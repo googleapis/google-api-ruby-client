@@ -5803,6 +5803,27 @@ module Google
         # @return [String]
         attr_accessor :authentication_config
       
+        # Assigns the Managed Identity for the RegionBackendService Workload. Use this
+        # property to configure the load balancer back-end to use certificates and roots
+        # of trust provisioned by the Managed Workload Identity system. The `
+        # managedIdentity` property is the fully-specified SPIFFE ID to use in the SVID
+        # presented by the Load Balancer Workload. The SPIFFE ID must be a resource
+        # starting with the "spiffe" scheme identifier, followed by the "trustDomain"
+        # property value, followed by the path to the Managed Workload Identity.
+        # Supported SPIFFE ID format: - spiffe://<trust_domain>/ns/<namespace>/sa/<
+        # subject> The Trust Domain within the Managed Identity must refer to a valid
+        # Workload Identity Pool. The TrustConfig and CertificateIssuanceConfig will be
+        # inherited from the Workload Identity Pool. Restrictions: - If you set the `
+        # managedIdentity` property, you cannot manually set the following fields: -
+        # tlsSettings.sni - tlsSettings.subjectAltNames - tlsSettings.
+        # authenticationConfig When defining a `managedIdentity` for a
+        # RegionBackendServices, the corresponding Workload Identity Pool must have a
+        # ca_pool configured in the same region. The system will set up a read-only
+        # tlsSettings.authenticationConfig for the Managed Identity.
+        # Corresponds to the JSON property `identity`
+        # @return [String]
+        attr_accessor :identity
+      
         # Server Name Indication - see RFC3546 section 3.1. If set, the load balancer
         # sends this string as the SNI hostname in the TLS connection to the backend,
         # and requires that this string match a Subject Alternative Name (SAN) in the
@@ -5833,6 +5854,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authentication_config = args[:authentication_config] if args.key?(:authentication_config)
+          @identity = args[:identity] if args.key?(:identity)
           @sni = args[:sni] if args.key?(:sni)
           @subject_alt_names = args[:subject_alt_names] if args.key?(:subject_alt_names)
         end
@@ -27295,6 +27317,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Specific subzone in the InterconnectLocation that represents where this
+        # connection is to be provisioned.
+        # Corresponds to the JSON property `subzone`
+        # @return [String]
+        attr_accessor :subzone
+      
         # [Output Only] A list of the URLs of all CrossSiteNetwork WireGroups configured
         # to use this Interconnect. The Interconnect cannot be deleted if this list is
         # non-empty.
@@ -27342,6 +27370,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @state = args[:state] if args.key?(:state)
+          @subzone = args[:subzone] if args.key?(:subzone)
           @wire_groups = args[:wire_groups] if args.key?(:wire_groups)
         end
       end
@@ -30683,6 +30712,13 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
+        # [Output Only] URLs of the other locations that can pair up with this location
+        # to support Single-Region 99.99% SLA. E.g. iad-zone1-1 and iad-zone2-5467 are
+        # Single-Region 99.99% peer locations of each other.
+        # Corresponds to the JSON property `singleRegionProductionCriticalPeerLocations`
+        # @return [Array<String>]
+        attr_accessor :single_region_production_critical_peer_locations
+      
         # [Output Only] The status of this InterconnectLocation, which can take one of
         # the following values: - CLOSED: The InterconnectLocation is closed and is
         # unavailable for provisioning new Interconnects. - AVAILABLE: The
@@ -30721,6 +30757,7 @@ module Google
           @region_infos = args[:region_infos] if args.key?(:region_infos)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @single_region_production_critical_peer_locations = args[:single_region_production_critical_peer_locations] if args.key?(:single_region_production_critical_peer_locations)
           @status = args[:status] if args.key?(:status)
           @supports_pzs = args[:supports_pzs] if args.key?(:supports_pzs)
         end
@@ -55497,14 +55534,14 @@ module Google
         # be configured to filter incoming HTTP requests targeting backend services (
         # including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They
         # filter requests before the request is served from Google's cache. -
-        # CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be
-        # configured to filter HTTP requests targeting services managed by Traffic
-        # Director in a service mesh. They filter requests before the request is served
-        # from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can
-        # be configured to filter packets targeting network load balancing resources
-        # such as backend services, target pools, target instances, and instances with
-        # external IPs. They filter requests before the request is served from the
-        # application. This field can be set only at resource creation time.
+        # CLOUD_ARMOR_INTERNAL_SERVICE (preview only): Cloud Armor internal service
+        # policies can be configured to filter HTTP requests targeting services managed
+        # by Traffic Director in a service mesh. They filter requests before the request
+        # is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network
+        # policies can be configured to filter packets targeting network load balancing
+        # resources such as backend services, target pools, target instances, and
+        # instances with external IPs. They filter requests before the request is served
+        # from the application. This field can be set only at resource creation time.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -56122,7 +56159,10 @@ module Google
         # redirectOptions. This action is only supported in Global Security Policies of
         # type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold.
         # Configure parameters for this action in rateLimitOptions. Requires
-        # rate_limit_options to be set for this.
+        # rate_limit_options to be set for this. - fairshare (preview only): when
+        # traffic reaches the threshold limit, requests from the clients matching this
+        # rule begin to be rate-limited using the Fair Share algorithm. This action is
+        # only allowed in security policies of type `CLOUD_ARMOR_INTERNAL_SERVICE`.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -56194,8 +56234,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :priority
       
-        # Must be specified if the action is "rate_based_ban" or "throttle". Cannot be
-        # specified for any other actions.
+        # Must be specified if the action is "rate_based_ban" or "throttle" or "
+        # fairshare". Cannot be specified for any other actions.
         # Corresponds to the JSON property `rateLimitOptions`
         # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptions]
         attr_accessor :rate_limit_options
@@ -56777,7 +56817,8 @@ module Google
         # configuration or an IP address cannot be resolved from it, the key type
         # defaults to IP. - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client
         # connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type
-        # defaults to ALL.
+        # defaults to ALL. For "fairshare" action, this value is limited to ALL i.e. a
+        # single rate limit threshold is enforced for all the requests matching the rule.
         # Corresponds to the JSON property `enforceOnKey`
         # @return [String]
         attr_accessor :enforce_on_key
