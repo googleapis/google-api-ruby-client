@@ -22,6 +22,35 @@ module Google
   module Apis
     module VmwareengineV1
       
+      # Request message for VmwareEngine.AcceleratePrivateCloudDeletion
+      class AcceleratePrivateCloudDeletionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Checksum used to ensure that the user-provided value is up to date
+        # before the server processes the request. The server compares provided checksum
+        # with the current checksum of the resource. If the user-provided value is out
+        # of date, this request returns an `ABORTED` error.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
       # Announcement for the resources of Vmware Engine.
       class Announcement
         include Google::Apis::Core::Hashable

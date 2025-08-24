@@ -22,6 +22,12 @@ module Google
   module Apis
     module VmwareengineV1
       
+      class AcceleratePrivateCloudDeletionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Announcement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -518,6 +524,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratePrivateCloudDeletionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :request_id, as: 'requestId'
+        end
       end
       
       class Announcement
