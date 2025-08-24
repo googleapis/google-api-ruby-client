@@ -10756,6 +10756,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authentication_config, as: 'authenticationConfig'
+          property :identity, as: 'identity'
           property :sni, as: 'sni'
           collection :subject_alt_names, as: 'subjectAltNames', class: Google::Apis::ComputeAlpha::BackendServiceTlsSettingsSubjectAltName, decorator: Google::Apis::ComputeAlpha::BackendServiceTlsSettingsSubjectAltName::Representation
       
@@ -16052,6 +16053,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :state, as: 'state'
+          property :subzone, as: 'subzone'
           collection :wire_groups, as: 'wireGroups'
         end
       end
@@ -16878,6 +16880,7 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          collection :single_region_production_critical_peer_locations, as: 'singleRegionProductionCriticalPeerLocations'
           property :status, as: 'status'
           property :supports_pzs, as: 'supportsPzs'
         end
