@@ -932,6 +932,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_share_count
       
+        # Output only. The min capacity of the instance.
+        # Corresponds to the JSON property `minCapacityGb`
+        # @return [Fixnum]
+        attr_accessor :min_capacity_gb
+      
         # Indicates whether this instance uses a multi-share configuration with which it
         # can have more than one file-share or none at all. File-shares are added,
         # updated and removed through the separate file-share APIs.
@@ -1045,6 +1050,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @max_capacity_gb = args[:max_capacity_gb] if args.key?(:max_capacity_gb)
           @max_share_count = args[:max_share_count] if args.key?(:max_share_count)
+          @min_capacity_gb = args[:min_capacity_gb] if args.key?(:min_capacity_gb)
           @multi_share_enabled = args[:multi_share_enabled] if args.key?(:multi_share_enabled)
           @name = args[:name] if args.key?(:name)
           @networks = args[:networks] if args.key?(:networks)
@@ -1710,6 +1716,19 @@ module Google
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # PauseReplicaRequest pauses a Filestore standby instance (replica).
+      class PauseReplicaRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
