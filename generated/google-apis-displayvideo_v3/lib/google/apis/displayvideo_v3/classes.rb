@@ -446,6 +446,17 @@ module Google
         # @return [Google::Apis::DisplayvideoV3::AdvertiserBillingConfig]
         attr_accessor :billing_config
       
+        # Optional. Whether this advertiser contains line items that serve European
+        # Union political ads. If this field is set to `
+        # DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING`, then the following will happen: *
+        # Any new line items created under this advertiser will be assigned `
+        # DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if not otherwise specified. * Any
+        # existing line items under this advertiser that do not have a set value be
+        # updated to `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` within a day.
+        # Corresponds to the JSON property `containsEuPoliticalAds`
+        # @return [String]
+        attr_accessor :contains_eu_political_ads
+      
         # Creatives related settings of an advertiser.
         # Corresponds to the JSON property `creativeConfig`
         # @return [Google::Apis::DisplayvideoV3::AdvertiserCreativeConfig]
@@ -523,6 +534,7 @@ module Google
           @ad_server_config = args[:ad_server_config] if args.key?(:ad_server_config)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
           @billing_config = args[:billing_config] if args.key?(:billing_config)
+          @contains_eu_political_ads = args[:contains_eu_political_ads] if args.key?(:contains_eu_political_ads)
           @creative_config = args[:creative_config] if args.key?(:creative_config)
           @data_access_config = args[:data_access_config] if args.key?(:data_access_config)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -851,6 +863,21 @@ module Google
         attr_accessor :bool_value
         alias_method :bool_value?, :bool_value
       
+        # Video content duration value.
+        # Corresponds to the JSON property `contentDurationValue`
+        # @return [String]
+        attr_accessor :content_duration_value
+      
+        # Video genre id value.
+        # Corresponds to the JSON property `contentGenreIdValue`
+        # @return [Fixnum]
+        attr_accessor :content_genre_id_value
+      
+        # Video delivery type value.
+        # Corresponds to the JSON property `contentStreamTypeValue`
+        # @return [String]
+        attr_accessor :content_stream_type_value
+      
         # Dimensions.
         # Corresponds to the JSON property `creativeDimensionValue`
         # @return [Google::Apis::DisplayvideoV3::Dimensions]
@@ -908,6 +935,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @content_duration_value = args[:content_duration_value] if args.key?(:content_duration_value)
+          @content_genre_id_value = args[:content_genre_id_value] if args.key?(:content_genre_id_value)
+          @content_stream_type_value = args[:content_stream_type_value] if args.key?(:content_stream_type_value)
           @creative_dimension_value = args[:creative_dimension_value] if args.key?(:creative_dimension_value)
           @day_and_time_value = args[:day_and_time_value] if args.key?(:day_and_time_value)
           @device_type_value = args[:device_type_value] if args.key?(:device_type_value)
@@ -2951,8 +2981,7 @@ module Google
         attr_accessor :target_line_item
       
         # Required. A field mask identifying which fields to update. Only the following
-        # fields are currently supported: * entityStatus *
-        # containsEuPoliticalAdvertising
+        # fields are currently supported: * entityStatus * containsEuPoliticalAds
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -5822,6 +5851,20 @@ module Google
       class DuplicateLineItemRequest
         include Google::Apis::Core::Hashable
       
+        # Whether this line item will serve European Union political ads. If
+        # contains_eu_political_ads has been set to `
+        # DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then this
+        # field will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if not
+        # otherwise specified. This field can then be updated using the UI, API, or
+        # Structured Data Files. *Warning*: Starting **September 8, 2025**, this field
+        # must be set. If not, either the value `
+        # DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` will be assigned to the line item
+        # if the parent advertiser has declared that it does not serve EU political ads,
+        # or **the request will fail**.
+        # Corresponds to the JSON property `containsEuPoliticalAds`
+        # @return [String]
+        attr_accessor :contains_eu_political_ads
+      
         # The display name of the new line item. Must be UTF-8 encoded with a maximum
         # size of 240 bytes.
         # Corresponds to the JSON property `targetDisplayName`
@@ -5834,6 +5877,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @contains_eu_political_ads = args[:contains_eu_political_ads] if args.key?(:contains_eu_political_ads)
           @target_display_name = args[:target_display_name] if args.key?(:target_display_name)
         end
       end
@@ -6742,6 +6786,20 @@ module Google
       class GenerateDefaultLineItemRequest
         include Google::Apis::Core::Hashable
       
+        # Whether this line item will serve European Union political ads. If
+        # contains_eu_political_ads has been set to `
+        # DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then this
+        # field will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if not
+        # otherwise specified. This field can then be updated using the UI, API, or
+        # Structured Data Files. *Warning*: Starting **September 8, 2025**, this field
+        # must be set. If not, either the value `
+        # DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` will be assigned to the line item
+        # if the parent advertiser has declared that it does not serve EU political ads,
+        # or **the request will fail**.
+        # Corresponds to the JSON property `containsEuPoliticalAds`
+        # @return [String]
+        attr_accessor :contains_eu_political_ads
+      
         # Required. The display name of the line item. Must be UTF-8 encoded with a
         # maximum size of 240 bytes.
         # Corresponds to the JSON property `displayName`
@@ -6769,6 +6827,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @contains_eu_political_ads = args[:contains_eu_political_ads] if args.key?(:contains_eu_political_ads)
           @display_name = args[:display_name] if args.key?(:display_name)
           @insertion_order_id = args[:insertion_order_id] if args.key?(:insertion_order_id)
           @line_item_type = args[:line_item_type] if args.key?(:line_item_type)
@@ -8357,6 +8416,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :campaign_id
       
+        # Whether this line item will serve European Union political ads. If
+        # contains_eu_political_ads has been set to `
+        # DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then this
+        # field will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if not
+        # otherwise specified. This field can then be updated using the UI, API, or
+        # Structured Data Files. *Warning*: Starting **September 8, 2025**, this field
+        # must be set when creating a new line item. If not, either the value `
+        # DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` will be assigned if the parent
+        # advertiser has declared that it does not serve EU political ads, or **the `
+        # advertisers.lineItems.create` request will fail**.
+        # Corresponds to the JSON property `containsEuPoliticalAds`
+        # @return [String]
+        attr_accessor :contains_eu_political_ads
+      
         # Settings that control how conversions are counted. All post-click conversions
         # will be counted. A percentage value can be set for post-view conversions
         # counting.
@@ -8491,6 +8564,7 @@ module Google
           @bid_strategy = args[:bid_strategy] if args.key?(:bid_strategy)
           @budget = args[:budget] if args.key?(:budget)
           @campaign_id = args[:campaign_id] if args.key?(:campaign_id)
+          @contains_eu_political_ads = args[:contains_eu_political_ads] if args.key?(:contains_eu_political_ads)
           @conversion_counting = args[:conversion_counting] if args.key?(:conversion_counting)
           @creative_ids = args[:creative_ids] if args.key?(:creative_ids)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -12965,9 +13039,10 @@ module Google
         # The value used by the bidding strategy. When the bidding strategy is assigned
         # at the line item level, this field is only applicable for the following
         # strategy types: * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `
-        # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` When the bidding
-        # strategy is assigned at the ad group level, this field is only applicable for
-        # the following strategy types: * `
+        # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` * `
+        # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_RESERVE_SHARE_OF_VOICE` When the
+        # bidding strategy is assigned at the ad group level, this field is only
+        # applicable for the following strategy types: * `
         # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM` * `
         # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV` * `
         # YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `
