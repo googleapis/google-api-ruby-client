@@ -679,7 +679,7 @@ module Google
         end
       end
       
-      # A step in the build pipeline. Next ID: 22
+      # A step in the build pipeline. Next ID: 23
       class BuildStep
         include Google::Apis::Core::Hashable
       
@@ -770,6 +770,11 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::TimeSpan]
         attr_accessor :pull_timing
       
+        # Remote configuration for the build step.
+        # Corresponds to the JSON property `remoteConfig`
+        # @return [String]
+        attr_accessor :remote_config
+      
         # 
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::ContaineranalysisV1alpha1::StepResult>]
@@ -841,6 +846,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @pull_timing = args[:pull_timing] if args.key?(:pull_timing)
+          @remote_config = args[:remote_config] if args.key?(:remote_config)
           @results = args[:results] if args.key?(:results)
           @script = args[:script] if args.key?(:script)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
@@ -894,6 +900,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # CISAKnownExploitedVulnerabilities provides information about whether the
+      # vulnerability is known to have been leveraged as part of a ransomware campaign.
+      class CisaKnownExploitedVulnerabilities
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether the vulnerability is known to have been leveraged as part of
+        # a ransomware campaign.
+        # Corresponds to the JSON property `knownRansomwareCampaignUse`
+        # @return [String]
+        attr_accessor :known_ransomware_campaign_use
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @known_ransomware_campaign_use = args[:known_ransomware_campaign_use] if args.key?(:known_ransomware_campaign_use)
         end
       end
       
@@ -3871,6 +3898,34 @@ module Google
         end
       end
       
+      # ExploitPredictionScoringSystem provides information about the Exploit
+      # Prediction Scoring System (EPSS) score and percentile.
+      class ExploitPredictionScoringSystem
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The percentile of the current score, the proportion of all scored
+        # vulnerabilities with the same or a lower EPSS score
+        # Corresponds to the JSON property `percentile`
+        # @return [Float]
+        attr_accessor :percentile
+      
+        # Optional. The EPSS score representing the probability [0-1] of exploitation in
+        # the wild in the next 30 days
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentile = args[:percentile] if args.key?(:percentile)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -6630,6 +6685,33 @@ module Google
         end
       end
       
+      # The Risk message provides information about the risk of a vulnerability.
+      class Risk
+        include Google::Apis::Core::Hashable
+      
+        # CISAKnownExploitedVulnerabilities provides information about whether the
+        # vulnerability is known to have been leveraged as part of a ransomware campaign.
+        # Corresponds to the JSON property `cisaKev`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::CisaKnownExploitedVulnerabilities]
+        attr_accessor :cisa_kev
+      
+        # ExploitPredictionScoringSystem provides information about the Exploit
+        # Prediction Scoring System (EPSS) score and percentile.
+        # Corresponds to the JSON property `epss`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::ExploitPredictionScoringSystem]
+        attr_accessor :epss
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cisa_kev = args[:cisa_kev] if args.key?(:cisa_kev)
+          @epss = args[:epss] if args.key?(:epss)
+        end
+      end
+      
       # 
       class RunDetails
         include Google::Apis::Core::Hashable
@@ -8039,6 +8121,11 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1alpha1::PackageIssue>]
         attr_accessor :package_issue
       
+        # The Risk message provides information about the risk of a vulnerability.
+        # Corresponds to the JSON property `risk`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::Risk]
+        attr_accessor :risk
+      
         # Output only. The note provider assigned Severity of the vulnerability.
         # Corresponds to the JSON property `severity`
         # @return [String]
@@ -8070,6 +8157,7 @@ module Google
           @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
           @extra_details = args[:extra_details] if args.key?(:extra_details)
           @package_issue = args[:package_issue] if args.key?(:package_issue)
+          @risk = args[:risk] if args.key?(:risk)
           @severity = args[:severity] if args.key?(:severity)
           @type = args[:type] if args.key?(:type)
           @vex_assessment = args[:vex_assessment] if args.key?(:vex_assessment)
