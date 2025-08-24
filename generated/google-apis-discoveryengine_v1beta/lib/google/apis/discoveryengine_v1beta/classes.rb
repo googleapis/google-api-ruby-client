@@ -7508,6 +7508,14 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
         attr_accessor :errors
       
+        # Optional. If the connector is a hybrid connector, determines whether ingestion
+        # is enabled and appropriate resources are provisioned during connector creation.
+        # If the connector is not a hybrid connector, this field is ignored.
+        # Corresponds to the JSON property `hybridIngestionDisabled`
+        # @return [Boolean]
+        attr_accessor :hybrid_ingestion_disabled
+        alias_method :hybrid_ingestion_disabled?, :hybrid_ingestion_disabled
+      
         # The refresh interval to sync the Access Control List information for the
         # documents ingested by this connector. If not set, the access control list will
         # be refreshed at the default interval of 30 minutes. The identity refresh
@@ -7687,6 +7695,7 @@ module Google
           @end_user_config = args[:end_user_config] if args.key?(:end_user_config)
           @entities = args[:entities] if args.key?(:entities)
           @errors = args[:errors] if args.key?(:errors)
+          @hybrid_ingestion_disabled = args[:hybrid_ingestion_disabled] if args.key?(:hybrid_ingestion_disabled)
           @identity_refresh_interval = args[:identity_refresh_interval] if args.key?(:identity_refresh_interval)
           @identity_schedule_config = args[:identity_schedule_config] if args.key?(:identity_schedule_config)
           @incremental_refresh_interval = args[:incremental_refresh_interval] if args.key?(:incremental_refresh_interval)
@@ -12196,6 +12205,8 @@ module Google
       
         # Required. Full resource name of DataStore, such as `projects/`project`/
         # locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
+        # The path must include the project number, project id is not supported for this
+        # field.
         # Corresponds to the JSON property `dataStore`
         # @return [String]
         attr_accessor :data_store
@@ -24632,6 +24643,8 @@ module Google
       
         # Required. Full resource name of DataStore, such as `projects/`project`/
         # locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
+        # The path must include the project number, project id is not supported for this
+        # field.
         # Corresponds to the JSON property `dataStore`
         # @return [String]
         attr_accessor :data_store
@@ -25693,6 +25706,11 @@ module Google
         # @return [Hash<String,Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDoubleList>]
         attr_accessor :model_scores
       
+        # A set of ranking signals.
+        # Corresponds to the JSON property `rankSignals`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignals]
+        attr_accessor :rank_signals
+      
         def initialize(**args)
            update!(**args)
         end
@@ -25703,6 +25721,99 @@ module Google
           @document = args[:document] if args.key?(:document)
           @id = args[:id] if args.key?(:id)
           @model_scores = args[:model_scores] if args.key?(:model_scores)
+          @rank_signals = args[:rank_signals] if args.key?(:rank_signals)
+        end
+      end
+      
+      # A set of ranking signals.
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignals
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Combined custom boosts for a doc.
+        # Corresponds to the JSON property `boostingFactor`
+        # @return [Float]
+        attr_accessor :boosting_factor
+      
+        # Optional. A list of custom clearbox signals.
+        # Corresponds to the JSON property `customSignals`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignalsCustomSignal>]
+        attr_accessor :custom_signals
+      
+        # Optional. The default rank of the result.
+        # Corresponds to the JSON property `defaultRank`
+        # @return [Float]
+        attr_accessor :default_rank
+      
+        # Optional. Age of the document in hours.
+        # Corresponds to the JSON property `documentAge`
+        # @return [Float]
+        attr_accessor :document_age
+      
+        # Optional. Keyword matching adjustment.
+        # Corresponds to the JSON property `keywordSimilarityScore`
+        # @return [Float]
+        attr_accessor :keyword_similarity_score
+      
+        # Optional. Predicted conversion rate adjustment as a rank.
+        # Corresponds to the JSON property `pctrRank`
+        # @return [Float]
+        attr_accessor :pctr_rank
+      
+        # Optional. Semantic relevance adjustment.
+        # Corresponds to the JSON property `relevanceScore`
+        # @return [Float]
+        attr_accessor :relevance_score
+      
+        # Optional. Semantic similarity adjustment.
+        # Corresponds to the JSON property `semanticSimilarityScore`
+        # @return [Float]
+        attr_accessor :semantic_similarity_score
+      
+        # Optional. Topicality adjustment as a rank.
+        # Corresponds to the JSON property `topicalityRank`
+        # @return [Float]
+        attr_accessor :topicality_rank
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boosting_factor = args[:boosting_factor] if args.key?(:boosting_factor)
+          @custom_signals = args[:custom_signals] if args.key?(:custom_signals)
+          @default_rank = args[:default_rank] if args.key?(:default_rank)
+          @document_age = args[:document_age] if args.key?(:document_age)
+          @keyword_similarity_score = args[:keyword_similarity_score] if args.key?(:keyword_similarity_score)
+          @pctr_rank = args[:pctr_rank] if args.key?(:pctr_rank)
+          @relevance_score = args[:relevance_score] if args.key?(:relevance_score)
+          @semantic_similarity_score = args[:semantic_similarity_score] if args.key?(:semantic_similarity_score)
+          @topicality_rank = args[:topicality_rank] if args.key?(:topicality_rank)
+        end
+      end
+      
+      # Custom clearbox signal represented by name and value pair.
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignalsCustomSignal
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Name of the signal.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Float value representing the ranking signal (e.g. 1.25 for BM25).
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
