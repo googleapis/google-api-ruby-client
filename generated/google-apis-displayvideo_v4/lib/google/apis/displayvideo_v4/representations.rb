@@ -2169,6 +2169,7 @@ module Google
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :billing_config, as: 'billingConfig', class: Google::Apis::DisplayvideoV4::AdvertiserBillingConfig, decorator: Google::Apis::DisplayvideoV4::AdvertiserBillingConfig::Representation
       
+          property :contains_eu_political_ads, as: 'containsEuPoliticalAds'
           property :creative_config, as: 'creativeConfig', class: Google::Apis::DisplayvideoV4::AdvertiserCreativeConfig, decorator: Google::Apis::DisplayvideoV4::AdvertiserCreativeConfig::Representation
       
           property :data_access_config, as: 'dataAccessConfig', class: Google::Apis::DisplayvideoV4::AdvertiserDataAccessConfig, decorator: Google::Apis::DisplayvideoV4::AdvertiserDataAccessConfig::Representation
@@ -2277,6 +2278,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bool_value, as: 'boolValue'
+          property :content_duration_value, as: 'contentDurationValue'
+          property :content_genre_id_value, :numeric_string => true, as: 'contentGenreIdValue'
+          property :content_stream_type_value, as: 'contentStreamTypeValue'
           property :creative_dimension_value, as: 'creativeDimensionValue', class: Google::Apis::DisplayvideoV4::Dimensions, decorator: Google::Apis::DisplayvideoV4::Dimensions::Representation
       
           property :day_and_time_value, as: 'dayAndTimeValue', class: Google::Apis::DisplayvideoV4::DayAndTime, decorator: Google::Apis::DisplayvideoV4::DayAndTime::Representation
@@ -3616,6 +3620,7 @@ module Google
       class DuplicateLineItemRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :contains_eu_political_ads, as: 'containsEuPoliticalAds'
           property :target_display_name, as: 'targetDisplayName'
         end
       end
@@ -3862,6 +3867,7 @@ module Google
       class GenerateDefaultLineItemRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :contains_eu_political_ads, as: 'containsEuPoliticalAds'
           property :display_name, as: 'displayName'
           property :insertion_order_id, :numeric_string => true, as: 'insertionOrderId'
           property :line_item_type, as: 'lineItemType'
@@ -4268,6 +4274,7 @@ module Google
           property :budget, as: 'budget', class: Google::Apis::DisplayvideoV4::LineItemBudget, decorator: Google::Apis::DisplayvideoV4::LineItemBudget::Representation
       
           property :campaign_id, :numeric_string => true, as: 'campaignId'
+          property :contains_eu_political_ads, as: 'containsEuPoliticalAds'
           property :conversion_counting, as: 'conversionCounting', class: Google::Apis::DisplayvideoV4::ConversionCountingConfig, decorator: Google::Apis::DisplayvideoV4::ConversionCountingConfig::Representation
       
           collection :creative_ids, as: 'creativeIds'
