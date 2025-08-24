@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelWorkflowInvocationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListReleaseConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -419,6 +431,12 @@ module Google
       end
       
       class NotebookRuntimeOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -771,6 +789,12 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1177,6 +1201,15 @@ module Google
         end
       end
       
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::DataformV1beta1::Operation, decorator: Google::Apis::DataformV1beta1::Operation::Representation
+      
+        end
+      end
+      
       class ListReleaseConfigsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1317,6 +1350,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ai_platform_notebook_runtime_template, as: 'aiPlatformNotebookRuntimeTemplate'
           property :gcs_output_bucket, as: 'gcsOutputBucket'
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::DataformV1beta1::Status, decorator: Google::Apis::DataformV1beta1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
         end
       end
       
