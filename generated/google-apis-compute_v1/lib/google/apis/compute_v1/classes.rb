@@ -38616,6 +38616,11 @@ module Google
       class ResourceStatus
         include Google::Apis::Core::Hashable
       
+        # Effective values of predefined metadata keys for an instance.
+        # Corresponds to the JSON property `effectiveInstanceMetadata`
+        # @return [Google::Apis::ComputeV1::ResourceStatusEffectiveInstanceMetadata]
+        attr_accessor :effective_instance_metadata
+      
         # [Output Only] The precise location of your instance within the zone's data
         # center, including the block, sub-block, and host. The field is formatted as
         # follows: blockId/subBlockId/hostId.
@@ -38644,10 +38649,79 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @effective_instance_metadata = args[:effective_instance_metadata] if args.key?(:effective_instance_metadata)
           @physical_host = args[:physical_host] if args.key?(:physical_host)
           @physical_host_topology = args[:physical_host_topology] if args.key?(:physical_host_topology)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
+        end
+      end
+      
+      # Effective values of predefined metadata keys for an instance.
+      class ResourceStatusEffectiveInstanceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Effective block-project-ssh-keys value at Instance level.
+        # Corresponds to the JSON property `blockProjectSshKeysMetadataValue`
+        # @return [Boolean]
+        attr_accessor :block_project_ssh_keys_metadata_value
+        alias_method :block_project_ssh_keys_metadata_value?, :block_project_ssh_keys_metadata_value
+      
+        # Effective enable-guest-attributes value at Instance level.
+        # Corresponds to the JSON property `enableGuestAttributesMetadataValue`
+        # @return [Boolean]
+        attr_accessor :enable_guest_attributes_metadata_value
+        alias_method :enable_guest_attributes_metadata_value?, :enable_guest_attributes_metadata_value
+      
+        # Effective enable-os-inventory value at Instance level.
+        # Corresponds to the JSON property `enableOsInventoryMetadataValue`
+        # @return [Boolean]
+        attr_accessor :enable_os_inventory_metadata_value
+        alias_method :enable_os_inventory_metadata_value?, :enable_os_inventory_metadata_value
+      
+        # Effective enable-osconfig value at Instance level.
+        # Corresponds to the JSON property `enableOsconfigMetadataValue`
+        # @return [Boolean]
+        attr_accessor :enable_osconfig_metadata_value
+        alias_method :enable_osconfig_metadata_value?, :enable_osconfig_metadata_value
+      
+        # Effective enable-oslogin value at Instance level.
+        # Corresponds to the JSON property `enableOsloginMetadataValue`
+        # @return [Boolean]
+        attr_accessor :enable_oslogin_metadata_value
+        alias_method :enable_oslogin_metadata_value?, :enable_oslogin_metadata_value
+      
+        # Effective serial-port-enable value at Instance level.
+        # Corresponds to the JSON property `serialPortEnableMetadataValue`
+        # @return [Boolean]
+        attr_accessor :serial_port_enable_metadata_value
+        alias_method :serial_port_enable_metadata_value?, :serial_port_enable_metadata_value
+      
+        # Effective serial-port-logging-enable value at Instance level.
+        # Corresponds to the JSON property `serialPortLoggingEnableMetadataValue`
+        # @return [Boolean]
+        attr_accessor :serial_port_logging_enable_metadata_value
+        alias_method :serial_port_logging_enable_metadata_value?, :serial_port_logging_enable_metadata_value
+      
+        # Effective VM DNS setting at Instance level.
+        # Corresponds to the JSON property `vmDnsSettingMetadataValue`
+        # @return [String]
+        attr_accessor :vm_dns_setting_metadata_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @block_project_ssh_keys_metadata_value = args[:block_project_ssh_keys_metadata_value] if args.key?(:block_project_ssh_keys_metadata_value)
+          @enable_guest_attributes_metadata_value = args[:enable_guest_attributes_metadata_value] if args.key?(:enable_guest_attributes_metadata_value)
+          @enable_os_inventory_metadata_value = args[:enable_os_inventory_metadata_value] if args.key?(:enable_os_inventory_metadata_value)
+          @enable_osconfig_metadata_value = args[:enable_osconfig_metadata_value] if args.key?(:enable_osconfig_metadata_value)
+          @enable_oslogin_metadata_value = args[:enable_oslogin_metadata_value] if args.key?(:enable_oslogin_metadata_value)
+          @serial_port_enable_metadata_value = args[:serial_port_enable_metadata_value] if args.key?(:serial_port_enable_metadata_value)
+          @serial_port_logging_enable_metadata_value = args[:serial_port_logging_enable_metadata_value] if args.key?(:serial_port_logging_enable_metadata_value)
+          @vm_dns_setting_metadata_value = args[:vm_dns_setting_metadata_value] if args.key?(:vm_dns_setting_metadata_value)
         end
       end
       
@@ -42077,14 +42151,14 @@ module Google
         # be configured to filter incoming HTTP requests targeting backend services (
         # including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They
         # filter requests before the request is served from Google's cache. -
-        # CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be
-        # configured to filter HTTP requests targeting services managed by Traffic
-        # Director in a service mesh. They filter requests before the request is served
-        # from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can
-        # be configured to filter packets targeting network load balancing resources
-        # such as backend services, target pools, target instances, and instances with
-        # external IPs. They filter requests before the request is served from the
-        # application. This field can be set only at resource creation time.
+        # CLOUD_ARMOR_INTERNAL_SERVICE (preview only): Cloud Armor internal service
+        # policies can be configured to filter HTTP requests targeting services managed
+        # by Traffic Director in a service mesh. They filter requests before the request
+        # is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network
+        # policies can be configured to filter packets targeting network load balancing
+        # resources such as backend services, target pools, target instances, and
+        # instances with external IPs. They filter requests before the request is served
+        # from the application. This field can be set only at resource creation time.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -42539,7 +42613,10 @@ module Google
         # redirectOptions. This action is only supported in Global Security Policies of
         # type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold.
         # Configure parameters for this action in rateLimitOptions. Requires
-        # rate_limit_options to be set for this.
+        # rate_limit_options to be set for this. - fairshare (preview only): when
+        # traffic reaches the threshold limit, requests from the clients matching this
+        # rule begin to be rate-limited using the Fair Share algorithm. This action is
+        # only allowed in security policies of type `CLOUD_ARMOR_INTERNAL_SERVICE`.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -42595,8 +42672,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :priority
       
-        # Must be specified if the action is "rate_based_ban" or "throttle". Cannot be
-        # specified for any other actions.
+        # Must be specified if the action is "rate_based_ban" or "throttle" or "
+        # fairshare". Cannot be specified for any other actions.
         # Corresponds to the JSON property `rateLimitOptions`
         # @return [Google::Apis::ComputeV1::SecurityPolicyRuleRateLimitOptions]
         attr_accessor :rate_limit_options
@@ -43046,7 +43123,8 @@ module Google
         # configuration or an IP address cannot be resolved from it, the key type
         # defaults to IP. - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client
         # connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type
-        # defaults to ALL.
+        # defaults to ALL. For "fairshare" action, this value is limited to ALL i.e. a
+        # single rate limit threshold is enforced for all the requests matching the rule.
         # Corresponds to the JSON property `enforceOnKey`
         # @return [String]
         attr_accessor :enforce_on_key
