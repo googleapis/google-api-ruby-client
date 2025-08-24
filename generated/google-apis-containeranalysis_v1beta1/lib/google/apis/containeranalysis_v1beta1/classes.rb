@@ -731,7 +731,7 @@ module Google
         end
       end
       
-      # A step in the build pipeline. Next ID: 22
+      # A step in the build pipeline. Next ID: 23
       class BuildStep
         include Google::Apis::Core::Hashable
       
@@ -822,6 +822,11 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1beta1::TimeSpan]
         attr_accessor :pull_timing
       
+        # Remote configuration for the build step.
+        # Corresponds to the JSON property `remoteConfig`
+        # @return [String]
+        attr_accessor :remote_config
+      
         # 
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::ContaineranalysisV1beta1::StepResult>]
@@ -893,6 +898,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @pull_timing = args[:pull_timing] if args.key?(:pull_timing)
+          @remote_config = args[:remote_config] if args.key?(:remote_config)
           @results = args[:results] if args.key?(:results)
           @script = args[:script] if args.key?(:script)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
@@ -5018,7 +5024,8 @@ module Google
         attr_accessor :notes
       
         # Unordered list. Unreachable regions. Populated for requests from the global
-        # region when `return_partial_success` is set. Format: projects//locations/
+        # region when `return_partial_success` is set. Format: `projects/[PROJECT_ID]/
+        # locations/[LOCATION]`
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -5051,7 +5058,8 @@ module Google
         attr_accessor :occurrences
       
         # Unordered list. Unreachable regions. Populated for requests from the global
-        # region when `return_partial_success` is set. Format: projects//locations/
+        # region when `return_partial_success` is set. Format: `projects/[PROJECT_ID]/
+        # locations/[LOCATION]`
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -7242,7 +7250,8 @@ module Google
         attr_accessor :counts
       
         # Unordered list. Unreachable regions. Populated for requests from the global
-        # region when `return_partial_success` is set. Format: projects//locations/
+        # region when `return_partial_success` is set. Format: `projects/[PROJECT_ID]/
+        # locations/[LOCATION]`
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
