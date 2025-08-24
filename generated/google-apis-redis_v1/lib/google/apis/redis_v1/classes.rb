@@ -287,10 +287,25 @@ module Google
         # @return [String]
         attr_accessor :kms_key
       
+        # Output only. The last time a backup was created in the backup collection.
+        # Corresponds to the JSON property `lastBackupTime`
+        # @return [String]
+        attr_accessor :last_backup_time
+      
         # Identifier. Full resource path of the backup collection.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Output only. Total number of backups in the backup collection.
+        # Corresponds to the JSON property `totalBackupCount`
+        # @return [Fixnum]
+        attr_accessor :total_backup_count
+      
+        # Output only. Total size of all backups in the backup collection.
+        # Corresponds to the JSON property `totalBackupSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :total_backup_size_bytes
       
         # Output only. System assigned unique identifier of the backup collection.
         # Corresponds to the JSON property `uid`
@@ -307,7 +322,10 @@ module Google
           @cluster_uid = args[:cluster_uid] if args.key?(:cluster_uid)
           @create_time = args[:create_time] if args.key?(:create_time)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @last_backup_time = args[:last_backup_time] if args.key?(:last_backup_time)
           @name = args[:name] if args.key?(:name)
+          @total_backup_count = args[:total_backup_count] if args.key?(:total_backup_count)
+          @total_backup_size_bytes = args[:total_backup_size_bytes] if args.key?(:total_backup_size_bytes)
           @uid = args[:uid] if args.key?(:uid)
         end
       end
