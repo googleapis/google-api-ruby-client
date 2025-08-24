@@ -5692,6 +5692,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceStatusEffectiveInstanceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceStatusPhysicalHostTopology
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -18675,6 +18681,8 @@ module Google
       class ResourceStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_instance_metadata, as: 'effectiveInstanceMetadata', class: Google::Apis::ComputeBeta::ResourceStatusEffectiveInstanceMetadata, decorator: Google::Apis::ComputeBeta::ResourceStatusEffectiveInstanceMetadata::Representation
+      
           property :physical_host, as: 'physicalHost'
           property :physical_host_topology, as: 'physicalHostTopology', class: Google::Apis::ComputeBeta::ResourceStatusPhysicalHostTopology, decorator: Google::Apis::ComputeBeta::ResourceStatusPhysicalHostTopology::Representation
       
@@ -18684,6 +18692,20 @@ module Google
       
           property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::ComputeBeta::UpcomingMaintenance, decorator: Google::Apis::ComputeBeta::UpcomingMaintenance::Representation
       
+        end
+      end
+      
+      class ResourceStatusEffectiveInstanceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :block_project_ssh_keys_metadata_value, as: 'blockProjectSshKeysMetadataValue'
+          property :enable_guest_attributes_metadata_value, as: 'enableGuestAttributesMetadataValue'
+          property :enable_os_inventory_metadata_value, as: 'enableOsInventoryMetadataValue'
+          property :enable_osconfig_metadata_value, as: 'enableOsconfigMetadataValue'
+          property :enable_oslogin_metadata_value, as: 'enableOsloginMetadataValue'
+          property :serial_port_enable_metadata_value, as: 'serialPortEnableMetadataValue'
+          property :serial_port_logging_enable_metadata_value, as: 'serialPortLoggingEnableMetadataValue'
+          property :vm_dns_setting_metadata_value, as: 'vmDnsSettingMetadataValue'
         end
       end
       
