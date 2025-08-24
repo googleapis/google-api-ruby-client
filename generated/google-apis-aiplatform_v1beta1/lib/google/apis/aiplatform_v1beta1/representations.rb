@@ -688,6 +688,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1Chunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1Citation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1630,6 +1636,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ExecuteSandboxEnvironmentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ExecuteSandboxEnvironmentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1Execution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2542,6 +2560,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1GenerateSyntheticDataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerateSyntheticDataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1GenerateVideoResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3238,6 +3268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ListSandboxEnvironmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1ListSavedQueriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3364,7 +3400,61 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExample
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSourceEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExampleGeneratedMemory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigMemoryTopic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigMemoryTopicCustomMemoryTopic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigMemoryTopicManagedMemoryTopic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1MergeVersionAliasesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4175,6 +4265,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1OutputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1OutputFieldSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5254,6 +5350,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigTtlConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1ReasoningEngineSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5645,6 +5753,24 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1SandboxEnvironment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1SandboxEnvironmentSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1SandboxEnvironmentSpecCodeExecutionEnvironment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7366,7 +7492,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1SyntheticExample
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1SyntheticField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1TfRecordDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1TaskDescriptionStrategy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8834,6 +8978,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :metric_name, as: 'metricName'
+          hash :monitored_resource_labels, as: 'monitoredResourceLabels'
           property :target, as: 'target'
         end
       end
@@ -9392,6 +9537,16 @@ module Google
           property :checkpoint_id, as: 'checkpointId'
           property :epoch, :numeric_string => true, as: 'epoch'
           property :step, :numeric_string => true, as: 'step'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1Chunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
+          property :metadata, as: 'metadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Metadata, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Metadata::Representation
+      
+          property :mime_type, as: 'mimeType'
         end
       end
       
@@ -11144,6 +11299,22 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1ExecuteSandboxEnvironmentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :inputs, as: 'inputs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Chunk, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Chunk::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ExecuteSandboxEnvironmentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :outputs, as: 'outputs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Chunk, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Chunk::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1Execution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12716,6 +12887,27 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1GenerateSyntheticDataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          collection :examples, as: 'examples', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SyntheticExample, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SyntheticExample::Representation
+      
+          collection :output_field_specs, as: 'outputFieldSpecs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1OutputFieldSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1OutputFieldSpec::Representation
+      
+          property :task_description, as: 'taskDescription', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TaskDescriptionStrategy, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TaskDescriptionStrategy::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerateSyntheticDataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :synthetic_examples, as: 'syntheticExamples', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SyntheticExample, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SyntheticExample::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1GenerateVideoResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12844,10 +13036,6 @@ module Google
       class GoogleCloudAiplatformV1beta1GoogleMaps
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_auth, as: 'apiAuth', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ApiAuth, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ApiAuth::Representation
-      
-          property :auth_config, as: 'authConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AuthConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AuthConfig::Representation
-      
         end
       end
       
@@ -13906,6 +14094,15 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1ListSandboxEnvironmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :sandbox_environments, as: 'sandboxEnvironments', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SandboxEnvironment, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SandboxEnvironment::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1ListSavedQueriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14101,10 +14298,86 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :generate_memories_examples, as: 'generateMemoriesExamples', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExample, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExample::Representation
+      
+          collection :memory_topics, as: 'memoryTopics', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigMemoryTopic, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigMemoryTopic::Representation
+      
+          collection :scope_keys, as: 'scopeKeys'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExample
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_source, as: 'conversationSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSource::Representation
+      
+          collection :generated_memories, as: 'generatedMemories', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExampleGeneratedMemory, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExampleGeneratedMemory::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :events, as: 'events', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSourceEvent, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSourceEvent::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSourceEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExampleGeneratedMemory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fact, as: 'fact'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigMemoryTopic
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_memory_topic, as: 'customMemoryTopic', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigMemoryTopicCustomMemoryTopic, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigMemoryTopicCustomMemoryTopic::Representation
+      
+          property :managed_memory_topic, as: 'managedMemoryTopic', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigMemoryTopicManagedMemoryTopic, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigMemoryTopicManagedMemoryTopic::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigMemoryTopicCustomMemoryTopic
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :label, as: 'label'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigMemoryTopicManagedMemoryTopic
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :managed_topic_enum, as: 'managedTopicEnum'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1MergeVersionAliasesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :version_aliases, as: 'versionAliases'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1Metadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :attributes, as: 'attributes'
         end
       end
       
@@ -15644,6 +15917,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GcsDestination, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GcsDestination::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1OutputFieldSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_name, as: 'fieldName'
+          property :field_type, as: 'fieldType'
+          property :guidance, as: 'guidance'
         end
       end
       
@@ -17433,9 +17715,13 @@ module Google
       class GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :customization_configs, as: 'customizationConfigs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfig::Representation
+      
           property :generation_config, as: 'generationConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigGenerationConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigGenerationConfig::Representation
       
           property :similarity_search_config, as: 'similaritySearchConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig::Representation
+      
+          property :ttl_config, as: 'ttlConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigTtlConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigTtlConfig::Representation
       
         end
       end
@@ -17451,6 +17737,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :embedding_model, as: 'embeddingModel'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigTtlConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_ttl, as: 'defaultTtl'
+          property :granular_ttl_config, as: 'granularTtlConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_ttl, as: 'createTtl'
+          property :generate_created_ttl, as: 'generateCreatedTtl'
+          property :generate_updated_ttl, as: 'generateUpdatedTtl'
         end
       end
       
@@ -18046,6 +18350,39 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :sample_rate, as: 'sampleRate'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1SandboxEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :metadata, as: 'metadata'
+          property :name, as: 'name'
+          property :spec, as: 'spec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SandboxEnvironmentSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SandboxEnvironmentSpec::Representation
+      
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1SandboxEnvironmentSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code_execution_environment, as: 'codeExecutionEnvironment', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SandboxEnvironmentSpecCodeExecutionEnvironment, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SandboxEnvironmentSpecCodeExecutionEnvironment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1SandboxEnvironmentSpecCodeExecutionEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code_language, as: 'codeLanguage'
+          collection :dependencies, as: 'dependencies'
+          collection :env, as: 'env', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnvVar, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnvVar::Representation
+      
+          property :machine_config, as: 'machineConfig'
         end
       end
       
@@ -20933,11 +21270,35 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1SyntheticExample
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fields, as: 'fields', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SyntheticField, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SyntheticField::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1SyntheticField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content::Representation
+      
+          property :field_name, as: 'fieldName'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1TfRecordDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GcsDestination, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GcsDestination::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1TaskDescriptionStrategy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :task_description, as: 'taskDescription'
         end
       end
       
