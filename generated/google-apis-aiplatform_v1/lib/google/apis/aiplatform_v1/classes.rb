@@ -13411,25 +13411,12 @@ module Google
       class GoogleCloudAiplatformV1GoogleMaps
         include Google::Apis::Core::Hashable
       
-        # The generic reusable api auth config. Deprecated. Please use AuthConfig (
-        # google/cloud/aiplatform/master/auth.proto) instead.
-        # Corresponds to the JSON property `apiAuth`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ApiAuth]
-        attr_accessor :api_auth
-      
-        # Auth configuration to run the extension.
-        # Corresponds to the JSON property `authConfig`
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AuthConfig]
-        attr_accessor :auth_config
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @api_auth = args[:api_auth] if args.key?(:api_auth)
-          @auth_config = args[:auth_config] if args.key?(:auth_config)
         end
       end
       
@@ -26397,13 +26384,14 @@ module Google
         attr_accessor :env
       
         # Optional. The maximum number of application instances that can be launched to
-        # handle increased traffic. Defaults to 100.
+        # handle increased traffic. Defaults to 100. Range: [1, 1000]. If VPC-SC or PSC-
+        # I is enabled, the acceptable range is [1, 100].
         # Corresponds to the JSON property `maxInstances`
         # @return [Fixnum]
         attr_accessor :max_instances
       
         # Optional. The minimum number of application instances that will be kept
-        # running at all times. Defaults to 1.
+        # running at all times. Defaults to 1. Range: [0, 10].
         # Corresponds to the JSON property `minInstances`
         # @return [Fixnum]
         attr_accessor :min_instances
@@ -26415,9 +26403,11 @@ module Google
       
         # Optional. Resource limits for each container. Only 'cpu' and 'memory' keys are
         # supported. Defaults to `"cpu": "4", "memory": "4Gi"`. * The only supported
-        # values for CPU are '1', '2', '4', and '8'. For more information, go to https://
-        # cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and
-        # syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
+        # values for CPU are '1', '2', '4', '6' and '8'. For more information, go to
+        # https://cloud.google.com/run/docs/configuring/cpu. * The only supported values
+        # for memory are '1Gi', '2Gi', ... '32 Gi'. * For required cpu on different
+        # memory values, go to https://cloud.google.com/run/docs/configuring/memory-
+        # limits
         # Corresponds to the JSON property `resourceLimits`
         # @return [Hash<String,String>]
         attr_accessor :resource_limits
