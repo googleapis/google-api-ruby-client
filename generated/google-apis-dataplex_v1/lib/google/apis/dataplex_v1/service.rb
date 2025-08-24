@@ -546,8 +546,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field. It is unsupported and is ignored unless
+        #   explicitly documented otherwise. This is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like "displayName=tokyo", and is documented in more detail in
@@ -640,8 +640,8 @@ module Google
         #   Required. The project to which the request should be attributed in the
         #   following form: projects/`project`/locations/global.
         # @param [String] order_by
-        #   Optional. Specifies the ordering of results. Supported values are: relevance (
-        #   default) last_modified_timestamp last_modified_timestamp asc
+        #   Optional. Specifies the ordering of results. Supported values are: relevance
+        #   last_modified_timestamp last_modified_timestamp asc
         # @param [Fixnum] page_size
         #   Optional. Number of results in the search page. If <=0, then defaults to 10.
         #   Max limit for page_size is 1000. Throws an invalid argument for page_size >
