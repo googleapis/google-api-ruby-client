@@ -3322,6 +3322,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignalsCustomSignal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaSearchResponseSessionInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7834,6 +7846,7 @@ module Google
       
           collection :errors, as: 'errors', class: Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus::Representation
       
+          property :hybrid_ingestion_disabled, as: 'hybridIngestionDisabled'
           property :identity_refresh_interval, as: 'identityRefreshInterval'
           property :identity_schedule_config, as: 'identityScheduleConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig::Representation
       
@@ -10374,6 +10387,32 @@ module Google
           property :id, as: 'id'
           hash :model_scores, as: 'modelScores', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDoubleList, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDoubleList::Representation
       
+          property :rank_signals, as: 'rankSignals', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignals, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignals::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boosting_factor, as: 'boostingFactor'
+          collection :custom_signals, as: 'customSignals', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignalsCustomSignal, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignalsCustomSignal::Representation
+      
+          property :default_rank, as: 'defaultRank'
+          property :document_age, as: 'documentAge'
+          property :keyword_similarity_score, as: 'keywordSimilarityScore'
+          property :pctr_rank, as: 'pctrRank'
+          property :relevance_score, as: 'relevanceScore'
+          property :semantic_similarity_score, as: 'semanticSimilarityScore'
+          property :topicality_rank, as: 'topicalityRank'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignalsCustomSignal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       
