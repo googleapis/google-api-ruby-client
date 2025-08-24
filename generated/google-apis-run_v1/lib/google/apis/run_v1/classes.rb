@@ -261,7 +261,8 @@ module Google
         # stores driver specific attributes. For Google Cloud Storage volumes, the
         # following attributes are supported: * bucketName: the name of the Cloud
         # Storage bucket to mount. The Cloud Run Service identity must have access to
-        # this bucket.
+        # this bucket. * mountOptions: comma-separated list of mount options to pass to
+        # the gcsfuse.
         # Corresponds to the JSON property `volumeAttributes`
         # @return [Hash<String,String>]
         attr_accessor :volume_attributes
