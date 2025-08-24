@@ -5079,7 +5079,13 @@ module Google
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :private_message_viewer
       
-        # Information about a quoted message.
+        # Information about a message that another message quotes. When you create a
+        # message, you can quote messages within the same thread, or quote a root
+        # message to create a new root message. However, you can't quote a message reply
+        # from a different thread. When you update a message, you can't add or replace
+        # the `quotedMessageMetadata` field, but you can remove it. For example usage,
+        # see [Quote another message](https://developers.google.com/workspace/chat/
+        # create-messages#quote-a-message).
         # Corresponds to the JSON property `quotedMessageMetadata`
         # @return [Google::Apis::ChatV1::QuotedMessageMetadata]
         attr_accessor :quoted_message_metadata
@@ -5424,12 +5430,21 @@ module Google
         end
       end
       
-      # Information about a quoted message.
+      # Information about a message that another message quotes. When you create a
+      # message, you can quote messages within the same thread, or quote a root
+      # message to create a new root message. However, you can't quote a message reply
+      # from a different thread. When you update a message, you can't add or replace
+      # the `quotedMessageMetadata` field, but you can remove it. For example usage,
+      # see [Quote another message](https://developers.google.com/workspace/chat/
+      # create-messages#quote-a-message).
       class QuotedMessageMetadata
         include Google::Apis::Core::Hashable
       
         # Required. The timestamp when the quoted message was created or when the quoted
-        # message was last updated.
+        # message was last updated. If the message was edited, use this field, `
+        # last_update_time`. If the message was never edited, use `create_time`. If `
+        # last_update_time` doesn't match the latest version of the quoted message, the
+        # request fails.
         # Corresponds to the JSON property `lastUpdateTime`
         # @return [String]
         attr_accessor :last_update_time
