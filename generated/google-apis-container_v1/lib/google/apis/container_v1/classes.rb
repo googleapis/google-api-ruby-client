@@ -2024,6 +2024,11 @@ module Google
         # @return [Google::Apis::ContainerV1::ClusterNetworkPerformanceConfig]
         attr_accessor :desired_network_performance_config
       
+        # NetworkTierConfig contains network tier information.
+        # Corresponds to the JSON property `desiredNetworkTierConfig`
+        # @return [Google::Apis::ContainerV1::NetworkTierConfig]
+        attr_accessor :desired_network_tier_config
+      
         # Node kubelet configs.
         # Corresponds to the JSON property `desiredNodeKubeletConfig`
         # @return [Google::Apis::ContainerV1::NodeKubeletConfig]
@@ -2254,6 +2259,7 @@ module Google
           @desired_monitoring_config = args[:desired_monitoring_config] if args.key?(:desired_monitoring_config)
           @desired_monitoring_service = args[:desired_monitoring_service] if args.key?(:desired_monitoring_service)
           @desired_network_performance_config = args[:desired_network_performance_config] if args.key?(:desired_network_performance_config)
+          @desired_network_tier_config = args[:desired_network_tier_config] if args.key?(:desired_network_tier_config)
           @desired_node_kubelet_config = args[:desired_node_kubelet_config] if args.key?(:desired_node_kubelet_config)
           @desired_node_pool_auto_config_kubelet_config = args[:desired_node_pool_auto_config_kubelet_config] if args.key?(:desired_node_pool_auto_config_kubelet_config)
           @desired_node_pool_auto_config_linux_node_config = args[:desired_node_pool_auto_config_linux_node_config] if args.key?(:desired_node_pool_auto_config_linux_node_config)
@@ -3800,6 +3806,11 @@ module Google
         # @return [String]
         attr_accessor :ipv6_access_type
       
+        # NetworkTierConfig contains network tier information.
+        # Corresponds to the JSON property `networkTierConfig`
+        # @return [Google::Apis::ContainerV1::NetworkTierConfig]
+        attr_accessor :network_tier_config
+      
         # This field is deprecated, use node_ipv4_cidr_block.
         # Corresponds to the JSON property `nodeIpv4Cidr`
         # @return [String]
@@ -3913,6 +3924,7 @@ module Google
           @create_subnetwork = args[:create_subnetwork] if args.key?(:create_subnetwork)
           @default_pod_ipv4_range_utilization = args[:default_pod_ipv4_range_utilization] if args.key?(:default_pod_ipv4_range_utilization)
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
+          @network_tier_config = args[:network_tier_config] if args.key?(:network_tier_config)
           @node_ipv4_cidr = args[:node_ipv4_cidr] if args.key?(:node_ipv4_cidr)
           @node_ipv4_cidr_block = args[:node_ipv4_cidr_block] if args.key?(:node_ipv4_cidr_block)
           @pod_cidr_overprovision_config = args[:pod_cidr_overprovision_config] if args.key?(:pod_cidr_overprovision_config)
@@ -5051,6 +5063,25 @@ module Google
         end
       end
       
+      # NetworkTierConfig contains network tier information.
+      class NetworkTierConfig
+        include Google::Apis::Core::Hashable
+      
+        # Network tier configuration.
+        # Corresponds to the JSON property `networkTier`
+        # @return [String]
+        attr_accessor :network_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_tier = args[:network_tier] if args.key?(:network_tier)
+        end
+      end
+      
       # Specifies the NodeAffinity key, values, and affinity operator according to [
       # shared sole tenant node group affinities](https://`$universe.dns_names.
       # final_documentation_domain`/compute/docs/nodes/sole-tenant-nodes#
@@ -5800,6 +5831,11 @@ module Google
         # @return [Google::Apis::ContainerV1::NetworkPerformanceConfig]
         attr_accessor :network_performance_config
       
+        # NetworkTierConfig contains network tier information.
+        # Corresponds to the JSON property `networkTierConfig`
+        # @return [Google::Apis::ContainerV1::NetworkTierConfig]
+        attr_accessor :network_tier_config
+      
         # [PRIVATE FIELD] Config for pod CIDR size overprovisioning.
         # Corresponds to the JSON property `podCidrOverprovisionConfig`
         # @return [Google::Apis::ContainerV1::PodCidrOverprovisionConfig]
@@ -5851,6 +5887,7 @@ module Google
           @create_pod_range = args[:create_pod_range] if args.key?(:create_pod_range)
           @enable_private_nodes = args[:enable_private_nodes] if args.key?(:enable_private_nodes)
           @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
+          @network_tier_config = args[:network_tier_config] if args.key?(:network_tier_config)
           @pod_cidr_overprovision_config = args[:pod_cidr_overprovision_config] if args.key?(:pod_cidr_overprovision_config)
           @pod_ipv4_cidr_block = args[:pod_ipv4_cidr_block] if args.key?(:pod_ipv4_cidr_block)
           @pod_ipv4_range_utilization = args[:pod_ipv4_range_utilization] if args.key?(:pod_ipv4_range_utilization)
