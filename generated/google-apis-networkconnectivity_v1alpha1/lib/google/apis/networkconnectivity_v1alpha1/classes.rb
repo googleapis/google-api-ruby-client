@@ -593,9 +593,11 @@ module Google
         attr_accessor :prefix_length
       
         # Optional. Can be set to narrow down or pick a different address space while
-        # searching for a free range. If not set, defaults to the "10.0.0.0/8" address
-        # space. This can be used to search in other rfc-1918 address spaces like "172.
-        # 16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
+        # searching for a free range. If not set, defaults to the ["10.0.0.0/8", "172.16.
+        # 0.0/12", "192.168.0.0/16"] address space (for auto-mode networks, the "10.0.0.
+        # 0/9" range is used instead of "10.0.0.0/8"). This can be used to target the
+        # search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/
+        # 16" or non-rfc-1918 address spaces used in the VPC.
         # Corresponds to the JSON property `targetCidrRange`
         # @return [Array<String>]
         attr_accessor :target_cidr_range
