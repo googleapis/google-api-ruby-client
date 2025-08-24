@@ -10818,10 +10818,6 @@ module Google
       class GoogleCloudAiplatformV1GoogleMaps
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_auth, as: 'apiAuth', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ApiAuth, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ApiAuth::Representation
-      
-          property :auth_config, as: 'authConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AuthConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AuthConfig::Representation
-      
         end
       end
       
