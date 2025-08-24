@@ -790,6 +790,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkTierConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeAffinity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1983,6 +1989,8 @@ module Google
           property :desired_monitoring_service, as: 'desiredMonitoringService'
           property :desired_network_performance_config, as: 'desiredNetworkPerformanceConfig', class: Google::Apis::ContainerV1beta1::ClusterNetworkPerformanceConfig, decorator: Google::Apis::ContainerV1beta1::ClusterNetworkPerformanceConfig::Representation
       
+          property :desired_network_tier_config, as: 'desiredNetworkTierConfig', class: Google::Apis::ContainerV1beta1::NetworkTierConfig, decorator: Google::Apis::ContainerV1beta1::NetworkTierConfig::Representation
+      
           property :desired_node_kubelet_config, as: 'desiredNodeKubeletConfig', class: Google::Apis::ContainerV1beta1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1beta1::NodeKubeletConfig::Representation
       
           property :desired_node_pool_auto_config_kubelet_config, as: 'desiredNodePoolAutoConfigKubeletConfig', class: Google::Apis::ContainerV1beta1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1beta1::NodeKubeletConfig::Representation
@@ -2507,6 +2515,8 @@ module Google
           property :create_subnetwork, as: 'createSubnetwork'
           property :default_pod_ipv4_range_utilization, as: 'defaultPodIpv4RangeUtilization'
           property :ipv6_access_type, as: 'ipv6AccessType'
+          property :network_tier_config, as: 'networkTierConfig', class: Google::Apis::ContainerV1beta1::NetworkTierConfig, decorator: Google::Apis::ContainerV1beta1::NetworkTierConfig::Representation
+      
           property :node_ipv4_cidr, as: 'nodeIpv4Cidr'
           property :node_ipv4_cidr_block, as: 'nodeIpv4CidrBlock'
           property :pod_cidr_overprovision_config, as: 'podCidrOverprovisionConfig', class: Google::Apis::ContainerV1beta1::PodCidrOverprovisionConfig, decorator: Google::Apis::ContainerV1beta1::PodCidrOverprovisionConfig::Representation
@@ -2880,6 +2890,13 @@ module Google
         end
       end
       
+      class NetworkTierConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_tier, as: 'networkTier'
+        end
+      end
+      
       class NodeAffinity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3041,6 +3058,8 @@ module Google
           property :create_pod_range, as: 'createPodRange'
           property :enable_private_nodes, as: 'enablePrivateNodes'
           property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ContainerV1beta1::NetworkPerformanceConfig, decorator: Google::Apis::ContainerV1beta1::NetworkPerformanceConfig::Representation
+      
+          property :network_tier_config, as: 'networkTierConfig', class: Google::Apis::ContainerV1beta1::NetworkTierConfig, decorator: Google::Apis::ContainerV1beta1::NetworkTierConfig::Representation
       
           property :pod_cidr_overprovision_config, as: 'podCidrOverprovisionConfig', class: Google::Apis::ContainerV1beta1::PodCidrOverprovisionConfig, decorator: Google::Apis::ContainerV1beta1::PodCidrOverprovisionConfig::Representation
       
