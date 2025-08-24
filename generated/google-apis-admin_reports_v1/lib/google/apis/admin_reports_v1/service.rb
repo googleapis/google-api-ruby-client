@@ -88,7 +88,8 @@ module Google
         #   and end in May. The report itself can be requested in August. If the `endTime`
         #   is not specified, the report returns all activities from the `startTime` until
         #   the current time or the most recent 180 days if the `startTime` is more than
-        #   180 days in the past.
+        #   180 days in the past. For Gmail requests, `startTime` and `endTime` must be
+        #   provided and the difference must not be greater than 30 days.
         # @param [String] event_name
         #   The name of the event being queried by the API. Each `eventName` is related to
         #   a specific Google Workspace service or feature which the API organizes into
@@ -155,7 +156,8 @@ module Google
         #   the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The report returns
         #   all activities from `startTime` until `endTime`. The `startTime` must be
         #   before the `endTime` (if specified) and the current time when the request is
-        #   made, or the API returns an error.
+        #   made, or the API returns an error. For Gmail requests, `startTime` and `
+        #   endTime` must be provided and the difference must not be greater than 30 days.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
