@@ -969,7 +969,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the singleton data retention settings for this property.
+        # Returns the reporting identity settings for this property.
         # @param [String] name
         #   Required. The name of the settings to lookup. Format: properties/`property`/
         #   reportingIdentitySettings Example: "properties/1000/reportingIdentitySettings"
