@@ -382,6 +382,12 @@ module Google
         # @return [String]
         attr_accessor :request_id
       
+        # Optional. The requestor ID is used to identify if the request comes from a GCA
+        # investigation or the old Ask Gemini Experience.
+        # Corresponds to the JSON property `requestorId`
+        # @return [String]
+        attr_accessor :requestor_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -389,6 +395,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
+          @requestor_id = args[:requestor_id] if args.key?(:requestor_id)
         end
       end
       
@@ -1370,7 +1377,7 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::AuxiliaryNodeGroup>]
         attr_accessor :auxiliary_node_groups
       
-        # Optional. The tier of the cluster.
+        # Optional. The cluster tier.
         # Corresponds to the JSON property `clusterTier`
         # @return [String]
         attr_accessor :cluster_tier
@@ -7874,7 +7881,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. The resource name of the session template.
+        # Required. Identifier. The resource name of the session template.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

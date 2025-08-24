@@ -1728,6 +1728,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
+          property :requestor_id, as: 'requestorId'
         end
       end
       
