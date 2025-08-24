@@ -556,11 +556,13 @@ module Google
           property :build_version, as: 'buildVersion'
           property :create_time, as: 'createTime'
           property :display_version, as: 'displayVersion'
+          property :expire_time, as: 'expireTime'
           property :firebase_console_uri, as: 'firebaseConsoleUri'
           property :name, as: 'name'
           property :release_notes, as: 'releaseNotes', class: Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1ReleaseNotes, decorator: Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1ReleaseNotes::Representation
       
           property :testing_uri, as: 'testingUri'
+          property :update_time, as: 'updateTime'
         end
       end
       
