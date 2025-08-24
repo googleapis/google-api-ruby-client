@@ -1453,6 +1453,7 @@ module Google
       
           property :image_uri, as: 'imageUri'
           property :machine_type, as: 'machineType'
+          property :release_track, as: 'releaseTrack'
           property :service_account, as: 'serviceAccount'
           property :storage_source, as: 'storageSource', class: Google::Apis::RunV2::GoogleCloudRunV2StorageSource, decorator: Google::Apis::RunV2::GoogleCloudRunV2StorageSource::Representation
       
