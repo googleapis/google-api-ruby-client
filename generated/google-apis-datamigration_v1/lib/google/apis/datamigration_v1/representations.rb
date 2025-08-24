@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HeterogeneousMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportMappingRulesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1509,6 +1515,13 @@ module Google
         end
       end
       
+      class HeterogeneousMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :unsupported_events_count, :numeric_string => true, as: 'unsupportedEventsCount'
+        end
+      end
+      
       class ImportMappingRulesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1787,6 +1800,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :error, as: 'error', class: Google::Apis::DatamigrationV1::Status, decorator: Google::Apis::DatamigrationV1::Status::Representation
+      
+          property :heterogeneous_metadata, as: 'heterogeneousMetadata', class: Google::Apis::DatamigrationV1::HeterogeneousMetadata, decorator: Google::Apis::DatamigrationV1::HeterogeneousMetadata::Representation
       
           property :name, as: 'name'
           property :phase, as: 'phase'

@@ -2279,6 +2279,25 @@ module Google
         end
       end
       
+      # Metadata for heterogeneous migration jobs objects.
+      class HeterogeneousMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The number of unsupported events.
+        # Corresponds to the JSON property `unsupportedEventsCount`
+        # @return [Fixnum]
+        attr_accessor :unsupported_events_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @unsupported_events_count = args[:unsupported_events_count] if args.key?(:unsupported_events_count)
+        end
+      end
+      
       # Request message for 'ImportMappingRules' request.
       class ImportMappingRulesRequest
         include Google::Apis::Core::Hashable
@@ -3328,6 +3347,11 @@ module Google
         # @return [Google::Apis::DatamigrationV1::Status]
         attr_accessor :error
       
+        # Metadata for heterogeneous migration jobs objects.
+        # Corresponds to the JSON property `heterogeneousMetadata`
+        # @return [Google::Apis::DatamigrationV1::HeterogeneousMetadata]
+        attr_accessor :heterogeneous_metadata
+      
         # The object's name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3361,6 +3385,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @error = args[:error] if args.key?(:error)
+          @heterogeneous_metadata = args[:heterogeneous_metadata] if args.key?(:heterogeneous_metadata)
           @name = args[:name] if args.key?(:name)
           @phase = args[:phase] if args.key?(:phase)
           @source_object = args[:source_object] if args.key?(:source_object)
