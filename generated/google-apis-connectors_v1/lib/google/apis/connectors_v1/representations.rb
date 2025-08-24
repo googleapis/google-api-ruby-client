@@ -676,6 +676,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkEgressModeOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1321,7 +1327,8 @@ module Google
           property :max_instance_request_concurrency, as: 'maxInstanceRequestConcurrency'
           property :migrate_deployment_model, as: 'migrateDeploymentModel'
           property :migrate_tls, as: 'migrateTls'
-          property :network_egress_mode, as: 'networkEgressMode'
+          property :network_egress_mode_override, as: 'networkEgressModeOverride', class: Google::Apis::ConnectorsV1::NetworkEgressModeOverride, decorator: Google::Apis::ConnectorsV1::NetworkEgressModeOverride::Representation
+      
           property :provision_cloud_spanner, as: 'provisionCloudSpanner'
           property :provision_memstore, as: 'provisionMemstore'
           property :ratelimit_threshold, :numeric_string => true, as: 'ratelimitThreshold'
@@ -2386,6 +2393,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :egress_ips, as: 'egressIps'
           property :egress_mode, as: 'egressMode'
+        end
+      end
+      
+      class NetworkEgressModeOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_eventing_override_enabled, as: 'isEventingOverrideEnabled'
+          property :is_jobs_override_enabled, as: 'isJobsOverrideEnabled'
+          property :network_egress_mode, as: 'networkEgressMode'
         end
       end
       
