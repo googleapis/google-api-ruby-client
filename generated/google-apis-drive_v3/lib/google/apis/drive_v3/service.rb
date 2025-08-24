@@ -703,7 +703,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a shared drive.
+        # Creates a shared drive. For more information, see [Manage shared drives](https:
+        # //developers.google.com/workspace/drive/api/guides/manage-shareddrives).
         # @param [String] request_id
         #   Required. An ID, such as a random UUID, which uniquely identifies this user's
         #   request for idempotent creation of a shared drive. A repeated request by the
@@ -741,7 +742,9 @@ module Google
         end
         
         # Permanently deletes a shared drive for which the user is an `organizer`. The
-        # shared drive cannot contain any untrashed items.
+        # shared drive cannot contain any untrashed items. For more information, see [
+        # Manage shared drives](https://developers.google.com/workspace/drive/api/guides/
+        # manage-shareddrives).
         # @param [String] drive_id
         #   The ID of the shared drive.
         # @param [Boolean] allow_item_deletion
@@ -778,7 +781,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a shared drive's metadata by ID.
+        # Gets a shared drive's metadata by ID. For more information, see [Manage shared
+        # drives](https://developers.google.com/workspace/drive/api/guides/manage-
+        # shareddrives).
         # @param [String] drive_id
         #   The ID of the shared drive.
         # @param [Boolean] use_domain_admin_access
@@ -813,7 +818,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Hides a shared drive from the default view.
+        # Hides a shared drive from the default view. For more information, see [Manage
+        # shared drives](https://developers.google.com/workspace/drive/api/guides/manage-
+        # shareddrives).
         # @param [String] drive_id
         #   The ID of the shared drive.
         # @param [String] fields
@@ -886,7 +893,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Restores a shared drive to the default view.
+        # Restores a shared drive to the default view. For more information, see [Manage
+        # shared drives](https://developers.google.com/workspace/drive/api/guides/manage-
+        # shareddrives).
         # @param [String] drive_id
         #   The ID of the shared drive.
         # @param [String] fields
@@ -916,7 +925,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the metadata for a shared drive.
+        # Updates the metadata for a shared drive. For more information, see [Manage
+        # shared drives](https://developers.google.com/workspace/drive/api/guides/manage-
+        # shareddrives).
         # @param [String] drive_id
         #   The ID of the shared drive.
         # @param [Google::Apis::DriveV3::Drive] drive_object
@@ -2186,7 +2197,8 @@ module Google
         # Permanently deletes a file version. You can only delete revisions for files
         # with binary content in Google Drive, like images or videos. Revisions for
         # other files, like Google Docs or Sheets, and the last remaining file version
-        # can't be deleted.
+        # can't be deleted. For more information, see [Manage file revisions](https://
+        # developers.google.com/drive/api/guides/manage-revisions).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] revision_id
@@ -2217,7 +2229,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a revision's metadata or content by ID.
+        # Gets a revision's metadata or content by ID. For more information, see [Manage
+        # file revisions](https://developers.google.com/workspace/drive/api/guides/
+        # manage-revisions).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] revision_id
@@ -2263,7 +2277,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists a file's revisions.
+        # Lists a file's revisions. For more information, see [Manage file revisions](
+        # https://developers.google.com/workspace/drive/api/guides/manage-revisions).
         # @param [String] file_id
         #   The ID of the file.
         # @param [Fixnum] page_size
@@ -2300,7 +2315,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a revision with patch semantics.
+        # Updates a revision with patch semantics. For more information, see [Manage
+        # file revisions](https://developers.google.com/workspace/drive/api/guides/
+        # manage-revisions).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] revision_id
