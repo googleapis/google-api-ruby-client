@@ -86,8 +86,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field. It is unsupported and is ignored unless
+        #   explicitly documented otherwise. This is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -307,8 +307,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field. It is unsupported and is ignored unless
+        #   explicitly documented otherwise. This is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -935,8 +935,8 @@ module Google
         
         # Gets the NetworkMonitoringProvider resource.
         # @param [String] name
-        #   Required. Name of the resource. Format: projects/`project`/locations/`location`
-        #   /networkMonitoringProviders/`network_monitoring_provider`
+        #   Required. Name of the resource. Format: `projects/`project`/locations/`
+        #   location`/networkMonitoringProviders/`network_monitoring_provider``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -966,8 +966,8 @@ module Google
         
         # Lists NetworkMonitoringProviders for a given project and location.
         # @param [String] parent
-        #   Required. Parent value for ListNetworkMonitoringProvidersRequest. Format:
-        #   projects/`project`/locations/`location`
+        #   Required. Parent value for ListNetworkMonitoringProvidersRequest. Format: `
+        #   projects/`project`/locations/`location``
         # @param [Fixnum] page_size
         #   Optional. The maximum number of monitoring points to return. The service may
         #   return fewer than this value. If unspecified, at most 20 monitoring points
