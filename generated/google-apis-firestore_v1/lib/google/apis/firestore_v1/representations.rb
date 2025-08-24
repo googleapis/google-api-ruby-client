@@ -1391,6 +1391,7 @@ module Google
           property :query_scope, as: 'queryScope'
           property :shard_count, as: 'shardCount'
           property :state, as: 'state'
+          property :unique, as: 'unique'
         end
       end
       

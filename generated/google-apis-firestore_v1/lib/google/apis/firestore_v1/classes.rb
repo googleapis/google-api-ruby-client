@@ -2292,6 +2292,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Optional. Whether it is an unique index. Unique index ensures all values for
+        # the indexed field(s) are unique across documents.
+        # Corresponds to the JSON property `unique`
+        # @return [Boolean]
+        attr_accessor :unique
+        alias_method :unique?, :unique
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2306,6 +2313,7 @@ module Google
           @query_scope = args[:query_scope] if args.key?(:query_scope)
           @shard_count = args[:shard_count] if args.key?(:shard_count)
           @state = args[:state] if args.key?(:state)
+          @unique = args[:unique] if args.key?(:unique)
         end
       end
       
