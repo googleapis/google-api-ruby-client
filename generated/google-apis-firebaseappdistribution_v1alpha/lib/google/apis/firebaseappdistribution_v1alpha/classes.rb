@@ -113,6 +113,11 @@ module Google
         # @return [String]
         attr_accessor :display_version
       
+        # Output only. The time the release will expire.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
         # Output only. A link to the Firebase console displaying a single release.
         # Corresponds to the JSON property `firebaseConsoleUri`
         # @return [String]
@@ -136,6 +141,11 @@ module Google
         # @return [String]
         attr_accessor :testing_uri
       
+        # Output only. The time the release was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -146,10 +156,12 @@ module Google
           @build_version = args[:build_version] if args.key?(:build_version)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_version = args[:display_version] if args.key?(:display_version)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @firebase_console_uri = args[:firebase_console_uri] if args.key?(:firebase_console_uri)
           @name = args[:name] if args.key?(:name)
           @release_notes = args[:release_notes] if args.key?(:release_notes)
           @testing_uri = args[:testing_uri] if args.key?(:testing_uri)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
