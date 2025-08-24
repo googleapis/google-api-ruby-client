@@ -887,6 +887,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_overwrite, as: 'allowOverwrite'
           property :copy_source_acl, as: 'copySourceAcl'
+          property :created_after_time, as: 'createdAfterTime', type: DateTime
+      
+          property :created_before_time, as: 'createdBeforeTime', type: DateTime
+      
           collection :match_globs, as: 'matchGlobs'
           property :soft_deleted_after_time, as: 'softDeletedAfterTime', type: DateTime
       
