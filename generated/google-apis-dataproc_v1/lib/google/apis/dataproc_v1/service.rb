@@ -1721,7 +1721,7 @@ module Google
         
         # Updates the session template synchronously.
         # @param [String] name
-        #   Required. The resource name of the session template.
+        #   Required. Identifier. The resource name of the session template.
         # @param [Google::Apis::DataprocV1::SessionTemplate] session_template_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
