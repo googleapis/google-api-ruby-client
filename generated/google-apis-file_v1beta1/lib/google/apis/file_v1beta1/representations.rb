@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PauseReplicaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PerformanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -543,6 +549,7 @@ module Google
           hash :labels, as: 'labels'
           property :max_capacity_gb, :numeric_string => true, as: 'maxCapacityGb'
           property :max_share_count, :numeric_string => true, as: 'maxShareCount'
+          property :min_capacity_gb, :numeric_string => true, as: 'minCapacityGb'
           property :multi_share_enabled, as: 'multiShareEnabled'
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::FileV1beta1::NetworkConfig, decorator: Google::Apis::FileV1beta1::NetworkConfig::Representation
@@ -723,6 +730,12 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class PauseReplicaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
