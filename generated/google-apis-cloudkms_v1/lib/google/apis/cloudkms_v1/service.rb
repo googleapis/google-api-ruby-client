@@ -121,7 +121,7 @@ module Google
         # determine where to create the resulting CryptoKey.
         # @param [String] name
         #   Identifier. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
-        #   autokeyConfig`.
+        #   autokeyConfig` `projects/`PROJECT_NUMBER`/autokeyConfig`.
         # @param [Google::Apis::CloudkmsV1::AutokeyConfig] autokey_config_object
         # @param [String] update_mask
         #   Required. Masks which fields of the AutokeyConfig to update, e.g. `keyProject`.
@@ -526,8 +526,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field. It is unsupported and is ignored unless
+        #   explicitly documented otherwise. This is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
