@@ -569,6 +569,26 @@ module Google
         end
       end
       
+      # 
+      class CisaKnownExploitedVulnerabilities
+        include Google::Apis::Core::Hashable
+      
+        # Whether the vulnerability is known to have been leveraged as part of a
+        # ransomware campaign.
+        # Corresponds to the JSON property `knownRansomwareCampaignUse`
+        # @return [String]
+        attr_accessor :known_ransomware_campaign_use
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @known_ransomware_campaign_use = args[:known_ransomware_campaign_use] if args.key?(:known_ransomware_campaign_use)
+        end
+      end
+      
       # Common Vulnerability Scoring System. For details, see https://www.first.org/
       # cvss/specification-document This is a message we will try to use for storing
       # various versions of CVSS rather than making a separate proto for storing a
@@ -1110,6 +1130,33 @@ module Google
         def update!(**args)
           @keyid = args[:keyid] if args.key?(:keyid)
           @sig = args[:sig] if args.key?(:sig)
+        end
+      end
+      
+      # 
+      class ExploitPredictionScoringSystem
+        include Google::Apis::Core::Hashable
+      
+        # The percentile of the current score, the proportion of all scored
+        # vulnerabilities with the same or a lower EPSS score
+        # Corresponds to the JSON property `percentile`
+        # @return [Float]
+        attr_accessor :percentile
+      
+        # The EPSS score representing the probability [0-1] of exploitation in the wild
+        # in the next 30 days
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentile = args[:percentile] if args.key?(:percentile)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -2977,6 +3024,33 @@ module Google
       end
       
       # 
+      class Risk
+        include Google::Apis::Core::Hashable
+      
+        # CISA maintains the authoritative source of vulnerabilities that have been
+        # exploited in the wild.
+        # Corresponds to the JSON property `cisaKev`
+        # @return [Google::Apis::OndemandscanningV1beta1::CisaKnownExploitedVulnerabilities]
+        attr_accessor :cisa_kev
+      
+        # The Exploit Prediction Scoring System (EPSS) estimates the likelihood (
+        # probability) that a software vulnerability will be exploited in the wild.
+        # Corresponds to the JSON property `epss`
+        # @return [Google::Apis::OndemandscanningV1beta1::ExploitPredictionScoringSystem]
+        attr_accessor :epss
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cisa_kev = args[:cisa_kev] if args.key?(:cisa_kev)
+          @epss = args[:epss] if args.key?(:epss)
+        end
+      end
+      
+      # 
       class RunDetails
         include Google::Apis::Core::Hashable
       
@@ -3997,6 +4071,11 @@ module Google
         # @return [Array<Google::Apis::OndemandscanningV1beta1::RelatedUrl>]
         attr_accessor :related_urls
       
+        # Risk information about the vulnerability, such as CISA, EPSS, etc.
+        # Corresponds to the JSON property `risk`
+        # @return [Google::Apis::OndemandscanningV1beta1::Risk]
+        attr_accessor :risk
+      
         # Output only. The note provider assigned severity of this vulnerability.
         # Corresponds to the JSON property `severity`
         # @return [String]
@@ -4035,6 +4114,7 @@ module Google
           @long_description = args[:long_description] if args.key?(:long_description)
           @package_issue = args[:package_issue] if args.key?(:package_issue)
           @related_urls = args[:related_urls] if args.key?(:related_urls)
+          @risk = args[:risk] if args.key?(:risk)
           @severity = args[:severity] if args.key?(:severity)
           @short_description = args[:short_description] if args.key?(:short_description)
           @type = args[:type] if args.key?(:type)
