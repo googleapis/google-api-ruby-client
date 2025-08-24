@@ -1163,7 +1163,7 @@ module Google
         end
       end
       
-      # The destination big query dataset to export findings to.
+      # The destination BigQuery dataset to export findings to.
       class BigQueryDestination
         include Google::Apis::Core::Hashable
       
@@ -2657,7 +2657,7 @@ module Google
       class ExportFindingsMetadata
         include Google::Apis::Core::Hashable
       
-        # The destination big query dataset to export findings to.
+        # The destination BigQuery dataset to export findings to.
         # Corresponds to the JSON property `bigQueryDestination`
         # @return [Google::Apis::SecuritycenterV1::BigQueryDestination]
         attr_accessor :big_query_destination
