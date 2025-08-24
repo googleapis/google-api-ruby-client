@@ -1237,10 +1237,11 @@ module Google
         attr_accessor :migrate_tls
         alias_method :migrate_tls?, :migrate_tls
       
-        # Indicate whether connector is being migrated to use direct VPC egress.
-        # Corresponds to the JSON property `networkEgressMode`
-        # @return [String]
-        attr_accessor :network_egress_mode
+        # NetworkEgressModeOverride provides the network egress mode override for a
+        # connector.
+        # Corresponds to the JSON property `networkEgressModeOverride`
+        # @return [Google::Apis::ConnectorsV1::NetworkEgressModeOverride]
+        attr_accessor :network_egress_mode_override
       
         # Indicate whether cloud spanner is required for connector job.
         # Corresponds to the JSON property `provisionCloudSpanner`
@@ -1289,7 +1290,7 @@ module Google
           @max_instance_request_concurrency = args[:max_instance_request_concurrency] if args.key?(:max_instance_request_concurrency)
           @migrate_deployment_model = args[:migrate_deployment_model] if args.key?(:migrate_deployment_model)
           @migrate_tls = args[:migrate_tls] if args.key?(:migrate_tls)
-          @network_egress_mode = args[:network_egress_mode] if args.key?(:network_egress_mode)
+          @network_egress_mode_override = args[:network_egress_mode_override] if args.key?(:network_egress_mode_override)
           @provision_cloud_spanner = args[:provision_cloud_spanner] if args.key?(:provision_cloud_spanner)
           @provision_memstore = args[:provision_memstore] if args.key?(:provision_memstore)
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
@@ -5129,6 +5130,42 @@ module Google
         def update!(**args)
           @egress_ips = args[:egress_ips] if args.key?(:egress_ips)
           @egress_mode = args[:egress_mode] if args.key?(:egress_mode)
+        end
+      end
+      
+      # NetworkEgressModeOverride provides the network egress mode override for a
+      # connector.
+      class NetworkEgressModeOverride
+        include Google::Apis::Core::Hashable
+      
+        # boolean should be set to true to make sure only eventing enabled connections
+        # are migrated to direct vpc egress.
+        # Corresponds to the JSON property `isEventingOverrideEnabled`
+        # @return [Boolean]
+        attr_accessor :is_eventing_override_enabled
+        alias_method :is_eventing_override_enabled?, :is_eventing_override_enabled
+      
+        # boolean should be set to true to make sure only async operations enabled
+        # connections are migrated to direct vpc egress.
+        # Corresponds to the JSON property `isJobsOverrideEnabled`
+        # @return [Boolean]
+        attr_accessor :is_jobs_override_enabled
+        alias_method :is_jobs_override_enabled?, :is_jobs_override_enabled
+      
+        # Determines the VPC Egress mode for the connector.
+        # Corresponds to the JSON property `networkEgressMode`
+        # @return [String]
+        attr_accessor :network_egress_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_eventing_override_enabled = args[:is_eventing_override_enabled] if args.key?(:is_eventing_override_enabled)
+          @is_jobs_override_enabled = args[:is_jobs_override_enabled] if args.key?(:is_jobs_override_enabled)
+          @network_egress_mode = args[:network_egress_mode] if args.key?(:network_egress_mode)
         end
       end
       
