@@ -230,6 +230,11 @@ module Google
         attr_accessor :immutable
         alias_method :immutable?, :immutable
       
+        # For list parameters, the max size of the list.
+        # Corresponds to the JSON property `maxListSize`
+        # @return [Fixnum]
+        attr_accessor :max_list_size
+      
         # For integer and double values specifies maximum allowed value.
         # Corresponds to the JSON property `maxValue`
         # @return [Float]
@@ -296,6 +301,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @fields = args[:fields] if args.key?(:fields)
           @immutable = args[:immutable] if args.key?(:immutable)
+          @max_list_size = args[:max_list_size] if args.key?(:max_list_size)
           @max_value = args[:max_value] if args.key?(:max_value)
           @min_value = args[:min_value] if args.key?(:min_value)
           @param_id = args[:param_id] if args.key?(:param_id)

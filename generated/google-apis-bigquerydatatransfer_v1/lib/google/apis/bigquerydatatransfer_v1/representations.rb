@@ -250,6 +250,7 @@ module Google
           collection :fields, as: 'fields', class: Google::Apis::BigquerydatatransferV1::DataSourceParameter, decorator: Google::Apis::BigquerydatatransferV1::DataSourceParameter::Representation
       
           property :immutable, as: 'immutable'
+          property :max_list_size, :numeric_string => true, as: 'maxListSize'
           property :max_value, as: 'maxValue'
           property :min_value, as: 'minValue'
           property :param_id, as: 'paramId'
