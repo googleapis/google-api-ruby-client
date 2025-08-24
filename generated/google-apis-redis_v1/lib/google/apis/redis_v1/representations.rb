@@ -634,7 +634,10 @@ module Google
           property :cluster_uid, as: 'clusterUid'
           property :create_time, as: 'createTime'
           property :kms_key, as: 'kmsKey'
+          property :last_backup_time, as: 'lastBackupTime'
           property :name, as: 'name'
+          property :total_backup_count, :numeric_string => true, as: 'totalBackupCount'
+          property :total_backup_size_bytes, :numeric_string => true, as: 'totalBackupSizeBytes'
           property :uid, as: 'uid'
         end
       end
