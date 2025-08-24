@@ -839,10 +839,20 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Type of the hybrid replication.
+        # Corresponds to the JSON property `hybridReplicationType`
+        # @return [String]
+        attr_accessor :hybrid_replication_type
+      
         # Optional. Labels to be added to the replication as the key value pairs.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # Optional. Constituent volume count for large volume.
+        # Corresponds to the JSON property `largeVolumeConstituentCount`
+        # @return [Fixnum]
+        attr_accessor :large_volume_constituent_count
       
         # Required. Name of the user's local source cluster to be peered with the
         # destination cluster.
@@ -872,6 +882,11 @@ module Google
         # @return [String]
         attr_accessor :replication
       
+        # Optional. Replication Schedule for the replication created.
+        # Corresponds to the JSON property `replicationSchedule`
+        # @return [String]
+        attr_accessor :replication_schedule
+      
         def initialize(**args)
            update!(**args)
         end
@@ -880,12 +895,15 @@ module Google
         def update!(**args)
           @cluster_location = args[:cluster_location] if args.key?(:cluster_location)
           @description = args[:description] if args.key?(:description)
+          @hybrid_replication_type = args[:hybrid_replication_type] if args.key?(:hybrid_replication_type)
           @labels = args[:labels] if args.key?(:labels)
+          @large_volume_constituent_count = args[:large_volume_constituent_count] if args.key?(:large_volume_constituent_count)
           @peer_cluster_name = args[:peer_cluster_name] if args.key?(:peer_cluster_name)
           @peer_ip_addresses = args[:peer_ip_addresses] if args.key?(:peer_ip_addresses)
           @peer_svm_name = args[:peer_svm_name] if args.key?(:peer_svm_name)
           @peer_volume_name = args[:peer_volume_name] if args.key?(:peer_volume_name)
           @replication = args[:replication] if args.key?(:replication)
+          @replication_schedule = args[:replication_schedule] if args.key?(:replication_schedule)
         end
       end
       
@@ -1727,6 +1745,11 @@ module Google
         # @return [String]
         attr_accessor :hybrid_replication_type
       
+        # UserCommands contains the commands to be executed by the customer.
+        # Corresponds to the JSON property `hybridReplicationUserCommands`
+        # @return [Google::Apis::NetappV1::UserCommands]
+        attr_accessor :hybrid_replication_user_commands
+      
         # Resource labels to represent user provided metadata.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -1789,6 +1812,7 @@ module Google
           @healthy = args[:healthy] if args.key?(:healthy)
           @hybrid_peering_details = args[:hybrid_peering_details] if args.key?(:hybrid_peering_details)
           @hybrid_replication_type = args[:hybrid_replication_type] if args.key?(:hybrid_replication_type)
+          @hybrid_replication_user_commands = args[:hybrid_replication_user_commands] if args.key?(:hybrid_replication_user_commands)
           @labels = args[:labels] if args.key?(:labels)
           @mirror_state = args[:mirror_state] if args.key?(:mirror_state)
           @name = args[:name] if args.key?(:name)
@@ -2473,6 +2497,25 @@ module Google
           @total_transfer_duration = args[:total_transfer_duration] if args.key?(:total_transfer_duration)
           @transfer_bytes = args[:transfer_bytes] if args.key?(:transfer_bytes)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # UserCommands contains the commands to be executed by the customer.
+      class UserCommands
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of commands to be executed by the customer.
+        # Corresponds to the JSON property `commands`
+        # @return [Array<String>]
+        attr_accessor :commands
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commands = args[:commands] if args.key?(:commands)
         end
       end
       

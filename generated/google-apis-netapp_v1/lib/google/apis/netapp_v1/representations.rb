@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserCommands
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ValidateDirectoryServiceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -545,12 +551,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_location, as: 'clusterLocation'
           property :description, as: 'description'
+          property :hybrid_replication_type, as: 'hybridReplicationType'
           hash :labels, as: 'labels'
+          property :large_volume_constituent_count, as: 'largeVolumeConstituentCount'
           property :peer_cluster_name, as: 'peerClusterName'
           collection :peer_ip_addresses, as: 'peerIpAddresses'
           property :peer_svm_name, as: 'peerSvmName'
           property :peer_volume_name, as: 'peerVolumeName'
           property :replication, as: 'replication'
+          property :replication_schedule, as: 'replicationSchedule'
         end
       end
       
@@ -781,6 +790,8 @@ module Google
           property :hybrid_peering_details, as: 'hybridPeeringDetails', class: Google::Apis::NetappV1::HybridPeeringDetails, decorator: Google::Apis::NetappV1::HybridPeeringDetails::Representation
       
           property :hybrid_replication_type, as: 'hybridReplicationType'
+          property :hybrid_replication_user_commands, as: 'hybridReplicationUserCommands', class: Google::Apis::NetappV1::UserCommands, decorator: Google::Apis::NetappV1::UserCommands::Representation
+      
           hash :labels, as: 'labels'
           property :mirror_state, as: 'mirrorState'
           property :name, as: 'name'
@@ -949,6 +960,13 @@ module Google
           property :total_transfer_duration, as: 'totalTransferDuration'
           property :transfer_bytes, :numeric_string => true, as: 'transferBytes'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class UserCommands
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :commands, as: 'commands'
         end
       end
       
