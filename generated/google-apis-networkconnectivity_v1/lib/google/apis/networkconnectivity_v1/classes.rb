@@ -553,6 +553,123 @@ module Google
         end
       end
       
+      # The Destination resource.
+      class Destination
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when the Destination was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An optional field to provide a description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Unordered list. The list of Endpoints configured for the IP Prefix.
+        # Corresponds to the JSON property `endpoints`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::DestinationEndpoint>]
+        attr_accessor :endpoints
+      
+        # The etag is computed by the server, and may be sent on update and delete
+        # requests to ensure the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. Immutable. Remote IP Prefix in the remote CSP, where the customer's
+        # workload is located
+        # Corresponds to the JSON property `ipPrefix`
+        # @return [String]
+        attr_accessor :ip_prefix
+      
+        # Optional. User-defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the Destination resource. Format: `projects/`project`/
+        # locations/`location`/multicloudDataTransferConfigs/`
+        # multicloud_data_transfer_config`/destinations/`destination``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The timeline of pending states for a resource.
+        # Corresponds to the JSON property `stateTimeline`
+        # @return [Google::Apis::NetworkconnectivityV1::StateTimeline]
+        attr_accessor :state_timeline
+      
+        # Output only. The Google-generated UUID for the destination. This value is
+        # unique across all destination resources. If a destination is deleted and
+        # another with the same name is created, the new destination is assigned a
+        # different uid.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Time when the Destination was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @endpoints = args[:endpoints] if args.key?(:endpoints)
+          @etag = args[:etag] if args.key?(:etag)
+          @ip_prefix = args[:ip_prefix] if args.key?(:ip_prefix)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state_timeline = args[:state_timeline] if args.key?(:state_timeline)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The metadata for a DestinationEndpoint.
+      class DestinationEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ASN of the remote IP Prefix.
+        # Corresponds to the JSON property `asn`
+        # @return [Fixnum]
+        attr_accessor :asn
+      
+        # Required. The name of the CSP of the remote IP Prefix.
+        # Corresponds to the JSON property `csp`
+        # @return [String]
+        attr_accessor :csp
+      
+        # Output only. The state of the Endpoint.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Time when the DestinationEndpoint was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asn = args[:asn] if args.key?(:asn)
+          @csp = args[:csp] if args.key?(:csp)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1205,9 +1322,11 @@ module Google
         attr_accessor :prefix_length
       
         # Optional. Can be set to narrow down or pick a different address space while
-        # searching for a free range. If not set, defaults to the "10.0.0.0/8" address
-        # space. This can be used to search in other rfc-1918 address spaces like "172.
-        # 16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
+        # searching for a free range. If not set, defaults to the ["10.0.0.0/8", "172.16.
+        # 0.0/12", "192.168.0.0/16"] address space (for auto-mode networks, the "10.0.0.
+        # 0/9" range is used instead of "10.0.0.0/8"). This can be used to target the
+        # search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/
+        # 16" or non-rfc-1918 address spaces used in the VPC.
         # Corresponds to the JSON property `targetCidrRange`
         # @return [Array<String>]
         attr_accessor :target_cidr_range
@@ -1517,6 +1636,37 @@ module Google
         end
       end
       
+      # Response message for ListDestinations.
+      class ListDestinationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Destinations to be returned.
+        # Corresponds to the JSON property `destinations`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::Destination>]
+        attr_accessor :destinations
+      
+        # The next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destinations = args[:destinations] if args.key?(:destinations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response for HubService.ListGroups method.
       class ListGroupsResponse
         include Google::Apis::Core::Hashable
@@ -1670,6 +1820,62 @@ module Google
         # Update properties of this object
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListMulticloudDataTransferConfigs.
+      class ListMulticloudDataTransferConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # MulticloudDataTransferConfigs to be returned.
+        # Corresponds to the JSON property `multicloudDataTransferConfigs`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::MulticloudDataTransferConfig>]
+        attr_accessor :multicloud_data_transfer_configs
+      
+        # The next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @multicloud_data_transfer_configs = args[:multicloud_data_transfer_configs] if args.key?(:multicloud_data_transfer_configs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for ListMulticloudDataTransferSupportedServices.
+      class ListMulticloudDataTransferSupportedServicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of supported services.
+        # Corresponds to the JSON property `multicloudDataTransferSupportedServices`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::MulticloudDataTransferSupportedService>]
+        attr_accessor :multicloud_data_transfer_supported_services
+      
+        # The next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @multicloud_data_transfer_supported_services = args[:multicloud_data_transfer_supported_services] if args.key?(:multicloud_data_transfer_supported_services)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -2058,6 +2264,118 @@ module Google
         def update!(**args)
           @source = args[:source] if args.key?(:source)
           @target = args[:target] if args.key?(:target)
+        end
+      end
+      
+      # The MulticloudDataTransferConfig resource. This lists the services for which
+      # customer is opting in for Multicloud Data Transfer.
+      class MulticloudDataTransferConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when the MulticloudDataTransferConfig was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An optional field to provide a description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The number of Destinations in use under the
+        # MulticloudDataTransferConfig resource.
+        # Corresponds to the JSON property `destinationsActiveCount`
+        # @return [Fixnum]
+        attr_accessor :destinations_active_count
+      
+        # Output only. The number of Destinations configured under the
+        # MulticloudDataTransferConfig resource.
+        # Corresponds to the JSON property `destinationsCount`
+        # @return [Fixnum]
+        attr_accessor :destinations_count
+      
+        # The etag is computed by the server, and may be sent on update and delete
+        # requests to ensure the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. User-defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the MulticloudDataTransferConfig resource. Format: `
+        # projects/`project`/locations/`location`/multicloudDataTransferConfigs/`
+        # multicloud_data_transfer_config``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. This map services to either their current or planned states. Service
+        # names are keys, and the associated values describe the service's state. If a
+        # state change is expected, the value will be the list of ADDING or DELETING
+        # states depending on the actions taken. Example: "services": ` "big-query": ` "
+        # states": [ ` "state": "ADDING", "effective_time": "2024-12-12T08:00:00Z" `, ] `
+        # , "cloud-storage": ` "states": [ ` "state": "ACTIVE", ` ] ` `
+        # Corresponds to the JSON property `services`
+        # @return [Hash<String,Google::Apis::NetworkconnectivityV1::StateTimeline>]
+        attr_accessor :services
+      
+        # Output only. The Google-generated UUID for the MulticloudDataTransferConfig.
+        # This value is unique across all MulticloudDataTransferConfig resources. If a
+        # MulticloudDataTransferConfig is deleted and another with the same name is
+        # created, the new MulticloudDataTransferConfig is assigned a different uid.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Time when the MulticloudDataTransferConfig was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @destinations_active_count = args[:destinations_active_count] if args.key?(:destinations_active_count)
+          @destinations_count = args[:destinations_count] if args.key?(:destinations_count)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @services = args[:services] if args.key?(:services)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The supported service for Multicloud Data Transfer.
+      class MulticloudDataTransferSupportedService
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The name of the service.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The network service tiers supported for the service.
+        # Corresponds to the JSON property `serviceConfigs`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::ServiceConfig>]
+        attr_accessor :service_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @service_configs = args[:service_configs] if args.key?(:service_configs)
         end
       end
       
@@ -3275,6 +3593,37 @@ module Google
         end
       end
       
+      # Specifies the Multicloud Data Transfer supported services configuration. This
+      # includes either the network tier or the request endpoint. If end of support
+      # for multicloud data transfer is planned for a service's network tier or
+      # request endpoint, the end time will be provided.
+      class ServiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The eligibility criteria for the service. The user has to meet
+        # the eligibility criteria specified here for the service to qualify for
+        # multicloud data transfer.
+        # Corresponds to the JSON property `eligibilityCriteria`
+        # @return [String]
+        attr_accessor :eligibility_criteria
+      
+        # Output only. The eligibility criteria support end time. If the end time is not
+        # specified, no planned end time is available.
+        # Corresponds to the JSON property `supportEndTime`
+        # @return [String]
+        attr_accessor :support_end_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eligibility_criteria = args[:eligibility_criteria] if args.key?(:eligibility_criteria)
+          @support_end_time = args[:support_end_time] if args.key?(:support_end_time)
+        end
+      end
+      
       # The ServiceConnectionMap resource.
       class ServiceConnectionMap
         include Google::Apis::Core::Hashable
@@ -3845,6 +4194,35 @@ module Google
         end
       end
       
+      # The state and activation time details of the resource state.
+      class StateMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. This field will be accompanied only with transient states (
+        # PENDING_ADD, PENDING_DELETE, PENDING_SUSPENSION) and denotes the time when the
+        # transient state of the resource will be effective. For instance, if the state
+        # is "ADDING," this field will show the time the resource transitions to "ACTIVE.
+        # " Similarly, if the state is "PENDING_DELETE," it will show the deletion time.
+        # Corresponds to the JSON property `effectiveTime`
+        # @return [String]
+        attr_accessor :effective_time
+      
+        # Output only. The state of the resource.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_time = args[:effective_time] if args.key?(:effective_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # The reason a spoke is inactive.
       class StateReason
         include Google::Apis::Core::Hashable
@@ -3873,6 +4251,25 @@ module Google
           @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
           @user_details = args[:user_details] if args.key?(:user_details)
+        end
+      end
+      
+      # The timeline of pending states for a resource.
+      class StateTimeline
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The state and activation time details of the resource state.
+        # Corresponds to the JSON property `states`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::StateMetadata>]
+        attr_accessor :states
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @states = args[:states] if args.key?(:states)
         end
       end
       
