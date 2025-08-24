@@ -2917,6 +2917,11 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # Optional. The release track of the client that initiated the build request.
+        # Corresponds to the JSON property `releaseTrack`
+        # @return [String]
+        attr_accessor :release_track
+      
         # Optional. The service account to use for the build. If not set, the default
         # Cloud Build service account for the project will be used.
         # Corresponds to the JSON property `serviceAccount`
@@ -2952,6 +2957,7 @@ module Google
           @docker_build = args[:docker_build] if args.key?(:docker_build)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @release_track = args[:release_track] if args.key?(:release_track)
           @service_account = args[:service_account] if args.key?(:service_account)
           @storage_source = args[:storage_source] if args.key?(:storage_source)
           @tags = args[:tags] if args.key?(:tags)
