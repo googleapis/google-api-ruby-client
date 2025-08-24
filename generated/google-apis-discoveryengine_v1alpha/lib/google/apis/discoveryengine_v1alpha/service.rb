@@ -6146,6 +6146,20 @@ module Google
         #   examples of filters would be: * "file_name = 'file_1'" * "file_name = 'file_1'
         #   AND mime_type = 'text/plain'" * "last_use_time > '2025-06-14T12:00:00Z'" For a
         #   full description of the filter format, please see https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Optional. Specifies the order in which files are returned. The value is a
+        #   comma-separated string of fields to sort by. For ascending order - just the
+        #   field name is used. For descending order - the field name is suffixed with `
+        #   desc`. Sorting is stable and applied sequentially according to the order of
+        #   fields provided in the string. Supported fields for ordering: * `upload_time`:
+        #   The time the file was uploaded. * `file_name`: The name of the file. * `
+        #   mime_type`: The MIME type of the file. * `session_name`: The name of the
+        #   session the file belongs to. Default Behavior: If the `order_by` field is not
+        #   specified, files will be returned sorted by creation time in descending order.
+        #   Examples: 1. Sort by file name in ascending order: `file_name` 2. Sort by
+        #   upload time in descending order: `upload_time desc` 3. Sort by file name (
+        #   ascending), then by content type (MIME type) (descending), and finally by
+        #   upload time (ascending): `file_name, mime_type desc, upload_time`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of files to return. The service may return fewer
         #   than this value. If unspecified, at most 100 files will be returned. The
@@ -6174,12 +6188,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_collection_engine_session_files(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_collection_engine_session_files(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+parent}/files', options)
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListFilesResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListFilesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
