@@ -706,6 +706,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementVersionsV1ScepCaConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1ScepProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementVersionsV1SignDataMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -713,6 +725,12 @@ module Google
       end
       
       class GoogleChromeManagementVersionsV1SignDataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1SubjectAltName
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1843,6 +1861,10 @@ module Google
           property :issued_certificate, as: 'issuedCertificate'
           property :name, as: 'name'
           property :provisioning_profile_id, as: 'provisioningProfileId'
+          property :scep_ca_connection, as: 'scepCaConnection', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ScepCaConnection, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ScepCaConnection::Representation
+      
+          property :scep_profile, as: 'scepProfile', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ScepProfile, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ScepProfile::Representation
+      
           property :sign_data, :base64 => true, as: 'signData'
           property :signature, :base64 => true, as: 'signature'
           property :signature_algorithm, as: 'signatureAlgorithm'
@@ -2047,6 +2069,29 @@ module Google
         end
       end
       
+      class GoogleChromeManagementVersionsV1ScepCaConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ca_connection_adapter_config_reference, as: 'caConnectionAdapterConfigReference'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1ScepProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_template_name, as: 'certificateTemplateName'
+          property :country, as: 'country'
+          collection :key_usages, as: 'keyUsages'
+          property :locality, as: 'locality'
+          property :organization, as: 'organization'
+          collection :organizational_units, as: 'organizationalUnits'
+          property :state, as: 'state'
+          collection :subject_alt_names, as: 'subjectAltNames', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SubjectAltName, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SubjectAltName::Representation
+      
+          property :subject_common_name, as: 'subjectCommonName'
+        end
+      end
+      
       class GoogleChromeManagementVersionsV1SignDataMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2059,6 +2104,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :certificate_provisioning_process, as: 'certificateProvisioningProcess', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CertificateProvisioningProcess, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CertificateProvisioningProcess::Representation
       
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1SubjectAltName
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+          property :value, as: 'value'
         end
       end
       

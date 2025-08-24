@@ -4246,6 +4246,16 @@ module Google
         # @return [String]
         attr_accessor :provisioning_profile_id
       
+        # Describes a SCEP Certificate Authority Connection.
+        # Corresponds to the JSON property `scepCaConnection`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ScepCaConnection]
+        attr_accessor :scep_ca_connection
+      
+        # Describes a SCEP certificate provisioning profile.
+        # Corresponds to the JSON property `scepProfile`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ScepProfile]
+        attr_accessor :scep_profile
+      
         # Output only. The data that the client was asked to sign. This field is only
         # present after the `SignData` operation has been initiated.
         # Corresponds to the JSON property `signData`
@@ -4295,6 +4305,8 @@ module Google
           @issued_certificate = args[:issued_certificate] if args.key?(:issued_certificate)
           @name = args[:name] if args.key?(:name)
           @provisioning_profile_id = args[:provisioning_profile_id] if args.key?(:provisioning_profile_id)
+          @scep_ca_connection = args[:scep_ca_connection] if args.key?(:scep_ca_connection)
+          @scep_profile = args[:scep_profile] if args.key?(:scep_profile)
           @sign_data = args[:sign_data] if args.key?(:sign_data)
           @signature = args[:signature] if args.key?(:signature)
           @signature_algorithm = args[:signature_algorithm] if args.key?(:signature_algorithm)
@@ -5042,6 +5054,95 @@ module Google
         end
       end
       
+      # Describes a SCEP Certificate Authority Connection.
+      class GoogleChromeManagementVersionsV1ScepCaConnection
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A string that references the administrator-provided configuration
+        # for the certification authority service. This field can be missing if no
+        # configuration was given.
+        # Corresponds to the JSON property `caConnectionAdapterConfigReference`
+        # @return [String]
+        attr_accessor :ca_connection_adapter_config_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_connection_adapter_config_reference = args[:ca_connection_adapter_config_reference] if args.key?(:ca_connection_adapter_config_reference)
+        end
+      end
+      
+      # Describes a SCEP certificate provisioning profile.
+      class GoogleChromeManagementVersionsV1ScepProfile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The certificate template name as defined by the admin on their on-
+        # prem infrastructure. This is identifiable by the customer's CA.
+        # Corresponds to the JSON property `certificateTemplateName`
+        # @return [String]
+        attr_accessor :certificate_template_name
+      
+        # Output only. The country of the subject.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # Output only. The allowed key usages for certificate's key.
+        # Corresponds to the JSON property `keyUsages`
+        # @return [Array<String>]
+        attr_accessor :key_usages
+      
+        # Output only. The locality of the subject.
+        # Corresponds to the JSON property `locality`
+        # @return [String]
+        attr_accessor :locality
+      
+        # Output only. The name of the organization the subject belongs to.
+        # Corresponds to the JSON property `organization`
+        # @return [String]
+        attr_accessor :organization
+      
+        # Output only. The organizational units of the subject.
+        # Corresponds to the JSON property `organizationalUnits`
+        # @return [Array<String>]
+        attr_accessor :organizational_units
+      
+        # Output only. The state of the subject.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The subject alternative names.
+        # Corresponds to the JSON property `subjectAltNames`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SubjectAltName>]
+        attr_accessor :subject_alt_names
+      
+        # Output only. The common name of the subject.
+        # Corresponds to the JSON property `subjectCommonName`
+        # @return [String]
+        attr_accessor :subject_common_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_template_name = args[:certificate_template_name] if args.key?(:certificate_template_name)
+          @country = args[:country] if args.key?(:country)
+          @key_usages = args[:key_usages] if args.key?(:key_usages)
+          @locality = args[:locality] if args.key?(:locality)
+          @organization = args[:organization] if args.key?(:organization)
+          @organizational_units = args[:organizational_units] if args.key?(:organizational_units)
+          @state = args[:state] if args.key?(:state)
+          @subject_alt_names = args[:subject_alt_names] if args.key?(:subject_alt_names)
+          @subject_common_name = args[:subject_common_name] if args.key?(:subject_common_name)
+        end
+      end
+      
       # Metadata for the long-running operation returned by signData.
       class GoogleChromeManagementVersionsV1SignDataMetadata
         include Google::Apis::Core::Hashable
@@ -5078,6 +5179,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @certificate_provisioning_process = args[:certificate_provisioning_process] if args.key?(:certificate_provisioning_process)
+        end
+      end
+      
+      # Describes a subject alternative name.
+      class GoogleChromeManagementVersionsV1SubjectAltName
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The type of the SubjectAltName extension.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. The value of the subject alternative name with respoect to the `
+        # type`.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
