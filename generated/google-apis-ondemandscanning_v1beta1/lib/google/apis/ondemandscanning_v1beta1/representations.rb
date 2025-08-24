@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CisaKnownExploitedVulnerabilities
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Cvss
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +197,12 @@ module Google
       end
       
       class EnvelopeSignature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExploitPredictionScoringSystem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -473,6 +485,12 @@ module Google
       end
       
       class ResourceDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Risk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -791,6 +809,13 @@ module Google
         end
       end
       
+      class CisaKnownExploitedVulnerabilities
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :known_ransomware_campaign_use, as: 'knownRansomwareCampaignUse'
+        end
+      end
+      
       class Cvss
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -934,6 +959,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :keyid, as: 'keyid'
           property :sig, :base64 => true, as: 'sig'
+        end
+      end
+      
+      class ExploitPredictionScoringSystem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentile, as: 'percentile'
+          property :score, as: 'score'
         end
       end
       
@@ -1457,6 +1490,16 @@ module Google
         end
       end
       
+      class Risk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cisa_kev, as: 'cisaKev', class: Google::Apis::OndemandscanningV1beta1::CisaKnownExploitedVulnerabilities, decorator: Google::Apis::OndemandscanningV1beta1::CisaKnownExploitedVulnerabilities::Representation
+      
+          property :epss, as: 'epss', class: Google::Apis::OndemandscanningV1beta1::ExploitPredictionScoringSystem, decorator: Google::Apis::OndemandscanningV1beta1::ExploitPredictionScoringSystem::Representation
+      
+        end
+      end
+      
       class RunDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1736,6 +1779,8 @@ module Google
           collection :package_issue, as: 'packageIssue', class: Google::Apis::OndemandscanningV1beta1::PackageIssue, decorator: Google::Apis::OndemandscanningV1beta1::PackageIssue::Representation
       
           collection :related_urls, as: 'relatedUrls', class: Google::Apis::OndemandscanningV1beta1::RelatedUrl, decorator: Google::Apis::OndemandscanningV1beta1::RelatedUrl::Representation
+      
+          property :risk, as: 'risk', class: Google::Apis::OndemandscanningV1beta1::Risk, decorator: Google::Apis::OndemandscanningV1beta1::Risk::Representation
       
           property :severity, as: 'severity'
           property :short_description, as: 'shortDescription'
