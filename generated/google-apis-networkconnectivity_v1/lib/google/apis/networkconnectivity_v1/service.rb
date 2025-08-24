@@ -85,8 +85,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field. It is unsupported and is ignored unless
+        #   explicitly documented otherwise. This is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -1734,6 +1734,526 @@ module Google
           command.response_representation = Google::Apis::NetworkconnectivityV1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::NetworkconnectivityV1::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a MulticloudDataTransferConfig in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource's name
+        # @param [Google::Apis::NetworkconnectivityV1::MulticloudDataTransferConfig] multicloud_data_transfer_config_object
+        # @param [String] multicloud_data_transfer_config_id
+        #   Required. The ID to use for the MulticloudDataTransferConfig, which will
+        #   become the final component of the MulticloudDataTransferConfig's resource name.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate MulticloudDataTransferConfigs. The request ID must be a valid UUID
+        #   with the exception that zero UUID is not supported (00000000-0000-0000-0000-
+        #   000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_multicloud_data_transfer_config(parent, multicloud_data_transfer_config_object = nil, multicloud_data_transfer_config_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/multicloudDataTransferConfigs', options)
+          command.request_representation = Google::Apis::NetworkconnectivityV1::MulticloudDataTransferConfig::Representation
+          command.request_object = multicloud_data_transfer_config_object
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['multicloudDataTransferConfigId'] = multicloud_data_transfer_config_id unless multicloud_data_transfer_config_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single MulticloudDataTransferConfig.
+        # @param [String] name
+        #   Required. The name of the MulticloudDataTransferConfig resource to delete.
+        # @param [String] etag
+        #   Optional. The etag is computed by the server, and may be sent on update and
+        #   delete requests to ensure the client has an up-to-date value before proceeding.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate MulticloudDataTransferConfigs. The request ID must be a valid UUID
+        #   with the exception that zero UUID is not supported (00000000-0000-0000-0000-
+        #   000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_multicloud_data_transfer_config(name, etag: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single MulticloudDataTransferConfig.
+        # @param [String] name
+        #   Required. Name of the MulticloudDataTransferConfig to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::MulticloudDataTransferConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::MulticloudDataTransferConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_multicloud_data_transfer_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::MulticloudDataTransferConfig::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::MulticloudDataTransferConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists MulticloudDataTransferConfigs in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource's name
+        # @param [String] filter
+        #   Optional. A filter expression that filters the results listed in the response.
+        # @param [String] order_by
+        #   Optional. Sort the results by a certain order.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results per page that should be returned.
+        # @param [String] page_token
+        #   Optional. The page token.
+        # @param [Boolean] return_partial_success
+        #   Optional. If true, allow partial responses for multi-regional Aggregated List
+        #   requests.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::ListMulticloudDataTransferConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::ListMulticloudDataTransferConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_multicloud_data_transfer_configs(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/multicloudDataTransferConfigs', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::ListMulticloudDataTransferConfigsResponse::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::ListMulticloudDataTransferConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a MulticloudDataTransferConfig in a given project and location.
+        # @param [String] name
+        #   Identifier. The name of the MulticloudDataTransferConfig resource. Format: `
+        #   projects/`project`/locations/`location`/multicloudDataTransferConfigs/`
+        #   multicloud_data_transfer_config``.
+        # @param [Google::Apis::NetworkconnectivityV1::MulticloudDataTransferConfig] multicloud_data_transfer_config_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate MulticloudDataTransferConfigs. The request ID must be a valid UUID
+        #   with the exception that zero UUID is not supported (00000000-0000-0000-0000-
+        #   000000000000).
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   MulticloudDataTransferConfig resource by the update. The fields specified in
+        #   the update_mask are relative to the resource, not the full request. A field
+        #   will be overwritten if it is in the mask. If the user does not provide a mask
+        #   then all fields will be overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_multicloud_data_transfer_config(name, multicloud_data_transfer_config_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::NetworkconnectivityV1::MulticloudDataTransferConfig::Representation
+          command.request_object = multicloud_data_transfer_config_object
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a Destination in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource's name
+        # @param [Google::Apis::NetworkconnectivityV1::Destination] destination_object
+        # @param [String] destination_id
+        #   Required. The ID to use for the Destination, which will become the final
+        #   component of the Destination's resource name.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate Destinations. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_multicloud_data_transfer_config_destination(parent, destination_object = nil, destination_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/destinations', options)
+          command.request_representation = Google::Apis::NetworkconnectivityV1::Destination::Representation
+          command.request_object = destination_object
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['destinationId'] = destination_id unless destination_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single Destination.
+        # @param [String] name
+        #   Required. The name of the Destination resource to delete.
+        # @param [String] etag
+        #   Optional. The etag is computed by the server, and may be sent on update and
+        #   delete requests to ensure the client has an up-to-date value before proceeding.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. The request ID must be a valid UUID with the
+        #   exception that zero UUID is not supported (00000000-0000-0000-0000-
+        #   000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_multicloud_data_transfer_config_destination(name, etag: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Destination.
+        # @param [String] name
+        #   Required. Name of the Destination to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::Destination] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::Destination]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_multicloud_data_transfer_config_destination(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::Destination::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::Destination
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Destinations in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource's name
+        # @param [String] filter
+        #   Optional. A filter expression that filters the results listed in the response.
+        # @param [String] order_by
+        #   Optional. Sort the results by a certain order.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results per page that should be returned.
+        # @param [String] page_token
+        #   Optional. The page token.
+        # @param [Boolean] return_partial_success
+        #   Optional. If true, allow partial responses for multi-regional Aggregated List
+        #   requests.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::ListDestinationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::ListDestinationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_multicloud_data_transfer_config_destinations(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/destinations', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::ListDestinationsResponse::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::ListDestinationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a Destination in a given project and location.
+        # @param [String] name
+        #   Identifier. The name of the Destination resource. Format: `projects/`project`/
+        #   locations/`location`/multicloudDataTransferConfigs/`
+        #   multicloud_data_transfer_config`/destinations/`destination``.
+        # @param [Google::Apis::NetworkconnectivityV1::Destination] destination_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. The request ID must be a valid UUID with the
+        #   exception that zero UUID is not supported (00000000-0000-0000-0000-
+        #   000000000000).
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   Destination resource by the update. The fields specified in the update_mask
+        #   are relative to the resource, not the full request. A field will be
+        #   overwritten if it is in the mask. If the user does not provide a mask then all
+        #   fields will be overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_multicloud_data_transfer_config_destination(name, destination_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::NetworkconnectivityV1::Destination::Representation
+          command.request_object = destination_object
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single MulticloudDataTransferSupportedServices.
+        # @param [String] name
+        #   Required. The name of the service.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::MulticloudDataTransferSupportedService] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::MulticloudDataTransferSupportedService]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_multicloud_data_transfer_supported_service(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::MulticloudDataTransferSupportedService::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::MulticloudDataTransferSupportedService
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the supported services for Multicloud Data Transfer. This is a
+        # passthrough method.
+        # @param [String] parent
+        #   Required. The parent resource's name
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results per page that should be returned.
+        # @param [String] page_token
+        #   Optional. The page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::ListMulticloudDataTransferSupportedServicesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::ListMulticloudDataTransferSupportedServicesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_multicloud_data_transfer_supported_services(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/multicloudDataTransferSupportedServices', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::ListMulticloudDataTransferSupportedServicesResponse::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::ListMulticloudDataTransferSupportedServicesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
