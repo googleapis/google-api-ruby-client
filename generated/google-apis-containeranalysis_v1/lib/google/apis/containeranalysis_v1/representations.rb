@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CisaKnownExploitedVulnerabilities
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Cvss
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -532,6 +538,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExploitPredictionScoringSystem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportSbomRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -857,6 +869,12 @@ module Google
       end
       
       class ResourceDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Risk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1287,6 +1305,7 @@ module Google
           property :name, as: 'name'
           property :pull_timing, as: 'pullTiming', class: Google::Apis::ContaineranalysisV1::TimeSpan, decorator: Google::Apis::ContaineranalysisV1::TimeSpan::Representation
       
+          property :remote_config, as: 'remoteConfig'
           collection :results, as: 'results', class: Google::Apis::ContaineranalysisV1::StepResult, decorator: Google::Apis::ContaineranalysisV1::StepResult::Representation
       
           property :script, as: 'script'
@@ -1305,6 +1324,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+        end
+      end
+      
+      class CisaKnownExploitedVulnerabilities
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :known_ransomware_campaign_use, as: 'knownRansomwareCampaignUse'
         end
       end
       
@@ -2077,6 +2103,14 @@ module Google
         end
       end
       
+      class ExploitPredictionScoringSystem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentile, as: 'percentile'
+          property :score, as: 'score'
+        end
+      end
+      
       class ExportSbomRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2681,6 +2715,16 @@ module Google
         end
       end
       
+      class Risk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cisa_kev, as: 'cisaKev', class: Google::Apis::ContaineranalysisV1::CisaKnownExploitedVulnerabilities, decorator: Google::Apis::ContaineranalysisV1::CisaKnownExploitedVulnerabilities::Representation
+      
+          property :epss, as: 'epss', class: Google::Apis::ContaineranalysisV1::ExploitPredictionScoringSystem, decorator: Google::Apis::ContaineranalysisV1::ExploitPredictionScoringSystem::Representation
+      
+        end
+      end
+      
       class RunDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3068,6 +3112,8 @@ module Google
           collection :package_issue, as: 'packageIssue', class: Google::Apis::ContaineranalysisV1::PackageIssue, decorator: Google::Apis::ContaineranalysisV1::PackageIssue::Representation
       
           collection :related_urls, as: 'relatedUrls', class: Google::Apis::ContaineranalysisV1::RelatedUrl, decorator: Google::Apis::ContaineranalysisV1::RelatedUrl::Representation
+      
+          property :risk, as: 'risk', class: Google::Apis::ContaineranalysisV1::Risk, decorator: Google::Apis::ContaineranalysisV1::Risk::Representation
       
           property :severity, as: 'severity'
           property :short_description, as: 'shortDescription'

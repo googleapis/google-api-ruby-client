@@ -705,7 +705,7 @@ module Google
         end
       end
       
-      # A step in the build pipeline. Next ID: 22
+      # A step in the build pipeline. Next ID: 23
       class BuildStep
         include Google::Apis::Core::Hashable
       
@@ -796,6 +796,11 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1::TimeSpan]
         attr_accessor :pull_timing
       
+        # Remote configuration for the build step.
+        # Corresponds to the JSON property `remoteConfig`
+        # @return [String]
+        attr_accessor :remote_config
+      
         # 
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::ContaineranalysisV1::StepResult>]
@@ -867,6 +872,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @pull_timing = args[:pull_timing] if args.key?(:pull_timing)
+          @remote_config = args[:remote_config] if args.key?(:remote_config)
           @results = args[:results] if args.key?(:results)
           @script = args[:script] if args.key?(:script)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
@@ -894,6 +900,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # 
+      class CisaKnownExploitedVulnerabilities
+        include Google::Apis::Core::Hashable
+      
+        # Whether the vulnerability is known to have been leveraged as part of a
+        # ransomware campaign.
+        # Corresponds to the JSON property `knownRansomwareCampaignUse`
+        # @return [String]
+        attr_accessor :known_ransomware_campaign_use
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @known_ransomware_campaign_use = args[:known_ransomware_campaign_use] if args.key?(:known_ransomware_campaign_use)
         end
       end
       
@@ -3846,6 +3872,33 @@ module Google
         end
       end
       
+      # 
+      class ExploitPredictionScoringSystem
+        include Google::Apis::Core::Hashable
+      
+        # The percentile of the current score, the proportion of all scored
+        # vulnerabilities with the same or a lower EPSS score
+        # Corresponds to the JSON property `percentile`
+        # @return [Float]
+        attr_accessor :percentile
+      
+        # The EPSS score representing the probability [0-1] of exploitation in the wild
+        # in the next 30 days
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentile = args[:percentile] if args.key?(:percentile)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
       # The request to generate and export SBOM. Target must be specified for the
       # request.
       class ExportSbomRequest
@@ -4901,7 +4954,8 @@ module Google
         attr_accessor :notes
       
         # Unordered list. Unreachable regions. Populated for requests from the global
-        # region when `return_partial_success` is set. Format: projects//locations/
+        # region when `return_partial_success` is set. Format: `projects/[PROJECT_ID]/
+        # locations/[LOCATION]`
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -4934,7 +4988,8 @@ module Google
         attr_accessor :occurrences
       
         # Unordered list. Unreachable regions. Populated for requests from the global
-        # region when `return_partial_success` is set. Format: projects//locations/
+        # region when `return_partial_success` is set. Format: `projects/[PROJECT_ID]/
+        # locations/[LOCATION]`
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -6045,6 +6100,33 @@ module Google
           @media_type = args[:media_type] if args.key?(:media_type)
           @name = args[:name] if args.key?(:name)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # 
+      class Risk
+        include Google::Apis::Core::Hashable
+      
+        # CISA maintains the authoritative source of vulnerabilities that have been
+        # exploited in the wild.
+        # Corresponds to the JSON property `cisaKev`
+        # @return [Google::Apis::ContaineranalysisV1::CisaKnownExploitedVulnerabilities]
+        attr_accessor :cisa_kev
+      
+        # The Exploit Prediction Scoring System (EPSS) estimates the likelihood (
+        # probability) that a software vulnerability will be exploited in the wild.
+        # Corresponds to the JSON property `epss`
+        # @return [Google::Apis::ContaineranalysisV1::ExploitPredictionScoringSystem]
+        attr_accessor :epss
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cisa_kev = args[:cisa_kev] if args.key?(:cisa_kev)
+          @epss = args[:epss] if args.key?(:epss)
         end
       end
       
@@ -7451,6 +7533,11 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1::RelatedUrl>]
         attr_accessor :related_urls
       
+        # Risk information about the vulnerability, such as CISA, EPSS, etc.
+        # Corresponds to the JSON property `risk`
+        # @return [Google::Apis::ContaineranalysisV1::Risk]
+        attr_accessor :risk
+      
         # Output only. The note provider assigned severity of this vulnerability.
         # Corresponds to the JSON property `severity`
         # @return [String]
@@ -7489,6 +7576,7 @@ module Google
           @long_description = args[:long_description] if args.key?(:long_description)
           @package_issue = args[:package_issue] if args.key?(:package_issue)
           @related_urls = args[:related_urls] if args.key?(:related_urls)
+          @risk = args[:risk] if args.key?(:risk)
           @severity = args[:severity] if args.key?(:severity)
           @short_description = args[:short_description] if args.key?(:short_description)
           @type = args[:type] if args.key?(:type)
@@ -7507,7 +7595,8 @@ module Google
         attr_accessor :counts
       
         # Unordered list. Unreachable regions. Populated for requests from the global
-        # region when `return_partial_success` is set. Format: projects//locations/
+        # region when `return_partial_success` is set. Format: `projects/[PROJECT_ID]/
+        # locations/[LOCATION]`
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
