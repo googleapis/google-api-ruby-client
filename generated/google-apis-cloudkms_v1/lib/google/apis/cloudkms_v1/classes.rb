@@ -319,7 +319,7 @@ module Google
         end
       end
       
-      # Cloud KMS Autokey configuration for a folder.
+      # Cloud KMS Autokey configuration for a folder or project.
       class AutokeyConfig
         include Google::Apis::Core::Hashable
       
@@ -344,7 +344,7 @@ module Google
         attr_accessor :key_project
       
         # Identifier. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
-        # autokeyConfig`.
+        # autokeyConfig` `projects/`PROJECT_NUMBER`/autokeyConfig`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
