@@ -3747,14 +3747,14 @@ module Google
       class WorkloadIdentityPoolManagedIdentity
         include Google::Apis::Core::Hashable
       
-        # A description of the managed identity. Cannot exceed 256 characters.
+        # Optional. A description of the managed identity. Cannot exceed 256 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Whether the managed identity is disabled. If disabled, credentials may no
-        # longer be issued for the identity, however existing credentials will still be
-        # accepted until they expire.
+        # Optional. Whether the managed identity is disabled. If disabled, credentials
+        # may no longer be issued for the identity, however existing credentials will
+        # still be accepted until they expire.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
@@ -3766,7 +3766,7 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # Output only. The resource name of the managed identity.
+        # Identifier. The resource name of the managed identity.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3795,14 +3795,14 @@ module Google
       class WorkloadIdentityPoolNamespace
         include Google::Apis::Core::Hashable
       
-        # A description of the namespace. Cannot exceed 256 characters.
+        # Optional. A description of the namespace. Cannot exceed 256 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Whether the namespace is disabled. If disabled, credentials may no longer be
-        # issued for identities within this namespace, however existing credentials will
-        # still be accepted until they expire.
+        # Optional. Whether the namespace is disabled. If disabled, credentials may no
+        # longer be issued for identities within this namespace, however existing
+        # credentials will still be accepted until they expire.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
@@ -3948,7 +3948,7 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # Output only. The resource name of the provider.
+        # Identifier. The resource name of the provider.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
