@@ -1,5 +1,10 @@
 # Release history for google-apis-storagebatchoperations_v1
 
+### v0.4.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250813
+* Regenerated using generator version 0.18.0
+
 ### v0.3.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0
