@@ -795,8 +795,8 @@ module Google
         # configuration of a Google Cloud load balancer. Forwarding rules are also used
         # for protocol forwarding, Private Service Connect and other network services to
         # provide forwarding information in the control plane. Applicable only to
-        # destination endpoint. Format: projects/`project`/global/forwardingRules/`id`
-        # or projects/`project`/regions/`region`/forwardingRules/`id`
+        # destination endpoint. Format: `projects/`project`/global/forwardingRules/`id``
+        # or `projects/`project`/regions/`region`/forwardingRules/`id``
         # Corresponds to the JSON property `forwardingRule`
         # @return [String]
         attr_accessor :forwarding_rule
