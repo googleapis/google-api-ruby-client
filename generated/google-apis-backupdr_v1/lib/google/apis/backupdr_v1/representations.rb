@@ -22,12 +22,6 @@ module Google
   module Apis
     module BackupdrV1
       
-      class AbandonBackupRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AcceleratorConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -340,18 +334,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FetchAccessTokenRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FetchAccessTokenResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class FetchBackupPlanAssociationsForResourceTypeResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -364,25 +346,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FetchMsComplianceMetadataRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FetchMsComplianceMetadataResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class FetchUsableBackupVaultsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FinalizeBackupRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -419,18 +383,6 @@ module Google
       end
       
       class InitializeServiceRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InitiateBackupRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InitiateBackupResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -586,12 +538,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RemoveDataSourceRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ResourceBackupConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -646,12 +592,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SetInternalStatusRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SetInternalStatusResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -665,6 +605,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubscribeTrialRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -694,6 +640,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Trial
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TriggerBackupRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -716,13 +668,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AbandonBackupRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :request_id, as: 'requestId'
-        end
       end
       
       class AcceleratorConfig
@@ -1408,23 +1353,6 @@ module Google
         end
       end
       
-      class FetchAccessTokenRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generation_id, as: 'generationId'
-        end
-      end
-      
-      class FetchAccessTokenResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :expire_time, as: 'expireTime'
-          property :read_location, as: 'readLocation'
-          property :token, as: 'token'
-          property :write_location, as: 'writeLocation'
-        end
-      end
-      
       class FetchBackupPlanAssociationsForResourceTypeResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1443,20 +1371,6 @@ module Google
         end
       end
       
-      class FetchMsComplianceMetadataRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :project_id, as: 'projectId'
-        end
-      end
-      
-      class FetchMsComplianceMetadataResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :is_assured_workload, as: 'isAssuredWorkload'
-        end
-      end
-      
       class FetchUsableBackupVaultsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1464,19 +1378,6 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
-        end
-      end
-      
-      class FinalizeBackupRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :backup_id, as: 'backupId'
-          property :consistency_time, as: 'consistencyTime'
-          property :description, as: 'description'
-          property :recovery_range_end_time, as: 'recoveryRangeEndTime'
-          property :recovery_range_start_time, as: 'recoveryRangeStartTime'
-          property :request_id, as: 'requestId'
-          property :retention_duration, as: 'retentionDuration'
         end
       end
       
@@ -1533,23 +1434,6 @@ module Google
       
           property :request_id, as: 'requestId'
           property :resource_type, as: 'resourceType'
-        end
-      end
-      
-      class InitiateBackupRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :backup_id, as: 'backupId'
-          property :request_id, as: 'requestId'
-        end
-      end
-      
-      class InitiateBackupResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :backup, as: 'backup'
-          property :base_backup_generation_id, as: 'baseBackupGenerationId'
-          property :new_backup_generation_id, as: 'newBackupGenerationId'
         end
       end
       
@@ -1818,13 +1702,6 @@ module Google
         end
       end
       
-      class RemoveDataSourceRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :request_id, as: 'requestId'
-        end
-      end
-      
       class ResourceBackupConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1925,15 +1802,6 @@ module Google
         end
       end
       
-      class SetInternalStatusRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :backup_config_state, as: 'backupConfigState'
-          property :request_id, as: 'requestId'
-          property :value, :base64 => true, as: 'value'
-        end
-      end
-      
       class SetInternalStatusResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1965,6 +1833,12 @@ module Google
         end
       end
       
+      class SubscribeTrialRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Tags
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1991,6 +1865,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class Trial
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :name, as: 'name'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
         end
       end
       
