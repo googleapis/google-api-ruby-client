@@ -347,6 +347,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # ProviderConfig contains the provider configurations.
+        # Corresponds to the JSON property `providerConfig`
+        # @return [Google::Apis::ConfigV1::ProviderConfig]
+        attr_accessor :provider_config
+      
         # Optional. Input to control quota checks for resources in terraform
         # configuration files. There are limited resources on which quota validation
         # applies.
@@ -427,6 +432,7 @@ module Google
           @latest_revision = args[:latest_revision] if args.key?(:latest_revision)
           @lock_state = args[:lock_state] if args.key?(:lock_state)
           @name = args[:name] if args.key?(:name)
+          @provider_config = args[:provider_config] if args.key?(:provider_config)
           @quota_validation = args[:quota_validation] if args.key?(:quota_validation)
           @service_account = args[:service_account] if args.key?(:service_account)
           @state = args[:state] if args.key?(:state)
@@ -1369,6 +1375,11 @@ module Google
         # @return [String]
         attr_accessor :preview_mode
       
+        # ProviderConfig contains the provider configurations.
+        # Corresponds to the JSON property `providerConfig`
+        # @return [Google::Apis::ConfigV1::ProviderConfig]
+        attr_accessor :provider_config
+      
         # Required. User-specified Service Account (SA) credentials to be used when
         # previewing resources. Format: `projects/`projectID`/serviceAccounts/`
         # serviceAccount``
@@ -1432,6 +1443,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @preview_artifacts = args[:preview_artifacts] if args.key?(:preview_artifacts)
           @preview_mode = args[:preview_mode] if args.key?(:preview_mode)
+          @provider_config = args[:provider_config] if args.key?(:provider_config)
           @service_account = args[:service_account] if args.key?(:service_account)
           @state = args[:state] if args.key?(:state)
           @terraform_blueprint = args[:terraform_blueprint] if args.key?(:terraform_blueprint)
@@ -1618,6 +1630,25 @@ module Google
           @before = args[:before] if args.key?(:before)
           @before_sensitive_paths = args[:before_sensitive_paths] if args.key?(:before_sensitive_paths)
           @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # ProviderConfig contains the provider configurations.
+      class ProviderConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. ProviderSource specifies the source type of the provider.
+        # Corresponds to the JSON property `sourceType`
+        # @return [String]
+        attr_accessor :source_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_type = args[:source_type] if args.key?(:source_type)
         end
       end
       
@@ -1929,6 +1960,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # ProviderConfig contains the provider configurations.
+        # Corresponds to the JSON property `providerConfig`
+        # @return [Google::Apis::ConfigV1::ProviderConfig]
+        attr_accessor :provider_config
+      
         # Optional. Input to control quota checks for resources in terraform
         # configuration files. There are limited resources on which quota validation
         # applies.
@@ -2013,6 +2049,7 @@ module Google
           @import_existing_resources = args[:import_existing_resources] if args.key?(:import_existing_resources)
           @logs = args[:logs] if args.key?(:logs)
           @name = args[:name] if args.key?(:name)
+          @provider_config = args[:provider_config] if args.key?(:provider_config)
           @quota_validation = args[:quota_validation] if args.key?(:quota_validation)
           @quota_validation_results = args[:quota_validation_results] if args.key?(:quota_validation_results)
           @service_account = args[:service_account] if args.key?(:service_account)

@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProviderConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Resource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -425,6 +431,8 @@ module Google
           property :latest_revision, as: 'latestRevision'
           property :lock_state, as: 'lockState'
           property :name, as: 'name'
+          property :provider_config, as: 'providerConfig', class: Google::Apis::ConfigV1::ProviderConfig, decorator: Google::Apis::ConfigV1::ProviderConfig::Representation
+      
           property :quota_validation, as: 'quotaValidation'
           property :service_account, as: 'serviceAccount'
           property :state, as: 'state'
@@ -686,6 +694,8 @@ module Google
           property :preview_artifacts, as: 'previewArtifacts', class: Google::Apis::ConfigV1::PreviewArtifacts, decorator: Google::Apis::ConfigV1::PreviewArtifacts::Representation
       
           property :preview_mode, as: 'previewMode'
+          property :provider_config, as: 'providerConfig', class: Google::Apis::ConfigV1::ProviderConfig, decorator: Google::Apis::ConfigV1::ProviderConfig::Representation
+      
           property :service_account, as: 'serviceAccount'
           property :state, as: 'state'
           property :terraform_blueprint, as: 'terraformBlueprint', class: Google::Apis::ConfigV1::TerraformBlueprint, decorator: Google::Apis::ConfigV1::TerraformBlueprint::Representation
@@ -744,6 +754,13 @@ module Google
           property :before, as: 'before'
           collection :before_sensitive_paths, as: 'beforeSensitivePaths'
           property :path, as: 'path'
+        end
+      end
+      
+      class ProviderConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_type, as: 'sourceType'
         end
       end
       
@@ -833,6 +850,8 @@ module Google
           property :import_existing_resources, as: 'importExistingResources'
           property :logs, as: 'logs'
           property :name, as: 'name'
+          property :provider_config, as: 'providerConfig', class: Google::Apis::ConfigV1::ProviderConfig, decorator: Google::Apis::ConfigV1::ProviderConfig::Representation
+      
           property :quota_validation, as: 'quotaValidation'
           property :quota_validation_results, as: 'quotaValidationResults'
           property :service_account, as: 'serviceAccount'
