@@ -824,6 +824,11 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
+        # Output only. The increase/decrease capacity step size in GB.
+        # Corresponds to the JSON property `capacityStepSizeGb`
+        # @return [Fixnum]
+        attr_accessor :capacity_step_size_gb
+      
         # Output only. The time when the instance was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -874,6 +879,16 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # Output only. The max capacity of the instance in GB.
+        # Corresponds to the JSON property `maxCapacityGb`
+        # @return [Fixnum]
+        attr_accessor :max_capacity_gb
+      
+        # Output only. The min capacity of the instance in GB.
+        # Corresponds to the JSON property `minCapacityGb`
+        # @return [Fixnum]
+        attr_accessor :min_capacity_gb
       
         # Output only. The resource name of the instance, in the format `projects/`
         # project`/locations/`location`/instances/`instance``.
@@ -965,6 +980,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @capacity_step_size_gb = args[:capacity_step_size_gb] if args.key?(:capacity_step_size_gb)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_performance_supported = args[:custom_performance_supported] if args.key?(:custom_performance_supported)
           @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
@@ -974,6 +990,8 @@ module Google
           @file_shares = args[:file_shares] if args.key?(:file_shares)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
+          @max_capacity_gb = args[:max_capacity_gb] if args.key?(:max_capacity_gb)
+          @min_capacity_gb = args[:min_capacity_gb] if args.key?(:min_capacity_gb)
           @name = args[:name] if args.key?(:name)
           @networks = args[:networks] if args.key?(:networks)
           @performance_config = args[:performance_config] if args.key?(:performance_config)

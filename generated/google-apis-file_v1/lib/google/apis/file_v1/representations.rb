@@ -480,6 +480,7 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_step_size_gb, :numeric_string => true, as: 'capacityStepSizeGb'
           property :create_time, as: 'createTime'
           property :custom_performance_supported, as: 'customPerformanceSupported'
           property :deletion_protection_enabled, as: 'deletionProtectionEnabled'
@@ -490,6 +491,8 @@ module Google
       
           property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
+          property :max_capacity_gb, :numeric_string => true, as: 'maxCapacityGb'
+          property :min_capacity_gb, :numeric_string => true, as: 'minCapacityGb'
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::FileV1::NetworkConfig, decorator: Google::Apis::FileV1::NetworkConfig::Representation
       
