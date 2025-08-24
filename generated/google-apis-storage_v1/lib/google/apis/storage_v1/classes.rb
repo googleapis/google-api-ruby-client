@@ -1586,6 +1586,16 @@ module Google
         attr_accessor :copy_source_acl
         alias_method :copy_source_acl?, :copy_source_acl
       
+        # Restores only the objects that were created after this time.
+        # Corresponds to the JSON property `createdAfterTime`
+        # @return [DateTime]
+        attr_accessor :created_after_time
+      
+        # Restores only the objects that were created before this time.
+        # Corresponds to the JSON property `createdBeforeTime`
+        # @return [DateTime]
+        attr_accessor :created_before_time
+      
         # Restores only the objects matching any of the specified glob(s). If this
         # parameter is not specified, all objects will be restored within the specified
         # time range.
@@ -1611,6 +1621,8 @@ module Google
         def update!(**args)
           @allow_overwrite = args[:allow_overwrite] if args.key?(:allow_overwrite)
           @copy_source_acl = args[:copy_source_acl] if args.key?(:copy_source_acl)
+          @created_after_time = args[:created_after_time] if args.key?(:created_after_time)
+          @created_before_time = args[:created_before_time] if args.key?(:created_before_time)
           @match_globs = args[:match_globs] if args.key?(:match_globs)
           @soft_deleted_after_time = args[:soft_deleted_after_time] if args.key?(:soft_deleted_after_time)
           @soft_deleted_before_time = args[:soft_deleted_before_time] if args.key?(:soft_deleted_before_time)
