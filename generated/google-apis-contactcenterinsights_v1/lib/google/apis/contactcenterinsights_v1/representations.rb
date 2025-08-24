@@ -3591,6 +3591,7 @@ module Google
           property :num_value, as: 'numValue'
           property :potential_score, as: 'potentialScore'
           property :score, as: 'score'
+          property :skip_value, as: 'skipValue'
           property :str_value, as: 'strValue'
         end
       end
@@ -3672,6 +3673,7 @@ module Google
           property :display_name, as: 'displayName'
           property :is_default, as: 'isDefault'
           property :name, as: 'name'
+          property :source, as: 'source'
           property :update_time, as: 'updateTime'
         end
       end
@@ -5174,6 +5176,7 @@ module Google
           property :num_value, as: 'numValue'
           property :potential_score, as: 'potentialScore'
           property :score, as: 'score'
+          property :skip_value, as: 'skipValue'
           property :str_value, as: 'strValue'
         end
       end

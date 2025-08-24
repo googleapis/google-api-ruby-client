@@ -5091,6 +5091,14 @@ module Google
         # @return [Float]
         attr_accessor :score
       
+        # Output only. A value of "Skip". If provided, this field may only be set to `
+        # true`. If a question receives this answer, it will be excluded from any score
+        # calculations. This would mean that the question was not evaluated.
+        # Corresponds to the JSON property `skipValue`
+        # @return [Boolean]
+        attr_accessor :skip_value
+        alias_method :skip_value?, :skip_value
+      
         # String value.
         # Corresponds to the JSON property `strValue`
         # @return [String]
@@ -5109,6 +5117,7 @@ module Google
           @num_value = args[:num_value] if args.key?(:num_value)
           @potential_score = args[:potential_score] if args.key?(:potential_score)
           @score = args[:score] if args.key?(:score)
+          @skip_value = args[:skip_value] if args.key?(:skip_value)
           @str_value = args[:str_value] if args.key?(:str_value)
         end
       end
@@ -5428,6 +5437,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The source of the scorecard.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
         # Output only. The most recent time at which the scorecard was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -5444,6 +5458,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @is_default = args[:is_default] if args.key?(:is_default)
           @name = args[:name] if args.key?(:name)
+          @source = args[:source] if args.key?(:source)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -10627,6 +10642,14 @@ module Google
         # @return [Float]
         attr_accessor :score
       
+        # Output only. A value of "Skip". If provided, this field may only be set to `
+        # true`. If a question receives this answer, it will be excluded from any score
+        # calculations. This would mean that the question was not evaluated.
+        # Corresponds to the JSON property `skipValue`
+        # @return [Boolean]
+        attr_accessor :skip_value
+        alias_method :skip_value?, :skip_value
+      
         # String value.
         # Corresponds to the JSON property `strValue`
         # @return [String]
@@ -10645,6 +10668,7 @@ module Google
           @num_value = args[:num_value] if args.key?(:num_value)
           @potential_score = args[:potential_score] if args.key?(:potential_score)
           @score = args[:score] if args.key?(:score)
+          @skip_value = args[:skip_value] if args.key?(:skip_value)
           @str_value = args[:str_value] if args.key?(:str_value)
         end
       end

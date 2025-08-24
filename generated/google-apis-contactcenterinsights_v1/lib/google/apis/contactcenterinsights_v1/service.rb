@@ -5148,10 +5148,10 @@ module Google
         #   Required. The parent resource of the QaQuestionTags.
         # @param [String] filter
         #   Optional. A filter to reduce results to a specific subset. Supports
-        #   disjunctions (OR) and conjunctions (AND). Supported fields include the
-        #   following: * `project_id` - id of the project to list tags for * `
-        #   qa_scorecard_revision_id` - id of the scorecard revision to list tags for * `
-        #   qa_question_id - id of the question to list tags for`
+        #   conjunctions (ie. AND operators). Supported fields include the following: * `
+        #   project_id` - id of the project to list tags for * `qa_scorecard_id` - id of
+        #   the scorecard to list tags for * `revision_id` - id of the scorecard revision
+        #   to list tags for` * `qa_question_id - id of the question to list tags for`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5337,6 +5337,10 @@ module Google
         #   Optional. The value returned by the last `ListQaScorecardsResponse`. This
         #   value indicates that this is a continuation of a prior `ListQaScorecards` call
         #   and that the system should return the next page of data.
+        # @param [Array<String>, String] qa_scorecard_sources
+        #   Optional. The source of scorecards are based on how those Scorecards were
+        #   created, e.g., a customer-defined scorecard, a predefined scorecard, etc. This
+        #   field is used to retrieve Scorecards of one or more sources.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5354,13 +5358,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_qa_scorecards(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_qa_scorecards(parent, page_size: nil, page_token: nil, qa_scorecard_sources: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/qaScorecards', options)
           command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse::Representation
           command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['qaScorecardSources'] = qa_scorecard_sources unless qa_scorecard_sources.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5560,6 +5565,11 @@ module Google
         #   This value indicates that this is a continuation of a prior `
         #   ListQaScorecardRevisions` call and that the system should return the next page
         #   of data.
+        # @param [Array<String>, String] qa_scorecard_sources
+        #   Optional. The source of scorecards are based on how those Scorecards were
+        #   created, e.g., a customer-defined scorecard, a predefined scorecard, etc. This
+        #   field is used to retrieve Scorecards Revisions from Scorecards of one or more
+        #   sources.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5577,7 +5587,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_qa_scorecard_revisions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_qa_scorecard_revisions(parent, filter: nil, page_size: nil, page_token: nil, qa_scorecard_sources: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/revisions', options)
           command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse::Representation
           command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse
@@ -5585,6 +5595,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['qaScorecardSources'] = qa_scorecard_sources unless qa_scorecard_sources.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
