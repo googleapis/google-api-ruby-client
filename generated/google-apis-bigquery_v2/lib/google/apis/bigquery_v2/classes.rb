@@ -1732,8 +1732,9 @@ module Google
         end
       end
       
-      # Data policy option proto, it currently supports name only, will support
-      # precedence later.
+      # Data policy option. For more information, see [Mask data by applying data
+      # policies to a column](https://cloud.google.com/bigquery/docs/column-data-
+      # masking#data-policies-on-column/).
       class DataPolicyOption
         include Google::Apis::Core::Hashable
       
@@ -4567,6 +4568,13 @@ module Google
         # @return [Google::Apis::BigqueryV2::JobConfigurationLoad]
         attr_accessor :load
       
+        # Optional. INTERNAL: DO NOT USE. The maximum rate of slot consumption to allow
+        # for this job. If set, the number of slots used to execute the job will be
+        # throttled to try and keep its slot consumption below the requested rate.
+        # Corresponds to the JSON property `maxSlots`
+        # @return [Fixnum]
+        attr_accessor :max_slots
+      
         # JobConfigurationQuery configures a BigQuery query job.
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::BigqueryV2::JobConfigurationQuery]
@@ -4593,6 +4601,7 @@ module Google
           @job_type = args[:job_type] if args.key?(:job_type)
           @labels = args[:labels] if args.key?(:labels)
           @load = args[:load] if args.key?(:load)
+          @max_slots = args[:max_slots] if args.key?(:max_slots)
           @query = args[:query] if args.key?(:query)
           @reservation = args[:reservation] if args.key?(:reservation)
         end
@@ -7868,6 +7877,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_results
       
+        # Optional. INTERNAL: DO NOT USE. The maximum rate of slot consumption to allow
+        # for this job. If set, the number of slots used to execute the job will be
+        # throttled to try and keep its slot consumption below the requested rate. This
+        # limit is best effort.
+        # Corresponds to the JSON property `maxSlots`
+        # @return [Fixnum]
+        attr_accessor :max_slots
+      
         # Optional. Limits the bytes billed for this query. Queries with bytes billed
         # above this limit will fail (without incurring a charge). If unspecified, the
         # project default is used.
@@ -7988,6 +8005,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
           @max_results = args[:max_results] if args.key?(:max_results)
+          @max_slots = args[:max_slots] if args.key?(:max_slots)
           @maximum_bytes_billed = args[:maximum_bytes_billed] if args.key?(:maximum_bytes_billed)
           @parameter_mode = args[:parameter_mode] if args.key?(:parameter_mode)
           @preserve_nulls = args[:preserve_nulls] if args.key?(:preserve_nulls)
@@ -8544,15 +8562,16 @@ module Google
         attr_accessor :data_governance_type
       
         # Required. The body of the routine. For functions, this is the expression in
-        # the AS clause. If language=SQL, it is the substring inside (but excluding) the
-        # parentheses. For example, for the function created with the following
-        # statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n",
-        # y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with
-        # linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS
-        # clause. For example, for the function created with the following statement: `
-        # CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The
+        # the AS clause. If `language = "SQL"`, it is the substring inside (but
+        # excluding) the parentheses. For example, for the function created with the
+        # following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(
+        # x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced
+        # with linebreak). If `language="JAVASCRIPT"`, it is the evaluated string in the
+        # AS clause. For example, for the function created with the following statement:
+        # `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The
         # definition_body is `return "\n";\n` Note that both \n are replaced with
-        # linebreaks.
+        # linebreaks. If `definition_body` references another routine, then that routine
+        # must be fully qualified with its project ID.
         # Corresponds to the JSON property `definitionBody`
         # @return [String]
         attr_accessor :definition_body
@@ -10486,7 +10505,8 @@ module Google
         # @return [String]
         attr_accessor :collation
       
-        # Optional. Data policy options, will replace the data_policies.
+        # Optional. Data policies attached to this field, used for field-level access
+        # control.
         # Corresponds to the JSON property `dataPolicies`
         # @return [Array<Google::Apis::BigqueryV2::DataPolicyOption>]
         attr_accessor :data_policies
