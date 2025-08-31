@@ -1106,6 +1106,145 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the caller's permissions on a BackupVault resource. A caller is not
+        # required to have Google IAM permission to make this request.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::BackupdrV1::TestIamPermissionsRequest] test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_backup_vault_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::BackupdrV1::TestIamPermissionsRequest::Representation
+          command.request_object = test_iam_permissions_request_object
+          command.response_representation = Google::Apis::BackupdrV1::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::BackupdrV1::TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Internal only. Abandons a backup.
+        # @param [String] data_source
+        #   Required. The resource name of the instance, in the format 'projects/*/
+        #   locations/*/backupVaults/*/dataSources/'.
+        # @param [Google::Apis::BackupdrV1::AbandonBackupRequest] abandon_backup_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def abandon_data_source_backup(data_source, abandon_backup_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+dataSource}:abandonBackup', options)
+          command.request_representation = Google::Apis::BackupdrV1::AbandonBackupRequest::Representation
+          command.request_object = abandon_backup_request_object
+          command.response_representation = Google::Apis::BackupdrV1::Operation::Representation
+          command.response_class = Google::Apis::BackupdrV1::Operation
+          command.params['dataSource'] = data_source unless data_source.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Internal only. Fetch access token for a given data source.
+        # @param [String] name
+        #   Required. The resource name for the location for which static IPs should be
+        #   returned. Must be in the format 'projects/*/locations/*/backupVaults/*/
+        #   dataSources'.
+        # @param [Google::Apis::BackupdrV1::FetchAccessTokenRequest] fetch_access_token_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::FetchAccessTokenResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::FetchAccessTokenResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_data_source_access_token(name, fetch_access_token_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:fetchAccessToken', options)
+          command.request_representation = Google::Apis::BackupdrV1::FetchAccessTokenRequest::Representation
+          command.request_object = fetch_access_token_request_object
+          command.response_representation = Google::Apis::BackupdrV1::FetchAccessTokenResponse::Representation
+          command.response_class = Google::Apis::BackupdrV1::FetchAccessTokenResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Internal only. Finalize a backup that was started by a call to InitiateBackup.
+        # @param [String] data_source
+        #   Required. The resource name of the instance, in the format 'projects/*/
+        #   locations/*/backupVaults/*/dataSources/'.
+        # @param [Google::Apis::BackupdrV1::FinalizeBackupRequest] finalize_backup_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def finalize_data_source_backup(data_source, finalize_backup_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+dataSource}:finalizeBackup', options)
+          command.request_representation = Google::Apis::BackupdrV1::FinalizeBackupRequest::Representation
+          command.request_object = finalize_backup_request_object
+          command.response_representation = Google::Apis::BackupdrV1::Operation::Representation
+          command.response_class = Google::Apis::BackupdrV1::Operation
+          command.params['dataSource'] = data_source unless data_source.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets details of a DataSource.
         # @param [String] name
         #   Required. Name of the data source resource name, in the format 'projects/`
@@ -1133,6 +1272,40 @@ module Google
           command.response_representation = Google::Apis::BackupdrV1::DataSource::Representation
           command.response_class = Google::Apis::BackupdrV1::DataSource
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Internal only. Initiates a backup.
+        # @param [String] data_source
+        #   Required. The resource name of the instance, in the format 'projects/*/
+        #   locations/*/backupVaults/*/dataSources/'.
+        # @param [Google::Apis::BackupdrV1::InitiateBackupRequest] initiate_backup_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::InitiateBackupResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::InitiateBackupResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def initiate_data_source_backup(data_source, initiate_backup_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+dataSource}:initiateBackup', options)
+          command.request_representation = Google::Apis::BackupdrV1::InitiateBackupRequest::Representation
+          command.request_object = initiate_backup_request_object
+          command.response_representation = Google::Apis::BackupdrV1::InitiateBackupResponse::Representation
+          command.response_class = Google::Apis::BackupdrV1::InitiateBackupResponse
+          command.params['dataSource'] = data_source unless data_source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1239,6 +1412,75 @@ module Google
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a DataSource. This is a custom method instead of a standard delete
+        # method because external clients will not delete DataSources except for
+        # BackupDR backup appliances.
+        # @param [String] name
+        #   Required. Name of the resource.
+        # @param [Google::Apis::BackupdrV1::RemoveDataSourceRequest] remove_data_source_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_data_source(name, remove_data_source_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:remove', options)
+          command.request_representation = Google::Apis::BackupdrV1::RemoveDataSourceRequest::Representation
+          command.request_object = remove_data_source_request_object
+          command.response_representation = Google::Apis::BackupdrV1::Operation::Representation
+          command.response_class = Google::Apis::BackupdrV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the internal status of a DataSource.
+        # @param [String] data_source
+        #   Required. The resource name of the instance, in the format 'projects/*/
+        #   locations/*/backupVaults/*/dataSources/'.
+        # @param [Google::Apis::BackupdrV1::SetInternalStatusRequest] set_internal_status_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_data_source_internal_status(data_source, set_internal_status_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+dataSource}:setInternalStatus', options)
+          command.request_representation = Google::Apis::BackupdrV1::SetInternalStatusRequest::Representation
+          command.request_object = set_internal_status_request_object
+          command.response_representation = Google::Apis::BackupdrV1::Operation::Representation
+          command.response_class = Google::Apis::BackupdrV1::Operation
+          command.params['dataSource'] = data_source unless data_source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1765,6 +2007,42 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the Assured Workloads compliance metadata for a given project.
+        # @param [String] parent
+        #   Required. The project and location to be used to check CSS metadata for target
+        #   project information, in the format 'projects/`project_id`/locations/`location`'
+        #   . In Cloud BackupDR, locations map to Google Cloud regions, for example **us-
+        #   central1**.
+        # @param [Google::Apis::BackupdrV1::FetchMsComplianceMetadataRequest] fetch_ms_compliance_metadata_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::FetchMsComplianceMetadataResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::FetchMsComplianceMetadataResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def ms_project_location_management_server_compliance_metadata(parent, fetch_ms_compliance_metadata_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}:msComplianceMetadata', options)
+          command.request_representation = Google::Apis::BackupdrV1::FetchMsComplianceMetadataRequest::Representation
+          command.request_object = fetch_ms_compliance_metadata_request_object
+          command.response_representation = Google::Apis::BackupdrV1::FetchMsComplianceMetadataResponse::Representation
+          command.response_class = Google::Apis::BackupdrV1::FetchMsComplianceMetadataResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
