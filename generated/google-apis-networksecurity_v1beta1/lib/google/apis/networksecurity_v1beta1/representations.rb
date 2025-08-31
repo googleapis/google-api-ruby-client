@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirewallEndpointEndpointSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GatewaySecurityPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1057,6 +1063,8 @@ module Google
           property :billing_project_id, as: 'billingProjectId'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :endpoint_settings, as: 'endpointSettings', class: Google::Apis::NetworksecurityV1beta1::FirewallEndpointEndpointSettings, decorator: Google::Apis::NetworksecurityV1beta1::FirewallEndpointEndpointSettings::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
@@ -1088,6 +1096,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :network, as: 'network'
+        end
+      end
+      
+      class FirewallEndpointEndpointSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

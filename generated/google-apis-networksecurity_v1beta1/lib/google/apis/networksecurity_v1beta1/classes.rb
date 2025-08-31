@@ -772,15 +772,16 @@ module Google
       
         # Required. All gateways and forwarding rules referenced by this policy and
         # extensions must share the same load balancing scheme. Supported values: `
-        # INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more information, refer to [
-        # Backend services overview](https://cloud.google.com/load-balancing/docs/
-        # backend-service).
+        # INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`. For more
+        # information, refer to [Backend services overview](https://cloud.google.com/
+        # load-balancing/docs/backend-service).
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
       
         # Required. A list of references to the Forwarding Rules on which this policy
-        # will be applied.
+        # will be applied. For policies created for Cloudrun, this field will reference
+        # the Cloud Run services.
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources
@@ -1107,23 +1108,26 @@ module Google
         end
       end
       
-      # Message describing DnsThreatDetector object.
+      # A DNS threat detector sends DNS query logs to a _provider_ that then analyzes
+      # the logs to identify malicious activity in the DNS queries. By default, all
+      # VPC networks in your projects are included. You can exclude specific networks
+      # by supplying `excluded_networks`.
       class DnsThreatDetector
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output only] Create time stamp
+        # Output only. Create time stamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. A list of Network resource names which are exempt from the
-        # configuration in this DnsThreatDetector. Example: `projects/PROJECT_ID/global/
-        # networks/NETWORK_NAME`.
+        # Optional. A list of network resource names which aren't monitored by this
+        # DnsThreatDetector. Example: `projects/PROJECT_ID/global/networks/NETWORK_NAME`.
         # Corresponds to the JSON property `excludedNetworks`
         # @return [Array<String>]
         attr_accessor :excluded_networks
       
-        # Optional. Labels as key value pairs
+        # Optional. Any labels associated with the DnsThreatDetector, listed as key
+        # value pairs.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1138,7 +1142,7 @@ module Google
         # @return [String]
         attr_accessor :provider
       
-        # Output only. [Output only] Update time stamp
+        # Output only. Update time stamp.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1262,6 +1266,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Settings for the endpoint.
+        # Corresponds to the JSON property `endpointSettings`
+        # @return [Google::Apis::NetworksecurityV1beta1::FirewallEndpointEndpointSettings]
+        attr_accessor :endpoint_settings
+      
         # Optional. Labels as key value pairs
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -1312,6 +1321,7 @@ module Google
           @billing_project_id = args[:billing_project_id] if args.key?(:billing_project_id)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @endpoint_settings = args[:endpoint_settings] if args.key?(:endpoint_settings)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
@@ -1424,6 +1434,19 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+        end
+      end
+      
+      # Settings for the endpoint.
+      class FirewallEndpointEndpointSettings
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2727,7 +2750,7 @@ module Google
         end
       end
       
-      # Message for response to listing DnsThreatDetectors.
+      # The response message to requesting a list of DnsThreatDetectors.
       class ListDnsThreatDetectorsResponse
         include Google::Apis::Core::Hashable
       
@@ -2736,7 +2759,7 @@ module Google
         # @return [Array<Google::Apis::NetworksecurityV1beta1::DnsThreatDetector>]
         attr_accessor :dns_threat_detectors
       
-        # A token, which can be sent as `page_token` to retrieve the next page.
+        # A token, which can be sent as `page_token`, to retrieve the next page.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
