@@ -813,6 +813,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :zonal_igm_ids, as: 'zonalIgmIds'
+          hash :zone_to_igm_ids, as: 'zoneToIgmIds'
         end
       end
       
