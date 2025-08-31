@@ -85,8 +85,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field. It is unsupported and is ignored unless
+        #   explicitly documented otherwise. This is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -612,6 +612,41 @@ module Google
           command = make_simple_command(:post, 'v1beta1/{+name}:restore', options)
           command.request_representation = Google::Apis::FileV1beta1::RestoreInstanceRequest::Representation
           command.request_object = restore_instance_request_object
+          command.response_representation = Google::Apis::FileV1beta1::Operation::Representation
+          command.response_class = Google::Apis::FileV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resume the standby instance (replica). WARNING: Any data written to the
+        # standby instance while paused will be lost when the replica is resumed.
+        # @param [String] name
+        #   Required. The resource name of the instance, in the format `projects/`
+        #   project_id`/locations/`location_id`/instances/`instance_id``.
+        # @param [Google::Apis::FileV1beta1::ResumeReplicaRequest] resume_replica_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resume_instance_replica(name, resume_replica_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:resumeReplica', options)
+          command.request_representation = Google::Apis::FileV1beta1::ResumeReplicaRequest::Representation
+          command.request_object = resume_replica_request_object
           command.response_representation = Google::Apis::FileV1beta1::Operation::Representation
           command.response_class = Google::Apis::FileV1beta1::Operation
           command.params['name'] = name unless name.nil?
