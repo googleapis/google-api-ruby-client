@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListTraceScopesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +77,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TraceScope
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -102,6 +114,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ObservabilityV1::Operation, decorator: Google::Apis::ObservabilityV1::Operation::Representation
+      
+        end
+      end
+      
+      class ListTraceScopesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :trace_scopes, as: 'traceScopes', class: Google::Apis::ObservabilityV1::TraceScope, decorator: Google::Apis::ObservabilityV1::TraceScope::Representation
       
         end
       end
@@ -147,6 +168,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :log_scope, as: 'logScope'
           property :name, as: 'name'
+          property :trace_scope, as: 'traceScope'
           property :update_time, as: 'updateTime'
         end
       end
@@ -157,6 +179,17 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TraceScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :name, as: 'name'
+          collection :resource_names, as: 'resourceNames'
+          property :update_time, as: 'updateTime'
         end
       end
     end

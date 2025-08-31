@@ -1,5 +1,9 @@
 # Release history for google-apis-observability_v1
 
+### v0.6.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250822
+
 ### v0.5.0 (2025-08-24)
 
 * Regenerated from discovery document revision 20250814

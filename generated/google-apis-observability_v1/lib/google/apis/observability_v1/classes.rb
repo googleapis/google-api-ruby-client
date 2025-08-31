@@ -101,6 +101,33 @@ module Google
         end
       end
       
+      # Response for listing TraceScopes.
+      class ListTraceScopesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If there might be more results than appear in this response, then `
+        # next_page_token` is included. To get the next set of results, call the same
+        # method again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Optional. A list of trace scopes.
+        # Corresponds to the JSON property `traceScopes`
+        # @return [Array<Google::Apis::ObservabilityV1::TraceScope>]
+        attr_accessor :trace_scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @trace_scopes = args[:trace_scopes] if args.key?(:trace_scopes)
+        end
+      end
+      
       # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
@@ -286,6 +313,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Required. The resource name of the `TraceScope`. For example: projects/
+        # myproject/locations/global/traceScopes/my-trace-scope
+        # Corresponds to the JSON property `traceScope`
+        # @return [String]
+        attr_accessor :trace_scope
+      
         # Output only. Update timestamp. Note: The Update timestamp for the default
         # scope is initially unset.
         # Corresponds to the JSON property `updateTime`
@@ -300,6 +333,7 @@ module Google
         def update!(**args)
           @log_scope = args[:log_scope] if args.key?(:log_scope)
           @name = args[:name] if args.key?(:name)
+          @trace_scope = args[:trace_scope] if args.key?(:trace_scope)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -340,6 +374,52 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # A trace scope is a collection of resources whose traces are queried together.
+      class TraceScope
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The creation timestamp of the trace scope.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Describes this trace scope. The maximum length of the description is
+        # 8000 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Identifier. The resource name of the trace scope. For example: projects/my-
+        # project/locations/global/traceScopes/my-trace-scope
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Names of the projects that are included in this trace scope. * `
+        # projects/[PROJECT_ID]` A trace scope can include a maximum of 20 projects.
+        # Corresponds to the JSON property `resourceNames`
+        # @return [Array<String>]
+        attr_accessor :resource_names
+      
+        # Output only. The last update timestamp of the trace scope.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @resource_names = args[:resource_names] if args.key?(:resource_names)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
     end
