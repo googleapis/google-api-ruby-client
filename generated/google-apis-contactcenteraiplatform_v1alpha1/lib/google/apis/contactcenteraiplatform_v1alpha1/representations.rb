@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FeatureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudCommonOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -208,6 +214,8 @@ module Google
           property :display_name, as: 'displayName'
           property :early, as: 'early', class: Google::Apis::ContactcenteraiplatformV1alpha1::Early, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Early::Representation
       
+          property :feature_config, as: 'featureConfig', class: Google::Apis::ContactcenteraiplatformV1alpha1::FeatureConfig, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::FeatureConfig::Representation
+      
           property :instance_config, as: 'instanceConfig', class: Google::Apis::ContactcenteraiplatformV1alpha1::InstanceConfig, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::InstanceConfig::Representation
       
           property :kms_key, as: 'kmsKey'
@@ -256,6 +264,13 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class FeatureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_desktop_enabled, as: 'agentDesktopEnabled'
         end
       end
       
