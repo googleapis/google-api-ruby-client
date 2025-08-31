@@ -772,6 +772,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1ListDatasetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3105,6 +3111,7 @@ module Google
       
           property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequest::Representation
       
+          collection :sampled_conversations, as: 'sampledConversations'
         end
       end
       
@@ -3368,6 +3375,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :conversations, as: 'conversations', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ListDatasetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :datasets, as: 'datasets', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Dataset, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Dataset::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -4921,6 +4937,7 @@ module Google
       
           property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest::Representation
       
+          collection :sampled_conversations, as: 'sampledConversations'
         end
       end
       
