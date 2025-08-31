@@ -402,12 +402,13 @@ module Google
         # @return [Google::Apis::WorkloadmanagerV1::InstanceProperties]
         attr_accessor :instance_properties
       
-        # Output only. ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.
+        # Output only.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Output only. resource name
+        # Output only. resource name Example: compute.googleapis.com/projects/wlm-obs-
+        # dev/zones/us-central1-a/instances/sap-pri
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1501,6 +1502,11 @@ module Google
         # @return [String]
         attr_accessor :revision_id
       
+        # The type of the rule.
+        # Corresponds to the JSON property `ruleType`
+        # @return [String]
+        attr_accessor :rule_type
+      
         # the secondary category
         # Corresponds to the JSON property `secondaryCategory`
         # @return [String]
@@ -1534,6 +1540,7 @@ module Google
           @primary_category = args[:primary_category] if args.key?(:primary_category)
           @remediation = args[:remediation] if args.key?(:remediation)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @rule_type = args[:rule_type] if args.key?(:rule_type)
           @secondary_category = args[:secondary_category] if args.key?(:secondary_category)
           @severity = args[:severity] if args.key?(:severity)
           @tags = args[:tags] if args.key?(:tags)

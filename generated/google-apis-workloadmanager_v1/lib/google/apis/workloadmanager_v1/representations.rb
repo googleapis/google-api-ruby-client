@@ -898,6 +898,7 @@ module Google
           property :primary_category, as: 'primaryCategory'
           property :remediation, as: 'remediation'
           property :revision_id, as: 'revisionId'
+          property :rule_type, as: 'ruleType'
           property :secondary_category, as: 'secondaryCategory'
           property :severity, as: 'severity'
           collection :tags, as: 'tags'
