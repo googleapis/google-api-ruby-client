@@ -7774,6 +7774,20 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundednessInput]
         attr_accessor :groundedness_input
       
+        # A single instance to be evaluated. Instances are used to specify the input
+        # data for evaluation, from simple string comparisons to complex, multi-turn
+        # model evaluations
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstance]
+        attr_accessor :instance
+      
+        # The metrics used for evaluation. Currently, we only support evaluating a
+        # single metric. If multiple metrics are provided, only the first one will be
+        # evaluated.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Metric>]
+        attr_accessor :metrics
+      
         # Input for MetricX metric.
         # Corresponds to the JSON property `metricxInput`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MetricxInput]
@@ -7913,6 +7927,8 @@ module Google
           @fluency_input = args[:fluency_input] if args.key?(:fluency_input)
           @fulfillment_input = args[:fulfillment_input] if args.key?(:fulfillment_input)
           @groundedness_input = args[:groundedness_input] if args.key?(:groundedness_input)
+          @instance = args[:instance] if args.key?(:instance)
+          @metrics = args[:metrics] if args.key?(:metrics)
           @metricx_input = args[:metricx_input] if args.key?(:metricx_input)
           @pairwise_metric_input = args[:pairwise_metric_input] if args.key?(:pairwise_metric_input)
           @pairwise_question_answering_quality_input = args[:pairwise_question_answering_quality_input] if args.key?(:pairwise_question_answering_quality_input)
@@ -7980,6 +7996,12 @@ module Google
         # Corresponds to the JSON property `groundednessResult`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundednessResult]
         attr_accessor :groundedness_result
+      
+        # Metric results for each instance. The order of the metric results is
+        # guaranteed to be the same as the order of the instances in the request.
+        # Corresponds to the JSON property `metricResults`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MetricResult>]
+        attr_accessor :metric_results
       
         # Spec for MetricX result - calculates the MetricX score for the given instance
         # using the version specified in the spec.
@@ -8120,6 +8142,7 @@ module Google
           @fluency_result = args[:fluency_result] if args.key?(:fluency_result)
           @fulfillment_result = args[:fulfillment_result] if args.key?(:fulfillment_result)
           @groundedness_result = args[:groundedness_result] if args.key?(:groundedness_result)
+          @metric_results = args[:metric_results] if args.key?(:metric_results)
           @metricx_result = args[:metricx_result] if args.key?(:metricx_result)
           @pairwise_metric_result = args[:pairwise_metric_result] if args.key?(:pairwise_metric_result)
           @pairwise_question_answering_quality_result = args[:pairwise_question_answering_quality_result] if args.key?(:pairwise_question_answering_quality_result)
@@ -8274,6 +8297,116 @@ module Google
         def update!(**args)
           @bigquery_source = args[:bigquery_source] if args.key?(:bigquery_source)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+        end
+      end
+      
+      # A single instance to be evaluated. Instances are used to specify the input
+      # data for evaluation, from simple string comparisons to complex, multi-turn
+      # model evaluations
+      class GoogleCloudAiplatformV1EvaluationInstance
+        include Google::Apis::Core::Hashable
+      
+        # Instance data specified as a map.
+        # Corresponds to the JSON property `otherData`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceMapInstance]
+        attr_accessor :other_data
+      
+        # Instance data used to populate placeholders in a metric prompt template.
+        # Corresponds to the JSON property `prompt`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceInstanceData]
+        attr_accessor :prompt
+      
+        # Instance data used to populate placeholders in a metric prompt template.
+        # Corresponds to the JSON property `reference`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceInstanceData]
+        attr_accessor :reference
+      
+        # Instance data used to populate placeholders in a metric prompt template.
+        # Corresponds to the JSON property `response`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceInstanceData]
+        attr_accessor :response
+      
+        # Optional. Named groups of rubrics associated with the prompt. This is used for
+        # rubric-based evaluations where rubrics can be referenced by a key. The key
+        # could represent versions, associated metrics, etc.
+        # Corresponds to the JSON property `rubricGroups`
+        # @return [Hash<String,Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricGroup>]
+        attr_accessor :rubric_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @other_data = args[:other_data] if args.key?(:other_data)
+          @prompt = args[:prompt] if args.key?(:prompt)
+          @reference = args[:reference] if args.key?(:reference)
+          @response = args[:response] if args.key?(:response)
+          @rubric_groups = args[:rubric_groups] if args.key?(:rubric_groups)
+        end
+      end
+      
+      # Instance data used to populate placeholders in a metric prompt template.
+      class GoogleCloudAiplatformV1EvaluationInstanceInstanceData
+        include Google::Apis::Core::Hashable
+      
+        # List of standard Content messages from Gemini API.
+        # Corresponds to the JSON property `contents`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceInstanceDataContents]
+        attr_accessor :contents
+      
+        # Text data.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # List of standard Content messages from Gemini API.
+      class GoogleCloudAiplatformV1EvaluationInstanceInstanceDataContents
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Repeated contents.
+        # Corresponds to the JSON property `contents`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content>]
+        attr_accessor :contents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
+        end
+      end
+      
+      # Instance data specified as a map.
+      class GoogleCloudAiplatformV1EvaluationInstanceMapInstance
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Map of instance data.
+        # Corresponds to the JSON property `mapInstance`
+        # @return [Hash<String,Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceInstanceData>]
+        attr_accessor :map_instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @map_instance = args[:map_instance] if args.key?(:map_instance)
         end
       end
       
@@ -12985,6 +13118,58 @@ module Google
         end
       end
       
+      # Request message for EvaluationService.GenerateInstanceRubrics.
+      class GoogleCloudAiplatformV1GenerateInstanceRubricsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The prompt to generate rubrics from. For single-turn queries, this
+        # is a single instance. For multi-turn queries, this is a repeated field that
+        # contains conversation history + latest request.
+        # Corresponds to the JSON property `contents`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content>]
+        attr_accessor :contents
+      
+        # The spec for a pre-defined metric.
+        # Corresponds to the JSON property `predefinedRubricGenerationSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PredefinedMetricSpec]
+        attr_accessor :predefined_rubric_generation_spec
+      
+        # Specification for how rubrics should be generated.
+        # Corresponds to the JSON property `rubricGenerationSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricGenerationSpec]
+        attr_accessor :rubric_generation_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
+          @predefined_rubric_generation_spec = args[:predefined_rubric_generation_spec] if args.key?(:predefined_rubric_generation_spec)
+          @rubric_generation_spec = args[:rubric_generation_spec] if args.key?(:rubric_generation_spec)
+        end
+      end
+      
+      # Response message for EvaluationService.GenerateInstanceRubrics.
+      class GoogleCloudAiplatformV1GenerateInstanceRubricsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A list of generated rubrics.
+        # Corresponds to the JSON property `generatedRubrics`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Rubric>]
+        attr_accessor :generated_rubrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generated_rubrics = args[:generated_rubrics] if args.key?(:generated_rubrics)
+        end
+      end
+      
       # Generate video response.
       class GoogleCloudAiplatformV1GenerateVideoResponse
         include Google::Apis::Core::Hashable
@@ -17169,6 +17354,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PointwiseMetricSpec]
         attr_accessor :pointwise_metric_spec
       
+        # The spec for a pre-defined metric.
+        # Corresponds to the JSON property `predefinedMetricSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PredefinedMetricSpec]
+        attr_accessor :predefined_metric_spec
+      
         # Spec for rouge score metric - calculates the recall of n-grams in prediction
         # as compared to reference - returns a score ranging between 0 and 1.
         # Corresponds to the JSON property `rougeSpec`
@@ -17186,7 +17376,40 @@ module Google
           @exact_match_spec = args[:exact_match_spec] if args.key?(:exact_match_spec)
           @pairwise_metric_spec = args[:pairwise_metric_spec] if args.key?(:pairwise_metric_spec)
           @pointwise_metric_spec = args[:pointwise_metric_spec] if args.key?(:pointwise_metric_spec)
+          @predefined_metric_spec = args[:predefined_metric_spec] if args.key?(:predefined_metric_spec)
           @rouge_spec = args[:rouge_spec] if args.key?(:rouge_spec)
+        end
+      end
+      
+      # Result for a single metric on a single instance.
+      class GoogleCloudAiplatformV1MetricResult
+        include Google::Apis::Core::Hashable
+      
+        # The explanation for the metric result.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # For rubric-based metrics, the verdicts for each rubric.
+        # Corresponds to the JSON property `rubricVerdicts`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricVerdict>]
+        attr_accessor :rubric_verdicts
+      
+        # The score for the metric. Please refer to each metric's documentation for the
+        # meaning of the score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @rubric_verdicts = args[:rubric_verdicts] if args.key?(:rubric_verdicts)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -22861,6 +23084,32 @@ module Google
         end
       end
       
+      # The spec for a pre-defined metric.
+      class GoogleCloudAiplatformV1PredefinedMetricSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of a pre-defined metric, such as "instruction_following_v1"
+        # or "text_quality_v1".
+        # Corresponds to the JSON property `metricSpecName`
+        # @return [String]
+        attr_accessor :metric_spec_name
+      
+        # Optional. The parameters needed to run the pre-defined metric.
+        # Corresponds to the JSON property `metricSpecParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :metric_spec_parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric_spec_name = args[:metric_spec_name] if args.key?(:metric_spec_name)
+          @metric_spec_parameters = args[:metric_spec_parameters] if args.key?(:metric_spec_parameters)
+        end
+      end
+      
       # Assigns input data to training, validation, and test sets based on the value
       # of a provided key. Supported only for tabular Datasets.
       class GoogleCloudAiplatformV1PredefinedSplit
@@ -27175,6 +27424,48 @@ module Google
         end
       end
       
+      # Message representing a single testable criterion for evaluation. One input
+      # prompt could have multiple rubrics.
+      class GoogleCloudAiplatformV1Rubric
+        include Google::Apis::Core::Hashable
+      
+        # Content of the rubric, defining the testable criteria.
+        # Corresponds to the JSON property `content`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricContent]
+        attr_accessor :content
+      
+        # Optional. The relative importance of this rubric.
+        # Corresponds to the JSON property `importance`
+        # @return [String]
+        attr_accessor :importance
+      
+        # Unique identifier for the rubric. This ID is used to refer to this rubric, e.g.
+        # , in RubricVerdict.
+        # Corresponds to the JSON property `rubricId`
+        # @return [String]
+        attr_accessor :rubric_id
+      
+        # Optional. A type designator for the rubric, which can inform how it's
+        # evaluated or interpreted by systems or users. It's recommended to use
+        # consistent, well-defined, upper snake_case strings. Examples: "
+        # SUMMARIZATION_QUALITY", "SAFETY_HARMFUL_CONTENT", "INSTRUCTION_ADHERENCE".
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @importance = args[:importance] if args.key?(:importance)
+          @rubric_id = args[:rubric_id] if args.key?(:rubric_id)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Instance and metric spec for RubricBasedInstructionFollowing metric.
       class GoogleCloudAiplatformV1RubricBasedInstructionFollowingInput
         include Google::Apis::Core::Hashable
@@ -27263,6 +27554,45 @@ module Google
         end
       end
       
+      # Content of the rubric, defining the testable criteria.
+      class GoogleCloudAiplatformV1RubricContent
+        include Google::Apis::Core::Hashable
+      
+        # Defines criteria based on a specific property.
+        # Corresponds to the JSON property `property`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricContentProperty]
+        attr_accessor :property
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @property = args[:property] if args.key?(:property)
+        end
+      end
+      
+      # Defines criteria based on a specific property.
+      class GoogleCloudAiplatformV1RubricContentProperty
+        include Google::Apis::Core::Hashable
+      
+        # Description of the property being evaluated. Example: "The model's response is
+        # grammatically correct."
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+        end
+      end
+      
       # Rubric critique result.
       class GoogleCloudAiplatformV1RubricCritiqueResult
         include Google::Apis::Core::Hashable
@@ -27286,6 +27616,116 @@ module Google
         # Update properties of this object
         def update!(**args)
           @rubric = args[:rubric] if args.key?(:rubric)
+          @verdict = args[:verdict] if args.key?(:verdict)
+        end
+      end
+      
+      # Specification for how rubrics should be generated.
+      class GoogleCloudAiplatformV1RubricGenerationSpec
+        include Google::Apis::Core::Hashable
+      
+        # The configs for autorater. This is applicable to both EvaluateInstances and
+        # EvaluateDataset.
+        # Corresponds to the JSON property `modelConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AutoraterConfig]
+        attr_accessor :model_config
+      
+        # Template for the prompt used to generate rubrics. The details should be
+        # updated based on the most-recent recipe requirements.
+        # Corresponds to the JSON property `promptTemplate`
+        # @return [String]
+        attr_accessor :prompt_template
+      
+        # The type of rubric content to be generated.
+        # Corresponds to the JSON property `rubricContentType`
+        # @return [String]
+        attr_accessor :rubric_content_type
+      
+        # Optional. An optional, pre-defined list of allowed types for generated rubrics.
+        # If this field is provided, it implies `include_rubric_type` should be true,
+        # and the generated rubric types should be chosen from this ontology.
+        # Corresponds to the JSON property `rubricTypeOntology`
+        # @return [Array<String>]
+        attr_accessor :rubric_type_ontology
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model_config = args[:model_config] if args.key?(:model_config)
+          @prompt_template = args[:prompt_template] if args.key?(:prompt_template)
+          @rubric_content_type = args[:rubric_content_type] if args.key?(:rubric_content_type)
+          @rubric_type_ontology = args[:rubric_type_ontology] if args.key?(:rubric_type_ontology)
+        end
+      end
+      
+      # A group of rubrics, used for grouping rubrics based on a metric or a version.
+      class GoogleCloudAiplatformV1RubricGroup
+        include Google::Apis::Core::Hashable
+      
+        # Human-readable name for the group. This should be unique within a given
+        # context if used for display or selection. Example: "Instruction Following V1",
+        # "Content Quality - Summarization Task".
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Unique identifier for the group.
+        # Corresponds to the JSON property `groupId`
+        # @return [String]
+        attr_accessor :group_id
+      
+        # Rubrics that are part of this group.
+        # Corresponds to the JSON property `rubrics`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Rubric>]
+        attr_accessor :rubrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @group_id = args[:group_id] if args.key?(:group_id)
+          @rubrics = args[:rubrics] if args.key?(:rubrics)
+        end
+      end
+      
+      # Represents the verdict of an evaluation against a single rubric.
+      class GoogleCloudAiplatformV1RubricVerdict
+        include Google::Apis::Core::Hashable
+      
+        # Message representing a single testable criterion for evaluation. One input
+        # prompt could have multiple rubrics.
+        # Corresponds to the JSON property `evaluatedRubric`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Rubric]
+        attr_accessor :evaluated_rubric
+      
+        # Optional. Human-readable reasoning or explanation for the verdict. This can
+        # include specific examples or details from the evaluated content that justify
+        # the given verdict.
+        # Corresponds to the JSON property `reasoning`
+        # @return [String]
+        attr_accessor :reasoning
+      
+        # Required. Outcome of the evaluation against the rubric, represented as a
+        # boolean. `true` indicates a "Pass", `false` indicates a "Fail".
+        # Corresponds to the JSON property `verdict`
+        # @return [Boolean]
+        attr_accessor :verdict
+        alias_method :verdict?, :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluated_rubric = args[:evaluated_rubric] if args.key?(:evaluated_rubric)
+          @reasoning = args[:reasoning] if args.key?(:reasoning)
           @verdict = args[:verdict] if args.key?(:verdict)
         end
       end

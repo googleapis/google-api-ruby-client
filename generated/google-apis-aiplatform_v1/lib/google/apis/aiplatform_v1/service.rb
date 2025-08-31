@@ -1142,6 +1142,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generates rubrics for a given prompt. A rubric represents a single testable
+        # criterion for evaluation. One input prompt could have multiple rubrics This
+        # RPC allows users to get suggested rubrics based on provided prompt, which can
+        # then be reviewed and used for subsequent evaluations.
+        # @param [String] location
+        #   Required. The resource name of the Location to generate rubrics from. Format: `
+        #   projects/`project`/locations/`location``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateInstanceRubricsRequest] google_cloud_aiplatform_v1_generate_instance_rubrics_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateInstanceRubricsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateInstanceRubricsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_instance_rubrics(location, google_cloud_aiplatform_v1_generate_instance_rubrics_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+location}:generateInstanceRubrics', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateInstanceRubricsRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_generate_instance_rubrics_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateInstanceRubricsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateInstanceRubricsResponse
+          command.params['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets information about a location.
         # @param [String] name
         #   Resource name for the location.
@@ -1207,8 +1244,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field. It is unsupported and is ignored unless
+        #   explicitly documented otherwise. This is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
