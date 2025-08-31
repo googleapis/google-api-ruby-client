@@ -1432,6 +1432,33 @@ module Google
         end
       end
       
+      # Access Control Configuration.
+      class GoogleCloudDiscoveryengineV1AclConfig
+        include Google::Apis::Core::Hashable
+      
+        # Identity Provider Config.
+        # Corresponds to the JSON property `idpConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1IdpConfig]
+        attr_accessor :idp_config
+      
+        # Immutable. The full resource name of the acl configuration. Format: `projects/`
+        # project`/locations/`location`/aclConfig`. This field must be a UTF-8 encoded
+        # string with a length limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @idp_config = args[:idp_config] if args.key?(:idp_config)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Request message for CompletionService.AdvancedCompleteQuery method. .
       class GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest
         include Google::Apis::Core::Hashable
@@ -7384,6 +7411,13 @@ module Google
       class GoogleCloudDiscoveryengineV1Engine
         include Google::Apis::Core::Hashable
       
+        # Optional. Immutable. This the application type which this engine resource
+        # represents. NOTE: this is a new concept independ of existing industry vertical
+        # or solution type.
+        # Corresponds to the JSON property `appType`
+        # @return [String]
+        attr_accessor :app_type
+      
         # Configurations for a Chat Engine.
         # Corresponds to the JSON property `chatEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineChatEngineConfig]
@@ -7479,6 +7513,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
           @common_config = args[:common_config] if args.key?(:common_config)
@@ -8233,6 +8268,50 @@ module Google
           @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Identity Provider Config.
+      class GoogleCloudDiscoveryengineV1IdpConfig
+        include Google::Apis::Core::Hashable
+      
+        # Third party IDP Config.
+        # Corresponds to the JSON property `externalIdpConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig]
+        attr_accessor :external_idp_config
+      
+        # Identity provider type configured.
+        # Corresponds to the JSON property `idpType`
+        # @return [String]
+        attr_accessor :idp_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_idp_config = args[:external_idp_config] if args.key?(:external_idp_config)
+          @idp_type = args[:idp_type] if args.key?(:idp_type)
+        end
+      end
+      
+      # Third party IDP Config.
+      class GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig
+        include Google::Apis::Core::Hashable
+      
+        # Workforce pool name. Example: "locations/global/workforcePools/pool_id"
+        # Corresponds to the JSON property `workforcePoolName`
+        # @return [String]
+        attr_accessor :workforce_pool_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @workforce_pool_name = args[:workforce_pool_name] if args.key?(:workforce_pool_name)
         end
       end
       
@@ -17237,6 +17316,13 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaEngine
         include Google::Apis::Core::Hashable
       
+        # Optional. Immutable. This the application type which this engine resource
+        # represents. NOTE: this is a new concept independ of existing industry vertical
+        # or solution type.
+        # Corresponds to the JSON property `appType`
+        # @return [String]
+        attr_accessor :app_type
+      
         # Configurations for a Chat Engine.
         # Corresponds to the JSON property `chatEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig]
@@ -17342,6 +17428,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
           @common_config = args[:common_config] if args.key?(:common_config)
@@ -21974,6 +22061,33 @@ module Google
         end
       end
       
+      # Access Control Configuration.
+      class GoogleCloudDiscoveryengineV1betaAclConfig
+        include Google::Apis::Core::Hashable
+      
+        # Identity Provider Config.
+        # Corresponds to the JSON property `idpConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaIdpConfig]
+        attr_accessor :idp_config
+      
+        # Immutable. The full resource name of the acl configuration. Format: `projects/`
+        # project`/locations/`location`/aclConfig`. This field must be a UTF-8 encoded
+        # string with a length limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @idp_config = args[:idp_config] if args.key?(:idp_config)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Configuration data for advance site search.
       class GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig
         include Google::Apis::Core::Hashable
@@ -23517,6 +23631,13 @@ module Google
       class GoogleCloudDiscoveryengineV1betaEngine
         include Google::Apis::Core::Hashable
       
+        # Optional. Immutable. This the application type which this engine resource
+        # represents. NOTE: this is a new concept independ of existing industry vertical
+        # or solution type.
+        # Corresponds to the JSON property `appType`
+        # @return [String]
+        attr_accessor :app_type
+      
         # Configurations for a Chat Engine.
         # Corresponds to the JSON property `chatEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig]
@@ -23612,6 +23733,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
           @common_config = args[:common_config] if args.key?(:common_config)
@@ -24117,6 +24239,50 @@ module Google
           @failure_count = args[:failure_count] if args.key?(:failure_count)
           @success_count = args[:success_count] if args.key?(:success_count)
           @total_count = args[:total_count] if args.key?(:total_count)
+        end
+      end
+      
+      # Identity Provider Config.
+      class GoogleCloudDiscoveryengineV1betaIdpConfig
+        include Google::Apis::Core::Hashable
+      
+        # Third party IDP Config.
+        # Corresponds to the JSON property `externalIdpConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig]
+        attr_accessor :external_idp_config
+      
+        # Identity provider type configured.
+        # Corresponds to the JSON property `idpType`
+        # @return [String]
+        attr_accessor :idp_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_idp_config = args[:external_idp_config] if args.key?(:external_idp_config)
+          @idp_type = args[:idp_type] if args.key?(:idp_type)
+        end
+      end
+      
+      # Third party IDP Config.
+      class GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig
+        include Google::Apis::Core::Hashable
+      
+        # Workforce pool name. Example: "locations/global/workforcePools/pool_id"
+        # Corresponds to the JSON property `workforcePoolName`
+        # @return [String]
+        attr_accessor :workforce_pool_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @workforce_pool_name = args[:workforce_pool_name] if args.key?(:workforce_pool_name)
         end
       end
       
