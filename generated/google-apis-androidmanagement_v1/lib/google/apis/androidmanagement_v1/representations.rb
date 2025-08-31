@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplicationSigningKeyCert
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupServiceToggledEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,6 +239,12 @@ module Google
       end
       
       class CryptoSelfTestCompletedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomAppConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1192,6 +1204,8 @@ module Google
           property :auto_update_mode, as: 'autoUpdateMode'
           property :connected_work_and_personal_app, as: 'connectedWorkAndPersonalApp'
           property :credential_provider_policy, as: 'credentialProviderPolicy'
+          property :custom_app_config, as: 'customAppConfig', class: Google::Apis::AndroidmanagementV1::CustomAppConfig, decorator: Google::Apis::AndroidmanagementV1::CustomAppConfig::Representation
+      
           property :default_permission_policy, as: 'defaultPermissionPolicy'
           collection :delegated_scopes, as: 'delegatedScopes'
           property :disabled, as: 'disabled'
@@ -1210,6 +1224,8 @@ module Google
           collection :permission_grants, as: 'permissionGrants', class: Google::Apis::AndroidmanagementV1::PermissionGrant, decorator: Google::Apis::AndroidmanagementV1::PermissionGrant::Representation
       
           property :preferential_network_id, as: 'preferentialNetworkId'
+          collection :signing_key_certs, as: 'signingKeyCerts', class: Google::Apis::AndroidmanagementV1::ApplicationSigningKeyCert, decorator: Google::Apis::AndroidmanagementV1::ApplicationSigningKeyCert::Representation
+      
           property :user_control_settings, as: 'userControlSettings'
           property :work_profile_widgets, as: 'workProfileWidgets'
         end
@@ -1248,6 +1264,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :include_removed_apps, as: 'includeRemovedApps'
+        end
+      end
+      
+      class ApplicationSigningKeyCert
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :signing_key_cert_fingerprint_sha256, :base64 => true, as: 'signingKeyCertFingerprintSha256'
         end
       end
       
@@ -1433,6 +1456,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :success, as: 'success'
+        end
+      end
+      
+      class CustomAppConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :user_uninstall_settings, as: 'userUninstallSettings'
         end
       end
       

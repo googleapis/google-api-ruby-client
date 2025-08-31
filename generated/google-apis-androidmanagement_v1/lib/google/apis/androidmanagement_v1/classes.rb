@@ -107,7 +107,9 @@ module Google
       
         # Controls access to developer settings: developer options and safe boot.
         # Replaces safeBootDisabled (deprecated) and debuggingFeaturesAllowed (
-        # deprecated).
+        # deprecated). On personally-owned devices with a work profile, setting this
+        # policy will not disable safe boot. In this case, a NonComplianceDetail with
+        # MANAGEMENT_MODE is reported.
         # Corresponds to the JSON property `developerSettings`
         # @return [String]
         attr_accessor :developer_settings
@@ -811,6 +813,11 @@ module Google
         # @return [String]
         attr_accessor :credential_provider_policy
       
+        # Configuration for a custom app.
+        # Corresponds to the JSON property `customAppConfig`
+        # @return [Google::Apis::AndroidmanagementV1::CustomAppConfig]
+        attr_accessor :custom_app_config
+      
         # The default policy for all permissions requested by the app. If specified,
         # this overrides the policy-level default_permission_policy which applies to all
         # apps. It does not override the permission_grants which applies to all apps.
@@ -920,6 +927,21 @@ module Google
         # @return [String]
         attr_accessor :preferential_network_id
       
+        # Optional. Signing key certificates of the app.This field is required in the
+        # following cases: The app has installType set to CUSTOM (i.e. a custom app).
+        # The app has extensionConfig set (i.e. an extension app) but ExtensionConfig.
+        # signingKeyFingerprintsSha256 (deprecated) is not set and the app does not
+        # exist on the Play Store.If this field is not set for a custom app, the policy
+        # is rejected. If it is not set when required for a non-custom app, a
+        # NonComplianceDetail with INVALID_VALUE is reported.For other cases, this field
+        # is optional and the signing key certificates obtained from Play Store are used.
+        # See following policy settings to see how this field is used:
+        # choosePrivateKeyRules ApplicationPolicy.InstallType.CUSTOM ApplicationPolicy.
+        # extensionConfig
+        # Corresponds to the JSON property `signingKeyCerts`
+        # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationSigningKeyCert>]
+        attr_accessor :signing_key_certs
+      
         # Optional. Specifies whether user control is permitted for the app. User
         # control includes user actions like force-stopping and clearing app data.
         # Certain types of apps have special treatment, see
@@ -945,6 +967,7 @@ module Google
           @auto_update_mode = args[:auto_update_mode] if args.key?(:auto_update_mode)
           @connected_work_and_personal_app = args[:connected_work_and_personal_app] if args.key?(:connected_work_and_personal_app)
           @credential_provider_policy = args[:credential_provider_policy] if args.key?(:credential_provider_policy)
+          @custom_app_config = args[:custom_app_config] if args.key?(:custom_app_config)
           @default_permission_policy = args[:default_permission_policy] if args.key?(:default_permission_policy)
           @delegated_scopes = args[:delegated_scopes] if args.key?(:delegated_scopes)
           @disabled = args[:disabled] if args.key?(:disabled)
@@ -959,6 +982,7 @@ module Google
           @package_name = args[:package_name] if args.key?(:package_name)
           @permission_grants = args[:permission_grants] if args.key?(:permission_grants)
           @preferential_network_id = args[:preferential_network_id] if args.key?(:preferential_network_id)
+          @signing_key_certs = args[:signing_key_certs] if args.key?(:signing_key_certs)
           @user_control_settings = args[:user_control_settings] if args.key?(:user_control_settings)
           @work_profile_widgets = args[:work_profile_widgets] if args.key?(:work_profile_widgets)
         end
@@ -1100,6 +1124,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @include_removed_apps = args[:include_removed_apps] if args.key?(:include_removed_apps)
+        end
+      end
+      
+      # The application signing key certificate.
+      class ApplicationSigningKeyCert
+        include Google::Apis::Core::Hashable
+      
+        # Required. The SHA-256 hash value of the signing key certificate of the app.
+        # This must be a valid SHA-256 hash value, i.e. 32 bytes. Otherwise, the policy
+        # is rejected.
+        # Corresponds to the JSON property `signingKeyCertFingerprintSha256`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :signing_key_cert_fingerprint_sha256
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signing_key_cert_fingerprint_sha256 = args[:signing_key_cert_fingerprint_sha256] if args.key?(:signing_key_cert_fingerprint_sha256)
         end
       end
       
@@ -1315,10 +1361,11 @@ module Google
       class ChoosePrivateKeyRule
         include Google::Apis::Core::Hashable
       
-        # The package names to which this rule applies. The hash of the signing
-        # certificate for each app is verified against the hash provided by Play. If no
-        # package names are specified, then the alias is provided to all apps that call
-        # KeyChain.choosePrivateKeyAlias (https://developer.android.com/reference/
+        # The package names to which this rule applies. The signing key certificate
+        # fingerprint of the app is verified against the signing key certificate
+        # fingerprints provided by Play Store and ApplicationPolicy.signingKeyCerts . If
+        # no package names are specified, then the alias is provided to all apps that
+        # call KeyChain.choosePrivateKeyAlias (https://developer.android.com/reference/
         # android/security/KeyChain#choosePrivateKeyAlias%28android.app.Activity,%
         # 20android.security.KeyChainAliasCallback,%20java.lang.String[],%20java.
         # security.Principal[],%20java.lang.String,%20int,%20java.lang.String%29) or any
@@ -1824,6 +1871,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @success = args[:success] if args.key?(:success)
+        end
+      end
+      
+      # Configuration for a custom app.
+      class CustomAppConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. User uninstall settings of the custom app.
+        # Corresponds to the JSON property `userUninstallSettings`
+        # @return [String]
+        attr_accessor :user_uninstall_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_uninstall_settings = args[:user_uninstall_settings] if args.key?(:user_uninstall_settings)
         end
       end
       
