@@ -1898,6 +1898,7 @@ module Google
           property :click_through_url_suffix, as: 'clickThroughUrlSuffix'
           property :default_click_through_event_tag_id, :numeric_string => true, as: 'defaultClickThroughEventTagId'
           property :default_email, as: 'defaultEmail'
+          property :eu_political_ads_declaration, as: 'euPoliticalAdsDeclaration'
           property :floodlight_configuration_id, :numeric_string => true, as: 'floodlightConfigurationId'
           property :floodlight_configuration_id_dimension_value, as: 'floodlightConfigurationIdDimensionValue', class: Google::Apis::DfareportingV4::DimensionValue, decorator: Google::Apis::DfareportingV4::DimensionValue::Representation
       
@@ -2118,6 +2119,7 @@ module Google
           property :default_landing_page_id, :numeric_string => true, as: 'defaultLandingPageId'
           property :end_date, as: 'endDate', type: Date
       
+          property :eu_political_ads_declaration, as: 'euPoliticalAdsDeclaration'
           collection :event_tag_overrides, as: 'eventTagOverrides', class: Google::Apis::DfareportingV4::EventTagOverride, decorator: Google::Apis::DfareportingV4::EventTagOverride::Representation
       
           property :external_id, as: 'externalId'
