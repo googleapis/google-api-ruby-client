@@ -1882,6 +1882,12 @@ module Google
         # @return [String]
         attr_accessor :database
       
+        # Optional. Controls how the API should respond when the SQL execution result
+        # exceeds 10 MB. The default mode is to throw an error.
+        # Corresponds to the JSON property `partialResultMode`
+        # @return [String]
+        attr_accessor :partial_result_mode
+      
         # Optional. The maximum number of rows returned per SQL statement.
         # Corresponds to the JSON property `rowLimit`
         # @return [Fixnum]
@@ -1893,6 +1899,13 @@ module Google
         # @return [String]
         attr_accessor :sql_statement
       
+        # Optional. The name of an existing database user to connect to the database.
+        # When `auto_iam_authn` is set to true, this field is ignored and the API caller'
+        # s IAM user is used.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1901,8 +1914,10 @@ module Google
         def update!(**args)
           @auto_iam_authn = args[:auto_iam_authn] if args.key?(:auto_iam_authn)
           @database = args[:database] if args.key?(:database)
+          @partial_result_mode = args[:partial_result_mode] if args.key?(:partial_result_mode)
           @row_limit = args[:row_limit] if args.key?(:row_limit)
           @sql_statement = args[:sql_statement] if args.key?(:sql_statement)
+          @user = args[:user] if args.key?(:user)
         end
       end
       
@@ -5209,6 +5224,11 @@ module Google
       class SqlInstancesGetLatestRecoveryTimeResponse
         include Google::Apis::Core::Hashable
       
+        # Timestamp, identifies the earliest recovery time of the source instance.
+        # Corresponds to the JSON property `earliestRecoveryTime`
+        # @return [String]
+        attr_accessor :earliest_recovery_time
+      
         # This is always `sql#getLatestRecoveryTime`.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -5225,6 +5245,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @earliest_recovery_time = args[:earliest_recovery_time] if args.key?(:earliest_recovery_time)
           @kind = args[:kind] if args.key?(:kind)
           @latest_recovery_time = args[:latest_recovery_time] if args.key?(:latest_recovery_time)
         end
