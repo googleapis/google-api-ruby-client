@@ -298,6 +298,13 @@ module Google
         # @return [String]
         attr_accessor :success_criteria
       
+        # Output only. The test case that contained this step. Note: The test case may
+        # have changed or been deleted since this step was created. Format: `projects/`
+        # project_number`/apps/`app`/testCases/`test_case``
+        # Corresponds to the JSON property `testCase`
+        # @return [String]
+        attr_accessor :test_case
+      
         def initialize(**args)
            update!(**args)
         end
@@ -308,6 +315,7 @@ module Google
           @goal = args[:goal] if args.key?(:goal)
           @hint = args[:hint] if args.key?(:hint)
           @success_criteria = args[:success_criteria] if args.key?(:success_criteria)
+          @test_case = args[:test_case] if args.key?(:test_case)
         end
       end
       
@@ -1276,7 +1284,7 @@ module Google
         end
       end
       
-      # The results of running an automated test on a release.
+      # Instance of an automated test for a release.
       class GoogleFirebaseAppdistroV1alphaReleaseTest
         include Google::Apis::Core::Hashable
       

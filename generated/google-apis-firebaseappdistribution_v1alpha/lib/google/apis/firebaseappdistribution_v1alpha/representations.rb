@@ -409,6 +409,7 @@ module Google
           property :goal, as: 'goal'
           property :hint, as: 'hint'
           property :success_criteria, as: 'successCriteria'
+          property :test_case, as: 'testCase'
         end
       end
       
