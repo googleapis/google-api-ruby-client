@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1AclConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1325,6 +1331,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1IdentityMappingStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1IdpConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3448,6 +3466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaAclConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3809,6 +3833,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaIdentityMappingEntryOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaIdpConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4657,6 +4693,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :function_name, as: 'functionName'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1AclConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :idp_config, as: 'idpConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1IdpConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1IdpConfig::Representation
+      
+          property :name, as: 'name'
         end
       end
       
@@ -6335,6 +6380,7 @@ module Google
       class GoogleCloudDiscoveryengineV1Engine
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_type, as: 'appType'
           property :chat_engine_config, as: 'chatEngineConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineChatEngineConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineChatEngineConfig::Representation
       
           property :chat_engine_metadata, as: 'chatEngineMetadata', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineChatEngineMetadata, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineChatEngineMetadata::Representation
@@ -6552,6 +6598,22 @@ module Google
       
           property :kms_key_name, as: 'kmsKeyName'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1IdpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_idp_config, as: 'externalIdpConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig::Representation
+      
+          property :idp_type, as: 'idpType'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :workforce_pool_name, as: 'workforcePoolName'
         end
       end
       
@@ -8957,6 +9019,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaEngine
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_type, as: 'appType'
           property :chat_engine_config, as: 'chatEngineConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig::Representation
       
           property :chat_engine_metadata, as: 'chatEngineMetadata', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata::Representation
@@ -10177,6 +10240,15 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaAclConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :idp_config, as: 'idpConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaIdpConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaIdpConfig::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10619,6 +10691,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaEngine
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_type, as: 'appType'
           property :chat_engine_config, as: 'chatEngineConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig::Representation
       
           property :chat_engine_metadata, as: 'chatEngineMetadata', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata::Representation
@@ -10777,6 +10850,22 @@ module Google
           property :failure_count, :numeric_string => true, as: 'failureCount'
           property :success_count, :numeric_string => true, as: 'successCount'
           property :total_count, :numeric_string => true, as: 'totalCount'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaIdpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_idp_config, as: 'externalIdpConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig::Representation
+      
+          property :idp_type, as: 'idpType'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :workforce_pool_name, as: 'workforcePoolName'
         end
       end
       
