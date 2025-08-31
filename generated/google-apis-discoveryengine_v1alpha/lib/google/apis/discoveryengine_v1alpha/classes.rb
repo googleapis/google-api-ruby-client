@@ -1638,6 +1638,33 @@ module Google
         end
       end
       
+      # Access Control Configuration.
+      class GoogleCloudDiscoveryengineV1AclConfig
+        include Google::Apis::Core::Hashable
+      
+        # Identity Provider Config.
+        # Corresponds to the JSON property `idpConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1IdpConfig]
+        attr_accessor :idp_config
+      
+        # Immutable. The full resource name of the acl configuration. Format: `projects/`
+        # project`/locations/`location`/aclConfig`. This field must be a UTF-8 encoded
+        # string with a length limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @idp_config = args[:idp_config] if args.key?(:idp_config)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Configuration data for advance site search.
       class GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig
         include Google::Apis::Core::Hashable
@@ -3404,6 +3431,13 @@ module Google
       class GoogleCloudDiscoveryengineV1Engine
         include Google::Apis::Core::Hashable
       
+        # Optional. Immutable. This the application type which this engine resource
+        # represents. NOTE: this is a new concept independ of existing industry vertical
+        # or solution type.
+        # Corresponds to the JSON property `appType`
+        # @return [String]
+        attr_accessor :app_type
+      
         # Configurations for a Chat Engine.
         # Corresponds to the JSON property `chatEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineChatEngineConfig]
@@ -3499,6 +3533,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
           @common_config = args[:common_config] if args.key?(:common_config)
@@ -3889,6 +3924,50 @@ module Google
           @failure_count = args[:failure_count] if args.key?(:failure_count)
           @success_count = args[:success_count] if args.key?(:success_count)
           @total_count = args[:total_count] if args.key?(:total_count)
+        end
+      end
+      
+      # Identity Provider Config.
+      class GoogleCloudDiscoveryengineV1IdpConfig
+        include Google::Apis::Core::Hashable
+      
+        # Third party IDP Config.
+        # Corresponds to the JSON property `externalIdpConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig]
+        attr_accessor :external_idp_config
+      
+        # Identity provider type configured.
+        # Corresponds to the JSON property `idpType`
+        # @return [String]
+        attr_accessor :idp_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_idp_config = args[:external_idp_config] if args.key?(:external_idp_config)
+          @idp_type = args[:idp_type] if args.key?(:idp_type)
+        end
+      end
+      
+      # Third party IDP Config.
+      class GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig
+        include Google::Apis::Core::Hashable
+      
+        # Workforce pool name. Example: "locations/global/workforcePools/pool_id"
+        # Corresponds to the JSON property `workforcePoolName`
+        # @return [String]
+        attr_accessor :workforce_pool_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @workforce_pool_name = args[:workforce_pool_name] if args.key?(:workforce_pool_name)
         end
       end
       
@@ -13021,6 +13100,13 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaEngine
         include Google::Apis::Core::Hashable
       
+        # Optional. Immutable. This the application type which this engine resource
+        # represents. NOTE: this is a new concept independ of existing industry vertical
+        # or solution type.
+        # Corresponds to the JSON property `appType`
+        # @return [String]
+        attr_accessor :app_type
+      
         # Configurations for a Chat Engine.
         # Corresponds to the JSON property `chatEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig]
@@ -13126,6 +13212,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
           @common_config = args[:common_config] if args.key?(:common_config)
@@ -24272,6 +24359,33 @@ module Google
         end
       end
       
+      # Access Control Configuration.
+      class GoogleCloudDiscoveryengineV1betaAclConfig
+        include Google::Apis::Core::Hashable
+      
+        # Identity Provider Config.
+        # Corresponds to the JSON property `idpConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaIdpConfig]
+        attr_accessor :idp_config
+      
+        # Immutable. The full resource name of the acl configuration. Format: `projects/`
+        # project`/locations/`location`/aclConfig`. This field must be a UTF-8 encoded
+        # string with a length limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @idp_config = args[:idp_config] if args.key?(:idp_config)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Configuration data for advance site search.
       class GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig
         include Google::Apis::Core::Hashable
@@ -25815,6 +25929,13 @@ module Google
       class GoogleCloudDiscoveryengineV1betaEngine
         include Google::Apis::Core::Hashable
       
+        # Optional. Immutable. This the application type which this engine resource
+        # represents. NOTE: this is a new concept independ of existing industry vertical
+        # or solution type.
+        # Corresponds to the JSON property `appType`
+        # @return [String]
+        attr_accessor :app_type
+      
         # Configurations for a Chat Engine.
         # Corresponds to the JSON property `chatEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig]
@@ -25910,6 +26031,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
           @common_config = args[:common_config] if args.key?(:common_config)
@@ -26415,6 +26537,50 @@ module Google
           @failure_count = args[:failure_count] if args.key?(:failure_count)
           @success_count = args[:success_count] if args.key?(:success_count)
           @total_count = args[:total_count] if args.key?(:total_count)
+        end
+      end
+      
+      # Identity Provider Config.
+      class GoogleCloudDiscoveryengineV1betaIdpConfig
+        include Google::Apis::Core::Hashable
+      
+        # Third party IDP Config.
+        # Corresponds to the JSON property `externalIdpConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig]
+        attr_accessor :external_idp_config
+      
+        # Identity provider type configured.
+        # Corresponds to the JSON property `idpType`
+        # @return [String]
+        attr_accessor :idp_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_idp_config = args[:external_idp_config] if args.key?(:external_idp_config)
+          @idp_type = args[:idp_type] if args.key?(:idp_type)
+        end
+      end
+      
+      # Third party IDP Config.
+      class GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig
+        include Google::Apis::Core::Hashable
+      
+        # Workforce pool name. Example: "locations/global/workforcePools/pool_id"
+        # Corresponds to the JSON property `workforcePoolName`
+        # @return [String]
+        attr_accessor :workforce_pool_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @workforce_pool_name = args[:workforce_pool_name] if args.key?(:workforce_pool_name)
         end
       end
       
@@ -29364,6 +29530,31 @@ module Google
         end
       end
       
+      # Account and role information.
+      class GoogleCloudNotebooklmV1alphaAccountAndRole
+        include Google::Apis::Core::Hashable
+      
+        # Required. The email address associated with the account.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Required. The role in the notebook.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
       # Metadata about an agentspace source.
       class GoogleCloudNotebooklmV1alphaAgentspaceMetadata
         include Google::Apis::Core::Hashable
@@ -29386,6 +29577,100 @@ module Google
         def update!(**args)
           @document_name = args[:document_name] if args.key?(:document_name)
           @document_title = args[:document_title] if args.key?(:document_title)
+        end
+      end
+      
+      # An audio overview of a notebook. This is a summary of the notebook in audio
+      # format.
+      class GoogleCloudNotebooklmV1alphaAudioOverview
+        include Google::Apis::Core::Hashable
+      
+        # The audio overview in wav format. This is only present if the status is
+        # AUDIO_OVERVIEW_STATUS_COMPLETE.
+        # Corresponds to the JSON property `audio`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :audio
+      
+        # Output only. Unique ID of the audio overview.
+        # Corresponds to the JSON property `audioOverviewId`
+        # @return [String]
+        attr_accessor :audio_overview_id
+      
+        # The language code of the generated audio overview. Use the BCP 47 language
+        # code (e.g. "en", "es", "hi", etc.). Examples: google3/i18n/identifiers/tools/
+        # language_code_constants.txt
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # The mime type of the audio overview.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Identifier. The full resource name of the notebook. Format: `projects/`project`
+        # /locations/`location`/notebooks/`notebook`/audioOverviews/`audio_overview_id``.
+        # This field must be a UTF-8 encoded string with a length limit of 1024
+        # characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The url used to play the audio overview.
+        # Corresponds to the JSON property `playbackUrl`
+        # @return [String]
+        attr_accessor :playback_url
+      
+        # The status of the audio overview.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio = args[:audio] if args.key?(:audio)
+          @audio_overview_id = args[:audio_overview_id] if args.key?(:audio_overview_id)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @name = args[:name] if args.key?(:name)
+          @playback_url = args[:playback_url] if args.key?(:playback_url)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Options used during audio overview generation.
+      class GoogleCloudNotebooklmV1alphaAudioOverviewGenerationOptions
+        include Google::Apis::Core::Hashable
+      
+        # What the hosts of the show should focus on.
+        # Corresponds to the JSON property `episodeFocus`
+        # @return [String]
+        attr_accessor :episode_focus
+      
+        # The language that the audio overview was requested in.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Optional. The sources in which the audio overview is grounded.
+        # Corresponds to the JSON property `sourceIds`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceId>]
+        attr_accessor :source_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @episode_focus = args[:episode_focus] if args.key?(:episode_focus)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @source_ids = args[:source_ids] if args.key?(:source_ids)
         end
       end
       
@@ -29427,6 +29712,46 @@ module Google
         end
       end
       
+      # Request for NotebookService.BatchDeleteNotebooks method.
+      class GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Full resource names of Notebook, such as `projects/`project`/
+        # locations/`location`/notebooks/`notebook_id``.
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
+        end
+      end
+      
+      # Request for SourceService.BatchDeleteSourcesRequest method.
+      class GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Names of sources to be deleted. Format: projects/`project`/locations/
+        # `location`/notebooks/`notebook`/sources/`source`
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
+        end
+      end
+      
       # Customer-managed encryption configuration for Notebooks.
       class GoogleCloudNotebooklmV1alphaCmekConfig
         include Google::Apis::Core::Hashable
@@ -29444,6 +29769,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
+        end
+      end
+      
+      # Request for AudioOverviewService.CreateAudioOverview method.
+      class GoogleCloudNotebooklmV1alphaCreateAudioOverviewRequest
+        include Google::Apis::Core::Hashable
+      
+        # Options used during audio overview generation.
+        # Corresponds to the JSON property `generationOptions`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaAudioOverviewGenerationOptions]
+        attr_accessor :generation_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generation_options = args[:generation_options] if args.key?(:generation_options)
+        end
+      end
+      
+      # Response for AudioOverviewService.CreateAudioOverview method.
+      class GoogleCloudNotebooklmV1alphaCreateAudioOverviewResponse
+        include Google::Apis::Core::Hashable
+      
+        # An audio overview of a notebook. This is a summary of the notebook in audio
+        # format.
+        # Corresponds to the JSON property `audioOverview`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaAudioOverview]
+        attr_accessor :audio_overview
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_overview = args[:audio_overview] if args.key?(:audio_overview)
         end
       end
       
@@ -29562,6 +29926,45 @@ module Google
           @is_shareable = args[:is_shareable] if args.key?(:is_shareable)
           @is_shared = args[:is_shared] if args.key?(:is_shared)
           @last_viewed = args[:last_viewed] if args.key?(:last_viewed)
+        end
+      end
+      
+      # Request for NotebookService.ShareNotebook method.
+      class GoogleCloudNotebooklmV1alphaShareNotebookRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of accounts and roles to share the notebook with.
+        # Corresponds to the JSON property `accountAndRoles`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaAccountAndRole>]
+        attr_accessor :account_and_roles
+      
+        # Required. Whether to notify the shared users via email.
+        # Corresponds to the JSON property `notifyViaEmail`
+        # @return [Boolean]
+        attr_accessor :notify_via_email
+        alias_method :notify_via_email?, :notify_via_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_and_roles = args[:account_and_roles] if args.key?(:account_and_roles)
+          @notify_via_email = args[:notify_via_email] if args.key?(:notify_via_email)
+        end
+      end
+      
+      # Response for NotebookService.ShareNotebook method.
+      class GoogleCloudNotebooklmV1alphaShareNotebookResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -29733,6 +30136,26 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent]
         attr_accessor :agentspace_content
       
+        # The content from Google Drive.
+        # Corresponds to the JSON property `googleDriveContent`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentGoogleDriveContent]
+        attr_accessor :google_drive_content
+      
+        # The text content uploaded as source.
+        # Corresponds to the JSON property `textContent`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentTextContent]
+        attr_accessor :text_content
+      
+        # Video content uploaded as source.
+        # Corresponds to the JSON property `videoContent`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentVideoContent]
+        attr_accessor :video_content
+      
+        # The web content uploaded as source.
+        # Corresponds to the JSON property `webContent`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentWebContent]
+        attr_accessor :web_content
+      
         def initialize(**args)
            update!(**args)
         end
@@ -29740,6 +30163,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agentspace_content = args[:agentspace_content] if args.key?(:agentspace_content)
+          @google_drive_content = args[:google_drive_content] if args.key?(:google_drive_content)
+          @text_content = args[:text_content] if args.key?(:text_content)
+          @video_content = args[:video_content] if args.key?(:video_content)
+          @web_content = args[:web_content] if args.key?(:web_content)
         end
       end
       
@@ -29771,6 +30198,107 @@ module Google
           @document_name = args[:document_name] if args.key?(:document_name)
           @engine_name = args[:engine_name] if args.key?(:engine_name)
           @ideaforge_idea_name = args[:ideaforge_idea_name] if args.key?(:ideaforge_idea_name)
+        end
+      end
+      
+      # The content from Google Drive.
+      class GoogleCloudNotebooklmV1alphaUserContentGoogleDriveContent
+        include Google::Apis::Core::Hashable
+      
+        # The document id of the selected document.
+        # Corresponds to the JSON property `documentId`
+        # @return [String]
+        attr_accessor :document_id
+      
+        # The mime type of the selected document. This can be used to differentiate type
+        # of content selected in the drive picker.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Should track this from Drive Picker.
+        # Corresponds to the JSON property `sourceName`
+        # @return [String]
+        attr_accessor :source_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_id = args[:document_id] if args.key?(:document_id)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @source_name = args[:source_name] if args.key?(:source_name)
+        end
+      end
+      
+      # The text content uploaded as source.
+      class GoogleCloudNotebooklmV1alphaUserContentTextContent
+        include Google::Apis::Core::Hashable
+      
+        # The content of the text source.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # The name of the text source.
+        # Corresponds to the JSON property `sourceName`
+        # @return [String]
+        attr_accessor :source_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @source_name = args[:source_name] if args.key?(:source_name)
+        end
+      end
+      
+      # Video content uploaded as source.
+      class GoogleCloudNotebooklmV1alphaUserContentVideoContent
+        include Google::Apis::Core::Hashable
+      
+        # The youtube url of the video content.
+        # Corresponds to the JSON property `youtubeUrl`
+        # @return [String]
+        attr_accessor :youtube_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @youtube_url = args[:youtube_url] if args.key?(:youtube_url)
+        end
+      end
+      
+      # The web content uploaded as source.
+      class GoogleCloudNotebooklmV1alphaUserContentWebContent
+        include Google::Apis::Core::Hashable
+      
+        # The name of the web source.
+        # Corresponds to the JSON property `sourceName`
+        # @return [String]
+        attr_accessor :source_name
+      
+        # If URL is supplied, will fetch the webpage in the backend.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_name = args[:source_name] if args.key?(:source_name)
+          @url = args[:url] if args.key?(:url)
         end
       end
       

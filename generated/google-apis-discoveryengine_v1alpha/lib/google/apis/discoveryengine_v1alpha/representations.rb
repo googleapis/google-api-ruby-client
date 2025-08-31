@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1AclConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -593,6 +599,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1IdentityMappingEntryOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1IdpConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3814,6 +3832,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaAclConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4175,6 +4199,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaIdentityMappingEntryOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaIdpConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4624,7 +4660,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudNotebooklmV1alphaAccountAndRole
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudNotebooklmV1alphaAgentspaceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaAudioOverview
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaAudioOverviewGenerationOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4642,7 +4696,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudNotebooklmV1alphaCmekConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaCreateAudioOverviewRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaCreateAudioOverviewResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4661,6 +4739,18 @@ module Google
       end
       
       class GoogleCloudNotebooklmV1alphaNotebookMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaShareNotebookRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaShareNotebookResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4703,6 +4793,30 @@ module Google
       end
       
       class GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaUserContentGoogleDriveContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaUserContentTextContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaUserContentVideoContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaUserContentWebContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5147,6 +5261,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :function_name, as: 'functionName'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1AclConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :idp_config, as: 'idpConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1IdpConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1IdpConfig::Representation
+      
+          property :name, as: 'name'
         end
       end
       
@@ -5653,6 +5776,7 @@ module Google
       class GoogleCloudDiscoveryengineV1Engine
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_type, as: 'appType'
           property :chat_engine_config, as: 'chatEngineConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineChatEngineConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineChatEngineConfig::Representation
       
           property :chat_engine_metadata, as: 'chatEngineMetadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineChatEngineMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineChatEngineMetadata::Representation
@@ -5776,6 +5900,22 @@ module Google
           property :failure_count, :numeric_string => true, as: 'failureCount'
           property :success_count, :numeric_string => true, as: 'successCount'
           property :total_count, :numeric_string => true, as: 'totalCount'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1IdpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_idp_config, as: 'externalIdpConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig::Representation
+      
+          property :idp_type, as: 'idpType'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :workforce_pool_name, as: 'workforcePoolName'
         end
       end
       
@@ -8270,6 +8410,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaEngine
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_type, as: 'appType'
           property :chat_engine_config, as: 'chatEngineConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig::Representation
       
           property :chat_engine_metadata, as: 'chatEngineMetadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata::Representation
@@ -11284,6 +11425,15 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaAclConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :idp_config, as: 'idpConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaIdpConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaIdpConfig::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11726,6 +11876,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaEngine
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_type, as: 'appType'
           property :chat_engine_config, as: 'chatEngineConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig::Representation
       
           property :chat_engine_metadata, as: 'chatEngineMetadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata::Representation
@@ -11884,6 +12035,22 @@ module Google
           property :failure_count, :numeric_string => true, as: 'failureCount'
           property :success_count, :numeric_string => true, as: 'successCount'
           property :total_count, :numeric_string => true, as: 'totalCount'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaIdpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_idp_config, as: 'externalIdpConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig::Representation
+      
+          property :idp_type, as: 'idpType'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :workforce_pool_name, as: 'workforcePoolName'
         end
       end
       
@@ -12634,11 +12801,42 @@ module Google
         end
       end
       
+      class GoogleCloudNotebooklmV1alphaAccountAndRole
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :role, as: 'role'
+        end
+      end
+      
       class GoogleCloudNotebooklmV1alphaAgentspaceMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :document_name, as: 'documentName'
           property :document_title, as: 'documentTitle'
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaAudioOverview
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio, :base64 => true, as: 'audio'
+          property :audio_overview_id, as: 'audioOverviewId'
+          property :language_code, as: 'languageCode'
+          property :mime_type, as: 'mimeType'
+          property :name, as: 'name'
+          property :playback_url, as: 'playbackUrl'
+          property :status, as: 'status'
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaAudioOverviewGenerationOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :episode_focus, as: 'episodeFocus'
+          property :language_code, as: 'languageCode'
+          collection :source_ids, as: 'sourceIds', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceId, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceId::Representation
+      
         end
       end
       
@@ -12658,10 +12856,40 @@ module Google
         end
       end
       
+      class GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :names, as: 'names'
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :names, as: 'names'
+        end
+      end
+      
       class GoogleCloudNotebooklmV1alphaCmekConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key, as: 'kmsKey'
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaCreateAudioOverviewRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generation_options, as: 'generationOptions', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaAudioOverviewGenerationOptions, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaAudioOverviewGenerationOptions::Representation
+      
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaCreateAudioOverviewResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_overview, as: 'audioOverview', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaAudioOverview, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaAudioOverview::Representation
+      
         end
       end
       
@@ -12695,6 +12923,21 @@ module Google
           property :is_shareable, as: 'isShareable'
           property :is_shared, as: 'isShared'
           property :last_viewed, as: 'lastViewed'
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaShareNotebookRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :account_and_roles, as: 'accountAndRoles', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaAccountAndRole, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaAccountAndRole::Representation
+      
+          property :notify_via_email, as: 'notifyViaEmail'
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaShareNotebookResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -12754,6 +12997,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agentspace_content, as: 'agentspaceContent', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent::Representation
       
+          property :google_drive_content, as: 'googleDriveContent', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentGoogleDriveContent, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentGoogleDriveContent::Representation
+      
+          property :text_content, as: 'textContent', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentTextContent, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentTextContent::Representation
+      
+          property :video_content, as: 'videoContent', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentVideoContent, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentVideoContent::Representation
+      
+          property :web_content, as: 'webContent', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentWebContent, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaUserContentWebContent::Representation
+      
         end
       end
       
@@ -12763,6 +13014,38 @@ module Google
           property :document_name, as: 'documentName'
           property :engine_name, as: 'engineName'
           property :ideaforge_idea_name, as: 'ideaforgeIdeaName'
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaUserContentGoogleDriveContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_id, as: 'documentId'
+          property :mime_type, as: 'mimeType'
+          property :source_name, as: 'sourceName'
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaUserContentTextContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :source_name, as: 'sourceName'
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaUserContentVideoContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :youtube_url, as: 'youtubeUrl'
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaUserContentWebContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_name, as: 'sourceName'
+          property :url, as: 'url'
         end
       end
       
