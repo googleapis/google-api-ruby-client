@@ -269,9 +269,8 @@ module Google
         # @param [String] location
         #   The location of the pool. Format: `locations/`location``.
         # @param [Fixnum] page_size
-        #   The maximum number of pools to return. If unspecified, at most 50 pools will
-        #   be returned. The maximum value is 1000; values above 1000 are truncated to
-        #   1000.
+        #   The maximum number of pools to return. The default value is 50. The maximum
+        #   value is 100.
         # @param [String] page_token
         #   A page token, received from a previous `ListWorkforcePools` call. Provide this
         #   to retrieve the subsequent page.
