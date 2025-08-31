@@ -1063,6 +1063,13 @@ module Google
         # @return [String]
         attr_accessor :connection_status
       
+        # Output only. Reason the service attachment creation failed. This value will
+        # only be populated if the service attachment encounters an issue during
+        # provisioning.
+        # Corresponds to the JSON property `failureReason`
+        # @return [String]
+        attr_accessor :failure_reason
+      
         # Optional. Fully qualified domain name that will be used in the private DNS
         # record created for the service attachment.
         # Corresponds to the JSON property `localFqdn`
@@ -1088,6 +1095,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connection_status = args[:connection_status] if args.key?(:connection_status)
+          @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
           @local_fqdn = args[:local_fqdn] if args.key?(:local_fqdn)
           @local_fqdns = args[:local_fqdns] if args.key?(:local_fqdns)
           @target_service_attachment_uri = args[:target_service_attachment_uri] if args.key?(:target_service_attachment_uri)
