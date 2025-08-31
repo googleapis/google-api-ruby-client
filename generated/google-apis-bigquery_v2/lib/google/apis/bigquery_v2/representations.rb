@@ -2478,6 +2478,7 @@ module Google
           hash :labels, as: 'labels'
           property :load, as: 'load', class: Google::Apis::BigqueryV2::JobConfigurationLoad, decorator: Google::Apis::BigqueryV2::JobConfigurationLoad::Representation
       
+          property :max_slots, as: 'maxSlots'
           property :query, as: 'query', class: Google::Apis::BigqueryV2::JobConfigurationQuery, decorator: Google::Apis::BigqueryV2::JobConfigurationQuery::Representation
       
           property :reservation, as: 'reservation'
@@ -3261,6 +3262,7 @@ module Google
           hash :labels, as: 'labels'
           property :location, as: 'location'
           property :max_results, as: 'maxResults'
+          property :max_slots, as: 'maxSlots'
           property :maximum_bytes_billed, :numeric_string => true, as: 'maximumBytesBilled'
           property :parameter_mode, as: 'parameterMode'
           property :preserve_nulls, as: 'preserveNulls'
