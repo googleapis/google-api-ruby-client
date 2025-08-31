@@ -1004,6 +1004,11 @@ module Google
         # @return [String]
         attr_accessor :default_email
       
+        # Optional. Whether the advertiser plans to serve EU political ads.
+        # Corresponds to the JSON property `euPoliticalAdsDeclaration`
+        # @return [String]
+        attr_accessor :eu_political_ads_declaration
+      
         # Floodlight configuration ID of this advertiser. The floodlight configuration
         # ID will be created automatically, so on insert this field should be left blank.
         # This field can be set to another advertiser's floodlight configuration ID in
@@ -1086,6 +1091,7 @@ module Google
           @click_through_url_suffix = args[:click_through_url_suffix] if args.key?(:click_through_url_suffix)
           @default_click_through_event_tag_id = args[:default_click_through_event_tag_id] if args.key?(:default_click_through_event_tag_id)
           @default_email = args[:default_email] if args.key?(:default_email)
+          @eu_political_ads_declaration = args[:eu_political_ads_declaration] if args.key?(:eu_political_ads_declaration)
           @floodlight_configuration_id = args[:floodlight_configuration_id] if args.key?(:floodlight_configuration_id)
           @floodlight_configuration_id_dimension_value = args[:floodlight_configuration_id_dimension_value] if args.key?(:floodlight_configuration_id_dimension_value)
           @id = args[:id] if args.key?(:id)
@@ -1862,6 +1868,13 @@ module Google
         # @return [Date]
         attr_accessor :end_date
       
+        # Optional. Whether the campaign has EU political ads. Campaign Manager 360
+        # doesn't allow campaigns with EU political ads to serve in the EU. They can
+        # still serve in other regions.
+        # Corresponds to the JSON property `euPoliticalAdsDeclaration`
+        # @return [String]
+        attr_accessor :eu_political_ads_declaration
+      
         # Overrides that can be used to activate or deactivate advertiser event tags.
         # Corresponds to the JSON property `eventTagOverrides`
         # @return [Array<Google::Apis::DfareportingV4::EventTagOverride>]
@@ -1938,6 +1951,7 @@ module Google
           @default_click_through_event_tag_properties = args[:default_click_through_event_tag_properties] if args.key?(:default_click_through_event_tag_properties)
           @default_landing_page_id = args[:default_landing_page_id] if args.key?(:default_landing_page_id)
           @end_date = args[:end_date] if args.key?(:end_date)
+          @eu_political_ads_declaration = args[:eu_political_ads_declaration] if args.key?(:eu_political_ads_declaration)
           @event_tag_overrides = args[:event_tag_overrides] if args.key?(:event_tag_overrides)
           @external_id = args[:external_id] if args.key?(:external_id)
           @id = args[:id] if args.key?(:id)
