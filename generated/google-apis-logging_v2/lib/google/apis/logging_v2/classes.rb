@@ -3358,7 +3358,7 @@ module Google
         # @return [Google::Apis::LoggingV2::LoggingQuery]
         attr_accessor :logging_query
       
-        # Optional. Resource name of the recent query.In the format: "projects/[
+        # Output only. Resource name of the recent query.In the format: "projects/[
         # PROJECT_ID]/locations/[LOCATION_ID]/recentQueries/[QUERY_ID]" For a list of
         # supported locations, see Supported Regions (https://cloud.google.com/logging/
         # docs/region-support)The QUERY_ID is a system generated alphanumeric ID.
