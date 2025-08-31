@@ -977,6 +977,57 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # List remote source's inventory of storage resources. The remote source is
+        # another cloud vendor (e.g. AWS, Azure). The inventory describes the list of
+        # existing storage resources in that source. Note that this operation lists the
+        # resources on the remote source, as opposed to listing the MigratingVms
+        # resources in the vmmigration service.
+        # @param [String] source
+        #   Required. The name of the Source.
+        # @param [Boolean] force_refresh
+        #   Optional. If this flag is set to true, the source will be queried instead of
+        #   using cached results. Using this flag will make the call slower.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of VMs to return. The service may return fewer
+        #   than this value.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `FetchStorageInventory` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `FetchStorageInventory` must match the call that
+        #   provided the page token.
+        # @param [String] type
+        #   Required. The type of the storage inventory to fetch.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmmigrationV1::FetchStorageInventoryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmmigrationV1::FetchStorageInventoryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_source_storage_inventory(source, force_refresh: nil, page_size: nil, page_token: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+source}:fetchStorageInventory', options)
+          command.response_representation = Google::Apis::VmmigrationV1::FetchStorageInventoryResponse::Representation
+          command.response_class = Google::Apis::VmmigrationV1::FetchStorageInventoryResponse
+          command.params['source'] = source unless source.nil?
+          command.query['forceRefresh'] = force_refresh unless force_refresh.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['type'] = type unless type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets details of a single Source.
         # @param [String] name
         #   Required. The Source name.
@@ -1303,6 +1354,283 @@ module Google
           command.response_representation = Google::Apis::VmmigrationV1::Operation::Representation
           command.response_class = Google::Apis::VmmigrationV1::Operation
           command.params['datacenterConnector'] = datacenter_connector unless datacenter_connector.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Cancels the disk migration job.
+        # @param [String] name
+        #   Required. The name of the DiskMigrationJob.
+        # @param [Google::Apis::VmmigrationV1::CancelDiskMigrationJobRequest] cancel_disk_migration_job_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmmigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmmigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_disk_migration_job(name, cancel_disk_migration_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command.request_representation = Google::Apis::VmmigrationV1::CancelDiskMigrationJobRequest::Representation
+          command.request_object = cancel_disk_migration_job_request_object
+          command.response_representation = Google::Apis::VmmigrationV1::Operation::Representation
+          command.response_class = Google::Apis::VmmigrationV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new disk migration job in a given Source.
+        # @param [String] parent
+        #   Required. The DiskMigrationJob's parent.
+        # @param [Google::Apis::VmmigrationV1::DiskMigrationJob] disk_migration_job_object
+        # @param [String] disk_migration_job_id
+        #   Required. The DiskMigrationJob identifier. The maximum length of this value is
+        #   63 characters. Valid characters are lower case Latin letters, digits and
+        #   hyphen. It must start with a Latin letter and must not end with a hyphen.
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server will guarantee that for
+        #   at least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request timed out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmmigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmmigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_source_disk_migration_job(parent, disk_migration_job_object = nil, disk_migration_job_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/diskMigrationJobs', options)
+          command.request_representation = Google::Apis::VmmigrationV1::DiskMigrationJob::Representation
+          command.request_object = disk_migration_job_object
+          command.response_representation = Google::Apis::VmmigrationV1::Operation::Representation
+          command.response_class = Google::Apis::VmmigrationV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['diskMigrationJobId'] = disk_migration_job_id unless disk_migration_job_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single DiskMigrationJob.
+        # @param [String] name
+        #   Required. The name of the DiskMigrationJob.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmmigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmmigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_source_disk_migration_job(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::VmmigrationV1::Operation::Representation
+          command.response_class = Google::Apis::VmmigrationV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single DiskMigrationJob.
+        # @param [String] name
+        #   Required. The name of the DiskMigrationJob.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmmigrationV1::DiskMigrationJob] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmmigrationV1::DiskMigrationJob]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_source_disk_migration_job(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::VmmigrationV1::DiskMigrationJob::Representation
+          command.response_class = Google::Apis::VmmigrationV1::DiskMigrationJob
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists DiskMigrationJobs in a given Source.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of DiskMigrationJobs.
+        # @param [String] filter
+        #   Optional. The filter request (according to AIP-160).
+        # @param [String] order_by
+        #   Optional. Ordering of the result list.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of disk migration jobs to return. The service may
+        #   return fewer than this value. If unspecified, at most 500 disk migration jobs
+        #   will be returned. The maximum value is 1000; values above 1000 will be coerced
+        #   to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListDiskMigrationJobs` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all parameters
+        #   provided to `ListDiskMigrationJobs` except `page_size` must match the call
+        #   that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmmigrationV1::ListDiskMigrationJobsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmmigrationV1::ListDiskMigrationJobsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_source_disk_migration_jobs(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/diskMigrationJobs', options)
+          command.response_representation = Google::Apis::VmmigrationV1::ListDiskMigrationJobsResponse::Representation
+          command.response_class = Google::Apis::VmmigrationV1::ListDiskMigrationJobsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single DiskMigrationJob.
+        # @param [String] name
+        #   Output only. Identifier. The identifier of the DiskMigrationJob.
+        # @param [Google::Apis::VmmigrationV1::DiskMigrationJob] disk_migration_job_object
+        # @param [String] request_id
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. The server will guarantee that for
+        #   at least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request timed out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   DiskMigrationJob resource by the update. The fields specified in the
+        #   update_mask are relative to the resource, not the full request. A field will
+        #   be overwritten if it is in the mask. If the user does not provide a mask, then
+        #   a mask equivalent to all fields that are populated (have a non-empty value),
+        #   will be implied.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmmigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmmigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_source_disk_migration_job(name, disk_migration_job_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::VmmigrationV1::DiskMigrationJob::Representation
+          command.request_object = disk_migration_job_object
+          command.response_representation = Google::Apis::VmmigrationV1::Operation::Representation
+          command.response_class = Google::Apis::VmmigrationV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Runs the disk migration job.
+        # @param [String] name
+        #   Required. The name of the DiskMigrationJob.
+        # @param [Google::Apis::VmmigrationV1::RunDiskMigrationJobRequest] run_disk_migration_job_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmmigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmmigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def run_disk_migration_job(name, run_disk_migration_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:run', options)
+          command.request_representation = Google::Apis::VmmigrationV1::RunDiskMigrationJobRequest::Representation
+          command.request_object = run_disk_migration_job_request_object
+          command.response_representation = Google::Apis::VmmigrationV1::Operation::Representation
+          command.response_class = Google::Apis::VmmigrationV1::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -300,6 +300,43 @@ module Google
         end
       end
       
+      # Represents the source AWS Disk details.
+      class AwsSourceDiskDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Output only. Disk type.
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # Output only. Size in GiB.
+        # Corresponds to the JSON property `sizeGib`
+        # @return [Fixnum]
+        attr_accessor :size_gib
+      
+        # Optional. Output only. A map of AWS volume tags.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        # Required. AWS volume ID.
+        # Corresponds to the JSON property `volumeId`
+        # @return [String]
+        attr_accessor :volume_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @size_gib = args[:size_gib] if args.key?(:size_gib)
+          @tags = args[:tags] if args.key?(:tags)
+          @volume_id = args[:volume_id] if args.key?(:volume_id)
+        end
+      end
+      
       # Represent the source AWS VM details.
       class AwsSourceVmDetails
         include Google::Apis::Core::Hashable
@@ -823,6 +860,19 @@ module Google
         end
       end
       
+      # Request message for 'CancelDiskMigrationJob' request.
+      class CancelDiskMigrationJobRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for 'CancelImageImportJob' request.
       class CancelImageImportJobRequest
         include Google::Apis::Core::Hashable
@@ -1003,6 +1053,48 @@ module Google
           @instantiating_migrated_vm = args[:instantiating_migrated_vm] if args.key?(:instantiating_migrated_vm)
           @preparing_vm_disks = args[:preparing_vm_disks] if args.key?(:preparing_vm_disks)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Compute Engine disk target details.
+      class ComputeEngineDisk
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Target Compute Engine Disk ID. This is the resource ID segment of
+        # the Compute Engine Disk to create. In the resource name compute/v1/projects/`
+        # project`/zones/`zone`/disks/disk1 "disk1" is the resource ID for the disk.
+        # Corresponds to the JSON property `diskId`
+        # @return [String]
+        attr_accessor :disk_id
+      
+        # Required. The disk type to use.
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # Optional. Replication zones of the regional disk. Should be of the form:
+        # projects/`target-project`/locations/`replica-zone` Currently only one replica
+        # zone is supported.
+        # Corresponds to the JSON property `replicaZones`
+        # @return [Array<String>]
+        attr_accessor :replica_zones
+      
+        # Required. The Compute Engine zone in which to create the disk. Should be of
+        # the form: projects/`target-project`/locations/`zone`
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_id = args[:disk_id] if args.key?(:disk_id)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -1463,8 +1555,34 @@ module Google
         end
       end
       
+      # CopyingSourceDiskSnapshotStep contains specific step details.
+      class CopyingSourceDiskSnapshotStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # CreatingImageStep contains specific step details.
       class CreatingImageStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # CreatingSourceDiskSnapshotStep contains specific step details.
+      class CreatingSourceDiskSnapshotStep
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1942,6 +2060,151 @@ module Google
         end
       end
       
+      # Describes the disk which will be migrated from the source environment. The
+      # source disk has to be unattached.
+      class DiskMigrationJob
+        include Google::Apis::Core::Hashable
+      
+        # Represents the source AWS Disk details.
+        # Corresponds to the JSON property `awsSourceDiskDetails`
+        # @return [Google::Apis::VmmigrationV1::AwsSourceDiskDetails]
+        attr_accessor :aws_source_disk_details
+      
+        # Output only. The time the DiskMigrationJob resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Provides details on the errors that led to the disk migration job'
+        # s state in case of an error.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::VmmigrationV1::Status>]
+        attr_accessor :errors
+      
+        # Output only. Identifier. The identifier of the DiskMigrationJob.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. State of the DiskMigrationJob.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The disk migration steps list representing its progress.
+        # Corresponds to the JSON property `steps`
+        # @return [Array<Google::Apis::VmmigrationV1::DiskMigrationStep>]
+        attr_accessor :steps
+      
+        # Details of the target disk in Compute Engine.
+        # Corresponds to the JSON property `targetDetails`
+        # @return [Google::Apis::VmmigrationV1::DiskMigrationJobTargetDetails]
+        attr_accessor :target_details
+      
+        # Output only. The last time the DiskMigrationJob resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aws_source_disk_details = args[:aws_source_disk_details] if args.key?(:aws_source_disk_details)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @errors = args[:errors] if args.key?(:errors)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @steps = args[:steps] if args.key?(:steps)
+          @target_details = args[:target_details] if args.key?(:target_details)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Details of the target disk in Compute Engine.
+      class DiskMigrationJobTargetDetails
+        include Google::Apis::Core::Hashable
+      
+        # Encryption message describes the details of the applied encryption.
+        # Corresponds to the JSON property `encryption`
+        # @return [Google::Apis::VmmigrationV1::Encryption]
+        attr_accessor :encryption
+      
+        # Optional. A map of labels to associate with the disk.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Compute Engine disk target details.
+        # Corresponds to the JSON property `targetDisk`
+        # @return [Google::Apis::VmmigrationV1::ComputeEngineDisk]
+        attr_accessor :target_disk
+      
+        # Required. The name of the resource of type TargetProject which represents the
+        # Compute Engine project in which to create the disk. Should be of the form:
+        # projects/`project`/locations/global/targetProjects/`target-project`
+        # Corresponds to the JSON property `targetProject`
+        # @return [String]
+        attr_accessor :target_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption = args[:encryption] if args.key?(:encryption)
+          @labels = args[:labels] if args.key?(:labels)
+          @target_disk = args[:target_disk] if args.key?(:target_disk)
+          @target_project = args[:target_project] if args.key?(:target_project)
+        end
+      end
+      
+      # DiskMigrationStep holds information about the disk migration step progress.
+      class DiskMigrationStep
+        include Google::Apis::Core::Hashable
+      
+        # CopyingSourceDiskSnapshotStep contains specific step details.
+        # Corresponds to the JSON property `copyingSourceDiskSnapshot`
+        # @return [Google::Apis::VmmigrationV1::CopyingSourceDiskSnapshotStep]
+        attr_accessor :copying_source_disk_snapshot
+      
+        # CreatingSourceDiskSnapshotStep contains specific step details.
+        # Corresponds to the JSON property `creatingSourceDiskSnapshot`
+        # @return [Google::Apis::VmmigrationV1::CreatingSourceDiskSnapshotStep]
+        attr_accessor :creating_source_disk_snapshot
+      
+        # Output only. The time the step has ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # ProvisioningTargetDiskStep contains specific step details.
+        # Corresponds to the JSON property `provisioningTargetDisk`
+        # @return [Google::Apis::VmmigrationV1::ProvisioningTargetDiskStep]
+        attr_accessor :provisioning_target_disk
+      
+        # Output only. The time the step has started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @copying_source_disk_snapshot = args[:copying_source_disk_snapshot] if args.key?(:copying_source_disk_snapshot)
+          @creating_source_disk_snapshot = args[:creating_source_disk_snapshot] if args.key?(:creating_source_disk_snapshot)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @provisioning_target_disk = args[:provisioning_target_disk] if args.key?(:provisioning_target_disk)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Details for a disk only migration.
       class DisksMigrationDisksTargetDefaults
         include Google::Apis::Core::Hashable
@@ -2224,6 +2487,39 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vmware_vms = args[:vmware_vms] if args.key?(:vmware_vms)
+        end
+      end
+      
+      # Response message for fetchStorageInventory.
+      class FetchStorageInventoryResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A token, which can be sent as `page_token` to retrieve the next
+        # page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of storage resources in the source.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::VmmigrationV1::SourceStorageResource>]
+        attr_accessor :resources
+      
+        # Output only. The timestamp when the source was last queried (if the result is
+        # from the cache).
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resources = args[:resources] if args.key?(:resources)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -2677,6 +2973,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @datacenter_connectors = args[:datacenter_connectors] if args.key?(:datacenter_connectors)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for 'ListDiskMigrationJobs' request.
+      class ListDiskMigrationJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of the disk migration jobs.
+        # Corresponds to the JSON property `diskMigrationJobs`
+        # @return [Array<Google::Apis::VmmigrationV1::DiskMigrationJob>]
+        attr_accessor :disk_migration_jobs
+      
+        # Optional. Output only. A token, which can be sent as `page_token` to retrieve
+        # the next page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_migration_jobs = args[:disk_migration_jobs] if args.key?(:disk_migration_jobs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
@@ -3827,6 +4155,19 @@ module Google
         end
       end
       
+      # ProvisioningTargetDiskStep contains specific step details.
+      class ProvisioningTargetDiskStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for 'RemoveMigration' request.
       class RemoveGroupMigrationRequest
         include Google::Apis::Core::Hashable
@@ -3984,6 +4325,19 @@ module Google
       
       # Request message for 'ResumeMigration' request.
       class ResumeMigrationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for 'RunDiskMigrationJobRequest' request.
+      class RunDiskMigrationJobRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -4212,6 +4566,25 @@ module Google
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vmware = args[:vmware] if args.key?(:vmware)
+        end
+      end
+      
+      # SourceStorageResource describes a storage resource in the source.
+      class SourceStorageResource
+        include Google::Apis::Core::Hashable
+      
+        # Represents the source AWS Disk details.
+        # Corresponds to the JSON property `awsDiskDetails`
+        # @return [Google::Apis::VmmigrationV1::AwsSourceDiskDetails]
+        attr_accessor :aws_disk_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aws_disk_details = args[:aws_disk_details] if args.key?(:aws_disk_details)
         end
       end
       
