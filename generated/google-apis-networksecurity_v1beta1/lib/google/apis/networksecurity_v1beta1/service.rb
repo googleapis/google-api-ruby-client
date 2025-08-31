@@ -1186,8 +1186,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field. It is unsupported and is ignored unless
+        #   explicitly documented otherwise. This is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -2851,11 +2851,11 @@ module Google
         
         # Creates a new DnsThreatDetector in a given project and location.
         # @param [String] parent
-        #   Required. Value for parent of the DnsThreatDetector resource.
+        #   Required. The value for the parent of the DnsThreatDetector resource.
         # @param [Google::Apis::NetworksecurityV1beta1::DnsThreatDetector] dns_threat_detector_object
         # @param [String] dns_threat_detector_id
-        #   Optional. Id of the requesting DnsThreatDetector object. If this field is not
-        #   supplied, the service will generate an identifier.
+        #   Optional. The ID of the requesting DnsThreatDetector object. If this field is
+        #   not supplied, the service generates an identifier.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2916,9 +2916,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single DnsThreatDetector.
+        # Gets the details of a single DnsThreatDetector.
         # @param [String] name
-        #   Required. Name of the DnsThreatDetector resource
+        #   Required. Name of the DnsThreatDetector resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2948,14 +2948,13 @@ module Google
         
         # Lists DnsThreatDetectors in a given project and location.
         # @param [String] parent
-        #   Required. Parent value for ListDnsThreatDetectorsRequest
+        #   Required. The parent value for `ListDnsThreatDetectorsRequest`.
         # @param [Fixnum] page_size
-        #   Optional. Requested page size. Server may return fewer items than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   Optional. The requested page size. The server may return fewer items than
+        #   requested. If unspecified, the server picks an appropriate default.
         # @param [String] page_token
-        #   Optional. A page token, received from a previous `
-        #   ListDnsThreatDetectorsRequest` call. Provide this to retrieve the subsequent
-        #   page.
+        #   Optional. A page token received from a previous `ListDnsThreatDetectorsRequest`
+        #   call. Provide this to retrieve the subsequent page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2985,13 +2984,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the parameters of a single DnsThreatDetector.
+        # Updates a single DnsThreatDetector.
         # @param [String] name
         #   Immutable. Identifier. Name of the DnsThreatDetector resource.
         # @param [Google::Apis::NetworksecurityV1beta1::DnsThreatDetector] dns_threat_detector_object
         # @param [String] update_mask
-        #   Optional. Field mask is used to specify the fields to be overwritten in the
-        #   DnsThreatDetector resource by the update. The fields specified in the
+        #   Optional. The field mask is used to specify the fields to be overwritten in
+        #   the DnsThreatDetector resource by the update. The fields specified in the
         #   update_mask are relative to the resource, not the full request. A field will
         #   be overwritten if it is in the mask. If the mask is not provided then all
         #   fields present in the request will be overwritten.
