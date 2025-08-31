@@ -140,6 +140,11 @@ module Google
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::Early]
         attr_accessor :early
       
+        # Optional. Feature configuration to populate the feature flags.
+        # Corresponds to the JSON property `featureConfig`
+        # @return [Google::Apis::ContactcenteraiplatformV1alpha1::FeatureConfig]
+        attr_accessor :feature_config
+      
         # Message storing the instance configuration.
         # Corresponds to the JSON property `instanceConfig`
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::InstanceConfig]
@@ -220,6 +225,7 @@ module Google
           @customer_domain_prefix = args[:customer_domain_prefix] if args.key?(:customer_domain_prefix)
           @display_name = args[:display_name] if args.key?(:display_name)
           @early = args[:early] if args.key?(:early)
+          @feature_config = args[:feature_config] if args.key?(:feature_config)
           @instance_config = args[:instance_config] if args.key?(:instance_config)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @labels = args[:labels] if args.key?(:labels)
@@ -316,6 +322,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # 
+      class FeatureConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true - enables the agent desktop feature. Default is false.
+        # Corresponds to the JSON property `agentDesktopEnabled`
+        # @return [Boolean]
+        attr_accessor :agent_desktop_enabled
+        alias_method :agent_desktop_enabled?, :agent_desktop_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_desktop_enabled = args[:agent_desktop_enabled] if args.key?(:agent_desktop_enabled)
         end
       end
       
