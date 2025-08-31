@@ -1302,8 +1302,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_iam_authn, as: 'autoIamAuthn'
           property :database, as: 'database'
+          property :partial_result_mode, as: 'partialResultMode'
           property :row_limit, :numeric_string => true, as: 'rowLimit'
           property :sql_statement, as: 'sqlStatement'
+          property :user, as: 'user'
         end
       end
       
@@ -2167,6 +2169,7 @@ module Google
       class SqlInstancesGetLatestRecoveryTimeResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :earliest_recovery_time, as: 'earliestRecoveryTime'
           property :kind, as: 'kind'
           property :latest_recovery_time, as: 'latestRecoveryTime'
         end
