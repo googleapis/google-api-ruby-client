@@ -345,6 +345,188 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Create a new TraceScope.
+        # @param [String] parent
+        #   Required. The full resource name of the location where the trace scope should
+        #   be created projects/[PROJECT_ID]/locations/[LOCATION_ID] For example: projects/
+        #   my-project/locations/global
+        # @param [Google::Apis::ObservabilityV1::TraceScope] trace_scope_object
+        # @param [String] trace_scope_id
+        #   Required. A client-assigned identifier for the trace scope.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ObservabilityV1::TraceScope] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ObservabilityV1::TraceScope]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_trace_scope(parent, trace_scope_object = nil, trace_scope_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/traceScopes', options)
+          command.request_representation = Google::Apis::ObservabilityV1::TraceScope::Representation
+          command.request_object = trace_scope_object
+          command.response_representation = Google::Apis::ObservabilityV1::TraceScope::Representation
+          command.response_class = Google::Apis::ObservabilityV1::TraceScope
+          command.params['parent'] = parent unless parent.nil?
+          command.query['traceScopeId'] = trace_scope_id unless trace_scope_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a TraceScope.
+        # @param [String] name
+        #   Required. The full resource name of the trace scope to delete: projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]/traceScopes/[TRACE_SCOPE_ID] For example:
+        #   projects/my-project/locations/global/traceScopes/my-trace-scope
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ObservabilityV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ObservabilityV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_trace_scope(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ObservabilityV1::Empty::Representation
+          command.response_class = Google::Apis::ObservabilityV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get TraceScope resource.
+        # @param [String] name
+        #   Required. The resource name of the trace scope: projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/traceScopes/[TRACE_SCOPE_ID] For example: projects/my-
+        #   project/locations/global/traceScopes/my-trace-scope
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ObservabilityV1::TraceScope] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ObservabilityV1::TraceScope]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_trace_scope(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ObservabilityV1::TraceScope::Representation
+          command.response_class = Google::Apis::ObservabilityV1::TraceScope
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List TraceScopes of a project in a particular location.
+        # @param [String] parent
+        #   Required. The full resource name of the location to look for trace scopes:
+        #   projects/[PROJECT_ID]/locations/[LOCATION_ID] For example: projects/my-project/
+        #   locations/global
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of `next_page_token` in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. `page_token` must be the value of `
+        #   next_page_token` from the previous response. The values of other method
+        #   parameters should be identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ObservabilityV1::ListTraceScopesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ObservabilityV1::ListTraceScopesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_trace_scopes(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/traceScopes', options)
+          command.response_representation = Google::Apis::ObservabilityV1::ListTraceScopesResponse::Representation
+          command.response_class = Google::Apis::ObservabilityV1::ListTraceScopesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a TraceScope.
+        # @param [String] name
+        #   Identifier. The resource name of the trace scope. For example: projects/my-
+        #   project/locations/global/traceScopes/my-trace-scope
+        # @param [Google::Apis::ObservabilityV1::TraceScope] trace_scope_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ObservabilityV1::TraceScope] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ObservabilityV1::TraceScope]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_trace_scope(name, trace_scope_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ObservabilityV1::TraceScope::Representation
+          command.request_object = trace_scope_object
+          command.response_representation = Google::Apis::ObservabilityV1::TraceScope::Representation
+          command.response_class = Google::Apis::ObservabilityV1::TraceScope
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
