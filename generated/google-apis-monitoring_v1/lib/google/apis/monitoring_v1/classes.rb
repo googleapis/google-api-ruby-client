@@ -670,8 +670,9 @@ module Google
       class Dimension
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the column in the source SQL query that is used to chart
-        # the dimension.
+        # Required. For widgets that use SQL queries, set the value to the name of the
+        # column in the results table whose data is charted. For a histogram that uses a
+        # time series query, set the value of this field to metric_value.
         # Corresponds to the JSON property `column`
         # @return [String]
         attr_accessor :column
@@ -691,14 +692,18 @@ module Google
         # @return [Float]
         attr_accessor :float_bin_size
       
-        # A limit to the number of bins generated. When 0 is specified, the maximum
-        # count is not enforced.
+        # For widgets that use SQL queries, the limit to the number of bins to generate.
+        # When 0 is specified, the maximum count is not enforced. For a histogram that
+        # uses a time series query, the exact number of bins to generate. If not
+        # specified or the value is 0, then the histogram determines the number of bins
+        # to use.
         # Corresponds to the JSON property `maxBinCount`
         # @return [Fixnum]
         attr_accessor :max_bin_count
       
         # numeric_bin_size is used when the column type used for a dimension is numeric
-        # or string.
+        # or string. If the column field is set to metric_value, then numericBinSize
+        # overrides maxBinCount.
         # Corresponds to the JSON property `numericBinSize`
         # @return [Fixnum]
         attr_accessor :numeric_bin_size
@@ -715,8 +720,8 @@ module Google
         # @return [String]
         attr_accessor :sort_order
       
-        # time_bin_size is used when the data type specified by column is a time type
-        # and the bin size is determined by a time duration. If column_type is DATE,
+        # time_bin_size is used when the data type of the specified dimension is a time
+        # type and the bin size is determined by a time duration. If column_type is DATE,
         # this must be a whole value multiple of 1 day. If column_type is TIME, this
         # must be less than or equal to 24 hours.
         # Corresponds to the JSON property `timeBinSize`
