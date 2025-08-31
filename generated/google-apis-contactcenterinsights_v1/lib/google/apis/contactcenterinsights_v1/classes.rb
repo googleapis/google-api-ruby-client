@@ -3503,6 +3503,12 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequest]
         attr_accessor :request
       
+        # Output only. Stores the conversation resources produced by ingest sampling
+        # operations.
+        # Corresponds to the JSON property `sampledConversations`
+        # @return [Array<String>]
+        attr_accessor :sampled_conversations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3514,6 +3520,7 @@ module Google
           @ingest_conversations_stats = args[:ingest_conversations_stats] if args.key?(:ingest_conversations_stats)
           @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
           @request = args[:request] if args.key?(:request)
+          @sampled_conversations = args[:sampled_conversations] if args.key?(:sampled_conversations)
         end
       end
       
@@ -4398,6 +4405,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @conversations = args[:conversations] if args.key?(:conversations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response to list datasets.
+      class GoogleCloudContactcenterinsightsV1ListDatasetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The datasets that match the request.
+        # Corresponds to the JSON property `datasets`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Dataset>]
+        attr_accessor :datasets
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @datasets = args[:datasets] if args.key?(:datasets)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -9751,6 +9784,12 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest]
         attr_accessor :request
       
+        # Output only. Stores the conversation resources produced by ingest sampling
+        # operations.
+        # Corresponds to the JSON property `sampledConversations`
+        # @return [Array<String>]
+        attr_accessor :sampled_conversations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9762,6 +9801,7 @@ module Google
           @ingest_conversations_stats = args[:ingest_conversations_stats] if args.key?(:ingest_conversations_stats)
           @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
           @request = args[:request] if args.key?(:request)
+          @sampled_conversations = args[:sampled_conversations] if args.key?(:sampled_conversations)
         end
       end
       
