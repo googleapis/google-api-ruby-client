@@ -1,5 +1,9 @@
 # Release history for google-apis-firebasedataconnect_v1beta
 
+### v0.12.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250824
+
 ### v0.11.0 (2025-08-17)
 
 * Regenerated from discovery document revision 20250810
