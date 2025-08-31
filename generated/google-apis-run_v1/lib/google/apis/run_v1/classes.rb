@@ -4984,7 +4984,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :node_selector
       
-        # Runtime. Leave unset for default.
+        # Optional. Runtime. Leave unset for default.
         # Corresponds to the JSON property `runtimeClassName`
         # @return [String]
         attr_accessor :runtime_class_name
