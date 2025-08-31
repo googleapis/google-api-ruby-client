@@ -133,6 +133,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the AclConfig.
+        # @param [String] name
+        #   Required. Resource name of AclConfig, such as `projects/*/locations/*/
+        #   aclConfig`. If the caller does not have permission to access the AclConfig,
+        #   regardless of whether or not it exists, a PERMISSION_DENIED error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AclConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AclConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_acl_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AclConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AclConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the CmekConfig.
         # @param [String] name
         #   Required. Resource name of CmekConfig, such as `projects/*/locations/*/
@@ -160,6 +192,43 @@ module Google
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CmekConfig::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CmekConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Default ACL configuration for use in a location of a customer's project.
+        # Updates will only reflect to new data stores. Existing data stores will still
+        # use the old value.
+        # @param [String] name
+        #   Immutable. The full resource name of the acl configuration. Format: `projects/`
+        #   project`/locations/`location`/aclConfig`. This field must be a UTF-8 encoded
+        #   string with a length limit of 1024 characters.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AclConfig] google_cloud_discoveryengine_v1_acl_config_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AclConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AclConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_acl_config(name, google_cloud_discoveryengine_v1_acl_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AclConfig::Representation
+          command.request_object = google_cloud_discoveryengine_v1_acl_config_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AclConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AclConfig
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
