@@ -4633,7 +4633,8 @@ module Google
         end
         
         # Cancels a user's subscription purchase. The subscription remains valid until
-        # its expiration time.
+        # its expiration time. Newer version is available at purchases.subscriptionsv2.
+        # cancel for better client library support.
         # @param [String] package_name
         #   The package name of the application for which this subscription was purchased (
         #   for example, 'com.some.thing').
