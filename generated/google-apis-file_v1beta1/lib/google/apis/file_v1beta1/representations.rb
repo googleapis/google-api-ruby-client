@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResumeReplicaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RevertInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -800,6 +806,12 @@ module Google
           property :file_share, as: 'fileShare'
           property :source_backup, as: 'sourceBackup'
           property :source_snapshot, as: 'sourceSnapshot'
+        end
+      end
+      
+      class ResumeReplicaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

@@ -1954,6 +1954,19 @@ module Google
         end
       end
       
+      # ResumeReplicaRequest resumes a Filestore standby instance (replica).
+      class ResumeReplicaRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # RevertInstanceRequest reverts the given instance's file share to the specified
       # snapshot.
       class RevertInstanceRequest
