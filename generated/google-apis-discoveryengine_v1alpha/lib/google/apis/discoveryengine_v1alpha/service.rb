@@ -9930,6 +9930,105 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Batch deletes Notebooks. Needs a side channel with the user's EUC.
+        # @param [String] parent
+        #   Required. The parent branch resource name, such as `projects/`project`/
+        #   locations/`location``.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest] google_cloud_notebooklm_v1alpha_batch_delete_notebooks_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_notebook_delete(parent, google_cloud_notebooklm_v1alpha_batch_delete_notebooks_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/notebooks:batchDelete', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest::Representation
+          command.request_object = google_cloud_notebooklm_v1alpha_batch_delete_notebooks_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleProtobufEmpty
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a notebook. Needs a side channel with the user's EUC.
+        # @param [String] parent
+        #   Required. The parent resource name, such as `projects/`project`/locations/`
+        #   location``.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebook] google_cloud_notebooklm_v1alpha_notebook_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebook] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebook]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_notebook(parent, google_cloud_notebooklm_v1alpha_notebook_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/notebooks', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebook::Representation
+          command.request_object = google_cloud_notebooklm_v1alpha_notebook_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebook::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebook
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a notebook. Needs a side channel with the user's EUC.
+        # @param [String] name
+        #   Required. Full resource name of Notebook, such as `projects/`project`/
+        #   locations/`location`/notebooks/`notebook_id``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebook] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebook]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_notebook(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebook::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaNotebook
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the recently viewed notebooks. Needs a side channel with the user's EUC.
         # @param [String] parent
         #   Required. The parent branch resource name, such as `projects/`project`/
@@ -9969,6 +10068,106 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Shares a notebook to other accounts. Needs a side channel with the user's EUC.
+        # @param [String] name
+        #   Required. Full resource name of Notebook, such as `projects/`project`/
+        #   locations/`location`/notebooks/`notebook_id``.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaShareNotebookRequest] google_cloud_notebooklm_v1alpha_share_notebook_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaShareNotebookResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaShareNotebookResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def share_project_location_notebook(name, google_cloud_notebooklm_v1alpha_share_notebook_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:share', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaShareNotebookRequest::Representation
+          command.request_object = google_cloud_notebooklm_v1alpha_share_notebook_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaShareNotebookResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaShareNotebookResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates a new audio overview. Needs a side channel with the user's EUC.
+        # @param [String] parent
+        #   Required. The parent resource where this notebook will be created. Format:
+        #   projects/`project`/locations/`location`/notebooks/`notebook`
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaCreateAudioOverviewRequest] google_cloud_notebooklm_v1alpha_create_audio_overview_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaCreateAudioOverviewResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaCreateAudioOverviewResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_notebook_audio_overview(parent, google_cloud_notebooklm_v1alpha_create_audio_overview_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/audioOverviews', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaCreateAudioOverviewRequest::Representation
+          command.request_object = google_cloud_notebooklm_v1alpha_create_audio_overview_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaCreateAudioOverviewResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaCreateAudioOverviewResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an audio overview. Needs a side channel with the user's EUC.
+        # @param [String] name
+        #   Required. The full resource name of the AudioOverview, such as `projects/`
+        #   project`/locations/`location`/notebooks/`notebook`/audioOverviews/`
+        #   audio_overview_id``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_notebook_audio_overview(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a list of Sources.
         # @param [String] parent
         #   Required. The parent resource where the sources will be created. Format:
@@ -9998,6 +10197,71 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes multiple sources
+        # @param [String] parent
+        #   Required. The parent resource where the sources will be deleted. Format:
+        #   projects/`project`/locations/`location`/notebooks/`notebook`
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest] google_cloud_notebooklm_v1alpha_batch_delete_sources_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_notebook_source_delete(parent, google_cloud_notebooklm_v1alpha_batch_delete_sources_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/sources:batchDelete', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest::Representation
+          command.request_object = google_cloud_notebooklm_v1alpha_batch_delete_sources_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleProtobufEmpty
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Source.
+        # @param [String] name
+        #   Required. The resource name for source Format: projects/`project`/locations/`
+        #   location`/notebooks/`notebook`/sources/`source`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_notebook_source(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSource::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSource
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
