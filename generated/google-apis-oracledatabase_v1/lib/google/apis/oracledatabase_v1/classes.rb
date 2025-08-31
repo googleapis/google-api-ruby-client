@@ -1128,7 +1128,9 @@ module Google
         # @return [String]
         attr_accessor :entitlement_id
       
-        # Optional. Google Cloud Platform location where Oracle Exadata is hosted.
+        # Optional. The GCP Oracle zone where Oracle Exadata Infrastructure is hosted.
+        # Example: us-east4-b-r2. If not specified, the system will pick a zone based on
+        # availability.
         # Corresponds to the JSON property `gcpOracleZone`
         # @return [String]
         attr_accessor :gcp_oracle_zone
@@ -1410,8 +1412,9 @@ module Google
         # @return [String]
         attr_accessor :exadata_infrastructure
       
-        # Output only. Google Cloud Platform location where Oracle Exadata is hosted. It
-        # is same as Google Cloud Platform Oracle zone of Exadata infrastructure.
+        # Output only. The GCP Oracle zone where Oracle CloudVmCluster is hosted. This
+        # will be the same as the gcp_oracle_zone of the CloudExadataInfrastructure.
+        # Example: us-east4-b-r2.
         # Corresponds to the JSON property `gcpOracleZone`
         # @return [String]
         attr_accessor :gcp_oracle_zone
