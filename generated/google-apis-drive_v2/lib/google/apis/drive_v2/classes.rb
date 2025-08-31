@@ -1035,15 +1035,13 @@ module Google
         end
       end
       
-      # A comment on a file in Google Drive. Some resource methods (such as `comments.
-      # update`) require a `commentId`. Use the `comments.list` method to retrieve the
-      # ID for a comment in a file.
+      # A comment on a file in Google Drive.
       class Comment
         include Google::Apis::Core::Hashable
       
         # A region of the document represented as a JSON string. For details on defining
-        # anchor properties, refer to [Add comments and replies](https://developers.
-        # google.com/workspace/drive/api/v2/manage-comments).
+        # anchor properties, refer to [Manage comments and replies](https://developers.
+        # google.com/workspace/drive/api/v3/manage-comments).
         # Corresponds to the JSON property `anchor`
         # @return [String]
         attr_accessor :anchor
@@ -1053,7 +1051,7 @@ module Google
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :author
       
-        # Output only. The ID of the comment.
+        # The ID of the comment.
         # Corresponds to the JSON property `commentId`
         # @return [String]
         attr_accessor :comment_id
@@ -1064,7 +1062,7 @@ module Google
         # @return [String]
         attr_accessor :content
       
-        # The context of the file which is being commented on.
+        # Context of a file which is being commented on.
         # Corresponds to the JSON property `context`
         # @return [Google::Apis::DriveV2::Comment::Context]
         attr_accessor :context
@@ -1074,30 +1072,30 @@ module Google
         # @return [DateTime]
         attr_accessor :created_date
       
-        # Output only. Whether this comment has been deleted. If a comment has been
-        # deleted the content will be cleared and this will only represent a comment
-        # that once existed.
+        # Whether this comment has been deleted. If a comment has been deleted the
+        # content will be cleared and this will only represent a comment that once
+        # existed.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # Output only. The file which this comment is addressing.
+        # The file which this comment is addressing.
         # Corresponds to the JSON property `fileId`
         # @return [String]
         attr_accessor :file_id
       
-        # Output only. The title of the file which this comment is addressing.
+        # The title of the file which this comment is addressing.
         # Corresponds to the JSON property `fileTitle`
         # @return [String]
         attr_accessor :file_title
       
-        # Output only. HTML formatted content for this comment.
+        # HTML formatted content for this comment.
         # Corresponds to the JSON property `htmlContent`
         # @return [String]
         attr_accessor :html_content
       
-        # Output only. This is always `drive#comment`.
+        # This is always drive#comment.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1107,19 +1105,20 @@ module Google
         # @return [DateTime]
         attr_accessor :modified_date
       
-        # Output only. Replies to this post.
+        # Replies to this post.
         # Corresponds to the JSON property `replies`
         # @return [Array<Google::Apis::DriveV2::CommentReply>]
         attr_accessor :replies
       
-        # Output only. A link back to this comment.
+        # A link back to this comment.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
       
-        # Output only. The status of this comment. Status can be changed by posting a
-        # reply to a comment with the desired status. * `open` - The comment is still
-        # open. * `resolved` - The comment has been resolved by one of its replies.
+        # The status of this comment. Status can be changed by posting a reply to a
+        # comment with the desired status. Possible values are: * `open` - The comment
+        # is still open. * `resolved` - The comment has been resolved by one of its
+        # replies.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -1147,7 +1146,7 @@ module Google
           @status = args[:status] if args.key?(:status)
         end
         
-        # The context of the file which is being commented on.
+        # Context of a file which is being commented on.
         class Context
           include Google::Apis::Core::Hashable
         
@@ -1185,7 +1184,7 @@ module Google
         # @return [Array<Google::Apis::DriveV2::Comment>]
         attr_accessor :items
       
-        # This is always `drive#commentList`.
+        # This is always drive#commentList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1222,9 +1221,7 @@ module Google
         end
       end
       
-      # A comment on a file in Google Drive. Some resource methods (such as `replies.
-      # update`) require a `replyId`. Use the `replies.list` method to retrieve the ID
-      # for a reply.
+      # A reply to a comment on a file in Google Drive.
       class CommentReply
         include Google::Apis::Core::Hashable
       
@@ -1245,20 +1242,19 @@ module Google
         # @return [DateTime]
         attr_accessor :created_date
       
-        # Output only. Whether this reply has been deleted. If a reply has been deleted
-        # the content will be cleared and this will only represent a reply that once
-        # existed.
+        # Whether this reply has been deleted. If a reply has been deleted the content
+        # will be cleared and this will only represent a reply that once existed.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # Output only. HTML formatted content for this reply.
+        # HTML formatted content for this reply.
         # Corresponds to the JSON property `htmlContent`
         # @return [String]
         attr_accessor :html_content
       
-        # Output only. This is always `drive#commentReply`.
+        # This is always drive#commentReply.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1268,13 +1264,13 @@ module Google
         # @return [DateTime]
         attr_accessor :modified_date
       
-        # Output only. The ID of the reply.
+        # The ID of the reply.
         # Corresponds to the JSON property `replyId`
         # @return [String]
         attr_accessor :reply_id
       
         # The action this reply performed to the parent comment. When creating a new
-        # reply this is the action to be perform to the parent comment. Possible values
+        # reply this is the action to be perform tSo the parent comment. Possible values
         # are: * `resolve` - To resolve a comment. * `reopen` - To reopen (un-resolve) a
         # comment.
         # Corresponds to the JSON property `verb`
