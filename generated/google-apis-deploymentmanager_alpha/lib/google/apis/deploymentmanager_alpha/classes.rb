@@ -2581,6 +2581,11 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :zonal_igm_ids
       
+        # Map of zone to an ID of the zonal IGM belonging to the RMIG.
+        # Corresponds to the JSON property `zoneToIgmIds`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :zone_to_igm_ids
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2588,6 +2593,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @zonal_igm_ids = args[:zonal_igm_ids] if args.key?(:zonal_igm_ids)
+          @zone_to_igm_ids = args[:zone_to_igm_ids] if args.key?(:zone_to_igm_ids)
         end
       end
       
