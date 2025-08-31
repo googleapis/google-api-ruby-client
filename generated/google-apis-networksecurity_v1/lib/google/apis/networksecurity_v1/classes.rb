@@ -772,15 +772,16 @@ module Google
       
         # Required. All gateways and forwarding rules referenced by this policy and
         # extensions must share the same load balancing scheme. Supported values: `
-        # INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more information, refer to [
-        # Backend services overview](https://cloud.google.com/load-balancing/docs/
-        # backend-service).
+        # INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`. For more
+        # information, refer to [Backend services overview](https://cloud.google.com/
+        # load-balancing/docs/backend-service).
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
       
         # Required. A list of references to the Forwarding Rules on which this policy
-        # will be applied.
+        # will be applied. For policies created for Cloudrun, this field will reference
+        # the Cloud Run services.
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources
@@ -1211,6 +1212,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Settings for the endpoint.
+        # Corresponds to the JSON property `endpointSettings`
+        # @return [Google::Apis::NetworksecurityV1::FirewallEndpointEndpointSettings]
+        attr_accessor :endpoint_settings
+      
         # Optional. Labels as key value pairs
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -1261,6 +1267,7 @@ module Google
           @billing_project_id = args[:billing_project_id] if args.key?(:billing_project_id)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @endpoint_settings = args[:endpoint_settings] if args.key?(:endpoint_settings)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
@@ -1373,6 +1380,19 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+        end
+      end
+      
+      # Settings for the endpoint.
+      class FirewallEndpointEndpointSettings
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
