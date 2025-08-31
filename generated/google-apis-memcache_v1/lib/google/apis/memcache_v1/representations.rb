@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetTagsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetTagsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMemcacheV1LocationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,6 +256,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SetTagsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetTagsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -333,6 +357,22 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GetTagsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GetTagsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          hash :tags, as: 'tags'
+          property :tags_etag, as: 'tagsEtag'
         end
       end
       
@@ -675,6 +715,25 @@ module Google
           property :duration, as: 'duration'
           property :start_time, as: 'startTime', class: Google::Apis::MemcacheV1::TimeOfDay, decorator: Google::Apis::MemcacheV1::TimeOfDay::Representation
       
+        end
+      end
+      
+      class SetTagsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :request_id, as: 'requestId'
+          hash :tags, as: 'tags'
+          property :tags_etag, as: 'tagsEtag'
+        end
+      end
+      
+      class SetTagsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          hash :tags, as: 'tags'
+          property :tags_etag, as: 'tagsEtag'
         end
       end
       

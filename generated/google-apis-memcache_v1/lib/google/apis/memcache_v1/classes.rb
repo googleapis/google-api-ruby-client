@@ -195,6 +195,59 @@ module Google
         end
       end
       
+      # Request message for GetTags.
+      class GetTagsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The full One Platform resource name of the service resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Response message for GetTags.
+      class GetTagsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. The full One Platform resource name of the service resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Tag keys/values directly bound to this resource. Each item in the
+        # map must be expressed as " : ". For example: "123/environment" : "production",
+        # "123/costCenter" : "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        # A checksum based on the current bindings. This field is always set in server
+        # responses.
+        # Corresponds to the JSON property `tagsEtag`
+        # @return [String]
+        attr_accessor :tags_etag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @tags = args[:tags] if args.key?(:tags)
+          @tags_etag = args[:tags_etag] if args.key?(:tags_etag)
+        end
+      end
+      
       # Metadata for the given google.cloud.location.Location.
       class GoogleCloudMemcacheV1LocationMetadata
         include Google::Apis::Core::Hashable
@@ -1550,6 +1603,81 @@ module Google
           @day = args[:day] if args.key?(:day)
           @duration = args[:duration] if args.key?(:duration)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Request message for SetTags.
+      class SetTagsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The full One Platform resource name of the service resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. A unique identifier for this request. Must be a valid UUID. This
+        # request is only idempotent if a `request_id` is provided.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Required. These bindings will override any bindings previously set and will be
+        # effective immediately. Each item in the map must be expressed as " : ". For
+        # example: "123/environment" : "production", "123/costCenter" : "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        # Optional. A checksum based on the current bindings which can be passed to
+        # prevent race conditions. If not passed, etag check would be skipped.
+        # Corresponds to the JSON property `tagsEtag`
+        # @return [String]
+        attr_accessor :tags_etag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @tags = args[:tags] if args.key?(:tags)
+          @tags_etag = args[:tags_etag] if args.key?(:tags_etag)
+        end
+      end
+      
+      # Response message for SetTags.
+      class SetTagsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. The full One Platform resource name of the service resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Tag keys/values directly bound to this resource. Each item in the
+        # map must be expressed as " : ". For example: "123/environment" : "production",
+        # "123/costCenter" : "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        # A checksum based on the current bindings. This field is always set in server
+        # responses.
+        # Corresponds to the JSON property `tagsEtag`
+        # @return [String]
+        attr_accessor :tags_etag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @tags = args[:tags] if args.key?(:tags)
+          @tags_etag = args[:tags_etag] if args.key?(:tags_etag)
         end
       end
       
