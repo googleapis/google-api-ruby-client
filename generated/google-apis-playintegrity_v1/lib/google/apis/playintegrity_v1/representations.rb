@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PcTestingDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PcTokenPayloadExternal
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -292,6 +298,13 @@ module Google
         end
       end
       
+      class PcTestingDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_testing_response, as: 'isTestingResponse'
+        end
+      end
+      
       class PcTokenPayloadExternal
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -300,6 +313,8 @@ module Google
           property :device_integrity, as: 'deviceIntegrity', class: Google::Apis::PlayintegrityV1::PcDeviceIntegrity, decorator: Google::Apis::PlayintegrityV1::PcDeviceIntegrity::Representation
       
           property :request_details, as: 'requestDetails', class: Google::Apis::PlayintegrityV1::PcRequestDetails, decorator: Google::Apis::PlayintegrityV1::PcRequestDetails::Representation
+      
+          property :testing_details, as: 'testingDetails', class: Google::Apis::PlayintegrityV1::PcTestingDetails, decorator: Google::Apis::PlayintegrityV1::PcTestingDetails::Representation
       
         end
       end
