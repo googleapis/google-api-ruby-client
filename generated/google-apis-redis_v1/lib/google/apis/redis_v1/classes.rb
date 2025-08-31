@@ -555,10 +555,7 @@ module Google
       class Cluster
         include Google::Apis::Core::Hashable
       
-        # Optional. Immutable. Allows customers to specify if they are okay with
-        # deploying a multi-zone cluster in less than 3 zones. Once set, if there is a
-        # zonal outage during the cluster creation, the cluster will only be deployed in
-        # 2 zones, and stay within the 2 zones for its lifecycle.
+        # Optional. Immutable. Deprecated, do not use.
         # Corresponds to the JSON property `allowFewerZonesDeployment`
         # @return [Boolean]
         attr_accessor :allow_fewer_zones_deployment
