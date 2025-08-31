@@ -22,6 +22,34 @@ module Google
   module Apis
     module BackupdrV1
       
+      # request message for AbandonBackup.
+      class AbandonBackupRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes since the first request. For example, consider a
+        # situation where you make an initial request and the request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
       # A specification of the type and number of accelerator cards attached to the
       # instance.
       class AcceleratorConfig
@@ -2921,6 +2949,62 @@ module Google
         end
       end
       
+      # Request message for FetchAccessToken.
+      class FetchAccessTokenRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The generation of the backup to update.
+        # Corresponds to the JSON property `generationId`
+        # @return [Fixnum]
+        attr_accessor :generation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generation_id = args[:generation_id] if args.key?(:generation_id)
+        end
+      end
+      
+      # Response message for FetchAccessToken.
+      class FetchAccessTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token is valid until this time.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # The location in bucket that can be used for reading.
+        # Corresponds to the JSON property `readLocation`
+        # @return [String]
+        attr_accessor :read_location
+      
+        # The downscoped token that was created.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        # The location in bucket that can be used for writing.
+        # Corresponds to the JSON property `writeLocation`
+        # @return [String]
+        attr_accessor :write_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @read_location = args[:read_location] if args.key?(:read_location)
+          @token = args[:token] if args.key?(:token)
+          @write_location = args[:write_location] if args.key?(:write_location)
+        end
+      end
+      
       # Response for the FetchBackupPlanAssociationsForResourceType method.
       class FetchBackupPlanAssociationsForResourceTypeResponse
         include Google::Apis::Core::Hashable
@@ -2973,6 +3057,46 @@ module Google
         end
       end
       
+      # Request message for GetMsComplianceMetadata
+      class FetchMsComplianceMetadataRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The project id of the target project
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # Response message for GetMsComplianceMetadata
+      class FetchMsComplianceMetadataResponse
+        include Google::Apis::Core::Hashable
+      
+        # The ms compliance metadata of the target project, if the project is an assured
+        # workloads project, values will be true, otherwise false.
+        # Corresponds to the JSON property `isAssuredWorkload`
+        # @return [Boolean]
+        attr_accessor :is_assured_workload
+        alias_method :is_assured_workload?, :is_assured_workload
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_assured_workload = args[:is_assured_workload] if args.key?(:is_assured_workload)
+        end
+      end
+      
       # Response message for fetching usable BackupVaults.
       class FetchUsableBackupVaultsResponse
         include Google::Apis::Core::Hashable
@@ -3005,6 +3129,76 @@ module Google
           @backup_vaults = args[:backup_vaults] if args.key?(:backup_vaults)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for finalizing a Backup.
+      class FinalizeBackupRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Resource ID of the Backup resource to be finalized. This must be the
+        # same backup_id that was used in the InitiateBackupRequest.
+        # Corresponds to the JSON property `backupId`
+        # @return [String]
+        attr_accessor :backup_id
+      
+        # The point in time when this backup was captured from the source. This will be
+        # assigned to the consistency_time field of the newly created Backup.
+        # Corresponds to the JSON property `consistencyTime`
+        # @return [String]
+        attr_accessor :consistency_time
+      
+        # This will be assigned to the description field of the newly created Backup.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The latest timestamp of data available in this Backup. This will be set on the
+        # newly created Backup.
+        # Corresponds to the JSON property `recoveryRangeEndTime`
+        # @return [String]
+        attr_accessor :recovery_range_end_time
+      
+        # The earliest timestamp of data available in this Backup. This will set on the
+        # newly created Backup.
+        # Corresponds to the JSON property `recoveryRangeStartTime`
+        # @return [String]
+        attr_accessor :recovery_range_start_time
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes after the first request. For example, consider a
+        # situation where you make an initial request and the request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # The ExpireTime on the backup will be set to FinalizeTime plus this duration.
+        # If the resulting ExpireTime is less than EnforcedRetentionEndTime, then
+        # ExpireTime is set to EnforcedRetentionEndTime.
+        # Corresponds to the JSON property `retentionDuration`
+        # @return [String]
+        attr_accessor :retention_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_id = args[:backup_id] if args.key?(:backup_id)
+          @consistency_time = args[:consistency_time] if args.key?(:consistency_time)
+          @description = args[:description] if args.key?(:description)
+          @recovery_range_end_time = args[:recovery_range_end_time] if args.key?(:recovery_range_end_time)
+          @recovery_range_start_time = args[:recovery_range_start_time] if args.key?(:recovery_range_start_time)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @retention_duration = args[:retention_duration] if args.key?(:retention_duration)
         end
       end
       
@@ -3221,6 +3415,71 @@ module Google
           @cloud_sql_instance_initialization_config = args[:cloud_sql_instance_initialization_config] if args.key?(:cloud_sql_instance_initialization_config)
           @request_id = args[:request_id] if args.key?(:request_id)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
+      # request message for InitiateBackup.
+      class InitiateBackupRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Resource ID of the Backup resource.
+        # Corresponds to the JSON property `backupId`
+        # @return [String]
+        attr_accessor :backup_id
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes since the first request. For example, consider a
+        # situation where you make an initial request and the request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_id = args[:backup_id] if args.key?(:backup_id)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # Response message for InitiateBackup.
+      class InitiateBackupResponse
+        include Google::Apis::Core::Hashable
+      
+        # The name of the backup that was created.
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
+        # The generation id of the base backup. It is needed for the incremental backups.
+        # Corresponds to the JSON property `baseBackupGenerationId`
+        # @return [Fixnum]
+        attr_accessor :base_backup_generation_id
+      
+        # The generation id of the new backup.
+        # Corresponds to the JSON property `newBackupGenerationId`
+        # @return [Fixnum]
+        attr_accessor :new_backup_generation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+          @base_backup_generation_id = args[:base_backup_generation_id] if args.key?(:base_backup_generation_id)
+          @new_backup_generation_id = args[:new_backup_generation_id] if args.key?(:new_backup_generation_id)
         end
       end
       
@@ -4268,6 +4527,34 @@ module Google
         end
       end
       
+      # Message for deleting a DataSource.
+      class RemoveDataSourceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes after the first request. For example, consider a
+        # situation where you make an initial request and the request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
       # ResourceBackupConfig represents a resource along with its backup
       # configurations.
       class ResourceBackupConfig
@@ -4663,6 +4950,47 @@ module Google
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Request message for SetStatusInternal method.
+      class SetInternalStatusRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output only. The new BackupConfigState to set for the DataSource.
+        # Corresponds to the JSON property `backupConfigState`
+        # @return [String]
+        attr_accessor :backup_config_state
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes after the first request. The request ID must be a
+        # valid UUID with the exception that zero UUID is not supported (00000000-0000-
+        # 0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Required. The value required for this method to work. This field must be the
+        # 32-byte SHA256 hash of the DataSourceID. The DataSourceID used here is only
+        # the final piece of the fully qualified resource path for this DataSource (i.e.
+        # the part after '.../dataSources/'). This field exists to make this method
+        # difficult to call since it is intended for use only by Backup Appliances.
+        # Corresponds to the JSON property `value`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_config_state = args[:backup_config_state] if args.key?(:backup_config_state)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
