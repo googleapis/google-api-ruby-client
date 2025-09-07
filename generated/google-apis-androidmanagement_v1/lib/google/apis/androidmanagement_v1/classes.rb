@@ -3239,7 +3239,8 @@ module Google
         # @return [String]
         attr_accessor :model
       
-        # The device serial number.
+        # The device serial number. However, for personally-owned devices running
+        # Android 12 and above, this is the same as the enterpriseSpecificId.
         # Corresponds to the JSON property `serialNumber`
         # @return [String]
         attr_accessor :serial_number
