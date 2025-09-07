@@ -1419,6 +1419,12 @@ module Google
         # @return [String]
         attr_accessor :gcp_oracle_zone
       
+        # The identity connector details which will allow OCI to securely access the
+        # resources in the customer project.
+        # Corresponds to the JSON property `identityConnector`
+        # @return [Google::Apis::OracledatabaseV1::IdentityConnector]
+        attr_accessor :identity_connector
+      
         # Optional. Labels or tags associated with the VM Cluster.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -1469,6 +1475,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @exadata_infrastructure = args[:exadata_infrastructure] if args.key?(:exadata_infrastructure)
           @gcp_oracle_zone = args[:gcp_oracle_zone] if args.key?(:gcp_oracle_zone)
+          @identity_connector = args[:identity_connector] if args.key?(:identity_connector)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
@@ -2246,6 +2253,34 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The identity connector details which will allow OCI to securely access the
+      # resources in the customer project.
+      class IdentityConnector
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The connection state of the identity connector.
+        # Corresponds to the JSON property `connectionState`
+        # @return [String]
+        attr_accessor :connection_state
+      
+        # Output only. A google managed service account on which customers can grant
+        # roles to access resources in the customer project. Example: `p176944527254-55-
+        # 75119d87fd8f@gcp-sa-oci.iam.gserviceaccount.com`
+        # Corresponds to the JSON property `serviceAgentEmail`
+        # @return [String]
+        attr_accessor :service_agent_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_state = args[:connection_state] if args.key?(:connection_state)
+          @service_agent_email = args[:service_agent_email] if args.key?(:service_agent_email)
         end
       end
       

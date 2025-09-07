@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IdentityConnector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAutonomousDatabaseBackupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -680,6 +686,8 @@ module Google
           property :display_name, as: 'displayName'
           property :exadata_infrastructure, as: 'exadataInfrastructure'
           property :gcp_oracle_zone, as: 'gcpOracleZone'
+          property :identity_connector, as: 'identityConnector', class: Google::Apis::OracledatabaseV1::IdentityConnector, decorator: Google::Apis::OracledatabaseV1::IdentityConnector::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -868,6 +876,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :version, as: 'version'
+        end
+      end
+      
+      class IdentityConnector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_state, as: 'connectionState'
+          property :service_agent_email, as: 'serviceAgentEmail'
         end
       end
       
