@@ -466,6 +466,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1BigQueryRequestSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1BigQueryRequestSetSamplingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1BigQuerySource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -556,6 +568,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1CancelEvaluationRunRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1CancelHyperparameterTuningJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -587,6 +605,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1Candidate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1CandidateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1CandidateResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1378,6 +1408,138 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1EvaluationItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationPrompt
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationPromptPromptTemplateData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRubricConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunDataSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunEvaluationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunEvaluationConfigOutputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunEvaluationConfigPromptTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunInferenceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunMetricComputationBasedMetricSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunMetricLlmBasedMetricSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunMetricPredefinedMetricSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunMetricRubricBasedMetricSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunMetricRubricBasedMetricSpecRepeatedRubrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1Event
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2158,6 +2320,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1GenerateSyntheticDataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1GenerateSyntheticDataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1GenerateVideoResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2561,6 +2735,24 @@ module Google
       end
       
       class GoogleCloudAiplatformV1ListEntityTypesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ListEvaluationItemsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ListEvaluationRunsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ListEvaluationSetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3461,6 +3653,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1OutputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1OutputFieldSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6190,6 +6388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1SummaryMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1SupervisedHyperParameters
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6232,7 +6436,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1SyntheticExample
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SyntheticField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1TfRecordDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1TaskDescriptionStrategy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7865,6 +8087,27 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1BigQueryRequestSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :candidate_response_columns, as: 'candidateResponseColumns'
+          property :prompt_column, as: 'promptColumn'
+          property :rubrics_column, as: 'rubricsColumn'
+          property :sampling_config, as: 'samplingConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQueryRequestSetSamplingConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQueryRequestSetSamplingConfig::Representation
+      
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1BigQueryRequestSetSamplingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sampling_count, as: 'samplingCount'
+          property :sampling_duration, as: 'samplingDuration'
+          property :sampling_method, as: 'samplingMethod'
+        end
+      end
+      
       class GoogleCloudAiplatformV1BigQuerySource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7997,6 +8240,12 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1CancelEvaluationRunRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudAiplatformV1CancelHyperparameterTuningJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8046,6 +8295,28 @@ module Google
       
           property :url_context_metadata, as: 'urlContextMetadata', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1UrlContextMetadata, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1UrlContextMetadata::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1CandidateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :candidate, as: 'candidate'
+          property :text, as: 'text'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1CandidateResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_results, as: 'additionalResults'
+          property :candidate, as: 'candidate'
+          property :explanation, as: 'explanation'
+          property :metric, as: 'metric'
+          collection :rubric_verdicts, as: 'rubricVerdicts', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricVerdict, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricVerdict::Representation
+      
+          property :score, as: 'score'
         end
       end
       
@@ -9529,6 +9800,269 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1EvaluationItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :error, as: 'error', class: Google::Apis::AiplatformV1::GoogleRpcStatus, decorator: Google::Apis::AiplatformV1::GoogleRpcStatus::Representation
+      
+          property :evaluation_item_type, as: 'evaluationItemType'
+          property :evaluation_request, as: 'evaluationRequest', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRequest, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRequest::Representation
+      
+          property :evaluation_response, as: 'evaluationResponse', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationResult::Representation
+      
+          property :gcs_uri, as: 'gcsUri'
+          hash :labels, as: 'labels'
+          property :metadata, as: 'metadata'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationPrompt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prompt_template_data, as: 'promptTemplateData', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationPromptPromptTemplateData, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationPromptPromptTemplateData::Representation
+      
+          property :text, as: 'text'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationPromptPromptTemplateData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :values, as: 'values', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :candidate_responses, as: 'candidateResponses', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CandidateResponse, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CandidateResponse::Representation
+      
+          property :golden_response, as: 'goldenResponse', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CandidateResponse, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CandidateResponse::Representation
+      
+          property :prompt, as: 'prompt', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationPrompt, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationPrompt::Representation
+      
+          hash :rubrics, as: 'rubrics', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricGroup, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricGroup::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :candidate_results, as: 'candidateResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CandidateResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CandidateResult::Representation
+      
+          property :evaluation_request, as: 'evaluationRequest'
+          property :evaluation_run, as: 'evaluationRun'
+          property :metadata, as: 'metadata'
+          property :metric, as: 'metric'
+          property :request, as: 'request', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRequest, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :evaluation_set, as: 'evaluationSet'
+          property :summary_metrics, as: 'summaryMetrics', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummaryMetrics, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummaryMetrics::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRubricConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :predefined_rubric_generation_spec, as: 'predefinedRubricGenerationSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricPredefinedMetricSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricPredefinedMetricSpec::Representation
+      
+          property :rubric_generation_spec, as: 'rubricGenerationSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec::Representation
+      
+          property :rubric_group_key, as: 'rubricGroupKey'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completion_time, as: 'completionTime'
+          property :create_time, as: 'createTime'
+          property :data_source, as: 'dataSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunDataSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunDataSource::Representation
+      
+          property :display_name, as: 'displayName'
+          property :error, as: 'error', class: Google::Apis::AiplatformV1::GoogleRpcStatus, decorator: Google::Apis::AiplatformV1::GoogleRpcStatus::Representation
+      
+          property :evaluation_config, as: 'evaluationConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfig::Representation
+      
+          property :evaluation_results, as: 'evaluationResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationResults, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationResults::Representation
+      
+          property :evaluation_set_snapshot, as: 'evaluationSetSnapshot'
+          hash :inference_configs, as: 'inferenceConfigs', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunInferenceConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunInferenceConfig::Representation
+      
+          hash :labels, as: 'labels'
+          property :metadata, as: 'metadata'
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunDataSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_request_set, as: 'bigqueryRequestSet', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQueryRequestSet, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQueryRequestSet::Representation
+      
+          property :evaluation_set, as: 'evaluationSet'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunEvaluationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :autorater_config, as: 'autoraterConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig::Representation
+      
+          collection :metrics, as: 'metrics', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetric, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetric::Representation
+      
+          property :output_config, as: 'outputConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigOutputConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigOutputConfig::Representation
+      
+          property :prompt_template, as: 'promptTemplate', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigPromptTemplate, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigPromptTemplate::Representation
+      
+          collection :rubric_configs, as: 'rubricConfigs', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRubricConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRubricConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :autorater_model, as: 'autoraterModel'
+          property :generation_config, as: 'generationConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig::Representation
+      
+          property :sample_count, as: 'sampleCount'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunEvaluationConfigOutputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQueryDestination, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQueryDestination::Representation
+      
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunEvaluationConfigPromptTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_uri, as: 'gcsUri'
+          property :prompt_template, as: 'promptTemplate'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunInferenceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generation_config, as: 'generationConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig::Representation
+      
+          property :model, as: 'model'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :computation_based_metric_spec, as: 'computationBasedMetricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricComputationBasedMetricSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricComputationBasedMetricSpec::Representation
+      
+          property :llm_based_metric_spec, as: 'llmBasedMetricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricLlmBasedMetricSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricLlmBasedMetricSpec::Representation
+      
+          property :metric, as: 'metric'
+          property :predefined_metric_spec, as: 'predefinedMetricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricPredefinedMetricSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricPredefinedMetricSpec::Representation
+      
+          property :rubric_based_metric_spec, as: 'rubricBasedMetricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricRubricBasedMetricSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricRubricBasedMetricSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunMetricComputationBasedMetricSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :parameters, as: 'parameters'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunMetricLlmBasedMetricSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_config, as: 'additionalConfig'
+          property :judge_autorater_config, as: 'judgeAutoraterConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig::Representation
+      
+          property :metric_prompt_template, as: 'metricPromptTemplate'
+          property :predefined_rubric_generation_spec, as: 'predefinedRubricGenerationSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricPredefinedMetricSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricPredefinedMetricSpec::Representation
+      
+          property :rubric_generation_spec, as: 'rubricGenerationSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec::Representation
+      
+          property :rubric_group_key, as: 'rubricGroupKey'
+          property :system_instruction, as: 'systemInstruction'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunMetricPredefinedMetricSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric_spec_name, as: 'metricSpecName'
+          hash :parameters, as: 'parameters'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunMetricRubricBasedMetricSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inline_rubrics, as: 'inlineRubrics', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricRubricBasedMetricSpecRepeatedRubrics, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricRubricBasedMetricSpecRepeatedRubrics::Representation
+      
+          property :judge_autorater_config, as: 'judgeAutoraterConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig::Representation
+      
+          property :metric_prompt_template, as: 'metricPromptTemplate'
+          property :rubric_generation_spec, as: 'rubricGenerationSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec::Representation
+      
+          property :rubric_group_key, as: 'rubricGroupKey'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunMetricRubricBasedMetricSpecRepeatedRubrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :rubrics, as: 'rubrics', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Rubric, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Rubric::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model_config, as: 'modelConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig::Representation
+      
+          property :prompt_template, as: 'promptTemplate'
+          property :rubric_content_type, as: 'rubricContentType'
+          collection :rubric_type_ontology, as: 'rubricTypeOntology'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluationSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          collection :evaluation_items, as: 'evaluationItems'
+          property :metadata, as: 'metadata'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudAiplatformV1Event
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10850,6 +11384,27 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1GenerateSyntheticDataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          collection :examples, as: 'examples', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SyntheticExample, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SyntheticExample::Representation
+      
+          collection :output_field_specs, as: 'outputFieldSpecs', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OutputFieldSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OutputFieldSpec::Representation
+      
+          property :task_description, as: 'taskDescription', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TaskDescriptionStrategy, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TaskDescriptionStrategy::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1GenerateSyntheticDataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :synthetic_examples, as: 'syntheticExamples', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SyntheticExample, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SyntheticExample::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1GenerateVideoResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11601,6 +12156,33 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1ListEvaluationItemsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :evaluation_items, as: 'evaluationItems', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationItem, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationItem::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ListEvaluationRunsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :evaluation_runs, as: 'evaluationRuns', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRun, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRun::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ListEvaluationSetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :evaluation_sets, as: 'evaluationSets', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationSet, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationSet::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudAiplatformV1ListExecutionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12108,6 +12690,8 @@ module Google
       class GoogleCloudAiplatformV1MetricResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::AiplatformV1::GoogleRpcStatus, decorator: Google::Apis::AiplatformV1::GoogleRpcStatus::Representation
+      
           property :explanation, as: 'explanation'
           collection :rubric_verdicts, as: 'rubricVerdicts', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricVerdict, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricVerdict::Representation
       
@@ -13208,6 +13792,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1OutputFieldSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_name, as: 'fieldName'
+          property :field_type, as: 'fieldType'
+          property :guidance, as: 'guidance'
         end
       end
       
@@ -14667,6 +15260,7 @@ module Google
           property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec::Representation
       
           property :etag, as: 'etag'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :spec, as: 'spec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpec::Representation
       
@@ -17695,6 +18289,15 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1SummaryMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failed_items, as: 'failedItems'
+          hash :metrics, as: 'metrics'
+          property :total_items, as: 'totalItems'
+        end
+      end
+      
       class GoogleCloudAiplatformV1SupervisedHyperParameters
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -17775,11 +18378,35 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1SyntheticExample
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fields, as: 'fields', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SyntheticField, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SyntheticField::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SyntheticField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content::Representation
+      
+          property :field_name, as: 'fieldName'
+        end
+      end
+      
       class GoogleCloudAiplatformV1TfRecordDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TaskDescriptionStrategy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :task_description, as: 'taskDescription'
         end
       end
       
