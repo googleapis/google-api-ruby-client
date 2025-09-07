@@ -273,6 +273,7 @@ module Google
           property :markup, as: 'markup'
           property :multi_speaker_markup, as: 'multiSpeakerMarkup', class: Google::Apis::TexttospeechV1::MultiSpeakerMarkup, decorator: Google::Apis::TexttospeechV1::MultiSpeakerMarkup::Representation
       
+          property :prompt, as: 'prompt'
           property :ssml, as: 'ssml'
           property :text, as: 'text'
         end
