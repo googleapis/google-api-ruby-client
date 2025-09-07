@@ -2440,10 +2440,10 @@ module Google
         attr_accessor :default_mode
       
         # If unspecified, the volume will expose a file whose name is the secret,
-        # relative to VolumeMount.mount_path. If specified, the key will be used as the
-        # version to fetch from Cloud Secret Manager and the path will be the name of
-        # the file exposed in the volume. When items are defined, they must specify a
-        # path and a version.
+        # relative to VolumeMount.mount_path + VolumeMount.sub_path. If specified, the
+        # key will be used as the version to fetch from Cloud Secret Manager and the
+        # path will be the name of the file exposed in the volume. When items are
+        # defined, they must specify a path and a version.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2VersionToPath>]
         attr_accessor :items
@@ -5313,7 +5313,8 @@ module Google
       class GoogleDevtoolsCloudbuildV1NpmPackage
         include Google::Apis::Core::Hashable
       
-        # Path to the package.json. e.g. workspace/path/to/package
+        # Optional. Path to the package.json. e.g. workspace/path/to/package Only one of
+        # `archive` or `package_path` can be specified.
         # Corresponds to the JSON property `packagePath`
         # @return [String]
         attr_accessor :package_path
