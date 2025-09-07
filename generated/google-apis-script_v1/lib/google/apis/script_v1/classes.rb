@@ -329,8 +329,7 @@ module Google
       class File
         include Google::Apis::Core::Hashable
       
-        # Creation date timestamp. This read-only field is only visible to users who
-        # have WRITER permission for the script project.
+        # Creation date timestamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -361,8 +360,7 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Last modified date timestamp. This read-only field is only visible to users
-        # who have WRITER permission for the script project.
+        # Last modified date timestamp.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
