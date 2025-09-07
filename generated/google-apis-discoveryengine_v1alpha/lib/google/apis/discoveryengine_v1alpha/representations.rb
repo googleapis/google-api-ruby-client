@@ -1834,6 +1834,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorFederatedConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4726,6 +4732,114 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudNotebooklmV1alphaFailureReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorLanguageDetectionFailed
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorNoAudioDetected
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonDomainBlocked
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonIngestionError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonPaywallError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonSourceLimitExceeded
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonSourceTooLong
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonSourceUnreachable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonUnknown
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonUploadError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonYoutubeError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaGoogleDocsSourceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4774,6 +4888,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudNotebooklmV1alphaSourceSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudNotebooklmV1alphaUploadSourceFileRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4817,6 +4937,12 @@ module Google
       end
       
       class GoogleCloudNotebooklmV1alphaUserContentWebContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaYoutubeMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7986,6 +8112,8 @@ module Google
       
           collection :errors, as: 'errors', class: Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus::Representation
       
+          property :federated_config, as: 'federatedConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnectorFederatedConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnectorFederatedConfig::Representation
+      
           property :hybrid_ingestion_disabled, as: 'hybridIngestionDisabled'
           property :identity_refresh_interval, as: 'identityRefreshInterval'
           property :identity_schedule_config, as: 'identityScheduleConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaIdentityScheduleConfig::Representation
@@ -8004,6 +8132,7 @@ module Google
           property :realtime_sync_config, as: 'realtimeSyncConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnectorRealtimeSyncConfig::Representation
       
           property :refresh_interval, as: 'refreshInterval'
+          collection :remove_param_keys, as: 'removeParamKeys'
           property :state, as: 'state'
           collection :static_ip_addresses, as: 'staticIpAddresses'
           property :static_ip_enabled, as: 'staticIpEnabled'
@@ -8019,6 +8148,14 @@ module Google
           hash :auth_params, as: 'authParams'
           property :tenant, as: 'tenant', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaTenant, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaTenant::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorFederatedConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_params, as: 'additionalParams'
+          hash :auth_params, as: 'authParams'
         end
       end
       
@@ -11278,6 +11415,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_web_grounding_toggle_off, as: 'defaultWebGroundingToggleOff'
+          property :disable_location_context, as: 'disableLocationContext'
           property :google_search_grounding_enabled, as: 'googleSearchGroundingEnabled'
           property :web_grounding_type, as: 'webGroundingType'
         end
@@ -12893,6 +13031,151 @@ module Google
         end
       end
       
+      class GoogleCloudNotebooklmV1alphaFailureReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_transcription_error, as: 'audioTranscriptionError', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionError, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionError::Representation
+      
+          property :domain_blocked, as: 'domainBlocked', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonDomainBlocked, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonDomainBlocked::Representation
+      
+          property :google_drive_error, as: 'googleDriveError', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveError, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveError::Representation
+      
+          property :ingestion_error, as: 'ingestionError', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonIngestionError, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonIngestionError::Representation
+      
+          property :paywall_error, as: 'paywallError', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonPaywallError, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonPaywallError::Representation
+      
+          property :source_empty, as: 'sourceEmpty', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty::Representation
+      
+          property :source_limit_exceeded, as: 'sourceLimitExceeded', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonSourceLimitExceeded, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonSourceLimitExceeded::Representation
+      
+          property :source_too_long, as: 'sourceTooLong', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonSourceTooLong, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonSourceTooLong::Representation
+      
+          property :source_unreachable, as: 'sourceUnreachable', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonSourceUnreachable, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonSourceUnreachable::Representation
+      
+          property :unknown, as: 'unknown', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonUnknown, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonUnknown::Representation
+      
+          property :upload_error, as: 'uploadError', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonUploadError, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonUploadError::Representation
+      
+          property :youtube_error, as: 'youtubeError', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonYoutubeError, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonYoutubeError::Representation
+      
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_detection_failed, as: 'languageDetectionFailed', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorLanguageDetectionFailed, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorLanguageDetectionFailed::Representation
+      
+          property :no_audio_detected, as: 'noAudioDetected', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorNoAudioDetected, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorNoAudioDetected::Representation
+      
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorLanguageDetectionFailed
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorNoAudioDetected
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonDomainBlocked
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :download_prevented, as: 'downloadPrevented', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented::Representation
+      
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonIngestionError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonPaywallError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonSourceLimitExceeded
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonSourceTooLong
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :word_count, as: 'wordCount'
+          property :word_limit, as: 'wordLimit'
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonSourceUnreachable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_details, as: 'errorDetails'
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonUnknown
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonUploadError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonYoutubeError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :video_deleted, as: 'videoDeleted', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted::Representation
+      
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaGoogleDocsSourceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_id, as: 'documentId'
+          property :revision_id, as: 'revisionId'
+        end
+      end
+      
       class GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12947,6 +13230,8 @@ module Google
           property :metadata, as: 'metadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceMetadata::Representation
       
           property :name, as: 'name'
+          property :settings, as: 'settings', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceSettings, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceSettings::Representation
+      
           property :source_id, as: 'sourceId', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceId, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceId::Representation
       
           property :title, as: 'title'
@@ -12965,9 +13250,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agentspace_metadata, as: 'agentspaceMetadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaAgentspaceMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaAgentspaceMetadata::Representation
       
+          property :google_docs_metadata, as: 'googleDocsMetadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaGoogleDocsSourceMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaGoogleDocsSourceMetadata::Representation
+      
           property :source_added_timestamp, as: 'sourceAddedTimestamp'
           property :token_count, as: 'tokenCount'
           property :word_count, as: 'wordCount'
+          property :youtube_metadata, as: 'youtubeMetadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaYoutubeMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaYoutubeMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaSourceSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_reason, as: 'failureReason', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReason, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReason::Representation
+      
+          property :status, as: 'status'
         end
       end
       
@@ -13046,6 +13344,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :source_name, as: 'sourceName'
           property :url, as: 'url'
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaYoutubeMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_name, as: 'channelName'
+          property :video_id, as: 'videoId'
         end
       end
       

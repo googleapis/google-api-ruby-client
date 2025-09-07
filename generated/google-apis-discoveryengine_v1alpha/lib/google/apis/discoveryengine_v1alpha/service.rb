@@ -9930,7 +9930,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Batch deletes Notebooks. Needs a side channel with the user's EUC.
+        # Batch deletes Notebooks.
         # @param [String] parent
         #   Required. The parent branch resource name, such as `projects/`project`/
         #   locations/`location``.
@@ -9964,7 +9964,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a notebook. Needs a side channel with the user's EUC.
+        # Creates a notebook.
         # @param [String] parent
         #   Required. The parent resource name, such as `projects/`project`/locations/`
         #   location``.
@@ -9998,7 +9998,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a notebook. Needs a side channel with the user's EUC.
+        # Gets a notebook.
         # @param [String] name
         #   Required. Full resource name of Notebook, such as `projects/`project`/
         #   locations/`location`/notebooks/`notebook_id``.
@@ -10029,7 +10029,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the recently viewed notebooks. Needs a side channel with the user's EUC.
+        # Lists the notebooks ordered by last view time.
         # @param [String] parent
         #   Required. The parent branch resource name, such as `projects/`project`/
         #   locations/`location``.
@@ -10068,7 +10068,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Shares a notebook to other accounts. Needs a side channel with the user's EUC.
+        # Shares a notebook to other accounts.
         # @param [String] name
         #   Required. Full resource name of Notebook, such as `projects/`project`/
         #   locations/`location`/notebooks/`notebook_id``.
@@ -10102,7 +10102,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates a new audio overview. Needs a side channel with the user's EUC.
+        # Generates a new audio overview.
         # @param [String] parent
         #   Required. The parent resource where this notebook will be created. Format:
         #   projects/`project`/locations/`location`/notebooks/`notebook`
@@ -10136,7 +10136,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an audio overview. Needs a side channel with the user's EUC.
+        # Deletes an audio overview.
         # @param [String] name
         #   Required. The full resource name of the AudioOverview, such as `projects/`
         #   project`/locations/`location`/notebooks/`notebook`/audioOverviews/`
