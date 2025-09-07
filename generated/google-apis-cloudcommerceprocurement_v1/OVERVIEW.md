@@ -51,7 +51,7 @@ require "google/apis/cloudcommerceprocurement_v1"
 client = Google::Apis::CloudcommerceprocurementV1::CloudCommercePartnerProcurementServiceService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
@@ -60,8 +60,8 @@ See the class reference docs for information on the methods you can call from a 
 
 More detailed descriptions of the Google simple REST clients are available in two documents.
 
- *  The [Usage Guide](https://github.com/googleapis/google-api-ruby-client/blob/master/docs/usage-guide.md) discusses how to make API calls, how to use the provided data structures, and how to work the various features of the client library, including media upload and download, error handling, retries, pagination, and logging.
- *  The [Auth Guide](https://github.com/googleapis/google-api-ruby-client/blob/master/docs/auth-guide.md) discusses authentication in the client libraries, including API keys, OAuth 2.0, service accounts, and environment variables.
+ *  The [Usage Guide](https://github.com/googleapis/google-api-ruby-client/blob/main/docs/usage-guide.md) discusses how to make API calls, how to use the provided data structures, and how to work the various features of the client library, including media upload and download, error handling, retries, pagination, and logging.
+ *  The [Auth Guide](https://github.com/googleapis/google-api-ruby-client/blob/main/docs/auth-guide.md) discusses authentication in the client libraries, including API keys, OAuth 2.0, service accounts, and environment variables.
 
 (Note: the above documents are written for the simple REST clients in general, and their examples may not reflect the Cloudcommerceprocurement service in particular.)
 
@@ -83,9 +83,9 @@ The [product documentation](https://cloud.google.com/marketplace/docs/partners/)
 
 ## Supported Ruby versions
 
-This library is supported on Ruby 2.5+.
+This library is supported on Ruby 3.1+.
 
-Google provides official support for Ruby versions that are actively supported by Ruby Core -- that is, Ruby versions that are either in normal maintenance or in security maintenance, and not end of life. Currently, this means Ruby 2.5 and later. Older versions of Ruby _may_ still work, but are unsupported and not recommended. See https://www.ruby-lang.org/en/downloads/branches/ for details about the Ruby support schedule.
+Google provides official support for Ruby versions that are actively supported by Ruby Core -- that is, Ruby versions that are either in normal maintenance or in security maintenance, and not end of life. Older versions of Ruby _may_ still work, but are unsupported and not recommended. See https://www.ruby-lang.org/en/downloads/branches/ for details about the Ruby support schedule.
 
 ## License
 

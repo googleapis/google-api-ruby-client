@@ -155,6 +155,7 @@ module Google
       class ApproveEntitlementRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :entitlement_migrated, as: 'entitlementMigrated'
           hash :properties, as: 'properties'
         end
       end
@@ -176,16 +177,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account, as: 'account'
+          property :cancellation_reason, as: 'cancellationReason'
           collection :consumers, as: 'consumers', class: Google::Apis::CloudcommerceprocurementV1::Consumer, decorator: Google::Apis::CloudcommerceprocurementV1::Consumer::Representation
       
           property :create_time, as: 'createTime'
+          collection :entitlement_benefit_ids, as: 'entitlementBenefitIds'
           hash :input_properties, as: 'inputProperties'
           property :message_to_user, as: 'messageToUser'
           property :name, as: 'name'
+          property :new_offer_end_time, as: 'newOfferEndTime'
+          property :new_offer_start_time, as: 'newOfferStartTime'
           property :new_pending_offer, as: 'newPendingOffer'
+          property :new_pending_offer_duration, as: 'newPendingOfferDuration'
           property :new_pending_plan, as: 'newPendingPlan'
           property :offer, as: 'offer'
+          property :offer_duration, as: 'offerDuration'
           property :offer_end_time, as: 'offerEndTime'
+          property :order_id, as: 'orderId'
           property :plan, as: 'plan'
           property :product, as: 'product'
           property :product_external_name, as: 'productExternalName'
