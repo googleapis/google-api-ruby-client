@@ -531,32 +531,6 @@ module Google
         end
       end
       
-      # Operation metadata returned by the CLH during resource state reconciliation.
-      class ReconciliationOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # DEPRECATED. Use exclusive_action instead.
-        # Corresponds to the JSON property `deleteResource`
-        # @return [Boolean]
-        attr_accessor :delete_resource
-        alias_method :delete_resource?, :delete_resource
-      
-        # Excluisive action returned by the CLH.
-        # Corresponds to the JSON property `exclusiveAction`
-        # @return [String]
-        attr_accessor :exclusive_action
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @delete_resource = args[:delete_resource] if args.key?(:delete_resource)
-          @exclusive_action = args[:exclusive_action] if args.key?(:exclusive_action)
-        end
-      end
-      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
