@@ -1747,6 +1747,11 @@ module Google
       class Tool
         include Google::Apis::Core::Hashable
       
+        # List of tool names that this tool depends on.
+        # Corresponds to the JSON property `dependsOn`
+        # @return [Array<String>]
+        attr_accessor :depends_on
+      
         # Description of the tool.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -1773,6 +1778,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @depends_on = args[:depends_on] if args.key?(:depends_on)
           @description = args[:description] if args.key?(:description)
           @input_schema = args[:input_schema] if args.key?(:input_schema)
           @name = args[:name] if args.key?(:name)
