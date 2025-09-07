@@ -7587,6 +7587,12 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus>]
         attr_accessor :errors
       
+        # Any params and credentials used specifically for hybrid connectors supporting
+        # FEDERATED mode.
+        # Corresponds to the JSON property `federatedConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataConnectorFederatedConfig]
+        attr_accessor :federated_config
+      
         # Optional. If the connector is a hybrid connector, determines whether ingestion
         # is enabled and appropriate resources are provisioned during connector creation.
         # If the connector is not a hybrid connector, this field is ignored.
@@ -7726,6 +7732,14 @@ module Google
         # @return [String]
         attr_accessor :refresh_interval
       
+        # Optional. Specifies keys to be removed from the 'params' field. This is only
+        # active when 'params' is included in the 'update_mask' in an
+        # UpdateDataConnectorRequest. Deletion takes precedence if a key is both in '
+        # remove_param_keys' and present in the 'params' field of the request.
+        # Corresponds to the JSON property `removeParamKeys`
+        # @return [Array<String>]
+        attr_accessor :remove_param_keys
+      
         # Output only. State of the connector.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -7774,6 +7788,7 @@ module Google
           @end_user_config = args[:end_user_config] if args.key?(:end_user_config)
           @entities = args[:entities] if args.key?(:entities)
           @errors = args[:errors] if args.key?(:errors)
+          @federated_config = args[:federated_config] if args.key?(:federated_config)
           @hybrid_ingestion_disabled = args[:hybrid_ingestion_disabled] if args.key?(:hybrid_ingestion_disabled)
           @identity_refresh_interval = args[:identity_refresh_interval] if args.key?(:identity_refresh_interval)
           @identity_schedule_config = args[:identity_schedule_config] if args.key?(:identity_schedule_config)
@@ -7789,6 +7804,7 @@ module Google
           @realtime_state = args[:realtime_state] if args.key?(:realtime_state)
           @realtime_sync_config = args[:realtime_sync_config] if args.key?(:realtime_sync_config)
           @refresh_interval = args[:refresh_interval] if args.key?(:refresh_interval)
+          @remove_param_keys = args[:remove_param_keys] if args.key?(:remove_param_keys)
           @state = args[:state] if args.key?(:state)
           @static_ip_addresses = args[:static_ip_addresses] if args.key?(:static_ip_addresses)
           @static_ip_enabled = args[:static_ip_enabled] if args.key?(:static_ip_enabled)
@@ -7827,6 +7843,32 @@ module Google
           @additional_params = args[:additional_params] if args.key?(:additional_params)
           @auth_params = args[:auth_params] if args.key?(:auth_params)
           @tenant = args[:tenant] if args.key?(:tenant)
+        end
+      end
+      
+      # Any params and credentials used specifically for hybrid connectors supporting
+      # FEDERATED mode.
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorFederatedConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Any additional parameters needed for FEDERATED.
+        # Corresponds to the JSON property `additionalParams`
+        # @return [Hash<String,Object>]
+        attr_accessor :additional_params
+      
+        # Optional. Any authentication parameters specific to FEDERATED.
+        # Corresponds to the JSON property `authParams`
+        # @return [Hash<String,Object>]
+        attr_accessor :auth_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_params = args[:additional_params] if args.key?(:additional_params)
+          @auth_params = args[:auth_params] if args.key?(:auth_params)
         end
       end
       
