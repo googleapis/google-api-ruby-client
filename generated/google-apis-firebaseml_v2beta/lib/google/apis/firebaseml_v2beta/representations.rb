@@ -280,12 +280,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +299,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1GroundingMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GroundingMetadataSourceFlaggingUri
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -973,6 +973,7 @@ module Google
       class GoogleCloudAiplatformV1beta1GoogleMaps
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_widget, as: 'enableWidget'
         end
       end
       
@@ -1011,30 +1012,17 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSources
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :flag_content_uri, as: 'flagContentUri'
           collection :review_snippets, as: 'reviewSnippets', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet::Representation
       
-        end
-      end
-      
-      class GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          property :photo_uri, as: 'photoUri'
-          property :uri, as: 'uri'
         end
       end
       
       class GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :author_attribution, as: 'authorAttribution', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution::Representation
-      
-          property :flag_content_uri, as: 'flagContentUri'
           property :google_maps_uri, as: 'googleMapsUri'
-          property :relative_publish_time_description, as: 'relativePublishTimeDescription'
-          property :review, as: 'review'
+          property :review_id, as: 'reviewId'
+          property :title, as: 'title'
         end
       end
       
@@ -1072,7 +1060,17 @@ module Google
           collection :retrieval_queries, as: 'retrievalQueries'
           property :search_entry_point, as: 'searchEntryPoint', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SearchEntryPoint, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SearchEntryPoint::Representation
       
+          collection :source_flagging_uris, as: 'sourceFlaggingUris', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingMetadataSourceFlaggingUri, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingMetadataSourceFlaggingUri::Representation
+      
           collection :web_search_queries, as: 'webSearchQueries'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GroundingMetadataSourceFlaggingUri
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :flag_content_uri, as: 'flagContentUri'
+          property :source_id, as: 'sourceId'
         end
       end
       
