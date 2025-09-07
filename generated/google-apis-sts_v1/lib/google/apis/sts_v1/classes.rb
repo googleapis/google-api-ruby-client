@@ -317,7 +317,13 @@ module Google
         # new security attributes applied, such as a Credential Access Boundary. In this
         # case, set `subject_token_type` to `urn:ietf:params:oauth:token-type:
         # access_token`. If an access token already contains security attributes, you
-        # cannot apply additional security attributes.
+        # cannot apply additional security attributes. If the request is for X.509
+        # certificate-based authentication, the `subject_token` must be a JSON-formatted
+        # list of X.509 certificates in DER format, as defined in [RFC 7515](https://www.
+        # rfc-editor.org/rfc/rfc7515#section-4.1.6). `subject_token_type` must be `urn:
+        # ietf:params:oauth:token-type:mtls`. The following example shows a JSON-
+        # formatted list of X.509 certificate in DER format: ``` [\"MIIEYDCCA0i...\", \"
+        # MCIFFGAGTT0...\"] ```
         # Corresponds to the JSON property `subjectToken`
         # @return [String]
         attr_accessor :subject_token
@@ -325,8 +331,9 @@ module Google
         # Required. An identifier that indicates the type of the security token in the `
         # subject_token` parameter. Supported values are `urn:ietf:params:oauth:token-
         # type:jwt`, `urn:ietf:params:oauth:token-type:id_token`, `urn:ietf:params:aws:
-        # token-type:aws4_request`, `urn:ietf:params:oauth:token-type:access_token`, and
-        # `urn:ietf:params:oauth:token-type:saml2`.
+        # token-type:aws4_request`, `urn:ietf:params:oauth:token-type:access_token`, `
+        # urn:ietf:params:oauth:token-type:mtls`, and `urn:ietf:params:oauth:token-type:
+        # saml2`.
         # Corresponds to the JSON property `subjectTokenType`
         # @return [String]
         attr_accessor :subject_token_type
