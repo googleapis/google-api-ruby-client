@@ -621,6 +621,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. The time at which the video started recording.
+        # Corresponds to the JSON property `videoStartTime`
+        # @return [String]
+        attr_accessor :video_start_time
+      
         # Output only. A URI to a video of the test run.
         # Corresponds to the JSON property `videoUri`
         # @return [String]
@@ -642,6 +647,7 @@ module Google
           @robo_stats = args[:robo_stats] if args.key?(:robo_stats)
           @screenshot_uris = args[:screenshot_uris] if args.key?(:screenshot_uris)
           @state = args[:state] if args.key?(:state)
+          @video_start_time = args[:video_start_time] if args.key?(:video_start_time)
           @video_uri = args[:video_uri] if args.key?(:video_uri)
         end
       end
@@ -966,7 +972,7 @@ module Google
       class GoogleFirebaseAppdistroV1alphaGoalAction
         include Google::Apis::Core::Hashable
       
-        # Information to help the customer understand why the agent took this action
+        # Information to help the customer understand why the agent took this action.
         # Corresponds to the JSON property `debugInfo`
         # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo]
         attr_accessor :debug_info
@@ -982,6 +988,11 @@ module Google
         # @return [String]
         attr_accessor :explanation
       
+        # Output only. The time at which the action started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
         # An action taken by the AI to end the goal.
         # Corresponds to the JSON property `terminalAction`
         # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTerminalAction]
@@ -996,21 +1007,22 @@ module Google
           @debug_info = args[:debug_info] if args.key?(:debug_info)
           @device_action = args[:device_action] if args.key?(:device_action)
           @explanation = args[:explanation] if args.key?(:explanation)
+          @start_time = args[:start_time] if args.key?(:start_time)
           @terminal_action = args[:terminal_action] if args.key?(:terminal_action)
         end
       end
       
-      # Information to help the customer understand why the agent took this action
+      # Information to help the customer understand why the agent took this action.
       class GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo
         include Google::Apis::Core::Hashable
       
         # Output only. URI of the screenshot with elements labeled which was used by the
-        # agent
+        # agent.
         # Corresponds to the JSON property `annotatedScreenshotUri`
         # @return [String]
         attr_accessor :annotated_screenshot_uri
       
-        # Output only. Structured data explaining the agent's choice
+        # Output only. Structured data explaining the agent's choice.
         # Corresponds to the JSON property `jsonUri`
         # @return [String]
         attr_accessor :json_uri
