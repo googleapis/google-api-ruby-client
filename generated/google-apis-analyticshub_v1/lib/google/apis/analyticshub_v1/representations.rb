@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Replica
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestrictedExportConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -471,6 +477,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset, as: 'dataset'
+          collection :effective_replicas, as: 'effectiveReplicas', class: Google::Apis::AnalyticshubV1::Replica, decorator: Google::Apis::AnalyticshubV1::Replica::Representation
+      
+          collection :replica_locations, as: 'replicaLocations'
           property :restricted_export_policy, as: 'restrictedExportPolicy', class: Google::Apis::AnalyticshubV1::RestrictedExportPolicy, decorator: Google::Apis::AnalyticshubV1::RestrictedExportPolicy::Representation
       
           collection :selected_resources, as: 'selectedResources', class: Google::Apis::AnalyticshubV1::SelectedResource, decorator: Google::Apis::AnalyticshubV1::SelectedResource::Representation
@@ -562,6 +571,7 @@ module Google
           property :friendly_name, as: 'friendlyName'
           hash :labels, as: 'labels'
           property :location, as: 'location'
+          collection :replica_locations, as: 'replicaLocations'
         end
       end
       
@@ -907,6 +917,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :subscription, as: 'subscription', class: Google::Apis::AnalyticshubV1::Subscription, decorator: Google::Apis::AnalyticshubV1::Subscription::Representation
       
+        end
+      end
+      
+      class Replica
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          property :primary_state, as: 'primaryState'
+          property :replica_state, as: 'replicaState'
         end
       end
       

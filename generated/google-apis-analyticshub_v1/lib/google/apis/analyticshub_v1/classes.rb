@@ -224,6 +224,19 @@ module Google
         # @return [String]
         attr_accessor :dataset
       
+        # Output only. Server-owned effective state of replicas. Contains both primary
+        # and secondary replicas. Each replica includes a system-computed (output-only)
+        # state and primary designation.
+        # Corresponds to the JSON property `effectiveReplicas`
+        # @return [Array<Google::Apis::AnalyticshubV1::Replica>]
+        attr_accessor :effective_replicas
+      
+        # Optional. A list of regions where the publisher has created shared dataset
+        # replicas.
+        # Corresponds to the JSON property `replicaLocations`
+        # @return [Array<String>]
+        attr_accessor :replica_locations
+      
         # Restricted export policy used to configure restricted export on linked dataset.
         # Corresponds to the JSON property `restrictedExportPolicy`
         # @return [Google::Apis::AnalyticshubV1::RestrictedExportPolicy]
@@ -242,6 +255,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dataset = args[:dataset] if args.key?(:dataset)
+          @effective_replicas = args[:effective_replicas] if args.key?(:effective_replicas)
+          @replica_locations = args[:replica_locations] if args.key?(:replica_locations)
           @restricted_export_policy = args[:restricted_export_policy] if args.key?(:restricted_export_policy)
           @selected_resources = args[:selected_resources] if args.key?(:selected_resources)
         end
@@ -683,6 +698,13 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # Optional. The geographic locations where the dataset should be replicated. See
+        # [BigQuery locations](https://cloud.google.com/bigquery/docs/locations) for
+        # supported locations.
+        # Corresponds to the JSON property `replicaLocations`
+        # @return [Array<String>]
+        attr_accessor :replica_locations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -694,6 +716,7 @@ module Google
           @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
           @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
+          @replica_locations = args[:replica_locations] if args.key?(:replica_locations)
         end
       end
       
@@ -2065,6 +2088,42 @@ module Google
         # Update properties of this object
         def update!(**args)
           @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
+      # Represents the state of a replica of a shared dataset. It includes the
+      # geographic location of the replica and system-computed, output-only fields
+      # indicating its replication state and whether it is the primary replica.
+      class Replica
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The geographic location where the replica resides. See [BigQuery
+        # locations](https://cloud.google.com/bigquery/docs/locations) for supported
+        # locations. Eg. "us-central1".
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Output only. Indicates that this replica is the primary replica.
+        # Corresponds to the JSON property `primaryState`
+        # @return [String]
+        attr_accessor :primary_state
+      
+        # Output only. Assigned by Analytics Hub based on real BigQuery replication
+        # state.
+        # Corresponds to the JSON property `replicaState`
+        # @return [String]
+        attr_accessor :replica_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @primary_state = args[:primary_state] if args.key?(:primary_state)
+          @replica_state = args[:replica_state] if args.key?(:replica_state)
         end
       end
       
