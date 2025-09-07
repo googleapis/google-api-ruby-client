@@ -408,6 +408,13 @@ module Google
         # @return [Google::Apis::TexttospeechV1beta1::MultiSpeakerMarkup]
         attr_accessor :multi_speaker_markup
       
+        # This is system instruction supported only for controllable voice models. If
+        # used, we will pass text to Flash TTS as is. Can only used with Flash TTS. What
+        # AI Studio calls Style Instructions.
+        # Corresponds to the JSON property `prompt`
+        # @return [String]
+        attr_accessor :prompt
+      
         # The SSML document to be synthesized. The SSML document must be valid and well-
         # formed. Otherwise the RPC will fail and return google.rpc.Code.
         # INVALID_ARGUMENT. For more information, see [SSML](https://cloud.google.com/
@@ -430,6 +437,7 @@ module Google
           @custom_pronunciations = args[:custom_pronunciations] if args.key?(:custom_pronunciations)
           @markup = args[:markup] if args.key?(:markup)
           @multi_speaker_markup = args[:multi_speaker_markup] if args.key?(:multi_speaker_markup)
+          @prompt = args[:prompt] if args.key?(:prompt)
           @ssml = args[:ssml] if args.key?(:ssml)
           @text = args[:text] if args.key?(:text)
         end
