@@ -1476,12 +1476,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the user's files. This method accepts the `q` parameter, which is a
-        # search query combining one or more search terms. For more information, see the
-        # [Search for files & folders](/workspace/drive/api/guides/search-files) guide. *
-        # Note:* This method returns *all* files by default, including trashed files. If
-        # you don't want trashed files to appear in the list, use the `trashed=false`
-        # query parameter to remove trashed files from the results.
+        # Lists the user's files. For more information, see [Search for files and
+        # folders](/workspace/drive/api/guides/search-files). This method accepts the `q`
+        # parameter, which is a search query combining one or more search terms. This
+        # method returns *all* files by default, including trashed files. If you don't
+        # want trashed files to appear in the list, use the `trashed=false` query
+        # parameter to remove trashed files from the results.
         # @param [String] corpora
         #   Bodies of items (files/documents) to which the query applies. Supported bodies
         #   are `default`, `domain`, `drive` and `allDrives`. Prefer `default` or `drive`
@@ -1889,16 +1889,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a file's metadata and/or content. When calling this method, only
+        # Updates a file's metadata, content, or both. When calling this method, only
         # populate fields in the request that you want to modify. When updating fields,
         # some fields might be changed automatically, such as `modifiedDate`. This
         # method supports patch semantics. This method supports an */upload* URI and
         # accepts uploaded media with the following characteristics: - *Maximum file
-        # size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid MIME
+        # size:* 5,120 GB - *Accepted Media MIME types:* `*/*` (Specify a valid MIME
         # type, rather than the literal `*/*` value. The literal `*/*` is only used to
-        # indicate that any valid MIME type can be uploaded. For more information on
-        # uploading files, see [Upload file data](/workspace/drive/api/guides/manage-
-        # uploads).
+        # indicate that any valid MIME type can be uploaded. For more information, see [
+        # Google Workspace and Google Drive supported MIME types](/workspace/drive/api/
+        # guides/mime-types).) For more information on uploading files, see [Upload file
+        # data](/workspace/drive/api/guides/manage-uploads).
         # @param [String] file_id
         #   The ID of the file to update.
         # @param [Google::Apis::DriveV2::File] file_object
