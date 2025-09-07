@@ -11483,6 +11483,12 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus>]
         attr_accessor :errors
       
+        # Any params and credentials used specifically for hybrid connectors supporting
+        # FEDERATED mode.
+        # Corresponds to the JSON property `federatedConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnectorFederatedConfig]
+        attr_accessor :federated_config
+      
         # Optional. If the connector is a hybrid connector, determines whether ingestion
         # is enabled and appropriate resources are provisioned during connector creation.
         # If the connector is not a hybrid connector, this field is ignored.
@@ -11622,6 +11628,14 @@ module Google
         # @return [String]
         attr_accessor :refresh_interval
       
+        # Optional. Specifies keys to be removed from the 'params' field. This is only
+        # active when 'params' is included in the 'update_mask' in an
+        # UpdateDataConnectorRequest. Deletion takes precedence if a key is both in '
+        # remove_param_keys' and present in the 'params' field of the request.
+        # Corresponds to the JSON property `removeParamKeys`
+        # @return [Array<String>]
+        attr_accessor :remove_param_keys
+      
         # Output only. State of the connector.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -11670,6 +11684,7 @@ module Google
           @end_user_config = args[:end_user_config] if args.key?(:end_user_config)
           @entities = args[:entities] if args.key?(:entities)
           @errors = args[:errors] if args.key?(:errors)
+          @federated_config = args[:federated_config] if args.key?(:federated_config)
           @hybrid_ingestion_disabled = args[:hybrid_ingestion_disabled] if args.key?(:hybrid_ingestion_disabled)
           @identity_refresh_interval = args[:identity_refresh_interval] if args.key?(:identity_refresh_interval)
           @identity_schedule_config = args[:identity_schedule_config] if args.key?(:identity_schedule_config)
@@ -11685,6 +11700,7 @@ module Google
           @realtime_state = args[:realtime_state] if args.key?(:realtime_state)
           @realtime_sync_config = args[:realtime_sync_config] if args.key?(:realtime_sync_config)
           @refresh_interval = args[:refresh_interval] if args.key?(:refresh_interval)
+          @remove_param_keys = args[:remove_param_keys] if args.key?(:remove_param_keys)
           @state = args[:state] if args.key?(:state)
           @static_ip_addresses = args[:static_ip_addresses] if args.key?(:static_ip_addresses)
           @static_ip_enabled = args[:static_ip_enabled] if args.key?(:static_ip_enabled)
@@ -11723,6 +11739,32 @@ module Google
           @additional_params = args[:additional_params] if args.key?(:additional_params)
           @auth_params = args[:auth_params] if args.key?(:auth_params)
           @tenant = args[:tenant] if args.key?(:tenant)
+        end
+      end
+      
+      # Any params and credentials used specifically for hybrid connectors supporting
+      # FEDERATED mode.
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorFederatedConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Any additional parameters needed for FEDERATED.
+        # Corresponds to the JSON property `additionalParams`
+        # @return [Hash<String,Object>]
+        attr_accessor :additional_params
+      
+        # Optional. Any authentication parameters specific to FEDERATED.
+        # Corresponds to the JSON property `authParams`
+        # @return [Hash<String,Object>]
+        attr_accessor :auth_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_params = args[:additional_params] if args.key?(:additional_params)
+          @auth_params = args[:auth_params] if args.key?(:auth_params)
         end
       end
       
@@ -23763,6 +23805,12 @@ module Google
         attr_accessor :default_web_grounding_toggle_off
         alias_method :default_web_grounding_toggle_off?, :default_web_grounding_toggle_off
       
+        # Optional. Output only. Whether to disable user location context.
+        # Corresponds to the JSON property `disableLocationContext`
+        # @return [Boolean]
+        attr_accessor :disable_location_context
+        alias_method :disable_location_context?, :disable_location_context
+      
         # Whether or not the Google search grounding toggle is shown. Deprecated. Use
         # web_grounding_type instead.
         # Corresponds to the JSON property `googleSearchGroundingEnabled`
@@ -23782,6 +23830,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @default_web_grounding_toggle_off = args[:default_web_grounding_toggle_off] if args.key?(:default_web_grounding_toggle_off)
+          @disable_location_context = args[:disable_location_context] if args.key?(:disable_location_context)
           @google_search_grounding_enabled = args[:google_search_grounding_enabled] if args.key?(:google_search_grounding_enabled)
           @web_grounding_type = args[:web_grounding_type] if args.key?(:web_grounding_type)
         end
@@ -29598,8 +29647,7 @@ module Google
         attr_accessor :audio_overview_id
       
         # The language code of the generated audio overview. Use the BCP 47 language
-        # code (e.g. "en", "es", "hi", etc.). Examples: google3/i18n/identifiers/tools/
-        # language_code_constants.txt
+        # code (e.g. "en", "es", "hi", etc.).
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -29811,6 +29859,368 @@ module Google
         end
       end
       
+      # Failure reason containing details about why a source failed to ingest.
+      class GoogleCloudNotebooklmV1alphaFailureReason
+        include Google::Apis::Core::Hashable
+      
+        # An audio file transcription specific error.
+        # Corresponds to the JSON property `audioTranscriptionError`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionError]
+        attr_accessor :audio_transcription_error
+      
+        # Error to indicate that the source was removed because the domain was blocked.
+        # Corresponds to the JSON property `domainBlocked`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonDomainBlocked]
+        attr_accessor :domain_blocked
+      
+        # A google drive specific error.
+        # Corresponds to the JSON property `googleDriveError`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveError]
+        attr_accessor :google_drive_error
+      
+        # Indicates an error occurred while ingesting the source.
+        # Corresponds to the JSON property `ingestionError`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonIngestionError]
+        attr_accessor :ingestion_error
+      
+        # Indicates that the source is paywalled and cannot be ingested.
+        # Corresponds to the JSON property `paywallError`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonPaywallError]
+        attr_accessor :paywall_error
+      
+        # Indicates that the source is empty.
+        # Corresponds to the JSON property `sourceEmpty`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty]
+        attr_accessor :source_empty
+      
+        # Indicates that the user does not have space for this source.
+        # Corresponds to the JSON property `sourceLimitExceeded`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonSourceLimitExceeded]
+        attr_accessor :source_limit_exceeded
+      
+        # Indicates source word count exceeded the user's limit.
+        # Corresponds to the JSON property `sourceTooLong`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonSourceTooLong]
+        attr_accessor :source_too_long
+      
+        # Indicates that the source is unreachable. This is primarily used for sources
+        # that are added via URL.
+        # Corresponds to the JSON property `sourceUnreachable`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonSourceUnreachable]
+        attr_accessor :source_unreachable
+      
+        # Indicates an unknown error occurred.
+        # Corresponds to the JSON property `unknown`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonUnknown]
+        attr_accessor :unknown
+      
+        # Indicates an error occurred while uploading the source.
+        # Corresponds to the JSON property `uploadError`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonUploadError]
+        attr_accessor :upload_error
+      
+        # A youtube specific error.
+        # Corresponds to the JSON property `youtubeError`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonYoutubeError]
+        attr_accessor :youtube_error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_transcription_error = args[:audio_transcription_error] if args.key?(:audio_transcription_error)
+          @domain_blocked = args[:domain_blocked] if args.key?(:domain_blocked)
+          @google_drive_error = args[:google_drive_error] if args.key?(:google_drive_error)
+          @ingestion_error = args[:ingestion_error] if args.key?(:ingestion_error)
+          @paywall_error = args[:paywall_error] if args.key?(:paywall_error)
+          @source_empty = args[:source_empty] if args.key?(:source_empty)
+          @source_limit_exceeded = args[:source_limit_exceeded] if args.key?(:source_limit_exceeded)
+          @source_too_long = args[:source_too_long] if args.key?(:source_too_long)
+          @source_unreachable = args[:source_unreachable] if args.key?(:source_unreachable)
+          @unknown = args[:unknown] if args.key?(:unknown)
+          @upload_error = args[:upload_error] if args.key?(:upload_error)
+          @youtube_error = args[:youtube_error] if args.key?(:youtube_error)
+        end
+      end
+      
+      # An audio file transcription specific error.
+      class GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionError
+        include Google::Apis::Core::Hashable
+      
+        # Could not detect language of the file (it may not be speech).
+        # Corresponds to the JSON property `languageDetectionFailed`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorLanguageDetectionFailed]
+        attr_accessor :language_detection_failed
+      
+        # No audio was detected in the input file.
+        # Corresponds to the JSON property `noAudioDetected`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorNoAudioDetected]
+        attr_accessor :no_audio_detected
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_detection_failed = args[:language_detection_failed] if args.key?(:language_detection_failed)
+          @no_audio_detected = args[:no_audio_detected] if args.key?(:no_audio_detected)
+        end
+      end
+      
+      # Could not detect language of the file (it may not be speech).
+      class GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorLanguageDetectionFailed
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # No audio was detected in the input file.
+      class GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorNoAudioDetected
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Error to indicate that the source was removed because the domain was blocked.
+      class GoogleCloudNotebooklmV1alphaFailureReasonDomainBlocked
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A google drive specific error.
+      class GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveError
+        include Google::Apis::Core::Hashable
+      
+        # The user was prevented from downloading the file.
+        # Corresponds to the JSON property `downloadPrevented`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented]
+        attr_accessor :download_prevented
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @download_prevented = args[:download_prevented] if args.key?(:download_prevented)
+        end
+      end
+      
+      # The user was prevented from downloading the file.
+      class GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Indicates an error occurred while ingesting the source.
+      class GoogleCloudNotebooklmV1alphaFailureReasonIngestionError
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Indicates that the source is paywalled and cannot be ingested.
+      class GoogleCloudNotebooklmV1alphaFailureReasonPaywallError
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Indicates that the source is empty.
+      class GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Indicates that the user does not have space for this source.
+      class GoogleCloudNotebooklmV1alphaFailureReasonSourceLimitExceeded
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Indicates source word count exceeded the user's limit.
+      class GoogleCloudNotebooklmV1alphaFailureReasonSourceTooLong
+        include Google::Apis::Core::Hashable
+      
+        # The number of words in the source.
+        # Corresponds to the JSON property `wordCount`
+        # @return [Fixnum]
+        attr_accessor :word_count
+      
+        # The word count limit for the current user at the time of the upload.
+        # Corresponds to the JSON property `wordLimit`
+        # @return [Fixnum]
+        attr_accessor :word_limit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @word_count = args[:word_count] if args.key?(:word_count)
+          @word_limit = args[:word_limit] if args.key?(:word_limit)
+        end
+      end
+      
+      # Indicates that the source is unreachable. This is primarily used for sources
+      # that are added via URL.
+      class GoogleCloudNotebooklmV1alphaFailureReasonSourceUnreachable
+        include Google::Apis::Core::Hashable
+      
+        # Describes why the source is unreachable.
+        # Corresponds to the JSON property `errorDetails`
+        # @return [String]
+        attr_accessor :error_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_details = args[:error_details] if args.key?(:error_details)
+        end
+      end
+      
+      # Indicates an unknown error occurred.
+      class GoogleCloudNotebooklmV1alphaFailureReasonUnknown
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Indicates an error occurred while uploading the source.
+      class GoogleCloudNotebooklmV1alphaFailureReasonUploadError
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A youtube specific error.
+      class GoogleCloudNotebooklmV1alphaFailureReasonYoutubeError
+        include Google::Apis::Core::Hashable
+      
+        # Error to indicate that the source was removed because the video was deleted.
+        # Corresponds to the JSON property `videoDeleted`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted]
+        attr_accessor :video_deleted
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @video_deleted = args[:video_deleted] if args.key?(:video_deleted)
+        end
+      end
+      
+      # Error to indicate that the source was removed because the video was deleted.
+      class GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata about a google doc source.
+      class GoogleCloudNotebooklmV1alphaGoogleDocsSourceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The document id of the google doc.
+        # Corresponds to the JSON property `documentId`
+        # @return [String]
+        attr_accessor :document_id
+      
+        # Output only. Revision id for the doc.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_id = args[:document_id] if args.key?(:document_id)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+        end
+      end
+      
       # Response for NotebookService.ListRecentlyViewedNotebooks method.
       class GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse
         include Google::Apis::Core::Hashable
@@ -29863,8 +30273,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. Notebook id, which is the last segment of the notebook's resource
-        # name. This is to make it similar with notebooklm API.
+        # Output only. Notebook id, which is the last segment of the notebook's resource
+        # name.
         # Corresponds to the JSON property `notebookId`
         # @return [String]
         attr_accessor :notebook_id
@@ -29984,6 +30394,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Allows extension of Source Settings in the BatchCreateSources (Formerly
+        # AddSource request).
+        # Corresponds to the JSON property `settings`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceSettings]
+        attr_accessor :settings
+      
         # SourceId is the last segment of the source's resource name.
         # Corresponds to the JSON property `sourceId`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSourceId]
@@ -30002,6 +30418,7 @@ module Google
         def update!(**args)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+          @settings = args[:settings] if args.key?(:settings)
           @source_id = args[:source_id] if args.key?(:source_id)
           @title = args[:title] if args.key?(:title)
         end
@@ -30035,6 +30452,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaAgentspaceMetadata]
         attr_accessor :agentspace_metadata
       
+        # Metadata about a google doc source.
+        # Corresponds to the JSON property `googleDocsMetadata`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaGoogleDocsSourceMetadata]
+        attr_accessor :google_docs_metadata
+      
         # The timestamp the source was added.
         # Corresponds to the JSON property `sourceAddedTimestamp`
         # @return [String]
@@ -30050,6 +30472,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :word_count
       
+        # Metadata about a youtube video source.
+        # Corresponds to the JSON property `youtubeMetadata`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaYoutubeMetadata]
+        attr_accessor :youtube_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -30057,9 +30484,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agentspace_metadata = args[:agentspace_metadata] if args.key?(:agentspace_metadata)
+          @google_docs_metadata = args[:google_docs_metadata] if args.key?(:google_docs_metadata)
           @source_added_timestamp = args[:source_added_timestamp] if args.key?(:source_added_timestamp)
           @token_count = args[:token_count] if args.key?(:token_count)
           @word_count = args[:word_count] if args.key?(:word_count)
+          @youtube_metadata = args[:youtube_metadata] if args.key?(:youtube_metadata)
+        end
+      end
+      
+      # Allows extension of Source Settings in the BatchCreateSources (Formerly
+      # AddSource request).
+      class GoogleCloudNotebooklmV1alphaSourceSettings
+        include Google::Apis::Core::Hashable
+      
+        # Failure reason containing details about why a source failed to ingest.
+        # Corresponds to the JSON property `failureReason`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReason]
+        attr_accessor :failure_reason
+      
+        # Status of the source.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -30211,12 +30666,14 @@ module Google
         attr_accessor :document_id
       
         # The mime type of the selected document. This can be used to differentiate type
-        # of content selected in the drive picker.
+        # of content selected in the drive picker. Use application/vnd.google-apps.
+        # document for Google Docs or application/vnd.google-apps.presentation for
+        # Google Slides.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
       
-        # Should track this from Drive Picker.
+        # Name to be displayed for the source.
         # Corresponds to the JSON property `sourceName`
         # @return [String]
         attr_accessor :source_name
@@ -30237,12 +30694,12 @@ module Google
       class GoogleCloudNotebooklmV1alphaUserContentTextContent
         include Google::Apis::Core::Hashable
       
-        # The content of the text source.
+        # Name to be displayed for the source.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
       
-        # The name of the text source.
+        # The display name of the text source.
         # Corresponds to the JSON property `sourceName`
         # @return [String]
         attr_accessor :source_name
@@ -30281,7 +30738,7 @@ module Google
       class GoogleCloudNotebooklmV1alphaUserContentWebContent
         include Google::Apis::Core::Hashable
       
-        # The name of the web source.
+        # Name to be displayed for the source.
         # Corresponds to the JSON property `sourceName`
         # @return [String]
         attr_accessor :source_name
@@ -30299,6 +30756,31 @@ module Google
         def update!(**args)
           @source_name = args[:source_name] if args.key?(:source_name)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Metadata about a youtube video source.
+      class GoogleCloudNotebooklmV1alphaYoutubeMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The channel name of the youtube video.
+        # Corresponds to the JSON property `channelName`
+        # @return [String]
+        attr_accessor :channel_name
+      
+        # Output only. The id of the youtube video.
+        # Corresponds to the JSON property `videoId`
+        # @return [String]
+        attr_accessor :video_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_name = args[:channel_name] if args.key?(:channel_name)
+          @video_id = args[:video_id] if args.key?(:video_id)
         end
       end
       
