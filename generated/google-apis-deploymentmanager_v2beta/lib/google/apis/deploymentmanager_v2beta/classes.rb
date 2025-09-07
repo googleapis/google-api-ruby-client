@@ -1029,7 +1029,7 @@ module Google
         # @return [Google::Apis::DeploymentmanagerV2beta::Policy]
         attr_accessor :policy
       
-        # 
+        # Update mask for the policy.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
