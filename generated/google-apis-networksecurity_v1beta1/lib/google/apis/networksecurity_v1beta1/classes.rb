@@ -4495,6 +4495,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # UrlFilteringProfile defines filters based on URL.
+        # Corresponds to the JSON property `urlFilteringProfile`
+        # @return [Google::Apis::NetworksecurityV1beta1::UrlFilteringProfile]
+        attr_accessor :url_filtering_profile
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4511,6 +4516,7 @@ module Google
           @threat_prevention_profile = args[:threat_prevention_profile] if args.key?(:threat_prevention_profile)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @url_filtering_profile = args[:url_filtering_profile] if args.key?(:url_filtering_profile)
         end
       end
       
@@ -4578,6 +4584,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Optional. Reference to a SecurityProfile with the UrlFiltering configuration.
+        # Corresponds to the JSON property `urlFilteringProfile`
+        # @return [String]
+        attr_accessor :url_filtering_profile
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4594,6 +4605,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @threat_prevention_profile = args[:threat_prevention_profile] if args.key?(:threat_prevention_profile)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @url_filtering_profile = args[:url_filtering_profile] if args.key?(:url_filtering_profile)
         end
       end
       
@@ -4943,6 +4955,60 @@ module Google
           @tls_feature_profile = args[:tls_feature_profile] if args.key?(:tls_feature_profile)
           @trust_config = args[:trust_config] if args.key?(:trust_config)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A URL filter defines an action to take for some URL match.
+      class UrlFilter
+        include Google::Apis::Core::Hashable
+      
+        # Required. The action taken when this filter is applied.
+        # Corresponds to the JSON property `filteringAction`
+        # @return [String]
+        attr_accessor :filtering_action
+      
+        # Required. The priority of this filter within the URL Filtering Profile. Lower
+        # integers indicate higher priorities. The priority of a filter must be unique
+        # within a URL Filtering Profile.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        # Required. The list of strings that a URL must match with for this filter to be
+        # applied.
+        # Corresponds to the JSON property `urls`
+        # @return [Array<String>]
+        attr_accessor :urls
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filtering_action = args[:filtering_action] if args.key?(:filtering_action)
+          @priority = args[:priority] if args.key?(:priority)
+          @urls = args[:urls] if args.key?(:urls)
+        end
+      end
+      
+      # UrlFilteringProfile defines filters based on URL.
+      class UrlFilteringProfile
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of filtering configs in which each config defines an action
+        # to take for some URL match.
+        # Corresponds to the JSON property `urlFilters`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::UrlFilter>]
+        attr_accessor :url_filters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url_filters = args[:url_filters] if args.key?(:url_filters)
         end
       end
       
