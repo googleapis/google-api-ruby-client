@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoCreatedSubnetworkInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -262,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListRemoteTransportProfilesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListRouteTablesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +311,12 @@ module Google
       end
       
       class ListSpokesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListTransportsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -436,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoteTransportProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Route
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -556,6 +580,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Transport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VirtualMachine
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -622,6 +652,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :auto_accept_projects, as: 'autoAcceptProjects'
+        end
+      end
+      
+      class AutoCreatedSubnetworkInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :internal_range, as: 'internalRange'
+          property :internal_range_ref, as: 'internalRangeRef'
+          property :subnetwork, as: 'subnetwork'
+          property :subnetwork_ref, as: 'subnetworkRef'
         end
       end
       
@@ -1006,6 +1046,16 @@ module Google
         end
       end
       
+      class ListRemoteTransportProfilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :remote_transport_profiles, as: 'remoteTransportProfiles', class: Google::Apis::NetworkconnectivityV1::RemoteTransportProfile, decorator: Google::Apis::NetworkconnectivityV1::RemoteTransportProfile::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListRouteTablesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1071,6 +1121,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :spokes, as: 'spokes', class: Google::Apis::NetworkconnectivityV1::Spoke, decorator: Google::Apis::NetworkconnectivityV1::Spoke::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListTransportsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :transports, as: 'transports', class: Google::Apis::NetworkconnectivityV1::Transport, decorator: Google::Apis::NetworkconnectivityV1::Transport::Representation
       
           collection :unreachable, as: 'unreachable'
         end
@@ -1326,6 +1386,16 @@ module Google
         end
       end
       
+      class RemoteTransportProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class Route
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1429,6 +1499,8 @@ module Google
       class ServiceConnectionPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_created_subnet_info, as: 'autoCreatedSubnetInfo', class: Google::Apis::NetworkconnectivityV1::AutoCreatedSubnetworkInfo, decorator: Google::Apis::NetworkconnectivityV1::AutoCreatedSubnetworkInfo::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :etag, as: 'etag'
@@ -1571,6 +1643,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class Transport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       
