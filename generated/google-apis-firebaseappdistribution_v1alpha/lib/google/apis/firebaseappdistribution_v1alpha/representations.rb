@@ -511,6 +511,7 @@ module Google
       
           collection :screenshot_uris, as: 'screenshotUris'
           property :state, as: 'state'
+          property :video_start_time, as: 'videoStartTime'
           property :video_uri, as: 'videoUri'
         end
       end
@@ -632,6 +633,7 @@ module Google
           property :device_action, as: 'deviceAction', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceAction, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceAction::Representation
       
           property :explanation, as: 'explanation'
+          property :start_time, as: 'startTime'
           property :terminal_action, as: 'terminalAction', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTerminalAction, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTerminalAction::Representation
       
         end
