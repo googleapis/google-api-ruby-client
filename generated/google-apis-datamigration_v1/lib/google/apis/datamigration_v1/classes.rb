@@ -5326,10 +5326,21 @@ module Google
         # @return [String]
         attr_accessor :cloud_sql_id
       
+        # Optional. The project id of the Cloud SQL instance. If not provided, the
+        # project id of the connection profile will be used.
+        # Corresponds to the JSON property `cloudSqlProjectId`
+        # @return [String]
+        attr_accessor :cloud_sql_project_id
+      
         # Required. The name of the specific database within the host.
         # Corresponds to the JSON property `database`
         # @return [String]
         attr_accessor :database
+      
+        # Optional. The Database Mirroring (DBM) port of the source SQL Server instance.
+        # Corresponds to the JSON property `dbmPort`
+        # @return [Fixnum]
+        attr_accessor :dbm_port
       
         # Forward SSH Tunnel connectivity.
         # Corresponds to the JSON property `forwardSshConnectivity`
@@ -5398,7 +5409,9 @@ module Google
         def update!(**args)
           @backups = args[:backups] if args.key?(:backups)
           @cloud_sql_id = args[:cloud_sql_id] if args.key?(:cloud_sql_id)
+          @cloud_sql_project_id = args[:cloud_sql_project_id] if args.key?(:cloud_sql_project_id)
           @database = args[:database] if args.key?(:database)
+          @dbm_port = args[:dbm_port] if args.key?(:dbm_port)
           @forward_ssh_connectivity = args[:forward_ssh_connectivity] if args.key?(:forward_ssh_connectivity)
           @host = args[:host] if args.key?(:host)
           @password = args[:password] if args.key?(:password)
@@ -5409,6 +5422,34 @@ module Google
           @ssl = args[:ssl] if args.key?(:ssl)
           @static_ip_connectivity = args[:static_ip_connectivity] if args.key?(:static_ip_connectivity)
           @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Configuration for distributed availability group (DAG) for the SQL Server
+      # homogeneous migration.
+      class SqlServerDagConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the linked server that points to the source SQL Server
+        # instance. Only used by DAG migrations.
+        # Corresponds to the JSON property `linkedServer`
+        # @return [String]
+        attr_accessor :linked_server
+      
+        # Required. The name of the source availability group. Only used by DAG
+        # migrations.
+        # Corresponds to the JSON property `sourceAg`
+        # @return [String]
+        attr_accessor :source_ag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @linked_server = args[:linked_server] if args.key?(:linked_server)
+          @source_ag = args[:source_ag] if args.key?(:source_ag)
         end
       end
       
@@ -5491,6 +5532,12 @@ module Google
         # @return [String]
         attr_accessor :backup_file_pattern
       
+        # Configuration for distributed availability group (DAG) for the SQL Server
+        # homogeneous migration.
+        # Corresponds to the JSON property `dagConfig`
+        # @return [Google::Apis::DatamigrationV1::SqlServerDagConfig]
+        attr_accessor :dag_config
+      
         # Required. Backup details per database in Cloud Storage.
         # Corresponds to the JSON property `databaseBackups`
         # @return [Array<Google::Apis::DatamigrationV1::SqlServerDatabaseBackup>]
@@ -5515,6 +5562,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup_file_pattern = args[:backup_file_pattern] if args.key?(:backup_file_pattern)
+          @dag_config = args[:dag_config] if args.key?(:dag_config)
           @database_backups = args[:database_backups] if args.key?(:database_backups)
           @promote_when_ready = args[:promote_when_ready] if args.key?(:promote_when_ready)
           @use_diff_backup = args[:use_diff_backup] if args.key?(:use_diff_backup)

@@ -766,6 +766,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlServerDagConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SqlServerDatabaseBackup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2311,7 +2317,9 @@ module Google
           property :backups, as: 'backups', class: Google::Apis::DatamigrationV1::SqlServerBackups, decorator: Google::Apis::DatamigrationV1::SqlServerBackups::Representation
       
           property :cloud_sql_id, as: 'cloudSqlId'
+          property :cloud_sql_project_id, as: 'cloudSqlProjectId'
           property :database, as: 'database'
+          property :dbm_port, as: 'dbmPort'
           property :forward_ssh_connectivity, as: 'forwardSshConnectivity', class: Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity, decorator: Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity::Representation
       
           property :host, as: 'host'
@@ -2327,6 +2335,14 @@ module Google
           property :static_ip_connectivity, as: 'staticIpConnectivity', class: Google::Apis::DatamigrationV1::StaticIpConnectivity, decorator: Google::Apis::DatamigrationV1::StaticIpConnectivity::Representation
       
           property :username, as: 'username'
+        end
+      end
+      
+      class SqlServerDagConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :linked_server, as: 'linkedServer'
+          property :source_ag, as: 'sourceAg'
         end
       end
       
@@ -2352,6 +2368,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_file_pattern, as: 'backupFilePattern'
+          property :dag_config, as: 'dagConfig', class: Google::Apis::DatamigrationV1::SqlServerDagConfig, decorator: Google::Apis::DatamigrationV1::SqlServerDagConfig::Representation
+      
           collection :database_backups, as: 'databaseBackups', class: Google::Apis::DatamigrationV1::SqlServerDatabaseBackup, decorator: Google::Apis::DatamigrationV1::SqlServerDatabaseBackup::Representation
       
           property :promote_when_ready, as: 'promoteWhenReady'
