@@ -3904,6 +3904,11 @@ module Google
         # @return [Google::Apis::GkeonpremV1::VmwareAdminPrivateRegistryConfig]
         attr_accessor :private_registry_config
       
+        # VmwareAdminProxy represents configuration for admin cluster proxy.
+        # Corresponds to the JSON property `proxy`
+        # @return [Google::Apis::GkeonpremV1::VmwareAdminProxy]
+        attr_accessor :proxy
+      
         # Output only. If set, there are currently changes in flight to the VMware admin
         # cluster.
         # Corresponds to the JSON property `reconciling`
@@ -3971,6 +3976,7 @@ module Google
           @platform_config = args[:platform_config] if args.key?(:platform_config)
           @prepared_secrets = args[:prepared_secrets] if args.key?(:prepared_secrets)
           @private_registry_config = args[:private_registry_config] if args.key?(:private_registry_config)
+          @proxy = args[:proxy] if args.key?(:proxy)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
@@ -4306,6 +4312,34 @@ module Google
         def update!(**args)
           @address = args[:address] if args.key?(:address)
           @ca_cert = args[:ca_cert] if args.key?(:ca_cert)
+        end
+      end
+      
+      # VmwareAdminProxy represents configuration for admin cluster proxy.
+      class VmwareAdminProxy
+        include Google::Apis::Core::Hashable
+      
+        # A comma-separated list of IP addresses, IP address ranges, host names, and
+        # domain names that should not go through the proxy server. When Google
+        # Distributed Cloud sends a request to one of these addresses, hosts, or domains,
+        # the request is sent directly.
+        # Corresponds to the JSON property `noProxy`
+        # @return [String]
+        attr_accessor :no_proxy
+      
+        # The HTTP address of proxy server.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @no_proxy = args[:no_proxy] if args.key?(:no_proxy)
+          @url = args[:url] if args.key?(:url)
         end
       end
       

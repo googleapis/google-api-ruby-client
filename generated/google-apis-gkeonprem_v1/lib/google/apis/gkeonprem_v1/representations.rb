@@ -742,6 +742,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VmwareAdminProxy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmwareAdminSeesawConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2045,6 +2051,8 @@ module Google
       
           property :private_registry_config, as: 'privateRegistryConfig', class: Google::Apis::GkeonpremV1::VmwareAdminPrivateRegistryConfig, decorator: Google::Apis::GkeonpremV1::VmwareAdminPrivateRegistryConfig::Representation
       
+          property :proxy, as: 'proxy', class: Google::Apis::GkeonpremV1::VmwareAdminProxy, decorator: Google::Apis::GkeonpremV1::VmwareAdminProxy::Representation
+      
           property :reconciling, as: 'reconciling'
           property :state, as: 'state'
           property :status, as: 'status', class: Google::Apis::GkeonpremV1::ResourceStatus, decorator: Google::Apis::GkeonpremV1::ResourceStatus::Representation
@@ -2147,6 +2155,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
           property :ca_cert, as: 'caCert'
+        end
+      end
+      
+      class VmwareAdminProxy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :no_proxy, as: 'noProxy'
+          property :url, as: 'url'
         end
       end
       
