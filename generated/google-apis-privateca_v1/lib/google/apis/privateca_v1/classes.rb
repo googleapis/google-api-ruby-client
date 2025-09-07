@@ -365,6 +365,11 @@ module Google
       class CaPool
         include Google::Apis::Core::Hashable
       
+        # The configuration used for encrypting data at rest.
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::PrivatecaV1::EncryptionSpec]
+        attr_accessor :encryption_spec
+      
         # Defines controls over all certificate issuance within a CaPool.
         # Corresponds to the JSON property `issuancePolicy`
         # @return [Google::Apis::PrivatecaV1::IssuancePolicy]
@@ -400,6 +405,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @issuance_policy = args[:issuance_policy] if args.key?(:issuance_policy)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -1194,6 +1200,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # The configuration used for encrypting data at rest.
+      class EncryptionSpec
+        include Google::Apis::Core::Hashable
+      
+        # The resource name for a Cloud KMS key in the format `projects/*/locations/*/
+        # keyRings/*/cryptoKeys/*`.
+        # Corresponds to the JSON property `cloudKmsKey`
+        # @return [String]
+        attr_accessor :cloud_kms_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_kms_key = args[:cloud_kms_key] if args.key?(:cloud_kms_key)
         end
       end
       
@@ -2296,32 +2322,6 @@ module Google
           @encoding_format = args[:encoding_format] if args.key?(:encoding_format)
           @publish_ca_cert = args[:publish_ca_cert] if args.key?(:publish_ca_cert)
           @publish_crl = args[:publish_crl] if args.key?(:publish_crl)
-        end
-      end
-      
-      # Operation metadata returned by the CLH during resource state reconciliation.
-      class ReconciliationOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # DEPRECATED. Use exclusive_action instead.
-        # Corresponds to the JSON property `deleteResource`
-        # @return [Boolean]
-        attr_accessor :delete_resource
-        alias_method :delete_resource?, :delete_resource
-      
-        # Excluisive action returned by the CLH.
-        # Corresponds to the JSON property `exclusiveAction`
-        # @return [String]
-        attr_accessor :exclusive_action
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @delete_resource = args[:delete_resource] if args.key?(:delete_resource)
-          @exclusive_action = args[:exclusive_action] if args.key?(:exclusive_action)
         end
       end
       
