@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OAuthInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Oauth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrgPolicyViolationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -278,6 +290,8 @@ module Google
           collection :access_levels, as: 'accessLevels'
           collection :audiences, as: 'audiences'
           hash :claims, as: 'claims'
+          property :oauth, as: 'oauth', class: Google::Apis::ServicecontrolV2::Oauth, decorator: Google::Apis::ServicecontrolV2::Oauth::Representation
+      
           property :presenter, as: 'presenter'
           property :principal, as: 'principal'
         end
@@ -287,6 +301,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authority_selector, as: 'authoritySelector'
+          hash :loggable_short_lived_credential, as: 'loggableShortLivedCredential'
+          property :oauth_info, as: 'oauthInfo', class: Google::Apis::ServicecontrolV2::OAuthInfo, decorator: Google::Apis::ServicecontrolV2::OAuthInfo::Representation
+      
           property :principal_email, as: 'principalEmail'
           property :principal_subject, as: 'principalSubject'
           collection :service_account_delegation_info, as: 'serviceAccountDelegationInfo', class: Google::Apis::ServicecontrolV2::ServiceAccountDelegationInfo, decorator: Google::Apis::ServicecontrolV2::ServiceAccountDelegationInfo::Representation
@@ -337,6 +354,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :principal_email, as: 'principalEmail'
           hash :service_metadata, as: 'serviceMetadata'
+        end
+      end
+      
+      class OAuthInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :oauth_client_id, as: 'oauthClientId'
+        end
+      end
+      
+      class Oauth
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
         end
       end
       

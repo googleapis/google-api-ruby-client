@@ -326,6 +326,11 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :claims
       
+        # This message defines attributes associated with OAuth credentials.
+        # Corresponds to the JSON property `oauth`
+        # @return [Google::Apis::ServicecontrolV2::Oauth]
+        attr_accessor :oauth
+      
         # The authorized presenter of the credential. Reflects the optional Authorized
         # Presenter (`azp`) claim within a JWT or the OAuth client id. For example, a
         # Google Cloud Platform client id looks as follows: "123456789012.apps.
@@ -351,6 +356,7 @@ module Google
           @access_levels = args[:access_levels] if args.key?(:access_levels)
           @audiences = args[:audiences] if args.key?(:audiences)
           @claims = args[:claims] if args.key?(:claims)
+          @oauth = args[:oauth] if args.key?(:oauth)
           @presenter = args[:presenter] if args.key?(:presenter)
           @principal = args[:principal] if args.key?(:principal)
         end
@@ -365,6 +371,20 @@ module Google
         # Corresponds to the JSON property `authoritySelector`
         # @return [String]
         attr_accessor :authority_selector
+      
+        # Converted from "identity_cloudgaia.AuditLoggableShortLivedCredential" proto.
+        # This message will be used by security, detection and response team. For
+        # context please refer to go/cg:short-lived-credential-logging. When the JSON
+        # object represented here has a proto equivalent, the proto name will be
+        # indicated in the `@type` property.
+        # Corresponds to the JSON property `loggableShortLivedCredential`
+        # @return [Hash<String,Object>]
+        attr_accessor :loggable_short_lived_credential
+      
+        # OAuth related information about the request.
+        # Corresponds to the JSON property `oauthInfo`
+        # @return [Google::Apis::ServicecontrolV2::OAuthInfo]
+        attr_accessor :oauth_info
       
         # The email address of the authenticated user (or service account on behalf of
         # third party principal) making the request. For third party identity callers,
@@ -421,6 +441,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authority_selector = args[:authority_selector] if args.key?(:authority_selector)
+          @loggable_short_lived_credential = args[:loggable_short_lived_credential] if args.key?(:loggable_short_lived_credential)
+          @oauth_info = args[:oauth_info] if args.key?(:oauth_info)
           @principal_email = args[:principal_email] if args.key?(:principal_email)
           @principal_subject = args[:principal_subject] if args.key?(:principal_subject)
           @service_account_delegation_info = args[:service_account_delegation_info] if args.key?(:service_account_delegation_info)
@@ -589,6 +611,47 @@ module Google
         def update!(**args)
           @principal_email = args[:principal_email] if args.key?(:principal_email)
           @service_metadata = args[:service_metadata] if args.key?(:service_metadata)
+        end
+      end
+      
+      # OAuth related information about the request.
+      class OAuthInfo
+        include Google::Apis::Core::Hashable
+      
+        # The OAuth client ID of the 1P or 3P application acting on behalf of the user.
+        # Corresponds to the JSON property `oauthClientId`
+        # @return [String]
+        attr_accessor :oauth_client_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oauth_client_id = args[:oauth_client_id] if args.key?(:oauth_client_id)
+        end
+      end
+      
+      # This message defines attributes associated with OAuth credentials.
+      class Oauth
+        include Google::Apis::Core::Hashable
+      
+        # The optional OAuth client ID. This is the unique public identifier issued by
+        # an authorization server to a registered client application. Empty string is
+        # equivalent to no oauth client id. WARNING: This is for MCP tools/call and
+        # tools/list authorization and not for general use.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
         end
       end
       
