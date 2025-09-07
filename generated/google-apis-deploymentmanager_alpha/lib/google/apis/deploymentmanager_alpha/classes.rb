@@ -1081,7 +1081,7 @@ module Google
         # @return [Google::Apis::DeploymentmanagerAlpha::Policy]
         attr_accessor :policy
       
-        # 
+        # Update mask for the policy.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
