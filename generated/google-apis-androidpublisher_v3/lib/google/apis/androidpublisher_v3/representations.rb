@@ -406,6 +406,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelSubscriptionPurchaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelSubscriptionPurchaseResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelSurveyResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -413,6 +425,12 @@ module Google
       end
       
       class CanceledStateContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancellationContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1175,6 +1193,12 @@ module Google
       end
       
       class Price
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PriceStepUpConsentDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2122,6 +2146,8 @@ module Google
       
           property :price_change_details, as: 'priceChangeDetails', class: Google::Apis::AndroidpublisherV3::SubscriptionItemPriceChangeDetails, decorator: Google::Apis::AndroidpublisherV3::SubscriptionItemPriceChangeDetails::Representation
       
+          property :price_step_up_consent_details, as: 'priceStepUpConsentDetails', class: Google::Apis::AndroidpublisherV3::PriceStepUpConsentDetails, decorator: Google::Apis::AndroidpublisherV3::PriceStepUpConsentDetails::Representation
+      
           property :recurring_price, as: 'recurringPrice', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
       
         end
@@ -2421,6 +2447,20 @@ module Google
         end
       end
       
+      class CancelSubscriptionPurchaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancellation_context, as: 'cancellationContext', class: Google::Apis::AndroidpublisherV3::CancellationContext, decorator: Google::Apis::AndroidpublisherV3::CancellationContext::Representation
+      
+        end
+      end
+      
+      class CancelSubscriptionPurchaseResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CancelSurveyResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2440,6 +2480,13 @@ module Google
       
           property :user_initiated_cancellation, as: 'userInitiatedCancellation', class: Google::Apis::AndroidpublisherV3::UserInitiatedCancellation, decorator: Google::Apis::AndroidpublisherV3::UserInitiatedCancellation::Representation
       
+        end
+      end
+      
+      class CancellationContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancellation_type, as: 'cancellationType'
         end
       end
       
@@ -3714,6 +3761,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :currency, as: 'currency'
           property :price_micros, as: 'priceMicros'
+        end
+      end
+      
+      class PriceStepUpConsentDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consent_deadline_time, as: 'consentDeadlineTime'
+          property :new_price, as: 'newPrice', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :state, as: 'state'
         end
       end
       
