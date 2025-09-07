@@ -994,6 +994,44 @@ module Google
       class GoogleFirebaseAppcheckV1betaPlayIntegrityConfig
         include Google::Apis::Core::Hashable
       
+        # A settings object specifying account requirements for Android devices running
+        # your app. These settings correspond to requirements on the [**account details**
+        # field](https://developer.android.com/google/play/integrity/verdicts#account-
+        # details-field) obtained from the Play Integrity API. See the [default
+        # responses table](https://developer.android.com/google/play/integrity/setup#
+        # default) for a quick summary. The default values for these settings work for
+        # most apps, and are recommended.
+        # Corresponds to the JSON property `accountDetails`
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAccountDetails]
+        attr_accessor :account_details
+      
+        # A settings object specifying application integrity requirements for Android
+        # devices running your app. These settings correspond to requirements on the [**
+        # application integrity** field](https://developer.android.com/google/play/
+        # integrity/verdicts#application-integrity-field) obtained from the Play
+        # Integrity API. See the [default responses table](https://developer.android.com/
+        # google/play/integrity/setup#default) for a quick summary. The default values
+        # for these settings work for most apps, and are recommended.
+        # Corresponds to the JSON property `appIntegrity`
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAppIntegrity]
+        attr_accessor :app_integrity
+      
+        # A settings object specifying device integrity requirements for Android devices
+        # running your app. These settings correspond to requirements on the [**device
+        # integrity** field](https://developer.android.com/google/play/integrity/
+        # verdicts#device-integrity-field) obtained from the Play Integrity API. See the
+        # [default responses table](https://developer.android.com/google/play/integrity/
+        # setup#default) for a quick summary. Warning: There are also [conditional](
+        # https://developer.android.com/google/play/integrity/setup#conditional) as well
+        # as [optional](https://developer.android.com/google/play/integrity/setup#
+        # optional_device_information) responses that you can receive, but requires
+        # additional explicit opt-in from you. The App Check API is **not** responsible
+        # for any such opt-ins. The default values for these settings work for most apps,
+        # and are recommended.
+        # Corresponds to the JSON property `deviceIntegrity`
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity]
+        attr_accessor :device_integrity
+      
         # Required. The relative resource name of the Play Integrity configuration
         # object, in the format: ``` projects/`project_number`/apps/`app_id`/
         # playIntegrityConfig ```
@@ -1014,8 +1052,112 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_details = args[:account_details] if args.key?(:account_details)
+          @app_integrity = args[:app_integrity] if args.key?(:app_integrity)
+          @device_integrity = args[:device_integrity] if args.key?(:device_integrity)
           @name = args[:name] if args.key?(:name)
           @token_ttl = args[:token_ttl] if args.key?(:token_ttl)
+        end
+      end
+      
+      # A settings object specifying account requirements for Android devices running
+      # your app. These settings correspond to requirements on the [**account details**
+      # field](https://developer.android.com/google/play/integrity/verdicts#account-
+      # details-field) obtained from the Play Integrity API. See the [default
+      # responses table](https://developer.android.com/google/play/integrity/setup#
+      # default) for a quick summary. The default values for these settings work for
+      # most apps, and are recommended.
+      class GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAccountDetails
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether the caller must have received the [`LICENSED` verdict](https:
+        # //developer.android.com/google/play/integrity/verdicts#account-details-field).
+        # For additional details about scenarios where your users will receive this `
+        # LICENSED` label, see [the default responses table](https://developer.android.
+        # com/google/play/integrity/setup#default). If set to `true`, apps without the `
+        # LICENSED` app licensing verdict will be rejected. If set to `false`, any app
+        # licensing verdict is allowed. The default value is `false`.
+        # Corresponds to the JSON property `requireLicensed`
+        # @return [Boolean]
+        attr_accessor :require_licensed
+        alias_method :require_licensed?, :require_licensed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @require_licensed = args[:require_licensed] if args.key?(:require_licensed)
+        end
+      end
+      
+      # A settings object specifying application integrity requirements for Android
+      # devices running your app. These settings correspond to requirements on the [**
+      # application integrity** field](https://developer.android.com/google/play/
+      # integrity/verdicts#application-integrity-field) obtained from the Play
+      # Integrity API. See the [default responses table](https://developer.android.com/
+      # google/play/integrity/setup#default) for a quick summary. The default values
+      # for these settings work for most apps, and are recommended.
+      class GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAppIntegrity
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether your running app is allowed to have the `
+        # UNRECOGNIZED_VERSION` [app recognition verdict](https://developer.android.com/
+        # google/play/integrity/verdicts#application-integrity-field). Note that the app
+        # recognition verdict `PLAY_RECOGNIZED` is a strong, comprehensive integrity
+        # signal that takes into account various other signals, including conditional
+        # and optional device integrity responses that you have opted into. If your app
+        # is published off-Play, this field should be set to `true` to allow instances
+        # of your app installed from off-Play sources to function. If set to `false`,
+        # only `PLAY_RECOGNIZED` verdicts are allowed, and both `UNRECOGNIZED_VERSION`
+        # and `UNEVALUATED` will be rejected. If set to `true`, any app recognition
+        # verdict is allowed. The default value is `false`.
+        # Corresponds to the JSON property `allowUnrecognizedVersion`
+        # @return [Boolean]
+        attr_accessor :allow_unrecognized_version
+        alias_method :allow_unrecognized_version?, :allow_unrecognized_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_unrecognized_version = args[:allow_unrecognized_version] if args.key?(:allow_unrecognized_version)
+        end
+      end
+      
+      # A settings object specifying device integrity requirements for Android devices
+      # running your app. These settings correspond to requirements on the [**device
+      # integrity** field](https://developer.android.com/google/play/integrity/
+      # verdicts#device-integrity-field) obtained from the Play Integrity API. See the
+      # [default responses table](https://developer.android.com/google/play/integrity/
+      # setup#default) for a quick summary. Warning: There are also [conditional](
+      # https://developer.android.com/google/play/integrity/setup#conditional) as well
+      # as [optional](https://developer.android.com/google/play/integrity/setup#
+      # optional_device_information) responses that you can receive, but requires
+      # additional explicit opt-in from you. The App Check API is **not** responsible
+      # for any such opt-ins. The default values for these settings work for most apps,
+      # and are recommended.
+      class GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the minimum device integrity level in order for the device to be
+        # considered valid. Any device with a device recognition verdict lower than this
+        # level will be rejected. If this is unspecified, the default level is `
+        # NO_INTEGRITY`.
+        # Corresponds to the JSON property `minDeviceRecognitionLevel`
+        # @return [String]
+        attr_accessor :min_device_recognition_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min_device_recognition_level = args[:min_device_recognition_level] if args.key?(:min_device_recognition_level)
         end
       end
       
@@ -1102,6 +1244,14 @@ module Google
       class GoogleFirebaseAppcheckV1betaRecaptchaConfig
         include Google::Apis::Core::Hashable
       
+        # Specifies a minimum score required for a reCAPTCHA token to be considered
+        # valid. If its score is greater than or equal to this value, it will be
+        # accepted; otherwise, it will be rejected. The value must be between 0.0 and 1.
+        # 0. The default value is 0.5.
+        # Corresponds to the JSON property `minValidScore`
+        # @return [Float]
+        attr_accessor :min_valid_score
+      
         # Required. The relative resource name of the reCAPTCHA v3 configuration object,
         # in the format: ``` projects/`project_number`/apps/`app_id`/recaptchaConfig ```
         # Corresponds to the JSON property `name`
@@ -1136,6 +1286,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @min_valid_score = args[:min_valid_score] if args.key?(:min_valid_score)
           @name = args[:name] if args.key?(:name)
           @site_secret = args[:site_secret] if args.key?(:site_secret)
           @site_secret_set = args[:site_secret_set] if args.key?(:site_secret_set)
@@ -1156,6 +1307,16 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # A settings object specifying risk tolerance and requirements for your
+        # application. These settings correspond to requirements on the [**`riskAnalysis`
+        # **](https://cloud.google.com/recaptcha/docs/interpret-assessment-website#
+        # interpret_assessment) tuple in the assessment obtained from reCAPTCHA
+        # Enterprise. The default values for these settings work for most apps, and are
+        # recommended.
+        # Corresponds to the JSON property `riskAnalysis`
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigRiskAnalysis]
+        attr_accessor :risk_analysis
       
         # The score-based site key [created in reCAPTCHA Enterprise](https://cloud.
         # google.com/recaptcha-enterprise/docs/create-key#creating_a_site_key) used to [
@@ -1181,8 +1342,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @risk_analysis = args[:risk_analysis] if args.key?(:risk_analysis)
           @site_key = args[:site_key] if args.key?(:site_key)
           @token_ttl = args[:token_ttl] if args.key?(:token_ttl)
+        end
+      end
+      
+      # A settings object specifying risk tolerance and requirements for your
+      # application. These settings correspond to requirements on the [**`riskAnalysis`
+      # **](https://cloud.google.com/recaptcha/docs/interpret-assessment-website#
+      # interpret_assessment) tuple in the assessment obtained from reCAPTCHA
+      # Enterprise. The default values for these settings work for most apps, and are
+      # recommended.
+      class GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigRiskAnalysis
+        include Google::Apis::Core::Hashable
+      
+        # Specifies a minimum score required for a reCAPTCHA token to be considered
+        # valid. If its score is greater than or equal to this value, it will be
+        # accepted; otherwise, it will be rejected. The value must be between 0.0 and 1.
+        # 0. The default value is 0.5.
+        # Corresponds to the JSON property `minValidScore`
+        # @return [Float]
+        attr_accessor :min_valid_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min_valid_score = args[:min_valid_score] if args.key?(:min_valid_score)
         end
       end
       
@@ -1192,6 +1381,14 @@ module Google
       # AppCheckToken`, such as its ttl.
       class GoogleFirebaseAppcheckV1betaRecaptchaV3Config
         include Google::Apis::Core::Hashable
+      
+        # Specifies a minimum score required for a reCAPTCHA token to be considered
+        # valid. If its score is greater than or equal to this value, it will be
+        # accepted; otherwise, it will be rejected. The value must be between 0.0 and 1.
+        # 0. The default value is 0.5.
+        # Corresponds to the JSON property `minValidScore`
+        # @return [Float]
+        attr_accessor :min_valid_score
       
         # Required. The relative resource name of the reCAPTCHA v3 configuration object,
         # in the format: ``` projects/`project_number`/apps/`app_id`/recaptchaV3Config ``
@@ -1228,6 +1425,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @min_valid_score = args[:min_valid_score] if args.key?(:min_valid_score)
           @name = args[:name] if args.key?(:name)
           @site_secret = args[:site_secret] if args.key?(:site_secret)
           @site_secret_set = args[:site_secret_set] if args.key?(:site_secret_set)
