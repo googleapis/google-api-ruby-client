@@ -1394,6 +1394,37 @@ module Google
         end
       end
       
+      # For display only. Metadata associated with a hybrid subnet.
+      class HybridSubnetInfo
+        include Google::Apis::Core::Hashable
+      
+        # Name of a hybrid subnet.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Name of a Google Cloud region where the hybrid subnet is configured.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # URI of a hybrid subnet.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @region = args[:region] if args.key?(:region)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # For display only. Metadata associated with a Compute Engine instance.
       class InstanceInfo
         include Google::Apis::Core::Hashable
@@ -1494,10 +1525,20 @@ module Google
         # @return [String]
         attr_accessor :interconnect_uri
       
+        # Appliance IP address that was matched for L2_DEDICATED attachments.
+        # Corresponds to the JSON property `l2AttachmentMatchedIpAddress`
+        # @return [String]
+        attr_accessor :l2_attachment_matched_ip_address
+      
         # Name of a Google Cloud region where the Interconnect attachment is configured.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
+      
+        # The type of interconnect attachment this is.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
       
         # URI of an Interconnect attachment.
         # Corresponds to the JSON property `uri`
@@ -1513,7 +1554,9 @@ module Google
           @cloud_router_uri = args[:cloud_router_uri] if args.key?(:cloud_router_uri)
           @display_name = args[:display_name] if args.key?(:display_name)
           @interconnect_uri = args[:interconnect_uri] if args.key?(:interconnect_uri)
+          @l2_attachment_matched_ip_address = args[:l2_attachment_matched_ip_address] if args.key?(:l2_attachment_matched_ip_address)
           @region = args[:region] if args.key?(:region)
+          @type = args[:type] if args.key?(:type)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -3490,6 +3533,11 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1::GoogleServiceInfo]
         attr_accessor :google_service
       
+        # For display only. Metadata associated with a hybrid subnet.
+        # Corresponds to the JSON property `hybridSubnet`
+        # @return [Google::Apis::NetworkmanagementV1::HybridSubnetInfo]
+        attr_accessor :hybrid_subnet
+      
         # For display only. Metadata associated with a Compute Engine instance.
         # Corresponds to the JSON property `instance`
         # @return [Google::Apis::NetworkmanagementV1::InstanceInfo]
@@ -3603,6 +3651,7 @@ module Google
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @gke_master = args[:gke_master] if args.key?(:gke_master)
           @google_service = args[:google_service] if args.key?(:google_service)
+          @hybrid_subnet = args[:hybrid_subnet] if args.key?(:hybrid_subnet)
           @instance = args[:instance] if args.key?(:instance)
           @interconnect_attachment = args[:interconnect_attachment] if args.key?(:interconnect_attachment)
           @load_balancer = args[:load_balancer] if args.key?(:load_balancer)

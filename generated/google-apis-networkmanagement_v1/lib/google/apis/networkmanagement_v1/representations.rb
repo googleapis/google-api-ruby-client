@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HybridSubnetInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -797,6 +803,15 @@ module Google
         end
       end
       
+      class HybridSubnetInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :region, as: 'region'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class InstanceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -820,7 +835,9 @@ module Google
           property :cloud_router_uri, as: 'cloudRouterUri'
           property :display_name, as: 'displayName'
           property :interconnect_uri, as: 'interconnectUri'
+          property :l2_attachment_matched_ip_address, as: 'l2AttachmentMatchedIpAddress'
           property :region, as: 'region'
+          property :type, as: 'type'
           property :uri, as: 'uri'
         end
       end
@@ -1306,6 +1323,8 @@ module Google
           property :gke_master, as: 'gkeMaster', class: Google::Apis::NetworkmanagementV1::GkeMasterInfo, decorator: Google::Apis::NetworkmanagementV1::GkeMasterInfo::Representation
       
           property :google_service, as: 'googleService', class: Google::Apis::NetworkmanagementV1::GoogleServiceInfo, decorator: Google::Apis::NetworkmanagementV1::GoogleServiceInfo::Representation
+      
+          property :hybrid_subnet, as: 'hybridSubnet', class: Google::Apis::NetworkmanagementV1::HybridSubnetInfo, decorator: Google::Apis::NetworkmanagementV1::HybridSubnetInfo::Representation
       
           property :instance, as: 'instance', class: Google::Apis::NetworkmanagementV1::InstanceInfo, decorator: Google::Apis::NetworkmanagementV1::InstanceInfo::Representation
       
