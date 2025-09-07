@@ -1741,7 +1741,8 @@ module Google
       class PolicyDns64ConfigScope
         include Google::Apis::Core::Hashable
       
-        # Controls whether DNS64 is enabled globally at the network level.
+        # Controls whether DNS64 is enabled globally for all networks bound to the
+        # policy.
         # Corresponds to the JSON property `allQueries`
         # @return [Boolean]
         attr_accessor :all_queries
