@@ -1739,25 +1739,26 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a MulticloudDataTransferConfig in a given project and location.
+        # Creates a `MulticloudDataTransferConfig` resource in a specified project and
+        # location.
         # @param [String] parent
-        #   Required. The parent resource's name
+        #   Required. The name of the parent resource.
         # @param [Google::Apis::NetworkconnectivityV1::MulticloudDataTransferConfig] multicloud_data_transfer_config_object
         # @param [String] multicloud_data_transfer_config_id
-        #   Required. The ID to use for the MulticloudDataTransferConfig, which will
-        #   become the final component of the MulticloudDataTransferConfig's resource name.
+        #   Required. The ID to use for the `MulticloudDataTransferConfig` resource, which
+        #   becomes the final component of the `MulticloudDataTransferConfig` resource
+        #   name.
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate MulticloudDataTransferConfigs. The request ID must be a valid UUID
-        #   with the exception that zero UUID is not supported (00000000-0000-0000-0000-
-        #   000000000000).
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server can ignore the request if it
+        #   has already been completed. The server waits for at least 60 minutes since the
+        #   first request. For example, consider a situation where you make an initial
+        #   request and the request times out. If you make the request again with the same
+        #   request ID, the server can check if original operation with the same request
+        #   ID was received, and if so, can ignore the second request. This prevents
+        #   clients from accidentally creating duplicate `MulticloudDataTransferConfig`
+        #   resources. The request ID must be a valid UUID with the exception that zero
+        #   UUID (00000000-0000-0000-0000-000000000000) isn't supported.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1789,24 +1790,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single MulticloudDataTransferConfig.
+        # Deletes a `MulticloudDataTransferConfig` resource.
         # @param [String] name
-        #   Required. The name of the MulticloudDataTransferConfig resource to delete.
+        #   Required. The name of the `MulticloudDataTransferConfig` resource to delete.
         # @param [String] etag
-        #   Optional. The etag is computed by the server, and may be sent on update and
-        #   delete requests to ensure the client has an up-to-date value before proceeding.
+        #   Optional. The etag is computed by the server, and might be sent with update
+        #   and delete requests so that the client has an up-to-date value before
+        #   proceeding.
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate MulticloudDataTransferConfigs. The request ID must be a valid UUID
-        #   with the exception that zero UUID is not supported (00000000-0000-0000-0000-
-        #   000000000000).
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server can ignore the request if it
+        #   has already been completed. The server waits for at least 60 minutes since the
+        #   first request. For example, consider a situation where you make an initial
+        #   request and the request times out. If you make the request again with the same
+        #   request ID, the server can check if original operation with the same request
+        #   ID was received, and if so, can ignore the second request. This prevents
+        #   clients from accidentally creating duplicate `MulticloudDataTransferConfig`
+        #   resources. The request ID must be a valid UUID with the exception that zero
+        #   UUID (00000000-0000-0000-0000-000000000000) isn't supported.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1836,9 +1837,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single MulticloudDataTransferConfig.
+        # Gets the details of a `MulticloudDataTransferConfig` resource.
         # @param [String] name
-        #   Required. Name of the MulticloudDataTransferConfig to get.
+        #   Required. The name of the `MulticloudDataTransferConfig` resource to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1866,20 +1867,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists MulticloudDataTransferConfigs in a given project and location.
+        # Lists the `MulticloudDataTransferConfig` resources in a specified project and
+        # location.
         # @param [String] parent
-        #   Required. The parent resource's name
+        #   Required. The name of the parent resource.
         # @param [String] filter
-        #   Optional. A filter expression that filters the results listed in the response.
+        #   Optional. An expression that filters the results listed in the response.
         # @param [String] order_by
-        #   Optional. Sort the results by a certain order.
+        #   Optional. The sort order of the results.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results per page that should be returned.
+        #   Optional. The maximum number of results listed per page.
         # @param [String] page_token
         #   Optional. The page token.
         # @param [Boolean] return_partial_success
-        #   Optional. If true, allow partial responses for multi-regional Aggregated List
-        #   requests.
+        #   Optional. If `true`, allows partial responses for multi-regional aggregated
+        #   list requests.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1912,30 +1914,30 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a MulticloudDataTransferConfig in a given project and location.
+        # Updates a `MulticloudDataTransferConfig` resource in a specified project and
+        # location.
         # @param [String] name
-        #   Identifier. The name of the MulticloudDataTransferConfig resource. Format: `
+        #   Identifier. The name of the `MulticloudDataTransferConfig` resource. Format: `
         #   projects/`project`/locations/`location`/multicloudDataTransferConfigs/`
         #   multicloud_data_transfer_config``.
         # @param [Google::Apis::NetworkconnectivityV1::MulticloudDataTransferConfig] multicloud_data_transfer_config_object
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes after the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate MulticloudDataTransferConfigs. The request ID must be a valid UUID
-        #   with the exception that zero UUID is not supported (00000000-0000-0000-0000-
-        #   000000000000).
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server can ignore the request if it
+        #   has already been completed. The server waits for at least 60 minutes since the
+        #   first request. For example, consider a situation where you make an initial
+        #   request and the request times out. If you make the request again with the same
+        #   request ID, the server can check if original operation with the same request
+        #   ID was received, and if so, can ignore the second request. This prevents
+        #   clients from accidentally creating duplicate `MulticloudDataTransferConfig`
+        #   resources. The request ID must be a valid UUID with the exception that zero
+        #   UUID (00000000-0000-0000-0000-000000000000) isn't supported.
         # @param [String] update_mask
-        #   Optional. Field mask is used to specify the fields to be overwritten in the
-        #   MulticloudDataTransferConfig resource by the update. The fields specified in
-        #   the update_mask are relative to the resource, not the full request. A field
-        #   will be overwritten if it is in the mask. If the user does not provide a mask
-        #   then all fields will be overwritten.
+        #   Optional. `FieldMask` is used to specify the fields in the `
+        #   MulticloudDataTransferConfig` resource to be overwritten by the update. The
+        #   fields specified in `update_mask` are relative to the resource, not the full
+        #   request. A field is overwritten if it is in the mask. If you don't specify a
+        #   mask, all fields are overwritten.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1967,24 +1969,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a Destination in a given project and location.
+        # Creates a `Destination` resource in a specified project and location.
         # @param [String] parent
-        #   Required. The parent resource's name
+        #   Required. The name of the parent resource.
         # @param [Google::Apis::NetworkconnectivityV1::Destination] destination_object
         # @param [String] destination_id
-        #   Required. The ID to use for the Destination, which will become the final
-        #   component of the Destination's resource name.
+        #   Required. The ID to use for the `Destination` resource, which becomes the
+        #   final component of the `Destination` resource name.
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate Destinations. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server can ignore the request if it
+        #   has already been completed. The server waits for at least 60 minutes since the
+        #   first request. For example, consider a situation where you make an initial
+        #   request and the request times out. If you make the request again with the same
+        #   request ID, the server can check if original operation with the same request
+        #   ID was received, and if so, can ignore the second request. This prevents
+        #   clients from accidentally creating duplicate `Destination` resources. The
+        #   request ID must be a valid UUID with the exception that zero UUID (00000000-
+        #   0000-0000-0000-000000000000) isn't supported.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2016,23 +2018,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single Destination.
+        # Deletes a `Destination` resource.
         # @param [String] name
-        #   Required. The name of the Destination resource to delete.
+        #   Required. The name of the `Destination` resource to delete.
         # @param [String] etag
-        #   Optional. The etag is computed by the server, and may be sent on update and
-        #   delete requests to ensure the client has an up-to-date value before proceeding.
+        #   Optional. The etag is computed by the server, and might be sent with update
+        #   and delete requests so that the client has an up-to-date value before
+        #   proceeding.
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. The request ID must be a valid UUID with the
-        #   exception that zero UUID is not supported (00000000-0000-0000-0000-
-        #   000000000000).
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server can ignore the request if it
+        #   has already been completed. The server waits for at least 60 minutes since the
+        #   first request. For example, consider a situation where you make an initial
+        #   request and the request times out. If you make the request again with the same
+        #   request ID, the server can check if original operation with the same request
+        #   ID was received, and if so, can ignore the second request. The request ID must
+        #   be a valid UUID with the exception that zero UUID (00000000-0000-0000-0000-
+        #   000000000000) isn't supported.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2062,9 +2064,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single Destination.
+        # Gets the details of a `Destination` resource.
         # @param [String] name
-        #   Required. Name of the Destination to get.
+        #   Required. The name of the `Destination` resource to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2092,20 +2094,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Destinations in a given project and location.
+        # Lists the `Destination` resources in a specified project and location.
         # @param [String] parent
-        #   Required. The parent resource's name
+        #   Required. The name of the parent resource.
         # @param [String] filter
-        #   Optional. A filter expression that filters the results listed in the response.
+        #   Optional. An expression that filters the results listed in the response.
         # @param [String] order_by
-        #   Optional. Sort the results by a certain order.
+        #   Optional. The sort order of the results.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results per page that should be returned.
+        #   Optional. The maximum number of results listed per page.
         # @param [String] page_token
         #   Optional. The page token.
         # @param [Boolean] return_partial_success
-        #   Optional. If true, allow partial responses for multi-regional Aggregated List
-        #   requests.
+        #   Optional. If `true`, allow partial responses for multi-regional aggregated
+        #   list requests.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2138,29 +2140,27 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a Destination in a given project and location.
+        # Updates a `Destination` resource in a specified project and location.
         # @param [String] name
-        #   Identifier. The name of the Destination resource. Format: `projects/`project`/
-        #   locations/`location`/multicloudDataTransferConfigs/`
+        #   Identifier. The name of the `Destination` resource. Format: `projects/`project`
+        #   /locations/`location`/multicloudDataTransferConfigs/`
         #   multicloud_data_transfer_config`/destinations/`destination``.
         # @param [Google::Apis::NetworkconnectivityV1::Destination] destination_object
         # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. The request ID must be a valid UUID with the
-        #   exception that zero UUID is not supported (00000000-0000-0000-0000-
-        #   000000000000).
+        #   Optional. A request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server can ignore the request if it
+        #   has already been completed. The server waits for at least 60 minutes since the
+        #   first request. For example, consider a situation where you make an initial
+        #   request and the request times out. If you make the request again with the same
+        #   request ID, the server can check if original operation with the same request
+        #   ID was received, and if so, can ignore the second request. The request ID must
+        #   be a valid UUID with the exception that zero UUID (00000000-0000-0000-0000-
+        #   000000000000) isn't supported.
         # @param [String] update_mask
-        #   Optional. Field mask is used to specify the fields to be overwritten in the
-        #   Destination resource by the update. The fields specified in the update_mask
-        #   are relative to the resource, not the full request. A field will be
-        #   overwritten if it is in the mask. If the user does not provide a mask then all
-        #   fields will be overwritten.
+        #   Optional. `FieldMask is used to specify the fields to be overwritten in the `
+        #   Destination` resource by the update. The fields specified in `update_mask` are
+        #   relative to the resource, not the full request. A field is overwritten if it
+        #   is in the mask. If you don't specify a mask, all fields are overwritten.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2192,7 +2192,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single MulticloudDataTransferSupportedServices.
+        # Gets the details of a service that is supported for Data Transfer Essentials.
         # @param [String] name
         #   Required. The name of the service.
         # @param [String] fields
@@ -2222,12 +2222,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the supported services for Multicloud Data Transfer. This is a
-        # passthrough method.
+        # Lists the services in the project for a region that are supported for Data
+        # Transfer Essentials.
         # @param [String] parent
-        #   Required. The parent resource's name
+        #   Required. The name of the parent resource.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results per page that should be returned.
+        #   Optional. The maximum number of results listed per page.
         # @param [String] page_token
         #   Optional. The page token.
         # @param [String] fields
@@ -2558,6 +2558,79 @@ module Google
           command = make_simple_command(:get, 'v1/{+parent}/regionalEndpoints', options)
           command.response_representation = Google::Apis::NetworkconnectivityV1::ListRegionalEndpointsResponse::Representation
           command.response_class = Google::Apis::NetworkconnectivityV1::ListRegionalEndpointsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single RemoteTransportProfile.
+        # @param [String] name
+        #   Required. Name of the resource
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::RemoteTransportProfile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::RemoteTransportProfile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_remote_transport_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::RemoteTransportProfile::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::RemoteTransportProfile
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists RemoteTransportProfiles in a given project and location.
+        # @param [String] parent
+        #   Required. Parent value for ListRemoteTransportProfilesRequest
+        # @param [String] filter
+        #   Optional. Filtering results
+        # @param [String] order_by
+        #   Optional. Hint for how to order the results
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::ListRemoteTransportProfilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::ListRemoteTransportProfilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_remote_transport_profiles(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/remoteTransportProfiles', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::ListRemoteTransportProfilesResponse::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::ListRemoteTransportProfilesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
@@ -3210,6 +3283,18 @@ module Google
         #   Required. The parent resource's name of the ServiceConnectionPolicy. ex.
         #   projects/123/locations/us-east1
         # @param [Google::Apis::NetworkconnectivityV1::ServiceConnectionPolicy] service_connection_policy_object
+        # @param [String] auto_subnetwork_config_alloc_range_space
+        #   Optional. The space where we search for a free range to create a subnetwork.
+        #   It can be narrow down or pick a different space. This is in standard CIDR
+        #   format. If not specified, “10.0.0.0/8” is used. Only eligible for IPV4_ONLY
+        #   and IPV4_IPV6 subnetwork.
+        # @param [String] auto_subnetwork_config_ip_stack
+        #   Optional. The requested IP stack for the subnetwork. If not specified, IPv4 is
+        #   used.
+        # @param [Fixnum] auto_subnetwork_config_prefix_length
+        #   Optional. The desired prefix length for the subnet's IP address range. E.g.,
+        #   24 for a /24. The actual range is allocated from available space. If not
+        #   specified, 24 is used. Only eligible for IPV4_ONLY and IPV4_IPV6 subnetwork.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -3225,6 +3310,8 @@ module Google
         #   Optional. Resource ID (i.e. 'foo' in '[...]/projects/p/locations/l/
         #   serviceConnectionPolicies/foo') See https://google.aip.dev/122#resource-id-
         #   segments Unique per location.
+        # @param [String] subnetwork_mode
+        #   Optional. If this field is not set, USER_PROVIDED is the inferred value to use.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3242,15 +3329,19 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_service_connection_policy(parent, service_connection_policy_object = nil, request_id: nil, service_connection_policy_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_service_connection_policy(parent, service_connection_policy_object = nil, auto_subnetwork_config_alloc_range_space: nil, auto_subnetwork_config_ip_stack: nil, auto_subnetwork_config_prefix_length: nil, request_id: nil, service_connection_policy_id: nil, subnetwork_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/serviceConnectionPolicies', options)
           command.request_representation = Google::Apis::NetworkconnectivityV1::ServiceConnectionPolicy::Representation
           command.request_object = service_connection_policy_object
           command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['autoSubnetworkConfig.allocRangeSpace'] = auto_subnetwork_config_alloc_range_space unless auto_subnetwork_config_alloc_range_space.nil?
+          command.query['autoSubnetworkConfig.ipStack'] = auto_subnetwork_config_ip_stack unless auto_subnetwork_config_ip_stack.nil?
+          command.query['autoSubnetworkConfig.prefixLength'] = auto_subnetwork_config_prefix_length unless auto_subnetwork_config_prefix_length.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['serviceConnectionPolicyId'] = service_connection_policy_id unless service_connection_policy_id.nil?
+          command.query['subnetworkMode'] = subnetwork_mode unless subnetwork_mode.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4054,6 +4145,221 @@ module Google
           command.response_representation = Google::Apis::NetworkconnectivityV1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::NetworkconnectivityV1::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new Transport in a given project and location.
+        # @param [String] parent
+        #   Required. Value for parent.
+        # @param [Google::Apis::NetworkconnectivityV1::Transport] transport_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] transport_id
+        #   Required. Id of the requesting object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_transport(parent, transport_object = nil, request_id: nil, transport_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/transports', options)
+          command.request_representation = Google::Apis::NetworkconnectivityV1::Transport::Representation
+          command.request_object = transport_object
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['transportId'] = transport_id unless transport_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single Transport.
+        # @param [String] name
+        #   Required. Name of the resource
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_transport(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Transport.
+        # @param [String] name
+        #   Required. Name of the resource
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::Transport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::Transport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_transport(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::Transport::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::Transport
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Transports in a given project and location.
+        # @param [String] parent
+        #   Required. Parent value for ListTransportsRequest
+        # @param [String] filter
+        #   Optional. Filtering results
+        # @param [String] order_by
+        #   Optional. Hint for how to order the results
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::ListTransportsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::ListTransportsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_transports(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/transports', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::ListTransportsResponse::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::ListTransportsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single Transport.
+        # @param [String] name
+        #   Identifier. name of resource
+        # @param [Google::Apis::NetworkconnectivityV1::Transport] transport_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   Transport resource by the update. The fields specified in the update_mask are
+        #   relative to the resource, not the full request. A field will be overwritten if
+        #   it is in the mask. If the user does not provide a mask then all fields present
+        #   in the request will be overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_transport(name, transport_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::NetworkconnectivityV1::Transport::Representation
+          command.request_object = transport_object
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
