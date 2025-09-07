@@ -630,6 +630,11 @@ module Google
         # @return [String]
         attr_accessor :kms_key
       
+        # Optional. Labels to represent user-provided metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Maintenance policy per cluster.
         # Corresponds to the JSON property `maintenancePolicy`
         # @return [Google::Apis::RedisV1beta1::ClusterMaintenancePolicy]
@@ -778,6 +783,7 @@ module Google
           @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @labels = args[:labels] if args.key?(:labels)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
           @managed_backup_source = args[:managed_backup_source] if args.key?(:managed_backup_source)

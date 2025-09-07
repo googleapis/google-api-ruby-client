@@ -733,6 +733,7 @@ module Google
           property :gcs_source, as: 'gcsSource', class: Google::Apis::RedisV1beta1::GcsBackupSource, decorator: Google::Apis::RedisV1beta1::GcsBackupSource::Representation
       
           property :kms_key, as: 'kmsKey'
+          hash :labels, as: 'labels'
           property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::RedisV1beta1::ClusterMaintenancePolicy, decorator: Google::Apis::RedisV1beta1::ClusterMaintenancePolicy::Representation
       
           property :maintenance_schedule, as: 'maintenanceSchedule', class: Google::Apis::RedisV1beta1::ClusterMaintenanceSchedule, decorator: Google::Apis::RedisV1beta1::ClusterMaintenanceSchedule::Representation
