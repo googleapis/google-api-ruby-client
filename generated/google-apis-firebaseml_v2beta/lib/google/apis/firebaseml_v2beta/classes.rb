@@ -1141,7 +1141,8 @@ module Google
         # @return [String]
         attr_accessor :response_id
       
-        # Usage metadata about response(s).
+        # Usage metadata about the content generation request and response. This message
+        # provides a detailed breakdown of token usage and other relevant metrics.
         # Corresponds to the JSON property `usageMetadata`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata]
         attr_accessor :usage_metadata
@@ -1192,67 +1193,73 @@ module Google
         end
       end
       
-      # Usage metadata about response(s).
+      # Usage metadata about the content generation request and response. This message
+      # provides a detailed breakdown of token usage and other relevant metrics.
       class GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata
         include Google::Apis::Core::Hashable
       
-        # Output only. List of modalities of the cached content in the request input.
+        # Output only. A detailed breakdown of the token count for each modality in the
+        # cached content.
         # Corresponds to the JSON property `cacheTokensDetails`
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
         attr_accessor :cache_tokens_details
       
-        # Output only. Number of tokens in the cached part in the input (the cached
-        # content).
+        # Output only. The number of tokens in the cached content that was used for this
+        # request.
         # Corresponds to the JSON property `cachedContentTokenCount`
         # @return [Fixnum]
         attr_accessor :cached_content_token_count
       
-        # Number of tokens in the response(s).
+        # The total number of tokens in the generated candidates.
         # Corresponds to the JSON property `candidatesTokenCount`
         # @return [Fixnum]
         attr_accessor :candidates_token_count
       
-        # Output only. List of modalities that were returned in the response.
+        # Output only. A detailed breakdown of the token count for each modality in the
+        # generated candidates.
         # Corresponds to the JSON property `candidatesTokensDetails`
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
         attr_accessor :candidates_tokens_details
       
-        # Number of tokens in the request. When `cached_content` is set, this is still
-        # the total effective prompt size meaning this includes the number of tokens in
-        # the cached content.
+        # The total number of tokens in the prompt. This includes any text, images, or
+        # other media provided in the request. When `cached_content` is set, this also
+        # includes the number of tokens in the cached content.
         # Corresponds to the JSON property `promptTokenCount`
         # @return [Fixnum]
         attr_accessor :prompt_token_count
       
-        # Output only. List of modalities that were processed in the request input.
+        # Output only. A detailed breakdown of the token count for each modality in the
+        # prompt.
         # Corresponds to the JSON property `promptTokensDetails`
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
         attr_accessor :prompt_tokens_details
       
-        # Output only. Number of tokens present in thoughts output.
+        # Output only. The number of tokens that were part of the model's generated "
+        # thoughts" output, if applicable.
         # Corresponds to the JSON property `thoughtsTokenCount`
         # @return [Fixnum]
         attr_accessor :thoughts_token_count
       
-        # Output only. Number of tokens present in tool-use prompt(s).
+        # Output only. The number of tokens in the results from tool executions, which
+        # are provided back to the model as input, if applicable.
         # Corresponds to the JSON property `toolUsePromptTokenCount`
         # @return [Fixnum]
         attr_accessor :tool_use_prompt_token_count
       
-        # Output only. List of modalities that were processed for tool-use request
-        # inputs.
+        # Output only. A detailed breakdown by modality of the token counts from the
+        # results of tool executions, which are provided back to the model as input.
         # Corresponds to the JSON property `toolUsePromptTokensDetails`
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
         attr_accessor :tool_use_prompt_tokens_details
       
-        # Total token count for prompt, response candidates, and tool-use prompts (if
-        # present).
+        # The total number of tokens for the entire request. This is the sum of `
+        # prompt_token_count`, `candidates_token_count`, `tool_use_prompt_token_count`,
+        # and `thoughts_token_count`.
         # Corresponds to the JSON property `totalTokenCount`
         # @return [Fixnum]
         attr_accessor :total_token_count
       
-        # Output only. Traffic type. This shows whether a request consumes Pay-As-You-Go
-        # or Provisioned Throughput quota.
+        # Output only. The traffic type for this request.
         # Corresponds to the JSON property `trafficType`
         # @return [String]
         attr_accessor :traffic_type
@@ -1562,12 +1569,19 @@ module Google
       class GoogleCloudAiplatformV1beta1GoogleMaps
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, include the widget context token in the response.
+        # Corresponds to the JSON property `enableWidget`
+        # @return [Boolean]
+        attr_accessor :enable_widget
+        alias_method :enable_widget?, :enable_widget
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @enable_widget = args[:enable_widget] if args.key?(:enable_widget)
         end
       end
       
@@ -1636,17 +1650,17 @@ module Google
         # @return [String]
         attr_accessor :place_id
       
-        # Text of the chunk.
+        # Text of the place answer.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
       
-        # Title of the chunk.
+        # Title of the place.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
       
-        # URI reference of the chunk.
+        # URI reference of the place.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1669,11 +1683,6 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSources
         include Google::Apis::Core::Hashable
       
-        # A link where users can flag a problem with the generated answer.
-        # Corresponds to the JSON property `flagContentUri`
-        # @return [String]
-        attr_accessor :flag_content_uri
-      
         # Snippets of reviews that are used to generate the answer.
         # Corresponds to the JSON property `reviewSnippets`
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet>]
@@ -1685,39 +1694,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
           @review_snippets = args[:review_snippets] if args.key?(:review_snippets)
-        end
-      end
-      
-      # Author attribution for a photo or review.
-      class GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution
-        include Google::Apis::Core::Hashable
-      
-        # Name of the author of the Photo or Review.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Profile photo URI of the author of the Photo or Review.
-        # Corresponds to the JSON property `photoUri`
-        # @return [String]
-        attr_accessor :photo_uri
-      
-        # URI of the author of the Photo or Review.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @photo_uri = args[:photo_uri] if args.key?(:photo_uri)
-          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -1725,32 +1702,20 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet
         include Google::Apis::Core::Hashable
       
-        # Author attribution for a photo or review.
-        # Corresponds to the JSON property `authorAttribution`
-        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution]
-        attr_accessor :author_attribution
-      
-        # A link where users can flag a problem with the review.
-        # Corresponds to the JSON property `flagContentUri`
-        # @return [String]
-        attr_accessor :flag_content_uri
-      
         # A link to show the review on Google Maps.
         # Corresponds to the JSON property `googleMapsUri`
         # @return [String]
         attr_accessor :google_maps_uri
       
-        # A string of formatted recent time, expressing the review time relative to the
-        # current time in a form appropriate for the language and country.
-        # Corresponds to the JSON property `relativePublishTimeDescription`
+        # Id of the review referencing the place.
+        # Corresponds to the JSON property `reviewId`
         # @return [String]
-        attr_accessor :relative_publish_time_description
+        attr_accessor :review_id
       
-        # A reference representing this place review which may be used to look up this
-        # place review again.
-        # Corresponds to the JSON property `review`
+        # Title of the review.
+        # Corresponds to the JSON property `title`
         # @return [String]
-        attr_accessor :review
+        attr_accessor :title
       
         def initialize(**args)
            update!(**args)
@@ -1758,11 +1723,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @author_attribution = args[:author_attribution] if args.key?(:author_attribution)
-          @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
           @google_maps_uri = args[:google_maps_uri] if args.key?(:google_maps_uri)
-          @relative_publish_time_description = args[:relative_publish_time_description] if args.key?(:relative_publish_time_description)
-          @review = args[:review] if args.key?(:review)
+          @review_id = args[:review_id] if args.key?(:review_id)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -1878,6 +1841,12 @@ module Google
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SearchEntryPoint]
         attr_accessor :search_entry_point
       
+        # Optional. Output only. List of source flagging uris. This is currently
+        # populated only for Google Maps grounding.
+        # Corresponds to the JSON property `sourceFlaggingUris`
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingMetadataSourceFlaggingUri>]
+        attr_accessor :source_flagging_uris
+      
         # Optional. Web search queries for the following-up web search.
         # Corresponds to the JSON property `webSearchQueries`
         # @return [Array<String>]
@@ -1895,7 +1864,34 @@ module Google
           @retrieval_metadata = args[:retrieval_metadata] if args.key?(:retrieval_metadata)
           @retrieval_queries = args[:retrieval_queries] if args.key?(:retrieval_queries)
           @search_entry_point = args[:search_entry_point] if args.key?(:search_entry_point)
+          @source_flagging_uris = args[:source_flagging_uris] if args.key?(:source_flagging_uris)
           @web_search_queries = args[:web_search_queries] if args.key?(:web_search_queries)
+        end
+      end
+      
+      # Source content flagging uri for a place or review. This is currently populated
+      # only for Google Maps grounding.
+      class GoogleCloudAiplatformV1beta1GroundingMetadataSourceFlaggingUri
+        include Google::Apis::Core::Hashable
+      
+        # A link where users can flag a problem with the source (place or review).
+        # Corresponds to the JSON property `flagContentUri`
+        # @return [String]
+        attr_accessor :flag_content_uri
+      
+        # Id of the place or review.
+        # Corresponds to the JSON property `sourceId`
+        # @return [String]
+        attr_accessor :source_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
+          @source_id = args[:source_id] if args.key?(:source_id)
         end
       end
       
