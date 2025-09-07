@@ -1458,7 +1458,8 @@ module Google
         # associated with an existing database. This value should be 4-63 characters.
         # Valid characters are /a-z-/ with first character a letter and the last a
         # letter or a number. Must not be UUID-like /[0-9a-f]`8`(-[0-9a-f]`4`)`3`-[0-9a-
-        # f]`12`/. "(default)" database ID is also valid.
+        # f]`12`/. "(default)" database ID is also valid if the database is Standard
+        # edition.
         # Corresponds to the JSON property `databaseId`
         # @return [String]
         attr_accessor :database_id
@@ -2811,7 +2812,8 @@ module Google
         # associated with an existing database. This value should be 4-63 characters.
         # Valid characters are /a-z-/ with first character a letter and the last a
         # letter or a number. Must not be UUID-like /[0-9a-f]`8`(-[0-9a-f]`4`)`3`-[0-9a-
-        # f]`12`/. "(default)" database ID is also valid.
+        # f]`12`/. "(default)" database ID is also valid if the database is Standard
+        # edition.
         # Corresponds to the JSON property `databaseId`
         # @return [String]
         attr_accessor :database_id
