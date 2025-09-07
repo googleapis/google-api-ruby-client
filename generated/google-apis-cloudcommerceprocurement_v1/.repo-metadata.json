@@ -1,0 +1,7 @@
+{
+    "api_id": "cloudcommerceprocurement:v1",
+    "name_pretty": "Cloud Commerce Partner Procurement API",
+    "distribution_name": "google-apis-cloudcommerceprocurement_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
