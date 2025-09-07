@@ -366,6 +366,13 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # Optional. The geographic locations where the dataset should be replicated. See
+        # [BigQuery locations](https://cloud.google.com/bigquery/docs/locations) for
+        # supported locations.
+        # Corresponds to the JSON property `replicaLocations`
+        # @return [Array<String>]
+        attr_accessor :replica_locations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -377,6 +384,7 @@ module Google
           @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
           @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
+          @replica_locations = args[:replica_locations] if args.key?(:replica_locations)
         end
       end
       
