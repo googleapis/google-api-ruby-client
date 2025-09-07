@@ -904,6 +904,11 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::SubscriptionItemPriceChangeDetails]
         attr_accessor :price_change_details
       
+        # Information related to a price step-up that requires user consent.
+        # Corresponds to the JSON property `priceStepUpConsentDetails`
+        # @return [Google::Apis::AndroidpublisherV3::PriceStepUpConsentDetails]
+        attr_accessor :price_step_up_consent_details
+      
         # Represents an amount of money with its currency type.
         # Corresponds to the JSON property `recurringPrice`
         # @return [Google::Apis::AndroidpublisherV3::Money]
@@ -918,6 +923,7 @@ module Google
           @auto_renew_enabled = args[:auto_renew_enabled] if args.key?(:auto_renew_enabled)
           @installment_details = args[:installment_details] if args.key?(:installment_details)
           @price_change_details = args[:price_change_details] if args.key?(:price_change_details)
+          @price_step_up_consent_details = args[:price_step_up_consent_details] if args.key?(:price_step_up_consent_details)
           @recurring_price = args[:recurring_price] if args.key?(:recurring_price)
         end
       end
@@ -1705,6 +1711,38 @@ module Google
         end
       end
       
+      # Request for the purchases.subscriptionsv2.cancel API.
+      class CancelSubscriptionPurchaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # Cancellation context of the purchases.subscriptionsv2.cancel API.
+        # Corresponds to the JSON property `cancellationContext`
+        # @return [Google::Apis::AndroidpublisherV3::CancellationContext]
+        attr_accessor :cancellation_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancellation_context = args[:cancellation_context] if args.key?(:cancellation_context)
+        end
+      end
+      
+      # Response for the purchases.subscriptionsv2.cancel API.
+      class CancelSubscriptionPurchaseResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Result of the cancel survey when the subscription was canceled by the user.
       class CancelSurveyResult
         include Google::Apis::Core::Hashable
@@ -1766,6 +1804,25 @@ module Google
           @replacement_cancellation = args[:replacement_cancellation] if args.key?(:replacement_cancellation)
           @system_initiated_cancellation = args[:system_initiated_cancellation] if args.key?(:system_initiated_cancellation)
           @user_initiated_cancellation = args[:user_initiated_cancellation] if args.key?(:user_initiated_cancellation)
+        end
+      end
+      
+      # Cancellation context of the purchases.subscriptionsv2.cancel API.
+      class CancellationContext
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type of cancellation for the purchased subscription.
+        # Corresponds to the JSON property `cancellationType`
+        # @return [String]
+        attr_accessor :cancellation_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancellation_type = args[:cancellation_type] if args.key?(:cancellation_type)
         end
       end
       
@@ -6007,6 +6064,38 @@ module Google
         def update!(**args)
           @currency = args[:currency] if args.key?(:currency)
           @price_micros = args[:price_micros] if args.key?(:price_micros)
+        end
+      end
+      
+      # Information related to a price step-up that requires user consent.
+      class PriceStepUpConsentDetails
+        include Google::Apis::Core::Hashable
+      
+        # The deadline by which the user must provide consent. If consent is not
+        # provided by this time, the subscription will be canceled.
+        # Corresponds to the JSON property `consentDeadlineTime`
+        # @return [String]
+        attr_accessor :consent_deadline_time
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `newPrice`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :new_price
+      
+        # Output only. The state of the price step-up consent.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_deadline_time = args[:consent_deadline_time] if args.key?(:consent_deadline_time)
+          @new_price = args[:new_price] if args.key?(:new_price)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
