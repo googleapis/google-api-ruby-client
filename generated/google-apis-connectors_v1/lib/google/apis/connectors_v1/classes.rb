@@ -660,7 +660,7 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # Optional. Location Tyep denotes where this value should be sent in BYOC
+        # Optional. Location Type denotes where this value should be sent in BYOC
         # connections.
         # Corresponds to the JSON property `locationType`
         # @return [String]
