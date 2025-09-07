@@ -214,6 +214,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppcheckV1PublicJwk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +245,12 @@ module Google
       end
       
       class GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -535,8 +559,35 @@ module Google
       class GoogleFirebaseAppcheckV1PlayIntegrityConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_details, as: 'accountDetails', class: Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails, decorator: Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails::Representation
+      
+          property :app_integrity, as: 'appIntegrity', class: Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity, decorator: Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity::Representation
+      
+          property :device_integrity, as: 'deviceIntegrity', class: Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity, decorator: Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity::Representation
+      
           property :name, as: 'name'
           property :token_ttl, as: 'tokenTtl'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :require_licensed, as: 'requireLicensed'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_unrecognized_version, as: 'allowUnrecognizedVersion'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_device_recognition_level, as: 'minDeviceRecognitionLevel'
         end
       end
       
@@ -564,14 +615,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          property :risk_analysis, as: 'riskAnalysis', class: Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis, decorator: Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis::Representation
+      
           property :site_key, as: 'siteKey'
           property :token_ttl, as: 'tokenTtl'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_valid_score, as: 'minValidScore'
         end
       end
       
       class GoogleFirebaseAppcheckV1RecaptchaV3Config
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_valid_score, as: 'minValidScore'
           property :name, as: 'name'
           property :site_secret, as: 'siteSecret'
           property :site_secret_set, as: 'siteSecretSet'
