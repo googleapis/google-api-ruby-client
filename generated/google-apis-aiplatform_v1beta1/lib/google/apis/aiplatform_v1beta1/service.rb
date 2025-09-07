@@ -23746,6 +23746,11 @@ module Google
         #   Optional. The standard list filter. More detail in [AIP-160](https://google.
         #   aip.dev/160). Supported fields (equality match only): * `scope` (as a JSON
         #   string)
+        # @param [String] order_by
+        #   Optional. The standard list order by string. If not specified, the default
+        #   order is `create_time desc`. If specified, the default sorting order of
+        #   provided fields is ascending. More detail in [AIP-132](https://google.aip.dev/
+        #   132). Supported fields: * `create_time` * `update_time`
         # @param [Fixnum] page_size
         #   Optional. The standard list page size.
         # @param [String] page_token
@@ -23767,12 +23772,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_reasoning_engine_memories(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_reasoning_engine_memories(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/memories', options)
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoriesResponse::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoriesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -30141,6 +30147,11 @@ module Google
         #   Optional. The standard list filter. More detail in [AIP-160](https://google.
         #   aip.dev/160). Supported fields (equality match only): * `scope` (as a JSON
         #   string)
+        # @param [String] order_by
+        #   Optional. The standard list order by string. If not specified, the default
+        #   order is `create_time desc`. If specified, the default sorting order of
+        #   provided fields is ascending. More detail in [AIP-132](https://google.aip.dev/
+        #   132). Supported fields: * `create_time` * `update_time`
         # @param [Fixnum] page_size
         #   Optional. The standard list page size.
         # @param [String] page_token
@@ -30162,12 +30173,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_reasoning_engine_memories(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_reasoning_engine_memories(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/memories', options)
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoriesResponse::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoriesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

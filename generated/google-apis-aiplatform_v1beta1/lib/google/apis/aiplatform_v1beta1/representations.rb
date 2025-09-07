@@ -10998,6 +10998,7 @@ module Google
           property :create_time, as: 'createTime'
           property :dedicated_resources, as: 'dedicatedResources', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DedicatedResources, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DedicatedResources::Representation
       
+          property :disable_container_logging, as: 'disableContainerLogging'
           property :disable_explanations, as: 'disableExplanations'
           property :display_name, as: 'displayName'
           property :enable_access_logging, as: 'enableAccessLogging'
@@ -15185,6 +15186,8 @@ module Google
       class GoogleCloudAiplatformV1beta1MetricResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::AiplatformV1beta1::GoogleRpcStatus, decorator: Google::Apis::AiplatformV1beta1::GoogleRpcStatus::Representation
+      
           property :explanation, as: 'explanation'
           collection :rubric_verdicts, as: 'rubricVerdicts', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RubricVerdict, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RubricVerdict::Representation
       
@@ -17280,6 +17283,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :evaluation_config, as: 'evaluationConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationConfig::Representation
       
+          property :export_last_checkpoint_only, as: 'exportLastCheckpointOnly'
           property :hyper_parameters, as: 'hyperParameters', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PreferenceOptimizationHyperParameters, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PreferenceOptimizationHyperParameters::Representation
       
           property :training_dataset_uri, as: 'trainingDatasetUri'
@@ -18464,6 +18468,7 @@ module Google
           property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec::Representation
       
           property :etag, as: 'etag'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :spec, as: 'spec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpec::Representation
       
@@ -19183,7 +19188,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
-          property :metadata, as: 'metadata'
           property :name, as: 'name'
           property :spec, as: 'spec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SandboxEnvironmentSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SandboxEnvironmentSpec::Representation
       
@@ -19204,9 +19208,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code_language, as: 'codeLanguage'
-          collection :dependencies, as: 'dependencies'
-          collection :env, as: 'env', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnvVar, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnvVar::Representation
-      
           property :machine_config, as: 'machineConfig'
         end
       end

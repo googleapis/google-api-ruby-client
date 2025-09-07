@@ -7683,6 +7683,16 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DedicatedResources]
         attr_accessor :dedicated_resources
       
+        # For custom-trained Models and AutoML Tabular Models, the container of the
+        # DeployedModel instances will send `stderr` and `stdout` streams to Cloud
+        # Logging by default. Please note that the logs incur cost, which are subject to
+        # [Cloud Logging pricing](https://cloud.google.com/logging/pricing). User can
+        # disable container logging by setting this flag to true.
+        # Corresponds to the JSON property `disableContainerLogging`
+        # @return [Boolean]
+        attr_accessor :disable_container_logging
+        alias_method :disable_container_logging?, :disable_container_logging
+      
         # If true, deploy the model without explainable feature, regardless the
         # existence of Model.explanation_spec or explanation_spec.
         # Corresponds to the JSON property `disableExplanations`
@@ -7807,6 +7817,7 @@ module Google
           @checkpoint_id = args[:checkpoint_id] if args.key?(:checkpoint_id)
           @create_time = args[:create_time] if args.key?(:create_time)
           @dedicated_resources = args[:dedicated_resources] if args.key?(:dedicated_resources)
+          @disable_container_logging = args[:disable_container_logging] if args.key?(:disable_container_logging)
           @disable_explanations = args[:disable_explanations] if args.key?(:disable_explanations)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_access_logging = args[:enable_access_logging] if args.key?(:enable_access_logging)
@@ -21567,7 +21578,8 @@ module Google
         attr_accessor :display_name
       
         # Optional. Timestamp of when this resource is considered expired. This is *
-        # always* provided on output, regardless of what `expiration` was sent on input.
+        # always* provided on output when `expiration` is set on input, regardless of
+        # whether `expire_time` or `ttl` was provided.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
@@ -22077,18 +22089,28 @@ module Google
       class GoogleCloudAiplatformV1beta1MetricResult
         include Google::Apis::Core::Hashable
       
-        # The explanation for the metric result.
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # Output only. The explanation for the metric result.
         # Corresponds to the JSON property `explanation`
         # @return [String]
         attr_accessor :explanation
       
-        # For rubric-based metrics, the verdicts for each rubric.
+        # Output only. For rubric-based metrics, the verdicts for each rubric.
         # Corresponds to the JSON property `rubricVerdicts`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RubricVerdict>]
         attr_accessor :rubric_verdicts
       
-        # The score for the metric. Please refer to each metric's documentation for the
-        # meaning of the score.
+        # Output only. The score for the metric. Please refer to each metric's
+        # documentation for the meaning of the score.
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -22099,6 +22121,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @error = args[:error] if args.key?(:error)
           @explanation = args[:explanation] if args.key?(:explanation)
           @rubric_verdicts = args[:rubric_verdicts] if args.key?(:rubric_verdicts)
           @score = args[:score] if args.key?(:score)
@@ -29745,6 +29768,14 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationConfig]
         attr_accessor :evaluation_config
       
+        # Optional. If set to true, disable intermediate checkpoints for Preference
+        # Optimization and only the last checkpoint will be exported. Otherwise, enable
+        # intermediate checkpoints for Preference Optimization. Default is false.
+        # Corresponds to the JSON property `exportLastCheckpointOnly`
+        # @return [Boolean]
+        attr_accessor :export_last_checkpoint_only
+        alias_method :export_last_checkpoint_only?, :export_last_checkpoint_only
+      
         # Hyperparameters for Preference Optimization.
         # Corresponds to the JSON property `hyperParameters`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PreferenceOptimizationHyperParameters]
@@ -29769,6 +29800,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @evaluation_config = args[:evaluation_config] if args.key?(:evaluation_config)
+          @export_last_checkpoint_only = args[:export_last_checkpoint_only] if args.key?(:export_last_checkpoint_only)
           @hyper_parameters = args[:hyper_parameters] if args.key?(:hyper_parameters)
           @training_dataset_uri = args[:training_dataset_uri] if args.key?(:training_dataset_uri)
           @validation_dataset_uri = args[:validation_dataset_uri] if args.key?(:validation_dataset_uri)
@@ -33572,6 +33604,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Labels for the ReasoningEngine.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Identifier. The resource name of the ReasoningEngine. Format: `projects/`
         # project`/locations/`location`/reasoningEngines/`reasoning_engine``
         # Corresponds to the JSON property `name`
@@ -33600,6 +33637,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @spec = args[:spec] if args.key?(:spec)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -35887,11 +35925,6 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. Additional information about the SandboxEnvironment.
-        # Corresponds to the JSON property `metadata`
-        # @return [Object]
-        attr_accessor :metadata
-      
         # Identifier. The name of the SandboxEnvironment.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -35921,7 +35954,6 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
-          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @spec = args[:spec] if args.key?(:spec)
           @state = args[:state] if args.key?(:state)
@@ -35957,17 +35989,6 @@ module Google
         # @return [String]
         attr_accessor :code_language
       
-        # Optional. The additional dependencies to install in the code execution
-        # environment. For example, "pandas==2.2.3".
-        # Corresponds to the JSON property `dependencies`
-        # @return [Array<String>]
-        attr_accessor :dependencies
-      
-        # Optional. The environment variables to set in the code execution environment.
-        # Corresponds to the JSON property `env`
-        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnvVar>]
-        attr_accessor :env
-      
         # The machine config of the code execution environment.
         # Corresponds to the JSON property `machineConfig`
         # @return [String]
@@ -35980,8 +36001,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code_language = args[:code_language] if args.key?(:code_language)
-          @dependencies = args[:dependencies] if args.key?(:dependencies)
-          @env = args[:env] if args.key?(:env)
           @machine_config = args[:machine_config] if args.key?(:machine_config)
         end
       end
