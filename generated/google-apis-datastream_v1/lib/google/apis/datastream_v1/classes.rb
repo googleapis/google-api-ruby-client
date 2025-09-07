@@ -1331,6 +1331,25 @@ module Google
         end
       end
       
+      # MongoDB change stream position
+      class MongodbChangeStreamPosition
+        include Google::Apis::Core::Hashable
+      
+        # Required. The timestamp (in epoch seconds) to start change stream from.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # MongoDB Cluster structure.
       class MongodbCluster
         include Google::Apis::Core::Hashable
@@ -3488,6 +3507,11 @@ module Google
       class SpecificStartPosition
         include Google::Apis::Core::Hashable
       
+        # MongoDB change stream position
+        # Corresponds to the JSON property `mongodbChangeStreamPosition`
+        # @return [Google::Apis::DatastreamV1::MongodbChangeStreamPosition]
+        attr_accessor :mongodb_change_stream_position
+      
         # MySQL GTID position
         # Corresponds to the JSON property `mysqlGtidPosition`
         # @return [Google::Apis::DatastreamV1::MysqlGtidPosition]
@@ -3514,6 +3538,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @mongodb_change_stream_position = args[:mongodb_change_stream_position] if args.key?(:mongodb_change_stream_position)
           @mysql_gtid_position = args[:mysql_gtid_position] if args.key?(:mysql_gtid_position)
           @mysql_log_position = args[:mysql_log_position] if args.key?(:mysql_log_position)
           @oracle_scn_position = args[:oracle_scn_position] if args.key?(:oracle_scn_position)
