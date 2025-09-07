@@ -1003,8 +1003,8 @@ module Google
         attr_accessor :restricted_for_readers
         alias_method :restricted_for_readers?, :restricted_for_readers
       
-        # Whether download and copy is restricted for writers. If true, download is also
-        # restricted for readers.
+        # Whether download and copy is restricted for writers. If `true`, download is
+        # also restricted for readers.
         # Corresponds to the JSON property `restrictedForWriters`
         # @return [Boolean]
         attr_accessor :restricted_for_writers
@@ -1496,7 +1496,9 @@ module Google
         attr_accessor :app_properties
       
         # Output only. Capabilities the current user has on this file. Each capability
-        # corresponds to a fine-grained action that a user may take.
+        # corresponds to a fine-grained action that a user may take. For more
+        # information, see [Understand file capabilities](https://developers.google.com/
+        # workspace/drive/api/guides/manage-sharing#capabilities).
         # Corresponds to the JSON property `capabilities`
         # @return [Google::Apis::DriveV3::File::Capabilities]
         attr_accessor :capabilities
@@ -1513,7 +1515,7 @@ module Google
         # @return [Array<Google::Apis::DriveV3::ContentRestriction>]
         attr_accessor :content_restrictions
       
-        # Whether the options to copy, print, or download this file, should be disabled
+        # Whether the options to copy, print, or download this file should be disabled
         # for readers and commenters.
         # Corresponds to the JSON property `copyRequiresWriterPermission`
         # @return [Boolean]
@@ -1560,9 +1562,10 @@ module Google
         attr_accessor :file_extension
       
         # The color for a folder or a shortcut to a folder as an RGB hex string. The
-        # supported colors are published in the `folderColorPalette` field of the About
-        # resource. If an unsupported color is specified, the closest color in the
-        # palette is used instead.
+        # supported colors are published in the `folderColorPalette` field of the [`
+        # about`](/workspace/drive/api/reference/rest/v3/about) resource. If an
+        # unsupported color is specified, the closest color in the palette is used
+        # instead.
         # Corresponds to the JSON property `folderColorRgb`
         # @return [String]
         attr_accessor :folder_color_rgb
@@ -1570,8 +1573,8 @@ module Google
         # Output only. The full file extension extracted from the `name` field. May
         # contain multiple concatenated extensions, such as "tar.gz". This is only
         # available for files with binary content in Google Drive. This is automatically
-        # updated when the `name` field changes, however it is not cleared if the new
-        # name does not contain a valid extension.
+        # updated when the `name` field changes, however it's not cleared if the new
+        # name doesn't contain a valid extension.
         # Corresponds to the JSON property `fullFileExtension`
         # @return [String]
         attr_accessor :full_file_extension
@@ -1583,7 +1586,7 @@ module Google
         attr_accessor :has_augmented_permissions
         alias_method :has_augmented_permissions?, :has_augmented_permissions
       
-        # Output only. Whether this file has a thumbnail. This does not indicate whether
+        # Output only. Whether this file has a thumbnail. This doesn't indicate whether
         # the requesting app has access to the thumbnail. To check access, look for the
         # presence of the thumbnailLink field.
         # Corresponds to the JSON property `hasThumbnail`
@@ -1657,7 +1660,8 @@ module Google
         # appropriate value from uploaded content, if no value is provided. The value
         # cannot be changed unless a new revision is uploaded. If a file is created with
         # a Google Doc MIME type, the uploaded content is imported, if possible. The
-        # supported import formats are published in the About resource.
+        # supported import formats are published in the [`about`](/workspace/drive/api/
+        # reference/rest/v3/about) resource.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -1679,9 +1683,9 @@ module Google
         # @return [DateTime]
         attr_accessor :modified_time
       
-        # The name of the file. This is not necessarily unique within a folder. Note
-        # that for immutable items such as the top level folders of shared drives, My
-        # Drive root folder, and Application Data folder the name is constant.
+        # The name of the file. This isn't necessarily unique within a folder. Note that
+        # for immutable items such as the top-level folders of shared drives, the My
+        # Drive root folder, and the Application Data folder, the name is constant.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1746,14 +1750,14 @@ module Google
         attr_accessor :resource_key
       
         # Output only. The SHA1 checksum associated with this file, if available. This
-        # field is only populated for files with content stored in Google Drive; it is
+        # field is only populated for files with content stored in Google Drive; it's
         # not populated for Docs Editors or shortcut files.
         # Corresponds to the JSON property `sha1Checksum`
         # @return [String]
         attr_accessor :sha1_checksum
       
         # Output only. The SHA256 checksum associated with this file, if available. This
-        # field is only populated for files with content stored in Google Drive; it is
+        # field is only populated for files with content stored in Google Drive; it's
         # not populated for Docs Editors or shortcut files.
         # Corresponds to the JSON property `sha256Checksum`
         # @return [String]
@@ -1784,14 +1788,14 @@ module Google
         # @return [Google::Apis::DriveV3::File::ShortcutDetails]
         attr_accessor :shortcut_details
       
-        # Output only. Size in bytes of blobs and first party editor files. Won't be
-        # populated for files that have no size, like shortcuts and folders.
+        # Output only. Size in bytes of blobs and Google Workspace editor files. Won't
+        # be populated for files that have no size, like shortcuts and folders.
         # Corresponds to the JSON property `size`
         # @return [Fixnum]
         attr_accessor :size
       
         # Output only. The list of spaces which contain the file. The currently
-        # supported values are 'drive', 'appDataFolder' and 'photos'.
+        # supported values are `drive`, `appDataFolder`, and `photos`.
         # Corresponds to the JSON property `spaces`
         # @return [Array<String>]
         attr_accessor :spaces
@@ -1810,9 +1814,9 @@ module Google
         # Output only. A short-lived link to the file's thumbnail, if available.
         # Typically lasts on the order of hours. Not intended for direct usage on web
         # applications due to [Cross-Origin Resource Sharing (CORS)](https://developer.
-        # mozilla.org/en-US/docs/Web/HTTP/CORS) policies, consider using a proxy server.
+        # mozilla.org/en-US/docs/Web/HTTP/CORS) policies. Consider using a proxy server.
         # Only populated when the requesting app can access the file's content. If the
-        # file isn't shared publicly, the URL returned in `Files.thumbnailLink` must be
+        # file isn't shared publicly, the URL returned in `files.thumbnailLink` must be
         # fetched using a credentialed request.
         # Corresponds to the JSON property `thumbnailLink`
         # @return [String]
@@ -1964,7 +1968,9 @@ module Google
         end
         
         # Output only. Capabilities the current user has on this file. Each capability
-        # corresponds to a fine-grained action that a user may take.
+        # corresponds to a fine-grained action that a user may take. For more
+        # information, see [Understand file capabilities](https://developers.google.com/
+        # workspace/drive/api/guides/manage-sharing#capabilities).
         class Capabilities
           include Google::Apis::Core::Hashable
         
@@ -1976,15 +1982,15 @@ module Google
           alias_method :can_accept_ownership?, :can_accept_ownership
         
           # Output only. Whether the current user can add children to this folder. This is
-          # always false when the item is not a folder.
+          # always `false` when the item isn't a folder.
           # Corresponds to the JSON property `canAddChildren`
           # @return [Boolean]
           attr_accessor :can_add_children
           alias_method :can_add_children?, :can_add_children
         
           # Output only. Whether the current user can add a folder from another drive (
-          # different shared drive or My Drive) to this folder. This is false when the
-          # item is not a folder. Only populated for items in shared drives.
+          # different shared drive or My Drive) to this folder. This is `false` when the
+          # item isn't a folder. Only populated for items in shared drives.
           # Corresponds to the JSON property `canAddFolderFromAnotherDrive`
           # @return [Boolean]
           attr_accessor :can_add_folder_from_another_drive
@@ -2012,7 +2018,7 @@ module Google
           attr_accessor :can_change_item_download_restriction
           alias_method :can_change_item_download_restriction?, :can_change_item_download_restriction
         
-          # Output only. Whether the current user can change the securityUpdateEnabled
+          # Output only. Whether the current user can change the `securityUpdateEnabled`
           # field on link share metadata.
           # Corresponds to the JSON property `canChangeSecurityUpdateEnabled`
           # @return [Boolean]
@@ -2033,7 +2039,7 @@ module Google
         
           # Output only. Whether the current user can copy this file. For an item in a
           # shared drive, whether the current user can copy non-folder descendants of this
-          # item, or this item itself if it is not a folder.
+          # item, or this item if it's not a folder.
           # Corresponds to the JSON property `canCopy`
           # @return [Boolean]
           attr_accessor :can_copy
@@ -2046,7 +2052,7 @@ module Google
           alias_method :can_delete?, :can_delete
         
           # Output only. Whether the current user can delete children of this folder. This
-          # is false when the item is not a folder. Only populated for items in shared
+          # is `false` when the item isn't a folder. Only populated for items in shared
           # drives.
           # Corresponds to the JSON property `canDeleteChildren`
           # @return [Boolean]
@@ -2080,7 +2086,7 @@ module Google
           alias_method :can_enable_inherited_permissions?, :can_enable_inherited_permissions
         
           # Output only. Whether the current user can list the children of this folder.
-          # This is always false when the item is not a folder.
+          # This is always `false` when the item isn't a folder.
           # Corresponds to the JSON property `canListChildren`
           # @return [Boolean]
           attr_accessor :can_list_children
@@ -2093,7 +2099,7 @@ module Google
           alias_method :can_modify_content?, :can_modify_content
         
           # Deprecated: Output only. Use one of `canModifyEditorContentRestriction`, `
-          # canModifyOwnerContentRestriction` or `canRemoveContentRestriction`.
+          # canModifyOwnerContentRestriction`, or `canRemoveContentRestriction`.
           # Corresponds to the JSON property `canModifyContentRestriction`
           # @return [Boolean]
           attr_accessor :can_modify_content_restriction
@@ -2120,7 +2126,7 @@ module Google
           alias_method :can_modify_owner_content_restriction?, :can_modify_owner_content_restriction
         
           # Output only. Whether the current user can move children of this folder outside
-          # of the shared drive. This is false when the item is not a folder. Only
+          # of the shared drive. This is `false` when the item isn't a folder. Only
           # populated for items in shared drives.
           # Corresponds to the JSON property `canMoveChildrenOutOfDrive`
           # @return [Boolean]
@@ -2134,7 +2140,7 @@ module Google
           alias_method :can_move_children_out_of_team_drive?, :can_move_children_out_of_team_drive
         
           # Output only. Whether the current user can move children of this folder within
-          # this drive. This is false when the item is not a folder. Note that a request
+          # this drive. This is `false` when the item isn't a folder. Note that a request
           # to move the child may still fail depending on the current user's access to the
           # child and to the destination folder.
           # Corresponds to the JSON property `canMoveChildrenWithinDrive`
@@ -2156,7 +2162,7 @@ module Google
         
           # Output only. Whether the current user can move this item outside of this drive
           # by changing its parent. Note that a request to change the parent of the item
-          # may still fail depending on the new parent that is being added.
+          # may still fail depending on the new parent that's being added.
           # Corresponds to the JSON property `canMoveItemOutOfDrive`
           # @return [Boolean]
           attr_accessor :can_move_item_out_of_drive
@@ -2170,7 +2176,7 @@ module Google
         
           # Output only. Whether the current user can move this item within this drive.
           # Note that a request to change the parent of the item may still fail depending
-          # on the new parent that is being added and the parent that is being removed.
+          # on the new parent that's being added and the parent that is being removed.
           # Corresponds to the JSON property `canMoveItemWithinDrive`
           # @return [Boolean]
           attr_accessor :can_move_item_within_drive
@@ -2204,7 +2210,7 @@ module Google
         
           # Output only. Whether the current user can read the revisions resource of this
           # file. For a shared drive item, whether revisions of non-folder descendants of
-          # this item, or this item itself if it is not a folder, can be read.
+          # this item, or this item if it's not a folder, can be read.
           # Corresponds to the JSON property `canReadRevisions`
           # @return [Boolean]
           attr_accessor :can_read_revisions
@@ -2217,14 +2223,14 @@ module Google
           alias_method :can_read_team_drive?, :can_read_team_drive
         
           # Output only. Whether the current user can remove children from this folder.
-          # This is always false when the item is not a folder. For a folder in a shared
+          # This is always `false` when the item isn't a folder. For a folder in a shared
           # drive, use `canDeleteChildren` or `canTrashChildren` instead.
           # Corresponds to the JSON property `canRemoveChildren`
           # @return [Boolean]
           attr_accessor :can_remove_children
           alias_method :can_remove_children?, :can_remove_children
         
-          # Output only. Whether there is a content restriction on the file that can be
+          # Output only. Whether there's a content restriction on the file that can be
           # removed by the current user.
           # Corresponds to the JSON property `canRemoveContentRestriction`
           # @return [Boolean]
@@ -2259,7 +2265,7 @@ module Google
           alias_method :can_trash?, :can_trash
         
           # Output only. Whether the current user can trash children of this folder. This
-          # is false when the item is not a folder. Only populated for items in shared
+          # is `false` when the item isn't a folder. Only populated for items in shared
           # drives.
           # Corresponds to the JSON property `canTrashChildren`
           # @return [Boolean]
@@ -2331,7 +2337,7 @@ module Google
           include Google::Apis::Core::Hashable
         
           # Text to be indexed for the file to improve fullText queries. This is limited
-          # to 128KB in length and may contain HTML elements.
+          # to 128 KB in length and may contain HTML elements.
           # Corresponds to the JSON property `indexableText`
           # @return [String]
           attr_accessor :indexable_text
@@ -2357,7 +2363,8 @@ module Google
           class Thumbnail
             include Google::Apis::Core::Hashable
           
-            # The thumbnail data encoded with URL-safe Base64 (RFC 4648 section 5).
+            # The thumbnail data encoded with URL-safe Base64 ([RFC 4648 section 5](https://
+            # datatracker.ietf.org/doc/html/rfc4648#section-5)).
             # Corresponds to the JSON property `image`
             # NOTE: Values are automatically base64 encoded/decoded in the client library.
             # @return [String]
@@ -2620,7 +2627,7 @@ module Google
           # @return [String]
           attr_accessor :target_mime_type
         
-          # Output only. The ResourceKey for the target file.
+          # Output only. The `resourceKey` for the target file.
           # Corresponds to the JSON property `targetResourceKey`
           # @return [String]
           attr_accessor :target_resource_key
@@ -2674,7 +2681,7 @@ module Google
       class FileList
         include Google::Apis::Core::Hashable
       
-        # The list of files. If nextPageToken is populated, then this list may be
+        # The list of files. If `nextPageToken` is populated, then this list may be
         # incomplete and an additional page of results should be fetched.
         # Corresponds to the JSON property `files`
         # @return [Array<Google::Apis::DriveV3::File>]
@@ -2682,9 +2689,9 @@ module Google
       
         # Whether the search process was incomplete. If true, then some search results
         # might be missing, since all documents were not searched. This can occur when
-        # searching multiple drives with the 'allDrives' corpora, but all corpora couldn'
+        # searching multiple drives with the `allDrives` corpora, but all corpora couldn'
         # t be searched. When this happens, it's suggested that clients narrow their
-        # query by choosing a different corpus such as 'user' or 'drive'.
+        # query by choosing a different corpus such as `user` or `drive`.
         # Corresponds to the JSON property `incompleteSearch`
         # @return [Boolean]
         attr_accessor :incomplete_search
@@ -2859,7 +2866,7 @@ module Google
         # @return [String]
         attr_accessor :field_id
       
-        # This is always drive#labelFieldModification.
+        # This is always `"drive#labelFieldModification"`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2885,8 +2892,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :set_text_values
       
-        # Replaces a `user` field with these new values. The values must be valid email
-        # addresses.
+        # Replaces a `user` field with these new values. The values must be a valid
+        # email addresses.
         # Corresponds to the JSON property `setUserValues`
         # @return [Array<String>]
         attr_accessor :set_user_values
@@ -2918,7 +2925,7 @@ module Google
       class LabelList
         include Google::Apis::Core::Hashable
       
-        # This is always drive#labelList
+        # This is always `"drive#labelList"`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2949,9 +2956,9 @@ module Google
         end
       end
       
-      # A modification to a label on a file. A LabelModification can be used to apply
-      # a label to a file, update an existing label on a file, or remove a label from
-      # a file.
+      # A modification to a label on a file. A `LabelModification` can be used to
+      # apply a label to a file, update an existing label on a file, or remove a label
+      # from a file.
       class LabelModification
         include Google::Apis::Core::Hashable
       
@@ -2960,7 +2967,7 @@ module Google
         # @return [Array<Google::Apis::DriveV3::LabelFieldModification>]
         attr_accessor :field_modifications
       
-        # This is always drive#labelModification.
+        # This is always `"drive#labelModification"`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3022,7 +3029,7 @@ module Google
       class ModifyLabelsRequest
         include Google::Apis::Core::Hashable
       
-        # This is always drive#modifyLabelsRequest.
+        # This is always `"drive#modifyLabelsRequest"`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3043,12 +3050,12 @@ module Google
         end
       end
       
-      # Response to a ModifyLabels request. This contains only those labels which were
-      # added or updated by the request.
+      # Response to a `ModifyLabels` request. This contains only those labels which
+      # were added or updated by the request.
       class ModifyLabelsResponse
         include Google::Apis::Core::Hashable
       
-        # This is always drive#modifyLabelsResponse
+        # This is always `"drive#modifyLabelsResponse"`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
