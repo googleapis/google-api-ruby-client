@@ -705,7 +705,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new Policy.
+        # Creates a new policy.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [Google::Apis::DnsV1beta2::Policy] policy_object
@@ -742,7 +742,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a previously created Policy. Fails if the policy is still being
+        # Deletes a previously created policy. Fails if the policy is still being
         # referenced by a network.
         # @param [String] project
         #   Identifies the project addressed by this request.
@@ -778,7 +778,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetches the representation of an existing Policy.
+        # Fetches the representation of an existing policy.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] policy
@@ -815,7 +815,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enumerates all Policies associated with a project.
+        # Enumerates all policies associated with a project.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [Fixnum] max_results
@@ -853,7 +853,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Applies a partial update to an existing Policy.
+        # Applies a partial update to an existing policy.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] policy
@@ -893,7 +893,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing Policy.
+        # Updates an existing policy.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] policy
@@ -1105,13 +1105,14 @@ module Google
         #   decides how many results to return.
         # @param [String] name
         #   Restricts the list to return only records with this fully qualified domain
-        #   name.
+        #   name. Mutually exclusive with the `@code filter` field.
         # @param [String] page_token
         #   Optional. A tag returned by a previous list request that was truncated. Use
         #   this parameter to continue a previous list request.
         # @param [String] type
         #   Restricts the list to return only records of this type. If present, the "name"
-        #   parameter must also be present.
+        #   parameter must also be present. Mutually exclusive with the `@code filter`
+        #   field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
