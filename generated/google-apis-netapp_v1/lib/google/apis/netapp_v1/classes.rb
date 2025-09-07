@@ -2196,6 +2196,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :capacity_gib
       
+        # Output only. Total cold tier data rounded down to the nearest GiB used by the
+        # storage pool.
+        # Corresponds to the JSON property `coldTierSizeUsedGib`
+        # @return [Fixnum]
+        attr_accessor :cold_tier_size_used_gib
+      
         # Output only. Create time of the storage pool
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2241,6 +2247,12 @@ module Google
         # Corresponds to the JSON property `hotTierSizeGib`
         # @return [Fixnum]
         attr_accessor :hot_tier_size_gib
+      
+        # Output only. Total hot tier data rounded down to the nearest GiB used by the
+        # storage pool.
+        # Corresponds to the JSON property `hotTierSizeUsedGib`
+        # @return [Fixnum]
+        attr_accessor :hot_tier_size_used_gib
       
         # Optional. Specifies the KMS config to be used for volume encryption.
         # Corresponds to the JSON property `kmsConfig`
@@ -2348,6 +2360,7 @@ module Google
           @allow_auto_tiering = args[:allow_auto_tiering] if args.key?(:allow_auto_tiering)
           @available_throughput_mibps = args[:available_throughput_mibps] if args.key?(:available_throughput_mibps)
           @capacity_gib = args[:capacity_gib] if args.key?(:capacity_gib)
+          @cold_tier_size_used_gib = args[:cold_tier_size_used_gib] if args.key?(:cold_tier_size_used_gib)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_performance_enabled = args[:custom_performance_enabled] if args.key?(:custom_performance_enabled)
           @description = args[:description] if args.key?(:description)
@@ -2355,6 +2368,7 @@ module Google
           @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
           @global_access_allowed = args[:global_access_allowed] if args.key?(:global_access_allowed)
           @hot_tier_size_gib = args[:hot_tier_size_gib] if args.key?(:hot_tier_size_gib)
+          @hot_tier_size_used_gib = args[:hot_tier_size_used_gib] if args.key?(:hot_tier_size_used_gib)
           @kms_config = args[:kms_config] if args.key?(:kms_config)
           @labels = args[:labels] if args.key?(:labels)
           @ldap_enabled = args[:ldap_enabled] if args.key?(:ldap_enabled)
@@ -2637,6 +2651,12 @@ module Google
         attr_accessor :has_replication
         alias_method :has_replication?, :has_replication
       
+        # Output only. Total hot tier data rounded down to the nearest GiB used by the
+        # Volume. This field is only used for flex Service Level
+        # Corresponds to the JSON property `hotTierSizeUsedGib`
+        # @return [Fixnum]
+        attr_accessor :hot_tier_size_used_gib
+      
         # The Hybrid Replication parameters for the volume.
         # Corresponds to the JSON property `hybridReplicationParameters`
         # @return [Google::Apis::NetappV1::HybridReplicationParameters]
@@ -2818,6 +2838,7 @@ module Google
           @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
           @export_policy = args[:export_policy] if args.key?(:export_policy)
           @has_replication = args[:has_replication] if args.key?(:has_replication)
+          @hot_tier_size_used_gib = args[:hot_tier_size_used_gib] if args.key?(:hot_tier_size_used_gib)
           @hybrid_replication_parameters = args[:hybrid_replication_parameters] if args.key?(:hybrid_replication_parameters)
           @kerberos_enabled = args[:kerberos_enabled] if args.key?(:kerberos_enabled)
           @kms_config = args[:kms_config] if args.key?(:kms_config)

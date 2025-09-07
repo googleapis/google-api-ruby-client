@@ -900,6 +900,7 @@ module Google
           property :allow_auto_tiering, as: 'allowAutoTiering'
           property :available_throughput_mibps, as: 'availableThroughputMibps'
           property :capacity_gib, :numeric_string => true, as: 'capacityGib'
+          property :cold_tier_size_used_gib, :numeric_string => true, as: 'coldTierSizeUsedGib'
           property :create_time, as: 'createTime'
           property :custom_performance_enabled, as: 'customPerformanceEnabled'
           property :description, as: 'description'
@@ -907,6 +908,7 @@ module Google
           property :encryption_type, as: 'encryptionType'
           property :global_access_allowed, as: 'globalAccessAllowed'
           property :hot_tier_size_gib, :numeric_string => true, as: 'hotTierSizeGib'
+          property :hot_tier_size_used_gib, :numeric_string => true, as: 'hotTierSizeUsedGib'
           property :kms_config, as: 'kmsConfig'
           hash :labels, as: 'labels'
           property :ldap_enabled, as: 'ldapEnabled'
@@ -1006,6 +1008,7 @@ module Google
           property :export_policy, as: 'exportPolicy', class: Google::Apis::NetappV1::ExportPolicy, decorator: Google::Apis::NetappV1::ExportPolicy::Representation
       
           property :has_replication, as: 'hasReplication'
+          property :hot_tier_size_used_gib, :numeric_string => true, as: 'hotTierSizeUsedGib'
           property :hybrid_replication_parameters, as: 'hybridReplicationParameters', class: Google::Apis::NetappV1::HybridReplicationParameters, decorator: Google::Apis::NetappV1::HybridReplicationParameters::Representation
       
           property :kerberos_enabled, as: 'kerberosEnabled'
