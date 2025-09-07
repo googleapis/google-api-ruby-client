@@ -2607,6 +2607,86 @@ module Google
         end
       end
       
+      # The request set for the evaluation run.
+      class GoogleCloudAiplatformV1BigQueryRequestSet
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Map of candidate name to candidate response column name. The column
+        # will be in evaluation_item.CandidateResponse format.
+        # Corresponds to the JSON property `candidateResponseColumns`
+        # @return [Hash<String,String>]
+        attr_accessor :candidate_response_columns
+      
+        # Optional. The name of the column that contains the requests to evaluate. This
+        # will be in evaluation_item.EvalPrompt format.
+        # Corresponds to the JSON property `promptColumn`
+        # @return [String]
+        attr_accessor :prompt_column
+      
+        # Optional. The name of the column that contains the rubrics. This will be in
+        # evaluation_rubric.RubricGroup format (cl/762595858).
+        # Corresponds to the JSON property `rubricsColumn`
+        # @return [String]
+        attr_accessor :rubrics_column
+      
+        # The sampling config.
+        # Corresponds to the JSON property `samplingConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQueryRequestSetSamplingConfig]
+        attr_accessor :sampling_config
+      
+        # Required. The URI of a BigQuery table. e.g. bq://projectId.bqDatasetId.
+        # bqTableId
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidate_response_columns = args[:candidate_response_columns] if args.key?(:candidate_response_columns)
+          @prompt_column = args[:prompt_column] if args.key?(:prompt_column)
+          @rubrics_column = args[:rubrics_column] if args.key?(:rubrics_column)
+          @sampling_config = args[:sampling_config] if args.key?(:sampling_config)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # The sampling config.
+      class GoogleCloudAiplatformV1BigQueryRequestSetSamplingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The total number of logged data to import. If available data is less
+        # than the sampling count, all data will be imported. Default is 100.
+        # Corresponds to the JSON property `samplingCount`
+        # @return [Fixnum]
+        attr_accessor :sampling_count
+      
+        # Optional. How long to wait before sampling data from the BigQuery table. If
+        # not specified, defaults to 0.
+        # Corresponds to the JSON property `samplingDuration`
+        # @return [String]
+        attr_accessor :sampling_duration
+      
+        # Optional. The sampling method to use.
+        # Corresponds to the JSON property `samplingMethod`
+        # @return [String]
+        attr_accessor :sampling_method
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sampling_count = args[:sampling_count] if args.key?(:sampling_count)
+          @sampling_duration = args[:sampling_duration] if args.key?(:sampling_duration)
+          @sampling_method = args[:sampling_method] if args.key?(:sampling_method)
+        end
+      end
+      
       # The BigQuery location for the input content.
       class GoogleCloudAiplatformV1BigQuerySource
         include Google::Apis::Core::Hashable
@@ -3028,6 +3108,19 @@ module Google
         end
       end
       
+      # Request message for EvaluationManagementService.CancelEvaluationRun.
+      class GoogleCloudAiplatformV1CancelEvaluationRunRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for JobService.CancelHyperparameterTuningJob.
       class GoogleCloudAiplatformV1CancelHyperparameterTuningJobRequest
         include Google::Apis::Core::Hashable
@@ -3169,6 +3262,87 @@ module Google
           @logprobs_result = args[:logprobs_result] if args.key?(:logprobs_result)
           @safety_ratings = args[:safety_ratings] if args.key?(:safety_ratings)
           @url_context_metadata = args[:url_context_metadata] if args.key?(:url_context_metadata)
+        end
+      end
+      
+      # Responses from model or agent.
+      class GoogleCloudAiplatformV1CandidateResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the candidate that produced the response.
+        # Corresponds to the JSON property `candidate`
+        # @return [String]
+        attr_accessor :candidate
+      
+        # Text response.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Fields and values that can be used to populate the response template.
+        # Corresponds to the JSON property `value`
+        # @return [Object]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidate = args[:candidate] if args.key?(:candidate)
+          @text = args[:text] if args.key?(:text)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Result for a single candidate.
+      class GoogleCloudAiplatformV1CandidateResult
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Additional results for the metric.
+        # Corresponds to the JSON property `additionalResults`
+        # @return [Object]
+        attr_accessor :additional_results
+      
+        # Required. The candidate that is being evaluated. The value is the same as the
+        # candidate name in the EvaluationRequest.
+        # Corresponds to the JSON property `candidate`
+        # @return [String]
+        attr_accessor :candidate
+      
+        # Optional. The explanation for the metric.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # Required. The metric that was evaluated.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # Optional. The rubric verdicts for the metric.
+        # Corresponds to the JSON property `rubricVerdicts`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricVerdict>]
+        attr_accessor :rubric_verdicts
+      
+        # Optional. The score for the metric.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_results = args[:additional_results] if args.key?(:additional_results)
+          @candidate = args[:candidate] if args.key?(:candidate)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @metric = args[:metric] if args.key?(:metric)
+          @rubric_verdicts = args[:rubric_verdicts] if args.key?(:rubric_verdicts)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -8410,6 +8584,889 @@ module Google
         end
       end
       
+      # EvaluationItem is a single evaluation request or result. The content of an
+      # EvaluationItem is immutable - it cannot be updated once created.
+      # EvaluationItems can be deleted when no longer needed.
+      class GoogleCloudAiplatformV1EvaluationItem
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when this item was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The display name of the EvaluationItem.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::AiplatformV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # Required. The type of the EvaluationItem.
+        # Corresponds to the JSON property `evaluationItemType`
+        # @return [String]
+        attr_accessor :evaluation_item_type
+      
+        # Single evaluation request.
+        # Corresponds to the JSON property `evaluationRequest`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRequest]
+        attr_accessor :evaluation_request
+      
+        # Evaluation result.
+        # Corresponds to the JSON property `evaluationResponse`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationResult]
+        attr_accessor :evaluation_response
+      
+        # The GCS object where the request or response is stored.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        # Optional. Labels for the EvaluationItem.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. Metadata for the EvaluationItem.
+        # Corresponds to the JSON property `metadata`
+        # @return [Object]
+        attr_accessor :metadata
+      
+        # Identifier. The resource name of the EvaluationItem. Format: `projects/`
+        # project`/locations/`location`/evaluationItems/`evaluation_item``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @error = args[:error] if args.key?(:error)
+          @evaluation_item_type = args[:evaluation_item_type] if args.key?(:evaluation_item_type)
+          @evaluation_request = args[:evaluation_request] if args.key?(:evaluation_request)
+          @evaluation_response = args[:evaluation_response] if args.key?(:evaluation_response)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @labels = args[:labels] if args.key?(:labels)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Prompt to be evaluated.
+      class GoogleCloudAiplatformV1EvaluationPrompt
+        include Google::Apis::Core::Hashable
+      
+        # Message to hold a prompt template and the values to populate the template.
+        # Corresponds to the JSON property `promptTemplateData`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationPromptPromptTemplateData]
+        attr_accessor :prompt_template_data
+      
+        # Text prompt.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Fields and values that can be used to populate the prompt template.
+        # Corresponds to the JSON property `value`
+        # @return [Object]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prompt_template_data = args[:prompt_template_data] if args.key?(:prompt_template_data)
+          @text = args[:text] if args.key?(:text)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Message to hold a prompt template and the values to populate the template.
+      class GoogleCloudAiplatformV1EvaluationPromptPromptTemplateData
+        include Google::Apis::Core::Hashable
+      
+        # The values for fields in the prompt template.
+        # Corresponds to the JSON property `values`
+        # @return [Hash<String,Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Single evaluation request.
+      class GoogleCloudAiplatformV1EvaluationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Responses from model under test and other baseline models for
+        # comparison.
+        # Corresponds to the JSON property `candidateResponses`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CandidateResponse>]
+        attr_accessor :candidate_responses
+      
+        # Responses from model or agent.
+        # Corresponds to the JSON property `goldenResponse`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CandidateResponse]
+        attr_accessor :golden_response
+      
+        # Prompt to be evaluated.
+        # Corresponds to the JSON property `prompt`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationPrompt]
+        attr_accessor :prompt
+      
+        # Optional. Named groups of rubrics associated with this prompt. The key is a
+        # user-defined name for the rubric group.
+        # Corresponds to the JSON property `rubrics`
+        # @return [Hash<String,Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricGroup>]
+        attr_accessor :rubrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidate_responses = args[:candidate_responses] if args.key?(:candidate_responses)
+          @golden_response = args[:golden_response] if args.key?(:golden_response)
+          @prompt = args[:prompt] if args.key?(:prompt)
+          @rubrics = args[:rubrics] if args.key?(:rubrics)
+        end
+      end
+      
+      # Evaluation result.
+      class GoogleCloudAiplatformV1EvaluationResult
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The results for the metric.
+        # Corresponds to the JSON property `candidateResults`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CandidateResult>]
+        attr_accessor :candidate_results
+      
+        # Required. The request item that was evaluated. Format: projects/`project`/
+        # locations/`location`/evaluationItems/`evaluation_item`
+        # Corresponds to the JSON property `evaluationRequest`
+        # @return [String]
+        attr_accessor :evaluation_request
+      
+        # Required. The evaluation run that was used to generate the result. Format:
+        # projects/`project`/locations/`location`/evaluationRuns/`evaluation_run`
+        # Corresponds to the JSON property `evaluationRun`
+        # @return [String]
+        attr_accessor :evaluation_run
+      
+        # Optional. Metadata about the evaluation result.
+        # Corresponds to the JSON property `metadata`
+        # @return [Object]
+        attr_accessor :metadata
+      
+        # Required. The metric that was evaluated.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # Single evaluation request.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidate_results = args[:candidate_results] if args.key?(:candidate_results)
+          @evaluation_request = args[:evaluation_request] if args.key?(:evaluation_request)
+          @evaluation_run = args[:evaluation_run] if args.key?(:evaluation_run)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @metric = args[:metric] if args.key?(:metric)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The results of the evaluation run.
+      class GoogleCloudAiplatformV1EvaluationResults
+        include Google::Apis::Core::Hashable
+      
+        # The evaluation set where item level results are stored.
+        # Corresponds to the JSON property `evaluationSet`
+        # @return [String]
+        attr_accessor :evaluation_set
+      
+        # The summary metrics for the evaluation run.
+        # Corresponds to the JSON property `summaryMetrics`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SummaryMetrics]
+        attr_accessor :summary_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation_set = args[:evaluation_set] if args.key?(:evaluation_set)
+          @summary_metrics = args[:summary_metrics] if args.key?(:summary_metrics)
+        end
+      end
+      
+      # Configuration for a rubric group to be generated/saved for evaluation.
+      class GoogleCloudAiplatformV1EvaluationRubricConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specification for a pre-defined metric.
+        # Corresponds to the JSON property `predefinedRubricGenerationSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricPredefinedMetricSpec]
+        attr_accessor :predefined_rubric_generation_spec
+      
+        # Specification for how rubrics should be generated.
+        # Corresponds to the JSON property `rubricGenerationSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec]
+        attr_accessor :rubric_generation_spec
+      
+        # Required. The key used to save the generated rubrics. If a generation spec is
+        # provided, this key will be used for the name of the generated rubric group.
+        # Otherwise, this key will be used to look up the existing rubric group on the
+        # evaluation item. Note that if a rubric group key is specified on both a rubric
+        # config and an evaluation metric, the key from the metric will be used to
+        # select the rubrics for evaluation.
+        # Corresponds to the JSON property `rubricGroupKey`
+        # @return [String]
+        attr_accessor :rubric_group_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @predefined_rubric_generation_spec = args[:predefined_rubric_generation_spec] if args.key?(:predefined_rubric_generation_spec)
+          @rubric_generation_spec = args[:rubric_generation_spec] if args.key?(:rubric_generation_spec)
+          @rubric_group_key = args[:rubric_group_key] if args.key?(:rubric_group_key)
+        end
+      end
+      
+      # EvaluationRun is a resource that represents a single evaluation run, which
+      # includes a set of prompts, model responses, evaluation configuration and the
+      # resulting metrics.
+      class GoogleCloudAiplatformV1EvaluationRun
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when the evaluation run was completed.
+        # Corresponds to the JSON property `completionTime`
+        # @return [String]
+        attr_accessor :completion_time
+      
+        # Output only. Time when the evaluation run was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The data source for the evaluation run.
+        # Corresponds to the JSON property `dataSource`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunDataSource]
+        attr_accessor :data_source
+      
+        # Required. The display name of the Evaluation Run.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::AiplatformV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # The Evalution configuration used for the evaluation run.
+        # Corresponds to the JSON property `evaluationConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfig]
+        attr_accessor :evaluation_config
+      
+        # The results of the evaluation run.
+        # Corresponds to the JSON property `evaluationResults`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationResults]
+        attr_accessor :evaluation_results
+      
+        # Output only. The specific evaluation set of the evaluation run. For runs with
+        # an evaluation set input, this will be that same set. For runs with BigQuery
+        # input, it's the sampled BigQuery dataset.
+        # Corresponds to the JSON property `evaluationSetSnapshot`
+        # @return [String]
+        attr_accessor :evaluation_set_snapshot
+      
+        # Optional. The candidate to inference config map for the evaluation run. The
+        # candidate can be up to 128 characters long and can consist of any UTF-8
+        # characters.
+        # Corresponds to the JSON property `inferenceConfigs`
+        # @return [Hash<String,Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunInferenceConfig>]
+        attr_accessor :inference_configs
+      
+        # Optional. Labels for the evaluation run.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. Metadata about the evaluation run, can be used by the caller to
+        # store additional tracking information about the evaluation run.
+        # Corresponds to the JSON property `metadata`
+        # @return [Object]
+        attr_accessor :metadata
+      
+        # Identifier. The resource name of the EvaluationRun. This is a unique
+        # identifier. Format: `projects/`project`/locations/`location`/evaluationRuns/`
+        # evaluation_run``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the evaluation run.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completion_time = args[:completion_time] if args.key?(:completion_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @data_source = args[:data_source] if args.key?(:data_source)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @error = args[:error] if args.key?(:error)
+          @evaluation_config = args[:evaluation_config] if args.key?(:evaluation_config)
+          @evaluation_results = args[:evaluation_results] if args.key?(:evaluation_results)
+          @evaluation_set_snapshot = args[:evaluation_set_snapshot] if args.key?(:evaluation_set_snapshot)
+          @inference_configs = args[:inference_configs] if args.key?(:inference_configs)
+          @labels = args[:labels] if args.key?(:labels)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The data source for the evaluation run.
+      class GoogleCloudAiplatformV1EvaluationRunDataSource
+        include Google::Apis::Core::Hashable
+      
+        # The request set for the evaluation run.
+        # Corresponds to the JSON property `bigqueryRequestSet`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQueryRequestSet]
+        attr_accessor :bigquery_request_set
+      
+        # The EvaluationSet resource name. Format: `projects/`project`/locations/`
+        # location`/evaluationSets/`evaluation_set``
+        # Corresponds to the JSON property `evaluationSet`
+        # @return [String]
+        attr_accessor :evaluation_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_request_set = args[:bigquery_request_set] if args.key?(:bigquery_request_set)
+          @evaluation_set = args[:evaluation_set] if args.key?(:evaluation_set)
+        end
+      end
+      
+      # The Evalution configuration used for the evaluation run.
+      class GoogleCloudAiplatformV1EvaluationRunEvaluationConfig
+        include Google::Apis::Core::Hashable
+      
+        # The autorater config used for the evaluation run.
+        # Corresponds to the JSON property `autoraterConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig]
+        attr_accessor :autorater_config
+      
+        # Required. The metrics to be calculated in the evaluation run.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetric>]
+        attr_accessor :metrics
+      
+        # The output config for the evaluation run.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigOutputConfig]
+        attr_accessor :output_config
+      
+        # Prompt template used for inference.
+        # Corresponds to the JSON property `promptTemplate`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigPromptTemplate]
+        attr_accessor :prompt_template
+      
+        # Optional. The rubric configs for the evaluation run. They are used to generate
+        # rubrics which can be used by rubric-based metrics. Multiple rubric configs can
+        # be specified for rubric generation but only one rubric config can be used for
+        # a rubric-based metric. If more than one rubric config is provided, the
+        # evaluation metric must specify a rubric group key. Note that if a generation
+        # spec is specified on both a rubric config and an evaluation metric, the
+        # rubrics generated for the metric will be used for evaluation.
+        # Corresponds to the JSON property `rubricConfigs`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRubricConfig>]
+        attr_accessor :rubric_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @autorater_config = args[:autorater_config] if args.key?(:autorater_config)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @output_config = args[:output_config] if args.key?(:output_config)
+          @prompt_template = args[:prompt_template] if args.key?(:prompt_template)
+          @rubric_configs = args[:rubric_configs] if args.key?(:rubric_configs)
+        end
+      end
+      
+      # The autorater config used for the evaluation run.
+      class GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The fully qualified name of the publisher model or tuned autorater
+        # endpoint to use. Publisher model format: `projects/`project`/locations/`
+        # location`/publishers/*/models/*` Tuned model endpoint format: `projects/`
+        # project`/locations/`location`/endpoints/`endpoint``
+        # Corresponds to the JSON property `autoraterModel`
+        # @return [String]
+        attr_accessor :autorater_model
+      
+        # Generation config.
+        # Corresponds to the JSON property `generationConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig]
+        attr_accessor :generation_config
+      
+        # Optional. Number of samples for each instance in the dataset. If not specified,
+        # the default is 4. Minimum value is 1, maximum value is 32.
+        # Corresponds to the JSON property `sampleCount`
+        # @return [Fixnum]
+        attr_accessor :sample_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @autorater_model = args[:autorater_model] if args.key?(:autorater_model)
+          @generation_config = args[:generation_config] if args.key?(:generation_config)
+          @sample_count = args[:sample_count] if args.key?(:sample_count)
+        end
+      end
+      
+      # The output config for the evaluation run.
+      class GoogleCloudAiplatformV1EvaluationRunEvaluationConfigOutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # The BigQuery location for the output content.
+        # Corresponds to the JSON property `bigqueryDestination`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQueryDestination]
+        attr_accessor :bigquery_destination
+      
+        # The Google Cloud Storage location where the output is to be written to.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination]
+        attr_accessor :gcs_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+        end
+      end
+      
+      # Prompt template used for inference.
+      class GoogleCloudAiplatformV1EvaluationRunEvaluationConfigPromptTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Prompt template stored in Cloud Storage. Format: "gs://my-bucket/file-name.txt"
+        # .
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        # Inline prompt template. Template variables should be in the format "`var_name`"
+        # . Example: "Translate the following from `source_lang` to `target_lang`: `text`
+        # "
+        # Corresponds to the JSON property `promptTemplate`
+        # @return [String]
+        attr_accessor :prompt_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @prompt_template = args[:prompt_template] if args.key?(:prompt_template)
+        end
+      end
+      
+      # An inference config used for model inference during the evaluation run.
+      class GoogleCloudAiplatformV1EvaluationRunInferenceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Generation config.
+        # Corresponds to the JSON property `generationConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig]
+        attr_accessor :generation_config
+      
+        # Required. The fully qualified name of the publisher model or endpoint to use.
+        # Publisher model format: `projects/`project`/locations/`location`/publishers/*/
+        # models/*` Endpoint format: `projects/`project`/locations/`location`/endpoints/`
+        # endpoint``
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generation_config = args[:generation_config] if args.key?(:generation_config)
+          @model = args[:model] if args.key?(:model)
+        end
+      end
+      
+      # The metric used for evaluation runs.
+      class GoogleCloudAiplatformV1EvaluationRunMetric
+        include Google::Apis::Core::Hashable
+      
+        # Specification for a computation based metric.
+        # Corresponds to the JSON property `computationBasedMetricSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricComputationBasedMetricSpec]
+        attr_accessor :computation_based_metric_spec
+      
+        # Specification for an LLM based metric.
+        # Corresponds to the JSON property `llmBasedMetricSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricLlmBasedMetricSpec]
+        attr_accessor :llm_based_metric_spec
+      
+        # Required. The name of the metric.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # Specification for a pre-defined metric.
+        # Corresponds to the JSON property `predefinedMetricSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricPredefinedMetricSpec]
+        attr_accessor :predefined_metric_spec
+      
+        # Specification for a metric that is based on rubrics.
+        # Corresponds to the JSON property `rubricBasedMetricSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricRubricBasedMetricSpec]
+        attr_accessor :rubric_based_metric_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @computation_based_metric_spec = args[:computation_based_metric_spec] if args.key?(:computation_based_metric_spec)
+          @llm_based_metric_spec = args[:llm_based_metric_spec] if args.key?(:llm_based_metric_spec)
+          @metric = args[:metric] if args.key?(:metric)
+          @predefined_metric_spec = args[:predefined_metric_spec] if args.key?(:predefined_metric_spec)
+          @rubric_based_metric_spec = args[:rubric_based_metric_spec] if args.key?(:rubric_based_metric_spec)
+        end
+      end
+      
+      # Specification for a computation based metric.
+      class GoogleCloudAiplatformV1EvaluationRunMetricComputationBasedMetricSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A map of parameters for the metric, e.g. `"rouge_type": "rougeL"`.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :parameters
+      
+        # Required. The type of the computation based metric.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Specification for an LLM based metric.
+      class GoogleCloudAiplatformV1EvaluationRunMetricLlmBasedMetricSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional additional configuration for the metric.
+        # Corresponds to the JSON property `additionalConfig`
+        # @return [Hash<String,Object>]
+        attr_accessor :additional_config
+      
+        # The autorater config used for the evaluation run.
+        # Corresponds to the JSON property `judgeAutoraterConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig]
+        attr_accessor :judge_autorater_config
+      
+        # Required. Template for the prompt sent to the judge model.
+        # Corresponds to the JSON property `metricPromptTemplate`
+        # @return [String]
+        attr_accessor :metric_prompt_template
+      
+        # Specification for a pre-defined metric.
+        # Corresponds to the JSON property `predefinedRubricGenerationSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricPredefinedMetricSpec]
+        attr_accessor :predefined_rubric_generation_spec
+      
+        # Specification for how rubrics should be generated.
+        # Corresponds to the JSON property `rubricGenerationSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec]
+        attr_accessor :rubric_generation_spec
+      
+        # Use a pre-defined group of rubrics associated with the input. Refers to a key
+        # in the rubric_groups map of EvaluationInstance.
+        # Corresponds to the JSON property `rubricGroupKey`
+        # @return [String]
+        attr_accessor :rubric_group_key
+      
+        # Optional. System instructions for the judge model.
+        # Corresponds to the JSON property `systemInstruction`
+        # @return [String]
+        attr_accessor :system_instruction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_config = args[:additional_config] if args.key?(:additional_config)
+          @judge_autorater_config = args[:judge_autorater_config] if args.key?(:judge_autorater_config)
+          @metric_prompt_template = args[:metric_prompt_template] if args.key?(:metric_prompt_template)
+          @predefined_rubric_generation_spec = args[:predefined_rubric_generation_spec] if args.key?(:predefined_rubric_generation_spec)
+          @rubric_generation_spec = args[:rubric_generation_spec] if args.key?(:rubric_generation_spec)
+          @rubric_group_key = args[:rubric_group_key] if args.key?(:rubric_group_key)
+          @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
+        end
+      end
+      
+      # Specification for a pre-defined metric.
+      class GoogleCloudAiplatformV1EvaluationRunMetricPredefinedMetricSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of a pre-defined metric, such as "instruction_following_v1"
+        # or "text_quality_v1".
+        # Corresponds to the JSON property `metricSpecName`
+        # @return [String]
+        attr_accessor :metric_spec_name
+      
+        # Optional. The parameters needed to run the pre-defined metric.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric_spec_name = args[:metric_spec_name] if args.key?(:metric_spec_name)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # Specification for a metric that is based on rubrics.
+      class GoogleCloudAiplatformV1EvaluationRunMetricRubricBasedMetricSpec
+        include Google::Apis::Core::Hashable
+      
+        # Defines a list of rubrics, used when providing rubrics inline.
+        # Corresponds to the JSON property `inlineRubrics`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricRubricBasedMetricSpecRepeatedRubrics]
+        attr_accessor :inline_rubrics
+      
+        # The autorater config used for the evaluation run.
+        # Corresponds to the JSON property `judgeAutoraterConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig]
+        attr_accessor :judge_autorater_config
+      
+        # Optional. Template for the prompt used by the judge model to evaluate against
+        # rubrics.
+        # Corresponds to the JSON property `metricPromptTemplate`
+        # @return [String]
+        attr_accessor :metric_prompt_template
+      
+        # Specification for how rubrics should be generated.
+        # Corresponds to the JSON property `rubricGenerationSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec]
+        attr_accessor :rubric_generation_spec
+      
+        # Use a pre-defined group of rubrics associated with the input content. This
+        # refers to a key in the `rubric_groups` map of `RubricEnhancedContents`.
+        # Corresponds to the JSON property `rubricGroupKey`
+        # @return [String]
+        attr_accessor :rubric_group_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inline_rubrics = args[:inline_rubrics] if args.key?(:inline_rubrics)
+          @judge_autorater_config = args[:judge_autorater_config] if args.key?(:judge_autorater_config)
+          @metric_prompt_template = args[:metric_prompt_template] if args.key?(:metric_prompt_template)
+          @rubric_generation_spec = args[:rubric_generation_spec] if args.key?(:rubric_generation_spec)
+          @rubric_group_key = args[:rubric_group_key] if args.key?(:rubric_group_key)
+        end
+      end
+      
+      # Defines a list of rubrics, used when providing rubrics inline.
+      class GoogleCloudAiplatformV1EvaluationRunMetricRubricBasedMetricSpecRepeatedRubrics
+        include Google::Apis::Core::Hashable
+      
+        # The list of rubrics.
+        # Corresponds to the JSON property `rubrics`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Rubric>]
+        attr_accessor :rubrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rubrics = args[:rubrics] if args.key?(:rubrics)
+        end
+      end
+      
+      # Specification for how rubrics should be generated.
+      class GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec
+        include Google::Apis::Core::Hashable
+      
+        # The autorater config used for the evaluation run.
+        # Corresponds to the JSON property `modelConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig]
+        attr_accessor :model_config
+      
+        # Optional. Template for the prompt used to generate rubrics. The details should
+        # be updated based on the most-recent recipe requirements.
+        # Corresponds to the JSON property `promptTemplate`
+        # @return [String]
+        attr_accessor :prompt_template
+      
+        # Optional. The type of rubric content to be generated.
+        # Corresponds to the JSON property `rubricContentType`
+        # @return [String]
+        attr_accessor :rubric_content_type
+      
+        # Optional. An optional, pre-defined list of allowed types for generated rubrics.
+        # If this field is provided, it implies `include_rubric_type` should be true,
+        # and the generated rubric types should be chosen from this ontology.
+        # Corresponds to the JSON property `rubricTypeOntology`
+        # @return [Array<String>]
+        attr_accessor :rubric_type_ontology
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model_config = args[:model_config] if args.key?(:model_config)
+          @prompt_template = args[:prompt_template] if args.key?(:prompt_template)
+          @rubric_content_type = args[:rubric_content_type] if args.key?(:rubric_content_type)
+          @rubric_type_ontology = args[:rubric_type_ontology] if args.key?(:rubric_type_ontology)
+        end
+      end
+      
+      # EvaluationSet is a collection of related EvaluationItems that are evaluated
+      # together.
+      class GoogleCloudAiplatformV1EvaluationSet
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when this item was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The display name of the EvaluationSet.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The EvaluationItems that are part of this dataset.
+        # Corresponds to the JSON property `evaluationItems`
+        # @return [Array<String>]
+        attr_accessor :evaluation_items
+      
+        # Optional. Metadata for the EvaluationSet.
+        # Corresponds to the JSON property `metadata`
+        # @return [Object]
+        attr_accessor :metadata
+      
+        # Identifier. The resource name of the EvaluationSet. Format: `projects/`project`
+        # /locations/`location`/evaluationSets/`evaluation_set``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Timestamp when this item was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @evaluation_items = args[:evaluation_items] if args.key?(:evaluation_items)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # An edge describing the relationship between an Artifact and an Execution in a
       # lineage graph.
       class GoogleCloudAiplatformV1Event
@@ -13170,6 +14227,64 @@ module Google
         end
       end
       
+      # Request message for DataFoundryService.GenerateSyntheticData.
+      class GoogleCloudAiplatformV1GenerateSyntheticDataRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The number of synthetic examples to generate. For this stateless API,
+        # the count is limited to a small number.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Optional. A list of few-shot examples to guide the model's output style and
+        # format.
+        # Corresponds to the JSON property `examples`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SyntheticExample>]
+        attr_accessor :examples
+      
+        # Required. The schema of the desired output, defined by a list of fields.
+        # Corresponds to the JSON property `outputFieldSpecs`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OutputFieldSpec>]
+        attr_accessor :output_field_specs
+      
+        # Defines a generation strategy based on a high-level task description.
+        # Corresponds to the JSON property `taskDescription`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TaskDescriptionStrategy]
+        attr_accessor :task_description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @examples = args[:examples] if args.key?(:examples)
+          @output_field_specs = args[:output_field_specs] if args.key?(:output_field_specs)
+          @task_description = args[:task_description] if args.key?(:task_description)
+        end
+      end
+      
+      # The response containing the generated data.
+      class GoogleCloudAiplatformV1GenerateSyntheticDataResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of generated synthetic examples.
+        # Corresponds to the JSON property `syntheticExamples`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SyntheticExample>]
+        attr_accessor :synthetic_examples
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @synthetic_examples = args[:synthetic_examples] if args.key?(:synthetic_examples)
+        end
+      end
+      
       # Generate video response.
       class GoogleCloudAiplatformV1GenerateVideoResponse
         include Google::Apis::Core::Hashable
@@ -15856,6 +16971,81 @@ module Google
         end
       end
       
+      # Response message for EvaluationManagementService.ListEvaluationItems.
+      class GoogleCloudAiplatformV1ListEvaluationItemsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of EvaluationItems in the requested page.
+        # Corresponds to the JSON property `evaluationItems`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationItem>]
+        attr_accessor :evaluation_items
+      
+        # A token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation_items = args[:evaluation_items] if args.key?(:evaluation_items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for EvaluationManagementService.ListEvaluationRuns.
+      class GoogleCloudAiplatformV1ListEvaluationRunsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of EvaluationRuns in the requested page.
+        # Corresponds to the JSON property `evaluationRuns`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRun>]
+        attr_accessor :evaluation_runs
+      
+        # A token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation_runs = args[:evaluation_runs] if args.key?(:evaluation_runs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for EvaluationManagementService.ListEvaluationSets.
+      class GoogleCloudAiplatformV1ListEvaluationSetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of EvaluationSets in the requested page.
+        # Corresponds to the JSON property `evaluationSets`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationSet>]
+        attr_accessor :evaluation_sets
+      
+        # A token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation_sets = args[:evaluation_sets] if args.key?(:evaluation_sets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for MetadataService.ListExecutions.
       class GoogleCloudAiplatformV1ListExecutionsResponse
         include Google::Apis::Core::Hashable
@@ -17385,18 +18575,28 @@ module Google
       class GoogleCloudAiplatformV1MetricResult
         include Google::Apis::Core::Hashable
       
-        # The explanation for the metric result.
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::AiplatformV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # Output only. The explanation for the metric result.
         # Corresponds to the JSON property `explanation`
         # @return [String]
         attr_accessor :explanation
       
-        # For rubric-based metrics, the verdicts for each rubric.
+        # Output only. For rubric-based metrics, the verdicts for each rubric.
         # Corresponds to the JSON property `rubricVerdicts`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RubricVerdict>]
         attr_accessor :rubric_verdicts
       
-        # The score for the metric. Please refer to each metric's documentation for the
-        # meaning of the score.
+        # Output only. The score for the metric. Please refer to each metric's
+        # documentation for the meaning of the score.
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -17407,6 +18607,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @error = args[:error] if args.key?(:error)
           @explanation = args[:explanation] if args.key?(:explanation)
           @rubric_verdicts = args[:rubric_verdicts] if args.key?(:rubric_verdicts)
           @score = args[:score] if args.key?(:score)
@@ -21600,6 +22801,40 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+        end
+      end
+      
+      # Defines a specification for a single output field.
+      class GoogleCloudAiplatformV1OutputFieldSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the output field.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # Optional. The data type of the field. Defaults to CONTENT if not set.
+        # Corresponds to the JSON property `fieldType`
+        # @return [String]
+        attr_accessor :field_type
+      
+        # Optional. Optional, but recommended. Additional guidance specific to this
+        # field to provide targeted instructions for the LLM to generate the content of
+        # a single output field. While the LLM can sometimes infer content from the
+        # field name, providing explicit guidance is preferred.
+        # Corresponds to the JSON property `guidance`
+        # @return [String]
+        attr_accessor :guidance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @field_type = args[:field_type] if args.key?(:field_type)
+          @guidance = args[:guidance] if args.key?(:guidance)
         end
       end
       
@@ -26532,6 +27767,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Labels for the ReasoningEngine.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Identifier. The resource name of the ReasoningEngine. Format: `projects/`
         # project`/locations/`location`/reasoningEngines/`reasoning_engine``
         # Corresponds to the JSON property `name`
@@ -26559,6 +27799,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @spec = args[:spec] if args.key?(:spec)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -37495,6 +38736,37 @@ module Google
         end
       end
       
+      # The summary metrics for the evaluation run.
+      class GoogleCloudAiplatformV1SummaryMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of items that failed to be evaluated.
+        # Corresponds to the JSON property `failedItems`
+        # @return [Fixnum]
+        attr_accessor :failed_items
+      
+        # Optional. Map of metric name to metric value.
+        # Corresponds to the JSON property `metrics`
+        # @return [Hash<String,Object>]
+        attr_accessor :metrics
+      
+        # Optional. The total number of items that were evaluated.
+        # Corresponds to the JSON property `totalItems`
+        # @return [Fixnum]
+        attr_accessor :total_items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_items = args[:failed_items] if args.key?(:failed_items)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @total_items = args[:total_items] if args.key?(:total_items)
+        end
+      end
+      
       # Hyperparameters for SFT.
       class GoogleCloudAiplatformV1SupervisedHyperParameters
         include Google::Apis::Core::Hashable
@@ -37794,6 +39066,55 @@ module Google
         end
       end
       
+      # Represents a single synthetic example, composed of multiple fields. Used for
+      # providing few-shot examples in the request and for returning generated
+      # examples in the response.
+      class GoogleCloudAiplatformV1SyntheticExample
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of fields that constitute an example.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SyntheticField>]
+        attr_accessor :fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+        end
+      end
+      
+      # Represents a single named field within a SyntheticExample.
+      class GoogleCloudAiplatformV1SyntheticField
+        include Google::Apis::Core::Hashable
+      
+        # The base structured datatype containing multi-part content of a message. A `
+        # Content` includes a `role` field designating the producer of the `Content` and
+        # a `parts` field containing multi-part data that contains the content of the
+        # message turn.
+        # Corresponds to the JSON property `content`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
+        attr_accessor :content
+      
+        # Optional. The name of the field.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @field_name = args[:field_name] if args.key?(:field_name)
+        end
+      end
+      
       # The storage details for TFRecord output content.
       class GoogleCloudAiplatformV1TfRecordDestination
         include Google::Apis::Core::Hashable
@@ -37810,6 +39131,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+        end
+      end
+      
+      # Defines a generation strategy based on a high-level task description.
+      class GoogleCloudAiplatformV1TaskDescriptionStrategy
+        include Google::Apis::Core::Hashable
+      
+        # Required. A high-level description of the synthetic data to be generated.
+        # Corresponds to the JSON property `taskDescription`
+        # @return [String]
+        attr_accessor :task_description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @task_description = args[:task_description] if args.key?(:task_description)
         end
       end
       
