@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MongodbChangeStreamPosition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MongodbCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1219,6 +1225,13 @@ module Google
         end
       end
       
+      class MongodbChangeStreamPosition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class MongodbCluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1848,6 +1861,8 @@ module Google
       class SpecificStartPosition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :mongodb_change_stream_position, as: 'mongodbChangeStreamPosition', class: Google::Apis::DatastreamV1::MongodbChangeStreamPosition, decorator: Google::Apis::DatastreamV1::MongodbChangeStreamPosition::Representation
+      
           property :mysql_gtid_position, as: 'mysqlGtidPosition', class: Google::Apis::DatastreamV1::MysqlGtidPosition, decorator: Google::Apis::DatastreamV1::MysqlGtidPosition::Representation
       
           property :mysql_log_position, as: 'mysqlLogPosition', class: Google::Apis::DatastreamV1::MysqlLogPosition, decorator: Google::Apis::DatastreamV1::MysqlLogPosition::Representation
