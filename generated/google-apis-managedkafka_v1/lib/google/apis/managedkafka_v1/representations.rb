@@ -382,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateSchemaConfigRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -490,6 +496,8 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :tls_config, as: 'tlsConfig', class: Google::Apis::ManagedkafkaV1::TlsConfig, decorator: Google::Apis::ManagedkafkaV1::TlsConfig::Representation
+      
+          property :update_options, as: 'updateOptions', class: Google::Apis::ManagedkafkaV1::UpdateOptions, decorator: Google::Apis::ManagedkafkaV1::UpdateOptions::Representation
       
           property :update_time, as: 'updateTime'
         end
@@ -935,6 +943,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :cas_configs, as: 'casConfigs', class: Google::Apis::ManagedkafkaV1::CertificateAuthorityServiceConfig, decorator: Google::Apis::ManagedkafkaV1::CertificateAuthorityServiceConfig::Representation
       
+        end
+      end
+      
+      class UpdateOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_broker_downscale_on_cluster_upscale, as: 'allowBrokerDownscaleOnClusterUpscale'
         end
       end
       

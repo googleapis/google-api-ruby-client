@@ -369,6 +369,13 @@ module Google
         # @return [Google::Apis::ManagedkafkaV1::TlsConfig]
         attr_accessor :tls_config
       
+        # UpdateOptions specifies options that influence how a cluster update is applied.
+        # These options control the behavior of the update process, rather than
+        # defining the desired end-state of a cluster.
+        # Corresponds to the JSON property `updateOptions`
+        # @return [Google::Apis::ManagedkafkaV1::UpdateOptions]
+        attr_accessor :update_options
+      
         # Output only. The time when the cluster was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -390,6 +397,7 @@ module Google
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @tls_config = args[:tls_config] if args.key?(:tls_config)
+          @update_options = args[:update_options] if args.key?(:update_options)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -1922,6 +1930,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cas_configs = args[:cas_configs] if args.key?(:cas_configs)
+        end
+      end
+      
+      # UpdateOptions specifies options that influence how a cluster update is applied.
+      # These options control the behavior of the update process, rather than
+      # defining the desired end-state of a cluster.
+      class UpdateOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, allows an update operation that increases the total vCPU
+        # and/or memory allocation of the cluster to significantly decrease the per-
+        # broker vCPU and/or memory allocation. This can result in reduced performance
+        # and availability. By default, the update operation will fail if an upscale
+        # request results in a vCPU or memory allocation for the brokers that is smaller
+        # than 90% of the current broker size.
+        # Corresponds to the JSON property `allowBrokerDownscaleOnClusterUpscale`
+        # @return [Boolean]
+        attr_accessor :allow_broker_downscale_on_cluster_upscale
+        alias_method :allow_broker_downscale_on_cluster_upscale?, :allow_broker_downscale_on_cluster_upscale
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_broker_downscale_on_cluster_upscale = args[:allow_broker_downscale_on_cluster_upscale] if args.key?(:allow_broker_downscale_on_cluster_upscale)
         end
       end
       
