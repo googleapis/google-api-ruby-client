@@ -784,6 +784,7 @@ module Google
       class Tool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :depends_on, as: 'dependsOn'
           property :description, as: 'description'
           property :input_schema, as: 'inputSchema', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
       
