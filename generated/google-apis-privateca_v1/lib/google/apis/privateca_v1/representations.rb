@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -323,12 +329,6 @@ module Google
       end
       
       class PublishingOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ReconciliationOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -524,6 +524,8 @@ module Google
       class CaPool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::PrivatecaV1::EncryptionSpec, decorator: Google::Apis::PrivatecaV1::EncryptionSpec::Representation
+      
           property :issuance_policy, as: 'issuancePolicy', class: Google::Apis::PrivatecaV1::IssuancePolicy, decorator: Google::Apis::PrivatecaV1::IssuancePolicy::Representation
       
           hash :labels, as: 'labels'
@@ -730,6 +732,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
+        end
+      end
+      
+      class EncryptionSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_kms_key, as: 'cloudKmsKey'
         end
       end
       
@@ -997,14 +1006,6 @@ module Google
           property :encoding_format, as: 'encodingFormat'
           property :publish_ca_cert, as: 'publishCaCert'
           property :publish_crl, as: 'publishCrl'
-        end
-      end
-      
-      class ReconciliationOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :delete_resource, as: 'deleteResource'
-          property :exclusive_action, as: 'exclusiveAction'
         end
       end
       
