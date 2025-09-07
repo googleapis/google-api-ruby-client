@@ -1240,6 +1240,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateSeriesMetadataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateStudyMetadataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserDataMapping
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3146,6 +3158,18 @@ module Google
       
           property :name, as: 'name'
           property :primitive, as: 'primitive'
+        end
+      end
+      
+      class UpdateSeriesMetadataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UpdateStudyMetadataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

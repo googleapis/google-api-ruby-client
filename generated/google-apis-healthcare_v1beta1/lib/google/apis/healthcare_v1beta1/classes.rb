@@ -3124,9 +3124,12 @@ module Google
         attr_accessor :disable_resource_versioning
         alias_method :disable_resource_versioning?, :disable_resource_versioning
       
-        # Optional. Whether to allow ExecuteBundle to accept history bundles, and
-        # directly insert and overwrite historical resource versions into the FHIR store.
-        # If set to false, using history bundles fails with an error. Defaults to false.
+        # Optional. Whether to allow the [ImportResourcesHistory] and [ExecuteBundle]
+        # APIs to accept history bundles, and directly insert and overwrite historical
+        # resource versions into the FHIR store. Changing resource histories creates
+        # resource interactions that have occurred in the past which clients might not
+        # allow. If set to false, [ImportResourcesHistory] and [ExecuteBundle] requests
+        # will return errors.
         # Corresponds to the JSON property `enableHistoryModifications`
         # @return [Boolean]
         attr_accessor :enable_history_modifications
@@ -6971,6 +6974,32 @@ module Google
           @fields = args[:fields] if args.key?(:fields)
           @name = args[:name] if args.key?(:name)
           @primitive = args[:primitive] if args.key?(:primitive)
+        end
+      end
+      
+      # UpdateSeriesMetadataResponse is the LRO response for UpdateSeriesMetadata.
+      class UpdateSeriesMetadataResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # UpdateStudyMetadataResponse is the LRO response for UpdateStudyMetadata.
+      class UpdateStudyMetadataResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
