@@ -6583,8 +6583,11 @@ module Google
         # is complete. * "ingest-conversations": Notify each time an IngestConversations
         # LRO is complete. * "update-conversation": Notify each time a conversation is
         # updated via UpdateConversation. * "upload-conversation": Notify when an
-        # UploadConversation LRO is complete. Values are Pub/Sub topics. The format of
-        # each Pub/Sub topic is: projects/`project`/topics/`topic`
+        # UploadConversation LRO is complete. * "update-or-analyze-conversation": Notify
+        # when an analysis for a conversation is completed or when the conversation is
+        # updated. The message will contain the conversation with transcript, analysis
+        # and other metadata. Values are Pub/Sub topics. The format of each Pub/Sub
+        # topic is: projects/`project`/topics/`topic`
         # Corresponds to the JSON property `pubsubNotificationSettings`
         # @return [Hash<String,String>]
         attr_accessor :pubsub_notification_settings

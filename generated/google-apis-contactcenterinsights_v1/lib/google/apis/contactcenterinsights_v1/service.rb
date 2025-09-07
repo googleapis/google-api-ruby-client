@@ -732,7 +732,7 @@ module Google
         #   final component of the AuthorizedViewSet's resource name. If no ID is
         #   specified, a server-generated ID will be used. This value should be 4-64
         #   characters and must match the regular expression `^[a-z]([a-z0-9-]`0,61`[a-z0-
-        #   9])?$`. See aip.dev/122#resource-id-segments
+        #   9])?$`. See https://google.aip.dev/122#resource-id-segments
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -924,8 +924,8 @@ module Google
         #   Optional. A unique ID for the new AuthorizedView. This ID will become the
         #   final component of the AuthorizedView's resource name. If no ID is specified,
         #   a server-generated ID will be used. This value should be 4-64 characters and
-        #   must match the regular expression `^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$`. See aip.
-        #   dev/122#resource-id-segments
+        #   must match the regular expression `^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$`. See
+        #   https://google.aip.dev/122#resource-id-segments
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
