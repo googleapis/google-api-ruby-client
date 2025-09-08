@@ -81,7 +81,7 @@ module Google
 
           http_res = client.get(url.to_s, query, request_header) do |request|
             request.options.on_data = proc do |chunk, _size, res|
-              status = res.status.to_i
+              status = res ? res.status.to_i : 200
               next if chunk.nil? || (status >= 300 && status < 400)
 
               # HTTP 206 is Partial Content
