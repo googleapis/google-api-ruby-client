@@ -15,7 +15,7 @@
 require 'spec_helper'
 require 'google/apis/core/storage_upload'
 require 'google/apis/core/json_representation'
-require 'pry'
+
 RSpec.describe Google::Apis::Core::StorageUploadCommand do
   include TestHelpers
   include_context 'HTTP client'
