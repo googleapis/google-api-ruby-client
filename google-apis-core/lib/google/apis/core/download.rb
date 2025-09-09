@@ -81,6 +81,9 @@ module Google
 
           http_res = client.get(url.to_s, query, request_header) do |request|
             request.options.on_data = proc do |chunk, _size, res|
+              # The on_data callback is only invoked on a successful response.
+              # Some Faraday adapters (e.g. Typhoeus) may not provide a response
+              # object in the callback, so we default to a 200 OK status.
               status = res ? res.status.to_i : 200
               next if chunk.nil? || (status >= 300 && status < 400)
 
