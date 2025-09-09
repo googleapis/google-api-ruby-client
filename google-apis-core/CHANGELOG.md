@@ -1,5 +1,11 @@
 # Release History
 
+### 1.0.2 (2025-09-09)
+
+#### Bug Fixes
+
+* Handle nil response in on_data callback for Faraday streaming ([#24235](https://github.com/googleapis/google-api-ruby-client/issues/24235)) 
+
 ### 1.0.1 (2025-08-08)
 
 #### Bug Fixes
