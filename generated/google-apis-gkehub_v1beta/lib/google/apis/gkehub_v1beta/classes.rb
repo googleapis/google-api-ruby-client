@@ -5577,8 +5577,14 @@ module Google
         # @return [String]
         attr_accessor :connect_version
       
-        # Optional. Major version of the Kubernetes cluster. This is only used to
-        # determine which version to use for the CustomResourceDefinition resources, `
+        # Optional. Git version of the Kubernetes cluster. This is only used to gate the
+        # Connect Agent migration to svc.id.goog on GDC-SO 1.33.100 patch and above.
+        # Corresponds to the JSON property `k8sGitVersion`
+        # @return [String]
+        attr_accessor :k8s_git_version
+      
+        # Optional. Major and minor version of the Kubernetes cluster. This is only used
+        # to determine which version to use for the CustomResourceDefinition resources, `
         # apiextensions/v1beta1` or`apiextensions/v1`.
         # Corresponds to the JSON property `k8sVersion`
         # @return [String]
@@ -5599,6 +5605,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connect_version = args[:connect_version] if args.key?(:connect_version)
+          @k8s_git_version = args[:k8s_git_version] if args.key?(:k8s_git_version)
           @k8s_version = args[:k8s_version] if args.key?(:k8s_version)
           @v1beta1_crd = args[:v1beta1_crd] if args.key?(:v1beta1_crd)
         end
