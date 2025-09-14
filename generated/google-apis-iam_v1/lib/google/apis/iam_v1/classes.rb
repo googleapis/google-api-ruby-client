@@ -3446,8 +3446,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. Time after which the workload pool provider will be permanently
-        # purged and cannot be recovered.
+        # Output only. Time after which the workforce identity pool provider will be
+        # permanently purged and cannot be recovered.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
