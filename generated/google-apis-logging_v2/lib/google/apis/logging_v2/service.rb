@@ -357,8 +357,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
+        #   field which is primarily intended for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like "displayName=tokyo", and is documented in more detail in
@@ -2616,8 +2616,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
+        #   field which is primarily intended for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like "displayName=tokyo", and is documented in more detail in
@@ -3514,9 +3514,10 @@ module Google
         
         # Creates a log scope.
         # @param [String] parent
-        #   Required. The parent project in which to create the log scope "projects/[
-        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
-        #   locations/global"
+        #   Required. The parent resource in which to create the log scope: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
+        #   example:"projects/my-project/locations/global"
         # @param [Google::Apis::LoggingV2::LogScope] log_scope_object
         # @param [String] log_scope_id
         #   Required. A client-assigned identifier such as "log-scope". Identifiers are
@@ -3555,8 +3556,9 @@ module Google
         # Deletes a log scope.
         # @param [String] name
         #   Required. The resource name of the log scope to delete: "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-
-        #   project/locations/global/logScopes/my-log-scope"
+        #   locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"
+        #   projects/my-project/locations/global/logScopes/my-log-scope"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3587,7 +3589,8 @@ module Google
         # Gets a log scope.
         # @param [String] name
         #   Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/
-        #   [LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-project/
+        #   [LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "
+        #   folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
         #   locations/global/logScopes/my-log-scope"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4531,8 +4534,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
+        #   field which is primarily intended for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like "displayName=tokyo", and is documented in more detail in
@@ -6022,8 +6025,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
+        #   field which is primarily intended for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like "displayName=tokyo", and is documented in more detail in
@@ -6920,9 +6923,10 @@ module Google
         
         # Creates a log scope.
         # @param [String] parent
-        #   Required. The parent project in which to create the log scope "projects/[
-        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
-        #   locations/global"
+        #   Required. The parent resource in which to create the log scope: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
+        #   example:"projects/my-project/locations/global"
         # @param [Google::Apis::LoggingV2::LogScope] log_scope_object
         # @param [String] log_scope_id
         #   Required. A client-assigned identifier such as "log-scope". Identifiers are
@@ -6961,8 +6965,9 @@ module Google
         # Deletes a log scope.
         # @param [String] name
         #   Required. The resource name of the log scope to delete: "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-
-        #   project/locations/global/logScopes/my-log-scope"
+        #   locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"
+        #   projects/my-project/locations/global/logScopes/my-log-scope"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6993,7 +6998,8 @@ module Google
         # Gets a log scope.
         # @param [String] name
         #   Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/
-        #   [LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-project/
+        #   [LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "
+        #   folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
         #   locations/global/logScopes/my-log-scope"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8209,8 +8215,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
+        #   field which is primarily intended for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like "displayName=tokyo", and is documented in more detail in
@@ -9107,9 +9113,10 @@ module Google
         
         # Creates a log scope.
         # @param [String] parent
-        #   Required. The parent project in which to create the log scope "projects/[
-        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
-        #   locations/global"
+        #   Required. The parent resource in which to create the log scope: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
+        #   example:"projects/my-project/locations/global"
         # @param [Google::Apis::LoggingV2::LogScope] log_scope_object
         # @param [String] log_scope_id
         #   Required. A client-assigned identifier such as "log-scope". Identifiers are
@@ -9148,8 +9155,9 @@ module Google
         # Deletes a log scope.
         # @param [String] name
         #   Required. The resource name of the log scope to delete: "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-
-        #   project/locations/global/logScopes/my-log-scope"
+        #   locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"
+        #   projects/my-project/locations/global/logScopes/my-log-scope"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9180,7 +9188,8 @@ module Google
         # Gets a log scope.
         # @param [String] name
         #   Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/
-        #   [LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-project/
+        #   [LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "
+        #   folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
         #   locations/global/logScopes/my-log-scope"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
