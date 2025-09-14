@@ -494,6 +494,39 @@ module Google
         end
       end
       
+      # The Impersonate request to Firebase Data Connect.
+      class ImpersonateRequest
+        include Google::Apis::Core::Hashable
+      
+        # GraphqlRequestExtensions contains additional information of `GraphqlRequest`.
+        # Corresponds to the JSON property `extensions`
+        # @return [Google::Apis::FirebasedataconnectV1::GraphqlRequestExtensions]
+        attr_accessor :extensions
+      
+        # Required. The name of the GraphQL operation name. Required because all
+        # Connector operations must be named. See https://graphql.org/learn/queries/#
+        # operation-name.
+        # Corresponds to the JSON property `operationName`
+        # @return [String]
+        attr_accessor :operation_name
+      
+        # Optional. Values for GraphQL variables provided in this request.
+        # Corresponds to the JSON property `variables`
+        # @return [Hash<String,Object>]
+        attr_accessor :variables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extensions = args[:extensions] if args.key?(:extensions)
+          @operation_name = args[:operation_name] if args.key?(:operation_name)
+          @variables = args[:variables] if args.key?(:variables)
+        end
+      end
+      
       # Impersonation configures the Firebase Auth context to impersonate.
       class Impersonation
         include Google::Apis::Core::Hashable
