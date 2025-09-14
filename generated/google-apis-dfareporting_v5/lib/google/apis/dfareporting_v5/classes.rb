@@ -9239,6 +9239,12 @@ module Google
         # @return [Google::Apis::DfareportingV5::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
+        # Optional. Whether the placement is enabled for YouTube integration.
+        # Corresponds to the JSON property `allowOnYoutube`
+        # @return [Boolean]
+        attr_accessor :allow_on_youtube
+        alias_method :allow_on_youtube?, :allow_on_youtube
+      
         # Campaign ID of this placement. This field is a required field on insertion.
         # Corresponds to the JSON property `campaignId`
         # @return [Fixnum]
@@ -9478,6 +9484,11 @@ module Google
         attr_accessor :wrapping_opt_out
         alias_method :wrapping_opt_out?, :wrapping_opt_out
       
+        # Contains the YouTube settings.
+        # Corresponds to the JSON property `youtubeSettings`
+        # @return [Google::Apis::DfareportingV5::YoutubeSettings]
+        attr_accessor :youtube_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9491,6 +9502,7 @@ module Google
           @additional_sizes = args[:additional_sizes] if args.key?(:additional_sizes)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
           @advertiser_id_dimension_value = args[:advertiser_id_dimension_value] if args.key?(:advertiser_id_dimension_value)
+          @allow_on_youtube = args[:allow_on_youtube] if args.key?(:allow_on_youtube)
           @campaign_id = args[:campaign_id] if args.key?(:campaign_id)
           @campaign_id_dimension_value = args[:campaign_id_dimension_value] if args.key?(:campaign_id_dimension_value)
           @comment = args[:comment] if args.key?(:comment)
@@ -9530,6 +9542,7 @@ module Google
           @video_settings = args[:video_settings] if args.key?(:video_settings)
           @vpaid_adapter_choice = args[:vpaid_adapter_choice] if args.key?(:vpaid_adapter_choice)
           @wrapping_opt_out = args[:wrapping_opt_out] if args.key?(:wrapping_opt_out)
+          @youtube_settings = args[:youtube_settings] if args.key?(:youtube_settings)
         end
       end
       
@@ -13536,6 +13549,57 @@ module Google
           @publisher_specification_id = args[:publisher_specification_id] if args.key?(:publisher_specification_id)
           @skippable_settings = args[:skippable_settings] if args.key?(:skippable_settings)
           @transcode_settings = args[:transcode_settings] if args.key?(:transcode_settings)
+        end
+      end
+      
+      # Contains the YouTube settings.
+      class YoutubeSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The IDs of the creatives to use for the business logo. Currently
+        # only one creative is supported.
+        # Corresponds to the JSON property `businessLogoCreativeIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :business_logo_creative_ids
+      
+        # Optional. The business name.
+        # Corresponds to the JSON property `businessName`
+        # @return [String]
+        attr_accessor :business_name
+      
+        # Optional. The call to actions. Currently only one call to action is supported.
+        # Corresponds to the JSON property `callToActions`
+        # @return [Array<String>]
+        attr_accessor :call_to_actions
+      
+        # Optional. The descriptions. Currently only one description is supported.
+        # Corresponds to the JSON property `descriptions`
+        # @return [Array<String>]
+        attr_accessor :descriptions
+      
+        # Optional. The headlines associated with the call to actions. Currently only
+        # one headline is supported.
+        # Corresponds to the JSON property `headlines`
+        # @return [Array<String>]
+        attr_accessor :headlines
+      
+        # Optional. The long headlines. Currently only one long headline is supported.
+        # Corresponds to the JSON property `longHeadlines`
+        # @return [Array<String>]
+        attr_accessor :long_headlines
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business_logo_creative_ids = args[:business_logo_creative_ids] if args.key?(:business_logo_creative_ids)
+          @business_name = args[:business_name] if args.key?(:business_name)
+          @call_to_actions = args[:call_to_actions] if args.key?(:call_to_actions)
+          @descriptions = args[:descriptions] if args.key?(:descriptions)
+          @headlines = args[:headlines] if args.key?(:headlines)
+          @long_headlines = args[:long_headlines] if args.key?(:long_headlines)
         end
       end
     end
