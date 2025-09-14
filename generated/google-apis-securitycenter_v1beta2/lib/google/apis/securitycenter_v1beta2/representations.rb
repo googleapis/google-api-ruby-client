@@ -958,6 +958,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2IssueResourceApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2IssueResourceAwsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3410,6 +3416,8 @@ module Google
       class GoogleCloudSecuritycenterV2IssueResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :application, as: 'application', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplication, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplication::Representation
+      
           property :aws_metadata, as: 'awsMetadata', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAwsMetadata, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAwsMetadata::Representation
       
           property :azure_metadata, as: 'azureMetadata', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAzureMetadata, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAzureMetadata::Representation
@@ -3420,6 +3428,13 @@ module Google
       
           property :name, as: 'name'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
