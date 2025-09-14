@@ -1062,6 +1062,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :entitlement_id, as: 'entitlementId'
+          property :gcp_oracle_zone, as: 'gcpOracleZone'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'

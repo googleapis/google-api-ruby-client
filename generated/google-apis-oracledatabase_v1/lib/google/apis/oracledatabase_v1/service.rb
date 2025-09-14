@@ -86,8 +86,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
+        #   field which is primarily intended for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -765,6 +765,10 @@ module Google
         # @param [String] parent
         #   Required. The parent value for CloudExadataInfrastructure in the following
         #   format: projects/`project`/locations/`location`.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request.
+        # @param [String] order_by
+        #   Optional. An expression for ordering the results of the request.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return. If unspecified, at most 50
         #   Exadata infrastructures will be returned. The maximum value is 1000; values
@@ -788,11 +792,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_cloud_exadata_infrastructures(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_cloud_exadata_infrastructures(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/cloudExadataInfrastructures', options)
           command.response_representation = Google::Apis::OracledatabaseV1::ListCloudExadataInfrastructuresResponse::Representation
           command.response_class = Google::Apis::OracledatabaseV1::ListCloudExadataInfrastructuresResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1046,6 +1052,10 @@ module Google
         # @param [String] parent
         #   Required. The parent value for Database System Shapes in the following format:
         #   projects/`project`/locations/`location`.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request. Only the
+        #   gcp_oracle_zone_id field is supported in this format: `gcp_oracle_zone_id="`
+        #   gcp_oracle_zone_id`"`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return. If unspecified, at most 50
         #   database system shapes will be returned. The maximum value is 1000; values
@@ -1069,11 +1079,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_db_system_shapes(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_db_system_shapes(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/dbSystemShapes', options)
           command.response_representation = Google::Apis::OracledatabaseV1::ListDbSystemShapesResponse::Representation
           command.response_class = Google::Apis::OracledatabaseV1::ListDbSystemShapesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1126,7 +1137,8 @@ module Google
         #   format: Format: projects/`project`/locations/`location`.
         # @param [String] filter
         #   Optional. An expression for filtering the results of the request. Only the
-        #   shape and gi_version fields are supported in this format: `shape="`shape`"`.
+        #   shape, gcp_oracle_zone and gi_version fields are supported in this format: `
+        #   shape="`shape`"`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return. If unspecified, a maximum of
         #   50 Oracle Grid Infrastructure (GI) versions will be returned. The maximum
