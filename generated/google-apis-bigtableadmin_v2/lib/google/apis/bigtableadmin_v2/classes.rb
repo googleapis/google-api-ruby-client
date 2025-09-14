@@ -3177,7 +3177,8 @@ module Google
       class MaterializedView
         include Google::Apis::Core::Hashable
       
-        # Set to true to make the MaterializedView protected against deletion.
+        # Set to true to make the MaterializedView protected against deletion. Views: `
+        # SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`.
         # Corresponds to the JSON property `deletionProtection`
         # @return [Boolean]
         attr_accessor :deletion_protection
@@ -3185,18 +3186,21 @@ module Google
       
         # Optional. The etag for this materialized view. This may be sent on update
         # requests to ensure that the client has an up-to-date value before proceeding.
-        # The server returns an ABORTED error on a mismatched etag.
+        # The server returns an ABORTED error on a mismatched etag. Views: `SCHEMA_VIEW`,
+        # `REPLICATION_VIEW`, `FULL`.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
         # Identifier. The unique name of the materialized view. Format: `projects/`
-        # project`/instances/`instance`/materializedViews/`materialized_view``
+        # project`/instances/`instance`/materializedViews/`materialized_view`` Views: `
+        # SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. Immutable. The materialized view's select query.
+        # Required. Immutable. The materialized view's select query. Views: `SCHEMA_VIEW`
+        # , `FULL`.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
