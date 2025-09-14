@@ -1494,7 +1494,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. Other test cases that depend on this test cse as a prerequisite.
+        # Output only. Other test cases that depend on this test case as a prerequisite.
         # Corresponds to the JSON property `dependentTestCases`
         # @return [Array<String>]
         attr_accessor :dependent_test_cases
