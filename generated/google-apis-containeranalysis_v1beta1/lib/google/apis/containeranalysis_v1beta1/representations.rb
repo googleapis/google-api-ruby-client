@@ -550,6 +550,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FileLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FileNote
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -911,6 +917,30 @@ module Google
       end
       
       class SbomReferenceIntotoPredicate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretNote
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2032,6 +2062,13 @@ module Google
         end
       end
       
+      class FileLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_path, as: 'filePath'
+        end
+      end
+      
       class FileNote
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2409,6 +2446,8 @@ module Google
       
           property :sbom_reference, as: 'sbomReference', class: Google::Apis::ContaineranalysisV1beta1::SbomReferenceNote, decorator: Google::Apis::ContaineranalysisV1beta1::SbomReferenceNote::Representation
       
+          property :secret, as: 'secret', class: Google::Apis::ContaineranalysisV1beta1::SecretNote, decorator: Google::Apis::ContaineranalysisV1beta1::SecretNote::Representation
+      
           property :short_description, as: 'shortDescription'
           property :spdx_file, as: 'spdxFile', class: Google::Apis::ContaineranalysisV1beta1::FileNote, decorator: Google::Apis::ContaineranalysisV1beta1::FileNote::Representation
       
@@ -2453,6 +2492,8 @@ module Google
           property :sbom, as: 'sbom', class: Google::Apis::ContaineranalysisV1beta1::DocumentOccurrence, decorator: Google::Apis::ContaineranalysisV1beta1::DocumentOccurrence::Representation
       
           property :sbom_reference, as: 'sbomReference', class: Google::Apis::ContaineranalysisV1beta1::SbomReferenceOccurrence, decorator: Google::Apis::ContaineranalysisV1beta1::SbomReferenceOccurrence::Representation
+      
+          property :secret, as: 'secret', class: Google::Apis::ContaineranalysisV1beta1::SecretOccurrence, decorator: Google::Apis::ContaineranalysisV1beta1::SecretOccurrence::Representation
       
           property :spdx_file, as: 'spdxFile', class: Google::Apis::ContaineranalysisV1beta1::FileOccurrence, decorator: Google::Apis::ContaineranalysisV1beta1::FileOccurrence::Representation
       
@@ -2731,6 +2772,40 @@ module Google
           property :location, as: 'location'
           property :mime_type, as: 'mimeType'
           property :referrer_id, as: 'referrerId'
+        end
+      end
+      
+      class SecretLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_location, as: 'fileLocation', class: Google::Apis::ContaineranalysisV1beta1::FileLocation, decorator: Google::Apis::ContaineranalysisV1beta1::FileLocation::Representation
+      
+        end
+      end
+      
+      class SecretNote
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SecretOccurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :locations, as: 'locations', class: Google::Apis::ContaineranalysisV1beta1::SecretLocation, decorator: Google::Apis::ContaineranalysisV1beta1::SecretLocation::Representation
+      
+          collection :statuses, as: 'statuses', class: Google::Apis::ContaineranalysisV1beta1::SecretStatus, decorator: Google::Apis::ContaineranalysisV1beta1::SecretStatus::Representation
+      
+        end
+      end
+      
+      class SecretStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :status, as: 'status'
+          property :update_time, as: 'updateTime'
         end
       end
       
