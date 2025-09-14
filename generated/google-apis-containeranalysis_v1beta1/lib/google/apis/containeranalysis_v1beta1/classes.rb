@@ -3921,6 +3921,26 @@ module Google
         end
       end
       
+      # Indicates the location at which a package was found.
+      class FileLocation
+        include Google::Apis::Core::Hashable
+      
+        # For jars that are contained inside .war files, this filepath can indicate the
+        # path to war file combined with the path to jar file.
+        # Corresponds to the JSON property `filePath`
+        # @return [String]
+        attr_accessor :file_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_path = args[:file_path] if args.key?(:file_path)
+        end
+      end
+      
       # FileNote represents an SPDX File Information section: https://spdx.github.io/
       # spdx-spec/4-file-information/
       class FileNote
@@ -5211,6 +5231,11 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1beta1::SbomReferenceNote]
         attr_accessor :sbom_reference
       
+        # The note representing a secret.
+        # Corresponds to the JSON property `secret`
+        # @return [Google::Apis::ContaineranalysisV1beta1::SecretNote]
+        attr_accessor :secret
+      
         # A one sentence description of this note.
         # Corresponds to the JSON property `shortDescription`
         # @return [String]
@@ -5273,6 +5298,7 @@ module Google
           @related_url = args[:related_url] if args.key?(:related_url)
           @sbom = args[:sbom] if args.key?(:sbom)
           @sbom_reference = args[:sbom_reference] if args.key?(:sbom_reference)
+          @secret = args[:secret] if args.key?(:secret)
           @short_description = args[:short_description] if args.key?(:short_description)
           @spdx_file = args[:spdx_file] if args.key?(:spdx_file)
           @spdx_package = args[:spdx_package] if args.key?(:spdx_package)
@@ -5377,6 +5403,11 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1beta1::SbomReferenceOccurrence]
         attr_accessor :sbom_reference
       
+        # The occurrence provides details of a secret.
+        # Corresponds to the JSON property `secret`
+        # @return [Google::Apis::ContaineranalysisV1beta1::SecretOccurrence]
+        attr_accessor :secret
+      
         # FileOccurrence represents an SPDX File Information section: https://spdx.
         # github.io/spdx-spec/4-file-information/
         # Corresponds to the JSON property `spdxFile`
@@ -5427,6 +5458,7 @@ module Google
           @resource = args[:resource] if args.key?(:resource)
           @sbom = args[:sbom] if args.key?(:sbom)
           @sbom_reference = args[:sbom_reference] if args.key?(:sbom_reference)
+          @secret = args[:secret] if args.key?(:secret)
           @spdx_file = args[:spdx_file] if args.key?(:spdx_file)
           @spdx_package = args[:spdx_package] if args.key?(:spdx_package)
           @spdx_relationship = args[:spdx_relationship] if args.key?(:spdx_relationship)
@@ -6500,6 +6532,100 @@ module Google
           @location = args[:location] if args.key?(:location)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @referrer_id = args[:referrer_id] if args.key?(:referrer_id)
+        end
+      end
+      
+      # The location of the secret.
+      class SecretLocation
+        include Google::Apis::Core::Hashable
+      
+        # Indicates the location at which a package was found.
+        # Corresponds to the JSON property `fileLocation`
+        # @return [Google::Apis::ContaineranalysisV1beta1::FileLocation]
+        attr_accessor :file_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_location = args[:file_location] if args.key?(:file_location)
+        end
+      end
+      
+      # The note representing a secret.
+      class SecretNote
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The occurrence provides details of a secret.
+      class SecretOccurrence
+        include Google::Apis::Core::Hashable
+      
+        # Required. Type of secret.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Optional. Locations where the secret is detected.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::SecretLocation>]
+        attr_accessor :locations
+      
+        # Optional. Status of the secret.
+        # Corresponds to the JSON property `statuses`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::SecretStatus>]
+        attr_accessor :statuses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @locations = args[:locations] if args.key?(:locations)
+          @statuses = args[:statuses] if args.key?(:statuses)
+        end
+      end
+      
+      # The status of the secret with a timestamp.
+      class SecretStatus
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional message about the status code.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Optional. The status of the secret.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Optional. The time the secret status was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @status = args[:status] if args.key?(:status)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
