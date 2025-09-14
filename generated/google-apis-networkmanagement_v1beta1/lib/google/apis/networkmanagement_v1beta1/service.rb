@@ -86,8 +86,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
+        #   field which is primarily intended for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -517,8 +517,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
+        #   field which is primarily intended for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -1322,6 +1322,55 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # ShowEffectiveFlowLogsConfigs returns a list of all VPC Flow Logs
+        # configurations applicable to a specified resource.
+        # @param [String] parent
+        #   Required. The parent resource of the VpcFlowLogsConfig, specified in the
+        #   following format: `projects/`project_id`/locations/global`
+        # @param [String] filter
+        #   Optional. Lists the `EffectiveVpcFlowLogsConfigs` that match the filter
+        #   expression. A filter expression must use the supported [CEL logic operators] (
+        #   https://cloud.google.com/vpc/docs/about-flow-logs-records#
+        #   supported_cel_logic_operators).
+        # @param [Fixnum] page_size
+        #   Optional. Number of `EffectiveVpcFlowLogsConfigs` to return. Default is 30.
+        # @param [String] page_token
+        #   Optional. Page token from an earlier query, as returned in `next_page_token`.
+        # @param [String] resource
+        #   Required. The resource to get the effective VPC Flow Logs configuration for.
+        #   The resource must belong to the same project as the parent. The resource must
+        #   be a network, subnetwork, interconnect attachment, VPN tunnel, or a project.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1beta1::ShowEffectiveFlowLogsConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1beta1::ShowEffectiveFlowLogsConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def show_project_location_vpc_flow_logs_config_effective_flow_logs_configs(parent, filter: nil, page_size: nil, page_token: nil, resource: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/vpcFlowLogsConfigs:showEffectiveFlowLogsConfigs', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1beta1::ShowEffectiveFlowLogsConfigsResponse::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1beta1::ShowEffectiveFlowLogsConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
