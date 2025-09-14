@@ -973,9 +973,10 @@ module Google
       class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig
         include Google::Apis::Core::Hashable
       
-        # Represents a config used to authenticate with a Google OIDC token using a GCP
-        # service account. Use this authentication method to invoke your Cloud Run and
-        # Cloud Functions destinations or HTTP endpoints that support Google OIDC.
+        # Represents a config used to authenticate with a Google OIDC token using a
+        # Google Cloud service account. Use this authentication method to invoke your
+        # Cloud Run and Cloud Functions destinations or HTTP endpoints that support
+        # Google OIDC.
         # Corresponds to the JSON property `googleOidc`
         # @return [Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken]
         attr_accessor :google_oidc
@@ -1032,9 +1033,10 @@ module Google
         end
       end
       
-      # Represents a config used to authenticate with a Google OIDC token using a GCP
-      # service account. Use this authentication method to invoke your Cloud Run and
-      # Cloud Functions destinations or HTTP endpoints that support Google OIDC.
+      # Represents a config used to authenticate with a Google OIDC token using a
+      # Google Cloud service account. Use this authentication method to invoke your
+      # Cloud Run and Cloud Functions destinations or HTTP endpoints that support
+      # Google OIDC.
       class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken
         include Google::Apis::Core::Hashable
       
