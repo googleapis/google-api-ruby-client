@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImpersonateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Impersonation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -335,6 +341,16 @@ module Google
           hash :data, as: 'data'
           collection :errors, as: 'errors', class: Google::Apis::FirebasedataconnectV1::GraphqlError, decorator: Google::Apis::FirebasedataconnectV1::GraphqlError::Representation
       
+        end
+      end
+      
+      class ImpersonateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :extensions, as: 'extensions', class: Google::Apis::FirebasedataconnectV1::GraphqlRequestExtensions, decorator: Google::Apis::FirebasedataconnectV1::GraphqlRequestExtensions::Representation
+      
+          property :operation_name, as: 'operationName'
+          hash :variables, as: 'variables'
         end
       end
       
