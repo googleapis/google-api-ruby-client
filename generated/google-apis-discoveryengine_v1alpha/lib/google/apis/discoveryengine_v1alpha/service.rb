@@ -10035,7 +10035,7 @@ module Google
         #   locations/`location``.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of Notebooks to return. If unspecified, defaults to "
-        #   200". The maximum allowed value is "500". If this field is negative, will use
+        #   500". The maximum allowed value is "500". If this field is negative, will use
         #   the default value.
         # @param [String] page_token
         #   Optional. The page token, provide this to retrieve the subsequent page.

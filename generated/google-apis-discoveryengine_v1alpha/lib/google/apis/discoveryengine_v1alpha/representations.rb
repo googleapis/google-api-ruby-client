@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1AssistantGenerationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1294,6 +1300,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultModelArmorEnforcementResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaAssistAnswerReply
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1349,6 +1379,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyBannedPhrase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyModelArmorConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5448,6 +5484,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :banned_phrases, as: 'bannedPhrases', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase::Representation
       
+          property :model_armor_config, as: 'modelArmorConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfig::Representation
+      
         end
       end
       
@@ -5457,6 +5495,15 @@ module Google
           property :ignore_diacritics, as: 'ignoreDiacritics'
           property :match_type, as: 'matchType'
           property :phrase, as: 'phrase'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_mode, as: 'failureMode'
+          property :response_template, as: 'responseTemplate'
+          property :user_prompt_template, as: 'userPromptTemplate'
         end
       end
       
@@ -7194,10 +7241,47 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assist_skipped_reasons, as: 'assistSkippedReasons'
+          property :customer_policy_enforcement_result, as: 'customerPolicyEnforcementResult', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResult, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResult::Representation
+      
           property :name, as: 'name'
           collection :replies, as: 'replies', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswerReply, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswerReply::Representation
       
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :policy_results, as: 'policyResults', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult::Representation
+      
+          property :verdict, as: 'verdict'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :banned_phrases, as: 'bannedPhrases'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultModelArmorEnforcementResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus::Representation
+      
+          property :model_armor_violation, as: 'modelArmorViolation'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :banned_phrase_enforcement_result, as: 'bannedPhraseEnforcementResult', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult::Representation
+      
+          property :model_armor_enforcement_result, as: 'modelArmorEnforcementResult', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultModelArmorEnforcementResult, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultModelArmorEnforcementResult::Representation
+      
         end
       end
       
@@ -7284,6 +7368,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :banned_phrases, as: 'bannedPhrases', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyBannedPhrase, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyBannedPhrase::Representation
       
+          property :model_armor_config, as: 'modelArmorConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyModelArmorConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyModelArmorConfig::Representation
+      
         end
       end
       
@@ -7293,6 +7379,15 @@ module Google
           property :ignore_diacritics, as: 'ignoreDiacritics'
           property :match_type, as: 'matchType'
           property :phrase, as: 'phrase'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyModelArmorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_mode, as: 'failureMode'
+          property :response_template, as: 'responseTemplate'
+          property :user_prompt_template, as: 'userPromptTemplate'
         end
       end
       
@@ -11446,6 +11541,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_config, as: 'contentConfig'
+          property :data_store_config_type, as: 'dataStoreConfigType'
           property :display_name, as: 'displayName'
           property :entity_name, as: 'entityName'
           property :id, as: 'id'
@@ -13195,6 +13291,8 @@ module Google
       
           property :name, as: 'name'
           property :notebook_id, as: 'notebookId'
+          collection :sources, as: 'sources', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSource, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSource::Representation
+      
           property :title, as: 'title'
         end
       end

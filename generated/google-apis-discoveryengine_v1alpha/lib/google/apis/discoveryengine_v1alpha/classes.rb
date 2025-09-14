@@ -1835,6 +1835,12 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase>]
         attr_accessor :banned_phrases
       
+        # Configuration for customer defined Model Armor templates to be used for
+        # sanitizing user prompts and assistant responses.
+        # Corresponds to the JSON property `modelArmorConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfig]
+        attr_accessor :model_armor_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1842,6 +1848,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @banned_phrases = args[:banned_phrases] if args.key?(:banned_phrases)
+          @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
         end
       end
       
@@ -1877,6 +1884,44 @@ module Google
           @ignore_diacritics = args[:ignore_diacritics] if args.key?(:ignore_diacritics)
           @match_type = args[:match_type] if args.key?(:match_type)
           @phrase = args[:phrase] if args.key?(:phrase)
+        end
+      end
+      
+      # Configuration for customer defined Model Armor templates to be used for
+      # sanitizing user prompts and assistant responses.
+      class GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Defines the failure mode for Model Armor sanitization.
+        # Corresponds to the JSON property `failureMode`
+        # @return [String]
+        attr_accessor :failure_mode
+      
+        # Optional. The resource name of the Model Armor template for sanitizing
+        # assistant responses. Format: `projects/`project`/locations/`location`/
+        # templates/`template_id`` If not specified, no sanitization will be applied to
+        # the assistant response.
+        # Corresponds to the JSON property `responseTemplate`
+        # @return [String]
+        attr_accessor :response_template
+      
+        # Optional. The resource name of the Model Armor template for sanitizing user
+        # prompts. Format: `projects/`project`/locations/`location`/templates/`
+        # template_id`` If not specified, no sanitization will be applied to the user
+        # prompt.
+        # Corresponds to the JSON property `userPromptTemplate`
+        # @return [String]
+        attr_accessor :user_prompt_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_mode = args[:failure_mode] if args.key?(:failure_mode)
+          @response_template = args[:response_template] if args.key?(:response_template)
+          @user_prompt_template = args[:user_prompt_template] if args.key?(:user_prompt_template)
         end
       end
       
@@ -8164,6 +8209,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :assist_skipped_reasons
       
+        # Customer policy enforcement results. Contains the results of the various
+        # policy checks, like the banned phrases or the Model Armor checks.
+        # Corresponds to the JSON property `customerPolicyEnforcementResult`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResult]
+        attr_accessor :customer_policy_enforcement_result
+      
         # Immutable. Identifier. Resource name of the `AssistAnswer`. Format: `projects/`
         # project`/locations/`location`/collections/`collection`/engines/`engine`/
         # sessions/`session`/assistAnswers/`assist_answer`` This field must be a UTF-8
@@ -8189,9 +8240,113 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assist_skipped_reasons = args[:assist_skipped_reasons] if args.key?(:assist_skipped_reasons)
+          @customer_policy_enforcement_result = args[:customer_policy_enforcement_result] if args.key?(:customer_policy_enforcement_result)
           @name = args[:name] if args.key?(:name)
           @replies = args[:replies] if args.key?(:replies)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Customer policy enforcement results. Contains the results of the various
+      # policy checks, like the banned phrases or the Model Armor checks.
+      class GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResult
+        include Google::Apis::Core::Hashable
+      
+        # Customer policy enforcement results. Populated only if the assist call was
+        # skipped due to a policy violation. It contains results from those filters that
+        # blocked the processing of the query.
+        # Corresponds to the JSON property `policyResults`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult>]
+        attr_accessor :policy_results
+      
+        # Final verdict of the customer policy enforcement. If only one policy blocked
+        # the processing, the verdict is BLOCK.
+        # Corresponds to the JSON property `verdict`
+        # @return [String]
+        attr_accessor :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_results = args[:policy_results] if args.key?(:policy_results)
+          @verdict = args[:verdict] if args.key?(:verdict)
+        end
+      end
+      
+      # Customer policy enforcement result for the banned phrase policy.
+      class GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult
+        include Google::Apis::Core::Hashable
+      
+        # The banned phrases that were found in the query or the answer.
+        # Corresponds to the JSON property `bannedPhrases`
+        # @return [Array<String>]
+        attr_accessor :banned_phrases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @banned_phrases = args[:banned_phrases] if args.key?(:banned_phrases)
+        end
+      end
+      
+      # Customer policy enforcement result for the Model Armor policy.
+      class GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultModelArmorEnforcementResult
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # The Model Armor violation that was found.
+        # Corresponds to the JSON property `modelArmorViolation`
+        # @return [String]
+        attr_accessor :model_armor_violation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @model_armor_violation = args[:model_armor_violation] if args.key?(:model_armor_violation)
+        end
+      end
+      
+      # Customer policy enforcement result for a single policy type.
+      class GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult
+        include Google::Apis::Core::Hashable
+      
+        # Customer policy enforcement result for the banned phrase policy.
+        # Corresponds to the JSON property `bannedPhraseEnforcementResult`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult]
+        attr_accessor :banned_phrase_enforcement_result
+      
+        # Customer policy enforcement result for the Model Armor policy.
+        # Corresponds to the JSON property `modelArmorEnforcementResult`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultModelArmorEnforcementResult]
+        attr_accessor :model_armor_enforcement_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @banned_phrase_enforcement_result = args[:banned_phrase_enforcement_result] if args.key?(:banned_phrase_enforcement_result)
+          @model_armor_enforcement_result = args[:model_armor_enforcement_result] if args.key?(:model_armor_enforcement_result)
         end
       end
       
@@ -8457,6 +8612,12 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyBannedPhrase>]
         attr_accessor :banned_phrases
       
+        # Configuration for customer defined Model Armor templates to be used for
+        # sanitizing user prompts and assistant responses.
+        # Corresponds to the JSON property `modelArmorConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyModelArmorConfig]
+        attr_accessor :model_armor_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8464,6 +8625,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @banned_phrases = args[:banned_phrases] if args.key?(:banned_phrases)
+          @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
         end
       end
       
@@ -8499,6 +8661,44 @@ module Google
           @ignore_diacritics = args[:ignore_diacritics] if args.key?(:ignore_diacritics)
           @match_type = args[:match_type] if args.key?(:match_type)
           @phrase = args[:phrase] if args.key?(:phrase)
+        end
+      end
+      
+      # Configuration for customer defined Model Armor templates to be used for
+      # sanitizing user prompts and assistant responses.
+      class GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicyModelArmorConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Defines the failure mode for Model Armor sanitization.
+        # Corresponds to the JSON property `failureMode`
+        # @return [String]
+        attr_accessor :failure_mode
+      
+        # Optional. The resource name of the Model Armor template for sanitizing
+        # assistant responses. Format: `projects/`project`/locations/`location`/
+        # templates/`template_id`` If not specified, no sanitization will be applied to
+        # the assistant response.
+        # Corresponds to the JSON property `responseTemplate`
+        # @return [String]
+        attr_accessor :response_template
+      
+        # Optional. The resource name of the Model Armor template for sanitizing user
+        # prompts. Format: `projects/`project`/locations/`location`/templates/`
+        # template_id`` If not specified, no sanitization will be applied to the user
+        # prompt.
+        # Corresponds to the JSON property `userPromptTemplate`
+        # @return [String]
+        attr_accessor :user_prompt_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_mode = args[:failure_mode] if args.key?(:failure_mode)
+          @response_template = args[:response_template] if args.key?(:response_template)
+          @user_prompt_template = args[:user_prompt_template] if args.key?(:user_prompt_template)
         end
       end
       
@@ -23927,6 +24127,11 @@ module Google
         # @return [String]
         attr_accessor :content_config
       
+        # Output only. The type of the data store config.
+        # Corresponds to the JSON property `dataStoreConfigType`
+        # @return [String]
+        attr_accessor :data_store_config_type
+      
         # The display name of the data store.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -23967,6 +24172,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content_config = args[:content_config] if args.key?(:content_config)
+          @data_store_config_type = args[:data_store_config_type] if args.key?(:data_store_config_type)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entity_name = args[:entity_name] if args.key?(:entity_name)
           @id = args[:id] if args.key?(:id)
@@ -30279,6 +30485,11 @@ module Google
         # @return [String]
         attr_accessor :notebook_id
       
+        # Output only. List of sources in the notebook. This is an output only field.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaSource>]
+        attr_accessor :sources
+      
         # Optional. The title of the notebook.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -30295,6 +30506,7 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @notebook_id = args[:notebook_id] if args.key?(:notebook_id)
+          @sources = args[:sources] if args.key?(:sources)
           @title = args[:title] if args.key?(:title)
         end
       end
@@ -30673,7 +30885,7 @@ module Google
         # @return [String]
         attr_accessor :mime_type
       
-        # Name to be displayed for the source.
+        # The name to be displayed for the source.
         # Corresponds to the JSON property `sourceName`
         # @return [String]
         attr_accessor :source_name
@@ -30694,7 +30906,7 @@ module Google
       class GoogleCloudNotebooklmV1alphaUserContentTextContent
         include Google::Apis::Core::Hashable
       
-        # Name to be displayed for the source.
+        # The name to be displayed for the source.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
@@ -30738,7 +30950,7 @@ module Google
       class GoogleCloudNotebooklmV1alphaUserContentWebContent
         include Google::Apis::Core::Hashable
       
-        # Name to be displayed for the source.
+        # The name to be displayed for the source.
         # Corresponds to the JSON property `sourceName`
         # @return [String]
         attr_accessor :source_name
