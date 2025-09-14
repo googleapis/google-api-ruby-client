@@ -86,8 +86,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
+        #   field which is primarily intended for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -273,6 +273,216 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same
+        # settings already exists (even if the ID is different), the creation fails.
+        # Notes: 1. Creating a configuration with `state=DISABLED` will fail 2. The
+        # following fields are not considered as settings for the purpose of the check
+        # mentioned above, therefore - creating another configuration with the same
+        # fields but different values for the following fields will fail as well: * name
+        # * create_time * update_time * labels * description
+        # @param [String] parent
+        #   Required. The parent resource of the VpcFlowLogsConfig to create, in one of
+        #   the following formats: - For project-level resources: `projects/`project_id`/
+        #   locations/global` - For organization-level resources: `organizations/`
+        #   organization_id`/locations/global`
+        # @param [Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig] vpc_flow_logs_config_object
+        # @param [String] vpc_flow_logs_config_id
+        #   Required. ID of the `VpcFlowLogsConfig`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_vpc_flow_logs_config(parent, vpc_flow_logs_config_object = nil, vpc_flow_logs_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/vpcFlowLogsConfigs', options)
+          command.request_representation = Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig::Representation
+          command.request_object = vpc_flow_logs_config_object
+          command.response_representation = Google::Apis::NetworkmanagementV1::Operation::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['vpcFlowLogsConfigId'] = vpc_flow_logs_config_id unless vpc_flow_logs_config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a specific `VpcFlowLogsConfig`.
+        # @param [String] name
+        #   Required. The resource name of the VpcFlowLogsConfig, in one of the following
+        #   formats: - For a project-level resource: `projects/`project_id`/locations/
+        #   global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` - For an organization-
+        #   level resource: `organizations/`organization_id`/locations/global/
+        #   vpcFlowLogsConfigs/`vpc_flow_logs_config_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_location_vpc_flow_logs_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::Operation::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the details of a specific `VpcFlowLogsConfig`.
+        # @param [String] name
+        #   Required. The resource name of the VpcFlowLogsConfig, in one of the following
+        #   formats: - For project-level resources: `projects/`project_id`/locations/
+        #   global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` - For organization-level
+        #   resources: `organizations/`organization_id`/locations/global/
+        #   vpcFlowLogsConfigs/`vpc_flow_logs_config_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_vpc_flow_logs_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all `VpcFlowLogsConfigs` in a given organization.
+        # @param [String] parent
+        #   Required. The parent resource of the VpcFlowLogsConfig, in one of the
+        #   following formats: - For project-level resourcs: `projects/`project_id`/
+        #   locations/global` - For organization-level resources: `organizations/`
+        #   organization_id`/locations/global`
+        # @param [String] filter
+        #   Optional. Lists the `VpcFlowLogsConfigs` that match the filter expression. A
+        #   filter expression must use the supported [CEL logic operators] (https://cloud.
+        #   google.com/vpc/docs/about-flow-logs-records#supported_cel_logic_operators).
+        # @param [String] order_by
+        #   Optional. Field to use to sort the list.
+        # @param [Fixnum] page_size
+        #   Optional. Number of `VpcFlowLogsConfigs` to return.
+        # @param [String] page_token
+        #   Optional. Page token from an earlier query, as returned in `next_page_token`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::ListVpcFlowLogsConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::ListVpcFlowLogsConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_vpc_flow_logs_configs(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/vpcFlowLogsConfigs', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::ListVpcFlowLogsConfigsResponse::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::ListVpcFlowLogsConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing `VpcFlowLogsConfig`. If a configuration with the exact
+        # same settings already exists (even if the ID is different), the creation fails.
+        # Notes: 1. Updating a configuration with `state=DISABLED` will fail 2. The
+        # following fields are not considered as settings for the purpose of the check
+        # mentioned above, therefore - updating another configuration with the same
+        # fields but different values for the following fields will fail as well: * name
+        # * create_time * update_time * labels * description
+        # @param [String] name
+        #   Identifier. Unique name of the configuration. The name can have one of the
+        #   following forms: - For project-level configurations: `projects/`project_id`/
+        #   locations/global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` - For
+        #   organization-level configurations: `organizations/`organization_id`/locations/
+        #   global/vpcFlowLogsConfigs/`vpc_flow_logs_config_id``
+        # @param [Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig] vpc_flow_logs_config_object
+        # @param [String] update_mask
+        #   Required. Mask of fields to update. At least one path must be supplied in this
+        #   field. For example, to change the state of the configuration to ENABLED,
+        #   specify `update_mask` = `"state"`, and the `vpc_flow_logs_config` would be: `
+        #   vpc_flow_logs_config = ` name = "projects/my-project/locations/global/
+        #   vpcFlowLogsConfigs/my-config" state = "ENABLED" ``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_location_vpc_flow_logs_config(name, vpc_flow_logs_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::NetworkmanagementV1::VpcFlowLogsConfig::Representation
+          command.request_object = vpc_flow_logs_config_object
+          command.response_representation = Google::Apis::NetworkmanagementV1::Operation::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets information about a location.
         # @param [String] name
         #   Resource name for the location.
@@ -307,8 +517,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
+        #   field which is primarily intended for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -1435,6 +1645,98 @@ module Google
           command.response_class = Google::Apis::NetworkmanagementV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # QueryOrgVpcFlowLogsConfigs returns a list of all organization-level VPC Flow
+        # Logs configurations applicable to the specified project.
+        # @param [String] parent
+        #   Required. The parent resource of the VpcFlowLogsConfig, specified in the
+        #   following format: `projects/`project_id`/locations/global`
+        # @param [String] filter
+        #   Optional. Lists the `VpcFlowLogsConfigs` that match the filter expression. A
+        #   filter expression must use the supported [CEL logic operators] (https://cloud.
+        #   google.com/vpc/docs/about-flow-logs-records#supported_cel_logic_operators).
+        # @param [Fixnum] page_size
+        #   Optional. Number of `VpcFlowLogsConfigs` to return.
+        # @param [String] page_token
+        #   Optional. Page token from an earlier query, as returned in `next_page_token`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::QueryOrgVpcFlowLogsConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::QueryOrgVpcFlowLogsConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_project_location_vpc_flow_logs_config_org_vpc_flow_logs_configs(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/vpcFlowLogsConfigs:queryOrgVpcFlowLogsConfigs', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::QueryOrgVpcFlowLogsConfigsResponse::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::QueryOrgVpcFlowLogsConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # ShowEffectiveFlowLogsConfigs returns a list of all VPC Flow Logs
+        # configurations applicable to a specified resource.
+        # @param [String] parent
+        #   Required. The parent resource of the VpcFlowLogsConfig, specified in the
+        #   following format: `projects/`project_id`/locations/global`
+        # @param [String] filter
+        #   Optional. Lists the `EffectiveVpcFlowLogsConfigs` that match the filter
+        #   expression. A filter expression must use the supported [CEL logic operators] (
+        #   https://cloud.google.com/vpc/docs/about-flow-logs-records#
+        #   supported_cel_logic_operators).
+        # @param [Fixnum] page_size
+        #   Optional. Number of `EffectiveVpcFlowLogsConfigs` to return. Default is 30.
+        # @param [String] page_token
+        #   Optional. Page token from an earlier query, as returned in `next_page_token`.
+        # @param [String] resource
+        #   Required. The resource to get the effective VPC Flow Logs configuration for.
+        #   The resource must belong to the same project as the parent. The resource must
+        #   be a network, subnetwork, interconnect attachment, VPN tunnel, or a project.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkmanagementV1::ShowEffectiveFlowLogsConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkmanagementV1::ShowEffectiveFlowLogsConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def show_project_location_vpc_flow_logs_config_effective_flow_logs_configs(parent, filter: nil, page_size: nil, page_token: nil, resource: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/vpcFlowLogsConfigs:showEffectiveFlowLogsConfigs', options)
+          command.response_representation = Google::Apis::NetworkmanagementV1::ShowEffectiveFlowLogsConfigsResponse::Representation
+          command.response_class = Google::Apis::NetworkmanagementV1::ShowEffectiveFlowLogsConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
