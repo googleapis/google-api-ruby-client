@@ -2096,7 +2096,7 @@ module Google
         # @return [String]
         attr_accessor :profile
       
-        # Required. Scope of the resources for the computation. For Apigee, the
+        # Optional. Scope of the resources for the computation. For Apigee, the
         # environment is the scope of the resources.
         # Corresponds to the JSON property `scope`
         # @return [String]
@@ -6758,6 +6758,33 @@ module Google
         end
       end
       
+      # Response for ListSecurityFeedback
+      class GoogleCloudApigeeV1ListSecurityFeedbackResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as `page_token` in `ListSecurityFeedbackRequest` to
+        # retrieve the next page. If this field is omitted, there are no subsequent
+        # pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of SecurityFeedback reports.
+        # Corresponds to the JSON property `securityFeedback`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback>]
+        attr_accessor :security_feedback
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @security_feedback = args[:security_feedback] if args.key?(:security_feedback)
+        end
+      end
+      
       # Response for ListSecurityIncidents.
       class GoogleCloudApigeeV1ListSecurityIncidentsResponse
         include Google::Apis::Core::Hashable
@@ -10376,6 +10403,94 @@ module Google
         end
       end
       
+      # Represents a feedback report from an Advanced API Security customer.
+      class GoogleCloudApigeeV1SecurityFeedback
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional text the user can provide for additional, unstructured
+        # context.
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # Output only. The time when this specific feedback id was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The display name of the feedback.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. One or more attribute/value pairs for constraining the feedback.
+        # Corresponds to the JSON property `feedbackContexts`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedbackFeedbackContext>]
+        attr_accessor :feedback_contexts
+      
+        # Required. The type of feedback being submitted.
+        # Corresponds to the JSON property `feedbackType`
+        # @return [String]
+        attr_accessor :feedback_type
+      
+        # Output only. Identifier. The feedback name is intended to be a system-
+        # generated uuid.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The reason for the feedback.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Output only. The time when this specific feedback id was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment = args[:comment] if args.key?(:comment)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @feedback_contexts = args[:feedback_contexts] if args.key?(:feedback_contexts)
+          @feedback_type = args[:feedback_type] if args.key?(:feedback_type)
+          @name = args[:name] if args.key?(:name)
+          @reason = args[:reason] if args.key?(:reason)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # FeedbackContext captures the intent of the submitted feedback.
+      class GoogleCloudApigeeV1SecurityFeedbackFeedbackContext
+        include Google::Apis::Core::Hashable
+      
+        # Required. The attribute the user is providing feedback about.
+        # Corresponds to the JSON property `attribute`
+        # @return [String]
+        attr_accessor :attribute
+      
+        # Required. The values of the attribute the user is providing feedback about.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute = args[:attribute] if args.key?(:attribute)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Represents an SecurityIncident resource.
       class GoogleCloudApigeeV1SecurityIncident
         include Google::Apis::Core::Hashable
@@ -10479,7 +10594,7 @@ module Google
         # @return [String]
         attr_accessor :profile
       
-        # Required. Scope of the security monitoring condition. For Apigee, the
+        # Optional. Scope of the security monitoring condition. For Apigee, the
         # environment is the scope of the resources.
         # Corresponds to the JSON property `scope`
         # @return [String]
