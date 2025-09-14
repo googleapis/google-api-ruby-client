@@ -1012,6 +1012,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListSecurityFeedbackResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListSecurityIncidentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1571,6 +1577,18 @@ module Google
       end
       
       class GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityFeedback
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityFeedbackFeedbackContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3702,6 +3720,15 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ListSecurityFeedbackResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_feedback, as: 'securityFeedback', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback::Representation
+      
+        end
+      end
+      
       class GoogleCloudApigeeV1ListSecurityIncidentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4676,6 +4703,29 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :text, as: 'text'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityFeedback
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment, as: 'comment'
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          collection :feedback_contexts, as: 'feedbackContexts', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedbackFeedbackContext, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedbackFeedbackContext::Representation
+      
+          property :feedback_type, as: 'feedbackType'
+          property :name, as: 'name'
+          property :reason, as: 'reason'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityFeedbackFeedbackContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute, as: 'attribute'
+          collection :values, as: 'values'
         end
       end
       
