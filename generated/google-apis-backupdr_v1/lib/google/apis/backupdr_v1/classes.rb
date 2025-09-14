@@ -1298,7 +1298,9 @@ module Google
         # defined in “days”. The value should be greater than or equal to minimum
         # enforced retention of the backup vault. Minimum value is 1 and maximum value
         # is 36159 for custom retention on-demand backup. Minimum and maximum values are
-        # workload specific for all other rules.
+        # workload specific for all other rules. Note: Longer retention can lead to
+        # higher storage costs post introductory trial. We recommend starting with a
+        # short duration of 3 days or less.
         # Corresponds to the JSON property `backupRetentionDays`
         # @return [Fixnum]
         attr_accessor :backup_retention_days
@@ -1353,7 +1355,10 @@ module Google
         attr_accessor :backup_count
       
         # Required. The default and minimum enforced retention for each backup within
-        # the backup vault. The enforced retention for each backup can be extended.
+        # the backup vault. The enforced retention for each backup can be extended. Note:
+        # Longer minimum enforced retention period impacts potential storage costs post
+        # introductory trial. We recommend starting with a short duration of 3 days or
+        # less.
         # Corresponds to the JSON property `backupMinimumEnforcedRetentionDuration`
         # @return [String]
         attr_accessor :backup_minimum_enforced_retention_duration
@@ -5225,6 +5230,11 @@ module Google
       class Trial
         include Google::Apis::Core::Hashable
       
+        # Output only. The reason for ending the trial.
+        # Corresponds to the JSON property `endReason`
+        # @return [String]
+        attr_accessor :end_reason
+      
         # Output only. The time when the trial will expire.
         # Corresponds to the JSON property `endTime`
         # @return [String]
@@ -5252,6 +5262,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @end_reason = args[:end_reason] if args.key?(:end_reason)
           @end_time = args[:end_time] if args.key?(:end_time)
           @name = args[:name] if args.key?(:name)
           @start_time = args[:start_time] if args.key?(:start_time)

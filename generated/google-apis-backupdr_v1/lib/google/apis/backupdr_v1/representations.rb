@@ -2015,6 +2015,7 @@ module Google
       class Trial
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_reason, as: 'endReason'
           property :end_time, as: 'endTime'
           property :name, as: 'name'
           property :start_time, as: 'startTime'
