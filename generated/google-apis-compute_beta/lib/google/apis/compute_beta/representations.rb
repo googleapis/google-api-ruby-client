@@ -4144,6 +4144,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkProfileProfileType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkProfilesListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -8389,6 +8395,9 @@ module Google
       class AllocationAggregateReservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :host_count, as: 'hostCount'
+          property :in_use_host_count, as: 'inUseHostCount'
+          property :in_use_instance_count, as: 'inUseInstanceCount'
           collection :in_use_resources, as: 'inUseResources', class: Google::Apis::ComputeBeta::AllocationAggregateReservationReservedResourceInfo, decorator: Google::Apis::ComputeBeta::AllocationAggregateReservationReservedResourceInfo::Representation
       
           collection :reserved_resources, as: 'reservedResources', class: Google::Apis::ComputeBeta::AllocationAggregateReservationReservedResourceInfo, decorator: Google::Apis::ComputeBeta::AllocationAggregateReservationReservedResourceInfo::Representation
@@ -9451,6 +9460,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :asns, as: 'asns'
+          collection :asns32, as: 'asns32'
           property :type, as: 'type'
         end
       end
@@ -10585,6 +10595,7 @@ module Google
           collection :packet_mirroring_rules, as: 'packetMirroringRules', class: Google::Apis::ComputeBeta::FirewallPolicyRule, decorator: Google::Apis::ComputeBeta::FirewallPolicyRule::Representation
       
           property :parent, as: 'parent'
+          property :policy_source, as: 'policySource'
           property :policy_type, as: 'policyType'
           property :region, as: 'region'
           property :rule_tuple_count, as: 'ruleTupleCount'
@@ -10654,10 +10665,12 @@ module Google
           property :rule_name, as: 'ruleName'
           property :rule_tuple_count, as: 'ruleTupleCount'
           property :security_profile_group, as: 'securityProfileGroup'
+          collection :target_forwarding_rules, as: 'targetForwardingRules'
           collection :target_resources, as: 'targetResources'
           collection :target_secure_tags, as: 'targetSecureTags', class: Google::Apis::ComputeBeta::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeBeta::FirewallPolicyRuleSecureTag::Representation
       
           collection :target_service_accounts, as: 'targetServiceAccounts'
+          property :target_type, as: 'targetType'
           property :tls_inspect, as: 'tlsInspect'
         end
       end
@@ -10900,6 +10913,7 @@ module Google
           property :name, as: 'name'
           property :name_prefix, as: 'namePrefix'
           property :planning_status, as: 'planningStatus'
+          property :protection_tier, as: 'protectionTier'
           property :reservation_mode, as: 'reservationMode'
           property :reservation_name, as: 'reservationName'
           property :scheduling_type, as: 'schedulingType'
@@ -13098,6 +13112,8 @@ module Google
       class InstanceParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_valid_for_duration, as: 'requestValidForDuration', class: Google::Apis::ComputeBeta::Duration, decorator: Google::Apis::ComputeBeta::Duration::Representation
+      
           hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
@@ -14500,6 +14516,7 @@ module Google
           property :lacp, as: 'lacp'
           property :max_lag_size100_gbps, as: 'maxLagSize100Gbps'
           property :max_lag_size10_gbps, as: 'maxLagSize10Gbps'
+          property :max_lag_size400_gbps, as: 'maxLagSize400Gbps'
           property :name, as: 'name'
           property :peeringdb_facility_id, as: 'peeringdbFacilityId'
           collection :permitted_connections, as: 'permittedConnections', class: Google::Apis::ComputeBeta::InterconnectRemoteLocationPermittedConnections, decorator: Google::Apis::ComputeBeta::InterconnectRemoteLocationPermittedConnections::Representation
@@ -15881,6 +15898,8 @@ module Google
           property :location, as: 'location', class: Google::Apis::ComputeBeta::NetworkProfileLocation, decorator: Google::Apis::ComputeBeta::NetworkProfileLocation::Representation
       
           property :name, as: 'name'
+          property :profile_type, as: 'profileType', class: Google::Apis::ComputeBeta::NetworkProfileProfileType, decorator: Google::Apis::ComputeBeta::NetworkProfileProfileType::Representation
+      
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
         end
@@ -15925,6 +15944,16 @@ module Google
           collection :subnetwork_purposes, as: 'subnetworkPurposes'
           collection :subnetwork_stack_types, as: 'subnetworkStackTypes'
           property :unicast, as: 'unicast'
+        end
+      end
+      
+      class NetworkProfileProfileType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_type, as: 'networkType'
+          property :rdma_subtype, as: 'rdmaSubtype'
+          property :ull_subtype, as: 'ullSubtype'
+          property :vpc_subtype, as: 'vpcSubtype'
         end
       end
       
@@ -18144,6 +18173,7 @@ module Google
       
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
+          property :in_use_host_count, as: 'inUseHostCount'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputeBeta::ReservationBlockPhysicalTopology, decorator: Google::Apis::ComputeBeta::ReservationBlockPhysicalTopology::Representation
@@ -18277,6 +18307,7 @@ module Google
       
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
+          property :in_use_host_count, as: 'inUseHostCount'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputeBeta::ReservationSubBlockPhysicalTopology, decorator: Google::Apis::ComputeBeta::ReservationSubBlockPhysicalTopology::Representation
@@ -20012,6 +20043,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consumer_network, as: 'consumerNetwork'
           property :endpoint, as: 'endpoint'
+          collection :nat_ips, as: 'natIps'
           property :propagated_connection_count, as: 'propagatedConnectionCount'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
           property :status, as: 'status'
@@ -23064,6 +23096,7 @@ module Google
       class WireProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bandwidth_allocation, as: 'bandwidthAllocation'
           property :bandwidth_unmetered, :numeric_string => true, as: 'bandwidthUnmetered'
           property :fault_response, as: 'faultResponse'
         end
