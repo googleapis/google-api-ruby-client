@@ -5973,6 +5973,13 @@ module Google
         # @return [String]
         attr_accessor :notification_type
       
+        # The physical headers provided by RequestReceivedParameters in Scotty request.
+        # type is uploader_service.KeyValuePairs.
+        # Corresponds to the JSON property `physicalHeaders`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :physical_headers
+      
         # The Scotty request ID.
         # Corresponds to the JSON property `requestId`
         # @return [String]
@@ -6008,6 +6015,7 @@ module Google
           @diff_object_version = args[:diff_object_version] if args.key?(:diff_object_version)
           @final_status = args[:final_status] if args.key?(:final_status)
           @notification_type = args[:notification_type] if args.key?(:notification_type)
+          @physical_headers = args[:physical_headers] if args.key?(:physical_headers)
           @request_id = args[:request_id] if args.key?(:request_id)
           @request_received_params_serving_info = args[:request_received_params_serving_info] if args.key?(:request_received_params_serving_info)
           @total_bytes = args[:total_bytes] if args.key?(:total_bytes)

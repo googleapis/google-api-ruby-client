@@ -2468,6 +2468,7 @@ module Google
           property :diff_object_version, as: 'diffObjectVersion'
           property :final_status, as: 'finalStatus'
           property :notification_type, as: 'notificationType'
+          property :physical_headers, :base64 => true, as: 'physicalHeaders'
           property :request_id, as: 'requestId'
           property :request_received_params_serving_info, :base64 => true, as: 'requestReceivedParamsServingInfo'
           property :total_bytes, :numeric_string => true, as: 'totalBytes'
