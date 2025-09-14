@@ -44985,6 +44985,8 @@ module Google
         #   Name of the region of this request.
         # @param [String] service_attachment
         #   Name of the ServiceAttachment resource to return.
+        # @param [Boolean] show_nat_ips
+        #   Indicates whether NAT IPs should be included in the response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -45004,13 +45006,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_service_attachment(project, region, service_attachment, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_service_attachment(project, region, service_attachment, show_nat_ips: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/serviceAttachments/{serviceAttachment}', options)
           command.response_representation = Google::Apis::ComputeBeta::ServiceAttachment::Representation
           command.response_class = Google::Apis::ComputeBeta::ServiceAttachment
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['serviceAttachment'] = service_attachment unless service_attachment.nil?
+          command.query['showNatIps'] = show_nat_ips unless show_nat_ips.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

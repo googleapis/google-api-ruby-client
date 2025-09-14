@@ -1222,6 +1222,23 @@ module Google
       class AllocationAggregateReservation
         include Google::Apis::Core::Hashable
       
+        # Count of reserved hosts of specified VM family. The host has fixed number of
+        # accelerators based on the accelerator/vm-family selected.
+        # Corresponds to the JSON property `hostCount`
+        # @return [Fixnum]
+        attr_accessor :host_count
+      
+        # Number of hosts currently in use. If there is one or more Instances running on
+        # the host, it is considered in use.
+        # Corresponds to the JSON property `inUseHostCount`
+        # @return [Fixnum]
+        attr_accessor :in_use_host_count
+      
+        # Number of instances currently in use in this reservation.
+        # Corresponds to the JSON property `inUseInstanceCount`
+        # @return [Fixnum]
+        attr_accessor :in_use_instance_count
+      
         # [Output only] List of resources currently in use.
         # Corresponds to the JSON property `inUseResources`
         # @return [Array<Google::Apis::ComputeBeta::AllocationAggregateReservationReservedResourceInfo>]
@@ -1249,6 +1266,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @host_count = args[:host_count] if args.key?(:host_count)
+          @in_use_host_count = args[:in_use_host_count] if args.key?(:in_use_host_count)
+          @in_use_instance_count = args[:in_use_instance_count] if args.key?(:in_use_instance_count)
           @in_use_resources = args[:in_use_resources] if args.key?(:in_use_resources)
           @reserved_resources = args[:reserved_resources] if args.key?(:reserved_resources)
           @vm_family = args[:vm_family] if args.key?(:vm_family)
@@ -3268,8 +3288,8 @@ module Google
         # CDN will apply the following default TTLs to these status codes: HTTP 300 (
         # Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found),
         # 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not
-        # Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults
-        # can be overridden in negative_caching_policy.
+        # Found), 501 (Not Implemented): 60s. These defaults can be overridden in
+        # negative_caching_policy.
         # Corresponds to the JSON property `negativeCaching`
         # @return [Boolean]
         attr_accessor :negative_caching
@@ -4461,8 +4481,8 @@ module Google
         # CDN will apply the following default TTLs to these status codes: HTTP 300 (
         # Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found),
         # 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not
-        # Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults
-        # can be overridden in negative_caching_policy.
+        # Found), 501 (Not Implemented): 60s. These defaults can be overridden in
+        # negative_caching_policy.
         # Corresponds to the JSON property `negativeCaching`
         # @return [Boolean]
         attr_accessor :negative_caching
@@ -6006,6 +6026,13 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :asns
       
+        # [Output only] ASNs in the path segment. This field is for better support of 32
+        # bit ASNs as the other asns field suffers from overflow when the ASN is larger.
+        # When type is SEQUENCE, these are ordered.
+        # Corresponds to the JSON property `asns32`
+        # @return [Array<Fixnum>]
+        attr_accessor :asns32
+      
         # [Output only] Type of AS-PATH segment (SEQUENCE or SET)
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -6018,6 +6045,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @asns = args[:asns] if args.key?(:asns)
+          @asns32 = args[:asns32] if args.key?(:asns32)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -10785,6 +10813,12 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # [Output Only] Source of this Firewall Policy. USER_DEFINED if created by a
+        # Cloud user, or SYSTEM if created by managed services like GKE.
+        # Corresponds to the JSON property `policySource`
+        # @return [String]
+        attr_accessor :policy_source
+      
         # The type of the firewall policy. This field can be either VPC_POLICY or
         # RDMA_ROCE_POLICY. Note: if not specified then VPC_POLICY will be used.
         # Corresponds to the JSON property `policyType`
@@ -10852,6 +10886,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @packet_mirroring_rules = args[:packet_mirroring_rules] if args.key?(:packet_mirroring_rules)
           @parent = args[:parent] if args.key?(:parent)
+          @policy_source = args[:policy_source] if args.key?(:policy_source)
           @policy_type = args[:policy_type] if args.key?(:policy_type)
           @region = args[:region] if args.key?(:region)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
@@ -11108,6 +11143,17 @@ module Google
         # @return [String]
         attr_accessor :security_profile_group
       
+        # A list of forwarding rules to which this rule applies. This field allows you
+        # to control which load balancers get this rule. For example, the following are
+        # valid values: - https://www.googleapis.com/compute/v1/projects/project /global/
+        # forwardingRules/forwardingRule - https://www.googleapis.com/compute/v1/
+        # projects/project/regions/region /forwardingRules/forwardingRule - projects/
+        # project/global/ forwardingRules/forwardingRule - projects/project/regions/
+        # region/forwardingRules/ forwardingRule
+        # Corresponds to the JSON property `targetForwardingRules`
+        # @return [Array<String>]
+        attr_accessor :target_forwarding_rules
+      
         # A list of network resource URLs to which this rule applies. This field allows
         # you to control which network's VMs get this rule. If this field is left blank,
         # all VMs within the organization will receive the rule.
@@ -11132,6 +11178,11 @@ module Google
         # Corresponds to the JSON property `targetServiceAccounts`
         # @return [Array<String>]
         attr_accessor :target_service_accounts
+      
+        # Target types of the firewall policy rule. Default value is INSTANCES.
+        # Corresponds to the JSON property `targetType`
+        # @return [String]
+        attr_accessor :target_type
       
         # Boolean flag indicating if the traffic should be TLS decrypted. Can be set
         # only if action = 'apply_security_profile_group' and cannot be set for other
@@ -11158,9 +11209,11 @@ module Google
           @rule_name = args[:rule_name] if args.key?(:rule_name)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
           @security_profile_group = args[:security_profile_group] if args.key?(:security_profile_group)
+          @target_forwarding_rules = args[:target_forwarding_rules] if args.key?(:target_forwarding_rules)
           @target_resources = args[:target_resources] if args.key?(:target_resources)
           @target_secure_tags = args[:target_secure_tags] if args.key?(:target_secure_tags)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
+          @target_type = args[:target_type] if args.key?(:target_type)
           @tls_inspect = args[:tls_inspect] if args.key?(:tls_inspect)
         end
       end
@@ -12385,6 +12438,11 @@ module Google
         # @return [String]
         attr_accessor :planning_status
       
+        # Protection tier for the workload.
+        # Corresponds to the JSON property `protectionTier`
+        # @return [String]
+        attr_accessor :protection_tier
+      
         # The reservation mode which determines reservation-termination behavior and
         # expected pricing.
         # Corresponds to the JSON property `reservationMode`
@@ -12469,6 +12527,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @name_prefix = args[:name_prefix] if args.key?(:name_prefix)
           @planning_status = args[:planning_status] if args.key?(:planning_status)
+          @protection_tier = args[:protection_tier] if args.key?(:protection_tier)
           @reservation_mode = args[:reservation_mode] if args.key?(:reservation_mode)
           @reservation_name = args[:reservation_name] if args.key?(:reservation_name)
           @scheduling_type = args[:scheduling_type] if args.key?(:scheduling_type)
@@ -21194,6 +21253,14 @@ module Google
       class InstanceParams
         include Google::Apis::Core::Hashable
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `requestValidForDuration`
+        # @return [Google::Apis::ComputeBeta::Duration]
+        attr_accessor :request_valid_for_duration
+      
         # Resource manager tags to be bound to the instance. Tag keys and values have
         # the same definition as resource manager tags. Keys must be in the format `
         # tagKeys/`tag_key_id``, and values are in the format `tagValues/456`. The field
@@ -21208,6 +21275,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @request_valid_for_duration = args[:request_valid_for_duration] if args.key?(:request_valid_for_duration)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
@@ -24658,9 +24726,7 @@ module Google
         # @return [String]
         attr_accessor :is_active
       
-        # Whether this Attachment is active, and if so, whether BGP is up. This is based
-        # on the statuses available in the Pantheon UI here: http://google3/java/com/
-        # google/cloud/boq/clientapi/gce/hybrid/api/interconnect_models.proto
+        # Whether this Attachment is active, and if so, whether BGP is up.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -26705,6 +26771,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_lag_size10_gbps
       
+        # [Output Only] The maximum number of 400 Gbps ports supported in a link
+        # aggregation group (LAG). When linkType is 400 Gbps, requestedLinkCount cannot
+        # exceed max_lag_size_400_gbps.
+        # Corresponds to the JSON property `maxLagSize400Gbps`
+        # @return [Fixnum]
+        attr_accessor :max_lag_size400_gbps
+      
         # [Output Only] Name of the resource.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -26761,6 +26834,7 @@ module Google
           @lacp = args[:lacp] if args.key?(:lacp)
           @max_lag_size100_gbps = args[:max_lag_size100_gbps] if args.key?(:max_lag_size100_gbps)
           @max_lag_size10_gbps = args[:max_lag_size10_gbps] if args.key?(:max_lag_size10_gbps)
+          @max_lag_size400_gbps = args[:max_lag_size400_gbps] if args.key?(:max_lag_size400_gbps)
           @name = args[:name] if args.key?(:name)
           @peeringdb_facility_id = args[:peeringdb_facility_id] if args.key?(:peeringdb_facility_id)
           @permitted_connections = args[:permitted_connections] if args.key?(:permitted_connections)
@@ -32175,6 +32249,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] Type of the network profile.
+        # Corresponds to the JSON property `profileType`
+        # @return [Google::Apis::ComputeBeta::NetworkProfileProfileType]
+        attr_accessor :profile_type
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -32198,6 +32277,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @profile_type = args[:profile_type] if args.key?(:profile_type)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
         end
@@ -32409,6 +32489,43 @@ module Google
           @subnetwork_purposes = args[:subnetwork_purposes] if args.key?(:subnetwork_purposes)
           @subnetwork_stack_types = args[:subnetwork_stack_types] if args.key?(:subnetwork_stack_types)
           @unicast = args[:unicast] if args.key?(:unicast)
+        end
+      end
+      
+      # 
+      class NetworkProfileProfileType
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `networkType`
+        # @return [String]
+        attr_accessor :network_type
+      
+        # 
+        # Corresponds to the JSON property `rdmaSubtype`
+        # @return [String]
+        attr_accessor :rdma_subtype
+      
+        # 
+        # Corresponds to the JSON property `ullSubtype`
+        # @return [String]
+        attr_accessor :ull_subtype
+      
+        # 
+        # Corresponds to the JSON property `vpcSubtype`
+        # @return [String]
+        attr_accessor :vpc_subtype
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_type = args[:network_type] if args.key?(:network_type)
+          @rdma_subtype = args[:rdma_subtype] if args.key?(:rdma_subtype)
+          @ull_subtype = args[:ull_subtype] if args.key?(:ull_subtype)
+          @vpc_subtype = args[:vpc_subtype] if args.key?(:vpc_subtype)
         end
       end
       
@@ -40854,6 +40971,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :in_use_count
       
+        # Number of hosts currently in use. If there is one or more Instances running on
+        # the host, it is considered in use.
+        # Corresponds to the JSON property `inUseHostCount`
+        # @return [Fixnum]
+        attr_accessor :in_use_host_count
+      
         # [Output Only] Type of the resource. Always compute#reservationBlock for
         # reservation blocks.
         # Corresponds to the JSON property `kind`
@@ -40921,6 +41044,7 @@ module Google
           @health_info = args[:health_info] if args.key?(:health_info)
           @id = args[:id] if args.key?(:id)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
+          @in_use_host_count = args[:in_use_host_count] if args.key?(:in_use_host_count)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @physical_topology = args[:physical_topology] if args.key?(:physical_topology)
@@ -41340,6 +41464,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :in_use_count
       
+        # Number of hosts currently in use. If there is one or more Instances running on
+        # the host, it is considered in use.
+        # Corresponds to the JSON property `inUseHostCount`
+        # @return [Fixnum]
+        attr_accessor :in_use_host_count
+      
         # [Output Only] Type of the resource. Always compute#reservationSubBlock for
         # reservation subBlocks.
         # Corresponds to the JSON property `kind`
@@ -41394,6 +41524,7 @@ module Google
           @health_info = args[:health_info] if args.key?(:health_info)
           @id = args[:id] if args.key?(:id)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
+          @in_use_host_count = args[:in_use_host_count] if args.key?(:in_use_host_count)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @physical_topology = args[:physical_topology] if args.key?(:physical_topology)
@@ -44824,15 +44955,15 @@ module Google
       class RouterParams
         include Google::Apis::Core::Hashable
       
-        # Tag keys/values directly bound to this resource. Tag keys and values have the
-        # same definition as resource manager tags. The field is allowed for INSERT only.
-        # The keys/values to set on the resource should be specified in either ID ` : `
-        # or Namespaced format ` : `. For example the following are valid inputs: * `"
-        # tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"` * `"123/
-        # environment" : "production", "345/abc" : "xyz"` Note: * Invalid combinations
-        # of ID & namespaced format is not supported. For instance: `"123/environment" :
-        # "tagValues/444"` is invalid. * Inconsistent format is not supported. For
-        # instance: `"tagKeys/333" : "tagValues/444", "123/env" : "prod"` is invalid.
+        # Tag keys/values directly bound to this resource. The field is allowed for
+        # INSERT only. The keys/values to set on the resource should be specified in
+        # either ID ` : ` or Namespaced format ` : `. For example the following are
+        # valid inputs: * `"tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/
+        # 456"` * `"123/environment" : "production", "345/abc" : "xyz"` Note: * Invalid
+        # combinations of ID & namespaced format is not supported. For instance: `"123/
+        # environment" : "tagValues/444"` is invalid. * Inconsistent format is not
+        # supported. For instance: `"tagKeys/333" : "tagValues/444", "123/env" : "prod"`
+        # is invalid.
         # Corresponds to the JSON property `resourceManagerTags`
         # @return [Hash<String,String>]
         attr_accessor :resource_manager_tags
@@ -48433,6 +48564,12 @@ module Google
         # @return [String]
         attr_accessor :endpoint
       
+        # NAT IPs of the connected PSC endpoint and those of other endpoints propagated
+        # from it.
+        # Corresponds to the JSON property `natIps`
+        # @return [Array<String>]
+        attr_accessor :nat_ips
+      
         # The number of consumer Network Connectivity Center spokes that the connected
         # Private Service Connect endpoint has propagated to.
         # Corresponds to the JSON property `propagatedConnectionCount`
@@ -48457,6 +48594,7 @@ module Google
         def update!(**args)
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @nat_ips = args[:nat_ips] if args.key?(:nat_ips)
           @propagated_connection_count = args[:propagated_connection_count] if args.key?(:propagated_connection_count)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @status = args[:status] if args.key?(:status)
@@ -60557,6 +60695,17 @@ module Google
       class WireProperties
         include Google::Apis::Core::Hashable
       
+        # The configuration of the bandwidth allocation, one of the following: -
+        # ALLOCATE_PER_WIRE: configures a separate unmetered bandwidth allocation (and
+        # associated charges) for each wire in the group. - SHARED_WITH_WIRE_GROUP: this
+        # is the default behavior, which configures one unmetered bandwidth allocation
+        # for the wire group. The unmetered bandwidth is divided equally across each
+        # wire in the group, but dynamic throttling reallocates unused unmetered
+        # bandwidth from unused or underused wires to other wires in the group.
+        # Corresponds to the JSON property `bandwidthAllocation`
+        # @return [String]
+        attr_accessor :bandwidth_allocation
+      
         # The unmetered bandwidth in Gigabits per second, using decimal units. `10` is
         # 10 Gbps, `100` is 100 Gbps.
         # Corresponds to the JSON property `bandwidthUnmetered`
@@ -60576,6 +60725,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bandwidth_allocation = args[:bandwidth_allocation] if args.key?(:bandwidth_allocation)
           @bandwidth_unmetered = args[:bandwidth_unmetered] if args.key?(:bandwidth_unmetered)
           @fault_response = args[:fault_response] if args.key?(:fault_response)
         end
