@@ -2510,6 +2510,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connect_version, as: 'connectVersion'
+          property :k8s_git_version, as: 'k8sGitVersion'
           property :k8s_version, as: 'k8sVersion'
           property :v1beta1_crd, as: 'v1beta1Crd'
         end
