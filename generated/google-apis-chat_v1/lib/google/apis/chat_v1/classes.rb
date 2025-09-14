@@ -843,8 +843,11 @@ module Google
         # @return [String]
         attr_accessor :host_app
       
-        # Name of the invoked function associated with the widget. Only set for Chat
-        # apps.
+        # Name of the function to invoke. This field doesn't populate for Google
+        # Workspace Add-ons that extend Google Chat. Instead, to receive function data
+        # like identifiers, add-ons that extend Chat should use the `parameters` field.
+        # See [Build interactive interfaces for Chat apps](https://developers.google.com/
+        # workspace/add-ons/chat/build).
         # Corresponds to the JSON property `invokedFunction`
         # @return [String]
         attr_accessor :invoked_function
