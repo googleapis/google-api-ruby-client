@@ -462,6 +462,7 @@ module Google
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
           property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
           property :source_image, as: 'sourceImage'
+          property :storage_pool, as: 'storagePool'
         end
       end
       

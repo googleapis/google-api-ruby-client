@@ -211,6 +211,12 @@ module Google
         # @return [String]
         attr_accessor :source_image
       
+        # Optional. The storage pool in which the boot disk is created. You can provide
+        # this as a partial or full URL to the resource.
+        # Corresponds to the JSON property `storagePool`
+        # @return [String]
+        attr_accessor :storage_pool
+      
         def initialize(**args)
            update!(**args)
         end
@@ -223,6 +229,7 @@ module Google
           @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
           @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
           @source_image = args[:source_image] if args.key?(:source_image)
+          @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
         end
       end
       
