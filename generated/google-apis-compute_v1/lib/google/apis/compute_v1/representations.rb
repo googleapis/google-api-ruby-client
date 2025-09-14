@@ -3658,6 +3658,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkProfileProfileType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkProfilesListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -5291,6 +5297,12 @@ module Google
       end
       
       class RouterNatSubnetworkToNat64
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7150,6 +7162,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpnTunnelCipherSuite
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpnTunnelList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -7164,6 +7182,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnTunnelPhase1Algorithms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnTunnelPhase2Algorithms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -11561,6 +11591,8 @@ module Google
       class InstanceParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_valid_for_duration, as: 'requestValidForDuration', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
+      
           hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
@@ -14013,9 +14045,11 @@ module Google
           property :network_attachment, as: 'networkAttachment'
           property :network_ip, as: 'networkIP'
           property :nic_type, as: 'nicType'
+          property :parent_nic_name, as: 'parentNicName'
           property :queue_count, as: 'queueCount'
           property :stack_type, as: 'stackType'
           property :subnetwork, as: 'subnetwork'
+          property :vlan, as: 'vlan'
         end
       end
       
@@ -14128,6 +14162,8 @@ module Google
           property :location, as: 'location', class: Google::Apis::ComputeV1::NetworkProfileLocation, decorator: Google::Apis::ComputeV1::NetworkProfileLocation::Representation
       
           property :name, as: 'name'
+          property :profile_type, as: 'profileType', class: Google::Apis::ComputeV1::NetworkProfileProfileType, decorator: Google::Apis::ComputeV1::NetworkProfileProfileType::Representation
+      
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
         end
@@ -14172,6 +14208,16 @@ module Google
           collection :subnetwork_purposes, as: 'subnetworkPurposes'
           collection :subnetwork_stack_types, as: 'subnetworkStackTypes'
           property :unicast, as: 'unicast'
+        end
+      end
+      
+      class NetworkProfileProfileType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_type, as: 'networkType'
+          property :rdma_subtype, as: 'rdmaSubtype'
+          property :ull_subtype, as: 'ullSubtype'
+          property :vpc_subtype, as: 'vpcSubtype'
         end
       end
       
@@ -16927,6 +16973,8 @@ module Google
           collection :nats, as: 'nats', class: Google::Apis::ComputeV1::RouterNat, decorator: Google::Apis::ComputeV1::RouterNat::Representation
       
           property :network, as: 'network'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::RouterParams, decorator: Google::Apis::ComputeV1::RouterParams::Representation
+      
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
         end
@@ -17165,6 +17213,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class RouterParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -17435,6 +17490,7 @@ module Google
       
           property :preemptible, as: 'preemptible'
           property :provisioning_model, as: 'provisioningModel'
+          property :skip_guest_os_shutdown, as: 'skipGuestOsShutdown'
           property :termination_time, as: 'terminationTime'
         end
       end
@@ -17971,6 +18027,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consumer_network, as: 'consumerNetwork'
           property :endpoint, as: 'endpoint'
+          collection :nat_ips, as: 'natIps'
           property :propagated_connection_count, as: 'propagatedConnectionCount'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
           property :status, as: 'status'
@@ -20528,6 +20585,8 @@ module Google
       class VpnTunnel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cipher_suite, as: 'cipherSuite', class: Google::Apis::ComputeV1::VpnTunnelCipherSuite, decorator: Google::Apis::ComputeV1::VpnTunnelCipherSuite::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :detailed_status, as: 'detailedStatus'
@@ -20588,6 +20647,16 @@ module Google
         end
       end
       
+      class VpnTunnelCipherSuite
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :phase1, as: 'phase1', class: Google::Apis::ComputeV1::VpnTunnelPhase1Algorithms, decorator: Google::Apis::ComputeV1::VpnTunnelPhase1Algorithms::Representation
+      
+          property :phase2, as: 'phase2', class: Google::Apis::ComputeV1::VpnTunnelPhase2Algorithms, decorator: Google::Apis::ComputeV1::VpnTunnelPhase2Algorithms::Representation
+      
+        end
+      end
+      
       class VpnTunnelList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -20617,6 +20686,25 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class VpnTunnelPhase1Algorithms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dh, as: 'dh'
+          collection :encryption, as: 'encryption'
+          collection :integrity, as: 'integrity'
+          collection :prf, as: 'prf'
+        end
+      end
+      
+      class VpnTunnelPhase2Algorithms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :encryption, as: 'encryption'
+          collection :integrity, as: 'integrity'
+          collection :pfs, as: 'pfs'
         end
       end
       
