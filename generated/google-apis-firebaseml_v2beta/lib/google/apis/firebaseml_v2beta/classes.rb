@@ -877,7 +877,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Required. The name of the function to call. Matches [FunctionDeclaration.name].
+        # Optional. The name of the function to call. Matches [FunctionDeclaration.name].
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1130,7 +1130,9 @@ module Google
         # @return [String]
         attr_accessor :model_version
       
-        # Content filter results for a prompt sent in the request.
+        # Content filter results for a prompt sent in the request. Note: This is sent
+        # only in the first stream chunk and only if no candidates were generated due to
+        # content violations.
         # Corresponds to the JSON property `promptFeedback`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback]
         attr_accessor :prompt_feedback
@@ -1162,21 +1164,25 @@ module Google
         end
       end
       
-      # Content filter results for a prompt sent in the request.
+      # Content filter results for a prompt sent in the request. Note: This is sent
+      # only in the first stream chunk and only if no candidates were generated due to
+      # content violations.
       class GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback
         include Google::Apis::Core::Hashable
       
-        # Output only. Blocked reason.
+        # Output only. The reason why the prompt was blocked.
         # Corresponds to the JSON property `blockReason`
         # @return [String]
         attr_accessor :block_reason
       
-        # Output only. A readable block reason message.
+        # Output only. A readable message that explains the reason why the prompt was
+        # blocked.
         # Corresponds to the JSON property `blockReasonMessage`
         # @return [String]
         attr_accessor :block_reason_message
       
-        # Output only. Safety ratings.
+        # Output only. A list of safety ratings for the prompt. There is one rating per
+        # category.
         # Corresponds to the JSON property `safetyRatings`
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetyRating>]
         attr_accessor :safety_ratings
