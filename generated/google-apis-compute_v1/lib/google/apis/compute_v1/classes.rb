@@ -3143,8 +3143,8 @@ module Google
         # CDN will apply the following default TTLs to these status codes: HTTP 300 (
         # Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found),
         # 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not
-        # Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults
-        # can be overridden in negative_caching_policy.
+        # Found), 501 (Not Implemented): 60s. These defaults can be overridden in
+        # negative_caching_policy.
         # Corresponds to the JSON property `negativeCaching`
         # @return [Boolean]
         attr_accessor :negative_caching
@@ -4205,8 +4205,8 @@ module Google
         # CDN will apply the following default TTLs to these status codes: HTTP 300 (
         # Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found),
         # 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not
-        # Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults
-        # can be overridden in negative_caching_policy.
+        # Found), 501 (Not Implemented): 60s. These defaults can be overridden in
+        # negative_caching_policy.
         # Corresponds to the JSON property `negativeCaching`
         # @return [Boolean]
         attr_accessor :negative_caching
@@ -18503,6 +18503,14 @@ module Google
       class InstanceParams
         include Google::Apis::Core::Hashable
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `requestValidForDuration`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :request_valid_for_duration
+      
         # Resource manager tags to be bound to the instance. Tag keys and values have
         # the same definition as resource manager tags. Keys must be in the format `
         # tagKeys/`tag_key_id``, and values are in the format `tagValues/456`. The field
@@ -18517,6 +18525,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @request_valid_for_duration = args[:request_valid_for_duration] if args.key?(:request_valid_for_duration)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
@@ -21835,9 +21844,7 @@ module Google
         # @return [String]
         attr_accessor :is_active
       
-        # Whether this Attachment is active, and if so, whether BGP is up. This is based
-        # on the statuses available in the Pantheon UI here: http://google3/java/com/
-        # google/cloud/boq/clientapi/gce/hybrid/api/interconnect_models.proto
+        # Whether this Attachment is active, and if so, whether BGP is up.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -28192,6 +28199,11 @@ module Google
         # @return [String]
         attr_accessor :nic_type
       
+        # Name of the parent network interface of a dynamic network interface.
+        # Corresponds to the JSON property `parentNicName`
+        # @return [String]
+        attr_accessor :parent_nic_name
+      
         # The networking queue count that's specified by users for the network interface.
         # Both Rx and Tx queues will be set to this number. It'll be empty if not
         # specified by the users.
@@ -28219,6 +28231,12 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
+        # VLAN tag of a dynamic network interface, must be an integer in the range from
+        # 2 to 255 inclusively.
+        # Corresponds to the JSON property `vlan`
+        # @return [Fixnum]
+        attr_accessor :vlan
+      
         def initialize(**args)
            update!(**args)
         end
@@ -28238,9 +28256,11 @@ module Google
           @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
           @network_ip = args[:network_ip] if args.key?(:network_ip)
           @nic_type = args[:nic_type] if args.key?(:nic_type)
+          @parent_nic_name = args[:parent_nic_name] if args.key?(:parent_nic_name)
           @queue_count = args[:queue_count] if args.key?(:queue_count)
           @stack_type = args[:stack_type] if args.key?(:stack_type)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @vlan = args[:vlan] if args.key?(:vlan)
         end
       end
       
@@ -28695,6 +28715,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] Type of the network profile.
+        # Corresponds to the JSON property `profileType`
+        # @return [Google::Apis::ComputeV1::NetworkProfileProfileType]
+        attr_accessor :profile_type
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -28718,6 +28743,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @profile_type = args[:profile_type] if args.key?(:profile_type)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
         end
@@ -28929,6 +28955,43 @@ module Google
           @subnetwork_purposes = args[:subnetwork_purposes] if args.key?(:subnetwork_purposes)
           @subnetwork_stack_types = args[:subnetwork_stack_types] if args.key?(:subnetwork_stack_types)
           @unicast = args[:unicast] if args.key?(:unicast)
+        end
+      end
+      
+      # 
+      class NetworkProfileProfileType
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `networkType`
+        # @return [String]
+        attr_accessor :network_type
+      
+        # 
+        # Corresponds to the JSON property `rdmaSubtype`
+        # @return [String]
+        attr_accessor :rdma_subtype
+      
+        # 
+        # Corresponds to the JSON property `ullSubtype`
+        # @return [String]
+        attr_accessor :ull_subtype
+      
+        # 
+        # Corresponds to the JSON property `vpcSubtype`
+        # @return [String]
+        attr_accessor :vpc_subtype
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_type = args[:network_type] if args.key?(:network_type)
+          @rdma_subtype = args[:rdma_subtype] if args.key?(:rdma_subtype)
+          @ull_subtype = args[:ull_subtype] if args.key?(:ull_subtype)
+          @vpc_subtype = args[:vpc_subtype] if args.key?(:vpc_subtype)
         end
       end
       
@@ -39418,6 +39481,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Additional router parameters.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeV1::RouterParams]
+        attr_accessor :params
+      
         # [Output Only] URI of the region where the router resides. You must specify
         # this field as part of the HTTP request URL. It is not settable as a field in
         # the request body.
@@ -39448,6 +39516,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @nats = args[:nats] if args.key?(:nats)
           @network = args[:network] if args.key?(:network)
+          @params = args[:params] if args.key?(:params)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
         end
@@ -40564,6 +40633,33 @@ module Google
         end
       end
       
+      # Additional router parameters.
+      class RouterParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource. The field is allowed for
+        # INSERT only. The keys/values to set on the resource should be specified in
+        # either ID ` : ` or Namespaced format ` : `. For example the following are
+        # valid inputs: * `"tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/
+        # 456"` * `"123/environment" : "production", "345/abc" : "xyz"` Note: * Invalid
+        # combinations of ID & namespaced format is not supported. For instance: `"123/
+        # environment" : "tagValues/444"` is invalid. * Inconsistent format is not
+        # supported. For instance: `"tagKeys/333" : "tagValues/444", "123/env" : "prod"`
+        # is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
+        end
+      end
+      
       # 
       class RouterStatus
         include Google::Apis::Core::Hashable
@@ -41664,6 +41760,13 @@ module Google
         # @return [String]
         attr_accessor :provisioning_model
       
+        # Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off
+        # and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        # Corresponds to the JSON property `skipGuestOsShutdown`
+        # @return [Boolean]
+        attr_accessor :skip_guest_os_shutdown
+        alias_method :skip_guest_os_shutdown?, :skip_guest_os_shutdown
+      
         # Specifies the timestamp, when the instance will be terminated, in RFC3339 text
         # format. If specified, the instance termination action will be performed at the
         # termination time.
@@ -41690,6 +41793,7 @@ module Google
           @on_instance_stop_action = args[:on_instance_stop_action] if args.key?(:on_instance_stop_action)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
+          @skip_guest_os_shutdown = args[:skip_guest_os_shutdown] if args.key?(:skip_guest_os_shutdown)
           @termination_time = args[:termination_time] if args.key?(:termination_time)
         end
       end
@@ -43820,6 +43924,12 @@ module Google
         # @return [String]
         attr_accessor :endpoint
       
+        # NAT IPs of the connected PSC endpoint and those of other endpoints propagated
+        # from it.
+        # Corresponds to the JSON property `natIps`
+        # @return [Array<String>]
+        attr_accessor :nat_ips
+      
         # The number of consumer Network Connectivity Center spokes that the connected
         # Private Service Connect endpoint has propagated to.
         # Corresponds to the JSON property `propagatedConnectionCount`
@@ -43844,6 +43954,7 @@ module Google
         def update!(**args)
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @nat_ips = args[:nat_ips] if args.key?(:nat_ips)
           @propagated_connection_count = args[:propagated_connection_count] if args.key?(:propagated_connection_count)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @status = args[:status] if args.key?(:status)
@@ -54022,6 +54133,12 @@ module Google
       class VpnTunnel
         include Google::Apis::Core::Hashable
       
+        # User specified list of ciphers to use for the phase 1 and phase 2 of the IKE
+        # protocol.
+        # Corresponds to the JSON property `cipherSuite`
+        # @return [Google::Apis::ComputeV1::VpnTunnelCipherSuite]
+        attr_accessor :cipher_suite
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -54207,6 +54324,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cipher_suite = args[:cipher_suite] if args.key?(:cipher_suite)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @detailed_status = args[:detailed_status] if args.key?(:detailed_status)
@@ -54357,6 +54475,31 @@ module Google
         end
       end
       
+      # 
+      class VpnTunnelCipherSuite
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `phase1`
+        # @return [Google::Apis::ComputeV1::VpnTunnelPhase1Algorithms]
+        attr_accessor :phase1
+      
+        # 
+        # Corresponds to the JSON property `phase2`
+        # @return [Google::Apis::ComputeV1::VpnTunnelPhase2Algorithms]
+        attr_accessor :phase2
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phase1 = args[:phase1] if args.key?(:phase1)
+          @phase2 = args[:phase2] if args.key?(:phase2)
+        end
+      end
+      
       # Contains a list of VpnTunnel resources.
       class VpnTunnelList
         include Google::Apis::Core::Hashable
@@ -54471,6 +54614,74 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class VpnTunnelPhase1Algorithms
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `dh`
+        # @return [Array<String>]
+        attr_accessor :dh
+      
+        # 
+        # Corresponds to the JSON property `encryption`
+        # @return [Array<String>]
+        attr_accessor :encryption
+      
+        # 
+        # Corresponds to the JSON property `integrity`
+        # @return [Array<String>]
+        attr_accessor :integrity
+      
+        # 
+        # Corresponds to the JSON property `prf`
+        # @return [Array<String>]
+        attr_accessor :prf
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dh = args[:dh] if args.key?(:dh)
+          @encryption = args[:encryption] if args.key?(:encryption)
+          @integrity = args[:integrity] if args.key?(:integrity)
+          @prf = args[:prf] if args.key?(:prf)
+        end
+      end
+      
+      # 
+      class VpnTunnelPhase2Algorithms
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `encryption`
+        # @return [Array<String>]
+        attr_accessor :encryption
+      
+        # 
+        # Corresponds to the JSON property `integrity`
+        # @return [Array<String>]
+        attr_accessor :integrity
+      
+        # 
+        # Corresponds to the JSON property `pfs`
+        # @return [Array<String>]
+        attr_accessor :pfs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption = args[:encryption] if args.key?(:encryption)
+          @integrity = args[:integrity] if args.key?(:integrity)
+          @pfs = args[:pfs] if args.key?(:pfs)
         end
       end
       
