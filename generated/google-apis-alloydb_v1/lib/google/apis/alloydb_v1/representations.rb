@@ -544,6 +544,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainEntitlement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1576,6 +1582,8 @@ module Google
       
           property :config_based_signal_data, as: 'configBasedSignalData', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData::Representation
       
+          property :database_resource_signal_data, as: 'databaseResourceSignalData', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData::Representation
+      
           property :feed_timestamp, as: 'feedTimestamp'
           property :feed_type, as: 'feedType'
           property :observability_metric_data, as: 'observabilityMetricData', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainObservabilityMetricData, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainObservabilityMetricData::Representation
@@ -1664,6 +1672,7 @@ module Google
           property :updation_time, as: 'updationTime'
           property :user_label_set, as: 'userLabelSet', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainUserLabels, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainUserLabels::Representation
       
+          property :zone, as: 'zone'
         end
       end
       
@@ -1677,6 +1686,19 @@ module Google
           property :recommender_id, as: 'recommenderId'
           property :recommender_subtype, as: 'recommenderSubtype'
           property :resource_name, as: 'resourceName'
+          property :signal_type, as: 'signalType'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_resource_name, as: 'fullResourceName'
+          property :last_refresh_time, as: 'lastRefreshTime'
+          property :resource_id, as: 'resourceId', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
+      
+          property :signal_bool_value, as: 'signalBoolValue'
+          property :signal_state, as: 'signalState'
           property :signal_type, as: 'signalType'
         end
       end
