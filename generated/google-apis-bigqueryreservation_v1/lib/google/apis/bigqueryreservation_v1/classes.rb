@@ -501,7 +501,9 @@ module Google
       class FailoverReservationRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. failover mode for the failover operation.
+        # Optional. A parameter that determines how writes that are pending replication
+        # are handled after a failover is initiated. If not specified, HARD failover
+        # mode is used by default.
         # Corresponds to the JSON property `failoverMode`
         # @return [String]
         attr_accessor :failover_mode
