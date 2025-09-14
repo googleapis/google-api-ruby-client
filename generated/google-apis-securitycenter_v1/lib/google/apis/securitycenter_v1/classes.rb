@@ -6915,14 +6915,11 @@ module Google
         attr_accessor :backup_disaster_recovery
       
         # Output only. The canonical name of the finding. The following list shows some
-        # examples: + `organizations/`organization_id`/sources/`source_id`/findings/`
-        # finding_id`` + `organizations/`organization_id`/sources/`source_id`/locations/`
+        # examples: + `organizations/`organization_id`/sources/`source_id`/locations/`
         # location_id`/findings/`finding_id`` + `folders/`folder_id`/sources/`source_id`/
-        # findings/`finding_id`` + `folders/`folder_id`/sources/`source_id`/locations/`
-        # location_id`/findings/`finding_id`` + `projects/`project_id`/sources/`
-        # source_id`/findings/`finding_id`` + `projects/`project_id`/sources/`source_id`/
-        # locations/`location_id`/findings/`finding_id`` The prefix is the closest CRM
-        # ancestor of the resource associated with the finding.
+        # locations/`location_id`/findings/`finding_id`` + `projects/`project_id`/
+        # sources/`source_id`/locations/`location_id`/findings/`finding_id`` The prefix
+        # is the closest CRM ancestor of the resource associated with the finding.
         # Corresponds to the JSON property `canonicalName`
         # @return [String]
         attr_accessor :canonical_name
@@ -7884,6 +7881,11 @@ module Google
       class GoogleCloudSecuritycenterV2IssueResource
         include Google::Apis::Core::Hashable
       
+        # The AppHub application associated with the resource, if any.
+        # Corresponds to the JSON property `application`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueResourceApplication]
+        attr_accessor :application
+      
         # The AWS metadata of a resource associated with an issue.
         # Corresponds to the JSON property `awsMetadata`
         # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2IssueResourceAwsMetadata]
@@ -7926,6 +7928,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @application = args[:application] if args.key?(:application)
           @aws_metadata = args[:aws_metadata] if args.key?(:aws_metadata)
           @azure_metadata = args[:azure_metadata] if args.key?(:azure_metadata)
           @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
@@ -7933,6 +7936,26 @@ module Google
           @google_cloud_metadata = args[:google_cloud_metadata] if args.key?(:google_cloud_metadata)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The AppHub application associated with the resource, if any.
+      class GoogleCloudSecuritycenterV2IssueResourceApplication
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of an Application. Format: `projects/`host-project-id`/
+        # locations/`location`/applications/`application-id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
