@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EffectiveVpcFlowLogsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +353,12 @@ module Google
       end
       
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShowEffectiveFlowLogsConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -594,6 +606,25 @@ module Google
         end
       end
       
+      class EffectiveVpcFlowLogsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_interval, as: 'aggregationInterval'
+          property :cross_project_metadata, as: 'crossProjectMetadata'
+          property :filter_expr, as: 'filterExpr'
+          property :flow_sampling, as: 'flowSampling'
+          property :interconnect_attachment, as: 'interconnectAttachment'
+          property :metadata, as: 'metadata'
+          collection :metadata_fields, as: 'metadataFields'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :scope, as: 'scope'
+          property :state, as: 'state'
+          property :subnet, as: 'subnet'
+          property :vpn_tunnel, as: 'vpnTunnel'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -615,6 +646,7 @@ module Google
           property :forwarding_rule_target, as: 'forwardingRuleTarget'
           property :fqdn, as: 'fqdn'
           property :gke_master_cluster, as: 'gkeMasterCluster'
+          property :gke_pod, as: 'gkePod'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
           property :load_balancer_id, as: 'loadBalancerId'
@@ -1067,6 +1099,16 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::NetworkmanagementV1beta1::Policy, decorator: Google::Apis::NetworkmanagementV1beta1::Policy::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class ShowEffectiveFlowLogsConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :effective_flow_logs_configs, as: 'effectiveFlowLogsConfigs', class: Google::Apis::NetworkmanagementV1beta1::EffectiveVpcFlowLogsConfig, decorator: Google::Apis::NetworkmanagementV1beta1::EffectiveVpcFlowLogsConfig::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       

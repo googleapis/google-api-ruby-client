@@ -751,6 +751,117 @@ module Google
         end
       end
       
+      # A configuration to generate a response for GetEffectiveVpcFlowLogsConfig
+      # request.
+      class EffectiveVpcFlowLogsConfig
+        include Google::Apis::Core::Hashable
+      
+        # The aggregation interval for the logs. Default value is INTERVAL_5_SEC.
+        # Corresponds to the JSON property `aggregationInterval`
+        # @return [String]
+        attr_accessor :aggregation_interval
+      
+        # Determines whether to include cross project annotations in the logs. This
+        # field is available only for organization configurations. If not specified in
+        # org configs will be set to CROSS_PROJECT_METADATA_ENABLED.
+        # Corresponds to the JSON property `crossProjectMetadata`
+        # @return [String]
+        attr_accessor :cross_project_metadata
+      
+        # Export filter used to define which VPC Flow Logs should be logged.
+        # Corresponds to the JSON property `filterExpr`
+        # @return [String]
+        attr_accessor :filter_expr
+      
+        # The value of the field must be in (0, 1]. The sampling rate of VPC Flow Logs
+        # where 1.0 means all collected logs are reported. Setting the sampling rate to
+        # 0.0 is not allowed. If you want to disable VPC Flow Logs, use the state field
+        # instead. Default value is 1.0.
+        # Corresponds to the JSON property `flowSampling`
+        # @return [Float]
+        attr_accessor :flow_sampling
+      
+        # Traffic will be logged from the Interconnect Attachment. Format: projects/`
+        # project_id`/regions/`region`/interconnectAttachments/`name`
+        # Corresponds to the JSON property `interconnectAttachment`
+        # @return [String]
+        attr_accessor :interconnect_attachment
+      
+        # Configures whether all, none or a subset of metadata fields should be added to
+        # the reported VPC flow logs. Default value is INCLUDE_ALL_METADATA.
+        # Corresponds to the JSON property `metadata`
+        # @return [String]
+        attr_accessor :metadata
+      
+        # Custom metadata fields to include in the reported VPC flow logs. Can only be
+        # specified if "metadata" was set to CUSTOM_METADATA.
+        # Corresponds to the JSON property `metadataFields`
+        # @return [Array<String>]
+        attr_accessor :metadata_fields
+      
+        # Unique name of the configuration. The name can have one of the following forms:
+        # - For project-level configurations: `projects/`project_id`/locations/global/
+        # vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` - For organization-level
+        # configurations: `organizations/`organization_id`/locations/global/
+        # vpcFlowLogsConfigs/`vpc_flow_logs_config_id`` - For a Compute config, the name
+        # will be the path of the subnet: `projects/`project_id`/regions/`region`/
+        # subnetworks/`subnet_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments
+        # within the network. Format: projects/`project_id`/global/networks/`name`
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Specifies the scope of the config (e.g., SUBNET, NETWORK, ORGANIZATION..).
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # The state of the VPC Flow Log configuration. Default value is ENABLED. When
+        # creating a new configuration, it must be enabled. Setting state=DISABLED will
+        # pause the log generation for this config.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Traffic will be logged from VMs within the subnetwork. Format: projects/`
+        # project_id`/regions/`region`/subnetworks/`name`
+        # Corresponds to the JSON property `subnet`
+        # @return [String]
+        attr_accessor :subnet
+      
+        # Traffic will be logged from the VPN Tunnel. Format: projects/`project_id`/
+        # regions/`region`/vpnTunnels/`name`
+        # Corresponds to the JSON property `vpnTunnel`
+        # @return [String]
+        attr_accessor :vpn_tunnel
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_interval = args[:aggregation_interval] if args.key?(:aggregation_interval)
+          @cross_project_metadata = args[:cross_project_metadata] if args.key?(:cross_project_metadata)
+          @filter_expr = args[:filter_expr] if args.key?(:filter_expr)
+          @flow_sampling = args[:flow_sampling] if args.key?(:flow_sampling)
+          @interconnect_attachment = args[:interconnect_attachment] if args.key?(:interconnect_attachment)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @metadata_fields = args[:metadata_fields] if args.key?(:metadata_fields)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @scope = args[:scope] if args.key?(:scope)
+          @state = args[:state] if args.key?(:state)
+          @subnet = args[:subnet] if args.key?(:subnet)
+          @vpn_tunnel = args[:vpn_tunnel] if args.key?(:vpn_tunnel)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -824,6 +935,11 @@ module Google
         # Corresponds to the JSON property `gkeMasterCluster`
         # @return [String]
         attr_accessor :gke_master_cluster
+      
+        # A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+        # Corresponds to the JSON property `gkePod`
+        # @return [String]
+        attr_accessor :gke_pod
       
         # A Compute Engine instance URI.
         # Corresponds to the JSON property `instance`
@@ -901,6 +1017,7 @@ module Google
           @forwarding_rule_target = args[:forwarding_rule_target] if args.key?(:forwarding_rule_target)
           @fqdn = args[:fqdn] if args.key?(:fqdn)
           @gke_master_cluster = args[:gke_master_cluster] if args.key?(:gke_master_cluster)
+          @gke_pod = args[:gke_pod] if args.key?(:gke_pod)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @load_balancer_id = args[:load_balancer_id] if args.key?(:load_balancer_id)
@@ -2821,6 +2938,37 @@ module Google
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Response for the `ShowEffectiveFlowLogsConfigs` method.
+      class ShowEffectiveFlowLogsConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of Effective Vpc Flow Logs configurations.
+        # Corresponds to the JSON property `effectiveFlowLogsConfigs`
+        # @return [Array<Google::Apis::NetworkmanagementV1beta1::EffectiveVpcFlowLogsConfig>]
+        attr_accessor :effective_flow_logs_configs
+      
+        # Page token to fetch the next set of configurations.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached (when querying all locations with `-`).
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_flow_logs_configs = args[:effective_flow_logs_configs] if args.key?(:effective_flow_logs_configs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
