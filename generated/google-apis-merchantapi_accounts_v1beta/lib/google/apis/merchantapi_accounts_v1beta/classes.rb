@@ -1624,6 +1624,25 @@ module Google
         end
       end
       
+      # Response message for the GetAccountForGcpRegistration method.
+      class GetAccountForGcpRegistrationResponse
+        include Google::Apis::Core::Hashable
+      
+        # The name of the merchant account id that the GCP is registered with.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # The current status of establishing of the service. (for example, pending
       # approval or approved).
       class Handshake
