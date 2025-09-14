@@ -2835,6 +2835,12 @@ module Google
         # @return [String]
         attr_accessor :entitlement_id
       
+        # Optional. The GCP Oracle zone where OdbNetwork is hosted. Example: us-east4-b-
+        # r2. If not specified, the system will pick a zone based on availability.
+        # Corresponds to the JSON property `gcpOracleZone`
+        # @return [String]
+        attr_accessor :gcp_oracle_zone
+      
         # Optional. Labels or tags associated with the resource.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -2865,6 +2871,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @entitlement_id = args[:entitlement_id] if args.key?(:entitlement_id)
+          @gcp_oracle_zone = args[:gcp_oracle_zone] if args.key?(:gcp_oracle_zone)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
