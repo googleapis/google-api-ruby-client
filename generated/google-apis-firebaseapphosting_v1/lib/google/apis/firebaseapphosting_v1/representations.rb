@@ -22,6 +22,12 @@ module Google
   module Apis
     module FirebaseapphostingV1
       
+      class ArchiveSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Backend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SourceUserMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -262,6 +274,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ArchiveSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :author, as: 'author', class: Google::Apis::FirebaseapphostingV1::SourceUserMetadata, decorator: Google::Apis::FirebaseapphostingV1::SourceUserMetadata::Representation
+      
+          property :description, as: 'description'
+          property :external_signed_uri, as: 'externalSignedUri'
+          property :root_directory, as: 'rootDirectory'
+          property :user_storage_uri, as: 'userStorageUri'
+        end
+      end
+      
       class Backend
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -280,6 +304,7 @@ module Google
           property :mode, as: 'mode'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
+          property :request_logs_disabled, as: 'requestLogsDisabled'
           property :service_account, as: 'serviceAccount'
           property :serving_locality, as: 'servingLocality'
           property :uid, as: 'uid'
@@ -317,6 +342,8 @@ module Google
       class BuildSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive, as: 'archive', class: Google::Apis::FirebaseapphostingV1::ArchiveSource, decorator: Google::Apis::FirebaseapphostingV1::ArchiveSource::Representation
+      
           property :codebase, as: 'codebase', class: Google::Apis::FirebaseapphostingV1::CodebaseSource, decorator: Google::Apis::FirebaseapphostingV1::CodebaseSource::Representation
       
           property :container, as: 'container', class: Google::Apis::FirebaseapphostingV1::ContainerSource, decorator: Google::Apis::FirebaseapphostingV1::ContainerSource::Representation
@@ -669,6 +696,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :redirect, as: 'redirect', class: Google::Apis::FirebaseapphostingV1::Redirect, decorator: Google::Apis::FirebaseapphostingV1::Redirect::Representation
       
+        end
+      end
+      
+      class SourceUserMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :email, as: 'email'
+          property :image_uri, as: 'imageUri'
         end
       end
       

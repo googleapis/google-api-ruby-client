@@ -22,6 +22,51 @@ module Google
   module Apis
     module FirebaseapphostingV1
       
+      # The URI of an storage archive or a signed URL to use as the build source.
+      class ArchiveSource
+        include Google::Apis::Core::Hashable
+      
+        # Metadata for the user who started the build.
+        # Corresponds to the JSON property `author`
+        # @return [Google::Apis::FirebaseapphostingV1::SourceUserMetadata]
+        attr_accessor :author
+      
+        # Optional. An optional message that describes the uploaded version of the
+        # source code.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Signed URL to an archive in a storage bucket.
+        # Corresponds to the JSON property `externalSignedUri`
+        # @return [String]
+        attr_accessor :external_signed_uri
+      
+        # Optional. Relative path in the archive.
+        # Corresponds to the JSON property `rootDirectory`
+        # @return [String]
+        attr_accessor :root_directory
+      
+        # URI to an archive in Cloud Storage. The object must be a zipped (.zip) or
+        # gzipped archive file (.tar.gz) containing source to deploy.
+        # Corresponds to the JSON property `userStorageUri`
+        # @return [String]
+        attr_accessor :user_storage_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @author = args[:author] if args.key?(:author)
+          @description = args[:description] if args.key?(:description)
+          @external_signed_uri = args[:external_signed_uri] if args.key?(:external_signed_uri)
+          @root_directory = args[:root_directory] if args.key?(:root_directory)
+          @user_storage_uri = args[:user_storage_uri] if args.key?(:user_storage_uri)
+        end
+      end
+      
       # A backend is the primary resource of App Hosting.
       class Backend
         include Google::Apis::Core::Hashable
@@ -102,6 +147,13 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Optional. A field that, if true, indicates that incoming request logs are
+        # disabled for this backend. Incoming request logs are enabled by default.
+        # Corresponds to the JSON property `requestLogsDisabled`
+        # @return [Boolean]
+        attr_accessor :request_logs_disabled
+        alias_method :request_logs_disabled?, :request_logs_disabled
+      
         # Required. The name of the service account used for Cloud Build and Cloud Run.
         # Should have the role roles/firebaseapphosting.computeRunner or equivalent
         # permissions.
@@ -151,6 +203,7 @@ module Google
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @request_logs_disabled = args[:request_logs_disabled] if args.key?(:request_logs_disabled)
           @service_account = args[:service_account] if args.key?(:service_account)
           @serving_locality = args[:serving_locality] if args.key?(:serving_locality)
           @uid = args[:uid] if args.key?(:uid)
@@ -293,6 +346,11 @@ module Google
       class BuildSource
         include Google::Apis::Core::Hashable
       
+        # The URI of an storage archive or a signed URL to use as the build source.
+        # Corresponds to the JSON property `archive`
+        # @return [Google::Apis::FirebaseapphostingV1::ArchiveSource]
+        attr_accessor :archive
+      
         # A codebase source, representing the state of the codebase that the build will
         # be created at.
         # Corresponds to the JSON property `codebase`
@@ -312,6 +370,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @archive = args[:archive] if args.key?(:archive)
           @codebase = args[:codebase] if args.key?(:codebase)
           @container = args[:container] if args.key?(:container)
         end
@@ -1435,8 +1494,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # Immutable. The name of a build that already exists. It doesn't have to be
-        # built; a rollout will wait for a build to be ready before updating traffic.
+        # Required. Immutable. The name of a build that already exists. It doesn't have
+        # to be built; a rollout will wait for a build to be ready before updating
+        # traffic.
         # Corresponds to the JSON property `build`
         # @return [String]
         attr_accessor :build
@@ -1667,6 +1727,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @redirect = args[:redirect] if args.key?(:redirect)
+        end
+      end
+      
+      # Metadata for the user who started the build.
+      class SourceUserMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The user-chosen displayname. May be empty.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The account email linked to the EUC that created the build. May
+        # be a service account or other robot account.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Output only. The URI of a profile photo associated with the user who created
+        # the build.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @email = args[:email] if args.key?(:email)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
         end
       end
       
