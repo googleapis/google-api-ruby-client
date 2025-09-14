@@ -3720,7 +3720,7 @@ module Google
       end
       
       # DatabaseResourceFeed is the top level proto to be used to ingest different
-      # database resource level events into Condor platform. Next ID: 11
+      # database resource level events into Condor platform. Next ID: 12
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed
         include Google::Apis::Core::Hashable
       
@@ -3736,6 +3736,13 @@ module Google
         # Corresponds to the JSON property `configBasedSignalData`
         # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData]
         attr_accessor :config_based_signal_data
+      
+        # Database resource signal data. This is used to send signals to Condor which
+        # are based on the DB/Instance/Fleet level configurations. These will be used to
+        # send signals for all inventory types. Next ID: 7
+        # Corresponds to the JSON property `databaseResourceSignalData`
+        # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData]
+        attr_accessor :database_resource_signal_data
       
         # Required. Timestamp when feed is generated.
         # Corresponds to the JSON property `feedTimestamp`
@@ -3767,7 +3774,7 @@ module Google
         # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 26
+        # Common model for database resource instance metadata. Next ID: 27
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -3790,6 +3797,7 @@ module Google
         def update!(**args)
           @backupdr_metadata = args[:backupdr_metadata] if args.key?(:backupdr_metadata)
           @config_based_signal_data = args[:config_based_signal_data] if args.key?(:config_based_signal_data)
+          @database_resource_signal_data = args[:database_resource_signal_data] if args.key?(:database_resource_signal_data)
           @feed_timestamp = args[:feed_timestamp] if args.key?(:feed_timestamp)
           @feed_type = args[:feed_type] if args.key?(:feed_type)
           @observability_metric_data = args[:observability_metric_data] if args.key?(:observability_metric_data)
@@ -3964,7 +3972,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 26
+      # Common model for database resource instance metadata. Next ID: 27
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -4108,6 +4116,12 @@ module Google
         # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainUserLabels]
         attr_accessor :user_label_set
       
+        # The resource zone. This is only applicable for zonal resources and will be
+        # empty for regional and multi-regional resources.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4138,6 +4152,7 @@ module Google
           @tags_set = args[:tags_set] if args.key?(:tags_set)
           @updation_time = args[:updation_time] if args.key?(:updation_time)
           @user_label_set = args[:user_label_set] if args.key?(:user_label_set)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -4210,6 +4225,58 @@ module Google
           @recommender_id = args[:recommender_id] if args.key?(:recommender_id)
           @recommender_subtype = args[:recommender_subtype] if args.key?(:recommender_subtype)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @signal_type = args[:signal_type] if args.key?(:signal_type)
+        end
+      end
+      
+      # Database resource signal data. This is used to send signals to Condor which
+      # are based on the DB/Instance/Fleet level configurations. These will be used to
+      # send signals for all inventory types. Next ID: 7
+      class StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData
+        include Google::Apis::Core::Hashable
+      
+        # Required. Full Resource name of the source resource.
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        # Required. Last time signal was refreshed
+        # Corresponds to the JSON property `lastRefreshTime`
+        # @return [String]
+        attr_accessor :last_refresh_time
+      
+        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
+        attr_accessor :resource_id
+      
+        # Signal data for boolean signals.
+        # Corresponds to the JSON property `signalBoolValue`
+        # @return [Boolean]
+        attr_accessor :signal_bool_value
+        alias_method :signal_bool_value?, :signal_bool_value
+      
+        # Required. Output only. Signal state of the signal
+        # Corresponds to the JSON property `signalState`
+        # @return [String]
+        attr_accessor :signal_state
+      
+        # Required. Signal type of the signal
+        # Corresponds to the JSON property `signalType`
+        # @return [String]
+        attr_accessor :signal_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+          @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @signal_bool_value = args[:signal_bool_value] if args.key?(:signal_bool_value)
+          @signal_state = args[:signal_state] if args.key?(:signal_state)
           @signal_type = args[:signal_type] if args.key?(:signal_type)
         end
       end
