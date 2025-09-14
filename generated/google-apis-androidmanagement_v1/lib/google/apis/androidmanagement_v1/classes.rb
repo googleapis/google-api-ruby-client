@@ -1950,9 +1950,12 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationReport>]
         attr_accessor :application_reports
       
-        # The password requirements currently applied to the device. The applied
-        # requirements may be slightly different from those specified in
-        # passwordPolicies in some cases. fieldPath is set based on passwordPolicies.
+        # The password requirements currently applied to the device. This field exists
+        # because the applied requirements may be slightly different from those
+        # specified in passwordPolicies in some cases. Note that this field does not
+        # provide information about password compliance. For non-compliance information,
+        # see nonComplianceDetails. NonComplianceDetail.fieldPath, is set based on
+        # passwordPolicies, not based on this field.
         # Corresponds to the JSON property `appliedPasswordPolicies`
         # @return [Array<Google::Apis::AndroidmanagementV1::PasswordRequirements>]
         attr_accessor :applied_password_policies
