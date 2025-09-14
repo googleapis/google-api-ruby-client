@@ -1660,6 +1660,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class YoutubeSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Account
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4070,6 +4076,7 @@ module Google
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :advertiser_id_dimension_value, as: 'advertiserIdDimensionValue', class: Google::Apis::DfareportingV4::DimensionValue, decorator: Google::Apis::DfareportingV4::DimensionValue::Representation
       
+          property :allow_on_youtube, as: 'allowOnYoutube'
           property :campaign_id, :numeric_string => true, as: 'campaignId'
           property :campaign_id_dimension_value, as: 'campaignIdDimensionValue', class: Google::Apis::DfareportingV4::DimensionValue, decorator: Google::Apis::DfareportingV4::DimensionValue::Representation
       
@@ -4124,6 +4131,8 @@ module Google
       
           property :vpaid_adapter_choice, as: 'vpaidAdapterChoice'
           property :wrapping_opt_out, as: 'wrappingOptOut'
+          property :youtube_settings, as: 'youtubeSettings', class: Google::Apis::DfareportingV4::YoutubeSettings, decorator: Google::Apis::DfareportingV4::YoutubeSettings::Representation
+      
         end
       end
       
@@ -5284,6 +5293,18 @@ module Google
       
           property :transcode_settings, as: 'transcodeSettings', class: Google::Apis::DfareportingV4::TranscodeSetting, decorator: Google::Apis::DfareportingV4::TranscodeSetting::Representation
       
+        end
+      end
+      
+      class YoutubeSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :business_logo_creative_ids, as: 'businessLogoCreativeIds'
+          property :business_name, as: 'businessName'
+          collection :call_to_actions, as: 'callToActions'
+          collection :descriptions, as: 'descriptions'
+          collection :headlines, as: 'headlines'
+          collection :long_headlines, as: 'longHeadlines'
         end
       end
     end
