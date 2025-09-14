@@ -1914,6 +1914,12 @@ module Google
         # @return [String]
         attr_accessor :allowed_clients
       
+        # Optional. An integer representing the anonymous user ID. Range is 0 to
+        # 4294967295. Required when squash_mode is ROOT_SQUASH or ALL_SQUASH.
+        # Corresponds to the JSON property `anonUid`
+        # @return [Fixnum]
+        attr_accessor :anon_uid
+      
         # Whether Unix root access will be granted.
         # Corresponds to the JSON property `hasRootAccess`
         # @return [String]
@@ -1982,6 +1988,13 @@ module Google
         attr_accessor :nfsv4
         alias_method :nfsv4?, :nfsv4
       
+        # Optional. Defines how user identity squashing is applied for this export rule.
+        # This field is the preferred way to configure squashing behavior and takes
+        # precedence over `has_root_access` if both are provided.
+        # Corresponds to the JSON property `squashMode`
+        # @return [String]
+        attr_accessor :squash_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1990,6 +2003,7 @@ module Google
         def update!(**args)
           @access_type = args[:access_type] if args.key?(:access_type)
           @allowed_clients = args[:allowed_clients] if args.key?(:allowed_clients)
+          @anon_uid = args[:anon_uid] if args.key?(:anon_uid)
           @has_root_access = args[:has_root_access] if args.key?(:has_root_access)
           @kerberos5_read_only = args[:kerberos5_read_only] if args.key?(:kerberos5_read_only)
           @kerberos5_read_write = args[:kerberos5_read_write] if args.key?(:kerberos5_read_write)
@@ -1999,6 +2013,7 @@ module Google
           @kerberos5p_read_write = args[:kerberos5p_read_write] if args.key?(:kerberos5p_read_write)
           @nfsv3 = args[:nfsv3] if args.key?(:nfsv3)
           @nfsv4 = args[:nfsv4] if args.key?(:nfsv4)
+          @squash_mode = args[:squash_mode] if args.key?(:squash_mode)
         end
       end
       

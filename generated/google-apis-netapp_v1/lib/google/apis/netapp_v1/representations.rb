@@ -837,6 +837,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_type, as: 'accessType'
           property :allowed_clients, as: 'allowedClients'
+          property :anon_uid, :numeric_string => true, as: 'anonUid'
           property :has_root_access, as: 'hasRootAccess'
           property :kerberos5_read_only, as: 'kerberos5ReadOnly'
           property :kerberos5_read_write, as: 'kerberos5ReadWrite'
@@ -846,6 +847,7 @@ module Google
           property :kerberos5p_read_write, as: 'kerberos5pReadWrite'
           property :nfsv3, as: 'nfsv3'
           property :nfsv4, as: 'nfsv4'
+          property :squash_mode, as: 'squashMode'
         end
       end
       
