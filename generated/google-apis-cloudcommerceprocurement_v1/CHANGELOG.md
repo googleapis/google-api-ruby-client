@@ -1,5 +1,9 @@
 # Release history for google-apis-cloudcommerceprocurement_v1
 
+### v0.3.0 (2025-09-14)
+
+* Regenerated from discovery document revision 20250907
+
 ### v0.2.0 (2025-09-07)
 
 * Regenerated from discovery document revision 20250831
