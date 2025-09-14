@@ -841,7 +841,7 @@ module Google
         # @return [Google::Apis::WorkloadmanagerV1::AgentStatus]
         attr_accessor :agent_status
       
-        # Required. The instance id where the insight is generated from
+        # Optional. The instance id where the insight is generated from
         # Corresponds to the JSON property `instanceId`
         # @return [String]
         attr_accessor :instance_id
@@ -2700,7 +2700,7 @@ module Google
         # @return [String]
         attr_accessor :agent_version
       
-        # Required. instance_name lists the human readable name of the instance that the
+        # Optional. instance_name lists the human readable name of the instance that the
         # data comes from.
         # Corresponds to the JSON property `instanceName`
         # @return [String]
