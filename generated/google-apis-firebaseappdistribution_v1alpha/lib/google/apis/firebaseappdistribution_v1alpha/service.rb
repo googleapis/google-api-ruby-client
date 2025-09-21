@@ -724,6 +724,9 @@ module Google
         #   Identifier. The name of the test case resource. Format: `projects/`
         #   project_number`/apps/`app_id`/testCases/`test_case_id``
         # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase] google_firebase_appdistro_v1alpha_test_case_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the test case is not found, a new test case will
+        #   be created.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -741,13 +744,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_app_test_case(name, google_firebase_appdistro_v1alpha_test_case_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_app_test_case(name, google_firebase_appdistro_v1alpha_test_case_object = nil, allow_missing: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1alpha/{+name}', options)
           command.request_representation = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase::Representation
           command.request_object = google_firebase_appdistro_v1alpha_test_case_object
           command.response_representation = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase::Representation
           command.response_class = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase
           command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
