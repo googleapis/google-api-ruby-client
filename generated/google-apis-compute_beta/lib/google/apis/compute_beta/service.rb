@@ -26710,6 +26710,8 @@ module Google
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Indicates fields to be cleared as part of this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -26729,7 +26731,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_organization_security_policy(security_policy, security_policy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_organization_security_policy(security_policy, security_policy_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:patch, 'locations/global/securityPolicies/{securityPolicy}', options)
           command.request_representation = Google::Apis::ComputeBeta::SecurityPolicy::Representation
           command.request_object = security_policy_object
@@ -26737,6 +26739,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -26760,6 +26763,8 @@ module Google
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Indicates fields to be cleared as part of this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -26779,7 +26784,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_organization_security_policy_rule(security_policy, security_policy_rule_object = nil, priority: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_organization_security_policy_rule(security_policy, security_policy_rule_object = nil, priority: nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'locations/global/securityPolicies/{securityPolicy}/patchRule', options)
           command.request_representation = Google::Apis::ComputeBeta::SecurityPolicyRule::Representation
           command.request_object = security_policy_rule_object
@@ -26788,6 +26793,7 @@ module Google
           command.params['securityPolicy'] = security_policy unless security_policy.nil?
           command.query['priority'] = priority unless priority.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -27947,7 +27953,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Moves a persistent disk from one zone to another.
+        # Starting September 29, 2025, you can't use the moveDisk API on new projects.
+        # To move a disk to a different region or zone, follow the steps in [Change the
+        # location of a disk](https://`$universe.dns_names.final_documentation_domain`/
+        # compute/docs/disks/migrate-to-hyperdisk#migrate-to-hd). Projects that already
+        # use the moveDisk API can continue usage until September 29, 2026. Starting
+        # November 1, 2025, API responses will include a warning message in the response
+        # body about the upcoming deprecation. You can skip the message to continue
+        # using the service without interruption.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::DiskMoveRequest] disk_move_request_object

@@ -14395,6 +14395,7 @@ module Google
           collection :region_infos, as: 'regionInfos', class: Google::Apis::ComputeBeta::InterconnectLocationRegionInfo, decorator: Google::Apis::ComputeBeta::InterconnectLocationRegionInfo::Representation
       
           property :self_link, as: 'selfLink'
+          collection :single_region_production_critical_peer_locations, as: 'singleRegionProductionCriticalPeerLocations'
           property :status, as: 'status'
           property :supports_pzs, as: 'supportsPzs'
         end
