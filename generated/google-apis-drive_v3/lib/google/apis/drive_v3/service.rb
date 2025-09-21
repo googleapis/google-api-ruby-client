@@ -82,11 +82,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an AccessProposal by ID.
+        # Retrieves an access proposal by ID. For more information, see [Manage pending
+        # access proposals](https://developers.google.com/workspace/drive/api/guides/
+        # pending-access).
         # @param [String] file_id
-        #   Required. The id of the item the request is on.
+        #   Required. The ID of the item the request is on.
         # @param [String] proposal_id
-        #   Required. The id of the access proposal to resolve.
+        #   Required. The ID of the access proposal to resolve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -115,12 +117,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the AccessProposals on a file. Note: Only approvers are able to list
-        # AccessProposals on a file. If the user is not an approver, returns a 403.
+        # List the access proposals on a file. For more information, see [Manage pending
+        # access proposals](https://developers.google.com/workspace/drive/api/guides/
+        # pending-access). Note: Only approvers are able to list access proposals on a
+        # file. If the user isn't an approver, a 403 error is returned.
         # @param [String] file_id
-        #   Required. The id of the item the request is on.
+        #   Required. The ID of the item the request is on.
         # @param [Fixnum] page_size
-        #   Optional. The number of results per page
+        #   Optional. The number of results per page.
         # @param [String] page_token
         #   Optional. The continuation token on the list of access requests.
         # @param [String] fields
@@ -152,11 +156,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Used to approve or deny an Access Proposal.
+        # Approves or denies an access proposal. For more information, see [Manage
+        # pending access proposals](https://developers.google.com/workspace/drive/api/
+        # guides/pending-access).
         # @param [String] file_id
-        #   Required. The id of the item the request is on.
+        #   Required. The ID of the item the request is on.
         # @param [String] proposal_id
-        #   Required. The id of the access proposal to resolve.
+        #   Required. The ID of the access proposal to resolve.
         # @param [Google::Apis::DriveV3::ResolveAccessProposalRequest] resolve_access_proposal_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

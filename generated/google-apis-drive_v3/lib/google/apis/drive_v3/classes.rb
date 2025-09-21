@@ -227,41 +227,43 @@ module Google
         end
       end
       
-      # The Access Proposal resource for outstanding access proposals on a file
+      # Manage outstanding access proposals on a file.
       class AccessProposal
         include Google::Apis::Core::Hashable
       
-        # The creation time
+        # The creation time.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # The file id that the proposal for access is on
+        # The file ID that the proposal for access is on.
         # Corresponds to the JSON property `fileId`
         # @return [String]
         attr_accessor :file_id
       
-        # The id of the access proposal
+        # The ID of the access proposal.
         # Corresponds to the JSON property `proposalId`
         # @return [String]
         attr_accessor :proposal_id
       
-        # The email address of the user that will receive permissions if accepted
+        # The email address of the user that will receive permissions, if accepted.
         # Corresponds to the JSON property `recipientEmailAddress`
         # @return [String]
         attr_accessor :recipient_email_address
       
-        # The message that the requester added to the proposal
+        # The message that the requester added to the proposal.
         # Corresponds to the JSON property `requestMessage`
         # @return [String]
         attr_accessor :request_message
       
-        # The email address of the requesting user
+        # The email address of the requesting user.
         # Corresponds to the JSON property `requesterEmailAddress`
         # @return [String]
         attr_accessor :requester_email_address
       
-        # A wrapper for the role and view of an access proposal.
+        # A wrapper for the role and view of an access proposal. For more information,
+        # see [Roles and permissions](https://developers.google.com/workspace/drive/api/
+        # guides/ref-roles).
         # Corresponds to the JSON property `rolesAndViews`
         # @return [Array<Google::Apis::DriveV3::AccessProposalRoleAndView>]
         attr_accessor :roles_and_views
@@ -282,19 +284,20 @@ module Google
         end
       end
       
-      # A wrapper for the role and view of an access proposal.
+      # A wrapper for the role and view of an access proposal. For more information,
+      # see [Roles and permissions](https://developers.google.com/workspace/drive/api/
+      # guides/ref-roles).
       class AccessProposalRoleAndView
         include Google::Apis::Core::Hashable
       
-        # The role that was proposed by the requester New values may be added in the
-        # future, but the following are currently possible: * `writer` * `commenter` * `
-        # reader`
+        # The role that was proposed by the requester. The supported values are: * `
+        # writer` * `commenter` * `reader`
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
       
         # Indicates the view for this access proposal. Only populated for proposals that
-        # belong to a view. `published` is the only supported value.
+        # belong to a view. Only `published` is supported.
         # Corresponds to the JSON property `view`
         # @return [String]
         attr_accessor :view
@@ -2996,11 +2999,11 @@ module Google
         end
       end
       
-      # The response to an Access Proposal list request.
+      # The response to an access proposal list request.
       class ListAccessProposalsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of Access Proposals. This field is only populated in v3 and v3beta.
+        # The list of access proposals. This field is only populated in Drive API v3.
         # Corresponds to the JSON property `accessProposals`
         # @return [Array<Google::Apis::DriveV3::AccessProposal>]
         attr_accessor :access_proposals
@@ -3519,26 +3522,28 @@ module Google
       class ResolveAccessProposalRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The action to take on the AccessProposal.
+        # Required. The action to take on the access proposal.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
       
-        # Optional. The roles the approver has allowed, if any. Note: This field is
-        # required for the `ACCEPT` action.
+        # Optional. The roles that the approver has allowed, if any. For more
+        # information, see [Roles and permissions](https://developers.google.com/
+        # workspace/drive/api/guides/ref-roles). Note: This field is required for the `
+        # ACCEPT` action.
         # Corresponds to the JSON property `role`
         # @return [Array<String>]
         attr_accessor :role
       
-        # Optional. Whether to send an email to the requester when the AccessProposal is
-        # denied or accepted.
+        # Optional. Whether to send an email to the requester when the access proposal
+        # is denied or accepted.
         # Corresponds to the JSON property `sendNotification`
         # @return [Boolean]
         attr_accessor :send_notification
         alias_method :send_notification?, :send_notification
       
         # Optional. Indicates the view for this access proposal. This should only be set
-        # when the proposal belongs to a view. `published` is the only supported value.
+        # when the proposal belongs to a view. Only `published` is supported.
         # Corresponds to the JSON property `view`
         # @return [String]
         attr_accessor :view
