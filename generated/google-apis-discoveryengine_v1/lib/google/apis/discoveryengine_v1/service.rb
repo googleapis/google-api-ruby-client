@@ -198,6 +198,89 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a Collection and sets up the DataConnector for it. To stop a
+        # DataConnector after setup, use the CollectionService.DeleteCollection method.
+        # @param [String] parent
+        #   Required. The parent of Collection, in the format of `projects/`project`/
+        #   locations/`location``.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SetUpDataConnectorRequest] google_cloud_discoveryengine_v1_set_up_data_connector_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_up_data_connector(parent, google_cloud_discoveryengine_v1_set_up_data_connector_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}:setUpDataConnector', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SetUpDataConnectorRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1_set_up_data_connector_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a Collection and sets up the DataConnector for it. To stop a
+        # DataConnector after setup, use the CollectionService.DeleteCollection method.
+        # @param [String] parent
+        #   Required. The parent of Collection, in the format of `projects/`project`/
+        #   locations/`location``.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataConnector] google_cloud_discoveryengine_v1_data_connector_object
+        # @param [String] collection_display_name
+        #   Required. The display name of the Collection. Should be human readable, used
+        #   to display collections in the Console Dashboard. UTF-8 encoded string with
+        #   limit of 1024 characters.
+        # @param [String] collection_id
+        #   Required. The ID to use for the Collection, which will become the final
+        #   component of the Collection's resource name. A new Collection is created as
+        #   part of the DataConnector setup. DataConnector is a singleton resource under
+        #   Collection, managing all DataStores of the Collection. This field must conform
+        #   to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length
+        #   limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_up_data_connector_v2(parent, google_cloud_discoveryengine_v1_data_connector_object = nil, collection_display_name: nil, collection_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}:setUpDataConnectorV2', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataConnector::Representation
+          command.request_object = google_cloud_discoveryengine_v1_data_connector_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['collectionDisplayName'] = collection_display_name unless collection_display_name.nil?
+          command.query['collectionId'] = collection_id unless collection_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Default ACL configuration for use in a location of a customer's project.
         # Updates will only reflect to new data stores. Existing data stores will still
         # use the old value.
@@ -409,6 +492,116 @@ module Google
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['setDefault'] = set_default unless set_default.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Collection.
+        # @param [String] name
+        #   Required. The full resource name of the Collection, in the format of `projects/
+        #   `project`/locations/`location`/collections/`collection``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_collection(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the DataConnector. DataConnector is a singleton resource for each
+        # Collection.
+        # @param [String] name
+        #   Required. Full resource name of DataConnector, such as `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataConnector`. If the caller
+        #   does not have permission to access the DataConnector, regardless of whether or
+        #   not it exists, a PERMISSION_DENIED error is returned. If the requested
+        #   DataConnector does not exist, a NOT_FOUND error is returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataConnector] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataConnector]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_data_connector(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataConnector::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataConnector
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a DataConnector.
+        # @param [String] name
+        #   Output only. The full resource name of the Data Connector. Format: `projects/*/
+        #   locations/*/collections/*/dataConnector`.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataConnector] google_cloud_discoveryengine_v1_data_connector_object
+        # @param [String] update_mask
+        #   Indicates which fields in the provided DataConnector to update. Supported
+        #   field paths include: - refresh_interval - params - auto_run_disabled -
+        #   action_config - action_config.action_params - action_config.service_name -
+        #   destination_configs - blocking_reasons - sync_mode - incremental_sync_disabled
+        #   - incremental_refresh_interval Note: Support for these fields may vary
+        #   depending on the connector type. For example, not all connectors support `
+        #   destination_configs`. If an unsupported or unknown field path is provided, the
+        #   request will return an INVALID_ARGUMENT error.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataConnector] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataConnector]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_collection_data_connector(name, google_cloud_discoveryengine_v1_data_connector_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataConnector::Representation
+          command.request_object = google_cloud_discoveryengine_v1_data_connector_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataConnector::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataConnector
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
