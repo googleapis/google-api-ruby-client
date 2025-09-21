@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CacheConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CacheParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +251,12 @@ module Google
       end
       
       class Replication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestoreBackupFilesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -465,6 +483,31 @@ module Google
           property :source_backup_vault, as: 'sourceBackupVault'
           property :source_region, as: 'sourceRegion'
           property :state, as: 'state'
+        end
+      end
+      
+      class CacheConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cifs_change_notify_enabled, as: 'cifsChangeNotifyEnabled'
+        end
+      end
+      
+      class CacheParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_config, as: 'cacheConfig', class: Google::Apis::NetappV1::CacheConfig, decorator: Google::Apis::NetappV1::CacheConfig::Representation
+      
+          property :cache_state, as: 'cacheState'
+          property :command, as: 'command'
+          property :enable_global_file_lock, as: 'enableGlobalFileLock'
+          property :passphrase, as: 'passphrase'
+          property :peer_cluster_name, as: 'peerClusterName'
+          collection :peer_ip_addresses, as: 'peerIpAddresses'
+          property :peer_svm_name, as: 'peerSvmName'
+          property :peer_volume_name, as: 'peerVolumeName'
+          property :peering_command_expiry_time, as: 'peeringCommandExpiryTime'
+          property :state_details, as: 'stateDetails'
         end
       end
       
@@ -805,6 +848,15 @@ module Google
         end
       end
       
+      class RestoreBackupFilesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
+          collection :file_list, as: 'fileList'
+          property :restore_destination_path, as: 'restoreDestinationPath'
+        end
+      end
+      
       class RestoreParameters
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1001,6 +1053,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active_directory, as: 'activeDirectory'
           property :backup_config, as: 'backupConfig', class: Google::Apis::NetappV1::BackupConfig, decorator: Google::Apis::NetappV1::BackupConfig::Representation
+      
+          property :cache_parameters, as: 'cacheParameters', class: Google::Apis::NetappV1::CacheParameters, decorator: Google::Apis::NetappV1::CacheParameters::Representation
       
           property :capacity_gib, :numeric_string => true, as: 'capacityGib'
           property :cold_tier_size_gib, :numeric_string => true, as: 'coldTierSizeGib'
