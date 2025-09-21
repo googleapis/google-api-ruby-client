@@ -2975,6 +2975,8 @@ module Google
       class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotations, as: 'annotations', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentAnnotations, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentAnnotations::Representation
+      
           collection :blocks, as: 'blocks', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlock::Representation
       
           property :text, as: 'text'
@@ -4015,6 +4017,7 @@ module Google
       class GoogleCloudDocumentaiV1beta3Processor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_schema_version, as: 'activeSchemaVersion'
           property :create_time, as: 'createTime'
           property :default_processor_version, as: 'defaultProcessorVersion'
           property :display_name, as: 'displayName'
