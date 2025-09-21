@@ -23369,6 +23369,13 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] URLs of the other locations that can pair up with this location
+        # to support Single-Region 99.99% SLA. E.g. iad-zone1-1 and iad-zone2-5467 are
+        # Single-Region 99.99% peer locations of each other.
+        # Corresponds to the JSON property `singleRegionProductionCriticalPeerLocations`
+        # @return [Array<String>]
+        attr_accessor :single_region_production_critical_peer_locations
+      
         # [Output Only] The status of this InterconnectLocation, which can take one of
         # the following values: - CLOSED: The InterconnectLocation is closed and is
         # unavailable for provisioning new Interconnects. - AVAILABLE: The
@@ -23405,6 +23412,7 @@ module Google
           @peeringdb_facility_id = args[:peeringdb_facility_id] if args.key?(:peeringdb_facility_id)
           @region_infos = args[:region_infos] if args.key?(:region_infos)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @single_region_production_critical_peer_locations = args[:single_region_production_critical_peer_locations] if args.key?(:single_region_production_critical_peer_locations)
           @status = args[:status] if args.key?(:status)
           @supports_pzs = args[:supports_pzs] if args.key?(:supports_pzs)
         end
@@ -23858,6 +23866,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_lag_size10_gbps
       
+        # [Output Only] The maximum number of 400 Gbps ports supported in a link
+        # aggregation group (LAG). When linkType is 400 Gbps, requestedLinkCount cannot
+        # exceed max_lag_size_400_gbps.
+        # Corresponds to the JSON property `maxLagSize400Gbps`
+        # @return [Fixnum]
+        attr_accessor :max_lag_size400_gbps
+      
         # [Output Only] Name of the resource.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -23914,6 +23929,7 @@ module Google
           @lacp = args[:lacp] if args.key?(:lacp)
           @max_lag_size100_gbps = args[:max_lag_size100_gbps] if args.key?(:max_lag_size100_gbps)
           @max_lag_size10_gbps = args[:max_lag_size10_gbps] if args.key?(:max_lag_size10_gbps)
+          @max_lag_size400_gbps = args[:max_lag_size400_gbps] if args.key?(:max_lag_size400_gbps)
           @name = args[:name] if args.key?(:name)
           @peeringdb_facility_id = args[:peeringdb_facility_id] if args.key?(:peeringdb_facility_id)
           @permitted_connections = args[:permitted_connections] if args.key?(:permitted_connections)
@@ -36374,6 +36390,11 @@ module Google
         # @return [String]
         attr_accessor :backend_service
       
+        # The percentage of requests to be mirrored to `backend_service`.
+        # Corresponds to the JSON property `mirrorPercent`
+        # @return [Float]
+        attr_accessor :mirror_percent
+      
         def initialize(**args)
            update!(**args)
         end
@@ -36381,6 +36402,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
+          @mirror_percent = args[:mirror_percent] if args.key?(:mirror_percent)
         end
       end
       
@@ -47780,6 +47802,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :system_reserved_internal_ipv6_ranges
       
+        # The current IP utilization of all subnetwork ranges. Contains the total number
+        # of allocated and free IPs in each range.
+        # Corresponds to the JSON property `utilizationDetails`
+        # @return [Google::Apis::ComputeV1::SubnetworkUtilizationDetails]
+        attr_accessor :utilization_details
+      
         def initialize(**args)
            update!(**args)
         end
@@ -47816,6 +47844,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @system_reserved_external_ipv6_ranges = args[:system_reserved_external_ipv6_ranges] if args.key?(:system_reserved_external_ipv6_ranges)
           @system_reserved_internal_ipv6_ranges = args[:system_reserved_internal_ipv6_ranges] if args.key?(:system_reserved_internal_ipv6_ranges)
+          @utilization_details = args[:utilization_details] if args.key?(:utilization_details)
         end
       end
       
@@ -48187,6 +48216,101 @@ module Google
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @range_name = args[:range_name] if args.key?(:range_name)
           @reserved_internal_range = args[:reserved_internal_range] if args.key?(:reserved_internal_range)
+        end
+      end
+      
+      # The current IP utilization of all subnetwork ranges. Contains the total number
+      # of allocated and free IPs in each range.
+      class SubnetworkUtilizationDetails
+        include Google::Apis::Core::Hashable
+      
+        # The IPV6 utilization of a single IP range.
+        # Corresponds to the JSON property `externalIpv6InstanceUtilization`
+        # @return [Google::Apis::ComputeV1::SubnetworkUtilizationDetailsIpv6Utilization]
+        attr_accessor :external_ipv6_instance_utilization
+      
+        # The IPV6 utilization of a single IP range.
+        # Corresponds to the JSON property `externalIpv6LbUtilization`
+        # @return [Google::Apis::ComputeV1::SubnetworkUtilizationDetailsIpv6Utilization]
+        attr_accessor :external_ipv6_lb_utilization
+      
+        # The IPV6 utilization of a single IP range.
+        # Corresponds to the JSON property `internalIpv6Utilization`
+        # @return [Google::Apis::ComputeV1::SubnetworkUtilizationDetailsIpv6Utilization]
+        attr_accessor :internal_ipv6_utilization
+      
+        # Utilizations of all IPV4 IP ranges. For primary ranges, the range name will be
+        # empty.
+        # Corresponds to the JSON property `ipv4Utilizations`
+        # @return [Array<Google::Apis::ComputeV1::SubnetworkUtilizationDetailsIpv4Utilization>]
+        attr_accessor :ipv4_utilizations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_ipv6_instance_utilization = args[:external_ipv6_instance_utilization] if args.key?(:external_ipv6_instance_utilization)
+          @external_ipv6_lb_utilization = args[:external_ipv6_lb_utilization] if args.key?(:external_ipv6_lb_utilization)
+          @internal_ipv6_utilization = args[:internal_ipv6_utilization] if args.key?(:internal_ipv6_utilization)
+          @ipv4_utilizations = args[:ipv4_utilizations] if args.key?(:ipv4_utilizations)
+        end
+      end
+      
+      # The IPV4 utilization of a single IP range.
+      class SubnetworkUtilizationDetailsIpv4Utilization
+        include Google::Apis::Core::Hashable
+      
+        # Will be set for secondary range. Empty for primary IPv4 range.
+        # Corresponds to the JSON property `rangeName`
+        # @return [String]
+        attr_accessor :range_name
+      
+        # 
+        # Corresponds to the JSON property `totalAllocatedIp`
+        # @return [Fixnum]
+        attr_accessor :total_allocated_ip
+      
+        # 
+        # Corresponds to the JSON property `totalFreeIp`
+        # @return [Fixnum]
+        attr_accessor :total_free_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @range_name = args[:range_name] if args.key?(:range_name)
+          @total_allocated_ip = args[:total_allocated_ip] if args.key?(:total_allocated_ip)
+          @total_free_ip = args[:total_free_ip] if args.key?(:total_free_ip)
+        end
+      end
+      
+      # The IPV6 utilization of a single IP range.
+      class SubnetworkUtilizationDetailsIpv6Utilization
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `totalAllocatedIp`
+        # @return [Google::Apis::ComputeV1::Uint128]
+        attr_accessor :total_allocated_ip
+      
+        # 
+        # Corresponds to the JSON property `totalFreeIp`
+        # @return [Google::Apis::ComputeV1::Uint128]
+        attr_accessor :total_free_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_allocated_ip = args[:total_allocated_ip] if args.key?(:total_allocated_ip)
+          @total_free_ip = args[:total_free_ip] if args.key?(:total_free_ip)
         end
       end
       
