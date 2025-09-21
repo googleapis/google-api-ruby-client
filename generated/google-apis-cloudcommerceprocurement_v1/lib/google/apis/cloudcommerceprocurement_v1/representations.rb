@@ -121,6 +121,7 @@ module Google
           hash :input_properties, as: 'inputProperties'
           property :name, as: 'name'
           property :provider, as: 'provider'
+          property :reseller_parent_billing_account, as: 'resellerParentBillingAccount'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
