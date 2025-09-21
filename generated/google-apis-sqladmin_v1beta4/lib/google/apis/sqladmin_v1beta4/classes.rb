@@ -181,7 +181,7 @@ module Google
         end
       end
       
-      # A backup resource. Next ID: 30
+      # A backup resource.
       class Backup
         include Google::Apis::Core::Hashable
       
@@ -3666,6 +3666,34 @@ module Google
         end
       end
       
+      # Represents a notice or warning message from the database.
+      class Message
+        include Google::Apis::Core::Hashable
+      
+        # The full message string. For PostgreSQL, this is a formatted string that may
+        # include severity, code, and the notice/warning message. For MySQL, this
+        # contains the warning message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # The severity of the message (e.g., "NOTICE" for PostgreSQL, "WARNING" for
+        # MySQL).
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
       # The additional metadata information regarding the execution of the SQL
       # statements.
       class Metadata
@@ -4511,6 +4539,52 @@ module Google
         end
       end
       
+      # The read pool auto-scale configuration.
+      class ReadPoolAutoScaleConfig
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether read pool auto scaling supports scale in operations (
+        # removing nodes).
+        # Corresponds to the JSON property `disableScaleIn`
+        # @return [Boolean]
+        attr_accessor :disable_scale_in
+        alias_method :disable_scale_in?, :disable_scale_in
+      
+        # Indicates whether read pool auto scaling is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Maximum number of read pool nodes to be maintained.
+        # Corresponds to the JSON property `maxNodeCount`
+        # @return [Fixnum]
+        attr_accessor :max_node_count
+      
+        # Minimum number of read pool nodes to be maintained.
+        # Corresponds to the JSON property `minNodeCount`
+        # @return [Fixnum]
+        attr_accessor :min_node_count
+      
+        # Optional. Target metrics for read pool auto scaling.
+        # Corresponds to the JSON property `targetMetrics`
+        # @return [Array<Google::Apis::SqladminV1beta4::TargetMetric>]
+        attr_accessor :target_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_scale_in = args[:disable_scale_in] if args.key?(:disable_scale_in)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
+          @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
+          @target_metrics = args[:target_metrics] if args.key?(:target_metrics)
+        end
+      end
+      
       # Read-replica configuration for connecting to the primary instance.
       class ReplicaConfiguration
         include Google::Apis::Core::Hashable
@@ -4949,6 +5023,11 @@ module Google
         # @return [String]
         attr_accessor :pricing_plan
       
+        # The read pool auto-scale configuration.
+        # Corresponds to the JSON property `readPoolAutoScaleConfig`
+        # @return [Google::Apis::SqladminV1beta4::ReadPoolAutoScaleConfig]
+        attr_accessor :read_pool_auto_scale_config
+      
         # Optional. Configuration value for recreation of replica after certain
         # replication lag.
         # Corresponds to the JSON property `replicationLagMaxSeconds`
@@ -5050,6 +5129,7 @@ module Google
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @password_validation_policy = args[:password_validation_policy] if args.key?(:password_validation_policy)
           @pricing_plan = args[:pricing_plan] if args.key?(:pricing_plan)
+          @read_pool_auto_scale_config = args[:read_pool_auto_scale_config] if args.key?(:read_pool_auto_scale_config)
           @replication_lag_max_seconds = args[:replication_lag_max_seconds] if args.key?(:replication_lag_max_seconds)
           @replication_type = args[:replication_type] if args.key?(:replication_type)
           @retain_backups_on_delete = args[:retain_backups_on_delete] if args.key?(:retain_backups_on_delete)
@@ -5168,6 +5248,15 @@ module Google
       class SqlInstancesExecuteSqlResponse
         include Google::Apis::Core::Hashable
       
+        # A list of notices and warnings generated during query execution. For
+        # PostgreSQL, this includes all notices and warnings. For MySQL, this includes
+        # warnings generated by the last executed statement. To retrieve all warnings
+        # for a multi-statement query, `SHOW WARNINGS` must be executed after each
+        # statement.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::SqladminV1beta4::Message>]
+        attr_accessor :messages
+      
         # The additional metadata information regarding the execution of the SQL
         # statements.
         # Corresponds to the JSON property `metadata`
@@ -5185,6 +5274,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @messages = args[:messages] if args.key?(:messages)
           @metadata = args[:metadata] if args.key?(:metadata)
           @results = args[:results] if args.key?(:results)
         end
@@ -5857,6 +5947,31 @@ module Google
         end
       end
       
+      # Target metric for read pool auto scaling.
+      class TargetMetric
+        include Google::Apis::Core::Hashable
+      
+        # The metric name to be used for auto scaling.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # The target value for the metric.
+        # Corresponds to the JSON property `targetValue`
+        # @return [Float]
+        attr_accessor :target_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric = args[:metric] if args.key?(:metric)
+          @target_value = args[:target_value] if args.key?(:target_value)
+        end
+      end
+      
       # A Google Cloud SQL service tier resource.
       class Tier
         include Google::Apis::Core::Hashable
@@ -5975,6 +6090,11 @@ module Google
         # @return [String]
         attr_accessor :host
       
+        # Indicates if a group is active or inactive for IAM database authentication.
+        # Corresponds to the JSON property `iamStatus`
+        # @return [String]
+        attr_accessor :iam_status
+      
         # The name of the Cloud SQL instance. This does not include the project ID. Can
         # be omitted for *update* because it is already specified on the URL.
         # Corresponds to the JSON property `instance`
@@ -6029,6 +6149,7 @@ module Google
           @dual_password_type = args[:dual_password_type] if args.key?(:dual_password_type)
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)
+          @iam_status = args[:iam_status] if args.key?(:iam_status)
           @instance = args[:instance] if args.key?(:instance)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
