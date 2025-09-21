@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OpenShiftValidation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -708,6 +714,8 @@ module Google
           property :agent_status, as: 'agentStatus', class: Google::Apis::WorkloadmanagerV1::AgentStatus, decorator: Google::Apis::WorkloadmanagerV1::AgentStatus::Representation
       
           property :instance_id, as: 'instanceId'
+          property :open_shift_validation, as: 'openShiftValidation', class: Google::Apis::WorkloadmanagerV1::OpenShiftValidation, decorator: Google::Apis::WorkloadmanagerV1::OpenShiftValidation::Representation
+      
           property :sap_discovery, as: 'sapDiscovery', class: Google::Apis::WorkloadmanagerV1::SapDiscovery, decorator: Google::Apis::WorkloadmanagerV1::SapDiscovery::Representation
       
           property :sap_validation, as: 'sapValidation', class: Google::Apis::WorkloadmanagerV1::SapValidation, decorator: Google::Apis::WorkloadmanagerV1::SapValidation::Representation
@@ -824,6 +832,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message'
+        end
+      end
+      
+      class OpenShiftValidation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
