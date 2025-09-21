@@ -85,8 +85,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
+        #   field which is primarily intended for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -2570,7 +2570,7 @@ module Google
         
         # Gets details of a single RemoteTransportProfile.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. Name of the resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2600,11 +2600,11 @@ module Google
         
         # Lists RemoteTransportProfiles in a given project and location.
         # @param [String] parent
-        #   Required. Parent value for ListRemoteTransportProfilesRequest
+        #   Required. Parent value for ListRemoteTransportProfilesRequest.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filtering results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Hint for how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.
@@ -4200,7 +4200,7 @@ module Google
         
         # Deletes a single Transport.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. Name of the resource.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -4242,7 +4242,7 @@ module Google
         
         # Gets details of a single Transport.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. Name of the resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4272,11 +4272,11 @@ module Google
         
         # Lists Transports in a given project and location.
         # @param [String] parent
-        #   Required. Parent value for ListTransportsRequest
+        #   Required. Parent value for ListTransportsRequest.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filtering results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Hint for how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.
@@ -4315,7 +4315,7 @@ module Google
         
         # Updates the parameters of a single Transport.
         # @param [String] name
-        #   Identifier. name of resource
+        #   Identifier. Name of the resource, see google.aip.dev/122 for resource naming.
         # @param [Google::Apis::NetworkconnectivityV1::Transport] transport_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique

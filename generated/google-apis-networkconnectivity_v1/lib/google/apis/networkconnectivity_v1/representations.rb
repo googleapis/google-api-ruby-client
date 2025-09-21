@@ -1390,8 +1390,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :flow, as: 'flow'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :order_state, as: 'orderState'
+          property :provider, as: 'provider'
+          property :provider_site, as: 'providerSite'
+          property :region, as: 'region'
+          property :sla, as: 'sla'
+          collection :supported_bandwidths, as: 'supportedBandwidths'
           property :update_time, as: 'updateTime'
         end
       end
@@ -1649,9 +1657,21 @@ module Google
       class Transport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_enabled, as: 'adminEnabled'
+          property :advertised_routes, as: 'advertisedRoutes'
+          property :bandwidth, as: 'bandwidth'
           property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :generated_activation_key, as: 'generatedActivationKey'
           hash :labels, as: 'labels'
+          property :mtu_limit, as: 'mtuLimit'
           property :name, as: 'name'
+          property :network, as: 'network'
+          property :provided_activation_key, as: 'providedActivationKey'
+          property :region, as: 'region'
+          property :remote_profile, as: 'remoteProfile'
+          property :stack_type, as: 'stackType'
+          property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
       end
