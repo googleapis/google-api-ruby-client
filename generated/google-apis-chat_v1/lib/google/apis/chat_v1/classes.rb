@@ -2061,15 +2061,15 @@ module Google
         end
       end
       
-      # [Developer Preview](https://developers.google.com/workspace/preview): A
-      # carousel, also known as a slider, rotates and displays a list of widgets in a
-      # slideshow format, with buttons navigating to the previous or next widget. For
-      # example, this is a JSON representation of a carousel that contains three text
-      # paragraph widgets. ``` ` "carouselCards": [ ` "widgets": [ ` "textParagraph": `
-      # "text": "First text paragraph in carousel", ` ` ] `, ` "widgets": [ ` "
-      # textParagraph": ` "text": "Second text paragraph in carousel", ` ` ] `, ` "
-      # widgets": [ ` "textParagraph": ` "text": "Third text paragraph in carousel", `
-      # ` ] ` ] ` ``` [Google Chat apps](https://developers.google.com/workspace/chat):
+      # A carousel, also known as a slider, rotates and displays a list of widgets in
+      # a slideshow format, with buttons navigating to the previous or next widget.
+      # For example, this is a JSON representation of a carousel that contains three
+      # text paragraph widgets. ``` ` "carouselCards": [ ` "widgets": [ ` "
+      # textParagraph": ` "text": "First text paragraph in carousel", ` ` ] `, ` "
+      # widgets": [ ` "textParagraph": ` "text": "Second text paragraph in carousel", `
+      # ` ] `, ` "widgets": [ ` "textParagraph": ` "text": "Third text paragraph in
+      # carousel", ` ` ] ` ] ` ``` [Google Chat apps](https://developers.google.com/
+      # workspace/chat):
       class GoogleAppsCardV1Carousel
         include Google::Apis::Core::Hashable
       
@@ -2088,8 +2088,7 @@ module Google
         end
       end
       
-      # [Developer Preview](https://developers.google.com/workspace/preview): A card
-      # that can be displayed as a carousel item. [Google Chat apps](https://
+      # A card that can be displayed as a carousel item. [Google Chat apps](https://
       # developers.google.com/workspace/chat):
       class GoogleAppsCardV1CarouselCard
         include Google::Apis::Core::Hashable
@@ -2507,6 +2506,19 @@ module Google
         # @return [String]
         attr_accessor :bottom_label
       
+        # A paragraph of text that supports formatting. For an example in Google Chat
+        # apps, see [Add a paragraph of formatted text](https://developers.google.com/
+        # workspace/chat/add-text-image-card-dialog#add_a_paragraph_of_formatted_text).
+        # For more information about formatting text, see [Formatting text in Google
+        # Chat apps](https://developers.google.com/workspace/chat/format-messages#card-
+        # formatting) and [Formatting text in Google Workspace add-ons](https://
+        # developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). [
+        # Google Workspace add-ons and Chat apps](https://developers.google.com/
+        # workspace/extend):
+        # Corresponds to the JSON property `bottomLabelText`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
+        attr_accessor :bottom_label_text
+      
         # A text, icon, or text and icon button that users can click. For an example in
         # Google Chat apps, see [Add a button](https://developers.google.com/workspace/
         # chat/design-interactive-card-dialog#add_a_button). To make an image a
@@ -2516,6 +2528,19 @@ module Google
         # Corresponds to the JSON property `button`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
         attr_accessor :button
+      
+        # A paragraph of text that supports formatting. For an example in Google Chat
+        # apps, see [Add a paragraph of formatted text](https://developers.google.com/
+        # workspace/chat/add-text-image-card-dialog#add_a_paragraph_of_formatted_text).
+        # For more information about formatting text, see [Formatting text in Google
+        # Chat apps](https://developers.google.com/workspace/chat/format-messages#card-
+        # formatting) and [Formatting text in Google Workspace add-ons](https://
+        # developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). [
+        # Google Workspace add-ons and Chat apps](https://developers.google.com/
+        # workspace/extend):
+        # Corresponds to the JSON property `contentText`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
+        attr_accessor :content_text
       
         # An icon displayed in a widget on a card. For an example in Google Chat apps,
         # see [Add an icon](https://developers.google.com/workspace/chat/add-text-image-
@@ -2557,6 +2582,13 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :start_icon
       
+        # Optional. Vertical alignment of the start icon. If not set, the icon will be
+        # vertically centered. [Google Chat apps](https://developers.google.com/
+        # workspace/chat):
+        # Corresponds to the JSON property `startIconVerticalAlignment`
+        # @return [String]
+        attr_accessor :start_icon_vertical_alignment
+      
         # Either a toggle-style switch or a checkbox inside a `decoratedText` widget. [
         # Google Workspace add-ons and Chat apps](https://developers.google.com/
         # workspace/extend): Only supported in the `decoratedText` widget.
@@ -2578,6 +2610,19 @@ module Google
         # @return [String]
         attr_accessor :top_label
       
+        # A paragraph of text that supports formatting. For an example in Google Chat
+        # apps, see [Add a paragraph of formatted text](https://developers.google.com/
+        # workspace/chat/add-text-image-card-dialog#add_a_paragraph_of_formatted_text).
+        # For more information about formatting text, see [Formatting text in Google
+        # Chat apps](https://developers.google.com/workspace/chat/format-messages#card-
+        # formatting) and [Formatting text in Google Workspace add-ons](https://
+        # developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). [
+        # Google Workspace add-ons and Chat apps](https://developers.google.com/
+        # workspace/extend):
+        # Corresponds to the JSON property `topLabelText`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
+        attr_accessor :top_label_text
+      
         # The wrap text setting. If `true`, the text wraps and displays on multiple
         # lines. Otherwise, the text is truncated. Only applies to `text`, not `topLabel`
         # and `bottomLabel`.
@@ -2593,14 +2638,18 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bottom_label = args[:bottom_label] if args.key?(:bottom_label)
+          @bottom_label_text = args[:bottom_label_text] if args.key?(:bottom_label_text)
           @button = args[:button] if args.key?(:button)
+          @content_text = args[:content_text] if args.key?(:content_text)
           @end_icon = args[:end_icon] if args.key?(:end_icon)
           @icon = args[:icon] if args.key?(:icon)
           @on_click = args[:on_click] if args.key?(:on_click)
           @start_icon = args[:start_icon] if args.key?(:start_icon)
+          @start_icon_vertical_alignment = args[:start_icon_vertical_alignment] if args.key?(:start_icon_vertical_alignment)
           @switch_control = args[:switch_control] if args.key?(:switch_control)
           @text = args[:text] if args.key?(:text)
           @top_label = args[:top_label] if args.key?(:top_label)
+          @top_label_text = args[:top_label_text] if args.key?(:top_label_text)
           @wrap_text = args[:wrap_text] if args.key?(:wrap_text)
         end
       end
@@ -3059,8 +3108,7 @@ module Google
         end
       end
       
-      # [Developer Preview](https://developers.google.com/workspace/preview): A list
-      # of widgets that can be displayed in a containing layout, such as a `
+      # A list of widgets that can be displayed in a containing layout, such as a `
       # CarouselCard`. [Google Chat apps](https://developers.google.com/workspace/chat)
       # :
       class GoogleAppsCardV1NestedWidget
@@ -3824,6 +3872,12 @@ module Google
         # @return [String]
         attr_accessor :text
       
+        # The syntax of the text. If not set, the text is rendered as HTML. [Google Chat
+        # apps](https://developers.google.com/workspace/chat):
+        # Corresponds to the JSON property `textSyntax`
+        # @return [String]
+        attr_accessor :text_syntax
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3832,6 +3886,7 @@ module Google
         def update!(**args)
           @max_lines = args[:max_lines] if args.key?(:max_lines)
           @text = args[:text] if args.key?(:text)
+          @text_syntax = args[:text_syntax] if args.key?(:text_syntax)
         end
       end
       
@@ -3919,15 +3974,15 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
         attr_accessor :button_list
       
-        # [Developer Preview](https://developers.google.com/workspace/preview): A
-        # carousel, also known as a slider, rotates and displays a list of widgets in a
-        # slideshow format, with buttons navigating to the previous or next widget. For
-        # example, this is a JSON representation of a carousel that contains three text
-        # paragraph widgets. ``` ` "carouselCards": [ ` "widgets": [ ` "textParagraph": `
-        # "text": "First text paragraph in carousel", ` ` ] `, ` "widgets": [ ` "
-        # textParagraph": ` "text": "Second text paragraph in carousel", ` ` ] `, ` "
-        # widgets": [ ` "textParagraph": ` "text": "Third text paragraph in carousel", `
-        # ` ] ` ] ` ``` [Google Chat apps](https://developers.google.com/workspace/chat):
+        # A carousel, also known as a slider, rotates and displays a list of widgets in
+        # a slideshow format, with buttons navigating to the previous or next widget.
+        # For example, this is a JSON representation of a carousel that contains three
+        # text paragraph widgets. ``` ` "carouselCards": [ ` "widgets": [ ` "
+        # textParagraph": ` "text": "First text paragraph in carousel", ` ` ] `, ` "
+        # widgets": [ ` "textParagraph": ` "text": "Second text paragraph in carousel", `
+        # ` ] `, ` "widgets": [ ` "textParagraph": ` "text": "Third text paragraph in
+        # carousel", ` ` ] ` ] ` ``` [Google Chat apps](https://developers.google.com/
+        # workspace/chat):
         # Corresponds to the JSON property `carousel`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Carousel]
         attr_accessor :carousel
