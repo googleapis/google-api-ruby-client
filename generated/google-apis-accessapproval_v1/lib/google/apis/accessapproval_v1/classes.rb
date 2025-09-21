@@ -97,9 +97,7 @@ module Google
         # If name refers to an organization, enrollment can be done for individual
         # services. If name refers to a folder or project, enrollment can only be done
         # on an all or nothing basis. If a cloud_product is repeated in this list, the
-        # first entry will be honored and all following entries will be discarded. A
-        # maximum of 10 enrolled services will be enforced, to be expanded as the set of
-        # supported services is expanded.
+        # first entry will be honored and all following entries will be discarded.
         # Corresponds to the JSON property `enrolledServices`
         # @return [Array<Google::Apis::AccessapprovalV1::EnrolledService>]
         attr_accessor :enrolled_services
@@ -131,34 +129,38 @@ module Google
         # @return [Array<String>]
         attr_accessor :notification_emails
       
-        # Optional. A pubsub topic to which notifications relating to approval requests
-        # should be sent.
+        # Optional. A pubsub topic that notifications relating to access approval are
+        # published to. Notifications include pre-approved accesses.
         # Corresponds to the JSON property `notificationPubsubTopic`
         # @return [String]
         attr_accessor :notification_pubsub_topic
       
-        # This preference is communicated to Google personnel when sending an approval
-        # request but can be overridden if necessary.
+        # This field is used to set a preference for granularity of an access approval
+        # request. If true, Google personnel will be asked to send resource-level
+        # requests when possible. If false, Google personnel will be asked to send
+        # requests at the project level.
         # Corresponds to the JSON property `preferNoBroadApprovalRequests`
         # @return [Boolean]
         attr_accessor :prefer_no_broad_approval_requests
         alias_method :prefer_no_broad_approval_requests?, :prefer_no_broad_approval_requests
       
-        # This preference is shared with Google personnel, but can be overridden if said
-        # personnel deems necessary. The approver ultimately can set the expiration at
-        # approval time.
+        # Set the default access approval request expiration time. This value is able to
+        # be set directly by the customer at the time of approval, overriding this
+        # suggested value. We recommend setting this value to 30 days.
         # Corresponds to the JSON property `preferredRequestExpirationDays`
         # @return [Fixnum]
         attr_accessor :preferred_request_expiration_days
       
-        # Optional. A setting to indicate the maximum width of an Access Approval
-        # request.
+        # Optional. A setting that indicates the maximum scope of an Access Approval
+        # request: either organization, folder, or project. Google administrators will
+        # be asked to send requests no broader than the configured scope.
         # Corresponds to the JSON property `requestScopeMaxWidthPreference`
         # @return [String]
         attr_accessor :request_scope_max_width_preference
       
-        # Optional. A setting to require approval request justifications to be customer
-        # visible.
+        # Optional. When enabled, Google will only be able to send approval requests for
+        # access reasons with a customer accessible case ID in the reason detail. Also
+        # known as "Require customer initiated support case justification"
         # Corresponds to the JSON property `requireCustomerVisibleJustification`
         # @return [Boolean]
         attr_accessor :require_customer_visible_justification
@@ -187,26 +189,27 @@ module Google
         end
       end
       
-      # Home office and physical location of the principal.
+      # Physical assigned office and physical location of the Google administrator
+      # performing the access.
       class AccessLocations
         include Google::Apis::Core::Hashable
       
-        # The "home office" location of the principal. A two-letter country code (ISO
-        # 3166-1 alpha-2), such as "US", "DE" or "GB" or a region code. In some limited
-        # situations Google systems may refer refer to a region code instead of a
-        # country code. Possible Region Codes: * ASI: Asia * EUR: Europe * OCE: Oceania *
-        # AFR: Africa * NAM: North America * SAM: South America * ANT: Antarctica * ANY:
-        # Any location
+        # The "home office" location of the Google administrator. A two-letter country
+        # code (ISO 3166-1 alpha-2), such as "US", "DE" or "GB" or a region code. In
+        # some limited situations Google systems may refer refer to a region code
+        # instead of a country code. Possible Region Codes: * ASI: Asia * EUR: Europe *
+        # OCE: Oceania * AFR: Africa * NAM: North America * SAM: South America * ANT:
+        # Antarctica * ANY: Any location
         # Corresponds to the JSON property `principalOfficeCountry`
         # @return [String]
         attr_accessor :principal_office_country
       
-        # Physical location of the principal at the time of the access. A two-letter
-        # country code (ISO 3166-1 alpha-2), such as "US", "DE" or "GB" or a region code.
-        # In some limited situations Google systems may refer refer to a region code
-        # instead of a country code. Possible Region Codes: * ASI: Asia * EUR: Europe *
-        # OCE: Oceania * AFR: Africa * NAM: North America * SAM: South America * ANT:
-        # Antarctica * ANY: Any location
+        # Physical location of the Google administrator at the time of the access. A two-
+        # letter country code (ISO 3166-1 alpha-2), such as "US", "DE" or "GB" or a
+        # region code. In some limited situations Google systems may refer refer to a
+        # region code instead of a country code. Possible Region Codes: * ASI: Asia *
+        # EUR: Europe * OCE: Oceania * AFR: Africa * NAM: North America * SAM: South
+        # America * ANT: Antarctica * ANY: Any location
         # Corresponds to the JSON property `principalPhysicalLocationCountry`
         # @return [String]
         attr_accessor :principal_physical_location_country
@@ -231,7 +234,7 @@ module Google
         # @return [String]
         attr_accessor :detail
       
-        # Type of access justification.
+        # Type of access reason.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -272,7 +275,8 @@ module Google
         # @return [String]
         attr_accessor :request_time
       
-        # This field contains the augmented information of the request.
+        # This field contains the augmented information of the request. Requires
+        # augmented administrative access to be enabled.
         # Corresponds to the JSON property `requestedAugmentedInfo`
         # @return [Google::Apis::AccessapprovalV1::AugmentedInfo]
         attr_accessor :requested_augmented_info
@@ -288,12 +292,13 @@ module Google
         # @return [String]
         attr_accessor :requested_expiration
       
-        # Home office and physical location of the principal.
+        # Physical assigned office and physical location of the Google administrator
+        # performing the access.
         # Corresponds to the JSON property `requestedLocations`
         # @return [Google::Apis::AccessapprovalV1::AccessLocations]
         attr_accessor :requested_locations
       
-        # The justification for which approval is being requested.
+        # The access reason for which approval is being requested.
         # Corresponds to the JSON property `requestedReason`
         # @return [Google::Apis::AccessapprovalV1::AccessReason]
         attr_accessor :requested_reason
@@ -402,7 +407,8 @@ module Google
         end
       end
       
-      # This field contains the augmented information of the request.
+      # This field contains the augmented information of the request. Requires
+      # augmented administrative access to be enabled.
       class AugmentedInfo
         include Google::Apis::Core::Hashable
       
@@ -503,27 +509,50 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The product for which Access Approval will be enrolled. Allowed values are
-        # listed below (case-sensitive): * all * GA * App Engine * Artifact Registry *
-        # BigQuery * Certificate Authority Service * Cloud Bigtable * Cloud Key
-        # Management Service * Compute Engine * Cloud Composer * Cloud Dataflow * Cloud
-        # Dataproc * Cloud DLP * Cloud EKM * Cloud Firestore * Cloud HSM * Cloud
-        # Identity and Access Management * Cloud Logging * Cloud NAT * Cloud Pub/Sub *
-        # Cloud Spanner * Cloud SQL * Cloud Storage * Eventarc * Google Kubernetes
-        # Engine * Organization Policy Serivice * Persistent Disk * Resource Manager *
-        # Secret Manager * Speaker ID Note: These values are supported as input for
-        # legacy purposes, but will not be returned from the API. * all * ga-only *
-        # appengine.googleapis.com * artifactregistry.googleapis.com * bigquery.
-        # googleapis.com * bigtable.googleapis.com * container.googleapis.com * cloudkms.
-        # googleapis.com * cloudresourcemanager.googleapis.com * cloudsql.googleapis.com
-        # * compute.googleapis.com * dataflow.googleapis.com * dataproc.googleapis.com *
-        # dlp.googleapis.com * iam.googleapis.com * logging.googleapis.com * orgpolicy.
-        # googleapis.com * pubsub.googleapis.com * spanner.googleapis.com *
-        # secretmanager.googleapis.com * speakerid.googleapis.com * storage.googleapis.
-        # com Calls to UpdateAccessApprovalSettings using 'all' or any of the XXX.
-        # googleapis.com will be translated to the associated product name ('all', 'App
-        # Engine', etc.). Note: 'all' will enroll the resource in all products supported
-        # at both 'GA' and 'Preview' levels. More information about levels of support is
-        # available at https://cloud.google.com/access-approval/docs/supported-services
+        # listed below (case-sensitive): * all * GA * Access Context Manager * Anthos
+        # Identity Service * AlloyDB for PostgreSQL * Apigee * Application Integration *
+        # App Hub * Artifact Registry * Anthos Service Mesh * Access Transparency *
+        # BigQuery * Certificate Authority Service * Cloud Bigtable * CCAI Assist and
+        # Knowledge * Cloud Dataflow * Cloud Dataproc * CEP Security Gateway *
+        # Compliance Evaluation Service * Cloud Firestore * Cloud Healthcare API *
+        # Chronicle * Cloud AI Companion Gateway - Titan * Google Cloud Armor * Cloud
+        # Asset Inventory * Cloud Asset Search * Cloud Deploy * Cloud DNS * Cloud
+        # Latency * Cloud Memorystore for Redis * CloudNet Control * Cloud Riptide *
+        # Cloud Tasks * Cloud Trace * Cloud Data Transfer * Cloud Composer * Integration
+        # Connectors * Contact Center AI Insights * Cloud Pub/Sub * Cloud Run * Resource
+        # Manager * Cloud Spanner * Database Center * Cloud Dataform * Cloud Data Fusion
+        # * Dataplex * Dialogflow Customer Experience Edition * Cloud DLP * Document AI *
+        # Edge Container * Edge Network * Cloud EKM * Eventarc * Firebase Data Connect *
+        # Firebase Rules * App Engine * Cloud Build * Compute Engine * Cloud Functions (
+        # 2nd Gen) * Cloud Filestore * Cloud Interconnect * Cloud NetApp Volumes * Cloud
+        # Storage * Generative AI App Builder * Google Kubernetes Engine * Backup for
+        # GKE API * GKE Connect * GKE Hub * Hoverboard * Cloud HSM * Cloud Identity and
+        # Access Management * Cloud Identity-Aware Proxy * Infrastructure Manager *
+        # Identity Storage Service * Key Access Justifications * Cloud Key Management
+        # Service * Cloud Logging * Looker (Google Cloud core) * Looker Studio *
+        # Management Hub * Model Armor * Cloud Monitoring * Cloud NAT * Connectivity Hub
+        # * External passthrough Network Load Balancer * OIDC One * Organization Policy
+        # Service * Org Lifecycle * Persistent Disk * Parameter Manager * Private
+        # Services Access * Regional Internal Application Load Balancer * Storage Batch
+        # Operations * Cloud Security Command Center * Secure Source Manager * Seeker *
+        # Service Provisioning * Speaker ID * Secret Manager * Cloud SQL * Cloud Speech-
+        # to-Text * Traffic Director * Cloud Text-to-Speech * USPS Andromeda * Vertex AI
+        # * Virtual Private Cloud (VPC) * VPC Access * VPC Service Controls
+        # Troubleshooter * VPC virtnet * Cloud Workstations * Web Risk Note: These
+        # values are supported as input for legacy purposes, but will not be returned
+        # from the API. * all * ga-only * appengine.googleapis.com * artifactregistry.
+        # googleapis.com * bigquery.googleapis.com * bigtable.googleapis.com * container.
+        # googleapis.com * cloudkms.googleapis.com * cloudresourcemanager.googleapis.com
+        # * cloudsql.googleapis.com * compute.googleapis.com * dataflow.googleapis.com *
+        # dataproc.googleapis.com * dlp.googleapis.com * iam.googleapis.com * logging.
+        # googleapis.com * orgpolicy.googleapis.com * pubsub.googleapis.com * spanner.
+        # googleapis.com * secretmanager.googleapis.com * speakerid.googleapis.com *
+        # storage.googleapis.com Calls to UpdateAccessApprovalSettings using 'all' or
+        # any of the XXX.googleapis.com will be translated to the associated product
+        # name ('all', 'App Engine', etc.). Note: 'all' will enroll the resource in all
+        # products supported at both 'GA' and 'Preview' levels. More information about
+        # levels of support is available at https://cloud.google.com/access-approval/
+        # docs/supported-services
         # Corresponds to the JSON property `cloudProduct`
         # @return [String]
         attr_accessor :cloud_product
