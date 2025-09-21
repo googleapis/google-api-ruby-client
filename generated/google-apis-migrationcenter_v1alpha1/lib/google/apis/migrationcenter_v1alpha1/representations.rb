@@ -172,13 +172,91 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AwsCloudFrontDistributionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AwsEc2PlatformDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AwsEcsClusterDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsEfsFileSystemDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsEksClusterDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsElbLoadBalancerDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsLambdaFunctionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AwsRds
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsRedshiftDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsS3BucketDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsS3BucketDetailsObjectsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsS3BucketDetailsObjectsMetadataTotalObjects
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsS3BucketDetailsStorageClass
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsS3BucketDetailsVersioning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsVpcDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -599,6 +677,18 @@ module Google
       end
       
       class GuestRuntimeDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HostingProviderDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HostingProviderDetailsAws
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1174,6 +1264,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RunAssetsExportJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1546,6 +1642,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assigned_groups, as: 'assignedGroups'
           hash :attributes, as: 'attributes'
+          property :aws_cloud_front_distribution_details, as: 'awsCloudFrontDistributionDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsCloudFrontDistributionDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsCloudFrontDistributionDetails::Representation
+      
+          property :aws_ecs_cluster_details, as: 'awsEcsClusterDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsEcsClusterDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsEcsClusterDetails::Representation
+      
+          property :aws_efs_file_system_details, as: 'awsEfsFileSystemDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsEfsFileSystemDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsEfsFileSystemDetails::Representation
+      
+          property :aws_eks_cluster_details, as: 'awsEksClusterDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsEksClusterDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsEksClusterDetails::Representation
+      
+          property :aws_elb_load_balancer_details, as: 'awsElbLoadBalancerDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails::Representation
+      
+          property :aws_lambda_function_details, as: 'awsLambdaFunctionDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsLambdaFunctionDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsLambdaFunctionDetails::Representation
+      
+          property :aws_redshift_details, as: 'awsRedshiftDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsRedshiftDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsRedshiftDetails::Representation
+      
+          property :aws_s3_bucket_details, as: 'awsS3BucketDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetails::Representation
+      
+          property :aws_vpc_details, as: 'awsVpcDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsVpcDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsVpcDetails::Representation
+      
           property :create_time, as: 'createTime'
           property :database_deployment_details, as: 'databaseDeploymentDetails', class: Google::Apis::MigrationcenterV1alpha1::DatabaseDeploymentDetails, decorator: Google::Apis::MigrationcenterV1alpha1::DatabaseDeploymentDetails::Representation
       
@@ -1554,6 +1668,8 @@ module Google
           property :hidden, as: 'hidden'
           property :hide_reason, as: 'hideReason'
           property :hide_time, as: 'hideTime'
+          property :hosting_provider_details, as: 'hostingProviderDetails', class: Google::Apis::MigrationcenterV1alpha1::HostingProviderDetails, decorator: Google::Apis::MigrationcenterV1alpha1::HostingProviderDetails::Representation
+      
           property :insight_list, as: 'insightList', class: Google::Apis::MigrationcenterV1alpha1::InsightList, decorator: Google::Apis::MigrationcenterV1alpha1::InsightList::Representation
       
           hash :labels, as: 'labels'
@@ -1563,6 +1679,7 @@ module Google
           property :performance_data, as: 'performanceData', class: Google::Apis::MigrationcenterV1alpha1::AssetPerformanceData, decorator: Google::Apis::MigrationcenterV1alpha1::AssetPerformanceData::Representation
       
           collection :sources, as: 'sources'
+          hash :structured_attributes, as: 'structuredAttributes'
           property :title, as: 'title'
           property :update_time, as: 'updateTime'
           property :virtual_machine_details, as: 'virtualMachineDetails', class: Google::Apis::MigrationcenterV1alpha1::VirtualMachineDetails, decorator: Google::Apis::MigrationcenterV1alpha1::VirtualMachineDetails::Representation
@@ -1574,10 +1691,30 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :attributes, as: 'attributes'
+          property :aws_cloud_front_distribution_details, as: 'awsCloudFrontDistributionDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsCloudFrontDistributionDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsCloudFrontDistributionDetails::Representation
+      
+          property :aws_ecs_cluster_details, as: 'awsEcsClusterDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsEcsClusterDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsEcsClusterDetails::Representation
+      
+          property :aws_efs_file_system_details, as: 'awsEfsFileSystemDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsEfsFileSystemDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsEfsFileSystemDetails::Representation
+      
+          property :aws_eks_cluster_details, as: 'awsEksClusterDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsEksClusterDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsEksClusterDetails::Representation
+      
+          property :aws_elb_load_balancer_details, as: 'awsElbLoadBalancerDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails::Representation
+      
+          property :aws_lambda_function_details, as: 'awsLambdaFunctionDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsLambdaFunctionDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsLambdaFunctionDetails::Representation
+      
+          property :aws_redshift_details, as: 'awsRedshiftDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsRedshiftDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsRedshiftDetails::Representation
+      
+          property :aws_s3_bucket_details, as: 'awsS3BucketDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetails::Representation
+      
+          property :aws_vpc_details, as: 'awsVpcDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsVpcDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsVpcDetails::Representation
+      
           property :collection_type, as: 'collectionType'
           property :database_deployment_details, as: 'databaseDeploymentDetails', class: Google::Apis::MigrationcenterV1alpha1::DatabaseDeploymentDetails, decorator: Google::Apis::MigrationcenterV1alpha1::DatabaseDeploymentDetails::Representation
       
           property :database_details, as: 'databaseDetails', class: Google::Apis::MigrationcenterV1alpha1::DatabaseDetails, decorator: Google::Apis::MigrationcenterV1alpha1::DatabaseDetails::Representation
+      
+          property :hosting_provider_details, as: 'hostingProviderDetails', class: Google::Apis::MigrationcenterV1alpha1::HostingProviderDetails, decorator: Google::Apis::MigrationcenterV1alpha1::HostingProviderDetails::Representation
       
           hash :labels, as: 'labels'
           property :machine_details, as: 'machineDetails', class: Google::Apis::MigrationcenterV1alpha1::MachineDetails, decorator: Google::Apis::MigrationcenterV1alpha1::MachineDetails::Representation
@@ -1585,6 +1722,7 @@ module Google
           collection :performance_samples, as: 'performanceSamples', class: Google::Apis::MigrationcenterV1alpha1::PerformanceSample, decorator: Google::Apis::MigrationcenterV1alpha1::PerformanceSample::Representation
       
           property :report_time, as: 'reportTime'
+          hash :structured_attributes, as: 'structuredAttributes'
           property :trace_token, as: 'traceToken'
           property :virtual_machine_details, as: 'virtualMachineDetails', class: Google::Apis::MigrationcenterV1alpha1::VirtualMachineDetails, decorator: Google::Apis::MigrationcenterV1alpha1::VirtualMachineDetails::Representation
       
@@ -1681,6 +1819,12 @@ module Google
         end
       end
       
+      class AwsCloudFrontDistributionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AwsEc2PlatformDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1690,7 +1834,91 @@ module Google
         end
       end
       
+      class AwsEcsClusterDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AwsEfsFileSystemDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AwsEksClusterDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AwsElbLoadBalancerDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AwsLambdaFunctionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AwsRds
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AwsRedshiftDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AwsS3BucketDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :objects_metadata, as: 'objectsMetadata', class: Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetailsObjectsMetadata, decorator: Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetailsObjectsMetadata::Representation
+      
+          collection :storage_classes, as: 'storageClasses', class: Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetailsStorageClass, decorator: Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetailsStorageClass::Representation
+      
+          property :versioning, as: 'versioning', class: Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetailsVersioning, decorator: Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetailsVersioning::Representation
+      
+        end
+      end
+      
+      class AwsS3BucketDetailsObjectsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :total_objects, as: 'totalObjects', class: Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetailsObjectsMetadataTotalObjects, decorator: Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetailsObjectsMetadataTotalObjects::Representation
+      
+        end
+      end
+      
+      class AwsS3BucketDetailsObjectsMetadataTotalObjects
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+        end
+      end
+      
+      class AwsS3BucketDetailsStorageClass
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :total_bytes, :numeric_string => true, as: 'totalBytes'
+          property :type, as: 'type'
+        end
+      end
+      
+      class AwsS3BucketDetailsVersioning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class AwsVpcDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1739,7 +1967,11 @@ module Google
           property :bios_name, as: 'biosName'
           property :bios_release_date, as: 'biosReleaseDate'
           property :bios_version, as: 'biosVersion'
+          property :id, as: 'id'
+          property :manufacturer, as: 'manufacturer'
+          property :release_time, as: 'releaseTime'
           property :smbios_uuid, as: 'smbiosUuid'
+          property :version, as: 'version'
         end
       end
       
@@ -2185,8 +2417,10 @@ module Google
       class DiskEntry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_bytes, :numeric_string => true, as: 'capacityBytes'
           property :disk_label, as: 'diskLabel'
           property :disk_label_type, as: 'diskLabelType'
+          property :free_space_bytes, :numeric_string => true, as: 'freeSpaceBytes'
           property :hw_address, as: 'hwAddress'
           property :interface_type, as: 'interfaceType'
           property :partitions, as: 'partitions', class: Google::Apis::MigrationcenterV1alpha1::DiskPartitionList, decorator: Google::Apis::MigrationcenterV1alpha1::DiskPartitionList::Representation
@@ -2386,12 +2620,15 @@ module Google
       
           property :selinux, as: 'selinux', class: Google::Apis::MigrationcenterV1alpha1::Selinux, decorator: Google::Apis::MigrationcenterV1alpha1::Selinux::Representation
       
+          property :selinux_mode, as: 'selinuxMode'
         end
       end
       
       class GuestInstalledApplication
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_name, as: 'applicationName'
+          property :install_time, as: 'installTime'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :path, as: 'path'
@@ -2414,8 +2651,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config, as: 'config', class: Google::Apis::MigrationcenterV1alpha1::GuestConfigDetails, decorator: Google::Apis::MigrationcenterV1alpha1::GuestConfigDetails::Representation
       
+          property :family, as: 'family'
+          property :os_name, as: 'osName'
           property :runtime, as: 'runtime', class: Google::Apis::MigrationcenterV1alpha1::GuestRuntimeDetails, decorator: Google::Apis::MigrationcenterV1alpha1::GuestRuntimeDetails::Representation
       
+          property :version, as: 'version'
         end
       end
       
@@ -2425,6 +2665,7 @@ module Google
           property :domain, as: 'domain'
           property :installed_apps, as: 'installedApps', class: Google::Apis::MigrationcenterV1alpha1::GuestInstalledApplicationList, decorator: Google::Apis::MigrationcenterV1alpha1::GuestInstalledApplicationList::Representation
       
+          property :last_boot_time, as: 'lastBootTime'
           property :last_uptime, as: 'lastUptime', class: Google::Apis::MigrationcenterV1alpha1::Date, decorator: Google::Apis::MigrationcenterV1alpha1::Date::Representation
       
           property :machine_name, as: 'machineName'
@@ -2436,6 +2677,26 @@ module Google
       
           property :services, as: 'services', class: Google::Apis::MigrationcenterV1alpha1::RunningServiceList, decorator: Google::Apis::MigrationcenterV1alpha1::RunningServiceList::Representation
       
+        end
+      end
+      
+      class HostingProviderDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws, as: 'aws', class: Google::Apis::MigrationcenterV1alpha1::HostingProviderDetailsAws, decorator: Google::Apis::MigrationcenterV1alpha1::HostingProviderDetailsAws::Representation
+      
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :location, as: 'location', class: Google::Apis::MigrationcenterV1alpha1::ResourceLocation, decorator: Google::Apis::MigrationcenterV1alpha1::ResourceLocation::Representation
+      
+          property :original_id, as: 'originalId'
+        end
+      end
+      
+      class HostingProviderDetailsAws
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :owning_account_id, as: 'owningAccountId'
         end
       end
       
@@ -2920,6 +3181,8 @@ module Google
       class NetworkAdapterList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::MigrationcenterV1alpha1::NetworkAdapterDetails, decorator: Google::Apis::MigrationcenterV1alpha1::NetworkAdapterDetails::Representation
+      
           collection :network_adapters, as: 'networkAdapters', class: Google::Apis::MigrationcenterV1alpha1::NetworkAdapterDetails, decorator: Google::Apis::MigrationcenterV1alpha1::NetworkAdapterDetails::Representation
       
         end
@@ -2940,6 +3203,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :addresses, as: 'addresses', class: Google::Apis::MigrationcenterV1alpha1::NetworkAddress, decorator: Google::Apis::MigrationcenterV1alpha1::NetworkAddress::Representation
+      
+          collection :entries, as: 'entries', class: Google::Apis::MigrationcenterV1alpha1::NetworkAddress, decorator: Google::Apis::MigrationcenterV1alpha1::NetworkAddress::Representation
       
         end
       end
@@ -3476,6 +3741,13 @@ module Google
         end
       end
       
+      class ResourceLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :region, as: 'region'
+        end
+      end
+      
       class RunAssetsExportJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3512,6 +3784,8 @@ module Google
       class RunningProcessList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::MigrationcenterV1alpha1::RunningProcess, decorator: Google::Apis::MigrationcenterV1alpha1::RunningProcess::Representation
+      
           collection :processes, as: 'processes', class: Google::Apis::MigrationcenterV1alpha1::RunningProcess, decorator: Google::Apis::MigrationcenterV1alpha1::RunningProcess::Representation
       
         end
@@ -3524,6 +3798,7 @@ module Google
           property :exe_path, as: 'exePath'
           property :name, as: 'name'
           property :pid, :numeric_string => true, as: 'pid'
+          property :service_name, as: 'serviceName'
           property :start_mode, as: 'startMode'
           property :state, as: 'state'
           property :status, as: 'status'
@@ -3533,6 +3808,8 @@ module Google
       class RunningServiceList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::MigrationcenterV1alpha1::RunningService, decorator: Google::Apis::MigrationcenterV1alpha1::RunningService::Representation
+      
           collection :services, as: 'services', class: Google::Apis::MigrationcenterV1alpha1::RunningService, decorator: Google::Apis::MigrationcenterV1alpha1::RunningService::Representation
       
         end
@@ -3546,6 +3823,8 @@ module Google
           property :netstat, as: 'netstat'
           property :netstat_time, as: 'netstatTime', class: Google::Apis::MigrationcenterV1alpha1::DateTime, decorator: Google::Apis::MigrationcenterV1alpha1::DateTime::Representation
       
+          property :raw_scan_result, as: 'rawScanResult'
+          property :scan_time, as: 'scanTime'
         end
       end
       
@@ -3884,7 +4163,10 @@ module Google
           property :esx_hyperthreading, as: 'esxHyperthreading'
           property :esx_version, as: 'esxVersion'
           property :osid, as: 'osid'
+          property :vcenter_folder, as: 'vcenterFolder'
+          property :vcenter_uri, as: 'vcenterUri'
           property :vcenter_version, as: 'vcenterVersion'
+          property :vcenter_vm_id, as: 'vcenterVmId'
         end
       end
       

@@ -397,6 +397,51 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :attributes
       
+        # Details of an AWS CloudFront distribution.
+        # Corresponds to the JSON property `awsCloudFrontDistributionDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsCloudFrontDistributionDetails]
+        attr_accessor :aws_cloud_front_distribution_details
+      
+        # Details of an AWS ECS cluster.
+        # Corresponds to the JSON property `awsEcsClusterDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsEcsClusterDetails]
+        attr_accessor :aws_ecs_cluster_details
+      
+        # Details of an AWS EFS file system.
+        # Corresponds to the JSON property `awsEfsFileSystemDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsEfsFileSystemDetails]
+        attr_accessor :aws_efs_file_system_details
+      
+        # Asset information specific for AWS EKS clusters.
+        # Corresponds to the JSON property `awsEksClusterDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsEksClusterDetails]
+        attr_accessor :aws_eks_cluster_details
+      
+        # Asset information specific for AWS Load Balancers.
+        # Corresponds to the JSON property `awsElbLoadBalancerDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails]
+        attr_accessor :aws_elb_load_balancer_details
+      
+        # Asset information specific for AWS Lambda functions.
+        # Corresponds to the JSON property `awsLambdaFunctionDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsLambdaFunctionDetails]
+        attr_accessor :aws_lambda_function_details
+      
+        # Details of an AWS Redshift cluster.
+        # Corresponds to the JSON property `awsRedshiftDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsRedshiftDetails]
+        attr_accessor :aws_redshift_details
+      
+        # Asset information specific for AWS S3 buckets.
+        # Corresponds to the JSON property `awsS3BucketDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetails]
+        attr_accessor :aws_s3_bucket_details
+      
+        # Asset information specific for AWS VPCs.
+        # Corresponds to the JSON property `awsVpcDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsVpcDetails]
+        attr_accessor :aws_vpc_details
+      
         # Output only. The timestamp when the asset was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -428,6 +473,11 @@ module Google
         # @return [String]
         attr_accessor :hide_time
       
+        # Details about the hosting platform of the asset.
+        # Corresponds to the JSON property `hostingProviderDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::HostingProviderDetails]
+        attr_accessor :hosting_provider_details
+      
         # Message containing insights list.
         # Corresponds to the JSON property `insightList`
         # @return [Google::Apis::MigrationcenterV1alpha1::InsightList]
@@ -458,6 +508,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :sources
       
+        # Optional. Generic structured asset attributes.
+        # Corresponds to the JSON property `structuredAttributes`
+        # @return [Hash<String,Object>]
+        attr_accessor :structured_attributes
+      
         # Output only. Server generated human readable name of the asset.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -481,18 +536,29 @@ module Google
         def update!(**args)
           @assigned_groups = args[:assigned_groups] if args.key?(:assigned_groups)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @aws_cloud_front_distribution_details = args[:aws_cloud_front_distribution_details] if args.key?(:aws_cloud_front_distribution_details)
+          @aws_ecs_cluster_details = args[:aws_ecs_cluster_details] if args.key?(:aws_ecs_cluster_details)
+          @aws_efs_file_system_details = args[:aws_efs_file_system_details] if args.key?(:aws_efs_file_system_details)
+          @aws_eks_cluster_details = args[:aws_eks_cluster_details] if args.key?(:aws_eks_cluster_details)
+          @aws_elb_load_balancer_details = args[:aws_elb_load_balancer_details] if args.key?(:aws_elb_load_balancer_details)
+          @aws_lambda_function_details = args[:aws_lambda_function_details] if args.key?(:aws_lambda_function_details)
+          @aws_redshift_details = args[:aws_redshift_details] if args.key?(:aws_redshift_details)
+          @aws_s3_bucket_details = args[:aws_s3_bucket_details] if args.key?(:aws_s3_bucket_details)
+          @aws_vpc_details = args[:aws_vpc_details] if args.key?(:aws_vpc_details)
           @create_time = args[:create_time] if args.key?(:create_time)
           @database_deployment_details = args[:database_deployment_details] if args.key?(:database_deployment_details)
           @database_details = args[:database_details] if args.key?(:database_details)
           @hidden = args[:hidden] if args.key?(:hidden)
           @hide_reason = args[:hide_reason] if args.key?(:hide_reason)
           @hide_time = args[:hide_time] if args.key?(:hide_time)
+          @hosting_provider_details = args[:hosting_provider_details] if args.key?(:hosting_provider_details)
           @insight_list = args[:insight_list] if args.key?(:insight_list)
           @labels = args[:labels] if args.key?(:labels)
           @machine_details = args[:machine_details] if args.key?(:machine_details)
           @name = args[:name] if args.key?(:name)
           @performance_data = args[:performance_data] if args.key?(:performance_data)
           @sources = args[:sources] if args.key?(:sources)
+          @structured_attributes = args[:structured_attributes] if args.key?(:structured_attributes)
           @title = args[:title] if args.key?(:title)
           @update_time = args[:update_time] if args.key?(:update_time)
           @virtual_machine_details = args[:virtual_machine_details] if args.key?(:virtual_machine_details)
@@ -507,6 +573,51 @@ module Google
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,String>]
         attr_accessor :attributes
+      
+        # Details of an AWS CloudFront distribution.
+        # Corresponds to the JSON property `awsCloudFrontDistributionDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsCloudFrontDistributionDetails]
+        attr_accessor :aws_cloud_front_distribution_details
+      
+        # Details of an AWS ECS cluster.
+        # Corresponds to the JSON property `awsEcsClusterDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsEcsClusterDetails]
+        attr_accessor :aws_ecs_cluster_details
+      
+        # Details of an AWS EFS file system.
+        # Corresponds to the JSON property `awsEfsFileSystemDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsEfsFileSystemDetails]
+        attr_accessor :aws_efs_file_system_details
+      
+        # Asset information specific for AWS EKS clusters.
+        # Corresponds to the JSON property `awsEksClusterDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsEksClusterDetails]
+        attr_accessor :aws_eks_cluster_details
+      
+        # Asset information specific for AWS Load Balancers.
+        # Corresponds to the JSON property `awsElbLoadBalancerDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails]
+        attr_accessor :aws_elb_load_balancer_details
+      
+        # Asset information specific for AWS Lambda functions.
+        # Corresponds to the JSON property `awsLambdaFunctionDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsLambdaFunctionDetails]
+        attr_accessor :aws_lambda_function_details
+      
+        # Details of an AWS Redshift cluster.
+        # Corresponds to the JSON property `awsRedshiftDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsRedshiftDetails]
+        attr_accessor :aws_redshift_details
+      
+        # Asset information specific for AWS S3 buckets.
+        # Corresponds to the JSON property `awsS3BucketDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetails]
+        attr_accessor :aws_s3_bucket_details
+      
+        # Asset information specific for AWS VPCs.
+        # Corresponds to the JSON property `awsVpcDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsVpcDetails]
+        attr_accessor :aws_vpc_details
       
         # Optional. Frame collection type, if not specified the collection type will be
         # based on the source type of the source the frame was reported on.
@@ -523,6 +634,11 @@ module Google
         # Corresponds to the JSON property `databaseDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::DatabaseDetails]
         attr_accessor :database_details
+      
+        # Details about the hosting platform of the asset.
+        # Corresponds to the JSON property `hostingProviderDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::HostingProviderDetails]
+        attr_accessor :hosting_provider_details
       
         # Labels as key value pairs.
         # Corresponds to the JSON property `labels`
@@ -545,6 +661,11 @@ module Google
         # @return [String]
         attr_accessor :report_time
       
+        # Optional. Generic structured asset attributes.
+        # Corresponds to the JSON property `structuredAttributes`
+        # @return [Hash<String,Object>]
+        attr_accessor :structured_attributes
+      
         # Optional. Trace token is optionally provided to assist with debugging and
         # traceability.
         # Corresponds to the JSON property `traceToken`
@@ -563,13 +684,24 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @aws_cloud_front_distribution_details = args[:aws_cloud_front_distribution_details] if args.key?(:aws_cloud_front_distribution_details)
+          @aws_ecs_cluster_details = args[:aws_ecs_cluster_details] if args.key?(:aws_ecs_cluster_details)
+          @aws_efs_file_system_details = args[:aws_efs_file_system_details] if args.key?(:aws_efs_file_system_details)
+          @aws_eks_cluster_details = args[:aws_eks_cluster_details] if args.key?(:aws_eks_cluster_details)
+          @aws_elb_load_balancer_details = args[:aws_elb_load_balancer_details] if args.key?(:aws_elb_load_balancer_details)
+          @aws_lambda_function_details = args[:aws_lambda_function_details] if args.key?(:aws_lambda_function_details)
+          @aws_redshift_details = args[:aws_redshift_details] if args.key?(:aws_redshift_details)
+          @aws_s3_bucket_details = args[:aws_s3_bucket_details] if args.key?(:aws_s3_bucket_details)
+          @aws_vpc_details = args[:aws_vpc_details] if args.key?(:aws_vpc_details)
           @collection_type = args[:collection_type] if args.key?(:collection_type)
           @database_deployment_details = args[:database_deployment_details] if args.key?(:database_deployment_details)
           @database_details = args[:database_details] if args.key?(:database_details)
+          @hosting_provider_details = args[:hosting_provider_details] if args.key?(:hosting_provider_details)
           @labels = args[:labels] if args.key?(:labels)
           @machine_details = args[:machine_details] if args.key?(:machine_details)
           @performance_samples = args[:performance_samples] if args.key?(:performance_samples)
           @report_time = args[:report_time] if args.key?(:report_time)
+          @structured_attributes = args[:structured_attributes] if args.key?(:structured_attributes)
           @trace_token = args[:trace_token] if args.key?(:trace_token)
           @virtual_machine_details = args[:virtual_machine_details] if args.key?(:virtual_machine_details)
         end
@@ -864,6 +996,19 @@ module Google
         end
       end
       
+      # Details of an AWS CloudFront distribution.
+      class AwsCloudFrontDistributionDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # AWS EC2 specific details.
       class AwsEc2PlatformDetails
         include Google::Apis::Core::Hashable
@@ -895,8 +1040,213 @@ module Google
         end
       end
       
+      # Details of an AWS ECS cluster.
+      class AwsEcsClusterDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Details of an AWS EFS file system.
+      class AwsEfsFileSystemDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Asset information specific for AWS EKS clusters.
+      class AwsEksClusterDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Asset information specific for AWS Load Balancers.
+      class AwsElbLoadBalancerDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Asset information specific for AWS Lambda functions.
+      class AwsLambdaFunctionDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Specific details for an AWS RDS database deployment.
       class AwsRds
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Details of an AWS Redshift cluster.
+      class AwsRedshiftDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Asset information specific for AWS S3 buckets.
+      class AwsS3BucketDetails
+        include Google::Apis::Core::Hashable
+      
+        # The metadata of the objects in the bucket.
+        # Corresponds to the JSON property `objectsMetadata`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetailsObjectsMetadata]
+        attr_accessor :objects_metadata
+      
+        # Optional. The storage classes in the bucket.
+        # Corresponds to the JSON property `storageClasses`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetailsStorageClass>]
+        attr_accessor :storage_classes
+      
+        # Versioning configuration of the bucket.
+        # Corresponds to the JSON property `versioning`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetailsVersioning]
+        attr_accessor :versioning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @objects_metadata = args[:objects_metadata] if args.key?(:objects_metadata)
+          @storage_classes = args[:storage_classes] if args.key?(:storage_classes)
+          @versioning = args[:versioning] if args.key?(:versioning)
+        end
+      end
+      
+      # The metadata of the objects in the bucket.
+      class AwsS3BucketDetailsObjectsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Information about the total number of objects in the bucket.
+        # Corresponds to the JSON property `totalObjects`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetailsObjectsMetadataTotalObjects]
+        attr_accessor :total_objects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_objects = args[:total_objects] if args.key?(:total_objects)
+        end
+      end
+      
+      # Information about the total number of objects in the bucket.
+      class AwsS3BucketDetailsObjectsMetadataTotalObjects
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The total number of objects in the bucket.
+        # Corresponds to the JSON property `value`
+        # @return [Fixnum]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Details about storage class.
+      class AwsS3BucketDetailsStorageClass
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The total size of the storage class in bytes.
+        # Corresponds to the JSON property `totalBytes`
+        # @return [Fixnum]
+        attr_accessor :total_bytes
+      
+        # Required. Type of the storage class.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_bytes = args[:total_bytes] if args.key?(:total_bytes)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Versioning configuration of the bucket.
+      class AwsS3BucketDetailsVersioning
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether versioning is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Asset information specific for AWS VPCs.
+      class AwsVpcDetails
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1045,10 +1395,30 @@ module Google
         # @return [String]
         attr_accessor :bios_version
       
+        # BIOS ID.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # BIOS manufacturer.
+        # Corresponds to the JSON property `manufacturer`
+        # @return [String]
+        attr_accessor :manufacturer
+      
+        # BIOS release date.
+        # Corresponds to the JSON property `releaseTime`
+        # @return [String]
+        attr_accessor :release_time
+      
         # SMBIOS UUID.
         # Corresponds to the JSON property `smbiosUuid`
         # @return [String]
         attr_accessor :smbios_uuid
+      
+        # BIOS version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
       
         def initialize(**args)
            update!(**args)
@@ -1060,7 +1430,11 @@ module Google
           @bios_name = args[:bios_name] if args.key?(:bios_name)
           @bios_release_date = args[:bios_release_date] if args.key?(:bios_release_date)
           @bios_version = args[:bios_version] if args.key?(:bios_version)
+          @id = args[:id] if args.key?(:id)
+          @manufacturer = args[:manufacturer] if args.key?(:manufacturer)
+          @release_time = args[:release_time] if args.key?(:release_time)
           @smbios_uuid = args[:smbios_uuid] if args.key?(:smbios_uuid)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -2562,6 +2936,11 @@ module Google
       class DiskEntry
         include Google::Apis::Core::Hashable
       
+        # Disk capacity.
+        # Corresponds to the JSON property `capacityBytes`
+        # @return [Fixnum]
+        attr_accessor :capacity_bytes
+      
         # Disk label.
         # Corresponds to the JSON property `diskLabel`
         # @return [String]
@@ -2571,6 +2950,11 @@ module Google
         # Corresponds to the JSON property `diskLabelType`
         # @return [String]
         attr_accessor :disk_label_type
+      
+        # Disk free space.
+        # Corresponds to the JSON property `freeSpaceBytes`
+        # @return [Fixnum]
+        attr_accessor :free_space_bytes
       
         # Disk hardware address (e.g. 0:1 for SCSI).
         # Corresponds to the JSON property `hwAddress`
@@ -2608,8 +2992,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @capacity_bytes = args[:capacity_bytes] if args.key?(:capacity_bytes)
           @disk_label = args[:disk_label] if args.key?(:disk_label)
           @disk_label_type = args[:disk_label_type] if args.key?(:disk_label_type)
+          @free_space_bytes = args[:free_space_bytes] if args.key?(:free_space_bytes)
           @hw_address = args[:hw_address] if args.key?(:hw_address)
           @interface_type = args[:interface_type] if args.key?(:interface_type)
           @partitions = args[:partitions] if args.key?(:partitions)
@@ -3222,6 +3608,11 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::Selinux]
         attr_accessor :selinux
       
+        # Security-Enhanced Linux (SELinux) mode.
+        # Corresponds to the JSON property `selinuxMode`
+        # @return [String]
+        attr_accessor :selinux_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3233,12 +3624,23 @@ module Google
           @issue = args[:issue] if args.key?(:issue)
           @nfs_exports = args[:nfs_exports] if args.key?(:nfs_exports)
           @selinux = args[:selinux] if args.key?(:selinux)
+          @selinux_mode = args[:selinux_mode] if args.key?(:selinux_mode)
         end
       end
       
       # Guest installed application information.
       class GuestInstalledApplication
         include Google::Apis::Core::Hashable
+      
+        # Installed application name.
+        # Corresponds to the JSON property `applicationName`
+        # @return [String]
+        attr_accessor :application_name
+      
+        # The time when the application was installed.
+        # Corresponds to the JSON property `installTime`
+        # @return [String]
+        attr_accessor :install_time
       
         # License strings associated with the installed application.
         # Corresponds to the JSON property `licenses`
@@ -3276,6 +3678,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @application_name = args[:application_name] if args.key?(:application_name)
+          @install_time = args[:install_time] if args.key?(:install_time)
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @path = args[:path] if args.key?(:path)
@@ -3313,10 +3717,25 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::GuestConfigDetails]
         attr_accessor :config
       
+        # What family the OS belong to, if known.
+        # Corresponds to the JSON property `family`
+        # @return [String]
+        attr_accessor :family
+      
+        # The name of the operating system.
+        # Corresponds to the JSON property `osName`
+        # @return [String]
+        attr_accessor :os_name
+      
         # Guest OS runtime information.
         # Corresponds to the JSON property `runtime`
         # @return [Google::Apis::MigrationcenterV1alpha1::GuestRuntimeDetails]
         attr_accessor :runtime
+      
+        # The version of the operating system.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
       
         def initialize(**args)
            update!(**args)
@@ -3325,7 +3744,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @config = args[:config] if args.key?(:config)
+          @family = args[:family] if args.key?(:family)
+          @os_name = args[:os_name] if args.key?(:os_name)
           @runtime = args[:runtime] if args.key?(:runtime)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -3342,6 +3764,11 @@ module Google
         # Corresponds to the JSON property `installedApps`
         # @return [Google::Apis::MigrationcenterV1alpha1::GuestInstalledApplicationList]
         attr_accessor :installed_apps
+      
+        # Last time the OS was booted.
+        # Corresponds to the JSON property `lastBootTime`
+        # @return [String]
+        attr_accessor :last_boot_time
       
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
@@ -3388,12 +3815,75 @@ module Google
         def update!(**args)
           @domain = args[:domain] if args.key?(:domain)
           @installed_apps = args[:installed_apps] if args.key?(:installed_apps)
+          @last_boot_time = args[:last_boot_time] if args.key?(:last_boot_time)
           @last_uptime = args[:last_uptime] if args.key?(:last_uptime)
           @machine_name = args[:machine_name] if args.key?(:machine_name)
           @network_info = args[:network_info] if args.key?(:network_info)
           @open_file_list = args[:open_file_list] if args.key?(:open_file_list)
           @processes = args[:processes] if args.key?(:processes)
           @services = args[:services] if args.key?(:services)
+        end
+      end
+      
+      # Details about the hosting platform of the asset.
+      class HostingProviderDetails
+        include Google::Apis::Core::Hashable
+      
+        # Details for AWS platform.
+        # Corresponds to the JSON property `aws`
+        # @return [Google::Apis::MigrationcenterV1alpha1::HostingProviderDetailsAws]
+        attr_accessor :aws
+      
+        # Optional. The timestamp when resource was created in the hosting provider.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Display name of the asset.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Location of a resource.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ResourceLocation]
+        attr_accessor :location
+      
+        # Optional. Unique identifier for the asset in the hosting provider.
+        # Corresponds to the JSON property `originalId`
+        # @return [String]
+        attr_accessor :original_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aws = args[:aws] if args.key?(:aws)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @location = args[:location] if args.key?(:location)
+          @original_id = args[:original_id] if args.key?(:original_id)
+        end
+      end
+      
+      # Details for AWS platform.
+      class HostingProviderDetailsAws
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The AWS account ID owning the resource represented by this asset.
+        # Corresponds to the JSON property `owningAccountId`
+        # @return [String]
+        attr_accessor :owning_account_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @owning_account_id = args[:owning_account_id] if args.key?(:owning_account_id)
         end
       end
       
@@ -4944,6 +5434,11 @@ module Google
       class NetworkAdapterList
         include Google::Apis::Core::Hashable
       
+        # Network adapter entries.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::NetworkAdapterDetails>]
+        attr_accessor :entries
+      
         # Network adapter descriptions.
         # Corresponds to the JSON property `networkAdapters`
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::NetworkAdapterDetails>]
@@ -4955,6 +5450,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
           @network_adapters = args[:network_adapters] if args.key?(:network_adapters)
         end
       end
@@ -5011,6 +5507,11 @@ module Google
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::NetworkAddress>]
         attr_accessor :addresses
       
+        # Network address entries.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::NetworkAddress>]
+        attr_accessor :entries
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5018,6 +5519,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @addresses = args[:addresses] if args.key?(:addresses)
+          @entries = args[:entries] if args.key?(:entries)
         end
       end
       
@@ -6570,7 +7072,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :allocated_asset_count
       
-        # Set of disk types allocated to assets.
+        # @deprecated. Use storage_allocations instead. Set of disk types allocated to
+        # assets.
         # Corresponds to the JSON property `allocatedDiskTypes`
         # @return [Array<String>]
         attr_accessor :allocated_disk_types
@@ -6796,6 +7299,25 @@ module Google
         end
       end
       
+      # Location of a resource.
+      class ResourceLocation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the region.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region = args[:region] if args.key?(:region)
+        end
+      end
+      
       # A request to run an assets export job.
       class RunAssetsExportJobRequest
         include Google::Apis::Core::Hashable
@@ -6919,6 +7441,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Running process entries.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::RunningProcess>]
+        attr_accessor :entries
+      
+        # Running process entries.
         # Corresponds to the JSON property `processes`
         # @return [Array<Google::Apis::MigrationcenterV1alpha1::RunningProcess>]
         attr_accessor :processes
@@ -6929,6 +7456,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
           @processes = args[:processes] if args.key?(:processes)
         end
       end
@@ -6957,6 +7485,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :pid
       
+        # Service name.
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
         # Service start mode (raw, OS-agnostic).
         # Corresponds to the JSON property `startMode`
         # @return [String]
@@ -6982,6 +7515,7 @@ module Google
           @exe_path = args[:exe_path] if args.key?(:exe_path)
           @name = args[:name] if args.key?(:name)
           @pid = args[:pid] if args.key?(:pid)
+          @service_name = args[:service_name] if args.key?(:service_name)
           @start_mode = args[:start_mode] if args.key?(:start_mode)
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
@@ -6991,6 +7525,11 @@ module Google
       # List of running guest OS services.
       class RunningServiceList
         include Google::Apis::Core::Hashable
+      
+        # Running service entries.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::RunningService>]
+        attr_accessor :entries
       
         # Running service entries.
         # Corresponds to the JSON property `services`
@@ -7003,6 +7542,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
           @services = args[:services] if args.key?(:services)
         end
       end
@@ -7039,6 +7579,18 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::DateTime]
         attr_accessor :netstat_time
       
+        # Raw network scan result. This field is intended for human inspection. The
+        # format of this field may be netstat output or any another raw output. The
+        # exact format may change without notice and should not be relied upon.
+        # Corresponds to the JSON property `rawScanResult`
+        # @return [String]
+        attr_accessor :raw_scan_result
+      
+        # Time of the last network scan.
+        # Corresponds to the JSON property `scanTime`
+        # @return [String]
+        attr_accessor :scan_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7048,6 +7600,8 @@ module Google
           @connections = args[:connections] if args.key?(:connections)
           @netstat = args[:netstat] if args.key?(:netstat)
           @netstat_time = args[:netstat_time] if args.key?(:netstat_time)
+          @raw_scan_result = args[:raw_scan_result] if args.key?(:raw_scan_result)
+          @scan_time = args[:scan_time] if args.key?(:scan_time)
         end
       end
       
@@ -8246,10 +8800,25 @@ module Google
         # @return [String]
         attr_accessor :osid
       
+        # Folder name in vCenter where asset resides.
+        # Corresponds to the JSON property `vcenterFolder`
+        # @return [String]
+        attr_accessor :vcenter_folder
+      
+        # vCenter URI used in collection.
+        # Corresponds to the JSON property `vcenterUri`
+        # @return [String]
+        attr_accessor :vcenter_uri
+      
         # vCenter version.
         # Corresponds to the JSON property `vcenterVersion`
         # @return [String]
         attr_accessor :vcenter_version
+      
+        # vCenter VM ID.
+        # Corresponds to the JSON property `vcenterVmId`
+        # @return [String]
+        attr_accessor :vcenter_vm_id
       
         def initialize(**args)
            update!(**args)
@@ -8260,7 +8829,10 @@ module Google
           @esx_hyperthreading = args[:esx_hyperthreading] if args.key?(:esx_hyperthreading)
           @esx_version = args[:esx_version] if args.key?(:esx_version)
           @osid = args[:osid] if args.key?(:osid)
+          @vcenter_folder = args[:vcenter_folder] if args.key?(:vcenter_folder)
+          @vcenter_uri = args[:vcenter_uri] if args.key?(:vcenter_uri)
           @vcenter_version = args[:vcenter_version] if args.key?(:vcenter_version)
+          @vcenter_vm_id = args[:vcenter_vm_id] if args.key?(:vcenter_vm_id)
         end
       end
       
