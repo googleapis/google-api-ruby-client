@@ -1057,6 +1057,25 @@ module Google
         end
       end
       
+      # The details of the database backup destination.
+      class BackupDestinationDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The type of the database backup destination.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -1759,6 +1778,204 @@ module Google
         end
       end
       
+      # Data collection options for diagnostics. https://docs.oracle.com/en-us/iaas/
+      # api/#/en/database/20160918/datatypes/DataCollectionOptions
+      class DataCollectionOptionsCommon
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates whether to enable data collection for diagnostics.
+        # Corresponds to the JSON property `isDiagnosticsEventsEnabled`
+        # @return [Boolean]
+        attr_accessor :is_diagnostics_events_enabled
+        alias_method :is_diagnostics_events_enabled?, :is_diagnostics_events_enabled
+      
+        # Optional. Indicates whether to enable health monitoring.
+        # Corresponds to the JSON property `isHealthMonitoringEnabled`
+        # @return [Boolean]
+        attr_accessor :is_health_monitoring_enabled
+        alias_method :is_health_monitoring_enabled?, :is_health_monitoring_enabled
+      
+        # Optional. Indicates whether to enable incident logs and trace collection.
+        # Corresponds to the JSON property `isIncidentLogsEnabled`
+        # @return [Boolean]
+        attr_accessor :is_incident_logs_enabled
+        alias_method :is_incident_logs_enabled?, :is_incident_logs_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_diagnostics_events_enabled = args[:is_diagnostics_events_enabled] if args.key?(:is_diagnostics_events_enabled)
+          @is_health_monitoring_enabled = args[:is_health_monitoring_enabled] if args.key?(:is_health_monitoring_enabled)
+          @is_incident_logs_enabled = args[:is_incident_logs_enabled] if args.key?(:is_incident_logs_enabled)
+        end
+      end
+      
+      # Data collection options for DbSystem.
+      class DataCollectionOptionsDbSystem
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates whether to enable data collection for diagnostics.
+        # Corresponds to the JSON property `isDiagnosticsEventsEnabled`
+        # @return [Boolean]
+        attr_accessor :is_diagnostics_events_enabled
+        alias_method :is_diagnostics_events_enabled?, :is_diagnostics_events_enabled
+      
+        # Optional. Indicates whether to enable incident logs and trace collection.
+        # Corresponds to the JSON property `isIncidentLogsEnabled`
+        # @return [Boolean]
+        attr_accessor :is_incident_logs_enabled
+        alias_method :is_incident_logs_enabled?, :is_incident_logs_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_diagnostics_events_enabled = args[:is_diagnostics_events_enabled] if args.key?(:is_diagnostics_events_enabled)
+          @is_incident_logs_enabled = args[:is_incident_logs_enabled] if args.key?(:is_incident_logs_enabled)
+        end
+      end
+      
+      # Details of the Database resource. https://docs.oracle.com/en-us/iaas/api/#/en/
+      # database/20160918/Database/
+      class Database
+        include Google::Apis::Core::Hashable
+      
+        # Required. The password for the default ADMIN user.
+        # Corresponds to the JSON property `adminPassword`
+        # @return [String]
+        attr_accessor :admin_password
+      
+        # Optional. The character set for the database. The default is AL32UTF8.
+        # Corresponds to the JSON property `characterSet`
+        # @return [String]
+        attr_accessor :character_set
+      
+        # Output only. The date and time that the Database was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The database ID of the Database.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
+        # Optional. The name of the DbHome resource associated with the Database.
+        # Corresponds to the JSON property `dbHomeName`
+        # @return [String]
+        attr_accessor :db_home_name
+      
+        # Optional. The database name. The name must begin with an alphabetic character
+        # and can contain a maximum of eight alphanumeric characters. Special characters
+        # are not permitted.
+        # Corresponds to the JSON property `dbName`
+        # @return [String]
+        attr_accessor :db_name
+      
+        # Optional. The DB_UNIQUE_NAME of the Oracle Database being backed up.
+        # Corresponds to the JSON property `dbUniqueName`
+        # @return [String]
+        attr_accessor :db_unique_name
+      
+        # Output only. The GCP Oracle zone where the Database is created.
+        # Corresponds to the JSON property `gcpOracleZone`
+        # @return [String]
+        attr_accessor :gcp_oracle_zone
+      
+        # Identifier. The name of the Database resource in the following format:
+        # projects/`project`/locations/`region`/databases/`database`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The national character set for the database. The default is
+        # AL16UTF16.
+        # Corresponds to the JSON property `ncharacterSet`
+        # @return [String]
+        attr_accessor :ncharacter_set
+      
+        # Output only. HTTPS link to OCI resources exposed to Customer via UI Interface.
+        # Corresponds to the JSON property `ociUrl`
+        # @return [String]
+        attr_accessor :oci_url
+      
+        # Output only. The Status of Operations Insights for this Database.
+        # Corresponds to the JSON property `opsInsightsStatus`
+        # @return [String]
+        attr_accessor :ops_insights_status
+      
+        # The properties of a Database.
+        # Corresponds to the JSON property `properties`
+        # @return [Google::Apis::OracledatabaseV1::DatabaseProperties]
+        attr_accessor :properties
+      
+        # Optional. The TDE wallet password for the database.
+        # Corresponds to the JSON property `tdeWalletPassword`
+        # @return [String]
+        attr_accessor :tde_wallet_password
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admin_password = args[:admin_password] if args.key?(:admin_password)
+          @character_set = args[:character_set] if args.key?(:character_set)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @database_id = args[:database_id] if args.key?(:database_id)
+          @db_home_name = args[:db_home_name] if args.key?(:db_home_name)
+          @db_name = args[:db_name] if args.key?(:db_name)
+          @db_unique_name = args[:db_unique_name] if args.key?(:db_unique_name)
+          @gcp_oracle_zone = args[:gcp_oracle_zone] if args.key?(:gcp_oracle_zone)
+          @name = args[:name] if args.key?(:name)
+          @ncharacter_set = args[:ncharacter_set] if args.key?(:ncharacter_set)
+          @oci_url = args[:oci_url] if args.key?(:oci_url)
+          @ops_insights_status = args[:ops_insights_status] if args.key?(:ops_insights_status)
+          @properties = args[:properties] if args.key?(:properties)
+          @tde_wallet_password = args[:tde_wallet_password] if args.key?(:tde_wallet_password)
+        end
+      end
+      
+      # Details of the Database character set resource.
+      class DatabaseCharacterSet
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The character set name for the Database which is the ID in the
+        # resource name.
+        # Corresponds to the JSON property `characterSet`
+        # @return [String]
+        attr_accessor :character_set
+      
+        # Output only. The character set type for the Database.
+        # Corresponds to the JSON property `characterSetType`
+        # @return [String]
+        attr_accessor :character_set_type
+      
+        # Identifier. The name of the Database Character Set resource in the following
+        # format: projects/`project`/locations/`region`/databaseCharacterSets/`
+        # database_character_set`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @character_set = args[:character_set] if args.key?(:character_set)
+          @character_set_type = args[:character_set_type] if args.key?(:character_set_type)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # The connection string profile to allow clients to group. https://docs.oracle.
       # com/en-us/iaas/api/#/en/database/20160918/datatypes/
       # DatabaseConnectionStringProfile
@@ -1828,6 +2045,172 @@ module Google
           @syntax_format = args[:syntax_format] if args.key?(:syntax_format)
           @tls_authentication = args[:tls_authentication] if args.key?(:tls_authentication)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # The configuration of the Database Management service.
+      class DatabaseManagementConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The status of the Database Management service.
+        # Corresponds to the JSON property `managementState`
+        # @return [String]
+        attr_accessor :management_state
+      
+        # Output only. The Database Management type.
+        # Corresponds to the JSON property `managementType`
+        # @return [String]
+        attr_accessor :management_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @management_state = args[:management_state] if args.key?(:management_state)
+          @management_type = args[:management_type] if args.key?(:management_type)
+        end
+      end
+      
+      # The properties of a Database.
+      class DatabaseProperties
+        include Google::Apis::Core::Hashable
+      
+        # The configuration of the Database Management service.
+        # Corresponds to the JSON property `databaseManagementConfig`
+        # @return [Google::Apis::OracledatabaseV1::DatabaseManagementConfig]
+        attr_accessor :database_management_config
+      
+        # Backup Options for the Database.
+        # Corresponds to the JSON property `dbBackupConfig`
+        # @return [Google::Apis::OracledatabaseV1::DbBackupConfig]
+        attr_accessor :db_backup_config
+      
+        # Required. The Oracle Database version.
+        # Corresponds to the JSON property `dbVersion`
+        # @return [String]
+        attr_accessor :db_version
+      
+        # Output only. State of the Database.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_management_config = args[:database_management_config] if args.key?(:database_management_config)
+          @db_backup_config = args[:db_backup_config] if args.key?(:db_backup_config)
+          @db_version = args[:db_version] if args.key?(:db_version)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Backup Options for the Database.
+      class DbBackupConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, enables automatic backups on the database.
+        # Corresponds to the JSON property `autoBackupEnabled`
+        # @return [Boolean]
+        attr_accessor :auto_backup_enabled
+        alias_method :auto_backup_enabled?, :auto_backup_enabled
+      
+        # Optional. The day of the week on which the full backup should be performed on
+        # the database. If no value is provided, it will default to Sunday.
+        # Corresponds to the JSON property `autoFullBackupDay`
+        # @return [String]
+        attr_accessor :auto_full_backup_day
+      
+        # Optional. The window in which the full backup should be performed on the
+        # database. If no value is provided, the default is anytime.
+        # Corresponds to the JSON property `autoFullBackupWindow`
+        # @return [String]
+        attr_accessor :auto_full_backup_window
+      
+        # Optional. The window in which the incremental backup should be performed on
+        # the database. If no value is provided, the default is anytime except the auto
+        # full backup day.
+        # Corresponds to the JSON property `autoIncrementalBackupWindow`
+        # @return [String]
+        attr_accessor :auto_incremental_backup_window
+      
+        # Optional. This defines when the backups will be deleted after Database
+        # termination.
+        # Corresponds to the JSON property `backupDeletionPolicy`
+        # @return [String]
+        attr_accessor :backup_deletion_policy
+      
+        # Optional. Details of the database backup destinations.
+        # Corresponds to the JSON property `backupDestinationDetails`
+        # @return [Array<Google::Apis::OracledatabaseV1::BackupDestinationDetails>]
+        attr_accessor :backup_destination_details
+      
+        # Optional. The number of days an automatic backup is retained before being
+        # automatically deleted. This value determines the earliest point in time to
+        # which a database can be restored. Min: 1, Max: 60.
+        # Corresponds to the JSON property `retentionPeriodDays`
+        # @return [Fixnum]
+        attr_accessor :retention_period_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_backup_enabled = args[:auto_backup_enabled] if args.key?(:auto_backup_enabled)
+          @auto_full_backup_day = args[:auto_full_backup_day] if args.key?(:auto_full_backup_day)
+          @auto_full_backup_window = args[:auto_full_backup_window] if args.key?(:auto_full_backup_window)
+          @auto_incremental_backup_window = args[:auto_incremental_backup_window] if args.key?(:auto_incremental_backup_window)
+          @backup_deletion_policy = args[:backup_deletion_policy] if args.key?(:backup_deletion_policy)
+          @backup_destination_details = args[:backup_destination_details] if args.key?(:backup_destination_details)
+          @retention_period_days = args[:retention_period_days] if args.key?(:retention_period_days)
+        end
+      end
+      
+      # Details of the Database Home resource.
+      class DbHome
+        include Google::Apis::Core::Hashable
+      
+        # Details of the Database resource. https://docs.oracle.com/en-us/iaas/api/#/en/
+        # database/20160918/Database/
+        # Corresponds to the JSON property `database`
+        # @return [Google::Apis::OracledatabaseV1::Database]
+        attr_accessor :database
+      
+        # Required. A valid Oracle Database version. For a list of supported versions,
+        # use the ListDbVersions operation.
+        # Corresponds to the JSON property `dbVersion`
+        # @return [String]
+        attr_accessor :db_version
+      
+        # Optional. The display name for the Database Home. The name does not have to be
+        # unique within your project.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Whether unified auditing is enabled for the Database Home.
+        # Corresponds to the JSON property `isUnifiedAuditingEnabled`
+        # @return [Boolean]
+        attr_accessor :is_unified_auditing_enabled
+        alias_method :is_unified_auditing_enabled?, :is_unified_auditing_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @db_version = args[:db_version] if args.key?(:db_version)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @is_unified_auditing_enabled = args[:is_unified_auditing_enabled] if args.key?(:is_unified_auditing_enabled)
         end
       end
       
@@ -2033,6 +2416,311 @@ module Google
         end
       end
       
+      # Details of the DbSystem (BaseDB) resource. https://docs.oracle.com/en-us/iaas/
+      # api/#/en/database/20160918/DbSystem/
+      class DbSystem
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The date and time that the DbSystem was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The display name for the System db. The name does not have to be
+        # unique within your project.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The ID of the subscription entitlement associated with the
+        # DbSystem
+        # Corresponds to the JSON property `entitlementId`
+        # @return [String]
+        attr_accessor :entitlement_id
+      
+        # Optional. The GCP Oracle zone where Oracle DbSystem is hosted. Example: us-
+        # east4-b-r2. If not specified, the system will pick a zone based on
+        # availability.
+        # Corresponds to the JSON property `gcpOracleZone`
+        # @return [String]
+        attr_accessor :gcp_oracle_zone
+      
+        # Optional. The labels or tags associated with the DbSystem.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the DbSystem resource in the following format:
+        # projects/`project`/locations/`region`/dbSystems/`db_system`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. HTTPS link to OCI resources exposed to Customer via UI Interface.
+        # Corresponds to the JSON property `ociUrl`
+        # @return [String]
+        attr_accessor :oci_url
+      
+        # Optional. The name of the OdbNetwork associated with the DbSystem. Format:
+        # projects/`project`/locations/`location`/odbNetworks/`odb_network` It is
+        # optional but if specified, this should match the parent ODBNetwork of the
+        # OdbSubnet.
+        # Corresponds to the JSON property `odbNetwork`
+        # @return [String]
+        attr_accessor :odb_network
+      
+        # Required. The name of the OdbSubnet associated with the DbSystem for IP
+        # allocation. Format: projects/`project`/locations/`location`/odbNetworks/`
+        # odb_network`/odbSubnets/`odb_subnet`
+        # Corresponds to the JSON property `odbSubnet`
+        # @return [String]
+        attr_accessor :odb_subnet
+      
+        # The properties of a DbSystem.
+        # Corresponds to the JSON property `properties`
+        # @return [Google::Apis::OracledatabaseV1::DbSystemProperties]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entitlement_id = args[:entitlement_id] if args.key?(:entitlement_id)
+          @gcp_oracle_zone = args[:gcp_oracle_zone] if args.key?(:gcp_oracle_zone)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @oci_url = args[:oci_url] if args.key?(:oci_url)
+          @odb_network = args[:odb_network] if args.key?(:odb_network)
+          @odb_subnet = args[:odb_subnet] if args.key?(:odb_subnet)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # Summary of the DbSystem initial storage size.
+      class DbSystemInitialStorageSize
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The properties of a DbSystem initial storage size summary.
+        # Corresponds to the JSON property `properties`
+        # @return [Google::Apis::OracledatabaseV1::DbSystemInitialStorageSizeProperties]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # The properties of a DbSystem initial storage size summary.
+      class DbSystemInitialStorageSizeProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of storage disk details available for launches from backup.
+        # Corresponds to the JSON property `launchFromBackupStorageSizeDetails`
+        # @return [Array<Google::Apis::OracledatabaseV1::StorageSizeDetails>]
+        attr_accessor :launch_from_backup_storage_size_details
+      
+        # Output only. VM shape platform type
+        # Corresponds to the JSON property `shapeType`
+        # @return [String]
+        attr_accessor :shape_type
+      
+        # Output only. The storage option used in DB system.
+        # Corresponds to the JSON property `storageManagement`
+        # @return [String]
+        attr_accessor :storage_management
+      
+        # Output only. List of storage disk details.
+        # Corresponds to the JSON property `storageSizeDetails`
+        # @return [Array<Google::Apis::OracledatabaseV1::StorageSizeDetails>]
+        attr_accessor :storage_size_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @launch_from_backup_storage_size_details = args[:launch_from_backup_storage_size_details] if args.key?(:launch_from_backup_storage_size_details)
+          @shape_type = args[:shape_type] if args.key?(:shape_type)
+          @storage_management = args[:storage_management] if args.key?(:storage_management)
+          @storage_size_details = args[:storage_size_details] if args.key?(:storage_size_details)
+        end
+      end
+      
+      # Details of the DbSystem Options.
+      class DbSystemOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The storage option used in DB system.
+        # Corresponds to the JSON property `storageManagement`
+        # @return [String]
+        attr_accessor :storage_management
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @storage_management = args[:storage_management] if args.key?(:storage_management)
+        end
+      end
+      
+      # The properties of a DbSystem.
+      class DbSystemProperties
+        include Google::Apis::Core::Hashable
+      
+        # Required. The number of CPU cores to enable for the DbSystem.
+        # Corresponds to the JSON property `computeCount`
+        # @return [Fixnum]
+        attr_accessor :compute_count
+      
+        # Optional. The compute model of the DbSystem.
+        # Corresponds to the JSON property `computeModel`
+        # @return [String]
+        attr_accessor :compute_model
+      
+        # Data collection options for DbSystem.
+        # Corresponds to the JSON property `dataCollectionOptions`
+        # @return [Google::Apis::OracledatabaseV1::DataCollectionOptionsDbSystem]
+        attr_accessor :data_collection_options
+      
+        # Optional. The data storage size in GB that is currently available to DbSystems.
+        # Corresponds to the JSON property `dataStorageSizeGb`
+        # @return [Fixnum]
+        attr_accessor :data_storage_size_gb
+      
+        # Required. The database edition of the DbSystem.
+        # Corresponds to the JSON property `databaseEdition`
+        # @return [String]
+        attr_accessor :database_edition
+      
+        # Details of the Database Home resource.
+        # Corresponds to the JSON property `dbHome`
+        # @return [Google::Apis::OracledatabaseV1::DbHome]
+        attr_accessor :db_home
+      
+        # Details of the DbSystem Options.
+        # Corresponds to the JSON property `dbSystemOptions`
+        # @return [Google::Apis::OracledatabaseV1::DbSystemOptions]
+        attr_accessor :db_system_options
+      
+        # Optional. The host domain name of the DbSystem.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Output only. The hostname of the DbSystem.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Optional. Prefix for DB System host names.
+        # Corresponds to the JSON property `hostnamePrefix`
+        # @return [String]
+        attr_accessor :hostname_prefix
+      
+        # Required. The initial data storage size in GB.
+        # Corresponds to the JSON property `initialDataStorageSizeGb`
+        # @return [Fixnum]
+        attr_accessor :initial_data_storage_size_gb
+      
+        # Required. The license model of the DbSystem.
+        # Corresponds to the JSON property `licenseModel`
+        # @return [String]
+        attr_accessor :license_model
+      
+        # Output only. State of the DbSystem.
+        # Corresponds to the JSON property `lifecycleState`
+        # @return [String]
+        attr_accessor :lifecycle_state
+      
+        # Optional. The memory size in GB.
+        # Corresponds to the JSON property `memorySizeGb`
+        # @return [Fixnum]
+        attr_accessor :memory_size_gb
+      
+        # Optional. The number of nodes in the DbSystem.
+        # Corresponds to the JSON property `nodeCount`
+        # @return [Fixnum]
+        attr_accessor :node_count
+      
+        # Output only. OCID of the DbSystem.
+        # Corresponds to the JSON property `ocid`
+        # @return [String]
+        attr_accessor :ocid
+      
+        # Optional. The private IP address of the DbSystem.
+        # Corresponds to the JSON property `privateIp`
+        # @return [String]
+        attr_accessor :private_ip
+      
+        # Optional. The reco/redo storage size in GB.
+        # Corresponds to the JSON property `recoStorageSizeGb`
+        # @return [Fixnum]
+        attr_accessor :reco_storage_size_gb
+      
+        # Required. Shape of DB System.
+        # Corresponds to the JSON property `shape`
+        # @return [String]
+        attr_accessor :shape
+      
+        # Required. SSH public keys to be stored with the DbSystem.
+        # Corresponds to the JSON property `sshPublicKeys`
+        # @return [Array<String>]
+        attr_accessor :ssh_public_keys
+      
+        # Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/
+        # time-zones).
+        # Corresponds to the JSON property `timeZone`
+        # @return [Google::Apis::OracledatabaseV1::TimeZone]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compute_count = args[:compute_count] if args.key?(:compute_count)
+          @compute_model = args[:compute_model] if args.key?(:compute_model)
+          @data_collection_options = args[:data_collection_options] if args.key?(:data_collection_options)
+          @data_storage_size_gb = args[:data_storage_size_gb] if args.key?(:data_storage_size_gb)
+          @database_edition = args[:database_edition] if args.key?(:database_edition)
+          @db_home = args[:db_home] if args.key?(:db_home)
+          @db_system_options = args[:db_system_options] if args.key?(:db_system_options)
+          @domain = args[:domain] if args.key?(:domain)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @hostname_prefix = args[:hostname_prefix] if args.key?(:hostname_prefix)
+          @initial_data_storage_size_gb = args[:initial_data_storage_size_gb] if args.key?(:initial_data_storage_size_gb)
+          @license_model = args[:license_model] if args.key?(:license_model)
+          @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
+          @memory_size_gb = args[:memory_size_gb] if args.key?(:memory_size_gb)
+          @node_count = args[:node_count] if args.key?(:node_count)
+          @ocid = args[:ocid] if args.key?(:ocid)
+          @private_ip = args[:private_ip] if args.key?(:private_ip)
+          @reco_storage_size_gb = args[:reco_storage_size_gb] if args.key?(:reco_storage_size_gb)
+          @shape = args[:shape] if args.key?(:shape)
+          @ssh_public_keys = args[:ssh_public_keys] if args.key?(:ssh_public_keys)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
       # Details of the Database System Shapes resource. https://docs.oracle.com/en-us/
       # iaas/api/#/en/database/20160918/DbSystemShapeSummary/
       class DbSystemShape
@@ -2120,6 +2808,102 @@ module Google
         end
       end
       
+      # A valid Oracle Database version.
+      class DbVersion
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the DbVersion resource in the following format:
+        # projects/`project`/locations/`region`/dbVersions/`db_version`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The properties of a DbVersion.
+        # Corresponds to the JSON property `properties`
+        # @return [Google::Apis::OracledatabaseV1::DbVersionProperties]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # The properties of a DbVersion.
+      class DbVersionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. True if this version of the Oracle Database software is the
+        # latest version for a release.
+        # Corresponds to the JSON property `isLatestForMajorVersion`
+        # @return [Boolean]
+        attr_accessor :is_latest_for_major_version
+        alias_method :is_latest_for_major_version?, :is_latest_for_major_version
+      
+        # Output only. True if this version of the Oracle Database software is the
+        # preview version.
+        # Corresponds to the JSON property `isPreviewDbVersion`
+        # @return [Boolean]
+        attr_accessor :is_preview_db_version
+        alias_method :is_preview_db_version?, :is_preview_db_version
+      
+        # Output only. True if this version of the Oracle Database software is supported
+        # for Upgrade.
+        # Corresponds to the JSON property `isUpgradeSupported`
+        # @return [Boolean]
+        attr_accessor :is_upgrade_supported
+        alias_method :is_upgrade_supported?, :is_upgrade_supported
+      
+        # Output only. True if this version of the Oracle Database software supports
+        # pluggable databases.
+        # Corresponds to the JSON property `supportsPdb`
+        # @return [Boolean]
+        attr_accessor :supports_pdb
+        alias_method :supports_pdb?, :supports_pdb
+      
+        # Output only. A valid Oracle Database version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_latest_for_major_version = args[:is_latest_for_major_version] if args.key?(:is_latest_for_major_version)
+          @is_preview_db_version = args[:is_preview_db_version] if args.key?(:is_preview_db_version)
+          @is_upgrade_supported = args[:is_upgrade_supported] if args.key?(:is_upgrade_supported)
+          @supports_pdb = args[:supports_pdb] if args.key?(:supports_pdb)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Wrapper message for the value of a defined tag.
+      class DefinedTagValue
+        include Google::Apis::Core::Hashable
+      
+        # The tags within the namespace.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -2171,6 +2955,451 @@ module Google
           @entitlement_id = args[:entitlement_id] if args.key?(:entitlement_id)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # ExadbVmCluster represents a cluster of VMs that are used to run Exadata
+      # workloads. https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/
+      # ExadbVmCluster/
+      class ExadbVmCluster
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The name of the backup OdbSubnet associated with the
+        # ExadbVmCluster. Format: projects/`project`/locations/`location`/odbNetworks/`
+        # odb_network`/odbSubnets/`odb_subnet`
+        # Corresponds to the JSON property `backupOdbSubnet`
+        # @return [String]
+        attr_accessor :backup_odb_subnet
+      
+        # Output only. The date and time that the ExadbVmCluster was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Immutable. The display name for the ExadbVmCluster. The name does
+        # not have to be unique within your project. The name must be 1-255 characters
+        # long and can only contain alphanumeric characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The ID of the subscription entitlement associated with the
+        # ExadbVmCluster.
+        # Corresponds to the JSON property `entitlementId`
+        # @return [String]
+        attr_accessor :entitlement_id
+      
+        # Output only. Immutable. The GCP Oracle zone where Oracle ExadbVmCluster is
+        # hosted. Example: us-east4-b-r2. During creation, the system will pick the zone
+        # assigned to the ExascaleDbStorageVault.
+        # Corresponds to the JSON property `gcpOracleZone`
+        # @return [String]
+        attr_accessor :gcp_oracle_zone
+      
+        # Optional. The labels or tags associated with the ExadbVmCluster.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the ExadbVmCluster resource in the following format:
+        # projects/`project`/locations/`region`/exadbVmClusters/`exadb_vm_cluster`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Immutable. The name of the OdbNetwork associated with the
+        # ExadbVmCluster. Format: projects/`project`/locations/`location`/odbNetworks/`
+        # odb_network` It is optional but if specified, this should match the parent
+        # ODBNetwork of the OdbSubnet.
+        # Corresponds to the JSON property `odbNetwork`
+        # @return [String]
+        attr_accessor :odb_network
+      
+        # Required. Immutable. The name of the OdbSubnet associated with the
+        # ExadbVmCluster for IP allocation. Format: projects/`project`/locations/`
+        # location`/odbNetworks/`odb_network`/odbSubnets/`odb_subnet`
+        # Corresponds to the JSON property `odbSubnet`
+        # @return [String]
+        attr_accessor :odb_subnet
+      
+        # The properties of an ExadbVmCluster.
+        # Corresponds to the JSON property `properties`
+        # @return [Google::Apis::OracledatabaseV1::ExadbVmClusterProperties]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_odb_subnet = args[:backup_odb_subnet] if args.key?(:backup_odb_subnet)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entitlement_id = args[:entitlement_id] if args.key?(:entitlement_id)
+          @gcp_oracle_zone = args[:gcp_oracle_zone] if args.key?(:gcp_oracle_zone)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @odb_network = args[:odb_network] if args.key?(:odb_network)
+          @odb_subnet = args[:odb_subnet] if args.key?(:odb_subnet)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # The properties of an ExadbVmCluster.
+      class ExadbVmClusterProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Immutable. The number of additional ECPUs per node for an Exadata VM
+        # cluster on exascale infrastructure.
+        # Corresponds to the JSON property `additionalEcpuCountPerNode`
+        # @return [Fixnum]
+        attr_accessor :additional_ecpu_count_per_node
+      
+        # Optional. Immutable. The cluster name for Exascale vm cluster. The cluster
+        # name must begin with an alphabetic character and may contain hyphens(-) but
+        # can not contain underscores(_). It should be not more than 11 characters and
+        # is not case sensitive. OCI Cluster name.
+        # Corresponds to the JSON property `clusterName`
+        # @return [String]
+        attr_accessor :cluster_name
+      
+        # Data collection options for diagnostics. https://docs.oracle.com/en-us/iaas/
+        # api/#/en/database/20160918/datatypes/DataCollectionOptions
+        # Corresponds to the JSON property `dataCollectionOptions`
+        # @return [Google::Apis::OracledatabaseV1::DataCollectionOptionsCommon]
+        attr_accessor :data_collection_options
+      
+        # Required. Immutable. The number of ECPUs enabled per node for an exadata vm
+        # cluster on exascale infrastructure.
+        # Corresponds to the JSON property `enabledEcpuCountPerNode`
+        # @return [Fixnum]
+        attr_accessor :enabled_ecpu_count_per_node
+      
+        # Required. Immutable. The name of ExascaleDbStorageVault associated with the
+        # ExadbVmCluster. It can refer to an existing ExascaleDbStorageVault. Or a new
+        # one can be created during the ExadbVmCluster creation (requires
+        # storage_vault_properties to be set). Format: projects/`project`/locations/`
+        # location`/exascaleDbStorageVaults/`exascale_db_storage_vault`
+        # Corresponds to the JSON property `exascaleDbStorageVault`
+        # @return [String]
+        attr_accessor :exascale_db_storage_vault
+      
+        # Output only. The Oracle Grid Infrastructure (GI) software version.
+        # Corresponds to the JSON property `giVersion`
+        # @return [String]
+        attr_accessor :gi_version
+      
+        # Required. Immutable. Grid Infrastructure Version.
+        # Corresponds to the JSON property `gridImageId`
+        # @return [String]
+        attr_accessor :grid_image_id
+      
+        # Output only. The hostname of the ExadbVmCluster.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Required. Immutable. Prefix for VM cluster host names.
+        # Corresponds to the JSON property `hostnamePrefix`
+        # @return [String]
+        attr_accessor :hostname_prefix
+      
+        # Optional. Immutable. The license type of the ExadbVmCluster.
+        # Corresponds to the JSON property `licenseModel`
+        # @return [String]
+        attr_accessor :license_model
+      
+        # Output only. State of the cluster.
+        # Corresponds to the JSON property `lifecycleState`
+        # @return [String]
+        attr_accessor :lifecycle_state
+      
+        # Output only. Memory per VM (GB) (Read-only): Shows the amount of memory
+        # allocated to each VM. Memory is calculated based on 2.75 GB per Total ECPUs.
+        # Corresponds to the JSON property `memorySizeGb`
+        # @return [Fixnum]
+        attr_accessor :memory_size_gb
+      
+        # Required. The number of nodes/VMs in the ExadbVmCluster.
+        # Corresponds to the JSON property `nodeCount`
+        # @return [Fixnum]
+        attr_accessor :node_count
+      
+        # Output only. Deep link to the OCI console to view this resource.
+        # Corresponds to the JSON property `ociUri`
+        # @return [String]
+        attr_accessor :oci_uri
+      
+        # Optional. Immutable. SCAN listener port - TCP
+        # Corresponds to the JSON property `scanListenerPortTcp`
+        # @return [Fixnum]
+        attr_accessor :scan_listener_port_tcp
+      
+        # Required. Immutable. The shape attribute of the VM cluster. The type of
+        # Exascale storage used for Exadata VM cluster. The default is SMART_STORAGE
+        # which supports Oracle Database 23ai and later
+        # Corresponds to the JSON property `shapeAttribute`
+        # @return [String]
+        attr_accessor :shape_attribute
+      
+        # Required. Immutable. The SSH public keys for the ExadbVmCluster.
+        # Corresponds to the JSON property `sshPublicKeys`
+        # @return [Array<String>]
+        attr_accessor :ssh_public_keys
+      
+        # Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/
+        # time-zones).
+        # Corresponds to the JSON property `timeZone`
+        # @return [Google::Apis::OracledatabaseV1::TimeZone]
+        attr_accessor :time_zone
+      
+        # The storage allocation for the exadbvmcluster, in gigabytes (GB).
+        # Corresponds to the JSON property `vmFileSystemStorage`
+        # @return [Google::Apis::OracledatabaseV1::ExadbVmClusterStorageDetails]
+        attr_accessor :vm_file_system_storage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_ecpu_count_per_node = args[:additional_ecpu_count_per_node] if args.key?(:additional_ecpu_count_per_node)
+          @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
+          @data_collection_options = args[:data_collection_options] if args.key?(:data_collection_options)
+          @enabled_ecpu_count_per_node = args[:enabled_ecpu_count_per_node] if args.key?(:enabled_ecpu_count_per_node)
+          @exascale_db_storage_vault = args[:exascale_db_storage_vault] if args.key?(:exascale_db_storage_vault)
+          @gi_version = args[:gi_version] if args.key?(:gi_version)
+          @grid_image_id = args[:grid_image_id] if args.key?(:grid_image_id)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @hostname_prefix = args[:hostname_prefix] if args.key?(:hostname_prefix)
+          @license_model = args[:license_model] if args.key?(:license_model)
+          @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
+          @memory_size_gb = args[:memory_size_gb] if args.key?(:memory_size_gb)
+          @node_count = args[:node_count] if args.key?(:node_count)
+          @oci_uri = args[:oci_uri] if args.key?(:oci_uri)
+          @scan_listener_port_tcp = args[:scan_listener_port_tcp] if args.key?(:scan_listener_port_tcp)
+          @shape_attribute = args[:shape_attribute] if args.key?(:shape_attribute)
+          @ssh_public_keys = args[:ssh_public_keys] if args.key?(:ssh_public_keys)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @vm_file_system_storage = args[:vm_file_system_storage] if args.key?(:vm_file_system_storage)
+        end
+      end
+      
+      # The storage allocation for the exadbvmcluster, in gigabytes (GB).
+      class ExadbVmClusterStorageDetails
+        include Google::Apis::Core::Hashable
+      
+        # Required. The storage allocation for the exadbvmcluster per node, in gigabytes
+        # (GB). This field is used to calculate the total storage allocation for the
+        # exadbvmcluster.
+        # Corresponds to the JSON property `sizeInGbsPerNode`
+        # @return [Fixnum]
+        attr_accessor :size_in_gbs_per_node
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @size_in_gbs_per_node = args[:size_in_gbs_per_node] if args.key?(:size_in_gbs_per_node)
+        end
+      end
+      
+      # The storage details of the ExascaleDbStorageVault.
+      class ExascaleDbStorageDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The available storage capacity for the ExascaleDbStorageVault, in
+        # gigabytes (GB).
+        # Corresponds to the JSON property `availableSizeGbs`
+        # @return [Fixnum]
+        attr_accessor :available_size_gbs
+      
+        # Required. The total storage allocation for the ExascaleDbStorageVault, in
+        # gigabytes (GB).
+        # Corresponds to the JSON property `totalSizeGbs`
+        # @return [Fixnum]
+        attr_accessor :total_size_gbs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @available_size_gbs = args[:available_size_gbs] if args.key?(:available_size_gbs)
+          @total_size_gbs = args[:total_size_gbs] if args.key?(:total_size_gbs)
+        end
+      end
+      
+      # ExascaleDbStorageVault represents a storage vault exadb vm cluster resource.
+      # https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/
+      # ExascaleDbStorageVault/
+      class ExascaleDbStorageVault
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The date and time when the ExascaleDbStorageVault was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The display name for the ExascaleDbStorageVault. The name does not
+        # have to be unique within your project. The name must be 1-255 characters long
+        # and can only contain alphanumeric characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The ID of the subscription entitlement associated with the
+        # ExascaleDbStorageVault.
+        # Corresponds to the JSON property `entitlementId`
+        # @return [String]
+        attr_accessor :entitlement_id
+      
+        # Optional. The GCP Oracle zone where Oracle ExascaleDbStorageVault is hosted.
+        # Example: us-east4-b-r2. If not specified, the system will pick a zone based on
+        # availability.
+        # Corresponds to the JSON property `gcpOracleZone`
+        # @return [String]
+        attr_accessor :gcp_oracle_zone
+      
+        # Optional. The labels or tags associated with the ExascaleDbStorageVault.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The resource name of the ExascaleDbStorageVault. Format: projects/`
+        # project`/locations/`location`/exascaleDbStorageVaults/`
+        # exascale_db_storage_vault`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The properties of the ExascaleDbStorageVault. next ID: 12
+        # Corresponds to the JSON property `properties`
+        # @return [Google::Apis::OracledatabaseV1::ExascaleDbStorageVaultProperties]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entitlement_id = args[:entitlement_id] if args.key?(:entitlement_id)
+          @gcp_oracle_zone = args[:gcp_oracle_zone] if args.key?(:gcp_oracle_zone)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # The properties of the ExascaleDbStorageVault. next ID: 12
+      class ExascaleDbStorageVaultProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The size of additional flash cache in percentage of high capacity
+        # database storage.
+        # Corresponds to the JSON property `additionalFlashCachePercent`
+        # @return [Fixnum]
+        attr_accessor :additional_flash_cache_percent
+      
+        # Output only. The shape attributes of the VM clusters attached to the
+        # ExascaleDbStorageVault.
+        # Corresponds to the JSON property `attachedShapeAttributes`
+        # @return [Array<String>]
+        attr_accessor :attached_shape_attributes
+      
+        # Output only. The shape attributes available for the VM clusters to be attached
+        # to the ExascaleDbStorageVault.
+        # Corresponds to the JSON property `availableShapeAttributes`
+        # @return [Array<String>]
+        attr_accessor :available_shape_attributes
+      
+        # Optional. The description of the ExascaleDbStorageVault.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The storage details of the ExascaleDbStorageVault.
+        # Corresponds to the JSON property `exascaleDbStorageDetails`
+        # @return [Google::Apis::OracledatabaseV1::ExascaleDbStorageDetails]
+        attr_accessor :exascale_db_storage_details
+      
+        # Output only. Deep link to the OCI console to view this resource.
+        # Corresponds to the JSON property `ociUri`
+        # @return [String]
+        attr_accessor :oci_uri
+      
+        # Output only. The OCID for the ExascaleDbStorageVault.
+        # Corresponds to the JSON property `ocid`
+        # @return [String]
+        attr_accessor :ocid
+      
+        # Output only. The state of the ExascaleDbStorageVault.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/
+        # time-zones).
+        # Corresponds to the JSON property `timeZone`
+        # @return [Google::Apis::OracledatabaseV1::TimeZone]
+        attr_accessor :time_zone
+      
+        # Output only. The number of VM clusters associated with the
+        # ExascaleDbStorageVault.
+        # Corresponds to the JSON property `vmClusterCount`
+        # @return [Fixnum]
+        attr_accessor :vm_cluster_count
+      
+        # Output only. The list of VM cluster OCIDs associated with the
+        # ExascaleDbStorageVault.
+        # Corresponds to the JSON property `vmClusterIds`
+        # @return [Array<String>]
+        attr_accessor :vm_cluster_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_flash_cache_percent = args[:additional_flash_cache_percent] if args.key?(:additional_flash_cache_percent)
+          @attached_shape_attributes = args[:attached_shape_attributes] if args.key?(:attached_shape_attributes)
+          @available_shape_attributes = args[:available_shape_attributes] if args.key?(:available_shape_attributes)
+          @description = args[:description] if args.key?(:description)
+          @exascale_db_storage_details = args[:exascale_db_storage_details] if args.key?(:exascale_db_storage_details)
+          @oci_uri = args[:oci_uri] if args.key?(:oci_uri)
+          @ocid = args[:ocid] if args.key?(:ocid)
+          @state = args[:state] if args.key?(:state)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @vm_cluster_count = args[:vm_cluster_count] if args.key?(:vm_cluster_count)
+          @vm_cluster_ids = args[:vm_cluster_ids] if args.key?(:vm_cluster_ids)
+        end
+      end
+      
+      # The request for `OracleDatabase.FailoverAutonomousDatabase`.
+      class FailoverAutonomousDatabaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The peer database name to fail over to.
+        # Corresponds to the JSON property `peerAutonomousDatabase`
+        # @return [String]
+        attr_accessor :peer_autonomous_database
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @peer_autonomous_database = args[:peer_autonomous_database] if args.key?(:peer_autonomous_database)
         end
       end
       
@@ -2434,6 +3663,56 @@ module Google
         end
       end
       
+      # The response for `DatabaseCharacterSet.List`.
+      class ListDatabaseCharacterSetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of DatabaseCharacterSets.
+        # Corresponds to the JSON property `databaseCharacterSets`
+        # @return [Array<Google::Apis::OracledatabaseV1::DatabaseCharacterSet>]
+        attr_accessor :database_character_sets
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_character_sets = args[:database_character_sets] if args.key?(:database_character_sets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response for `Database.List`.
+      class ListDatabasesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Databases.
+        # Corresponds to the JSON property `databases`
+        # @return [Array<Google::Apis::OracledatabaseV1::Database>]
+        attr_accessor :databases
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @databases = args[:databases] if args.key?(:databases)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response for `DbNode.List`.
       class ListDbNodesResponse
         include Google::Apis::Core::Hashable
@@ -2484,6 +3763,31 @@ module Google
         end
       end
       
+      # The response for `DbSystemInitialStorageSizes.List`.
+      class ListDbSystemInitialStorageSizesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of DbSystemInitialStorageSizes.
+        # Corresponds to the JSON property `dbSystemInitialStorageSizes`
+        # @return [Array<Google::Apis::OracledatabaseV1::DbSystemInitialStorageSize>]
+        attr_accessor :db_system_initial_storage_sizes
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @db_system_initial_storage_sizes = args[:db_system_initial_storage_sizes] if args.key?(:db_system_initial_storage_sizes)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response for `DbSystemShape.List`.
       class ListDbSystemShapesResponse
         include Google::Apis::Core::Hashable
@@ -2509,6 +3813,56 @@ module Google
         end
       end
       
+      # The response for `DbSystem.List`.
+      class ListDbSystemsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of DbSystems.
+        # Corresponds to the JSON property `dbSystems`
+        # @return [Array<Google::Apis::OracledatabaseV1::DbSystem>]
+        attr_accessor :db_systems
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @db_systems = args[:db_systems] if args.key?(:db_systems)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response for `DbVersions.List`.
+      class ListDbVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of DbVersions.
+        # Corresponds to the JSON property `dbVersions`
+        # @return [Array<Google::Apis::OracledatabaseV1::DbVersion>]
+        attr_accessor :db_versions
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @db_versions = args[:db_versions] if args.key?(:db_versions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response for `Entitlement.List`.
       class ListEntitlementsResponse
         include Google::Apis::Core::Hashable
@@ -2530,6 +3884,59 @@ module Google
         # Update properties of this object
         def update!(**args)
           @entitlements = args[:entitlements] if args.key?(:entitlements)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response for `ExadbVmCluster.List`.
+      class ListExadbVmClustersResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of ExadbVmClusters.
+        # Corresponds to the JSON property `exadbVmClusters`
+        # @return [Array<Google::Apis::OracledatabaseV1::ExadbVmCluster>]
+        attr_accessor :exadb_vm_clusters
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exadb_vm_clusters = args[:exadb_vm_clusters] if args.key?(:exadb_vm_clusters)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response for `ExascaleDbStorageVault.List`.
+      class ListExascaleDbStorageVaultsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The ExascaleDbStorageVaults.
+        # Corresponds to the JSON property `exascaleDbStorageVaults`
+        # @return [Array<Google::Apis::OracledatabaseV1::ExascaleDbStorageVault>]
+        attr_accessor :exascale_db_storage_vaults
+      
+        # A token identifying a page of results the server should return. If present,
+        # the next page token can be provided to a subsequent
+        # ListExascaleDbStorageVaults call to list the next page. If empty, there are no
+        # more pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exascale_db_storage_vaults = args[:exascale_db_storage_vaults] if args.key?(:exascale_db_storage_vaults)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -2580,6 +3987,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response for `MinorVersion.List`.
+      class ListMinorVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of MinorVersions.
+        # Corresponds to the JSON property `minorVersions`
+        # @return [Array<Google::Apis::OracledatabaseV1::MinorVersion>]
+        attr_accessor :minor_versions
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @minor_versions = args[:minor_versions] if args.key?(:minor_versions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -2670,6 +4102,31 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # The response for `PluggableDatabase.List`.
+      class ListPluggableDatabasesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of PluggableDatabases.
+        # Corresponds to the JSON property `pluggableDatabases`
+        # @return [Array<Google::Apis::OracledatabaseV1::PluggableDatabase>]
+        attr_accessor :pluggable_databases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @pluggable_databases = args[:pluggable_databases] if args.key?(:pluggable_databases)
         end
       end
       
@@ -2817,6 +4274,40 @@ module Google
           @patching_mode = args[:patching_mode] if args.key?(:patching_mode)
           @preference = args[:preference] if args.key?(:preference)
           @weeks_of_month = args[:weeks_of_month] if args.key?(:weeks_of_month)
+        end
+      end
+      
+      # MinorVersion represents a minor version of a GI. https://docs.oracle.com/en-us/
+      # iaas/api/#/en/database/20160918/GiMinorVersionSummary/
+      class MinorVersion
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The ID of the Grid Image.
+        # Corresponds to the JSON property `gridImageId`
+        # @return [String]
+        attr_accessor :grid_image_id
+      
+        # Identifier. The name of the MinorVersion resource with the format: projects/`
+        # project`/locations/`region`/giVersions/`gi_version`/minorVersions/`
+        # minor_version`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The valid Oracle grid infrastructure software version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grid_image_id = args[:grid_image_id] if args.key?(:grid_image_id)
+          @name = args[:name] if args.key?(:name)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -3058,6 +4549,236 @@ module Google
         end
       end
       
+      # The PluggableDatabase resource. https://docs.oracle.com/en-us/iaas/api/#/en/
+      # database/20160918/PluggableDatabase/
+      class PluggableDatabase
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The date and time that the PluggableDatabase was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Identifier. The name of the PluggableDatabase resource in the following format:
+        # projects/`project`/locations/`region`/pluggableDatabases/`pluggable_database`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. HTTPS link to OCI resources exposed to Customer via UI Interface.
+        # Corresponds to the JSON property `ociUrl`
+        # @return [String]
+        attr_accessor :oci_url
+      
+        # The properties of a PluggableDatabase.
+        # Corresponds to the JSON property `properties`
+        # @return [Google::Apis::OracledatabaseV1::PluggableDatabaseProperties]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @oci_url = args[:oci_url] if args.key?(:oci_url)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # The connection strings used to connect to the Oracle Database.
+      class PluggableDatabaseConnectionStrings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. All connection strings to use to connect to the pluggable database.
+        # Corresponds to the JSON property `allConnectionStrings`
+        # @return [Hash<String,String>]
+        attr_accessor :all_connection_strings
+      
+        # Optional. The default connection string to use to connect to the pluggable
+        # database.
+        # Corresponds to the JSON property `pdbDefault`
+        # @return [String]
+        attr_accessor :pdb_default
+      
+        # Optional. The default connection string to use to connect to the pluggable
+        # database using IP.
+        # Corresponds to the JSON property `pdbIpDefault`
+        # @return [String]
+        attr_accessor :pdb_ip_default
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_connection_strings = args[:all_connection_strings] if args.key?(:all_connection_strings)
+          @pdb_default = args[:pdb_default] if args.key?(:pdb_default)
+          @pdb_ip_default = args[:pdb_ip_default] if args.key?(:pdb_ip_default)
+        end
+      end
+      
+      # The Pluggable Database Node Level Details.
+      class PluggableDatabaseNodeLevelDetails
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Node name of the Database home.
+        # Corresponds to the JSON property `nodeName`
+        # @return [String]
+        attr_accessor :node_name
+      
+        # Required. The mode that the pluggable database is in to open it.
+        # Corresponds to the JSON property `openMode`
+        # @return [String]
+        attr_accessor :open_mode
+      
+        # Required. The OCID of the Pluggable Database.
+        # Corresponds to the JSON property `pluggableDatabaseId`
+        # @return [String]
+        attr_accessor :pluggable_database_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_name = args[:node_name] if args.key?(:node_name)
+          @open_mode = args[:open_mode] if args.key?(:open_mode)
+          @pluggable_database_id = args[:pluggable_database_id] if args.key?(:pluggable_database_id)
+        end
+      end
+      
+      # The properties of a PluggableDatabase.
+      class PluggableDatabaseProperties
+        include Google::Apis::Core::Hashable
+      
+        # Required. The OCID of the compartment.
+        # Corresponds to the JSON property `compartmentId`
+        # @return [String]
+        attr_accessor :compartment_id
+      
+        # The connection strings used to connect to the Oracle Database.
+        # Corresponds to the JSON property `connectionStrings`
+        # @return [Google::Apis::OracledatabaseV1::PluggableDatabaseConnectionStrings]
+        attr_accessor :connection_strings
+      
+        # Required. The OCID of the CDB.
+        # Corresponds to the JSON property `containerDatabaseOcid`
+        # @return [String]
+        attr_accessor :container_database_ocid
+      
+        # The configuration of the Database Management service.
+        # Corresponds to the JSON property `databaseManagementConfig`
+        # @return [Google::Apis::OracledatabaseV1::DatabaseManagementConfig]
+        attr_accessor :database_management_config
+      
+        # Optional. Defined tags for this resource. Each key is predefined and scoped to
+        # a namespace.
+        # Corresponds to the JSON property `definedTags`
+        # @return [Hash<String,Google::Apis::OracledatabaseV1::DefinedTagValue>]
+        attr_accessor :defined_tags
+      
+        # Optional. Free-form tags for this resource. Each tag is a simple key-value
+        # pair with no predefined name, type, or namespace.
+        # Corresponds to the JSON property `freeformTags`
+        # @return [Hash<String,String>]
+        attr_accessor :freeform_tags
+      
+        # Optional. The restricted mode of the pluggable database. If a pluggable
+        # database is opened in restricted mode, the user needs both create a session
+        # and have restricted session privileges to connect to it.
+        # Corresponds to the JSON property `isRestricted`
+        # @return [Boolean]
+        attr_accessor :is_restricted
+        alias_method :is_restricted?, :is_restricted
+      
+        # Output only. Additional information about the current lifecycle state.
+        # Corresponds to the JSON property `lifecycleDetails`
+        # @return [String]
+        attr_accessor :lifecycle_details
+      
+        # Output only. The current state of the pluggable database.
+        # Corresponds to the JSON property `lifecycleState`
+        # @return [String]
+        attr_accessor :lifecycle_state
+      
+        # Output only. The OCID of the pluggable database.
+        # Corresponds to the JSON property `ocid`
+        # @return [String]
+        attr_accessor :ocid
+      
+        # Output only. The status of Operations Insights for this Database.
+        # Corresponds to the JSON property `operationsInsightsState`
+        # @return [String]
+        attr_accessor :operations_insights_state
+      
+        # Required. The database name.
+        # Corresponds to the JSON property `pdbName`
+        # @return [String]
+        attr_accessor :pdb_name
+      
+        # Optional. Pluggable Database Node Level Details
+        # Corresponds to the JSON property `pdbNodeLevelDetails`
+        # @return [Array<Google::Apis::OracledatabaseV1::PluggableDatabaseNodeLevelDetails>]
+        attr_accessor :pdb_node_level_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compartment_id = args[:compartment_id] if args.key?(:compartment_id)
+          @connection_strings = args[:connection_strings] if args.key?(:connection_strings)
+          @container_database_ocid = args[:container_database_ocid] if args.key?(:container_database_ocid)
+          @database_management_config = args[:database_management_config] if args.key?(:database_management_config)
+          @defined_tags = args[:defined_tags] if args.key?(:defined_tags)
+          @freeform_tags = args[:freeform_tags] if args.key?(:freeform_tags)
+          @is_restricted = args[:is_restricted] if args.key?(:is_restricted)
+          @lifecycle_details = args[:lifecycle_details] if args.key?(:lifecycle_details)
+          @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
+          @ocid = args[:ocid] if args.key?(:ocid)
+          @operations_insights_state = args[:operations_insights_state] if args.key?(:operations_insights_state)
+          @pdb_name = args[:pdb_name] if args.key?(:pdb_name)
+          @pdb_node_level_details = args[:pdb_node_level_details] if args.key?(:pdb_node_level_details)
+        end
+      end
+      
+      # The request for `ExadbVmCluster.RemoveVirtualMachine`.
+      class RemoveVirtualMachineExadbVmClusterRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of host names of db nodes to be removed from the
+        # ExadbVmCluster.
+        # Corresponds to the JSON property `hostnames`
+        # @return [Array<String>]
+        attr_accessor :hostnames
+      
+        # Optional. An optional ID to identify the request. This value is used to
+        # identify duplicate requests. If you make a request with the same request ID
+        # and the original request is still in progress or completed, the server ignores
+        # the second request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hostnames = args[:hostnames] if args.key?(:hostnames)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
       # The request for `AutonomousDatabase.Restart`.
       class RestartAutonomousDatabaseRequest
         include Google::Apis::Core::Hashable
@@ -3216,6 +4937,34 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The initial storage size, in gigabytes, that is applicable for virtual machine
+      # DBSystem.
+      class StorageSizeDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The data storage size, in gigabytes, that is applicable for
+        # virtual machine DBSystem.
+        # Corresponds to the JSON property `dataStorageSizeInGbs`
+        # @return [Fixnum]
+        attr_accessor :data_storage_size_in_gbs
+      
+        # Output only. The RECO/REDO storage size, in gigabytes, that is applicable for
+        # virtual machine DBSystem.
+        # Corresponds to the JSON property `recoStorageSizeInGbs`
+        # @return [Fixnum]
+        attr_accessor :reco_storage_size_in_gbs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_storage_size_in_gbs = args[:data_storage_size_in_gbs] if args.key?(:data_storage_size_in_gbs)
+          @reco_storage_size_in_gbs = args[:reco_storage_size_in_gbs] if args.key?(:reco_storage_size_in_gbs)
         end
       end
       

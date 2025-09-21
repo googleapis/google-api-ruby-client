@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupDestinationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,7 +142,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataCollectionOptionsCommon
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataCollectionOptionsDbSystem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Database
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseCharacterSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatabaseConnectionStringProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseManagementConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DbBackupConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DbHome
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -166,7 +220,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DbSystem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DbSystemInitialStorageSize
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DbSystemInitialStorageSizeProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DbSystemOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DbSystemProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DbSystemShape
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DbVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DbVersionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DefinedTagValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -179,6 +281,48 @@ module Google
       end
       
       class Entitlement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExadbVmCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExadbVmClusterProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExadbVmClusterStorageDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExascaleDbStorageDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExascaleDbStorageVault
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExascaleDbStorageVaultProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FailoverAutonomousDatabaseRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -244,6 +388,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListDatabaseCharacterSetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDatabasesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDbNodesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -256,13 +412,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListDbSystemInitialStorageSizesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDbSystemShapesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListDbSystemsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDbVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListEntitlementsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListExadbVmClustersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListExascaleDbStorageVaultsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -275,6 +461,12 @@ module Google
       end
       
       class ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMinorVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,6 +490,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPluggableDatabasesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +509,12 @@ module Google
       end
       
       class MaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MinorVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -335,6 +539,36 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PluggableDatabase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PluggableDatabaseConnectionStrings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PluggableDatabaseNodeLevelDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PluggableDatabaseProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveVirtualMachineExadbVmClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -377,6 +611,12 @@ module Google
       end
       
       class StopAutonomousDatabaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageSizeDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -608,6 +848,13 @@ module Google
         end
       end
       
+      class BackupDestinationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -755,6 +1002,53 @@ module Google
         end
       end
       
+      class DataCollectionOptionsCommon
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_diagnostics_events_enabled, as: 'isDiagnosticsEventsEnabled'
+          property :is_health_monitoring_enabled, as: 'isHealthMonitoringEnabled'
+          property :is_incident_logs_enabled, as: 'isIncidentLogsEnabled'
+        end
+      end
+      
+      class DataCollectionOptionsDbSystem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_diagnostics_events_enabled, as: 'isDiagnosticsEventsEnabled'
+          property :is_incident_logs_enabled, as: 'isIncidentLogsEnabled'
+        end
+      end
+      
+      class Database
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_password, as: 'adminPassword'
+          property :character_set, as: 'characterSet'
+          property :create_time, as: 'createTime'
+          property :database_id, as: 'databaseId'
+          property :db_home_name, as: 'dbHomeName'
+          property :db_name, as: 'dbName'
+          property :db_unique_name, as: 'dbUniqueName'
+          property :gcp_oracle_zone, as: 'gcpOracleZone'
+          property :name, as: 'name'
+          property :ncharacter_set, as: 'ncharacterSet'
+          property :oci_url, as: 'ociUrl'
+          property :ops_insights_status, as: 'opsInsightsStatus'
+          property :properties, as: 'properties', class: Google::Apis::OracledatabaseV1::DatabaseProperties, decorator: Google::Apis::OracledatabaseV1::DatabaseProperties::Representation
+      
+          property :tde_wallet_password, as: 'tdeWalletPassword'
+        end
+      end
+      
+      class DatabaseCharacterSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :character_set, as: 'characterSet'
+          property :character_set_type, as: 'characterSetType'
+          property :name, as: 'name'
+        end
+      end
+      
       class DatabaseConnectionStringProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -767,6 +1061,51 @@ module Google
           property :syntax_format, as: 'syntaxFormat'
           property :tls_authentication, as: 'tlsAuthentication'
           property :value, as: 'value'
+        end
+      end
+      
+      class DatabaseManagementConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :management_state, as: 'managementState'
+          property :management_type, as: 'managementType'
+        end
+      end
+      
+      class DatabaseProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_management_config, as: 'databaseManagementConfig', class: Google::Apis::OracledatabaseV1::DatabaseManagementConfig, decorator: Google::Apis::OracledatabaseV1::DatabaseManagementConfig::Representation
+      
+          property :db_backup_config, as: 'dbBackupConfig', class: Google::Apis::OracledatabaseV1::DbBackupConfig, decorator: Google::Apis::OracledatabaseV1::DbBackupConfig::Representation
+      
+          property :db_version, as: 'dbVersion'
+          property :state, as: 'state'
+        end
+      end
+      
+      class DbBackupConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_backup_enabled, as: 'autoBackupEnabled'
+          property :auto_full_backup_day, as: 'autoFullBackupDay'
+          property :auto_full_backup_window, as: 'autoFullBackupWindow'
+          property :auto_incremental_backup_window, as: 'autoIncrementalBackupWindow'
+          property :backup_deletion_policy, as: 'backupDeletionPolicy'
+          collection :backup_destination_details, as: 'backupDestinationDetails', class: Google::Apis::OracledatabaseV1::BackupDestinationDetails, decorator: Google::Apis::OracledatabaseV1::BackupDestinationDetails::Representation
+      
+          property :retention_period_days, as: 'retentionPeriodDays'
+        end
+      end
+      
+      class DbHome
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database', class: Google::Apis::OracledatabaseV1::Database, decorator: Google::Apis::OracledatabaseV1::Database::Representation
+      
+          property :db_version, as: 'dbVersion'
+          property :display_name, as: 'displayName'
+          property :is_unified_auditing_enabled, as: 'isUnifiedAuditingEnabled'
         end
       end
       
@@ -820,6 +1159,82 @@ module Google
         end
       end
       
+      class DbSystem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :entitlement_id, as: 'entitlementId'
+          property :gcp_oracle_zone, as: 'gcpOracleZone'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :oci_url, as: 'ociUrl'
+          property :odb_network, as: 'odbNetwork'
+          property :odb_subnet, as: 'odbSubnet'
+          property :properties, as: 'properties', class: Google::Apis::OracledatabaseV1::DbSystemProperties, decorator: Google::Apis::OracledatabaseV1::DbSystemProperties::Representation
+      
+        end
+      end
+      
+      class DbSystemInitialStorageSize
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :properties, as: 'properties', class: Google::Apis::OracledatabaseV1::DbSystemInitialStorageSizeProperties, decorator: Google::Apis::OracledatabaseV1::DbSystemInitialStorageSizeProperties::Representation
+      
+        end
+      end
+      
+      class DbSystemInitialStorageSizeProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :launch_from_backup_storage_size_details, as: 'launchFromBackupStorageSizeDetails', class: Google::Apis::OracledatabaseV1::StorageSizeDetails, decorator: Google::Apis::OracledatabaseV1::StorageSizeDetails::Representation
+      
+          property :shape_type, as: 'shapeType'
+          property :storage_management, as: 'storageManagement'
+          collection :storage_size_details, as: 'storageSizeDetails', class: Google::Apis::OracledatabaseV1::StorageSizeDetails, decorator: Google::Apis::OracledatabaseV1::StorageSizeDetails::Representation
+      
+        end
+      end
+      
+      class DbSystemOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :storage_management, as: 'storageManagement'
+        end
+      end
+      
+      class DbSystemProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compute_count, as: 'computeCount'
+          property :compute_model, as: 'computeModel'
+          property :data_collection_options, as: 'dataCollectionOptions', class: Google::Apis::OracledatabaseV1::DataCollectionOptionsDbSystem, decorator: Google::Apis::OracledatabaseV1::DataCollectionOptionsDbSystem::Representation
+      
+          property :data_storage_size_gb, as: 'dataStorageSizeGb'
+          property :database_edition, as: 'databaseEdition'
+          property :db_home, as: 'dbHome', class: Google::Apis::OracledatabaseV1::DbHome, decorator: Google::Apis::OracledatabaseV1::DbHome::Representation
+      
+          property :db_system_options, as: 'dbSystemOptions', class: Google::Apis::OracledatabaseV1::DbSystemOptions, decorator: Google::Apis::OracledatabaseV1::DbSystemOptions::Representation
+      
+          property :domain, as: 'domain'
+          property :hostname, as: 'hostname'
+          property :hostname_prefix, as: 'hostnamePrefix'
+          property :initial_data_storage_size_gb, as: 'initialDataStorageSizeGb'
+          property :license_model, as: 'licenseModel'
+          property :lifecycle_state, as: 'lifecycleState'
+          property :memory_size_gb, as: 'memorySizeGb'
+          property :node_count, as: 'nodeCount'
+          property :ocid, as: 'ocid'
+          property :private_ip, as: 'privateIp'
+          property :reco_storage_size_gb, as: 'recoStorageSizeGb'
+          property :shape, as: 'shape'
+          collection :ssh_public_keys, as: 'sshPublicKeys'
+          property :time_zone, as: 'timeZone', class: Google::Apis::OracledatabaseV1::TimeZone, decorator: Google::Apis::OracledatabaseV1::TimeZone::Representation
+      
+        end
+      end
+      
       class DbSystemShape
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -838,6 +1253,33 @@ module Google
         end
       end
       
+      class DbVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :properties, as: 'properties', class: Google::Apis::OracledatabaseV1::DbVersionProperties, decorator: Google::Apis::OracledatabaseV1::DbVersionProperties::Representation
+      
+        end
+      end
+      
+      class DbVersionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_latest_for_major_version, as: 'isLatestForMajorVersion'
+          property :is_preview_db_version, as: 'isPreviewDbVersion'
+          property :is_upgrade_supported, as: 'isUpgradeSupported'
+          property :supports_pdb, as: 'supportsPdb'
+          property :version, as: 'version'
+        end
+      end
+      
+      class DefinedTagValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :tags, as: 'tags'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -852,6 +1294,106 @@ module Google
           property :entitlement_id, as: 'entitlementId'
           property :name, as: 'name'
           property :state, as: 'state'
+        end
+      end
+      
+      class ExadbVmCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_odb_subnet, as: 'backupOdbSubnet'
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :entitlement_id, as: 'entitlementId'
+          property :gcp_oracle_zone, as: 'gcpOracleZone'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :odb_network, as: 'odbNetwork'
+          property :odb_subnet, as: 'odbSubnet'
+          property :properties, as: 'properties', class: Google::Apis::OracledatabaseV1::ExadbVmClusterProperties, decorator: Google::Apis::OracledatabaseV1::ExadbVmClusterProperties::Representation
+      
+        end
+      end
+      
+      class ExadbVmClusterProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_ecpu_count_per_node, as: 'additionalEcpuCountPerNode'
+          property :cluster_name, as: 'clusterName'
+          property :data_collection_options, as: 'dataCollectionOptions', class: Google::Apis::OracledatabaseV1::DataCollectionOptionsCommon, decorator: Google::Apis::OracledatabaseV1::DataCollectionOptionsCommon::Representation
+      
+          property :enabled_ecpu_count_per_node, as: 'enabledEcpuCountPerNode'
+          property :exascale_db_storage_vault, as: 'exascaleDbStorageVault'
+          property :gi_version, as: 'giVersion'
+          property :grid_image_id, as: 'gridImageId'
+          property :hostname, as: 'hostname'
+          property :hostname_prefix, as: 'hostnamePrefix'
+          property :license_model, as: 'licenseModel'
+          property :lifecycle_state, as: 'lifecycleState'
+          property :memory_size_gb, as: 'memorySizeGb'
+          property :node_count, as: 'nodeCount'
+          property :oci_uri, as: 'ociUri'
+          property :scan_listener_port_tcp, as: 'scanListenerPortTcp'
+          property :shape_attribute, as: 'shapeAttribute'
+          collection :ssh_public_keys, as: 'sshPublicKeys'
+          property :time_zone, as: 'timeZone', class: Google::Apis::OracledatabaseV1::TimeZone, decorator: Google::Apis::OracledatabaseV1::TimeZone::Representation
+      
+          property :vm_file_system_storage, as: 'vmFileSystemStorage', class: Google::Apis::OracledatabaseV1::ExadbVmClusterStorageDetails, decorator: Google::Apis::OracledatabaseV1::ExadbVmClusterStorageDetails::Representation
+      
+        end
+      end
+      
+      class ExadbVmClusterStorageDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :size_in_gbs_per_node, as: 'sizeInGbsPerNode'
+        end
+      end
+      
+      class ExascaleDbStorageDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :available_size_gbs, as: 'availableSizeGbs'
+          property :total_size_gbs, as: 'totalSizeGbs'
+        end
+      end
+      
+      class ExascaleDbStorageVault
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :entitlement_id, as: 'entitlementId'
+          property :gcp_oracle_zone, as: 'gcpOracleZone'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :properties, as: 'properties', class: Google::Apis::OracledatabaseV1::ExascaleDbStorageVaultProperties, decorator: Google::Apis::OracledatabaseV1::ExascaleDbStorageVaultProperties::Representation
+      
+        end
+      end
+      
+      class ExascaleDbStorageVaultProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_flash_cache_percent, as: 'additionalFlashCachePercent'
+          collection :attached_shape_attributes, as: 'attachedShapeAttributes'
+          collection :available_shape_attributes, as: 'availableShapeAttributes'
+          property :description, as: 'description'
+          property :exascale_db_storage_details, as: 'exascaleDbStorageDetails', class: Google::Apis::OracledatabaseV1::ExascaleDbStorageDetails, decorator: Google::Apis::OracledatabaseV1::ExascaleDbStorageDetails::Representation
+      
+          property :oci_uri, as: 'ociUri'
+          property :ocid, as: 'ocid'
+          property :state, as: 'state'
+          property :time_zone, as: 'timeZone', class: Google::Apis::OracledatabaseV1::TimeZone, decorator: Google::Apis::OracledatabaseV1::TimeZone::Representation
+      
+          property :vm_cluster_count, as: 'vmClusterCount'
+          collection :vm_cluster_ids, as: 'vmClusterIds'
+        end
+      end
+      
+      class FailoverAutonomousDatabaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :peer_autonomous_database, as: 'peerAutonomousDatabase'
         end
       end
       
@@ -941,6 +1483,24 @@ module Google
         end
       end
       
+      class ListDatabaseCharacterSetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :database_character_sets, as: 'databaseCharacterSets', class: Google::Apis::OracledatabaseV1::DatabaseCharacterSet, decorator: Google::Apis::OracledatabaseV1::DatabaseCharacterSet::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListDatabasesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :databases, as: 'databases', class: Google::Apis::OracledatabaseV1::Database, decorator: Google::Apis::OracledatabaseV1::Database::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListDbNodesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -959,6 +1519,15 @@ module Google
         end
       end
       
+      class ListDbSystemInitialStorageSizesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :db_system_initial_storage_sizes, as: 'dbSystemInitialStorageSizes', class: Google::Apis::OracledatabaseV1::DbSystemInitialStorageSize, decorator: Google::Apis::OracledatabaseV1::DbSystemInitialStorageSize::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListDbSystemShapesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -968,10 +1537,46 @@ module Google
         end
       end
       
+      class ListDbSystemsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :db_systems, as: 'dbSystems', class: Google::Apis::OracledatabaseV1::DbSystem, decorator: Google::Apis::OracledatabaseV1::DbSystem::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListDbVersionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :db_versions, as: 'dbVersions', class: Google::Apis::OracledatabaseV1::DbVersion, decorator: Google::Apis::OracledatabaseV1::DbVersion::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListEntitlementsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :entitlements, as: 'entitlements', class: Google::Apis::OracledatabaseV1::Entitlement, decorator: Google::Apis::OracledatabaseV1::Entitlement::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListExadbVmClustersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exadb_vm_clusters, as: 'exadbVmClusters', class: Google::Apis::OracledatabaseV1::ExadbVmCluster, decorator: Google::Apis::OracledatabaseV1::ExadbVmCluster::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListExascaleDbStorageVaultsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exascale_db_storage_vaults, as: 'exascaleDbStorageVaults', class: Google::Apis::OracledatabaseV1::ExascaleDbStorageVault, decorator: Google::Apis::OracledatabaseV1::ExascaleDbStorageVault::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -990,6 +1595,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :locations, as: 'locations', class: Google::Apis::OracledatabaseV1::Location, decorator: Google::Apis::OracledatabaseV1::Location::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListMinorVersionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :minor_versions, as: 'minorVersions', class: Google::Apis::OracledatabaseV1::MinorVersion, decorator: Google::Apis::OracledatabaseV1::MinorVersion::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -1024,6 +1638,15 @@ module Google
         end
       end
       
+      class ListPluggableDatabasesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :pluggable_databases, as: 'pluggableDatabases', class: Google::Apis::OracledatabaseV1::PluggableDatabase, decorator: Google::Apis::OracledatabaseV1::PluggableDatabase::Representation
+      
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1054,6 +1677,15 @@ module Google
           property :patching_mode, as: 'patchingMode'
           property :preference, as: 'preference'
           collection :weeks_of_month, as: 'weeksOfMonth'
+        end
+      end
+      
+      class MinorVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :grid_image_id, as: 'gridImageId'
+          property :name, as: 'name'
+          property :version, as: 'version'
         end
       end
       
@@ -1108,6 +1740,66 @@ module Google
         end
       end
       
+      class PluggableDatabase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :oci_url, as: 'ociUrl'
+          property :properties, as: 'properties', class: Google::Apis::OracledatabaseV1::PluggableDatabaseProperties, decorator: Google::Apis::OracledatabaseV1::PluggableDatabaseProperties::Representation
+      
+        end
+      end
+      
+      class PluggableDatabaseConnectionStrings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :all_connection_strings, as: 'allConnectionStrings'
+          property :pdb_default, as: 'pdbDefault'
+          property :pdb_ip_default, as: 'pdbIpDefault'
+        end
+      end
+      
+      class PluggableDatabaseNodeLevelDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_name, as: 'nodeName'
+          property :open_mode, as: 'openMode'
+          property :pluggable_database_id, as: 'pluggableDatabaseId'
+        end
+      end
+      
+      class PluggableDatabaseProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compartment_id, as: 'compartmentId'
+          property :connection_strings, as: 'connectionStrings', class: Google::Apis::OracledatabaseV1::PluggableDatabaseConnectionStrings, decorator: Google::Apis::OracledatabaseV1::PluggableDatabaseConnectionStrings::Representation
+      
+          property :container_database_ocid, as: 'containerDatabaseOcid'
+          property :database_management_config, as: 'databaseManagementConfig', class: Google::Apis::OracledatabaseV1::DatabaseManagementConfig, decorator: Google::Apis::OracledatabaseV1::DatabaseManagementConfig::Representation
+      
+          hash :defined_tags, as: 'definedTags', class: Google::Apis::OracledatabaseV1::DefinedTagValue, decorator: Google::Apis::OracledatabaseV1::DefinedTagValue::Representation
+      
+          hash :freeform_tags, as: 'freeformTags'
+          property :is_restricted, as: 'isRestricted'
+          property :lifecycle_details, as: 'lifecycleDetails'
+          property :lifecycle_state, as: 'lifecycleState'
+          property :ocid, as: 'ocid'
+          property :operations_insights_state, as: 'operationsInsightsState'
+          property :pdb_name, as: 'pdbName'
+          collection :pdb_node_level_details, as: 'pdbNodeLevelDetails', class: Google::Apis::OracledatabaseV1::PluggableDatabaseNodeLevelDetails, decorator: Google::Apis::OracledatabaseV1::PluggableDatabaseNodeLevelDetails::Representation
+      
+        end
+      end
+      
+      class RemoveVirtualMachineExadbVmClusterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :hostnames, as: 'hostnames'
+          property :request_id, as: 'requestId'
+        end
+      end
+      
       class RestartAutonomousDatabaseRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1158,6 +1850,14 @@ module Google
       class StopAutonomousDatabaseRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class StorageSizeDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_storage_size_in_gbs, as: 'dataStorageSizeInGbs'
+          property :reco_storage_size_in_gbs, as: 'recoStorageSizeInGbs'
         end
       end
       
