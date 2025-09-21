@@ -502,6 +502,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Message
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -599,6 +605,12 @@ module Google
       end
       
       class QueryResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReadPoolAutoScaleConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -803,6 +815,12 @@ module Google
       end
       
       class SyncFlags
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetMetric
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1777,6 +1795,14 @@ module Google
         end
       end
       
+      class Message
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :severity, as: 'severity'
+        end
+      end
+      
       class Metadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1990,6 +2016,18 @@ module Google
         end
       end
       
+      class ReadPoolAutoScaleConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_scale_in, as: 'disableScaleIn'
+          property :enabled, as: 'enabled'
+          property :max_node_count, as: 'maxNodeCount'
+          property :min_node_count, as: 'minNodeCount'
+          collection :target_metrics, as: 'targetMetrics', class: Google::Apis::SqladminV1::TargetMetric, decorator: Google::Apis::SqladminV1::TargetMetric::Representation
+      
+        end
+      end
+      
       class ReplicaConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2105,6 +2143,8 @@ module Google
           property :password_validation_policy, as: 'passwordValidationPolicy', class: Google::Apis::SqladminV1::PasswordValidationPolicy, decorator: Google::Apis::SqladminV1::PasswordValidationPolicy::Representation
       
           property :pricing_plan, as: 'pricingPlan'
+          property :read_pool_auto_scale_config, as: 'readPoolAutoScaleConfig', class: Google::Apis::SqladminV1::ReadPoolAutoScaleConfig, decorator: Google::Apis::SqladminV1::ReadPoolAutoScaleConfig::Representation
+      
           property :replication_lag_max_seconds, as: 'replicationLagMaxSeconds'
           property :replication_type, as: 'replicationType'
           property :retain_backups_on_delete, as: 'retainBackupsOnDelete'
@@ -2150,6 +2190,8 @@ module Google
       class SqlInstancesExecuteSqlResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :messages, as: 'messages', class: Google::Apis::SqladminV1::Message, decorator: Google::Apis::SqladminV1::Message::Representation
+      
           property :metadata, as: 'metadata', class: Google::Apis::SqladminV1::Metadata, decorator: Google::Apis::SqladminV1::Metadata::Representation
       
           collection :results, as: 'results', class: Google::Apis::SqladminV1::QueryResult, decorator: Google::Apis::SqladminV1::QueryResult::Representation
@@ -2355,6 +2397,14 @@ module Google
         end
       end
       
+      class TargetMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric, as: 'metric'
+          property :target_value, as: 'targetValue'
+        end
+      end
+      
       class Tier
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2389,6 +2439,7 @@ module Google
           property :dual_password_type, as: 'dualPasswordType'
           property :etag, as: 'etag'
           property :host, as: 'host'
+          property :iam_status, as: 'iamStatus'
           property :instance, as: 'instance'
           property :kind, as: 'kind'
           property :name, as: 'name'

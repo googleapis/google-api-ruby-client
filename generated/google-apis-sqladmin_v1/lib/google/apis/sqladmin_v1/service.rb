@@ -1561,6 +1561,8 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] mode
+        #   Optional. Reset SSL mode to use.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1578,12 +1580,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def reset_instance_ssl_config(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def reset_instance_ssl_config(project, instance, mode: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/resetSslConfig', options)
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['mode'] = mode unless mode.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
