@@ -7158,11 +7158,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :aspect_types
       
-        # Required. The entry group that is in scope for the import job, specified as a
-        # relative resource name in the format projects/`project_number_or_id`/locations/
-        # `location_id`/entryGroups/`entry_group_id`. Only entries and aspects that
-        # belong to the specified entry group are affected by the job.Must contain
-        # exactly one element. The entry group and the job must be in the same location.
+        # Required. The entry groups that are in scope for the import job, specified as
+        # relative resource names in the format projects/`project_number_or_id`/
+        # locations/`location_id`/entryGroups/`entry_group_id`. Only entries and aspects
+        # that belong to the specified entry groups are affected by the job.The entry
+        # groups and the job must be in the same location.
         # Corresponds to the JSON property `entryGroups`
         # @return [Array<String>]
         attr_accessor :entry_groups
