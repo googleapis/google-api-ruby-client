@@ -40043,6 +40043,25 @@ module Google
       end
       
       # 
+      class NetworksCancelRequestRemovePeeringRequest
+        include Google::Apis::Core::Hashable
+      
+        # Name of the peering, which should conform to RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
       class NetworksGetEffectiveFirewallsResponse
         include Google::Apis::Core::Hashable
       
@@ -54249,6 +54268,14 @@ module Google
         # @return [String]
         attr_accessor :ipv6_nexthop_address
       
+        # The linked custom hardware resource. The URI of the custom hardware link
+        # attachment is where you will establish the BGP session from the Cloud Router.
+        # This link attachment must reside in the same subnetwork as the associated
+        # router interface.
+        # Corresponds to the JSON property `linkedCustomHardware`
+        # @return [String]
+        attr_accessor :linked_custom_hardware
+      
         # [Output Only] The resource that configures and manages this BGP peer. -
         # MANAGED_BY_USER is the default value and can be managed by you or other users -
         # MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud
@@ -54327,6 +54354,7 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ipv4_nexthop_address = args[:ipv4_nexthop_address] if args.key?(:ipv4_nexthop_address)
           @ipv6_nexthop_address = args[:ipv6_nexthop_address] if args.key?(:ipv6_nexthop_address)
+          @linked_custom_hardware = args[:linked_custom_hardware] if args.key?(:linked_custom_hardware)
           @management_type = args[:management_type] if args.key?(:management_type)
           @md5_authentication_key_name = args[:md5_authentication_key_name] if args.key?(:md5_authentication_key_name)
           @name = args[:name] if args.key?(:name)
@@ -55194,6 +55222,13 @@ module Google
         # @return [String]
         attr_accessor :ipv6_nexthop_address
       
+        # The URI of the linked custom hardware resource, CustomHardwareLinkAttachment.
+        # This CustomHardwareLinkAttachment resource is the one that will establish the
+        # BGP session from the Cloud Router.
+        # Corresponds to the JSON property `linkedCustomHardware`
+        # @return [String]
+        attr_accessor :linked_custom_hardware
+      
         # URL of the VPN tunnel that this BGP peer controls.
         # Corresponds to the JSON property `linkedVpnTunnel`
         # @return [String]
@@ -55277,6 +55312,7 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ipv4_nexthop_address = args[:ipv4_nexthop_address] if args.key?(:ipv4_nexthop_address)
           @ipv6_nexthop_address = args[:ipv6_nexthop_address] if args.key?(:ipv6_nexthop_address)
+          @linked_custom_hardware = args[:linked_custom_hardware] if args.key?(:linked_custom_hardware)
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
           @md5_auth_enabled = args[:md5_auth_enabled] if args.key?(:md5_auth_enabled)
           @name = args[:name] if args.key?(:name)
