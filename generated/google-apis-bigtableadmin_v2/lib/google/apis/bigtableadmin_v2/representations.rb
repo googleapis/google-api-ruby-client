@@ -1104,7 +1104,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :finish_time, as: 'finishTime'
           property :name, as: 'name'
+          property :request_time, as: 'requestTime'
           property :source_table, as: 'sourceTable'
           property :start_time, as: 'startTime'
         end
@@ -1158,8 +1160,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :finish_time, as: 'finishTime'
           property :original_request, as: 'originalRequest', class: Google::Apis::BigtableadminV2::CreateLogicalViewRequest, decorator: Google::Apis::BigtableadminV2::CreateLogicalViewRequest::Representation
       
+          property :request_time, as: 'requestTime'
           property :start_time, as: 'startTime'
         end
       end
@@ -1178,8 +1182,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :finish_time, as: 'finishTime'
           property :original_request, as: 'originalRequest', class: Google::Apis::BigtableadminV2::CreateMaterializedViewRequest, decorator: Google::Apis::BigtableadminV2::CreateMaterializedViewRequest::Representation
       
+          property :request_time, as: 'requestTime'
           property :start_time, as: 'startTime'
         end
       end
@@ -1197,9 +1203,9 @@ module Google
       class CreateSchemaBundleMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
+          property :finish_time, as: 'finishTime'
           property :name, as: 'name'
-          property :start_time, as: 'startTime'
+          property :request_time, as: 'requestTime'
         end
       end
       
@@ -2066,7 +2072,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :finish_time, as: 'finishTime'
           property :name, as: 'name'
+          property :request_time, as: 'requestTime'
           property :start_time, as: 'startTime'
         end
       end
@@ -2135,8 +2143,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :finish_time, as: 'finishTime'
           property :original_request, as: 'originalRequest', class: Google::Apis::BigtableadminV2::UpdateLogicalViewRequest, decorator: Google::Apis::BigtableadminV2::UpdateLogicalViewRequest::Representation
       
+          property :request_time, as: 'requestTime'
           property :start_time, as: 'startTime'
         end
       end
@@ -2153,9 +2163,9 @@ module Google
       class UpdateSchemaBundleMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
+          property :finish_time, as: 'finishTime'
           property :name, as: 'name'
-          property :start_time, as: 'startTime'
+          property :request_time, as: 'requestTime'
         end
       end
       
@@ -2163,7 +2173,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :finish_time, as: 'finishTime'
           property :name, as: 'name'
+          property :request_time, as: 'requestTime'
           property :start_time, as: 'startTime'
         end
       end
