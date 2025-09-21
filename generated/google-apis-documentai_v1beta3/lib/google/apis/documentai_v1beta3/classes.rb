@@ -3720,6 +3720,11 @@ module Google
       class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock
         include Google::Apis::Core::Hashable
       
+        # Represents the annotation of a block or a chunk.
+        # Corresponds to the JSON property `annotations`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentAnnotations]
+        attr_accessor :annotations
+      
         # A text block could further have child blocks. Repeated blocks support further
         # hierarchies and nested blocks.
         # Corresponds to the JSON property `blocks`
@@ -3744,6 +3749,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @blocks = args[:blocks] if args.key?(:blocks)
           @text = args[:text] if args.key?(:text)
           @type = args[:type] if args.key?(:type)
@@ -6688,8 +6694,7 @@ module Google
         attr_accessor :external_processor_version_source
       
         # The source processor version to import from. The source processor version and
-        # destination processor need to be in the same environment and region. Note that
-        # ProcessorVersions with `model_type` `MODEL_TYPE_LLM` are not supported.
+        # destination processor need to be in the same environment and region.
         # Corresponds to the JSON property `processorVersionSource`
         # @return [String]
         attr_accessor :processor_version_source
@@ -7403,6 +7408,13 @@ module Google
       class GoogleCloudDocumentaiV1beta3Processor
         include Google::Apis::Core::Hashable
       
+        # Optional. SchemaVersion used by the Processor. It is the same as Processor's
+        # DatasetSchema.schema_version Format is `projects/`project`/locations/`location`
+        # /schemas/`schema`/schemaVersions/`schema_version`
+        # Corresponds to the JSON property `activeSchemaVersion`
+        # @return [String]
+        attr_accessor :active_schema_version
+      
         # Output only. The time the processor was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -7470,6 +7482,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_schema_version = args[:active_schema_version] if args.key?(:active_schema_version)
           @create_time = args[:create_time] if args.key?(:create_time)
           @default_processor_version = args[:default_processor_version] if args.key?(:default_processor_version)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -8236,7 +8249,7 @@ module Google
       class GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestCustomDocumentExtractionOptions
         include Google::Apis::Core::Hashable
       
-        # Training method to use for CDE training.
+        # Optional. Training method to use for CDE training.
         # Corresponds to the JSON property `trainingMethod`
         # @return [String]
         attr_accessor :training_method
