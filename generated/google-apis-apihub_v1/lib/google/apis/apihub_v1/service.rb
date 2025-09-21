@@ -119,8 +119,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
+        #   field which is primarily intended for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -270,7 +270,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the API hub instance.
+        # Deletes the API hub instance. Deleting the API hub instance will also result
+        # in the removal of all associated runtime project attachments and the host
+        # project registration.
         # @param [String] name
         #   Required. The name of the Api Hub instance to delete. Format: `projects/`
         #   project`/locations/`location`/apiHubInstances/`apiHubInstance``.
@@ -3609,6 +3611,41 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Manages data for a given plugin instance.
+        # @param [String] name
+        #   Required. The name of the plugin instance for which data needs to be managed.
+        #   Format: `projects/`project`/locations/`location`/plugins/`plugin`/instances/`
+        #   instance``
+        # @param [Google::Apis::ApihubV1::GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest] google_cloud_apihub_v1_manage_plugin_instance_source_data_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApihubV1::GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def manage_project_location_plugin_instance_source_data(name, google_cloud_apihub_v1_manage_plugin_instance_source_data_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:manageSourceData', options)
+          command.request_representation = Google::Apis::ApihubV1::GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest::Representation
+          command.request_object = google_cloud_apihub_v1_manage_plugin_instance_source_data_request_object
+          command.response_representation = Google::Apis::ApihubV1::GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse::Representation
+          command.response_class = Google::Apis::ApihubV1::GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -454,6 +454,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApihubV1MatchResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1535,6 +1547,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :runtime_project_attachment, as: 'runtimeProjectAttachment', class: Google::Apis::ApihubV1::GoogleCloudApihubV1RuntimeProjectAttachment, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1RuntimeProjectAttachment::Representation
       
+        end
+      end
+      
+      class GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :data, :base64 => true, as: 'data'
+          property :data_type, as: 'dataType'
+          property :relative_path, as: 'relativePath'
+        end
+      end
+      
+      class GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

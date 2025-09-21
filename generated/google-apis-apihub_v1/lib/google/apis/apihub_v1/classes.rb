@@ -2811,6 +2811,57 @@ module Google
         end
       end
       
+      # The ManagePluginInstanceSourceData method's request.
+      class GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Action to be performed.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Required. Data to be managed.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Required. Type of data to be managed.
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        # Required. Relative path of data being managed for a given plugin instance.
+        # Corresponds to the JSON property `relativePath`
+        # @return [String]
+        attr_accessor :relative_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @data = args[:data] if args.key?(:data)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @relative_path = args[:relative_path] if args.key?(:relative_path)
+        end
+      end
+      
+      # The ManagePluginInstanceSourceData method's response.
+      class GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # MatchResult represents the result of matching a discovered API operation with
       # a catalog API operation.
       class GoogleCloudApihubV1MatchResult
@@ -3129,7 +3180,9 @@ module Google
       class GoogleCloudApihubV1Plugin
         include Google::Apis::Core::Hashable
       
-        # Required. The configuration of actions supported by the plugin.
+        # Optional. The configuration of actions supported by the plugin. **REQUIRED**:
+        # This field must be provided when creating or updating a Plugin. The server
+        # will reject requests if this field is missing.
         # Corresponds to the JSON property `actionsConfig`
         # @return [Array<Google::Apis::ApihubV1::GoogleCloudApihubV1PluginActionConfig>]
         attr_accessor :actions_config
