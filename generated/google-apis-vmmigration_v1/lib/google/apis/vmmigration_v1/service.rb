@@ -582,7 +582,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Initiates the cancellation of a running clone job.
+        # Initiates the cancellation of a running ImageImportJob.
         # @param [String] name
         #   Required. The image import job id.
         # @param [Google::Apis::VmmigrationV1::CancelImageImportJobRequest] cancel_image_import_job_request_object
