@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdaptationModifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdaptingOsStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -823,6 +829,14 @@ module Google
         end
       end
       
+      class AdaptationModifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :modifier, as: 'modifier'
+          property :value, as: 'value'
+        end
+      end
+      
       class AdaptingOsStep
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1151,6 +1165,8 @@ module Google
       class ComputeEngineTargetDefaults
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :adaptation_modifiers, as: 'adaptationModifiers', class: Google::Apis::VmmigrationV1alpha1::AdaptationModifier, decorator: Google::Apis::VmmigrationV1alpha1::AdaptationModifier::Representation
+      
           collection :additional_licenses, as: 'additionalLicenses'
           property :applied_license, as: 'appliedLicense', class: Google::Apis::VmmigrationV1alpha1::AppliedLicense, decorator: Google::Apis::VmmigrationV1alpha1::AppliedLicense::Representation
       
@@ -1184,6 +1200,8 @@ module Google
       class ComputeEngineTargetDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :adaptation_modifiers, as: 'adaptationModifiers', class: Google::Apis::VmmigrationV1alpha1::AdaptationModifier, decorator: Google::Apis::VmmigrationV1alpha1::AdaptationModifier::Representation
+      
           collection :additional_licenses, as: 'additionalLicenses'
           property :applied_license, as: 'appliedLicense', class: Google::Apis::VmmigrationV1alpha1::AppliedLicense, decorator: Google::Apis::VmmigrationV1alpha1::AppliedLicense::Representation
       
@@ -1574,6 +1592,8 @@ module Google
       class ImageImportOsAdaptationParameters
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :adaptation_modifiers, as: 'adaptationModifiers', class: Google::Apis::VmmigrationV1alpha1::AdaptationModifier, decorator: Google::Apis::VmmigrationV1alpha1::AdaptationModifier::Representation
+      
           property :boot_conversion, as: 'bootConversion'
           property :generalize, as: 'generalize'
           property :license_type, as: 'licenseType'
