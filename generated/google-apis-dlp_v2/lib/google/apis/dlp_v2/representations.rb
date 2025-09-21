@@ -1822,6 +1822,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2TagFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2TagFilters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2TagResources
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3530,6 +3542,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :include_regexes, as: 'includeRegexes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreRegexes, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreRegexes::Representation
       
+          property :include_tags, as: 'includeTags', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TagFilters, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TagFilters::Representation
+      
         end
       end
       
@@ -4444,6 +4458,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :output_schema, as: 'outputSchema'
+          property :storage_path, as: 'storagePath', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStoragePath, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStoragePath::Representation
+      
           property :table, as: 'table', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable::Representation
       
         end
@@ -5161,6 +5177,22 @@ module Google
           property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore::Representation
       
           property :tag, as: 'tag', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TagValue, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TagValue::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2TagFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :namespaced_tag_key, as: 'namespacedTagKey'
+          property :namespaced_tag_value, as: 'namespacedTagValue'
+        end
+      end
+      
+      class GooglePrivacyDlpV2TagFilters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tag_filters, as: 'tagFilters', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TagFilter, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TagFilter::Representation
       
         end
       end
