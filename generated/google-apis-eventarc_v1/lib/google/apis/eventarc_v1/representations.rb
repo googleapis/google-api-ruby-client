@@ -316,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrganizationSubscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Pipeline
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -323,6 +329,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProjectSubscriptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -545,6 +557,10 @@ module Google
           property :logging_config, as: 'loggingConfig', class: Google::Apis::EventarcV1::LoggingConfig, decorator: Google::Apis::EventarcV1::LoggingConfig::Representation
       
           property :name, as: 'name'
+          property :organization_subscription, as: 'organizationSubscription', class: Google::Apis::EventarcV1::OrganizationSubscription, decorator: Google::Apis::EventarcV1::OrganizationSubscription::Representation
+      
+          property :project_subscriptions, as: 'projectSubscriptions', class: Google::Apis::EventarcV1::ProjectSubscriptions, decorator: Google::Apis::EventarcV1::ProjectSubscriptions::Representation
+      
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -870,6 +886,13 @@ module Google
         end
       end
       
+      class OrganizationSubscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class Pipeline
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -905,6 +928,13 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class ProjectSubscriptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :list, as: 'list'
         end
       end
       
