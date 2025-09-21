@@ -59,6 +59,14 @@ module Google
         # @return [String]
         attr_accessor :provider
       
+        # The reseller parent billing account of the account's corresponding billing
+        # account, applicable only when the corresponding billing account is a
+        # subaccount of a reseller. Included in responses only for view
+        # ACCOUNT_VIEW_FULL. Format: billingAccounts/`billing_account_id`
+        # Corresponds to the JSON property `resellerParentBillingAccount`
+        # @return [String]
+        attr_accessor :reseller_parent_billing_account
+      
         # Output only. The state of the account. This is used to decide whether the
         # customer is in good standing with the provider and is able to make purchases.
         # An account might not be able to make a purchase if the billing account is
@@ -83,6 +91,7 @@ module Google
           @input_properties = args[:input_properties] if args.key?(:input_properties)
           @name = args[:name] if args.key?(:name)
           @provider = args[:provider] if args.key?(:provider)
+          @reseller_parent_billing_account = args[:reseller_parent_billing_account] if args.key?(:reseller_parent_billing_account)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
