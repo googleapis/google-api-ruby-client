@@ -6286,6 +6286,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SubnetworkUtilizationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubnetworkUtilizationDetailsIpv4Utilization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubnetworkUtilizationDetailsIpv6Utilization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubnetworksExpandIpCidrRangeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -12839,6 +12857,7 @@ module Google
           collection :region_infos, as: 'regionInfos', class: Google::Apis::ComputeV1::InterconnectLocationRegionInfo, decorator: Google::Apis::ComputeV1::InterconnectLocationRegionInfo::Representation
       
           property :self_link, as: 'selfLink'
+          collection :single_region_production_critical_peer_locations, as: 'singleRegionProductionCriticalPeerLocations'
           property :status, as: 'status'
           property :supports_pzs, as: 'supportsPzs'
         end
@@ -12953,6 +12972,7 @@ module Google
           property :lacp, as: 'lacp'
           property :max_lag_size100_gbps, as: 'maxLagSize100Gbps'
           property :max_lag_size10_gbps, as: 'maxLagSize10Gbps'
+          property :max_lag_size400_gbps, as: 'maxLagSize400Gbps'
           property :name, as: 'name'
           property :peeringdb_facility_id, as: 'peeringdbFacilityId'
           collection :permitted_connections, as: 'permittedConnections', class: Google::Apis::ComputeV1::InterconnectRemoteLocationPermittedConnections, decorator: Google::Apis::ComputeV1::InterconnectRemoteLocationPermittedConnections::Representation
@@ -16156,6 +16176,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backend_service, as: 'backendService'
+          property :mirror_percent, as: 'mirrorPercent'
         end
       end
       
@@ -18990,6 +19011,8 @@ module Google
           property :state, as: 'state'
           collection :system_reserved_external_ipv6_ranges, as: 'systemReservedExternalIpv6Ranges'
           collection :system_reserved_internal_ipv6_ranges, as: 'systemReservedInternalIpv6Ranges'
+          property :utilization_details, as: 'utilizationDetails', class: Google::Apis::ComputeV1::SubnetworkUtilizationDetails, decorator: Google::Apis::ComputeV1::SubnetworkUtilizationDetails::Representation
+      
         end
       end
       
@@ -19083,6 +19106,39 @@ module Google
           property :ip_cidr_range, as: 'ipCidrRange'
           property :range_name, as: 'rangeName'
           property :reserved_internal_range, as: 'reservedInternalRange'
+        end
+      end
+      
+      class SubnetworkUtilizationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_ipv6_instance_utilization, as: 'externalIpv6InstanceUtilization', class: Google::Apis::ComputeV1::SubnetworkUtilizationDetailsIpv6Utilization, decorator: Google::Apis::ComputeV1::SubnetworkUtilizationDetailsIpv6Utilization::Representation
+      
+          property :external_ipv6_lb_utilization, as: 'externalIpv6LbUtilization', class: Google::Apis::ComputeV1::SubnetworkUtilizationDetailsIpv6Utilization, decorator: Google::Apis::ComputeV1::SubnetworkUtilizationDetailsIpv6Utilization::Representation
+      
+          property :internal_ipv6_utilization, as: 'internalIpv6Utilization', class: Google::Apis::ComputeV1::SubnetworkUtilizationDetailsIpv6Utilization, decorator: Google::Apis::ComputeV1::SubnetworkUtilizationDetailsIpv6Utilization::Representation
+      
+          collection :ipv4_utilizations, as: 'ipv4Utilizations', class: Google::Apis::ComputeV1::SubnetworkUtilizationDetailsIpv4Utilization, decorator: Google::Apis::ComputeV1::SubnetworkUtilizationDetailsIpv4Utilization::Representation
+      
+        end
+      end
+      
+      class SubnetworkUtilizationDetailsIpv4Utilization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :range_name, as: 'rangeName'
+          property :total_allocated_ip, :numeric_string => true, as: 'totalAllocatedIp'
+          property :total_free_ip, :numeric_string => true, as: 'totalFreeIp'
+        end
+      end
+      
+      class SubnetworkUtilizationDetailsIpv6Utilization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :total_allocated_ip, as: 'totalAllocatedIp', class: Google::Apis::ComputeV1::Uint128, decorator: Google::Apis::ComputeV1::Uint128::Representation
+      
+          property :total_free_ip, as: 'totalFreeIp', class: Google::Apis::ComputeV1::Uint128, decorator: Google::Apis::ComputeV1::Uint128::Representation
+      
         end
       end
       
