@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DatabaseResourceSignalData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiscoveryEndpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -874,6 +880,8 @@ module Google
       
           property :config_based_signal_data, as: 'configBasedSignalData', class: Google::Apis::RedisV1::ConfigBasedSignalData, decorator: Google::Apis::RedisV1::ConfigBasedSignalData::Representation
       
+          property :database_resource_signal_data, as: 'databaseResourceSignalData', class: Google::Apis::RedisV1::DatabaseResourceSignalData, decorator: Google::Apis::RedisV1::DatabaseResourceSignalData::Representation
+      
           property :feed_timestamp, as: 'feedTimestamp'
           property :feed_type, as: 'feedType'
           property :observability_metric_data, as: 'observabilityMetricData', class: Google::Apis::RedisV1::ObservabilityMetricData, decorator: Google::Apis::RedisV1::ObservabilityMetricData::Representation
@@ -962,6 +970,7 @@ module Google
           property :updation_time, as: 'updationTime'
           property :user_label_set, as: 'userLabelSet', class: Google::Apis::RedisV1::UserLabels, decorator: Google::Apis::RedisV1::UserLabels::Representation
       
+          property :zone, as: 'zone'
         end
       end
       
@@ -975,6 +984,19 @@ module Google
           property :recommender_id, as: 'recommenderId'
           property :recommender_subtype, as: 'recommenderSubtype'
           property :resource_name, as: 'resourceName'
+          property :signal_type, as: 'signalType'
+        end
+      end
+      
+      class DatabaseResourceSignalData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_resource_name, as: 'fullResourceName'
+          property :last_refresh_time, as: 'lastRefreshTime'
+          property :resource_id, as: 'resourceId', class: Google::Apis::RedisV1::DatabaseResourceId, decorator: Google::Apis::RedisV1::DatabaseResourceId::Representation
+      
+          property :signal_bool_value, as: 'signalBoolValue'
+          property :signal_state, as: 'signalState'
           property :signal_type, as: 'signalType'
         end
       end
