@@ -5577,6 +5577,13 @@ module Google
       class GoogleCloudDocumentaiV1Processor
         include Google::Apis::Core::Hashable
       
+        # Optional. SchemaVersion used by the Processor. It is the same as Processor's
+        # DatasetSchema.schema_version Format is `projects/`project`/locations/`location`
+        # /schemas/`schema`/schemaVersions/`schema_version`
+        # Corresponds to the JSON property `activeSchemaVersion`
+        # @return [String]
+        attr_accessor :active_schema_version
+      
         # Output only. The time the processor was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -5644,6 +5651,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_schema_version = args[:active_schema_version] if args.key?(:active_schema_version)
           @create_time = args[:create_time] if args.key?(:create_time)
           @default_processor_version = args[:default_processor_version] if args.key?(:default_processor_version)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -6292,7 +6300,7 @@ module Google
       class GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions
         include Google::Apis::Core::Hashable
       
-        # Training method to use for CDE training.
+        # Optional. Training method to use for CDE training.
         # Corresponds to the JSON property `trainingMethod`
         # @return [String]
         attr_accessor :training_method
