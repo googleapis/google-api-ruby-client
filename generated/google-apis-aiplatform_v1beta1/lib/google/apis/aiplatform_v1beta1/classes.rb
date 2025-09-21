@@ -7285,8 +7285,10 @@ module Google
       class GoogleCloudAiplatformV1beta1DeployRequestEndpointConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. By default, if dedicated endpoint is enabled, the endpoint will be
-        # exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your
+        # Optional. By default, if dedicated endpoint is enabled and private service
+        # connect config is not set, the endpoint will be exposed through a dedicated
+        # DNS [Endpoint.dedicated_endpoint_dns]. If private service connect config is
+        # set, the endpoint will be exposed through private service connect. Your
         # request to the dedicated DNS will be isolated from other users' traffic and
         # will have better performance and reliability. Note: Once you enabled dedicated
         # endpoint, you won't be able to send request to the shared DNS `region`-
@@ -7329,6 +7331,11 @@ module Google
         # @return [String]
         attr_accessor :endpoint_user_id
       
+        # Represents configuration for private service connect.
+        # Corresponds to the JSON property `privateServiceConnectConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig]
+        attr_accessor :private_service_connect_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7339,6 +7346,7 @@ module Google
           @dedicated_endpoint_enabled = args[:dedicated_endpoint_enabled] if args.key?(:dedicated_endpoint_enabled)
           @endpoint_display_name = args[:endpoint_display_name] if args.key?(:endpoint_display_name)
           @endpoint_user_id = args[:endpoint_user_id] if args.key?(:endpoint_user_id)
+          @private_service_connect_config = args[:private_service_connect_config] if args.key?(:private_service_connect_config)
         end
       end
       
@@ -8337,6 +8345,53 @@ module Google
         def update!(**args)
           @dynamic_threshold = args[:dynamic_threshold] if args.key?(:dynamic_threshold)
           @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
+      # Request message for ModelGardenService.EnableModel.
+      class GoogleCloudAiplatformV1beta1EnableModelRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The ID links the Marketplace listing to the underlying Vertex AI
+        # model endpoint. Format: `services/`service_id`` Format: `services/`service_id``
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # Response message for ModelGardenService.EnableModel.
+      class GoogleCloudAiplatformV1beta1EnableModelResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The result of the model enablement.
+        # Corresponds to the JSON property `enablementState`
+        # @return [String]
+        attr_accessor :enablement_state
+      
+        # Output only. The publisher endpoint that the project is enabled for. Format: `
+        # projects/`project`/locations/`location`/publishers/`publisher`/models/`
+        # publisher_model``
+        # Corresponds to the JSON property `publisherEndpoint`
+        # @return [String]
+        attr_accessor :publisher_endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enablement_state = args[:enablement_state] if args.key?(:enablement_state)
+          @publisher_endpoint = args[:publisher_endpoint] if args.key?(:publisher_endpoint)
         end
       end
       
@@ -10183,11 +10238,6 @@ module Google
       class GoogleCloudAiplatformV1beta1EvaluationRunMetric
         include Google::Apis::Core::Hashable
       
-        # Specification for a computation based metric.
-        # Corresponds to the JSON property `computationBasedMetricSpec`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunMetricComputationBasedMetricSpec]
-        attr_accessor :computation_based_metric_spec
-      
         # Specification for an LLM based metric.
         # Corresponds to the JSON property `llmBasedMetricSpec`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunMetricLlmBasedMetricSpec]
@@ -10214,36 +10264,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @computation_based_metric_spec = args[:computation_based_metric_spec] if args.key?(:computation_based_metric_spec)
           @llm_based_metric_spec = args[:llm_based_metric_spec] if args.key?(:llm_based_metric_spec)
           @metric = args[:metric] if args.key?(:metric)
           @predefined_metric_spec = args[:predefined_metric_spec] if args.key?(:predefined_metric_spec)
           @rubric_based_metric_spec = args[:rubric_based_metric_spec] if args.key?(:rubric_based_metric_spec)
-        end
-      end
-      
-      # Specification for a computation based metric.
-      class GoogleCloudAiplatformV1beta1EvaluationRunMetricComputationBasedMetricSpec
-        include Google::Apis::Core::Hashable
-      
-        # Optional. A map of parameters for the metric, e.g. `"rouge_type": "rougeL"`.
-        # Corresponds to the JSON property `parameters`
-        # @return [Hash<String,Object>]
-        attr_accessor :parameters
-      
-        # Required. The type of the computation based metric.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @parameters = args[:parameters] if args.key?(:parameters)
-          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -16494,7 +16518,9 @@ module Google
         # @return [String]
         attr_accessor :model_version
       
-        # Content filter results for a prompt sent in the request.
+        # Content filter results for a prompt sent in the request. Note: This is sent
+        # only in the first stream chunk and only if no candidates were generated due to
+        # content violations.
         # Corresponds to the JSON property `promptFeedback`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback]
         attr_accessor :prompt_feedback
@@ -16505,7 +16531,8 @@ module Google
         # @return [String]
         attr_accessor :response_id
       
-        # Usage metadata about response(s).
+        # Usage metadata about the content generation request and response. This message
+        # provides a detailed breakdown of token usage and other relevant metrics.
         # Corresponds to the JSON property `usageMetadata`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata]
         attr_accessor :usage_metadata
@@ -16525,21 +16552,25 @@ module Google
         end
       end
       
-      # Content filter results for a prompt sent in the request.
+      # Content filter results for a prompt sent in the request. Note: This is sent
+      # only in the first stream chunk and only if no candidates were generated due to
+      # content violations.
       class GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback
         include Google::Apis::Core::Hashable
       
-        # Output only. Blocked reason.
+        # Output only. The reason why the prompt was blocked.
         # Corresponds to the JSON property `blockReason`
         # @return [String]
         attr_accessor :block_reason
       
-        # Output only. A readable block reason message.
+        # Output only. A readable message that explains the reason why the prompt was
+        # blocked.
         # Corresponds to the JSON property `blockReasonMessage`
         # @return [String]
         attr_accessor :block_reason_message
       
-        # Output only. Safety ratings.
+        # Output only. A list of safety ratings for the prompt. There is one rating per
+        # category.
         # Corresponds to the JSON property `safetyRatings`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetyRating>]
         attr_accessor :safety_ratings
@@ -16556,67 +16587,73 @@ module Google
         end
       end
       
-      # Usage metadata about response(s).
+      # Usage metadata about the content generation request and response. This message
+      # provides a detailed breakdown of token usage and other relevant metrics.
       class GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata
         include Google::Apis::Core::Hashable
       
-        # Output only. List of modalities of the cached content in the request input.
+        # Output only. A detailed breakdown of the token count for each modality in the
+        # cached content.
         # Corresponds to the JSON property `cacheTokensDetails`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
         attr_accessor :cache_tokens_details
       
-        # Output only. Number of tokens in the cached part in the input (the cached
-        # content).
+        # Output only. The number of tokens in the cached content that was used for this
+        # request.
         # Corresponds to the JSON property `cachedContentTokenCount`
         # @return [Fixnum]
         attr_accessor :cached_content_token_count
       
-        # Number of tokens in the response(s).
+        # The total number of tokens in the generated candidates.
         # Corresponds to the JSON property `candidatesTokenCount`
         # @return [Fixnum]
         attr_accessor :candidates_token_count
       
-        # Output only. List of modalities that were returned in the response.
+        # Output only. A detailed breakdown of the token count for each modality in the
+        # generated candidates.
         # Corresponds to the JSON property `candidatesTokensDetails`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
         attr_accessor :candidates_tokens_details
       
-        # Number of tokens in the request. When `cached_content` is set, this is still
-        # the total effective prompt size meaning this includes the number of tokens in
-        # the cached content.
+        # The total number of tokens in the prompt. This includes any text, images, or
+        # other media provided in the request. When `cached_content` is set, this also
+        # includes the number of tokens in the cached content.
         # Corresponds to the JSON property `promptTokenCount`
         # @return [Fixnum]
         attr_accessor :prompt_token_count
       
-        # Output only. List of modalities that were processed in the request input.
+        # Output only. A detailed breakdown of the token count for each modality in the
+        # prompt.
         # Corresponds to the JSON property `promptTokensDetails`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
         attr_accessor :prompt_tokens_details
       
-        # Output only. Number of tokens present in thoughts output.
+        # Output only. The number of tokens that were part of the model's generated "
+        # thoughts" output, if applicable.
         # Corresponds to the JSON property `thoughtsTokenCount`
         # @return [Fixnum]
         attr_accessor :thoughts_token_count
       
-        # Output only. Number of tokens present in tool-use prompt(s).
+        # Output only. The number of tokens in the results from tool executions, which
+        # are provided back to the model as input, if applicable.
         # Corresponds to the JSON property `toolUsePromptTokenCount`
         # @return [Fixnum]
         attr_accessor :tool_use_prompt_token_count
       
-        # Output only. List of modalities that were processed for tool-use request
-        # inputs.
+        # Output only. A detailed breakdown by modality of the token counts from the
+        # results of tool executions, which are provided back to the model as input.
         # Corresponds to the JSON property `toolUsePromptTokensDetails`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
         attr_accessor :tool_use_prompt_tokens_details
       
-        # Total token count for prompt, response candidates, and tool-use prompts (if
-        # present).
+        # The total number of tokens for the entire request. This is the sum of `
+        # prompt_token_count`, `candidates_token_count`, `tool_use_prompt_token_count`,
+        # and `thoughts_token_count`.
         # Corresponds to the JSON property `totalTokenCount`
         # @return [Fixnum]
         attr_accessor :total_token_count
       
-        # Output only. Traffic type. This shows whether a request consumes Pay-As-You-Go
-        # or Provisioned Throughput quota.
+        # Output only. The traffic type for this request.
         # Corresponds to the JSON property `trafficType`
         # @return [String]
         attr_accessor :traffic_type
@@ -17375,12 +17412,19 @@ module Google
       class GoogleCloudAiplatformV1beta1GoogleMaps
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, include the widget context token in the response.
+        # Corresponds to the JSON property `enableWidget`
+        # @return [Boolean]
+        attr_accessor :enable_widget
+        alias_method :enable_widget?, :enable_widget
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @enable_widget = args[:enable_widget] if args.key?(:enable_widget)
         end
       end
       
@@ -17550,17 +17594,17 @@ module Google
         # @return [String]
         attr_accessor :place_id
       
-        # Text of the chunk.
+        # Text of the place answer.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
       
-        # Title of the chunk.
+        # Title of the place.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
       
-        # URI reference of the chunk.
+        # URI reference of the place.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -17583,11 +17627,6 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSources
         include Google::Apis::Core::Hashable
       
-        # A link where users can flag a problem with the generated answer.
-        # Corresponds to the JSON property `flagContentUri`
-        # @return [String]
-        attr_accessor :flag_content_uri
-      
         # Snippets of reviews that are used to generate the answer.
         # Corresponds to the JSON property `reviewSnippets`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet>]
@@ -17599,39 +17638,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
           @review_snippets = args[:review_snippets] if args.key?(:review_snippets)
-        end
-      end
-      
-      # Author attribution for a photo or review.
-      class GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution
-        include Google::Apis::Core::Hashable
-      
-        # Name of the author of the Photo or Review.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Profile photo URI of the author of the Photo or Review.
-        # Corresponds to the JSON property `photoUri`
-        # @return [String]
-        attr_accessor :photo_uri
-      
-        # URI of the author of the Photo or Review.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @photo_uri = args[:photo_uri] if args.key?(:photo_uri)
-          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -17639,32 +17646,20 @@ module Google
       class GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet
         include Google::Apis::Core::Hashable
       
-        # Author attribution for a photo or review.
-        # Corresponds to the JSON property `authorAttribution`
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution]
-        attr_accessor :author_attribution
-      
-        # A link where users can flag a problem with the review.
-        # Corresponds to the JSON property `flagContentUri`
-        # @return [String]
-        attr_accessor :flag_content_uri
-      
         # A link to show the review on Google Maps.
         # Corresponds to the JSON property `googleMapsUri`
         # @return [String]
         attr_accessor :google_maps_uri
       
-        # A string of formatted recent time, expressing the review time relative to the
-        # current time in a form appropriate for the language and country.
-        # Corresponds to the JSON property `relativePublishTimeDescription`
+        # Id of the review referencing the place.
+        # Corresponds to the JSON property `reviewId`
         # @return [String]
-        attr_accessor :relative_publish_time_description
+        attr_accessor :review_id
       
-        # A reference representing this place review which may be used to look up this
-        # place review again.
-        # Corresponds to the JSON property `review`
+        # Title of the review.
+        # Corresponds to the JSON property `title`
         # @return [String]
-        attr_accessor :review
+        attr_accessor :title
       
         def initialize(**args)
            update!(**args)
@@ -17672,11 +17667,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @author_attribution = args[:author_attribution] if args.key?(:author_attribution)
-          @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
           @google_maps_uri = args[:google_maps_uri] if args.key?(:google_maps_uri)
-          @relative_publish_time_description = args[:relative_publish_time_description] if args.key?(:relative_publish_time_description)
-          @review = args[:review] if args.key?(:review)
+          @review_id = args[:review_id] if args.key?(:review_id)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -17792,6 +17785,12 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SearchEntryPoint]
         attr_accessor :search_entry_point
       
+        # Optional. Output only. List of source flagging uris. This is currently
+        # populated only for Google Maps grounding.
+        # Corresponds to the JSON property `sourceFlaggingUris`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GroundingMetadataSourceFlaggingUri>]
+        attr_accessor :source_flagging_uris
+      
         # Optional. Web search queries for the following-up web search.
         # Corresponds to the JSON property `webSearchQueries`
         # @return [Array<String>]
@@ -17809,7 +17808,34 @@ module Google
           @retrieval_metadata = args[:retrieval_metadata] if args.key?(:retrieval_metadata)
           @retrieval_queries = args[:retrieval_queries] if args.key?(:retrieval_queries)
           @search_entry_point = args[:search_entry_point] if args.key?(:search_entry_point)
+          @source_flagging_uris = args[:source_flagging_uris] if args.key?(:source_flagging_uris)
           @web_search_queries = args[:web_search_queries] if args.key?(:web_search_queries)
+        end
+      end
+      
+      # Source content flagging uri for a place or review. This is currently populated
+      # only for Google Maps grounding.
+      class GoogleCloudAiplatformV1beta1GroundingMetadataSourceFlaggingUri
+        include Google::Apis::Core::Hashable
+      
+        # A link where users can flag a problem with the source (place or review).
+        # Corresponds to the JSON property `flagContentUri`
+        # @return [String]
+        attr_accessor :flag_content_uri
+      
+        # Id of the place or review.
+        # Corresponds to the JSON property `sourceId`
+        # @return [String]
+        attr_accessor :source_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flag_content_uri = args[:flag_content_uri] if args.key?(:flag_content_uri)
+          @source_id = args[:source_id] if args.key?(:source_id)
         end
       end
       
@@ -19435,6 +19461,46 @@ module Google
         end
       end
       
+      # Request message for PredictionService.Invoke.
+      class GoogleCloudAiplatformV1beta1InvokeRequest
+        include Google::Apis::Core::Hashable
+      
+        # ID of the DeployedModel that serves the invoke request.
+        # Corresponds to the JSON property `deployedModelId`
+        # @return [String]
+        attr_accessor :deployed_model_id
+      
+        # Message that represents an arbitrary HTTP body. It should only be used for
+        # payload formats that can't be represented as JSON, such as raw binary or an
+        # HTML page. This message can be used both in streaming and non-streaming API
+        # methods in the request as well as the response. It can be used as a top-level
+        # request field, which is convenient if one wants to extract parameters from
+        # either the URL or HTTP template into the request fields and also want access
+        # to the raw HTTP body. Example: message GetResourceRequest ` // A unique
+        # request id. string request_id = 1; // The raw HTTP body is bound to this field.
+        # google.api.HttpBody http_body = 2; ` service ResourceService ` rpc
+        # GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+        # UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); ` Example
+        # with streaming methods: service CaldavService ` rpc GetCalendar(stream google.
+        # api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream
+        # google.api.HttpBody) returns (stream google.api.HttpBody); ` Use of this type
+        # only changes how the request and response bodies are handled, all other
+        # features will continue to work unchanged.
+        # Corresponds to the JSON property `httpBody`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody]
+        attr_accessor :http_body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployed_model_id = args[:deployed_model_id] if args.key?(:deployed_model_id)
+          @http_body = args[:http_body] if args.key?(:http_body)
+        end
+      end
+      
       # The Jira source for the ImportRagFilesRequest.
       class GoogleCloudAiplatformV1beta1JiraSource
         include Google::Apis::Core::Hashable
@@ -19496,6 +19562,63 @@ module Google
           @email = args[:email] if args.key?(:email)
           @projects = args[:projects] if args.key?(:projects)
           @server_uri = args[:server_uri] if args.key?(:server_uri)
+        end
+      end
+      
+      # Specification for an LLM based metric.
+      class GoogleCloudAiplatformV1beta1LlmBasedMetricSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional additional configuration for the metric.
+        # Corresponds to the JSON property `additionalConfig`
+        # @return [Hash<String,Object>]
+        attr_accessor :additional_config
+      
+        # The configs for autorater. This is applicable to both EvaluateInstances and
+        # EvaluateDataset.
+        # Corresponds to the JSON property `judgeAutoraterConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AutoraterConfig]
+        attr_accessor :judge_autorater_config
+      
+        # Required. Template for the prompt sent to the judge model.
+        # Corresponds to the JSON property `metricPromptTemplate`
+        # @return [String]
+        attr_accessor :metric_prompt_template
+      
+        # The spec for a pre-defined metric.
+        # Corresponds to the JSON property `predefinedRubricGenerationSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PredefinedMetricSpec]
+        attr_accessor :predefined_rubric_generation_spec
+      
+        # Specification for how rubrics should be generated.
+        # Corresponds to the JSON property `rubricGenerationSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RubricGenerationSpec]
+        attr_accessor :rubric_generation_spec
+      
+        # Use a pre-defined group of rubrics associated with the input. Refers to a key
+        # in the rubric_groups map of EvaluationInstance.
+        # Corresponds to the JSON property `rubricGroupKey`
+        # @return [String]
+        attr_accessor :rubric_group_key
+      
+        # Optional. System instructions for the judge model.
+        # Corresponds to the JSON property `systemInstruction`
+        # @return [String]
+        attr_accessor :system_instruction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_config = args[:additional_config] if args.key?(:additional_config)
+          @judge_autorater_config = args[:judge_autorater_config] if args.key?(:judge_autorater_config)
+          @metric_prompt_template = args[:metric_prompt_template] if args.key?(:metric_prompt_template)
+          @predefined_rubric_generation_spec = args[:predefined_rubric_generation_spec] if args.key?(:predefined_rubric_generation_spec)
+          @rubric_generation_spec = args[:rubric_generation_spec] if args.key?(:rubric_generation_spec)
+          @rubric_group_key = args[:rubric_group_key] if args.key?(:rubric_group_key)
+          @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
         end
       end
       
@@ -21747,6 +21870,13 @@ module Google
         # @return [String]
         attr_accessor :fact
       
+        # Optional. The list of topics that the memory should be associated with. For
+        # example, use `custom_memory_topic_label = "jargon"` if the extracted memory is
+        # an example of memory extraction for the custom topic `jargon`.
+        # Corresponds to the JSON property `topics`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryTopicId>]
+        attr_accessor :topics
+      
         def initialize(**args)
            update!(**args)
         end
@@ -21754,6 +21884,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fact = args[:fact] if args.key?(:fact)
+          @topics = args[:topics] if args.key?(:topics)
         end
       end
       
@@ -21825,6 +21956,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @managed_topic_enum = args[:managed_topic_enum] if args.key?(:managed_topic_enum)
+        end
+      end
+      
+      # A memory topic identifier. This will be used to label a Memory and to restrict
+      # which topics are eligible for generation or retrieval.
+      class GoogleCloudAiplatformV1beta1MemoryTopicId
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The custom memory topic label.
+        # Corresponds to the JSON property `customMemoryTopicLabel`
+        # @return [String]
+        attr_accessor :custom_memory_topic_label
+      
+        # Optional. The managed memory topic.
+        # Corresponds to the JSON property `managedMemoryTopic`
+        # @return [String]
+        attr_accessor :managed_memory_topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_memory_topic_label = args[:custom_memory_topic_label] if args.key?(:custom_memory_topic_label)
+          @managed_memory_topic = args[:managed_memory_topic] if args.key?(:managed_memory_topic)
         end
       end
       
@@ -22048,6 +22205,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExactMatchSpec]
         attr_accessor :exact_match_spec
       
+        # Specification for an LLM based metric.
+        # Corresponds to the JSON property `llmBasedMetricSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1LlmBasedMetricSpec]
+        attr_accessor :llm_based_metric_spec
+      
         # Spec for pairwise metric.
         # Corresponds to the JSON property `pairwiseMetricSpec`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PairwiseMetricSpec]
@@ -22078,6 +22240,7 @@ module Google
           @aggregation_metrics = args[:aggregation_metrics] if args.key?(:aggregation_metrics)
           @bleu_spec = args[:bleu_spec] if args.key?(:bleu_spec)
           @exact_match_spec = args[:exact_match_spec] if args.key?(:exact_match_spec)
+          @llm_based_metric_spec = args[:llm_based_metric_spec] if args.key?(:llm_based_metric_spec)
           @pairwise_metric_spec = args[:pairwise_metric_spec] if args.key?(:pairwise_metric_spec)
           @pointwise_metric_spec = args[:pointwise_metric_spec] if args.key?(:pointwise_metric_spec)
           @predefined_metric_spec = args[:predefined_metric_spec] if args.key?(:predefined_metric_spec)

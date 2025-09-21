@@ -1378,8 +1378,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Do not use this field. It is unsupported and is ignored unless
-        #   explicitly documented otherwise. This is primarily for internal usage.
+        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
+        #   field which is primarily intended for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -6297,6 +6297,124 @@ module Google
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody
           command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Forwards arbitrary HTTP requests for both streaming and non-streaming cases.
+        # To use this method, invoke_route_prefix must be set to allow the paths that
+        # will be specified in the request.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint``
+        # @param [String] deployed_model_id
+        #   ID of the DeployedModel that serves the invoke request.
+        # @param [String] invoke_id
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1InvokeRequest] google_cloud_aiplatform_v1beta1_invoke_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def invoke_project_location_endpoint_deployed_model_invoke(endpoint, deployed_model_id, invoke_id, google_cloud_aiplatform_v1beta1_invoke_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+endpoint}/deployedModels/{deployedModelId}/invoke/{+invokeId}', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1InvokeRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_invoke_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.params['deployedModelId'] = deployed_model_id unless deployed_model_id.nil?
+          command.params['invokeId'] = invoke_id unless invoke_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Forwards arbitrary HTTP requests for both streaming and non-streaming cases.
+        # To use this method, invoke_route_prefix must be set to allow the paths that
+        # will be specified in the request.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint``
+        # @param [String] invoke_id
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1InvokeRequest] google_cloud_aiplatform_v1beta1_invoke_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def invoke_project_location_endpoint_invoke(endpoint, invoke_id, google_cloud_aiplatform_v1beta1_invoke_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+endpoint}/invoke/{+invokeId}', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1InvokeRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_invoke_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.params['invokeId'] = invoke_id unless invoke_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Forwards arbitrary HTTP requests for both streaming and non-streaming cases.
+        # To use this method, invoke_route_prefix must be set to allow the paths that
+        # will be specified in the request.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody] google_api_http_body_object
+        # @param [String] deployed_model_id
+        #   ID of the DeployedModel that serves the invoke request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def embeddings_project_location_endpoint_openapi(endpoint, google_api_http_body_object = nil, deployed_model_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+endpoint}/embeddings', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody::Representation
+          command.request_object = google_api_http_body_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.query['deployedModelId'] = deployed_model_id unless deployed_model_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -23461,6 +23579,294 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get request for reasoning engine instance via the A2A get protocol apis.
+        # @param [String] name
+        #   Required. The full resource path of the reasoning engine, captured from the
+        #   URL. Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [String] a2a_endpoint
+        #   Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123`
+        # @param [String] history_length
+        #   Optional. The optional query parameter for the getTask endpoint. Mapped from "?
+        #   history_length=". This indicates how many turns of history to return. If not
+        #   set, the default value is 0, which means all the history will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def card_project_location_reasoning_engine_a2a_v1(name, a2a_endpoint, history_length: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/a2a/{+a2aEndpoint}', options)
+          command.params['name'] = name unless name.nil?
+          command.params['a2aEndpoint'] = a2a_endpoint unless a2a_endpoint.nil?
+          command.query['historyLength'] = history_length unless history_length.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Send post request for reasoning engine instance via the A2A post protocol apis.
+        # @param [String] name
+        #   Required. The full resource path of the reasoning engine, captured from the
+        #   URL.
+        # @param [String] a2a_endpoint
+        #   Required. The a2a endpoint path, captured from the URL. e.g., v1/message:send
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def send_project_location_reasoning_engine_a2a_v1_message(name, a2a_endpoint, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}/a2a/{+a2aEndpoint}:send', options)
+          command.params['name'] = name unless name.nil?
+          command.params['a2aEndpoint'] = a2a_endpoint unless a2a_endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Streams queries using a reasoning engine instance via the A2A streaming
+        # protocol apis.
+        # @param [String] name
+        #   Required. The full resource path of the reasoning engine, captured from the
+        #   URL.
+        # @param [String] a2a_endpoint
+        #   Required. The http endpoint extracted from the URL path. e.g., v1/message:
+        #   stream.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_reasoning_engine_a2a_v1_message(name, a2a_endpoint, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}/a2a/{+a2aEndpoint}:stream', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody
+          command.params['name'] = name unless name.nil?
+          command.params['a2aEndpoint'] = a2a_endpoint unless a2a_endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get request for reasoning engine instance via the A2A get protocol apis.
+        # @param [String] name
+        #   Required. The full resource path of the reasoning engine, captured from the
+        #   URL. Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [String] a2a_endpoint
+        #   Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123`
+        # @param [String] history_length
+        #   Optional. The optional query parameter for the getTask endpoint. Mapped from "?
+        #   history_length=". This indicates how many turns of history to return. If not
+        #   set, the default value is 0, which means all the history will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def a2a_project_location_reasoning_engine_a2a_v1_task_get_reasoning_engine(name, a2a_endpoint, history_length: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/a2a/{+a2aEndpoint}', options)
+          command.params['name'] = name unless name.nil?
+          command.params['a2aEndpoint'] = a2a_endpoint unless a2a_endpoint.nil?
+          command.query['historyLength'] = history_length unless history_length.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Send post request for reasoning engine instance via the A2A post protocol apis.
+        # @param [String] name
+        #   Required. The full resource path of the reasoning engine, captured from the
+        #   URL.
+        # @param [String] a2a_endpoint
+        #   Required. The a2a endpoint path, captured from the URL. e.g., v1/message:send
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_project_location_reasoning_engine_a2a_v1_task(name, a2a_endpoint, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}/a2a/{+a2aEndpoint}:cancel', options)
+          command.params['name'] = name unless name.nil?
+          command.params['a2aEndpoint'] = a2a_endpoint unless a2a_endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get request for reasoning engine instance via the A2A get protocol apis.
+        # @param [String] name
+        #   Required. The full resource path of the reasoning engine, captured from the
+        #   URL. Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [String] a2a_endpoint
+        #   Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123`
+        # @param [String] history_length
+        #   Optional. The optional query parameter for the getTask endpoint. Mapped from "?
+        #   history_length=". This indicates how many turns of history to return. If not
+        #   set, the default value is 0, which means all the history will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def push_project_location_reasoning_engine_a2a_v1_task_notification_configs(name, a2a_endpoint, history_length: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/a2a/{+a2aEndpoint}', options)
+          command.params['name'] = name unless name.nil?
+          command.params['a2aEndpoint'] = a2a_endpoint unless a2a_endpoint.nil?
+          command.query['historyLength'] = history_length unless history_length.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Stream get request for reasoning engine instance via the A2A stream get
+        # protocol apis.
+        # @param [String] name
+        #   Required. The full resource path of the reasoning engine, captured from the
+        #   URL.
+        # @param [String] a2a_endpoint
+        #   Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123:
+        #   subscribe`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def subscribe_project_location_reasoning_engine_a2a_v1_task(name, a2a_endpoint, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/a2a/{+a2aEndpoint}:subscribe', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody
+          command.params['name'] = name unless name.nil?
+          command.params['a2aEndpoint'] = a2a_endpoint unless a2a_endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get request for reasoning engine instance via the A2A get protocol apis.
+        # @param [String] name
+        #   Required. The full resource path of the reasoning engine, captured from the
+        #   URL. Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [String] a2a_endpoint
+        #   Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123`
+        # @param [String] history_length
+        #   Optional. The optional query parameter for the getTask endpoint. Mapped from "?
+        #   history_length=". This indicates how many turns of history to return. If not
+        #   set, the default value is 0, which means all the history will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def a2a_project_location_reasoning_engine_a2a_v1_task_push_notification_config_get_reasoning_engine(name, a2a_endpoint, history_length: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/a2a/{+a2aEndpoint}', options)
+          command.params['name'] = name unless name.nil?
+          command.params['a2aEndpoint'] = a2a_endpoint unless a2a_endpoint.nil?
+          command.query['historyLength'] = history_length unless history_length.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
@@ -29408,6 +29814,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Enables model for the project if prerequisites are met (e.g. completed
+        # questionnaire and consents, or an active Private Offer).
+        # @param [String] parent
+        #   Required. The project requesting access for named model. Format: `projects/`
+        #   project``
+        # @param [String] name
+        #   Required. The name of the PublisherModel resource. Format: `publishers/`
+        #   publisher`/models/`publisher_model``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnableModelRequest] google_cloud_aiplatform_v1beta1_enable_model_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnableModelResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnableModelResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def enable_project_publisher_model_model(parent, name, google_cloud_aiplatform_v1beta1_enable_model_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/{+name}:enableModel', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnableModelRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_enable_model_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnableModelResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnableModelResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Return a list of tokens based on the input text.
         # @param [String] endpoint
         #   Required. The name of the Endpoint requested to get lists of tokens and token
@@ -30000,6 +30445,294 @@ module Google
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get request for reasoning engine instance via the A2A get protocol apis.
+        # @param [String] name
+        #   Required. The full resource path of the reasoning engine, captured from the
+        #   URL. Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [String] a2a_endpoint
+        #   Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123`
+        # @param [String] history_length
+        #   Optional. The optional query parameter for the getTask endpoint. Mapped from "?
+        #   history_length=". This indicates how many turns of history to return. If not
+        #   set, the default value is 0, which means all the history will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def card_reasoning_engine_a2a_v1(name, a2a_endpoint, history_length: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/a2a/{+a2aEndpoint}', options)
+          command.params['name'] = name unless name.nil?
+          command.params['a2aEndpoint'] = a2a_endpoint unless a2a_endpoint.nil?
+          command.query['historyLength'] = history_length unless history_length.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Send post request for reasoning engine instance via the A2A post protocol apis.
+        # @param [String] name
+        #   Required. The full resource path of the reasoning engine, captured from the
+        #   URL.
+        # @param [String] a2a_endpoint
+        #   Required. The a2a endpoint path, captured from the URL. e.g., v1/message:send
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def send_reasoning_engine_a2a_v1_message(name, a2a_endpoint, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}/a2a/{+a2aEndpoint}:send', options)
+          command.params['name'] = name unless name.nil?
+          command.params['a2aEndpoint'] = a2a_endpoint unless a2a_endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Streams queries using a reasoning engine instance via the A2A streaming
+        # protocol apis.
+        # @param [String] name
+        #   Required. The full resource path of the reasoning engine, captured from the
+        #   URL.
+        # @param [String] a2a_endpoint
+        #   Required. The http endpoint extracted from the URL path. e.g., v1/message:
+        #   stream.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_reasoning_engine_a2a_v1_message(name, a2a_endpoint, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}/a2a/{+a2aEndpoint}:stream', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody
+          command.params['name'] = name unless name.nil?
+          command.params['a2aEndpoint'] = a2a_endpoint unless a2a_endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get request for reasoning engine instance via the A2A get protocol apis.
+        # @param [String] name
+        #   Required. The full resource path of the reasoning engine, captured from the
+        #   URL. Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [String] a2a_endpoint
+        #   Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123`
+        # @param [String] history_length
+        #   Optional. The optional query parameter for the getTask endpoint. Mapped from "?
+        #   history_length=". This indicates how many turns of history to return. If not
+        #   set, the default value is 0, which means all the history will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def a2a_reasoning_engine_a2a_v1_task_get_reasoning_engine(name, a2a_endpoint, history_length: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/a2a/{+a2aEndpoint}', options)
+          command.params['name'] = name unless name.nil?
+          command.params['a2aEndpoint'] = a2a_endpoint unless a2a_endpoint.nil?
+          command.query['historyLength'] = history_length unless history_length.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Send post request for reasoning engine instance via the A2A post protocol apis.
+        # @param [String] name
+        #   Required. The full resource path of the reasoning engine, captured from the
+        #   URL.
+        # @param [String] a2a_endpoint
+        #   Required. The a2a endpoint path, captured from the URL. e.g., v1/message:send
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_reasoning_engine_a2a_v1_task(name, a2a_endpoint, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}/a2a/{+a2aEndpoint}:cancel', options)
+          command.params['name'] = name unless name.nil?
+          command.params['a2aEndpoint'] = a2a_endpoint unless a2a_endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get request for reasoning engine instance via the A2A get protocol apis.
+        # @param [String] name
+        #   Required. The full resource path of the reasoning engine, captured from the
+        #   URL. Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [String] a2a_endpoint
+        #   Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123`
+        # @param [String] history_length
+        #   Optional. The optional query parameter for the getTask endpoint. Mapped from "?
+        #   history_length=". This indicates how many turns of history to return. If not
+        #   set, the default value is 0, which means all the history will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def push_reasoning_engine_a2a_v1_task_notification_configs(name, a2a_endpoint, history_length: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/a2a/{+a2aEndpoint}', options)
+          command.params['name'] = name unless name.nil?
+          command.params['a2aEndpoint'] = a2a_endpoint unless a2a_endpoint.nil?
+          command.query['historyLength'] = history_length unless history_length.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Stream get request for reasoning engine instance via the A2A stream get
+        # protocol apis.
+        # @param [String] name
+        #   Required. The full resource path of the reasoning engine, captured from the
+        #   URL.
+        # @param [String] a2a_endpoint
+        #   Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123:
+        #   subscribe`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def subscribe_reasoning_engine_a2a_v1_task(name, a2a_endpoint, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/a2a/{+a2aEndpoint}:subscribe', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleApiHttpBody
+          command.params['name'] = name unless name.nil?
+          command.params['a2aEndpoint'] = a2a_endpoint unless a2a_endpoint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get request for reasoning engine instance via the A2A get protocol apis.
+        # @param [String] name
+        #   Required. The full resource path of the reasoning engine, captured from the
+        #   URL. Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [String] a2a_endpoint
+        #   Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123`
+        # @param [String] history_length
+        #   Optional. The optional query parameter for the getTask endpoint. Mapped from "?
+        #   history_length=". This indicates how many turns of history to return. If not
+        #   set, the default value is 0, which means all the history will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def a2a_reasoning_engine_a2a_v1_task_push_notification_config_get_reasoning_engine(name, a2a_endpoint, history_length: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/a2a/{+a2aEndpoint}', options)
+          command.params['name'] = name unless name.nil?
+          command.params['a2aEndpoint'] = a2a_endpoint unless a2a_endpoint.nil?
+          command.query['historyLength'] = history_length unless history_length.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
