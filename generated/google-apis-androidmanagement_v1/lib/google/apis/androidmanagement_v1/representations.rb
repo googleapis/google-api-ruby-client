@@ -820,6 +820,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Role
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ScreenBrightnessSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1224,6 +1230,8 @@ module Google
           collection :permission_grants, as: 'permissionGrants', class: Google::Apis::AndroidmanagementV1::PermissionGrant, decorator: Google::Apis::AndroidmanagementV1::PermissionGrant::Representation
       
           property :preferential_network_id, as: 'preferentialNetworkId'
+          collection :roles, as: 'roles', class: Google::Apis::AndroidmanagementV1::Role, decorator: Google::Apis::AndroidmanagementV1::Role::Representation
+      
           collection :signing_key_certs, as: 'signingKeyCerts', class: Google::Apis::AndroidmanagementV1::ApplicationSigningKeyCert, decorator: Google::Apis::AndroidmanagementV1::ApplicationSigningKeyCert::Representation
       
           property :user_control_settings, as: 'userControlSettings'
@@ -2538,6 +2546,13 @@ module Google
           property :eid_info, as: 'eidInfo', class: Google::Apis::AndroidmanagementV1::EidInfo, decorator: Google::Apis::AndroidmanagementV1::EidInfo::Representation
       
           property :status, as: 'status'
+        end
+      end
+      
+      class Role
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :role_type, as: 'roleType'
         end
       end
       
