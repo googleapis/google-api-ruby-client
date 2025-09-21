@@ -1570,7 +1570,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bottom_label, as: 'bottomLabel'
+          property :bottom_label_text, as: 'bottomLabelText', class: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph, decorator: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph::Representation
+      
           property :button, as: 'button', class: Google::Apis::ChatV1::GoogleAppsCardV1Button, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Button::Representation
+      
+          property :content_text, as: 'contentText', class: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph, decorator: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph::Representation
       
           property :end_icon, as: 'endIcon', class: Google::Apis::ChatV1::GoogleAppsCardV1Icon, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Icon::Representation
       
@@ -1580,10 +1584,13 @@ module Google
       
           property :start_icon, as: 'startIcon', class: Google::Apis::ChatV1::GoogleAppsCardV1Icon, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Icon::Representation
       
+          property :start_icon_vertical_alignment, as: 'startIconVerticalAlignment'
           property :switch_control, as: 'switchControl', class: Google::Apis::ChatV1::GoogleAppsCardV1SwitchControl, decorator: Google::Apis::ChatV1::GoogleAppsCardV1SwitchControl::Representation
       
           property :text, as: 'text'
           property :top_label, as: 'topLabel'
+          property :top_label_text, as: 'topLabelText', class: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph, decorator: Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph::Representation
+      
           property :wrap_text, as: 'wrapText'
         end
       end
@@ -1869,6 +1876,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_lines, as: 'maxLines'
           property :text, as: 'text'
+          property :text_syntax, as: 'textSyntax'
         end
       end
       
