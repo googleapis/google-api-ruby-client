@@ -54,6 +54,33 @@ module Google
         end
       end
       
+      # AdaptationModifier a modifier to be used for configuration of the OS
+      # adaptation process.
+      class AdaptationModifier
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The modifier name.
+        # Corresponds to the JSON property `modifier`
+        # @return [String]
+        attr_accessor :modifier
+      
+        # Optional. The value of the modifier. The actual value depends on the modifier
+        # and can also be empty.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @modifier = args[:modifier] if args.key?(:modifier)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # AdaptingOSStep contains specific step details.
       class AdaptingOsStep
         include Google::Apis::Core::Hashable
@@ -1194,6 +1221,12 @@ module Google
       class ComputeEngineTargetDefaults
         include Google::Apis::Core::Hashable
       
+        # Optional. AdaptationModifiers are the set of modifiers used during OS
+        # adaptation.
+        # Corresponds to the JSON property `adaptationModifiers`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::AdaptationModifier>]
+        attr_accessor :adaptation_modifiers
+      
         # Additional licenses to assign to the VM.
         # Corresponds to the JSON property `additionalLicenses`
         # @return [Array<String>]
@@ -1332,6 +1365,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @adaptation_modifiers = args[:adaptation_modifiers] if args.key?(:adaptation_modifiers)
           @additional_licenses = args[:additional_licenses] if args.key?(:additional_licenses)
           @applied_license = args[:applied_license] if args.key?(:applied_license)
           @boot_conversion = args[:boot_conversion] if args.key?(:boot_conversion)
@@ -1362,6 +1396,11 @@ module Google
       # target Compute Engine project.
       class ComputeEngineTargetDetails
         include Google::Apis::Core::Hashable
+      
+        # Optional. Modifiers to be used as configuration of the OS adaptation process.
+        # Corresponds to the JSON property `adaptationModifiers`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::AdaptationModifier>]
+        attr_accessor :adaptation_modifiers
       
         # Additional licenses to assign to the VM.
         # Corresponds to the JSON property `additionalLicenses`
@@ -1498,6 +1537,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @adaptation_modifiers = args[:adaptation_modifiers] if args.key?(:adaptation_modifiers)
           @additional_licenses = args[:additional_licenses] if args.key?(:additional_licenses)
           @applied_license = args[:applied_license] if args.key?(:applied_license)
           @boot_conversion = args[:boot_conversion] if args.key?(:boot_conversion)
@@ -2775,6 +2815,11 @@ module Google
       class ImageImportOsAdaptationParameters
         include Google::Apis::Core::Hashable
       
+        # Optional. Modifiers to be used as configuration of the OS adaptation process.
+        # Corresponds to the JSON property `adaptationModifiers`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::AdaptationModifier>]
+        attr_accessor :adaptation_modifiers
+      
         # Optional. By default the image will keep its existing boot option. Setting
         # this property will trigger an internal process which will convert the image
         # from using the existing boot option to another. The size of the boot disk
@@ -2804,6 +2849,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @adaptation_modifiers = args[:adaptation_modifiers] if args.key?(:adaptation_modifiers)
           @boot_conversion = args[:boot_conversion] if args.key?(:boot_conversion)
           @generalize = args[:generalize] if args.key?(:generalize)
           @license_type = args[:license_type] if args.key?(:license_type)
