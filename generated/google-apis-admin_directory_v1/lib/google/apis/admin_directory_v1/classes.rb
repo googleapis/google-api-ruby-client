@@ -1242,7 +1242,7 @@ module Google
         # @return [String]
         attr_accessor :os_version
       
-        # Output only. Compliance status of the OS version.
+        # Output only. Device policy compliance status of the OS version.
         # Corresponds to the JSON property `osVersionCompliance`
         # @return [String]
         attr_accessor :os_version_compliance

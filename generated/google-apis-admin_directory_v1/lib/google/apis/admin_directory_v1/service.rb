@@ -1624,7 +1624,8 @@ module Google
         #   Token to specify next page in the list
         # @param [String] query
         #   Query string search. Should be of the form "". Complete documentation is at
-        #   https: //developers.google.com/admin-sdk/directory/v1/guides/search-groups
+        #   https://developers.google.com/workspace/admin/directory/v1/guides/search-
+        #   groups
         # @param [String] sort_order
         #   Whether to return results in ascending or descending order. Only of use when
         #   orderBy is also used
@@ -4361,7 +4362,7 @@ module Google
         #   What subset of fields to fetch for this user.
         # @param [String] query
         #   Query string search. Should be of the form "". Complete documentation is at
-        #   https: //developers.google.com/admin-sdk/directory/v1/guides/search-users
+        #   https://developers.google.com/workspace/admin/directory/v1/guides/search-users
         # @param [String] show_deleted
         #   If set to true, retrieves the list of deleted users. (Default: false)
         # @param [String] sort_order
