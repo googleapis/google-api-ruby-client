@@ -927,17 +927,41 @@ module Google
         # @return [String]
         attr_accessor :preferential_network_id
       
+        # Optional. Roles the app has.Apps having certain roles can be exempted from
+        # power and background execution restrictions, suspension and hibernation on
+        # Android 14 and above. The user control can also be disallowed for apps with
+        # certain roles on Android 11 and above. Refer to the documentation of each
+        # RoleType for more details.The app is notified about the roles that are set for
+        # it if the app has a notification receiver service with . The app is notified
+        # whenever its roles are updated or after the app is installed when it has
+        # nonempty list of roles. The app can use this notification to bootstrap itself
+        # after the installation. See Integrate with the AMAPI SDK (https://developers.
+        # google.com/android/management/sdk-integration) and Manage app roles (https://
+        # developers.google.com/android/management/app-roles) guides for more details on
+        # the requirements for the service.For the exemptions to be applied and the app
+        # to be notified about the roles, the signing key certificate fingerprint of the
+        # app on the device must match one of the signing key certificate fingerprints
+        # obtained from Play Store or one of the entries in ApplicationPolicy.
+        # signingKeyCerts. Otherwise, a NonComplianceDetail with
+        # APP_SIGNING_CERT_MISMATCH is reported.There must not be duplicate roles with
+        # the same roleType. Multiple apps cannot hold a role with the same roleType. A
+        # role with type ROLE_TYPE_UNSPECIFIED is not allowed.
+        # Corresponds to the JSON property `roles`
+        # @return [Array<Google::Apis::AndroidmanagementV1::Role>]
+        attr_accessor :roles
+      
         # Optional. Signing key certificates of the app.This field is required in the
         # following cases: The app has installType set to CUSTOM (i.e. a custom app).
-        # The app has extensionConfig set (i.e. an extension app) but ExtensionConfig.
-        # signingKeyFingerprintsSha256 (deprecated) is not set and the app does not
-        # exist on the Play Store.If this field is not set for a custom app, the policy
-        # is rejected. If it is not set when required for a non-custom app, a
-        # NonComplianceDetail with INVALID_VALUE is reported.For other cases, this field
-        # is optional and the signing key certificates obtained from Play Store are used.
-        # See following policy settings to see how this field is used:
+        # The app has roles set to a nonempty list and the app does not exist on the
+        # Play Store. The app has extensionConfig set (i.e. an extension app) but
+        # ExtensionConfig.signingKeyFingerprintsSha256 (deprecated) is not set and the
+        # app does not exist on the Play Store.If this field is not set for a custom app,
+        # the policy is rejected. If it is not set when required for a non-custom app,
+        # a NonComplianceDetail with INVALID_VALUE is reported.For other cases, this
+        # field is optional and the signing key certificates obtained from Play Store
+        # are used.See following policy settings to see how this field is used:
         # choosePrivateKeyRules ApplicationPolicy.InstallType.CUSTOM ApplicationPolicy.
-        # extensionConfig
+        # extensionConfig ApplicationPolicy.roles
         # Corresponds to the JSON property `signingKeyCerts`
         # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationSigningKeyCert>]
         attr_accessor :signing_key_certs
@@ -982,6 +1006,7 @@ module Google
           @package_name = args[:package_name] if args.key?(:package_name)
           @permission_grants = args[:permission_grants] if args.key?(:permission_grants)
           @preferential_network_id = args[:preferential_network_id] if args.key?(:preferential_network_id)
+          @roles = args[:roles] if args.key?(:roles)
           @signing_key_certs = args[:signing_key_certs] if args.key?(:signing_key_certs)
           @user_control_settings = args[:user_control_settings] if args.key?(:user_control_settings)
           @work_profile_widgets = args[:work_profile_widgets] if args.key?(:work_profile_widgets)
@@ -6226,6 +6251,25 @@ module Google
         def update!(**args)
           @eid_info = args[:eid_info] if args.key?(:eid_info)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Role an app can have.
+      class Role
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type of the role an app can have.
+        # Corresponds to the JSON property `roleType`
+        # @return [String]
+        attr_accessor :role_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @role_type = args[:role_type] if args.key?(:role_type)
         end
       end
       
