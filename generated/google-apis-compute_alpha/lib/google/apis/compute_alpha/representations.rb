@@ -5164,6 +5164,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworksCancelRequestRemovePeeringRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworksGetEffectiveFirewallsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -19492,6 +19498,13 @@ module Google
         end
       end
       
+      class NetworksCancelRequestRemovePeeringRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class NetworksGetEffectiveFirewallsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -23208,6 +23221,7 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :ipv4_nexthop_address, as: 'ipv4NexthopAddress'
           property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
+          property :linked_custom_hardware, as: 'linkedCustomHardware'
           property :management_type, as: 'managementType'
           property :md5_authentication_key_name, as: 'md5AuthenticationKeyName'
           property :name, as: 'name'
@@ -23406,6 +23420,7 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :ipv4_nexthop_address, as: 'ipv4NexthopAddress'
           property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
+          property :linked_custom_hardware, as: 'linkedCustomHardware'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
           property :md5_auth_enabled, as: 'md5AuthEnabled'
           property :name, as: 'name'
