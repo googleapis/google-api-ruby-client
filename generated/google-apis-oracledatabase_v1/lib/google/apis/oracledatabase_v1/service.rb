@@ -308,6 +308,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Initiates a failover to target autonomous database from the associated primary
+        # database.
+        # @param [String] name
+        #   Required. The name of the Autonomous Database in the following format:
+        #   projects/`project`/locations/`location`/autonomousDatabases/`
+        #   autonomous_database`.
+        # @param [Google::Apis::OracledatabaseV1::FailoverAutonomousDatabaseRequest] failover_autonomous_database_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def failover_autonomous_database(name, failover_autonomous_database_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:failover', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::FailoverAutonomousDatabaseRequest::Representation
+          command.request_object = failover_autonomous_database_request_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generates a wallet for an Autonomous Database.
         # @param [String] name
         #   Required. The name of the Autonomous Database in the following format:
@@ -1048,6 +1084,174 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # List DatabaseCharacterSets for the given project and location.
+        # @param [String] parent
+        #   Required. The parent value for DatabaseCharacterSets in the following format:
+        #   projects/`project`/locations/`location`.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request. Only the **
+        #   character_set_type** field is supported in the following format: `
+        #   character_set_type="`characterSetType`"`. Accepted values include `DATABASE`
+        #   and `NATIONAL`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of DatabaseCharacterSets to return. The service
+        #   may return fewer than this value. If unspecified, at most 50
+        #   DatabaseCharacterSets will be returned. The maximum value is 1000; values
+        #   above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListDatabaseCharacterSets`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListDatabaseCharacterSets` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListDatabaseCharacterSetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListDatabaseCharacterSetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_database_character_sets(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/databaseCharacterSets', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListDatabaseCharacterSetsResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListDatabaseCharacterSetsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Database.
+        # @param [String] name
+        #   Required. The name of the Database resource in the following format: projects/`
+        #   project`/locations/`region`/databases/`database`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Database] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Database]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_database(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::Database::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Database
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the Databases for the given project, location and DbSystem.
+        # @param [String] parent
+        #   Required. The parent resource name in the following format: projects/`project`/
+        #   locations/`region`
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request. list for
+        #   container databases is supported only with a valid dbSystem (full resource
+        #   name) filter in this format: `dbSystem="projects/`project`/locations/`location`
+        #   /dbSystems/`dbSystemId`"`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If unspecified, a maximum of
+        #   50 System Versions will be returned. The maximum value is 1000; values above
+        #   1000 will be reset to 1000.
+        # @param [String] page_token
+        #   Optional. A token identifying the requested page of results to return. All
+        #   fields except the filter should remain the same as in the request that
+        #   provided this page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListDatabasesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListDatabasesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_databases(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/databases', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListDatabasesResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListDatabasesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the DbSystemInitialStorageSizes for the given project and location.
+        # @param [String] parent
+        #   Required. The parent value for the DbSystemInitialStorageSize resource with
+        #   the format: projects/`project`/locations/`location`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If unspecified, a maximum of
+        #   50 System Versions will be returned. The maximum value is 1000; values above
+        #   1000 will be reset to 1000.
+        # @param [String] page_token
+        #   Optional. A token identifying the requested page of results to return. All
+        #   fields except the filter should remain the same as in the request that
+        #   provided this page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListDbSystemInitialStorageSizesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListDbSystemInitialStorageSizesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_db_system_initial_storage_sizes(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dbSystemInitialStorageSizes', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListDbSystemInitialStorageSizesResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListDbSystemInitialStorageSizesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the database system shapes available for the project and location.
         # @param [String] parent
         #   Required. The parent value for Database System Shapes in the following format:
@@ -1083,6 +1287,219 @@ module Google
           command = make_simple_command(:get, 'v1/{+parent}/dbSystemShapes', options)
           command.response_representation = Google::Apis::OracledatabaseV1::ListDbSystemShapesResponse::Representation
           command.response_class = Google::Apis::OracledatabaseV1::ListDbSystemShapesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new DbSystem in a given project and location.
+        # @param [String] parent
+        #   Required. The value for parent of the DbSystem in the following format:
+        #   projects/`project`/locations/`location`.
+        # @param [Google::Apis::OracledatabaseV1::DbSystem] db_system_object
+        # @param [String] db_system_id
+        #   Required. The ID of the DbSystem to create. This value is restricted to (^[a-z]
+        #   ([a-z0-9-]`0,61`[a-z0-9])?$) and must be a maximum of 63 characters in length.
+        #   The value must start with a letter and end with a letter or a number.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_db_system(parent, db_system_object = nil, db_system_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/dbSystems', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::DbSystem::Representation
+          command.request_object = db_system_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['dbSystemId'] = db_system_id unless db_system_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single DbSystem.
+        # @param [String] name
+        #   Required. The name of the DbSystem in the following format: projects/`project`/
+        #   locations/`location`/dbSystems/`db_system`.
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_db_system(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single DbSystem.
+        # @param [String] name
+        #   Required. The name of the DbSystem in the following format: projects/`project`/
+        #   locations/`location`/dbSystems/`db_system`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::DbSystem] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::DbSystem]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_db_system(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::DbSystem::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::DbSystem
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the DbSystems for the given project and location.
+        # @param [String] parent
+        #   Required. The parent value for DbSystems in the following format: projects/`
+        #   project`/locations/`location`.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request.
+        # @param [String] order_by
+        #   Optional. An expression for ordering the results of the request.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If unspecified, at most 50
+        #   DbSystems will be returned. The maximum value is 1000; values above 1000 will
+        #   be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListDbSystemsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListDbSystemsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_db_systems(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dbSystems', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListDbSystemsResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListDbSystemsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List DbVersions for the given project and location.
+        # @param [String] parent
+        #   Required. The parent value for the DbVersion resource with the format:
+        #   projects/`project`/locations/`location`
+        # @param [String] filter
+        #   Optional. Filter expression that matches a subset of the DbVersions to show.
+        #   The supported filter for dbSystem creation is `db_system_shape = `
+        #   db_system_shape` AND storage_management = `storage_management``. If no filter
+        #   is provided, all DbVersions will be returned.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If unspecified, a maximum of
+        #   50 System Versions will be returned. The maximum value is 1000; values above
+        #   1000 will be reset to 1000.
+        # @param [String] page_token
+        #   Optional. A token identifying the requested page of results to return. All
+        #   fields except the filter should remain the same as in the request that
+        #   provided this page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListDbVersionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListDbVersionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_db_versions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dbVersions', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListDbVersionsResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListDbVersionsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -1130,6 +1547,425 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new Exadb (Exascale) VM Cluster resource.
+        # @param [String] parent
+        #   Required. The value for parent of the ExadbVmCluster in the following format:
+        #   projects/`project`/locations/`location`.
+        # @param [Google::Apis::OracledatabaseV1::ExadbVmCluster] exadb_vm_cluster_object
+        # @param [String] exadb_vm_cluster_id
+        #   Required. The ID of the ExadbVmCluster to create. This value is restricted to (
+        #   ^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$) and must be a maximum of 63 characters in
+        #   length. The value must start with a letter and end with a letter or a number.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_exadb_vm_cluster(parent, exadb_vm_cluster_object = nil, exadb_vm_cluster_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/exadbVmClusters', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::ExadbVmCluster::Representation
+          command.request_object = exadb_vm_cluster_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['exadbVmClusterId'] = exadb_vm_cluster_id unless exadb_vm_cluster_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single Exadb (Exascale) VM Cluster.
+        # @param [String] name
+        #   Required. The name of the ExadbVmCluster in the following format: projects/`
+        #   project`/locations/`location`/exadbVmClusters/`exadb_vm_cluster`.
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_exadb_vm_cluster(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Exadb (Exascale) VM Cluster.
+        # @param [String] name
+        #   Required. The name of the ExadbVmCluster in the following format: projects/`
+        #   project`/locations/`location`/exadbVmClusters/`exadb_vm_cluster`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ExadbVmCluster] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ExadbVmCluster]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_exadb_vm_cluster(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ExadbVmCluster::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ExadbVmCluster
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the Exadb (Exascale) VM Clusters for the given project and location.
+        # @param [String] parent
+        #   Required. The parent value for ExadbVmClusters in the following format:
+        #   projects/`project`/locations/`location`.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request.
+        # @param [String] order_by
+        #   Optional. An expression for ordering the results of the request.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If unspecified, at most 50
+        #   ExadbVmClusters will be returned. The maximum value is 1000; values above 1000
+        #   will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListExadbVmClustersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListExadbVmClustersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_exadb_vm_clusters(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/exadbVmClusters', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListExadbVmClustersResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListExadbVmClustersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a single Exadb (Exascale) VM Cluster. To add virtual machines to
+        # existing exadb vm cluster, only pass the node count.
+        # @param [String] name
+        #   Identifier. The name of the ExadbVmCluster resource in the following format:
+        #   projects/`project`/locations/`region`/exadbVmClusters/`exadb_vm_cluster`
+        # @param [Google::Apis::OracledatabaseV1::ExadbVmCluster] exadb_vm_cluster_object
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. A mask specifying which fields in th VM Cluster should be updated. A
+        #   field specified in the mask is overwritten. If a mask isn't provided then all
+        #   the fields in the VM Cluster are overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_exadb_vm_cluster(name, exadb_vm_cluster_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::ExadbVmCluster::Representation
+          command.request_object = exadb_vm_cluster_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes virtual machines from an existing exadb vm cluster.
+        # @param [String] name
+        #   Required. The name of the ExadbVmCluster in the following format: projects/`
+        #   project`/locations/`location`/exadbVmClusters/`exadb_vm_cluster`.
+        # @param [Google::Apis::OracledatabaseV1::RemoveVirtualMachineExadbVmClusterRequest] remove_virtual_machine_exadb_vm_cluster_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_virtual_machine_exadb_vm_cluster(name, remove_virtual_machine_exadb_vm_cluster_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:removeVirtualMachine', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::RemoveVirtualMachineExadbVmClusterRequest::Representation
+          command.request_object = remove_virtual_machine_exadb_vm_cluster_request_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new ExascaleDB Storage Vault resource.
+        # @param [String] parent
+        #   Required. The value for parent of the ExascaleDbStorageVault in the following
+        #   format: projects/`project`/locations/`location`.
+        # @param [Google::Apis::OracledatabaseV1::ExascaleDbStorageVault] exascale_db_storage_vault_object
+        # @param [String] exascale_db_storage_vault_id
+        #   Required. The ID of the ExascaleDbStorageVault to create. This value is
+        #   restricted to (^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$) and must be a maximum of 63
+        #   characters in length. The value must start with a letter and end with a letter
+        #   or a number.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_exascale_db_storage_vault(parent, exascale_db_storage_vault_object = nil, exascale_db_storage_vault_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/exascaleDbStorageVaults', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::ExascaleDbStorageVault::Representation
+          command.request_object = exascale_db_storage_vault_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['exascaleDbStorageVaultId'] = exascale_db_storage_vault_id unless exascale_db_storage_vault_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single ExascaleDB Storage Vault.
+        # @param [String] name
+        #   Required. The name of the ExascaleDbStorageVault in the following format:
+        #   projects/`project`/locations/`location`/exascaleDbStorageVaults/`
+        #   exascale_db_storage_vault`.
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_exascale_db_storage_vault(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single ExascaleDB Storage Vault.
+        # @param [String] name
+        #   Required. The name of the ExascaleDbStorageVault in the following format:
+        #   projects/`project`/locations/`location`/exascaleDbStorageVaults/`
+        #   exascale_db_storage_vault`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ExascaleDbStorageVault] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ExascaleDbStorageVault]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_exascale_db_storage_vault(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ExascaleDbStorageVault::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ExascaleDbStorageVault
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the ExascaleDB Storage Vaults for the given project and location.
+        # @param [String] parent
+        #   Required. The parent value for ExascaleDbStorageVault in the following format:
+        #   projects/`project`/locations/`location`.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request. Filter the
+        #   list as specified in https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Optional. An expression for ordering the results of the request. Order results
+        #   as specified in https://google.aip.dev/132.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If unspecified, at most 50
+        #   ExascaleDbStorageVaults will be returned. The maximum value is 1000; values
+        #   above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListExascaleDbStorageVaultsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListExascaleDbStorageVaultsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_exascale_db_storage_vaults(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/exascaleDbStorageVaults', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListExascaleDbStorageVaultsResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListExascaleDbStorageVaultsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all the valid Oracle Grid Infrastructure (GI) versions for the given
         # project and location.
         # @param [String] parent
@@ -1166,6 +2002,53 @@ module Google
           command = make_simple_command(:get, 'v1/{+parent}/giVersions', options)
           command.response_representation = Google::Apis::OracledatabaseV1::ListGiVersionsResponse::Representation
           command.response_class = Google::Apis::OracledatabaseV1::ListGiVersionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the valid minor versions for the given project, location, gi version
+        # and shape family.
+        # @param [String] parent
+        #   Required. The parent value for the MinorVersion resource with the format:
+        #   projects/`project`/locations/`location`/giVersions/`gi_version`
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request. Only
+        #   shapeFamily and gcp_oracle_zone_id are supported in this format: `shape_family=
+        #   "`shapeFamily`" AND gcp_oracle_zone_id="`gcp_oracle_zone_id`"`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If unspecified, a maximum of
+        #   50 System Versions will be returned. The maximum value is 1000; values above
+        #   1000 will be reset to 1000.
+        # @param [String] page_token
+        #   Optional. A token identifying the requested page of results to return. All
+        #   fields except the filter should remain the same as in the request that
+        #   provided this page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListMinorVersionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListMinorVersionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_gi_version_minor_versions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/minorVersions', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListMinorVersionsResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListMinorVersionsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -1635,6 +2518,85 @@ module Google
           command.response_representation = Google::Apis::OracledatabaseV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::OracledatabaseV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single PluggableDatabase.
+        # @param [String] name
+        #   Required. The name of the PluggableDatabase resource in the following format:
+        #   projects/`project`/locations/`region`/pluggableDatabases/`pluggable_database`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::PluggableDatabase] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::PluggableDatabase]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_pluggable_database(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::PluggableDatabase::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::PluggableDatabase
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the PluggableDatabases for the given project, location and Container
+        # Database.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of PluggableDatabases. Format:
+        #   projects/`project`/locations/`location`
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request. List for
+        #   pluggable databases is supported only with a valid container database (full
+        #   resource name) filter in this format: `database="projects/`project`/locations/`
+        #   location`/databases/`database`"`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of PluggableDatabases to return. The service may
+        #   return fewer than this value.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListPluggableDatabases` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListPluggableDatabases` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListPluggableDatabasesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListPluggableDatabasesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_pluggable_databases(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/pluggableDatabases', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListPluggableDatabasesResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListPluggableDatabasesResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
