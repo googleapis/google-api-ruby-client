@@ -792,8 +792,8 @@ module Google
         # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
         # sort order is important, for example when encoding keys. - Distinct: In this
         # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
-        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
-        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # However, the converse is not guaranteed. For example, both ``'foo': '1', 'bar':
+        # '2'`` and ``'bar': '2', 'foo': '1'`` are valid encodings of the same JSON
         # value. The API clearly documents which mode is used wherever an encoding can
         # be configured. Each encoding also documents which values are supported in
         # which modes. For example, when encoding INT64 as a numeric STRING, negative
@@ -1008,22 +1008,33 @@ module Google
       class CreateBackupMetadata
         include Google::Apis::Core::Hashable
       
-        # If set, the time at which this operation finished or was cancelled.
+        # If set, the time at which this operation finished or was cancelled. DEPRECATED:
+        # Use finish_time instead.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
       
         # The name of the backup being created.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
         # The name of the table the backup is created from.
         # Corresponds to the JSON property `sourceTable`
         # @return [String]
         attr_accessor :source_table
       
-        # The time at which this operation started.
+        # The time at which this operation started. DEPRECATED: Use request_time instead.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -1035,7 +1046,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
           @name = args[:name] if args.key?(:name)
+          @request_time = args[:request_time] if args.key?(:request_time)
           @source_table = args[:source_table] if args.key?(:source_table)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
@@ -1195,17 +1208,27 @@ module Google
       class CreateLogicalViewMetadata
         include Google::Apis::Core::Hashable
       
-        # If set, the time at which this operation finished or was canceled.
+        # DEPRECATED: Use finish_time instead.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
       
         # Request message for BigtableInstanceAdmin.CreateLogicalView.
         # Corresponds to the JSON property `originalRequest`
         # @return [Google::Apis::BigtableadminV2::CreateLogicalViewRequest]
         attr_accessor :original_request
       
-        # The time at which this operation started.
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        # DEPRECATED: Use request_time instead.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -1217,7 +1240,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
           @original_request = args[:original_request] if args.key?(:original_request)
+          @request_time = args[:request_time] if args.key?(:request_time)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
@@ -1259,17 +1284,28 @@ module Google
       class CreateMaterializedViewMetadata
         include Google::Apis::Core::Hashable
       
-        # If set, the time at which this operation finished or was canceled.
+        # If set, the time at which this operation finished or was canceled. DEPRECATED:
+        # Use finish_time instead.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
       
         # Request message for BigtableInstanceAdmin.CreateMaterializedView.
         # Corresponds to the JSON property `originalRequest`
         # @return [Google::Apis::BigtableadminV2::CreateMaterializedViewRequest]
         attr_accessor :original_request
       
-        # The time at which this operation started.
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        # The time at which this operation started. DEPRECATED: Use request_time instead.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -1281,7 +1317,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
           @original_request = args[:original_request] if args.key?(:original_request)
+          @request_time = args[:request_time] if args.key?(:request_time)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
@@ -1323,10 +1361,10 @@ module Google
       class CreateSchemaBundleMetadata
         include Google::Apis::Core::Hashable
       
-        # If set, the time at which this operation finished or was canceled.
-        # Corresponds to the JSON property `endTime`
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
         # @return [String]
-        attr_accessor :end_time
+        attr_accessor :finish_time
       
         # The unique name identifying this schema bundle. Values are of the form `
         # projects/`project`/instances/`instance`/tables/`table`/schemaBundles/`
@@ -1335,10 +1373,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The time at which this operation started.
-        # Corresponds to the JSON property `startTime`
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
         # @return [String]
-        attr_accessor :start_time
+        attr_accessor :request_time
       
         def initialize(**args)
            update!(**args)
@@ -1346,9 +1384,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @end_time = args[:end_time] if args.key?(:end_time)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
           @name = args[:name] if args.key?(:name)
-          @start_time = args[:start_time] if args.key?(:start_time)
+          @request_time = args[:request_time] if args.key?(:request_time)
         end
       end
       
@@ -1789,8 +1827,8 @@ module Google
         # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
         # sort order is important, for example when encoding keys. - Distinct: In this
         # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
-        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
-        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # However, the converse is not guaranteed. For example, both ``'foo': '1', 'bar':
+        # '2'`` and ``'bar': '2', 'foo': '1'`` are valid encodings of the same JSON
         # value. The API clearly documents which mode is used wherever an encoding can
         # be configured. Each encoding also documents which values are supported in
         # which modes. For example, when encoding INT64 as a numeric STRING, negative
@@ -1821,8 +1859,8 @@ module Google
         # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
         # sort order is important, for example when encoding keys. - Distinct: In this
         # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
-        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
-        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # However, the converse is not guaranteed. For example, both ``'foo': '1', 'bar':
+        # '2'`` and ``'bar': '2', 'foo': '1'`` are valid encodings of the same JSON
         # value. The API clearly documents which mode is used wherever an encoding can
         # be configured. Each encoding also documents which values are supported in
         # which modes. For example, when encoding INT64 as a numeric STRING, negative
@@ -1926,8 +1964,8 @@ module Google
         # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
         # sort order is important, for example when encoding keys. - Distinct: In this
         # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
-        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
-        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # However, the converse is not guaranteed. For example, both ``'foo': '1', 'bar':
+        # '2'`` and ``'bar': '2', 'foo': '1'`` are valid encodings of the same JSON
         # value. The API clearly documents which mode is used wherever an encoding can
         # be configured. Each encoding also documents which values are supported in
         # which modes. For example, when encoding INT64 as a numeric STRING, negative
@@ -2005,7 +2043,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # If set, allows NULL values to be encoded as the empty string "". The actual
-        # empty string, or any value which only contains the null byte 0x00, has one
+        # empty string, or any value which only contains the null byte `0x00`, has one
         # more null byte appended.
         # Corresponds to the JSON property `escapeNulls`
         # @return [Boolean]
@@ -2191,8 +2229,8 @@ module Google
         # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
         # sort order is important, for example when encoding keys. - Distinct: In this
         # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
-        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
-        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # However, the converse is not guaranteed. For example, both ``'foo': '1', 'bar':
+        # '2'`` and ``'bar': '2', 'foo': '1'`` are valid encodings of the same JSON
         # value. The API clearly documents which mode is used wherever an encoding can
         # be configured. Each encoding also documents which values are supported in
         # which modes. For example, when encoding INT64 as a numeric STRING, negative
@@ -2211,8 +2249,8 @@ module Google
         # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
         # sort order is important, for example when encoding keys. - Distinct: In this
         # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
-        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
-        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # However, the converse is not guaranteed. For example, both ``'foo': '1', 'bar':
+        # '2'`` and ``'bar': '2', 'foo': '1'`` are valid encodings of the same JSON
         # value. The API clearly documents which mode is used wherever an encoding can
         # be configured. Each encoding also documents which values are supported in
         # which modes. For example, when encoding INT64 as a numeric STRING, negative
@@ -2318,8 +2356,8 @@ module Google
         # NULL values to be encoded as the empty string "". The actual empty string, or
         # any value where every character equals `null_escape_char`, has one more `
         # null_escape_char` appended. If `null_escape_char` is set and does not equal
-        # the ASCII null character 0x00, then the encoding will not support sorted mode.
-        # .
+        # the ASCII null character `0x00`, then the encoding will not support sorted
+        # mode. .
         # Corresponds to the JSON property `nullEscapeChar`
         # @return [String]
         attr_accessor :null_escape_char
@@ -2383,35 +2421,45 @@ module Google
         # delimiter`. Sorted mode: - Fields are encoded in sorted mode. - Encoded field
         # values must not contain any bytes <= `delimiter[0]` - Element-wise order is
         # preserved: `A < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`, etc.
-        # Strict prefixes sort first. Distinct mode: - Fields are encoded in distinct
-        # mode. - Encoded field values must not contain `delimiter[0]`.
+        # Strict prefixes sort first. - This encoding does not support `DESC` field
+        # ordering. Distinct mode: - Fields are encoded in distinct mode. - Encoded
+        # field values must not contain `delimiter[0]`.
         # Corresponds to the JSON property `delimitedBytes`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes]
         attr_accessor :delimited_bytes
       
-        # Fields are encoded independently and concatenated with the fixed byte pair `
-        # 0x00, 0x01` in between. Any null (0x00) byte in an encoded field is replaced
-        # by the fixed byte pair `0x00, 0xFF`. Fields that encode to the empty string ""
-        # have special handling: - If *every* field encodes to "", or if the STRUCT has
-        # no fields defined, then the STRUCT is encoded as the fixed byte pair `0x00,
-        # 0x00`. - Otherwise, the STRUCT only encodes until the last non-empty field,
-        # omitting any trailing empty fields. Any empty fields that aren't omitted are
-        # replaced with the fixed byte pair `0x00, 0x00`. Examples: - STRUCT() -> "\00\
-        # 00" - STRUCT("") -> "\00\00" - STRUCT("", "") -> "\00\00" - STRUCT("", "B") ->
-        # "\00\00" + "\00\01" + "B" - STRUCT("A", "") -> "A" - STRUCT("", "B", "") -> "\
-        # 00\00" + "\00\01" + "B" - STRUCT("A", "", "C") -> "A" + "\00\01" + "\00\00" + "
-        # \00\01" + "C" Since null bytes are always escaped, this encoding can cause
-        # size blowup for encodings like `Int64.BigEndianBytes` that are likely to
-        # produce many such bytes. Sorted mode: - Fields are encoded in sorted mode. -
-        # All values supported by the field encodings are allowed - Element-wise order
-        # is preserved: `A < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`,
-        # etc. Strict prefixes sort first. Distinct mode: - Fields are encoded in
-        # distinct mode. - All values supported by the field encodings are allowed.
+        # Fields are encoded independently, then escaped and delimited by appling the
+        # following rules in order: - While the last remaining field is `ASC` or `
+        # UNSPECIFIED`, and encodes to the empty string "", remove it. - In each
+        # remaining field, replace all null bytes `0x00` with the fixed byte pair ``0x00,
+        # 0xFF``. - If any remaining field encodes to the empty string "", replace it
+        # with the fixed byte pair ``0x00, 0x00``. - Append the fixed byte pair ``0x00,
+        # 0x01`` to each remaining field, except for the last remaining field if it is `
+        # ASC`. - Bitwise negate all `DESC` fields. - Concatenate the results, or emit
+        # the fixed byte pair ``0x00, 0x00`` if there are no remaining fields to
+        # concatenate. Examples: ``` - STRUCT() -> "\00\00" - STRUCT("") -> "\00\00" -
+        # STRUCT("", "") -> "\00\00" - STRUCT("", "B") -> "\00\00" + "\00\01" + "B" -
+        # STRUCT("A", "") -> "A" - STRUCT("", "B", "") -> "\00\00" + "\00\01" + "B" -
+        # STRUCT("A", "", "C") -> "A" + "\00\01" + "\00\00" + "\00\01" + "C" ```
+        # Examples for struct with `DESC` fields: ``` - STRUCT("" DESC) -> "\xFF\xFF" + "
+        # \xFF\xFE" - STRUCT("" DESC, "") -> "\xFF\xFF" + "\xFF\xFE" - STRUCT("" DESC, ""
+        # , "") -> "\xFF\xFF" + "\xFF\xFE" - STRUCT("" DESC, "A") -> "\xFF\xFF" + "\xFF\
+        # xFE" + "A" - STRUCT("A", "" DESC, "") -> "A" + "\00\01" + "\xFF\xFF" + "\xFF\
+        # xFE" - STRUCT("", "A" DESC) -> "\x00\x00" + "\x00\x01" + "\xBE" + "\xFF\xFE" ``
+        # ` Since null bytes are always escaped, this encoding can cause size blowup for
+        # encodings like `Int64.BigEndianBytes` that are likely to produce many such
+        # bytes. Sorted mode: - Fields are encoded in sorted mode. - All values
+        # supported by the field encodings are allowed. - Fields with unset or `
+        # UNSPECIFIED` order are treated as `ASC`. - Element-wise order is preserved: `A
+        # < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`, etc. Strict
+        # prefixes sort first. Distinct mode: - Fields are encoded in distinct mode. -
+        # All values supported by the field encodings are allowed.
         # Corresponds to the JSON property `orderedCodeBytes`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes]
         attr_accessor :ordered_code_bytes
       
         # Uses the encoding of `fields[0].type` as-is. Only valid if `fields.size == 1`.
+        # This encoding does not support `DESC` field ordering.
         # Corresponds to the JSON property `singleton`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncodingSingleton]
         attr_accessor :singleton
@@ -2433,8 +2481,9 @@ module Google
       # delimiter`. Sorted mode: - Fields are encoded in sorted mode. - Encoded field
       # values must not contain any bytes <= `delimiter[0]` - Element-wise order is
       # preserved: `A < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`, etc.
-      # Strict prefixes sort first. Distinct mode: - Fields are encoded in distinct
-      # mode. - Encoded field values must not contain `delimiter[0]`.
+      # Strict prefixes sort first. - This encoding does not support `DESC` field
+      # ordering. Distinct mode: - Fields are encoded in distinct mode. - Encoded
+      # field values must not contain `delimiter[0]`.
       class GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes
         include Google::Apis::Core::Hashable
       
@@ -2455,24 +2504,32 @@ module Google
         end
       end
       
-      # Fields are encoded independently and concatenated with the fixed byte pair `
-      # 0x00, 0x01` in between. Any null (0x00) byte in an encoded field is replaced
-      # by the fixed byte pair `0x00, 0xFF`. Fields that encode to the empty string ""
-      # have special handling: - If *every* field encodes to "", or if the STRUCT has
-      # no fields defined, then the STRUCT is encoded as the fixed byte pair `0x00,
-      # 0x00`. - Otherwise, the STRUCT only encodes until the last non-empty field,
-      # omitting any trailing empty fields. Any empty fields that aren't omitted are
-      # replaced with the fixed byte pair `0x00, 0x00`. Examples: - STRUCT() -> "\00\
-      # 00" - STRUCT("") -> "\00\00" - STRUCT("", "") -> "\00\00" - STRUCT("", "B") ->
-      # "\00\00" + "\00\01" + "B" - STRUCT("A", "") -> "A" - STRUCT("", "B", "") -> "\
-      # 00\00" + "\00\01" + "B" - STRUCT("A", "", "C") -> "A" + "\00\01" + "\00\00" + "
-      # \00\01" + "C" Since null bytes are always escaped, this encoding can cause
-      # size blowup for encodings like `Int64.BigEndianBytes` that are likely to
-      # produce many such bytes. Sorted mode: - Fields are encoded in sorted mode. -
-      # All values supported by the field encodings are allowed - Element-wise order
-      # is preserved: `A < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`,
-      # etc. Strict prefixes sort first. Distinct mode: - Fields are encoded in
-      # distinct mode. - All values supported by the field encodings are allowed.
+      # Fields are encoded independently, then escaped and delimited by appling the
+      # following rules in order: - While the last remaining field is `ASC` or `
+      # UNSPECIFIED`, and encodes to the empty string "", remove it. - In each
+      # remaining field, replace all null bytes `0x00` with the fixed byte pair ``0x00,
+      # 0xFF``. - If any remaining field encodes to the empty string "", replace it
+      # with the fixed byte pair ``0x00, 0x00``. - Append the fixed byte pair ``0x00,
+      # 0x01`` to each remaining field, except for the last remaining field if it is `
+      # ASC`. - Bitwise negate all `DESC` fields. - Concatenate the results, or emit
+      # the fixed byte pair ``0x00, 0x00`` if there are no remaining fields to
+      # concatenate. Examples: ``` - STRUCT() -> "\00\00" - STRUCT("") -> "\00\00" -
+      # STRUCT("", "") -> "\00\00" - STRUCT("", "B") -> "\00\00" + "\00\01" + "B" -
+      # STRUCT("A", "") -> "A" - STRUCT("", "B", "") -> "\00\00" + "\00\01" + "B" -
+      # STRUCT("A", "", "C") -> "A" + "\00\01" + "\00\00" + "\00\01" + "C" ```
+      # Examples for struct with `DESC` fields: ``` - STRUCT("" DESC) -> "\xFF\xFF" + "
+      # \xFF\xFE" - STRUCT("" DESC, "") -> "\xFF\xFF" + "\xFF\xFE" - STRUCT("" DESC, ""
+      # , "") -> "\xFF\xFF" + "\xFF\xFE" - STRUCT("" DESC, "A") -> "\xFF\xFF" + "\xFF\
+      # xFE" + "A" - STRUCT("A", "" DESC, "") -> "A" + "\00\01" + "\xFF\xFF" + "\xFF\
+      # xFE" - STRUCT("", "A" DESC) -> "\x00\x00" + "\x00\x01" + "\xBE" + "\xFF\xFE" ``
+      # ` Since null bytes are always escaped, this encoding can cause size blowup for
+      # encodings like `Int64.BigEndianBytes` that are likely to produce many such
+      # bytes. Sorted mode: - Fields are encoded in sorted mode. - All values
+      # supported by the field encodings are allowed. - Fields with unset or `
+      # UNSPECIFIED` order are treated as `ASC`. - Element-wise order is preserved: `A
+      # < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`, etc. Strict
+      # prefixes sort first. Distinct mode: - Fields are encoded in distinct mode. -
+      # All values supported by the field encodings are allowed.
       class GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes
         include Google::Apis::Core::Hashable
       
@@ -2486,6 +2543,7 @@ module Google
       end
       
       # Uses the encoding of `fields[0].type` as-is. Only valid if `fields.size == 1`.
+      # This encoding does not support `DESC` field ordering.
       class GoogleBigtableAdminV2TypeStructEncodingSingleton
         include Google::Apis::Core::Hashable
       
@@ -2517,8 +2575,8 @@ module Google
         # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
         # sort order is important, for example when encoding keys. - Distinct: In this
         # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
-        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
-        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # However, the converse is not guaranteed. For example, both ``'foo': '1', 'bar':
+        # '2'`` and ``'bar': '2', 'foo': '1'`` are valid encodings of the same JSON
         # value. The API clearly documents which mode is used wherever an encoding can
         # be configured. Each encoding also documents which values are supported in
         # which modes. For example, when encoding INT64 as a numeric STRING, negative
@@ -4275,8 +4333,8 @@ module Google
       # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
       # sort order is important, for example when encoding keys. - Distinct: In this
       # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
-      # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
-      # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+      # However, the converse is not guaranteed. For example, both ``'foo': '1', 'bar':
+      # '2'`` and ``'bar': '2', 'foo': '1'`` are valid encodings of the same JSON
       # value. The API clearly documents which mode is used wherever an encoding can
       # be configured. Each encoding also documents which values are supported in
       # which modes. For example, when encoding INT64 as a numeric STRING, negative
@@ -4394,17 +4452,28 @@ module Google
       class UndeleteTableMetadata
         include Google::Apis::Core::Hashable
       
-        # If set, the time at which this operation finished or was cancelled.
+        # If set, the time at which this operation finished or was cancelled. DEPRECATED:
+        # Use finish_time instead.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
       
         # The name of the table being restored.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The time at which this operation started.
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        # The time at which this operation started. DEPRECATED: Use request_time instead.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -4416,7 +4485,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
           @name = args[:name] if args.key?(:name)
+          @request_time = args[:request_time] if args.key?(:request_time)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
@@ -4601,17 +4672,27 @@ module Google
       class UpdateLogicalViewMetadata
         include Google::Apis::Core::Hashable
       
-        # If set, the time at which this operation finished or was canceled.
+        # DEPRECATED: Use finish_time instead.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
       
         # Request message for BigtableInstanceAdmin.UpdateLogicalView.
         # Corresponds to the JSON property `originalRequest`
         # @return [Google::Apis::BigtableadminV2::UpdateLogicalViewRequest]
         attr_accessor :original_request
       
-        # The time at which this operation was started.
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        # DEPRECATED: Use request_time instead.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -4623,7 +4704,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
           @original_request = args[:original_request] if args.key?(:original_request)
+          @request_time = args[:request_time] if args.key?(:request_time)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
@@ -4657,10 +4740,10 @@ module Google
       class UpdateSchemaBundleMetadata
         include Google::Apis::Core::Hashable
       
-        # If set, the time at which this operation finished or was canceled.
-        # Corresponds to the JSON property `endTime`
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
         # @return [String]
-        attr_accessor :end_time
+        attr_accessor :finish_time
       
         # The unique name identifying this schema bundle. Values are of the form `
         # projects/`project`/instances/`instance`/tables/`table`/schemaBundles/`
@@ -4669,10 +4752,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The time at which this operation started.
-        # Corresponds to the JSON property `startTime`
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
         # @return [String]
-        attr_accessor :start_time
+        attr_accessor :request_time
       
         def initialize(**args)
            update!(**args)
@@ -4680,9 +4763,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @end_time = args[:end_time] if args.key?(:end_time)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
           @name = args[:name] if args.key?(:name)
-          @start_time = args[:start_time] if args.key?(:start_time)
+          @request_time = args[:request_time] if args.key?(:request_time)
         end
       end
       
@@ -4690,17 +4773,28 @@ module Google
       class UpdateTableMetadata
         include Google::Apis::Core::Hashable
       
-        # If set, the time at which this operation finished or was canceled.
+        # If set, the time at which this operation finished or was canceled. DEPRECATED:
+        # Use finish_time instead.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
       
         # The name of the table being updated.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The time at which this operation started.
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        # The time at which this operation started. DEPRECATED: Use request_time instead.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -4712,7 +4806,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
           @name = args[:name] if args.key?(:name)
+          @request_time = args[:request_time] if args.key?(:request_time)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
