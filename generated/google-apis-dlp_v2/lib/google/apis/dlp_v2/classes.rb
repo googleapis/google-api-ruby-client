@@ -5033,6 +5033,11 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FileStoreRegexes]
         attr_accessor :include_regexes
       
+        # Tags to match against for filtering.
+        # Corresponds to the JSON property `includeTags`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TagFilters]
+        attr_accessor :include_tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5040,6 +5045,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @include_regexes = args[:include_regexes] if args.key?(:include_regexes)
+          @include_tags = args[:include_tags] if args.key?(:include_tags)
         end
       end
       
@@ -7985,6 +7991,11 @@ module Google
         # @return [String]
         attr_accessor :output_schema
       
+        # Message representing a single file or path in Cloud Storage.
+        # Corresponds to the JSON property `storagePath`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStoragePath]
+        attr_accessor :storage_path
+      
         # Message defining the location of a BigQuery table. A table is uniquely
         # identified by its project_id, dataset_id, and table_name. Within a query a
         # table is often referenced with a string in the format of: `:.` or `..`.
@@ -7999,6 +8010,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @output_schema = args[:output_schema] if args.key?(:output_schema)
+          @storage_path = args[:storage_path] if args.key?(:storage_path)
           @table = args[:table] if args.key?(:table)
         end
       end
@@ -10339,6 +10351,55 @@ module Google
         def update!(**args)
           @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
           @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # A single tag to filter against.
+      class GooglePrivacyDlpV2TagFilter
+        include Google::Apis::Core::Hashable
+      
+        # The namespaced name for the tag key. Must be in the format ``parent_id`/`
+        # tag_key_short_name``, for example, "123456/sensitive" for an organization
+        # parent, or "my-project/sensitive" for a project parent.
+        # Corresponds to the JSON property `namespacedTagKey`
+        # @return [String]
+        attr_accessor :namespaced_tag_key
+      
+        # The namespaced name for the tag value. Must be in the format ``parent_id`/`
+        # tag_key_short_name`/`short_name``, for example, "123456/environment/prod" for
+        # an organization parent, or "my-project/environment/prod" for a project parent.
+        # Corresponds to the JSON property `namespacedTagValue`
+        # @return [String]
+        attr_accessor :namespaced_tag_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @namespaced_tag_key = args[:namespaced_tag_key] if args.key?(:namespaced_tag_key)
+          @namespaced_tag_value = args[:namespaced_tag_value] if args.key?(:namespaced_tag_value)
+        end
+      end
+      
+      # Tags to match against for filtering.
+      class GooglePrivacyDlpV2TagFilters
+        include Google::Apis::Core::Hashable
+      
+        # Required. A resource must match ALL of the specified tag filters to be
+        # included in the collection.
+        # Corresponds to the JSON property `tagFilters`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2TagFilter>]
+        attr_accessor :tag_filters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tag_filters = args[:tag_filters] if args.key?(:tag_filters)
         end
       end
       
