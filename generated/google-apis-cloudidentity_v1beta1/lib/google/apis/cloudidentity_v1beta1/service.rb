@@ -745,16 +745,19 @@ module Google
         # provided, only DeviceUsers having all of these properties are considered as
         # matches - i.e. the query behaves like an AND. Different platforms require
         # different amounts of information from the caller to ensure that the DeviceUser
-        # is uniquely identified. - iOS: No properties need to be passed, the caller's
-        # credentials are sufficient to identify the corresponding DeviceUser. - Android:
-        # Specifying the 'android_id' field is required. - Desktop: Specifying the '
-        # raw_resource_id' field is required.
+        # is uniquely identified. - iOS: Specifying the 'partner' and 'ios_device_id'
+        # fields is required. - Android: Specifying the 'android_id' field is required. -
+        # Desktop: Specifying the 'raw_resource_id' field is required.
         # @param [String] parent
         #   Must be set to "devices/-/deviceUsers" to search across all DeviceUser
         #   belonging to the user.
         # @param [String] android_id
         #   Android Id returned by [Settings.Secure#ANDROID_ID](https://developer.android.
         #   com/reference/android/provider/Settings.Secure.html#ANDROID_ID).
+        # @param [String] ios_device_id
+        #   Optional. The partner-specified device identifier assigned to the iOS device
+        #   that initiated the Lookup API call. This string must match the value of the
+        #   iosDeviceId key in the app config dictionary provided to Google Workspace apps.
         # @param [Fixnum] page_size
         #   The maximum number of DeviceUsers to return. If unspecified, at most 20
         #   DeviceUsers will be returned. The maximum value is 20; values above 20 will be
@@ -764,6 +767,10 @@ module Google
         #   to retrieve the subsequent page. When paginating, all other parameters
         #   provided to `LookupDeviceUsers` must match the call that provided the page
         #   token.
+        # @param [String] partner
+        #   Optional. The partner ID of the calling iOS app. This string must match the
+        #   value of the partner key within the app configuration dictionary provided to
+        #   Google Workspace apps.
         # @param [String] raw_resource_id
         #   Raw Resource Id used by Google Endpoint Verification. If the user is enrolled
         #   into Google Endpoint Verification, this id will be saved as the '
@@ -791,14 +798,16 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def lookup_device_device_user(parent, android_id: nil, page_size: nil, page_token: nil, raw_resource_id: nil, user_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def lookup_device_device_user(parent, android_id: nil, ios_device_id: nil, page_size: nil, page_token: nil, partner: nil, raw_resource_id: nil, user_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}:lookup', options)
           command.response_representation = Google::Apis::CloudidentityV1beta1::LookupSelfDeviceUsersResponse::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::LookupSelfDeviceUsersResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['androidId'] = android_id unless android_id.nil?
+          command.query['iosDeviceId'] = ios_device_id unless ios_device_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['partner'] = partner unless partner.nil?
           command.query['rawResourceId'] = raw_resource_id unless raw_resource_id.nil?
           command.query['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
