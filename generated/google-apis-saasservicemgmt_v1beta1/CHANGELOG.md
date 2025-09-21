@@ -1,8 +1,8 @@
 # Release history for google-apis-saasservicemgmt_v1beta1
 
-### v0.4.0 (2025-09-14)
+### v0.4.0 (2025-09-21)
 
-* Regenerated from discovery document revision 20250903
+* Regenerated from discovery document revision 20250910
 
 ### v0.3.0 (2025-08-31)
 
