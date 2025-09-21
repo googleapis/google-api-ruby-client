@@ -26259,6 +26259,13 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] URLs of the other locations that can pair up with this location
+        # to support Single-Region 99.99% SLA. E.g. iad-zone1-1 and iad-zone2-5467 are
+        # Single-Region 99.99% peer locations of each other.
+        # Corresponds to the JSON property `singleRegionProductionCriticalPeerLocations`
+        # @return [Array<String>]
+        attr_accessor :single_region_production_critical_peer_locations
+      
         # [Output Only] The status of this InterconnectLocation, which can take one of
         # the following values: - CLOSED: The InterconnectLocation is closed and is
         # unavailable for provisioning new Interconnects. - AVAILABLE: The
@@ -26296,6 +26303,7 @@ module Google
           @peeringdb_facility_id = args[:peeringdb_facility_id] if args.key?(:peeringdb_facility_id)
           @region_infos = args[:region_infos] if args.key?(:region_infos)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @single_region_production_critical_peer_locations = args[:single_region_production_critical_peer_locations] if args.key?(:single_region_production_critical_peer_locations)
           @status = args[:status] if args.key?(:status)
           @supports_pzs = args[:supports_pzs] if args.key?(:supports_pzs)
         end
