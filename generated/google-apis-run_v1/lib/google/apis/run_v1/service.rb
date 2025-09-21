@@ -593,9 +593,9 @@ module Google
         
         # Get information about a job.
         # @param [String] name
-        #   Required. The name of the job to retrieve. Replace `namespace` with the
-        #   project ID or number. It takes the form namespaces/`namespace`. For example:
-        #   namespaces/PROJECT_ID
+        #   Required. The name of the job to retrieve. It takes the form namespaces/`
+        #   namespace`/jobs/`job_name` and the `endpoint` must be regional. Replace `
+        #   namespace` with the project ID or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
