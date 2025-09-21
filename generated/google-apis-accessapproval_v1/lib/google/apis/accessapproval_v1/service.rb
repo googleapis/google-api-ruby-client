@@ -52,10 +52,10 @@ module Google
         end
         
         # Deletes the settings associated with a project, folder, or organization. This
-        # will have the effect of disabling Access Approval for the project, folder, or
-        # organization, but only if all ancestors also have Access Approval disabled. If
-        # Access Approval is enabled at a higher level of the hierarchy, then Access
-        # Approval will still be enabled at this level as the settings are inherited.
+        # will have the effect of disabling Access Approval for the resource. Access
+        # Approval may remain active based on parent resource settings. To confirm the
+        # effective settings, call GetAccessApprovalSettings and verify effective
+        # setting is disabled.
         # @param [String] name
         #   Name of the AccessApprovalSettings to delete.
         # @param [String] fields
@@ -85,7 +85,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the settings associated with a project, folder, or organization.
+        # Gets the Access Approval settings associated with a project, folder, or
+        # organization.
         # @param [String] name
         #   The name of the AccessApprovalSettings to retrieve. Format: "`projects|folders|
         #   organizations`/`id`/accessApprovalSettings"
@@ -227,11 +228,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not
-        # deny access to the resource if another request has been made and approved. It
-        # is equivalent in effect to ignoring the request altogether. Returns NOT_FOUND
-        # if the request does not exist. Returns FAILED_PRECONDITION if the request
-        # exists but is not in a pending state.
+        # Dismisses a request. Returns the updated ApprovalRequest. NOTE: When a request
+        # is dismissed, it is considered ignored. Dismissing a request does not prevent
+        # access granted by other Access Approval requests. Returns NOT_FOUND if the
+        # request does not exist. Returns FAILED_PRECONDITION if the request exists but
+        # is not in a pending state.
         # @param [String] name
         #   Name of the ApprovalRequest to dismiss.
         # @param [Google::Apis::AccessapprovalV1::DismissApprovalRequestMessage] dismiss_approval_request_message_object
@@ -296,8 +297,8 @@ module Google
         end
         
         # Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest.
-        # NOTE: This does not deny access to the resource if another request has been
-        # made and approved. It only invalidates a single approval. Returns
+        # NOTE: This action revokes Google access based on this approval request. If the
+        # resource has other active approvals, access will remain granted. Returns
         # FAILED_PRECONDITION if the request exists but is not in an approved state.
         # @param [String] name
         #   Name of the ApprovalRequest to invalidate.
@@ -380,10 +381,10 @@ module Google
         end
         
         # Deletes the settings associated with a project, folder, or organization. This
-        # will have the effect of disabling Access Approval for the project, folder, or
-        # organization, but only if all ancestors also have Access Approval disabled. If
-        # Access Approval is enabled at a higher level of the hierarchy, then Access
-        # Approval will still be enabled at this level as the settings are inherited.
+        # will have the effect of disabling Access Approval for the resource. Access
+        # Approval may remain active based on parent resource settings. To confirm the
+        # effective settings, call GetAccessApprovalSettings and verify effective
+        # setting is disabled.
         # @param [String] name
         #   Name of the AccessApprovalSettings to delete.
         # @param [String] fields
@@ -413,7 +414,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the settings associated with a project, folder, or organization.
+        # Gets the Access Approval settings associated with a project, folder, or
+        # organization.
         # @param [String] name
         #   The name of the AccessApprovalSettings to retrieve. Format: "`projects|folders|
         #   organizations`/`id`/accessApprovalSettings"
@@ -555,11 +557,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not
-        # deny access to the resource if another request has been made and approved. It
-        # is equivalent in effect to ignoring the request altogether. Returns NOT_FOUND
-        # if the request does not exist. Returns FAILED_PRECONDITION if the request
-        # exists but is not in a pending state.
+        # Dismisses a request. Returns the updated ApprovalRequest. NOTE: When a request
+        # is dismissed, it is considered ignored. Dismissing a request does not prevent
+        # access granted by other Access Approval requests. Returns NOT_FOUND if the
+        # request does not exist. Returns FAILED_PRECONDITION if the request exists but
+        # is not in a pending state.
         # @param [String] name
         #   Name of the ApprovalRequest to dismiss.
         # @param [Google::Apis::AccessapprovalV1::DismissApprovalRequestMessage] dismiss_approval_request_message_object
@@ -624,8 +626,8 @@ module Google
         end
         
         # Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest.
-        # NOTE: This does not deny access to the resource if another request has been
-        # made and approved. It only invalidates a single approval. Returns
+        # NOTE: This action revokes Google access based on this approval request. If the
+        # resource has other active approvals, access will remain granted. Returns
         # FAILED_PRECONDITION if the request exists but is not in an approved state.
         # @param [String] name
         #   Name of the ApprovalRequest to invalidate.
@@ -708,10 +710,10 @@ module Google
         end
         
         # Deletes the settings associated with a project, folder, or organization. This
-        # will have the effect of disabling Access Approval for the project, folder, or
-        # organization, but only if all ancestors also have Access Approval disabled. If
-        # Access Approval is enabled at a higher level of the hierarchy, then Access
-        # Approval will still be enabled at this level as the settings are inherited.
+        # will have the effect of disabling Access Approval for the resource. Access
+        # Approval may remain active based on parent resource settings. To confirm the
+        # effective settings, call GetAccessApprovalSettings and verify effective
+        # setting is disabled.
         # @param [String] name
         #   Name of the AccessApprovalSettings to delete.
         # @param [String] fields
@@ -741,7 +743,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the settings associated with a project, folder, or organization.
+        # Gets the Access Approval settings associated with a project, folder, or
+        # organization.
         # @param [String] name
         #   The name of the AccessApprovalSettings to retrieve. Format: "`projects|folders|
         #   organizations`/`id`/accessApprovalSettings"
@@ -883,11 +886,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not
-        # deny access to the resource if another request has been made and approved. It
-        # is equivalent in effect to ignoring the request altogether. Returns NOT_FOUND
-        # if the request does not exist. Returns FAILED_PRECONDITION if the request
-        # exists but is not in a pending state.
+        # Dismisses a request. Returns the updated ApprovalRequest. NOTE: When a request
+        # is dismissed, it is considered ignored. Dismissing a request does not prevent
+        # access granted by other Access Approval requests. Returns NOT_FOUND if the
+        # request does not exist. Returns FAILED_PRECONDITION if the request exists but
+        # is not in a pending state.
         # @param [String] name
         #   Name of the ApprovalRequest to dismiss.
         # @param [Google::Apis::AccessapprovalV1::DismissApprovalRequestMessage] dismiss_approval_request_message_object
@@ -952,8 +955,8 @@ module Google
         end
         
         # Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest.
-        # NOTE: This does not deny access to the resource if another request has been
-        # made and approved. It only invalidates a single approval. Returns
+        # NOTE: This action revokes Google access based on this approval request. If the
+        # resource has other active approvals, access will remain granted. Returns
         # FAILED_PRECONDITION if the request exists but is not in an approved state.
         # @param [String] name
         #   Name of the ApprovalRequest to invalidate.
