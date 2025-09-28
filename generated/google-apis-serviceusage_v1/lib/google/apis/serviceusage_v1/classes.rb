@@ -233,9 +233,18 @@ module Google
       # which represent a concrete implementation of an interface as opposed to simply
       # a description of methods and bindings. They are also sometimes simply referred
       # to as "APIs" in other contexts, such as the name of this message itself. See
-      # https://cloud.google.com/apis/design/glossary for detailed terminology.
+      # https://cloud.google.com/apis/design/glossary for detailed terminology. New
+      # usages of this message as an alternative to ServiceDescriptorProto are
+      # strongly discouraged. This message does not reliability preserve all
+      # information necessary to model the schema and preserve semantics. Instead make
+      # use of FileDescriptorSet which preserves the necessary information.
       class Api
         include Google::Apis::Core::Hashable
+      
+        # The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
       
         # The methods of this interface, in unspecified order.
         # Corresponds to the JSON property `methods`
@@ -292,6 +301,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
           @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
           @mixins = args[:mixins] if args.key?(:mixins)
           @name = args[:name] if args.key?(:name)
@@ -610,7 +620,7 @@ module Google
         # @return [Hash<String,Google::Apis::ServiceusageV1::BackendRule>]
         attr_accessor :overrides_by_request_protocol
       
-        # 
+        # no-lint
         # Corresponds to the JSON property `pathTranslation`
         # @return [String]
         attr_accessor :path_translation
@@ -1137,6 +1147,48 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # ContentSecurity defines the content security related fields of a MCP policy.
+      class ContentSecurity
+        include Google::Apis::Core::Hashable
+      
+        # List of content security providers that are enabled for content scanning.
+        # Corresponds to the JSON property `contentSecurityProviders`
+        # @return [Array<Google::Apis::ServiceusageV1::ContentSecurityProvider>]
+        attr_accessor :content_security_providers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_security_providers = args[:content_security_providers] if args.key?(:content_security_providers)
+        end
+      end
+      
+      # ContentSecurityProvider contains the name of content security provider.
+      class ContentSecurityProvider
+        include Google::Apis::Core::Hashable
+      
+        # Name of security service for content scanning, such as Google Cloud Model
+        # Armor or supported third-party ISV solutions. If it is Google 1P service, the
+        # name should be prefixed with `services/`. If it is a 3P service, the format
+        # needs to be documented. The currently supported values are: - `services/
+        # modelarmor.googleapis.com` for Google Cloud Model Armor.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1809,7 +1861,11 @@ module Google
         end
       end
       
-      # Enum type definition.
+      # Enum type definition. New usages of this message as an alternative to
+      # EnumDescriptorProto are strongly discouraged. This message does not
+      # reliability preserve all information necessary to model the schema and
+      # preserve semantics. Instead make use of FileDescriptorSet which preserves the
+      # necessary information.
       class Enum
         include Google::Apis::Core::Hashable
       
@@ -1859,7 +1915,11 @@ module Google
         end
       end
       
-      # Enum value definition.
+      # Enum value definition. New usages of this message as an alternative to
+      # EnumValueDescriptorProto are strongly discouraged. This message does not
+      # reliability preserve all information necessary to model the schema and
+      # preserve semantics. Instead make use of FileDescriptorSet which preserves the
+      # necessary information.
       class EnumValue
         include Google::Apis::Core::Hashable
       
@@ -1933,7 +1993,11 @@ module Google
         end
       end
       
-      # A single field of a message type.
+      # A single field of a message type. New usages of this message as an alternative
+      # to FieldDescriptorProto are strongly discouraged. This message does not
+      # reliability preserve all information necessary to model the schema and
+      # preserve semantics. Instead make use of FileDescriptorSet which preserves the
+      # necessary information.
       class Field
         include Google::Apis::Core::Hashable
       
@@ -2103,7 +2167,8 @@ module Google
       
         # Map of service names to renamed services. Keys are the package relative
         # service names and values are the name to be used for the service client and
-        # call options. publishing: go_settings: renamed_services: Publisher: TopicAdmin
+        # call options. Example: publishing: go_settings: renamed_services: Publisher:
+        # TopicAdmin
         # Corresponds to the JSON property `renamedServices`
         # @return [Hash<String,String>]
         attr_accessor :renamed_services
@@ -2938,8 +3003,8 @@ module Google
         # @return [Array<Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaEnableRule>]
         attr_accessor :enable_rules
       
-        # Output only. An opaque tag indicating the current version of the policy, used
-        # for concurrency control.
+        # An opaque tag indicating the current version of the policy, used for
+        # concurrency control.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -3005,6 +3070,14 @@ module Google
         # @return [String]
         attr_accessor :impact_type
       
+        # Output only. This field will be populated only for the `
+        # DEPENDENCY_MISSING_DEPENDENCIES` impact type. Example: `services/compute.
+        # googleapis.com`. Impact.detail will be in format : `missing service dependency:
+        # `missing_dependency`.`
+        # Corresponds to the JSON property `missingDependency`
+        # @return [String]
+        attr_accessor :missing_dependency
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3013,6 +3086,7 @@ module Google
         def update!(**args)
           @detail = args[:detail] if args.key?(:detail)
           @impact_type = args[:impact_type] if args.key?(:impact_type)
+          @missing_dependency = args[:missing_dependency] if args.key?(:missing_dependency)
         end
       end
       
@@ -3732,9 +3806,114 @@ module Google
         end
       end
       
-      # Method represents a method of an API interface.
+      # McpEnableRule contains MCP enablement related rules.
+      class McpEnableRule
+        include Google::Apis::Core::Hashable
+      
+        # List of enabled MCP services.
+        # Corresponds to the JSON property `mcpServices`
+        # @return [Array<Google::Apis::ServiceusageV1::McpService>]
+        attr_accessor :mcp_services
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mcp_services = args[:mcp_services] if args.key?(:mcp_services)
+        end
+      end
+      
+      # MCP Consumer Policy is a set of rules that define MCP related policy for a
+      # cloud resource hierarchy.
+      class McpPolicy
+        include Google::Apis::Core::Hashable
+      
+        # ContentSecurity defines the content security related fields of a MCP policy.
+        # Corresponds to the JSON property `contentSecurity`
+        # @return [Google::Apis::ServiceusageV1::ContentSecurity]
+        attr_accessor :content_security
+      
+        # Output only. The time the policy was created. For singleton policies (such as
+        # the `default` policy), this is the first touch of the policy.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # An opaque tag indicating the current version of the policy, used for
+        # concurrency control.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # McpEnableRules contains MCP enablement related rules.
+        # Corresponds to the JSON property `mcpEnableRules`
+        # @return [Array<Google::Apis::ServiceusageV1::McpEnableRule>]
+        attr_accessor :mcp_enable_rules
+      
+        # Output only. The resource name of the policy. Only the `default` policy is
+        # supported. We allow the following formats: `projects/`PROJECT_NUMBER`/
+        # mcpPolicies/default`, `projects/`PROJECT_ID`/mcpPolicies/default`, `folders/`
+        # FOLDER_ID`/mcpPolicies/default`, `organizations/`ORG_ID`/mcpPolicies/default`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The time the policy was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_security = args[:content_security] if args.key?(:content_security)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @mcp_enable_rules = args[:mcp_enable_rules] if args.key?(:mcp_enable_rules)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # McpService contains the service names that are enabled for MCP.
+      class McpService
+        include Google::Apis::Core::Hashable
+      
+        # The names of the services that are enabled for MCP. Example: `services/library-
+        # example.googleapis.com`
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # Method represents a method of an API interface. New usages of this message as
+      # an alternative to MethodDescriptorProto are strongly discouraged. This message
+      # does not reliability preserve all information necessary to model the schema
+      # and preserve semantics. Instead make use of FileDescriptorSet which preserves
+      # the necessary information.
       class MethodProp
         include Google::Apis::Core::Hashable
+      
+        # The source edition string, only valid when syntax is SYNTAX_EDITIONS. This
+        # field should be ignored, instead the edition should be inherited from Api.
+        # This is similar to Field and EnumValue.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
       
         # The simple name of this method.
         # Corresponds to the JSON property `name`
@@ -3768,7 +3947,8 @@ module Google
         # @return [String]
         attr_accessor :response_type_url
       
-        # The source syntax of this method.
+        # The source syntax of this method. This field should be ignored, instead the
+        # syntax should be inherited from Api. This is similar to Field and EnumValue.
         # Corresponds to the JSON property `syntax`
         # @return [String]
         attr_accessor :syntax
@@ -3779,6 +3959,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
           @name = args[:name] if args.key?(:name)
           @options = args[:options] if args.key?(:options)
           @request_streaming = args[:request_streaming] if args.key?(:request_streaming)
@@ -4421,7 +4602,9 @@ module Google
       end
       
       # A protocol buffer option, which can be attached to a message, field,
-      # enumeration, etc.
+      # enumeration, etc. New usages of this message as an alternative to FileOptions,
+      # MessageOptions, FieldOptions, EnumOptions, EnumValueOptions, ServiceOptions,
+      # or MethodOptions are strongly discouraged.
       class Option
         include Google::Apis::Core::Hashable
       
@@ -5160,7 +5343,11 @@ module Google
         end
       end
       
-      # A protocol buffer message type.
+      # A protocol buffer message type. New usages of this message as an alternative
+      # to DescriptorProto are strongly discouraged. This message does not reliability
+      # preserve all information necessary to model the schema and preserve semantics.
+      # Instead make use of FileDescriptorSet which preserves the necessary
+      # information.
       class Type
         include Google::Apis::Core::Hashable
       
@@ -5233,6 +5420,19 @@ module Google
       
       # Metadata for the `UpdateConsumerPolicy` method.
       class UpdateConsumerPolicyMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for the `UpdateMcpPolicy` method.
+      class UpdateMcpPolicyMetadata
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
