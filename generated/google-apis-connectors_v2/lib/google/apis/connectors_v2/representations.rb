@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ToolAnnotations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateEntitiesWithConditionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -784,6 +790,8 @@ module Google
       class Tool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotations, as: 'annotations', class: Google::Apis::ConnectorsV2::ToolAnnotations, decorator: Google::Apis::ConnectorsV2::ToolAnnotations::Representation
+      
           collection :depends_on, as: 'dependsOn'
           property :description, as: 'description'
           property :input_schema, as: 'inputSchema', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
@@ -791,6 +799,17 @@ module Google
           property :name, as: 'name'
           property :output_schema, as: 'outputSchema', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
       
+        end
+      end
+      
+      class ToolAnnotations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destructive_hint, as: 'destructiveHint'
+          property :idempotent_hint, as: 'idempotentHint'
+          property :open_world_hint, as: 'openWorldHint'
+          property :read_only_hint, as: 'readOnlyHint'
+          property :title, as: 'title'
         end
       end
       

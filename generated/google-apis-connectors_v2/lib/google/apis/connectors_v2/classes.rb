@@ -1747,6 +1747,11 @@ module Google
       class Tool
         include Google::Apis::Core::Hashable
       
+        # ToolAnnotations holds annotations for a tool.
+        # Corresponds to the JSON property `annotations`
+        # @return [Google::Apis::ConnectorsV2::ToolAnnotations]
+        attr_accessor :annotations
+      
         # List of tool names that this tool depends on.
         # Corresponds to the JSON property `dependsOn`
         # @return [Array<String>]
@@ -1778,11 +1783,65 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @depends_on = args[:depends_on] if args.key?(:depends_on)
           @description = args[:description] if args.key?(:description)
           @input_schema = args[:input_schema] if args.key?(:input_schema)
           @name = args[:name] if args.key?(:name)
           @output_schema = args[:output_schema] if args.key?(:output_schema)
+        end
+      end
+      
+      # ToolAnnotations holds annotations for a tool.
+      class ToolAnnotations
+        include Google::Apis::Core::Hashable
+      
+        # If true, the tool may perform destructive updates to its environment. If false,
+        # the tool performs only additive updates. (This property is meaningful only
+        # when `read_only_hint == false`)
+        # Corresponds to the JSON property `destructiveHint`
+        # @return [Boolean]
+        attr_accessor :destructive_hint
+        alias_method :destructive_hint?, :destructive_hint
+      
+        # If true, calling the tool repeatedly with the same arguments will have no
+        # additional effect on the environment. (This property is meaningful only when `
+        # read_only_hint == false`)
+        # Corresponds to the JSON property `idempotentHint`
+        # @return [Boolean]
+        attr_accessor :idempotent_hint
+        alias_method :idempotent_hint?, :idempotent_hint
+      
+        # If true, this tool may interact with an "open world" of external entities. If
+        # false, the tool's domain of interaction is closed. For example, the world of a
+        # web search tool is open, whereas that of a memory tool is not.
+        # Corresponds to the JSON property `openWorldHint`
+        # @return [Boolean]
+        attr_accessor :open_world_hint
+        alias_method :open_world_hint?, :open_world_hint
+      
+        # If true, the tool does not modify its environment.
+        # Corresponds to the JSON property `readOnlyHint`
+        # @return [Boolean]
+        attr_accessor :read_only_hint
+        alias_method :read_only_hint?, :read_only_hint
+      
+        # A human-readable title for the tool.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destructive_hint = args[:destructive_hint] if args.key?(:destructive_hint)
+          @idempotent_hint = args[:idempotent_hint] if args.key?(:idempotent_hint)
+          @open_world_hint = args[:open_world_hint] if args.key?(:open_world_hint)
+          @read_only_hint = args[:read_only_hint] if args.key?(:read_only_hint)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
