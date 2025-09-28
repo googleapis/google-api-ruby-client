@@ -1172,6 +1172,12 @@ module Google
         # @return [String]
         attr_accessor :business_status
       
+        # The consumer alert message for the place when we detect suspicious review
+        # activity on a business or a business violates our policies.
+        # Corresponds to the JSON property `consumerAlert`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlert]
+        attr_accessor :consumer_alert
+      
         # List of places in which the current place is located.
         # Corresponds to the JSON property `containingPlaces`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceContainingPlace>]
@@ -1604,6 +1610,7 @@ module Google
           @allows_dogs = args[:allows_dogs] if args.key?(:allows_dogs)
           @attributions = args[:attributions] if args.key?(:attributions)
           @business_status = args[:business_status] if args.key?(:business_status)
+          @consumer_alert = args[:consumer_alert] if args.key?(:consumer_alert)
           @containing_places = args[:containing_places] if args.key?(:containing_places)
           @curbside_pickup = args[:curbside_pickup] if args.key?(:curbside_pickup)
           @current_opening_hours = args[:current_opening_hours] if args.key?(:current_opening_hours)
@@ -1777,6 +1784,95 @@ module Google
         def update!(**args)
           @provider = args[:provider] if args.key?(:provider)
           @provider_uri = args[:provider_uri] if args.key?(:provider_uri)
+        end
+      end
+      
+      # The consumer alert message for the place when we detect suspicious review
+      # activity on a business or a business violates our policies.
+      class GoogleMapsPlacesV1PlaceConsumerAlert
+        include Google::Apis::Core::Hashable
+      
+        # The details of the consumer alert message.
+        # Corresponds to the JSON property `details`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlertDetails]
+        attr_accessor :details
+      
+        # The language code of the consumer alert message. This is a BCP 47 language
+        # code.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # The overview of the consumer alert message.
+        # Corresponds to the JSON property `overview`
+        # @return [String]
+        attr_accessor :overview
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @overview = args[:overview] if args.key?(:overview)
+        end
+      end
+      
+      # The details of the consumer alert message.
+      class GoogleMapsPlacesV1PlaceConsumerAlertDetails
+        include Google::Apis::Core::Hashable
+      
+        # The link to show together with the description to provide more information.
+        # Corresponds to the JSON property `aboutLink`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink]
+        attr_accessor :about_link
+      
+        # The description of the consumer alert message.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The title to show together with the description.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @about_link = args[:about_link] if args.key?(:about_link)
+          @description = args[:description] if args.key?(:description)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # The link to show together with the description to provide more information.
+      class GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink
+        include Google::Apis::Core::Hashable
+      
+        # The title to show for the link.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # The uri of the link.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -2465,6 +2561,18 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
         attr_accessor :text
       
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `visitDate`
+        # @return [Google::Apis::PlacesV1::GoogleTypeDate]
+        attr_accessor :visit_date
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2480,6 +2588,7 @@ module Google
           @rating = args[:rating] if args.key?(:rating)
           @relative_publish_time_description = args[:relative_publish_time_description] if args.key?(:relative_publish_time_description)
           @text = args[:text] if args.key?(:text)
+          @visit_date = args[:visit_date] if args.key?(:visit_date)
         end
       end
       
