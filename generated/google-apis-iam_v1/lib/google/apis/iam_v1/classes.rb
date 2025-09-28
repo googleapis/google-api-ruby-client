@@ -3281,8 +3281,7 @@ module Google
         # @return [Google::Apis::IamV1::AccessRestrictions]
         attr_accessor :access_restrictions
       
-        # Optional. A user-specified description of the pool. Cannot exceed 256
-        # characters.
+        # Optional. A description of the pool. Cannot exceed 256 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -3295,8 +3294,7 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # Optional. A user-specified display name of the pool in Google Cloud Console.
-        # Cannot exceed 32 characters.
+        # Optional. A display name for the pool. Cannot exceed 32 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -3419,8 +3417,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :attribute_mapping
       
-        # Optional. A user-specified description of the provider. Cannot exceed 256
-        # characters.
+        # Optional. A description of the provider. Cannot exceed 256 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -3440,8 +3437,7 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # Optional. A user-specified display name for the provider. Cannot exceed 32
-        # characters.
+        # Optional. A display name for the provider. Cannot exceed 32 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -3579,14 +3575,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :claim_mapping
       
-        # Optional. The user-specified description of the scim tenant. Cannot exceed 256
-        # characters.
+        # Optional. The description of the scim tenant. Cannot exceed 256 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Optional. The user-specified display name of the scim tenant. Cannot exceed 32
-        # characters.
+        # Optional. The display name of the scim tenant. Cannot exceed 32 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -3629,8 +3623,7 @@ module Google
       class WorkforcePoolProviderScimToken
         include Google::Apis::Core::Hashable
       
-        # Optional. The user-specified display name of the scim token. Cannot exceed 32
-        # characters.
+        # Optional. The display name of the scim token. Cannot exceed 32 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
