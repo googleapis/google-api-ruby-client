@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -507,6 +513,8 @@ module Google
           property :account_id, as: 'accountId'
           property :annotation, as: 'annotation'
           property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
+          property :phone_authentication_event, as: 'phoneAuthenticationEvent', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent::Representation
+      
           collection :reasons, as: 'reasons'
           property :transaction_event, as: 'transactionEvent', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionEvent, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionEvent::Representation
       
@@ -871,6 +879,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :skip_billing_check, as: 'skipBillingCheck'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_time, as: 'eventTime'
+          property :phone_number, as: 'phoneNumber'
         end
       end
       
