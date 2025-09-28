@@ -977,6 +977,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ChecksV1alpha::Operation, decorator: Google::Apis::ChecksV1alpha::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
