@@ -4017,7 +4017,6 @@ module Google
       class GoogleCloudDocumentaiV1beta3Processor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :active_schema_version, as: 'activeSchemaVersion'
           property :create_time, as: 'createTime'
           property :default_processor_version, as: 'defaultProcessorVersion'
           property :display_name, as: 'displayName'
