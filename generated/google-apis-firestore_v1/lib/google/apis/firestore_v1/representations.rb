@@ -1233,12 +1233,15 @@ module Google
           property :delete_time, as: 'deleteTime'
           property :earliest_version_time, as: 'earliestVersionTime'
           property :etag, as: 'etag'
+          property :firestore_data_access_mode, as: 'firestoreDataAccessMode'
           property :free_tier, as: 'freeTier'
           property :key_prefix, as: 'keyPrefix'
           property :location_id, as: 'locationId'
+          property :mongodb_compatible_data_access_mode, as: 'mongodbCompatibleDataAccessMode'
           property :name, as: 'name'
           property :point_in_time_recovery_enablement, as: 'pointInTimeRecoveryEnablement'
           property :previous_id, as: 'previousId'
+          property :realtime_updates_mode, as: 'realtimeUpdatesMode'
           property :source_info, as: 'sourceInfo', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SourceInfo, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SourceInfo::Representation
       
           hash :tags, as: 'tags'

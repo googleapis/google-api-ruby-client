@@ -1646,6 +1646,13 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Optional. The Firestore API data access mode to use for this database. If not
+        # set on write: - the default value is DATA_ACCESS_MODE_DISABLED for Enterprise
+        # Edition. - the default value is DATA_ACCESS_MODE_ENABLED for Standard Edition.
+        # Corresponds to the JSON property `firestoreDataAccessMode`
+        # @return [String]
+        attr_accessor :firestore_data_access_mode
+      
         # Output only. Background: Free tier is the ability of a Firestore database to
         # use a small amount of resources every day without being charged. Once usage
         # exceeds the free tier limit further usage is charged. Whether this database
@@ -1674,6 +1681,14 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
+        # Optional. The MongoDB compatible API data access mode to use for this database.
+        # If not set on write, the default value is DATA_ACCESS_MODE_ENABLED for
+        # Enterprise Edition. The value is always DATA_ACCESS_MODE_DISABLED for Standard
+        # Edition.
+        # Corresponds to the JSON property `mongodbCompatibleDataAccessMode`
+        # @return [String]
+        attr_accessor :mongodb_compatible_data_access_mode
+      
         # The resource name of the Database. Format: `projects/`project`/databases/`
         # database``
         # Corresponds to the JSON property `name`
@@ -1690,6 +1705,11 @@ module Google
         # Corresponds to the JSON property `previousId`
         # @return [String]
         attr_accessor :previous_id
+      
+        # Immutable. The default Realtime Updates mode to use for this database.
+        # Corresponds to the JSON property `realtimeUpdatesMode`
+        # @return [String]
+        attr_accessor :realtime_updates_mode
       
         # Information about the provenance of this database.
         # Corresponds to the JSON property `sourceInfo`
@@ -1745,12 +1765,15 @@ module Google
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @earliest_version_time = args[:earliest_version_time] if args.key?(:earliest_version_time)
           @etag = args[:etag] if args.key?(:etag)
+          @firestore_data_access_mode = args[:firestore_data_access_mode] if args.key?(:firestore_data_access_mode)
           @free_tier = args[:free_tier] if args.key?(:free_tier)
           @key_prefix = args[:key_prefix] if args.key?(:key_prefix)
           @location_id = args[:location_id] if args.key?(:location_id)
+          @mongodb_compatible_data_access_mode = args[:mongodb_compatible_data_access_mode] if args.key?(:mongodb_compatible_data_access_mode)
           @name = args[:name] if args.key?(:name)
           @point_in_time_recovery_enablement = args[:point_in_time_recovery_enablement] if args.key?(:point_in_time_recovery_enablement)
           @previous_id = args[:previous_id] if args.key?(:previous_id)
+          @realtime_updates_mode = args[:realtime_updates_mode] if args.key?(:realtime_updates_mode)
           @source_info = args[:source_info] if args.key?(:source_info)
           @tags = args[:tags] if args.key?(:tags)
           @type = args[:type] if args.key?(:type)
