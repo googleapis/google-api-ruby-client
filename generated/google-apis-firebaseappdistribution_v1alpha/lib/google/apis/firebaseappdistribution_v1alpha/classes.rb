@@ -972,6 +972,11 @@ module Google
       class GoogleFirebaseAppdistroV1alphaGoalAction
         include Google::Apis::Core::Hashable
       
+        # Output only. The type of caching used to determine the action.
+        # Corresponds to the JSON property `cachingType`
+        # @return [String]
+        attr_accessor :caching_type
+      
         # Information to help the customer understand why the agent took this action.
         # Corresponds to the JSON property `debugInfo`
         # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo]
@@ -1004,6 +1009,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @caching_type = args[:caching_type] if args.key?(:caching_type)
           @debug_info = args[:debug_info] if args.key?(:debug_info)
           @device_action = args[:device_action] if args.key?(:device_action)
           @explanation = args[:explanation] if args.key?(:explanation)

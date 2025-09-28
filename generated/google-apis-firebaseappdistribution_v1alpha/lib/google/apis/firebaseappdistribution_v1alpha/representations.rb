@@ -628,6 +628,7 @@ module Google
       class GoogleFirebaseAppdistroV1alphaGoalAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :caching_type, as: 'cachingType'
           property :debug_info, as: 'debugInfo', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo::Representation
       
           property :device_action, as: 'deviceAction', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceAction, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceAction::Representation
