@@ -314,6 +314,55 @@ module Google
         end
       end
       
+      # Configuration for a multi-speaker text-to-speech setup. Enables the use of up
+      # to two distinct voices in a single synthesis request.
+      class MultiSpeakerVoiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of configurations for the voices of the speakers. Exactly two
+        # speaker voice configurations must be provided.
+        # Corresponds to the JSON property `speakerVoiceConfigs`
+        # @return [Array<Google::Apis::TexttospeechV1::MultispeakerPrebuiltVoice>]
+        attr_accessor :speaker_voice_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @speaker_voice_configs = args[:speaker_voice_configs] if args.key?(:speaker_voice_configs)
+        end
+      end
+      
+      # Configuration for a single speaker in a Gemini TTS multi-speaker setup.
+      # Enables dialogue between two speakers.
+      class MultispeakerPrebuiltVoice
+        include Google::Apis::Core::Hashable
+      
+        # Required. The speaker alias of the voice. This is the user-chosen speaker name
+        # that is used in the multispeaker text input, such as "Speaker1".
+        # Corresponds to the JSON property `speakerAlias`
+        # @return [String]
+        attr_accessor :speaker_alias
+      
+        # Required. The speaker ID of the voice. See https://cloud.google.com/text-to-
+        # speech/docs/gemini-tts#voice_options for available values.
+        # Corresponds to the JSON property `speakerId`
+        # @return [String]
+        attr_accessor :speaker_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @speaker_alias = args[:speaker_alias] if args.key?(:speaker_alias)
+          @speaker_id = args[:speaker_id] if args.key?(:speaker_id)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -720,6 +769,12 @@ module Google
         # @return [String]
         attr_accessor :model_name
       
+        # Configuration for a multi-speaker text-to-speech setup. Enables the use of up
+        # to two distinct voices in a single synthesis request.
+        # Corresponds to the JSON property `multiSpeakerVoiceConfig`
+        # @return [Google::Apis::TexttospeechV1::MultiSpeakerVoiceConfig]
+        attr_accessor :multi_speaker_voice_config
+      
         # The name of the voice. If both the name and the gender are not set, the
         # service will choose a voice based on the other parameters such as
         # language_code.
@@ -750,6 +805,7 @@ module Google
           @custom_voice = args[:custom_voice] if args.key?(:custom_voice)
           @language_code = args[:language_code] if args.key?(:language_code)
           @model_name = args[:model_name] if args.key?(:model_name)
+          @multi_speaker_voice_config = args[:multi_speaker_voice_config] if args.key?(:multi_speaker_voice_config)
           @name = args[:name] if args.key?(:name)
           @ssml_gender = args[:ssml_gender] if args.key?(:ssml_gender)
           @voice_clone = args[:voice_clone] if args.key?(:voice_clone)
