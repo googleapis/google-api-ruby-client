@@ -3901,14 +3901,13 @@ module Google
       class PersonProperties
         include Google::Apis::Core::Hashable
       
-        # Output only. The email address linked to this Person. This field is always
-        # present.
+        # The email address linked to this Person. This field is always present.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
       
-        # Output only. The name of the person if it's displayed in the link text instead
-        # of the person's email address.
+        # The name of the person if it's displayed in the link text instead of the
+        # person's email address.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
