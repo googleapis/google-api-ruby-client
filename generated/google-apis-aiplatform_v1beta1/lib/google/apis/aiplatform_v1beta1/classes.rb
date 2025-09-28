@@ -1830,6 +1830,11 @@ module Google
         attr_accessor :flip_enabled
         alias_method :flip_enabled?, :flip_enabled
       
+        # Generation config.
+        # Corresponds to the JSON property `generationConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerationConfig]
+        attr_accessor :generation_config
+      
         # Optional. Number of samples for each instance in the dataset. If not specified,
         # the default is 4. Minimum value is 1, maximum value is 32.
         # Corresponds to the JSON property `samplingCount`
@@ -1844,6 +1849,7 @@ module Google
         def update!(**args)
           @autorater_model = args[:autorater_model] if args.key?(:autorater_model)
           @flip_enabled = args[:flip_enabled] if args.key?(:flip_enabled)
+          @generation_config = args[:generation_config] if args.key?(:generation_config)
           @sampling_count = args[:sampling_count] if args.key?(:sampling_count)
         end
       end
@@ -3004,8 +3010,8 @@ module Google
         # @return [String]
         attr_accessor :prompt_column
       
-        # Optional. The name of the column that contains the rubrics. This will be in
-        # evaluation_rubric.RubricGroup format (cl/762595858).
+        # Optional. The name of the column that contains the rubrics. This is in
+        # evaluation_rubric.RubricGroup format.
         # Corresponds to the JSON property `rubricsColumn`
         # @return [String]
         attr_accessor :rubrics_column
@@ -9697,7 +9703,7 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationResult]
         attr_accessor :evaluation_response
       
-        # The GCS object where the request or response is stored.
+        # The Cloud Storage object where the request or response is stored.
         # Corresponds to the JSON property `gcsUri`
         # @return [String]
         attr_accessor :gcs_uri
@@ -15912,7 +15918,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Required. The name of the function to call. Matches [FunctionDeclaration.name].
+        # Optional. The name of the function to call. Matches [FunctionDeclaration.name].
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -21519,6 +21525,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
+      # Represents a mount configuration for Lustre file system.
+      class GoogleCloudAiplatformV1beta1LustreMount
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the Lustre filesystem.
+        # Corresponds to the JSON property `filesystem`
+        # @return [String]
+        attr_accessor :filesystem
+      
+        # Required. IP address of the Lustre instance.
+        # Corresponds to the JSON property `instanceIp`
+        # @return [String]
+        attr_accessor :instance_ip
+      
+        # Required. Destination mount path. The Lustre file system will be mounted for
+        # the user under /mnt/lustre/
+        # Corresponds to the JSON property `mountPoint`
+        # @return [String]
+        attr_accessor :mount_point
+      
+        # Required. The unique identifier of the Lustre volume.
+        # Corresponds to the JSON property `volumeHandle`
+        # @return [String]
+        attr_accessor :volume_handle
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filesystem = args[:filesystem] if args.key?(:filesystem)
+          @instance_ip = args[:instance_ip] if args.key?(:instance_ip)
+          @mount_point = args[:mount_point] if args.key?(:mount_point)
+          @volume_handle = args[:volume_handle] if args.key?(:volume_handle)
         end
       end
       
@@ -36088,6 +36132,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Timestamp in UTC of when this SandboxEnvironment is considered
+        # expired. This is *always* provided on output, regardless of what `expiration`
+        # was sent on input.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
         # Identifier. The name of the SandboxEnvironment.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -36103,6 +36154,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Optional. Input only. The TTL for the sandbox environment. The expiration time
+        # is computed: now + TTL.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
         # Output only. The timestamp when this SandboxEnvironment was most recently
         # updated.
         # Corresponds to the JSON property `updateTime`
@@ -36117,9 +36174,11 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @name = args[:name] if args.key?(:name)
           @spec = args[:spec] if args.key?(:spec)
           @state = args[:state] if args.key?(:state)
+          @ttl = args[:ttl] if args.key?(:ttl)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -50874,6 +50933,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DiskSpec]
         attr_accessor :disk_spec
       
+        # Optional. List of Lustre mounts.
+        # Corresponds to the JSON property `lustreMounts`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1LustreMount>]
+        attr_accessor :lustre_mounts
+      
         # Specification of a single machine.
         # Corresponds to the JSON property `machineSpec`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MachineSpec]
@@ -50902,6 +50966,7 @@ module Google
         def update!(**args)
           @container_spec = args[:container_spec] if args.key?(:container_spec)
           @disk_spec = args[:disk_spec] if args.key?(:disk_spec)
+          @lustre_mounts = args[:lustre_mounts] if args.key?(:lustre_mounts)
           @machine_spec = args[:machine_spec] if args.key?(:machine_spec)
           @nfs_mounts = args[:nfs_mounts] if args.key?(:nfs_mounts)
           @python_package_spec = args[:python_package_spec] if args.key?(:python_package_spec)
