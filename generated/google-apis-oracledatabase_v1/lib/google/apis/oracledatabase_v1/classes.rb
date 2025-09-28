@@ -694,6 +694,17 @@ module Google
         # @return [String]
         attr_accessor :disaster_recovery_role_changed_time
       
+        # The encryption key used to encrypt the Autonomous Database.
+        # Corresponds to the JSON property `encryptionKey`
+        # @return [Google::Apis::OracledatabaseV1::EncryptionKey]
+        attr_accessor :encryption_key
+      
+        # Output only. The history of the encryption keys used to encrypt the Autonomous
+        # Database.
+        # Corresponds to the JSON property `encryptionKeyHistoryEntries`
+        # @return [Array<Google::Apis::OracledatabaseV1::EncryptionKeyHistoryEntry>]
+        attr_accessor :encryption_key_history_entries
+      
         # Output only. This field indicates the number of seconds of data loss during a
         # Data Guard failover.
         # Corresponds to the JSON property `failedDataRecoveryDuration`
@@ -867,6 +878,12 @@ module Google
         # @return [String]
         attr_accessor :secret_id
       
+        # Output only. An Oracle-managed Google Cloud service account on which customers
+        # can grant roles to access resources in the customer project.
+        # Corresponds to the JSON property `serviceAgentEmail`
+        # @return [String]
+        attr_accessor :service_agent_email
+      
         # Output only. The SQL Web Developer URL for the Autonomous Database.
         # Corresponds to the JSON property `sqlWebDeveloperUrl`
         # @return [String]
@@ -928,6 +945,8 @@ module Google
           @db_version = args[:db_version] if args.key?(:db_version)
           @db_workload = args[:db_workload] if args.key?(:db_workload)
           @disaster_recovery_role_changed_time = args[:disaster_recovery_role_changed_time] if args.key?(:disaster_recovery_role_changed_time)
+          @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
+          @encryption_key_history_entries = args[:encryption_key_history_entries] if args.key?(:encryption_key_history_entries)
           @failed_data_recovery_duration = args[:failed_data_recovery_duration] if args.key?(:failed_data_recovery_duration)
           @is_auto_scaling_enabled = args[:is_auto_scaling_enabled] if args.key?(:is_auto_scaling_enabled)
           @is_local_data_guard_enabled = args[:is_local_data_guard_enabled] if args.key?(:is_local_data_guard_enabled)
@@ -959,6 +978,7 @@ module Google
           @role = args[:role] if args.key?(:role)
           @scheduled_operation_details = args[:scheduled_operation_details] if args.key?(:scheduled_operation_details)
           @secret_id = args[:secret_id] if args.key?(:secret_id)
+          @service_agent_email = args[:service_agent_email] if args.key?(:service_agent_email)
           @sql_web_developer_url = args[:sql_web_developer_url] if args.key?(:sql_web_developer_url)
           @state = args[:state] if args.key?(:state)
           @supported_clone_regions = args[:supported_clone_regions] if args.key?(:supported_clone_regions)
@@ -2920,6 +2940,60 @@ module Google
         end
       end
       
+      # The encryption key used to encrypt the Autonomous Database.
+      class EncryptionKey
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The KMS key used to encrypt the Autonomous Database. This field is
+        # required if the provider is GOOGLE_MANAGED. The name of the KMS key resource
+        # in the following format: `projects/`project`/locations/`location`/keyRings/`
+        # key_ring`/cryptoKeys/`crypto_key``.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # Optional. The provider of the encryption key.
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @provider = args[:provider] if args.key?(:provider)
+        end
+      end
+      
+      # The history of the encryption keys used to encrypt the Autonomous Database.
+      class EncryptionKeyHistoryEntry
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The date and time when the encryption key was activated on the
+        # Autonomous Database..
+        # Corresponds to the JSON property `activationTime`
+        # @return [String]
+        attr_accessor :activation_time
+      
+        # The encryption key used to encrypt the Autonomous Database.
+        # Corresponds to the JSON property `encryptionKey`
+        # @return [Google::Apis::OracledatabaseV1::EncryptionKey]
+        attr_accessor :encryption_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activation_time = args[:activation_time] if args.key?(:activation_time)
+          @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
+        end
+      end
+      
       # Details of the Entitlement resource.
       class Entitlement
         include Google::Apis::Core::Hashable
@@ -4094,6 +4168,13 @@ module Google
         # @return [Array<Google::Apis::OracledatabaseV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4102,6 +4183,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
