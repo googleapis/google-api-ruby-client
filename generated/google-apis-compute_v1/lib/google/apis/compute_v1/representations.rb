@@ -850,6 +850,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeprecationStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1722,6 +1728,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImageParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4096,6 +4108,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrganizationSecurityPoliciesListAssociationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OutlierDetection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4253,6 +4271,54 @@ module Google
       end
       
       class PreservedStatePreservedNetworkIpIpAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreviewFeature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreviewFeatureList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreviewFeatureRolloutOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreviewFeatureRolloutOperationRolloutInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreviewFeatureStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreviewFeatureStatusReleaseStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4900,6 +4966,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReservationSubBlocksReportFaultyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationSubBlocksReportFaultyRequestFaultReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReservationsBlocksPerformMaintenanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5542,6 +5620,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyAssociation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyDdosProtectionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5850,6 +5934,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -8894,6 +8984,15 @@ module Google
         end
       end
       
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
+        end
+      end
+      
       class DeprecationStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10539,6 +10638,8 @@ module Google
           collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::ImageParams, decorator: Google::Apis::ComputeV1::ImageParams::Representation
+      
           property :raw_disk, as: 'rawDisk', class: Google::Apis::ComputeV1::Image::RawDisk, decorator: Google::Apis::ComputeV1::Image::RawDisk::Representation
       
           property :satisfies_pzi, as: 'satisfiesPzi'
@@ -10610,6 +10711,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ImageParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -12136,6 +12244,7 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :state, as: 'state'
+          property :subzone, as: 'subzone'
         end
       end
       
@@ -15057,6 +15166,15 @@ module Google
         end
       end
       
+      class OrganizationSecurityPoliciesListAssociationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associations, as: 'associations', class: Google::Apis::ComputeV1::SecurityPolicyAssociation, decorator: Google::Apis::ComputeV1::SecurityPolicyAssociation::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
       class OutlierDetection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -15358,6 +15476,91 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
           property :literal, as: 'literal'
+        end
+      end
+      
+      class PreviewFeature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activation_status, as: 'activationStatus'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :rollout_operation, as: 'rolloutOperation', class: Google::Apis::ComputeV1::PreviewFeatureRolloutOperation, decorator: Google::Apis::ComputeV1::PreviewFeatureRolloutOperation::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :status, as: 'status', class: Google::Apis::ComputeV1::PreviewFeatureStatus, decorator: Google::Apis::ComputeV1::PreviewFeatureStatus::Representation
+      
+        end
+      end
+      
+      class PreviewFeatureList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::PreviewFeature, decorator: Google::Apis::ComputeV1::PreviewFeature::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::PreviewFeatureList::Warning, decorator: Google::Apis::ComputeV1::PreviewFeatureList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::PreviewFeatureList::Warning::Datum, decorator: Google::Apis::ComputeV1::PreviewFeatureList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class PreviewFeatureRolloutOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rollout_input, as: 'rolloutInput', class: Google::Apis::ComputeV1::PreviewFeatureRolloutOperationRolloutInput, decorator: Google::Apis::ComputeV1::PreviewFeatureRolloutOperationRolloutInput::Representation
+      
+        end
+      end
+      
+      class PreviewFeatureRolloutOperationRolloutInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :predefined_rollout_plan, as: 'predefinedRolloutPlan'
+        end
+      end
+      
+      class PreviewFeatureStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :help_link, as: 'helpLink'
+          property :release_status, as: 'releaseStatus', class: Google::Apis::ComputeV1::PreviewFeatureStatusReleaseStatus, decorator: Google::Apis::ComputeV1::PreviewFeatureStatusReleaseStatus::Representation
+      
+        end
+      end
+      
+      class PreviewFeatureStatusReleaseStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stage, as: 'stage'
+          property :update_date, as: 'updateDate', class: Google::Apis::ComputeV1::Date, decorator: Google::Apis::ComputeV1::Date::Representation
+      
         end
       end
       
@@ -16478,6 +16681,24 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ReservationSubBlocksReportFaultyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disruption_schedule, as: 'disruptionSchedule'
+          property :failure_component, as: 'failureComponent'
+          collection :fault_reasons, as: 'faultReasons', class: Google::Apis::ComputeV1::ReservationSubBlocksReportFaultyRequestFaultReason, decorator: Google::Apis::ComputeV1::ReservationSubBlocksReportFaultyRequestFaultReason::Representation
+      
+        end
+      end
+      
+      class ReservationSubBlocksReportFaultyRequestFaultReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :behavior, as: 'behavior'
+          property :description, as: 'description'
         end
       end
       
@@ -17625,6 +17846,8 @@ module Google
       
           property :advanced_options_config, as: 'advancedOptionsConfig', class: Google::Apis::ComputeV1::SecurityPolicyAdvancedOptionsConfig, decorator: Google::Apis::ComputeV1::SecurityPolicyAdvancedOptionsConfig::Representation
       
+          collection :associations, as: 'associations', class: Google::Apis::ComputeV1::SecurityPolicyAssociation, decorator: Google::Apis::ComputeV1::SecurityPolicyAssociation::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :ddos_protection_config, as: 'ddosProtectionConfig', class: Google::Apis::ComputeV1::SecurityPolicyDdosProtectionConfig, decorator: Google::Apis::ComputeV1::SecurityPolicyDdosProtectionConfig::Representation
       
@@ -17641,6 +17864,7 @@ module Google
           collection :rules, as: 'rules', class: Google::Apis::ComputeV1::SecurityPolicyRule, decorator: Google::Apis::ComputeV1::SecurityPolicyRule::Representation
       
           property :self_link, as: 'selfLink'
+          property :short_name, as: 'shortName'
           property :type, as: 'type'
           collection :user_defined_fields, as: 'userDefinedFields', class: Google::Apis::ComputeV1::SecurityPolicyUserDefinedField, decorator: Google::Apis::ComputeV1::SecurityPolicyUserDefinedField::Representation
       
@@ -17705,6 +17929,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :content_types, as: 'contentTypes'
+        end
+      end
+      
+      class SecurityPolicyAssociation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment_id, as: 'attachmentId'
+          property :display_name, as: 'displayName'
+          collection :excluded_folders, as: 'excludedFolders'
+          collection :excluded_projects, as: 'excludedProjects'
+          property :name, as: 'name'
+          property :security_policy_id, as: 'securityPolicyId'
+          property :short_name, as: 'shortName'
         end
       end
       
@@ -18224,6 +18461,8 @@ module Google
           collection :licenses, as: 'licenses'
           property :location_hint, as: 'locationHint'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::SnapshotParams, decorator: Google::Apis::ComputeV1::SnapshotParams::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
@@ -18277,6 +18516,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SnapshotParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
