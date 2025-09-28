@@ -436,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesPreCheckMajorVersionUpgradeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesReencryptRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -587,6 +593,18 @@ module Google
       end
       
       class PoolNodeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreCheckMajorVersionUpgradeContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreCheckResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1683,6 +1701,14 @@ module Google
         end
       end
       
+      class InstancesPreCheckMajorVersionUpgradeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pre_check_major_version_upgrade_context, as: 'preCheckMajorVersionUpgradeContext', class: Google::Apis::SqladminV1::PreCheckMajorVersionUpgradeContext, decorator: Google::Apis::SqladminV1::PreCheckMajorVersionUpgradeContext::Representation
+      
+        end
+      end
+      
       class InstancesReencryptRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1874,6 +1900,8 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :operation_type, as: 'operationType'
+          property :pre_check_major_version_upgrade_context, as: 'preCheckMajorVersionUpgradeContext', class: Google::Apis::SqladminV1::PreCheckMajorVersionUpgradeContext, decorator: Google::Apis::SqladminV1::PreCheckMajorVersionUpgradeContext::Representation
+      
           property :self_link, as: 'selfLink'
           property :start_time, as: 'startTime'
           property :status, as: 'status'
@@ -1982,6 +2010,25 @@ module Google
         end
       end
       
+      class PreCheckMajorVersionUpgradeContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :pre_check_response, as: 'preCheckResponse', class: Google::Apis::SqladminV1::PreCheckResponse, decorator: Google::Apis::SqladminV1::PreCheckResponse::Representation
+      
+          property :target_database_version, as: 'targetDatabaseVersion'
+        end
+      end
+      
+      class PreCheckResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions_required, as: 'actionsRequired'
+          property :message, as: 'message'
+          property :message_type, as: 'messageType'
+        end
+      end
+      
       class PscAutoConnectionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2023,6 +2070,8 @@ module Google
           property :enabled, as: 'enabled'
           property :max_node_count, as: 'maxNodeCount'
           property :min_node_count, as: 'minNodeCount'
+          property :scale_in_cooldown_seconds, as: 'scaleInCooldownSeconds'
+          property :scale_out_cooldown_seconds, as: 'scaleOutCooldownSeconds'
           collection :target_metrics, as: 'targetMetrics', class: Google::Apis::SqladminV1::TargetMetric, decorator: Google::Apis::SqladminV1::TargetMetric::Representation
       
         end

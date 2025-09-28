@@ -3242,6 +3242,25 @@ module Google
         end
       end
       
+      # Request for Pre-checks for MVU
+      class InstancesPreCheckMajorVersionUpgradeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Pre-check major version upgrade context.
+        # Corresponds to the JSON property `preCheckMajorVersionUpgradeContext`
+        # @return [Google::Apis::SqladminV1::PreCheckMajorVersionUpgradeContext]
+        attr_accessor :pre_check_major_version_upgrade_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pre_check_major_version_upgrade_context = args[:pre_check_major_version_upgrade_context] if args.key?(:pre_check_major_version_upgrade_context)
+        end
+      end
+      
       # Database Instance reencrypt request.
       class InstancesReencryptRequest
         include Google::Apis::Core::Hashable
@@ -3966,6 +3985,11 @@ module Google
         # @return [String]
         attr_accessor :operation_type
       
+        # Pre-check major version upgrade context.
+        # Corresponds to the JSON property `preCheckMajorVersionUpgradeContext`
+        # @return [Google::Apis::SqladminV1::PreCheckMajorVersionUpgradeContext]
+        attr_accessor :pre_check_major_version_upgrade_context
+      
         # The URI of this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -4024,6 +4048,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @pre_check_major_version_upgrade_context = args[:pre_check_major_version_upgrade_context] if args.key?(:pre_check_major_version_upgrade_context)
           @self_link = args[:self_link] if args.key?(:self_link)
           @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
@@ -4406,6 +4431,68 @@ module Google
         end
       end
       
+      # Pre-check major version upgrade context.
+      class PreCheckMajorVersionUpgradeContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. This is always `sql#preCheckMajorVersionUpgradeContext`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Output only. The responses from the precheck operation.
+        # Corresponds to the JSON property `preCheckResponse`
+        # @return [Array<Google::Apis::SqladminV1::PreCheckResponse>]
+        attr_accessor :pre_check_response
+      
+        # Required. The target database version to upgrade to.
+        # Corresponds to the JSON property `targetDatabaseVersion`
+        # @return [String]
+        attr_accessor :target_database_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @pre_check_response = args[:pre_check_response] if args.key?(:pre_check_response)
+          @target_database_version = args[:target_database_version] if args.key?(:target_database_version)
+        end
+      end
+      
+      # Structured PreCheckResponse containing message, type, and required actions.
+      class PreCheckResponse
+        include Google::Apis::Core::Hashable
+      
+        # The actions that the user needs to take. Use repeated for multiple actions.
+        # Corresponds to the JSON property `actionsRequired`
+        # @return [Array<String>]
+        attr_accessor :actions_required
+      
+        # The message to be displayed to the user.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # The type of message whether it is an info, warning, or error.
+        # Corresponds to the JSON property `messageType`
+        # @return [String]
+        attr_accessor :message_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions_required = args[:actions_required] if args.key?(:actions_required)
+          @message = args[:message] if args.key?(:message)
+          @message_type = args[:message_type] if args.key?(:message_type)
+        end
+      end
+      
       # Settings for an automatically-setup Private Service Connect consumer endpoint
       # that is used to connect to a Cloud SQL instance.
       class PscAutoConnectionConfig
@@ -4565,6 +4652,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_node_count
       
+        # The cooldown period for scale-in operations.
+        # Corresponds to the JSON property `scaleInCooldownSeconds`
+        # @return [Fixnum]
+        attr_accessor :scale_in_cooldown_seconds
+      
+        # The cooldown period for scale-out operations.
+        # Corresponds to the JSON property `scaleOutCooldownSeconds`
+        # @return [Fixnum]
+        attr_accessor :scale_out_cooldown_seconds
+      
         # Optional. Target metrics for read pool auto scaling.
         # Corresponds to the JSON property `targetMetrics`
         # @return [Array<Google::Apis::SqladminV1::TargetMetric>]
@@ -4580,6 +4677,8 @@ module Google
           @enabled = args[:enabled] if args.key?(:enabled)
           @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
           @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
+          @scale_in_cooldown_seconds = args[:scale_in_cooldown_seconds] if args.key?(:scale_in_cooldown_seconds)
+          @scale_out_cooldown_seconds = args[:scale_out_cooldown_seconds] if args.key?(:scale_out_cooldown_seconds)
           @target_metrics = args[:target_metrics] if args.key?(:target_metrics)
         end
       end
