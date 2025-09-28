@@ -1,5 +1,9 @@
 # Release history for google-apis-discoveryengine_v1alpha
 
+### v0.78.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250924
+
 ### v0.77.0 (2025-09-21)
 
 * Regenerated from discovery document revision 20250918

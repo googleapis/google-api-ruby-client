@@ -1672,6 +1672,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaBranch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaBranchBranchStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaCheckGroundingRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2675,6 +2687,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaLanguageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaListBranchesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5609,6 +5627,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :action_params, as: 'actionParams'
           property :is_action_configured, as: 'isActionConfigured'
+          property :json_action_params, as: 'jsonActionParams'
           property :service_name, as: 'serviceName'
           property :use_static_secrets, as: 'useStaticSecrets'
         end
@@ -5738,6 +5757,7 @@ module Google
       class GoogleCloudDiscoveryengineV1BapConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enabled_actions, as: 'enabledActions'
           collection :supported_connector_modes, as: 'supportedConnectorModes'
         end
       end
@@ -6015,6 +6035,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :additional_params, as: 'additionalParams'
           hash :auth_params, as: 'authParams'
+          property :json_auth_params, as: 'jsonAuthParams'
           property :tenant, as: 'tenant', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1Tenant, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1Tenant::Representation
       
         end
@@ -6025,6 +6046,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :additional_params, as: 'additionalParams'
           hash :auth_params, as: 'authParams'
+          property :json_auth_params, as: 'jsonAuthParams'
         end
       end
       
@@ -6072,6 +6094,7 @@ module Google
       
           property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1CmekConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1CmekConfig::Representation
       
+          property :configurable_billing_approach, as: 'configurableBillingApproach'
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -6965,6 +6988,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :action_params, as: 'actionParams'
           property :is_action_configured, as: 'isActionConfigured'
+          property :json_action_params, as: 'jsonActionParams'
           property :service_name, as: 'serviceName'
           property :use_static_secrets, as: 'useStaticSecrets'
         end
@@ -7688,6 +7712,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :grounded_content, as: 'groundedContent', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistantGroundedContent, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistantGroundedContent::Representation
       
+          property :reply_id, as: 'replyId'
         end
       end
       
@@ -7876,6 +7901,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaBapConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enabled_actions, as: 'enabledActions'
           collection :supported_connector_modes, as: 'supportedConnectorModes'
         end
       end
@@ -8034,6 +8060,25 @@ module Google
           property :instance_id, as: 'instanceId'
           property :project_id, as: 'projectId'
           property :table_id, as: 'tableId'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaBranch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch_stats, as: 'branchStats', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBranchBranchStats, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBranchBranchStats::Representation
+      
+          property :display_name, as: 'displayName'
+          property :is_default, as: 'isDefault'
+          property :last_document_import_time, as: 'lastDocumentImportTime'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaBranchBranchStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :document_counts, as: 'documentCounts'
         end
       end
       
@@ -8641,6 +8686,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :additional_params, as: 'additionalParams'
           hash :auth_params, as: 'authParams'
+          property :json_auth_params, as: 'jsonAuthParams'
           property :tenant, as: 'tenant', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaTenant, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaTenant::Representation
       
         end
@@ -8651,6 +8697,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :additional_params, as: 'additionalParams'
           hash :auth_params, as: 'authParams'
+          property :json_auth_params, as: 'jsonAuthParams'
         end
       end
       
@@ -8698,6 +8745,7 @@ module Google
       
           property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig::Representation
       
+          property :configurable_billing_approach, as: 'configurableBillingApproach'
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -9803,6 +9851,14 @@ module Google
           property :language_code, as: 'languageCode'
           property :normalized_language_code, as: 'normalizedLanguageCode'
           property :region, as: 'region'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaListBranchesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :branches, as: 'branches', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBranch, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaBranch::Representation
+      
         end
       end
       
@@ -12346,6 +12402,7 @@ module Google
       
           property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaCmekConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaCmekConfig::Representation
       
+          property :configurable_billing_approach, as: 'configurableBillingApproach'
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -13947,6 +14004,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
