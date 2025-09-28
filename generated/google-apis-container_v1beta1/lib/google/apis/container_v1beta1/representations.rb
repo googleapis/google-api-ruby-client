@@ -2205,6 +2205,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_external_traffic, as: 'allowExternalTraffic'
+          property :enable_k8s_certs_via_dns, as: 'enableK8sCertsViaDns'
+          property :enable_k8s_tokens_via_dns, as: 'enableK8sTokensViaDns'
           property :endpoint, as: 'endpoint'
         end
       end
