@@ -14228,6 +14228,39 @@ module Google
         end
       end
       
+      # A common evalaution pipeline status.
+      class GoogleCloudDialogflowV2beta1EvaluationStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. If the value is `false`, it means the evaluation is still in
+        # progress. If `true`, the operation is completed, and either `error` or `
+        # response` is available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `pipelineStatus`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleRpcStatus]
+        attr_accessor :pipeline_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @pipeline_status = args[:pipeline_status] if args.key?(:pipeline_status)
+        end
+      end
+      
       # Events allow for matching intents by event name instead of the natural
       # language input. For instance, input `` can trigger a personalized welcome
       # response. The parameter `name` may be used by the agent in the response: `"
@@ -15044,6 +15077,261 @@ module Google
           @tools = args[:tools] if args.key?(:tools)
           @trigger_event = args[:trigger_event] if args.key?(:trigger_event)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents evaluation result of a generator.
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Completion time of this generator evaluation.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Output only. Creation time of this generator evaluation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The display name of the generator evaluation. At most 64 bytes long.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A common evalaution pipeline status.
+        # Corresponds to the JSON property `evaluationStatus`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EvaluationStatus]
+        attr_accessor :evaluation_status
+      
+        # Generator evaluation input config.
+        # Corresponds to the JSON property `generatorEvaluationConfig`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluationConfig]
+        attr_accessor :generator_evaluation_config
+      
+        # LLM generator.
+        # Corresponds to the JSON property `initialGenerator`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Generator]
+        attr_accessor :initial_generator
+      
+        # Output only. Identifier. The resource name of the evaluation. Format: `
+        # projects//locations//generators// evaluations/`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Evaluation metrics for summarization generator.
+        # Corresponds to the JSON property `summarizationMetrics`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetrics]
+        attr_accessor :summarization_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @evaluation_status = args[:evaluation_status] if args.key?(:evaluation_status)
+          @generator_evaluation_config = args[:generator_evaluation_config] if args.key?(:generator_evaluation_config)
+          @initial_generator = args[:initial_generator] if args.key?(:initial_generator)
+          @name = args[:name] if args.key?(:name)
+          @summarization_metrics = args[:summarization_metrics] if args.key?(:summarization_metrics)
+        end
+      end
+      
+      # Generator evaluation input config.
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Input data config details
+        # Corresponds to the JSON property `inputDataConfig`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigInputDataConfig]
+        attr_accessor :input_data_config
+      
+        # Required. The output Cloud Storage bucket path to store eval files, e.g.
+        # per_summary_accuracy_score report. This path is provided by customer and files
+        # stored in it are visible to customer, no internal data should be stored in
+        # this path.
+        # Corresponds to the JSON property `outputGcsBucketPath`
+        # @return [String]
+        attr_accessor :output_gcs_bucket_path
+      
+        # Evaluation configs for summarization generator.
+        # Corresponds to the JSON property `summarizationConfig`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigSummarizationConfig]
+        attr_accessor :summarization_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_data_config = args[:input_data_config] if args.key?(:input_data_config)
+          @output_gcs_bucket_path = args[:output_gcs_bucket_path] if args.key?(:output_gcs_bucket_path)
+          @summarization_config = args[:summarization_config] if args.key?(:summarization_config)
+        end
+      end
+      
+      # The distinctive configs for Agent Assist conversations as the conversation
+      # source.
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigAgentAssistInputDataConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The end of the time range for conversations to be evaluated. Only
+        # conversations ended at or before this timestamp will be sampled.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Required. The start of the time range for conversations to be evaluated. Only
+        # conversations created at or after this timestamp will be sampled.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # The distinctive configs for dataset as the conversation source.
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigDatasetInputDataConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The identifier of the dataset to be evaluated. Format: `projects//
+        # locations//datasets/`.
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset = args[:dataset] if args.key?(:dataset)
+        end
+      end
+      
+      # Input data config details
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigInputDataConfig
+        include Google::Apis::Core::Hashable
+      
+        # The distinctive configs for Agent Assist conversations as the conversation
+        # source.
+        # Corresponds to the JSON property `agentAssistInputDataConfig`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigAgentAssistInputDataConfig]
+        attr_accessor :agent_assist_input_data_config
+      
+        # The distinctive configs for dataset as the conversation source.
+        # Corresponds to the JSON property `datasetInputDataConfig`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigDatasetInputDataConfig]
+        attr_accessor :dataset_input_data_config
+      
+        # Optional. The end timestamp to fetch conversation data.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Required. The source type of input data.
+        # Corresponds to the JSON property `inputDataSourceType`
+        # @return [String]
+        attr_accessor :input_data_source_type
+      
+        # Optional. Whether the summary generation is allowed when the pre-existing
+        # qualified summaries are insufficient to cover the sample size.
+        # Corresponds to the JSON property `isSummaryGenerationAllowed`
+        # @return [Boolean]
+        attr_accessor :is_summary_generation_allowed
+        alias_method :is_summary_generation_allowed?, :is_summary_generation_allowed
+      
+        # Optional. Desired number of conversation-summary pairs to be evaluated.
+        # Corresponds to the JSON property `sampleSize`
+        # @return [Fixnum]
+        attr_accessor :sample_size
+      
+        # Optional. The start timestamp to fetch conversation data.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Optional. Option to control whether summaries are generated during evaluation.
+        # Corresponds to the JSON property `summaryGenerationOption`
+        # @return [String]
+        attr_accessor :summary_generation_option
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_assist_input_data_config = args[:agent_assist_input_data_config] if args.key?(:agent_assist_input_data_config)
+          @dataset_input_data_config = args[:dataset_input_data_config] if args.key?(:dataset_input_data_config)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @input_data_source_type = args[:input_data_source_type] if args.key?(:input_data_source_type)
+          @is_summary_generation_allowed = args[:is_summary_generation_allowed] if args.key?(:is_summary_generation_allowed)
+          @sample_size = args[:sample_size] if args.key?(:sample_size)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @summary_generation_option = args[:summary_generation_option] if args.key?(:summary_generation_option)
+        end
+      end
+      
+      # Evaluation configs for summarization generator.
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigSummarizationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Version for summarization accuracy. This will determine the prompt
+        # and model used at backend.
+        # Corresponds to the JSON property `accuracyEvaluationVersion`
+        # @return [String]
+        attr_accessor :accuracy_evaluation_version
+      
+        # Optional. Version for summarization completeness. This will determine the
+        # prompt and model used at backend.
+        # Corresponds to the JSON property `completenessEvaluationVersion`
+        # @return [String]
+        attr_accessor :completeness_evaluation_version
+      
+        # Optional. Enable accuracy evaluation.
+        # Corresponds to the JSON property `enableAccuracyEvaluation`
+        # @return [Boolean]
+        attr_accessor :enable_accuracy_evaluation
+        alias_method :enable_accuracy_evaluation?, :enable_accuracy_evaluation
+      
+        # Optional. Enable completeness evaluation.
+        # Corresponds to the JSON property `enableCompletenessEvaluation`
+        # @return [Boolean]
+        attr_accessor :enable_completeness_evaluation
+        alias_method :enable_completeness_evaluation?, :enable_completeness_evaluation
+      
+        # Output only. Version for summarization evaluation.
+        # Corresponds to the JSON property `evaluatorVersion`
+        # @return [String]
+        attr_accessor :evaluator_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accuracy_evaluation_version = args[:accuracy_evaluation_version] if args.key?(:accuracy_evaluation_version)
+          @completeness_evaluation_version = args[:completeness_evaluation_version] if args.key?(:completeness_evaluation_version)
+          @enable_accuracy_evaluation = args[:enable_accuracy_evaluation] if args.key?(:enable_accuracy_evaluation)
+          @enable_completeness_evaluation = args[:enable_completeness_evaluation] if args.key?(:enable_completeness_evaluation)
+          @evaluator_version = args[:evaluator_version] if args.key?(:evaluator_version)
         end
       end
       
@@ -18462,6 +18750,32 @@ module Google
         end
       end
       
+      # Response of ListGeneratorEvaluations.
+      class GoogleCloudDialogflowV2beta1ListGeneratorEvaluationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of evaluations to return.
+        # Corresponds to the JSON property `generatorEvaluations`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluation>]
+        attr_accessor :generator_evaluations
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generator_evaluations = args[:generator_evaluations] if args.key?(:generator_evaluations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response of ListGenerators.
       class GoogleCloudDialogflowV2beta1ListGeneratorsResponse
         include Google::Apis::Core::Hashable
@@ -21487,6 +21801,451 @@ module Google
           @output_language_code = args[:output_language_code] if args.key?(:output_language_code)
           @summarization_sections = args[:summarization_sections] if args.key?(:summarization_sections)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Evaluation metrics for summarization generator.
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of conversation details.
+        # Corresponds to the JSON property `conversationDetails`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetail>]
+        attr_accessor :conversation_details
+      
+        # Output only. A list of aggregated(average) scores per metric section.
+        # Corresponds to the JSON property `overallMetrics`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsOverallScoresByMetric>]
+        attr_accessor :overall_metrics
+      
+        # Output only. Overall token per section. This is an aggregated(sum) result of
+        # input token of summary acorss all conversations that are selected for
+        # summarization evaluation.
+        # Corresponds to the JSON property `overallSectionTokens`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSectionToken>]
+        attr_accessor :overall_section_tokens
+      
+        # Output only. User bucket uri for merged evaluation score and aggregation score
+        # csv.
+        # Corresponds to the JSON property `summarizationEvaluationMergedResultsUri`
+        # @return [String]
+        attr_accessor :summarization_evaluation_merged_results_uri
+      
+        # Output only. A list of evaluation results per conversation(&summary), metric
+        # and section.
+        # Corresponds to the JSON property `summarizationEvaluationResults`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSummarizationEvaluationResult>]
+        attr_accessor :summarization_evaluation_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_details = args[:conversation_details] if args.key?(:conversation_details)
+          @overall_metrics = args[:overall_metrics] if args.key?(:overall_metrics)
+          @overall_section_tokens = args[:overall_section_tokens] if args.key?(:overall_section_tokens)
+          @summarization_evaluation_merged_results_uri = args[:summarization_evaluation_merged_results_uri] if args.key?(:summarization_evaluation_merged_results_uri)
+          @summarization_evaluation_results = args[:summarization_evaluation_results] if args.key?(:summarization_evaluation_results)
+        end
+      end
+      
+      # Decomposition details for accuracy.
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAccuracyDecomposition
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The accuracy reasoning of the breakdown point.
+        # Corresponds to the JSON property `accuracyReasoning`
+        # @return [String]
+        attr_accessor :accuracy_reasoning
+      
+        # Output only. Whether the breakdown point is accurate or not.
+        # Corresponds to the JSON property `isAccurate`
+        # @return [Boolean]
+        attr_accessor :is_accurate
+        alias_method :is_accurate?, :is_accurate
+      
+        # Output only. The breakdown point of the summary.
+        # Corresponds to the JSON property `point`
+        # @return [String]
+        attr_accessor :point
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accuracy_reasoning = args[:accuracy_reasoning] if args.key?(:accuracy_reasoning)
+          @is_accurate = args[:is_accurate] if args.key?(:is_accurate)
+          @point = args[:point] if args.key?(:point)
+        end
+      end
+      
+      # Decomposition details for adherence.
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAdherenceDecomposition
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The adherence reasoning of the breakdown point.
+        # Corresponds to the JSON property `adherenceReasoning`
+        # @return [String]
+        attr_accessor :adherence_reasoning
+      
+        # Output only. Whether the breakdown point is adherent or not.
+        # Corresponds to the JSON property `isAdherent`
+        # @return [Boolean]
+        attr_accessor :is_adherent
+        alias_method :is_adherent?, :is_adherent
+      
+        # Output only. The breakdown point of the given instructions.
+        # Corresponds to the JSON property `point`
+        # @return [String]
+        attr_accessor :point
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adherence_reasoning = args[:adherence_reasoning] if args.key?(:adherence_reasoning)
+          @is_adherent = args[:is_adherent] if args.key?(:is_adherent)
+          @point = args[:point] if args.key?(:point)
+        end
+      end
+      
+      # Rubric result of the adherence evaluation. A rubric is ued to determine if the
+      # summary adheres to all aspects of the given instructions.
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAdherenceRubric
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A boolean that indicates whether the rubric question is addressed
+        # or not.
+        # Corresponds to the JSON property `isAddressed`
+        # @return [Boolean]
+        attr_accessor :is_addressed
+        alias_method :is_addressed?, :is_addressed
+      
+        # Output only. The question generated from instruction that used to evaluate
+        # summary.
+        # Corresponds to the JSON property `question`
+        # @return [String]
+        attr_accessor :question
+      
+        # Output only. The reasoning of the rubric question is addressed or not.
+        # Corresponds to the JSON property `reasoning`
+        # @return [String]
+        attr_accessor :reasoning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_addressed = args[:is_addressed] if args.key?(:is_addressed)
+          @question = args[:question] if args.key?(:question)
+          @reasoning = args[:reasoning] if args.key?(:reasoning)
+        end
+      end
+      
+      # Rubric details of the completeness evaluation result.
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsCompletenessRubric
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A boolean that indicates whether the rubric question is addressed
+        # or not.
+        # Corresponds to the JSON property `isAddressed`
+        # @return [Boolean]
+        attr_accessor :is_addressed
+        alias_method :is_addressed?, :is_addressed
+      
+        # Output only. The question generated from instruction that used to evaluate
+        # summary.
+        # Corresponds to the JSON property `question`
+        # @return [String]
+        attr_accessor :question
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_addressed = args[:is_addressed] if args.key?(:is_addressed)
+          @question = args[:question] if args.key?(:question)
+        end
+      end
+      
+      # Aggregated evaluation result on conversation level. This contains evaluation
+      # results of all the metrics and sections.
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetail
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Conversation transcript that used for summarization evaluation as
+        # a reference.
+        # Corresponds to the JSON property `messageEntries`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1MessageEntry>]
+        attr_accessor :message_entries
+      
+        # Output only. List of metric details.
+        # Corresponds to the JSON property `metricDetails`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetail>]
+        attr_accessor :metric_details
+      
+        # Output only. Conversation level token count per section. This is an aggregated(
+        # sum) result of input token of summary acorss all metrics for a single
+        # conversation.
+        # Corresponds to the JSON property `sectionTokens`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSectionToken>]
+        attr_accessor :section_tokens
+      
+        # Output only. Summary sections that used for summarization evaluation as a
+        # reference.
+        # Corresponds to the JSON property `summarySections`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection>]
+        attr_accessor :summary_sections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_entries = args[:message_entries] if args.key?(:message_entries)
+          @metric_details = args[:metric_details] if args.key?(:metric_details)
+          @section_tokens = args[:section_tokens] if args.key?(:section_tokens)
+          @summary_sections = args[:summary_sections] if args.key?(:summary_sections)
+        end
+      end
+      
+      # Aggregated result on metric level. This contains the evaluation results of all
+      # the sections.
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetail
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Metrics name. e.g. accuracy, adherence, completeness.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # Output only. Aggregated(average) score on this metric across all sections.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # Output only. List of section details.
+        # Corresponds to the JSON property `sectionDetails`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail>]
+        attr_accessor :section_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric = args[:metric] if args.key?(:metric)
+          @score = args[:score] if args.key?(:score)
+          @section_details = args[:section_details] if args.key?(:section_details)
+        end
+      end
+      
+      # Section level result.
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of evaluation result. The list only contains one kind of the
+        # evaluation result.
+        # Corresponds to the JSON property `evaluationResults`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsEvaluationResult>]
+        attr_accessor :evaluation_results
+      
+        # Output only. Aggregated(average) score on this section across all evaluation
+        # results. Either decompositions or rubrics.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # Output only. The name of the summary instruction.
+        # Corresponds to the JSON property `section`
+        # @return [String]
+        attr_accessor :section
+      
+        # Output only. Summary for this section
+        # Corresponds to the JSON property `sectionSummary`
+        # @return [String]
+        attr_accessor :section_summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation_results = args[:evaluation_results] if args.key?(:evaluation_results)
+          @score = args[:score] if args.key?(:score)
+          @section = args[:section] if args.key?(:section)
+          @section_summary = args[:section_summary] if args.key?(:section_summary)
+        end
+      end
+      
+      # Decomposition details
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsDecomposition
+        include Google::Apis::Core::Hashable
+      
+        # Decomposition details for accuracy.
+        # Corresponds to the JSON property `accuracyDecomposition`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAccuracyDecomposition]
+        attr_accessor :accuracy_decomposition
+      
+        # Decomposition details for adherence.
+        # Corresponds to the JSON property `adherenceDecomposition`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAdherenceDecomposition]
+        attr_accessor :adherence_decomposition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accuracy_decomposition = args[:accuracy_decomposition] if args.key?(:accuracy_decomposition)
+          @adherence_decomposition = args[:adherence_decomposition] if args.key?(:adherence_decomposition)
+        end
+      end
+      
+      # Evaluation result that contains one of accuracy, adherence or completeness
+      # evaluation result.
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsEvaluationResult
+        include Google::Apis::Core::Hashable
+      
+        # Decomposition details for accuracy.
+        # Corresponds to the JSON property `accuracyDecomposition`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAccuracyDecomposition]
+        attr_accessor :accuracy_decomposition
+      
+        # Rubric result of the adherence evaluation. A rubric is ued to determine if the
+        # summary adheres to all aspects of the given instructions.
+        # Corresponds to the JSON property `adherenceRubric`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAdherenceRubric]
+        attr_accessor :adherence_rubric
+      
+        # Rubric details of the completeness evaluation result.
+        # Corresponds to the JSON property `completenessRubric`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsCompletenessRubric]
+        attr_accessor :completeness_rubric
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accuracy_decomposition = args[:accuracy_decomposition] if args.key?(:accuracy_decomposition)
+          @adherence_rubric = args[:adherence_rubric] if args.key?(:adherence_rubric)
+          @completeness_rubric = args[:completeness_rubric] if args.key?(:completeness_rubric)
+        end
+      end
+      
+      # Overall performance per metric. This is the aggregated score for each metric
+      # across all conversations that are selected for summarization evaluation.
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsOverallScoresByMetric
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Metric name. e.g. accuracy, adherence, completeness.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric = args[:metric] if args.key?(:metric)
+        end
+      end
+      
+      # A pair of section name and input token count of the input summary section.
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSectionToken
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the summary instruction.
+        # Corresponds to the JSON property `section`
+        # @return [String]
+        attr_accessor :section
+      
+        # Output only. Token count.
+        # Corresponds to the JSON property `tokenCount`
+        # @return [Fixnum]
+        attr_accessor :token_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @section = args[:section] if args.key?(:section)
+          @token_count = args[:token_count] if args.key?(:token_count)
+        end
+      end
+      
+      # Evaluation result per conversation(&summary), metric and section.
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSummarizationEvaluationResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of decompostion details
+        # Corresponds to the JSON property `decompositions`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsDecomposition>]
+        attr_accessor :decompositions
+      
+        # Output only. List of evaluation results.
+        # Corresponds to the JSON property `evaluationResults`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsEvaluationResult>]
+        attr_accessor :evaluation_results
+      
+        # Output only. metric name, e.g. accuracy, completeness, adherence, etc.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # Output only. score calculated from decompositions
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # Output only. section/task name, e.g. action, situation, etc
+        # Corresponds to the JSON property `section`
+        # @return [String]
+        attr_accessor :section
+      
+        # Output only. Summary of this section
+        # Corresponds to the JSON property `sectionSummary`
+        # @return [String]
+        attr_accessor :section_summary
+      
+        # Output only. conversation session id
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @decompositions = args[:decompositions] if args.key?(:decompositions)
+          @evaluation_results = args[:evaluation_results] if args.key?(:evaluation_results)
+          @metric = args[:metric] if args.key?(:metric)
+          @score = args[:score] if args.key?(:score)
+          @section = args[:section] if args.key?(:section)
+          @section_summary = args[:section_summary] if args.key?(:section_summary)
+          @session_id = args[:session_id] if args.key?(:session_id)
         end
       end
       
