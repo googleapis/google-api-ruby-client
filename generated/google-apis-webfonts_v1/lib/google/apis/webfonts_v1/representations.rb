@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Tag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Webfont
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -49,6 +55,14 @@ module Google
         end
       end
       
+      class Tag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :weight, as: 'weight'
+        end
+      end
+      
       class Webfont
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -62,6 +76,8 @@ module Google
           property :last_modified, as: 'lastModified'
           property :menu, as: 'menu'
           collection :subsets, as: 'subsets'
+          collection :tags, as: 'tags', class: Google::Apis::WebfontsV1::Tag, decorator: Google::Apis::WebfontsV1::Tag::Representation
+      
           collection :variants, as: 'variants'
           property :version, as: 'version'
         end

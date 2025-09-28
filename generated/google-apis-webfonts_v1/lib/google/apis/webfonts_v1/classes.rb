@@ -53,6 +53,31 @@ module Google
         end
       end
       
+      # Metadata for a tag.
+      class Tag
+        include Google::Apis::Core::Hashable
+      
+        # The name of the tag.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The weight of the tag.
+        # Corresponds to the JSON property `weight`
+        # @return [Float]
+        attr_accessor :weight
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @weight = args[:weight] if args.key?(:weight)
+        end
+      end
+      
       # Metadata describing a family of fonts.
       class Webfont
         include Google::Apis::Core::Hashable
@@ -104,6 +129,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :subsets
       
+        # The tags that apply to this family.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<Google::Apis::WebfontsV1::Tag>]
+        attr_accessor :tags
+      
         # The available variants for the font.
         # Corresponds to the JSON property `variants`
         # @return [Array<String>]
@@ -129,6 +159,7 @@ module Google
           @last_modified = args[:last_modified] if args.key?(:last_modified)
           @menu = args[:menu] if args.key?(:menu)
           @subsets = args[:subsets] if args.key?(:subsets)
+          @tags = args[:tags] if args.key?(:tags)
           @variants = args[:variants] if args.key?(:variants)
           @version = args[:version] if args.key?(:version)
         end

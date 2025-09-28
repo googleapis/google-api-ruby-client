@@ -1,5 +1,10 @@
 # Release history for google-apis-webfonts_v1
 
+### v0.20.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250917
+* Regenerated using generator version 0.18.0
+
 ### v0.19.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0
