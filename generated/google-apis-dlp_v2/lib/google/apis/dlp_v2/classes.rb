@@ -66,6 +66,20 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog]
         attr_accessor :publish_findings_to_cloud_data_catalog
       
+        # Publish findings of a DlpJob to Dataplex Universal Catalog as a `sensitive-
+        # data-protection-job-result` aspect. To learn more about aspects, see [Send
+        # inspection results to Dataplex Universal Catalog as aspects](https://cloud.
+        # google.com/sensitive-data-protection/docs/add-aspects-inspection-job). Aspects
+        # are persisted in Dataplex Universal Catalog storage and are governed by
+        # service-specific policies for Dataplex Universal Catalog. For more information,
+        # see [Service Specific Terms](https://cloud.google.com/terms/service-terms).
+        # Only a single instance of this action can be specified. This action is allowed
+        # only if all resources being scanned are BigQuery tables. Compatible with:
+        # Inspect
+        # Corresponds to the JSON property `publishFindingsToDataplexCatalog`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishFindingsToDataplexCatalog]
+        attr_accessor :publish_findings_to_dataplex_catalog
+      
         # Publish the result summary of a DlpJob to [Security Command Center](https://
         # cloud.google.com/security-command-center). This action is available for only
         # projects that belong to an organization. This action publishes the count of
@@ -102,6 +116,7 @@ module Google
           @job_notification_emails = args[:job_notification_emails] if args.key?(:job_notification_emails)
           @pub_sub = args[:pub_sub] if args.key?(:pub_sub)
           @publish_findings_to_cloud_data_catalog = args[:publish_findings_to_cloud_data_catalog] if args.key?(:publish_findings_to_cloud_data_catalog)
+          @publish_findings_to_dataplex_catalog = args[:publish_findings_to_dataplex_catalog] if args.key?(:publish_findings_to_dataplex_catalog)
           @publish_summary_to_cscc = args[:publish_summary_to_cscc] if args.key?(:publish_summary_to_cscc)
           @publish_to_stackdriver = args[:publish_to_stackdriver] if args.key?(:publish_to_stackdriver)
           @save_findings = args[:save_findings] if args.key?(:save_findings)
@@ -8525,6 +8540,28 @@ module Google
       # specified. This action is allowed only if all resources being scanned are
       # BigQuery tables. Compatible with: Inspect
       class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Publish findings of a DlpJob to Dataplex Universal Catalog as a `sensitive-
+      # data-protection-job-result` aspect. To learn more about aspects, see [Send
+      # inspection results to Dataplex Universal Catalog as aspects](https://cloud.
+      # google.com/sensitive-data-protection/docs/add-aspects-inspection-job). Aspects
+      # are persisted in Dataplex Universal Catalog storage and are governed by
+      # service-specific policies for Dataplex Universal Catalog. For more information,
+      # see [Service Specific Terms](https://cloud.google.com/terms/service-terms).
+      # Only a single instance of this action can be specified. This action is allowed
+      # only if all resources being scanned are BigQuery tables. Compatible with:
+      # Inspect
+      class GooglePrivacyDlpV2PublishFindingsToDataplexCatalog
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
