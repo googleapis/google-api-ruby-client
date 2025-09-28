@@ -1943,6 +1943,16 @@ module Google
         # @return [String]
         attr_accessor :agent_type
       
+        # The agent's deployment display name. Only applicable to automated agents.
+        # Corresponds to the JSON property `deploymentDisplayName`
+        # @return [String]
+        attr_accessor :deployment_display_name
+      
+        # The agent's deployment ID. Only applicable to automated agents.
+        # Corresponds to the JSON property `deploymentId`
+        # @return [String]
+        attr_accessor :deployment_id
+      
         # The agent's name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -1970,6 +1980,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :teams
       
+        # The agent's version display name. Only applicable to automated agents.
+        # Corresponds to the JSON property `versionDisplayName`
+        # @return [String]
+        attr_accessor :version_display_name
+      
+        # The agent's version ID. Only applicable to automated agents.
+        # Corresponds to the JSON property `versionId`
+        # @return [String]
+        attr_accessor :version_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1978,11 +1998,15 @@ module Google
         def update!(**args)
           @agent_id = args[:agent_id] if args.key?(:agent_id)
           @agent_type = args[:agent_type] if args.key?(:agent_type)
+          @deployment_display_name = args[:deployment_display_name] if args.key?(:deployment_display_name)
+          @deployment_id = args[:deployment_id] if args.key?(:deployment_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @disposition_code = args[:disposition_code] if args.key?(:disposition_code)
           @location = args[:location] if args.key?(:location)
           @team = args[:team] if args.key?(:team)
           @teams = args[:teams] if args.key?(:teams)
+          @version_display_name = args[:version_display_name] if args.key?(:version_display_name)
+          @version_id = args[:version_id] if args.key?(:version_id)
         end
       end
       
@@ -2686,6 +2710,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata]
         attr_accessor :qa_question_dimension_metadata
       
+        # Metadata about the QA scorecard dimension.
+        # Corresponds to the JSON property `qaScorecardDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata]
+        attr_accessor :qa_scorecard_dimension_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2697,6 +2726,7 @@ module Google
           @issue_dimension_metadata = args[:issue_dimension_metadata] if args.key?(:issue_dimension_metadata)
           @qa_question_answer_dimension_metadata = args[:qa_question_answer_dimension_metadata] if args.key?(:qa_question_answer_dimension_metadata)
           @qa_question_dimension_metadata = args[:qa_question_dimension_metadata] if args.key?(:qa_question_dimension_metadata)
+          @qa_scorecard_dimension_metadata = args[:qa_scorecard_dimension_metadata] if args.key?(:qa_scorecard_dimension_metadata)
         end
       end
       
@@ -2704,12 +2734,27 @@ module Google
       class GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata
         include Google::Apis::Core::Hashable
       
-        # Optional. The agent's name
+        # Optional. The agent's deployment display name. Only applicable to automated
+        # agents. This will be populated for AGENT_DEPLOYMENT_ID dimensions.
+        # Corresponds to the JSON property `agentDeploymentDisplayName`
+        # @return [String]
+        attr_accessor :agent_deployment_display_name
+      
+        # Optional. The agent's deployment ID. Only applicable to automated agents. This
+        # will be populated for AGENT and AGENT_DEPLOYMENT_ID dimensions.
+        # Corresponds to the JSON property `agentDeploymentId`
+        # @return [String]
+        attr_accessor :agent_deployment_id
+      
+        # Optional. The agent's name This will be populated for AGENT, AGENT_TEAM,
+        # AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions.
         # Corresponds to the JSON property `agentDisplayName`
         # @return [String]
         attr_accessor :agent_display_name
       
-        # Optional. A user-specified string representing the agent.
+        # Optional. A user-specified string representing the agent. This will be
+        # populated for AGENT, AGENT_TEAM, AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID
+        # dimensions.
         # Corresponds to the JSON property `agentId`
         # @return [String]
         attr_accessor :agent_id
@@ -2719,15 +2764,32 @@ module Google
         # @return [String]
         attr_accessor :agent_team
       
+        # Optional. The agent's version display name. Only applicable to automated
+        # agents. This will be populated for AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID
+        # dimensions.
+        # Corresponds to the JSON property `agentVersionDisplayName`
+        # @return [String]
+        attr_accessor :agent_version_display_name
+      
+        # Optional. The agent's version ID. Only applicable to automated agents. This
+        # will be populated for AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions.
+        # Corresponds to the JSON property `agentVersionId`
+        # @return [String]
+        attr_accessor :agent_version_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @agent_deployment_display_name = args[:agent_deployment_display_name] if args.key?(:agent_deployment_display_name)
+          @agent_deployment_id = args[:agent_deployment_id] if args.key?(:agent_deployment_id)
           @agent_display_name = args[:agent_display_name] if args.key?(:agent_display_name)
           @agent_id = args[:agent_id] if args.key?(:agent_id)
           @agent_team = args[:agent_team] if args.key?(:agent_team)
+          @agent_version_display_name = args[:agent_version_display_name] if args.key?(:agent_version_display_name)
+          @agent_version_id = args[:agent_version_id] if args.key?(:agent_version_id)
         end
       end
       
@@ -2828,6 +2890,25 @@ module Google
           @qa_question_id = args[:qa_question_id] if args.key?(:qa_question_id)
           @qa_scorecard_id = args[:qa_scorecard_id] if args.key?(:qa_scorecard_id)
           @question_body = args[:question_body] if args.key?(:question_body)
+        end
+      end
+      
+      # Metadata about the QA scorecard dimension.
+      class GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The QA scorecard ID.
+        # Corresponds to the JSON property `qaScorecardId`
+        # @return [String]
+        attr_accessor :qa_scorecard_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @qa_scorecard_id = args[:qa_scorecard_id] if args.key?(:qa_scorecard_id)
         end
       end
       
@@ -5119,6 +5200,11 @@ module Google
         # @return [Float]
         attr_accessor :potential_score
       
+        # Wrapper for the rationale for the answer.
+        # Corresponds to the JSON property `rationale`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaAnswerAnswerValueQaAnswerRationale]
+        attr_accessor :rationale
+      
         # Output only. Numerical score of the answer.
         # Corresponds to the JSON property `score`
         # @return [Float]
@@ -5149,9 +5235,29 @@ module Google
           @normalized_score = args[:normalized_score] if args.key?(:normalized_score)
           @num_value = args[:num_value] if args.key?(:num_value)
           @potential_score = args[:potential_score] if args.key?(:potential_score)
+          @rationale = args[:rationale] if args.key?(:rationale)
           @score = args[:score] if args.key?(:score)
           @skip_value = args[:skip_value] if args.key?(:skip_value)
           @str_value = args[:str_value] if args.key?(:str_value)
+        end
+      end
+      
+      # Wrapper for the rationale for the answer.
+      class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValueQaAnswerRationale
+        include Google::Apis::Core::Hashable
+      
+        # The rationale string for the answer.
+        # Corresponds to the JSON property `rationale`
+        # @return [String]
+        attr_accessor :rationale
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rationale = args[:rationale] if args.key?(:rationale)
         end
       end
       
@@ -5941,7 +6047,11 @@ module Google
         # @return [String]
         attr_accessor :average_duration
       
-        # Average QA normalized score. Will exclude 0's in average calculation.
+        # The average normalized QA score for a scorecard. When computing the average
+        # across a set of conversations, if a conversation has been evaluated with
+        # multiple revisions of a scorecard, only the latest revision results will be
+        # used. Will exclude 0's in average calculation. Will be only populated if the
+        # request specifies a dimension of QA_SCORECARD_ID.
         # Corresponds to the JSON property `averageQaNormalizedScore`
         # @return [Float]
         attr_accessor :average_qa_normalized_score
@@ -8274,6 +8384,16 @@ module Google
         # @return [String]
         attr_accessor :agent_type
       
+        # The agent's deployment display name. Only applicable to automated agents.
+        # Corresponds to the JSON property `deploymentDisplayName`
+        # @return [String]
+        attr_accessor :deployment_display_name
+      
+        # The agent's deployment ID. Only applicable to automated agents.
+        # Corresponds to the JSON property `deploymentId`
+        # @return [String]
+        attr_accessor :deployment_id
+      
         # The agent's name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -8301,6 +8421,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :teams
       
+        # The agent's version display name. Only applicable to automated agents.
+        # Corresponds to the JSON property `versionDisplayName`
+        # @return [String]
+        attr_accessor :version_display_name
+      
+        # The agent's version ID. Only applicable to automated agents.
+        # Corresponds to the JSON property `versionId`
+        # @return [String]
+        attr_accessor :version_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8309,11 +8439,15 @@ module Google
         def update!(**args)
           @agent_id = args[:agent_id] if args.key?(:agent_id)
           @agent_type = args[:agent_type] if args.key?(:agent_type)
+          @deployment_display_name = args[:deployment_display_name] if args.key?(:deployment_display_name)
+          @deployment_id = args[:deployment_id] if args.key?(:deployment_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @disposition_code = args[:disposition_code] if args.key?(:disposition_code)
           @location = args[:location] if args.key?(:location)
           @team = args[:team] if args.key?(:team)
           @teams = args[:teams] if args.key?(:teams)
+          @version_display_name = args[:version_display_name] if args.key?(:version_display_name)
+          @version_id = args[:version_id] if args.key?(:version_id)
         end
       end
       
@@ -9004,6 +9138,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata]
         attr_accessor :qa_question_dimension_metadata
       
+        # Metadata about the QA scorecard dimension.
+        # Corresponds to the JSON property `qaScorecardDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata]
+        attr_accessor :qa_scorecard_dimension_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9015,6 +9154,7 @@ module Google
           @issue_dimension_metadata = args[:issue_dimension_metadata] if args.key?(:issue_dimension_metadata)
           @qa_question_answer_dimension_metadata = args[:qa_question_answer_dimension_metadata] if args.key?(:qa_question_answer_dimension_metadata)
           @qa_question_dimension_metadata = args[:qa_question_dimension_metadata] if args.key?(:qa_question_dimension_metadata)
+          @qa_scorecard_dimension_metadata = args[:qa_scorecard_dimension_metadata] if args.key?(:qa_scorecard_dimension_metadata)
         end
       end
       
@@ -9022,12 +9162,27 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata
         include Google::Apis::Core::Hashable
       
-        # Optional. The agent's name
+        # Optional. The agent's deployment display name. Only applicable to automated
+        # agents. This will be populated for AGENT_DEPLOYMENT_ID dimensions.
+        # Corresponds to the JSON property `agentDeploymentDisplayName`
+        # @return [String]
+        attr_accessor :agent_deployment_display_name
+      
+        # Optional. The agent's deployment ID. Only applicable to automated agents. This
+        # will be populated for AGENT and AGENT_DEPLOYMENT_ID dimensions.
+        # Corresponds to the JSON property `agentDeploymentId`
+        # @return [String]
+        attr_accessor :agent_deployment_id
+      
+        # Optional. The agent's name This will be populated for AGENT, AGENT_TEAM,
+        # AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions.
         # Corresponds to the JSON property `agentDisplayName`
         # @return [String]
         attr_accessor :agent_display_name
       
-        # Optional. A user-specified string representing the agent.
+        # Optional. A user-specified string representing the agent. This will be
+        # populated for AGENT, AGENT_TEAM, AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID
+        # dimensions.
         # Corresponds to the JSON property `agentId`
         # @return [String]
         attr_accessor :agent_id
@@ -9037,15 +9192,32 @@ module Google
         # @return [String]
         attr_accessor :agent_team
       
+        # Optional. The agent's version display name. Only applicable to automated
+        # agents. This will be populated for AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID
+        # dimensions.
+        # Corresponds to the JSON property `agentVersionDisplayName`
+        # @return [String]
+        attr_accessor :agent_version_display_name
+      
+        # Optional. The agent's version ID. Only applicable to automated agents. This
+        # will be populated for AGENT_VERSION_ID, and AGENT_DEPLOYMENT_ID dimensions.
+        # Corresponds to the JSON property `agentVersionId`
+        # @return [String]
+        attr_accessor :agent_version_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @agent_deployment_display_name = args[:agent_deployment_display_name] if args.key?(:agent_deployment_display_name)
+          @agent_deployment_id = args[:agent_deployment_id] if args.key?(:agent_deployment_id)
           @agent_display_name = args[:agent_display_name] if args.key?(:agent_display_name)
           @agent_id = args[:agent_id] if args.key?(:agent_id)
           @agent_team = args[:agent_team] if args.key?(:agent_team)
+          @agent_version_display_name = args[:agent_version_display_name] if args.key?(:agent_version_display_name)
+          @agent_version_id = args[:agent_version_id] if args.key?(:agent_version_id)
         end
       end
       
@@ -9146,6 +9318,25 @@ module Google
           @qa_question_id = args[:qa_question_id] if args.key?(:qa_question_id)
           @qa_scorecard_id = args[:qa_scorecard_id] if args.key?(:qa_scorecard_id)
           @question_body = args[:question_body] if args.key?(:question_body)
+        end
+      end
+      
+      # Metadata about the QA scorecard dimension.
+      class GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The QA scorecard ID.
+        # Corresponds to the JSON property `qaScorecardId`
+        # @return [String]
+        attr_accessor :qa_scorecard_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @qa_scorecard_id = args[:qa_scorecard_id] if args.key?(:qa_scorecard_id)
         end
       end
       
@@ -10680,6 +10871,11 @@ module Google
         # @return [Float]
         attr_accessor :potential_score
       
+        # Wrapper for the rationale for the answer.
+        # Corresponds to the JSON property `rationale`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValueQaAnswerRationale]
+        attr_accessor :rationale
+      
         # Output only. Numerical score of the answer.
         # Corresponds to the JSON property `score`
         # @return [Float]
@@ -10710,9 +10906,29 @@ module Google
           @normalized_score = args[:normalized_score] if args.key?(:normalized_score)
           @num_value = args[:num_value] if args.key?(:num_value)
           @potential_score = args[:potential_score] if args.key?(:potential_score)
+          @rationale = args[:rationale] if args.key?(:rationale)
           @score = args[:score] if args.key?(:score)
           @skip_value = args[:skip_value] if args.key?(:skip_value)
           @str_value = args[:str_value] if args.key?(:str_value)
+        end
+      end
+      
+      # Wrapper for the rationale for the answer.
+      class GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValueQaAnswerRationale
+        include Google::Apis::Core::Hashable
+      
+        # The rationale string for the answer.
+        # Corresponds to the JSON property `rationale`
+        # @return [String]
+        attr_accessor :rationale
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rationale = args[:rationale] if args.key?(:rationale)
         end
       end
       
@@ -11088,7 +11304,11 @@ module Google
         # @return [String]
         attr_accessor :average_duration
       
-        # Average QA normalized score. Will exclude 0's in average calculation.
+        # The average normalized QA score for a scorecard. When computing the average
+        # across a set of conversations, if a conversation has been evaluated with
+        # multiple revisions of a scorecard, only the latest revision results will be
+        # used. Will exclude 0's in average calculation. Will be only populated if the
+        # request specifies a dimension of QA_SCORECARD_ID.
         # Corresponds to the JSON property `averageQaNormalizedScore`
         # @return [Float]
         attr_accessor :average_qa_normalized_score
@@ -12272,6 +12492,13 @@ module Google
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -12280,6 +12507,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

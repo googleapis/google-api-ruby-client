@@ -472,6 +472,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1EncryptionSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -911,6 +917,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValueQaAnswerRationale
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1552,6 +1564,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1823,6 +1841,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValueQaAnswerRationale
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2644,11 +2668,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_id, as: 'agentId'
           property :agent_type, as: 'agentType'
+          property :deployment_display_name, as: 'deploymentDisplayName'
+          property :deployment_id, as: 'deploymentId'
           property :display_name, as: 'displayName'
           property :disposition_code, as: 'dispositionCode'
           property :location, as: 'location'
           property :team, as: 'team'
           collection :teams, as: 'teams'
+          property :version_display_name, as: 'versionDisplayName'
+          property :version_id, as: 'versionId'
         end
       end
       
@@ -2869,15 +2897,21 @@ module Google
       
           property :qa_question_dimension_metadata, as: 'qaQuestionDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata::Representation
       
+          property :qa_scorecard_dimension_metadata, as: 'qaScorecardDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata::Representation
+      
         end
       end
       
       class GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_deployment_display_name, as: 'agentDeploymentDisplayName'
+          property :agent_deployment_id, as: 'agentDeploymentId'
           property :agent_display_name, as: 'agentDisplayName'
           property :agent_id, as: 'agentId'
           property :agent_team, as: 'agentTeam'
+          property :agent_version_display_name, as: 'agentVersionDisplayName'
+          property :agent_version_id, as: 'agentVersionId'
         end
       end
       
@@ -2906,6 +2940,13 @@ module Google
           property :qa_question_id, as: 'qaQuestionId'
           property :qa_scorecard_id, as: 'qaScorecardId'
           property :question_body, as: 'questionBody'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :qa_scorecard_id, as: 'qaScorecardId'
         end
       end
       
@@ -3606,9 +3647,18 @@ module Google
           property :normalized_score, as: 'normalizedScore'
           property :num_value, as: 'numValue'
           property :potential_score, as: 'potentialScore'
+          property :rationale, as: 'rationale', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaAnswerAnswerValueQaAnswerRationale, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaAnswerAnswerValueQaAnswerRationale::Representation
+      
           property :score, as: 'score'
           property :skip_value, as: 'skipValue'
           property :str_value, as: 'strValue'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValueQaAnswerRationale
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rationale, as: 'rationale'
         end
       end
       
@@ -4489,11 +4539,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_id, as: 'agentId'
           property :agent_type, as: 'agentType'
+          property :deployment_display_name, as: 'deploymentDisplayName'
+          property :deployment_id, as: 'deploymentId'
           property :display_name, as: 'displayName'
           property :disposition_code, as: 'dispositionCode'
           property :location, as: 'location'
           property :team, as: 'team'
           collection :teams, as: 'teams'
+          property :version_display_name, as: 'versionDisplayName'
+          property :version_id, as: 'versionId'
         end
       end
       
@@ -4708,15 +4762,21 @@ module Google
       
           property :qa_question_dimension_metadata, as: 'qaQuestionDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata::Representation
       
+          property :qa_scorecard_dimension_metadata, as: 'qaScorecardDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata::Representation
+      
         end
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_deployment_display_name, as: 'agentDeploymentDisplayName'
+          property :agent_deployment_id, as: 'agentDeploymentId'
           property :agent_display_name, as: 'agentDisplayName'
           property :agent_id, as: 'agentId'
           property :agent_team, as: 'agentTeam'
+          property :agent_version_display_name, as: 'agentVersionDisplayName'
+          property :agent_version_id, as: 'agentVersionId'
         end
       end
       
@@ -4745,6 +4805,13 @@ module Google
           property :qa_question_id, as: 'qaQuestionId'
           property :qa_scorecard_id, as: 'qaScorecardId'
           property :question_body, as: 'questionBody'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :qa_scorecard_id, as: 'qaScorecardId'
         end
       end
       
@@ -5192,9 +5259,18 @@ module Google
           property :normalized_score, as: 'normalizedScore'
           property :num_value, as: 'numValue'
           property :potential_score, as: 'potentialScore'
+          property :rationale, as: 'rationale', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValueQaAnswerRationale, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValueQaAnswerRationale::Representation
+      
           property :score, as: 'score'
           property :skip_value, as: 'skipValue'
           property :str_value, as: 'strValue'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValueQaAnswerRationale
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rationale, as: 'rationale'
         end
       end
       
@@ -5610,6 +5686,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation, decorator: Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
