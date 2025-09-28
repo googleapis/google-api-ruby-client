@@ -456,6 +456,56 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the parameters of a single Autonomous Database.
+        # @param [String] name
+        #   Identifier. The name of the Autonomous Database resource in the following
+        #   format: projects/`project`/locations/`region`/autonomousDatabases/`
+        #   autonomous_database`
+        # @param [Google::Apis::OracledatabaseV1::AutonomousDatabase] autonomous_database_object
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   Exadata resource by the update. The fields specified in the update_mask are
+        #   relative to the resource, not the full request. A field will be overwritten if
+        #   it is in the mask. If the user does not provide a mask then all fields will be
+        #   overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_autonomous_database(name, autonomous_database_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::AutonomousDatabase::Representation
+          command.request_object = autonomous_database_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Restarts an Autonomous Database.
         # @param [String] name
         #   Required. The name of the Autonomous Database in the following format:
@@ -2496,6 +2546,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2513,7 +2570,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::OracledatabaseV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::OracledatabaseV1::ListOperationsResponse
@@ -2521,6 +2578,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

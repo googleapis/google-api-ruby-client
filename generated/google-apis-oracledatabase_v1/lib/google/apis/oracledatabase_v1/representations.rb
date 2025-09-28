@@ -280,6 +280,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EncryptionKeyHistoryEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Entitlement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -785,6 +797,10 @@ module Google
           property :db_version, as: 'dbVersion'
           property :db_workload, as: 'dbWorkload'
           property :disaster_recovery_role_changed_time, as: 'disasterRecoveryRoleChangedTime'
+          property :encryption_key, as: 'encryptionKey', class: Google::Apis::OracledatabaseV1::EncryptionKey, decorator: Google::Apis::OracledatabaseV1::EncryptionKey::Representation
+      
+          collection :encryption_key_history_entries, as: 'encryptionKeyHistoryEntries', class: Google::Apis::OracledatabaseV1::EncryptionKeyHistoryEntry, decorator: Google::Apis::OracledatabaseV1::EncryptionKeyHistoryEntry::Representation
+      
           property :failed_data_recovery_duration, as: 'failedDataRecoveryDuration'
           property :is_auto_scaling_enabled, as: 'isAutoScalingEnabled'
           property :is_local_data_guard_enabled, as: 'isLocalDataGuardEnabled'
@@ -818,6 +834,7 @@ module Google
           collection :scheduled_operation_details, as: 'scheduledOperationDetails', class: Google::Apis::OracledatabaseV1::ScheduledOperationDetails, decorator: Google::Apis::OracledatabaseV1::ScheduledOperationDetails::Representation
       
           property :secret_id, as: 'secretId'
+          property :service_agent_email, as: 'serviceAgentEmail'
           property :sql_web_developer_url, as: 'sqlWebDeveloperUrl'
           property :state, as: 'state'
           collection :supported_clone_regions, as: 'supportedCloneRegions'
@@ -1286,6 +1303,23 @@ module Google
         end
       end
       
+      class EncryptionKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key, as: 'kmsKey'
+          property :provider, as: 'provider'
+        end
+      end
+      
+      class EncryptionKeyHistoryEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activation_time, as: 'activationTime'
+          property :encryption_key, as: 'encryptionKey', class: Google::Apis::OracledatabaseV1::EncryptionKey, decorator: Google::Apis::OracledatabaseV1::EncryptionKey::Representation
+      
+        end
+      end
+      
       class Entitlement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1635,6 +1669,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::OracledatabaseV1::Operation, decorator: Google::Apis::OracledatabaseV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
