@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Cname
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +101,12 @@ module Google
       end
       
       class GclbTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IPs
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -202,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Troubleshooting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TrustAnchor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -236,10 +254,22 @@ module Google
       class AuthorizationAttemptInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :attempt_time, as: 'attemptTime'
           property :details, as: 'details'
           property :domain, as: 'domain'
           property :failure_reason, as: 'failureReason'
           property :state, as: 'state'
+          property :troubleshooting, as: 'troubleshooting', class: Google::Apis::CertificatemanagerV1::Troubleshooting, decorator: Google::Apis::CertificatemanagerV1::Troubleshooting::Representation
+      
+        end
+      end
+      
+      class Cname
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expected_data, as: 'expectedData'
+          property :name, as: 'name'
+          collection :resolved_data, as: 'resolvedData'
         end
       end
       
@@ -366,6 +396,15 @@ module Google
       
           property :target_https_proxy, as: 'targetHttpsProxy'
           property :target_ssl_proxy, as: 'targetSslProxy'
+        end
+      end
+      
+      class IPs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resolved, as: 'resolved'
+          collection :serving, as: 'serving'
+          collection :serving_on_alt_ports, as: 'servingOnAltPorts'
         end
       end
       
@@ -534,6 +573,17 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class Troubleshooting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cname, as: 'cname', class: Google::Apis::CertificatemanagerV1::Cname, decorator: Google::Apis::CertificatemanagerV1::Cname::Representation
+      
+          property :ips, as: 'ips', class: Google::Apis::CertificatemanagerV1::IPs, decorator: Google::Apis::CertificatemanagerV1::IPs::Representation
+      
+          collection :issues, as: 'issues'
         end
       end
       
