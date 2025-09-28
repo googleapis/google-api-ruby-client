@@ -3489,8 +3489,8 @@ module Google
       class ExternalServiceCost
         include Google::Apis::Core::Hashable
       
-        # The billing method used for the external job. This field is only used when
-        # billed on the services sku, set to "SERVICES_SKU". Otherwise, it is
+        # The billing method used for the external job. This field, set to `SERVICES_SKU`
+        # , is only used when billing under the services SKU. Otherwise, it is
         # unspecified for backward compatibility.
         # Corresponds to the JSON property `billingMethod`
         # @return [String]
@@ -4177,6 +4177,71 @@ module Google
         end
       end
       
+      # Statistics related to Incremental Query Results. Populated as part of
+      # JobStatistics2. This feature is not yet available.
+      class IncrementalResultStats
+        include Google::Apis::Core::Hashable
+      
+        # Reason why incremental query results are/were not written by the query.
+        # Corresponds to the JSON property `disabledReason`
+        # @return [String]
+        attr_accessor :disabled_reason
+      
+        # The time at which the result table's contents were modified. May be absent if
+        # no results have been written or the query has completed.
+        # Corresponds to the JSON property `resultSetLastModifyTime`
+        # @return [String]
+        attr_accessor :result_set_last_modify_time
+      
+        # The time at which the result table's contents were completely replaced. May be
+        # absent if no results have been written or the query has completed.
+        # Corresponds to the JSON property `resultSetLastReplaceTime`
+        # @return [String]
+        attr_accessor :result_set_last_replace_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled_reason = args[:disabled_reason] if args.key?(:disabled_reason)
+          @result_set_last_modify_time = args[:result_set_last_modify_time] if args.key?(:result_set_last_modify_time)
+          @result_set_last_replace_time = args[:result_set_last_replace_time] if args.key?(:result_set_last_replace_time)
+        end
+      end
+      
+      # Statistics for index pruning.
+      class IndexPruningStats
+        include Google::Apis::Core::Hashable
+      
+        # The base table reference.
+        # Corresponds to the JSON property `baseTable`
+        # @return [Google::Apis::BigqueryV2::TableReference]
+        attr_accessor :base_table
+      
+        # The number of parallel inputs after index pruning.
+        # Corresponds to the JSON property `postIndexPruningParallelInputCount`
+        # @return [Fixnum]
+        attr_accessor :post_index_pruning_parallel_input_count
+      
+        # The number of parallel inputs before index pruning.
+        # Corresponds to the JSON property `preIndexPruningParallelInputCount`
+        # @return [Fixnum]
+        attr_accessor :pre_index_pruning_parallel_input_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_table = args[:base_table] if args.key?(:base_table)
+          @post_index_pruning_parallel_input_count = args[:post_index_pruning_parallel_input_count] if args.key?(:post_index_pruning_parallel_input_count)
+          @pre_index_pruning_parallel_input_count = args[:pre_index_pruning_parallel_input_count] if args.key?(:pre_index_pruning_parallel_input_count)
+        end
+      end
+      
       # Reason about why no search index was used in the search query (or sub-query).
       class IndexUnusedReason
         include Google::Apis::Core::Hashable
@@ -4539,11 +4604,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::JobConfigurationExtract]
         attr_accessor :extract
       
-        # Optional. Job timeout in milliseconds. If this time limit is exceeded,
-        # BigQuery will attempt to stop a longer job, but may not always succeed in
-        # canceling it before the job completes. For example, a job that takes more than
-        # 60 seconds to complete has a better chance of being stopped than a job that
-        # takes 10 seconds to complete.
+        # Optional. Job timeout in milliseconds relative to the job creation time. If
+        # this time limit is exceeded, BigQuery attempts to stop the job, but might not
+        # always succeed in canceling it before the job completes. For example, a job
+        # that takes more than 60 seconds to complete has a better chance of being
+        # stopped than a job that takes 10 seconds to complete.
         # Corresponds to the JSON property `jobTimeoutMs`
         # @return [Fixnum]
         attr_accessor :job_timeout_ms
@@ -4986,13 +5051,14 @@ module Google
       
         # Allows the schema of the destination table to be updated as a side effect of
         # the load job if a schema is autodetected or supplied in the job configuration.
-        # Schema update options are supported in two cases: when writeDisposition is
-        # WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination
-        # table is a partition of a table, specified by partition decorators. For normal
-        # tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the
-        # following values are specified: * ALLOW_FIELD_ADDITION: allow adding a
-        # nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow relaxing a
-        # required field in the original schema to nullable.
+        # Schema update options are supported in three cases: when writeDisposition is
+        # WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE_DATA; when
+        # writeDisposition is WRITE_TRUNCATE and the destination table is a partition of
+        # a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE
+        # will always overwrite the schema. One or more of the following values are
+        # specified: * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+        # * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original
+        # schema to nullable.
         # Corresponds to the JSON property `schemaUpdateOptions`
         # @return [Array<String>]
         attr_accessor :schema_update_options
@@ -5273,13 +5339,14 @@ module Google
         attr_accessor :range_partitioning
       
         # Allows the schema of the destination table to be updated as a side effect of
-        # the query job. Schema update options are supported in two cases: when
-        # writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and
-        # the destination table is a partition of a table, specified by partition
-        # decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
-        # One or more of the following values are specified: * ALLOW_FIELD_ADDITION:
-        # allow adding a nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow
-        # relaxing a required field in the original schema to nullable.
+        # the query job. Schema update options are supported in three cases: when
+        # writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE_DATA;
+        # when writeDisposition is WRITE_TRUNCATE and the destination table is a
+        # partition of a table, specified by partition decorators. For normal tables,
+        # WRITE_TRUNCATE will always overwrite the schema. One or more of the following
+        # values are specified: * ALLOW_FIELD_ADDITION: allow adding a nullable field to
+        # the schema. * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the
+        # original schema to nullable.
         # Corresponds to the JSON property `schemaUpdateOptions`
         # @return [Array<String>]
         attr_accessor :schema_update_options
@@ -5932,6 +5999,12 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::ExternalServiceCost>]
         attr_accessor :external_service_costs
       
+        # Statistics related to Incremental Query Results. Populated as part of
+        # JobStatistics2. This feature is not yet available.
+        # Corresponds to the JSON property `incrementalResultStats`
+        # @return [Google::Apis::BigqueryV2::IncrementalResultStats]
+        attr_accessor :incremental_result_stats
+      
         # Statistics for a LOAD query.
         # Corresponds to the JSON property `loadQueryStatistics`
         # @return [Google::Apis::BigqueryV2::LoadQueryStatistics]
@@ -6145,10 +6218,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_partitions_processed
       
-        # Output only. Total slot-milliseconds for the job that run on external services
-        # and billed on the service SKU. This field is only populated for jobs that have
-        # external service costs, and is the total of the usage for costs whose billing
-        # method is "SERVICES_SKU".
+        # Output only. Total slot milliseconds for the job that ran on external services
+        # and billed on the services SKU. This field is only populated for jobs that
+        # have external service costs, and is the total of the usage for costs whose
+        # billing method is `"SERVICES_SKU"`.
         # Corresponds to the JSON property `totalServicesSkuSlotMs`
         # @return [Fixnum]
         attr_accessor :total_services_sku_slot_ms
@@ -6198,6 +6271,7 @@ module Google
           @estimated_bytes_processed = args[:estimated_bytes_processed] if args.key?(:estimated_bytes_processed)
           @export_data_statistics = args[:export_data_statistics] if args.key?(:export_data_statistics)
           @external_service_costs = args[:external_service_costs] if args.key?(:external_service_costs)
+          @incremental_result_stats = args[:incremental_result_stats] if args.key?(:incremental_result_stats)
           @load_query_statistics = args[:load_query_statistics] if args.key?(:load_query_statistics)
           @materialized_view_statistics = args[:materialized_view_statistics] if args.key?(:materialized_view_statistics)
           @metadata_cache_statistics = args[:metadata_cache_statistics] if args.key?(:metadata_cache_statistics)
@@ -7584,6 +7658,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # The column metadata index pruning statistics.
+      class PruningStats
+        include Google::Apis::Core::Hashable
+      
+        # The number of parallel inputs matched.
+        # Corresponds to the JSON property `postCmetaPruningParallelInputCount`
+        # @return [Fixnum]
+        attr_accessor :post_cmeta_pruning_parallel_input_count
+      
+        # The number of partitions matched.
+        # Corresponds to the JSON property `postCmetaPruningPartitionCount`
+        # @return [Fixnum]
+        attr_accessor :post_cmeta_pruning_partition_count
+      
+        # The number of parallel inputs scanned.
+        # Corresponds to the JSON property `preCmetaPruningParallelInputCount`
+        # @return [Fixnum]
+        attr_accessor :pre_cmeta_pruning_parallel_input_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @post_cmeta_pruning_parallel_input_count = args[:post_cmeta_pruning_parallel_input_count] if args.key?(:post_cmeta_pruning_parallel_input_count)
+          @post_cmeta_pruning_partition_count = args[:post_cmeta_pruning_partition_count] if args.key?(:post_cmeta_pruning_partition_count)
+          @pre_cmeta_pruning_parallel_input_count = args[:pre_cmeta_pruning_parallel_input_count] if args.key?(:pre_cmeta_pruning_parallel_input_count)
         end
       end
       
@@ -9016,6 +9121,14 @@ module Google
       class SearchStatistics
         include Google::Apis::Core::Hashable
       
+        # Search index pruning statistics, one for each base table that has a search
+        # index. If a base table does not have a search index or the index does not help
+        # with pruning on the base table, then there is no pruning statistics for that
+        # table.
+        # Corresponds to the JSON property `indexPruningStats`
+        # @return [Array<Google::Apis::BigqueryV2::IndexPruningStats>]
+        attr_accessor :index_pruning_stats
+      
         # When `indexUsageMode` is `UNUSED` or `PARTIALLY_USED`, this field explains why
         # indexes were not used in all or part of the search query. If `indexUsageMode`
         # is `FULLY_USED`, this field is not populated.
@@ -9034,6 +9147,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @index_pruning_stats = args[:index_pruning_stats] if args.key?(:index_pruning_stats)
           @index_unused_reasons = args[:index_unused_reasons] if args.key?(:index_unused_reasons)
           @index_usage_mode = args[:index_usage_mode] if args.key?(:index_usage_mode)
         end
@@ -10599,6 +10713,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :scale
       
+        # Optional. Precision (maximum number of total digits in base 10) for seconds of
+        # TIMESTAMP type. Possible values include: * 6 (Default, for TIMESTAMP type with
+        # microsecond precision) * 12 (For TIMESTAMP type with picosecond precision)
+        # Corresponds to the JSON property `timestampPrecision`
+        # @return [Fixnum]
+        attr_accessor :timestamp_precision
+      
         # Required. The field data type. Possible values include: * STRING * BYTES *
         # INTEGER (or INT64) * FLOAT (or FLOAT64) * BOOLEAN (or BOOL) * TIMESTAMP * DATE
         # * TIME * DATETIME * GEOGRAPHY * NUMERIC * BIGNUMERIC * JSON * RECORD (or
@@ -10629,6 +10750,7 @@ module Google
           @range_element_type = args[:range_element_type] if args.key?(:range_element_type)
           @rounding_mode = args[:rounding_mode] if args.key?(:rounding_mode)
           @scale = args[:scale] if args.key?(:scale)
+          @timestamp_precision = args[:timestamp_precision] if args.key?(:timestamp_precision)
           @type = args[:type] if args.key?(:type)
         end
         
@@ -10870,6 +10992,11 @@ module Google
         # @return [String]
         attr_accessor :explanation
       
+        # The column metadata index pruning statistics.
+        # Corresponds to the JSON property `pruningStats`
+        # @return [Google::Apis::BigqueryV2::PruningStats]
+        attr_accessor :pruning_stats
+      
         # Duration since last refresh as of this job for managed tables (indicates
         # metadata cache staleness as seen by this job).
         # Corresponds to the JSON property `staleness`
@@ -10899,6 +11026,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @explanation = args[:explanation] if args.key?(:explanation)
+          @pruning_stats = args[:pruning_stats] if args.key?(:pruning_stats)
           @staleness = args[:staleness] if args.key?(:staleness)
           @table_reference = args[:table_reference] if args.key?(:table_reference)
           @table_type = args[:table_type] if args.key?(:table_type)
@@ -11298,6 +11426,12 @@ module Google
         attr_accessor :enable_global_explain
         alias_method :enable_global_explain?, :enable_global_explain
       
+        # The idle TTL of the endpoint before the resources get destroyed. The default
+        # value is 6.5 hours.
+        # Corresponds to the JSON property `endpointIdleTtl`
+        # @return [String]
+        attr_accessor :endpoint_idle_ttl
+      
         # Feedback type that specifies which algorithm to run for matrix factorization.
         # Corresponds to the JSON property `feedbackType`
         # @return [String]
@@ -11348,6 +11482,11 @@ module Google
         # Corresponds to the JSON property `hparamTuningObjectives`
         # @return [Array<String>]
         attr_accessor :hparam_tuning_objectives
+      
+        # The id of a Hugging Face model. For example, `google/gemma-2-2b-it`.
+        # Corresponds to the JSON property `huggingFaceModelId`
+        # @return [String]
+        attr_accessor :hugging_face_model_id
       
         # Include drift when fitting an ARIMA model.
         # Corresponds to the JSON property `includeDrift`
@@ -11434,6 +11573,11 @@ module Google
         # @return [String]
         attr_accessor :loss_type
       
+        # The type of the machine used to deploy and serve the model.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
         # The maximum number of iterations in training. Used only for iterative training
         # algorithms.
         # Corresponds to the JSON property `maxIterations`
@@ -11444,6 +11588,12 @@ module Google
         # Corresponds to the JSON property `maxParallelTrials`
         # @return [Fixnum]
         attr_accessor :max_parallel_trials
+      
+        # The maximum number of machine replicas that will be deployed on an endpoint.
+        # The default value is equal to min_replica_count.
+        # Corresponds to the JSON property `maxReplicaCount`
+        # @return [Fixnum]
+        attr_accessor :max_replica_count
       
         # The maximum number of time points in a time series that can be used in
         # modeling the trend component of the time series. Don't use this option with
@@ -11468,6 +11618,13 @@ module Google
         # @return [Float]
         attr_accessor :min_relative_progress
       
+        # The minimum number of machine replicas that will be always deployed on an
+        # endpoint. This value must be greater than or equal to 1. The default value is
+        # 1.
+        # Corresponds to the JSON property `minReplicaCount`
+        # @return [Fixnum]
+        attr_accessor :min_replica_count
+      
         # Minimum split loss for boosted tree models.
         # Corresponds to the JSON property `minSplitLoss`
         # @return [Float]
@@ -11489,6 +11646,12 @@ module Google
         # Corresponds to the JSON property `minTreeChildWeight`
         # @return [Fixnum]
         attr_accessor :min_tree_child_weight
+      
+        # The name of a Vertex model garden publisher model. Format is `publishers/`
+        # publisher`/models/`model`@`optional_version_id``.
+        # Corresponds to the JSON property `modelGardenModelName`
+        # @return [String]
+        attr_accessor :model_garden_model_name
       
         # The model registry.
         # Corresponds to the JSON property `modelRegistry`
@@ -11553,6 +11716,25 @@ module Google
         # Corresponds to the JSON property `pcaSolver`
         # @return [String]
         attr_accessor :pca_solver
+      
+        # Corresponds to the label key of a reservation resource used by Vertex AI. To
+        # target a SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-
+        # name` as the key and specify the name of your reservation as its value.
+        # Corresponds to the JSON property `reservationAffinityKey`
+        # @return [String]
+        attr_accessor :reservation_affinity_key
+      
+        # Specifies the reservation affinity type used to configure a Vertex AI resource.
+        # The default value is `NO_RESERVATION`.
+        # Corresponds to the JSON property `reservationAffinityType`
+        # @return [String]
+        attr_accessor :reservation_affinity_type
+      
+        # Corresponds to the label values of a reservation resource used by Vertex AI.
+        # This must be the full resource name of the reservation or reservation block.
+        # Corresponds to the JSON property `reservationAffinityValues`
+        # @return [Array<String>]
+        attr_accessor :reservation_affinity_values
       
         # Number of paths for the sampled Shapley explain method.
         # Corresponds to the JSON property `sampledShapleyNumPaths`
@@ -11690,6 +11872,7 @@ module Google
           @dropout = args[:dropout] if args.key?(:dropout)
           @early_stop = args[:early_stop] if args.key?(:early_stop)
           @enable_global_explain = args[:enable_global_explain] if args.key?(:enable_global_explain)
+          @endpoint_idle_ttl = args[:endpoint_idle_ttl] if args.key?(:endpoint_idle_ttl)
           @feedback_type = args[:feedback_type] if args.key?(:feedback_type)
           @fit_intercept = args[:fit_intercept] if args.key?(:fit_intercept)
           @forecast_limit_lower_bound = args[:forecast_limit_lower_bound] if args.key?(:forecast_limit_lower_bound)
@@ -11699,6 +11882,7 @@ module Google
           @holiday_regions = args[:holiday_regions] if args.key?(:holiday_regions)
           @horizon = args[:horizon] if args.key?(:horizon)
           @hparam_tuning_objectives = args[:hparam_tuning_objectives] if args.key?(:hparam_tuning_objectives)
+          @hugging_face_model_id = args[:hugging_face_model_id] if args.key?(:hugging_face_model_id)
           @include_drift = args[:include_drift] if args.key?(:include_drift)
           @initial_learn_rate = args[:initial_learn_rate] if args.key?(:initial_learn_rate)
           @input_label_columns = args[:input_label_columns] if args.key?(:input_label_columns)
@@ -11715,15 +11899,19 @@ module Google
           @learn_rate = args[:learn_rate] if args.key?(:learn_rate)
           @learn_rate_strategy = args[:learn_rate_strategy] if args.key?(:learn_rate_strategy)
           @loss_type = args[:loss_type] if args.key?(:loss_type)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
           @max_iterations = args[:max_iterations] if args.key?(:max_iterations)
           @max_parallel_trials = args[:max_parallel_trials] if args.key?(:max_parallel_trials)
+          @max_replica_count = args[:max_replica_count] if args.key?(:max_replica_count)
           @max_time_series_length = args[:max_time_series_length] if args.key?(:max_time_series_length)
           @max_tree_depth = args[:max_tree_depth] if args.key?(:max_tree_depth)
           @min_apriori_support = args[:min_apriori_support] if args.key?(:min_apriori_support)
           @min_relative_progress = args[:min_relative_progress] if args.key?(:min_relative_progress)
+          @min_replica_count = args[:min_replica_count] if args.key?(:min_replica_count)
           @min_split_loss = args[:min_split_loss] if args.key?(:min_split_loss)
           @min_time_series_length = args[:min_time_series_length] if args.key?(:min_time_series_length)
           @min_tree_child_weight = args[:min_tree_child_weight] if args.key?(:min_tree_child_weight)
+          @model_garden_model_name = args[:model_garden_model_name] if args.key?(:model_garden_model_name)
           @model_registry = args[:model_registry] if args.key?(:model_registry)
           @model_uri = args[:model_uri] if args.key?(:model_uri)
           @non_seasonal_order = args[:non_seasonal_order] if args.key?(:non_seasonal_order)
@@ -11736,6 +11924,9 @@ module Google
           @optimizer = args[:optimizer] if args.key?(:optimizer)
           @pca_explained_variance_ratio = args[:pca_explained_variance_ratio] if args.key?(:pca_explained_variance_ratio)
           @pca_solver = args[:pca_solver] if args.key?(:pca_solver)
+          @reservation_affinity_key = args[:reservation_affinity_key] if args.key?(:reservation_affinity_key)
+          @reservation_affinity_type = args[:reservation_affinity_type] if args.key?(:reservation_affinity_type)
+          @reservation_affinity_values = args[:reservation_affinity_values] if args.key?(:reservation_affinity_values)
           @sampled_shapley_num_paths = args[:sampled_shapley_num_paths] if args.key?(:sampled_shapley_num_paths)
           @scale_features = args[:scale_features] if args.key?(:scale_features)
           @standardize_features = args[:standardize_features] if args.key?(:standardize_features)
