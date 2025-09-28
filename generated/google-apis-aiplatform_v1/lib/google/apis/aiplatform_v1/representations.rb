@@ -3034,6 +3034,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1LustreMount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1MachineSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7772,6 +7778,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :autorater_model, as: 'autoraterModel'
           property :flip_enabled, as: 'flipEnabled'
+          property :generation_config, as: 'generationConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig::Representation
+      
           property :sampling_count, as: 'samplingCount'
         end
       end
@@ -12600,6 +12608,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1LustreMount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filesystem, as: 'filesystem'
+          property :instance_ip, as: 'instanceIp'
+          property :mount_point, as: 'mountPoint'
+          property :volume_handle, as: 'volumeHandle'
         end
       end
       
@@ -19573,6 +19591,8 @@ module Google
           property :container_spec, as: 'containerSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ContainerSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ContainerSpec::Representation
       
           property :disk_spec, as: 'diskSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DiskSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DiskSpec::Representation
+      
+          collection :lustre_mounts, as: 'lustreMounts', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1LustreMount, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1LustreMount::Representation
       
           property :machine_spec, as: 'machineSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MachineSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MachineSpec::Representation
       
