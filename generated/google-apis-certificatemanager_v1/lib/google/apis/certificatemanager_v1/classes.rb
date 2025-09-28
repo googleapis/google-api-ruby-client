@@ -46,6 +46,11 @@ module Google
       class AuthorizationAttemptInfo
         include Google::Apis::Core::Hashable
       
+        # Output only. The timestamp, when the authorization attempt was made.
+        # Corresponds to the JSON property `attemptTime`
+        # @return [String]
+        attr_accessor :attempt_time
+      
         # Output only. Human readable explanation for reaching the state. Provided to
         # help address the configuration issues. Not guaranteed to be stable. For
         # programmatic access use FailureReason enum.
@@ -68,16 +73,59 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Troubleshooting information for the authorization attempt.
+        # Corresponds to the JSON property `troubleshooting`
+        # @return [Google::Apis::CertificatemanagerV1::Troubleshooting]
+        attr_accessor :troubleshooting
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @attempt_time = args[:attempt_time] if args.key?(:attempt_time)
           @details = args[:details] if args.key?(:details)
           @domain = args[:domain] if args.key?(:domain)
           @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
           @state = args[:state] if args.key?(:state)
+          @troubleshooting = args[:troubleshooting] if args.key?(:troubleshooting)
+        end
+      end
+      
+      # CNAME troubleshooting information.
+      class Cname
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The expected value of the CNAME record for the domain, equals to `
+        # dns_resource_record.data` in the corresponding `DnsAuthorization`.
+        # Corresponds to the JSON property `expectedData`
+        # @return [String]
+        attr_accessor :expected_data
+      
+        # Output only. The name of the CNAME record for the domain, equals to `
+        # dns_resource_record.name` in the corresponding `DnsAuthorization`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The resolved CNAME chain. Empty list if the CNAME record for `
+        # CNAME.name` is not found. Otherwise the first item is the value of the CNAME
+        # record for `CNAME.name`. If the CNAME chain is longer, the second item is the
+        # value of the CNAME record for the first item, and so on.
+        # Corresponds to the JSON property `resolvedData`
+        # @return [Array<String>]
+        attr_accessor :resolved_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expected_data = args[:expected_data] if args.key?(:expected_data)
+          @name = args[:name] if args.key?(:name)
+          @resolved_data = args[:resolved_data] if args.key?(:resolved_data)
         end
       end
       
@@ -577,6 +625,40 @@ module Google
           @ip_configs = args[:ip_configs] if args.key?(:ip_configs)
           @target_https_proxy = args[:target_https_proxy] if args.key?(:target_https_proxy)
           @target_ssl_proxy = args[:target_ssl_proxy] if args.key?(:target_ssl_proxy)
+        end
+      end
+      
+      # IPs troubleshooting information.
+      class IPs
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of IP addresses resolved from the domain's A/AAAA
+        # records. Can contain both ipv4 and ipv6 addresses.
+        # Corresponds to the JSON property `resolved`
+        # @return [Array<String>]
+        attr_accessor :resolved
+      
+        # Output only. The list of IP addresses, where the certificate is attached and
+        # port 443 is open.
+        # Corresponds to the JSON property `serving`
+        # @return [Array<String>]
+        attr_accessor :serving
+      
+        # Output only. The list of IP addresses, where the certificate is attached, but
+        # port 443 is not open.
+        # Corresponds to the JSON property `servingOnAltPorts`
+        # @return [Array<String>]
+        attr_accessor :serving_on_alt_ports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resolved = args[:resolved] if args.key?(:resolved)
+          @serving = args[:serving] if args.key?(:serving)
+          @serving_on_alt_ports = args[:serving_on_alt_ports] if args.key?(:serving_on_alt_ports)
         end
       end
       
@@ -1190,6 +1272,37 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Troubleshooting information for the authorization attempt.
+      class Troubleshooting
+        include Google::Apis::Core::Hashable
+      
+        # CNAME troubleshooting information.
+        # Corresponds to the JSON property `cname`
+        # @return [Google::Apis::CertificatemanagerV1::Cname]
+        attr_accessor :cname
+      
+        # IPs troubleshooting information.
+        # Corresponds to the JSON property `ips`
+        # @return [Google::Apis::CertificatemanagerV1::IPs]
+        attr_accessor :ips
+      
+        # Output only. The list of issues discovered during the authorization attempt.
+        # Corresponds to the JSON property `issues`
+        # @return [Array<String>]
+        attr_accessor :issues
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cname = args[:cname] if args.key?(:cname)
+          @ips = args[:ips] if args.key?(:ips)
+          @issues = args[:issues] if args.key?(:issues)
         end
       end
       
