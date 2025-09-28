@@ -5124,6 +5124,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :action_params, as: 'actionParams'
           property :is_action_configured, as: 'isActionConfigured'
+          property :json_action_params, as: 'jsonActionParams'
           property :service_name, as: 'serviceName'
           property :use_static_secrets, as: 'useStaticSecrets'
         end
@@ -5253,6 +5254,7 @@ module Google
       class GoogleCloudDiscoveryengineV1BapConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enabled_actions, as: 'enabledActions'
           collection :supported_connector_modes, as: 'supportedConnectorModes'
         end
       end
@@ -5530,6 +5532,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :additional_params, as: 'additionalParams'
           hash :auth_params, as: 'authParams'
+          property :json_auth_params, as: 'jsonAuthParams'
           property :tenant, as: 'tenant', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1Tenant, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1Tenant::Representation
       
         end
@@ -5540,6 +5543,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :additional_params, as: 'additionalParams'
           hash :auth_params, as: 'authParams'
+          property :json_auth_params, as: 'jsonAuthParams'
         end
       end
       
@@ -5587,6 +5591,7 @@ module Google
       
           property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1CmekConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1CmekConfig::Representation
       
+          property :configurable_billing_approach, as: 'configurableBillingApproach'
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -6465,6 +6470,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :action_params, as: 'actionParams'
           property :is_action_configured, as: 'isActionConfigured'
+          property :json_action_params, as: 'jsonActionParams'
           property :service_name, as: 'serviceName'
           property :use_static_secrets, as: 'useStaticSecrets'
         end
@@ -6722,6 +6728,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaBapConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enabled_actions, as: 'enabledActions'
           collection :supported_connector_modes, as: 'supportedConnectorModes'
         end
       end
@@ -7069,6 +7076,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :additional_params, as: 'additionalParams'
           hash :auth_params, as: 'authParams'
+          property :json_auth_params, as: 'jsonAuthParams'
           property :tenant, as: 'tenant', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaTenant, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaTenant::Representation
       
         end
@@ -7079,6 +7087,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :additional_params, as: 'additionalParams'
           hash :auth_params, as: 'authParams'
+          property :json_auth_params, as: 'jsonAuthParams'
         end
       end
       
@@ -7126,6 +7135,7 @@ module Google
       
           property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCmekConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCmekConfig::Representation
       
+          property :configurable_billing_approach, as: 'configurableBillingApproach'
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -10132,6 +10142,7 @@ module Google
       
           property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCmekConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCmekConfig::Representation
       
+          property :configurable_billing_approach, as: 'configurableBillingApproach'
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -12743,6 +12754,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation, decorator: Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
