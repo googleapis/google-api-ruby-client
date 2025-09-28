@@ -177,6 +177,67 @@ module Google
         end
       end
       
+      # A request message for signing an SSH public key.
+      class SignSshPublicKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The App Engine instance to sign the SSH public key for. Expected format: apps/`
+        # app`/services/`service`/versions/`version`/instances/`instance`
+        # Corresponds to the JSON property `appEngineInstance`
+        # @return [String]
+        attr_accessor :app_engine_instance
+      
+        # The Compute instance to sign the SSH public key for. Expected format: projects/
+        # `project`/zones/`zone`/instances/`numeric_instance_id`
+        # Corresponds to the JSON property `computeInstance`
+        # @return [String]
+        attr_accessor :compute_instance
+      
+        # Optional. The service account for the instance. If the instance in question
+        # does not have a service account, this field should be left empty. If the wrong
+        # service account is provided, this operation will return a signed certificate
+        # that will not be accepted by the VM.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Required. The SSH public key to sign.
+        # Corresponds to the JSON property `sshPublicKey`
+        # @return [String]
+        attr_accessor :ssh_public_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_engine_instance = args[:app_engine_instance] if args.key?(:app_engine_instance)
+          @compute_instance = args[:compute_instance] if args.key?(:compute_instance)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @ssh_public_key = args[:ssh_public_key] if args.key?(:ssh_public_key)
+        end
+      end
+      
+      # The response message for signing an SSH public key.
+      class SignSshPublicKeyResponse
+        include Google::Apis::Core::Hashable
+      
+        # The signed SSH public key to use in the SSH handshake.
+        # Corresponds to the JSON property `signedSshPublicKey`
+        # @return [String]
+        attr_accessor :signed_ssh_public_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signed_ssh_public_key = args[:signed_ssh_public_key] if args.key?(:signed_ssh_public_key)
+        end
+      end
+      
       # The SSH public key information associated with a Google account.
       class SshPublicKey
         include Google::Apis::Core::Hashable

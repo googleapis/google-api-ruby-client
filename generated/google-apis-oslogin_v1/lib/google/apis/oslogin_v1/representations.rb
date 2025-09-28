@@ -46,6 +46,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SignSshPublicKeyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SignSshPublicKeyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SshPublicKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -92,6 +104,23 @@ module Google
           property :system_id, as: 'systemId'
           property :uid, :numeric_string => true, as: 'uid'
           property :username, as: 'username'
+        end
+      end
+      
+      class SignSshPublicKeyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_engine_instance, as: 'appEngineInstance'
+          property :compute_instance, as: 'computeInstance'
+          property :service_account, as: 'serviceAccount'
+          property :ssh_public_key, as: 'sshPublicKey'
+        end
+      end
+      
+      class SignSshPublicKeyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :signed_ssh_public_key, as: 'signedSshPublicKey'
         end
       end
       
