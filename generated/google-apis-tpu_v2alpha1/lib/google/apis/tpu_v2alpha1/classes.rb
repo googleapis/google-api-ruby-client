@@ -399,6 +399,25 @@ module Google
         end
       end
       
+      # Response for GetMaintenanceInfo.
+      class GetMaintenanceInfoResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of upcoming maintenance entries.
+        # Corresponds to the JSON property `nodeUpcomingMaintenances`
+        # @return [Array<Google::Apis::TpuV2alpha1::NodeUpcomingMaintenanceInfo>]
+        attr_accessor :node_upcoming_maintenances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_upcoming_maintenances = args[:node_upcoming_maintenances] if args.key?(:node_upcoming_maintenances)
+        end
+      end
+      
       # Guaranteed tier definition.
       class Guaranteed
         include Google::Apis::Core::Hashable
@@ -1137,6 +1156,37 @@ module Google
           @node = args[:node] if args.key?(:node)
           @node_id = args[:node_id] if args.key?(:node_id)
           @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # A tuple containing node name / ID and maintenance info.
+      class NodeUpcomingMaintenanceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Unqualified node name.
+        # Corresponds to the JSON property `nodeName`
+        # @return [String]
+        attr_accessor :node_name
+      
+        # UID of this node.
+        # Corresponds to the JSON property `nodeUid`
+        # @return [Fixnum]
+        attr_accessor :node_uid
+      
+        # Upcoming Maintenance notification information.
+        # Corresponds to the JSON property `upcomingMaintenance`
+        # @return [Google::Apis::TpuV2alpha1::UpcomingMaintenance]
+        attr_accessor :upcoming_maintenance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_name = args[:node_name] if args.key?(:node_name)
+          @node_uid = args[:node_uid] if args.key?(:node_uid)
+          @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
         end
       end
       

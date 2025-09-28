@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetMaintenanceInfoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Guaranteed
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +233,12 @@ module Google
       end
       
       class NodeSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeUpcomingMaintenanceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -529,6 +541,14 @@ module Google
         end
       end
       
+      class GetMaintenanceInfoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :node_upcoming_maintenances, as: 'nodeUpcomingMaintenances', class: Google::Apis::TpuV2alpha1::NodeUpcomingMaintenanceInfo, decorator: Google::Apis::TpuV2alpha1::NodeUpcomingMaintenanceInfo::Representation
+      
+        end
+      end
+      
       class Guaranteed
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -733,6 +753,16 @@ module Google
       
           property :node_id, as: 'nodeId'
           property :parent, as: 'parent'
+        end
+      end
+      
+      class NodeUpcomingMaintenanceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_name, as: 'nodeName'
+          property :node_uid, :numeric_string => true, as: 'nodeUid'
+          property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::TpuV2alpha1::UpcomingMaintenance, decorator: Google::Apis::TpuV2alpha1::UpcomingMaintenance::Representation
+      
         end
       end
       
