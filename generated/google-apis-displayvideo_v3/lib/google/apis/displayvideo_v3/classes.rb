@@ -5856,11 +5856,8 @@ module Google
         # DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then this
         # field will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if not
         # otherwise specified. This field can then be updated using the UI, API, or
-        # Structured Data Files. *Warning*: Starting **September 8, 2025**, this field
-        # must be set. If not, either the value `
-        # DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` will be assigned to the line item
-        # if the parent advertiser has declared that it does not serve EU political ads,
-        # or **the request will fail**.
+        # Structured Data Files. This field must be assigned when creating a new line
+        # item. Otherwise, **the `advertisers.lineItems.create` request will fail**.
         # Corresponds to the JSON property `containsEuPoliticalAds`
         # @return [String]
         attr_accessor :contains_eu_political_ads
@@ -6791,11 +6788,8 @@ module Google
         # DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then this
         # field will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if not
         # otherwise specified. This field can then be updated using the UI, API, or
-        # Structured Data Files. *Warning*: Starting **September 8, 2025**, this field
-        # must be set. If not, either the value `
-        # DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` will be assigned to the line item
-        # if the parent advertiser has declared that it does not serve EU political ads,
-        # or **the request will fail**.
+        # Structured Data Files. This field must be assigned when creating a new line
+        # item. Otherwise, **the `advertisers.lineItems.create` request will fail**.
         # Corresponds to the JSON property `containsEuPoliticalAds`
         # @return [String]
         attr_accessor :contains_eu_political_ads
@@ -8421,11 +8415,8 @@ module Google
         # DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then this
         # field will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if not
         # otherwise specified. This field can then be updated using the UI, API, or
-        # Structured Data Files. *Warning*: Starting **September 8, 2025**, this field
-        # must be set when creating a new line item. If not, either the value `
-        # DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` will be assigned if the parent
-        # advertiser has declared that it does not serve EU political ads, or **the `
-        # advertisers.lineItems.create` request will fail**.
+        # Structured Data Files. This field must be assigned when creating a new line
+        # item. Otherwise, **the `advertisers.lineItems.create` request will fail**.
         # Corresponds to the JSON property `containsEuPoliticalAds`
         # @return [String]
         attr_accessor :contains_eu_political_ads
