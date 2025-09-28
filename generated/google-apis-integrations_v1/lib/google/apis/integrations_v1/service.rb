@@ -2155,6 +2155,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Execute the integration in draft state
+        # @param [String] name
+        #   Output only. Auto-generated primary key.
+        # @param [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestIntegrationsRequest] google_cloud_integrations_v1alpha_test_integrations_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestIntegrationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestIntegrationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_project_location_integration_version(name, google_cloud_integrations_v1alpha_test_integrations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:test', options)
+          command.request_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestIntegrationsRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_test_integrations_request_object
+          command.response_representation = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestIntegrationsResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTestIntegrationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the status of the ACTIVE integration to SNAPSHOT with a new tag "
         # PREVIOUSLY_PUBLISHED" after validating it. The "HEAD" and "PUBLISH_REQUESTED"
         # tags do not change. This RPC throws an exception if the version being snapshot
