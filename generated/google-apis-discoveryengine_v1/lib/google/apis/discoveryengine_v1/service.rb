@@ -648,6 +648,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -665,7 +672,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_collection_data_connector_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_collection_data_connector_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse
@@ -673,6 +680,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1430,6 +1438,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1447,7 +1462,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_collection_data_store_branch_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_collection_data_store_branch_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse
@@ -1455,6 +1470,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2059,6 +2075,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2076,7 +2099,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_collection_data_store_model_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_collection_data_store_model_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse
@@ -2084,6 +2107,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2130,6 +2154,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2147,7 +2178,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_collection_data_store_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_collection_data_store_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse
@@ -2155,6 +2186,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2388,6 +2420,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2405,7 +2444,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_collection_data_store_schema_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_collection_data_store_schema_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse
@@ -2413,6 +2452,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3113,6 +3153,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3130,7 +3177,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_collection_data_store_site_search_engine_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_collection_data_store_site_search_engine_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse
@@ -3138,6 +3185,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3509,6 +3557,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3526,7 +3581,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_collection_data_store_site_search_engine_target_site_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_collection_data_store_site_search_engine_target_site_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse
@@ -3534,6 +3589,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4607,6 +4663,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4624,7 +4687,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_collection_engine_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_collection_engine_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse
@@ -4632,6 +4695,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5149,6 +5213,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5166,7 +5237,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_collection_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_collection_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse
@@ -5174,6 +5245,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5896,6 +5968,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5913,7 +5992,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_data_store_branch_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_data_store_branch_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse
@@ -5921,6 +6000,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -6493,6 +6573,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6510,7 +6597,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_data_store_model_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_data_store_model_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse
@@ -6518,6 +6605,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -6564,6 +6652,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6581,7 +6676,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_data_store_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_data_store_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse
@@ -6589,6 +6684,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -8258,6 +8354,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8275,7 +8378,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_identity_mapping_store_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_identity_mapping_store_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse
@@ -8283,6 +8386,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -8329,6 +8433,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8346,7 +8457,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse
@@ -8354,6 +8465,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -8724,6 +8836,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8741,7 +8860,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningListOperationsResponse
@@ -8749,6 +8868,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
