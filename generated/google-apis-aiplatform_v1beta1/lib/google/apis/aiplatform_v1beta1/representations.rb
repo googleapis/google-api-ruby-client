@@ -3622,6 +3622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1LustreMount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1MachineSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -9315,6 +9321,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :autorater_model, as: 'autoraterModel'
           property :flip_enabled, as: 'flipEnabled'
+          property :generation_config, as: 'generationConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerationConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerationConfig::Representation
+      
           property :sampling_count, as: 'samplingCount'
         end
       end
@@ -15039,6 +15047,16 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1LustreMount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filesystem, as: 'filesystem'
+          property :instance_ip, as: 'instanceIp'
+          property :mount_point, as: 'mountPoint'
+          property :volume_handle, as: 'volumeHandle'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1MachineSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -19254,10 +19272,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :expire_time, as: 'expireTime'
           property :name, as: 'name'
           property :spec, as: 'spec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SandboxEnvironmentSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SandboxEnvironmentSpec::Representation
       
           property :state, as: 'state'
+          property :ttl, as: 'ttl'
           property :update_time, as: 'updateTime'
         end
       end
@@ -23457,6 +23477,8 @@ module Google
           property :container_spec, as: 'containerSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ContainerSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ContainerSpec::Representation
       
           property :disk_spec, as: 'diskSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DiskSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DiskSpec::Representation
+      
+          collection :lustre_mounts, as: 'lustreMounts', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1LustreMount, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1LustreMount::Representation
       
           property :machine_spec, as: 'machineSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MachineSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MachineSpec::Representation
       
