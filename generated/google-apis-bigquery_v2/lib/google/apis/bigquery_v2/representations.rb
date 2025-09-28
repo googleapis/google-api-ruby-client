@@ -520,6 +520,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IncrementalResultStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IndexPruningStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IndexUnusedReason
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -869,6 +881,12 @@ module Google
       end
       
       class ProjectReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PruningStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2359,6 +2377,25 @@ module Google
         end
       end
       
+      class IncrementalResultStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled_reason, as: 'disabledReason'
+          property :result_set_last_modify_time, as: 'resultSetLastModifyTime'
+          property :result_set_last_replace_time, as: 'resultSetLastReplaceTime'
+        end
+      end
+      
+      class IndexPruningStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_table, as: 'baseTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
+      
+          property :post_index_pruning_parallel_input_count, :numeric_string => true, as: 'postIndexPruningParallelInputCount'
+          property :pre_index_pruning_parallel_input_count, :numeric_string => true, as: 'preIndexPruningParallelInputCount'
+        end
+      end
+      
       class IndexUnusedReason
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2754,6 +2791,8 @@ module Google
           property :export_data_statistics, as: 'exportDataStatistics', class: Google::Apis::BigqueryV2::ExportDataStatistics, decorator: Google::Apis::BigqueryV2::ExportDataStatistics::Representation
       
           collection :external_service_costs, as: 'externalServiceCosts', class: Google::Apis::BigqueryV2::ExternalServiceCost, decorator: Google::Apis::BigqueryV2::ExternalServiceCost::Representation
+      
+          property :incremental_result_stats, as: 'incrementalResultStats', class: Google::Apis::BigqueryV2::IncrementalResultStats, decorator: Google::Apis::BigqueryV2::IncrementalResultStats::Representation
       
           property :load_query_statistics, as: 'loadQueryStatistics', class: Google::Apis::BigqueryV2::LoadQueryStatistics, decorator: Google::Apis::BigqueryV2::LoadQueryStatistics::Representation
       
@@ -3179,6 +3218,15 @@ module Google
         end
       end
       
+      class PruningStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :post_cmeta_pruning_parallel_input_count, :numeric_string => true, as: 'postCmetaPruningParallelInputCount'
+          property :post_cmeta_pruning_partition_count, :numeric_string => true, as: 'postCmetaPruningPartitionCount'
+          property :pre_cmeta_pruning_parallel_input_count, :numeric_string => true, as: 'preCmetaPruningParallelInputCount'
+        end
+      end
+      
       class PythonOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3518,6 +3566,8 @@ module Google
       class SearchStatistics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :index_pruning_stats, as: 'indexPruningStats', class: Google::Apis::BigqueryV2::IndexPruningStats, decorator: Google::Apis::BigqueryV2::IndexPruningStats::Representation
+      
           collection :index_unused_reasons, as: 'indexUnusedReasons', class: Google::Apis::BigqueryV2::IndexUnusedReason, decorator: Google::Apis::BigqueryV2::IndexUnusedReason::Representation
       
           property :index_usage_mode, as: 'indexUsageMode'
@@ -3926,6 +3976,7 @@ module Google
       
           property :rounding_mode, as: 'roundingMode'
           property :scale, :numeric_string => true, as: 'scale'
+          property :timestamp_precision, :numeric_string => true, as: 'timestampPrecision'
           property :type, as: 'type'
         end
         
@@ -4000,6 +4051,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :explanation, as: 'explanation'
+          property :pruning_stats, as: 'pruningStats', class: Google::Apis::BigqueryV2::PruningStats, decorator: Google::Apis::BigqueryV2::PruningStats::Representation
+      
           property :staleness, as: 'staleness'
           property :table_reference, as: 'tableReference', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
@@ -4104,6 +4157,7 @@ module Google
           property :dropout, as: 'dropout'
           property :early_stop, as: 'earlyStop'
           property :enable_global_explain, as: 'enableGlobalExplain'
+          property :endpoint_idle_ttl, as: 'endpointIdleTtl'
           property :feedback_type, as: 'feedbackType'
           property :fit_intercept, as: 'fitIntercept'
           property :forecast_limit_lower_bound, as: 'forecastLimitLowerBound'
@@ -4113,6 +4167,7 @@ module Google
           collection :holiday_regions, as: 'holidayRegions'
           property :horizon, :numeric_string => true, as: 'horizon'
           collection :hparam_tuning_objectives, as: 'hparamTuningObjectives'
+          property :hugging_face_model_id, as: 'huggingFaceModelId'
           property :include_drift, as: 'includeDrift'
           property :initial_learn_rate, as: 'initialLearnRate'
           collection :input_label_columns, as: 'inputLabelColumns'
@@ -4129,15 +4184,19 @@ module Google
           property :learn_rate, as: 'learnRate'
           property :learn_rate_strategy, as: 'learnRateStrategy'
           property :loss_type, as: 'lossType'
+          property :machine_type, as: 'machineType'
           property :max_iterations, :numeric_string => true, as: 'maxIterations'
           property :max_parallel_trials, :numeric_string => true, as: 'maxParallelTrials'
+          property :max_replica_count, :numeric_string => true, as: 'maxReplicaCount'
           property :max_time_series_length, :numeric_string => true, as: 'maxTimeSeriesLength'
           property :max_tree_depth, :numeric_string => true, as: 'maxTreeDepth'
           property :min_apriori_support, as: 'minAprioriSupport'
           property :min_relative_progress, as: 'minRelativeProgress'
+          property :min_replica_count, :numeric_string => true, as: 'minReplicaCount'
           property :min_split_loss, as: 'minSplitLoss'
           property :min_time_series_length, :numeric_string => true, as: 'minTimeSeriesLength'
           property :min_tree_child_weight, :numeric_string => true, as: 'minTreeChildWeight'
+          property :model_garden_model_name, as: 'modelGardenModelName'
           property :model_registry, as: 'modelRegistry'
           property :model_uri, as: 'modelUri'
           property :non_seasonal_order, as: 'nonSeasonalOrder', class: Google::Apis::BigqueryV2::ArimaOrder, decorator: Google::Apis::BigqueryV2::ArimaOrder::Representation
@@ -4151,6 +4210,9 @@ module Google
           property :optimizer, as: 'optimizer'
           property :pca_explained_variance_ratio, as: 'pcaExplainedVarianceRatio'
           property :pca_solver, as: 'pcaSolver'
+          property :reservation_affinity_key, as: 'reservationAffinityKey'
+          property :reservation_affinity_type, as: 'reservationAffinityType'
+          collection :reservation_affinity_values, as: 'reservationAffinityValues'
           property :sampled_shapley_num_paths, :numeric_string => true, as: 'sampledShapleyNumPaths'
           property :scale_features, as: 'scaleFeatures'
           property :standardize_features, as: 'standardizeFeatures'
