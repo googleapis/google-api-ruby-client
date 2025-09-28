@@ -174,6 +174,11 @@ module Google
         # @return [String]
         attr_accessor :hashed_account_id
       
+        # Details on a phone authentication event
+        # Corresponds to the JSON property `phoneAuthenticationEvent`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent]
+        attr_accessor :phone_authentication_event
+      
         # Optional. Reasons for the annotation that are assigned to the event.
         # Corresponds to the JSON property `reasons`
         # @return [Array<String>]
@@ -193,6 +198,7 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @annotation = args[:annotation] if args.key?(:annotation)
           @hashed_account_id = args[:hashed_account_id] if args.key?(:hashed_account_id)
+          @phone_authentication_event = args[:phone_authentication_event] if args.key?(:phone_authentication_event)
           @reasons = args[:reasons] if args.key?(:reasons)
           @transaction_event = args[:transaction_event] if args.key?(:transaction_event)
         end
@@ -1394,6 +1400,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @skip_billing_check = args[:skip_billing_check] if args.key?(:skip_billing_check)
+        end
+      end
+      
+      # Details on a phone authentication event
+      class GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The time at which the multi-factor authentication event (challenge
+        # or verification) occurred.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # Required. Phone number in E.164 format for which a multi-factor authentication
+        # challenge was initiated, succeeded, or failed.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
         end
       end
       
