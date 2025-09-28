@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AlloyDbClusterDataSourceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AlloyDbClusterBackupProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AttachedDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -786,6 +798,23 @@ module Google
         end
       end
       
+      class AlloyDbClusterDataSourceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class AlloyDbClusterBackupProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chain_id, as: 'chainId'
+          property :database_version, as: 'databaseVersion'
+          property :description, as: 'description'
+          property :stored_bytes, :numeric_string => true, as: 'storedBytes'
+        end
+      end
+      
       class AttachedDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -832,6 +861,8 @@ module Google
       class Backup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alloy_db_backup_properties, as: 'alloyDbBackupProperties', class: Google::Apis::BackupdrV1::AlloyDbClusterBackupProperties, decorator: Google::Apis::BackupdrV1::AlloyDbClusterBackupProperties::Representation
+      
           property :backup_appliance_backup_properties, as: 'backupApplianceBackupProperties', class: Google::Apis::BackupdrV1::BackupApplianceBackupProperties, decorator: Google::Apis::BackupdrV1::BackupApplianceBackupProperties::Representation
       
           collection :backup_appliance_locks, as: 'backupApplianceLocks', class: Google::Apis::BackupdrV1::BackupLock, decorator: Google::Apis::BackupdrV1::BackupLock::Representation
@@ -1284,6 +1315,8 @@ module Google
       class DataSourceGcpResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alloy_db_cluster_datasource_properties, as: 'alloyDbClusterDatasourceProperties', class: Google::Apis::BackupdrV1::AlloyDbClusterDataSourceProperties, decorator: Google::Apis::BackupdrV1::AlloyDbClusterDataSourceProperties::Representation
+      
           property :cloud_sql_instance_datasource_properties, as: 'cloudSqlInstanceDatasourceProperties', class: Google::Apis::BackupdrV1::CloudSqlInstanceDataSourceProperties, decorator: Google::Apis::BackupdrV1::CloudSqlInstanceDataSourceProperties::Representation
       
           property :compute_instance_datasource_properties, as: 'computeInstanceDatasourceProperties', class: Google::Apis::BackupdrV1::ComputeInstanceDataSourceProperties, decorator: Google::Apis::BackupdrV1::ComputeInstanceDataSourceProperties::Representation

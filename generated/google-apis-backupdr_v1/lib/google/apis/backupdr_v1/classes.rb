@@ -246,6 +246,66 @@ module Google
         end
       end
       
+      # AlloyDBClusterDataSourceProperties represents the properties of a AlloyDB
+      # cluster resource that are stored in the DataSource. .
+      class AlloyDbClusterDataSourceProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the AlloyDB cluster backed up by the datasource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # AlloyDbClusterBackupProperties represents AlloyDB cluster backup properties. .
+      class AlloyDbClusterBackupProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The chain id of this backup. Backups belonging to the same chain
+        # are sharing the same chain id. This property is calculated and maintained by
+        # BackupDR.
+        # Corresponds to the JSON property `chainId`
+        # @return [String]
+        attr_accessor :chain_id
+      
+        # Output only. The PostgreSQL major version of the AlloyDB cluster when the
+        # backup was taken.
+        # Corresponds to the JSON property `databaseVersion`
+        # @return [String]
+        attr_accessor :database_version
+      
+        # An optional text description for the backup.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Storage usage of this particular backup
+        # Corresponds to the JSON property `storedBytes`
+        # @return [Fixnum]
+        attr_accessor :stored_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chain_id = args[:chain_id] if args.key?(:chain_id)
+          @database_version = args[:database_version] if args.key?(:database_version)
+          @description = args[:description] if args.key?(:description)
+          @stored_bytes = args[:stored_bytes] if args.key?(:stored_bytes)
+        end
+      end
+      
       # An instance-attached disk resource.
       class AttachedDisk
         include Google::Apis::Core::Hashable
@@ -446,6 +506,11 @@ module Google
       class Backup
         include Google::Apis::Core::Hashable
       
+        # AlloyDbClusterBackupProperties represents AlloyDB cluster backup properties. .
+        # Corresponds to the JSON property `alloyDbBackupProperties`
+        # @return [Google::Apis::BackupdrV1::AlloyDbClusterBackupProperties]
+        attr_accessor :alloy_db_backup_properties
+      
         # BackupApplianceBackupProperties represents BackupDR backup appliance's
         # properties.
         # Corresponds to the JSON property `backupApplianceBackupProperties`
@@ -568,6 +633,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alloy_db_backup_properties = args[:alloy_db_backup_properties] if args.key?(:alloy_db_backup_properties)
           @backup_appliance_backup_properties = args[:backup_appliance_backup_properties] if args.key?(:backup_appliance_backup_properties)
           @backup_appliance_locks = args[:backup_appliance_locks] if args.key?(:backup_appliance_locks)
           @backup_type = args[:backup_type] if args.key?(:backup_type)
@@ -2382,6 +2448,12 @@ module Google
       class DataSourceGcpResource
         include Google::Apis::Core::Hashable
       
+        # AlloyDBClusterDataSourceProperties represents the properties of a AlloyDB
+        # cluster resource that are stored in the DataSource. .
+        # Corresponds to the JSON property `alloyDbClusterDatasourceProperties`
+        # @return [Google::Apis::BackupdrV1::AlloyDbClusterDataSourceProperties]
+        attr_accessor :alloy_db_cluster_datasource_properties
+      
         # CloudSqlInstanceDataSourceProperties represents the properties of a Cloud SQL
         # resource that are stored in the DataSource.
         # Corresponds to the JSON property `cloudSqlInstanceDatasourceProperties`
@@ -2422,6 +2494,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alloy_db_cluster_datasource_properties = args[:alloy_db_cluster_datasource_properties] if args.key?(:alloy_db_cluster_datasource_properties)
           @cloud_sql_instance_datasource_properties = args[:cloud_sql_instance_datasource_properties] if args.key?(:cloud_sql_instance_datasource_properties)
           @compute_instance_datasource_properties = args[:compute_instance_datasource_properties] if args.key?(:compute_instance_datasource_properties)
           @disk_datasource_properties = args[:disk_datasource_properties] if args.key?(:disk_datasource_properties)
