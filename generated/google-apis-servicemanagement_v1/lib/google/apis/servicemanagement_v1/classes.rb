@@ -49,9 +49,18 @@ module Google
       # which represent a concrete implementation of an interface as opposed to simply
       # a description of methods and bindings. They are also sometimes simply referred
       # to as "APIs" in other contexts, such as the name of this message itself. See
-      # https://cloud.google.com/apis/design/glossary for detailed terminology.
+      # https://cloud.google.com/apis/design/glossary for detailed terminology. New
+      # usages of this message as an alternative to ServiceDescriptorProto are
+      # strongly discouraged. This message does not reliability preserve all
+      # information necessary to model the schema and preserve semantics. Instead make
+      # use of FileDescriptorSet which preserves the necessary information.
       class Api
         include Google::Apis::Core::Hashable
+      
+        # The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
       
         # The methods of this interface, in unspecified order.
         # Corresponds to the JSON property `methods`
@@ -108,6 +117,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
           @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
           @mixins = args[:mixins] if args.key?(:mixins)
           @name = args[:name] if args.key?(:name)
@@ -497,7 +507,7 @@ module Google
         # @return [Hash<String,Google::Apis::ServicemanagementV1::BackendRule>]
         attr_accessor :overrides_by_request_protocol
       
-        # 
+        # no-lint
         # Corresponds to the JSON property `pathTranslation`
         # @return [String]
         attr_accessor :path_translation
@@ -1646,7 +1656,11 @@ module Google
         end
       end
       
-      # Enum type definition.
+      # Enum type definition. New usages of this message as an alternative to
+      # EnumDescriptorProto are strongly discouraged. This message does not
+      # reliability preserve all information necessary to model the schema and
+      # preserve semantics. Instead make use of FileDescriptorSet which preserves the
+      # necessary information.
       class Enum
         include Google::Apis::Core::Hashable
       
@@ -1696,7 +1710,11 @@ module Google
         end
       end
       
-      # Enum value definition.
+      # Enum value definition. New usages of this message as an alternative to
+      # EnumValueDescriptorProto are strongly discouraged. This message does not
+      # reliability preserve all information necessary to model the schema and
+      # preserve semantics. Instead make use of FileDescriptorSet which preserves the
+      # necessary information.
       class EnumValue
         include Google::Apis::Core::Hashable
       
@@ -1824,7 +1842,11 @@ module Google
         end
       end
       
-      # A single field of a message type.
+      # A single field of a message type. New usages of this message as an alternative
+      # to FieldDescriptorProto are strongly discouraged. This message does not
+      # reliability preserve all information necessary to model the schema and
+      # preserve semantics. Instead make use of FileDescriptorSet which preserves the
+      # necessary information.
       class Field
         include Google::Apis::Core::Hashable
       
@@ -2098,7 +2120,8 @@ module Google
       
         # Map of service names to renamed services. Keys are the package relative
         # service names and values are the name to be used for the service client and
-        # call options. publishing: go_settings: renamed_services: Publisher: TopicAdmin
+        # call options. Example: publishing: go_settings: renamed_services: Publisher:
+        # TopicAdmin
         # Corresponds to the JSON property `renamedServices`
         # @return [Hash<String,String>]
         attr_accessor :renamed_services
@@ -2754,9 +2777,20 @@ module Google
         end
       end
       
-      # Method represents a method of an API interface.
+      # Method represents a method of an API interface. New usages of this message as
+      # an alternative to MethodDescriptorProto are strongly discouraged. This message
+      # does not reliability preserve all information necessary to model the schema
+      # and preserve semantics. Instead make use of FileDescriptorSet which preserves
+      # the necessary information.
       class MethodProp
         include Google::Apis::Core::Hashable
+      
+        # The source edition string, only valid when syntax is SYNTAX_EDITIONS. This
+        # field should be ignored, instead the edition should be inherited from Api.
+        # This is similar to Field and EnumValue.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
       
         # The simple name of this method.
         # Corresponds to the JSON property `name`
@@ -2790,7 +2824,8 @@ module Google
         # @return [String]
         attr_accessor :response_type_url
       
-        # The source syntax of this method.
+        # The source syntax of this method. This field should be ignored, instead the
+        # syntax should be inherited from Api. This is similar to Field and EnumValue.
         # Corresponds to the JSON property `syntax`
         # @return [String]
         attr_accessor :syntax
@@ -2801,6 +2836,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
           @name = args[:name] if args.key?(:name)
           @options = args[:options] if args.key?(:options)
           @request_streaming = args[:request_streaming] if args.key?(:request_streaming)
@@ -3496,7 +3532,9 @@ module Google
       end
       
       # A protocol buffer option, which can be attached to a message, field,
-      # enumeration, etc.
+      # enumeration, etc. New usages of this message as an alternative to FileOptions,
+      # MessageOptions, FieldOptions, EnumOptions, EnumValueOptions, ServiceOptions,
+      # or MethodOptions are strongly discouraged.
       class Option
         include Google::Apis::Core::Hashable
       
@@ -3577,6 +3615,16 @@ module Google
         # @return [Google::Apis::ServicemanagementV1::CommonLanguageSettings]
         attr_accessor :common
       
+        # The package name to use in Php. Clobbers the php_namespace option set in the
+        # protobuf. This should be used **only** by APIs who have already set the
+        # language_settings.php.package_name" field in gapic.yaml. API teams should use
+        # the protobuf php_namespace option where possible. Example of a YAML
+        # configuration:: publishing: library_settings: php_settings: library_package:
+        # Google\Cloud\PubSub\V1
+        # Corresponds to the JSON property `libraryPackage`
+        # @return [String]
+        attr_accessor :library_package
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3584,6 +3632,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common = args[:common] if args.key?(:common)
+          @library_package = args[:library_package] if args.key?(:library_package)
         end
       end
       
@@ -4043,11 +4092,6 @@ module Google
         # @return [Google::Apis::ServicemanagementV1::TrafficPercentStrategy]
         attr_accessor :traffic_percent_strategy
       
-        # The TPC universe which the rollout will be rolled out to.
-        # Corresponds to the JSON property `universe`
-        # @return [String]
-        attr_accessor :universe
-      
         def initialize(**args)
            update!(**args)
         end
@@ -4061,7 +4105,6 @@ module Google
           @service_name = args[:service_name] if args.key?(:service_name)
           @status = args[:status] if args.key?(:status)
           @traffic_percent_strategy = args[:traffic_percent_strategy] if args.key?(:traffic_percent_strategy)
-          @universe = args[:universe] if args.key?(:universe)
         end
       end
       
@@ -4840,7 +4883,11 @@ module Google
         end
       end
       
-      # A protocol buffer message type.
+      # A protocol buffer message type. New usages of this message as an alternative
+      # to DescriptorProto are strongly discouraged. This message does not reliability
+      # preserve all information necessary to model the schema and preserve semantics.
+      # Instead make use of FileDescriptorSet which preserves the necessary
+      # information.
       class Type
         include Google::Apis::Core::Hashable
       
