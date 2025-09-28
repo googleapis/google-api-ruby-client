@@ -780,6 +780,38 @@ module Google
         end
       end
       
+      # Configuration for Managed Connection Pool (MCP).
+      class ConnectionPoolConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to enable Managed Connection Pool (MCP).
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Optional. Connection Pool flags, as a list of "key": "value" pairs.
+        # Corresponds to the JSON property `flags`
+        # @return [Hash<String,String>]
+        attr_accessor :flags
+      
+        # Output only. The number of running poolers per instance.
+        # Corresponds to the JSON property `poolerCount`
+        # @return [Fixnum]
+        attr_accessor :pooler_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @flags = args[:flags] if args.key?(:flags)
+          @pooler_count = args[:pooler_count] if args.key?(:pooler_count)
+        end
+      end
+      
       # ContinuousBackupConfig describes the continuous backups recovery
       # configurations of a cluster.
       class ContinuousBackupConfig
@@ -1515,6 +1547,11 @@ module Google
         # @return [Google::Apis::AlloydbV1::ClientConnectionConfig]
         attr_accessor :client_connection_config
       
+        # Configuration for Managed Connection Pool (MCP).
+        # Corresponds to the JSON property `connectionPoolConfig`
+        # @return [Google::Apis::AlloydbV1::ConnectionPoolConfig]
+        attr_accessor :connection_pool_config
+      
         # Output only. Create time stamp
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1684,6 +1721,7 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @availability_type = args[:availability_type] if args.key?(:availability_type)
           @client_connection_config = args[:client_connection_config] if args.key?(:client_connection_config)
+          @connection_pool_config = args[:connection_pool_config] if args.key?(:connection_pool_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @database_flags = args[:database_flags] if args.key?(:database_flags)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
@@ -3492,7 +3530,7 @@ module Google
       end
       
       # DatabaseResourceFeed is the top level proto to be used to ingest different
-      # database resource level events into Condor platform. Next ID: 12
+      # database resource level events into Condor platform. Next ID: 13
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed
         include Google::Apis::Core::Hashable
       
