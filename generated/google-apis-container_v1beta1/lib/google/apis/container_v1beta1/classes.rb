@@ -222,7 +222,7 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::GcePersistentDiskCsiDriverConfig]
         attr_accessor :gce_persistent_disk_csi_driver_config
       
-        # Configuration for the GCP Filestore CSI driver.
+        # Configuration for the Filestore CSI driver.
         # Corresponds to the JSON property `gcpFilestoreCsiDriverConfig`
         # @return [Google::Apis::ContainerV1beta1::GcpFilestoreCsiDriverConfig]
         attr_accessor :gcp_filestore_csi_driver_config
@@ -1344,7 +1344,8 @@ module Google
         # @return [String]
         attr_accessor :endpoint
       
-        # EnterpriseConfig is the cluster enterprise configuration.
+        # EnterpriseConfig is the cluster enterprise configuration. Deprecated: GKE
+        # Enterprise features are now available without an Enterprise tier.
         # Corresponds to the JSON property `enterpriseConfig`
         # @return [Google::Apis::ContainerV1beta1::EnterpriseConfig]
         attr_accessor :enterprise_config
@@ -1747,7 +1748,7 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::WorkloadCertificates]
         attr_accessor :workload_certificates
       
-        # Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
+        # Configuration for the use of Kubernetes Service Accounts in IAM policies.
         # Corresponds to the JSON property `workloadIdentityConfig`
         # @return [Google::Apis::ContainerV1beta1::WorkloadIdentityConfig]
         attr_accessor :workload_identity_config
@@ -2095,6 +2096,8 @@ module Google
         alias_method :desired_enable_private_endpoint?, :desired_enable_private_endpoint
       
         # DesiredEnterpriseConfig is a wrapper used for updating enterprise_config.
+        # Deprecated: GKE Enterprise features are now available without an Enterprise
+        # tier.
         # Corresponds to the JSON property `desiredEnterpriseConfig`
         # @return [Google::Apis::ContainerV1beta1::DesiredEnterpriseConfig]
         attr_accessor :desired_enterprise_config
@@ -2414,7 +2417,7 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::WorkloadCertificates]
         attr_accessor :desired_workload_certificates
       
-        # Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
+        # Configuration for the use of Kubernetes Service Accounts in IAM policies.
         # Corresponds to the JSON property `desiredWorkloadIdentityConfig`
         # @return [Google::Apis::ContainerV1beta1::WorkloadIdentityConfig]
         attr_accessor :desired_workload_identity_config
@@ -2977,12 +2980,24 @@ module Google
       class DnsEndpointConfig
         include Google::Apis::Core::Hashable
       
-        # Controls whether user traffic is allowed over this endpoint. Note that GCP-
+        # Controls whether user traffic is allowed over this endpoint. Note that Google-
         # managed services may still use the endpoint even if this is false.
         # Corresponds to the JSON property `allowExternalTraffic`
         # @return [Boolean]
         attr_accessor :allow_external_traffic
         alias_method :allow_external_traffic?, :allow_external_traffic
+      
+        # Controls whether the k8s certs auth is allowed via DNS.
+        # Corresponds to the JSON property `enableK8sCertsViaDns`
+        # @return [Boolean]
+        attr_accessor :enable_k8s_certs_via_dns
+        alias_method :enable_k8s_certs_via_dns?, :enable_k8s_certs_via_dns
+      
+        # Controls whether the k8s token auth is allowed via DNS.
+        # Corresponds to the JSON property `enableK8sTokensViaDns`
+        # @return [Boolean]
+        attr_accessor :enable_k8s_tokens_via_dns
+        alias_method :enable_k8s_tokens_via_dns?, :enable_k8s_tokens_via_dns
       
         # Output only. The cluster's DNS endpoint configuration. A DNS format address.
         # This is accessible from the public internet. Ex: uid.us-central1.gke.goog.
@@ -2999,6 +3014,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_external_traffic = args[:allow_external_traffic] if args.key?(:allow_external_traffic)
+          @enable_k8s_certs_via_dns = args[:enable_k8s_certs_via_dns] if args.key?(:enable_k8s_certs_via_dns)
+          @enable_k8s_tokens_via_dns = args[:enable_k8s_tokens_via_dns] if args.key?(:enable_k8s_tokens_via_dns)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
         end
       end
@@ -3179,6 +3196,8 @@ module Google
       end
       
       # DesiredEnterpriseConfig is a wrapper used for updating enterprise_config.
+      # Deprecated: GKE Enterprise features are now available without an Enterprise
+      # tier.
       class DesiredEnterpriseConfig
         include Google::Apis::Core::Hashable
       
@@ -3233,7 +3252,8 @@ module Google
         end
       end
       
-      # EnterpriseConfig is the cluster enterprise configuration.
+      # EnterpriseConfig is the cluster enterprise configuration. Deprecated: GKE
+      # Enterprise features are now available without an Enterprise tier.
       class EnterpriseConfig
         include Google::Apis::Core::Hashable
       
@@ -3748,11 +3768,11 @@ module Google
         end
       end
       
-      # Configuration for the GCP Filestore CSI driver.
+      # Configuration for the Filestore CSI driver.
       class GcpFilestoreCsiDriverConfig
         include Google::Apis::Core::Hashable
       
-        # Whether the GCP Filestore CSI driver is enabled for this cluster.
+        # Whether the Filestore CSI driver is enabled for this cluster.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -7781,7 +7801,7 @@ module Google
         end
       end
       
-      # Collection of [GCP labels](https://`$universe.dns_names.
+      # Collection of [Resource Manager labels](https://`$universe.dns_names.
       # final_documentation_domain`/resource-manager/docs/creating-managing-labels).
       class ResourceLabels
         include Google::Apis::Core::Hashable
@@ -9599,7 +9619,7 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::QueuedProvisioning]
         attr_accessor :queued_provisioning
       
-        # Collection of [GCP labels](https://`$universe.dns_names.
+        # Collection of [Resource Manager labels](https://`$universe.dns_names.
         # final_documentation_domain`/resource-manager/docs/creating-managing-labels).
         # Corresponds to the JSON property `resourceLabels`
         # @return [Google::Apis::ContainerV1beta1::ResourceLabels]
@@ -10378,7 +10398,7 @@ module Google
         end
       end
       
-      # Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
+      # Configuration for the use of Kubernetes Service Accounts in IAM policies.
       class WorkloadIdentityConfig
         include Google::Apis::Core::Hashable
       
