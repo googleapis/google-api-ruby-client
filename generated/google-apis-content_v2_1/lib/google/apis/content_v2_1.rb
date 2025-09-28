@@ -21,7 +21,8 @@ module Google
   module Apis
     # Content API for Shopping
     #
-    # Manage your product listings and accounts for Google Shopping
+    # This API is deprecated. Please use Merchant API instead: https://developers.
+    # google.com/merchant/api.
     #
     # @see https://developers.google.com/shopping-content/v2/
     module ContentV2_1
