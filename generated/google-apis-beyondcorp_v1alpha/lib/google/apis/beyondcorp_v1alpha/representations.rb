@@ -418,13 +418,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamExternal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamNetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeaders
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDeviceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedUserInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaEgressPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -460,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +509,24 @@ module Google
       end
       
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscovery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGatewayOperationDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1339,6 +1399,7 @@ module Google
           collection :endpoint_matchers, as: 'endpointMatchers', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpointMatcher, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpointMatcher::Representation
       
           property :name, as: 'name'
+          property :schema, as: 'schema'
           property :update_time, as: 'updateTime'
           collection :upstreams, as: 'upstreams', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstream, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstream::Representation
       
@@ -1350,7 +1411,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :egress_policy, as: 'egressPolicy', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaEgressPolicy, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaEgressPolicy::Representation
       
+          property :external, as: 'external', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamExternal, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamExternal::Representation
+      
           property :network, as: 'network', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamNetwork, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamNetwork::Representation
+      
+          property :proxy_protocol, as: 'proxyProtocol', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfig, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamExternal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :endpoints, as: 'endpoints', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpoint, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpoint::Representation
       
         end
       end
@@ -1362,10 +1435,52 @@ module Google
         end
       end
       
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeaders
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_info, as: 'deviceInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDeviceInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDeviceInfo::Representation
+      
+          property :group_info, as: 'groupInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfo::Representation
+      
+          property :output_type, as: 'outputType'
+          property :user_info, as: 'userInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedUserInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedUserInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDeviceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_type, as: 'outputType'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_type, as: 'outputType'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedUserInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_type, as: 'outputType'
+        end
+      end
+      
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaEgressPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :regions, as: 'regions'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hostname, as: 'hostname'
+          property :port, as: 'port'
         end
       end
       
@@ -1412,6 +1527,18 @@ module Google
         end
       end
       
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_client_headers, as: 'allowedClientHeaders'
+          property :client_ip, as: 'clientIp'
+          property :contextual_headers, as: 'contextualHeaders', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeaders, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeaders::Representation
+      
+          property :gateway_identity, as: 'gatewayIdentity'
+          hash :metadata_headers, as: 'metadataHeaders'
+        end
+      end
+      
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1422,6 +1549,10 @@ module Google
           hash :hubs, as: 'hubs', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub::Representation
       
           property :name, as: 'name'
+          property :proxy_protocol_config, as: 'proxyProtocolConfig', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfig, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfig::Representation
+      
+          property :service_discovery, as: 'serviceDiscovery', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscovery, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscovery::Representation
+      
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
@@ -1437,6 +1568,29 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscovery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_gateway, as: 'apiGateway', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGateway, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGateway::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_override, as: 'resourceOverride', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGatewayOperationDescriptor, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGatewayOperationDescriptor::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGatewayOperationDescriptor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
         end
       end
       
