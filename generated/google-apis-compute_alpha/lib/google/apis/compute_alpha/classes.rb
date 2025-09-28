@@ -663,6 +663,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # Reference to the source of external IPv4 addresses, like a
+        # PublicDelegatedPrefix (PDP) for BYOIP. The PDP must support enhanced IPv4
+        # allocations. Use one of the following formats to specify a PDP when reserving
+        # an external IPv4 address using BYOIP. - Full resource URL, as in https://www.
+        # googleapis.com/compute/v1/projects/projectId/regions/region /
+        # publicDelegatedPrefixes/pdp-name - Partial URL, as in - projects/projectId/
+        # regions/region/publicDelegatedPrefixes/pdp-name - regions/region/
+        # publicDelegatedPrefixes/pdp-name
+        # Corresponds to the JSON property `ipCollection`
+        # @return [String]
+        attr_accessor :ip_collection
+      
         # The IP version that will be used by this address. Valid options are IPV4 or
         # IPV6.
         # Corresponds to the JSON property `ipVersion`
@@ -798,6 +810,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
+          @ip_collection = args[:ip_collection] if args.key?(:ip_collection)
           @ip_version = args[:ip_version] if args.key?(:ip_version)
           @ipv6_endpoint_type = args[:ipv6_endpoint_type] if args.key?(:ipv6_endpoint_type)
           @kind = args[:kind] if args.key?(:kind)
@@ -13554,13 +13567,6 @@ module Google
         # @return [String]
         attr_accessor :target
       
-        # [PSC for VPC-hosted services only] Determines if clients are allowed to access
-        # the producer service via this PSC endpoint.
-        # Corresponds to the JSON property `trafficDisabled`
-        # @return [Boolean]
-        attr_accessor :traffic_disabled
-        alias_method :traffic_disabled?, :traffic_disabled
-      
         def initialize(**args)
            update!(**args)
         end
@@ -13606,7 +13612,6 @@ module Google
           @source_ip_ranges = args[:source_ip_ranges] if args.key?(:source_ip_ranges)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @target = args[:target] if args.key?(:target)
-          @traffic_disabled = args[:traffic_disabled] if args.key?(:traffic_disabled)
         end
       end
       
@@ -35831,6 +35836,11 @@ module Google
       class NamedSet
         include Google::Apis::Core::Hashable
       
+        # An optional description of named set.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # CEL expressions that are comparable to constructs of this set's type (see
         # Policy Language).
         # Corresponds to the JSON property `elements`
@@ -35865,6 +35875,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @description = args[:description] if args.key?(:description)
           @elements = args[:elements] if args.key?(:elements)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @name = args[:name] if args.key?(:name)
@@ -38163,6 +38174,13 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::AliasIpRange>]
         attr_accessor :alias_ip_ranges
       
+        # Optional. If true, DNS resolution will be enabled over this interface. Only
+        # valid with network_attachment.
+        # Corresponds to the JSON property `enableVpcScopedDns`
+        # @return [Boolean]
+        attr_accessor :enable_vpc_scoped_dns
+        alias_method :enable_vpc_scoped_dns?, :enable_vpc_scoped_dns
+      
         # Fingerprint hash of contents stored in this network interface. This field will
         # be ignored when inserting an Instance or adding a NetworkInterface. An up-to-
         # date fingerprint must be provided in order to update the NetworkInterface. The
@@ -38305,6 +38323,7 @@ module Google
         def update!(**args)
           @access_configs = args[:access_configs] if args.key?(:access_configs)
           @alias_ip_ranges = args[:alias_ip_ranges] if args.key?(:alias_ip_ranges)
+          @enable_vpc_scoped_dns = args[:enable_vpc_scoped_dns] if args.key?(:enable_vpc_scoped_dns)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @igmp_query = args[:igmp_query] if args.key?(:igmp_query)
           @internal_ipv6_prefix_length = args[:internal_ipv6_prefix_length] if args.key?(:internal_ipv6_prefix_length)
@@ -39331,6 +39350,16 @@ module Google
       class NetworkPolicyTrafficClassificationRuleAction
         include Google::Apis::Core::Hashable
       
+        # The traffic class that should be applied to the matching packet.
+        # Corresponds to the JSON property `dscpMode`
+        # @return [String]
+        attr_accessor :dscp_mode
+      
+        # Custom DSCP value from 0-63 range.
+        # Corresponds to the JSON property `dscpValue`
+        # @return [Fixnum]
+        attr_accessor :dscp_value
+      
         # The field type could be one of: TRAFFIC_CLASS or DSCP.
         # Corresponds to the JSON property `fieldType`
         # @return [String]
@@ -39340,6 +39369,11 @@ module Google
         # Corresponds to the JSON property `fieldValue`
         # @return [Fixnum]
         attr_accessor :field_value
+      
+        # The traffic class that should be applied to the matching packet.
+        # Corresponds to the JSON property `trafficClass`
+        # @return [String]
+        attr_accessor :traffic_class
       
         # Always "apply_traffic_classification" for traffic classification rules.
         # Corresponds to the JSON property `type`
@@ -39352,8 +39386,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dscp_mode = args[:dscp_mode] if args.key?(:dscp_mode)
+          @dscp_value = args[:dscp_value] if args.key?(:dscp_value)
           @field_type = args[:field_type] if args.key?(:field_type)
           @field_value = args[:field_value] if args.key?(:field_value)
+          @traffic_class = args[:traffic_class] if args.key?(:traffic_class)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -45667,6 +45704,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # [Output Only] Whether this PDP supports enhanced IPv4 allocations. Applicable
+        # for IPv4 PDPs only.
+        # Corresponds to the JSON property `enableEnhancedIpv4Allocation`
+        # @return [Boolean]
+        attr_accessor :enable_enhanced_ipv4_allocation
+        alias_method :enable_enhanced_ipv4_allocation?, :enable_enhanced_ipv4_allocation
+      
         # Fingerprint of this resource. A hash of the contents stored in this object.
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be
@@ -45791,6 +45835,7 @@ module Google
           @byoip_api_version = args[:byoip_api_version] if args.key?(:byoip_api_version)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @enable_enhanced_ipv4_allocation = args[:enable_enhanced_ipv4_allocation] if args.key?(:enable_enhanced_ipv4_allocation)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
@@ -46072,6 +46117,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # [Output Only] Whether this PDP supports enhanced IPv4 allocations. Applicable
+        # for IPv4 PDPs only.
+        # Corresponds to the JSON property `enableEnhancedIpv4Allocation`
+        # @return [Boolean]
+        attr_accessor :enable_enhanced_ipv4_allocation
+        alias_method :enable_enhanced_ipv4_allocation?, :enable_enhanced_ipv4_allocation
+      
         # The IP address range, in CIDR format, represented by this sub public delegated
         # prefix.
         # Corresponds to the JSON property `ipCidrRange`
@@ -46127,6 +46179,7 @@ module Google
           @allocatable_prefix_length = args[:allocatable_prefix_length] if args.key?(:allocatable_prefix_length)
           @delegatee_project = args[:delegatee_project] if args.key?(:delegatee_project)
           @description = args[:description] if args.key?(:description)
+          @enable_enhanced_ipv4_allocation = args[:enable_enhanced_ipv4_allocation] if args.key?(:enable_enhanced_ipv4_allocation)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @is_address = args[:is_address] if args.key?(:is_address)
@@ -59919,7 +59972,7 @@ module Google
       
       # Represents a Persistent Disk Snapshot resource. You can use snapshots to back
       # up data on a regular interval. For more information, read Creating persistent
-      # disk snapshots. LINT.IfChange
+      # disk snapshots.
       class Snapshot
         include Google::Apis::Core::Hashable
       

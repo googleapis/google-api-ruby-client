@@ -9890,6 +9890,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
+          property :ip_collection, as: 'ipCollection'
           property :ip_version, as: 'ipVersion'
           property :ipv6_endpoint_type, as: 'ipv6EndpointType'
           property :kind, as: 'kind'
@@ -12845,7 +12846,6 @@ module Google
           collection :source_ip_ranges, as: 'sourceIpRanges'
           property :subnetwork, as: 'subnetwork'
           property :target, as: 'target'
-          property :traffic_disabled, as: 'trafficDisabled'
         end
       end
       
@@ -18480,6 +18480,7 @@ module Google
       class NamedSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
           collection :elements, as: 'elements', class: Google::Apis::ComputeAlpha::Expr, decorator: Google::Apis::ComputeAlpha::Expr::Representation
       
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -19060,6 +19061,7 @@ module Google
       
           collection :alias_ip_ranges, as: 'aliasIpRanges', class: Google::Apis::ComputeAlpha::AliasIpRange, decorator: Google::Apis::ComputeAlpha::AliasIpRange::Representation
       
+          property :enable_vpc_scoped_dns, as: 'enableVpcScopedDns'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :igmp_query, as: 'igmpQuery'
           property :internal_ipv6_prefix_length, as: 'internalIpv6PrefixLength'
@@ -19333,8 +19335,11 @@ module Google
       class NetworkPolicyTrafficClassificationRuleAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dscp_mode, as: 'dscpMode'
+          property :dscp_value, as: 'dscpValue'
           property :field_type, as: 'fieldType'
           property :field_value, as: 'fieldValue'
+          property :traffic_class, as: 'trafficClass'
           property :type, as: 'type'
         end
       end
@@ -20965,6 +20970,7 @@ module Google
           property :byoip_api_version, as: 'byoipApiVersion'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :enable_enhanced_ipv4_allocation, as: 'enableEnhancedIpv4Allocation'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :ip_cidr_range, as: 'ipCidrRange'
@@ -21055,6 +21061,7 @@ module Google
           property :allocatable_prefix_length, as: 'allocatablePrefixLength'
           property :delegatee_project, as: 'delegateeProject'
           property :description, as: 'description'
+          property :enable_enhanced_ipv4_allocation, as: 'enableEnhancedIpv4Allocation'
           property :ip_cidr_range, as: 'ipCidrRange'
           property :ipv6_access_type, as: 'ipv6AccessType'
           property :is_address, as: 'isAddress'
