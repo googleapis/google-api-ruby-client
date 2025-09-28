@@ -2248,6 +2248,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1EvaluationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1EventInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2387,6 +2393,42 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1Generator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigAgentAssistInputDataConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigDatasetInputDataConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigInputDataConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigSummarizationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2974,6 +3016,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1ListGeneratorEvaluationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1ListGeneratorsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3425,6 +3473,84 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1SummarizationContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAccuracyDecomposition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAdherenceDecomposition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAdherenceRubric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsCompletenessRubric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsDecomposition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsEvaluationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsOverallScoresByMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSectionToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSummarizationEvaluationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7410,6 +7536,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1EvaluationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :pipeline_status, as: 'pipelineStatus', class: Google::Apis::DialogflowV2beta1::GoogleRpcStatus, decorator: Google::Apis::DialogflowV2beta1::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1EventInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7638,6 +7773,77 @@ module Google
           collection :tools, as: 'tools'
           property :trigger_event, as: 'triggerEvent'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :evaluation_status, as: 'evaluationStatus', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EvaluationStatus, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EvaluationStatus::Representation
+      
+          property :generator_evaluation_config, as: 'generatorEvaluationConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluationConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluationConfig::Representation
+      
+          property :initial_generator, as: 'initialGenerator', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Generator, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Generator::Representation
+      
+          property :name, as: 'name'
+          property :summarization_metrics, as: 'summarizationMetrics', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetrics, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetrics::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_data_config, as: 'inputDataConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigInputDataConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigInputDataConfig::Representation
+      
+          property :output_gcs_bucket_path, as: 'outputGcsBucketPath'
+          property :summarization_config, as: 'summarizationConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigSummarizationConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigSummarizationConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigAgentAssistInputDataConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigDatasetInputDataConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset, as: 'dataset'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigInputDataConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_assist_input_data_config, as: 'agentAssistInputDataConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigAgentAssistInputDataConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigAgentAssistInputDataConfig::Representation
+      
+          property :dataset_input_data_config, as: 'datasetInputDataConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigDatasetInputDataConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigDatasetInputDataConfig::Representation
+      
+          property :end_time, as: 'endTime'
+          property :input_data_source_type, as: 'inputDataSourceType'
+          property :is_summary_generation_allowed, as: 'isSummaryGenerationAllowed'
+          property :sample_size, as: 'sampleSize'
+          property :start_time, as: 'startTime'
+          property :summary_generation_option, as: 'summaryGenerationOption'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1GeneratorEvaluationConfigSummarizationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accuracy_evaluation_version, as: 'accuracyEvaluationVersion'
+          property :completeness_evaluation_version, as: 'completenessEvaluationVersion'
+          property :enable_accuracy_evaluation, as: 'enableAccuracyEvaluation'
+          property :enable_completeness_evaluation, as: 'enableCompletenessEvaluation'
+          property :evaluator_version, as: 'evaluatorVersion'
         end
       end
       
@@ -8621,6 +8827,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1ListGeneratorEvaluationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :generator_evaluations, as: 'generatorEvaluations', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluation, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorEvaluation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1ListGeneratorsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9410,6 +9625,143 @@ module Google
           collection :summarization_sections, as: 'summarizationSections', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationSection, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationSection::Representation
       
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversation_details, as: 'conversationDetails', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetail, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetail::Representation
+      
+          collection :overall_metrics, as: 'overallMetrics', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsOverallScoresByMetric, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsOverallScoresByMetric::Representation
+      
+          collection :overall_section_tokens, as: 'overallSectionTokens', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSectionToken, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSectionToken::Representation
+      
+          property :summarization_evaluation_merged_results_uri, as: 'summarizationEvaluationMergedResultsUri'
+          collection :summarization_evaluation_results, as: 'summarizationEvaluationResults', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSummarizationEvaluationResult, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSummarizationEvaluationResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAccuracyDecomposition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accuracy_reasoning, as: 'accuracyReasoning'
+          property :is_accurate, as: 'isAccurate'
+          property :point, as: 'point'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAdherenceDecomposition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adherence_reasoning, as: 'adherenceReasoning'
+          property :is_adherent, as: 'isAdherent'
+          property :point, as: 'point'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAdherenceRubric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_addressed, as: 'isAddressed'
+          property :question, as: 'question'
+          property :reasoning, as: 'reasoning'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsCompletenessRubric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_addressed, as: 'isAddressed'
+          property :question, as: 'question'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :message_entries, as: 'messageEntries', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1MessageEntry, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1MessageEntry::Representation
+      
+          collection :metric_details, as: 'metricDetails', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetail, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetail::Representation
+      
+          collection :section_tokens, as: 'sectionTokens', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSectionToken, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSectionToken::Representation
+      
+          collection :summary_sections, as: 'summarySections', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric, as: 'metric'
+          property :score, as: 'score'
+          collection :section_details, as: 'sectionDetails', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :evaluation_results, as: 'evaluationResults', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsEvaluationResult, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsEvaluationResult::Representation
+      
+          property :score, as: 'score'
+          property :section, as: 'section'
+          property :section_summary, as: 'sectionSummary'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsDecomposition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accuracy_decomposition, as: 'accuracyDecomposition', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAccuracyDecomposition, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAccuracyDecomposition::Representation
+      
+          property :adherence_decomposition, as: 'adherenceDecomposition', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAdherenceDecomposition, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAdherenceDecomposition::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsEvaluationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accuracy_decomposition, as: 'accuracyDecomposition', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAccuracyDecomposition, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAccuracyDecomposition::Representation
+      
+          property :adherence_rubric, as: 'adherenceRubric', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAdherenceRubric, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsAdherenceRubric::Representation
+      
+          property :completeness_rubric, as: 'completenessRubric', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsCompletenessRubric, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsCompletenessRubric::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsOverallScoresByMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric, as: 'metric'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSectionToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :section, as: 'section'
+          property :token_count, :numeric_string => true, as: 'tokenCount'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsSummarizationEvaluationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :decompositions, as: 'decompositions', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsDecomposition, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsDecomposition::Representation
+      
+          collection :evaluation_results, as: 'evaluationResults', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsEvaluationResult, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SummarizationEvaluationMetricsEvaluationResult::Representation
+      
+          property :metric, as: 'metric'
+          property :score, as: 'score'
+          property :section, as: 'section'
+          property :section_summary, as: 'sectionSummary'
+          property :session_id, as: 'sessionId'
         end
       end
       
