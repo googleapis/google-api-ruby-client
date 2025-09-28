@@ -388,11 +388,10 @@ module Google
         # successfully validated by mTLS. Each identity is a string whose value is
         # matched against a list of URI SANs, DNS Name SANs, or the common name in the
         # client's certificate. A match happens when any principal matches with the rule.
-        # Limited to 50 principals per Authorization Policy for Regional Internal
-        # Application Load Balancer, Regional External Application Load Balancer, Cross-
-        # region Internal Application Load Balancer, and Cloud Service Mesh. Limited to
-        # 25 principals per Authorization Policy for Global External Application Load
-        # Balancer.
+        # Limited to 50 principals per Authorization Policy for regional internal
+        # Application Load Balancers, regional external Application Load Balancers,
+        # cross-region internal Application Load Balancers, and Cloud Service Mesh. This
+        # field is not supported for global external Application Load Balancers.
         # Corresponds to the JSON property `principals`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::AuthzPolicyAuthzRulePrincipal>]
         attr_accessor :principals
@@ -3782,6 +3781,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Immutable. The type of the endpoint group. If left unspecified, defaults to
+        # DIRECT.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         # Output only. The timestamp when the resource was most recently updated. See
         # https://google.aip.dev/148#timestamps.
         # Corresponds to the JSON property `updateTime`
@@ -3803,6 +3808,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
