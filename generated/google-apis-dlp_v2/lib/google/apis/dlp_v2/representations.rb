@@ -1468,6 +1468,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2PublishFindingsToDataplexCatalog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2PublishSummaryToCscc
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2084,6 +2090,8 @@ module Google
           property :pub_sub, as: 'pubSub', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub::Representation
       
           property :publish_findings_to_cloud_data_catalog, as: 'publishFindingsToCloudDataCatalog', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog::Representation
+      
+          property :publish_findings_to_dataplex_catalog, as: 'publishFindingsToDataplexCatalog', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishFindingsToDataplexCatalog, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishFindingsToDataplexCatalog::Representation
       
           property :publish_summary_to_cscc, as: 'publishSummaryToCscc', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishSummaryToCscc, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishSummaryToCscc::Representation
       
@@ -4603,6 +4611,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GooglePrivacyDlpV2PublishFindingsToDataplexCatalog
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
