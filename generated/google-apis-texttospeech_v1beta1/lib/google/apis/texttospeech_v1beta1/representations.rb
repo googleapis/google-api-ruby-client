@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MultiSpeakerVoiceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultispeakerPrebuiltVoice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -226,6 +238,22 @@ module Google
         end
       end
       
+      class MultiSpeakerVoiceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :speaker_voice_configs, as: 'speakerVoiceConfigs', class: Google::Apis::TexttospeechV1beta1::MultispeakerPrebuiltVoice, decorator: Google::Apis::TexttospeechV1beta1::MultispeakerPrebuiltVoice::Representation
+      
+        end
+      end
+      
+      class MultispeakerPrebuiltVoice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :speaker_alias, as: 'speakerAlias'
+          property :speaker_id, as: 'speakerId'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -349,6 +377,8 @@ module Google
       
           property :language_code, as: 'languageCode'
           property :model_name, as: 'modelName'
+          property :multi_speaker_voice_config, as: 'multiSpeakerVoiceConfig', class: Google::Apis::TexttospeechV1beta1::MultiSpeakerVoiceConfig, decorator: Google::Apis::TexttospeechV1beta1::MultiSpeakerVoiceConfig::Representation
+      
           property :name, as: 'name'
           property :ssml_gender, as: 'ssmlGender'
           property :voice_clone, as: 'voiceClone', class: Google::Apis::TexttospeechV1beta1::VoiceCloneParams, decorator: Google::Apis::TexttospeechV1beta1::VoiceCloneParams::Representation
