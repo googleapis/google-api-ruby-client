@@ -7091,6 +7091,47 @@ module Google
         end
       end
       
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
       # Deprecation status for a public resource.
       class DeprecationStatus
         include Google::Apis::Core::Hashable
@@ -14390,6 +14431,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Additional image params.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeV1::ImageParams]
+        attr_accessor :params
+      
         # The parameters of the raw disk image.
         # Corresponds to the JSON property `rawDisk`
         # @return [Google::Apis::ComputeV1::Image::RawDisk]
@@ -14530,6 +14576,7 @@ module Google
           @license_codes = args[:license_codes] if args.key?(:license_codes)
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @raw_disk = args[:raw_disk] if args.key?(:raw_disk)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
@@ -14723,6 +14770,28 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Additional image params.
+      class ImageParams
+        include Google::Apis::Core::Hashable
+      
+        # Resource manager tags to be bound to the image. Tag keys and values have the
+        # same definition as resource manager tags. Keys must be in the format `tagKeys/`
+        # tag_key_id``, and values are in the format `tagValues/456`. The field is
+        # ignored (both PUT & PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -20527,6 +20596,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Specific subzone in the InterconnectLocation that represents where this
+        # connection is to be provisioned.
+        # Corresponds to the JSON property `subzone`
+        # @return [String]
+        attr_accessor :subzone
+      
         def initialize(**args)
            update!(**args)
         end
@@ -20566,6 +20641,7 @@ module Google
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @state = args[:state] if args.key?(:state)
+          @subzone = args[:subzone] if args.key?(:subzone)
         end
       end
       
@@ -32126,6 +32202,33 @@ module Google
         end
       end
       
+      # 
+      class OrganizationSecurityPoliciesListAssociationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of associations.
+        # Corresponds to the JSON property `associations`
+        # @return [Array<Google::Apis::ComputeV1::SecurityPolicyAssociation>]
+        attr_accessor :associations
+      
+        # [Output Only] Type of securityPolicy associations. Always compute#
+        # organizationSecurityPoliciesListAssociations for lists of securityPolicy
+        # associations.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @associations = args[:associations] if args.key?(:associations)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
       # Settings controlling the eviction of unhealthy hosts from the load balancing
       # pool for the backend service.
       class OutlierDetection
@@ -33357,6 +33460,308 @@ module Google
         def update!(**args)
           @address = args[:address] if args.key?(:address)
           @literal = args[:literal] if args.key?(:literal)
+        end
+      end
+      
+      # Represents a single Google Compute Engine preview feature.
+      class PreviewFeature
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether the feature is enabled or disabled.
+        # Corresponds to the JSON property `activationStatus`
+        # @return [String]
+        attr_accessor :activation_status
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # [Output Only] Description of the feature.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output only] The type of the feature. Always "compute#previewFeature" for
+        # preview features.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the feature.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents the rollout operation
+        # Corresponds to the JSON property `rolloutOperation`
+        # @return [Google::Apis::ComputeV1::PreviewFeatureRolloutOperation]
+        attr_accessor :rollout_operation
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] The status of the feature.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ComputeV1::PreviewFeatureStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activation_status = args[:activation_status] if args.key?(:activation_status)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @rollout_operation = args[:rollout_operation] if args.key?(:rollout_operation)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class PreviewFeatureList
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of PreviewFeature resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::PreviewFeature>]
+        attr_accessor :items
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources. end_interface:
+        # MixerListResponseWithEtagBuilder
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::PreviewFeatureList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::PreviewFeatureList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # Represents the rollout operation
+      class PreviewFeatureRolloutOperation
+        include Google::Apis::Core::Hashable
+      
+        # Represents the input for the rollout operation.
+        # Corresponds to the JSON property `rolloutInput`
+        # @return [Google::Apis::ComputeV1::PreviewFeatureRolloutOperationRolloutInput]
+        attr_accessor :rollout_input
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rollout_input = args[:rollout_input] if args.key?(:rollout_input)
+        end
+      end
+      
+      # Represents the input for the rollout operation.
+      class PreviewFeatureRolloutOperationRolloutInput
+        include Google::Apis::Core::Hashable
+      
+        # The name of the rollout plan Ex. organizations//locations/global/rolloutPlans/
+        # Ex. folders//locations/global/rolloutPlans/ Ex. projects//locations/global/
+        # rolloutPlans/.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Predefined rollout plan.
+        # Corresponds to the JSON property `predefinedRolloutPlan`
+        # @return [String]
+        attr_accessor :predefined_rollout_plan
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @predefined_rollout_plan = args[:predefined_rollout_plan] if args.key?(:predefined_rollout_plan)
+        end
+      end
+      
+      # [Output Only] The status of the feature.
+      class PreviewFeatureStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The description of the feature.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] Link to the public documentation for the feature.
+        # Corresponds to the JSON property `helpLink`
+        # @return [String]
+        attr_accessor :help_link
+      
+        # [Output Only] The release status of the feature.
+        # Corresponds to the JSON property `releaseStatus`
+        # @return [Google::Apis::ComputeV1::PreviewFeatureStatusReleaseStatus]
+        attr_accessor :release_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @help_link = args[:help_link] if args.key?(:help_link)
+          @release_status = args[:release_status] if args.key?(:release_status)
+        end
+      end
+      
+      # [Output Only] The release status of the feature.
+      class PreviewFeatureStatusReleaseStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The stage of the feature.
+        # Corresponds to the JSON property `stage`
+        # @return [String]
+        attr_accessor :stage
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `updateDate`
+        # @return [Google::Apis::ComputeV1::Date]
+        attr_accessor :update_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stage = args[:stage] if args.key?(:stage)
+          @update_date = args[:update_date] if args.key?(:update_date)
         end
       end
       
@@ -37570,6 +37975,62 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class ReservationSubBlocksReportFaultyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The disruption schedule for the subBlock.
+        # Corresponds to the JSON property `disruptionSchedule`
+        # @return [String]
+        attr_accessor :disruption_schedule
+      
+        # The component that experienced the fault.
+        # Corresponds to the JSON property `failureComponent`
+        # @return [String]
+        attr_accessor :failure_component
+      
+        # The reasons for the fault experienced with the subBlock.
+        # Corresponds to the JSON property `faultReasons`
+        # @return [Array<Google::Apis::ComputeV1::ReservationSubBlocksReportFaultyRequestFaultReason>]
+        attr_accessor :fault_reasons
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disruption_schedule = args[:disruption_schedule] if args.key?(:disruption_schedule)
+          @failure_component = args[:failure_component] if args.key?(:failure_component)
+          @fault_reasons = args[:fault_reasons] if args.key?(:fault_reasons)
+        end
+      end
+      
+      # The reason for the fault experienced with the subBlock.
+      class ReservationSubBlocksReportFaultyRequestFaultReason
+        include Google::Apis::Core::Hashable
+      
+        # The behavior of the fault experienced with the subBlock.
+        # Corresponds to the JSON property `behavior`
+        # @return [String]
+        attr_accessor :behavior
+      
+        # The description of the fault experienced with the subBlock.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @behavior = args[:behavior] if args.key?(:behavior)
+          @description = args[:description] if args.key?(:description)
         end
       end
       
@@ -42176,6 +42637,11 @@ module Google
         # @return [Google::Apis::ComputeV1::SecurityPolicyAdvancedOptionsConfig]
         attr_accessor :advanced_options_config
       
+        # A list of associations that belong to this policy.
+        # Corresponds to the JSON property `associations`
+        # @return [Array<Google::Apis::ComputeV1::SecurityPolicyAssociation>]
+        attr_accessor :associations
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -42270,6 +42736,18 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # User-provided name of the organization security policy. The name should be
+        # unique in the organization in which the security policy is created. This
+        # should only be used when SecurityPolicyType is CLOUD_ARMOR. The name must be 1-
+        # 63 characters long, and comply with https://www.ietf.org/rfc/rfc1035.txt.
+        # Specifically, the name must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must
+        # be a lowercase letter, and all following characters must be a dash, lowercase
+        # letter, or digit, except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
+      
         # The type indicates the intended use of the security policy. - CLOUD_ARMOR:
         # Cloud Armor backend security policies can be configured to filter incoming
         # HTTP requests targeting backend services. They filter requests before they hit
@@ -42307,6 +42785,7 @@ module Google
         def update!(**args)
           @adaptive_protection_config = args[:adaptive_protection_config] if args.key?(:adaptive_protection_config)
           @advanced_options_config = args[:advanced_options_config] if args.key?(:advanced_options_config)
+          @associations = args[:associations] if args.key?(:associations)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @ddos_protection_config = args[:ddos_protection_config] if args.key?(:ddos_protection_config)
           @description = args[:description] if args.key?(:description)
@@ -42320,6 +42799,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @rules = args[:rules] if args.key?(:rules)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @short_name = args[:short_name] if args.key?(:short_name)
           @type = args[:type] if args.key?(:type)
           @user_defined_fields = args[:user_defined_fields] if args.key?(:user_defined_fields)
         end
@@ -42545,6 +43025,61 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content_types = args[:content_types] if args.key?(:content_types)
+        end
+      end
+      
+      # 
+      class SecurityPolicyAssociation
+        include Google::Apis::Core::Hashable
+      
+        # The resource that the security policy is attached to.
+        # Corresponds to the JSON property `attachmentId`
+        # @return [String]
+        attr_accessor :attachment_id
+      
+        # [Output Only] The display name of the security policy of the association.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A list of folders to exclude from the security policy.
+        # Corresponds to the JSON property `excludedFolders`
+        # @return [Array<String>]
+        attr_accessor :excluded_folders
+      
+        # A list of projects to exclude from the security policy.
+        # Corresponds to the JSON property `excludedProjects`
+        # @return [Array<String>]
+        attr_accessor :excluded_projects
+      
+        # The name for an association.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] The security policy ID of the association.
+        # Corresponds to the JSON property `securityPolicyId`
+        # @return [String]
+        attr_accessor :security_policy_id
+      
+        # [Output Only] The short name of the security policy of the association.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachment_id = args[:attachment_id] if args.key?(:attachment_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @excluded_folders = args[:excluded_folders] if args.key?(:excluded_folders)
+          @excluded_projects = args[:excluded_projects] if args.key?(:excluded_projects)
+          @name = args[:name] if args.key?(:name)
+          @security_policy_id = args[:security_policy_id] if args.key?(:security_policy_id)
+          @short_name = args[:short_name] if args.key?(:short_name)
         end
       end
       
@@ -44474,7 +45009,7 @@ module Google
       
       # Represents a Persistent Disk Snapshot resource. You can use snapshots to back
       # up data on a regular interval. For more information, read Creating persistent
-      # disk snapshots. LINT.IfChange
+      # disk snapshots.
       class Snapshot
         include Google::Apis::Core::Hashable
       
@@ -44606,6 +45141,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Additional snapshot params.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeV1::SnapshotParams]
+        attr_accessor :params
       
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
@@ -44748,6 +45288,7 @@ module Google
           @licenses = args[:licenses] if args.key?(:licenses)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -44883,6 +45424,28 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Additional snapshot params.
+      class SnapshotParams
+        include Google::Apis::Core::Hashable
+      
+        # Resource manager tags to be bound to the snapshot. Tag keys and values have
+        # the same definition as resource manager tags. Keys must be in the format `
+        # tagKeys/`tag_key_id``, and values are in the format `tagValues/456`. The field
+        # is ignored (both PUT & PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
