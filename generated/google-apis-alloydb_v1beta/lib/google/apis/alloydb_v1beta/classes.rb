@@ -3686,7 +3686,7 @@ module Google
       end
       
       # DatabaseResourceFeed is the top level proto to be used to ingest different
-      # database resource level events into Condor platform. Next ID: 12
+      # database resource level events into Condor platform. Next ID: 13
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed
         include Google::Apis::Core::Hashable
       
