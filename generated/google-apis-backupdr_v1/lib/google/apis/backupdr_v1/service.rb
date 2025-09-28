@@ -83,7 +83,9 @@ module Google
         
         # Gets the Trial state for a given project
         # @param [String] name
-        #   Required. The name of the trial to retrieve.
+        #   Required. The project for which trial details need to be retrieved. Format:
+        #   projects/`project`/locations/`location` Supported Locations are - us, eu and
+        #   asia.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2350,7 +2352,8 @@ module Google
         
         # Subscribes to a trial for a project
         # @param [String] parent
-        #   Required. The parent resource where this trial will be created.
+        #   Required. The project where this trial will be created. Format: projects/`
+        #   project`/locations/`location` Supported Locations are - us, eu and asia.
         # @param [Google::Apis::BackupdrV1::SubscribeTrialRequest] subscribe_trial_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
