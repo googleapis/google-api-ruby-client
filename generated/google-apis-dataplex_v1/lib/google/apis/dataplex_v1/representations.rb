@@ -298,6 +298,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataDocumentationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataDocumentationResultField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataDocumentationResultQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataDocumentationResultSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataDocumentationResultTableResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataDocumentationSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataProfileResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1895,6 +1931,58 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1DataDocumentationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :table_result, as: 'tableResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultTableResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultTableResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDocumentationResultField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          collection :fields, as: 'fields', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultField, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultField::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDocumentationResultQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :sql, as: 'sql'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDocumentationResultSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fields, as: 'fields', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultField, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultField::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDocumentationResultTableResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :overview, as: 'overview'
+          collection :queries, as: 'queries', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultQuery, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultQuery::Representation
+      
+          property :schema, as: 'schema', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultSchema, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultSchema::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDocumentationSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudDataplexV1DataProfileResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2313,6 +2401,10 @@ module Google
       
           property :data_discovery_spec, as: 'dataDiscoverySpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpec::Representation
       
+          property :data_documentation_result, as: 'dataDocumentationResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResult::Representation
+      
+          property :data_documentation_spec, as: 'dataDocumentationSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationSpec::Representation
+      
           property :data_profile_result, as: 'dataProfileResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResult::Representation
       
           property :data_profile_spec, as: 'dataProfileSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpec::Representation
@@ -2449,6 +2541,10 @@ module Google
           property :data_discovery_result, as: 'dataDiscoveryResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoveryResult::Representation
       
           property :data_discovery_spec, as: 'dataDiscoverySpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpec::Representation
+      
+          property :data_documentation_result, as: 'dataDocumentationResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResult::Representation
+      
+          property :data_documentation_spec, as: 'dataDocumentationSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationSpec::Representation
       
           property :data_profile_result, as: 'dataProfileResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResult::Representation
       

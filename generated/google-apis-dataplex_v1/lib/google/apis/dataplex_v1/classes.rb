@@ -1913,6 +1913,152 @@ module Google
         end
       end
       
+      # The output of a DataDocumentation scan.
+      class GoogleCloudDataplexV1DataDocumentationResult
+        include Google::Apis::Core::Hashable
+      
+        # Generated metadata about the table.
+        # Corresponds to the JSON property `tableResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultTableResult]
+        attr_accessor :table_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @table_result = args[:table_result] if args.key?(:table_result)
+        end
+      end
+      
+      # Column of a table with generated metadata and nested fields.
+      class GoogleCloudDataplexV1DataDocumentationResultField
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Generated description for columns and fields.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Nested fields.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultField>]
+        attr_accessor :fields
+      
+        # Output only. The name of the column.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @fields = args[:fields] if args.key?(:fields)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A sample SQL query in data documentation.
+      class GoogleCloudDataplexV1DataDocumentationResultQuery
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The description for the query.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The SQL query string which can be executed.
+        # Corresponds to the JSON property `sql`
+        # @return [String]
+        attr_accessor :sql
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @sql = args[:sql] if args.key?(:sql)
+        end
+      end
+      
+      # Schema of the table with generated metadata of columns.
+      class GoogleCloudDataplexV1DataDocumentationResultSchema
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of columns.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultField>]
+        attr_accessor :fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+        end
+      end
+      
+      # Generated metadata about the table.
+      class GoogleCloudDataplexV1DataDocumentationResultTableResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The service-qualified full resource name of the cloud resource.
+        # Ex: bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/
+        # TABLE_ID
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Generated description of the table.
+        # Corresponds to the JSON property `overview`
+        # @return [String]
+        attr_accessor :overview
+      
+        # Output only. Sample SQL queries for the table.
+        # Corresponds to the JSON property `queries`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultQuery>]
+        attr_accessor :queries
+      
+        # Schema of the table with generated metadata of columns.
+        # Corresponds to the JSON property `schema`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultSchema]
+        attr_accessor :schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @overview = args[:overview] if args.key?(:overview)
+          @queries = args[:queries] if args.key?(:queries)
+          @schema = args[:schema] if args.key?(:schema)
+        end
+      end
+      
+      # DataDocumentation scan related spec.
+      class GoogleCloudDataplexV1DataDocumentationSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # DataProfileResult defines the output of DataProfileScan. Each field of the
       # table will have field type specific profile result.
       class GoogleCloudDataplexV1DataProfileResult
@@ -3367,7 +3513,11 @@ module Google
       # data profiling (https://cloud.google.com/dataplex/docs/data-profiling-overview)
       # . Data discovery: scans data in Cloud Storage buckets to extract and then
       # catalog metadata. For more information, see Discover and catalog Cloud Storage
-      # data (https://cloud.google.com/bigquery/docs/automatic-discovery).
+      # data (https://cloud.google.com/bigquery/docs/automatic-discovery). Data
+      # documentation: analyzes the table details and generates insights including
+      # descriptions and sample SQL queries for the table. For more information, see
+      # Generate data insights in BigQuery (https://cloud.google.com/bigquery/docs/
+      # data-insights).
       class GoogleCloudDataplexV1DataScan
         include Google::Apis::Core::Hashable
       
@@ -3390,6 +3540,16 @@ module Google
         # Corresponds to the JSON property `dataDiscoverySpec`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpec]
         attr_accessor :data_discovery_spec
+      
+        # The output of a DataDocumentation scan.
+        # Corresponds to the JSON property `dataDocumentationResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResult]
+        attr_accessor :data_documentation_result
+      
+        # DataDocumentation scan related spec.
+        # Corresponds to the JSON property `dataDocumentationSpec`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationSpec]
+        attr_accessor :data_documentation_spec
       
         # DataProfileResult defines the output of DataProfileScan. Each field of the
         # table will have field type specific profile result.
@@ -3476,6 +3636,8 @@ module Google
           @data = args[:data] if args.key?(:data)
           @data_discovery_result = args[:data_discovery_result] if args.key?(:data_discovery_result)
           @data_discovery_spec = args[:data_discovery_spec] if args.key?(:data_discovery_spec)
+          @data_documentation_result = args[:data_documentation_result] if args.key?(:data_documentation_result)
+          @data_documentation_spec = args[:data_documentation_spec] if args.key?(:data_documentation_spec)
           @data_profile_result = args[:data_profile_result] if args.key?(:data_profile_result)
           @data_profile_spec = args[:data_profile_spec] if args.key?(:data_profile_spec)
           @data_quality_result = args[:data_quality_result] if args.key?(:data_quality_result)
@@ -3890,6 +4052,16 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpec]
         attr_accessor :data_discovery_spec
       
+        # The output of a DataDocumentation scan.
+        # Corresponds to the JSON property `dataDocumentationResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResult]
+        attr_accessor :data_documentation_result
+      
+        # DataDocumentation scan related spec.
+        # Corresponds to the JSON property `dataDocumentationSpec`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationSpec]
+        attr_accessor :data_documentation_spec
+      
         # DataProfileResult defines the output of DataProfileScan. Each field of the
         # table will have field type specific profile result.
         # Corresponds to the JSON property `dataProfileResult`
@@ -3958,6 +4130,8 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_discovery_result = args[:data_discovery_result] if args.key?(:data_discovery_result)
           @data_discovery_spec = args[:data_discovery_spec] if args.key?(:data_discovery_spec)
+          @data_documentation_result = args[:data_documentation_result] if args.key?(:data_documentation_result)
+          @data_documentation_spec = args[:data_documentation_spec] if args.key?(:data_documentation_spec)
           @data_profile_result = args[:data_profile_result] if args.key?(:data_profile_result)
           @data_profile_spec = args[:data_profile_spec] if args.key?(:data_profile_spec)
           @data_quality_result = args[:data_quality_result] if args.key?(:data_quality_result)
@@ -3988,8 +4162,8 @@ module Google
         # a DataScan job to scan against. The field could either be: Cloud Storage
         # bucket for DataDiscoveryScan Format: //storage.googleapis.com/projects/
         # PROJECT_ID/buckets/BUCKET_ID or BigQuery table of type "TABLE" for
-        # DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/projects/
-        # PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        # DataProfileScan/DataQualityScan/DataDocumentationScan Format: //bigquery.
+        # googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
