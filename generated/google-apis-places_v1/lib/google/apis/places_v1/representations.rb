@@ -220,6 +220,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMapsPlacesV1PlaceConsumerAlert
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1PlaceConsumerAlertDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleMapsPlacesV1PlaceContainingPlace
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -750,6 +768,8 @@ module Google
           collection :attributions, as: 'attributions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAttribution, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAttribution::Representation
       
           property :business_status, as: 'businessStatus'
+          property :consumer_alert, as: 'consumerAlert', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlert, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlert::Representation
+      
           collection :containing_places, as: 'containingPlaces', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceContainingPlace, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceContainingPlace::Representation
       
           property :curbside_pickup, as: 'curbsidePickup'
@@ -869,6 +889,34 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :provider, as: 'provider'
           property :provider_uri, as: 'providerUri'
+        end
+      end
+      
+      class GoogleMapsPlacesV1PlaceConsumerAlert
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlertDetails, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlertDetails::Representation
+      
+          property :language_code, as: 'languageCode'
+          property :overview, as: 'overview'
+        end
+      end
+      
+      class GoogleMapsPlacesV1PlaceConsumerAlertDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :about_link, as: 'aboutLink', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink::Representation
+      
+          property :description, as: 'description'
+          property :title, as: 'title'
+        end
+      end
+      
+      class GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :title, as: 'title'
+          property :uri, as: 'uri'
         end
       end
       
@@ -1059,6 +1107,8 @@ module Google
           property :rating, as: 'rating'
           property :relative_publish_time_description, as: 'relativePublishTimeDescription'
           property :text, as: 'text', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :visit_date, as: 'visitDate', class: Google::Apis::PlacesV1::GoogleTypeDate, decorator: Google::Apis::PlacesV1::GoogleTypeDate::Representation
       
         end
       end
