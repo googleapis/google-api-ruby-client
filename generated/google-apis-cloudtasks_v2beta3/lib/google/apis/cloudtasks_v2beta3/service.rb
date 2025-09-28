@@ -117,8 +117,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
+        #   field which is primarily intended for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -772,7 +772,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a task.
+        # Gets a task. After a task is successfully executed or has exhausted its retry
+        # attempts, the task is deleted. A `GetTask` request for a deleted task returns
+        # a `NOT_FOUND` error.
         # @param [String] name
         #   Required. The task name. For example: `projects/PROJECT_ID/locations/
         #   LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
