@@ -1623,9 +1623,10 @@ module Google
         # @param [String] page_token
         #   Token to specify next page in the list
         # @param [String] query
-        #   Query string search. Should be of the form "". Complete documentation is at
+        #   Query string search. Contains one or more search clauses, each with a field,
+        #   operator, and value. For complete documentation, go to [Search for groups](
         #   https://developers.google.com/workspace/admin/directory/v1/guides/search-
-        #   groups
+        #   groups).
         # @param [String] sort_order
         #   Whether to return results in ascending or descending order. Only of use when
         #   orderBy is also used
@@ -2894,15 +2895,16 @@ module Google
         # @param [String] page_token
         #   Token to specify the next page in the list.
         # @param [String] query
-        #   String query used to filter results. Should be of the form "field operator
-        #   value" where field can be any of supported fields and operators can be any of
-        #   supported operations. Operators include '=' for exact match, '!=' for mismatch
-        #   and ':' for prefix match or HAS match where applicable. For prefix match, the
-        #   value should always be followed by a *. Logical operators NOT and AND are
-        #   supported (in this order of precedence). Supported fields include `
-        #   generatedResourceName`, `name`, `buildingId`, `floor_name`, `capacity`, `
-        #   featureInstances.feature.name`, `resourceEmail`, `resourceCategory`. For
-        #   example `buildingId=US-NYC-9TH AND featureInstances.feature.name:Phone`.
+        #   String query used to filter results. Contains one or more search clauses, each
+        #   with a field, operator, and value. A field can be any of supported fields and
+        #   operators can be any of supported operations. Operators include '=' for exact
+        #   match, '!=' for mismatch and ':' for prefix match or HAS match where
+        #   applicable. For prefix match, the value should always be followed by a *.
+        #   Logical operators NOT and AND are supported (in this order of precedence).
+        #   Supported fields include `generatedResourceName`, `name`, `buildingId`, `
+        #   floor_name`, `capacity`, `featureInstances.feature.name`, `resourceEmail`, `
+        #   resourceCategory`. For example `buildingId=US-NYC-9TH AND featureInstances.
+        #   feature.name:Phone`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4361,8 +4363,10 @@ module Google
         # @param [String] projection
         #   What subset of fields to fetch for this user.
         # @param [String] query
-        #   Query string search. Should be of the form "". Complete documentation is at
-        #   https://developers.google.com/workspace/admin/directory/v1/guides/search-users
+        #   Query string search. Contains one or more search clauses, each with a field,
+        #   operator, and value. For complete documentation, go to [Search for users](
+        #   https://developers.google.com/workspace/admin/directory/v1/guides/search-users)
+        #   .
         # @param [String] show_deleted
         #   If set to true, retrieves the list of deleted users. (Default: false)
         # @param [String] sort_order
