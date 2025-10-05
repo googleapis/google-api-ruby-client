@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoScalingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutomatedBackupPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -35,6 +41,30 @@ module Google
       end
       
       class Backup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupDrBackupSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupDrEnabledWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupDrInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupDrPitrSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -107,6 +137,12 @@ module Google
       end
       
       class ContinuousBackupSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CpuUtilization
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -334,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrimaryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -418,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Schedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecondaryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -443,12 +491,6 @@ module Google
       end
       
       class StageInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class StageSchedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -592,6 +634,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainRetentionSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -695,6 +755,16 @@ module Google
         end
       end
       
+      class AutoScalingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::AlloydbV1::Policy, decorator: Google::Apis::AlloydbV1::Policy::Representation
+      
+          collection :schedules, as: 'schedules', class: Google::Apis::AlloydbV1::Schedule, decorator: Google::Apis::AlloydbV1::Schedule::Representation
+      
+        end
+      end
+      
       class AutomatedBackupPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -746,6 +816,46 @@ module Google
         end
       end
       
+      class BackupDrBackupSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
+        end
+      end
+      
+      class BackupDrEnabledWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :automated_backup_previously_enabled, as: 'automatedBackupPreviouslyEnabled'
+          property :backup_plan_association, as: 'backupPlanAssociation'
+          property :continuous_backup_previous_recovery_window_days, as: 'continuousBackupPreviousRecoveryWindowDays'
+          property :continuous_backup_previously_enabled, as: 'continuousBackupPreviouslyEnabled'
+          property :continuous_backup_previously_enabled_time, as: 'continuousBackupPreviouslyEnabledTime'
+          property :data_source, as: 'dataSource'
+          property :disabled_time, as: 'disabledTime'
+          property :enabled_time, as: 'enabledTime'
+          property :log_retention_period, as: 'logRetentionPeriod'
+        end
+      end
+      
+      class BackupDrInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_window, as: 'currentWindow', class: Google::Apis::AlloydbV1::BackupDrEnabledWindow, decorator: Google::Apis::AlloydbV1::BackupDrEnabledWindow::Representation
+      
+          collection :previous_windows, as: 'previousWindows', class: Google::Apis::AlloydbV1::BackupDrEnabledWindow, decorator: Google::Apis::AlloydbV1::BackupDrEnabledWindow::Representation
+      
+        end
+      end
+      
+      class BackupDrPitrSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source, as: 'dataSource'
+          property :point_in_time, as: 'pointInTime'
+        end
+      end
+      
       class BackupSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -793,6 +903,10 @@ module Google
           property :automated_backup_policy, as: 'automatedBackupPolicy', class: Google::Apis::AlloydbV1::AutomatedBackupPolicy, decorator: Google::Apis::AlloydbV1::AutomatedBackupPolicy::Representation
       
           property :backup_source, as: 'backupSource', class: Google::Apis::AlloydbV1::BackupSource, decorator: Google::Apis::AlloydbV1::BackupSource::Representation
+      
+          property :backupdr_backup_source, as: 'backupdrBackupSource', class: Google::Apis::AlloydbV1::BackupDrBackupSource, decorator: Google::Apis::AlloydbV1::BackupDrBackupSource::Representation
+      
+          property :backupdr_info, as: 'backupdrInfo', class: Google::Apis::AlloydbV1::BackupDrInfo, decorator: Google::Apis::AlloydbV1::BackupDrInfo::Representation
       
           property :cloudsql_backup_run_source, as: 'cloudsqlBackupRunSource', class: Google::Apis::AlloydbV1::CloudSqlBackupRunSource, decorator: Google::Apis::AlloydbV1::CloudSqlBackupRunSource::Representation
       
@@ -902,6 +1016,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster, as: 'cluster'
           property :point_in_time, as: 'pointInTime'
+        end
+      end
+      
+      class CpuUtilization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :utilization_target, as: 'utilizationTarget'
         end
       end
       
@@ -1174,6 +1295,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::AlloydbV1::Operation, decorator: Google::Apis::AlloydbV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1298,6 +1420,17 @@ module Google
         end
       end
       
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cool_down_period_sec, :numeric_string => true, as: 'coolDownPeriodSec'
+          property :cpu_utilization, as: 'cpuUtilization', class: Google::Apis::AlloydbV1::CpuUtilization, decorator: Google::Apis::AlloydbV1::CpuUtilization::Representation
+      
+          property :enabled, as: 'enabled'
+          property :max_node_count, :numeric_string => true, as: 'maxNodeCount'
+        end
+      end
+      
       class PrimaryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1381,6 +1514,8 @@ module Google
       class ReadPoolConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_scaling_config, as: 'autoScalingConfig', class: Google::Apis::AlloydbV1::AutoScalingConfig, decorator: Google::Apis::AlloydbV1::AutoScalingConfig::Representation
+      
           property :node_count, as: 'nodeCount'
         end
       end
@@ -1407,6 +1542,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_source, as: 'backupSource', class: Google::Apis::AlloydbV1::BackupSource, decorator: Google::Apis::AlloydbV1::BackupSource::Representation
       
+          property :backupdr_backup_source, as: 'backupdrBackupSource', class: Google::Apis::AlloydbV1::BackupDrBackupSource, decorator: Google::Apis::AlloydbV1::BackupDrBackupSource::Representation
+      
+          property :backupdr_pitr_source, as: 'backupdrPitrSource', class: Google::Apis::AlloydbV1::BackupDrPitrSource, decorator: Google::Apis::AlloydbV1::BackupDrPitrSource::Representation
+      
           property :cluster, as: 'cluster', class: Google::Apis::AlloydbV1::Cluster, decorator: Google::Apis::AlloydbV1::Cluster::Representation
       
           property :cluster_id, as: 'clusterId'
@@ -1425,6 +1564,19 @@ module Google
           property :cluster, as: 'cluster', class: Google::Apis::AlloydbV1::Cluster, decorator: Google::Apis::AlloydbV1::Cluster::Representation
       
           property :cluster_id, as: 'clusterId'
+        end
+      end
+      
+      class Schedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cron_expression, as: 'cronExpression'
+          property :description, as: 'description'
+          property :disabled, as: 'disabled'
+          property :duration_sec, :numeric_string => true, as: 'durationSec'
+          property :min_node_count, :numeric_string => true, as: 'minNodeCount'
+          property :name, as: 'name'
+          property :time_zone, as: 'timeZone'
         end
       end
       
@@ -1468,22 +1620,10 @@ module Google
         end
       end
       
-      class StageSchedule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :actual_end_time, as: 'actualEndTime'
-          property :actual_start_time, as: 'actualStartTime'
-          property :estimated_end_time, as: 'estimatedEndTime'
-          property :estimated_start_time, as: 'estimatedStartTime'
-        end
-      end
-      
       class StageStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :read_pool_instances_upgrade, as: 'readPoolInstancesUpgrade', class: Google::Apis::AlloydbV1::ReadPoolInstancesUpgradeStageStatus, decorator: Google::Apis::AlloydbV1::ReadPoolInstancesUpgradeStageStatus::Representation
-      
-          property :schedule, as: 'schedule', class: Google::Apis::AlloydbV1::StageSchedule, decorator: Google::Apis::AlloydbV1::StageSchedule::Representation
       
           property :stage, as: 'stage'
           property :state, as: 'state'
@@ -1676,6 +1816,8 @@ module Google
           property :location, as: 'location'
           property :machine_configuration, as: 'machineConfiguration', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainMachineConfiguration, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainMachineConfiguration::Representation
       
+          property :maintenance_info, as: 'maintenanceInfo', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo::Representation
+      
           property :primary_resource_id, as: 'primaryResourceId', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
       
           property :primary_resource_location, as: 'primaryResourceLocation'
@@ -1779,6 +1921,39 @@ module Google
           property :code, as: 'code'
           property :error_type, as: 'errorType'
           property :message, as: 'message'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate', class: Google::Apis::AlloydbV1::GoogleTypeDate, decorator: Google::Apis::AlloydbV1::GoogleTypeDate::Representation
+      
+          property :start_date, as: 'startDate', class: Google::Apis::AlloydbV1::GoogleTypeDate, decorator: Google::Apis::AlloydbV1::GoogleTypeDate::Representation
+      
+          property :time, as: 'time', class: Google::Apis::AlloydbV1::GoogleTypeTimeOfDay, decorator: Google::Apis::AlloydbV1::GoogleTypeTimeOfDay::Representation
+      
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deny_maintenance_schedules, as: 'denyMaintenanceSchedules', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule::Representation
+      
+          property :maintenance_schedule, as: 'maintenanceSchedule', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule::Representation
+      
+          property :maintenance_version, as: 'maintenanceVersion'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :phase, as: 'phase'
+          property :time, as: 'time', class: Google::Apis::AlloydbV1::GoogleTypeTimeOfDay, decorator: Google::Apis::AlloydbV1::GoogleTypeTimeOfDay::Representation
+      
         end
       end
       
