@@ -2640,9 +2640,9 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2MultiRegionSettings]
         attr_accessor :multi_region_settings
       
-        # The fully qualified name of this Service. In CreateServiceRequest, this field
-        # is ignored, and instead composed from CreateServiceRequest.parent and
-        # CreateServiceRequest.service_id. Format: projects/`project`/locations/`
+        # Identifier. The fully qualified name of this Service. In CreateServiceRequest,
+        # this field is ignored, and instead composed from CreateServiceRequest.parent
+        # and CreateServiceRequest.service_id. Format: projects/`project`/locations/`
         # location`/services/`service_id`
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2900,6 +2900,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2BuildpacksBuild]
         attr_accessor :buildpack_build
       
+        # Optional. The client that initiated the build request.
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
         # Build the source using Docker. This means the source has a Dockerfile.
         # Corresponds to the JSON property `dockerBuild`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2DockerBuild]
@@ -2954,6 +2959,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @buildpack_build = args[:buildpack_build] if args.key?(:buildpack_build)
+          @client = args[:client] if args.key?(:client)
           @docker_build = args[:docker_build] if args.key?(:docker_build)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
@@ -6394,6 +6400,13 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6402,6 +6415,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

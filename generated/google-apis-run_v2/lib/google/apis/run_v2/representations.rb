@@ -1449,6 +1449,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :buildpack_build, as: 'buildpackBuild', class: Google::Apis::RunV2::GoogleCloudRunV2BuildpacksBuild, decorator: Google::Apis::RunV2::GoogleCloudRunV2BuildpacksBuild::Representation
       
+          property :client, as: 'client'
           property :docker_build, as: 'dockerBuild', class: Google::Apis::RunV2::GoogleCloudRunV2DockerBuild, decorator: Google::Apis::RunV2::GoogleCloudRunV2DockerBuild::Representation
       
           property :image_uri, as: 'imageUri'
@@ -2272,6 +2273,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::RunV2::GoogleLongrunningOperation, decorator: Google::Apis::RunV2::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
