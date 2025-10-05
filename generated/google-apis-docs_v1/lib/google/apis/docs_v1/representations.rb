@@ -376,6 +376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InsertPersonRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InsertSectionBreakRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1631,6 +1637,18 @@ module Google
         end
       end
       
+      class InsertPersonRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_of_segment_location, as: 'endOfSegmentLocation', class: Google::Apis::DocsV1::EndOfSegmentLocation, decorator: Google::Apis::DocsV1::EndOfSegmentLocation::Representation
+      
+          property :location, as: 'location', class: Google::Apis::DocsV1::Location, decorator: Google::Apis::DocsV1::Location::Representation
+      
+          property :person_properties, as: 'personProperties', class: Google::Apis::DocsV1::PersonProperties, decorator: Google::Apis::DocsV1::PersonProperties::Representation
+      
+        end
+      end
+      
       class InsertSectionBreakRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2168,6 +2186,8 @@ module Google
           property :insert_inline_image, as: 'insertInlineImage', class: Google::Apis::DocsV1::InsertInlineImageRequest, decorator: Google::Apis::DocsV1::InsertInlineImageRequest::Representation
       
           property :insert_page_break, as: 'insertPageBreak', class: Google::Apis::DocsV1::InsertPageBreakRequest, decorator: Google::Apis::DocsV1::InsertPageBreakRequest::Representation
+      
+          property :insert_person, as: 'insertPerson', class: Google::Apis::DocsV1::InsertPersonRequest, decorator: Google::Apis::DocsV1::InsertPersonRequest::Representation
       
           property :insert_section_break, as: 'insertSectionBreak', class: Google::Apis::DocsV1::InsertSectionBreakRequest, decorator: Google::Apis::DocsV1::InsertSectionBreakRequest::Representation
       

@@ -2425,6 +2425,38 @@ module Google
         end
       end
       
+      # Inserts a person mention.
+      class InsertPersonRequest
+        include Google::Apis::Core::Hashable
+      
+        # Location at the end of a body, header, footer or footnote. The location is
+        # immediately before the last newline in the document segment.
+        # Corresponds to the JSON property `endOfSegmentLocation`
+        # @return [Google::Apis::DocsV1::EndOfSegmentLocation]
+        attr_accessor :end_of_segment_location
+      
+        # A particular location in the document.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::DocsV1::Location]
+        attr_accessor :location
+      
+        # Properties specific to a linked Person.
+        # Corresponds to the JSON property `personProperties`
+        # @return [Google::Apis::DocsV1::PersonProperties]
+        attr_accessor :person_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_of_segment_location = args[:end_of_segment_location] if args.key?(:end_of_segment_location)
+          @location = args[:location] if args.key?(:location)
+          @person_properties = args[:person_properties] if args.key?(:person_properties)
+        end
+      end
+      
       # Inserts a section break at the given location. A newline character will be
       # inserted before the section break.
       class InsertSectionBreakRequest
@@ -4407,6 +4439,11 @@ module Google
         # @return [Google::Apis::DocsV1::InsertPageBreakRequest]
         attr_accessor :insert_page_break
       
+        # Inserts a person mention.
+        # Corresponds to the JSON property `insertPerson`
+        # @return [Google::Apis::DocsV1::InsertPersonRequest]
+        attr_accessor :insert_person
+      
         # Inserts a section break at the given location. A newline character will be
         # inserted before the section break.
         # Corresponds to the JSON property `insertSectionBreak`
@@ -4527,6 +4564,7 @@ module Google
           @delete_table_row = args[:delete_table_row] if args.key?(:delete_table_row)
           @insert_inline_image = args[:insert_inline_image] if args.key?(:insert_inline_image)
           @insert_page_break = args[:insert_page_break] if args.key?(:insert_page_break)
+          @insert_person = args[:insert_person] if args.key?(:insert_person)
           @insert_section_break = args[:insert_section_break] if args.key?(:insert_section_break)
           @insert_table = args[:insert_table] if args.key?(:insert_table)
           @insert_table_column = args[:insert_table_column] if args.key?(:insert_table_column)
