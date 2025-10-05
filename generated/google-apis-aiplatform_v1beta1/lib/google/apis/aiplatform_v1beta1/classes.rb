@@ -34036,7 +34036,8 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecDeploymentSpec]
         attr_accessor :deployment_spec
       
-        # User provided package spec like pickled object and package requirements.
+        # User-provided package specification, containing pickled object and package
+        # requirements.
         # Corresponds to the JSON property `packageSpec`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec]
         attr_accessor :package_spec
@@ -34139,7 +34140,8 @@ module Google
         end
       end
       
-      # User provided package spec like pickled object and package requirements.
+      # User-provided package specification, containing pickled object and package
+      # requirements.
       class GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec
         include Google::Apis::Core::Hashable
       
