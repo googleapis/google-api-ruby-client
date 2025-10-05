@@ -46,10 +46,20 @@ module Google
       class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule
         include Google::Apis::Core::Hashable
       
+        # A rule that aligns specified child fields with a parent field.
+        # Corresponds to the JSON property `childAlignmentRule`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule]
+        attr_accessor :child_alignment_rule
+      
         # Description of the validation rule. This has no use but for documentation
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # A rule that aligns specified fields with each other.
+        # Corresponds to the JSON property `entityAlignmentRule`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule]
+        attr_accessor :entity_alignment_rule
       
         # 
         # Corresponds to the JSON property `fieldOccurrences`
@@ -77,11 +87,75 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @child_alignment_rule = args[:child_alignment_rule] if args.key?(:child_alignment_rule)
           @description = args[:description] if args.key?(:description)
+          @entity_alignment_rule = args[:entity_alignment_rule] if args.key?(:entity_alignment_rule)
           @field_occurrences = args[:field_occurrences] if args.key?(:field_occurrences)
           @field_regex = args[:field_regex] if args.key?(:field_regex)
           @form_validation = args[:form_validation] if args.key?(:form_validation)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A rule for checking field alignment. Horizontal alignment checks if fields are
+      # on the same row by comparing y-coordinates of bounding box centers, while
+      # vertical alignment checks if fields are on the same column by comparing x-
+      # coordinates of bounding box centers.
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `alignmentType`
+        # @return [String]
+        attr_accessor :alignment_type
+      
+        # The tolerance to use when comparing coordinates.
+        # Corresponds to the JSON property `tolerance`
+        # @return [Float]
+        attr_accessor :tolerance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alignment_type = args[:alignment_type] if args.key?(:alignment_type)
+          @tolerance = args[:tolerance] if args.key?(:tolerance)
+        end
+      end
+      
+      # A rule that aligns specified child fields with a parent field.
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule
+        include Google::Apis::Core::Hashable
+      
+        # A rule for checking field alignment. Horizontal alignment checks if fields are
+        # on the same row by comparing y-coordinates of bounding box centers, while
+        # vertical alignment checks if fields are on the same column by comparing x-
+        # coordinates of bounding box centers.
+        # Corresponds to the JSON property `alignmentRule`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule]
+        attr_accessor :alignment_rule
+      
+        # The child fields to be aligned within the parent field.
+        # Corresponds to the JSON property `childFields`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField>]
+        attr_accessor :child_fields
+      
+        # The full path of the parent field.
+        # Corresponds to the JSON property `parentField`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField]
+        attr_accessor :parent_field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alignment_rule = args[:alignment_rule] if args.key?(:alignment_rule)
+          @child_fields = args[:child_fields] if args.key?(:child_fields)
+          @parent_field = args[:parent_field] if args.key?(:parent_field)
         end
       end
       
@@ -101,6 +175,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @float_value = args[:float_value] if args.key?(:float_value)
+        end
+      end
+      
+      # A rule that aligns specified fields with each other.
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule
+        include Google::Apis::Core::Hashable
+      
+        # A rule for checking field alignment. Horizontal alignment checks if fields are
+        # on the same row by comparing y-coordinates of bounding box centers, while
+        # vertical alignment checks if fields are on the same column by comparing x-
+        # coordinates of bounding box centers.
+        # Corresponds to the JSON property `alignmentRule`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule]
+        attr_accessor :alignment_rule
+      
+        # The fields to be aligned.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField>]
+        attr_accessor :fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alignment_rule = args[:alignment_rule] if args.key?(:alignment_rule)
+          @fields = args[:fields] if args.key?(:fields)
         end
       end
       
@@ -8504,6 +8606,13 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8512,6 +8621,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
