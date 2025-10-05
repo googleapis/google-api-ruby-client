@@ -1090,6 +1090,7 @@ module Google
       class AdaptMessageResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :last, as: 'last'
           property :payload, :base64 => true, as: 'payload'
           hash :state_updates, as: 'stateUpdates'
         end
@@ -1377,6 +1378,7 @@ module Google
           property :commit_timestamp, as: 'commitTimestamp'
           property :precommit_token, as: 'precommitToken', class: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken, decorator: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken::Representation
       
+          property :snapshot_timestamp, as: 'snapshotTimestamp'
         end
       end
       

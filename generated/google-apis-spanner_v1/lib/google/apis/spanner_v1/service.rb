@@ -1169,11 +1169,10 @@ module Google
         # delete the backup. There can be only one pending backup creation per database.
         # Backup creation of different databases can run concurrently.
         # @param [String] parent
-        #   Required. The name of the instance in which the backup will be created. This
-        #   must be the same instance that contains the database the backup will be
-        #   created from. The backup will be stored in the location(s) specified in the
-        #   instance configuration of this instance. Values are of the form `projects//
-        #   instances/`.
+        #   Required. The name of the instance in which the backup is created. This must
+        #   be the same instance that contains the database the backup is created from.
+        #   The backup will be stored in the locations specified in the instance
+        #   configuration of this instance. Values are of the form `projects//instances/`.
         # @param [Google::Apis::SpannerV1::Backup] backup_object
         # @param [String] backup_id
         #   Required. The id of the backup to be created. The `backup_id` appended to `
@@ -1181,9 +1180,15 @@ module Google
         # @param [String] encryption_config_encryption_type
         #   Required. The encryption type of the backup.
         # @param [String] encryption_config_kms_key_name
-        #   Optional. The Cloud KMS key that will be used to protect the backup. This
-        #   field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`.
-        #   Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        #   Optional. This field is maintained for backwards compatibility. For new
+        #   callers, we recommend using `kms_key_names` to specify the KMS key. Only use `
+        #   kms_key_name` if the location of the KMS key matches the database instance's
+        #   configuration (location) exactly. For example, if the KMS location is in `us-
+        #   central1` or `nam3`, then the database instance must also be in `us-central1`
+        #   or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored
+        #   database. Set this field only when encryption_type is `
+        #   CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//
+        #   keyRings//cryptoKeys/`.
         # @param [Array<String>, String] encryption_config_kms_key_names
         #   Optional. Specifies the KMS configuration for the one or more keys used to
         #   protect the backup. Values are of the form `projects//locations//keyRings//
@@ -1406,11 +1411,11 @@ module Google
         #   the form `projects//instances/`.
         # @param [Google::Apis::SpannerV1::Backup] backup_object
         # @param [String] update_mask
-        #   Required. A mask specifying which fields (e.g. `expire_time`) in the Backup
-        #   resource should be updated. This mask is relative to the Backup resource, not
-        #   to the request message. The field mask must always be specified; this prevents
-        #   any future fields from being erased accidentally by clients that do not know
-        #   about them.
+        #   Required. A mask specifying which fields (for example, `expire_time`) in the
+        #   backup resource should be updated. This mask is relative to the backup
+        #   resource, not to the request message. The field mask must always be specified;
+        #   this prevents any future fields from being erased accidentally by clients that
+        #   do not know about them.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2252,7 +2257,7 @@ module Google
         # Updates the schema of a Cloud Spanner database by creating/altering/dropping
         # tables, columns, indexes, etc. The returned long-running operation will have a
         # name of the format `/operations/` and can be used to track execution of the
-        # schema change(s). The metadata field type is UpdateDatabaseDdlMetadata. The
+        # schema changes. The metadata field type is UpdateDatabaseDdlMetadata. The
         # operation has no response.
         # @param [String] database
         #   Required. The database to update.
