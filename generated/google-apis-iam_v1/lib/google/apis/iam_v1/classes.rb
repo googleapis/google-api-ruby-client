@@ -1383,17 +1383,18 @@ module Google
         end
       end
       
-      # Response message for ListWorkforcePoolProviderScimTenants.
+      # Agentspace only. Response message for ListWorkforcePoolProviderScimTenants.
       class ListWorkforcePoolProviderScimTenantsResponse
         include Google::Apis::Core::Hashable
       
-        # Optional. A token, which can be sent as `page_token` to retrieve the next page.
-        # If this field is omitted, there are no subsequent pages.
+        # Optional. Agentspace only. A token, which can be sent as `page_token` to
+        # retrieve the next page. If this field is omitted, there are no subsequent
+        # pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # Output only. A list of scim tenants.
+        # Output only. Agentspace only. A list of SCIM tenants.
         # Corresponds to the JSON property `workforcePoolProviderScimTenants`
         # @return [Array<Google::Apis::IamV1::WorkforcePoolProviderScimTenant>]
         attr_accessor :workforce_pool_provider_scim_tenants
@@ -1409,17 +1410,18 @@ module Google
         end
       end
       
-      # Response message for ListWorkforcePoolProviderScimTokens.
+      # Agentspace only. Response message for ListWorkforcePoolProviderScimTokens.
       class ListWorkforcePoolProviderScimTokensResponse
         include Google::Apis::Core::Hashable
       
-        # Optional. A token, which can be sent as `page_token` to retrieve the next page.
-        # If this field is omitted, there are no subsequent pages.
+        # Optional. Agentspace only. A token, which can be sent as `page_token` to
+        # retrieve the next page. If this field is omitted, there are no subsequent
+        # pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # Output only. A list of scim tokens.
+        # Output only. Agentspace only. A list of SCIM tokens.
         # Corresponds to the JSON property `workforcePoolProviderScimTokens`
         # @return [Array<Google::Apis::IamV1::WorkforcePoolProviderScimToken>]
         attr_accessor :workforce_pool_provider_scim_tokens
@@ -3132,7 +3134,7 @@ module Google
         end
       end
       
-      # Request message for UndeleteWorkforcePoolProviderScimTenant.
+      # Agentspace only. Request message for UndeleteWorkforcePoolProviderScimTenant.
       class UndeleteWorkforcePoolProviderScimTenantRequest
         include Google::Apis::Core::Hashable
       
@@ -3145,7 +3147,7 @@ module Google
         end
       end
       
-      # Request message for UndeleteWorkforcePoolProviderScimToken.
+      # Agentspace only. Request message for UndeleteWorkforcePoolProviderScimToken.
       class UndeleteWorkforcePoolProviderScimTokenRequest
         include Google::Apis::Core::Hashable
       
@@ -3409,10 +3411,10 @@ module Google
         # to access a JSON representation of the authentication credential issued by the
         # provider. The maximum length of an attribute mapping expression is 2048
         # characters. When evaluated, the total size of all mapped attributes must not
-        # exceed 4KB. For OIDC providers, you must supply a custom mapping that includes
-        # the `google.subject` attribute. For example, the following maps the `sub`
-        # claim of the incoming credential to the `subject` attribute on a Google token:
-        # ``` `"google.subject": "assertion.sub"` ```
+        # exceed 16 KB. For OIDC providers, you must supply a custom mapping that
+        # includes the `google.subject` attribute. For example, the following maps the `
+        # sub` claim of the incoming credential to the `subject` attribute on a Google
+        # token: ``` `"google.subject": "assertion.sub"` ```
         # Corresponds to the JSON property `attributeMapping`
         # @return [Hash<String,String>]
         attr_accessor :attribute_mapping
@@ -3557,47 +3559,56 @@ module Google
         end
       end
       
-      # Represents a scim tenant. Used for provisioning and managing identity data (
-      # such as Users and Groups) in cross-domain environments.
+      # Agentspace only. Represents a SCIM tenant. Used for provisioning and managing
+      # identity data (such as Users and Groups) in cross-domain environments.
       class WorkforcePoolProviderScimTenant
         include Google::Apis::Core::Hashable
       
-        # Output only. Represents the base URI as defined in [RFC 7644, Section 1.3](
-        # https://datatracker.ietf.org/doc/html/rfc7644#section-1.3). Clients must use
-        # this as the root address for managing resources under the tenant. Format:
-        # https://iamscim.googleapis.com/`version`/`tenant_id`/
+        # Output only. Agentspace only. Represents the base URI as defined in [RFC 7644,
+        # Section 1.3](https://datatracker.ietf.org/doc/html/rfc7644#section-1.3).
+        # Clients must use this as the root address for managing resources under the
+        # tenant. Format: https://iamscim.googleapis.com/`version`/`tenant_id`/
         # Corresponds to the JSON property `baseUri`
         # @return [String]
         attr_accessor :base_uri
       
-        # Optional. Maps BYOID claims to SCIM claims.
+        # Optional. Agentspace only. Maps BYOID claims to SCIM claims.
         # Corresponds to the JSON property `claimMapping`
         # @return [Hash<String,String>]
         attr_accessor :claim_mapping
       
-        # Optional. The description of the scim tenant. Cannot exceed 256 characters.
+        # Optional. Agentspace only. The description of the SCIM tenant. Cannot exceed
+        # 256 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Optional. The display name of the scim tenant. Cannot exceed 32 characters.
+        # Optional. Agentspace only. The display name of the SCIM tenant. Cannot exceed
+        # 32 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Identifier. The resource name of the SCIM Tenant. Format: `locations/`location`
-        # /workforcePools/`workforce_pool`/providers/ `workforce_pool_provider`/
-        # scimTenants/`scim_tenant``
+        # Identifier. Agentspace only. The resource name of the SCIM Tenant. Format: `
+        # locations/`location`/workforcePools/`workforce_pool`/providers/ `
+        # workforce_pool_provider`/scimTenants/`scim_tenant``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. The timestamp when the scim tenant is going to be purged.
+        # Output only. Agentspace only. The timestamp that represents the time when the
+        # SCIM tenant is purged.
         # Corresponds to the JSON property `purgeTime`
         # @return [String]
         attr_accessor :purge_time
       
-        # Output only. The state of the tenant.
+        # Output only. Service Agent created by SCIM Tenant API. SCIM tokens created
+        # under this tenant will be attached to this service agent.
+        # Corresponds to the JSON property `serviceAgent`
+        # @return [String]
+        attr_accessor :service_agent
+      
+        # Output only. Agentspace only. The state of the tenant.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -3614,34 +3625,36 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @purge_time = args[:purge_time] if args.key?(:purge_time)
+          @service_agent = args[:service_agent] if args.key?(:service_agent)
           @state = args[:state] if args.key?(:state)
         end
       end
       
-      # Represents a token for the WorkforcePoolProviderScimTenant. Used for
-      # authenticating SCIM Provisioning requests.
+      # Agentspace only. Represents a token for the WorkforcePoolProviderScimTenant.
+      # Used for authenticating SCIM provisioning requests.
       class WorkforcePoolProviderScimToken
         include Google::Apis::Core::Hashable
       
-        # Optional. The display name of the scim token. Cannot exceed 32 characters.
+        # Optional. Agentspace only. The display name of the SCIM token. Cannot exceed
+        # 32 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Identifier. The resource name of the SCIM Token. Format: `locations/`location`/
-        # workforcePools/`workforce_pool`/providers/ `workforce_pool_provider`/
-        # scimTenants/`scim_tenant`/tokens/`token``
+        # Identifier. Agentspace only. The resource name of the SCIM Token. Format: `
+        # locations/`location`/workforcePools/`workforce_pool`/providers/ `
+        # workforce_pool_provider`/scimTenants/`scim_tenant`/tokens/`token``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. The token string. Provide this to the IdP for authentication.
-        # Will be set only during creation.
+        # Output only. Agentspace only. The token string. Provide this to the IdP for
+        # authentication. Will be set only during creation.
         # Corresponds to the JSON property `securityToken`
         # @return [String]
         attr_accessor :security_token
       
-        # Output only. The state of the token.
+        # Output only. Agentspace only. The state of the token.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -3759,7 +3772,7 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # Identifier. The resource name of the managed identity.
+        # Output only. The resource name of the managed identity.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3941,7 +3954,7 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # Identifier. The resource name of the provider.
+        # Output only. The resource name of the provider.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
