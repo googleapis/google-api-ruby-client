@@ -316,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ImageConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1LogprobsResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -738,6 +744,7 @@ module Google
       class GoogleCloudAiplatformV1beta1EnterpriseWebSearch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :blocking_confidence, as: 'blockingConfidence'
           collection :exclude_domains, as: 'excludeDomains'
         end
       end
@@ -905,6 +912,8 @@ module Google
           property :candidate_count, as: 'candidateCount'
           property :enable_affective_dialog, as: 'enableAffectiveDialog'
           property :frequency_penalty, as: 'frequencyPenalty'
+          property :image_config, as: 'imageConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ImageConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ImageConfig::Representation
+      
           property :logprobs, as: 'logprobs'
           property :max_output_tokens, as: 'maxOutputTokens'
           property :media_resolution, as: 'mediaResolution'
@@ -1081,6 +1090,13 @@ module Google
           collection :grounding_chunk_indices, as: 'groundingChunkIndices'
           property :segment, as: 'segment', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Segment, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Segment::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ImageConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aspect_ratio, as: 'aspectRatio'
         end
       end
       
@@ -1381,6 +1397,7 @@ module Google
       class GoogleCloudAiplatformV1beta1ToolGoogleSearch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :blocking_confidence, as: 'blockingConfidence'
           collection :exclude_domains, as: 'excludeDomains'
         end
       end
