@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigConflict
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DagProcessorResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -427,6 +433,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :build_log_uri, as: 'buildLogUri'
+          collection :config_conflicts, as: 'configConflicts', class: Google::Apis::ComposerV1::ConfigConflict, decorator: Google::Apis::ComposerV1::ConfigConflict::Representation
+      
           property :contains_pypi_modules_conflict, as: 'containsPypiModulesConflict'
           property :image_version, as: 'imageVersion'
           property :pypi_conflict_build_log_extract, as: 'pypiConflictBuildLogExtract'
@@ -465,6 +473,14 @@ module Google
           property :detailed_status_message, as: 'detailedStatusMessage'
           property :state, as: 'state'
           property :status_message, as: 'statusMessage'
+        end
+      end
+      
+      class ConfigConflict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :type, as: 'type'
         end
       end
       
@@ -677,6 +693,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ComposerV1::Operation, decorator: Google::Apis::ComposerV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
