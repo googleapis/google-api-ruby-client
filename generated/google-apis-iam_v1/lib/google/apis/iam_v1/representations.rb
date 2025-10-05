@@ -1668,6 +1668,7 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :purge_time, as: 'purgeTime'
+          property :service_agent, as: 'serviceAgent'
           property :state, as: 'state'
         end
       end

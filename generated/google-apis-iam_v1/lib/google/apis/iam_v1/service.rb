@@ -945,16 +945,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new WorkforcePoolProviderScimTenant in a WorkforcePoolProvider. You
-        # cannot reuse the name of a deleted scim tenant until 30 days after deletion.
+        # Agentspace only. Creates a new WorkforcePoolProviderScimTenant in a
+        # WorkforcePoolProvider. You cannot reuse the name of a deleted SCIM tenant
+        # until 30 days after deletion.
         # @param [String] parent
-        #   Required. The parent to create scim tenant. Format: 'locations/`location`/
-        #   workforcePools/`workforce_pool`/providers/`provider`'
+        #   Required. Agentspace only. The parent to create SCIM tenant. Format: '
+        #   locations/`location`/workforcePools/`workforce_pool`/providers/`provider`'
         # @param [Google::Apis::IamV1::WorkforcePoolProviderScimTenant] workforce_pool_provider_scim_tenant_object
         # @param [String] workforce_pool_provider_scim_tenant_id
-        #   Required. The ID to use for the scim tenant, which becomes the final component
-        #   of the resource name. This value should be 4-32 characters, and may contain
-        #   the characters [a-z0-9-].
+        #   Required. Agentspace only. The ID to use for the SCIM tenant, which becomes
+        #   the final component of the resource name. This value should be 4-32 characters,
+        #   containing the characters [a-z0-9-].
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -985,12 +986,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a WorkforcePoolProviderScimTenant. You can undelete a scim tenant for
-        # 30 days. After 30 days, deletion is permanent. You cannot update deleted scim
-        # tenants. However, you can view and list them.
+        # Agentspace only. Deletes a WorkforcePoolProviderScimTenant. You can undelete a
+        # SCIM tenant for 30 days. After 30 days, deletion is permanent. You cannot
+        # update deleted SCIM tenants. However, you can view and list them.
         # @param [String] name
-        #   Required. The name of the scim tenant to delete. Format: `locations/`location`/
-        #   workforcePools/`workforce_pool`/providers/`provider`/scimTenants/`scim_tenant``
+        #   Required. Agentspace only. The name of the scim tenant to delete. Format: `
+        #   locations/`location`/workforcePools/`workforce_pool`/providers/`provider`/
+        #   scimTenants/`scim_tenant``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1018,11 +1020,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an individual WorkforcePoolProviderScimTenant.
+        # Agentspace only. Gets an individual WorkforcePoolProviderScimTenant.
         # @param [String] name
-        #   Required. The name of the scim tenant to retrieve. Format: `locations/`
-        #   location`/workforcePools/`workforce_pool`/providers/`provider`/scimTenants/`
-        #   scim_tenant``
+        #   Required. Agentspace only. The name of the SCIM tenant to retrieve. Format: `
+        #   locations/`location`/workforcePools/`workforce_pool`/providers/`provider`/
+        #   scimTenants/`scim_tenant``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1050,20 +1052,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all non-deleted WorkforcePoolProviderScimTenants in a
-        # WorkforcePoolProvider. If `show_deleted` is set to `true`, then deleted scim
+        # Agentspace only. Lists all non-deleted WorkforcePoolProviderScimTenants in a
+        # WorkforcePoolProvider. If `show_deleted` is set to `true`, then deleted SCIM
         # tenants are also listed.
         # @param [String] parent
-        #   Required. The parent to list scim tenants. Format: 'locations/`location`/
-        #   workforcePools/`workforce_pool`/providers/`provider`'
+        #   Required. Agentspace only. The parent to list SCIM tenants. Format: 'locations/
+        #   `location`/workforcePools/`workforce_pool`/providers/`provider`'
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of scim tenants to return. If unspecified, at
-        #   most 1 scim tenant will be returned.
+        #   Optional. Agentspace only. The maximum number of SCIM tenants to return. If
+        #   unspecified, at most 1 scim tenant will be returned.
         # @param [String] page_token
-        #   Optional. A page token, received from a previous `ListScimTenants` call.
-        #   Provide this to retrieve the subsequent page.
+        #   Optional. Agentspace only. A page token, received from a previous `
+        #   ListScimTenants` call. Provide this to retrieve the subsequent page.
         # @param [Boolean] show_deleted
-        #   Optional. Whether to return soft-deleted scim tenants.
+        #   Optional. Agentspace only. Whether to return soft-deleted SCIM tenants.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1094,14 +1096,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing WorkforcePoolProviderScimTenant.
+        # Agentspace only. Updates an existing WorkforcePoolProviderScimTenant.
         # @param [String] name
-        #   Identifier. The resource name of the SCIM Tenant. Format: `locations/`location`
-        #   /workforcePools/`workforce_pool`/providers/ `workforce_pool_provider`/
-        #   scimTenants/`scim_tenant``
+        #   Identifier. Agentspace only. The resource name of the SCIM Tenant. Format: `
+        #   locations/`location`/workforcePools/`workforce_pool`/providers/ `
+        #   workforce_pool_provider`/scimTenants/`scim_tenant``
         # @param [Google::Apis::IamV1::WorkforcePoolProviderScimTenant] workforce_pool_provider_scim_tenant_object
         # @param [String] update_mask
-        #   Optional. The list of fields to update.
+        #   Optional. Agentspace only. The list of fields to update.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1132,12 +1134,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Undeletes a WorkforcePoolProviderScimTenant, as long as it was deleted fewer
-        # than 30 days ago.
+        # Agentspace only. Undeletes a WorkforcePoolProviderScimTenant, that was deleted
+        # fewer than 30 days ago.
         # @param [String] name
-        #   Required. The name of the scim tenant to undelete. Format: `locations/`
-        #   location`/workforcePools/`workforce_pool`/providers/`provider`/scimTenants/`
-        #   scim_tenant``
+        #   Required. Agentspace only. The name of the SCIM tenant to undelete. Format: `
+        #   locations/`location`/workforcePools/`workforce_pool`/providers/`provider`/
+        #   scimTenants/`scim_tenant``
         # @param [Google::Apis::IamV1::UndeleteWorkforcePoolProviderScimTenantRequest] undelete_workforce_pool_provider_scim_tenant_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1168,18 +1170,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new WorkforcePoolProviderScimToken in a
+        # Agentspace only. Creates a new WorkforcePoolProviderScimToken in a
         # WorkforcePoolProviderScimTenant. You cannot reuse the name of a deleted SCIM
         # token until 30 days after deletion.
         # @param [String] parent
-        #   Required. The parent tenant to create scim token. Format: 'locations/`location`
-        #   /workforcePools/`workforce_pool`/providers/`provider`/scimTenants/`scim_tenant`
-        #   '
+        #   Required. Agentspace only. The parent tenant to create SCIM token. Format: '
+        #   locations/`location`/workforcePools/`workforce_pool`/providers/`provider`/
+        #   scimTenants/`scim_tenant`'
         # @param [Google::Apis::IamV1::WorkforcePoolProviderScimToken] workforce_pool_provider_scim_token_object
         # @param [String] workforce_pool_provider_scim_token_id
-        #   Required. The ID to use for the scim token, which becomes the final component
-        #   of the resource name. This value should be 4-32 characters and follow this
-        #   pattern: "([a-z]([a-z0-9\\-]`2,30`[a-z0-9]))"
+        #   Required. Agentspace only. The ID to use for the SCIM token, which becomes the
+        #   final component of the resource name. This value should be 4-32 characters and
+        #   follow the pattern: "([a-z]([a-z0-9\\-]`2,30`[a-z0-9]))"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1210,13 +1212,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a WorkforcePoolProviderScimToken. You can undelete a scim token for 30
-        # days. After 30 days, deletion is permanent. You cannot update deleted scim
-        # tokens. However, you can view and list them.
+        # Agentspace only. Deletes a WorkforcePoolProviderScimToken. You can undelete a
+        # SCIM token for 30 days. After 30 days, the SCIM token is permanently deleted.
+        # You cannot update deleted SCIM tokens, however, you can view and list them.
         # @param [String] name
-        #   Required. The name of the scim token to delete. Format: `locations/`location`/
-        #   workforcePools/`workforce_pool`/providers/`provider`/scimTenants/`scim_tenant`/
-        #   tokens/`token``
+        #   Required. Agentspace only. The name of the SCIM token to delete. Format: `
+        #   locations/`location`/workforcePools/`workforce_pool`/providers/`provider`/
+        #   scimTenants/`scim_tenant`/tokens/`token``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1244,11 +1246,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an individual WorkforcePoolProviderScimToken.
+        # Agentspace only. Gets an individual WorkforcePoolProviderScimToken.
         # @param [String] name
-        #   Required. The name of the scim token to retrieve. Format: `locations/`location`
-        #   /workforcePools/`workforce_pool`/providers/`provider`/scimTenants/`scim_tenant`
-        #   /tokens/`token``
+        #   Required. Agentspace only. The name of the SCIM token to retrieve. Format: `
+        #   locations/`location`/workforcePools/`workforce_pool`/providers/`provider`/
+        #   scimTenants/`scim_tenant`/tokens/`token``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1276,21 +1278,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all non-deleted WorkforcePoolProviderScimTokenss in a
+        # Agentspace only. Lists all non-deleted WorkforcePoolProviderScimTokenss in a
         # WorkforcePoolProviderScimTenant. If `show_deleted` is set to `true`, then
         # deleted SCIM tokens are also listed.
         # @param [String] parent
-        #   Required. The parent to list scim tokens. Format: 'locations/`location`/
-        #   workforcePools/`workforce_pool`/providers/`provider`/scimTenants/`scim_tenant`'
+        #   Required. Agentspace only. The parent to list SCIM tokens. Format: 'locations/`
+        #   location`/workforcePools/`workforce_pool`/providers/`provider`/scimTenants/`
+        #   scim_tenant`'
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of scim tokens to return. If unspecified, at most
-        #   2 scim tokens will be returned.
+        #   Optional. Agentspace only. The maximum number of scim tokens to return. If
+        #   unspecified, at most 2 SCIM tokens will be returned.
         # @param [String] page_token
-        #   Optional. A page token, received from a previous `
+        #   Optional. Agentspace only. A page token, received from a previous `
         #   ListWorkforcePoolProviderScimTokens` call. Provide this to retrieve the
         #   subsequent page.
         # @param [Boolean] show_deleted
-        #   Optional. Whether to return soft-deleted scim tokens.
+        #   Optional. Agentspace only. Whether to return soft-deleted scim tokens.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1321,14 +1324,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing WorkforcePoolProviderScimToken.
+        # Agentspace only. Updates an existing WorkforcePoolProviderScimToken.
         # @param [String] name
-        #   Identifier. The resource name of the SCIM Token. Format: `locations/`location`/
-        #   workforcePools/`workforce_pool`/providers/ `workforce_pool_provider`/
-        #   scimTenants/`scim_tenant`/tokens/`token``
+        #   Identifier. Agentspace only. The resource name of the SCIM Token. Format: `
+        #   locations/`location`/workforcePools/`workforce_pool`/providers/ `
+        #   workforce_pool_provider`/scimTenants/`scim_tenant`/tokens/`token``
         # @param [Google::Apis::IamV1::WorkforcePoolProviderScimToken] workforce_pool_provider_scim_token_object
         # @param [String] update_mask
-        #   Optional. The list of fields to update.
+        #   Optional. Agentspace only. The list of fields to update.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1359,12 +1362,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Undeletes a WorkforcePoolProviderScimToken, as long as it was deleted fewer
-        # than 30 days ago.
+        # Agentspace only. Undeletes a WorkforcePoolProviderScimToken,that was deleted
+        # fewer than 30 days ago.
         # @param [String] name
-        #   Required. The name of the scim token to undelete. Format: `locations/`location`
-        #   /workforcePools/`workforce_pool`/providers/`provider`/scimTenants/`scim_tenant`
-        #   /tokens/`token``
+        #   Required. Agentspace only. The name of the SCIM token to undelete. Format: `
+        #   locations/`location`/workforcePools/`workforce_pool`/providers/`provider`/
+        #   scimTenants/`scim_tenant`/tokens/`token``
         # @param [Google::Apis::IamV1::UndeleteWorkforcePoolProviderScimTokenRequest] undelete_workforce_pool_provider_scim_token_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3034,7 +3037,7 @@ module Google
         # Updates an existing WorkloadIdentityPoolManagedIdentity in a
         # WorkloadIdentityPoolNamespace.
         # @param [String] name
-        #   Identifier. The resource name of the managed identity.
+        #   Output only. The resource name of the managed identity.
         # @param [Google::Apis::IamV1::WorkloadIdentityPoolManagedIdentity] workload_identity_pool_managed_identity_object
         # @param [String] update_mask
         #   Required. The list of fields to update.
@@ -3443,7 +3446,7 @@ module Google
         
         # Updates an existing WorkloadIdentityPoolProvider.
         # @param [String] name
-        #   Identifier. The resource name of the provider.
+        #   Output only. The resource name of the provider.
         # @param [Google::Apis::IamV1::WorkloadIdentityPoolProvider] workload_identity_pool_provider_object
         # @param [String] update_mask
         #   Required. The list of fields to update.
