@@ -2398,6 +2398,60 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2AgentCoachingInstruction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2AgentCoachingSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2AgentCoachingSuggestionSources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2AnnotatedMessagePart
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2993,6 +3047,60 @@ module Google
       end
       
       class GoogleCloudDialogflowV2WebhookResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingInstruction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7748,6 +7856,96 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2AgentCoachingInstruction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_action, as: 'agentAction'
+          property :condition, as: 'condition'
+          property :display_details, as: 'displayDetails'
+          property :display_name, as: 'displayName'
+          property :duplicate_check_result, as: 'duplicateCheckResult', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult::Representation
+      
+          property :system_action, as: 'systemAction'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :duplicate_suggestions, as: 'duplicateSuggestions', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_record, as: 'answerRecord'
+          property :similarity_score, as: 'similarityScore'
+          property :suggestion_index, as: 'suggestionIndex'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2AgentCoachingSuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_action_suggestions, as: 'agentActionSuggestions', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion::Representation
+      
+          collection :applicable_instructions, as: 'applicableInstructions', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingInstruction, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingInstruction::Representation
+      
+          collection :sample_responses, as: 'sampleResponses', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_action, as: 'agentAction'
+          property :duplicate_check_result, as: 'duplicateCheckResult', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult::Representation
+      
+          property :sources, as: 'sources', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionSources, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionSources::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :duplicate_suggestions, as: 'duplicateSuggestions', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_record, as: 'answerRecord'
+          property :similarity_score, as: 'similarityScore'
+          property :sources, as: 'sources', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionSources, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionSources::Representation
+      
+          property :suggestion_index, as: 'suggestionIndex'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duplicate_check_result, as: 'duplicateCheckResult', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult::Representation
+      
+          property :response_text, as: 'responseText'
+          property :sources, as: 'sources', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionSources, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionSources::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2AgentCoachingSuggestionSources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instruction_indexes, as: 'instructionIndexes'
+        end
+      end
+      
       class GoogleCloudDialogflowV2AnnotatedMessagePart
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7997,6 +8195,8 @@ module Google
       class GoogleCloudDialogflowV2GeneratorSuggestion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_coaching_suggestion, as: 'agentCoachingSuggestion', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestion, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestion::Representation
+      
           property :free_form_suggestion, as: 'freeFormSuggestion', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2FreeFormSuggestion, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2FreeFormSuggestion::Representation
       
           property :summary_suggestion, as: 'summarySuggestion', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SummarySuggestion, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SummarySuggestion::Representation
@@ -8716,9 +8916,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
+          property :answer_record, as: 'answerRecord'
           property :create_time, as: 'createTime'
           hash :input_parameters, as: 'inputParameters'
+          property :state, as: 'state'
           property :tool, as: 'tool'
+          property :tool_display_details, as: 'toolDisplayDetails'
+          property :tool_display_name, as: 'toolDisplayName'
         end
       end
       
@@ -8726,6 +8930,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
+          property :answer_record, as: 'answerRecord'
           property :content, as: 'content'
           property :create_time, as: 'createTime'
           property :error, as: 'error', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ToolCallResultError, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ToolCallResultError::Representation
@@ -8777,6 +8982,96 @@ module Google
           collection :session_entity_types, as: 'sessionEntityTypes', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SessionEntityType, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SessionEntityType::Representation
       
           property :source, as: 'source'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingInstruction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_action, as: 'agentAction'
+          property :condition, as: 'condition'
+          property :display_details, as: 'displayDetails'
+          property :display_name, as: 'displayName'
+          property :duplicate_check_result, as: 'duplicateCheckResult', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult::Representation
+      
+          property :system_action, as: 'systemAction'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :duplicate_suggestions, as: 'duplicateSuggestions', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_record, as: 'answerRecord'
+          property :similarity_score, as: 'similarityScore'
+          property :suggestion_index, as: 'suggestionIndex'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_action_suggestions, as: 'agentActionSuggestions', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion::Representation
+      
+          collection :applicable_instructions, as: 'applicableInstructions', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingInstruction, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingInstruction::Representation
+      
+          collection :sample_responses, as: 'sampleResponses', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_action, as: 'agentAction'
+          property :duplicate_check_result, as: 'duplicateCheckResult', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult::Representation
+      
+          property :sources, as: 'sources', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :duplicate_suggestions, as: 'duplicateSuggestions', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_record, as: 'answerRecord'
+          property :similarity_score, as: 'similarityScore'
+          property :sources, as: 'sources', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources::Representation
+      
+          property :suggestion_index, as: 'suggestionIndex'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duplicate_check_result, as: 'duplicateCheckResult', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult::Representation
+      
+          property :response_text, as: 'responseText'
+          property :sources, as: 'sources', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instruction_indexes, as: 'instructionIndexes'
         end
       end
       
@@ -8962,6 +9257,8 @@ module Google
       class GoogleCloudDialogflowV2beta1GeneratorSuggestion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_coaching_suggestion, as: 'agentCoachingSuggestion', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestion, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestion::Representation
+      
           property :free_form_suggestion, as: 'freeFormSuggestion', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1FreeFormSuggestion, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1FreeFormSuggestion::Representation
       
           property :summary_suggestion, as: 'summarySuggestion', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1SummarySuggestion, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1SummarySuggestion::Representation
@@ -9903,9 +10200,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
+          property :answer_record, as: 'answerRecord'
           property :create_time, as: 'createTime'
           hash :input_parameters, as: 'inputParameters'
+          property :state, as: 'state'
           property :tool, as: 'tool'
+          property :tool_display_details, as: 'toolDisplayDetails'
+          property :tool_display_name, as: 'toolDisplayName'
         end
       end
       
@@ -9913,6 +10214,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
+          property :answer_record, as: 'answerRecord'
           property :content, as: 'content'
           property :create_time, as: 'createTime'
           property :error, as: 'error', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1ToolCallResultError, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1ToolCallResultError::Representation
@@ -10013,6 +10315,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DialogflowV3::GoogleLongrunningOperation, decorator: Google::Apis::DialogflowV3::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       

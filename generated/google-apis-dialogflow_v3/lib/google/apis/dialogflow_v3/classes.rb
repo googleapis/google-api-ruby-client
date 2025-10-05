@@ -14796,6 +14796,282 @@ module Google
         end
       end
       
+      # Agent Coaching instructions that customer can configure.
+      class GoogleCloudDialogflowV2AgentCoachingInstruction
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The action that human agent should take. For example, "apologize for
+        # the slow shipping". If the users only want to use agent coaching for intent
+        # detection, agent_action can be empty
+        # Corresponds to the JSON property `agentAction`
+        # @return [String]
+        attr_accessor :agent_action
+      
+        # Optional. The condition of the instruction. For example, "the customer wants
+        # to cancel an order". If the users want the instruction to be triggered
+        # unconditionally, the condition can be empty.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # Optional. The detailed description of this instruction.
+        # Corresponds to the JSON property `displayDetails`
+        # @return [String]
+        attr_accessor :display_details
+      
+        # Optional. Display name for the instruction.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Duplication check for the suggestion.
+        # Corresponds to the JSON property `duplicateCheckResult`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult]
+        attr_accessor :duplicate_check_result
+      
+        # Optional. The action that system should take. For example, "call GetOrderTime
+        # with order_number=`order number provided by the customer`". If the users don't
+        # have plugins or don't want to trigger plugins, the system_action can be empty
+        # Corresponds to the JSON property `systemAction`
+        # @return [String]
+        attr_accessor :system_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_action = args[:agent_action] if args.key?(:agent_action)
+          @condition = args[:condition] if args.key?(:condition)
+          @display_details = args[:display_details] if args.key?(:display_details)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @duplicate_check_result = args[:duplicate_check_result] if args.key?(:duplicate_check_result)
+          @system_action = args[:system_action] if args.key?(:system_action)
+        end
+      end
+      
+      # Duplication check for the suggestion.
+      class GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The duplicate suggestions.
+        # Corresponds to the JSON property `duplicateSuggestions`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion>]
+        attr_accessor :duplicate_suggestions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duplicate_suggestions = args[:duplicate_suggestions] if args.key?(:duplicate_suggestions)
+        end
+      end
+      
+      # The duplicate suggestion details.
+      class GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The answer record id of the past duplicate suggestion.
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # Output only. The similarity score of between the past and current suggestion.
+        # Corresponds to the JSON property `similarityScore`
+        # @return [Float]
+        attr_accessor :similarity_score
+      
+        # Output only. The index of the duplicate suggestion in the past suggestion list.
+        # Corresponds to the JSON property `suggestionIndex`
+        # @return [Fixnum]
+        attr_accessor :suggestion_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @similarity_score = args[:similarity_score] if args.key?(:similarity_score)
+          @suggestion_index = args[:suggestion_index] if args.key?(:suggestion_index)
+        end
+      end
+      
+      # Suggestion for coaching agents.
+      class GoogleCloudDialogflowV2AgentCoachingSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Suggested actions for the agent to take.
+        # Corresponds to the JSON property `agentActionSuggestions`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion>]
+        attr_accessor :agent_action_suggestions
+      
+        # Optional. Instructions applicable based on the current context.
+        # Corresponds to the JSON property `applicableInstructions`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingInstruction>]
+        attr_accessor :applicable_instructions
+      
+        # Optional. Sample response for the Agent.
+        # Corresponds to the JSON property `sampleResponses`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse>]
+        attr_accessor :sample_responses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_action_suggestions = args[:agent_action_suggestions] if args.key?(:agent_action_suggestions)
+          @applicable_instructions = args[:applicable_instructions] if args.key?(:applicable_instructions)
+          @sample_responses = args[:sample_responses] if args.key?(:sample_responses)
+        end
+      end
+      
+      # Actions suggested for the agent. This is based on applicable instructions.
+      class GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The suggested action for the agent.
+        # Corresponds to the JSON property `agentAction`
+        # @return [String]
+        attr_accessor :agent_action
+      
+        # Duplication check for the suggestion.
+        # Corresponds to the JSON property `duplicateCheckResult`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult]
+        attr_accessor :duplicate_check_result
+      
+        # Sources for the suggestion.
+        # Corresponds to the JSON property `sources`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionSources]
+        attr_accessor :sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_action = args[:agent_action] if args.key?(:agent_action)
+          @duplicate_check_result = args[:duplicate_check_result] if args.key?(:duplicate_check_result)
+          @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
+      # Duplication check for the suggestion.
+      class GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The duplicate suggestions.
+        # Corresponds to the JSON property `duplicateSuggestions`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion>]
+        attr_accessor :duplicate_suggestions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duplicate_suggestions = args[:duplicate_suggestions] if args.key?(:duplicate_suggestions)
+        end
+      end
+      
+      # The duplicate suggestion details. Keeping answer_record and sources together
+      # as they are identifiers for duplicate suggestions.
+      class GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The answer record id of the past duplicate suggestion.
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # Output only. The similarity score of between the past and current suggestion.
+        # Corresponds to the JSON property `similarityScore`
+        # @return [Float]
+        attr_accessor :similarity_score
+      
+        # Sources for the suggestion.
+        # Corresponds to the JSON property `sources`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionSources]
+        attr_accessor :sources
+      
+        # Output only. The index of the duplicate suggestion in the past suggestion list.
+        # Corresponds to the JSON property `suggestionIndex`
+        # @return [Fixnum]
+        attr_accessor :suggestion_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @similarity_score = args[:similarity_score] if args.key?(:similarity_score)
+          @sources = args[:sources] if args.key?(:sources)
+          @suggestion_index = args[:suggestion_index] if args.key?(:suggestion_index)
+        end
+      end
+      
+      # Sample response that the agent can use. This could be based on applicable
+      # instructions and ingested data from other systems.
+      class GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse
+        include Google::Apis::Core::Hashable
+      
+        # Duplication check for the suggestion.
+        # Corresponds to the JSON property `duplicateCheckResult`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult]
+        attr_accessor :duplicate_check_result
+      
+        # Optional. Sample response for Agent in text.
+        # Corresponds to the JSON property `responseText`
+        # @return [String]
+        attr_accessor :response_text
+      
+        # Sources for the suggestion.
+        # Corresponds to the JSON property `sources`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestionSources]
+        attr_accessor :sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duplicate_check_result = args[:duplicate_check_result] if args.key?(:duplicate_check_result)
+          @response_text = args[:response_text] if args.key?(:response_text)
+          @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
+      # Sources for the suggestion.
+      class GoogleCloudDialogflowV2AgentCoachingSuggestionSources
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Source instruction indexes for the suggestion. This is the index
+        # of the applicable_instructions field.
+        # Corresponds to the JSON property `instructionIndexes`
+        # @return [Array<Fixnum>]
+        attr_accessor :instruction_indexes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instruction_indexes = args[:instruction_indexes] if args.key?(:instruction_indexes)
+        end
+      end
+      
       # Represents a part of a message possibly annotated with an entity. The part can
       # be an entity or purely a part of the message between two entities or message
       # start/end.
@@ -15749,6 +16025,11 @@ module Google
       class GoogleCloudDialogflowV2GeneratorSuggestion
         include Google::Apis::Core::Hashable
       
+        # Suggestion for coaching agents.
+        # Corresponds to the JSON property `agentCoachingSuggestion`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2AgentCoachingSuggestion]
+        attr_accessor :agent_coaching_suggestion
+      
         # Suggestion generated using free form generator.
         # Corresponds to the JSON property `freeFormSuggestion`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2FreeFormSuggestion]
@@ -15770,6 +16051,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_coaching_suggestion = args[:agent_coaching_suggestion] if args.key?(:agent_coaching_suggestion)
           @free_form_suggestion = args[:free_form_suggestion] if args.key?(:free_form_suggestion)
           @summary_suggestion = args[:summary_suggestion] if args.key?(:summary_suggestion)
           @tool_call_info = args[:tool_call_info] if args.key?(:tool_call_info)
@@ -18302,6 +18584,11 @@ module Google
         # @return [String]
         attr_accessor :action
       
+        # Optional. The answer record associated with this tool call.
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
         # Output only. Create time of the tool call.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -18312,11 +18599,26 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :input_parameters
       
+        # Output only. State of the tool call.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]
         attr_accessor :tool
+      
+        # Optional. A human readable description of the tool.
+        # Corresponds to the JSON property `toolDisplayDetails`
+        # @return [String]
+        attr_accessor :tool_display_details
+      
+        # Optional. A human readable short name of the tool, to be shown on the UI.
+        # Corresponds to the JSON property `toolDisplayName`
+        # @return [String]
+        attr_accessor :tool_display_name
       
         def initialize(**args)
            update!(**args)
@@ -18325,9 +18627,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action = args[:action] if args.key?(:action)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
           @create_time = args[:create_time] if args.key?(:create_time)
           @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
+          @state = args[:state] if args.key?(:state)
           @tool = args[:tool] if args.key?(:tool)
+          @tool_display_details = args[:tool_display_details] if args.key?(:tool_display_details)
+          @tool_display_name = args[:tool_display_name] if args.key?(:tool_display_name)
         end
       end
       
@@ -18339,6 +18645,11 @@ module Google
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
+      
+        # Optional. The answer record associated with this tool call result.
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
       
         # Only populated if the response content is utf-8 encoded.
         # Corresponds to the JSON property `content`
@@ -18375,6 +18686,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action = args[:action] if args.key?(:action)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
           @content = args[:content] if args.key?(:content)
           @create_time = args[:create_time] if args.key?(:create_time)
           @error = args[:error] if args.key?(:error)
@@ -18558,6 +18870,282 @@ module Google
           @payload = args[:payload] if args.key?(:payload)
           @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
           @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # Agent Coaching instructions that customer can configure.
+      class GoogleCloudDialogflowV2beta1AgentCoachingInstruction
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The action that human agent should take. For example, "apologize for
+        # the slow shipping". If the users only want to use agent coaching for intent
+        # detection, agent_action can be empty
+        # Corresponds to the JSON property `agentAction`
+        # @return [String]
+        attr_accessor :agent_action
+      
+        # Optional. The condition of the instruction. For example, "the customer wants
+        # to cancel an order". If the users want the instruction to be triggered
+        # unconditionally, the condition can be empty.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # Optional. The detailed description of this instruction.
+        # Corresponds to the JSON property `displayDetails`
+        # @return [String]
+        attr_accessor :display_details
+      
+        # Optional. Display name for the instruction.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Duplication check for the suggestion.
+        # Corresponds to the JSON property `duplicateCheckResult`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult]
+        attr_accessor :duplicate_check_result
+      
+        # Optional. The action that system should take. For example, "call GetOrderTime
+        # with order_number=`order number provided by the customer`". If the users don't
+        # have plugins or don't want to trigger plugins, the system_action can be empty
+        # Corresponds to the JSON property `systemAction`
+        # @return [String]
+        attr_accessor :system_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_action = args[:agent_action] if args.key?(:agent_action)
+          @condition = args[:condition] if args.key?(:condition)
+          @display_details = args[:display_details] if args.key?(:display_details)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @duplicate_check_result = args[:duplicate_check_result] if args.key?(:duplicate_check_result)
+          @system_action = args[:system_action] if args.key?(:system_action)
+        end
+      end
+      
+      # Duplication check for the suggestion.
+      class GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The duplicate suggestions.
+        # Corresponds to the JSON property `duplicateSuggestions`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion>]
+        attr_accessor :duplicate_suggestions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duplicate_suggestions = args[:duplicate_suggestions] if args.key?(:duplicate_suggestions)
+        end
+      end
+      
+      # The duplicate suggestion details.
+      class GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The answer record id of the past duplicate suggestion.
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # Output only. The similarity score of between the past and current suggestion.
+        # Corresponds to the JSON property `similarityScore`
+        # @return [Float]
+        attr_accessor :similarity_score
+      
+        # Output only. The index of the duplicate suggestion in the past suggestion list.
+        # Corresponds to the JSON property `suggestionIndex`
+        # @return [Fixnum]
+        attr_accessor :suggestion_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @similarity_score = args[:similarity_score] if args.key?(:similarity_score)
+          @suggestion_index = args[:suggestion_index] if args.key?(:suggestion_index)
+        end
+      end
+      
+      # Suggestion for coaching agents.
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Suggested actions for the agent to take.
+        # Corresponds to the JSON property `agentActionSuggestions`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion>]
+        attr_accessor :agent_action_suggestions
+      
+        # Optional. Instructions applicable based on the current context.
+        # Corresponds to the JSON property `applicableInstructions`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingInstruction>]
+        attr_accessor :applicable_instructions
+      
+        # Optional. Sample response for the Agent.
+        # Corresponds to the JSON property `sampleResponses`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse>]
+        attr_accessor :sample_responses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_action_suggestions = args[:agent_action_suggestions] if args.key?(:agent_action_suggestions)
+          @applicable_instructions = args[:applicable_instructions] if args.key?(:applicable_instructions)
+          @sample_responses = args[:sample_responses] if args.key?(:sample_responses)
+        end
+      end
+      
+      # Actions suggested for the agent. This is based on applicable instructions.
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The suggested action for the agent.
+        # Corresponds to the JSON property `agentAction`
+        # @return [String]
+        attr_accessor :agent_action
+      
+        # Duplication check for the suggestion.
+        # Corresponds to the JSON property `duplicateCheckResult`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult]
+        attr_accessor :duplicate_check_result
+      
+        # Sources for the suggestion.
+        # Corresponds to the JSON property `sources`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources]
+        attr_accessor :sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_action = args[:agent_action] if args.key?(:agent_action)
+          @duplicate_check_result = args[:duplicate_check_result] if args.key?(:duplicate_check_result)
+          @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
+      # Duplication check for the suggestion.
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The duplicate suggestions.
+        # Corresponds to the JSON property `duplicateSuggestions`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion>]
+        attr_accessor :duplicate_suggestions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duplicate_suggestions = args[:duplicate_suggestions] if args.key?(:duplicate_suggestions)
+        end
+      end
+      
+      # The duplicate suggestion details. Keeping answer_record and sources together
+      # as they are identifiers for duplicate suggestions.
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The answer record id of the past duplicate suggestion.
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # Output only. The similarity score of between the past and current suggestion.
+        # Corresponds to the JSON property `similarityScore`
+        # @return [Float]
+        attr_accessor :similarity_score
+      
+        # Sources for the suggestion.
+        # Corresponds to the JSON property `sources`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources]
+        attr_accessor :sources
+      
+        # Output only. The index of the duplicate suggestion in the past suggestion list.
+        # Corresponds to the JSON property `suggestionIndex`
+        # @return [Fixnum]
+        attr_accessor :suggestion_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @similarity_score = args[:similarity_score] if args.key?(:similarity_score)
+          @sources = args[:sources] if args.key?(:sources)
+          @suggestion_index = args[:suggestion_index] if args.key?(:suggestion_index)
+        end
+      end
+      
+      # Sample response that the agent can use. This could be based on applicable
+      # instructions and ingested data from other systems.
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse
+        include Google::Apis::Core::Hashable
+      
+        # Duplication check for the suggestion.
+        # Corresponds to the JSON property `duplicateCheckResult`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult]
+        attr_accessor :duplicate_check_result
+      
+        # Optional. Sample response for Agent in text.
+        # Corresponds to the JSON property `responseText`
+        # @return [String]
+        attr_accessor :response_text
+      
+        # Sources for the suggestion.
+        # Corresponds to the JSON property `sources`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources]
+        attr_accessor :sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duplicate_check_result = args[:duplicate_check_result] if args.key?(:duplicate_check_result)
+          @response_text = args[:response_text] if args.key?(:response_text)
+          @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
+      # Sources for the suggestion.
+      class GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Source instruction indexes for the suggestion. This is the index
+        # of the applicable_instructions field.
+        # Corresponds to the JSON property `instructionIndexes`
+        # @return [Array<Fixnum>]
+        attr_accessor :instruction_indexes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instruction_indexes = args[:instruction_indexes] if args.key?(:instruction_indexes)
         end
       end
       
@@ -19261,6 +19849,11 @@ module Google
       class GoogleCloudDialogflowV2beta1GeneratorSuggestion
         include Google::Apis::Core::Hashable
       
+        # Suggestion for coaching agents.
+        # Corresponds to the JSON property `agentCoachingSuggestion`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1AgentCoachingSuggestion]
+        attr_accessor :agent_coaching_suggestion
+      
         # Suggestion generated using free form generator.
         # Corresponds to the JSON property `freeFormSuggestion`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1FreeFormSuggestion]
@@ -19282,6 +19875,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_coaching_suggestion = args[:agent_coaching_suggestion] if args.key?(:agent_coaching_suggestion)
           @free_form_suggestion = args[:free_form_suggestion] if args.key?(:free_form_suggestion)
           @summary_suggestion = args[:summary_suggestion] if args.key?(:summary_suggestion)
           @tool_call_info = args[:tool_call_info] if args.key?(:tool_call_info)
@@ -22598,6 +23192,11 @@ module Google
         # @return [String]
         attr_accessor :action
       
+        # Optional. The answer record associated with this tool call.
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
         # Output only. Create time of the tool call.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -22608,11 +23207,26 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :input_parameters
       
+        # Output only. State of the tool call
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # Optional. The tool associated with this call. Format: `projects//locations//
         # tools/`.
         # Corresponds to the JSON property `tool`
         # @return [String]
         attr_accessor :tool
+      
+        # Optional. A human readable description of the tool.
+        # Corresponds to the JSON property `toolDisplayDetails`
+        # @return [String]
+        attr_accessor :tool_display_details
+      
+        # Optional. A human readable short name of the tool, to be shown on the UI.
+        # Corresponds to the JSON property `toolDisplayName`
+        # @return [String]
+        attr_accessor :tool_display_name
       
         def initialize(**args)
            update!(**args)
@@ -22621,9 +23235,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action = args[:action] if args.key?(:action)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
           @create_time = args[:create_time] if args.key?(:create_time)
           @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
+          @state = args[:state] if args.key?(:state)
           @tool = args[:tool] if args.key?(:tool)
+          @tool_display_details = args[:tool_display_details] if args.key?(:tool_display_details)
+          @tool_display_name = args[:tool_display_name] if args.key?(:tool_display_name)
         end
       end
       
@@ -22635,6 +23253,11 @@ module Google
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
+      
+        # Optional. The answer record associated with this tool call result.
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
       
         # Only populated if the response content is utf-8 encoded.
         # Corresponds to the JSON property `content`
@@ -22671,6 +23294,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action = args[:action] if args.key?(:action)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
           @content = args[:content] if args.key?(:content)
           @create_time = args[:create_time] if args.key?(:create_time)
           @error = args[:error] if args.key?(:error)
@@ -23047,6 +23671,13 @@ module Google
         # @return [Array<Google::Apis::DialogflowV3::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -23055,6 +23686,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
