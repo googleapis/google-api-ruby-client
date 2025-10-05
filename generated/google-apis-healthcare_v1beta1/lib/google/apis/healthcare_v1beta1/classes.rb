@@ -55,7 +55,7 @@ module Google
         attr_accessor :clean_image_tag
       
         # Inspect text and transform sensitive text. Configurable using TextConfig.
-        # Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/
+        # Supported [Value Representations] (https://dicom.nema.org/medical/dicom/2018e/
         # output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT,
         # DA, DT, AS
         # Corresponds to the JSON property `cleanTextTag`
@@ -79,15 +79,15 @@ module Google
         attr_accessor :queries
       
         # Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value
-        # Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/
-        # sect_6.2.html#table_6.2-1): SQ
+        # Representation] (https://dicom.nema.org/medical/dicom/2018e/output/chtml/
+        # part05/sect_6.2.html#table_6.2-1): SQ
         # Corresponds to the JSON property `recurseTag`
         # @return [Google::Apis::HealthcareV1beta1::RecurseTag]
         attr_accessor :recurse_tag
       
-        # Replace UID with a new generated UID. Supported [Value Representation] (http://
-        # dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-
-        # 1): UI
+        # Replace UID with a new generated UID. Supported [Value Representation] (https:/
+        # /dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.
+        # 2-1): UI
         # Corresponds to the JSON property `regenUidTag`
         # @return [Google::Apis::HealthcareV1beta1::RegenUidTag]
         attr_accessor :regen_uid_tag
@@ -939,12 +939,12 @@ module Google
         end
       end
       
-      # This option is based on the DICOM Standard's [Clean Descriptors Option](http://
-      # dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and
+      # This option is based on the DICOM Standard's [Clean Descriptors Option](https:/
+      # /dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and
       # the `CleanText` `Action` is applied to all the specified fields. When cleaning
       # text, the process attempts to transform phrases matching any of the tags
-      # marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://
-      # dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These
+      # marked for removal (action codes D, Z, X, and U) in the [Basic Profile](https:/
+      # /dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These
       # contextual phrases are replaced with the token "[CTX]". This option uses an
       # additional infoType during inspection.
       class CleanDescriptorsOption
@@ -976,7 +976,7 @@ module Google
       end
       
       # Inspect text and transform sensitive text. Configurable using TextConfig.
-      # Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/
+      # Supported [Value Representations] (https://dicom.nema.org/medical/dicom/2018e/
       # output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT,
       # DA, DT, AS
       class CleanTextTag
@@ -1925,7 +1925,7 @@ module Google
         # "Whilst these UIDs cannot be mapped directly to an individual out of context,
         # given access to the original images, or to a database of the original images
         # containing the UIDs, it would be possible to recover the individual's identity.
-        # " http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.
+        # " https://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.
         # html
         # Corresponds to the JSON property `skipIdRedaction`
         # @return [Boolean]
@@ -5331,12 +5331,12 @@ module Google
       class Options
         include Google::Apis::Core::Hashable
       
-        # This option is based on the DICOM Standard's [Clean Descriptors Option](http://
-        # dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and
+        # This option is based on the DICOM Standard's [Clean Descriptors Option](https:/
+        # /dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and
         # the `CleanText` `Action` is applied to all the specified fields. When cleaning
         # text, the process attempts to transform phrases matching any of the tags
-        # marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://
-        # dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These
+        # marked for removal (action codes D, Z, X, and U) in the [Basic Profile](https:/
+        # /dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These
         # contextual phrases are replaced with the token "[CTX]". This option uses an
         # additional infoType during inspection.
         # Corresponds to the JSON property `cleanDescriptors`
@@ -5349,7 +5349,7 @@ module Google
         attr_accessor :clean_image
       
         # Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`,
-        # and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/
+        # and `MediaStorageSOPInstanceUID`](https://dicom.nema.org/medical/dicom/2018e/
         # output/chtml/part06/chapter_6.html).
         # Corresponds to the JSON property `primaryIds`
         # @return [String]
@@ -5703,8 +5703,8 @@ module Google
       end
       
       # Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value
-      # Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/
-      # sect_6.2.html#table_6.2-1): SQ
+      # Representation] (https://dicom.nema.org/medical/dicom/2018e/output/chtml/
+      # part05/sect_6.2.html#table_6.2-1): SQ
       class RecurseTag
         include Google::Apis::Core::Hashable
       
@@ -5731,9 +5731,9 @@ module Google
         end
       end
       
-      # Replace UID with a new generated UID. Supported [Value Representation] (http://
-      # dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-
-      # 1): UI
+      # Replace UID with a new generated UID. Supported [Value Representation] (https:/
+      # /dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.
+      # 2-1): UI
       class RegenUidTag
         include Google::Apis::Core::Hashable
       
@@ -6769,7 +6769,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or
-        # Directory Structuring Elements, as defined at: http://dicom.nema.org/medical/
+        # Directory Structuring Elements, as defined at: https://dicom.nema.org/medical/
         # dicom/current/output/html/part06.html#table_6-1,. They may be provided by "
         # Keyword" or "Tag". For example, "PatientID", "00100010".
         # Corresponds to the JSON property `tags`
