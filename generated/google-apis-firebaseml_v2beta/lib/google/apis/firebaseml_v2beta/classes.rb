@@ -682,6 +682,12 @@ module Google
       class GoogleCloudAiplatformV1beta1EnterpriseWebSearch
         include Google::Apis::Core::Hashable
       
+        # Optional. Sites with confidence level chosen & above this value will be
+        # blocked from the search results.
+        # Corresponds to the JSON property `blockingConfidence`
+        # @return [String]
+        attr_accessor :blocking_confidence
+      
         # Optional. List of domains to be excluded from the search results. The default
         # limit is 2000 domains.
         # Corresponds to the JSON property `excludeDomains`
@@ -694,6 +700,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @blocking_confidence = args[:blocking_confidence] if args.key?(:blocking_confidence)
           @exclude_domains = args[:exclude_domains] if args.key?(:exclude_domains)
         end
       end
@@ -1318,6 +1325,11 @@ module Google
         # @return [Float]
         attr_accessor :frequency_penalty
       
+        # Config for image generation features.
+        # Corresponds to the JSON property `imageConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ImageConfig]
+        attr_accessor :image_config
+      
         # Optional. Logit probabilities.
         # Corresponds to the JSON property `logprobs`
         # @return [Fixnum]
@@ -1437,6 +1449,7 @@ module Google
           @candidate_count = args[:candidate_count] if args.key?(:candidate_count)
           @enable_affective_dialog = args[:enable_affective_dialog] if args.key?(:enable_affective_dialog)
           @frequency_penalty = args[:frequency_penalty] if args.key?(:frequency_penalty)
+          @image_config = args[:image_config] if args.key?(:image_config)
           @logprobs = args[:logprobs] if args.key?(:logprobs)
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
           @media_resolution = args[:media_resolution] if args.key?(:media_resolution)
@@ -1935,6 +1948,27 @@ module Google
           @confidence_scores = args[:confidence_scores] if args.key?(:confidence_scores)
           @grounding_chunk_indices = args[:grounding_chunk_indices] if args.key?(:grounding_chunk_indices)
           @segment = args[:segment] if args.key?(:segment)
+        end
+      end
+      
+      # Config for image generation features.
+      class GoogleCloudAiplatformV1beta1ImageConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The desired aspect ratio for the generated images. The following
+        # aspect ratios are supported: "1:1" "2:3", "3:2" "3:4", "4:3" "4:5", "5:4" "9:
+        # 16", "16:9" "21:9"
+        # Corresponds to the JSON property `aspectRatio`
+        # @return [String]
+        attr_accessor :aspect_ratio
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aspect_ratio = args[:aspect_ratio] if args.key?(:aspect_ratio)
         end
       end
       
@@ -2962,6 +2996,12 @@ module Google
       class GoogleCloudAiplatformV1beta1ToolGoogleSearch
         include Google::Apis::Core::Hashable
       
+        # Optional. Sites with confidence level chosen & above this value will be
+        # blocked from the search results.
+        # Corresponds to the JSON property `blockingConfidence`
+        # @return [String]
+        attr_accessor :blocking_confidence
+      
         # Optional. List of domains to be excluded from the search results. The default
         # limit is 2000 domains. Example: ["amazon.com", "facebook.com"].
         # Corresponds to the JSON property `excludeDomains`
@@ -2974,6 +3014,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @blocking_confidence = args[:blocking_confidence] if args.key?(:blocking_confidence)
           @exclude_domains = args[:exclude_domains] if args.key?(:exclude_domains)
         end
       end
