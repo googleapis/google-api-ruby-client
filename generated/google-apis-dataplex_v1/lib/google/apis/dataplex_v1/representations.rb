@@ -2656,6 +2656,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :enable_metastore_encryption, as: 'enableMetastoreEncryption'
           property :encryption_state, as: 'encryptionState'
           property :etag, as: 'etag'
           property :failure_details, as: 'failureDetails', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1EncryptionConfigFailureDetails, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1EncryptionConfigFailureDetails::Representation
@@ -3936,6 +3937,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DataplexV1::GoogleLongrunningOperation, decorator: Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       

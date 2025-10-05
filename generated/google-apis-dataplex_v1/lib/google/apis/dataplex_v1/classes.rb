@@ -2012,7 +2012,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The service-qualified full resource name of the cloud resource.
-        # Ex: bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/
+        # Ex: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/
         # TABLE_ID
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -4491,6 +4491,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Represent the state of CMEK opt-in for metastore.
+        # Corresponds to the JSON property `enableMetastoreEncryption`
+        # @return [Boolean]
+        attr_accessor :enable_metastore_encryption
+        alias_method :enable_metastore_encryption?, :enable_metastore_encryption
+      
         # Output only. The state of encryption of the databases.
         # Corresponds to the JSON property `encryptionState`
         # @return [String]
@@ -4532,6 +4538,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @enable_metastore_encryption = args[:enable_metastore_encryption] if args.key?(:enable_metastore_encryption)
           @encryption_state = args[:encryption_state] if args.key?(:encryption_state)
           @etag = args[:etag] if args.key?(:etag)
           @failure_details = args[:failure_details] if args.key?(:failure_details)
@@ -9478,6 +9485,13 @@ module Google
         # @return [Array<Google::Apis::DataplexV1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets
+        # ListOperationsRequest.return_partial_success and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9486,6 +9500,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
