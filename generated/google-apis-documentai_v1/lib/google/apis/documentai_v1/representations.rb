@@ -34,7 +34,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1563,7 +1581,11 @@ module Google
       class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :child_alignment_rule, as: 'childAlignmentRule', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule::Representation
+      
           property :description, as: 'description'
+          property :entity_alignment_rule, as: 'entityAlignmentRule', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule::Representation
+      
           property :field_occurrences, as: 'fieldOccurrences', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences::Representation
       
           property :field_regex, as: 'fieldRegex', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex::Representation
@@ -1574,10 +1596,40 @@ module Google
         end
       end
       
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alignment_type, as: 'alignmentType'
+          property :tolerance, as: 'tolerance'
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alignment_rule, as: 'alignmentRule', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule::Representation
+      
+          collection :child_fields, as: 'childFields', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField::Representation
+      
+          property :parent_field, as: 'parentField', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField::Representation
+      
+        end
+      end
+      
       class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :float_value, as: 'floatValue'
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alignment_rule, as: 'alignmentRule', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule::Representation
+      
+          collection :fields, as: 'fields', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField::Representation
+      
         end
       end
       
@@ -3953,6 +4005,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DocumentaiV1::GoogleLongrunningOperation, decorator: Google::Apis::DocumentaiV1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
