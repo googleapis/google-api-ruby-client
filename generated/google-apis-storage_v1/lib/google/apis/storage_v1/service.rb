@@ -796,6 +796,9 @@ module Google
         #   Filter results to buckets whose names begin with this prefix.
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl.
+        # @param [Boolean] return_partial_success
+        #   If true, return a list of bucket resource names for buckets that are in
+        #   unreachable locations.
         # @param [Boolean] soft_deleted
         #   If true, only soft-deleted bucket versions will be returned. The default is
         #   false. For more information, see [Soft Delete](https://cloud.google.com/
@@ -821,7 +824,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_buckets(project, max_results: nil, page_token: nil, prefix: nil, projection: nil, soft_deleted: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_buckets(project, max_results: nil, page_token: nil, prefix: nil, projection: nil, return_partial_success: nil, soft_deleted: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'b', options)
           command.response_representation = Google::Apis::StorageV1::Buckets::Representation
           command.response_class = Google::Apis::StorageV1::Buckets
@@ -830,6 +833,7 @@ module Google
           command.query['prefix'] = prefix unless prefix.nil?
           command.query['project'] = project unless project.nil?
           command.query['projection'] = projection unless projection.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['softDeleted'] = soft_deleted unless soft_deleted.nil?
           command.query['userProject'] = user_project unless user_project.nil?
           command.query['fields'] = fields unless fields.nil?
