@@ -58,6 +58,14 @@ module Google
       class AdaptMessageResponse
         include Google::Apis::Core::Hashable
       
+        # Optional. Indicates whether this is the last AdaptMessageResponse in the
+        # stream. This field may be optionally set by the server. Clients should not
+        # rely on this field being set in all cases.
+        # Corresponds to the JSON property `last`
+        # @return [Boolean]
+        attr_accessor :last
+        alias_method :last?, :last
+      
         # Optional. Uninterpreted bytes from the underlying wire protocol.
         # Corresponds to the JSON property `payload`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -75,6 +83,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @last = args[:last] if args.key?(:last)
           @payload = args[:payload] if args.key?(:payload)
           @state_updates = args[:state_updates] if args.key?(:state_updates)
         end
@@ -408,9 +417,9 @@ module Google
         # @return [String]
         attr_accessor :incremental_backup_chain_id
       
-        # Output only. The instance partition(s) storing the backup. This is the same as
-        # the list of the instance partition(s) that the database had footprint in at
-        # the backup's `version_time`.
+        # Output only. The instance partition storing the backup. This is the same as
+        # the list of the instance partitions that the database recorded at the backup's
+        # `version_time`.
         # Corresponds to the JSON property `instancePartitions`
         # @return [Array<Google::Apis::SpannerV1::BackupInstancePartition>]
         attr_accessor :instance_partitions
@@ -1220,6 +1229,13 @@ module Google
         # @return [Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken]
         attr_accessor :precommit_token
       
+        # If `TransactionOptions.isolation_level` is set to `IsolationLevel.
+        # REPEATABLE_READ`, then the snapshot timestamp is the timestamp at which all
+        # reads in the transaction ran. This timestamp is never returned.
+        # Corresponds to the JSON property `snapshotTimestamp`
+        # @return [String]
+        attr_accessor :snapshot_timestamp
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1229,6 +1245,7 @@ module Google
           @commit_stats = args[:commit_stats] if args.key?(:commit_stats)
           @commit_timestamp = args[:commit_timestamp] if args.key?(:commit_timestamp)
           @precommit_token = args[:precommit_token] if args.key?(:precommit_token)
+          @snapshot_timestamp = args[:snapshot_timestamp] if args.key?(:snapshot_timestamp)
         end
       end
       
@@ -1306,9 +1323,15 @@ module Google
         # @return [String]
         attr_accessor :encryption_type
       
-        # Optional. The Cloud KMS key that will be used to protect the backup. This
-        # field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`.
-        # Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        # Optional. This field is maintained for backwards compatibility. For new
+        # callers, we recommend using `kms_key_names` to specify the KMS key. Only use `
+        # kms_key_name` if the location of the KMS key matches the database instance's
+        # configuration (location) exactly. For example, if the KMS location is in `us-
+        # central1` or `nam3`, then the database instance must also be in `us-central1`
+        # or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored
+        # database. Set this field only when encryption_type is `
+        # CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//
+        # keyRings//cryptoKeys/`.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -1442,9 +1465,15 @@ module Google
         # @return [String]
         attr_accessor :encryption_type
       
-        # Optional. The Cloud KMS key that will be used to protect the backup. This
-        # field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`.
-        # Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        # Optional. This field is maintained for backwards compatibility. For new
+        # callers, we recommend using `kms_key_names` to specify the KMS key. Only use `
+        # kms_key_name` if the location of the KMS key matches the database instance's
+        # configuration (location) exactly. For example, if the KMS location is in `us-
+        # central1` or `nam3`, then the database instance must also be in `us-central1`
+        # or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored
+        # database. Set this field only when encryption_type is `
+        # CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//
+        # keyRings//cryptoKeys/`.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -2164,23 +2193,23 @@ module Google
       class DdlStatementActionInfo
         include Google::Apis::Core::Hashable
       
-        # The action for the DDL statement, e.g. CREATE, ALTER, DROP, GRANT, etc. This
-        # field is a non-empty string.
+        # The action for the DDL statement, for example, CREATE, ALTER, DROP, GRANT, etc.
+        # This field is a non-empty string.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
       
-        # The entity name(s) being operated on the DDL statement. E.g. 1. For statement "
-        # CREATE TABLE t1(...)", `entity_names` = ["t1"]. 2. For statement "GRANT ROLE
-        # r1, r2 ...", `entity_names` = ["r1", "r2"]. 3. For statement "ANALYZE", `
-        # entity_names` = [].
+        # The entity names being operated on the DDL statement. For example, 1. For
+        # statement "CREATE TABLE t1(...)", `entity_names` = ["t1"]. 2. For statement "
+        # GRANT ROLE r1, r2 ...", `entity_names` = ["r1", "r2"]. 3. For statement "
+        # ANALYZE", `entity_names` = [].
         # Corresponds to the JSON property `entityNames`
         # @return [Array<String>]
         attr_accessor :entity_names
       
-        # The entity type for the DDL statement, e.g. TABLE, INDEX, VIEW, etc. This
-        # field can be empty string for some DDL statement, e.g. for statement "ANALYZE",
-        # `entity_type` = "".
+        # The entity type for the DDL statement, for example, TABLE, INDEX, VIEW, etc.
+        # This field can be empty string for some DDL statement, for example, for
+        # statement "ANALYZE", `entity_type` = "".
         # Corresponds to the JSON property `entityType`
         # @return [String]
         attr_accessor :entity_type
@@ -3366,12 +3395,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. This field is maintained for backwards compatibility. For new
-        # callers, we recommend using `kms_key_names` to specify the KMS key. `
-        # kms_key_name` should only be used if the location of the KMS key matches the
-        # database instance’s configuration (location) exactly. E.g. The KMS location is
-        # in us-central1 or nam3 and the database instance is also in us-central1 or
-        # nam3. The Cloud KMS key to be used for encrypting and decrypting the database.
-        # Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        # callers, we recommend using `kms_key_names` to specify the KMS key. Only use `
+        # kms_key_name` if the location of the KMS key matches the database instance's
+        # configuration (location) exactly. For example, if the KMS location is in `us-
+        # central1` or `nam3`, then the database instance must also be in `us-central1`
+        # or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored
+        # database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -3545,7 +3574,7 @@ module Google
       class InstanceReplicaSelection
         include Google::Apis::Core::Hashable
       
-        # Required. Name of the location of the replicas (e.g., "us-central1").
+        # Required. Name of the location of the replicas (for example, "us-central1").
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -5956,8 +5985,13 @@ module Google
         # @return [String]
         attr_accessor :encryption_type
       
-        # Optional. The Cloud KMS key that will be used to encrypt/decrypt the restored
-        # database. This field should be set only when encryption_type is `
+        # Optional. This field is maintained for backwards compatibility. For new
+        # callers, we recommend using `kms_key_names` to specify the KMS key. Only use `
+        # kms_key_name` if the location of the KMS key matches the database instance's
+        # configuration (location) exactly. For example, if the KMS location is in `us-
+        # central1` or `nam3`, then the database instance must also be in `us-central1`
+        # or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored
+        # database. Set this field only when encryption_type is `
         # CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//
         # keyRings//cryptoKeys/`.
         # Corresponds to the JSON property `kmsKeyName`
@@ -6467,11 +6501,11 @@ module Google
       class SingleRegionQuorum
         include Google::Apis::Core::Hashable
       
-        # Required. The location of the serving region, e.g. "us-central1". The location
-        # must be one of the regions within the dual-region instance configuration of
-        # your database. The list of valid locations is available using the
-        # GetInstanceConfig API. This should only be used if you plan to change quorum
-        # to the single-region quorum type.
+        # Required. The location of the serving region, for example, "us-central1". The
+        # location must be one of the regions within the dual-region instance
+        # configuration of your database. The list of valid locations is available using
+        # the GetInstanceConfig API. This should only be used if you plan to change
+        # quorum to the single-region quorum type.
         # Corresponds to the JSON property `servingLocation`
         # @return [String]
         attr_accessor :serving_location
@@ -6884,9 +6918,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :statements
       
-        # Output only. When true, indicates that the operation is throttled e.g. due to
-        # resource constraints. When resources become available the operation will
-        # resume and this field will be false again.
+        # Output only. When true, indicates that the operation is throttled, for example,
+        # due to resource constraints. When resources become available the operation
+        # will resume and this field will be false again.
         # Corresponds to the JSON property `throttled`
         # @return [Boolean]
         attr_accessor :throttled
@@ -6911,13 +6945,13 @@ module Google
       # all at once, to the database schema at some point (or points) in the future.
       # The server checks that the statements are executable (syntactically valid,
       # name tables that exist, etc.) before enqueueing them, but they may still fail
-      # upon later execution (e.g., if a statement from another batch of statements is
-      # applied first and it conflicts in some way, or if there is some data-related
-      # problem like a `NULL` value in a column to which `NOT NULL` would be added).
-      # If a statement fails, all subsequent statements in the batch are automatically
-      # cancelled. Each batch of statements is assigned a name which can be used with
-      # the Operations API to monitor progress. See the operation_id field for more
-      # details.
+      # upon later execution (for example, if a statement from another batch of
+      # statements is applied first and it conflicts in some way, or if there is some
+      # data-related problem like a `NULL` value in a column to which `NOT NULL` would
+      # be added). If a statement fails, all subsequent statements in the batch are
+      # automatically cancelled. Each batch of statements is assigned a name which can
+      # be used with the Operations API to monitor progress. See the operation_id
+      # field for more details.
       class UpdateDatabaseDdlRequest
         include Google::Apis::Core::Hashable
       
