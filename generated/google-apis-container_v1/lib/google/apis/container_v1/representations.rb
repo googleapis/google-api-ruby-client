@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscaledRolloutPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BestEffortProvisioning
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1480,6 +1486,13 @@ module Google
         end
       end
       
+      class AutoscaledRolloutPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :wait_for_drain_duration, as: 'waitForDrainDuration'
+        end
+      end
+      
       class BestEffortProvisioning
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1517,6 +1530,8 @@ module Google
       class BlueGreenSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaled_rollout_policy, as: 'autoscaledRolloutPolicy', class: Google::Apis::ContainerV1::AutoscaledRolloutPolicy, decorator: Google::Apis::ContainerV1::AutoscaledRolloutPolicy::Representation
+      
           property :node_pool_soak_duration, as: 'nodePoolSoakDuration'
           property :standard_rollout_policy, as: 'standardRolloutPolicy', class: Google::Apis::ContainerV1::StandardRolloutPolicy, decorator: Google::Apis::ContainerV1::StandardRolloutPolicy::Representation
       
@@ -2000,6 +2015,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_external_traffic, as: 'allowExternalTraffic'
+          property :enable_k8s_certs_via_dns, as: 'enableK8sCertsViaDns'
+          property :enable_k8s_tokens_via_dns, as: 'enableK8sTokensViaDns'
           property :endpoint, as: 'endpoint'
         end
       end
