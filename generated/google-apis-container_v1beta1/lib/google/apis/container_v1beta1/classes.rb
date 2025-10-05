@@ -782,12 +782,19 @@ module Google
       class AutoscaledRolloutPolicy
         include Google::Apis::Core::Hashable
       
+        # Optional. Time to wait after cordoning the blue pool before draining the nodes.
+        # Defaults to 3 days. The value can be set between 0 and 7 days, inclusive.
+        # Corresponds to the JSON property `waitForDrainDuration`
+        # @return [String]
+        attr_accessor :wait_for_drain_duration
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @wait_for_drain_duration = args[:wait_for_drain_duration] if args.key?(:wait_for_drain_duration)
         end
       end
       

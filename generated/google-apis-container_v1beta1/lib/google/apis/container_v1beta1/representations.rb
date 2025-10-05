@@ -1629,6 +1629,7 @@ module Google
       class AutoscaledRolloutPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :wait_for_drain_duration, as: 'waitForDrainDuration'
         end
       end
       
