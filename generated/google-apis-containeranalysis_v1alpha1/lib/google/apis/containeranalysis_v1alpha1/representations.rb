@@ -2474,6 +2474,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :base_images, as: 'baseImages', class: Google::Apis::ContaineranalysisV1alpha1::BaseImage, decorator: Google::Apis::ContaineranalysisV1alpha1::BaseImage::Representation
       
+          property :chain_id, as: 'chainId'
           property :command, as: 'command'
           property :diff_id, as: 'diffId'
           property :index, as: 'index'
