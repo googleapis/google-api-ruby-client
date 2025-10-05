@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CheckConsumerConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckConsumerConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConsumerPscConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -675,6 +687,23 @@ module Google
         end
       end
       
+      class CheckConsumerConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_network, as: 'consumerNetwork'
+          property :endpoint_project, as: 'endpointProject'
+          property :requested_ip_version, as: 'requestedIpVersion'
+          property :service_class, as: 'serviceClass'
+        end
+      end
+      
+      class CheckConsumerConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors'
+        end
+      end
+      
       class ConsumerPscConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -779,6 +808,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation, decorator: Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1658,7 +1688,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin_enabled, as: 'adminEnabled'
-          property :advertised_routes, as: 'advertisedRoutes'
+          collection :advertised_routes, as: 'advertisedRoutes'
           property :bandwidth, as: 'bandwidth'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
