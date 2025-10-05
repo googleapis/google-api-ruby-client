@@ -543,6 +543,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ConfigV1::Operation, decorator: Google::Apis::ConfigV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
