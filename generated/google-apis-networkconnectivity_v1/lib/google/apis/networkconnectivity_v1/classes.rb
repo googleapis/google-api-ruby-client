@@ -389,6 +389,63 @@ module Google
         end
       end
       
+      # Request for CheckConsumerConfig.
+      class CheckConsumerConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Full resource name of the consumer network. Example: - projects/`
+        # project`/global/networks/`network`.
+        # Corresponds to the JSON property `consumerNetwork`
+        # @return [String]
+        attr_accessor :consumer_network
+      
+        # The project number or ID where the PSC endpoint is to be created.
+        # Corresponds to the JSON property `endpointProject`
+        # @return [String]
+        attr_accessor :endpoint_project
+      
+        # The requested IP Version
+        # Corresponds to the JSON property `requestedIpVersion`
+        # @return [String]
+        attr_accessor :requested_ip_version
+      
+        # Required. The service class identifier of the producer.
+        # Corresponds to the JSON property `serviceClass`
+        # @return [String]
+        attr_accessor :service_class
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
+          @endpoint_project = args[:endpoint_project] if args.key?(:endpoint_project)
+          @requested_ip_version = args[:requested_ip_version] if args.key?(:requested_ip_version)
+          @service_class = args[:service_class] if args.key?(:service_class)
+        end
+      end
+      
+      # Response for CheckConsumerConfig.
+      class CheckConsumerConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of validation errors. If the list is empty, the consumer config is valid.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<String>]
+        attr_accessor :errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+        end
+      end
+      
       # Allow the producer to specify which consumers can connect to it.
       class ConsumerPscConfig
         include Google::Apis::Core::Hashable
@@ -854,6 +911,13 @@ module Google
         # @return [Array<Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -862,6 +926,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -3231,8 +3296,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The name of the VPC network for this private regional endpoint. Format: `
-        # projects/`project`/global/networks/`network``
+        # Optional. The name of the VPC network for this private regional endpoint.
+        # Format: `projects/`project`/global/networks/`network``
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -3244,8 +3309,9 @@ module Google
         # @return [String]
         attr_accessor :psc_forwarding_rule
       
-        # The name of the subnetwork from which the IP address will be allocated. Format:
-        # `projects/`project`/regions/`region`/subnetworks/`subnetwork``
+        # Optional. The name of the subnetwork from which the IP address will be
+        # allocated. Format: `projects/`project`/regions/`region`/subnetworks/`
+        # subnetwork``
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -4531,7 +4597,7 @@ module Google
         # Optional. [Preview only] List of IP Prefixes that will be advertised to the
         # remote provider. Both IPv4 and IPv6 addresses are supported.
         # Corresponds to the JSON property `advertisedRoutes`
-        # @return [String]
+        # @return [Array<String>]
         attr_accessor :advertised_routes
       
         # Required. Bandwidth of the Transport. This must be one of the supported
