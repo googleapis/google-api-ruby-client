@@ -645,6 +645,13 @@ module Google
         # @return [Google::Apis::RedisV1::ClusterMaintenanceSchedule]
         attr_accessor :maintenance_schedule
       
+        # Optional. This field can be used to trigger self service update to indicate
+        # the desired maintenance version. The input to this field can be determined by
+        # the available_maintenance_versions field.
+        # Corresponds to the JSON property `maintenanceVersion`
+        # @return [String]
+        attr_accessor :maintenance_version
+      
         # Backups that generated and managed by memorystore.
         # Corresponds to the JSON property `managedBackupSource`
         # @return [Google::Apis::RedisV1::ManagedBackupSource]
@@ -786,6 +793,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
+          @maintenance_version = args[:maintenance_version] if args.key?(:maintenance_version)
           @managed_backup_source = args[:managed_backup_source] if args.key?(:managed_backup_source)
           @name = args[:name] if args.key?(:name)
           @node_type = args[:node_type] if args.key?(:node_type)
@@ -1173,7 +1181,7 @@ module Google
         # @return [Google::Apis::RedisV1::DatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 27
+        # Common model for database resource instance metadata. Next ID: 29
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::RedisV1::DatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -1371,7 +1379,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 27
+      # Common model for database resource instance metadata. Next ID: 29
       class DatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -1459,6 +1467,11 @@ module Google
         # @return [Google::Apis::RedisV1::MachineConfiguration]
         attr_accessor :machine_configuration
       
+        # MaintenanceInfo to capture the maintenance details of database resource.
+        # Corresponds to the JSON property `maintenanceInfo`
+        # @return [Google::Apis::RedisV1::ResourceMaintenanceInfo]
+        attr_accessor :maintenance_info
+      
         # DatabaseResourceId will serve as primary key for any resource ingestion event.
         # Corresponds to the JSON property `primaryResourceId`
         # @return [Google::Apis::RedisV1::DatabaseResourceId]
@@ -1542,6 +1555,7 @@ module Google
           @instance_type = args[:instance_type] if args.key?(:instance_type)
           @location = args[:location] if args.key?(:location)
           @machine_configuration = args[:machine_configuration] if args.key?(:machine_configuration)
+          @maintenance_info = args[:maintenance_info] if args.key?(:maintenance_info)
           @primary_resource_id = args[:primary_resource_id] if args.key?(:primary_resource_id)
           @primary_resource_location = args[:primary_resource_location] if args.key?(:primary_resource_location)
           @product = args[:product] if args.key?(:product)
@@ -1677,6 +1691,47 @@ module Google
           @signal_bool_value = args[:signal_bool_value] if args.key?(:signal_bool_value)
           @signal_state = args[:signal_state] if args.key?(:signal_state)
           @signal_type = args[:signal_type] if args.key?(:signal_type)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
         end
       end
       
@@ -3558,6 +3613,127 @@ module Google
         def update!(**args)
           @reschedule_type = args[:reschedule_type] if args.key?(:reschedule_type)
           @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
+        end
+      end
+      
+      # Deny maintenance period for the database resource. It specifies the time range
+      # during which the maintenance cannot start. This is configured by the customer.
+      class ResourceMaintenanceDenySchedule
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `endDate`
+        # @return [Google::Apis::RedisV1::Date]
+        attr_accessor :end_date
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `startDate`
+        # @return [Google::Apis::RedisV1::Date]
+        attr_accessor :start_date
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `time`
+        # @return [Google::Apis::RedisV1::TimeOfDay]
+        attr_accessor :time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @time = args[:time] if args.key?(:time)
+        end
+      end
+      
+      # MaintenanceInfo to capture the maintenance details of database resource.
+      class ResourceMaintenanceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of Deny maintenance period for the database resource.
+        # Corresponds to the JSON property `denyMaintenanceSchedules`
+        # @return [Array<Google::Apis::RedisV1::ResourceMaintenanceDenySchedule>]
+        attr_accessor :deny_maintenance_schedules
+      
+        # Maintenance window for the database resource. It specifies preferred time and
+        # day of the week and phase in some cases, when the maintenance can start. This
+        # is configured by the customer.
+        # Corresponds to the JSON property `maintenanceSchedule`
+        # @return [Google::Apis::RedisV1::ResourceMaintenanceSchedule]
+        attr_accessor :maintenance_schedule
+      
+        # Optional. Current Maintenance version of the database resource. Example: "
+        # MYSQL_8_0_41.R20250531.01_15"
+        # Corresponds to the JSON property `maintenanceVersion`
+        # @return [String]
+        attr_accessor :maintenance_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deny_maintenance_schedules = args[:deny_maintenance_schedules] if args.key?(:deny_maintenance_schedules)
+          @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
+          @maintenance_version = args[:maintenance_version] if args.key?(:maintenance_version)
+        end
+      end
+      
+      # Maintenance window for the database resource. It specifies preferred time and
+      # day of the week and phase in some cases, when the maintenance can start. This
+      # is configured by the customer.
+      class ResourceMaintenanceSchedule
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+        # Corresponds to the JSON property `day`
+        # @return [String]
+        attr_accessor :day
+      
+        # Optional. Phase of the maintenance window. This is to capture order of
+        # maintenance. For example, for Cloud SQL resources, this can be used to capture
+        # if the maintenance window is in Week1, Week2, Week5, etc. Non production
+        # resources are usually part of early phase. For more details, refer to Cloud
+        # SQL resources - https://cloud.google.com/sql/docs/mysql/maintenance
+        # Corresponds to the JSON property `phase`
+        # @return [String]
+        attr_accessor :phase
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `time`
+        # @return [Google::Apis::RedisV1::TimeOfDay]
+        attr_accessor :time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @phase = args[:phase] if args.key?(:phase)
+          @time = args[:time] if args.key?(:time)
         end
       end
       
