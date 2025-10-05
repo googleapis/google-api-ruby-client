@@ -5401,13 +5401,13 @@ module Google
       class PermissionSetting
         include Google::Apis::Core::Hashable
       
-        # Optional. Whether spaces managers have this permission.
+        # Optional. Whether space owners (`ROLE_MANAGER`) have this permission.
         # Corresponds to the JSON property `managersAllowed`
         # @return [Boolean]
         attr_accessor :managers_allowed
         alias_method :managers_allowed?, :managers_allowed
       
-        # Optional. Whether non-manager members have this permission.
+        # Optional. Whether basic space members (`ROLE_MEMBER`) have this permission.
         # Corresponds to the JSON property `membersAllowed`
         # @return [Boolean]
         attr_accessor :members_allowed
