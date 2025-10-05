@@ -216,7 +216,7 @@ module Google
         # @return [Google::Apis::ContainerV1::GcePersistentDiskCsiDriverConfig]
         attr_accessor :gce_persistent_disk_csi_driver_config
       
-        # Configuration for the GCP Filestore CSI driver.
+        # Configuration for the Filestore CSI driver.
         # Corresponds to the JSON property `gcpFilestoreCsiDriverConfig`
         # @return [Google::Apis::ContainerV1::GcpFilestoreCsiDriverConfig]
         attr_accessor :gcp_filestore_csi_driver_config
@@ -724,6 +724,27 @@ module Google
         end
       end
       
+      # Autoscaled rollout policy utilizes the cluster autoscaler during blue-green
+      # upgrade to scale both the blue and green pools.
+      class AutoscaledRolloutPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Time to wait after cordoning the blue pool before draining the nodes.
+        # Defaults to 3 days. The value can be set between 0 and 7 days, inclusive.
+        # Corresponds to the JSON property `waitForDrainDuration`
+        # @return [String]
+        attr_accessor :wait_for_drain_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @wait_for_drain_duration = args[:wait_for_drain_duration] if args.key?(:wait_for_drain_duration)
+        end
+      end
+      
       # Best effort provisioning.
       class BestEffortProvisioning
         include Google::Apis::Core::Hashable
@@ -852,6 +873,12 @@ module Google
       class BlueGreenSettings
         include Google::Apis::Core::Hashable
       
+        # Autoscaled rollout policy utilizes the cluster autoscaler during blue-green
+        # upgrade to scale both the blue and green pools.
+        # Corresponds to the JSON property `autoscaledRolloutPolicy`
+        # @return [Google::Apis::ContainerV1::AutoscaledRolloutPolicy]
+        attr_accessor :autoscaled_rollout_policy
+      
         # Time needed after draining entire blue pool. After this period, blue pool will
         # be cleaned up.
         # Corresponds to the JSON property `nodePoolSoakDuration`
@@ -869,6 +896,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autoscaled_rollout_policy = args[:autoscaled_rollout_policy] if args.key?(:autoscaled_rollout_policy)
           @node_pool_soak_duration = args[:node_pool_soak_duration] if args.key?(:node_pool_soak_duration)
           @standard_rollout_policy = args[:standard_rollout_policy] if args.key?(:standard_rollout_policy)
         end
@@ -1234,7 +1262,8 @@ module Google
         # @return [String]
         attr_accessor :endpoint
       
-        # EnterpriseConfig is the cluster enterprise configuration.
+        # EnterpriseConfig is the cluster enterprise configuration. Deprecated: GKE
+        # Enterprise features are now available without an Enterprise tier.
         # Corresponds to the JSON property `enterpriseConfig`
         # @return [Google::Apis::ContainerV1::EnterpriseConfig]
         attr_accessor :enterprise_config
@@ -1585,7 +1614,7 @@ module Google
         # @return [Google::Apis::ContainerV1::VerticalPodAutoscaling]
         attr_accessor :vertical_pod_autoscaling
       
-        # Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
+        # Configuration for the use of Kubernetes Service Accounts in IAM policies.
         # Corresponds to the JSON property `workloadIdentityConfig`
         # @return [Google::Apis::ContainerV1::WorkloadIdentityConfig]
         attr_accessor :workload_identity_config
@@ -1900,6 +1929,8 @@ module Google
         alias_method :desired_enable_private_endpoint?, :desired_enable_private_endpoint
       
         # DesiredEnterpriseConfig is a wrapper used for updating enterprise_config.
+        # Deprecated: GKE Enterprise features are now available without an Enterprise
+        # tier.
         # Corresponds to the JSON property `desiredEnterpriseConfig`
         # @return [Google::Apis::ContainerV1::DesiredEnterpriseConfig]
         attr_accessor :desired_enterprise_config
@@ -2177,7 +2208,7 @@ module Google
         # @return [Google::Apis::ContainerV1::VerticalPodAutoscaling]
         attr_accessor :desired_vertical_pod_autoscaling
       
-        # Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
+        # Configuration for the use of Kubernetes Service Accounts in IAM policies.
         # Corresponds to the JSON property `desiredWorkloadIdentityConfig`
         # @return [Google::Apis::ContainerV1::WorkloadIdentityConfig]
         attr_accessor :desired_workload_identity_config
@@ -2726,12 +2757,24 @@ module Google
       class DnsEndpointConfig
         include Google::Apis::Core::Hashable
       
-        # Controls whether user traffic is allowed over this endpoint. Note that GCP-
+        # Controls whether user traffic is allowed over this endpoint. Note that Google-
         # managed services may still use the endpoint even if this is false.
         # Corresponds to the JSON property `allowExternalTraffic`
         # @return [Boolean]
         attr_accessor :allow_external_traffic
         alias_method :allow_external_traffic?, :allow_external_traffic
+      
+        # Controls whether the k8s certs auth is allowed via DNS.
+        # Corresponds to the JSON property `enableK8sCertsViaDns`
+        # @return [Boolean]
+        attr_accessor :enable_k8s_certs_via_dns
+        alias_method :enable_k8s_certs_via_dns?, :enable_k8s_certs_via_dns
+      
+        # Controls whether the k8s token auth is allowed via DNS.
+        # Corresponds to the JSON property `enableK8sTokensViaDns`
+        # @return [Boolean]
+        attr_accessor :enable_k8s_tokens_via_dns
+        alias_method :enable_k8s_tokens_via_dns?, :enable_k8s_tokens_via_dns
       
         # Output only. The cluster's DNS endpoint configuration. A DNS format address.
         # This is accessible from the public internet. Ex: uid.us-central1.gke.goog.
@@ -2748,6 +2791,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_external_traffic = args[:allow_external_traffic] if args.key?(:allow_external_traffic)
+          @enable_k8s_certs_via_dns = args[:enable_k8s_certs_via_dns] if args.key?(:enable_k8s_certs_via_dns)
+          @enable_k8s_tokens_via_dns = args[:enable_k8s_tokens_via_dns] if args.key?(:enable_k8s_tokens_via_dns)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
         end
       end
@@ -2889,6 +2934,8 @@ module Google
       end
       
       # DesiredEnterpriseConfig is a wrapper used for updating enterprise_config.
+      # Deprecated: GKE Enterprise features are now available without an Enterprise
+      # tier.
       class DesiredEnterpriseConfig
         include Google::Apis::Core::Hashable
       
@@ -2943,7 +2990,8 @@ module Google
         end
       end
       
-      # EnterpriseConfig is the cluster enterprise configuration.
+      # EnterpriseConfig is the cluster enterprise configuration. Deprecated: GKE
+      # Enterprise features are now available without an Enterprise tier.
       class EnterpriseConfig
         include Google::Apis::Core::Hashable
       
@@ -3431,11 +3479,11 @@ module Google
         end
       end
       
-      # Configuration for the GCP Filestore CSI driver.
+      # Configuration for the Filestore CSI driver.
       class GcpFilestoreCsiDriverConfig
         include Google::Apis::Core::Hashable
       
-        # Whether the GCP Filestore CSI driver is enabled for this cluster.
+        # Whether the Filestore CSI driver is enabled for this cluster.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -7167,7 +7215,7 @@ module Google
         end
       end
       
-      # Collection of [GCP labels](https://`$universe.dns_names.
+      # Collection of [Resource Manager labels](https://`$universe.dns_names.
       # final_documentation_domain`/resource-manager/docs/creating-managing-labels).
       class ResourceLabels
         include Google::Apis::Core::Hashable
@@ -8941,7 +8989,7 @@ module Google
         # @return [Google::Apis::ContainerV1::QueuedProvisioning]
         attr_accessor :queued_provisioning
       
-        # Collection of [GCP labels](https://`$universe.dns_names.
+        # Collection of [Resource Manager labels](https://`$universe.dns_names.
         # final_documentation_domain`/resource-manager/docs/creating-managing-labels).
         # Corresponds to the JSON property `resourceLabels`
         # @return [Google::Apis::ContainerV1::ResourceLabels]
@@ -9589,7 +9637,7 @@ module Google
         end
       end
       
-      # Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
+      # Configuration for the use of Kubernetes Service Accounts in IAM policies.
       class WorkloadIdentityConfig
         include Google::Apis::Core::Hashable
       
