@@ -176,6 +176,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::PrivatecaV1beta1::Operation, decorator: Google::Apis::PrivatecaV1beta1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
