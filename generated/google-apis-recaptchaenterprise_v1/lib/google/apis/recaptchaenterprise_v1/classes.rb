@@ -1647,7 +1647,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. Challenge information for POLICY_BASED_CHALLENGE and INVISIBLE
-        # keys
+        # keys.
         # Corresponds to the JSON property `challenge`
         # @return [String]
         attr_accessor :challenge
