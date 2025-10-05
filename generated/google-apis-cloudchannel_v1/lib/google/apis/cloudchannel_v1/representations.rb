@@ -2214,6 +2214,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::CloudchannelV1::GoogleLongrunningOperation, decorator: Google::Apis::CloudchannelV1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
