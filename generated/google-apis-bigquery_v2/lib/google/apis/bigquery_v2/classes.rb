@@ -3362,6 +3362,20 @@ module Google
         # @return [String]
         attr_accessor :timestamp_format
       
+        # Precisions (maximum number of total digits in base 10) for seconds of
+        # TIMESTAMP types that are allowed to the destination table for autodetection
+        # mode. Available for the formats: CSV. For the CSV Format, Possible values
+        # include: Not Specified, [], or [6]: timestamp(6) for all auto detected
+        # TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP
+        # columns that have less than 6 digits of subseconds. timestamp(12) for all auto
+        # detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]:
+        # timestamp(12) for all auto detected TIMESTAMP columns. The order of the
+        # elements in this array is ignored. Inputs that have higher precision than the
+        # highest target precision in this array will be truncated.
+        # Corresponds to the JSON property `timestampTargetPrecision`
+        # @return [Array<Fixnum>]
+        attr_accessor :timestamp_target_precision
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3394,6 +3408,7 @@ module Google
           @time_format = args[:time_format] if args.key?(:time_format)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @timestamp_format = args[:timestamp_format] if args.key?(:timestamp_format)
+          @timestamp_target_precision = args[:timestamp_target_precision] if args.key?(:timestamp_target_precision)
         end
       end
       
@@ -4633,9 +4648,12 @@ module Google
         # @return [Google::Apis::BigqueryV2::JobConfigurationLoad]
         attr_accessor :load
       
-        # Optional. INTERNAL: DO NOT USE. The maximum rate of slot consumption to allow
-        # for this job. If set, the number of slots used to execute the job will be
-        # throttled to try and keep its slot consumption below the requested rate.
+        # Optional. A target limit on the rate of slot consumption by this job. If set
+        # to a value > 0, BigQuery will attempt to limit the rate of slot consumption by
+        # this job to keep it below the configured limit, even if the job is eligible
+        # for more slots based on fair scheduling. The unused slots will be available
+        # for other jobs and queries to use. Note: This feature is not yet generally
+        # available.
         # Corresponds to the JSON property `maxSlots`
         # @return [Fixnum]
         attr_accessor :max_slots
@@ -5127,6 +5145,20 @@ module Google
         # @return [String]
         attr_accessor :timestamp_format
       
+        # Precisions (maximum number of total digits in base 10) for seconds of
+        # TIMESTAMP types that are allowed to the destination table for autodetection
+        # mode. Available for the formats: CSV. For the CSV Format, Possible values
+        # include: Not Specified, [], or [6]: timestamp(6) for all auto detected
+        # TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP
+        # columns that have less than 6 digits of subseconds. timestamp(12) for all auto
+        # detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]:
+        # timestamp(12) for all auto detected TIMESTAMP columns. The order of the
+        # elements in this array is ignored. Inputs that have higher precision than the
+        # highest target precision in this array will be truncated.
+        # Corresponds to the JSON property `timestampTargetPrecision`
+        # @return [Array<Fixnum>]
+        attr_accessor :timestamp_target_precision
+      
         # Optional. If sourceFormat is set to "AVRO", indicates whether to interpret
         # logical types as the corresponding BigQuery data type (for example, TIMESTAMP),
         # instead of using the raw type (for example, INTEGER).
@@ -5198,6 +5230,7 @@ module Google
           @time_partitioning = args[:time_partitioning] if args.key?(:time_partitioning)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @timestamp_format = args[:timestamp_format] if args.key?(:timestamp_format)
+          @timestamp_target_precision = args[:timestamp_target_precision] if args.key?(:timestamp_target_precision)
           @use_avro_logical_types = args[:use_avro_logical_types] if args.key?(:use_avro_logical_types)
           @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
         end
@@ -5791,6 +5824,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :quota_deferments
       
+        # Output only. The reservation group path of the reservation assigned to this
+        # job. This field has a limit of 10 nested reservation groups. This is to
+        # maintain consistency between reservatins info schema and jobs info schema. The
+        # first reservation group is the root reservation group and the last is the leaf
+        # or lowest level reservation group.
+        # Corresponds to the JSON property `reservationGroupPath`
+        # @return [Array<String>]
+        attr_accessor :reservation_group_path
+      
         # Output only. Job resource usage breakdown by reservation. This field reported
         # misleading information and will no longer be populated.
         # Corresponds to the JSON property `reservationUsage`
@@ -5860,6 +5902,7 @@ module Google
           @parent_job_id = args[:parent_job_id] if args.key?(:parent_job_id)
           @query = args[:query] if args.key?(:query)
           @quota_deferments = args[:quota_deferments] if args.key?(:quota_deferments)
+          @reservation_group_path = args[:reservation_group_path] if args.key?(:reservation_group_path)
           @reservation_usage = args[:reservation_usage] if args.key?(:reservation_usage)
           @reservation_id = args[:reservation_id] if args.key?(:reservation_id)
           @row_level_security_statistics = args[:row_level_security_statistics] if args.key?(:row_level_security_statistics)
@@ -7982,10 +8025,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_results
       
-        # Optional. INTERNAL: DO NOT USE. The maximum rate of slot consumption to allow
-        # for this job. If set, the number of slots used to execute the job will be
-        # throttled to try and keep its slot consumption below the requested rate. This
-        # limit is best effort.
+        # Optional. A target limit on the rate of slot consumption by this query. If set
+        # to a value > 0, BigQuery will attempt to limit the rate of slot consumption by
+        # this query to keep it below the configured limit, even if the query is
+        # eligible for more slots based on fair scheduling. The unused slots will be
+        # available for other jobs and queries to use. Note: This feature is not yet
+        # generally available.
         # Corresponds to the JSON property `maxSlots`
         # @return [Fixnum]
         attr_accessor :max_slots
