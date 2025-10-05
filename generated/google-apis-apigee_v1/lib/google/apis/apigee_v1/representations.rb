@@ -1072,6 +1072,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1MaintenanceUpdatePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1451,6 +1463,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1RuntimeTraceSamplingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ScheduledMaintenance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1919,6 +1937,12 @@ module Google
       end
       
       class GoogleTypeMoney
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleTypeTimeOfDay
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3338,12 +3362,17 @@ module Google
           property :display_name, as: 'displayName'
           property :host, as: 'host'
           property :ip_range, as: 'ipRange'
+          property :is_version_locked, as: 'isVersionLocked'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :location, as: 'location'
+          property :maintenance_update_policy, as: 'maintenanceUpdatePolicy', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MaintenanceUpdatePolicy, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MaintenanceUpdatePolicy::Representation
+      
           property :name, as: 'name'
           property :peering_cidr_range, as: 'peeringCidrRange'
           property :port, as: 'port'
           property :runtime_version, as: 'runtimeVersion'
+          property :scheduled_maintenance, as: 'scheduledMaintenance', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScheduledMaintenance, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScheduledMaintenance::Representation
+      
           property :service_attachment, as: 'serviceAttachment'
           property :state, as: 'state'
         end
@@ -3805,6 +3834,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :trace_config_overrides, as: 'traceConfigOverrides', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1MaintenanceUpdatePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_channel, as: 'maintenanceChannel'
+          collection :maintenance_windows, as: 'maintenanceWindows', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :start_time, as: 'startTime', class: Google::Apis::ApigeeV1::GoogleTypeTimeOfDay, decorator: Google::Apis::ApigeeV1::GoogleTypeTimeOfDay::Representation
       
         end
       end
@@ -4482,6 +4529,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :sampler, as: 'sampler'
           property :sampling_rate, as: 'samplingRate'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ScheduledMaintenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -5246,6 +5300,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ApigeeV1::GoogleLongrunningOperation, decorator: Google::Apis::ApigeeV1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -5317,6 +5372,16 @@ module Google
           property :currency_code, as: 'currencyCode'
           property :nanos, as: 'nanos'
           property :units, :numeric_string => true, as: 'units'
+        end
+      end
+      
+      class GoogleTypeTimeOfDay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
         end
       end
     end

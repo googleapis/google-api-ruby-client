@@ -5598,6 +5598,14 @@ module Google
         # @return [String]
         attr_accessor :ip_range
       
+        # Output only. Indicates whether the instance is version locked. If true, the
+        # instance will not be updated by automated runtime rollouts. This is only
+        # supported for Apigee X instances.
+        # Corresponds to the JSON property `isVersionLocked`
+        # @return [Boolean]
+        attr_accessor :is_version_locked
+        alias_method :is_version_locked?, :is_version_locked
+      
         # Output only. Time the instance was last modified in milliseconds since epoch.
         # Corresponds to the JSON property `lastModifiedAt`
         # @return [Fixnum]
@@ -5607,6 +5615,12 @@ module Google
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
+      
+        # MaintenanceUpdatePolicy specifies the preferred window to perform maintenance
+        # on the instance (day of the week and time of day).
+        # Corresponds to the JSON property `maintenanceUpdatePolicy`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1MaintenanceUpdatePolicy]
+        attr_accessor :maintenance_update_policy
       
         # Required. Resource ID of the instance. Values must match the regular
         # expression `^a-z`0,30`[a-z\d]$`.
@@ -5632,6 +5646,11 @@ module Google
         # Corresponds to the JSON property `runtimeVersion`
         # @return [String]
         attr_accessor :runtime_version
+      
+        # Scheduled maintenance information for an instance.
+        # Corresponds to the JSON property `scheduledMaintenance`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScheduledMaintenance]
+        attr_accessor :scheduled_maintenance
       
         # Output only. Resource name of the service attachment created for the instance
         # in the format: `projects/*/regions/*/serviceAttachments/*` Apigee customers
@@ -5661,12 +5680,15 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @host = args[:host] if args.key?(:host)
           @ip_range = args[:ip_range] if args.key?(:ip_range)
+          @is_version_locked = args[:is_version_locked] if args.key?(:is_version_locked)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @location = args[:location] if args.key?(:location)
+          @maintenance_update_policy = args[:maintenance_update_policy] if args.key?(:maintenance_update_policy)
           @name = args[:name] if args.key?(:name)
           @peering_cidr_range = args[:peering_cidr_range] if args.key?(:peering_cidr_range)
           @port = args[:port] if args.key?(:port)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
+          @scheduled_maintenance = args[:scheduled_maintenance] if args.key?(:scheduled_maintenance)
           @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
           @state = args[:state] if args.key?(:state)
         end
@@ -7014,6 +7036,60 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @trace_config_overrides = args[:trace_config_overrides] if args.key?(:trace_config_overrides)
+        end
+      end
+      
+      # MaintenanceUpdatePolicy specifies the preferred window to perform maintenance
+      # on the instance (day of the week and time of day).
+      class GoogleCloudApigeeV1MaintenanceUpdatePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Maintenance channel to specify relative scheduling for maintenance.
+        # Corresponds to the JSON property `maintenanceChannel`
+        # @return [String]
+        attr_accessor :maintenance_channel
+      
+        # Optional. Preferred windows to perform maintenance. Currently limited to 1.
+        # Corresponds to the JSON property `maintenanceWindows`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow>]
+        attr_accessor :maintenance_windows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_channel = args[:maintenance_channel] if args.key?(:maintenance_channel)
+          @maintenance_windows = args[:maintenance_windows] if args.key?(:maintenance_windows)
+        end
+      end
+      
+      # MaintenanceWindow specifies the preferred day of the week and time of day to
+      # perform maintenance.
+      class GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # Required. Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+        # Corresponds to the JSON property `day`
+        # @return [String]
+        attr_accessor :day
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::ApigeeV1::GoogleTypeTimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -9610,6 +9686,25 @@ module Google
         def update!(**args)
           @sampler = args[:sampler] if args.key?(:sampler)
           @sampling_rate = args[:sampling_rate] if args.key?(:sampling_rate)
+        end
+      end
+      
+      # Scheduled maintenance information for an instance.
+      class GoogleCloudApigeeV1ScheduledMaintenance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The start time (UTC) of the scheduled maintenance.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -12637,6 +12732,13 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -12645,6 +12747,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -12940,6 +13043,51 @@ module Google
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @nanos = args[:nanos] if args.key?(:nanos)
           @units = args[:units] if args.key?(:units)
+        end
+      end
+      
+      # Represents a time of day. The date and time zone are either not significant or
+      # are specified elsewhere. An API may choose to allow leap seconds. Related
+      # types are google.type.Date and `google.protobuf.Timestamp`.
+      class GoogleTypeTimeOfDay
+        include Google::Apis::Core::Hashable
+      
+        # Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        # typically must be less than or equal to 23. An API may choose to allow the
+        # value "24:00:00" for scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Minutes of an hour. Must be greater than or equal to 0 and less than or equal
+        # to 59.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and
+        # less than or equal to 999,999,999.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Seconds of a minute. Must be greater than or equal to 0 and typically must be
+        # less than or equal to 59. An API may allow the value 60 if it allows leap-
+        # seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
         end
       end
     end
