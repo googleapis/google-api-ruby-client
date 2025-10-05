@@ -2340,6 +2340,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::GkehubV1alpha::Operation, decorator: Google::Apis::GkehubV1alpha::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
