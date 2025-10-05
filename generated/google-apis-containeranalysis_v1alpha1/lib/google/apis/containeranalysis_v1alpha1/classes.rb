@@ -5041,6 +5041,11 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1alpha1::BaseImage>]
         attr_accessor :base_images
       
+        # The chain ID of the layer in the container image.
+        # Corresponds to the JSON property `chainId`
+        # @return [String]
+        attr_accessor :chain_id
+      
         # The layer build command that was used to build the layer. This may not be
         # found in all layers depending on how the container image is built.
         # Corresponds to the JSON property `command`
@@ -5064,6 +5069,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @base_images = args[:base_images] if args.key?(:base_images)
+          @chain_id = args[:chain_id] if args.key?(:chain_id)
           @command = args[:command] if args.key?(:command)
           @diff_id = args[:diff_id] if args.key?(:diff_id)
           @index = args[:index] if args.key?(:index)
