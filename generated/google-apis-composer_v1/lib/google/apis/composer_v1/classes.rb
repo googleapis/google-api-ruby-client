@@ -121,6 +121,12 @@ module Google
         # @return [String]
         attr_accessor :build_log_uri
       
+        # Output only. Contains information about environment configuration that is
+        # incompatible with the new image version, except for pypi modules conflicts.
+        # Corresponds to the JSON property `configConflicts`
+        # @return [Array<Google::Apis::ComposerV1::ConfigConflict>]
+        attr_accessor :config_conflicts
+      
         # Output only. Whether build has succeeded or failed on modules conflicts.
         # Corresponds to the JSON property `containsPypiModulesConflict`
         # @return [String]
@@ -150,6 +156,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @build_log_uri = args[:build_log_uri] if args.key?(:build_log_uri)
+          @config_conflicts = args[:config_conflicts] if args.key?(:config_conflicts)
           @contains_pypi_modules_conflict = args[:contains_pypi_modules_conflict] if args.key?(:contains_pypi_modules_conflict)
           @image_version = args[:image_version] if args.key?(:image_version)
           @pypi_conflict_build_log_extract = args[:pypi_conflict_build_log_extract] if args.key?(:pypi_conflict_build_log_extract)
@@ -261,6 +268,31 @@ module Google
           @detailed_status_message = args[:detailed_status_message] if args.key?(:detailed_status_message)
           @state = args[:state] if args.key?(:state)
           @status_message = args[:status_message] if args.key?(:status_message)
+        end
+      end
+      
+      # Environment configuration conflict.
+      class ConfigConflict
+        include Google::Apis::Core::Hashable
+      
+        # Conflict message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Conflict type. It can be blocking or non-blocking.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1059,6 +1091,13 @@ module Google
         # @return [Array<Google::Apis::ComposerV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1067,6 +1106,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
