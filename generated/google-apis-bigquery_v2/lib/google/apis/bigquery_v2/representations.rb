@@ -2167,6 +2167,7 @@ module Google
           property :time_format, as: 'timeFormat'
           property :time_zone, as: 'timeZone'
           property :timestamp_format, as: 'timestampFormat'
+          collection :timestamp_target_precision, as: 'timestampTargetPrecision'
         end
       end
       
@@ -2596,6 +2597,7 @@ module Google
       
           property :time_zone, as: 'timeZone'
           property :timestamp_format, as: 'timestampFormat'
+          collection :timestamp_target_precision, as: 'timestampTargetPrecision'
           property :use_avro_logical_types, as: 'useAvroLogicalTypes'
           property :write_disposition, as: 'writeDisposition'
         end
@@ -2735,6 +2737,7 @@ module Google
           property :query, as: 'query', class: Google::Apis::BigqueryV2::JobStatistics2, decorator: Google::Apis::BigqueryV2::JobStatistics2::Representation
       
           collection :quota_deferments, as: 'quotaDeferments'
+          collection :reservation_group_path, as: 'reservationGroupPath'
           collection :reservation_usage, as: 'reservationUsage', class: Google::Apis::BigqueryV2::JobStatistics::ReservationUsage, decorator: Google::Apis::BigqueryV2::JobStatistics::ReservationUsage::Representation
       
           property :reservation_id, as: 'reservation_id'
