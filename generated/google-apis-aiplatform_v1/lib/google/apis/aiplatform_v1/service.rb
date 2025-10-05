@@ -11624,7 +11624,7 @@ module Google
         #   projects/`project`/locations/`location``
         # @param [Fixnum] page_size
         #   The maximum number of Metadata Stores to return. The service may return fewer.
-        #   Must be in range 1-1000, inclusive. Defaults to 100.
+        #   Must be in range 1-100, inclusive. Defaults to 100.
         # @param [String] page_token
         #   A page token, received from a previous MetadataService.ListMetadataStores call.
         #   Provide this to retrieve the subsequent page. When paginating, all other
@@ -11803,7 +11803,7 @@ module Google
         #   https://google.aip.dev/132#ordering for more details.
         # @param [Fixnum] page_size
         #   The maximum number of Artifacts to return. The service may return fewer. Must
-        #   be in range 1-1000, inclusive. Defaults to 100.
+        #   be in range 1-100, inclusive. Defaults to 100.
         # @param [String] page_token
         #   A page token, received from a previous MetadataService.ListArtifacts call.
         #   Provide this to retrieve the subsequent page. When paginating, all other
@@ -12376,7 +12376,7 @@ module Google
         #   https://google.aip.dev/132#ordering for more details.
         # @param [Fixnum] page_size
         #   The maximum number of Contexts to return. The service may return fewer. Must
-        #   be in range 1-1000, inclusive. Defaults to 100.
+        #   be in range 1-100, inclusive. Defaults to 100.
         # @param [String] page_token
         #   A page token, received from a previous MetadataService.ListContexts call.
         #   Provide this to retrieve the subsequent page. When paginating, all other
@@ -12921,7 +12921,7 @@ module Google
         #   https://google.aip.dev/132#ordering for more details.
         # @param [Fixnum] page_size
         #   The maximum number of Executions to return. The service may return fewer. Must
-        #   be in range 1-1000, inclusive. Defaults to 100.
+        #   be in range 1-100, inclusive. Defaults to 100.
         # @param [String] page_token
         #   A page token, received from a previous MetadataService.ListExecutions call.
         #   Provide this to retrieve the subsequent page. When paginating, all other
@@ -13331,7 +13331,7 @@ module Google
         #   A query to filter available MetadataSchemas for matching results.
         # @param [Fixnum] page_size
         #   The maximum number of MetadataSchemas to return. The service may return fewer.
-        #   Must be in range 1-1000, inclusive. Defaults to 100.
+        #   Must be in range 1-100, inclusive. Defaults to 100.
         # @param [String] page_token
         #   A page token, received from a previous MetadataService.ListMetadataSchemas
         #   call. Provide this to retrieve the next page. When paginating, all other
