@@ -1,5 +1,9 @@
 # Release history for google-apis-developerconnect_v1
 
+### v0.13.0 (2025-10-05)
+
+* Regenerated from discovery document revision 20250929
+
 ### v0.12.0 (2025-09-14)
 
 * Regenerated from discovery document revision 20250904
