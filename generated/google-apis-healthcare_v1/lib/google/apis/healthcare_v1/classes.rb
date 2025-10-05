@@ -1638,7 +1638,7 @@ module Google
         # Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an
         # individual out of context, given access to the original images, or to a
         # database of the original images containing the UIDs, it would be possible to
-        # recover the individual's identity." http://dicom.nema.org/medical/dicom/
+        # recover the individual's identity." https://dicom.nema.org/medical/dicom/
         # current/output/chtml/part15/sect_E.3.9.html
         # Corresponds to the JSON property `skipIdRedaction`
         # @return [Boolean]
@@ -5867,7 +5867,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Tags to be filtered. Tags must be DICOM Data Elements, File Meta
-        # Elements, or Directory Structuring Elements, as defined at: http://dicom.nema.
+        # Elements, or Directory Structuring Elements, as defined at: https://dicom.nema.
         # org/medical/dicom/current/output/html/part06.html#table_6-1,. They may be
         # provided by "Keyword" or "Tag". For example "PatientID", "00100010".
         # Corresponds to the JSON property `tags`

@@ -2428,7 +2428,7 @@ module Google
         end
         
         # SearchForInstances returns a list of matching instances. See [Search
-        # Transaction] (http://dicom.nema.org/medical/dicom/current/output/html/part18.
+        # Transaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.
         # html#sect_10.6). For details on the implementation of SearchForInstances, see [
         # Search transaction](https://cloud.google.com/healthcare/docs/dicom#
         # search_transaction) in the Cloud Healthcare API conformance statement. For
@@ -2471,11 +2471,11 @@ module Google
         end
         
         # SearchForSeries returns a list of matching series. See [Search Transaction] (
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
-        # For details on the implementation of SearchForSeries, see [Search transaction]
-        # (https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the
-        # Cloud Healthcare API conformance statement. For samples that show how to call
-        # SearchForSeries, see [Search for DICOM data](https://cloud.google.com/
+        # https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6)
+        # . For details on the implementation of SearchForSeries, see [Search
+        # transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
+        # in the Cloud Healthcare API conformance statement. For samples that show how
+        # to call SearchForSeries, see [Search for DICOM data](https://cloud.google.com/
         # healthcare/docs/how-tos/dicomweb#search-dicom).
         # @param [String] parent
         #   Required. The name of the DICOM store that is being accessed. For example, `
@@ -2513,8 +2513,8 @@ module Google
         end
         
         # SearchForStudies returns a list of matching studies. See [Search Transaction] (
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
-        # For details on the implementation of SearchForStudies, see [Search
+        # https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6)
+        # . For details on the implementation of SearchForStudies, see [Search
         # transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
         # in the Cloud Healthcare API conformance statement. For samples that show how
         # to call SearchForStudies, see [Search for DICOM data](https://cloud.google.com/
@@ -2635,7 +2635,7 @@ module Google
         end
         
         # StoreInstances stores DICOM instances associated with study instance unique
-        # identifiers (SUID). See [Store Transaction] (http://dicom.nema.org/medical/
+        # identifiers (SUID). See [Store Transaction] (https://dicom.nema.org/medical/
         # dicom/current/output/html/part18.html#sect_10.5). For details on the
         # implementation of StoreInstances, see [Store transaction](https://cloud.google.
         # com/healthcare/docs/dicom#store_transaction) in the Cloud Healthcare API
@@ -2899,7 +2899,7 @@ module Google
         end
         
         # RetrieveStudyMetadata returns instance associated with the given study
-        # presented as metadata. See [RetrieveTransaction] (http://dicom.nema.org/
+        # presented as metadata. See [RetrieveTransaction] (https://dicom.nema.org/
         # medical/dicom/current/output/html/part18.html#sect_10.4). For details on the
         # implementation of RetrieveStudyMetadata, see [Metadata resources](https://
         # cloud.google.com/healthcare/docs/dicom#metadata_resources) in the Cloud
@@ -2942,7 +2942,7 @@ module Google
         end
         
         # RetrieveStudy returns all instances within the given study. See [
-        # RetrieveTransaction] (http://dicom.nema.org/medical/dicom/current/output/html/
+        # RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/
         # part18.html#sect_10.4). For details on the implementation of RetrieveStudy,
         # see [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/
         # dicom#dicom_studyseriesinstances) in the Cloud Healthcare API conformance
@@ -2985,7 +2985,7 @@ module Google
         end
         
         # SearchForInstances returns a list of matching instances. See [Search
-        # Transaction] (http://dicom.nema.org/medical/dicom/current/output/html/part18.
+        # Transaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.
         # html#sect_10.6). For details on the implementation of SearchForInstances, see [
         # Search transaction](https://cloud.google.com/healthcare/docs/dicom#
         # search_transaction) in the Cloud Healthcare API conformance statement. For
@@ -3028,11 +3028,11 @@ module Google
         end
         
         # SearchForSeries returns a list of matching series. See [Search Transaction] (
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
-        # For details on the implementation of SearchForSeries, see [Search transaction]
-        # (https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the
-        # Cloud Healthcare API conformance statement. For samples that show how to call
-        # SearchForSeries, see [Search for DICOM data](https://cloud.google.com/
+        # https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6)
+        # . For details on the implementation of SearchForSeries, see [Search
+        # transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
+        # in the Cloud Healthcare API conformance statement. For samples that show how
+        # to call SearchForSeries, see [Search for DICOM data](https://cloud.google.com/
         # healthcare/docs/how-tos/dicomweb#search-dicom).
         # @param [String] parent
         #   Required. The name of the DICOM store that is being accessed. For example, `
@@ -3070,7 +3070,7 @@ module Google
         end
         
         # StoreInstances stores DICOM instances associated with study instance unique
-        # identifiers (SUID). See [Store Transaction] (http://dicom.nema.org/medical/
+        # identifiers (SUID). See [Store Transaction] (https://dicom.nema.org/medical/
         # dicom/current/output/html/part18.html#sect_10.5). For details on the
         # implementation of StoreInstances, see [Store transaction](https://cloud.google.
         # com/healthcare/docs/dicom#store_transaction) in the Cloud Healthcare API
@@ -3159,7 +3159,7 @@ module Google
         end
         
         # RetrieveSeriesMetadata returns instance associated with the given study and
-        # series, presented as metadata. See [RetrieveTransaction] (http://dicom.nema.
+        # series, presented as metadata. See [RetrieveTransaction] (https://dicom.nema.
         # org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on
         # the implementation of RetrieveSeriesMetadata, see [Metadata resources](https://
         # cloud.google.com/healthcare/docs/dicom#metadata_resources) in the Cloud
@@ -3202,7 +3202,7 @@ module Google
         end
         
         # RetrieveSeries returns all instances within the given study and series. See [
-        # RetrieveTransaction] (http://dicom.nema.org/medical/dicom/current/output/html/
+        # RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/
         # part18.html#sect_10.4). For details on the implementation of RetrieveSeries,
         # see [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/
         # dicom#dicom_studyseriesinstances) in the Cloud Healthcare API conformance
@@ -3245,7 +3245,7 @@ module Google
         end
         
         # SearchForInstances returns a list of matching instances. See [Search
-        # Transaction] (http://dicom.nema.org/medical/dicom/current/output/html/part18.
+        # Transaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.
         # html#sect_10.6). For details on the implementation of SearchForInstances, see [
         # Search transaction](https://cloud.google.com/healthcare/docs/dicom#
         # search_transaction) in the Cloud Healthcare API conformance statement. For
@@ -3330,7 +3330,7 @@ module Google
         end
         
         # RetrieveInstance returns instance associated with the given study, series, and
-        # SOP Instance UID. See [RetrieveTransaction] (http://dicom.nema.org/medical/
+        # SOP Instance UID. See [RetrieveTransaction] (https://dicom.nema.org/medical/
         # dicom/current/output/html/part18.html#sect_10.4). For details on the
         # implementation of RetrieveInstance, see [DICOM study/series/instances](https://
         # cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances) and [DICOM
@@ -3375,8 +3375,8 @@ module Google
         
         # RetrieveInstanceMetadata returns instance associated with the given study,
         # series, and SOP Instance UID presented as metadata. See [RetrieveTransaction] (
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
-        # For details on the implementation of RetrieveInstanceMetadata, see [Metadata
+        # https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4)
+        # . For details on the implementation of RetrieveInstanceMetadata, see [Metadata
         # resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
         # in the Cloud Healthcare API conformance statement. For samples that show how
         # to call RetrieveInstanceMetadata, see [Retrieve metadata](https://cloud.google.
@@ -3419,7 +3419,7 @@ module Google
         
         # RetrieveRenderedInstance returns instance associated with the given study,
         # series, and SOP Instance UID in an acceptable Rendered Media Type. See [
-        # RetrieveTransaction] (http://dicom.nema.org/medical/dicom/current/output/html/
+        # RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/
         # part18.html#sect_10.4). For details on the implementation of
         # RetrieveRenderedInstance, see [Rendered resources](https://cloud.google.com/
         # healthcare/docs/dicom#rendered_resources) in the Cloud Healthcare API
@@ -3467,7 +3467,7 @@ module Google
         end
         
         # Returns uncompressed, unencoded bytes representing the referenced bulkdata tag
-        # from an instance. See [Retrieve Transaction](http://dicom.nema.org/medical/
+        # from an instance. See [Retrieve Transaction](https://dicom.nema.org/medical/
         # dicom/current/output/html/part18.html#sect_10.4). For details on the
         # implementation of RetrieveBulkdata, see [Bulkdata resources](https://cloud.
         # google.com/healthcare/docs/dicom#bulkdata-resources) in the Cloud Healthcare
@@ -3511,7 +3511,7 @@ module Google
         end
         
         # RetrieveFrames returns instances associated with the given study, series, SOP
-        # Instance UID and frame numbers. See [RetrieveTransaction] (http://dicom.nema.
+        # Instance UID and frame numbers. See [RetrieveTransaction] (https://dicom.nema.
         # org/medical/dicom/current/output/html/part18.html#sect_10.4`. For details on
         # the implementation of RetrieveFrames, see [DICOM frames](https://cloud.google.
         # com/healthcare/docs/dicom#dicom_frames) in the Cloud Healthcare API
@@ -3556,7 +3556,7 @@ module Google
         
         # RetrieveRenderedFrames returns instances associated with the given study,
         # series, SOP Instance UID and frame numbers in an acceptable Rendered Media
-        # Type. See [RetrieveTransaction] (http://dicom.nema.org/medical/dicom/current/
+        # Type. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/
         # output/html/part18.html#sect_10.4). For details on the implementation of
         # RetrieveRenderedFrames, see [Rendered resources](https://cloud.google.com/
         # healthcare/docs/dicom#rendered_resources) in the Cloud Healthcare API
