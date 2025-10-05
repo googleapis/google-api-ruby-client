@@ -477,6 +477,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::OsconfigV2::Operation, decorator: Google::Apis::OsconfigV2::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
