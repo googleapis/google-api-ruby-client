@@ -154,6 +154,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InvalidRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InvalidRulesWrapper
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDiscoveredProfilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -742,6 +754,24 @@ module Google
         end
       end
       
+      class InvalidRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :gcs_uri, as: 'gcsUri'
+          property :name, as: 'name'
+          property :valiadtion_error, as: 'valiadtionError'
+        end
+      end
+      
+      class InvalidRulesWrapper
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :invalid_rules, as: 'invalidRules', class: Google::Apis::WorkloadmanagerV1::InvalidRule, decorator: Google::Apis::WorkloadmanagerV1::InvalidRule::Representation
+      
+        end
+      end
+      
       class ListDiscoveredProfilesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -802,7 +832,8 @@ module Google
       class ListRulesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
+          property :invalid_rules_wrapper, as: 'invalidRulesWrapper', class: Google::Apis::WorkloadmanagerV1::InvalidRulesWrapper, decorator: Google::Apis::WorkloadmanagerV1::InvalidRulesWrapper::Representation
+      
           collection :rules, as: 'rules', class: Google::Apis::WorkloadmanagerV1::Rule, decorator: Google::Apis::WorkloadmanagerV1::Rule::Representation
       
         end
