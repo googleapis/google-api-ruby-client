@@ -83,8 +83,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/
-        # projects.
+        # Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder,
+        # or project.
         # @param [String] name
         #   Required. The name of the KeyAccessJustificationsPolicyConfig to get.
         # @param [String] fields
@@ -155,8 +155,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the KeyAccessJustificationsPolicyConfig for a given organization/
-        # folder/projects.
+        # Updates the KeyAccessJustificationsPolicyConfig for a given organization,
+        # folder, or project.
         # @param [String] name
         #   Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in
         #   the format of "`organizations|folders|projects`/*/kajPolicyConfig".
@@ -193,8 +193,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/
-        # projects.
+        # Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder,
+        # or project.
         # @param [String] name
         #   Required. The name of the KeyAccessJustificationsPolicyConfig to get.
         # @param [String] fields
@@ -224,8 +224,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the KeyAccessJustificationsPolicyConfig for a given organization/
-        # folder/projects.
+        # Updates the KeyAccessJustificationsPolicyConfig for a given organization,
+        # folder, or project.
         # @param [String] name
         #   Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in
         #   the format of "`organizations|folders|projects`/*/kajPolicyConfig".
@@ -293,8 +293,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/
-        # projects.
+        # Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder,
+        # or project.
         # @param [String] name
         #   Required. The name of the KeyAccessJustificationsPolicyConfig to get.
         # @param [String] fields
@@ -461,8 +461,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the KeyAccessJustificationsPolicyConfig for a given organization/
-        # folder/projects.
+        # Updates the KeyAccessJustificationsPolicyConfig for a given organization,
+        # folder, or project.
         # @param [String] name
         #   Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in
         #   the format of "`organizations|folders|projects`/*/kajPolicyConfig".
