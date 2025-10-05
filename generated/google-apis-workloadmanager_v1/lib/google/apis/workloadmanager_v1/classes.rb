@@ -945,6 +945,62 @@ module Google
         end
       end
       
+      # Message represent an rule that failed to be validated.
+      class InvalidRule
+        include Google::Apis::Core::Hashable
+      
+        # display name of the invalid rule
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # cloud storage destination of the invalid rule
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        # name of the invalid rule
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The error message of valdating rule formats.
+        # Corresponds to the JSON property `valiadtionError`
+        # @return [String]
+        attr_accessor :valiadtion_error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @name = args[:name] if args.key?(:name)
+          @valiadtion_error = args[:valiadtion_error] if args.key?(:valiadtion_error)
+        end
+      end
+      
+      # Message wrappes a list of invalid rules.
+      class InvalidRulesWrapper
+        include Google::Apis::Core::Hashable
+      
+        # The invalid rules that failed to be validated.
+        # Corresponds to the JSON property `invalidRules`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::InvalidRule>]
+        attr_accessor :invalid_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @invalid_rules = args[:invalid_rules] if args.key?(:invalid_rules)
+        end
+      end
+      
       # List discovered profile Response returns discovered profiles from agents
       class ListDiscoveredProfilesResponse
         include Google::Apis::Core::Hashable
@@ -1118,10 +1174,10 @@ module Google
       class ListRulesResponse
         include Google::Apis::Core::Hashable
       
-        # A token identifying a page of results the server should return.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
+        # Message wrappes a list of invalid rules.
+        # Corresponds to the JSON property `invalidRulesWrapper`
+        # @return [Google::Apis::WorkloadmanagerV1::InvalidRulesWrapper]
+        attr_accessor :invalid_rules_wrapper
       
         # all rules in response
         # Corresponds to the JSON property `rules`
@@ -1134,7 +1190,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @invalid_rules_wrapper = args[:invalid_rules_wrapper] if args.key?(:invalid_rules_wrapper)
           @rules = args[:rules] if args.key?(:rules)
         end
       end
