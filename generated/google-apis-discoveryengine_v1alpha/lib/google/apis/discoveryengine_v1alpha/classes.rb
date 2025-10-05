@@ -1800,6 +1800,77 @@ module Google
         end
       end
       
+      # The resource level alert config. Used in: * UserLicense * EngineUserData The
+      # AlertPolicyConfig in data connector is of same usage. No easy way to migrate.
+      class GoogleCloudDiscoveryengineV1AlertPolicyResourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The enrollment state of each alert.
+        # Corresponds to the JSON property `alertEnrollments`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AlertPolicyResourceConfigAlertEnrollment>]
+        attr_accessor :alert_enrollments
+      
+        # Immutable. The fully qualified resource name of the AlertPolicy.
+        # Corresponds to the JSON property `alertPolicy`
+        # @return [String]
+        attr_accessor :alert_policy
+      
+        # Optional. The contact details for each alert policy.
+        # Corresponds to the JSON property `contactDetails`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ContactDetails>]
+        attr_accessor :contact_details
+      
+        # Optional. The language code used for notifications
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_enrollments = args[:alert_enrollments] if args.key?(:alert_enrollments)
+          @alert_policy = args[:alert_policy] if args.key?(:alert_policy)
+          @contact_details = args[:contact_details] if args.key?(:contact_details)
+          @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
+      # The alert enrollment status.
+      class GoogleCloudDiscoveryengineV1AlertPolicyResourceConfigAlertEnrollment
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The id of an alert.
+        # Corresponds to the JSON property `alertId`
+        # @return [String]
+        attr_accessor :alert_id
+      
+        # Required. The enrollment status of a customer.
+        # Corresponds to the JSON property `enrollState`
+        # @return [String]
+        attr_accessor :enroll_state
+      
+        # Optional. Parameters used to instantiate a notification. Used for
+        # notifications that are triggered when registered. Not stored. * Gemini
+        # Business welcome emails. * Gemini Business user invitation emails.
+        # Corresponds to the JSON property `notificationParams`
+        # @return [Hash<String,String>]
+        attr_accessor :notification_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_id = args[:alert_id] if args.key?(:alert_id)
+          @enroll_state = args[:enroll_state] if args.key?(:enroll_state)
+          @notification_params = args[:notification_params] if args.key?(:notification_params)
+        end
+      end
+      
       # The specification for answer generation.
       class GoogleCloudDiscoveryengineV1AnswerGenerationSpec
         include Google::Apis::Core::Hashable
@@ -2450,6 +2521,27 @@ module Google
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # The contact info stored in resource level. If both project level and resource
+      # level is populated, the resource level contact info will override the project
+      # level contact info.
+      class GoogleCloudDiscoveryengineV1ContactDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The email address of the contact.
+        # Corresponds to the JSON property `emailAddress`
+        # @return [String]
+        attr_accessor :email_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email_address = args[:email_address] if args.key?(:email_address)
         end
       end
       
@@ -3462,8 +3554,7 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1CmekConfig]
         attr_accessor :cmek_config
       
-        # Optional. Configuration for configurable billing approach. See go/vais-
-        # repricing-billing-dd for more details, only apply to non-Spark UCS Search.
+        # Optional. Configuration for configurable billing approach. See
         # Corresponds to the JSON property `configurableBillingApproach`
         # @return [String]
         attr_accessor :configurable_billing_approach
@@ -4283,8 +4374,7 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineCommonConfig]
         attr_accessor :common_config
       
-        # Optional. Configuration for configurable billing approach. See go/vais-
-        # repricing-billing-dd for more details.
+        # Optional. Configuration for configurable billing approach.
         # Corresponds to the JSON property `configurableBillingApproach`
         # @return [String]
         attr_accessor :configurable_billing_approach
@@ -4321,8 +4411,9 @@ module Google
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
         # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `disable-image-generation` * `disable-video-
-        # generation` * `disable-onedrive-upload`
+        # personalization-memory` * `disable-agent-sharing` * `disable-image-generation`
+        # * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
+        # content` * `disable-google-drive-upload`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -5161,6 +5252,99 @@ module Google
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @joined_events_count = args[:joined_events_count] if args.key?(:joined_events_count)
           @unjoined_events_count = args[:unjoined_events_count] if args.key?(:unjoined_events_count)
+        end
+      end
+      
+      # Information about users' licenses.
+      class GoogleCloudDiscoveryengineV1LicenseConfig
+        include Google::Apis::Core::Hashable
+      
+        # The resource level alert config. Used in: * UserLicense * EngineUserData The
+        # AlertPolicyConfig in data connector is of same usage. No easy way to migrate.
+        # Corresponds to the JSON property `alertPolicyResourceConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AlertPolicyResourceConfig]
+        attr_accessor :alert_policy_resource_config
+      
+        # Optional. Whether the license config should be auto renewed when it reaches
+        # the end date.
+        # Corresponds to the JSON property `autoRenew`
+        # @return [Boolean]
+        attr_accessor :auto_renew
+        alias_method :auto_renew?, :auto_renew
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `endDate`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate]
+        attr_accessor :end_date
+      
+        # Optional. Whether the license config is for free trial.
+        # Corresponds to the JSON property `freeTrial`
+        # @return [Boolean]
+        attr_accessor :free_trial
+        alias_method :free_trial?, :free_trial
+      
+        # Required. Number of licenses purchased.
+        # Corresponds to the JSON property `licenseCount`
+        # @return [Fixnum]
+        attr_accessor :license_count
+      
+        # Immutable. Identifier. The fully qualified resource name of the license config.
+        # Format: `projects/`project`/locations/`location`/licenseConfigs/`
+        # license_config``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `startDate`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate]
+        attr_accessor :start_date
+      
+        # Output only. The state of the license config.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required. Subscription term.
+        # Corresponds to the JSON property `subscriptionTerm`
+        # @return [String]
+        attr_accessor :subscription_term
+      
+        # Required. Subscription tier information for the license config.
+        # Corresponds to the JSON property `subscriptionTier`
+        # @return [String]
+        attr_accessor :subscription_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_policy_resource_config = args[:alert_policy_resource_config] if args.key?(:alert_policy_resource_config)
+          @auto_renew = args[:auto_renew] if args.key?(:auto_renew)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @free_trial = args[:free_trial] if args.key?(:free_trial)
+          @license_count = args[:license_count] if args.key?(:license_count)
+          @name = args[:name] if args.key?(:name)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @state = args[:state] if args.key?(:state)
+          @subscription_term = args[:subscription_term] if args.key?(:subscription_term)
+          @subscription_tier = args[:subscription_tier] if args.key?(:subscription_tier)
         end
       end
       
@@ -7328,6 +7512,77 @@ module Google
         def update!(**args)
           @alert_id = args[:alert_id] if args.key?(:alert_id)
           @enroll_state = args[:enroll_state] if args.key?(:enroll_state)
+        end
+      end
+      
+      # The resource level alert config. Used in: * UserLicense * EngineUserData The
+      # AlertPolicyConfig in data connector is of same usage. No easy way to migrate.
+      class GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The enrollment state of each alert.
+        # Corresponds to the JSON property `alertEnrollments`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfigAlertEnrollment>]
+        attr_accessor :alert_enrollments
+      
+        # Immutable. The fully qualified resource name of the AlertPolicy.
+        # Corresponds to the JSON property `alertPolicy`
+        # @return [String]
+        attr_accessor :alert_policy
+      
+        # Optional. The contact details for each alert policy.
+        # Corresponds to the JSON property `contactDetails`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaContactDetails>]
+        attr_accessor :contact_details
+      
+        # Optional. The language code used for notifications
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_enrollments = args[:alert_enrollments] if args.key?(:alert_enrollments)
+          @alert_policy = args[:alert_policy] if args.key?(:alert_policy)
+          @contact_details = args[:contact_details] if args.key?(:contact_details)
+          @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
+      # The alert enrollment status.
+      class GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfigAlertEnrollment
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The id of an alert.
+        # Corresponds to the JSON property `alertId`
+        # @return [String]
+        attr_accessor :alert_id
+      
+        # Required. The enrollment status of a customer.
+        # Corresponds to the JSON property `enrollState`
+        # @return [String]
+        attr_accessor :enroll_state
+      
+        # Optional. Parameters used to instantiate a notification. Used for
+        # notifications that are triggered when registered. Not stored. * Gemini
+        # Business welcome emails. * Gemini Business user invitation emails.
+        # Corresponds to the JSON property `notificationParams`
+        # @return [Hash<String,String>]
+        attr_accessor :notification_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_id = args[:alert_id] if args.key?(:alert_id)
+          @enroll_state = args[:enroll_state] if args.key?(:enroll_state)
+          @notification_params = args[:notification_params] if args.key?(:notification_params)
         end
       end
       
@@ -11759,6 +12014,27 @@ module Google
         end
       end
       
+      # The contact info stored in resource level. If both project level and resource
+      # level is populated, the resource level contact info will override the project
+      # level contact info.
+      class GoogleCloudDiscoveryengineV1alphaContactDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The email address of the contact.
+        # Corresponds to the JSON property `emailAddress`
+        # @return [String]
+        attr_accessor :email_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email_address = args[:email_address] if args.key?(:email_address)
+        end
+      end
+      
       # Defines a conditioned behavior to employ during serving. Must be attached to a
       # ServingConfig to be considered at serving time. Permitted actions dependent on
       # `SolutionType`.
@@ -13180,8 +13456,7 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig]
         attr_accessor :cmek_config
       
-        # Optional. Configuration for configurable billing approach. See go/vais-
-        # repricing-billing-dd for more details, only apply to non-Spark UCS Search.
+        # Optional. Configuration for configurable billing approach. See
         # Corresponds to the JSON property `configurableBillingApproach`
         # @return [String]
         attr_accessor :configurable_billing_approach
@@ -14436,8 +14711,7 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineCommonConfig]
         attr_accessor :common_config
       
-        # Optional. Configuration for configurable billing approach. See go/vais-
-        # repricing-billing-dd for more details.
+        # Optional. Configuration for configurable billing approach.
         # Corresponds to the JSON property `configurableBillingApproach`
         # @return [String]
         attr_accessor :configurable_billing_approach
@@ -14474,8 +14748,9 @@ module Google
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
         # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `disable-image-generation` * `disable-video-
-        # generation` * `disable-onedrive-upload`
+        # personalization-memory` * `disable-agent-sharing` * `disable-image-generation`
+        # * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
+        # content` * `disable-google-drive-upload`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -17148,6 +17423,99 @@ module Google
           @language_code = args[:language_code] if args.key?(:language_code)
           @normalized_language_code = args[:normalized_language_code] if args.key?(:normalized_language_code)
           @region = args[:region] if args.key?(:region)
+        end
+      end
+      
+      # Information about users' licenses.
+      class GoogleCloudDiscoveryengineV1alphaLicenseConfig
+        include Google::Apis::Core::Hashable
+      
+        # The resource level alert config. Used in: * UserLicense * EngineUserData The
+        # AlertPolicyConfig in data connector is of same usage. No easy way to migrate.
+        # Corresponds to the JSON property `alertPolicyResourceConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfig]
+        attr_accessor :alert_policy_resource_config
+      
+        # Optional. Whether the license config should be auto renewed when it reaches
+        # the end date.
+        # Corresponds to the JSON property `autoRenew`
+        # @return [Boolean]
+        attr_accessor :auto_renew
+        alias_method :auto_renew?, :auto_renew
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `endDate`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate]
+        attr_accessor :end_date
+      
+        # Optional. Whether the license config is for free trial.
+        # Corresponds to the JSON property `freeTrial`
+        # @return [Boolean]
+        attr_accessor :free_trial
+        alias_method :free_trial?, :free_trial
+      
+        # Required. Number of licenses purchased.
+        # Corresponds to the JSON property `licenseCount`
+        # @return [Fixnum]
+        attr_accessor :license_count
+      
+        # Immutable. Identifier. The fully qualified resource name of the license config.
+        # Format: `projects/`project`/locations/`location`/licenseConfigs/`
+        # license_config``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `startDate`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate]
+        attr_accessor :start_date
+      
+        # Output only. The state of the license config.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required. Subscription term.
+        # Corresponds to the JSON property `subscriptionTerm`
+        # @return [String]
+        attr_accessor :subscription_term
+      
+        # Required. Subscription tier information for the license config.
+        # Corresponds to the JSON property `subscriptionTier`
+        # @return [String]
+        attr_accessor :subscription_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_policy_resource_config = args[:alert_policy_resource_config] if args.key?(:alert_policy_resource_config)
+          @auto_renew = args[:auto_renew] if args.key?(:auto_renew)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @free_trial = args[:free_trial] if args.key?(:free_trial)
+          @license_count = args[:license_count] if args.key?(:license_count)
+          @name = args[:name] if args.key?(:name)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @state = args[:state] if args.key?(:state)
+          @subscription_term = args[:subscription_term] if args.key?(:subscription_term)
+          @subscription_tier = args[:subscription_tier] if args.key?(:subscription_tier)
         end
       end
       
@@ -23142,6 +23510,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswer]
         attr_accessor :detailed_answer
       
+        # AssistAnswer resource, main part of AssistResponse.
+        # Corresponds to the JSON property `detailedAssistAnswer`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswer]
+        attr_accessor :detailed_assist_answer
+      
         # Defines a user inputed query.
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaQuery]
@@ -23162,6 +23535,7 @@ module Google
         def update!(**args)
           @answer = args[:answer] if args.key?(:answer)
           @detailed_answer = args[:detailed_answer] if args.key?(:detailed_answer)
+          @detailed_assist_answer = args[:detailed_assist_answer] if args.key?(:detailed_assist_answer)
           @query = args[:query] if args.key?(:query)
           @query_config = args[:query_config] if args.key?(:query_config)
         end
@@ -25693,8 +26067,9 @@ module Google
         # Supported keys: * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery`
         # * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-
         # chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `disable-image-generation` * `disable-video-
-        # generation` * `disable-onedrive-upload`
+        # personalization-memory` * `disable-agent-sharing` * `disable-image-generation`
+        # * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
+        # content` * `disable-google-drive-upload`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -25915,6 +26290,77 @@ module Google
         def update!(**args)
           @disable_automatic_refresh = args[:disable_automatic_refresh] if args.key?(:disable_automatic_refresh)
           @disable_initial_index = args[:disable_initial_index] if args.key?(:disable_initial_index)
+        end
+      end
+      
+      # The resource level alert config. Used in: * UserLicense * EngineUserData The
+      # AlertPolicyConfig in data connector is of same usage. No easy way to migrate.
+      class GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The enrollment state of each alert.
+        # Corresponds to the JSON property `alertEnrollments`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfigAlertEnrollment>]
+        attr_accessor :alert_enrollments
+      
+        # Immutable. The fully qualified resource name of the AlertPolicy.
+        # Corresponds to the JSON property `alertPolicy`
+        # @return [String]
+        attr_accessor :alert_policy
+      
+        # Optional. The contact details for each alert policy.
+        # Corresponds to the JSON property `contactDetails`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaContactDetails>]
+        attr_accessor :contact_details
+      
+        # Optional. The language code used for notifications
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_enrollments = args[:alert_enrollments] if args.key?(:alert_enrollments)
+          @alert_policy = args[:alert_policy] if args.key?(:alert_policy)
+          @contact_details = args[:contact_details] if args.key?(:contact_details)
+          @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
+      # The alert enrollment status.
+      class GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfigAlertEnrollment
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The id of an alert.
+        # Corresponds to the JSON property `alertId`
+        # @return [String]
+        attr_accessor :alert_id
+      
+        # Required. The enrollment status of a customer.
+        # Corresponds to the JSON property `enrollState`
+        # @return [String]
+        attr_accessor :enroll_state
+      
+        # Optional. Parameters used to instantiate a notification. Used for
+        # notifications that are triggered when registered. Not stored. * Gemini
+        # Business welcome emails. * Gemini Business user invitation emails.
+        # Corresponds to the JSON property `notificationParams`
+        # @return [Hash<String,String>]
+        attr_accessor :notification_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_id = args[:alert_id] if args.key?(:alert_id)
+          @enroll_state = args[:enroll_state] if args.key?(:enroll_state)
+          @notification_params = args[:notification_params] if args.key?(:notification_params)
         end
       end
       
@@ -26181,6 +26627,27 @@ module Google
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # The contact info stored in resource level. If both project level and resource
+      # level is populated, the resource level contact info will override the project
+      # level contact info.
+      class GoogleCloudDiscoveryengineV1betaContactDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The email address of the contact.
+        # Corresponds to the JSON property `emailAddress`
+        # @return [String]
+        attr_accessor :email_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email_address = args[:email_address] if args.key?(:email_address)
         end
       end
       
@@ -26711,8 +27178,7 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaCmekConfig]
         attr_accessor :cmek_config
       
-        # Optional. Configuration for configurable billing approach. See go/vais-
-        # repricing-billing-dd for more details, only apply to non-Spark UCS Search.
+        # Optional. Configuration for configurable billing approach. See
         # Corresponds to the JSON property `configurableBillingApproach`
         # @return [String]
         attr_accessor :configurable_billing_approach
@@ -27464,8 +27930,7 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineCommonConfig]
         attr_accessor :common_config
       
-        # Optional. Configuration for configurable billing approach. See go/vais-
-        # repricing-billing-dd for more details.
+        # Optional. Configuration for configurable billing approach.
         # Corresponds to the JSON property `configurableBillingApproach`
         # @return [String]
         attr_accessor :configurable_billing_approach
@@ -27502,8 +27967,9 @@ module Google
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
         # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `disable-image-generation` * `disable-video-
-        # generation` * `disable-onedrive-upload`
+        # personalization-memory` * `disable-agent-sharing` * `disable-image-generation`
+        # * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
+        # content` * `disable-google-drive-upload`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -28566,6 +29032,99 @@ module Google
           @language_code = args[:language_code] if args.key?(:language_code)
           @normalized_language_code = args[:normalized_language_code] if args.key?(:normalized_language_code)
           @region = args[:region] if args.key?(:region)
+        end
+      end
+      
+      # Information about users' licenses.
+      class GoogleCloudDiscoveryengineV1betaLicenseConfig
+        include Google::Apis::Core::Hashable
+      
+        # The resource level alert config. Used in: * UserLicense * EngineUserData The
+        # AlertPolicyConfig in data connector is of same usage. No easy way to migrate.
+        # Corresponds to the JSON property `alertPolicyResourceConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfig]
+        attr_accessor :alert_policy_resource_config
+      
+        # Optional. Whether the license config should be auto renewed when it reaches
+        # the end date.
+        # Corresponds to the JSON property `autoRenew`
+        # @return [Boolean]
+        attr_accessor :auto_renew
+        alias_method :auto_renew?, :auto_renew
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `endDate`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate]
+        attr_accessor :end_date
+      
+        # Optional. Whether the license config is for free trial.
+        # Corresponds to the JSON property `freeTrial`
+        # @return [Boolean]
+        attr_accessor :free_trial
+        alias_method :free_trial?, :free_trial
+      
+        # Required. Number of licenses purchased.
+        # Corresponds to the JSON property `licenseCount`
+        # @return [Fixnum]
+        attr_accessor :license_count
+      
+        # Immutable. Identifier. The fully qualified resource name of the license config.
+        # Format: `projects/`project`/locations/`location`/licenseConfigs/`
+        # license_config``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `startDate`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate]
+        attr_accessor :start_date
+      
+        # Output only. The state of the license config.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required. Subscription term.
+        # Corresponds to the JSON property `subscriptionTerm`
+        # @return [String]
+        attr_accessor :subscription_term
+      
+        # Required. Subscription tier information for the license config.
+        # Corresponds to the JSON property `subscriptionTier`
+        # @return [String]
+        attr_accessor :subscription_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_policy_resource_config = args[:alert_policy_resource_config] if args.key?(:alert_policy_resource_config)
+          @auto_renew = args[:auto_renew] if args.key?(:auto_renew)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @free_trial = args[:free_trial] if args.key?(:free_trial)
+          @license_count = args[:license_count] if args.key?(:license_count)
+          @name = args[:name] if args.key?(:name)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @state = args[:state] if args.key?(:state)
+          @subscription_term = args[:subscription_term] if args.key?(:subscription_term)
+          @subscription_tier = args[:subscription_tier] if args.key?(:subscription_tier)
         end
       end
       

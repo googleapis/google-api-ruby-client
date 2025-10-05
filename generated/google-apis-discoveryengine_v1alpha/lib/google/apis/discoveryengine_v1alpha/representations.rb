@@ -238,6 +238,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1AlertPolicyResourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1AlertPolicyResourceConfigAlertEnrollment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1AnswerGenerationSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +365,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1ConditionTimeRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1ContactDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -772,6 +790,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1LicenseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1Project
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1097,6 +1121,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaAlertPolicyConfigAlertEnrollment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfigAlertEnrollment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1841,6 +1877,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRunProgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaContactDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2687,6 +2729,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaLanguageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaLicenseConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4048,6 +4096,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfigAlertEnrollment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaBatchCreateTargetSiteMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4091,6 +4151,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaConditionTimeRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaContactDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4499,6 +4565,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaLanguageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaLicenseConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5658,6 +5730,27 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1AlertPolicyResourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alert_enrollments, as: 'alertEnrollments', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AlertPolicyResourceConfigAlertEnrollment, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AlertPolicyResourceConfigAlertEnrollment::Representation
+      
+          property :alert_policy, as: 'alertPolicy'
+          collection :contact_details, as: 'contactDetails', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ContactDetails, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ContactDetails::Representation
+      
+          property :language_code, as: 'languageCode'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1AlertPolicyResourceConfigAlertEnrollment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_id, as: 'alertId'
+          property :enroll_state, as: 'enrollState'
+          hash :notification_params, as: 'notificationParams'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1AnswerGenerationSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5846,6 +5939,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ContactDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email_address, as: 'emailAddress'
         end
       end
       
@@ -6568,6 +6668,25 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1LicenseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_policy_resource_config, as: 'alertPolicyResourceConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AlertPolicyResourceConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AlertPolicyResourceConfig::Representation
+      
+          property :auto_renew, as: 'autoRenew'
+          property :end_date, as: 'endDate', class: Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate::Representation
+      
+          property :free_trial, as: 'freeTrial'
+          property :license_count, :numeric_string => true, as: 'licenseCount'
+          property :name, as: 'name'
+          property :start_date, as: 'startDate', class: Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate::Representation
+      
+          property :state, as: 'state'
+          property :subscription_term, as: 'subscriptionTerm'
+          property :subscription_tier, as: 'subscriptionTier'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7120,6 +7239,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alert_id, as: 'alertId'
           property :enroll_state, as: 'enrollState'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alert_enrollments, as: 'alertEnrollments', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfigAlertEnrollment, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfigAlertEnrollment::Representation
+      
+          property :alert_policy, as: 'alertPolicy'
+          collection :contact_details, as: 'contactDetails', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaContactDetails, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaContactDetails::Representation
+      
+          property :language_code, as: 'languageCode'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfigAlertEnrollment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_id, as: 'alertId'
+          property :enroll_state, as: 'enrollState'
+          hash :notification_params, as: 'notificationParams'
         end
       end
       
@@ -8382,6 +8522,13 @@ module Google
           property :current_count, :numeric_string => true, as: 'currentCount'
           property :percentile, as: 'percentile'
           property :total_count, :numeric_string => true, as: 'totalCount'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaContactDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email_address, as: 'emailAddress'
         end
       end
       
@@ -9851,6 +9998,25 @@ module Google
           property :language_code, as: 'languageCode'
           property :normalized_language_code, as: 'normalizedLanguageCode'
           property :region, as: 'region'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaLicenseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_policy_resource_config, as: 'alertPolicyResourceConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfig::Representation
+      
+          property :auto_renew, as: 'autoRenew'
+          property :end_date, as: 'endDate', class: Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate::Representation
+      
+          property :free_trial, as: 'freeTrial'
+          property :license_count, :numeric_string => true, as: 'licenseCount'
+          property :name, as: 'name'
+          property :start_date, as: 'startDate', class: Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate::Representation
+      
+          property :state, as: 'state'
+          property :subscription_term, as: 'subscriptionTerm'
+          property :subscription_tier, as: 'subscriptionTier'
         end
       end
       
@@ -11467,6 +11633,8 @@ module Google
           property :answer, as: 'answer'
           property :detailed_answer, as: 'detailedAnswer', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswer, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswer::Representation
       
+          property :detailed_assist_answer, as: 'detailedAssistAnswer', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswer, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistAnswer::Representation
+      
           property :query, as: 'query', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaQuery, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaQuery::Representation
       
           hash :query_config, as: 'queryConfig'
@@ -12175,6 +12343,27 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alert_enrollments, as: 'alertEnrollments', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfigAlertEnrollment, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfigAlertEnrollment::Representation
+      
+          property :alert_policy, as: 'alertPolicy'
+          collection :contact_details, as: 'contactDetails', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaContactDetails, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaContactDetails::Representation
+      
+          property :language_code, as: 'languageCode'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfigAlertEnrollment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_id, as: 'alertId'
+          property :enroll_state, as: 'enrollState'
+          hash :notification_params, as: 'notificationParams'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaBatchCreateTargetSiteMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12250,6 +12439,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaContactDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email_address, as: 'emailAddress'
         end
       end
       
@@ -12923,6 +13119,25 @@ module Google
           property :language_code, as: 'languageCode'
           property :normalized_language_code, as: 'normalizedLanguageCode'
           property :region, as: 'region'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaLicenseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_policy_resource_config, as: 'alertPolicyResourceConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaAlertPolicyResourceConfig::Representation
+      
+          property :auto_renew, as: 'autoRenew'
+          property :end_date, as: 'endDate', class: Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate::Representation
+      
+          property :free_trial, as: 'freeTrial'
+          property :license_count, :numeric_string => true, as: 'licenseCount'
+          property :name, as: 'name'
+          property :start_date, as: 'startDate', class: Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate::Representation
+      
+          property :state, as: 'state'
+          property :subscription_term, as: 'subscriptionTerm'
+          property :subscription_tier, as: 'subscriptionTier'
         end
       end
       
