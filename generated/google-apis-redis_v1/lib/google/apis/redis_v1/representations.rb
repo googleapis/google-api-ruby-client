@@ -749,6 +749,7 @@ module Google
           property :authorization_mode, as: 'authorizationMode'
           property :automated_backup_config, as: 'automatedBackupConfig', class: Google::Apis::RedisV1::AutomatedBackupConfig, decorator: Google::Apis::RedisV1::AutomatedBackupConfig::Representation
       
+          collection :available_maintenance_versions, as: 'availableMaintenanceVersions'
           property :backup_collection, as: 'backupCollection'
           collection :cluster_endpoints, as: 'clusterEndpoints', class: Google::Apis::RedisV1::ClusterEndpoint, decorator: Google::Apis::RedisV1::ClusterEndpoint::Representation
       
@@ -758,6 +759,7 @@ module Google
           property :deletion_protection_enabled, as: 'deletionProtectionEnabled'
           collection :discovery_endpoints, as: 'discoveryEndpoints', class: Google::Apis::RedisV1::DiscoveryEndpoint, decorator: Google::Apis::RedisV1::DiscoveryEndpoint::Representation
       
+          property :effective_maintenance_version, as: 'effectiveMaintenanceVersion'
           property :encryption_info, as: 'encryptionInfo', class: Google::Apis::RedisV1::EncryptionInfo, decorator: Google::Apis::RedisV1::EncryptionInfo::Representation
       
           property :gcs_source, as: 'gcsSource', class: Google::Apis::RedisV1::GcsBackupSource, decorator: Google::Apis::RedisV1::GcsBackupSource::Representation
