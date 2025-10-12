@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiscoveryEndpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -502,6 +508,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceMaintenanceDenySchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceMaintenanceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceMaintenanceSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RetentionSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -725,6 +749,7 @@ module Google
           property :authorization_mode, as: 'authorizationMode'
           property :automated_backup_config, as: 'automatedBackupConfig', class: Google::Apis::RedisV1beta1::AutomatedBackupConfig, decorator: Google::Apis::RedisV1beta1::AutomatedBackupConfig::Representation
       
+          collection :available_maintenance_versions, as: 'availableMaintenanceVersions'
           property :backup_collection, as: 'backupCollection'
           collection :cluster_endpoints, as: 'clusterEndpoints', class: Google::Apis::RedisV1beta1::ClusterEndpoint, decorator: Google::Apis::RedisV1beta1::ClusterEndpoint::Representation
       
@@ -734,6 +759,7 @@ module Google
           property :deletion_protection_enabled, as: 'deletionProtectionEnabled'
           collection :discovery_endpoints, as: 'discoveryEndpoints', class: Google::Apis::RedisV1beta1::DiscoveryEndpoint, decorator: Google::Apis::RedisV1beta1::DiscoveryEndpoint::Representation
       
+          property :effective_maintenance_version, as: 'effectiveMaintenanceVersion'
           property :encryption_info, as: 'encryptionInfo', class: Google::Apis::RedisV1beta1::EncryptionInfo, decorator: Google::Apis::RedisV1beta1::EncryptionInfo::Representation
       
           property :gcs_source, as: 'gcsSource', class: Google::Apis::RedisV1beta1::GcsBackupSource, decorator: Google::Apis::RedisV1beta1::GcsBackupSource::Representation
@@ -744,6 +770,7 @@ module Google
       
           property :maintenance_schedule, as: 'maintenanceSchedule', class: Google::Apis::RedisV1beta1::ClusterMaintenanceSchedule, decorator: Google::Apis::RedisV1beta1::ClusterMaintenanceSchedule::Representation
       
+          property :maintenance_version, as: 'maintenanceVersion'
           property :managed_backup_source, as: 'managedBackupSource', class: Google::Apis::RedisV1beta1::ManagedBackupSource, decorator: Google::Apis::RedisV1beta1::ManagedBackupSource::Representation
       
           property :name, as: 'name'
@@ -957,6 +984,8 @@ module Google
           property :location, as: 'location'
           property :machine_configuration, as: 'machineConfiguration', class: Google::Apis::RedisV1beta1::MachineConfiguration, decorator: Google::Apis::RedisV1beta1::MachineConfiguration::Representation
       
+          property :maintenance_info, as: 'maintenanceInfo', class: Google::Apis::RedisV1beta1::ResourceMaintenanceInfo, decorator: Google::Apis::RedisV1beta1::ResourceMaintenanceInfo::Representation
+      
           property :primary_resource_id, as: 'primaryResourceId', class: Google::Apis::RedisV1beta1::DatabaseResourceId, decorator: Google::Apis::RedisV1beta1::DatabaseResourceId::Representation
       
           property :primary_resource_location, as: 'primaryResourceLocation'
@@ -998,6 +1027,15 @@ module Google
           property :signal_bool_value, as: 'signalBoolValue'
           property :signal_state, as: 'signalState'
           property :signal_type, as: 'signalType'
+        end
+      end
+      
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
         end
       end
       
@@ -1496,6 +1534,39 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :reschedule_type, as: 'rescheduleType'
           property :schedule_time, as: 'scheduleTime'
+        end
+      end
+      
+      class ResourceMaintenanceDenySchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate', class: Google::Apis::RedisV1beta1::Date, decorator: Google::Apis::RedisV1beta1::Date::Representation
+      
+          property :start_date, as: 'startDate', class: Google::Apis::RedisV1beta1::Date, decorator: Google::Apis::RedisV1beta1::Date::Representation
+      
+          property :time, as: 'time', class: Google::Apis::RedisV1beta1::TimeOfDay, decorator: Google::Apis::RedisV1beta1::TimeOfDay::Representation
+      
+        end
+      end
+      
+      class ResourceMaintenanceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deny_maintenance_schedules, as: 'denyMaintenanceSchedules', class: Google::Apis::RedisV1beta1::ResourceMaintenanceDenySchedule, decorator: Google::Apis::RedisV1beta1::ResourceMaintenanceDenySchedule::Representation
+      
+          property :maintenance_schedule, as: 'maintenanceSchedule', class: Google::Apis::RedisV1beta1::ResourceMaintenanceSchedule, decorator: Google::Apis::RedisV1beta1::ResourceMaintenanceSchedule::Representation
+      
+          property :maintenance_version, as: 'maintenanceVersion'
+        end
+      end
+      
+      class ResourceMaintenanceSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :phase, as: 'phase'
+          property :time, as: 'time', class: Google::Apis::RedisV1beta1::TimeOfDay, decorator: Google::Apis::RedisV1beta1::TimeOfDay::Representation
+      
         end
       end
       
