@@ -585,6 +585,11 @@ module Google
       class ExecuteToolResponse
         include Google::Apis::Core::Hashable
       
+        # Metadata like service latency, etc.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Hash<String,Object>>]
+        attr_accessor :metadata
+      
         # Output from the tool execution.
         # Corresponds to the JSON property `result`
         # @return [Hash<String,Object>]
@@ -596,6 +601,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @result = args[:result] if args.key?(:result)
         end
       end
@@ -670,6 +676,38 @@ module Google
           @name = args[:name] if args.key?(:name)
           @nullable = args[:nullable] if args.key?(:nullable)
           @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # 
+      class GetResourceResponse
+        include Google::Apis::Core::Hashable
+      
+        # The content of the resource.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Metadata like service latency, etc.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Hash<String,Object>>]
+        attr_accessor :metadata
+      
+        # The MIME type of the resource.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
       end
       
@@ -1092,9 +1130,45 @@ module Google
         end
       end
       
+      # 
+      class ListResourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Metadata like service latency, etc.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Hash<String,Object>>]
+        attr_accessor :metadata
+      
+        # Next page token if more resources available.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of available resources.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ConnectorsV2::Resource>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
       # Response message for ConnectorAgentService.ListTools
       class ListToolsResponse
         include Google::Apis::Core::Hashable
+      
+        # Metadata like service latency, etc.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Hash<String,Object>>]
+        attr_accessor :metadata
       
         # Next page token.
         # Corresponds to the JSON property `nextPageToken`
@@ -1112,6 +1186,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @tools = args[:tools] if args.key?(:tools)
         end
@@ -1544,6 +1619,49 @@ module Google
         def update!(**args)
           @access_credentials = args[:access_credentials] if args.key?(:access_credentials)
           @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # 
+      class Resource
+        include Google::Apis::Core::Hashable
+      
+        # A description of what this resource represents.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The MIME type of this resource, if known.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # A human-readable name for this resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The size of the raw resource content, in bytes, if known.
+        # Corresponds to the JSON property `size`
+        # @return [Fixnum]
+        attr_accessor :size
+      
+        # The URI of this resource.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @name = args[:name] if args.key?(:name)
+          @size = args[:size] if args.key?(:size)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
