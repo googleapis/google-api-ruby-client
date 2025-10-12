@@ -34,6 +34,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AcceleratorTopologiesInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorTopologiesInfoAcceleratorTopologyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceleratorType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3832,6 +3850,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectAttachmentParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InterconnectAttachmentPartnerMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4097,6 +4121,12 @@ module Google
       end
       
       class InterconnectOutageNotification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9754,6 +9784,31 @@ module Google
         end
       end
       
+      class AcceleratorTopologiesInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerator_topology_infos, as: 'acceleratorTopologyInfos', class: Google::Apis::ComputeAlpha::AcceleratorTopologiesInfoAcceleratorTopologyInfo, decorator: Google::Apis::ComputeAlpha::AcceleratorTopologiesInfoAcceleratorTopologyInfo::Representation
+      
+        end
+      end
+      
+      class AcceleratorTopologiesInfoAcceleratorTopologyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_topology, as: 'acceleratorTopology'
+          collection :info_per_topology_states, as: 'infoPerTopologyStates', class: Google::Apis::ComputeAlpha::AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState, decorator: Google::Apis::ComputeAlpha::AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState::Representation
+      
+        end
+      end
+      
+      class AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          property :state, as: 'state'
+        end
+      end
+      
       class AcceleratorType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11379,6 +11434,7 @@ module Google
       
           property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstanceProperties, decorator: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstanceProperties::Representation
       
+          property :size, as: 'size'
         end
       end
       
@@ -11450,7 +11506,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :obtainability, as: 'obtainability'
-          property :spot_preemption, as: 'spotPreemption'
           property :uptime_score, as: 'uptimeScore'
         end
       end
@@ -11674,6 +11729,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::CompositeHealthCheckAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::CompositeHealthCheckAggregatedList::Warning::Representation
       
         end
@@ -12811,8 +12867,10 @@ module Google
           property :allow_global_access, as: 'allowGlobalAccess'
           property :allow_psc_global_access, as: 'allowPscGlobalAccess'
           property :allow_psc_packet_injection, as: 'allowPscPacketInjection'
+          property :availability_group, as: 'availabilityGroup'
           property :backend_service, as: 'backendService'
           property :base_forwarding_rule, as: 'baseForwardingRule'
+          collection :child_forwarding_rules, as: 'childForwardingRules'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :external_managed_backend_bucket_migration_state, as: 'externalManagedBackendBucketMigrationState'
@@ -12832,6 +12890,7 @@ module Google
           property :network, as: 'network'
           property :network_tier, as: 'networkTier'
           property :no_automate_dns_zone, as: 'noAutomateDnsZone'
+          property :parent_forwarding_rule, as: 'parentForwardingRule'
           property :port_range, as: 'portRange'
           collection :ports, as: 'ports'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
@@ -14211,6 +14270,7 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
           property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::HealthSourceAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::HealthSourceAggregatedList::Warning::Representation
       
         end
@@ -16533,6 +16593,8 @@ module Google
           property :name, as: 'name'
           property :noc_contact_email, as: 'nocContactEmail'
           property :operational_status, as: 'operationalStatus'
+          property :params, as: 'params', class: Google::Apis::ComputeAlpha::InterconnectParams, decorator: Google::Apis::ComputeAlpha::InterconnectParams::Representation
+      
           property :peer_ip_address, as: 'peerIpAddress'
           property :provisioned_link_count, as: 'provisionedLinkCount'
           property :remote_location, as: 'remoteLocation'
@@ -16621,6 +16683,8 @@ module Google
           property :name, as: 'name'
           property :operational_status, as: 'operationalStatus'
           property :pairing_key, as: 'pairingKey'
+          property :params, as: 'params', class: Google::Apis::ComputeAlpha::InterconnectAttachmentParams, decorator: Google::Apis::ComputeAlpha::InterconnectAttachmentParams::Representation
+      
           property :partner_asn, :numeric_string => true, as: 'partnerAsn'
           property :partner_metadata, as: 'partnerMetadata', class: Google::Apis::ComputeAlpha::InterconnectAttachmentPartnerMetadata, decorator: Google::Apis::ComputeAlpha::InterconnectAttachmentPartnerMetadata::Representation
       
@@ -16989,6 +17053,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InterconnectAttachmentParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -17471,6 +17542,13 @@ module Google
           property :source, as: 'source'
           property :start_time, :numeric_string => true, as: 'startTime'
           property :state, as: 'state'
+        end
+      end
+      
+      class InterconnectParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -22368,6 +22446,8 @@ module Google
       class ReservationSubBlock
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_topologies_info, as: 'acceleratorTopologiesInfo', class: Google::Apis::ComputeAlpha::AcceleratorTopologiesInfo, decorator: Google::Apis::ComputeAlpha::AcceleratorTopologiesInfo::Representation
+      
           property :count, as: 'count'
           property :creation_timestamp, as: 'creationTimestamp'
           property :health_info, as: 'healthInfo', class: Google::Apis::ComputeAlpha::ReservationSubBlockHealthInfo, decorator: Google::Apis::ComputeAlpha::ReservationSubBlockHealthInfo::Representation
@@ -22819,6 +22899,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_topology, as: 'acceleratorTopology'
+          property :accelerator_topology_mode, as: 'acceleratorTopologyMode'
           property :max_topology_distance, as: 'maxTopologyDistance'
           property :type, as: 'type'
         end
