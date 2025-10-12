@@ -11032,6 +11032,25 @@ module Google
         end
       end
       
+      # Response message for the DataConnectorService.CheckRefreshToken method.
+      class GoogleCloudDiscoveryengineV1alphaCheckRefreshTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # Describes a refresh token.
+        # Corresponds to the JSON property `refreshTokenInfo`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo]
+        attr_accessor :refresh_token_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @refresh_token_info = args[:refresh_token_info] if args.key?(:refresh_token_info)
+        end
+      end
+      
       # Request for CheckRequirement method.
       class GoogleCloudDiscoveryengineV1alphaCheckRequirementRequest
         include Google::Apis::Core::Hashable
@@ -26236,6 +26255,26 @@ module Google
           @super_admin_email_address = args[:super_admin_email_address] if args.key?(:super_admin_email_address)
           @super_admin_service_account = args[:super_admin_service_account] if args.key?(:super_admin_service_account)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Workspace settings for the end user.
+      class GoogleCloudDiscoveryengineV1alphaWorkspaceSettings
+        include Google::Apis::Core::Hashable
+      
+        # Whether an end user has workspace access enabled.
+        # Corresponds to the JSON property `workspaceAccessEnabled`
+        # @return [Boolean]
+        attr_accessor :workspace_access_enabled
+        alias_method :workspace_access_enabled?, :workspace_access_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @workspace_access_enabled = args[:workspace_access_enabled] if args.key?(:workspace_access_enabled)
         end
       end
       

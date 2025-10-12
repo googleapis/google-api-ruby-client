@@ -1750,6 +1750,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaCheckRefreshTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaCheckRequirementRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4079,6 +4085,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaWorkspaceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaWorkspaceSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8274,6 +8286,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaCheckRefreshTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :refresh_token_info, as: 'refreshTokenInfo', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRefreshTokenInfo::Representation
+      
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaCheckRequirementRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12323,6 +12343,13 @@ module Google
           property :super_admin_email_address, as: 'superAdminEmailAddress'
           property :super_admin_service_account, as: 'superAdminServiceAccount'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaWorkspaceSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :workspace_access_enabled, as: 'workspaceAccessEnabled'
         end
       end
       
