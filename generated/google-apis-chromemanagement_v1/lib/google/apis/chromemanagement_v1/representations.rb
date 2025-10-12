@@ -634,6 +634,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementVersionsV1DeviceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -718,7 +730,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementVersionsV1SetFailureRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1SetFailureResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementVersionsV1SignDataMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1SignDataRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -737,6 +767,36 @@ module Google
       end
       
       class GoogleChromeManagementVersionsV1ThirdPartyProfileUser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1UploadCertificateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1UploadCertificateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleLongrunningCancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleLongrunningListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleLongrunningOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1903,6 +1963,7 @@ module Google
           property :profile_permanent_id, as: 'profilePermanentId'
           property :reporting_data, as: 'reportingData', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingData, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingData::Representation
       
+          property :supports_fcm_notifications, as: 'supportsFcmNotifications'
           property :user_email, as: 'userEmail'
           property :user_id, as: 'userId'
         end
@@ -1946,6 +2007,19 @@ module Google
       
           property :user_directory_api_id, as: 'userDirectoryApiId'
           property :user_primary_email, as: 'userPrimaryEmail'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :caller_instance_id, as: 'callerInstanceId'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2092,10 +2166,31 @@ module Google
         end
       end
       
+      class GoogleChromeManagementVersionsV1SetFailureRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1SetFailureResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleChromeManagementVersionsV1SignDataMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1SignDataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sign_data, :base64 => true, as: 'signData'
+          property :signature_algorithm, as: 'signatureAlgorithm'
         end
       end
       
@@ -2120,6 +2215,47 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :org_unit_id, as: 'orgUnitId'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1UploadCertificateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_pem, as: 'certificatePem'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1UploadCertificateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleLongrunningCancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleLongrunningListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::ChromemanagementV1::GoogleLongrunningOperation, decorator: Google::Apis::ChromemanagementV1::GoogleLongrunningOperation::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class GoogleLongrunningOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::ChromemanagementV1::GoogleRpcStatus, decorator: Google::Apis::ChromemanagementV1::GoogleRpcStatus::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
         end
       end
       

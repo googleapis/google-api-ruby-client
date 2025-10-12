@@ -4271,9 +4271,10 @@ module Google
         # @return [String]
         attr_accessor :signature
       
-        # Output only. The signature algorithm that the adapter expects the client and
-        # backend components to use when processing `sign_data`. This field is only
-        # present after the `SignData` operation has been initiated.
+        # Output only. The signature algorithm that the client and backend components
+        # use when processing `sign_data`. If the `profile_type` is a `GenericProfile`,
+        # this field will only be present after the `SignData` operation was initiated.
+        # If the `profile_type` is a `ScepProfile`, the field will always be present.
         # Corresponds to the JSON property `signatureAlgorithm`
         # @return [String]
         attr_accessor :signature_algorithm
@@ -4442,6 +4443,12 @@ module Google
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingData]
         attr_accessor :reporting_data
       
+        # Output only. Whether the profile supports FCM notifications.
+        # Corresponds to the JSON property `supportsFcmNotifications`
+        # @return [Boolean]
+        attr_accessor :supports_fcm_notifications
+        alias_method :supports_fcm_notifications?, :supports_fcm_notifications
+      
         # Output only. Email address of the user to which the profile belongs.
         # Corresponds to the JSON property `userEmail`
         # @return [String]
@@ -4483,6 +4490,7 @@ module Google
           @profile_id = args[:profile_id] if args.key?(:profile_id)
           @profile_permanent_id = args[:profile_permanent_id] if args.key?(:profile_permanent_id)
           @reporting_data = args[:reporting_data] if args.key?(:reporting_data)
+          @supports_fcm_notifications = args[:supports_fcm_notifications] if args.key?(:supports_fcm_notifications)
           @user_email = args[:user_email] if args.key?(:user_email)
           @user_id = args[:user_id] if args.key?(:user_id)
         end
@@ -4640,6 +4648,38 @@ module Google
         end
       end
       
+      # Request message for claiming a certificate provisioning process.
+      class GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The instance id of the caller.
+        # Corresponds to the JSON property `callerInstanceId`
+        # @return [String]
+        attr_accessor :caller_instance_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @caller_instance_id = args[:caller_instance_id] if args.key?(:caller_instance_id)
+        end
+      end
+      
+      # Response message for claiming a certificate provisioning process.
+      class GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Information of a device that runs a Chrome browser profile.
       class GoogleChromeManagementVersionsV1DeviceInfo
         include Google::Apis::Core::Hashable
@@ -4688,8 +4728,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. A string that references the administrator-provided configuration
-        # for the certification authority service. This field can be missing if no
-        # configuration was given.
+        # for the certification authority service.
         # Corresponds to the JSON property `caConnectionAdapterConfigReference`
         # @return [String]
         attr_accessor :ca_connection_adapter_config_reference
@@ -4709,8 +4748,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. A string that references the administrator-provided configuration
-        # for the certificate provisioning profile. This field can be missing if no
-        # configuration was given.
+        # for the certificate provisioning profile.
         # Corresponds to the JSON property `profileAdapterConfigReference`
         # @return [String]
         attr_accessor :profile_adapter_config_reference
@@ -5059,8 +5097,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. A string that references the administrator-provided configuration
-        # for the certification authority service. This field can be missing if no
-        # configuration was given.
+        # for the certification authority service.
         # Corresponds to the JSON property `caConnectionAdapterConfigReference`
         # @return [String]
         attr_accessor :ca_connection_adapter_config_reference
@@ -5080,7 +5117,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The certificate template name as defined by the admin on their on-
-        # prem infrastructure. This is identifiable by the customer's CA.
+        # prem infrastructure. The Certificate Authority uses this name to identify the
+        # certificate template.
         # Corresponds to the JSON property `certificateTemplateName`
         # @return [String]
         attr_accessor :certificate_template_name
@@ -5143,6 +5181,40 @@ module Google
         end
       end
       
+      # Request message for marking a certificate provisioning process as failed.
+      class GoogleChromeManagementVersionsV1SetFailureRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A message describing the failure details. It is displayed on the
+        # ChromeOS client device.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
+        end
+      end
+      
+      # Response message for publishing a failure for a certificate provisioning
+      # process.
+      class GoogleChromeManagementVersionsV1SetFailureResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Metadata for the long-running operation returned by signData.
       class GoogleChromeManagementVersionsV1SignDataMetadata
         include Google::Apis::Core::Hashable
@@ -5159,6 +5231,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Request message for requesting a signature from the client that initated a
+      # certificate provisioning process.
+      class GoogleChromeManagementVersionsV1SignDataRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The data that the client was asked to sign.
+        # Corresponds to the JSON property `signData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sign_data
+      
+        # Required. The signature algorithm that the adapter expects the client and
+        # backend components to use when processing `sign_data`.
+        # Corresponds to the JSON property `signatureAlgorithm`
+        # @return [String]
+        attr_accessor :signature_algorithm
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sign_data = args[:sign_data] if args.key?(:sign_data)
+          @signature_algorithm = args[:signature_algorithm] if args.key?(:signature_algorithm)
         end
       end
       
@@ -5191,7 +5291,7 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Output only. The value of the subject alternative name with respoect to the `
+        # Output only. The value of the subject alternative name with respect to the `
         # type`.
         # Corresponds to the JSON property `value`
         # @return [String]
@@ -5232,6 +5332,148 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
+        end
+      end
+      
+      # Request message for uploading an issued certificate for a certificate
+      # provisioning process.
+      class GoogleChromeManagementVersionsV1UploadCertificateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The issued certificate in PEM format.
+        # Corresponds to the JSON property `certificatePem`
+        # @return [String]
+        attr_accessor :certificate_pem
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_pem = args[:certificate_pem] if args.key?(:certificate_pem)
+        end
+      end
+      
+      # Response message for publishing an issued certificate for a certificate
+      # provisioning process.
+      class GoogleChromeManagementVersionsV1UploadCertificateResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request message for Operations.CancelOperation.
+      class GoogleLongrunningCancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for Operations.ListOperations.
+      class GoogleLongrunningListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleLongrunningOperation>]
+        attr_accessor :operations
+      
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # This resource represents a long-running operation that is the result of a
+      # network API call.
+      class GoogleLongrunningOperation
+        include Google::Apis::Core::Hashable
+      
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ChromemanagementV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
