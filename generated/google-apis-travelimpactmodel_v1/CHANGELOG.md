@@ -1,5 +1,9 @@
 # Release history for google-apis-travelimpactmodel_v1
 
+### v0.10.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20251008
+
 ### v0.9.0 (2025-06-29)
 
 * Regenerated from discovery document revision 20250624

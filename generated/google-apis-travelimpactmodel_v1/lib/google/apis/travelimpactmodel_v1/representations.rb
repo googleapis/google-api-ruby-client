@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ComputeScope3FlightEmissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComputeScope3FlightEmissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ComputeTypicalFlightEmissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -88,6 +100,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Scope3FlightEmissions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Scope3FlightSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TypicalFlightEmissions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -106,6 +130,26 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :flight_emissions, as: 'flightEmissions', class: Google::Apis::TravelimpactmodelV1::FlightWithEmissions, decorator: Google::Apis::TravelimpactmodelV1::FlightWithEmissions::Representation
+      
+          property :model_version, as: 'modelVersion', class: Google::Apis::TravelimpactmodelV1::ModelVersion, decorator: Google::Apis::TravelimpactmodelV1::ModelVersion::Representation
+      
+        end
+      end
+      
+      class ComputeScope3FlightEmissionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :flights, as: 'flights', class: Google::Apis::TravelimpactmodelV1::Scope3FlightSegment, decorator: Google::Apis::TravelimpactmodelV1::Scope3FlightSegment::Representation
+      
+          property :model_version, as: 'modelVersion', class: Google::Apis::TravelimpactmodelV1::ModelVersion, decorator: Google::Apis::TravelimpactmodelV1::ModelVersion::Representation
+      
+        end
+      end
+      
+      class ComputeScope3FlightEmissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :flight_emissions, as: 'flightEmissions', class: Google::Apis::TravelimpactmodelV1::Scope3FlightEmissions, decorator: Google::Apis::TravelimpactmodelV1::Scope3FlightEmissions::Representation
       
           property :model_version, as: 'modelVersion', class: Google::Apis::TravelimpactmodelV1::ModelVersion, decorator: Google::Apis::TravelimpactmodelV1::ModelVersion::Representation
       
@@ -202,6 +246,32 @@ module Google
           property :major, as: 'major'
           property :minor, as: 'minor'
           property :patch, as: 'patch'
+        end
+      end
+      
+      class Scope3FlightEmissions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :flight, as: 'flight', class: Google::Apis::TravelimpactmodelV1::Scope3FlightSegment, decorator: Google::Apis::TravelimpactmodelV1::Scope3FlightSegment::Representation
+      
+          property :source, as: 'source'
+          property :ttw_emissions_grams_per_pax, :numeric_string => true, as: 'ttwEmissionsGramsPerPax'
+          property :wtt_emissions_grams_per_pax, :numeric_string => true, as: 'wttEmissionsGramsPerPax'
+          property :wtw_emissions_grams_per_pax, :numeric_string => true, as: 'wtwEmissionsGramsPerPax'
+        end
+      end
+      
+      class Scope3FlightSegment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cabin_class, as: 'cabinClass'
+          property :carrier_code, as: 'carrierCode'
+          property :departure_date, as: 'departureDate', class: Google::Apis::TravelimpactmodelV1::Date, decorator: Google::Apis::TravelimpactmodelV1::Date::Representation
+      
+          property :destination, as: 'destination'
+          property :distance_km, :numeric_string => true, as: 'distanceKm'
+          property :flight_number, as: 'flightNumber'
+          property :origin, as: 'origin'
         end
       end
       
