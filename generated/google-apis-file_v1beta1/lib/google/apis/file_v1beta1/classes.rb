@@ -347,6 +347,14 @@ module Google
         # @return [String]
         attr_accessor :source_backup
       
+        # The resource name of the BackupDR backup, in the format `projects/`project_id`/
+        # locations/`location_id`/backupVaults/`backupvault_id`/dataSources/`
+        # datasource_id`/backups/`backup_id``, TODO (b/443690479) - Remove visibility
+        # restrictions once the feature is ready
+        # Corresponds to the JSON property `sourceBackupdrBackup`
+        # @return [String]
+        attr_accessor :source_backupdr_backup
+      
         def initialize(**args)
            update!(**args)
         end
@@ -357,6 +365,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @nfs_export_options = args[:nfs_export_options] if args.key?(:nfs_export_options)
           @source_backup = args[:source_backup] if args.key?(:source_backup)
+          @source_backupdr_backup = args[:source_backupdr_backup] if args.key?(:source_backupdr_backup)
         end
       end
       
