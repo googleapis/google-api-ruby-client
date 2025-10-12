@@ -24,7 +24,7 @@ module Google
     # The Google Chat API lets you build Chat apps to integrate your services with
     # Google Chat and manage Chat resources such as spaces, members, and messages.
     #
-    # @see https://developers.google.com/hangouts/chat
+    # @see https://developers.google.com/workspace/chat
     module ChatV1
       # Version of the Google Chat API this client connects to.
       # This is NOT the gem version.
