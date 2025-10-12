@@ -41,32 +41,6 @@ module Google
         end
       end
       
-      # Configuration for autoscaling.
-      class AutoScalingConfig
-        include Google::Apis::Core::Hashable
-      
-        # Policy for the autoscaler.
-        # Corresponds to the JSON property `policy`
-        # @return [Google::Apis::AlloydbV1::Policy]
-        attr_accessor :policy
-      
-        # Optional list of schedules for the MIG autoscaler. If not set, no schedules
-        # are created.
-        # Corresponds to the JSON property `schedules`
-        # @return [Array<Google::Apis::AlloydbV1::Schedule>]
-        attr_accessor :schedules
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy = args[:policy] if args.key?(:policy)
-          @schedules = args[:schedules] if args.key?(:schedules)
-        end
-      end
-      
       # Message describing the user-specified automated backup policy. All fields in
       # the automated backup policy are optional. Defaults for each field are provided
       # if they are not set.
@@ -1108,25 +1082,6 @@ module Google
         def update!(**args)
           @cluster = args[:cluster] if args.key?(:cluster)
           @point_in_time = args[:point_in_time] if args.key?(:point_in_time)
-        end
-      end
-      
-      # CPU utilization policy for the autoscaler.
-      class CpuUtilization
-        include Google::Apis::Core::Hashable
-      
-        # Target CPU utilization as a float between 0 and 1.
-        # Corresponds to the JSON property `utilizationTarget`
-        # @return [Float]
-        attr_accessor :utilization_target
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @utilization_target = args[:utilization_target] if args.key?(:utilization_target)
         end
       end
       
@@ -2664,47 +2619,6 @@ module Google
         end
       end
       
-      # Policy for the autoscaler.
-      class Policy
-        include Google::Apis::Core::Hashable
-      
-        # The period of time in seconds after a new node is created before the
-        # autoscaler will incorporate its resource usage (e.g. CPU utilization) into the
-        # autoscaling recommendation algorithm.
-        # Corresponds to the JSON property `coolDownPeriodSec`
-        # @return [Fixnum]
-        attr_accessor :cool_down_period_sec
-      
-        # CPU utilization policy for the autoscaler.
-        # Corresponds to the JSON property `cpuUtilization`
-        # @return [Google::Apis::AlloydbV1::CpuUtilization]
-        attr_accessor :cpu_utilization
-      
-        # If true, autoscaling is enabled for the instance. If not set, the default
-        # value is false.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
-        # Maximum number of nodes for the autoscaler.
-        # Corresponds to the JSON property `maxNodeCount`
-        # @return [Fixnum]
-        attr_accessor :max_node_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cool_down_period_sec = args[:cool_down_period_sec] if args.key?(:cool_down_period_sec)
-          @cpu_utilization = args[:cpu_utilization] if args.key?(:cpu_utilization)
-          @enabled = args[:enabled] if args.key?(:enabled)
-          @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
-        end
-      end
-      
       # Configuration for the primary cluster. It has the list of clusters that are
       # replicating from this cluster. This should be set if and only if the cluster
       # is of type PRIMARY.
@@ -3035,11 +2949,6 @@ module Google
       class ReadPoolConfig
         include Google::Apis::Core::Hashable
       
-        # Configuration for autoscaling.
-        # Corresponds to the JSON property `autoScalingConfig`
-        # @return [Google::Apis::AlloydbV1::AutoScalingConfig]
-        attr_accessor :auto_scaling_config
-      
         # Read capacity, i.e. number of nodes in a read pool instance.
         # Corresponds to the JSON property `nodeCount`
         # @return [Fixnum]
@@ -3051,7 +2960,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @auto_scaling_config = args[:auto_scaling_config] if args.key?(:auto_scaling_config)
           @node_count = args[:node_count] if args.key?(:node_count)
         end
       end
@@ -3225,64 +3133,6 @@ module Google
           @cloudsql_backup_run_source = args[:cloudsql_backup_run_source] if args.key?(:cloudsql_backup_run_source)
           @cluster = args[:cluster] if args.key?(:cluster)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
-        end
-      end
-      
-      # A schedule for the autoscaler.
-      class Schedule
-        include Google::Apis::Core::Hashable
-      
-        # Cron expression for the triggering the schedule. See https://cloud.google.com/
-        # compute/docs/autoscaler/scaling-schedules#cron_expressions for the syntax.
-        # Corresponds to the JSON property `cronExpression`
-        # @return [String]
-        attr_accessor :cron_expression
-      
-        # Description of the schedule.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # If true, the schedule is disabled.
-        # Corresponds to the JSON property `disabled`
-        # @return [Boolean]
-        attr_accessor :disabled
-        alias_method :disabled?, :disabled
-      
-        # Duration of the schedule.
-        # Corresponds to the JSON property `durationSec`
-        # @return [Fixnum]
-        attr_accessor :duration_sec
-      
-        # Minimum number of nodes in while the schedule is active.
-        # Corresponds to the JSON property `minNodeCount`
-        # @return [Fixnum]
-        attr_accessor :min_node_count
-      
-        # Name of the schedule.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The location-based IANA time zone for interpreting the schedule's start time.
-        # If no time zone is provided, UTC is used by default.
-        # Corresponds to the JSON property `timeZone`
-        # @return [String]
-        attr_accessor :time_zone
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cron_expression = args[:cron_expression] if args.key?(:cron_expression)
-          @description = args[:description] if args.key?(:description)
-          @disabled = args[:disabled] if args.key?(:disabled)
-          @duration_sec = args[:duration_sec] if args.key?(:duration_sec)
-          @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
-          @name = args[:name] if args.key?(:name)
-          @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
       
