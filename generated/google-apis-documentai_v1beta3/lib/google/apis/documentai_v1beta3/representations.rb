@@ -886,6 +886,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3DocumentEntitiesRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3DocumentEntity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -899,6 +905,18 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta3DocumentEntityRelation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutputValidationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2812,7 +2830,12 @@ module Google
       
           collection :entities, as: 'entities', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntity, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntity::Representation
       
+          property :entities_revision_id, as: 'entitiesRevisionId'
+          collection :entities_revisions, as: 'entitiesRevisions', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntitiesRevision, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntitiesRevision::Representation
+      
           collection :entity_relations, as: 'entityRelations', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityRelation, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityRelation::Representation
+      
+          property :entity_validation_output, as: 'entityValidationOutput', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutput, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutput::Representation
       
           property :error, as: 'error', class: Google::Apis::DocumentaiV1beta3::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1beta3::GoogleRpcStatus::Representation
       
@@ -3036,6 +3059,17 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3DocumentEntitiesRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entities, as: 'entities', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntity, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntity::Representation
+      
+          property :entity_validation_output, as: 'entityValidationOutput', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutput, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutput::Representation
+      
+          property :revision_id, as: 'revisionId'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3DocumentEntity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3084,6 +3118,25 @@ module Google
           property :object_id_prop, as: 'objectId'
           property :relation, as: 'relation'
           property :subject_id, as: 'subjectId'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pass_all_rules, as: 'passAllRules'
+          collection :validation_results, as: 'validationResults', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutputValidationResult, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutputValidationResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutputValidationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rule_description, as: 'ruleDescription'
+          property :rule_name, as: 'ruleName'
+          property :validation_details, as: 'validationDetails'
+          property :validation_result_type, as: 'validationResultType'
         end
       end
       
