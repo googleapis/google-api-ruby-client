@@ -16,13 +16,13 @@ module Google
   module Apis
     module MerchantapiAccountsV1beta
       # Version of the google-apis-merchantapi_accounts_v1beta gem
-      GEM_VERSION = "0.25.0"
+      GEM_VERSION = "0.26.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.18.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20250909"
+      REVISION = "20251002"
     end
   end
 end
