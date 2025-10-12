@@ -463,6 +463,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ApphubV1::Operation, decorator: Google::Apis::ApphubV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
