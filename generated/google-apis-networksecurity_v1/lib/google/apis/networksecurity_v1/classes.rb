@@ -1385,12 +1385,20 @@ module Google
       class FirewallEndpointEndpointSettings
         include Google::Apis::Core::Hashable
       
+        # Optional. Immutable. Indicates whether Jumbo Frames are enabled. Default value
+        # is false.
+        # Corresponds to the JSON property `jumboFramesEnabled`
+        # @return [Boolean]
+        attr_accessor :jumbo_frames_enabled
+        alias_method :jumbo_frames_enabled?, :jumbo_frames_enabled
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @jumbo_frames_enabled = args[:jumbo_frames_enabled] if args.key?(:jumbo_frames_enabled)
         end
       end
       
