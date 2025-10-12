@@ -1,5 +1,9 @@
 # Release history for google-apis-apigateway_v1beta
 
+### v0.37.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20251001
+
 ### v0.36.0 (2025-09-21)
 
 * Regenerated from discovery document revision 20250910
