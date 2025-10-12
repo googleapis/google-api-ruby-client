@@ -716,6 +716,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::PolicysimulatorV1::GoogleLongrunningOperation, decorator: Google::Apis::PolicysimulatorV1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
