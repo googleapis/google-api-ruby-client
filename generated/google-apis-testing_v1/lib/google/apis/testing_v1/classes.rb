@@ -2850,7 +2850,8 @@ module Google
         attr_accessor :account
       
         # APKs to install in addition to those being directly tested. These will be
-        # installed after the app under test. Currently capped at 100.
+        # installed after the app under test. Limited to a combined total of 100 initial
+        # setup and additional files.
         # Corresponds to the JSON property `additionalApks`
         # @return [Array<Google::Apis::TestingV1::Apk>]
         attr_accessor :additional_apks
@@ -2884,7 +2885,7 @@ module Google
         attr_accessor :files_to_push
       
         # Optional. Initial setup APKs to install before the app under test is installed.
-        # Currently capped at 100.
+        # Limited to a combined total of 100 initial setup and additional files.
         # Corresponds to the JSON property `initialSetupApks`
         # @return [Array<Google::Apis::TestingV1::Apk>]
         attr_accessor :initial_setup_apks
