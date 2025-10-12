@@ -67,6 +67,58 @@ module Google
         end
       end
       
+      # A list of flight segments to request the Scope 3 emissions for.
+      class ComputeScope3FlightEmissionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Flights to return emission estimates for.
+        # Corresponds to the JSON property `flights`
+        # @return [Array<Google::Apis::TravelimpactmodelV1::Scope3FlightSegment>]
+        attr_accessor :flights
+      
+        # Travel Impact Model version. For more information about the model versioning
+        # see [GitHub](https://github.com/google/travel-impact-model/#versioning).
+        # Corresponds to the JSON property `modelVersion`
+        # @return [Google::Apis::TravelimpactmodelV1::ModelVersion]
+        attr_accessor :model_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flights = args[:flights] if args.key?(:flights)
+          @model_version = args[:model_version] if args.key?(:model_version)
+        end
+      end
+      
+      # A list of flights with Scope 3 emission estimates.
+      class ComputeScope3FlightEmissionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of flight segments with emission estimates.
+        # Corresponds to the JSON property `flightEmissions`
+        # @return [Array<Google::Apis::TravelimpactmodelV1::Scope3FlightEmissions>]
+        attr_accessor :flight_emissions
+      
+        # Travel Impact Model version. For more information about the model versioning
+        # see [GitHub](https://github.com/google/travel-impact-model/#versioning).
+        # Corresponds to the JSON property `modelVersion`
+        # @return [Google::Apis::TravelimpactmodelV1::ModelVersion]
+        attr_accessor :model_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flight_emissions = args[:flight_emissions] if args.key?(:flight_emissions)
+          @model_version = args[:model_version] if args.key?(:model_version)
+        end
+      end
+      
       # A list of pair of airports (markets) to request the typical emissions for.
       class ComputeTypicalFlightEmissionsRequest
         include Google::Apis::Core::Hashable
@@ -417,6 +469,137 @@ module Google
           @major = args[:major] if args.key?(:major)
           @minor = args[:minor] if args.key?(:minor)
           @patch = args[:patch] if args.key?(:patch)
+        end
+      end
+      
+      # Scope 3 flight with emission estimates.
+      class Scope3FlightEmissions
+        include Google::Apis::Core::Hashable
+      
+        # Flight parameters with which the Scope 3 emissions are fetched.
+        # Corresponds to the JSON property `flight`
+        # @return [Google::Apis::TravelimpactmodelV1::Scope3FlightSegment]
+        attr_accessor :flight
+      
+        # Optional. The source of the emissions data.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Optional. Tank-to-wake flight emissions per passenger based on the requested
+        # info.
+        # Corresponds to the JSON property `ttwEmissionsGramsPerPax`
+        # @return [Fixnum]
+        attr_accessor :ttw_emissions_grams_per_pax
+      
+        # Optional. Well-to-tank flight emissions per passenger based on the requested
+        # info.
+        # Corresponds to the JSON property `wttEmissionsGramsPerPax`
+        # @return [Fixnum]
+        attr_accessor :wtt_emissions_grams_per_pax
+      
+        # Optional. Total flight emissions (sum of well-to-tank and tank-to-wake) per
+        # passenger based on the requested info. This is the total emissions and unless
+        # you have specific reasons for using TTW or WTT emissions, you should use this
+        # number.
+        # Corresponds to the JSON property `wtwEmissionsGramsPerPax`
+        # @return [Fixnum]
+        attr_accessor :wtw_emissions_grams_per_pax
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flight = args[:flight] if args.key?(:flight)
+          @source = args[:source] if args.key?(:source)
+          @ttw_emissions_grams_per_pax = args[:ttw_emissions_grams_per_pax] if args.key?(:ttw_emissions_grams_per_pax)
+          @wtt_emissions_grams_per_pax = args[:wtt_emissions_grams_per_pax] if args.key?(:wtt_emissions_grams_per_pax)
+          @wtw_emissions_grams_per_pax = args[:wtw_emissions_grams_per_pax] if args.key?(:wtw_emissions_grams_per_pax)
+        end
+      end
+      
+      # Flight parameters with which the Scope 3 emissions are fetched.
+      class Scope3FlightSegment
+        include Google::Apis::Core::Hashable
+      
+        # Required. The cabin class of the flight.
+        # Corresponds to the JSON property `cabinClass`
+        # @return [String]
+        attr_accessor :cabin_class
+      
+        # Optional. IATA carrier code, e.g. `KE`. This is required if specific flight
+        # matching is desired. Otherwise, this is unused for typical flight and distance-
+        # based emissions models. This could be both operating and marketing carrier
+        # code (i.e. codeshare is covered).
+        # Corresponds to the JSON property `carrierCode`
+        # @return [String]
+        attr_accessor :carrier_code
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `departureDate`
+        # @return [Google::Apis::TravelimpactmodelV1::Date]
+        attr_accessor :departure_date
+      
+        # Optional. IATA airport code for flight destination, e.g. `ICN`. This is used
+        # to match specific flight if provided alongside origin, carrier, and flight
+        # number. If there is no match, we will first try to match the flight to a
+        # typical flight between the provided origin and destination airports. Otherwise,
+        # we will use the distance-based emissions model if the flight distance is
+        # provided.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # Optional. Distance in kilometers, e.g. `2423`. This is used to match a flight
+        # to distance-based emissions when origin and destination are not provided or
+        # there are no matching typical flights. This field supports values between 0
+        # and 2.5e16 km.
+        # Corresponds to the JSON property `distanceKm`
+        # @return [Fixnum]
+        attr_accessor :distance_km
+      
+        # Optional. Flight number, e.g. `71`. This is first used to match a specific
+        # flight if a flight number is specified alongside origin, destination, and
+        # carrier. If a flight number is not specified, we will first try to match the
+        # flight to a typical flight between the provided origin and destination
+        # airports. If that fails and/or origin & destination are not provided, we will
+        # use the distance-based emissions model based on the flight distance provided.
+        # Corresponds to the JSON property `flightNumber`
+        # @return [Fixnum]
+        attr_accessor :flight_number
+      
+        # Optional. IATA airport code for flight origin, e.g. `YVR`. This is used to
+        # match specific flight if provided alongside destination, carrier, and flight
+        # number. If there is no match, we will first try to match the flight to a
+        # typical flight between the provided origin and destination airports. Otherwise,
+        # we will use the distance-based emissions model if the flight distance is
+        # provided.
+        # Corresponds to the JSON property `origin`
+        # @return [String]
+        attr_accessor :origin
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cabin_class = args[:cabin_class] if args.key?(:cabin_class)
+          @carrier_code = args[:carrier_code] if args.key?(:carrier_code)
+          @departure_date = args[:departure_date] if args.key?(:departure_date)
+          @destination = args[:destination] if args.key?(:destination)
+          @distance_km = args[:distance_km] if args.key?(:distance_km)
+          @flight_number = args[:flight_number] if args.key?(:flight_number)
+          @origin = args[:origin] if args.key?(:origin)
         end
       end
       
