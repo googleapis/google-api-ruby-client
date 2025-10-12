@@ -922,12 +922,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValueQaAnswerRationale
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudContactcenterinsightsV1QaQuestion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1841,12 +1835,6 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValueQaAnswerRationale
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3647,18 +3635,9 @@ module Google
           property :normalized_score, as: 'normalizedScore'
           property :num_value, as: 'numValue'
           property :potential_score, as: 'potentialScore'
-          property :rationale, as: 'rationale', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaAnswerAnswerValueQaAnswerRationale, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaAnswerAnswerValueQaAnswerRationale::Representation
-      
           property :score, as: 'score'
           property :skip_value, as: 'skipValue'
           property :str_value, as: 'strValue'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValueQaAnswerRationale
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :rationale, as: 'rationale'
         end
       end
       
@@ -4057,6 +4036,7 @@ module Google
           hash :pubsub_notification_settings, as: 'pubsubNotificationSettings'
           property :redaction_config, as: 'redactionConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig::Representation
       
+          property :screen_recording_bucket_uri, as: 'screenRecordingBucketUri'
           property :speech_config, as: 'speechConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig::Representation
       
           property :update_time, as: 'updateTime'
@@ -5259,18 +5239,9 @@ module Google
           property :normalized_score, as: 'normalizedScore'
           property :num_value, as: 'numValue'
           property :potential_score, as: 'potentialScore'
-          property :rationale, as: 'rationale', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValueQaAnswerRationale, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValueQaAnswerRationale::Representation
-      
           property :score, as: 'score'
           property :skip_value, as: 'skipValue'
           property :str_value, as: 'strValue'
-        end
-      end
-      
-      class GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValueQaAnswerRationale
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :rationale, as: 'rationale'
         end
       end
       

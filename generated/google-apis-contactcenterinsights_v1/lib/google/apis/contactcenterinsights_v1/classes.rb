@@ -5200,11 +5200,6 @@ module Google
         # @return [Float]
         attr_accessor :potential_score
       
-        # Wrapper for the rationale for the answer.
-        # Corresponds to the JSON property `rationale`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaAnswerAnswerValueQaAnswerRationale]
-        attr_accessor :rationale
-      
         # Output only. Numerical score of the answer.
         # Corresponds to the JSON property `score`
         # @return [Float]
@@ -5235,29 +5230,9 @@ module Google
           @normalized_score = args[:normalized_score] if args.key?(:normalized_score)
           @num_value = args[:num_value] if args.key?(:num_value)
           @potential_score = args[:potential_score] if args.key?(:potential_score)
-          @rationale = args[:rationale] if args.key?(:rationale)
           @score = args[:score] if args.key?(:score)
           @skip_value = args[:skip_value] if args.key?(:skip_value)
           @str_value = args[:str_value] if args.key?(:str_value)
-        end
-      end
-      
-      # Wrapper for the rationale for the answer.
-      class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValueQaAnswerRationale
-        include Google::Apis::Core::Hashable
-      
-        # The rationale string for the answer.
-        # Corresponds to the JSON property `rationale`
-        # @return [String]
-        attr_accessor :rationale
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @rationale = args[:rationale] if args.key?(:rationale)
         end
       end
       
@@ -6713,6 +6688,15 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig]
         attr_accessor :redaction_config
       
+        # Optional. The path to a Cloud Storage bucket containing conversation screen
+        # recordings. If provided, Insights will search in the bucket for a screen
+        # recording file matching the conversation data source object name prefix. If
+        # matches are found, these file URIs will be stored in the conversation screen
+        # recordings field.
+        # Corresponds to the JSON property `screenRecordingBucketUri`
+        # @return [String]
+        attr_accessor :screen_recording_bucket_uri
+      
         # Speech-to-Text configuration. Speech-to-Text settings are applied to
         # conversations ingested from the `UploadConversation` and `IngestConversations`
         # endpoints, including conversation coming from CCAI Platform. They are not
@@ -6739,6 +6723,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @pubsub_notification_settings = args[:pubsub_notification_settings] if args.key?(:pubsub_notification_settings)
           @redaction_config = args[:redaction_config] if args.key?(:redaction_config)
+          @screen_recording_bucket_uri = args[:screen_recording_bucket_uri] if args.key?(:screen_recording_bucket_uri)
           @speech_config = args[:speech_config] if args.key?(:speech_config)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -10871,11 +10856,6 @@ module Google
         # @return [Float]
         attr_accessor :potential_score
       
-        # Wrapper for the rationale for the answer.
-        # Corresponds to the JSON property `rationale`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValueQaAnswerRationale]
-        attr_accessor :rationale
-      
         # Output only. Numerical score of the answer.
         # Corresponds to the JSON property `score`
         # @return [Float]
@@ -10906,29 +10886,9 @@ module Google
           @normalized_score = args[:normalized_score] if args.key?(:normalized_score)
           @num_value = args[:num_value] if args.key?(:num_value)
           @potential_score = args[:potential_score] if args.key?(:potential_score)
-          @rationale = args[:rationale] if args.key?(:rationale)
           @score = args[:score] if args.key?(:score)
           @skip_value = args[:skip_value] if args.key?(:skip_value)
           @str_value = args[:str_value] if args.key?(:str_value)
-        end
-      end
-      
-      # Wrapper for the rationale for the answer.
-      class GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValueQaAnswerRationale
-        include Google::Apis::Core::Hashable
-      
-        # The rationale string for the answer.
-        # Corresponds to the JSON property `rationale`
-        # @return [String]
-        attr_accessor :rationale
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @rationale = args[:rationale] if args.key?(:rationale)
         end
       end
       
