@@ -4880,10 +4880,11 @@ module Google
       class ResourceRequirements
         include Google::Apis::Core::Hashable
       
-        # Limits describes the maximum amount of compute resources allowed. Only 'cpu'
-        # and 'memory' keys are supported. * For supported 'cpu' values, go to https://
-        # cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and
-        # syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
+        # Limits describes the maximum amount of compute resources allowed. Only 'cpu', '
+        # memory' and 'nvidia.com/gpu' keys are supported. * For supported 'cpu' values,
+        # go to https://cloud.google.com/run/docs/configuring/cpu. * For supported '
+        # memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/
+        # memory-limits. * The only supported 'nvidia.com/gpu' value is '1'.
         # Corresponds to the JSON property `limits`
         # @return [Hash<String,String>]
         attr_accessor :limits
