@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleBigtableAdminV2MaterializedViewClusterState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleBigtableAdminV2TypeAggregate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1331,6 +1337,13 @@ module Google
         end
       end
       
+      class GoogleBigtableAdminV2MaterializedViewClusterState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :replication_state, as: 'replicationState'
+        end
+      end
+      
       class GoogleBigtableAdminV2TypeAggregate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1709,6 +1722,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::BigtableadminV2::Operation, decorator: Google::Apis::BigtableadminV2::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1754,6 +1768,8 @@ module Google
       class MaterializedView
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :cluster_states, as: 'clusterStates', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2MaterializedViewClusterState, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2MaterializedViewClusterState::Representation
+      
           property :deletion_protection, as: 'deletionProtection'
           property :etag, as: 'etag'
           property :name, as: 'name'
