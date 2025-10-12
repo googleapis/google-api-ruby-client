@@ -601,6 +601,89 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a single alert.
+        # @param [String] name
+        #   Required. The name of the alert.The format is: projects/[PROJECT_ID_OR_NUMBER]/
+        #   alerts/[ALERT_ID] The [ALERT_ID] is a system-assigned unique identifier for
+        #   the alert.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::Alert] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::Alert]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_alert(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV3::Alert::Representation
+          command.response_class = Google::Apis::MonitoringV3::Alert
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the existing alerts for the metrics scope of the project.
+        # @param [String] parent
+        #   Required. The name of the project to list alerts for.
+        # @param [String] filter
+        #   Optional. An alert is returned if there is a match on any fields belonging to
+        #   the alert or its subfields.
+        # @param [String] order_by
+        #   Optional. A comma-separated list of fields in Alert to use for sorting. The
+        #   default sort direction is ascending. To specify descending order for a field,
+        #   add a desc modifier. The following fields are supported: open_time
+        #   close_timeFor example, close_time desc, open_time will return the alerts
+        #   closed most recently, with ties broken in the order of older alerts listed
+        #   first.If the field is not set, the results are sorted by open_time desc.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return in a single response. If not
+        #   set to a positive number, at most 50 alerts will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. If non-empty, page_token must contain a value returned as the
+        #   next_page_token in a previous response to request the next set of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::ListAlertsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::ListAlertsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_alerts(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/alerts', options)
+          command.response_representation = Google::Apis::MonitoringV3::ListAlertsResponse::Representation
+          command.response_class = Google::Apis::MonitoringV3::ListAlertsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Cloud Monitoring Agent only: Creates a new time series.This method is only for
         # use by the Cloud Monitoring Agent. Use projects.timeSeries.create instead.
         # @param [String] name
