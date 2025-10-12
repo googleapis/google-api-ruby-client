@@ -6820,6 +6820,15 @@ module Google
         # @return [String]
         attr_accessor :cluster_uuid
       
+        # Optional. Whether the request is submitted by Dataproc super user. If true,
+        # IAM will check 'dataproc.clusters.repair' permission instead of 'dataproc.
+        # clusters.update' permission. This is to give Dataproc superuser the ability to
+        # repair clusters without granting the overly broad update permission.
+        # Corresponds to the JSON property `dataprocSuperUser`
+        # @return [Boolean]
+        attr_accessor :dataproc_super_user
+        alias_method :dataproc_super_user?, :dataproc_super_user
+      
         # Optional. Timeout for graceful YARN decommissioning. Graceful decommissioning
         # facilitates the removal of cluster nodes without interrupting jobs in progress.
         # The timeout specifies the amount of time to wait for jobs finish before
@@ -6862,6 +6871,7 @@ module Google
         def update!(**args)
           @cluster = args[:cluster] if args.key?(:cluster)
           @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
+          @dataproc_super_user = args[:dataproc_super_user] if args.key?(:dataproc_super_user)
           @graceful_decommission_timeout = args[:graceful_decommission_timeout] if args.key?(:graceful_decommission_timeout)
           @node_pools = args[:node_pools] if args.key?(:node_pools)
           @parent_operation_id = args[:parent_operation_id] if args.key?(:parent_operation_id)
@@ -11403,11 +11413,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :milli_dcu_seconds
       
-        # Optional. Slot usage in (milliSlot x seconds).
-        # Corresponds to the JSON property `milliSlotSeconds`
-        # @return [Fixnum]
-        attr_accessor :milli_slot_seconds
-      
         # Optional. Shuffle storage usage in (GB x seconds) (see Dataproc Serverless
         # pricing (https://cloud.google.com/dataproc-serverless/pricing)).
         # Corresponds to the JSON property `shuffleStorageGbSeconds`
@@ -11428,7 +11433,6 @@ module Google
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @milli_accelerator_seconds = args[:milli_accelerator_seconds] if args.key?(:milli_accelerator_seconds)
           @milli_dcu_seconds = args[:milli_dcu_seconds] if args.key?(:milli_dcu_seconds)
-          @milli_slot_seconds = args[:milli_slot_seconds] if args.key?(:milli_slot_seconds)
           @shuffle_storage_gb_seconds = args[:shuffle_storage_gb_seconds] if args.key?(:shuffle_storage_gb_seconds)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -11463,11 +11467,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :milli_dcu_premium
       
-        # Optional. Milli (one-thousandth) Slot usage of the workload.
-        # Corresponds to the JSON property `milliSlot`
-        # @return [Fixnum]
-        attr_accessor :milli_slot
-      
         # Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing (
         # https://cloud.google.com/dataproc-serverless/pricing))
         # Corresponds to the JSON property `shuffleStorageGb`
@@ -11496,7 +11495,6 @@ module Google
           @milli_accelerator = args[:milli_accelerator] if args.key?(:milli_accelerator)
           @milli_dcu = args[:milli_dcu] if args.key?(:milli_dcu)
           @milli_dcu_premium = args[:milli_dcu_premium] if args.key?(:milli_dcu_premium)
-          @milli_slot = args[:milli_slot] if args.key?(:milli_slot)
           @shuffle_storage_gb = args[:shuffle_storage_gb] if args.key?(:shuffle_storage_gb)
           @shuffle_storage_gb_premium = args[:shuffle_storage_gb_premium] if args.key?(:shuffle_storage_gb_premium)
           @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
