@@ -1014,6 +1014,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Ordered `Parts` that constitute a function response. Parts may have
+        # different IANA MIME types.
+        # Corresponds to the JSON property `parts`
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionResponsePart>]
+        attr_accessor :parts
+      
         # Required. The function response in JSON object format. Use "output" key to
         # specify function output and "error" key to specify error details (if any). If "
         # output" and "error" keys are not specified, then whole "response" is treated
@@ -1030,7 +1036,110 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
+          @parts = args[:parts] if args.key?(:parts)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # Raw media bytes for function response. Text should not be sent as raw bytes,
+      # use the 'text' field.
+      class GoogleCloudAiplatformV1beta1FunctionResponseBlob
+        include Google::Apis::Core::Hashable
+      
+        # Required. Raw bytes.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Optional. Display name of the blob. Used to provide a label or filename to
+        # distinguish blobs. This field is only returned in PromptMessage for prompt
+        # management. It is currently used in the Gemini GenerateContent calls only when
+        # server side tools (code_execution, google_search, and url_context) are enabled.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The IANA standard MIME type of the source data.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # URI based data for function response.
+      class GoogleCloudAiplatformV1beta1FunctionResponseFileData
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Display name of the file data. Used to provide a label or filename
+        # to distinguish file datas. This field is only returned in PromptMessage for
+        # prompt management. It is currently used in the Gemini GenerateContent calls
+        # only when server side tools (code_execution, google_search, and url_context)
+        # are enabled.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. URI.
+        # Corresponds to the JSON property `fileUri`
+        # @return [String]
+        attr_accessor :file_uri
+      
+        # Required. The IANA standard MIME type of the source data.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @file_uri = args[:file_uri] if args.key?(:file_uri)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # A datatype containing media that is part of a `FunctionResponse` message. A `
+      # FunctionResponsePart` consists of data which has an associated datatype. A `
+      # FunctionResponsePart` can only contain one of the accepted types in `
+      # FunctionResponsePart.data`. A `FunctionResponsePart` must have a fixed IANA
+      # MIME type identifying the type and subtype of the media if the `inline_data`
+      # field is filled with raw bytes.
+      class GoogleCloudAiplatformV1beta1FunctionResponsePart
+        include Google::Apis::Core::Hashable
+      
+        # URI based data for function response.
+        # Corresponds to the JSON property `fileData`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionResponseFileData]
+        attr_accessor :file_data
+      
+        # Raw media bytes for function response. Text should not be sent as raw bytes,
+        # use the 'text' field.
+        # Corresponds to the JSON property `inlineData`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1FunctionResponseBlob]
+        attr_accessor :inline_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_data = args[:file_data] if args.key?(:file_data)
+          @inline_data = args[:inline_data] if args.key?(:inline_data)
         end
       end
       
@@ -2099,6 +2208,27 @@ module Google
         end
       end
       
+      # Configuration for a multi-speaker text-to-speech setup. Enables the use of up
+      # to two distinct voices in a single synthesis request.
+      class GoogleCloudAiplatformV1beta1MultiSpeakerVoiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of configurations for the voices of the speakers. Exactly two
+        # speaker voice configurations must be provided.
+        # Corresponds to the JSON property `speakerVoiceConfigs`
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SpeakerVoiceConfig>]
+        attr_accessor :speaker_voice_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @speaker_voice_configs = args[:speaker_voice_configs] if args.key?(:speaker_voice_configs)
+        end
+      end
+      
       # A datatype containing media that is part of a multi-part `Content` message. A `
       # Part` consists of data which has an associated datatype. A `Part` can only
       # contain one of the accepted types in `Part.data`. A `Part` must have a fixed
@@ -2852,6 +2982,32 @@ module Google
         end
       end
       
+      # Configuration for a single speaker in a multi speaker setup.
+      class GoogleCloudAiplatformV1beta1SpeakerVoiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the speaker. This should be the same as the speaker name
+        # used in the prompt.
+        # Corresponds to the JSON property `speaker`
+        # @return [String]
+        attr_accessor :speaker
+      
+        # The configuration for the voice to use.
+        # Corresponds to the JSON property `voiceConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VoiceConfig]
+        attr_accessor :voice_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @speaker = args[:speaker] if args.key?(:speaker)
+          @voice_config = args[:voice_config] if args.key?(:voice_config)
+        end
+      end
+      
       # The speech generation config.
       class GoogleCloudAiplatformV1beta1SpeechConfig
         include Google::Apis::Core::Hashable
@@ -2860,6 +3016,12 @@ module Google
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
+      
+        # Configuration for a multi-speaker text-to-speech setup. Enables the use of up
+        # to two distinct voices in a single synthesis request.
+        # Corresponds to the JSON property `multiSpeakerVoiceConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1MultiSpeakerVoiceConfig]
+        attr_accessor :multi_speaker_voice_config
       
         # The configuration for the voice to use.
         # Corresponds to the JSON property `voiceConfig`
@@ -2873,6 +3035,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @multi_speaker_voice_config = args[:multi_speaker_voice_config] if args.key?(:multi_speaker_voice_config)
           @voice_config = args[:voice_config] if args.key?(:voice_config)
         end
       end
@@ -2891,6 +3054,11 @@ module Google
         # Corresponds to the JSON property `codeExecution`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolCodeExecution]
         attr_accessor :code_execution
+      
+        # Tool to support computer use.
+        # Corresponds to the JSON property `computerUse`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolComputerUse]
+        attr_accessor :computer_use
       
         # Tool to search public web data, powered by Vertex AI Search and Sec4
         # compliance.
@@ -2941,6 +3109,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code_execution = args[:code_execution] if args.key?(:code_execution)
+          @computer_use = args[:computer_use] if args.key?(:computer_use)
           @enterprise_web_search = args[:enterprise_web_search] if args.key?(:enterprise_web_search)
           @function_declarations = args[:function_declarations] if args.key?(:function_declarations)
           @google_maps = args[:google_maps] if args.key?(:google_maps)
@@ -2963,6 +3132,35 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Tool to support computer use.
+      class GoogleCloudAiplatformV1beta1ToolComputerUse
+        include Google::Apis::Core::Hashable
+      
+        # Required. The environment being operated.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # Optional. By default, predefined functions are included in the final model
+        # call. Some of them can be explicitly excluded from being automatically
+        # included. This can serve two purposes: 1. Using a more restricted / different
+        # action space. 2. Improving the definitions / instructions of predefined
+        # functions.
+        # Corresponds to the JSON property `excludedPredefinedFunctions`
+        # @return [Array<String>]
+        attr_accessor :excluded_predefined_functions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment = args[:environment] if args.key?(:environment)
+          @excluded_predefined_functions = args[:excluded_predefined_functions] if args.key?(:excluded_predefined_functions)
         end
       end
       
