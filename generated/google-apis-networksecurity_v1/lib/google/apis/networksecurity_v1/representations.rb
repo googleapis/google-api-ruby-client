@@ -1036,6 +1036,7 @@ module Google
       class FirewallEndpointEndpointSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :jumbo_frames_enabled, as: 'jumboFramesEnabled'
         end
       end
       
