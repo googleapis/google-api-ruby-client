@@ -1,8 +1,8 @@
 # Release history for google-apis-workloadmanager_v1
 
-### v0.44.0 (2025-10-05)
+### v0.44.0 (2025-10-12)
 
-* Regenerated from discovery document revision 20250922
+* Regenerated from discovery document revision 20251001
 
 ### v0.43.0 (2025-09-21)
 

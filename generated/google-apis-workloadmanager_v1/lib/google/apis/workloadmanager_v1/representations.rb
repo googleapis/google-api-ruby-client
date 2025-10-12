@@ -826,6 +826,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::WorkloadmanagerV1::Operation, decorator: Google::Apis::WorkloadmanagerV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -869,6 +870,8 @@ module Google
       class OpenShiftValidation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          hash :validation_details, as: 'validationDetails'
         end
       end
       
@@ -936,6 +939,7 @@ module Google
       class Rule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_type, as: 'assetType'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :error_message, as: 'errorMessage'

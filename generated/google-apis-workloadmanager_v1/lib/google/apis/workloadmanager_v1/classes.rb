@@ -1159,6 +1159,13 @@ module Google
         # @return [Array<Google::Apis::WorkloadmanagerV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1167,6 +1174,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1292,12 +1300,24 @@ module Google
       class OpenShiftValidation
         include Google::Apis::Core::Hashable
       
+        # Required. The OpenShift cluster ID (e.g. 8371bb05-7cac-4d38-82c0-0f58c4f6f936).
+        # Corresponds to the JSON property `clusterId`
+        # @return [String]
+        attr_accessor :cluster_id
+      
+        # Required. The validation details of the OpenShift cluster in JSON format.
+        # Corresponds to the JSON property `validationDetails`
+        # @return [Hash<String,Object>]
+        attr_accessor :validation_details
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+          @validation_details = args[:validation_details] if args.key?(:validation_details)
         end
       end
       
@@ -1544,6 +1564,12 @@ module Google
       class Rule
         include Google::Apis::Core::Hashable
       
+        # The CAI asset type of the rule is evaluating, for joined asset types, it will
+        # be the corresponding primary asset types.
+        # Corresponds to the JSON property `assetType`
+        # @return [String]
+        attr_accessor :asset_type
+      
         # descrite rule in plain language
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -1610,6 +1636,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @asset_type = args[:asset_type] if args.key?(:asset_type)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @error_message = args[:error_message] if args.key?(:error_message)
