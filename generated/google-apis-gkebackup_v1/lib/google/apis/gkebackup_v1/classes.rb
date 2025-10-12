@@ -191,8 +191,8 @@ module Google
         attr_accessor :manual
         alias_method :manual?, :manual
       
-        # Output only. The fully qualified name of the Backup. `projects/*/locations/*/
-        # backupPlans/*/backups/*`
+        # Output only. Identifier. The fully qualified name of the Backup. `projects/*/
+        # locations/*/backupPlans/*/backups/*`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -620,8 +620,8 @@ module Google
         # @return [String]
         attr_accessor :last_successful_backup_time
       
-        # Output only. The full name of the BackupPlan resource. Format: `projects/*/
-        # locations/*/backupPlans/*`
+        # Output only. Identifier. The full name of the BackupPlan resource. Format: `
+        # projects/*/locations/*/backupPlans/*`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1339,6 +1339,13 @@ module Google
         # @return [Array<Google::Apis::GkebackupV1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1347,6 +1354,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2316,8 +2324,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The full name of the Restore resource. Format: `projects/*/
-        # locations/*/restorePlans/*/restores/*`
+        # Output only. Identifier. The full name of the Restore resource. Format: `
+        # projects/*/locations/*/restorePlans/*/restores/*`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2685,8 +2693,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The full name of the RestorePlan resource. Format: `projects/*/
-        # locations/*/restorePlans/*`.
+        # Output only. Identifier. The full name of the RestorePlan resource. Format: `
+        # projects/*/locations/*/restorePlans/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
