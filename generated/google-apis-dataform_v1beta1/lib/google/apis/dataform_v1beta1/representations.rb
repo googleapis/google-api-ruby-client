@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +221,12 @@ module Google
       end
       
       class ErrorTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -442,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PolicyName
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -592,6 +610,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SimpleLoadMode
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -617,6 +641,18 @@ module Google
       end
       
       class Target
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestIamPermissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestIamPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -743,6 +779,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :job_id, as: 'jobId'
           property :sql_script, as: 'sqlScript'
+        end
+      end
+      
+      class Binding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::DataformV1beta1::Expr, decorator: Google::Apis::DataformV1beta1::Expr::Representation
+      
+          collection :members, as: 'members'
+          property :role, as: 'role'
         end
       end
       
@@ -918,6 +964,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_kms_key_name, as: 'defaultKmsKeyName'
+          property :internal_metadata, as: 'internalMetadata'
           property :name, as: 'name'
         end
       end
@@ -994,6 +1041,16 @@ module Google
           property :retention_days, as: 'retentionDays'
           property :target, as: 'target', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
       
+        end
+      end
+      
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
         end
       end
       
@@ -1120,6 +1177,7 @@ module Google
           collection :included_tags, as: 'includedTags'
           collection :included_targets, as: 'includedTargets', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
       
+          property :query_priority, as: 'queryPriority'
           property :service_account, as: 'serviceAccount'
           property :transitive_dependencies_included, as: 'transitiveDependenciesIncluded'
           property :transitive_dependents_included, as: 'transitiveDependentsIncluded'
@@ -1151,6 +1209,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DataformV1beta1::Operation, decorator: Google::Apis::DataformV1beta1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1333,6 +1392,16 @@ module Google
           property :relation_descriptor, as: 'relationDescriptor', class: Google::Apis::DataformV1beta1::RelationDescriptor, decorator: Google::Apis::DataformV1beta1::RelationDescriptor::Representation
       
           collection :tags, as: 'tags'
+        end
+      end
+      
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::DataformV1beta1::Binding, decorator: Google::Apis::DataformV1beta1::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :version, as: 'version'
         end
       end
       
@@ -1573,6 +1642,14 @@ module Google
         end
       end
       
+      class SetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::DataformV1beta1::Policy, decorator: Google::Apis::DataformV1beta1::Policy::Representation
+      
+        end
+      end
+      
       class SimpleLoadMode
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1613,6 +1690,20 @@ module Google
           property :database, as: 'database'
           property :name, as: 'name'
           property :schema, as: 'schema'
+        end
+      end
+      
+      class TestIamPermissionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TestIamPermissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
         end
       end
       
