@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetResourceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InputParameter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +179,12 @@ module Google
       end
       
       class ListEntityTypesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListResourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -257,6 +269,12 @@ module Google
       end
       
       class RefreshAccessTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Resource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -491,6 +509,7 @@ module Google
       class ExecuteToolResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata, as: 'metadata'
           hash :result, as: 'result'
         end
       end
@@ -509,6 +528,15 @@ module Google
           property :nullable, as: 'nullable'
           property :reference, as: 'reference', class: Google::Apis::ConnectorsV2::Reference, decorator: Google::Apis::ConnectorsV2::Reference::Representation
       
+        end
+      end
+      
+      class GetResourceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
+          hash :metadata, as: 'metadata'
+          property :mime_type, as: 'mimeType'
         end
       end
       
@@ -605,9 +633,20 @@ module Google
         end
       end
       
+      class ListResourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata, as: 'metadata'
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::ConnectorsV2::Resource, decorator: Google::Apis::ConnectorsV2::Resource::Representation
+      
+        end
+      end
+      
       class ListToolsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata, as: 'metadata'
           property :next_page_token, as: 'nextPageToken'
           collection :tools, as: 'tools', class: Google::Apis::ConnectorsV2::Tool, decorator: Google::Apis::ConnectorsV2::Tool::Representation
       
@@ -732,6 +771,17 @@ module Google
           property :access_credentials, as: 'accessCredentials', class: Google::Apis::ConnectorsV2::AccessCredentials, decorator: Google::Apis::ConnectorsV2::AccessCredentials::Representation
       
           hash :metadata, as: 'metadata'
+        end
+      end
+      
+      class Resource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :mime_type, as: 'mimeType'
+          property :name, as: 'name'
+          property :size, :numeric_string => true, as: 'size'
+          property :uri, as: 'uri'
         end
       end
       
