@@ -1302,6 +1302,12 @@ module Google
         # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::SubscriptionPromotionSpec>]
         attr_accessor :line_item_promotion_specs
       
+        # Identifier. Resource name of the line item. Format: partners/`partner`/
+        # subscriptions/`subscription`/lineItems/`lineItem`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # Details for a ONE_TIME recurrence line item.
         # Corresponds to the JSON property `oneTimeRecurrenceDetails`
         # @return [Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItemOneTimeRecurrenceDetails]
@@ -1341,6 +1347,7 @@ module Google
           @line_item_free_trial_end_time = args[:line_item_free_trial_end_time] if args.key?(:line_item_free_trial_end_time)
           @line_item_index = args[:line_item_index] if args.key?(:line_item_index)
           @line_item_promotion_specs = args[:line_item_promotion_specs] if args.key?(:line_item_promotion_specs)
+          @name = args[:name] if args.key?(:name)
           @one_time_recurrence_details = args[:one_time_recurrence_details] if args.key?(:one_time_recurrence_details)
           @product = args[:product] if args.key?(:product)
           @product_payload = args[:product_payload] if args.key?(:product_payload)
