@@ -581,6 +581,12 @@ module Google
         # @return [Google::Apis::RedisV1::AutomatedBackupConfig]
         attr_accessor :automated_backup_config
       
+        # Output only. This field is used to determine the available maintenance
+        # versions for the self service update.
+        # Corresponds to the JSON property `availableMaintenanceVersions`
+        # @return [Array<String>]
+        attr_accessor :available_maintenance_versions
+      
         # Optional. Output only. The backup collection full resource name. Example:
         # projects/`project`/locations/`location`/backupCollections/`collection`
         # Corresponds to the JSON property `backupCollection`
@@ -613,6 +619,12 @@ module Google
         # Corresponds to the JSON property `discoveryEndpoints`
         # @return [Array<Google::Apis::RedisV1::DiscoveryEndpoint>]
         attr_accessor :discovery_endpoints
+      
+        # Output only. This field represents the actual maintenance version of the
+        # cluster.
+        # Corresponds to the JSON property `effectiveMaintenanceVersion`
+        # @return [String]
+        attr_accessor :effective_maintenance_version
       
         # EncryptionInfo describes the encryption information of a cluster or a backup.
         # Corresponds to the JSON property `encryptionInfo`
@@ -781,12 +793,14 @@ module Google
           @async_cluster_endpoints_deletion_enabled = args[:async_cluster_endpoints_deletion_enabled] if args.key?(:async_cluster_endpoints_deletion_enabled)
           @authorization_mode = args[:authorization_mode] if args.key?(:authorization_mode)
           @automated_backup_config = args[:automated_backup_config] if args.key?(:automated_backup_config)
+          @available_maintenance_versions = args[:available_maintenance_versions] if args.key?(:available_maintenance_versions)
           @backup_collection = args[:backup_collection] if args.key?(:backup_collection)
           @cluster_endpoints = args[:cluster_endpoints] if args.key?(:cluster_endpoints)
           @create_time = args[:create_time] if args.key?(:create_time)
           @cross_cluster_replication_config = args[:cross_cluster_replication_config] if args.key?(:cross_cluster_replication_config)
           @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
           @discovery_endpoints = args[:discovery_endpoints] if args.key?(:discovery_endpoints)
+          @effective_maintenance_version = args[:effective_maintenance_version] if args.key?(:effective_maintenance_version)
           @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
