@@ -537,6 +537,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::WorkstationsV1beta::Operation, decorator: Google::Apis::WorkstationsV1beta::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
