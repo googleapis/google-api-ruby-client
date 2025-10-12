@@ -1993,7 +1993,7 @@ module Google
         # @return [String]
         attr_accessor :directions_uri
       
-        # A link to show reviews of this place on Google Maps.
+        # A link to show photos of this place on Google Maps.
         # Corresponds to the JSON property `photosUri`
         # @return [String]
         attr_accessor :photos_uri
