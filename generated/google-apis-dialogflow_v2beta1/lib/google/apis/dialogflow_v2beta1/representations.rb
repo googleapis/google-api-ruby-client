@@ -3190,6 +3190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1ListToolsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1ListVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3736,6 +3742,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1Tool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolAuthentication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolAuthenticationApiKeyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolAuthenticationBearerTokenConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolAuthenticationOAuthConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolAuthenticationServiceAgentAuthConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1ToolCall
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3749,6 +3791,60 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1ToolCallResultError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolConnectorTool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolConnectorToolAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolConnectorToolActionEntityOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolExtensionTool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolFunctionTool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolOpenApiTool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolServiceDirectoryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolTlsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolTlsConfigCaCert
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9262,6 +9358,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1ListToolsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :tools, as: 'tools', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Tool, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Tool::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1ListVersionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10209,6 +10314,80 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1Tool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :action_confirmation_requirement, as: 'actionConfirmationRequirement'
+          property :connector_spec, as: 'connectorSpec', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolConnectorTool, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolConnectorTool::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :extension_spec, as: 'extensionSpec', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolExtensionTool, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolExtensionTool::Representation
+      
+          property :function_spec, as: 'functionSpec', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolFunctionTool, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolFunctionTool::Representation
+      
+          property :name, as: 'name'
+          property :open_api_spec, as: 'openApiSpec', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolOpenApiTool, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolOpenApiTool::Representation
+      
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
+          property :tool_key, as: 'toolKey'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolAuthentication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_key_config, as: 'apiKeyConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolAuthenticationApiKeyConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolAuthenticationApiKeyConfig::Representation
+      
+          property :bearer_token_config, as: 'bearerTokenConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolAuthenticationBearerTokenConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolAuthenticationBearerTokenConfig::Representation
+      
+          property :oauth_config, as: 'oauthConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolAuthenticationOAuthConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolAuthenticationOAuthConfig::Representation
+      
+          property :service_agent_auth_config, as: 'serviceAgentAuthConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolAuthenticationServiceAgentAuthConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolAuthenticationServiceAgentAuthConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolAuthenticationApiKeyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_key, as: 'apiKey'
+          property :key_name, as: 'keyName'
+          property :request_location, as: 'requestLocation'
+          property :secret_version_for_api_key, as: 'secretVersionForApiKey'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolAuthenticationBearerTokenConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :secret_version_for_token, as: 'secretVersionForToken'
+          property :token, as: 'token'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolAuthenticationOAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          property :oauth_grant_type, as: 'oauthGrantType'
+          collection :scopes, as: 'scopes'
+          property :secret_version_for_client_secret, as: 'secretVersionForClientSecret'
+          property :token_endpoint, as: 'tokenEndpoint'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolAuthenticationServiceAgentAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_agent_auth, as: 'serviceAgentAuth'
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1ToolCall
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10241,6 +10420,86 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolConnectorTool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions, as: 'actions', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolConnectorToolAction, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolConnectorToolAction::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolConnectorToolAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_action_id, as: 'connectionActionId'
+          property :entity_operation, as: 'entityOperation', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolConnectorToolActionEntityOperation, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolConnectorToolActionEntityOperation::Representation
+      
+          collection :input_fields, as: 'inputFields'
+          collection :output_fields, as: 'outputFields'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolConnectorToolActionEntityOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_id, as: 'entityId'
+          property :operation, as: 'operation'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolExtensionTool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolFunctionTool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :input_schema, as: 'inputSchema'
+          property :method_type, as: 'methodType'
+          hash :output_schema, as: 'outputSchema'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolOpenApiTool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication, as: 'authentication', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolAuthentication, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolAuthentication::Representation
+      
+          property :service_directory_config, as: 'serviceDirectoryConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolServiceDirectoryConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolServiceDirectoryConfig::Representation
+      
+          property :text_schema, as: 'textSchema'
+          property :tls_config, as: 'tlsConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolTlsConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolTlsConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolServiceDirectoryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolTlsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ca_certs, as: 'caCerts', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolTlsConfigCaCert, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolTlsConfigCaCert::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ToolTlsConfigCaCert
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cert, :base64 => true, as: 'cert'
+          property :display_name, as: 'displayName'
         end
       end
       
