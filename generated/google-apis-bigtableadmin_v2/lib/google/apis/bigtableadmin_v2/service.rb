@@ -92,6 +92,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -109,7 +116,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operation_project_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_operation_project_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+name}/operations', options)
           command.response_representation = Google::Apis::BigtableadminV2::ListOperationsResponse::Representation
           command.response_class = Google::Apis::BigtableadminV2::ListOperationsResponse
@@ -117,6 +124,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1644,6 +1652,9 @@ module Google
         #   Required. The unique name of the requested materialized view. Values are of
         #   the form `projects/`project`/instances/`instance`/materializedViews/`
         #   materialized_view``.
+        # @param [String] view
+        #   Optional. Describes which of the materialized view's fields should be
+        #   populated in the response. Defaults to SCHEMA_VIEW.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1661,11 +1672,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_instance_materialized_view(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_instance_materialized_view(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::BigtableadminV2::MaterializedView::Representation
           command.response_class = Google::Apis::BigtableadminV2::MaterializedView
           command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1720,6 +1732,10 @@ module Google
         #   Provide this to retrieve the subsequent page. When paginating, all other
         #   parameters provided to `ListMaterializedViews` must match the call that
         #   provided the page token.
+        # @param [String] view
+        #   Optional. Describes which of the materialized view's fields should be
+        #   populated in the response. For now, only the default value SCHEMA_VIEW is
+        #   supported.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1737,13 +1753,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_instance_materialized_views(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_instance_materialized_views(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/materializedViews', options)
           command.response_representation = Google::Apis::BigtableadminV2::ListMaterializedViewsResponse::Representation
           command.response_class = Google::Apis::BigtableadminV2::ListMaterializedViewsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2802,42 +2819,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a Bigtable resource. Returns an empty
-        # policy if the resource exists but does not have a policy set.
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See [Resource
-        #   names](https://cloud.google.com/apis/design/resource_names) for the
-        #   appropriate value for this field.
-        # @param [Google::Apis::BigtableadminV2::GetIamPolicyRequest] get_iam_policy_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BigtableadminV2::Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BigtableadminV2::Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_schema_bundle_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+resource}:getIamPolicy', options)
-          command.request_representation = Google::Apis::BigtableadminV2::GetIamPolicyRequest::Representation
-          command.request_object = get_iam_policy_request_object
-          command.response_representation = Google::Apis::BigtableadminV2::Policy::Representation
-          command.response_class = Google::Apis::BigtableadminV2::Policy
-          command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Lists all schema bundles associated with the specified table.
         # @param [String] parent
         #   Required. The parent, which owns this collection of schema bundles. Values are
@@ -2922,77 +2903,6 @@ module Google
           command.params['name'] = name unless name.nil?
           command.query['ignoreWarnings'] = ignore_warnings unless ignore_warnings.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Sets the access control policy on a Bigtable resource. Replaces any existing
-        # policy.
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See [Resource
-        #   names](https://cloud.google.com/apis/design/resource_names) for the
-        #   appropriate value for this field.
-        # @param [Google::Apis::BigtableadminV2::SetIamPolicyRequest] set_iam_policy_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BigtableadminV2::Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BigtableadminV2::Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_schema_bundle_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+resource}:setIamPolicy', options)
-          command.request_representation = Google::Apis::BigtableadminV2::SetIamPolicyRequest::Representation
-          command.request_object = set_iam_policy_request_object
-          command.response_representation = Google::Apis::BigtableadminV2::Policy::Representation
-          command.response_class = Google::Apis::BigtableadminV2::Policy
-          command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Returns permissions that the caller has on the specified Bigtable resource.
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See [
-        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
-        #   appropriate value for this field.
-        # @param [Google::Apis::BigtableadminV2::TestIamPermissionsRequest] test_iam_permissions_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BigtableadminV2::TestIamPermissionsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BigtableadminV2::TestIamPermissionsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def test_schema_bundle_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+resource}:testIamPermissions', options)
-          command.request_representation = Google::Apis::BigtableadminV2::TestIamPermissionsRequest::Representation
-          command.request_object = test_iam_permissions_request_object
-          command.response_representation = Google::Apis::BigtableadminV2::TestIamPermissionsResponse::Representation
-          command.response_class = Google::Apis::BigtableadminV2::TestIamPermissionsResponse
-          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

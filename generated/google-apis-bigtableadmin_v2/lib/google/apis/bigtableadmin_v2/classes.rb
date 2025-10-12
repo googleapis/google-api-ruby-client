@@ -1803,6 +1803,25 @@ module Google
         end
       end
       
+      # The state of a materialized view's data in a particular cluster.
+      class GoogleBigtableAdminV2MaterializedViewClusterState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The state of the materialized view in this cluster.
+        # Corresponds to the JSON property `replicationState`
+        # @return [String]
+        attr_accessor :replication_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @replication_state = args[:replication_state] if args.key?(:replication_state)
+        end
+      end
+      
       # A value that combines incremental updates into a summarized value. Data is
       # never directly written or read using type `Aggregate`. Writes provide either
       # the `input_type` or `state_type`, and reads always return the `state_type` .
@@ -3080,6 +3099,13 @@ module Google
         # @return [Array<Google::Apis::BigtableadminV2::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3088,6 +3114,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -3235,6 +3262,15 @@ module Google
       class MaterializedView
         include Google::Apis::Core::Hashable
       
+        # Output only. Map from cluster ID to per-cluster materialized view state. If it
+        # could not be determined whether or not the materialized view has data in a
+        # particular cluster (for example, if its zone is unavailable), then there will
+        # be an entry for the cluster with `STATE_NOT_KNOWN` state. Views: `
+        # REPLICATION_VIEW`, `FULL`.
+        # Corresponds to the JSON property `clusterStates`
+        # @return [Hash<String,Google::Apis::BigtableadminV2::GoogleBigtableAdminV2MaterializedViewClusterState>]
+        attr_accessor :cluster_states
+      
         # Set to true to make the MaterializedView protected against deletion. Views: `
         # SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`.
         # Corresponds to the JSON property `deletionProtection`
@@ -3269,6 +3305,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster_states = args[:cluster_states] if args.key?(:cluster_states)
           @deletion_protection = args[:deletion_protection] if args.key?(:deletion_protection)
           @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
