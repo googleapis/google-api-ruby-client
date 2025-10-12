@@ -1550,7 +1550,7 @@ module Google
         attr_accessor :use_streaming_engine_resource_based_billing
         alias_method :use_streaming_engine_resource_based_billing?, :use_streaming_engine_resource_based_billing
       
-        # A description of the process that generated the request.
+        # Optional. A description of the process that generated the request.
         # Corresponds to the JSON property `userAgent`
         # @return [Hash<String,Object>]
         attr_accessor :user_agent
