@@ -31,7 +31,7 @@ module Google
       #    Chat = Google::Apis::ChatV1 # Alias the module
       #    service = Chat::HangoutsChatService.new
       #
-      # @see https://developers.google.com/hangouts/chat
+      # @see https://developers.google.com/workspace/chat
       class HangoutsChatService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://chat.$UNIVERSE_DOMAIN$/"
 
