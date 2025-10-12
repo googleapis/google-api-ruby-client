@@ -694,6 +694,7 @@ module Google
           property :line_item_index, as: 'lineItemIndex'
           collection :line_item_promotion_specs, as: 'lineItemPromotionSpecs', class: Google::Apis::PaymentsresellersubscriptionV1::SubscriptionPromotionSpec, decorator: Google::Apis::PaymentsresellersubscriptionV1::SubscriptionPromotionSpec::Representation
       
+          property :name, as: 'name'
           property :one_time_recurrence_details, as: 'oneTimeRecurrenceDetails', class: Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItemOneTimeRecurrenceDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItemOneTimeRecurrenceDetails::Representation
       
           property :product, as: 'product'
