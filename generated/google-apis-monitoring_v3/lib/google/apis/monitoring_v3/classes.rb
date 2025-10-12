@@ -116,6 +116,90 @@ module Google
         end
       end
       
+      # An alert is the representation of a violation of an alert policy. It is a read-
+      # only resource that cannot be modified by the accompanied API.
+      class Alert
+        include Google::Apis::Core::Hashable
+      
+        # The time when the alert was closed.
+        # Corresponds to the JSON property `closeTime`
+        # @return [String]
+        attr_accessor :close_time
+      
+        # Information about the log for log-based alerts.
+        # Corresponds to the JSON property `log`
+        # @return [Google::Apis::MonitoringV3::LogMetadata]
+        attr_accessor :log
+      
+        # Auxiliary metadata for a MonitoredResource object. MonitoredResource objects
+        # contain the minimum set of information to uniquely identify a monitored
+        # resource instance. There is some other useful auxiliary metadata. Monitoring
+        # and Logging use an ingestion pipeline to extract metadata for cloud resources
+        # of all types, and store the metadata in this message.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::MonitoringV3::MonitoredResourceMetadata]
+        attr_accessor :metadata
+      
+        # A specific metric, identified by specifying values for all of the labels of a
+        # MetricDescriptor.
+        # Corresponds to the JSON property `metric`
+        # @return [Google::Apis::MonitoringV3::Metric]
+        attr_accessor :metric
+      
+        # Identifier. The name of the alert.The format is: projects/[
+        # PROJECT_ID_OR_NUMBER]/alerts/[ALERT_ID] The [ALERT_ID] is a system-assigned
+        # unique identifier for the alert.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The time when the alert was opened.
+        # Corresponds to the JSON property `openTime`
+        # @return [String]
+        attr_accessor :open_time
+      
+        # The state of the policy at the time the alert was generated.
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::MonitoringV3::PolicySnapshot]
+        attr_accessor :policy
+      
+        # An object representing a resource that can be used for monitoring, logging,
+        # billing, or other purposes. Examples include virtual machine instances,
+        # databases, and storage devices such as disks. The type field identifies a
+        # MonitoredResourceDescriptor object that describes the resource's schema.
+        # Information in the labels field identifies the actual resource and its
+        # attributes according to the schema. For example, a particular Compute Engine
+        # VM instance could be represented by the following object, because the
+        # MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "
+        # instance_id" and "zone": ` "type": "gce_instance", "labels": ` "project_id": "
+        # my-project", "instance_id": "12345678901234", "zone": "us-central1-a" ``
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::MonitoringV3::MonitoredResource]
+        attr_accessor :resource
+      
+        # Output only. The current state of the alert.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @close_time = args[:close_time] if args.key?(:close_time)
+          @log = args[:log] if args.key?(:log)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @metric = args[:metric] if args.key?(:metric)
+          @name = args[:name] if args.key?(:name)
+          @open_time = args[:open_time] if args.key?(:open_time)
+          @policy = args[:policy] if args.key?(:policy)
+          @resource = args[:resource] if args.key?(:resource)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # A description of the conditions under which some aspect of your system is
       # considered to be "unhealthy" and the ways to notify people or services about
       # this state. For an overview of alerting policies, see Introduction to Alerting
@@ -2407,6 +2491,41 @@ module Google
         end
       end
       
+      # The ListAlerts response.
+      class ListAlertsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of alerts.
+        # Corresponds to the JSON property `alerts`
+        # @return [Array<Google::Apis::MonitoringV3::Alert>]
+        attr_accessor :alerts
+      
+        # If not empty, indicates that there may be more results that match the request.
+        # Use the value in the page_token field in a subsequent request to fetch the
+        # next set of results. The token is encrypted and only guaranteed to return
+        # correct results for 72 hours after it is created. If empty, all results have
+        # been returned.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The estimated total number of matching results for this query.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alerts = args[:alerts] if args.key?(:alerts)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
       # The ListGroupMembers response.
       class ListGroupMembersResponse
         include Google::Apis::Core::Hashable
@@ -2816,6 +2935,25 @@ module Google
         def update!(**args)
           @filter = args[:filter] if args.key?(:filter)
           @label_extractors = args[:label_extractors] if args.key?(:label_extractors)
+        end
+      end
+      
+      # Information about the log for log-based alerts.
+      class LogMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The labels extracted from the log.
+        # Corresponds to the JSON property `extractedLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :extracted_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extracted_labels = args[:extracted_labels] if args.key?(:extracted_labels)
         end
       end
       
@@ -3955,6 +4093,44 @@ module Google
         def update!(**args)
           @time_interval = args[:time_interval] if args.key?(:time_interval)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # The state of the policy at the time the alert was generated.
+      class PolicySnapshot
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the alert policy.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The name of the alert policy resource. In the form of "projects/
+        # PROJECT_ID_OR_NUMBER/alertPolicies/ALERT_POLICY_ID".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The severity of the alert policy.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # The user labels for the alert policy.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @severity = args[:severity] if args.key?(:severity)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
       end
       
