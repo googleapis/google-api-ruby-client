@@ -34,7 +34,7 @@ module Google
       #    Cloudtrace = Google::Apis::CloudtraceV2 # Alias the module
       #    service = Cloudtrace::CloudTraceService.new
       #
-      # @see https://cloud.google.com/trace
+      # @see https://cloud.google.com/trace/
       class CloudTraceService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://cloudtrace.$UNIVERSE_DOMAIN$/"
 
