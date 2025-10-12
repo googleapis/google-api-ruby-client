@@ -2191,10 +2191,31 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntity>]
         attr_accessor :entities
       
+        # The entity revision id that `document.entities` field is based on. If this
+        # field is set and `entities_revisions` is not empty, the entities in `document.
+        # entities` field are the entities in the entity revision with this id and `
+        # document.entity_validation_output` field is the `entity_validation_output`
+        # field in this entity revision.
+        # Corresponds to the JSON property `entitiesRevisionId`
+        # @return [String]
+        attr_accessor :entities_revision_id
+      
+        # A list of entity revisions. The entity revisions are appended to the document
+        # in the processing order. This field can be used for comparing the entity
+        # extraction results at different stages of the processing.
+        # Corresponds to the JSON property `entitiesRevisions`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntitiesRevision>]
+        attr_accessor :entities_revisions
+      
         # Placeholder. Relationship among Document.entities.
         # Corresponds to the JSON property `entityRelations`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityRelation>]
         attr_accessor :entity_relations
+      
+        # The output of the validation given the document and the validation rules.
+        # Corresponds to the JSON property `entityValidationOutput`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityValidationOutput]
+        attr_accessor :entity_validation_output
       
         # The `Status` type defines a logical error model that is suitable for different
         # programming environments, including REST APIs and RPC APIs. It is used by [
@@ -2264,7 +2285,10 @@ module Google
           @docid = args[:docid] if args.key?(:docid)
           @document_layout = args[:document_layout] if args.key?(:document_layout)
           @entities = args[:entities] if args.key?(:entities)
+          @entities_revision_id = args[:entities_revision_id] if args.key?(:entities_revision_id)
+          @entities_revisions = args[:entities_revisions] if args.key?(:entities_revisions)
           @entity_relations = args[:entity_relations] if args.key?(:entity_relations)
+          @entity_validation_output = args[:entity_validation_output] if args.key?(:entity_validation_output)
           @error = args[:error] if args.key?(:error)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @pages = args[:pages] if args.key?(:pages)
@@ -2677,6 +2701,37 @@ module Google
         end
       end
       
+      # Entity revision.
+      class GoogleCloudDocumentaiV1DocumentEntitiesRevision
+        include Google::Apis::Core::Hashable
+      
+        # The entities in this revision.
+        # Corresponds to the JSON property `entities`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntity>]
+        attr_accessor :entities
+      
+        # The output of the validation given the document and the validation rules.
+        # Corresponds to the JSON property `entityValidationOutput`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityValidationOutput]
+        attr_accessor :entity_validation_output
+      
+        # The revision id.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entities = args[:entities] if args.key?(:entities)
+          @entity_validation_output = args[:entity_validation_output] if args.key?(:entity_validation_output)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+        end
+      end
+      
       # An entity that could be a phrase in the text or a property that belongs to the
       # document. It is a known entity type, such as a person, an organization, or
       # location.
@@ -2904,6 +2959,70 @@ module Google
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
           @relation = args[:relation] if args.key?(:relation)
           @subject_id = args[:subject_id] if args.key?(:subject_id)
+        end
+      end
+      
+      # The output of the validation given the document and the validation rules.
+      class GoogleCloudDocumentaiV1DocumentEntityValidationOutput
+        include Google::Apis::Core::Hashable
+      
+        # The overall result of the validation, true if all applicable rules are valid.
+        # Corresponds to the JSON property `passAllRules`
+        # @return [Boolean]
+        attr_accessor :pass_all_rules
+        alias_method :pass_all_rules?, :pass_all_rules
+      
+        # The result of each validation rule.
+        # Corresponds to the JSON property `validationResults`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult>]
+        attr_accessor :validation_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pass_all_rules = args[:pass_all_rules] if args.key?(:pass_all_rules)
+          @validation_results = args[:validation_results] if args.key?(:validation_results)
+        end
+      end
+      
+      # Validation result for a single validation rule.
+      class GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult
+        include Google::Apis::Core::Hashable
+      
+        # The description of the validation rule.
+        # Corresponds to the JSON property `ruleDescription`
+        # @return [String]
+        attr_accessor :rule_description
+      
+        # The name of the validation rule.
+        # Corresponds to the JSON property `ruleName`
+        # @return [String]
+        attr_accessor :rule_name
+      
+        # The detailed information of the running the validation process using the
+        # entity from the document based on the validation rule.
+        # Corresponds to the JSON property `validationDetails`
+        # @return [String]
+        attr_accessor :validation_details
+      
+        # The result of the validation rule.
+        # Corresponds to the JSON property `validationResultType`
+        # @return [String]
+        attr_accessor :validation_result_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rule_description = args[:rule_description] if args.key?(:rule_description)
+          @rule_name = args[:rule_name] if args.key?(:rule_name)
+          @validation_details = args[:validation_details] if args.key?(:validation_details)
+          @validation_result_type = args[:validation_result_type] if args.key?(:validation_result_type)
         end
       end
       
