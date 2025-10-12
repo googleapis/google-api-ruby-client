@@ -832,6 +832,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SyncFlags
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2060,6 +2066,8 @@ module Google
           property :partial_result, as: 'partialResult'
           collection :rows, as: 'rows', class: Google::Apis::SqladminV1beta4::Row, decorator: Google::Apis::SqladminV1beta4::Row::Representation
       
+          property :status, as: 'status', class: Google::Apis::SqladminV1beta4::Status, decorator: Google::Apis::SqladminV1beta4::Status::Representation
+      
         end
       end
       
@@ -2155,6 +2163,7 @@ module Google
           property :advanced_machine_features, as: 'advancedMachineFeatures', class: Google::Apis::SqladminV1beta4::AdvancedMachineFeatures, decorator: Google::Apis::SqladminV1beta4::AdvancedMachineFeatures::Representation
       
           collection :authorized_gae_applications, as: 'authorizedGaeApplications'
+          property :auto_upgrade_enabled, as: 'autoUpgradeEnabled'
           property :availability_type, as: 'availabilityType'
           property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::SqladminV1beta4::BackupConfiguration, decorator: Google::Apis::SqladminV1beta4::BackupConfiguration::Representation
       
@@ -2244,6 +2253,8 @@ module Google
           property :metadata, as: 'metadata', class: Google::Apis::SqladminV1beta4::Metadata, decorator: Google::Apis::SqladminV1beta4::Metadata::Representation
       
           collection :results, as: 'results', class: Google::Apis::SqladminV1beta4::QueryResult, decorator: Google::Apis::SqladminV1beta4::QueryResult::Representation
+      
+          property :status, as: 'status', class: Google::Apis::SqladminV1beta4::Status, decorator: Google::Apis::SqladminV1beta4::Status::Representation
       
         end
       end
@@ -2438,6 +2449,15 @@ module Google
         end
       end
       
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
+        end
+      end
+      
       class SyncFlags
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2488,6 +2508,7 @@ module Google
           property :dual_password_type, as: 'dualPasswordType'
           property :etag, as: 'etag'
           property :host, as: 'host'
+          property :iam_email, as: 'iamEmail'
           property :iam_status, as: 'iamStatus'
           property :instance, as: 'instance'
           property :kind, as: 'kind'
