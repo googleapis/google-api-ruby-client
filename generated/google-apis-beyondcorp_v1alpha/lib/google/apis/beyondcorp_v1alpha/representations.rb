@@ -1688,6 +1688,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation, decorator: Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
