@@ -478,6 +478,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SubnetworkKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TrafficSplit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -509,6 +515,18 @@ module Google
       end
       
       class VpcAccessConnector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpcEgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpcNetworkTag
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1314,6 +1332,14 @@ module Google
         end
       end
       
+      class SubnetworkKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host_project_id, as: 'hostProjectId'
+          property :subnet, as: 'subnet'
+        end
+      end
+      
       class TrafficSplit
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1409,6 +1435,8 @@ module Google
           property :vm, as: 'vm'
           property :vpc_access_connector, as: 'vpcAccessConnector', class: Google::Apis::AppengineV1beta::VpcAccessConnector, decorator: Google::Apis::AppengineV1beta::VpcAccessConnector::Representation
       
+          property :vpc_egress, as: 'vpcEgress', class: Google::Apis::AppengineV1beta::VpcEgress, decorator: Google::Apis::AppengineV1beta::VpcEgress::Representation
+      
           collection :zones, as: 'zones'
         end
       end
@@ -1427,6 +1455,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :egress_setting, as: 'egressSetting'
           property :name, as: 'name'
+        end
+      end
+      
+      class VpcEgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :egress_setting, as: 'egressSetting'
+          collection :network_tags, as: 'networkTags', class: Google::Apis::AppengineV1beta::VpcNetworkTag, decorator: Google::Apis::AppengineV1beta::VpcNetworkTag::Representation
+      
+          property :subnetwork_key, as: 'subnetworkKey', class: Google::Apis::AppengineV1beta::SubnetworkKey, decorator: Google::Apis::AppengineV1beta::SubnetworkKey::Representation
+      
+        end
+      end
+      
+      class VpcNetworkTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
         end
       end
       

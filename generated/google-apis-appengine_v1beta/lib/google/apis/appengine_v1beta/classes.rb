@@ -3135,6 +3135,32 @@ module Google
         end
       end
       
+      # Subnetwork key message.
+      class SubnetworkKey
+        include Google::Apis::Core::Hashable
+      
+        # Project id (name not number) of the project that hosts the network
+        # Corresponds to the JSON property `hostProjectId`
+        # @return [String]
+        attr_accessor :host_project_id
+      
+        # Short name of the subnetwork. e.g. SUBNET instead of projects/`PROJECT_NAME`/
+        # regions/`REGION`/subnetworks/`SUBNET`
+        # Corresponds to the JSON property `subnet`
+        # @return [String]
+        attr_accessor :subnet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host_project_id = args[:host_project_id] if args.key?(:host_project_id)
+          @subnet = args[:subnet] if args.key?(:subnet)
+        end
+      end
+      
       # Traffic routing configuration for versions within a single service. Traffic
       # splits define how traffic directed to the service is assigned to versions.
       class TrafficSplit
@@ -3534,6 +3560,11 @@ module Google
         # @return [Google::Apis::AppengineV1beta::VpcAccessConnector]
         attr_accessor :vpc_access_connector
       
+        # Vpc Egress configuration.
+        # Corresponds to the JSON property `vpcEgress`
+        # @return [Google::Apis::AppengineV1beta::VpcEgress]
+        attr_accessor :vpc_egress
+      
         # The Google Compute Engine zones that are supported by this version in the App
         # Engine flexible environment. Deprecated.
         # Corresponds to the JSON property `zones`
@@ -3587,6 +3618,7 @@ module Google
           @version_url = args[:version_url] if args.key?(:version_url)
           @vm = args[:vm] if args.key?(:vm)
           @vpc_access_connector = args[:vpc_access_connector] if args.key?(:vpc_access_connector)
+          @vpc_egress = args[:vpc_egress] if args.key?(:vpc_egress)
           @zones = args[:zones] if args.key?(:zones)
         end
       end
@@ -3647,6 +3679,57 @@ module Google
         def update!(**args)
           @egress_setting = args[:egress_setting] if args.key?(:egress_setting)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Vpc Egress configuration.
+      class VpcEgress
+        include Google::Apis::Core::Hashable
+      
+        # The egress setting for the subnetwork, controlling what traffic is diverted
+        # through it.
+        # Corresponds to the JSON property `egressSetting`
+        # @return [String]
+        attr_accessor :egress_setting
+      
+        # The network tags to apply to the instance.
+        # Corresponds to the JSON property `networkTags`
+        # @return [Array<Google::Apis::AppengineV1beta::VpcNetworkTag>]
+        attr_accessor :network_tags
+      
+        # Subnetwork key message.
+        # Corresponds to the JSON property `subnetworkKey`
+        # @return [Google::Apis::AppengineV1beta::SubnetworkKey]
+        attr_accessor :subnetwork_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @egress_setting = args[:egress_setting] if args.key?(:egress_setting)
+          @network_tags = args[:network_tags] if args.key?(:network_tags)
+          @subnetwork_key = args[:subnetwork_key] if args.key?(:subnetwork_key)
+        end
+      end
+      
+      # Network tag message.
+      class VpcNetworkTag
+        include Google::Apis::Core::Hashable
+      
+        # value for the tag name
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
