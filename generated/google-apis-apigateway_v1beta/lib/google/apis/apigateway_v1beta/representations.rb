@@ -368,6 +368,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ApigatewayV1beta::ApigatewayOperation, decorator: Google::Apis::ApigatewayV1beta::ApigatewayOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
