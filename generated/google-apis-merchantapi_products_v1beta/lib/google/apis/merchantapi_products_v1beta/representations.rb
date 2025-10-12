@@ -630,6 +630,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country, as: 'country'
+          property :handling_cutoff_time, as: 'handlingCutoffTime'
+          property :handling_cutoff_timezone, as: 'handlingCutoffTimezone'
           property :location_group_name, as: 'locationGroupName'
           property :location_id, :numeric_string => true, as: 'locationId'
           property :max_handling_time, :numeric_string => true, as: 'maxHandlingTime'
