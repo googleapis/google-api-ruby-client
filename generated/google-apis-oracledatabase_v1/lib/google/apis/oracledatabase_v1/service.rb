@@ -1225,8 +1225,8 @@ module Google
         #   /dbSystems/`dbSystemId`"`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return. If unspecified, a maximum of
-        #   50 System Versions will be returned. The maximum value is 1000; values above
-        #   1000 will be reset to 1000.
+        #   50 Databases will be returned. The maximum value is 1000; values above 1000
+        #   will be reset to 1000.
         # @param [String] page_token
         #   Optional. A token identifying the requested page of results to return. All
         #   fields except the filter should remain the same as in the request that
@@ -1267,8 +1267,8 @@ module Google
         #   the format: projects/`project`/locations/`location`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return. If unspecified, a maximum of
-        #   50 System Versions will be returned. The maximum value is 1000; values above
-        #   1000 will be reset to 1000.
+        #   50 DbSystemInitialStorageSizes will be returned. The maximum value is 1000;
+        #   values above 1000 will be reset to 1000.
         # @param [String] page_token
         #   Optional. A token identifying the requested page of results to return. All
         #   fields except the filter should remain the same as in the request that
@@ -1523,8 +1523,8 @@ module Google
         #   is provided, all DbVersions will be returned.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return. If unspecified, a maximum of
-        #   50 System Versions will be returned. The maximum value is 1000; values above
-        #   1000 will be reset to 1000.
+        #   50 DbVersions will be returned. The maximum value is 1000; values above 1000
+        #   will be reset to 1000.
         # @param [String] page_token
         #   Optional. A token identifying the requested page of results to return. All
         #   fields except the filter should remain the same as in the request that
@@ -1840,6 +1840,45 @@ module Google
           command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
           command.response_class = Google::Apis::OracledatabaseV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the database nodes of a VM Cluster.
+        # @param [String] parent
+        #   Required. The parent value for database node in the following format: projects/
+        #   `project`/locations/`location`/cloudVmClusters/`cloudVmCluster`. .
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If unspecified, at most 50 db
+        #   nodes will be returned. The maximum value is 1000; values above 1000 will be
+        #   coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the node should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListDbNodesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListDbNodesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_exadb_vm_cluster_db_nodes(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dbNodes', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListDbNodesResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListDbNodesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
