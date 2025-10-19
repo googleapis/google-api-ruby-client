@@ -1076,13 +1076,15 @@ module Google
         attr_accessor :labels
       
         # The locations of the resource. This field is used to determine whether the
-        # request is compliant with Trust Boundaries. Usage: - If unset or empty, the
-        # location of authorization is used as the target location. - For global
-        # resources: use a single value of "global". - For regional/multi-regional
-        # resources: use name of the GCP region(s) where the resource exists (e.g., ["us-
-        # east1", "us-west1"]). For multi-regional resources specify the name of each
-        # GCP region in the resource's multi-region. NOTE: Only GCP cloud region names
-        # are supported - go/cloud-region-names.
+        # request is compliant with Trust Boundaries. Usage: - Must not be empty for
+        # services in-scope for Trust Boundaries. Once Trust Boundaries is GA, empty
+        # values will cause the request to be rejected if customers enforce Trust
+        # Boundaries on the parent CRM nodes. - For global resources: use a single value
+        # of "global". - For regional/multi-regional resources: use name of the GCP
+        # region(s) where the resource exists (e.g., ["us-east1", "us-west1"]). For
+        # multi-regional resources specify the name of each GCP region in the resource's
+        # multi-region. NOTE: Only GCP cloud region names are supported - go/cloud-
+        # region-names.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
