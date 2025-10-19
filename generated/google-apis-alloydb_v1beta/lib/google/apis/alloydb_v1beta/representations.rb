@@ -933,6 +933,7 @@ module Google
       
           property :maintenance_update_policy, as: 'maintenanceUpdatePolicy', class: Google::Apis::AlloydbV1beta::MaintenanceUpdatePolicy, decorator: Google::Apis::AlloydbV1beta::MaintenanceUpdatePolicy::Representation
       
+          property :maintenance_version_selection_policy, as: 'maintenanceVersionSelectionPolicy'
           property :migration_source, as: 'migrationSource', class: Google::Apis::AlloydbV1beta::MigrationSource, decorator: Google::Apis::AlloydbV1beta::MigrationSource::Representation
       
           property :name, as: 'name'
