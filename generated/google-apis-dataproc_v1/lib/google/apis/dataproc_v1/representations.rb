@@ -2845,6 +2845,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DataprocV1::Operation, decorator: Google::Apis::DataprocV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -4704,10 +4705,12 @@ module Google
       class YarnApplication
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :memory_mb_seconds, :numeric_string => true, as: 'memoryMbSeconds'
           property :name, as: 'name'
           property :progress, as: 'progress'
           property :state, as: 'state'
           property :tracking_url, as: 'trackingUrl'
+          property :vcore_seconds, :numeric_string => true, as: 'vcoreSeconds'
         end
       end
     end
