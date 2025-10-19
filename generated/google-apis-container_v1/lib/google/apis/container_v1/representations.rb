@@ -1294,6 +1294,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WritableCgroups
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceleratorConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1957,6 +1963,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :private_registry_access_config, as: 'privateRegistryAccessConfig', class: Google::Apis::ContainerV1::PrivateRegistryAccessConfig, decorator: Google::Apis::ContainerV1::PrivateRegistryAccessConfig::Representation
+      
+          property :writable_cgroups, as: 'writableCgroups', class: Google::Apis::ContainerV1::WritableCgroups, decorator: Google::Apis::ContainerV1::WritableCgroups::Representation
       
         end
       end
@@ -3751,6 +3759,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_net_admin, as: 'allowNetAdmin'
           property :autopilot_compatibility_auditing_enabled, as: 'autopilotCompatibilityAuditingEnabled'
+        end
+      end
+      
+      class WritableCgroups
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
     end

@@ -2561,6 +2561,11 @@ module Google
         # @return [Google::Apis::ContainerV1::PrivateRegistryAccessConfig]
         attr_accessor :private_registry_access_config
       
+        # Defines writable cgroups configuration.
+        # Corresponds to the JSON property `writableCgroups`
+        # @return [Google::Apis::ContainerV1::WritableCgroups]
+        attr_accessor :writable_cgroups
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2568,6 +2573,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @private_registry_access_config = args[:private_registry_access_config] if args.key?(:private_registry_access_config)
+          @writable_cgroups = args[:writable_cgroups] if args.key?(:writable_cgroups)
         end
       end
       
@@ -5625,7 +5631,7 @@ module Google
         # Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a
         # sequence of decimal numbers, each with optional fraction and a unit suffix,
         # such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h"
-        # . The value must be a positive duration.
+        # . The value must be a positive duration between 1ms and 1 second, inclusive.
         # Corresponds to the JSON property `cpuCfsQuotaPeriod`
         # @return [String]
         attr_accessor :cpu_cfs_quota_period
@@ -9701,6 +9707,26 @@ module Google
         def update!(**args)
           @allow_net_admin = args[:allow_net_admin] if args.key?(:allow_net_admin)
           @autopilot_compatibility_auditing_enabled = args[:autopilot_compatibility_auditing_enabled] if args.key?(:autopilot_compatibility_auditing_enabled)
+        end
+      end
+      
+      # Defines writable cgroups configuration.
+      class WritableCgroups
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether writable cgroups is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
     end
