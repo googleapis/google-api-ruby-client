@@ -1554,6 +1554,7 @@ module Google
           property :authorization, as: 'authorization', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectTypeAuthorization, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1AspectTypeAuthorization::Representation
       
           property :create_time, as: 'createTime'
+          property :data_classification, as: 'dataClassification'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
