@@ -1301,6 +1301,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::RedisV1beta1::Operation, decorator: Google::Apis::RedisV1beta1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1567,6 +1568,7 @@ module Google
           property :phase, as: 'phase'
           property :time, as: 'time', class: Google::Apis::RedisV1beta1::TimeOfDay, decorator: Google::Apis::RedisV1beta1::TimeOfDay::Representation
       
+          property :week, as: 'week'
         end
       end
       
