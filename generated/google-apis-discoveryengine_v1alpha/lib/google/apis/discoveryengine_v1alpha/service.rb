@@ -338,6 +338,64 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets configurable pricing usage stats.
+        # @param [String] name
+        #   Required. The name of the ConfigurablePricingUsageStats to retrieve. Format:
+        #   projects/`project`/locations/`location`/configurablePricingUsageStats
+        # @param [Array<String>, String] metric_types
+        #   Optional. The metric types to return usage for.
+        # @param [Fixnum] time_range_end_date_day
+        #   Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        #   specify a year by itself or a year and month where the day isn't significant.
+        # @param [Fixnum] time_range_end_date_month
+        #   Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        #   and day.
+        # @param [Fixnum] time_range_end_date_year
+        #   Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        #   year.
+        # @param [Fixnum] time_range_start_date_day
+        #   Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        #   specify a year by itself or a year and month where the day isn't significant.
+        # @param [Fixnum] time_range_start_date_month
+        #   Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        #   and day.
+        # @param [Fixnum] time_range_start_date_year
+        #   Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        #   year.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConfigurablePricingUsageStats] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConfigurablePricingUsageStats]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_configurable_pricing_usage_stats(name, metric_types: nil, time_range_end_date_day: nil, time_range_end_date_month: nil, time_range_end_date_year: nil, time_range_start_date_day: nil, time_range_start_date_month: nil, time_range_start_date_year: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConfigurablePricingUsageStats::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaConfigurablePricingUsageStats
+          command.params['name'] = name unless name.nil?
+          command.query['metricTypes'] = metric_types unless metric_types.nil?
+          command.query['timeRange.endDate.day'] = time_range_end_date_day unless time_range_end_date_day.nil?
+          command.query['timeRange.endDate.month'] = time_range_end_date_month unless time_range_end_date_month.nil?
+          command.query['timeRange.endDate.year'] = time_range_end_date_year unless time_range_end_date_year.nil?
+          command.query['timeRange.startDate.day'] = time_range_start_date_day unless time_range_start_date_day.nil?
+          command.query['timeRange.startDate.month'] = time_range_start_date_month unless time_range_start_date_month.nil?
+          command.query['timeRange.startDate.year'] = time_range_start_date_year unless time_range_start_date_year.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Obtains the time series data of organic or dedicated crawl rate for monitoring.
         # When dedicated crawl rate is not set, it will return vertex AI's organic
         # crawl rate time series. Organic crawl means Google automatically crawl the
