@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DocumentFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DocumentStyle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1281,6 +1287,13 @@ module Google
         end
       end
       
+      class DocumentFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_mode, as: 'documentMode'
+        end
+      end
+      
       class DocumentStyle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1288,6 +1301,8 @@ module Google
       
           property :default_footer_id, as: 'defaultFooterId'
           property :default_header_id, as: 'defaultHeaderId'
+          property :document_format, as: 'documentFormat', class: Google::Apis::DocsV1::DocumentFormat, decorator: Google::Apis::DocsV1::DocumentFormat::Representation
+      
           property :even_page_footer_id, as: 'evenPageFooterId'
           property :even_page_header_id, as: 'evenPageHeaderId'
           property :first_page_footer_id, as: 'firstPageFooterId'
@@ -2522,6 +2537,7 @@ module Google
       class TabProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :icon_emoji, as: 'iconEmoji'
           property :index, as: 'index'
           property :nesting_level, as: 'nestingLevel'
           property :parent_tab_id, as: 'parentTabId'

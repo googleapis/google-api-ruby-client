@@ -1091,6 +1091,25 @@ module Google
         end
       end
       
+      # Represents document-level format settings.
+      class DocumentFormat
+        include Google::Apis::Core::Hashable
+      
+        # Whether the document has pages or is pageless.
+        # Corresponds to the JSON property `documentMode`
+        # @return [String]
+        attr_accessor :document_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_mode = args[:document_mode] if args.key?(:document_mode)
+        end
+      end
+      
       # The style of the document.
       class DocumentStyle
         include Google::Apis::Core::Hashable
@@ -1111,6 +1130,11 @@ module Google
         # Corresponds to the JSON property `defaultHeaderId`
         # @return [String]
         attr_accessor :default_header_id
+      
+        # Represents document-level format settings.
+        # Corresponds to the JSON property `documentFormat`
+        # @return [Google::Apis::DocsV1::DocumentFormat]
+        attr_accessor :document_format
       
         # The ID of the footer used only for even pages. The value of
         # use_even_page_header_footer determines whether to use the default_footer_id or
@@ -1223,6 +1247,7 @@ module Google
           @background = args[:background] if args.key?(:background)
           @default_footer_id = args[:default_footer_id] if args.key?(:default_footer_id)
           @default_header_id = args[:default_header_id] if args.key?(:default_header_id)
+          @document_format = args[:document_format] if args.key?(:document_format)
           @even_page_footer_id = args[:even_page_footer_id] if args.key?(:even_page_footer_id)
           @even_page_header_id = args[:even_page_header_id] if args.key?(:even_page_header_id)
           @first_page_footer_id = args[:first_page_footer_id] if args.key?(:first_page_footer_id)
@@ -5573,6 +5598,15 @@ module Google
       class TabProperties
         include Google::Apis::Core::Hashable
       
+        # Optional. The emoji icon displayed with the tab. A valid emoji icon is
+        # represented by a non-empty Unicode string. Any set of characters that don't
+        # represent a single emoji is invalid. If an emoji is invalid, a 400 bad request
+        # error is returned. If this value is unset or empty, the tab will display the
+        # default tab icon.
+        # Corresponds to the JSON property `iconEmoji`
+        # @return [String]
+        attr_accessor :icon_emoji
+      
         # The zero-based index of the tab within the parent.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
@@ -5606,6 +5640,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @icon_emoji = args[:icon_emoji] if args.key?(:icon_emoji)
           @index = args[:index] if args.key?(:index)
           @nesting_level = args[:nesting_level] if args.key?(:nesting_level)
           @parent_tab_id = args[:parent_tab_id] if args.key?(:parent_tab_id)
