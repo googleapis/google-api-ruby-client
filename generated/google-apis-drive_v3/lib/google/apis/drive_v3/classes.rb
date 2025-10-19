@@ -3142,12 +3142,14 @@ module Google
       end
       
       # A permission for a file. A permission grants a user, group, domain, or the
-      # world access to a file or a folder hierarchy. By default, permissions requests
-      # only return a subset of fields. Permission kind, ID, type, and role are always
-      # returned. To retrieve specific fields, see https://developers.google.com/
-      # workspace/drive/api/guides/fields-parameter. Some resource methods (such as `
-      # permissions.update`) require a `permissionId`. Use the `permissions.list`
-      # method to retrieve the ID for a file, folder, or shared drive.
+      # world access to a file or a folder hierarchy. For more information, see [Share
+      # files, folders, and drives](https://developers.google.com/workspace/drive/api/
+      # guides/manage-sharing). By default, permission requests only return a subset
+      # of fields. Permission `kind`, `ID`, `type`, and `role` are always returned. To
+      # retrieve specific fields, see [Return specific fields](https://developers.
+      # google.com/workspace/drive/api/guides/fields-parameter). Some resource methods
+      # (such as `permissions.update`) require a `permissionId`. Use the `permissions.
+      # list` method to retrieve the ID for a file, folder, or shared drive.
       class Permission
         include Google::Apis::Core::Hashable
       
@@ -3159,7 +3161,7 @@ module Google
         alias_method :allow_file_discovery?, :allow_file_discovery
       
         # Output only. Whether the account associated with this permission has been
-        # deleted. This field only pertains to user and group permissions.
+        # deleted. This field only pertains to permissions of type `user` or `group`.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
@@ -3167,9 +3169,9 @@ module Google
       
         # Output only. The "pretty" name of the value of the permission. The following
         # is a list of examples for each type of permission: * `user` - User's full name,
-        # as defined for their Google account, such as "Joe Smith." * `group` - Name of
+        # as defined for their Google Account, such as "Dana A." * `group` - Name of
         # the Google Group, such as "The Company Administrators." * `domain` - String
-        # domain name, such as "thecompany.com." * `anyone` - No `displayName` is
+        # domain name, such as "cymbalgroup.com." * `anyone` - No `displayName` is
         # present.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -3194,14 +3196,15 @@ module Google
         attr_accessor :expiration_time
       
         # Output only. The ID of this permission. This is a unique identifier for the
-        # grantee, and is published in User resources as `permissionId`. IDs should be
+        # grantee, and is published in the [User resource](https://developers.google.com/
+        # workspace/drive/api/reference/rest/v3/User) as `permissionId`. IDs should be
         # treated as opaque values.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # When true, only organizers, owners, and users with permissions added directly
-        # on the item can access it.
+        # When `true`, only organizers, owners, and users with permissions added
+        # directly on the item can access it.
         # Corresponds to the JSON property `inheritedPermissionsDisabled`
         # @return [Boolean]
         attr_accessor :inherited_permissions_disabled
@@ -3214,14 +3217,15 @@ module Google
         attr_accessor :kind
       
         # Whether the account associated with this permission is a pending owner. Only
-        # populated for `user` type permissions for files that are not in a shared drive.
+        # populated for permissions of type `user` for files that aren't in a shared
+        # drive.
         # Corresponds to the JSON property `pendingOwner`
         # @return [Boolean]
         attr_accessor :pending_owner
         alias_method :pending_owner?, :pending_owner
       
         # Output only. Details of whether the permissions on this item are inherited or
-        # directly on this item.
+        # are directly on this item.
         # Corresponds to the JSON property `permissionDetails`
         # @return [Array<Google::Apis::DriveV3::Permission::PermissionDetail>]
         attr_accessor :permission_details
@@ -3231,9 +3235,10 @@ module Google
         # @return [String]
         attr_accessor :photo_link
       
-        # The role granted by this permission. While new values may be supported in the
-        # future, the following are currently allowed: * `owner` * `organizer` * `
-        # fileOrganizer` * `writer` * `commenter` * `reader`
+        # The role granted by this permission. Supported values include: * `owner` * `
+        # organizer` * `fileOrganizer` * `writer` * `commenter` * `reader` For more
+        # information, see [Roles and permissions](https://developers.google.com/
+        # workspace/drive/api/guides/ref-roles).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -3243,21 +3248,22 @@ module Google
         # @return [Array<Google::Apis::DriveV3::Permission::TeamDrivePermissionDetail>]
         attr_accessor :team_drive_permission_details
       
-        # The type of the grantee. Valid values are: * `user` * `group` * `domain` * `
-        # anyone` When creating a permission, if `type` is `user` or `group`, you must
-        # provide an `emailAddress` for the user or group. When `type` is `domain`, you
-        # must provide a `domain`. There isn't extra information required for an `anyone`
-        # type.
+        # The type of the grantee. Supported values include: * `user` * `group` * `
+        # domain` * `anyone` When creating a permission, if `type` is `user` or `group`,
+        # you must provide an `emailAddress` for the user or group. If `type` is `domain`
+        # , you must provide a `domain`. If `type` is `anyone`, no extra information is
+        # required.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
         # Indicates the view for this permission. Only populated for permissions that
-        # belong to a view. published and metadata are the only supported values. -
-        # published: The permission's role is published_reader. - metadata: The item is
-        # only visible to the metadata view because the item has limited access and the
-        # scope has at least read access to the parent. Note: The metadata view is
-        # currently only supported on folders.
+        # belong to a view. The only supported values are `published` and `metadata`: * `
+        # published`: The permission's role is `publishedReader`. * `metadata`: The item
+        # is only visible to the `metadata` view because the item has limited access and
+        # the scope has at least read access to the parent. The `metadata` view is only
+        # supported on folders. For more information, see [Views](https://developers.
+        # google.com/workspace/drive/api/guides/ref-roles#views).
         # Corresponds to the JSON property `view`
         # @return [String]
         attr_accessor :view
@@ -3303,15 +3309,16 @@ module Google
           # @return [String]
           attr_accessor :inherited_from
         
-          # Output only. The permission type for this user. While new values may be added
-          # in future, the following are currently possible: * `file` * `member`
+          # Output only. The permission type for this user. Supported values include: * `
+          # file` * `member`
           # Corresponds to the JSON property `permissionType`
           # @return [String]
           attr_accessor :permission_type
         
-          # Output only. The primary role for this user. While new values may be added in
-          # the future, the following are currently possible: * `owner` * `organizer` * `
-          # fileOrganizer` * `writer` * `commenter` * `reader`
+          # Output only. The primary role for this user. Supported values include: * `
+          # owner` * `organizer` * `fileOrganizer` * `writer` * `commenter` * `reader` For
+          # more information, see [Roles and permissions](https://developers.google.com/
+          # workspace/drive/api/guides/ref-roles).
           # Corresponds to the JSON property `role`
           # @return [String]
           attr_accessor :role
@@ -3388,8 +3395,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of permissions. If nextPageToken is populated, then this list may be
-        # incomplete and an additional page of results should be fetched.
+        # The list of permissions. If `nextPageToken` is populated, then this list may
+        # be incomplete and an additional page of results should be fetched.
         # Corresponds to the JSON property `permissions`
         # @return [Array<Google::Apis::DriveV3::Permission>]
         attr_accessor :permissions
