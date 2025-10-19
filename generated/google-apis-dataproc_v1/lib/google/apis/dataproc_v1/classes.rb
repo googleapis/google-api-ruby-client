@@ -3016,7 +3016,7 @@ module Google
       
         # Optional. Resource manager tags (https://cloud.google.com/resource-manager/
         # docs/tags/tags-creating-and-managing) to add to all instances (see Use secure
-        # tags in Dataproc (https://cloud.google.com/dataproc/docs/guides/attach-secure-
+        # tags in Dataproc (https://cloud.google.com/dataproc/docs/guides/use-secure-
         # tags)).
         # Corresponds to the JSON property `resourceManagerTags`
         # @return [Hash<String,String>]
@@ -5009,6 +5009,13 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets
+        # ListOperationsRequest.return_partial_success and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5017,6 +5024,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -11395,13 +11403,14 @@ module Google
       class UsageMetrics
         include Google::Apis::Core::Hashable
       
-        # Optional. Accelerator type being used, if any
+        # Optional. DEPRECATED Accelerator type being used, if any
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
       
-        # Optional. Accelerator usage in (milliAccelerator x seconds) (see Dataproc
-        # Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+        # Optional. DEPRECATED Accelerator usage in (milliAccelerator x seconds) (see
+        # Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/
+        # pricing)).
         # Corresponds to the JSON property `milliAcceleratorSeconds`
         # @return [Fixnum]
         attr_accessor :milli_accelerator_seconds
@@ -11975,6 +11984,12 @@ module Google
       class YarnApplication
         include Google::Apis::Core::Hashable
       
+        # Optional. The cumulative memory usage of the application for a job, measured
+        # in mb-seconds.
+        # Corresponds to the JSON property `memoryMbSeconds`
+        # @return [Fixnum]
+        attr_accessor :memory_mb_seconds
+      
         # Required. The application name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -11998,16 +12013,24 @@ module Google
         # @return [String]
         attr_accessor :tracking_url
       
+        # Optional. The cumulative CPU time consumed by the application for a job,
+        # measured in vcore-seconds.
+        # Corresponds to the JSON property `vcoreSeconds`
+        # @return [Fixnum]
+        attr_accessor :vcore_seconds
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @memory_mb_seconds = args[:memory_mb_seconds] if args.key?(:memory_mb_seconds)
           @name = args[:name] if args.key?(:name)
           @progress = args[:progress] if args.key?(:progress)
           @state = args[:state] if args.key?(:state)
           @tracking_url = args[:tracking_url] if args.key?(:tracking_url)
+          @vcore_seconds = args[:vcore_seconds] if args.key?(:vcore_seconds)
         end
       end
     end
