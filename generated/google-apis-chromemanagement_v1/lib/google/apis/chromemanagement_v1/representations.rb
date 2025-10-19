@@ -490,6 +490,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1TelemetryExternalDisplayData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1TelemetryExternalDisplayEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1453,8 +1465,12 @@ module Google
           property :connection_type, as: 'connectionType'
           property :encryption_on, as: 'encryptionOn'
           property :gateway_ip_address, as: 'gatewayIpAddress'
+          property :gateway_ipv6_address, as: 'gatewayIpv6Address'
           property :guid, as: 'guid'
+          collection :ipv6_address, as: 'ipv6Address'
           property :lan_ip_address, as: 'lanIpAddress'
+          property :link_down_speed_kbps, :numeric_string => true, as: 'linkDownSpeedKbps'
+          property :metered, as: 'metered'
           property :receiving_bit_rate_mbps, :numeric_string => true, as: 'receivingBitRateMbps'
           property :report_time, as: 'reportTime'
           property :sample_frequency, as: 'sampleFrequency'
@@ -1699,6 +1715,8 @@ module Google
           property :device, as: 'device', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryDeviceInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryDeviceInfo::Representation
       
           property :event_type, as: 'eventType'
+          property :external_displays_event, as: 'externalDisplaysEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryExternalDisplayEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryExternalDisplayEvent::Representation
+      
           property :https_latency_change_event, as: 'httpsLatencyChangeEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent::Representation
       
           property :name, as: 'name'
@@ -1722,6 +1740,26 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :event_types, as: 'eventTypes'
+        end
+      end
+      
+      class GoogleChromeManagementV1TelemetryExternalDisplayData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :edid_version, as: 'edidVersion'
+          property :refresh_rate, :numeric_string => true, as: 'refreshRate'
+          property :resolution_horizontal, as: 'resolutionHorizontal'
+          property :resolution_vertical, as: 'resolutionVertical'
+          property :serial_number, as: 'serialNumber'
+        end
+      end
+      
+      class GoogleChromeManagementV1TelemetryExternalDisplayEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :external_display_data, as: 'externalDisplayData', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryExternalDisplayData, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryExternalDisplayData::Representation
+      
         end
       end
       

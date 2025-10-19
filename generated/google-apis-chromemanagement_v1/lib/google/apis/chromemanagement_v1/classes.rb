@@ -2489,15 +2489,38 @@ module Google
         # @return [String]
         attr_accessor :gateway_ip_address
       
+        # Output only. The gateway IPv6 for this interface, if detected
+        # Corresponds to the JSON property `gatewayIpv6Address`
+        # @return [String]
+        attr_accessor :gateway_ipv6_address
+      
         # Output only. Network connection guid.
         # Corresponds to the JSON property `guid`
         # @return [String]
         attr_accessor :guid
       
+        # Output only. IPv6 addresses assigned to this network, if any. Each address is
+        # a string in standard IPv6 text representation (e.g., "2001:db8::1").
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [Array<String>]
+        attr_accessor :ipv6_address
+      
         # Output only. LAN IP address.
         # Corresponds to the JSON property `lanIpAddress`
         # @return [String]
         attr_accessor :lan_ip_address
+      
+        # Output only. The maximum downstream bandwidth in Kilobits per second (Kbps),
+        # if reported by the network interface or connection.
+        # Corresponds to the JSON property `linkDownSpeedKbps`
+        # @return [Fixnum]
+        attr_accessor :link_down_speed_kbps
+      
+        # Output only. Whether the network was detected as metered.
+        # Corresponds to the JSON property `metered`
+        # @return [Boolean]
+        attr_accessor :metered
+        alias_method :metered?, :metered
       
         # Output only. Receiving bit rate measured in Megabits per second.
         # Corresponds to the JSON property `receivingBitRateMbps`
@@ -2551,8 +2574,12 @@ module Google
           @connection_type = args[:connection_type] if args.key?(:connection_type)
           @encryption_on = args[:encryption_on] if args.key?(:encryption_on)
           @gateway_ip_address = args[:gateway_ip_address] if args.key?(:gateway_ip_address)
+          @gateway_ipv6_address = args[:gateway_ipv6_address] if args.key?(:gateway_ipv6_address)
           @guid = args[:guid] if args.key?(:guid)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
           @lan_ip_address = args[:lan_ip_address] if args.key?(:lan_ip_address)
+          @link_down_speed_kbps = args[:link_down_speed_kbps] if args.key?(:link_down_speed_kbps)
+          @metered = args[:metered] if args.key?(:metered)
           @receiving_bit_rate_mbps = args[:receiving_bit_rate_mbps] if args.key?(:receiving_bit_rate_mbps)
           @report_time = args[:report_time] if args.key?(:report_time)
           @sample_frequency = args[:sample_frequency] if args.key?(:sample_frequency)
@@ -3448,6 +3475,11 @@ module Google
         # @return [String]
         attr_accessor :event_type
       
+        # External display connected/disconnected event payload.
+        # Corresponds to the JSON property `externalDisplaysEvent`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryExternalDisplayEvent]
+        attr_accessor :external_displays_event
+      
         # Https latency routine is run periodically and `
         # TelemetryHttpsLatencyChangeEvent` is triggered if a latency problem was
         # detected or if the device has recovered from a latency problem. * Granular
@@ -3515,6 +3547,7 @@ module Google
           @audio_severe_underrun_event = args[:audio_severe_underrun_event] if args.key?(:audio_severe_underrun_event)
           @device = args[:device] if args.key?(:device)
           @event_type = args[:event_type] if args.key?(:event_type)
+          @external_displays_event = args[:external_displays_event] if args.key?(:external_displays_event)
           @https_latency_change_event = args[:https_latency_change_event] if args.key?(:https_latency_change_event)
           @name = args[:name] if args.key?(:name)
           @network_state_change_event = args[:network_state_change_event] if args.key?(:network_state_change_event)
@@ -3543,6 +3576,74 @@ module Google
         # Update properties of this object
         def update!(**args)
           @event_types = args[:event_types] if args.key?(:event_types)
+        end
+      end
+      
+      # External display data.
+      class GoogleChromeManagementV1TelemetryExternalDisplayData
+        include Google::Apis::Core::Hashable
+      
+        # The display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The EDID version.
+        # Corresponds to the JSON property `edidVersion`
+        # @return [String]
+        attr_accessor :edid_version
+      
+        # The refresh rate.
+        # Corresponds to the JSON property `refreshRate`
+        # @return [Fixnum]
+        attr_accessor :refresh_rate
+      
+        # The horizontal resolution.
+        # Corresponds to the JSON property `resolutionHorizontal`
+        # @return [Fixnum]
+        attr_accessor :resolution_horizontal
+      
+        # The vertical resolution.
+        # Corresponds to the JSON property `resolutionVertical`
+        # @return [Fixnum]
+        attr_accessor :resolution_vertical
+      
+        # The serial number.
+        # Corresponds to the JSON property `serialNumber`
+        # @return [Fixnum]
+        attr_accessor :serial_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @edid_version = args[:edid_version] if args.key?(:edid_version)
+          @refresh_rate = args[:refresh_rate] if args.key?(:refresh_rate)
+          @resolution_horizontal = args[:resolution_horizontal] if args.key?(:resolution_horizontal)
+          @resolution_vertical = args[:resolution_vertical] if args.key?(:resolution_vertical)
+          @serial_number = args[:serial_number] if args.key?(:serial_number)
+        end
+      end
+      
+      # External display connected/disconnected event payload.
+      class GoogleChromeManagementV1TelemetryExternalDisplayEvent
+        include Google::Apis::Core::Hashable
+      
+        # List of external displays that were connected/disconnected.
+        # Corresponds to the JSON property `externalDisplayData`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryExternalDisplayData>]
+        attr_accessor :external_display_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_display_data = args[:external_display_data] if args.key?(:external_display_data)
         end
       end
       
