@@ -1120,6 +1120,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecretSyncConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityBulletinEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1259,6 +1265,12 @@ module Google
       end
       
       class StatusCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SyncRotationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1415,6 +1427,12 @@ module Google
       end
       
       class WorkloadPolicyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WritableCgroups
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1869,6 +1887,8 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :secret_manager_config, as: 'secretManagerConfig', class: Google::Apis::ContainerV1beta1::SecretManagerConfig, decorator: Google::Apis::ContainerV1beta1::SecretManagerConfig::Representation
       
+          property :secret_sync_config, as: 'secretSyncConfig', class: Google::Apis::ContainerV1beta1::SecretSyncConfig, decorator: Google::Apis::ContainerV1beta1::SecretSyncConfig::Representation
+      
           property :security_posture_config, as: 'securityPostureConfig', class: Google::Apis::ContainerV1beta1::SecurityPostureConfig, decorator: Google::Apis::ContainerV1beta1::SecurityPostureConfig::Representation
       
           property :self_link, as: 'selfLink'
@@ -2148,6 +2168,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :private_registry_access_config, as: 'privateRegistryAccessConfig', class: Google::Apis::ContainerV1beta1::PrivateRegistryAccessConfig, decorator: Google::Apis::ContainerV1beta1::PrivateRegistryAccessConfig::Representation
+      
+          property :writable_cgroups, as: 'writableCgroups', class: Google::Apis::ContainerV1beta1::WritableCgroups, decorator: Google::Apis::ContainerV1beta1::WritableCgroups::Representation
       
         end
       end
@@ -3543,6 +3565,15 @@ module Google
         end
       end
       
+      class SecretSyncConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :rotation_config, as: 'rotationConfig', class: Google::Apis::ContainerV1beta1::SyncRotationConfig, decorator: Google::Apis::ContainerV1beta1::SyncRotationConfig::Representation
+      
+        end
+      end
+      
       class SecurityBulletinEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3799,6 +3830,14 @@ module Google
           property :canonical_code, as: 'canonicalCode'
           property :code, as: 'code'
           property :message, as: 'message'
+        end
+      end
+      
+      class SyncRotationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :rotation_interval, as: 'rotationInterval'
         end
       end
       
@@ -4104,6 +4143,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_net_admin, as: 'allowNetAdmin'
           property :autopilot_compatibility_auditing_enabled, as: 'autopilotCompatibilityAuditingEnabled'
+        end
+      end
+      
+      class WritableCgroups
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
     end

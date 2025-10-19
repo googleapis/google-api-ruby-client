@@ -1673,6 +1673,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::SecretManagerConfig]
         attr_accessor :secret_manager_config
       
+        # Configuration for sync Secret Manager secrets as k8s secrets.
+        # Corresponds to the JSON property `secretSyncConfig`
+        # @return [Google::Apis::ContainerV1beta1::SecretSyncConfig]
+        attr_accessor :secret_sync_config
+      
         # SecurityPostureConfig defines the flags needed to enable/disable features for
         # the Security Posture API.
         # Corresponds to the JSON property `securityPostureConfig`
@@ -1846,6 +1851,7 @@ module Google
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @secret_manager_config = args[:secret_manager_config] if args.key?(:secret_manager_config)
+          @secret_sync_config = args[:secret_sync_config] if args.key?(:secret_sync_config)
           @security_posture_config = args[:security_posture_config] if args.key?(:security_posture_config)
           @self_link = args[:self_link] if args.key?(:self_link)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
@@ -2791,6 +2797,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::PrivateRegistryAccessConfig]
         attr_accessor :private_registry_access_config
       
+        # Defines writable cgroups configuration.
+        # Corresponds to the JSON property `writableCgroups`
+        # @return [Google::Apis::ContainerV1beta1::WritableCgroups]
+        attr_accessor :writable_cgroups
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2798,6 +2809,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @private_registry_access_config = args[:private_registry_access_config] if args.key?(:private_registry_access_config)
+          @writable_cgroups = args[:writable_cgroups] if args.key?(:writable_cgroups)
         end
       end
       
@@ -6110,7 +6122,7 @@ module Google
         # Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a
         # sequence of decimal numbers, each with optional fraction and a unit suffix,
         # such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h"
-        # . The value must be a positive duration.
+        # . The value must be a positive duration between 1ms and 1 second, inclusive.
         # Corresponds to the JSON property `cpuCfsQuotaPeriod`
         # @return [String]
         attr_accessor :cpu_cfs_quota_period
@@ -8099,6 +8111,32 @@ module Google
         end
       end
       
+      # Configuration for sync Secret Manager secrets as k8s secrets.
+      class SecretSyncConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enable/Disable Secret Sync Config.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # SyncRotationConfig is config for secret manager auto rotation.
+        # Corresponds to the JSON property `rotationConfig`
+        # @return [Google::Apis::ContainerV1beta1::SyncRotationConfig]
+        attr_accessor :rotation_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @rotation_config = args[:rotation_config] if args.key?(:rotation_config)
+        end
+      end
+      
       # SecurityBulletinEvent is a notification sent to customers when a security
       # bulletin has been posted that they are vulnerable to.
       class SecurityBulletinEvent
@@ -9220,6 +9258,33 @@ module Google
           @canonical_code = args[:canonical_code] if args.key?(:canonical_code)
           @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # SyncRotationConfig is config for secret manager auto rotation.
+      class SyncRotationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the rotation is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # The interval between two consecutive rotations. Default rotation interval is 2
+        # minutes.
+        # Corresponds to the JSON property `rotationInterval`
+        # @return [String]
+        attr_accessor :rotation_interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @rotation_interval = args[:rotation_interval] if args.key?(:rotation_interval)
         end
       end
       
@@ -10488,6 +10553,26 @@ module Google
         def update!(**args)
           @allow_net_admin = args[:allow_net_admin] if args.key?(:allow_net_admin)
           @autopilot_compatibility_auditing_enabled = args[:autopilot_compatibility_auditing_enabled] if args.key?(:autopilot_compatibility_auditing_enabled)
+        end
+      end
+      
+      # Defines writable cgroups configuration.
+      class WritableCgroups
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether writable cgroups is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
     end
