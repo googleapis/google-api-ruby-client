@@ -2895,7 +2895,8 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleTypeMoney]
         attr_accessor :money_value
       
-        # 
+        # A signature - a graphical representation of a person's name, often used to
+        # sign a document.
         # Corresponds to the JSON property `signatureValue`
         # @return [Boolean]
         attr_accessor :signature_value
