@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ObjectRetention
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -327,6 +333,14 @@ module Google
         end
       end
       
+      class ObjectRetention
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retain_until_time, as: 'retainUntilTime'
+          property :retention_mode, as: 'retentionMode'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -369,6 +383,8 @@ module Google
           property :content_type, as: 'contentType'
           hash :custom_metadata, as: 'customMetadata'
           property :custom_time, as: 'customTime'
+          property :object_retention, as: 'objectRetention', class: Google::Apis::StoragebatchoperationsV1::ObjectRetention, decorator: Google::Apis::StoragebatchoperationsV1::ObjectRetention::Representation
+      
         end
       end
       

@@ -544,6 +544,33 @@ module Google
         end
       end
       
+      # Describes options for object retention update.
+      class ObjectRetention
+        include Google::Apis::Core::Hashable
+      
+        # Required. The time when the object will be retained until. UNSET will clear
+        # the retention. Must be specified in RFC 3339 format e.g. YYYY-MM-DD'T'HH:MM:SS.
+        # SS'Z' or YYYY-MM-DD'T'HH:MM:SS'Z'.
+        # Corresponds to the JSON property `retainUntilTime`
+        # @return [String]
+        attr_accessor :retain_until_time
+      
+        # Required. The retention mode of the object.
+        # Corresponds to the JSON property `retentionMode`
+        # @return [String]
+        attr_accessor :retention_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retain_until_time = args[:retain_until_time] if args.key?(:retain_until_time)
+          @retention_mode = args[:retention_mode] if args.key?(:retention_mode)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -740,6 +767,11 @@ module Google
         # @return [String]
         attr_accessor :custom_time
       
+        # Describes options for object retention update.
+        # Corresponds to the JSON property `objectRetention`
+        # @return [Google::Apis::StoragebatchoperationsV1::ObjectRetention]
+        attr_accessor :object_retention
+      
         def initialize(**args)
            update!(**args)
         end
@@ -753,6 +785,7 @@ module Google
           @content_type = args[:content_type] if args.key?(:content_type)
           @custom_metadata = args[:custom_metadata] if args.key?(:custom_metadata)
           @custom_time = args[:custom_time] if args.key?(:custom_time)
+          @object_retention = args[:object_retention] if args.key?(:object_retention)
         end
       end
       
