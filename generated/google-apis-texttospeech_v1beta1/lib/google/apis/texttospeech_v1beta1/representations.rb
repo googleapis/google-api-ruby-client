@@ -164,6 +164,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :low_latency_journey_synthesis, as: 'lowLatencyJourneySynthesis'
+          property :relax_safety_filters, as: 'relaxSafetyFilters'
         end
       end
       
