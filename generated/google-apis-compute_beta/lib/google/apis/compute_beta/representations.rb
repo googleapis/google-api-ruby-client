@@ -8458,6 +8458,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ZoneSetNestedPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ZoneSetPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -24191,6 +24197,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+        end
+      end
+      
+      class ZoneSetNestedPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::ComputeBeta::Binding, decorator: Google::Apis::ComputeBeta::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :policy, as: 'policy', class: Google::Apis::ComputeBeta::Policy, decorator: Google::Apis::ComputeBeta::Policy::Representation
+      
         end
       end
       
