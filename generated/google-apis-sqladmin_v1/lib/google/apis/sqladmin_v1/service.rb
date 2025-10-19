@@ -1184,9 +1184,9 @@ module Google
         
         # Retrieves a resource containing information about a Cloud SQL instance.
         # @param [String] project
-        #   Project ID of the project that contains the instance.
+        #   Required. Project ID of the project that contains the instance.
         # @param [String] instance
-        #   Database instance ID. This does not include the project ID.
+        #   Required. Database instance ID. This does not include the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1949,9 +1949,9 @@ module Google
         
         # Retrieves an instance operation that has been performed on an instance.
         # @param [String] project
-        #   Project ID of the project that contains the instance.
+        #   Required. Project ID of the project that contains the instance.
         # @param [String] operation
-        #   Instance operation ID.
+        #   Required. Instance operation ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
