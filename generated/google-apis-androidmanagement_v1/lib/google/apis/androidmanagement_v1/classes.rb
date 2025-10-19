@@ -122,7 +122,9 @@ module Google
       
         # Optional. Controls Memory Tagging Extension (MTE) (https://source.android.com/
         # docs/security/test/memory-safety/arm-mte) on the device. The device needs to
-        # be rebooted to apply changes to the MTE policy.
+        # be rebooted to apply changes to the MTE policy. On Android 15 and above, a
+        # NonComplianceDetail with PENDING is reported if the policy change is pending a
+        # device reboot.
         # Corresponds to the JSON property `mtePolicy`
         # @return [String]
         attr_accessor :mte_policy
@@ -1959,6 +1961,157 @@ module Google
         end
       end
       
+      # Information about the application to be set as the default.
+      class DefaultApplication
+        include Google::Apis::Core::Hashable
+      
+        # Required. The package name that should be set as the default application. The
+        # policy is rejected if the package name is invalid.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @package_name = args[:package_name] if args.key?(:package_name)
+        end
+      end
+      
+      # Additional context for non-compliance related to default application settings.
+      class DefaultApplicationContext
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The scope of non-compliant default application setting.
+        # Corresponds to the JSON property `defaultApplicationScope`
+        # @return [String]
+        attr_accessor :default_application_scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_application_scope = args[:default_application_scope] if args.key?(:default_application_scope)
+        end
+      end
+      
+      # The default application information for a specific DefaultApplicationType.
+      class DefaultApplicationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Details on the default application setting attempts, in the same
+        # order as listed in defaultApplications.
+        # Corresponds to the JSON property `defaultApplicationSettingAttempts`
+        # @return [Array<Google::Apis::AndroidmanagementV1::DefaultApplicationSettingAttempt>]
+        attr_accessor :default_application_setting_attempts
+      
+        # Output only. The default application type.
+        # Corresponds to the JSON property `defaultApplicationType`
+        # @return [String]
+        attr_accessor :default_application_type
+      
+        # Output only. The package name of the current default application.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_application_setting_attempts = args[:default_application_setting_attempts] if args.key?(:default_application_setting_attempts)
+          @default_application_type = args[:default_application_type] if args.key?(:default_application_type)
+          @package_name = args[:package_name] if args.key?(:package_name)
+        end
+      end
+      
+      # The default application setting for a DefaultApplicationType.
+      class DefaultApplicationSetting
+        include Google::Apis::Core::Hashable
+      
+        # Required. The scopes to which the policy should be applied. This list must not
+        # be empty or contain duplicates.A NonComplianceDetail with MANAGEMENT_MODE
+        # reason and DEFAULT_APPLICATION_SETTING_UNSUPPORTED_SCOPES specific reason is
+        # reported if none of the specified scopes can be applied to the management mode
+        # (e.g. a fully managed device receives a policy with only
+        # SCOPE_PERSONAL_PROFILE in the list).
+        # Corresponds to the JSON property `defaultApplicationScopes`
+        # @return [Array<String>]
+        attr_accessor :default_application_scopes
+      
+        # Required. The app type to set the default application.
+        # Corresponds to the JSON property `defaultApplicationType`
+        # @return [String]
+        attr_accessor :default_application_type
+      
+        # Required. The list of applications that can be set as the default app for a
+        # given type. This list must not be empty or contain duplicates. The first app
+        # in the list that is installed and qualified for the defaultApplicationType (e.
+        # g. SMS app for DEFAULT_SMS) is set as the default app. The signing key
+        # certificate fingerprint of the app on the device must also match one of the
+        # signing key certificate fingerprints obtained from Play Store or one of the
+        # entries in ApplicationPolicy.signingKeyCerts in order to be set as the default.
+        # If the defaultApplicationScopes contains SCOPE_FULLY_MANAGED or
+        # SCOPE_WORK_PROFILE, the app must have an entry in applications with
+        # installType set to a value other than BLOCKED.A NonComplianceDetail with
+        # APP_NOT_INSTALLED reason and DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE
+        # specific reason is reported if none of the apps in the list are installed. A
+        # NonComplianceDetail with INVALID_VALUE reason and
+        # DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE specific reason is reported if at
+        # least one app is installed but the policy fails to apply due to other reasons (
+        # e.g. the app is not of the right type).When applying to SCOPE_PERSONAL_PROFILE
+        # on a company-owned device with a work profile, only pre-installed system apps
+        # can be set as the default. A NonComplianceDetail with INVALID_VALUE reason and
+        # DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE specific reason is reported if
+        # the policy fails to apply to the personal profile.
+        # Corresponds to the JSON property `defaultApplications`
+        # @return [Array<Google::Apis::AndroidmanagementV1::DefaultApplication>]
+        attr_accessor :default_applications
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_application_scopes = args[:default_application_scopes] if args.key?(:default_application_scopes)
+          @default_application_type = args[:default_application_type] if args.key?(:default_application_type)
+          @default_applications = args[:default_applications] if args.key?(:default_applications)
+        end
+      end
+      
+      # Details on a default application setting attempt.
+      class DefaultApplicationSettingAttempt
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The outcome of setting the app as the default.
+        # Corresponds to the JSON property `attemptOutcome`
+        # @return [String]
+        attr_accessor :attempt_outcome
+      
+        # Output only. The package name of the attempted application.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attempt_outcome = args[:attempt_outcome] if args.key?(:attempt_outcome)
+          @package_name = args[:package_name] if args.key?(:package_name)
+        end
+      end
+      
       # A device owned by an enterprise. Unless otherwise noted, all fields are read-
       # only and can't be modified by enterprises.devices.patch.
       class Device
@@ -2008,6 +2161,19 @@ module Google
         # Corresponds to the JSON property `commonCriteriaModeInfo`
         # @return [Google::Apis::AndroidmanagementV1::CommonCriteriaModeInfo]
         attr_accessor :common_criteria_mode_info
+      
+        # Output only. The default application information for the
+        # DefaultApplicationType. This information is only available if
+        # defaultApplicationInfoReportingEnabled is true in the device's policy.
+        # Available on Android 16 and above.All app types are reported on fully managed
+        # devices. DEFAULT_BROWSER, DEFAULT_CALL_REDIRECTION, DEFAULT_CALL_SCREENING and
+        # DEFAULT_DIALER types are reported for the work profiles on company-owned
+        # devices with a work profile and personally-owned devices. DEFAULT_WALLET is
+        # also reported for company-owned devices with a work profile, but will only
+        # include work profile information.
+        # Corresponds to the JSON property `defaultApplicationInfo`
+        # @return [Array<Google::Apis::AndroidmanagementV1::DefaultApplicationInfo>]
+        attr_accessor :default_application_info
       
         # Information about security related device settings on device.
         # Corresponds to the JSON property `deviceSettings`
@@ -2198,6 +2364,7 @@ module Google
           @applied_policy_version = args[:applied_policy_version] if args.key?(:applied_policy_version)
           @applied_state = args[:applied_state] if args.key?(:applied_state)
           @common_criteria_mode_info = args[:common_criteria_mode_info] if args.key?(:common_criteria_mode_info)
+          @default_application_info = args[:default_application_info] if args.key?(:default_application_info)
           @device_settings = args[:device_settings] if args.key?(:device_settings)
           @disabled_reason = args[:disabled_reason] if args.key?(:disabled_reason)
           @displays = args[:displays] if args.key?(:displays)
@@ -5245,6 +5412,16 @@ module Google
         attr_accessor :debugging_features_allowed
         alias_method :debugging_features_allowed?, :debugging_features_allowed
       
+        # Optional. The default application setting for supported types. If the default
+        # application is successfully set for at least one app type on a profile, users
+        # are prevented from changing any default applications on that profile.Only one
+        # DefaultApplicationSetting is allowed for each DefaultApplicationType.See
+        # Default application settings (https://developers.google.com/android/management/
+        # default-application-settings) guide for more details.
+        # Corresponds to the JSON property `defaultApplicationSettings`
+        # @return [Array<Google::Apis::AndroidmanagementV1::DefaultApplicationSetting>]
+        attr_accessor :default_application_settings
+      
         # The default permission policy for runtime permission requests.
         # Corresponds to the JSON property `defaultPermissionPolicy`
         # @return [String]
@@ -5750,6 +5927,7 @@ module Google
           @cross_profile_policies = args[:cross_profile_policies] if args.key?(:cross_profile_policies)
           @data_roaming_disabled = args[:data_roaming_disabled] if args.key?(:data_roaming_disabled)
           @debugging_features_allowed = args[:debugging_features_allowed] if args.key?(:debugging_features_allowed)
+          @default_application_settings = args[:default_application_settings] if args.key?(:default_application_settings)
           @default_permission_policy = args[:default_permission_policy] if args.key?(:default_permission_policy)
           @device_connectivity_management = args[:device_connectivity_management] if args.key?(:device_connectivity_management)
           @device_owner_lock_screen_info = args[:device_owner_lock_screen_info] if args.key?(:device_owner_lock_screen_info)
@@ -6606,6 +6784,11 @@ module Google
       class SpecificNonComplianceContext
         include Google::Apis::Core::Hashable
       
+        # Additional context for non-compliance related to default application settings.
+        # Corresponds to the JSON property `defaultApplicationContext`
+        # @return [Google::Apis::AndroidmanagementV1::DefaultApplicationContext]
+        attr_accessor :default_application_context
+      
         # Additional context for non-compliance related to Wi-Fi configuration.
         # Corresponds to the JSON property `oncWifiContext`
         # @return [Google::Apis::AndroidmanagementV1::OncWifiContext]
@@ -6622,6 +6805,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_application_context = args[:default_application_context] if args.key?(:default_application_context)
           @onc_wifi_context = args[:onc_wifi_context] if args.key?(:onc_wifi_context)
           @password_policies_context = args[:password_policies_context] if args.key?(:password_policies_context)
         end
@@ -6756,6 +6940,12 @@ module Google
         attr_accessor :common_criteria_mode_enabled
         alias_method :common_criteria_mode_enabled?, :common_criteria_mode_enabled
       
+        # Optional. Whether defaultApplicationInfo reporting is enabled.
+        # Corresponds to the JSON property `defaultApplicationInfoReportingEnabled`
+        # @return [Boolean]
+        attr_accessor :default_application_info_reporting_enabled
+        alias_method :default_application_info_reporting_enabled?, :default_application_info_reporting_enabled
+      
         # Whether device settings reporting is enabled.
         # Corresponds to the JSON property `deviceSettingsEnabled`
         # @return [Boolean]
@@ -6816,6 +7006,7 @@ module Google
           @application_reporting_settings = args[:application_reporting_settings] if args.key?(:application_reporting_settings)
           @application_reports_enabled = args[:application_reports_enabled] if args.key?(:application_reports_enabled)
           @common_criteria_mode_enabled = args[:common_criteria_mode_enabled] if args.key?(:common_criteria_mode_enabled)
+          @default_application_info_reporting_enabled = args[:default_application_info_reporting_enabled] if args.key?(:default_application_info_reporting_enabled)
           @device_settings_enabled = args[:device_settings_enabled] if args.key?(:device_settings_enabled)
           @display_info_enabled = args[:display_info_enabled] if args.key?(:display_info_enabled)
           @hardware_status_enabled = args[:hardware_status_enabled] if args.key?(:hardware_status_enabled)

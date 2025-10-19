@@ -256,6 +256,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DefaultApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DefaultApplicationContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DefaultApplicationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DefaultApplicationSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DefaultApplicationSettingAttempt
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Device
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1483,6 +1513,48 @@ module Google
         end
       end
       
+      class DefaultApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :package_name, as: 'packageName'
+        end
+      end
+      
+      class DefaultApplicationContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_application_scope, as: 'defaultApplicationScope'
+        end
+      end
+      
+      class DefaultApplicationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :default_application_setting_attempts, as: 'defaultApplicationSettingAttempts', class: Google::Apis::AndroidmanagementV1::DefaultApplicationSettingAttempt, decorator: Google::Apis::AndroidmanagementV1::DefaultApplicationSettingAttempt::Representation
+      
+          property :default_application_type, as: 'defaultApplicationType'
+          property :package_name, as: 'packageName'
+        end
+      end
+      
+      class DefaultApplicationSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :default_application_scopes, as: 'defaultApplicationScopes'
+          property :default_application_type, as: 'defaultApplicationType'
+          collection :default_applications, as: 'defaultApplications', class: Google::Apis::AndroidmanagementV1::DefaultApplication, decorator: Google::Apis::AndroidmanagementV1::DefaultApplication::Representation
+      
+        end
+      end
+      
+      class DefaultApplicationSettingAttempt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attempt_outcome, as: 'attemptOutcome'
+          property :package_name, as: 'packageName'
+        end
+      end
+      
       class Device
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1495,6 +1567,8 @@ module Google
           property :applied_policy_version, :numeric_string => true, as: 'appliedPolicyVersion'
           property :applied_state, as: 'appliedState'
           property :common_criteria_mode_info, as: 'commonCriteriaModeInfo', class: Google::Apis::AndroidmanagementV1::CommonCriteriaModeInfo, decorator: Google::Apis::AndroidmanagementV1::CommonCriteriaModeInfo::Representation
+      
+          collection :default_application_info, as: 'defaultApplicationInfo', class: Google::Apis::AndroidmanagementV1::DefaultApplicationInfo, decorator: Google::Apis::AndroidmanagementV1::DefaultApplicationInfo::Representation
       
           property :device_settings, as: 'deviceSettings', class: Google::Apis::AndroidmanagementV1::DeviceSettings, decorator: Google::Apis::AndroidmanagementV1::DeviceSettings::Representation
       
@@ -2333,6 +2407,8 @@ module Google
       
           property :data_roaming_disabled, as: 'dataRoamingDisabled'
           property :debugging_features_allowed, as: 'debuggingFeaturesAllowed'
+          collection :default_application_settings, as: 'defaultApplicationSettings', class: Google::Apis::AndroidmanagementV1::DefaultApplicationSetting, decorator: Google::Apis::AndroidmanagementV1::DefaultApplicationSetting::Representation
+      
           property :default_permission_policy, as: 'defaultPermissionPolicy'
           property :device_connectivity_management, as: 'deviceConnectivityManagement', class: Google::Apis::AndroidmanagementV1::DeviceConnectivityManagement, decorator: Google::Apis::AndroidmanagementV1::DeviceConnectivityManagement::Representation
       
@@ -2635,6 +2711,8 @@ module Google
       class SpecificNonComplianceContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_application_context, as: 'defaultApplicationContext', class: Google::Apis::AndroidmanagementV1::DefaultApplicationContext, decorator: Google::Apis::AndroidmanagementV1::DefaultApplicationContext::Representation
+      
           property :onc_wifi_context, as: 'oncWifiContext', class: Google::Apis::AndroidmanagementV1::OncWifiContext, decorator: Google::Apis::AndroidmanagementV1::OncWifiContext::Representation
       
           property :password_policies_context, as: 'passwordPoliciesContext', class: Google::Apis::AndroidmanagementV1::PasswordPoliciesContext, decorator: Google::Apis::AndroidmanagementV1::PasswordPoliciesContext::Representation
@@ -2680,6 +2758,7 @@ module Google
       
           property :application_reports_enabled, as: 'applicationReportsEnabled'
           property :common_criteria_mode_enabled, as: 'commonCriteriaModeEnabled'
+          property :default_application_info_reporting_enabled, as: 'defaultApplicationInfoReportingEnabled'
           property :device_settings_enabled, as: 'deviceSettingsEnabled'
           property :display_info_enabled, as: 'displayInfoEnabled'
           property :hardware_status_enabled, as: 'hardwareStatusEnabled'
