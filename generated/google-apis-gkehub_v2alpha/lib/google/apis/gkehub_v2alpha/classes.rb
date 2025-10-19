@@ -1315,6 +1315,11 @@ module Google
         # @return [Google::Apis::GkehubV2alpha::ConfigManagementHierarchyControllerState]
         attr_accessor :hierarchy_controller_state
       
+        # Output only. The Kubernetes API server version of the cluster.
+        # Corresponds to the JSON property `kubernetesApiServerVersion`
+        # @return [String]
+        attr_accessor :kubernetes_api_server_version
+      
         # **Anthos Config Management**: Configuration for a single cluster. Intended to
         # parallel the ConfigManagement CR.
         # Corresponds to the JSON property `membershipSpec`
@@ -1341,6 +1346,7 @@ module Google
           @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
           @config_sync_state = args[:config_sync_state] if args.key?(:config_sync_state)
           @hierarchy_controller_state = args[:hierarchy_controller_state] if args.key?(:hierarchy_controller_state)
+          @kubernetes_api_server_version = args[:kubernetes_api_server_version] if args.key?(:kubernetes_api_server_version)
           @membership_spec = args[:membership_spec] if args.key?(:membership_spec)
           @operator_state = args[:operator_state] if args.key?(:operator_state)
           @policy_controller_state = args[:policy_controller_state] if args.key?(:policy_controller_state)
