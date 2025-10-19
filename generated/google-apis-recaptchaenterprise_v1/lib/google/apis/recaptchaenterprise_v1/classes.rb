@@ -570,8 +570,9 @@ module Google
         # @return [String]
         attr_accessor :user_ip_address
       
-        # Optional. Flag for running WAF token assessment. If enabled, the token must be
-        # specified, and have been created by a WAF-enabled key.
+        # Optional. Flag for running Web Application Firewall (WAF) token assessment. If
+        # enabled, the token must be specified, and have been created by a WAF-enabled
+        # key.
         # Corresponds to the JSON property `wafTokenAssessment`
         # @return [Boolean]
         attr_accessor :waf_token_assessment
@@ -2330,12 +2331,13 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1WafSettings
         include Google::Apis::Core::Hashable
       
-        # Required. The WAF feature for which this key is enabled.
+        # Required. The Web Application Firewall (WAF) feature for which this key is
+        # enabled.
         # Corresponds to the JSON property `wafFeature`
         # @return [String]
         attr_accessor :waf_feature
       
-        # Required. The WAF service that uses this key.
+        # Required. The Web Application Firewall (WAF) service that uses this key.
         # Corresponds to the JSON property `wafService`
         # @return [String]
         attr_accessor :waf_service
