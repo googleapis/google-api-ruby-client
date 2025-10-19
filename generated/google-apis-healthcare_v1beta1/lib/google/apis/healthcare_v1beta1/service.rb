@@ -2478,8 +2478,8 @@ module Google
         #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
         #   Required. The path of the SearchForInstancesRequest DICOMweb request. For
-        #   example, `instances`, `series/`series_uid`/instances`, or `studies/`study_uid`/
-        #   instances`.
+        #   example, `instances`, `studies/`study_uid`/series/`series_uid`/instances`, or `
+        #   studies/`study_uid`/instances`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3076,8 +3076,8 @@ module Google
         #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
         #   Required. The path of the SearchForInstancesRequest DICOMweb request. For
-        #   example, `instances`, `series/`series_uid`/instances`, or `studies/`study_uid`/
-        #   instances`.
+        #   example, `instances`, `studies/`study_uid`/series/`series_uid`/instances`, or `
+        #   studies/`study_uid`/instances`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3417,8 +3417,8 @@ module Google
         #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
         #   Required. The path of the SearchForInstancesRequest DICOMweb request. For
-        #   example, `instances`, `series/`series_uid`/instances`, or `studies/`study_uid`/
-        #   instances`.
+        #   example, `instances`, `studies/`study_uid`/series/`series_uid`/instances`, or `
+        #   studies/`study_uid`/instances`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4215,10 +4215,16 @@ module Google
         
         # Export resources from the FHIR store to the specified destination. This method
         # returns an Operation that can be used to track the status of the export by
-        # calling GetOperation. Immediate fatal errors appear in the error field, errors
-        # are also logged to Cloud Logging (see [Viewing error logs in Cloud Logging](
-        # https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when
-        # the operation finishes, a detailed response of type ExportResourcesResponse is
+        # calling GetOperation. To improve performance, it is recommended to make the `
+        # type` filter as specific as possible, including only the resource types that
+        # are absolutely needed. This minimizes the size of the initial dataset to be
+        # processed and is the most effective way to improve performance. While post-
+        # filters like `_since` are useful for refining results, they do not speed up
+        # the initial data retrieval phase, which is primarily governed by the `type`
+        # filter. Immediate fatal errors appear in the error field, errors are also
+        # logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://
+        # cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the
+        # operation finishes, a detailed response of type ExportResourcesResponse is
         # returned in the response field. The metadata field type for this operation is
         # OperationMetadata.
         # @param [String] name
@@ -4494,7 +4500,7 @@ module Google
         # Import resource historical versions from Cloud Storage source to destination
         # fhir store. The exported resource, along with previous versions, will be
         # exported in one or more FHIR history bundles. This method returns an Operation
-        # that can be used to track the status of the export by calling GetOperation.
+        # that can be used to track the status of the import by calling GetOperation.
         # Immediate fatal errors appear in the error field, errors are also logged to
         # Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.
         # com/healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes,
@@ -7399,6 +7405,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7416,7 +7429,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_dataset_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_dataset_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+name}/operations', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::ListOperationsResponse
@@ -7424,6 +7437,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
