@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutomatedDnsCreationSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +113,12 @@ module Google
       end
       
       class DestinationEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DnsAutomationStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -280,12 +292,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListRemoteTransportProfilesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListRouteTablesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -323,12 +329,6 @@ module Google
       end
       
       class ListSpokesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListTransportsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -466,12 +466,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RemoteTransportProfile
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Route
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -592,12 +586,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Transport
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class VirtualMachine
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -677,6 +665,15 @@ module Google
         end
       end
       
+      class AutomatedDnsCreationSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_suffix, as: 'dnsSuffix'
+          property :hostname, as: 'hostname'
+          property :ttl, as: 'ttl'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -722,6 +719,8 @@ module Google
       class ConsumerPscConnection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_automation_status, as: 'dnsAutomationStatus', class: Google::Apis::NetworkconnectivityV1::DnsAutomationStatus, decorator: Google::Apis::NetworkconnectivityV1::DnsAutomationStatus::Representation
+      
           property :error, as: 'error', class: Google::Apis::NetworkconnectivityV1::GoogleRpcStatus, decorator: Google::Apis::NetworkconnectivityV1::GoogleRpcStatus::Representation
       
           property :error_info, as: 'errorInfo', class: Google::Apis::NetworkconnectivityV1::GoogleRpcErrorInfo, decorator: Google::Apis::NetworkconnectivityV1::GoogleRpcErrorInfo::Representation
@@ -767,6 +766,16 @@ module Google
           property :csp, as: 'csp'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class DnsAutomationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::NetworkconnectivityV1::GoogleRpcStatus, decorator: Google::Apis::NetworkconnectivityV1::GoogleRpcStatus::Representation
+      
+          property :fqdn, as: 'fqdn'
+          property :state, as: 'state'
         end
       end
       
@@ -1076,16 +1085,6 @@ module Google
         end
       end
       
-      class ListRemoteTransportProfilesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :remote_transport_profiles, as: 'remoteTransportProfiles', class: Google::Apis::NetworkconnectivityV1::RemoteTransportProfile, decorator: Google::Apis::NetworkconnectivityV1::RemoteTransportProfile::Representation
-      
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
       class ListRouteTablesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1151,16 +1150,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :spokes, as: 'spokes', class: Google::Apis::NetworkconnectivityV1::Spoke, decorator: Google::Apis::NetworkconnectivityV1::Spoke::Representation
-      
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
-      class ListTransportsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :transports, as: 'transports', class: Google::Apis::NetworkconnectivityV1::Transport, decorator: Google::Apis::NetworkconnectivityV1::Transport::Representation
       
           collection :unreachable, as: 'unreachable'
         end
@@ -1313,6 +1302,8 @@ module Google
       class ProducerPscConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :automated_dns_creation_spec, as: 'automatedDnsCreationSpec', class: Google::Apis::NetworkconnectivityV1::AutomatedDnsCreationSpec, decorator: Google::Apis::NetworkconnectivityV1::AutomatedDnsCreationSpec::Representation
+      
           property :service_attachment_uri, as: 'serviceAttachmentUri'
         end
       end
@@ -1413,24 +1404,6 @@ module Google
           property :request_id, as: 'requestId'
           property :spoke_etag, as: 'spokeEtag'
           property :spoke_uri, as: 'spokeUri'
-        end
-      end
-      
-      class RemoteTransportProfile
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :description, as: 'description'
-          property :flow, as: 'flow'
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          property :order_state, as: 'orderState'
-          property :provider, as: 'provider'
-          property :provider_site, as: 'providerSite'
-          property :region, as: 'region'
-          property :sla, as: 'sla'
-          collection :supported_bandwidths, as: 'supportedBandwidths'
-          property :update_time, as: 'updateTime'
         end
       end
       
@@ -1681,28 +1654,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class Transport
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :admin_enabled, as: 'adminEnabled'
-          collection :advertised_routes, as: 'advertisedRoutes'
-          property :bandwidth, as: 'bandwidth'
-          property :create_time, as: 'createTime'
-          property :description, as: 'description'
-          property :generated_activation_key, as: 'generatedActivationKey'
-          hash :labels, as: 'labels'
-          property :mtu_limit, as: 'mtuLimit'
-          property :name, as: 'name'
-          property :network, as: 'network'
-          property :provided_activation_key, as: 'providedActivationKey'
-          property :region, as: 'region'
-          property :remote_profile, as: 'remoteProfile'
-          property :stack_type, as: 'stackType'
-          property :state, as: 'state'
-          property :update_time, as: 'updateTime'
         end
       end
       
