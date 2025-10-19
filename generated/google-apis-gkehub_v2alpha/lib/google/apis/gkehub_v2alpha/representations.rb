@@ -967,6 +967,7 @@ module Google
       
           property :hierarchy_controller_state, as: 'hierarchyControllerState', class: Google::Apis::GkehubV2alpha::ConfigManagementHierarchyControllerState, decorator: Google::Apis::GkehubV2alpha::ConfigManagementHierarchyControllerState::Representation
       
+          property :kubernetes_api_server_version, as: 'kubernetesApiServerVersion'
           property :membership_spec, as: 'membershipSpec', class: Google::Apis::GkehubV2alpha::ConfigManagementSpec, decorator: Google::Apis::GkehubV2alpha::ConfigManagementSpec::Representation
       
           property :operator_state, as: 'operatorState', class: Google::Apis::GkehubV2alpha::ConfigManagementOperatorState, decorator: Google::Apis::GkehubV2alpha::ConfigManagementOperatorState::Representation
