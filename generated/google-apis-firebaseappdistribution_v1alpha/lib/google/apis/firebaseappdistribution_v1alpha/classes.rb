@@ -470,7 +470,7 @@ module Google
         end
       end
       
-      # The request message for `DeleteTestCase`.
+      # The request message for `BatchDeleteTestCase`.
       class GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest
         include Google::Apis::Core::Hashable
       
@@ -488,6 +488,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @names = args[:names] if args.key?(:names)
+        end
+      end
+      
+      # The request message for `BatchUpdateTestCase`.
+      class GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The update requests. A maximum number of 1000 test cases can be
+        # updated in one batch
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # The response message for `BatchUpdateTestCase`.
+      class GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The updated test cases.
+        # Corresponds to the JSON property `testCases`
+        # @return [Array<Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase>]
+        attr_accessor :test_cases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @test_cases = args[:test_cases] if args.key?(:test_cases)
         end
       end
       
@@ -1675,6 +1714,33 @@ module Google
           @name = args[:name] if args.key?(:name)
           @platform = args[:platform] if args.key?(:platform)
           @udid = args[:udid] if args.key?(:udid)
+        end
+      end
+      
+      # The request message for `UpdateTestCase`.
+      class GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, and the test case is not found, a new test case will
+        # be created.
+        # Corresponds to the JSON property `allowMissing`
+        # @return [Boolean]
+        attr_accessor :allow_missing
+        alias_method :allow_missing?, :allow_missing
+      
+        # AI test cases
+        # Corresponds to the JSON property `testCase`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase]
+        attr_accessor :test_case
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @test_case = args[:test_case] if args.key?(:test_case)
         end
       end
       
