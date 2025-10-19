@@ -436,6 +436,7 @@ module Google
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
           property :kms_key, as: 'kmsKey'
+          collection :resource_policies, as: 'resourcePolicies'
         end
       end
       
@@ -611,6 +612,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::NotebooksV2::Operation, decorator: Google::Apis::NotebooksV2::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
