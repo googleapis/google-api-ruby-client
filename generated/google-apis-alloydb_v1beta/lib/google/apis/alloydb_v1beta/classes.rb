@@ -721,6 +721,12 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::MaintenanceUpdatePolicy]
         attr_accessor :maintenance_update_policy
       
+        # Input only. Policy to use to automatically select the maintenance version to
+        # which to update the cluster's instances.
+        # Corresponds to the JSON property `maintenanceVersionSelectionPolicy`
+        # @return [String]
+        attr_accessor :maintenance_version_selection_policy
+      
         # Subset of the source instance configuration that is available when reading the
         # cluster resource.
         # Corresponds to the JSON property `migrationSource`
@@ -856,6 +862,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
           @maintenance_update_policy = args[:maintenance_update_policy] if args.key?(:maintenance_update_policy)
+          @maintenance_version_selection_policy = args[:maintenance_version_selection_policy] if args.key?(:maintenance_version_selection_policy)
           @migration_source = args[:migration_source] if args.key?(:migration_source)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
