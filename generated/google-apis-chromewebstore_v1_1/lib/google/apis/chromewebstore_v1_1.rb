@@ -24,7 +24,7 @@ module Google
     # The Chrome Web Store API provides access to data about apps and extensions, as
     # well as developer tools for managing them.
     #
-    # @see https://developer.chrome.com/webstore/api_index
+    # @see https://developer.chrome.com/docs/webstore/api
     module ChromewebstoreV1_1
       # Version of the Chrome Web Store API this client connects to.
       # This is NOT the gem version.
