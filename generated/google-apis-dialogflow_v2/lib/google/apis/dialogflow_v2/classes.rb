@@ -15488,6 +15488,32 @@ module Google
         end
       end
       
+      # Response of ListTools.
+      class GoogleCloudDialogflowV2ListToolsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of tools retrieved.
+        # Corresponds to the JSON property `tools`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Tool>]
+        attr_accessor :tools
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @tools = args[:tools] if args.key?(:tools)
+        end
+      end
+      
       # The response message for Versions.ListVersions.
       class GoogleCloudDialogflowV2ListVersionsResponse
         include Google::Apis::Core::Hashable
@@ -18587,6 +18613,295 @@ module Google
         end
       end
       
+      # Represents a tool.
+      class GoogleCloudDialogflowV2Tool
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Confirmation requirement for the actions. Each key is an action name
+        # in the action_schemas. If an action's confirmation requirement is unspecified (
+        # either the key is not present, or its value is
+        # CONFIRMATION_REQUIREMENT_UNSPECIFIED), the requirement is inferred from the
+        # action's method_type - confirmation is not required if and only if method_type
+        # is GET.
+        # Corresponds to the JSON property `actionConfirmationRequirement`
+        # @return [Hash<String,String>]
+        attr_accessor :action_confirmation_requirement
+      
+        # A ConnectorTool enabling using Integration Connectors Connections as tools.
+        # Corresponds to the JSON property `connectorSpec`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolConnectorTool]
+        attr_accessor :connector_spec
+      
+        # Output only. Creation time of this tool.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A human readable description of the tool.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. A human readable short name of the tool, to be shown on the UI.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # An ExtensionTool is a way to use Vertex Extensions as a tool.
+        # Corresponds to the JSON property `extensionSpec`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolExtensionTool]
+        attr_accessor :extension_spec
+      
+        # A Function tool describes the functions to be invoked on the client side.
+        # Corresponds to the JSON property `functionSpec`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolFunctionTool]
+        attr_accessor :function_spec
+      
+        # Output only. Identifier. The resource name of the tool. Format: `projects//
+        # locations//tools/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # An OpenAPI tool is a way to provide the Tool specifications in the Open API
+        # schema format.
+        # Corresponds to the JSON property `openApiSpec`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolOpenApiTool]
+        attr_accessor :open_api_spec
+      
+        # Output only. A read only boolean field reflecting Zone Isolation status of the
+        # tool. If the field is absent, it means the status is unknown.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. A read only boolean field reflecting Zone Separation status of
+        # the tool. If the field is absent, it means the status is unknown.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
+        # Required. A human readable short name of the tool, which should be unique
+        # within the project. It should only contain letters, numbers, and underscores,
+        # and it will be used by LLM to identify the tool.
+        # Corresponds to the JSON property `toolKey`
+        # @return [String]
+        attr_accessor :tool_key
+      
+        # Output only. Update time of this tool.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_confirmation_requirement = args[:action_confirmation_requirement] if args.key?(:action_confirmation_requirement)
+          @connector_spec = args[:connector_spec] if args.key?(:connector_spec)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @extension_spec = args[:extension_spec] if args.key?(:extension_spec)
+          @function_spec = args[:function_spec] if args.key?(:function_spec)
+          @name = args[:name] if args.key?(:name)
+          @open_api_spec = args[:open_api_spec] if args.key?(:open_api_spec)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @tool_key = args[:tool_key] if args.key?(:tool_key)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Authentication information required for API calls
+      class GoogleCloudDialogflowV2ToolAuthentication
+        include Google::Apis::Core::Hashable
+      
+        # Config for authentication with API key.
+        # Corresponds to the JSON property `apiKeyConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolAuthenticationApiKeyConfig]
+        attr_accessor :api_key_config
+      
+        # Config for authentication using bearer token.
+        # Corresponds to the JSON property `bearerTokenConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolAuthenticationBearerTokenConfig]
+        attr_accessor :bearer_token_config
+      
+        # Config for authentication with OAuth.
+        # Corresponds to the JSON property `oauthConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolAuthenticationOAuthConfig]
+        attr_accessor :oauth_config
+      
+        # Config for auth using [Dialogflow service agent](https://cloud.google.com/iam/
+        # docs/service-agents#dialogflow-service-agent).
+        # Corresponds to the JSON property `serviceAgentAuthConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolAuthenticationServiceAgentAuthConfig]
+        attr_accessor :service_agent_auth_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key_config = args[:api_key_config] if args.key?(:api_key_config)
+          @bearer_token_config = args[:bearer_token_config] if args.key?(:bearer_token_config)
+          @oauth_config = args[:oauth_config] if args.key?(:oauth_config)
+          @service_agent_auth_config = args[:service_agent_auth_config] if args.key?(:service_agent_auth_config)
+        end
+      end
+      
+      # Config for authentication with API key.
+      class GoogleCloudDialogflowV2ToolAuthenticationApiKeyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The API key. If the `secret_version_for_api_key` field is set, this
+        # field will be ignored.
+        # Corresponds to the JSON property `apiKey`
+        # @return [String]
+        attr_accessor :api_key
+      
+        # Required. The parameter name or the header name of the API key. E.g., If the
+        # API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the
+        # parameter name.
+        # Corresponds to the JSON property `keyName`
+        # @return [String]
+        attr_accessor :key_name
+      
+        # Required. Key location in the request.
+        # Corresponds to the JSON property `requestLocation`
+        # @return [String]
+        attr_accessor :request_location
+      
+        # Optional. The name of the SecretManager secret version resource storing the
+        # API key. If this field is set, the `api_key` field will be ignored. Format: `
+        # projects/`project`/secrets/`secret`/versions/`version``
+        # Corresponds to the JSON property `secretVersionForApiKey`
+        # @return [String]
+        attr_accessor :secret_version_for_api_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key = args[:api_key] if args.key?(:api_key)
+          @key_name = args[:key_name] if args.key?(:key_name)
+          @request_location = args[:request_location] if args.key?(:request_location)
+          @secret_version_for_api_key = args[:secret_version_for_api_key] if args.key?(:secret_version_for_api_key)
+        end
+      end
+      
+      # Config for authentication using bearer token.
+      class GoogleCloudDialogflowV2ToolAuthenticationBearerTokenConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the SecretManager secret version resource storing the
+        # Bearer token. If this field is set, the `token` field will be ignored. Format:
+        # `projects/`project`/secrets/`secret`/versions/`version``
+        # Corresponds to the JSON property `secretVersionForToken`
+        # @return [String]
+        attr_accessor :secret_version_for_token
+      
+        # Optional. The text token appended to the text `Bearer` to the request
+        # Authorization header. [Session parameters reference](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/parameter#session-ref) can be used to pass the
+        # token dynamically, e.g. `$session.params.parameter-id`.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @secret_version_for_token = args[:secret_version_for_token] if args.key?(:secret_version_for_token)
+          @token = args[:token] if args.key?(:token)
+        end
+      end
+      
+      # Config for authentication with OAuth.
+      class GoogleCloudDialogflowV2ToolAuthenticationOAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The client ID from the OAuth provider.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Optional. The client secret from the OAuth provider. If the `
+        # secret_version_for_client_secret` field is set, this field will be ignored.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Required. OAuth grant types.
+        # Corresponds to the JSON property `oauthGrantType`
+        # @return [String]
+        attr_accessor :oauth_grant_type
+      
+        # Optional. The OAuth scopes to grant.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        # Optional. The name of the SecretManager secret version resource storing the
+        # client secret. If this field is set, the `client_secret` field will be ignored.
+        # Format: `projects/`project`/secrets/`secret`/versions/`version``
+        # Corresponds to the JSON property `secretVersionForClientSecret`
+        # @return [String]
+        attr_accessor :secret_version_for_client_secret
+      
+        # Required. The token endpoint in the OAuth provider to exchange for an access
+        # token.
+        # Corresponds to the JSON property `tokenEndpoint`
+        # @return [String]
+        attr_accessor :token_endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @oauth_grant_type = args[:oauth_grant_type] if args.key?(:oauth_grant_type)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @secret_version_for_client_secret = args[:secret_version_for_client_secret] if args.key?(:secret_version_for_client_secret)
+          @token_endpoint = args[:token_endpoint] if args.key?(:token_endpoint)
+        end
+      end
+      
+      # Config for auth using [Dialogflow service agent](https://cloud.google.com/iam/
+      # docs/service-agents#dialogflow-service-agent).
+      class GoogleCloudDialogflowV2ToolAuthenticationServiceAgentAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicate the auth token type generated from the [Diglogflow service
+        # agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-
+        # agent). The generated token is sent in the Authorization header.
+        # Corresponds to the JSON property `serviceAgentAuth`
+        # @return [String]
+        attr_accessor :service_agent_auth
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_agent_auth = args[:service_agent_auth] if args.key?(:service_agent_auth)
+        end
+      end
+      
       # Represents a call of a specific tool's action with the specified inputs.
       class GoogleCloudDialogflowV2ToolCall
         include Google::Apis::Core::Hashable
@@ -18723,6 +19038,266 @@ module Google
         # Update properties of this object
         def update!(**args)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # A ConnectorTool enabling using Integration Connectors Connections as tools.
+      class GoogleCloudDialogflowV2ToolConnectorTool
+        include Google::Apis::Core::Hashable
+      
+        # Required. Actions for the tool to use.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolConnectorToolAction>]
+        attr_accessor :actions
+      
+        # Required. The full resource name of the referenced Integration Connectors
+        # Connection. Format: 'projects/*/locations/*/connections/*'
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Configuration of a Connection operation for the tool to use.
+      class GoogleCloudDialogflowV2ToolConnectorToolAction
+        include Google::Apis::Core::Hashable
+      
+        # ID of a Connection action for the tool to use.
+        # Corresponds to the JSON property `connectionActionId`
+        # @return [String]
+        attr_accessor :connection_action_id
+      
+        # Entity CRUD operation specification.
+        # Corresponds to the JSON property `entityOperation`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolConnectorToolActionEntityOperation]
+        attr_accessor :entity_operation
+      
+        # Optional. Entity fields to use as inputs for the operation. If no fields are
+        # specified, all fields of the Entity will be used.
+        # Corresponds to the JSON property `inputFields`
+        # @return [Array<String>]
+        attr_accessor :input_fields
+      
+        # Optional. Entity fields to return from the operation. If no fields are
+        # specified, all fields of the Entity will be returned.
+        # Corresponds to the JSON property `outputFields`
+        # @return [Array<String>]
+        attr_accessor :output_fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_action_id = args[:connection_action_id] if args.key?(:connection_action_id)
+          @entity_operation = args[:entity_operation] if args.key?(:entity_operation)
+          @input_fields = args[:input_fields] if args.key?(:input_fields)
+          @output_fields = args[:output_fields] if args.key?(:output_fields)
+        end
+      end
+      
+      # Entity CRUD operation specification.
+      class GoogleCloudDialogflowV2ToolConnectorToolActionEntityOperation
+        include Google::Apis::Core::Hashable
+      
+        # Required. ID of the entity.
+        # Corresponds to the JSON property `entityId`
+        # @return [String]
+        attr_accessor :entity_id
+      
+        # Required. Operation to perform on the entity.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
+      # An ExtensionTool is a way to use Vertex Extensions as a tool.
+      class GoogleCloudDialogflowV2ToolExtensionTool
+        include Google::Apis::Core::Hashable
+      
+        # Required. The full name of the referenced vertex extension. Format: `projects/`
+        # project`/locations/`location`/extensions/`extension``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A Function tool describes the functions to be invoked on the client side.
+      class GoogleCloudDialogflowV2ToolFunctionTool
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The JSON schema is encapsulated in a google.protobuf.Struct to
+        # describe the input of the function. This input is a JSON object that contains
+        # the function's parameters as properties of the object.
+        # Corresponds to the JSON property `inputSchema`
+        # @return [Hash<String,Object>]
+        attr_accessor :input_schema
+      
+        # Optional. The method type of the function. If not specified, the default value
+        # is GET.
+        # Corresponds to the JSON property `methodType`
+        # @return [String]
+        attr_accessor :method_type
+      
+        # Optional. The JSON schema is encapsulated in a google.protobuf.Struct to
+        # describe the output of the function. This output is a JSON object that
+        # contains the function's parameters as properties of the object.
+        # Corresponds to the JSON property `outputSchema`
+        # @return [Hash<String,Object>]
+        attr_accessor :output_schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_schema = args[:input_schema] if args.key?(:input_schema)
+          @method_type = args[:method_type] if args.key?(:method_type)
+          @output_schema = args[:output_schema] if args.key?(:output_schema)
+        end
+      end
+      
+      # An OpenAPI tool is a way to provide the Tool specifications in the Open API
+      # schema format.
+      class GoogleCloudDialogflowV2ToolOpenApiTool
+        include Google::Apis::Core::Hashable
+      
+        # Authentication information required for API calls
+        # Corresponds to the JSON property `authentication`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolAuthentication]
+        attr_accessor :authentication
+      
+        # Configuration for tools using Service Directory.
+        # Corresponds to the JSON property `serviceDirectoryConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolServiceDirectoryConfig]
+        attr_accessor :service_directory_config
+      
+        # Required. The OpenAPI schema specified as a text.
+        # Corresponds to the JSON property `textSchema`
+        # @return [String]
+        attr_accessor :text_schema
+      
+        # The TLS configuration.
+        # Corresponds to the JSON property `tlsConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolTlsConfig]
+        attr_accessor :tls_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication = args[:authentication] if args.key?(:authentication)
+          @service_directory_config = args[:service_directory_config] if args.key?(:service_directory_config)
+          @text_schema = args[:text_schema] if args.key?(:text_schema)
+          @tls_config = args[:tls_config] if args.key?(:tls_config)
+        end
+      end
+      
+      # Configuration for tools using Service Directory.
+      class GoogleCloudDialogflowV2ToolServiceDirectoryConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of [Service Directory](https://cloud.google.com/service-
+        # directory) service. Format: `projects//locations//namespaces//services/`. `
+        # LocationID` of the service directory must be the same as the location of the
+        # tool.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # The TLS configuration.
+      class GoogleCloudDialogflowV2ToolTlsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies a list of allowed custom CA certificates for HTTPS
+        # verification.
+        # Corresponds to the JSON property `caCerts`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ToolTlsConfigCaCert>]
+        attr_accessor :ca_certs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_certs = args[:ca_certs] if args.key?(:ca_certs)
+        end
+      end
+      
+      # The CA certificate.
+      class GoogleCloudDialogflowV2ToolTlsConfigCaCert
+        include Google::Apis::Core::Hashable
+      
+        # Required. The allowed custom CA certificates (in DER format) for HTTPS
+        # verification. This overrides the default SSL trust store. If this is empty or
+        # unspecified, Dialogflow will use Google's default trust store to verify
+        # certificates. N.B. Make sure the HTTPS server certificates are signed with "
+        # subject alt name". For instance a certificate can be self-signed using the
+        # following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey
+        # example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='
+        # DNS:www.example.com'")
+        # Corresponds to the JSON property `cert`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :cert
+      
+        # Required. The name of the allowed custom CA certificates. This can be used to
+        # disambiguate the custom CA certificates.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cert = args[:cert] if args.key?(:cert)
+          @display_name = args[:display_name] if args.key?(:display_name)
         end
       end
       

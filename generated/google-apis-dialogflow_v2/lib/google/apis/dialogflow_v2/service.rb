@@ -10357,6 +10357,186 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a tool.
+        # @param [String] parent
+        #   Required. The project/location to create tool for. Format: `projects//
+        #   locations/`
+        # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Tool] google_cloud_dialogflow_v2_tool_object
+        # @param [String] tool_id
+        #   Optional. The ID to use for the tool, which will become the final component of
+        #   the tool's resource name. The tool ID must be compliant with the regression
+        #   formula `a-zA-Z*` with the characters length in range of [3,64]. If the field
+        #   is not provide, an Id will be auto-generated. If the field is provided, the
+        #   caller is responsible for 1. the uniqueness of the ID, otherwise the request
+        #   will be rejected. 2. the consistency for whether to use custom ID or not under
+        #   a project to better ensure uniqueness.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Tool] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Tool]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_tool(parent, google_cloud_dialogflow_v2_tool_object = nil, tool_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/tools', options)
+          command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Tool::Representation
+          command.request_object = google_cloud_dialogflow_v2_tool_object
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Tool::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Tool
+          command.params['parent'] = parent unless parent.nil?
+          command.query['toolId'] = tool_id unless tool_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a tool.
+        # @param [String] name
+        #   Required. The tool resource name to delete. Format: `projects//locations//
+        #   tools/`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_tool(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV2::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a tool.
+        # @param [String] name
+        #   Required. The tool resource name to retrieve. Format: `projects//locations//
+        #   tools/`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Tool] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Tool]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_tool(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Tool::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Tool
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists tools.
+        # @param [String] parent
+        #   Required. The project/location to list tools for. Format: `projects//locations/
+        #   `
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of conversation models to return in a single page.
+        #   Default to 10.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListToolsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListToolsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_tools(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/tools', options)
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListToolsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListToolsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a tool.
+        # @param [String] name
+        #   Output only. Identifier. The resource name of the tool. Format: `projects//
+        #   locations//tools/`.
+        # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Tool] google_cloud_dialogflow_v2_tool_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Tool] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Tool]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_tool(name, google_cloud_dialogflow_v2_tool_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Tool::Representation
+          command.request_object = google_cloud_dialogflow_v2_tool_object
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Tool::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Tool
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
