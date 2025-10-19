@@ -10939,6 +10939,11 @@ module Google
         # @return [String]
         attr_accessor :model
       
+        # Generative model parameters to control the model behavior.
+        # Corresponds to the JSON property `parameters`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1LlmModelSettingsParameters]
+        attr_accessor :parameters
+      
         # The custom prompt to use.
         # Corresponds to the JSON property `promptText`
         # @return [String]
@@ -10951,7 +10956,43 @@ module Google
         # Update properties of this object
         def update!(**args)
           @model = args[:model] if args.key?(:model)
+          @parameters = args[:parameters] if args.key?(:parameters)
           @prompt_text = args[:prompt_text] if args.key?(:prompt_text)
+        end
+      end
+      
+      # Generative model parameters to control the model behavior.
+      class GoogleCloudDialogflowCxV3beta1LlmModelSettingsParameters
+        include Google::Apis::Core::Hashable
+      
+        # The input token limit. This setting is currently only supported by playbooks.
+        # Corresponds to the JSON property `inputTokenLimit`
+        # @return [String]
+        attr_accessor :input_token_limit
+      
+        # The output token limit. This setting is currently only supported by playbooks.
+        # Only one of output_token_limit and max_output_tokens is allowed to be set.
+        # Corresponds to the JSON property `outputTokenLimit`
+        # @return [String]
+        attr_accessor :output_token_limit
+      
+        # The temperature used for sampling during response generation. Value ranges
+        # from 0 to 1. Temperature controls the degree of randomness in token selection.
+        # Lower temperature means less randomness, while higher temperature means more
+        # randomness. Valid range: [0.0, 1.0]
+        # Corresponds to the JSON property `temperature`
+        # @return [Float]
+        attr_accessor :temperature
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_token_limit = args[:input_token_limit] if args.key?(:input_token_limit)
+          @output_token_limit = args[:output_token_limit] if args.key?(:output_token_limit)
+          @temperature = args[:temperature] if args.key?(:temperature)
         end
       end
       
