@@ -3484,6 +3484,16 @@ module Google
         # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderSaml]
         attr_accessor :saml
       
+        # Optional. Agentspace only. Specifies whether the workforce identity pool
+        # provider uses SCIM-managed groups instead of the `google.groups` attribute
+        # mapping for authorization checks. The `scim_usage` and `
+        # extended_attributes_oauth2_client` fields are mutually exclusive. A request
+        # that enables both fields on the same workforce identity pool provider will
+        # produce an error.
+        # Corresponds to the JSON property `scimUsage`
+        # @return [String]
+        attr_accessor :scim_usage
+      
         # Output only. The state of the provider.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -3507,6 +3517,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @oidc = args[:oidc] if args.key?(:oidc)
           @saml = args[:saml] if args.key?(:saml)
+          @scim_usage = args[:scim_usage] if args.key?(:scim_usage)
           @state = args[:state] if args.key?(:state)
         end
       end

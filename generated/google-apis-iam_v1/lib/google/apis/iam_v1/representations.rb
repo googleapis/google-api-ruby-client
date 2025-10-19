@@ -1643,6 +1643,7 @@ module Google
       
           property :saml, as: 'saml', class: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderSaml, decorator: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderSaml::Representation
       
+          property :scim_usage, as: 'scimUsage'
           property :state, as: 'state'
         end
       end
