@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ImageConfigImageOutputOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1LogprobsResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1163,6 +1169,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aspect_ratio, as: 'aspectRatio'
+          property :image_output_options, as: 'imageOutputOptions', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ImageConfigImageOutputOptions, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ImageConfigImageOutputOptions::Representation
+      
+          property :person_generation, as: 'personGeneration'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ImageConfigImageOutputOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compression_quality, as: 'compressionQuality'
+          property :mime_type, as: 'mimeType'
         end
       end
       

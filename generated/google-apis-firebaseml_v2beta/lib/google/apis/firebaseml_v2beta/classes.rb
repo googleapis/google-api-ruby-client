@@ -2071,6 +2071,16 @@ module Google
         # @return [String]
         attr_accessor :aspect_ratio
       
+        # The image output format for generated images.
+        # Corresponds to the JSON property `imageOutputOptions`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ImageConfigImageOutputOptions]
+        attr_accessor :image_output_options
+      
+        # Optional. Controls whether the model can generate people.
+        # Corresponds to the JSON property `personGeneration`
+        # @return [String]
+        attr_accessor :person_generation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2078,6 +2088,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aspect_ratio = args[:aspect_ratio] if args.key?(:aspect_ratio)
+          @image_output_options = args[:image_output_options] if args.key?(:image_output_options)
+          @person_generation = args[:person_generation] if args.key?(:person_generation)
+        end
+      end
+      
+      # The image output format for generated images.
+      class GoogleCloudAiplatformV1beta1ImageConfigImageOutputOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The compression quality of the output image.
+        # Corresponds to the JSON property `compressionQuality`
+        # @return [Fixnum]
+        attr_accessor :compression_quality
+      
+        # Optional. The image format that the output should be saved as.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compression_quality = args[:compression_quality] if args.key?(:compression_quality)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
       end
       
