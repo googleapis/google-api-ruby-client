@@ -2717,6 +2717,13 @@ module Google
         # @return [Array<Google::Apis::RedisV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2725,6 +2732,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -3727,7 +3735,8 @@ module Google
         # maintenance. For example, for Cloud SQL resources, this can be used to capture
         # if the maintenance window is in Week1, Week2, Week5, etc. Non production
         # resources are usually part of early phase. For more details, refer to Cloud
-        # SQL resources - https://cloud.google.com/sql/docs/mysql/maintenance
+        # SQL resources - https://cloud.google.com/sql/docs/mysql/maintenance Deprecated.
+        # Use phase instead.
         # Corresponds to the JSON property `phase`
         # @return [String]
         attr_accessor :phase
@@ -3739,6 +3748,15 @@ module Google
         # @return [Google::Apis::RedisV1::TimeOfDay]
         attr_accessor :time
       
+        # Optional. Phase of the maintenance window. This is to capture order of
+        # maintenance. For example, for Cloud SQL resources, this can be used to capture
+        # if the maintenance window is in Week1, Week2, Week5, etc. Non production
+        # resources are usually part of early phase. For more details, refer to Cloud
+        # SQL resources - https://cloud.google.com/sql/docs/mysql/maintenance
+        # Corresponds to the JSON property `week`
+        # @return [String]
+        attr_accessor :week
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3748,6 +3766,7 @@ module Google
           @day = args[:day] if args.key?(:day)
           @phase = args[:phase] if args.key?(:phase)
           @time = args[:time] if args.key?(:time)
+          @week = args[:week] if args.key?(:week)
         end
       end
       
