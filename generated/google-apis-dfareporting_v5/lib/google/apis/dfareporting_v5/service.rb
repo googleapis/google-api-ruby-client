@@ -3769,6 +3769,96 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retransforms a dynamic feed.
+        # @param [Fixnum] dynamic_feed_id
+        #   Required. Dynamic feed ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DfareportingV5::DynamicFeed] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DfareportingV5::DynamicFeed]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retransform_dynamic_feed(dynamic_feed_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'studio/dynamicFeeds/{+dynamicFeedId}/retransform', options)
+          command.response_representation = Google::Apis::DfareportingV5::DynamicFeed::Representation
+          command.response_class = Google::Apis::DfareportingV5::DynamicFeed
+          command.params['dynamicFeedId'] = dynamic_feed_id unless dynamic_feed_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a new dynamic feed.
+        # @param [Google::Apis::DfareportingV5::DynamicFeed] dynamic_feed_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DfareportingV5::DynamicFeed] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DfareportingV5::DynamicFeed]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_dynamic_feed(dynamic_feed_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'studio/dynamicFeeds', options)
+          command.request_representation = Google::Apis::DfareportingV5::DynamicFeed::Representation
+          command.request_object = dynamic_feed_object
+          command.response_representation = Google::Apis::DfareportingV5::DynamicFeed::Representation
+          command.response_class = Google::Apis::DfareportingV5::DynamicFeed
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates code for a dynamic profile.
+        # @param [Fixnum] dynamic_profile_id
+        #   Required. Dynamic profile ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DfareportingV5::DynamicProfileGenerateCodeResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DfareportingV5::DynamicProfileGenerateCodeResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_dynamic_profile_code(dynamic_profile_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'studio/dynamicProfiles/{+dynamicProfileId}/generateCode', options)
+          command.response_representation = Google::Apis::DfareportingV5::DynamicProfileGenerateCodeResponse::Representation
+          command.response_class = Google::Apis::DfareportingV5::DynamicProfileGenerateCodeResponse
+          command.params['dynamicProfileId'] = dynamic_profile_id unless dynamic_profile_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a dynamic profile by ID.
         # @param [Fixnum] dynamic_profile_id
         #   Required. Dynamic profile ID.
@@ -3824,6 +3914,34 @@ module Google
           command.request_object = dynamic_profile_object
           command.response_representation = Google::Apis::DfareportingV5::DynamicProfile::Representation
           command.response_class = Google::Apis::DfareportingV5::DynamicProfile
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Publish for a dynamic profile.
+        # @param [Fixnum] dynamic_profile_id
+        #   Required. Dynamic profile ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def publish_dynamic_profile(dynamic_profile_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'studio/dynamicProfiles/{+dynamicProfileId}/publish', options)
+          command.params['dynamicProfileId'] = dynamic_profile_id unless dynamic_profile_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -7127,6 +7245,134 @@ module Google
           command.query['iabStandard'] = iab_standard unless iab_standard.nil?
           command.query['ids'] = ids unless ids.nil?
           command.query['width'] = width unless width.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inserts a new studio creative asset.
+        # @param [Google::Apis::DfareportingV5::DfareportingStudioCreativeAssetsInsertRequest] dfareporting_studio_creative_assets_insert_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [String] content_type
+        #   Content type of the uploaded content.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DfareportingV5::StudioCreativeAssetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DfareportingV5::StudioCreativeAssetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_studio_creative_asset(dfareporting_studio_creative_assets_insert_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+          if upload_source.nil?
+            command = make_simple_command(:post, 'studio/creativeAssets', options)
+          else
+            command = make_upload_command(:post, 'studio/creativeAssets', options)
+            command.upload_source = upload_source
+            command.upload_content_type = content_type
+          end
+          command.request_representation = Google::Apis::DfareportingV5::DfareportingStudioCreativeAssetsInsertRequest::Representation
+          command.request_object = dfareporting_studio_creative_assets_insert_request_object
+          command.response_representation = Google::Apis::DfareportingV5::StudioCreativeAssetsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV5::StudioCreativeAssetsResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a studio creative by ID.
+        # @param [Fixnum] studio_creative_id
+        #   Required. Studio creative ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DfareportingV5::StudioCreative] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DfareportingV5::StudioCreative]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_studio_creative(studio_creative_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'studio/creatives/{+studioCreativeId}', options)
+          command.response_representation = Google::Apis::DfareportingV5::StudioCreative::Representation
+          command.response_class = Google::Apis::DfareportingV5::StudioCreative
+          command.params['studioCreativeId'] = studio_creative_id unless studio_creative_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inserts a new studio creative.
+        # @param [Google::Apis::DfareportingV5::StudioCreative] studio_creative_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DfareportingV5::StudioCreative] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DfareportingV5::StudioCreative]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_studio_creative(studio_creative_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'studio/creatives', options)
+          command.request_representation = Google::Apis::DfareportingV5::StudioCreative::Representation
+          command.request_object = studio_creative_object
+          command.response_representation = Google::Apis::DfareportingV5::StudioCreative::Representation
+          command.response_class = Google::Apis::DfareportingV5::StudioCreative
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Publish for a studio creative.
+        # @param [Fixnum] studio_creative_id
+        #   Required. Studio creative ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def publish_studio_creative(studio_creative_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'studio/creatives/{+studioCreativeId}/publish', options)
+          command.params['studioCreativeId'] = studio_creative_id unless studio_creative_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
