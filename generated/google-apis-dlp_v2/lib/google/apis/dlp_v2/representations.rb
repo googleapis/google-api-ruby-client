@@ -4777,11 +4777,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :byte_item, as: 'byteItem', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ByteContentItem, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ByteContentItem::Representation
       
+          property :deidentify_template, as: 'deidentifyTemplate'
           collection :image_redaction_configs, as: 'imageRedactionConfigs', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageRedactionConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageRedactionConfig::Representation
       
           property :include_findings, as: 'includeFindings'
           property :inspect_config, as: 'inspectConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig::Representation
       
+          property :inspect_template, as: 'inspectTemplate'
           property :location_id, as: 'locationId'
         end
       end

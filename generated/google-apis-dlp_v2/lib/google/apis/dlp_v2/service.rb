@@ -600,19 +600,22 @@ module Google
         #   Allows filtering. Supported syntax: * Filter expressions are made up of one or
         #   more restrictions. * Restrictions can be combined by `AND` or `OR` logical
         #   operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-        #   has the form of ``field` `operator` `value``. * Supported fields/values: - `
-        #   table_data_profile_name` - The name of the related table data profile. - `
-        #   project_id` - The Google Cloud project ID. (REQUIRED) - `dataset_id` - The
-        #   BigQuery dataset ID. (REQUIRED) - `table_id` - The BigQuery table ID. (
-        #   REQUIRED) - `field_id` - The ID of the BigQuery field. - `info_type` - The
-        #   infotype detected in the resource. - `sensitivity_level` - HIGH|MEDIUM|LOW - `
-        #   data_risk_level`: How much risk is associated with this data. - `status_code` -
-        #   an RPC status code as defined in https://github.com/googleapis/googleapis/
-        #   blob/master/google/rpc/code.proto * The operator must be `=` for project_id,
-        #   dataset_id, and table_id. Other filters also support `!=`. Examples: *
-        #   project_id = 12345 AND status_code = 1 * project_id = 12345 AND
-        #   sensitivity_level = HIGH * project_id = 12345 AND info_type = STREET_ADDRESS
-        #   The length of this field should be no more than 500 characters.
+        #   has the form of ``field` `operator` `value``. * Supported fields: - `
+        #   table_data_profile_name`: The name of the related table data profile - `
+        #   project_id`: The Google Cloud project ID (REQUIRED) - `dataset_id`: The
+        #   BigQuery dataset ID (REQUIRED) - `table_id`: The BigQuery table ID (REQUIRED) -
+        #   `field_id`: The ID of the BigQuery field - `info_type`: The infotype detected
+        #   in the resource - `sensitivity_level`: HIGH|MEDIUM|LOW - `data_risk_level`:
+        #   How much risk is associated with this data - `status_code`: An RPC status code
+        #   as defined in https://github.com/googleapis/googleapis/blob/master/google/rpc/
+        #   code.proto - `profile_last_generated`: Date and time the profile was last
+        #   generated * The operator must be `=` for project_id, dataset_id, and table_id.
+        #   Other filters also support `!=`. The `profile_last_generated` filter also
+        #   supports `<` and `>`. The syntax is based on https://google.aip.dev/160.
+        #   Examples: * project_id = 12345 AND status_code = 1 * project_id = 12345 AND
+        #   sensitivity_level = HIGH * project_id = 12345 AND info_type = STREET_ADDRESS *
+        #   profile_last_generated < "2025-01-01T00:00:00.000Z" The length of this field
+        #   should be no more than 500 characters.
         # @param [String] order_by
         #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
@@ -764,7 +767,8 @@ module Google
         #   organizations/433245324/locations/europe` or `projects/project-id/locations/
         #   asia`.
         # @param [String] filter
-        #   Optional. Supported field/value: `state` - MISSING|AVAILABLE|ERROR
+        #   Optional. Supported field/value: `state` - MISSING|AVAILABLE|ERROR The syntax
+        #   is based on https://google.aip.dev/160.
         # @param [Fixnum] page_size
         #   Optional. Number of results per page, max 1000.
         # @param [String] page_token
@@ -840,7 +844,8 @@ module Google
         #   location, for example, `organizations/433245324/locations/-` or `projects/
         #   project-id/locations/-`.
         # @param [String] filter
-        #   Optional. Supported field/value: - `state` - MISSING|AVAILABLE|ERROR
+        #   Optional. Supported field/value: - `state` - MISSING|AVAILABLE|ERROR The
+        #   syntax is based on https://google.aip.dev/160.
         # @param [Fixnum] page_size
         #   Optional. Number of results per page, max 1000.
         # @param [String] page_token
@@ -1295,11 +1300,12 @@ module Google
         #   finished. * Supported fields for risk analysis jobs: - `state` - RUNNING|
         #   CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time the job
         #   finished. - 'start_time` - Corresponds to the time the job finished. * The
-        #   operator must be `=` or `!=`. Examples: * inspected_storage = cloud_storage
-        #   AND state = done * inspected_storage = cloud_storage OR inspected_storage =
-        #   bigquery * inspected_storage = cloud_storage AND (state = done OR state =
-        #   canceled) * end_time > \"2017-12-12T00:00:00+00:00\" The length of this field
-        #   should be no more than 500 characters.
+        #   operator must be `=` or `!=`. The syntax is based on https://google.aip.dev/
+        #   160. Examples: * inspected_storage = cloud_storage AND state = done *
+        #   inspected_storage = cloud_storage OR inspected_storage = bigquery *
+        #   inspected_storage = cloud_storage AND (state = done OR state = canceled) *
+        #   end_time > \"2017-12-12T00:00:00+00:00\" The length of this field should be no
+        #   more than 500 characters.
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -1420,19 +1426,22 @@ module Google
         #   Optional. Allows filtering. Supported syntax: * Filter expressions are made up
         #   of one or more restrictions. * Restrictions can be combined by `AND` or `OR`
         #   logical operators. A sequence of restrictions implicitly uses `AND`. * A
-        #   restriction has the form of ``field` `operator` `value``. * Supported fields/
-        #   values: - `project_id` - The Google Cloud project ID. - `account_id` - The AWS
-        #   account ID. - `file_store_path` - The path like "gs://bucket". - `
-        #   data_source_type` - The profile's data source type, like "google/storage/
-        #   bucket". - `data_storage_location` - The location where the file store's data
-        #   is stored, like "us-central1". - `sensitivity_level` - HIGH|MODERATE|LOW - `
-        #   data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|
-        #   RESTRICTED - `status_code` - an RPC status code as defined in https://github.
-        #   com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator
-        #   must be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `
-        #   project_id = 12345 AND sensitivity_level = HIGH` * `project_id = 12345 AND
-        #   resource_visibility = PUBLIC` * `file_store_path = "gs://mybucket"` The length
-        #   of this field should be no more than 500 characters.
+        #   restriction has the form of ``field` `operator` `value``. * Supported fields: -
+        #   `project_id`: The Google Cloud project ID - `account_id`: The AWS account ID -
+        #   `file_store_path`: The path like "gs://bucket" - `data_source_type`: The
+        #   profile's data source type, like "google/storage/bucket" - `
+        #   data_storage_location`: The location where the file store's data is stored,
+        #   like "us-central1" - `sensitivity_level`: HIGH|MODERATE|LOW - `data_risk_level`
+        #   : HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|RESTRICTED - `status_code`:
+        #   an RPC status code as defined in https://github.com/googleapis/googleapis/
+        #   blob/master/google/rpc/code.proto - `profile_last_generated`: Date and time
+        #   the profile was last generated * The operator must be `=` or `!=`. The `
+        #   profile_last_generated` filter also supports `<` and `>`. The syntax is based
+        #   on https://google.aip.dev/160. Examples: * `project_id = 12345 AND status_code
+        #   = 1` * `project_id = 12345 AND sensitivity_level = HIGH` * `project_id = 12345
+        #   AND resource_visibility = PUBLIC` * `file_store_path = "gs://mybucket"` * `
+        #   profile_last_generated < "2025-01-01T00:00:00.000Z"` The length of this field
+        #   should be no more than 500 characters.
         # @param [String] order_by
         #   Optional. Comma-separated list of fields to order by, followed by `asc` or `
         #   desc` postfix. This list is case insensitive. The default sorting order is
@@ -1862,12 +1871,12 @@ module Google
         #   DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted
         #   timestamp, surrounded by quotation marks. Nanoseconds are ignored. - '
         #   error_count' - Number of errors that have occurred while running. * The
-        #   operator must be `=` or `!=` for status and inspected_storage. Examples: *
-        #   inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage =
-        #   cloud_storage OR inspected_storage = bigquery * inspected_storage =
-        #   cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time > \"2017-
-        #   12-12T00:00:00+00:00\" The length of this field should be no more than 500
-        #   characters.
+        #   operator must be `=` or `!=` for status and inspected_storage. The syntax is
+        #   based on https://google.aip.dev/160. Examples: * inspected_storage =
+        #   cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR
+        #   inspected_storage = bigquery * inspected_storage = cloud_storage AND (state =
+        #   PAUSED OR state = HEALTHY) * last_run_time > \"2017-12-12T00:00:00+00:00\" The
+        #   length of this field should be no more than 500 characters.
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -1993,22 +2002,25 @@ module Google
         #   Allows filtering. Supported syntax: * Filter expressions are made up of one or
         #   more restrictions. * Restrictions can be combined by `AND` or `OR` logical
         #   operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-        #   has the form of ``field` `operator` `value``. * Supported fields/values: - `
-        #   sensitivity_level` - HIGH|MODERATE|LOW - `data_risk_level` - HIGH|MODERATE|LOW
-        #   - `status_code` - an RPC status code as defined in https://github.com/
-        #   googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must be
-        #   `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `
-        #   project_id = 12345 AND sensitivity_level = HIGH` The length of this field
-        #   should be no more than 500 characters.
+        #   has the form of ``field` `operator` `value``. * Supported fields: - `
+        #   project_id`: the Google Cloud project ID - `sensitivity_level`: HIGH|MODERATE|
+        #   LOW - `data_risk_level`: HIGH|MODERATE|LOW - `status_code`: an RPC status code
+        #   as defined in https://github.com/googleapis/googleapis/blob/master/google/rpc/
+        #   code.proto - `profile_last_generated`: Date and time the profile was last
+        #   generated * The operator must be `=` or `!=`. The `profile_last_generated`
+        #   filter also supports `<` and `>`. The syntax is based on https://google.aip.
+        #   dev/160. Examples: * `project_id = 12345 AND status_code = 1` * `project_id =
+        #   12345 AND sensitivity_level = HIGH` * `profile_last_generated < "2025-01-01T00:
+        #   00:00.000Z"` The length of this field should be no more than 500 characters.
         # @param [String] order_by
         #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Only one order field at a time
         #   is allowed. Examples: * `project_id` * `sensitivity_level desc` Supported
-        #   fields are: - `project_id`: Google Cloud project ID - `sensitivity_level`: How
-        #   sensitive the data in a project is, at most. - `data_risk_level`: How much
-        #   risk is associated with this data. - `profile_last_generated`: When the
-        #   profile was last updated in epoch seconds.
+        #   fields: - `project_id`: Google Cloud project ID - `sensitivity_level`: How
+        #   sensitive the data in a project is, at most - `data_risk_level`: How much risk
+        #   is associated with this data - `profile_last_generated`: Date and time (in
+        #   epoch seconds) the profile was last generated
         # @param [Fixnum] page_size
         #   Size of the page. This value can be limited by the server. If zero, server
         #   returns a page of max size 100.
@@ -2325,16 +2337,19 @@ module Google
         #   Allows filtering. Supported syntax: * Filter expressions are made up of one or
         #   more restrictions. * Restrictions can be combined by `AND` or `OR` logical
         #   operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-        #   has the form of ``field` `operator` `value``. * Supported fields/values: - `
-        #   project_id` - The Google Cloud project ID. - `dataset_id` - The BigQuery
-        #   dataset ID. - `table_id` - The ID of the BigQuery table. - `sensitivity_level`
-        #   - HIGH|MODERATE|LOW - `data_risk_level` - HIGH|MODERATE|LOW - `
-        #   resource_visibility`: PUBLIC|RESTRICTED - `status_code` - an RPC status code
-        #   as defined in https://github.com/googleapis/googleapis/blob/master/google/rpc/
-        #   code.proto * The operator must be `=` or `!=`. Examples: * `project_id = 12345
-        #   AND status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH` * `
-        #   project_id = 12345 AND resource_visibility = PUBLIC` The length of this field
-        #   should be no more than 500 characters.
+        #   has the form of ``field` `operator` `value``. * Supported fields: - `
+        #   project_id`: The Google Cloud project ID - `dataset_id`: The BigQuery dataset
+        #   ID - `table_id`: The ID of the BigQuery table - `sensitivity_level`: HIGH|
+        #   MODERATE|LOW - `data_risk_level`: HIGH|MODERATE|LOW - `resource_visibility`:
+        #   PUBLIC|RESTRICTED - `status_code`: an RPC status code as defined in https://
+        #   github.com/googleapis/googleapis/blob/master/google/rpc/code.proto - `
+        #   profile_last_generated`: Date and time the profile was last generated * The
+        #   operator must be `=` or `!=`. The `profile_last_generated` filter also
+        #   supports `<` and `>`. The syntax is based on https://google.aip.dev/160.
+        #   Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND
+        #   sensitivity_level = HIGH` * `project_id = 12345 AND resource_visibility =
+        #   PUBLIC` * `profile_last_generated < "2025-01-01T00:00:00.000Z"` The length of
+        #   this field should be no more than 500 characters.
         # @param [String] order_by
         #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
@@ -3109,11 +3124,12 @@ module Google
         #   finished. * Supported fields for risk analysis jobs: - `state` - RUNNING|
         #   CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time the job
         #   finished. - 'start_time` - Corresponds to the time the job finished. * The
-        #   operator must be `=` or `!=`. Examples: * inspected_storage = cloud_storage
-        #   AND state = done * inspected_storage = cloud_storage OR inspected_storage =
-        #   bigquery * inspected_storage = cloud_storage AND (state = done OR state =
-        #   canceled) * end_time > \"2017-12-12T00:00:00+00:00\" The length of this field
-        #   should be no more than 500 characters.
+        #   operator must be `=` or `!=`. The syntax is based on https://google.aip.dev/
+        #   160. Examples: * inspected_storage = cloud_storage AND state = done *
+        #   inspected_storage = cloud_storage OR inspected_storage = bigquery *
+        #   inspected_storage = cloud_storage AND (state = done OR state = canceled) *
+        #   end_time > \"2017-12-12T00:00:00+00:00\" The length of this field should be no
+        #   more than 500 characters.
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -3581,12 +3597,12 @@ module Google
         #   DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted
         #   timestamp, surrounded by quotation marks. Nanoseconds are ignored. - '
         #   error_count' - Number of errors that have occurred while running. * The
-        #   operator must be `=` or `!=` for status and inspected_storage. Examples: *
-        #   inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage =
-        #   cloud_storage OR inspected_storage = bigquery * inspected_storage =
-        #   cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time > \"2017-
-        #   12-12T00:00:00+00:00\" The length of this field should be no more than 500
-        #   characters.
+        #   operator must be `=` or `!=` for status and inspected_storage. The syntax is
+        #   based on https://google.aip.dev/160. Examples: * inspected_storage =
+        #   cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR
+        #   inspected_storage = bigquery * inspected_storage = cloud_storage AND (state =
+        #   PAUSED OR state = HEALTHY) * last_run_time > \"2017-12-12T00:00:00+00:00\" The
+        #   length of this field should be no more than 500 characters.
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -3714,19 +3730,22 @@ module Google
         #   Allows filtering. Supported syntax: * Filter expressions are made up of one or
         #   more restrictions. * Restrictions can be combined by `AND` or `OR` logical
         #   operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-        #   has the form of ``field` `operator` `value``. * Supported fields/values: - `
-        #   table_data_profile_name` - The name of the related table data profile. - `
-        #   project_id` - The Google Cloud project ID. (REQUIRED) - `dataset_id` - The
-        #   BigQuery dataset ID. (REQUIRED) - `table_id` - The BigQuery table ID. (
-        #   REQUIRED) - `field_id` - The ID of the BigQuery field. - `info_type` - The
-        #   infotype detected in the resource. - `sensitivity_level` - HIGH|MEDIUM|LOW - `
-        #   data_risk_level`: How much risk is associated with this data. - `status_code` -
-        #   an RPC status code as defined in https://github.com/googleapis/googleapis/
-        #   blob/master/google/rpc/code.proto * The operator must be `=` for project_id,
-        #   dataset_id, and table_id. Other filters also support `!=`. Examples: *
-        #   project_id = 12345 AND status_code = 1 * project_id = 12345 AND
-        #   sensitivity_level = HIGH * project_id = 12345 AND info_type = STREET_ADDRESS
-        #   The length of this field should be no more than 500 characters.
+        #   has the form of ``field` `operator` `value``. * Supported fields: - `
+        #   table_data_profile_name`: The name of the related table data profile - `
+        #   project_id`: The Google Cloud project ID (REQUIRED) - `dataset_id`: The
+        #   BigQuery dataset ID (REQUIRED) - `table_id`: The BigQuery table ID (REQUIRED) -
+        #   `field_id`: The ID of the BigQuery field - `info_type`: The infotype detected
+        #   in the resource - `sensitivity_level`: HIGH|MEDIUM|LOW - `data_risk_level`:
+        #   How much risk is associated with this data - `status_code`: An RPC status code
+        #   as defined in https://github.com/googleapis/googleapis/blob/master/google/rpc/
+        #   code.proto - `profile_last_generated`: Date and time the profile was last
+        #   generated * The operator must be `=` for project_id, dataset_id, and table_id.
+        #   Other filters also support `!=`. The `profile_last_generated` filter also
+        #   supports `<` and `>`. The syntax is based on https://google.aip.dev/160.
+        #   Examples: * project_id = 12345 AND status_code = 1 * project_id = 12345 AND
+        #   sensitivity_level = HIGH * project_id = 12345 AND info_type = STREET_ADDRESS *
+        #   profile_last_generated < "2025-01-01T00:00:00.000Z" The length of this field
+        #   should be no more than 500 characters.
         # @param [String] order_by
         #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
@@ -3878,7 +3897,8 @@ module Google
         #   organizations/433245324/locations/europe` or `projects/project-id/locations/
         #   asia`.
         # @param [String] filter
-        #   Optional. Supported field/value: `state` - MISSING|AVAILABLE|ERROR
+        #   Optional. Supported field/value: `state` - MISSING|AVAILABLE|ERROR The syntax
+        #   is based on https://google.aip.dev/160.
         # @param [Fixnum] page_size
         #   Optional. Number of results per page, max 1000.
         # @param [String] page_token
@@ -3954,7 +3974,8 @@ module Google
         #   location, for example, `organizations/433245324/locations/-` or `projects/
         #   project-id/locations/-`.
         # @param [String] filter
-        #   Optional. Supported field/value: - `state` - MISSING|AVAILABLE|ERROR
+        #   Optional. Supported field/value: - `state` - MISSING|AVAILABLE|ERROR The
+        #   syntax is based on https://google.aip.dev/160.
         # @param [Fixnum] page_size
         #   Optional. Number of results per page, max 1000.
         # @param [String] page_token
@@ -4759,11 +4780,12 @@ module Google
         #   finished. * Supported fields for risk analysis jobs: - `state` - RUNNING|
         #   CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time the job
         #   finished. - 'start_time` - Corresponds to the time the job finished. * The
-        #   operator must be `=` or `!=`. Examples: * inspected_storage = cloud_storage
-        #   AND state = done * inspected_storage = cloud_storage OR inspected_storage =
-        #   bigquery * inspected_storage = cloud_storage AND (state = done OR state =
-        #   canceled) * end_time > \"2017-12-12T00:00:00+00:00\" The length of this field
-        #   should be no more than 500 characters.
+        #   operator must be `=` or `!=`. The syntax is based on https://google.aip.dev/
+        #   160. Examples: * inspected_storage = cloud_storage AND state = done *
+        #   inspected_storage = cloud_storage OR inspected_storage = bigquery *
+        #   inspected_storage = cloud_storage AND (state = done OR state = canceled) *
+        #   end_time > \"2017-12-12T00:00:00+00:00\" The length of this field should be no
+        #   more than 500 characters.
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -4884,19 +4906,22 @@ module Google
         #   Optional. Allows filtering. Supported syntax: * Filter expressions are made up
         #   of one or more restrictions. * Restrictions can be combined by `AND` or `OR`
         #   logical operators. A sequence of restrictions implicitly uses `AND`. * A
-        #   restriction has the form of ``field` `operator` `value``. * Supported fields/
-        #   values: - `project_id` - The Google Cloud project ID. - `account_id` - The AWS
-        #   account ID. - `file_store_path` - The path like "gs://bucket". - `
-        #   data_source_type` - The profile's data source type, like "google/storage/
-        #   bucket". - `data_storage_location` - The location where the file store's data
-        #   is stored, like "us-central1". - `sensitivity_level` - HIGH|MODERATE|LOW - `
-        #   data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|
-        #   RESTRICTED - `status_code` - an RPC status code as defined in https://github.
-        #   com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator
-        #   must be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `
-        #   project_id = 12345 AND sensitivity_level = HIGH` * `project_id = 12345 AND
-        #   resource_visibility = PUBLIC` * `file_store_path = "gs://mybucket"` The length
-        #   of this field should be no more than 500 characters.
+        #   restriction has the form of ``field` `operator` `value``. * Supported fields: -
+        #   `project_id`: The Google Cloud project ID - `account_id`: The AWS account ID -
+        #   `file_store_path`: The path like "gs://bucket" - `data_source_type`: The
+        #   profile's data source type, like "google/storage/bucket" - `
+        #   data_storage_location`: The location where the file store's data is stored,
+        #   like "us-central1" - `sensitivity_level`: HIGH|MODERATE|LOW - `data_risk_level`
+        #   : HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|RESTRICTED - `status_code`:
+        #   an RPC status code as defined in https://github.com/googleapis/googleapis/
+        #   blob/master/google/rpc/code.proto - `profile_last_generated`: Date and time
+        #   the profile was last generated * The operator must be `=` or `!=`. The `
+        #   profile_last_generated` filter also supports `<` and `>`. The syntax is based
+        #   on https://google.aip.dev/160. Examples: * `project_id = 12345 AND status_code
+        #   = 1` * `project_id = 12345 AND sensitivity_level = HIGH` * `project_id = 12345
+        #   AND resource_visibility = PUBLIC` * `file_store_path = "gs://mybucket"` * `
+        #   profile_last_generated < "2025-01-01T00:00:00.000Z"` The length of this field
+        #   should be no more than 500 characters.
         # @param [String] order_by
         #   Optional. Comma-separated list of fields to order by, followed by `asc` or `
         #   desc` postfix. This list is case insensitive. The default sorting order is
@@ -5444,12 +5469,12 @@ module Google
         #   DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted
         #   timestamp, surrounded by quotation marks. Nanoseconds are ignored. - '
         #   error_count' - Number of errors that have occurred while running. * The
-        #   operator must be `=` or `!=` for status and inspected_storage. Examples: *
-        #   inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage =
-        #   cloud_storage OR inspected_storage = bigquery * inspected_storage =
-        #   cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time > \"2017-
-        #   12-12T00:00:00+00:00\" The length of this field should be no more than 500
-        #   characters.
+        #   operator must be `=` or `!=` for status and inspected_storage. The syntax is
+        #   based on https://google.aip.dev/160. Examples: * inspected_storage =
+        #   cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR
+        #   inspected_storage = bigquery * inspected_storage = cloud_storage AND (state =
+        #   PAUSED OR state = HEALTHY) * last_run_time > \"2017-12-12T00:00:00+00:00\" The
+        #   length of this field should be no more than 500 characters.
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -5575,22 +5600,25 @@ module Google
         #   Allows filtering. Supported syntax: * Filter expressions are made up of one or
         #   more restrictions. * Restrictions can be combined by `AND` or `OR` logical
         #   operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-        #   has the form of ``field` `operator` `value``. * Supported fields/values: - `
-        #   sensitivity_level` - HIGH|MODERATE|LOW - `data_risk_level` - HIGH|MODERATE|LOW
-        #   - `status_code` - an RPC status code as defined in https://github.com/
-        #   googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must be
-        #   `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `
-        #   project_id = 12345 AND sensitivity_level = HIGH` The length of this field
-        #   should be no more than 500 characters.
+        #   has the form of ``field` `operator` `value``. * Supported fields: - `
+        #   project_id`: the Google Cloud project ID - `sensitivity_level`: HIGH|MODERATE|
+        #   LOW - `data_risk_level`: HIGH|MODERATE|LOW - `status_code`: an RPC status code
+        #   as defined in https://github.com/googleapis/googleapis/blob/master/google/rpc/
+        #   code.proto - `profile_last_generated`: Date and time the profile was last
+        #   generated * The operator must be `=` or `!=`. The `profile_last_generated`
+        #   filter also supports `<` and `>`. The syntax is based on https://google.aip.
+        #   dev/160. Examples: * `project_id = 12345 AND status_code = 1` * `project_id =
+        #   12345 AND sensitivity_level = HIGH` * `profile_last_generated < "2025-01-01T00:
+        #   00:00.000Z"` The length of this field should be no more than 500 characters.
         # @param [String] order_by
         #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
         #   Redundant space characters are insignificant. Only one order field at a time
         #   is allowed. Examples: * `project_id` * `sensitivity_level desc` Supported
-        #   fields are: - `project_id`: Google Cloud project ID - `sensitivity_level`: How
-        #   sensitive the data in a project is, at most. - `data_risk_level`: How much
-        #   risk is associated with this data. - `profile_last_generated`: When the
-        #   profile was last updated in epoch seconds.
+        #   fields: - `project_id`: Google Cloud project ID - `sensitivity_level`: How
+        #   sensitive the data in a project is, at most - `data_risk_level`: How much risk
+        #   is associated with this data - `profile_last_generated`: Date and time (in
+        #   epoch seconds) the profile was last generated
         # @param [Fixnum] page_size
         #   Size of the page. This value can be limited by the server. If zero, server
         #   returns a page of max size 100.
@@ -5907,16 +5935,19 @@ module Google
         #   Allows filtering. Supported syntax: * Filter expressions are made up of one or
         #   more restrictions. * Restrictions can be combined by `AND` or `OR` logical
         #   operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-        #   has the form of ``field` `operator` `value``. * Supported fields/values: - `
-        #   project_id` - The Google Cloud project ID. - `dataset_id` - The BigQuery
-        #   dataset ID. - `table_id` - The ID of the BigQuery table. - `sensitivity_level`
-        #   - HIGH|MODERATE|LOW - `data_risk_level` - HIGH|MODERATE|LOW - `
-        #   resource_visibility`: PUBLIC|RESTRICTED - `status_code` - an RPC status code
-        #   as defined in https://github.com/googleapis/googleapis/blob/master/google/rpc/
-        #   code.proto * The operator must be `=` or `!=`. Examples: * `project_id = 12345
-        #   AND status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH` * `
-        #   project_id = 12345 AND resource_visibility = PUBLIC` The length of this field
-        #   should be no more than 500 characters.
+        #   has the form of ``field` `operator` `value``. * Supported fields: - `
+        #   project_id`: The Google Cloud project ID - `dataset_id`: The BigQuery dataset
+        #   ID - `table_id`: The ID of the BigQuery table - `sensitivity_level`: HIGH|
+        #   MODERATE|LOW - `data_risk_level`: HIGH|MODERATE|LOW - `resource_visibility`:
+        #   PUBLIC|RESTRICTED - `status_code`: an RPC status code as defined in https://
+        #   github.com/googleapis/googleapis/blob/master/google/rpc/code.proto - `
+        #   profile_last_generated`: Date and time the profile was last generated * The
+        #   operator must be `=` or `!=`. The `profile_last_generated` filter also
+        #   supports `<` and `>`. The syntax is based on https://google.aip.dev/160.
+        #   Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND
+        #   sensitivity_level = HIGH` * `project_id = 12345 AND resource_visibility =
+        #   PUBLIC` * `profile_last_generated < "2025-01-01T00:00:00.000Z"` The length of
+        #   this field should be no more than 500 characters.
         # @param [String] order_by
         #   Comma-separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case insensitive. The default sorting order is ascending.
