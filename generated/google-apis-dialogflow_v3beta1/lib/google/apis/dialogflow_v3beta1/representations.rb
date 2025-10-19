@@ -1786,6 +1786,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1LlmModelSettingsParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1LoadVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7045,7 +7051,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model, as: 'model'
+          property :parameters, as: 'parameters', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1LlmModelSettingsParameters, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1LlmModelSettingsParameters::Representation
+      
           property :prompt_text, as: 'promptText'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1LlmModelSettingsParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_token_limit, as: 'inputTokenLimit'
+          property :output_token_limit, as: 'outputTokenLimit'
+          property :temperature, as: 'temperature'
         end
       end
       
