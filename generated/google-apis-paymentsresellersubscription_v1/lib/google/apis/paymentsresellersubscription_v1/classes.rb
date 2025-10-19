@@ -148,6 +148,25 @@ module Google
         end
       end
       
+      # The cycle options when starting and resuming a subscription.
+      class CycleOptions
+        include Google::Apis::Core::Hashable
+      
+        # Describes the length of a period of a time.
+        # Corresponds to the JSON property `initialCycleDuration`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Duration]
+        attr_accessor :initial_cycle_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @initial_cycle_duration = args[:initial_cycle_duration] if args.key?(:initial_cycle_duration)
+        end
+      end
+      
       # Describes the length of a period of a time.
       class Duration
         include Google::Apis::Core::Hashable
@@ -1004,12 +1023,18 @@ module Google
       class ResumeSubscriptionRequest
         include Google::Apis::Core::Hashable
       
+        # The cycle options when starting and resuming a subscription.
+        # Corresponds to the JSON property `cycleOptions`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::CycleOptions]
+        attr_accessor :cycle_options
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @cycle_options = args[:cycle_options] if args.key?(:cycle_options)
         end
       end
       

@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CycleOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Duration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -356,6 +362,14 @@ module Google
         end
       end
       
+      class CycleOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :initial_cycle_duration, as: 'initialCycleDuration', class: Google::Apis::PaymentsresellersubscriptionV1::Duration, decorator: Google::Apis::PaymentsresellersubscriptionV1::Duration::Representation
+      
+        end
+      end
+      
       class Duration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -622,6 +636,8 @@ module Google
       class ResumeSubscriptionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cycle_options, as: 'cycleOptions', class: Google::Apis::PaymentsresellersubscriptionV1::CycleOptions, decorator: Google::Apis::PaymentsresellersubscriptionV1::CycleOptions::Representation
+      
         end
       end
       

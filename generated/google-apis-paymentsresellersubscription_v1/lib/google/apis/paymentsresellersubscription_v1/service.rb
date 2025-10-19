@@ -387,6 +387,10 @@ module Google
         #   Required. The parent resource name, which is the identifier of the partner. It
         #   will have the format of "partners/`partner_id`".
         # @param [Google::Apis::PaymentsresellersubscriptionV1::Subscription] subscription_object
+        # @param [Fixnum] cycle_options_initial_cycle_duration_count
+        #   number of duration units to be included.
+        # @param [String] cycle_options_initial_cycle_duration_unit
+        #   The unit used for the duration
         # @param [String] subscription_id
         #   Required. Identifies the subscription resource on the Partner side. The value
         #   is restricted to 63 ASCII characters at the maximum. If a subscription was
@@ -409,13 +413,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def provision_partner_subscription(parent, subscription_object = nil, subscription_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def provision_partner_subscription(parent, subscription_object = nil, cycle_options_initial_cycle_duration_count: nil, cycle_options_initial_cycle_duration_unit: nil, subscription_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/subscriptions:provision', options)
           command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::Subscription::Representation
           command.request_object = subscription_object
           command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::Subscription::Representation
           command.response_class = Google::Apis::PaymentsresellersubscriptionV1::Subscription
           command.params['parent'] = parent unless parent.nil?
+          command.query['cycleOptions.initialCycleDuration.count'] = cycle_options_initial_cycle_duration_count unless cycle_options_initial_cycle_duration_count.nil?
+          command.query['cycleOptions.initialCycleDuration.unit'] = cycle_options_initial_cycle_duration_unit unless cycle_options_initial_cycle_duration_unit.nil?
           command.query['subscriptionId'] = subscription_id unless subscription_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -528,6 +534,46 @@ module Google
           command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::UndoCancelSubscriptionResponse::Representation
           command.response_class = Google::Apis::PaymentsresellersubscriptionV1::UndoCancelSubscriptionResponse
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a line item of a subscription. It should be autenticated with a
+        # service account.
+        # @param [String] name
+        #   Identifier. Resource name of the line item. Format: partners/`partner`/
+        #   subscriptions/`subscription`/lineItems/`lineItem`
+        # @param [Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItem] subscription_line_item_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update. Only a limited set of fields can be
+        #   updated. The allowed fields are the following: - `product_payload.
+        #   googleHomePayload.googleStructureId`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItem] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItem]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_partner_subscription_line_item(name, subscription_line_item_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItem::Representation
+          command.request_object = subscription_line_item_object
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItem::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItem
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
