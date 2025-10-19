@@ -431,6 +431,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Immutable. Stores data classification of the aspect.
+        # Corresponds to the JSON property `dataClassification`
+        # @return [String]
+        attr_accessor :data_classification
+      
         # Optional. Description of the AspectType.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -489,6 +494,7 @@ module Google
         def update!(**args)
           @authorization = args[:authorization] if args.key?(:authorization)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @data_classification = args[:data_classification] if args.key?(:data_classification)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
