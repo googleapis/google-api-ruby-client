@@ -31,7 +31,7 @@ module Google
       #    Chromewebstore = Google::Apis::ChromewebstoreV1_1 # Alias the module
       #    service = Chromewebstore::ChromewebstoreService.new
       #
-      # @see https://developer.chrome.com/webstore/api_index
+      # @see https://developer.chrome.com/docs/webstore/api
       class ChromewebstoreService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://chromewebstore.$UNIVERSE_DOMAIN$/"
 
