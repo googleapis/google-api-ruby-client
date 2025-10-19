@@ -1882,8 +1882,9 @@ module Google
         # @return [String]
         attr_accessor :database
       
-        # Optional. Controls how the API should respond when the SQL execution result
-        # exceeds 10 MB. The default mode is to throw an error.
+        # Optional. Controls how the API should respond when the SQL execution result is
+        # incomplete due to the size limit or another error. The default mode is to
+        # throw an error.
         # Corresponds to the JSON property `partialResultMode`
         # @return [String]
         attr_accessor :partial_result_mode
@@ -4601,7 +4602,8 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # Set to true if the SQL execution's result is truncated due to size limits.
+        # Set to true if the SQL execution's result is truncated due to size limits or
+        # an error retrieving results.
         # Corresponds to the JSON property `partialResult`
         # @return [Boolean]
         attr_accessor :partial_result
@@ -4611,6 +4613,16 @@ module Google
         # Corresponds to the JSON property `rows`
         # @return [Array<Google::Apis::SqladminV1::Row>]
         attr_accessor :rows
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::SqladminV1::Status]
+        attr_accessor :status
       
         def initialize(**args)
            update!(**args)
@@ -4622,6 +4634,7 @@ module Google
           @message = args[:message] if args.key?(:message)
           @partial_result = args[:partial_result] if args.key?(:partial_result)
           @rows = args[:rows] if args.key?(:rows)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -4960,6 +4973,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :authorized_gae_applications
       
+        # Optional. Cloud SQL for MySQL auto-upgrade configuration. When this parameter
+        # is set to true, auto-upgrade is enabled for MySQL 8.0 minor versions. The
+        # MySQL version must be 8.0.35 or higher.
+        # Corresponds to the JSON property `autoUpgradeEnabled`
+        # @return [Boolean]
+        attr_accessor :auto_upgrade_enabled
+        alias_method :auto_upgrade_enabled?, :auto_upgrade_enabled
+      
         # Availability type. Potential values: * `ZONAL`: The instance serves data from
         # only one zone. Outages in that zone affect data accessibility. * `REGIONAL`:
         # The instance can serve data from more than one zone in a region (it is highly
@@ -5201,6 +5222,7 @@ module Google
           @active_directory_config = args[:active_directory_config] if args.key?(:active_directory_config)
           @advanced_machine_features = args[:advanced_machine_features] if args.key?(:advanced_machine_features)
           @authorized_gae_applications = args[:authorized_gae_applications] if args.key?(:authorized_gae_applications)
+          @auto_upgrade_enabled = args[:auto_upgrade_enabled] if args.key?(:auto_upgrade_enabled)
           @availability_type = args[:availability_type] if args.key?(:availability_type)
           @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
           @collation = args[:collation] if args.key?(:collation)
@@ -5366,6 +5388,16 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::QueryResult>]
         attr_accessor :results
       
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::SqladminV1::Status]
+        attr_accessor :status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5375,6 +5407,7 @@ module Google
           @messages = args[:messages] if args.key?(:messages)
           @metadata = args[:metadata] if args.key?(:metadata)
           @results = args[:results] if args.key?(:results)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -6018,6 +6051,45 @@ module Google
         end
       end
       
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # Initial sync flags for certain Cloud SQL APIs. Currently used for the MySQL
       # external server initial dump.
       class SyncFlags
@@ -6188,6 +6260,12 @@ module Google
         # @return [String]
         attr_accessor :host
       
+        # Optional. The full email for an IAM user. For normal database users, this will
+        # not be filled. Only applicable to MySQL database users.
+        # Corresponds to the JSON property `iamEmail`
+        # @return [String]
+        attr_accessor :iam_email
+      
         # Indicates if a group is active or inactive for IAM database authentication.
         # Corresponds to the JSON property `iamStatus`
         # @return [String]
@@ -6247,6 +6325,7 @@ module Google
           @dual_password_type = args[:dual_password_type] if args.key?(:dual_password_type)
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)
+          @iam_email = args[:iam_email] if args.key?(:iam_email)
           @iam_status = args[:iam_status] if args.key?(:iam_status)
           @instance = args[:instance] if args.key?(:instance)
           @kind = args[:kind] if args.key?(:kind)
