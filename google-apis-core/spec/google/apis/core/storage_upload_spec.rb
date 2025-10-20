@@ -161,6 +161,26 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
       expect(a_request(:put, upload_url)
         .with(body: 'Hello world')).to have_been_made
     end
+
+  end
+
+  context('restart resumable upload with wrong upload_id') do
+    let(:file) { StringIO.new('Hello world' * 3) }
+    let(:upload_id) { 'wrong_upload_id' }
+    let(:upload_url) { "https://www.googleapis.com/zoo/animals?uploadType=resumable&upload_id=#{upload_id}" }
+
+    before(:example) do
+      stub_request(:put, upload_url)
+        .to_return(status: 404)
+    end
+
+    it 'should return false if wrong upload id is provided' do
+      stub_request(:put, upload_url)
+        .to_return(status: 404)
+      command.options.upload_chunk_size = 11
+      command.upload_id = upload_id
+      expect(command.execute(client)).to be_falsy
+    end
   end
 
   context('should not restart resumable upload if upload is completed') do
@@ -234,6 +254,25 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
       command.execute(client)
       expect(a_request(:put, upload_url)
         .with(body: 'Hello world')).to have_not_been_made
+    end
+
+  end
+
+  context('delete resumable upload with upload_id') do
+    let(:file) { StringIO.new('Hello world' * 3) }
+    let(:upload_id) { 'wrong_upload_id' }
+    let(:upload_url) { "https://www.googleapis.com/zoo/animals?uploadType=resumable&upload_id=#{upload_id}" }
+
+    before(:example) do
+      stub_request(:delete, upload_url)
+        .to_return(status: 404)
+    end
+
+    it 'should return false if wrong upload id is provided' do
+      command.options.upload_chunk_size = 11
+      command.upload_id = upload_id
+      command.delete_upload = true
+      expect(command.execute(client)).to be_falsy
     end
   end
 
