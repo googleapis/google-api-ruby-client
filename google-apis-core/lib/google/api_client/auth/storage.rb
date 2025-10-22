@@ -38,6 +38,11 @@ module Google
       #
       # @param [Object] store
       #  Storage object
+      #
+      # @note Warning: This class is part of a deprecated credentials flow.
+      #   Providing an unvalidated credential configuration to Google APIs can
+      #   compromise the security of your systems and data. Use
+      #   google-auth-library-ruby instead.
       def initialize(store)
         @store= store
         @authorization = nil
