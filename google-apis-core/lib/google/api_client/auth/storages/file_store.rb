@@ -37,6 +37,11 @@ module Google
 
       ##
       # Attempt to read in credentials from the specified file.
+      #
+      # @note Warning: This method is part of a deprecated credentials flow.
+      #   Providing an unvalidated credential configuration to Google APIs can
+      #   compromise the security of your systems and data. Use
+      #   google-auth-library-ruby instead.
       def load_credentials
         open(path, 'r') { |f| JSON.parse(f.read) }
       rescue
