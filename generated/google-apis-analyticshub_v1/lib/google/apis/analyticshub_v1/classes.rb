@@ -1140,6 +1140,13 @@ module Google
         # @return [Google::Apis::AnalyticshubV1::RetryPolicy]
         attr_accessor :retry_policy
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1162,6 +1169,7 @@ module Google
           @push_config = args[:push_config] if args.key?(:push_config)
           @retain_acked_messages = args[:retain_acked_messages] if args.key?(:retain_acked_messages)
           @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -1511,6 +1519,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Stored procedure configuration, used to configure stored procedure sharing on
+        # linked dataset.
+        # Corresponds to the JSON property `storedProcedureConfig`
+        # @return [Google::Apis::AnalyticshubV1::StoredProcedureConfig]
+        attr_accessor :stored_procedure_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1536,6 +1550,7 @@ module Google
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @restricted_export_config = args[:restricted_export_config] if args.key?(:restricted_export_config)
           @state = args[:state] if args.key?(:state)
+          @stored_procedure_config = args[:stored_procedure_config] if args.key?(:stored_procedure_config)
         end
       end
       
@@ -2437,6 +2452,33 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Stored procedure configuration, used to configure stored procedure sharing on
+      # linked dataset.
+      class StoredProcedureConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Types of stored procedure supported to share.
+        # Corresponds to the JSON property `allowedStoredProcedureTypes`
+        # @return [Array<String>]
+        attr_accessor :allowed_stored_procedure_types
+      
+        # Optional. If true, enable sharing of stored procedure.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_stored_procedure_types = args[:allowed_stored_procedure_types] if args.key?(:allowed_stored_procedure_types)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
