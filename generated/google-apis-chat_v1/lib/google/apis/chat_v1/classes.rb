@@ -5402,6 +5402,13 @@ module Google
       class PermissionSetting
         include Google::Apis::Core::Hashable
       
+        # Optional. Whether space managers `ROLE_ASSISTANT_MANAGER`) have this
+        # permission.
+        # Corresponds to the JSON property `assistantManagersAllowed`
+        # @return [Boolean]
+        attr_accessor :assistant_managers_allowed
+        alias_method :assistant_managers_allowed?, :assistant_managers_allowed
+      
         # Optional. Whether space owners (`ROLE_MANAGER`) have this permission.
         # Corresponds to the JSON property `managersAllowed`
         # @return [Boolean]
@@ -5420,6 +5427,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @assistant_managers_allowed = args[:assistant_managers_allowed] if args.key?(:assistant_managers_allowed)
           @managers_allowed = args[:managers_allowed] if args.key?(:managers_allowed)
           @members_allowed = args[:members_allowed] if args.key?(:members_allowed)
         end
@@ -5932,8 +5940,9 @@ module Google
         # customer` is the `id` from the [Admin SDK customer resource](https://
         # developers.google.com/admin-sdk/directory/reference/rest/v1/customers).
         # Private apps can also use the `customers/my_customer` alias to create the
-        # space in the same Google Workspace organization as the app. For DMs, this
-        # field isn't populated.
+        # space in the same Google Workspace organization as the app. This field isn't
+        # populated for direct messages (DMs) or when the space is created by non-Google
+        # Workspace users.
         # Corresponds to the JSON property `customer`
         # @return [String]
         attr_accessor :customer
