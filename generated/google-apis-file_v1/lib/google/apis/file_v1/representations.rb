@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DirectoryServicesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +137,12 @@ module Google
       end
       
       class Instance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LdapConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -350,6 +362,14 @@ module Google
         end
       end
       
+      class DirectoryServicesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ldap, as: 'ldap', class: Google::Apis::FileV1::LdapConfig, decorator: Google::Apis::FileV1::LdapConfig::Representation
+      
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -493,6 +513,8 @@ module Google
           property :deletion_protection_enabled, as: 'deletionProtectionEnabled'
           property :deletion_protection_reason, as: 'deletionProtectionReason'
           property :description, as: 'description'
+          property :directory_services, as: 'directoryServices', class: Google::Apis::FileV1::DirectoryServicesConfig, decorator: Google::Apis::FileV1::DirectoryServicesConfig::Representation
+      
           property :etag, as: 'etag'
           collection :file_shares, as: 'fileShares', class: Google::Apis::FileV1::FileShareConfig, decorator: Google::Apis::FileV1::FileShareConfig::Representation
       
@@ -517,6 +539,16 @@ module Google
           collection :suspension_reasons, as: 'suspensionReasons'
           hash :tags, as: 'tags'
           property :tier, as: 'tier'
+        end
+      end
+      
+      class LdapConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :groups_ou, as: 'groupsOu'
+          collection :servers, as: 'servers'
+          property :users_ou, as: 'usersOu'
         end
       end
       
@@ -555,6 +587,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::FileV1::Operation, decorator: Google::Apis::FileV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
