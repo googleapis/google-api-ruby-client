@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataplexConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DenyMaintenancePeriod
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -917,6 +923,8 @@ module Google
       
           property :create_time, as: 'createTime'
           property :database_version, as: 'databaseVersion'
+          property :dataplex_config, as: 'dataplexConfig', class: Google::Apis::AlloydbV1beta::DataplexConfig, decorator: Google::Apis::AlloydbV1beta::DataplexConfig::Representation
+      
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::AlloydbV1beta::EncryptionConfig, decorator: Google::Apis::AlloydbV1beta::EncryptionConfig::Representation
@@ -1060,6 +1068,13 @@ module Google
           property :field_delimiter, as: 'fieldDelimiter'
           property :quote_character, as: 'quoteCharacter'
           property :table, as: 'table'
+        end
+      end
+      
+      class DataplexConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
