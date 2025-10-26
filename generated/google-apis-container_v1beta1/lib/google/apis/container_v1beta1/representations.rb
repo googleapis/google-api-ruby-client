@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BootDiskProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -352,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DedicatedLocalSsdProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DefaultComputeClassConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -388,7 +400,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnterpriseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EphemeralLocalSsdProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -815,6 +839,12 @@ module Google
       end
       
       class NodeConfigDefaults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeKernelModuleLoading
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1270,6 +1300,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SwapConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SyncRotationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1713,6 +1749,14 @@ module Google
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
           property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
+        end
+      end
+      
+      class BootDiskProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :swap_size_gib, :numeric_string => true, as: 'swapSizeGib'
+          property :swap_size_percent, as: 'swapSizePercent'
         end
       end
       
@@ -2263,6 +2307,13 @@ module Google
         end
       end
       
+      class DedicatedLocalSsdProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_count, :numeric_string => true, as: 'diskCount'
+        end
+      end
+      
       class DefaultComputeClassConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2305,11 +2356,26 @@ module Google
         end
       end
       
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
+        end
+      end
+      
       class EnterpriseConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_tier, as: 'clusterTier'
           property :desired_tier, as: 'desiredTier'
+        end
+      end
+      
+      class EphemeralLocalSsdProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :swap_size_gib, :numeric_string => true, as: 'swapSizeGib'
+          property :swap_size_percent, as: 'swapSizePercent'
         end
       end
       
@@ -2658,6 +2724,10 @@ module Google
           property :cgroup_mode, as: 'cgroupMode'
           property :hugepages, as: 'hugepages', class: Google::Apis::ContainerV1beta1::HugepagesConfig, decorator: Google::Apis::ContainerV1beta1::HugepagesConfig::Representation
       
+          property :node_kernel_module_loading, as: 'nodeKernelModuleLoading', class: Google::Apis::ContainerV1beta1::NodeKernelModuleLoading, decorator: Google::Apis::ContainerV1beta1::NodeKernelModuleLoading::Representation
+      
+          property :swap_config, as: 'swapConfig', class: Google::Apis::ContainerV1beta1::SwapConfig, decorator: Google::Apis::ContainerV1beta1::SwapConfig::Representation
+      
           hash :sysctls, as: 'sysctls'
           property :transparent_hugepage_defrag, as: 'transparentHugepageDefrag'
           property :transparent_hugepage_enabled, as: 'transparentHugepageEnabled'
@@ -2757,6 +2827,7 @@ module Google
       class MaintenanceExclusionOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time_behavior, as: 'endTimeBehavior'
           property :scope, as: 'scope'
         end
       end
@@ -3039,6 +3110,13 @@ module Google
         end
       end
       
+      class NodeKernelModuleLoading
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy'
+        end
+      end
+      
       class NodeKubeletConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3090,6 +3168,7 @@ module Google
       class NodeNetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_network_profile, as: 'acceleratorNetworkProfile'
           collection :additional_node_network_configs, as: 'additionalNodeNetworkConfigs', class: Google::Apis::ContainerV1beta1::AdditionalNodeNetworkConfig, decorator: Google::Apis::ContainerV1beta1::AdditionalNodeNetworkConfig::Representation
       
           collection :additional_pod_network_configs, as: 'additionalPodNetworkConfigs', class: Google::Apis::ContainerV1beta1::AdditionalPodNetworkConfig, decorator: Google::Apis::ContainerV1beta1::AdditionalPodNetworkConfig::Representation
@@ -3833,6 +3912,21 @@ module Google
         end
       end
       
+      class SwapConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boot_disk_profile, as: 'bootDiskProfile', class: Google::Apis::ContainerV1beta1::BootDiskProfile, decorator: Google::Apis::ContainerV1beta1::BootDiskProfile::Representation
+      
+          property :dedicated_local_ssd_profile, as: 'dedicatedLocalSsdProfile', class: Google::Apis::ContainerV1beta1::DedicatedLocalSsdProfile, decorator: Google::Apis::ContainerV1beta1::DedicatedLocalSsdProfile::Representation
+      
+          property :enabled, as: 'enabled'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::ContainerV1beta1::EncryptionConfig, decorator: Google::Apis::ContainerV1beta1::EncryptionConfig::Representation
+      
+          property :ephemeral_local_ssd_profile, as: 'ephemeralLocalSsdProfile', class: Google::Apis::ContainerV1beta1::EphemeralLocalSsdProfile, decorator: Google::Apis::ContainerV1beta1::EphemeralLocalSsdProfile::Representation
+      
+        end
+      end
+      
       class SyncRotationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3988,11 +4082,13 @@ module Google
       class UpgradeEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_emulated_version, as: 'currentEmulatedVersion'
           property :current_version, as: 'currentVersion'
           property :operation, as: 'operation'
           property :operation_start_time, as: 'operationStartTime'
           property :resource, as: 'resource'
           property :resource_type, as: 'resourceType'
+          property :target_emulated_version, as: 'targetEmulatedVersion'
           property :target_version, as: 'targetVersion'
         end
       end
@@ -4000,6 +4096,7 @@ module Google
       class UpgradeInfoEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_emulated_version, as: 'currentEmulatedVersion'
           property :current_version, as: 'currentVersion'
           property :description, as: 'description'
           property :end_time, as: 'endTime'
@@ -4011,6 +4108,7 @@ module Google
           property :standard_support_end_time, as: 'standardSupportEndTime'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
+          property :target_emulated_version, as: 'targetEmulatedVersion'
           property :target_version, as: 'targetVersion'
         end
       end
