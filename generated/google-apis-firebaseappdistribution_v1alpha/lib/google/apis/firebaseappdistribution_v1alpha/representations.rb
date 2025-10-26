@@ -124,6 +124,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -500,6 +512,20 @@ module Google
       end
       
       class GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :test_devices, as: 'testDevices', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestDevice, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestDevice::Representation
+      
+        end
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
