@@ -4235,6 +4235,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :base_table
       
+        # The index id.
+        # Corresponds to the JSON property `indexId`
+        # @return [String]
+        attr_accessor :index_id
+      
         # The number of parallel inputs after index pruning.
         # Corresponds to the JSON property `postIndexPruningParallelInputCount`
         # @return [Fixnum]
@@ -4252,6 +4257,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @base_table = args[:base_table] if args.key?(:base_table)
+          @index_id = args[:index_id] if args.key?(:index_id)
           @post_index_pruning_parallel_input_count = args[:post_index_pruning_parallel_input_count] if args.key?(:post_index_pruning_parallel_input_count)
           @pre_index_pruning_parallel_input_count = args[:pre_index_pruning_parallel_input_count] if args.key?(:pre_index_pruning_parallel_input_count)
         end

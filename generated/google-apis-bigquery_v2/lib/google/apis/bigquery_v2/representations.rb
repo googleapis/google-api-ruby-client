@@ -2392,6 +2392,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :base_table, as: 'baseTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
+          property :index_id, as: 'indexId'
           property :post_index_pruning_parallel_input_count, :numeric_string => true, as: 'postIndexPruningParallelInputCount'
           property :pre_index_pruning_parallel_input_count, :numeric_string => true, as: 'preIndexPruningParallelInputCount'
         end
