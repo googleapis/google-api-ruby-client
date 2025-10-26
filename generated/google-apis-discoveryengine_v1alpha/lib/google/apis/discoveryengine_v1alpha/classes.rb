@@ -5331,6 +5331,13 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig]
         attr_accessor :model_armor_config
       
+        # Optional. Whether to disable the notebook sharing feature for the project.
+        # Default to false if not specified.
+        # Corresponds to the JSON property `optOutNotebookSharing`
+        # @return [Boolean]
+        attr_accessor :opt_out_notebook_sharing
+        alias_method :opt_out_notebook_sharing?, :opt_out_notebook_sharing
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5338,6 +5345,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
+          @opt_out_notebook_sharing = args[:opt_out_notebook_sharing] if args.key?(:opt_out_notebook_sharing)
         end
       end
       
@@ -6782,6 +6790,62 @@ module Google
           @update_time = args[:update_time] if args.key?(:update_time)
           @user_principal = args[:user_principal] if args.key?(:user_principal)
           @user_profile = args[:user_profile] if args.key?(:user_profile)
+        end
+      end
+      
+      # Configures metadata that is used for End User entities.
+      class GoogleCloudDiscoveryengineV1UserStore
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The default subscription LicenseConfig for the UserStore, if
+        # UserStore.enable_license_auto_register is true, new users will automatically
+        # register under the default subscription. If default LicenseConfig doesn't have
+        # remaining license seats left, new users will not be assigned with license and
+        # will be blocked for Vertex AI Search features. This is used if `
+        # license_assignment_tier_rules` is not configured.
+        # Corresponds to the JSON property `defaultLicenseConfig`
+        # @return [String]
+        attr_accessor :default_license_config
+      
+        # The display name of the User Store.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Whether to enable license auto update for users in this User Store.
+        # If true, users with expired licenses will automatically be updated to use the
+        # default license config as long as the default license config has seats left.
+        # Corresponds to the JSON property `enableExpiredLicenseAutoUpdate`
+        # @return [Boolean]
+        attr_accessor :enable_expired_license_auto_update
+        alias_method :enable_expired_license_auto_update?, :enable_expired_license_auto_update
+      
+        # Optional. Whether to enable license auto register for users in this User Store.
+        # If true, new users will automatically register under the default license
+        # config as long as the default license config has seats left.
+        # Corresponds to the JSON property `enableLicenseAutoRegister`
+        # @return [Boolean]
+        attr_accessor :enable_license_auto_register
+        alias_method :enable_license_auto_register?, :enable_license_auto_register
+      
+        # Immutable. The full resource name of the User Store, in the format of `
+        # projects/`project`/locations/`location`/userStores/`user_store``. This field
+        # must be a UTF-8 encoded string with a length limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_license_config = args[:default_license_config] if args.key?(:default_license_config)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_expired_license_auto_update = args[:enable_expired_license_auto_update] if args.key?(:enable_expired_license_auto_update)
+          @enable_license_auto_register = args[:enable_license_auto_register] if args.key?(:enable_license_auto_register)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -10739,6 +10803,140 @@ module Google
         end
       end
       
+      # Canned query resource of Assistant. It represents a short-cut to a predefined
+      # conversation start.
+      class GoogleCloudDiscoveryengineV1alphaCannedQuery
+        include Google::Apis::Core::Hashable
+      
+        # The text pieces for the canned query, which can be localized.
+        # Corresponds to the JSON property `defaultTexts`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts]
+        attr_accessor :default_texts
+      
+        # The display name of the canned query. It must be a UTF-8 encoded string with a
+        # length limit of 128 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Whether this canned query is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Output only. Whether this is a Google-defined, read-only canned query.
+        # Corresponds to the JSON property `googleDefined`
+        # @return [Boolean]
+        attr_accessor :google_defined
+        alias_method :google_defined?, :google_defined
+      
+        # Optional. The translations of the text attributes. The keys should be BCP-47
+        # language codes.
+        # Corresponds to the JSON property `localizedTexts`
+        # @return [Hash<String,Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts>]
+        attr_accessor :localized_texts
+      
+        # Immutable. Resource name of the canned query. Format: `projects/`project`/
+        # locations/`location`/collections/`collection`/engines/`engine`/assistants/`
+        # assistant`/cannedQueries/`canned_query`` It must be a UTF-8 encoded string
+        # with a length limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The capabilities the Assistant needs to have to use this canned
+        # query.
+        # Corresponds to the JSON property `requiredCapabilities`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCannedQueryAssistantCapability>]
+        attr_accessor :required_capabilities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_texts = args[:default_texts] if args.key?(:default_texts)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @google_defined = args[:google_defined] if args.key?(:google_defined)
+          @localized_texts = args[:localized_texts] if args.key?(:localized_texts)
+          @name = args[:name] if args.key?(:name)
+          @required_capabilities = args[:required_capabilities] if args.key?(:required_capabilities)
+        end
+      end
+      
+      # Capability of an assistant needed to use this canned query.
+      class GoogleCloudDiscoveryengineV1alphaCannedQueryAssistantCapability
+        include Google::Apis::Core::Hashable
+      
+        # The name of the action that the Assistant needs to have set up to use this
+        # canned query.
+        # Corresponds to the JSON property `actionName`
+        # @return [String]
+        attr_accessor :action_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_name = args[:action_name] if args.key?(:action_name)
+        end
+      end
+      
+      # The text pieces for the canned query, which can be localized.
+      class GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The prefix that `suggested_prompts` should start with.
+        # Corresponds to the JSON property `prefix`
+        # @return [String]
+        attr_accessor :prefix
+      
+        # Required. The prompts the canned query will offer to the user.
+        # Corresponds to the JSON property `suggestedPrompts`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCannedQuerySuggestedPrompt>]
+        attr_accessor :suggested_prompts
+      
+        # Required. The title that is for the end user.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prefix = args[:prefix] if args.key?(:prefix)
+          @suggested_prompts = args[:suggested_prompts] if args.key?(:suggested_prompts)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A suggested prompt for the canned query.
+      class GoogleCloudDiscoveryengineV1alphaCannedQuerySuggestedPrompt
+        include Google::Apis::Core::Hashable
+      
+        # Required. The text of the suggested prompt.
+        # Corresponds to the JSON property `promptText`
+        # @return [String]
+        attr_accessor :prompt_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prompt_text = args[:prompt_text] if args.key?(:prompt_text)
+        end
+      end
+      
       # Request message for GroundedGenerationService.CheckGrounding method.
       class GoogleCloudDiscoveryengineV1alphaCheckGroundingRequest
         include Google::Apis::Core::Hashable
@@ -14051,6 +14249,35 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the UserStoreService.DeleteUserStore
+      # operation. This will be returned by the google.longrunning.Operation.metadata
+      # field. Delete UserStore will delete all the end users under the user store,
+      # return the number of end users successfully deleted or failed to delete in the
+      # metadata.
+      class GoogleCloudDiscoveryengineV1alphaDeleteUserStoreMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The number of end users under the user store that failed to be deleted.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # The number of end users under the user store that were successfully deleted.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+        end
+      end
+      
       # Defines target endpoints used to connect to third-party sources.
       class GoogleCloudDiscoveryengineV1alphaDestinationConfig
         include Google::Apis::Core::Hashable
@@ -14165,6 +14392,64 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request message for LicenseConfigService.DistributeLicenseConfig method.
+      class GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Distribute seats to this license config instead of creating a new
+        # one. If not specified, a new license config will be created from the billing
+        # account license config.
+        # Corresponds to the JSON property `licenseConfigId`
+        # @return [String]
+        attr_accessor :license_config_id
+      
+        # Required. The number of licenses to distribute.
+        # Corresponds to the JSON property `licenseCount`
+        # @return [Fixnum]
+        attr_accessor :license_count
+      
+        # Required. The target GCP project region to distribute the license config to.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Required. The target GCP project number to distribute the license config to.
+        # Corresponds to the JSON property `projectNumber`
+        # @return [Fixnum]
+        attr_accessor :project_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @license_config_id = args[:license_config_id] if args.key?(:license_config_id)
+          @license_count = args[:license_count] if args.key?(:license_count)
+          @location = args[:location] if args.key?(:location)
+          @project_number = args[:project_number] if args.key?(:project_number)
+        end
+      end
+      
+      # Response message for LicenseConfigService.DistributeLicenseConfig method.
+      class GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # Information about users' licenses.
+        # Corresponds to the JSON property `licenseConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaLicenseConfig]
+        attr_accessor :license_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @license_config = args[:license_config] if args.key?(:license_config)
         end
       end
       
@@ -17644,6 +17929,32 @@ module Google
         end
       end
       
+      # Response message for the CannedQueryService.ListCannedQueries method.
+      class GoogleCloudDiscoveryengineV1alphaListCannedQueriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of CannedQuerys matching the request.
+        # Corresponds to the JSON property `cannedQueries`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCannedQuery>]
+        attr_accessor :canned_queries
+      
+        # A token that can be sent as ListCannedQueriesRequest.page_token to retrieve
+        # the next page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canned_queries = args[:canned_queries] if args.key?(:canned_queries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for ChunkService.ListChunks method.
       class GoogleCloudDiscoveryengineV1alphaListChunksResponse
         include Google::Apis::Core::Hashable
@@ -18707,6 +19018,13 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig]
         attr_accessor :model_armor_config
       
+        # Optional. Whether to disable the notebook sharing feature for the project.
+        # Default to false if not specified.
+        # Corresponds to the JSON property `optOutNotebookSharing`
+        # @return [Boolean]
+        attr_accessor :opt_out_notebook_sharing
+        alias_method :opt_out_notebook_sharing?, :opt_out_notebook_sharing
+      
         def initialize(**args)
            update!(**args)
         end
@@ -18714,6 +19032,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
+          @opt_out_notebook_sharing = args[:opt_out_notebook_sharing] if args.key?(:opt_out_notebook_sharing)
         end
       end
       
@@ -20435,6 +20754,60 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request message for LicenseConfigService.RetractLicenseConfig method.
+      class GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, retract the entire license config. Otherwise,
+        # retract the specified license count.
+        # Corresponds to the JSON property `fullRetract`
+        # @return [Boolean]
+        attr_accessor :full_retract
+        alias_method :full_retract?, :full_retract
+      
+        # Required. Full resource name of LicenseConfig. Format: `projects/`project`/
+        # locations/`location`/licenseConfigs/`license_config_id``.
+        # Corresponds to the JSON property `licenseConfig`
+        # @return [String]
+        attr_accessor :license_config
+      
+        # Optional. The number of licenses to retract. Only used when full_retract is
+        # false.
+        # Corresponds to the JSON property `licenseCount`
+        # @return [Fixnum]
+        attr_accessor :license_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_retract = args[:full_retract] if args.key?(:full_retract)
+          @license_config = args[:license_config] if args.key?(:license_config)
+          @license_count = args[:license_count] if args.key?(:license_count)
+        end
+      end
+      
+      # Response message for LicenseConfigService.RetractLicenseConfig method.
+      class GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # Information about users' licenses.
+        # Corresponds to the JSON property `licenseConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaLicenseConfig]
+        attr_accessor :license_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @license_config = args[:license_config] if args.key?(:license_config)
         end
       end
       
@@ -25343,6 +25716,62 @@ module Google
         end
       end
       
+      # Configures metadata that is used for End User entities.
+      class GoogleCloudDiscoveryengineV1alphaUserStore
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The default subscription LicenseConfig for the UserStore, if
+        # UserStore.enable_license_auto_register is true, new users will automatically
+        # register under the default subscription. If default LicenseConfig doesn't have
+        # remaining license seats left, new users will not be assigned with license and
+        # will be blocked for Vertex AI Search features. This is used if `
+        # license_assignment_tier_rules` is not configured.
+        # Corresponds to the JSON property `defaultLicenseConfig`
+        # @return [String]
+        attr_accessor :default_license_config
+      
+        # The display name of the User Store.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Whether to enable license auto update for users in this User Store.
+        # If true, users with expired licenses will automatically be updated to use the
+        # default license config as long as the default license config has seats left.
+        # Corresponds to the JSON property `enableExpiredLicenseAutoUpdate`
+        # @return [Boolean]
+        attr_accessor :enable_expired_license_auto_update
+        alias_method :enable_expired_license_auto_update?, :enable_expired_license_auto_update
+      
+        # Optional. Whether to enable license auto register for users in this User Store.
+        # If true, new users will automatically register under the default license
+        # config as long as the default license config has seats left.
+        # Corresponds to the JSON property `enableLicenseAutoRegister`
+        # @return [Boolean]
+        attr_accessor :enable_license_auto_register
+        alias_method :enable_license_auto_register?, :enable_license_auto_register
+      
+        # Immutable. The full resource name of the User Store, in the format of `
+        # projects/`project`/locations/`location`/userStores/`user_store``. This field
+        # must be a UTF-8 encoded string with a length limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_license_config = args[:default_license_config] if args.key?(:default_license_config)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_expired_license_auto_update = args[:enable_expired_license_auto_update] if args.key?(:enable_expired_license_auto_update)
+          @enable_license_auto_register = args[:enable_license_auto_register] if args.key?(:enable_license_auto_register)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Standard characteristics of a video media view.
       class GoogleCloudDiscoveryengineV1alphaVideoCharacteristics
         include Google::Apis::Core::Hashable
@@ -25564,6 +25993,12 @@ module Google
         # @return [Hash<String,Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigUiComponentField>]
         attr_accessor :fields_ui_components_map
       
+        # Output only. Whether the subscription is gemini bundle or not.
+        # Corresponds to the JSON property `geminiBundle`
+        # @return [Boolean]
+        attr_accessor :gemini_bundle
+        alias_method :gemini_bundle?, :gemini_bundle
+      
         # Describes the homepage setting of the widget. It includes all homepage related
         # settings and configurations, such as shortcuts.
         # Corresponds to the JSON property `homepageSetting`
@@ -25657,6 +26092,7 @@ module Google
           @experimental_features = args[:experimental_features] if args.key?(:experimental_features)
           @facet_field = args[:facet_field] if args.key?(:facet_field)
           @fields_ui_components_map = args[:fields_ui_components_map] if args.key?(:fields_ui_components_map)
+          @gemini_bundle = args[:gemini_bundle] if args.key?(:gemini_bundle)
           @homepage_setting = args[:homepage_setting] if args.key?(:homepage_setting)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @llm_enabled = args[:llm_enabled] if args.key?(:llm_enabled)
@@ -25988,9 +26424,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The shortcuts to display on the homepage. LINT.IfChange(
-        # max_shortcuts_number) LINT.ThenChange(//depot/google3/cloud/console/web/ai/
+        # max_shortcuts_number) LINT.ThenChange( //depot/google3/cloud/console/web/ai/
         # unified_cloud_search/components/widget_preview/
-        # widget_homepage_shortcut_config_form.ts:max_shortcuts_number)
+        # widget_homepage_shortcut_config_form.ts:max_shortcuts_number )
         # Corresponds to the JSON property `shortcuts`
         # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSettingShortcut>]
         attr_accessor :shortcuts
@@ -29341,6 +29777,13 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig]
         attr_accessor :model_armor_config
       
+        # Optional. Whether to disable the notebook sharing feature for the project.
+        # Default to false if not specified.
+        # Corresponds to the JSON property `optOutNotebookSharing`
+        # @return [Boolean]
+        attr_accessor :opt_out_notebook_sharing
+        alias_method :opt_out_notebook_sharing?, :opt_out_notebook_sharing
+      
         def initialize(**args)
            update!(**args)
         end
@@ -29348,6 +29791,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
+          @opt_out_notebook_sharing = args[:opt_out_notebook_sharing] if args.key?(:opt_out_notebook_sharing)
         end
       end
       
@@ -31743,6 +32187,62 @@ module Google
           @update_time = args[:update_time] if args.key?(:update_time)
           @user_principal = args[:user_principal] if args.key?(:user_principal)
           @user_profile = args[:user_profile] if args.key?(:user_profile)
+        end
+      end
+      
+      # Configures metadata that is used for End User entities.
+      class GoogleCloudDiscoveryengineV1betaUserStore
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The default subscription LicenseConfig for the UserStore, if
+        # UserStore.enable_license_auto_register is true, new users will automatically
+        # register under the default subscription. If default LicenseConfig doesn't have
+        # remaining license seats left, new users will not be assigned with license and
+        # will be blocked for Vertex AI Search features. This is used if `
+        # license_assignment_tier_rules` is not configured.
+        # Corresponds to the JSON property `defaultLicenseConfig`
+        # @return [String]
+        attr_accessor :default_license_config
+      
+        # The display name of the User Store.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Whether to enable license auto update for users in this User Store.
+        # If true, users with expired licenses will automatically be updated to use the
+        # default license config as long as the default license config has seats left.
+        # Corresponds to the JSON property `enableExpiredLicenseAutoUpdate`
+        # @return [Boolean]
+        attr_accessor :enable_expired_license_auto_update
+        alias_method :enable_expired_license_auto_update?, :enable_expired_license_auto_update
+      
+        # Optional. Whether to enable license auto register for users in this User Store.
+        # If true, new users will automatically register under the default license
+        # config as long as the default license config has seats left.
+        # Corresponds to the JSON property `enableLicenseAutoRegister`
+        # @return [Boolean]
+        attr_accessor :enable_license_auto_register
+        alias_method :enable_license_auto_register?, :enable_license_auto_register
+      
+        # Immutable. The full resource name of the User Store, in the format of `
+        # projects/`project`/locations/`location`/userStores/`user_store``. This field
+        # must be a UTF-8 encoded string with a length limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_license_config = args[:default_license_config] if args.key?(:default_license_config)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_expired_license_auto_update = args[:enable_expired_license_auto_update] if args.key?(:enable_expired_license_auto_update)
+          @enable_license_auto_register = args[:enable_license_auto_register] if args.key?(:enable_license_auto_register)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
