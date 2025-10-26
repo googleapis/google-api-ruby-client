@@ -347,8 +347,8 @@ module Google
       
         # Optional. When set to `TRUE`, the response from an extension service is
         # allowed to set the `com.google.envoy.dynamic_forwarding` namespace in the
-        # dynamic metadata. This field is not supported for plugin extensions. Setting
-        # it results in a validation error.
+        # dynamic metadata. This field is not supported for plugin extensions or
+        # AuthzExtensions. Setting it results in a validation error.
         # Corresponds to the JSON property `allowDynamicForwarding`
         # @return [Boolean]
         attr_accessor :allow_dynamic_forwarding
@@ -384,28 +384,30 @@ module Google
       
         # Optional. The metadata provided here is included as part of the `
         # metadata_context` (of type `google.protobuf.Struct`) in the `ProcessingRequest`
-        # message sent to the extension server. The metadata is available under the
-        # namespace `com.google....`. For example: `com.google.lb_traffic_extension.
-        # lbtrafficextension1.chain1.ext1`. The following variables are supported in the
-        # metadata: ``forwarding_rule_id`` - substituted with the forwarding rule's
-        # fully qualified resource name. This field must not be set for plugin
-        # extensions. Setting it results in a validation error. You can set metadata at
-        # either the resource level or the extension level. The extension level metadata
-        # is recommended because you can pass a different set of metadata through each
-        # extension to the backend. This field is subject to following limitations: *
-        # The total size of the metadata must be less than 1KiB. * The total number of
-        # keys in the metadata must be less than 16. * The length of each key must be
-        # less than 64 characters. * The length of each value must be less than 1024
-        # characters. * All values must be strings.
+        # message sent to the extension server. For `AuthzExtension` resources, the
+        # metadata is available under the namespace `com.google.authz_extension.`. For
+        # other types of extensions, the metadata is available under the namespace `com.
+        # google....`. For example: `com.google.lb_traffic_extension.lbtrafficextension1.
+        # chain1.ext1`. The following variables are supported in the metadata: ``
+        # forwarding_rule_id`` - substituted with the forwarding rule's fully qualified
+        # resource name. This field must not be set for plugin extensions. Setting it
+        # results in a validation error. You can set metadata at either the resource
+        # level or the extension level. The extension level metadata is recommended
+        # because you can pass a different set of metadata through each extension to the
+        # backend. This field is subject to following limitations: * The total size of
+        # the metadata must be less than 1KiB. * The total number of keys in the
+        # metadata must be less than 16. * The length of each key must be less than 64
+        # characters. * The length of each value must be less than 1024 characters. *
+        # All values must be strings.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
-        # Required. The name for this extension. The name is logged as part of the HTTP
+        # Optional. The name for this extension. The name is logged as part of the HTTP
         # request logs. The name must conform with RFC-1034, is restricted to lower-
         # cased letters, numbers and hyphens, and can have a maximum length of 63
         # characters. Additionally, the first character must be a letter and the last a
-        # letter or a number.
+        # letter or a number. This field is required except for AuthzExtension.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -424,11 +426,13 @@ module Google
         attr_accessor :request_body_send_mode
       
         # Optional. Configures the send mode for response processing. If unspecified,
-        # the default value `STREAMED` is used. When this field is set to `
-        # FULL_DUPLEX_STREAMED`, `supported_events` must include both `RESPONSE_BODY`
-        # and `RESPONSE_TRAILERS`. This field can be set only for `LbTrafficExtension`
-        # resources, and only when the `service` field of the extension points to a `
-        # BackendService`.
+        # the default value `STREAMED` is used. The field can only be set if `
+        # supported_events` includes `RESPONSE_BODY`. If `supported_events` includes `
+        # RESPONSE_BODY`, but `response_body_send_mode` is unset, the default value `
+        # STREAMED` is used. When this field is set to `FULL_DUPLEX_STREAMED`, `
+        # supported_events` must include both `RESPONSE_BODY` and `RESPONSE_TRAILERS`.
+        # This field can be set only for `LbTrafficExtension` resources, and only when
+        # the `service` field of the extension points to a `BackendService`.
         # Corresponds to the JSON property `responseBodySendMode`
         # @return [String]
         attr_accessor :response_body_send_mode
@@ -456,7 +460,9 @@ module Google
         # required. For the `LbRouteExtension` resource, this field is optional. If
         # unspecified, `REQUEST_HEADERS` event is assumed as supported. For the `
         # LbEdgeExtension` resource, this field is required and must only contain `
-        # REQUEST_HEADERS` event.
+        # REQUEST_HEADERS` event. For the `AuthzExtension` resource, this field is
+        # optional. `REQUEST_HEADERS` is the only supported event. If unspecified, `
+        # REQUEST_HEADERS` event is assumed as supported.
         # Corresponds to the JSON property `supportedEvents`
         # @return [Array<String>]
         attr_accessor :supported_events
