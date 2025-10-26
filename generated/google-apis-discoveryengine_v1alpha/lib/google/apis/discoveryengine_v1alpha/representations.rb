@@ -1006,6 +1006,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1UserStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1WorkspaceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1702,6 +1708,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaCannedQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaCannedQueryAssistantCapability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaCannedQuerySuggestedPrompt
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaCheckGroundingRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2164,6 +2194,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaDeleteUserStoreMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaDestinationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2189,6 +2225,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2764,6 +2812,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaListCannedQueriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaListChunksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3287,6 +3341,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaResumeEngineRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3995,6 +4061,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaUserLicense
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaUserStore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4955,6 +5027,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaUserLicense
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaUserStore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6690,6 +6768,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model_armor_config, as: 'modelArmorConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig::Representation
       
+          property :opt_out_notebook_sharing, as: 'optOutNotebookSharing'
         end
       end
       
@@ -7042,6 +7121,17 @@ module Google
           property :update_time, as: 'updateTime'
           property :user_principal, as: 'userPrincipal'
           property :user_profile, as: 'userProfile'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1UserStore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_license_config, as: 'defaultLicenseConfig'
+          property :display_name, as: 'displayName'
+          property :enable_expired_license_auto_update, as: 'enableExpiredLicenseAutoUpdate'
+          property :enable_license_auto_register, as: 'enableLicenseAutoRegister'
+          property :name, as: 'name'
         end
       end
       
@@ -8201,6 +8291,46 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaCannedQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_texts, as: 'defaultTexts', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts::Representation
+      
+          property :display_name, as: 'displayName'
+          property :enabled, as: 'enabled'
+          property :google_defined, as: 'googleDefined'
+          hash :localized_texts, as: 'localizedTexts', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts::Representation
+      
+          property :name, as: 'name'
+          collection :required_capabilities, as: 'requiredCapabilities', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCannedQueryAssistantCapability, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCannedQueryAssistantCapability::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaCannedQueryAssistantCapability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_name, as: 'actionName'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaCannedQueryCannedQueryTexts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prefix, as: 'prefix'
+          collection :suggested_prompts, as: 'suggestedPrompts', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCannedQuerySuggestedPrompt, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCannedQuerySuggestedPrompt::Representation
+      
+          property :title, as: 'title'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaCannedQuerySuggestedPrompt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prompt_text, as: 'promptText'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaCheckGroundingRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9062,6 +9192,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaDeleteUserStoreMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaDestinationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9098,6 +9236,24 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :license_config_id, as: 'licenseConfigId'
+          property :license_count, :numeric_string => true, as: 'licenseCount'
+          property :location, as: 'location'
+          property :project_number, :numeric_string => true, as: 'projectNumber'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :license_config, as: 'licenseConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaLicenseConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaLicenseConfig::Representation
+      
         end
       end
       
@@ -10065,6 +10221,15 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaListCannedQueriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :canned_queries, as: 'cannedQueries', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCannedQuery, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCannedQuery::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaListChunksResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10407,6 +10572,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model_armor_config, as: 'modelArmorConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig::Representation
       
+          property :opt_out_notebook_sharing, as: 'optOutNotebookSharing'
         end
       end
       
@@ -10879,6 +11045,23 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaResumeEngineRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_retract, as: 'fullRetract'
+          property :license_config, as: 'licenseConfig'
+          property :license_count, :numeric_string => true, as: 'licenseCount'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :license_config, as: 'licenseConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaLicenseConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaLicenseConfig::Representation
+      
         end
       end
       
@@ -12132,6 +12315,17 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaUserStore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_license_config, as: 'defaultLicenseConfig'
+          property :display_name, as: 'displayName'
+          property :enable_expired_license_auto_update, as: 'enableExpiredLicenseAutoUpdate'
+          property :enable_license_auto_register, as: 'enableLicenseAutoRegister'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaVideoCharacteristics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12183,6 +12377,7 @@ module Google
       
           hash :fields_ui_components_map, as: 'fieldsUiComponentsMap', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigUiComponentField, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigUiComponentField::Representation
       
+          property :gemini_bundle, as: 'geminiBundle'
           property :homepage_setting, as: 'homepageSetting', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSetting, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigHomepageSetting::Representation
       
           property :industry_vertical, as: 'industryVertical'
@@ -13213,6 +13408,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model_armor_config, as: 'modelArmorConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig::Representation
       
+          property :opt_out_notebook_sharing, as: 'optOutNotebookSharing'
         end
       end
       
@@ -13792,6 +13988,17 @@ module Google
           property :update_time, as: 'updateTime'
           property :user_principal, as: 'userPrincipal'
           property :user_profile, as: 'userProfile'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaUserStore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_license_config, as: 'defaultLicenseConfig'
+          property :display_name, as: 'displayName'
+          property :enable_expired_license_auto_update, as: 'enableExpiredLicenseAutoUpdate'
+          property :enable_license_auto_register, as: 'enableLicenseAutoRegister'
+          property :name, as: 'name'
         end
       end
       
