@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SchedulingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchAllAssignmentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +209,8 @@ module Google
           property :enable_gemini_in_bigquery, as: 'enableGeminiInBigquery'
           property :job_type, as: 'jobType'
           property :name, as: 'name'
+          property :scheduling_policy, as: 'schedulingPolicy', class: Google::Apis::BigqueryreservationV1::SchedulingPolicy, decorator: Google::Apis::BigqueryreservationV1::SchedulingPolicy::Representation
+      
           property :state, as: 'state'
         end
       end
@@ -388,6 +396,8 @@ module Google
       
           property :reservation_group, as: 'reservationGroup'
           property :scaling_mode, as: 'scalingMode'
+          property :scheduling_policy, as: 'schedulingPolicy', class: Google::Apis::BigqueryreservationV1::SchedulingPolicy, decorator: Google::Apis::BigqueryreservationV1::SchedulingPolicy::Representation
+      
           property :secondary_location, as: 'secondaryLocation'
           property :slot_capacity, :numeric_string => true, as: 'slotCapacity'
           property :update_time, as: 'updateTime'
@@ -398,6 +408,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class SchedulingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :concurrency, :numeric_string => true, as: 'concurrency'
+          property :max_slots, :numeric_string => true, as: 'maxSlots'
         end
       end
       

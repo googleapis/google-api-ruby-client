@@ -58,6 +58,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The scheduling policy controls how a reservation's resources are distributed.
+        # Corresponds to the JSON property `schedulingPolicy`
+        # @return [Google::Apis::BigqueryreservationV1::SchedulingPolicy]
+        attr_accessor :scheduling_policy
+      
         # Output only. State of the assignment.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -73,6 +78,7 @@ module Google
           @enable_gemini_in_bigquery = args[:enable_gemini_in_bigquery] if args.key?(:enable_gemini_in_bigquery)
           @job_type = args[:job_type] if args.key?(:job_type)
           @name = args[:name] if args.key?(:name)
+          @scheduling_policy = args[:scheduling_policy] if args.key?(:scheduling_policy)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -960,6 +966,11 @@ module Google
         # @return [String]
         attr_accessor :scaling_mode
       
+        # The scheduling policy controls how a reservation's resources are distributed.
+        # Corresponds to the JSON property `schedulingPolicy`
+        # @return [Google::Apis::BigqueryreservationV1::SchedulingPolicy]
+        attr_accessor :scheduling_policy
+      
         # Optional. The current location of the reservation's secondary replica. This
         # field is only set for reservations using the managed disaster recovery feature.
         # Users can set this in create reservation calls to create a failover
@@ -1009,6 +1020,7 @@ module Google
           @replication_status = args[:replication_status] if args.key?(:replication_status)
           @reservation_group = args[:reservation_group] if args.key?(:reservation_group)
           @scaling_mode = args[:scaling_mode] if args.key?(:scaling_mode)
+          @scheduling_policy = args[:scheduling_policy] if args.key?(:scheduling_policy)
           @secondary_location = args[:secondary_location] if args.key?(:secondary_location)
           @slot_capacity = args[:slot_capacity] if args.key?(:slot_capacity)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1034,6 +1046,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The scheduling policy controls how a reservation's resources are distributed.
+      class SchedulingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If present and > 0, the reservation will attempt to limit the
+        # concurrency of jobs running for any particular project within it to the given
+        # value. This feature is not yet generally available.
+        # Corresponds to the JSON property `concurrency`
+        # @return [Fixnum]
+        attr_accessor :concurrency
+      
+        # Optional. If present and > 0, the reservation will attempt to limit the slot
+        # consumption of queries running for any particular project within it to the
+        # given value. This feature is not yet generally available.
+        # Corresponds to the JSON property `maxSlots`
+        # @return [Fixnum]
+        attr_accessor :max_slots
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @concurrency = args[:concurrency] if args.key?(:concurrency)
+          @max_slots = args[:max_slots] if args.key?(:max_slots)
         end
       end
       
