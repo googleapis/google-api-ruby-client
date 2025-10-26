@@ -2847,9 +2847,8 @@ module Google
       class GooglePrivacyDlpV2DataSourceType
         include Google::Apis::Core::Hashable
       
-        # Output only. An identifying string to the type of resource being profiled.
-        # Current values: * google/bigquery/table * google/project * google/sql/table *
-        # google/gcs/bucket
+        # An identifying string to the type of resource being profiled. Current values: *
+        # google/bigquery/table * google/project * google/sql/table * google/gcs/bucket
         # Corresponds to the JSON property `dataSource`
         # @return [String]
         attr_accessor :data_source
@@ -4384,7 +4383,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherResources]
         attr_accessor :others
       
-        # Identifies a single Vertex AI dataset.
+        # Identifies a single Vertex AI resource. Currently only datasets are supported.
         # Corresponds to the JSON property `vertexDatasetResourceReference`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2VertexDatasetResourceReference]
         attr_accessor :vertex_dataset_resource_reference
@@ -11489,12 +11488,13 @@ module Google
         end
       end
       
-      # Identifies a single Vertex AI dataset.
+      # Identifies a single Vertex AI resource. Currently only datasets are supported.
       class GooglePrivacyDlpV2VertexDatasetResourceReference
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the dataset resource. If set within a project-level
-        # configuration, the specified resource must be within the project.
+        # Required. The name of the Vertex AI resource. If set within a project-level
+        # configuration, the specified resource must be within the project. Examples: * `
+        # projects/`project`/locations/`location`/datasets/`dataset``
         # Corresponds to the JSON property `datasetResourceName`
         # @return [String]
         attr_accessor :dataset_resource_name
