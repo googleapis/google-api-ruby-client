@@ -54,6 +54,33 @@ module Google
         end
       end
       
+      # Controlled egress configuration.
+      class ControlledEgressConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of fully qualified domain names to be added to the allowlist
+        # for outbound traffic.
+        # Corresponds to the JSON property `egressFqdns`
+        # @return [Array<String>]
+        attr_accessor :egress_fqdns
+      
+        # Optional. Whether marketplace is enabled.
+        # Corresponds to the JSON property `marketplaceEnabled`
+        # @return [Boolean]
+        attr_accessor :marketplace_enabled
+        alias_method :marketplace_enabled?, :marketplace_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @egress_fqdns = args[:egress_fqdns] if args.key?(:egress_fqdns)
+          @marketplace_enabled = args[:marketplace_enabled] if args.key?(:marketplace_enabled)
+        end
+      end
+      
       # Custom domain information.
       class CustomDomain
         include Google::Apis::Core::Hashable
@@ -388,6 +415,17 @@ module Google
         # @return [String]
         attr_accessor :consumer_network
       
+        # Controlled egress configuration.
+        # Corresponds to the JSON property `controlledEgressConfig`
+        # @return [Google::Apis::LookerV1::ControlledEgressConfig]
+        attr_accessor :controlled_egress_config
+      
+        # Optional. Whether controlled egress is enabled on the Looker instance.
+        # Corresponds to the JSON property `controlledEgressEnabled`
+        # @return [Boolean]
+        attr_accessor :controlled_egress_enabled
+        alias_method :controlled_egress_enabled?, :controlled_egress_enabled
+      
         # Output only. The time when the Looker instance provisioning was first
         # requested.
         # Corresponds to the JSON property `createTime`
@@ -551,6 +589,8 @@ module Google
           @admin_settings = args[:admin_settings] if args.key?(:admin_settings)
           @class_type = args[:class_type] if args.key?(:class_type)
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
+          @controlled_egress_config = args[:controlled_egress_config] if args.key?(:controlled_egress_config)
+          @controlled_egress_enabled = args[:controlled_egress_enabled] if args.key?(:controlled_egress_enabled)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_domain = args[:custom_domain] if args.key?(:custom_domain)
           @deny_maintenance_period = args[:deny_maintenance_period] if args.key?(:deny_maintenance_period)

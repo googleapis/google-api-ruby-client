@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ControlledEgressConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomDomain
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +227,14 @@ module Google
         end
       end
       
+      class ControlledEgressConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :egress_fqdns, as: 'egressFqdns'
+          property :marketplace_enabled, as: 'marketplaceEnabled'
+        end
+      end
+      
       class CustomDomain
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -317,6 +331,9 @@ module Google
       
           property :class_type, as: 'classType'
           property :consumer_network, as: 'consumerNetwork'
+          property :controlled_egress_config, as: 'controlledEgressConfig', class: Google::Apis::LookerV1::ControlledEgressConfig, decorator: Google::Apis::LookerV1::ControlledEgressConfig::Representation
+      
+          property :controlled_egress_enabled, as: 'controlledEgressEnabled'
           property :create_time, as: 'createTime'
           property :custom_domain, as: 'customDomain', class: Google::Apis::LookerV1::CustomDomain, decorator: Google::Apis::LookerV1::CustomDomain::Representation
       
