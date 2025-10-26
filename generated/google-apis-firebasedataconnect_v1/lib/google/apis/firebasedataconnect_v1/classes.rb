@@ -305,10 +305,12 @@ module Google
       # draft/#sec-Errors Firebase Data Connect API surfaces `GraphqlError` in various
       # APIs: - Upon compile error, `UpdateSchema` and `UpdateConnector` return Code.
       # Invalid_Argument with a list of `GraphqlError` in error details. - Upon query
-      # compile error, `ExecuteGraphql` and `ExecuteGraphqlRead` return Code.OK with a
-      # list of `GraphqlError` in response body. - Upon query execution error, `
-      # ExecuteGraphql`, `ExecuteGraphqlRead`, `ExecuteMutation` and `ExecuteQuery`
-      # all return Code.OK with a list of `GraphqlError` in response body.
+      # compile error, `ExecuteGraphql`, `ExecuteGraphqlRead` and `IntrospectGraphql`
+      # return Code.OK with a list of `GraphqlError` in response body. - Upon query
+      # execution error, `ExecuteGraphql`, `ExecuteGraphqlRead`, `ExecuteMutation`, `
+      # ExecuteQuery`, `IntrospectGraphql`, `ImpersonateQuery` and `
+      # ImpersonateMutation` all return Code.OK with a list of `GraphqlError` in
+      # response body.
       class GraphqlError
         include Google::Apis::Core::Hashable
       
@@ -319,10 +321,11 @@ module Google
       
         # The source locations where the error occurred. Locations should help
         # developers and toolings identify the source of error quickly. Included in
-        # admin endpoints (`ExecuteGraphql`, `ExecuteGraphqlRead`, `UpdateSchema` and `
-        # UpdateConnector`) to reference the provided GraphQL GQL document. Omitted in `
-        # ExecuteMutation` and `ExecuteQuery` since the caller shouldn't have access
-        # access the underlying GQL source.
+        # admin endpoints (`ExecuteGraphql`, `ExecuteGraphqlRead`, `IntrospectGraphql`, `
+        # ImpersonateQuery`, `ImpersonateMutation`, `UpdateSchema` and `UpdateConnector`)
+        # to reference the provided GraphQL GQL document. Omitted in `ExecuteMutation`
+        # and `ExecuteQuery` since the caller shouldn't have access access the
+        # underlying GQL source.
         # Corresponds to the JSON property `locations`
         # @return [Array<Google::Apis::FirebasedataconnectV1::SourceLocation>]
         attr_accessor :locations
@@ -380,11 +383,16 @@ module Google
         # @return [String]
         attr_accessor :file
       
-        # Distinguish which schema or connector the error originates from. It should be
-        # set on errors from control plane APIs (e.g. `UpdateSchema`, `UpdateConnector`).
-        # Corresponds to the JSON property `resource`
+        # Warning level describes the severity and required action to suppress this
+        # warning when Firebase CLI run into it.
+        # Corresponds to the JSON property `warningLevel`
         # @return [String]
-        attr_accessor :resource
+        attr_accessor :warning_level
+      
+        # Workarounds provide suggestions to address the compile errors or warnings.
+        # Corresponds to the JSON property `workarounds`
+        # @return [Array<Google::Apis::FirebasedataconnectV1::Workaround>]
+        attr_accessor :workarounds
       
         def initialize(**args)
            update!(**args)
@@ -395,7 +403,8 @@ module Google
           @code = args[:code] if args.key?(:code)
           @debug_details = args[:debug_details] if args.key?(:debug_details)
           @file = args[:file] if args.key?(:file)
-          @resource = args[:resource] if args.key?(:resource)
+          @warning_level = args[:warning_level] if args.key?(:warning_level)
+          @workarounds = args[:workarounds] if args.key?(:workarounds)
         end
       end
       
@@ -638,6 +647,13 @@ module Google
         # @return [Array<Google::Apis::FirebasedataconnectV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -646,6 +662,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1193,6 +1210,37 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Workaround provides suggestions to address errors and warnings.
+      class Workaround
+        include Google::Apis::Core::Hashable
+      
+        # Description of this workaround.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Why would this workaround address the error and warning.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # A suggested code snippet to fix the error and warning.
+        # Corresponds to the JSON property `replace`
+        # @return [String]
+        attr_accessor :replace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @reason = args[:reason] if args.key?(:reason)
+          @replace = args[:replace] if args.key?(:replace)
         end
       end
     end
