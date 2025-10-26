@@ -376,6 +376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StoredProcedureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubmitQueryTemplateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -686,6 +692,7 @@ module Google
           property :retain_acked_messages, as: 'retainAckedMessages'
           property :retry_policy, as: 'retryPolicy', class: Google::Apis::AnalyticshubV1::RetryPolicy, decorator: Google::Apis::AnalyticshubV1::RetryPolicy::Representation
       
+          hash :tags, as: 'tags'
         end
       end
       
@@ -788,6 +795,8 @@ module Google
           property :restricted_export_config, as: 'restrictedExportConfig', class: Google::Apis::AnalyticshubV1::RestrictedExportConfig, decorator: Google::Apis::AnalyticshubV1::RestrictedExportConfig::Representation
       
           property :state, as: 'state'
+          property :stored_procedure_config, as: 'storedProcedureConfig', class: Google::Apis::AnalyticshubV1::StoredProcedureConfig, decorator: Google::Apis::AnalyticshubV1::StoredProcedureConfig::Representation
+      
         end
       end
       
@@ -1009,6 +1018,14 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StoredProcedureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_stored_procedure_types, as: 'allowedStoredProcedureTypes'
+          property :enabled, as: 'enabled'
         end
       end
       
