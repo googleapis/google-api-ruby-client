@@ -4250,6 +4250,11 @@ module Google
         # @return [Google::Apis::ContainerV1::HugepagesConfig]
         attr_accessor :hugepages
       
+        # Configuration for kernel module loading on nodes.
+        # Corresponds to the JSON property `nodeKernelModuleLoading`
+        # @return [Google::Apis::ContainerV1::NodeKernelModuleLoading]
+        attr_accessor :node_kernel_module_loading
+      
         # The Linux kernel parameters to be applied to the nodes and all pods running on
         # the nodes. The following parameters are supported. net.core.busy_poll net.core.
         # busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.rmem_default
@@ -4294,6 +4299,7 @@ module Google
         def update!(**args)
           @cgroup_mode = args[:cgroup_mode] if args.key?(:cgroup_mode)
           @hugepages = args[:hugepages] if args.key?(:hugepages)
+          @node_kernel_module_loading = args[:node_kernel_module_loading] if args.key?(:node_kernel_module_loading)
           @sysctls = args[:sysctls] if args.key?(:sysctls)
           @transparent_hugepage_defrag = args[:transparent_hugepage_defrag] if args.key?(:transparent_hugepage_defrag)
           @transparent_hugepage_enabled = args[:transparent_hugepage_enabled] if args.key?(:transparent_hugepage_enabled)
@@ -4523,6 +4529,11 @@ module Google
       class MaintenanceExclusionOptions
         include Google::Apis::Core::Hashable
       
+        # EndTimeBehavior specifies the behavior of the exclusion end time.
+        # Corresponds to the JSON property `endTimeBehavior`
+        # @return [String]
+        attr_accessor :end_time_behavior
+      
         # Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
         # Corresponds to the JSON property `scope`
         # @return [String]
@@ -4534,6 +4545,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @end_time_behavior = args[:end_time_behavior] if args.key?(:end_time_behavior)
           @scope = args[:scope] if args.key?(:scope)
         end
       end
@@ -5578,6 +5590,25 @@ module Google
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @node_kubelet_config = args[:node_kubelet_config] if args.key?(:node_kubelet_config)
+        end
+      end
+      
+      # Configuration for kernel module loading on nodes.
+      class NodeKernelModuleLoading
+        include Google::Apis::Core::Hashable
+      
+        # Set the node module loading policy for nodes in the node pool.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
@@ -8930,7 +8961,13 @@ module Google
         # final_documentation_domain`/compute/docs/zones#available) in which the node
         # pool's nodes should be located. Changing the locations for a node pool will
         # result in nodes being either created or removed from the node pool, depending
-        # on whether locations are being added or removed.
+        # on whether locations are being added or removed. Warning: It is recommended to
+        # update node pool locations in a standalone API call. Do not combine a location
+        # update with changes to other fields (such as `tags`, `labels`, `taints`, etc.)
+        # in the same request. Otherwise, the API performs a structural modification
+        # where changes to other fields will only apply to newly created nodes and will
+        # not be applied to existing nodes in the node pool. To ensure all nodes are
+        # updated consistently, use a separate API call for location changes.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
