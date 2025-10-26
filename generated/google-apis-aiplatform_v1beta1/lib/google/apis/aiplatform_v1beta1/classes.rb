@@ -8409,6 +8409,107 @@ module Google
         end
       end
       
+      # Request message for PredictionService.EmbedContent.
+      class GoogleCloudAiplatformV1beta1EmbedContentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to silently truncate the input content if it's longer than
+        # the maximum sequence length.
+        # Corresponds to the JSON property `autoTruncate`
+        # @return [Boolean]
+        attr_accessor :auto_truncate
+        alias_method :auto_truncate?, :auto_truncate
+      
+        # The base structured datatype containing multi-part content of a message. A `
+        # Content` includes a `role` field designating the producer of the `Content` and
+        # a `parts` field containing multi-part data that contains the content of the
+        # message turn.
+        # Corresponds to the JSON property `content`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content]
+        attr_accessor :content
+      
+        # Optional. Optional reduced dimension for the output embedding. If set,
+        # excessive values in the output embedding are truncated from the end.
+        # Corresponds to the JSON property `outputDimensionality`
+        # @return [Fixnum]
+        attr_accessor :output_dimensionality
+      
+        # Optional. The task type of the embedding.
+        # Corresponds to the JSON property `taskType`
+        # @return [String]
+        attr_accessor :task_type
+      
+        # Optional. An optional title for the text.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_truncate = args[:auto_truncate] if args.key?(:auto_truncate)
+          @content = args[:content] if args.key?(:content)
+          @output_dimensionality = args[:output_dimensionality] if args.key?(:output_dimensionality)
+          @task_type = args[:task_type] if args.key?(:task_type)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Response message for PredictionService.EmbedContent.
+      class GoogleCloudAiplatformV1beta1EmbedContentResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of floats representing an embedding.
+        # Corresponds to the JSON property `embedding`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EmbedContentResponseEmbedding]
+        attr_accessor :embedding
+      
+        # Whether the input content was truncated before generating the embedding.
+        # Corresponds to the JSON property `truncated`
+        # @return [Boolean]
+        attr_accessor :truncated
+        alias_method :truncated?, :truncated
+      
+        # Usage metadata about the content generation request and response. This message
+        # provides a detailed breakdown of token usage and other relevant metrics.
+        # Corresponds to the JSON property `usageMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UsageMetadata]
+        attr_accessor :usage_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @embedding = args[:embedding] if args.key?(:embedding)
+          @truncated = args[:truncated] if args.key?(:truncated)
+          @usage_metadata = args[:usage_metadata] if args.key?(:usage_metadata)
+        end
+      end
+      
+      # A list of floats representing an embedding.
+      class GoogleCloudAiplatformV1beta1EmbedContentResponseEmbedding
+        include Google::Apis::Core::Hashable
+      
+        # Embedding vector values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Float>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Request message for ModelGardenService.EnableModel.
       class GoogleCloudAiplatformV1beta1EnableModelRequest
         include Google::Apis::Core::Hashable
@@ -10667,12 +10768,6 @@ module Google
         # @return [String]
         attr_accessor :transfer_agent
       
-        # Deprecated. If set, the event transfers to the specified agent.
-        # Corresponds to the JSON property `transferToAgent`
-        # @return [Boolean]
-        attr_accessor :transfer_to_agent
-        alias_method :transfer_to_agent?, :transfer_to_agent
-      
         def initialize(**args)
            update!(**args)
         end
@@ -10685,7 +10780,6 @@ module Google
           @skip_summarization = args[:skip_summarization] if args.key?(:skip_summarization)
           @state_delta = args[:state_delta] if args.key?(:state_delta)
           @transfer_agent = args[:transfer_agent] if args.key?(:transfer_agent)
-          @transfer_to_agent = args[:transfer_to_agent] if args.key?(:transfer_to_agent)
         end
       end
       
@@ -16218,6 +16312,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Ordered `Parts` that constitute a function response. Parts may have
+        # different IANA MIME types.
+        # Corresponds to the JSON property `parts`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FunctionResponsePart>]
+        attr_accessor :parts
+      
         # Required. The function response in JSON object format. Use "output" key to
         # specify function output and "error" key to specify error details (if any). If "
         # output" and "error" keys are not specified, then whole "response" is treated
@@ -16234,7 +16334,110 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
+          @parts = args[:parts] if args.key?(:parts)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # Raw media bytes for function response. Text should not be sent as raw bytes,
+      # use the 'text' field.
+      class GoogleCloudAiplatformV1beta1FunctionResponseBlob
+        include Google::Apis::Core::Hashable
+      
+        # Required. Raw bytes.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Optional. Display name of the blob. Used to provide a label or filename to
+        # distinguish blobs. This field is only returned in PromptMessage for prompt
+        # management. It is currently used in the Gemini GenerateContent calls only when
+        # server side tools (code_execution, google_search, and url_context) are enabled.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The IANA standard MIME type of the source data.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # URI based data for function response.
+      class GoogleCloudAiplatformV1beta1FunctionResponseFileData
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Display name of the file data. Used to provide a label or filename
+        # to distinguish file datas. This field is only returned in PromptMessage for
+        # prompt management. It is currently used in the Gemini GenerateContent calls
+        # only when server side tools (code_execution, google_search, and url_context)
+        # are enabled.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. URI.
+        # Corresponds to the JSON property `fileUri`
+        # @return [String]
+        attr_accessor :file_uri
+      
+        # Required. The IANA standard MIME type of the source data.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @file_uri = args[:file_uri] if args.key?(:file_uri)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # A datatype containing media that is part of a `FunctionResponse` message. A `
+      # FunctionResponsePart` consists of data which has an associated datatype. A `
+      # FunctionResponsePart` can only contain one of the accepted types in `
+      # FunctionResponsePart.data`. A `FunctionResponsePart` must have a fixed IANA
+      # MIME type identifying the type and subtype of the media if the `inline_data`
+      # field is filled with raw bytes.
+      class GoogleCloudAiplatformV1beta1FunctionResponsePart
+        include Google::Apis::Core::Hashable
+      
+        # URI based data for function response.
+        # Corresponds to the JSON property `fileData`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FunctionResponseFileData]
+        attr_accessor :file_data
+      
+        # Raw media bytes for function response. Text should not be sent as raw bytes,
+        # use the 'text' field.
+        # Corresponds to the JSON property `inlineData`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FunctionResponseBlob]
+        attr_accessor :inline_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_data = args[:file_data] if args.key?(:file_data)
+          @inline_data = args[:inline_data] if args.key?(:inline_data)
         end
       end
       
@@ -16968,6 +17171,29 @@ module Google
         attr_accessor :disable_consolidation
         alias_method :disable_consolidation?, :disable_consolidation
       
+        # Optional. If true, no revisions will be created for this request.
+        # Corresponds to the JSON property `disableMemoryRevisions`
+        # @return [Boolean]
+        attr_accessor :disable_memory_revisions
+        alias_method :disable_memory_revisions?, :disable_memory_revisions
+      
+        # Optional. Timestamp of when the revision is considered expired. If not set,
+        # the memory revision will be kept until manually deleted.
+        # Corresponds to the JSON property `revisionExpireTime`
+        # @return [String]
+        attr_accessor :revision_expire_time
+      
+        # Optional. Labels to be applied to the generated memory revisions. For example,
+        # you can use this to label a revision with its data source.
+        # Corresponds to the JSON property `revisionLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :revision_labels
+      
+        # Optional. The TTL for the revision. The expiration time is computed: now + TTL.
+        # Corresponds to the JSON property `revisionTtl`
+        # @return [String]
+        attr_accessor :revision_ttl
+      
         # Optional. The scope of the memories that should be generated. Memories will be
         # consolidated across memories with the same scope. Must be provided unless the
         # scope is defined in the source content. If `scope` is provided, it will
@@ -16993,6 +17219,10 @@ module Google
           @direct_contents_source = args[:direct_contents_source] if args.key?(:direct_contents_source)
           @direct_memories_source = args[:direct_memories_source] if args.key?(:direct_memories_source)
           @disable_consolidation = args[:disable_consolidation] if args.key?(:disable_consolidation)
+          @disable_memory_revisions = args[:disable_memory_revisions] if args.key?(:disable_memory_revisions)
+          @revision_expire_time = args[:revision_expire_time] if args.key?(:revision_expire_time)
+          @revision_labels = args[:revision_labels] if args.key?(:revision_labels)
+          @revision_ttl = args[:revision_ttl] if args.key?(:revision_ttl)
           @scope = args[:scope] if args.key?(:scope)
           @vertex_session_source = args[:vertex_session_source] if args.key?(:vertex_session_source)
         end
@@ -20746,6 +20976,32 @@ module Google
         end
       end
       
+      # Response message for MemoryBankService.ListMemoryRevisions.
+      class GoogleCloudAiplatformV1beta1ListMemoryRevisionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Memory Revisions in the request page.
+        # Corresponds to the JSON property `memoryRevisions`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryRevision>]
+        attr_accessor :memory_revisions
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @memory_revisions = args[:memory_revisions] if args.key?(:memory_revisions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for MetadataService.ListMetadataSchemas.
       class GoogleCloudAiplatformV1beta1ListMetadataSchemasResponse
         include Google::Apis::Core::Hashable
@@ -21974,6 +22230,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Input only. If true, no revision will be created for this request.
+        # Corresponds to the JSON property `disableMemoryRevisions`
+        # @return [Boolean]
+        attr_accessor :disable_memory_revisions
+        alias_method :disable_memory_revisions?, :disable_memory_revisions
+      
         # Optional. Display name of the Memory.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -21996,6 +22258,18 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. Input only. Timestamp of when the revision is considered expired. If
+        # not set, the memory revision will be kept until manually deleted.
+        # Corresponds to the JSON property `revisionExpireTime`
+        # @return [String]
+        attr_accessor :revision_expire_time
+      
+        # Optional. Input only. The TTL for the revision. The expiration time is
+        # computed: now + TTL.
+        # Corresponds to the JSON property `revisionTtl`
+        # @return [String]
+        attr_accessor :revision_ttl
       
         # Required. Immutable. The scope of the Memory. Memories are isolated within
         # their scope. The scope is defined when creating or generating memories. Scope
@@ -22023,10 +22297,13 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @disable_memory_revisions = args[:disable_memory_revisions] if args.key?(:disable_memory_revisions)
           @display_name = args[:display_name] if args.key?(:display_name)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @fact = args[:fact] if args.key?(:fact)
           @name = args[:name] if args.key?(:name)
+          @revision_expire_time = args[:revision_expire_time] if args.key?(:revision_expire_time)
+          @revision_ttl = args[:revision_ttl] if args.key?(:revision_ttl)
           @scope = args[:scope] if args.key?(:scope)
           @ttl = args[:ttl] if args.key?(:ttl)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -22235,6 +22512,54 @@ module Google
         # Update properties of this object
         def update!(**args)
           @managed_topic_enum = args[:managed_topic_enum] if args.key?(:managed_topic_enum)
+        end
+      end
+      
+      # A revision of a Memory.
+      class GoogleCloudAiplatformV1beta1MemoryRevision
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when this Memory Revision was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Timestamp of when this resource is considered expired.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. The fact of the Memory Revision. This corresponds to the `fact`
+        # field of the parent Memory at the time of revision creation.
+        # Corresponds to the JSON property `fact`
+        # @return [String]
+        attr_accessor :fact
+      
+        # Output only. The labels of the Memory Revision. These labels are applied to
+        # the MemoryRevision when it is created based on `GenerateMemoriesRequest.
+        # revision_labels`.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The resource name of the Memory Revision. Format: `projects/`
+        # project`/locations/`location`/reasoningEngines/`reasoning_engine`/memories/`
+        # memory`/revisions/`memory_revision``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @fact = args[:fact] if args.key?(:fact)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -29931,6 +30256,12 @@ module Google
         # @return [Array<Object>]
         attr_accessor :instances
       
+        # Optional. The user labels for Imagen billing usage only. Only Imagen supports
+        # labels. For other use cases, it will be ignored.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The parameters that govern the prediction. The schema of the parameters may be
         # specified via Endpoint's DeployedModels' Model's PredictSchemata's
         # parameters_schema_uri.
@@ -29945,6 +30276,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @instances = args[:instances] if args.key?(:instances)
+          @labels = args[:labels] if args.key?(:labels)
           @parameters = args[:parameters] if args.key?(:parameters)
         end
       end
@@ -34136,6 +34468,13 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfig>]
         attr_accessor :customization_configs
       
+        # If true, no memory revisions will be created for any requests to the Memory
+        # Bank.
+        # Corresponds to the JSON property `disableMemoryRevisions`
+        # @return [Boolean]
+        attr_accessor :disable_memory_revisions
+        alias_method :disable_memory_revisions?, :disable_memory_revisions
+      
         # Configuration for how to generate memories.
         # Corresponds to the JSON property `generationConfig`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigGenerationConfig]
@@ -34159,6 +34498,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @customization_configs = args[:customization_configs] if args.key?(:customization_configs)
+          @disable_memory_revisions = args[:disable_memory_revisions] if args.key?(:disable_memory_revisions)
           @generation_config = args[:generation_config] if args.key?(:generation_config)
           @similarity_search_config = args[:similarity_search_config] if args.key?(:similarity_search_config)
           @ttl_config = args[:ttl_config] if args.key?(:ttl_config)
@@ -34223,6 +34563,13 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig]
         attr_accessor :granular_ttl_config
       
+        # Optional. The default TTL duration of the memory revisions in the Memory Bank.
+        # This applies to all operations that create a memory revision. If not set, a
+        # default TTL of 365 days will be used.
+        # Corresponds to the JSON property `memoryRevisionDefaultTtl`
+        # @return [String]
+        attr_accessor :memory_revision_default_ttl
+      
         def initialize(**args)
            update!(**args)
         end
@@ -34231,6 +34578,7 @@ module Google
         def update!(**args)
           @default_ttl = args[:default_ttl] if args.key?(:default_ttl)
           @granular_ttl_config = args[:granular_ttl_config] if args.key?(:granular_ttl_config)
+          @memory_revision_default_ttl = args[:memory_revision_default_ttl] if args.key?(:memory_revision_default_ttl)
         end
       end
       
@@ -35462,6 +35810,25 @@ module Google
         def update!(**args)
           @distance = args[:distance] if args.key?(:distance)
           @memory = args[:memory] if args.key?(:memory)
+        end
+      end
+      
+      # Request message for MemoryBankService.RollbackMemory.
+      class GoogleCloudAiplatformV1beta1RollbackMemoryRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of the revision to rollback to.
+        # Corresponds to the JSON property `targetRevisionId`
+        # @return [Fixnum]
+        attr_accessor :target_revision_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_revision_id = args[:target_revision_id] if args.key?(:target_revision_id)
         end
       end
       
@@ -48030,6 +48397,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolCodeExecution]
         attr_accessor :code_execution
       
+        # Tool to support computer use.
+        # Corresponds to the JSON property `computerUse`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolComputerUse]
+        attr_accessor :computer_use
+      
         # Tool to search public web data, powered by Vertex AI Search and Sec4
         # compliance.
         # Corresponds to the JSON property `enterpriseWebSearch`
@@ -48079,6 +48451,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code_execution = args[:code_execution] if args.key?(:code_execution)
+          @computer_use = args[:computer_use] if args.key?(:computer_use)
           @enterprise_web_search = args[:enterprise_web_search] if args.key?(:enterprise_web_search)
           @function_declarations = args[:function_declarations] if args.key?(:function_declarations)
           @google_maps = args[:google_maps] if args.key?(:google_maps)
@@ -48227,6 +48600,35 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Tool to support computer use.
+      class GoogleCloudAiplatformV1beta1ToolComputerUse
+        include Google::Apis::Core::Hashable
+      
+        # Required. The environment being operated.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # Optional. By default, predefined functions are included in the final model
+        # call. Some of them can be explicitly excluded from being automatically
+        # included. This can serve two purposes: 1. Using a more restricted / different
+        # action space. 2. Improving the definitions / instructions of predefined
+        # functions.
+        # Corresponds to the JSON property `excludedPredefinedFunctions`
+        # @return [Array<String>]
+        attr_accessor :excluded_predefined_functions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment = args[:environment] if args.key?(:environment)
+          @excluded_predefined_functions = args[:excluded_predefined_functions] if args.key?(:excluded_predefined_functions)
         end
       end
       
@@ -50907,6 +51309,97 @@ module Google
         def update!(**args)
           @retrieved_url = args[:retrieved_url] if args.key?(:retrieved_url)
           @url_retrieval_status = args[:url_retrieval_status] if args.key?(:url_retrieval_status)
+        end
+      end
+      
+      # Usage metadata about the content generation request and response. This message
+      # provides a detailed breakdown of token usage and other relevant metrics.
+      class GoogleCloudAiplatformV1beta1UsageMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A detailed breakdown of the token count for each modality in the
+        # cached content.
+        # Corresponds to the JSON property `cacheTokensDetails`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
+        attr_accessor :cache_tokens_details
+      
+        # Output only. The number of tokens in the cached content that was used for this
+        # request.
+        # Corresponds to the JSON property `cachedContentTokenCount`
+        # @return [Fixnum]
+        attr_accessor :cached_content_token_count
+      
+        # The total number of tokens in the generated candidates.
+        # Corresponds to the JSON property `candidatesTokenCount`
+        # @return [Fixnum]
+        attr_accessor :candidates_token_count
+      
+        # Output only. A detailed breakdown of the token count for each modality in the
+        # generated candidates.
+        # Corresponds to the JSON property `candidatesTokensDetails`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
+        attr_accessor :candidates_tokens_details
+      
+        # The total number of tokens in the prompt. This includes any text, images, or
+        # other media provided in the request. When `cached_content` is set, this also
+        # includes the number of tokens in the cached content.
+        # Corresponds to the JSON property `promptTokenCount`
+        # @return [Fixnum]
+        attr_accessor :prompt_token_count
+      
+        # Output only. A detailed breakdown of the token count for each modality in the
+        # prompt.
+        # Corresponds to the JSON property `promptTokensDetails`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
+        attr_accessor :prompt_tokens_details
+      
+        # Output only. The number of tokens that were part of the model's generated "
+        # thoughts" output, if applicable.
+        # Corresponds to the JSON property `thoughtsTokenCount`
+        # @return [Fixnum]
+        attr_accessor :thoughts_token_count
+      
+        # Output only. The number of tokens in the results from tool executions, which
+        # are provided back to the model as input, if applicable.
+        # Corresponds to the JSON property `toolUsePromptTokenCount`
+        # @return [Fixnum]
+        attr_accessor :tool_use_prompt_token_count
+      
+        # Output only. A detailed breakdown by modality of the token counts from the
+        # results of tool executions, which are provided back to the model as input.
+        # Corresponds to the JSON property `toolUsePromptTokensDetails`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModalityTokenCount>]
+        attr_accessor :tool_use_prompt_tokens_details
+      
+        # The total number of tokens for the entire request. This is the sum of `
+        # prompt_token_count`, `candidates_token_count`, `tool_use_prompt_token_count`,
+        # and `thoughts_token_count`.
+        # Corresponds to the JSON property `totalTokenCount`
+        # @return [Fixnum]
+        attr_accessor :total_token_count
+      
+        # Output only. The traffic type for this request.
+        # Corresponds to the JSON property `trafficType`
+        # @return [String]
+        attr_accessor :traffic_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cache_tokens_details = args[:cache_tokens_details] if args.key?(:cache_tokens_details)
+          @cached_content_token_count = args[:cached_content_token_count] if args.key?(:cached_content_token_count)
+          @candidates_token_count = args[:candidates_token_count] if args.key?(:candidates_token_count)
+          @candidates_tokens_details = args[:candidates_tokens_details] if args.key?(:candidates_tokens_details)
+          @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
+          @prompt_tokens_details = args[:prompt_tokens_details] if args.key?(:prompt_tokens_details)
+          @thoughts_token_count = args[:thoughts_token_count] if args.key?(:thoughts_token_count)
+          @tool_use_prompt_token_count = args[:tool_use_prompt_token_count] if args.key?(:tool_use_prompt_token_count)
+          @tool_use_prompt_tokens_details = args[:tool_use_prompt_tokens_details] if args.key?(:tool_use_prompt_tokens_details)
+          @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
+          @traffic_type = args[:traffic_type] if args.key?(:traffic_type)
         end
       end
       
