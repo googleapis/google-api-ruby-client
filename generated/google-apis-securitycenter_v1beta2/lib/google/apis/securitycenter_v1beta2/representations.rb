@@ -970,6 +970,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2IssueResourceAwsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3472,7 +3496,46 @@ module Google
       class GoogleCloudSecuritycenterV2IssueResourceApplication
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :attributes, as: 'attributes', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes::Representation
+      
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :business_owners, as: 'businessOwners', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo::Representation
+      
+          property :criticality, as: 'criticality', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality::Representation
+      
+          collection :developer_owners, as: 'developerOwners', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo::Representation
+      
+          property :environment, as: 'environment', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment::Representation
+      
+          collection :operator_owners, as: 'operatorOwners', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
