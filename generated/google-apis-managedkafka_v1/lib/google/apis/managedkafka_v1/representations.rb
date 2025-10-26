@@ -707,6 +707,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ManagedkafkaV1::Operation, decorator: Google::Apis::ManagedkafkaV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -916,6 +917,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :maximum_backoff, as: 'maximumBackoff'
           property :minimum_backoff, as: 'minimumBackoff'
+          property :task_retry_disabled, as: 'taskRetryDisabled'
         end
       end
       

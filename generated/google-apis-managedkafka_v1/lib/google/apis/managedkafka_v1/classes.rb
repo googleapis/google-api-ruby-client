@@ -480,7 +480,7 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Output only. The current state of the cluster.
+        # Output only. The current state of the Kafka Connect cluster.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -603,13 +603,15 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Task Retry Policy is implemented on a best-effort basis. Retry delay will be
-        # exponential based on provided minimum and maximum backoffs. https://en.
-        # wikipedia.org/wiki/Exponential_backoff. Note that the delay between
-        # consecutive task restarts may not always precisely match the configured
-        # settings. This can happen when the ConnectCluster is in rebalancing state or
-        # if the ConnectCluster is unresponsive etc. The default values for minimum and
-        # maximum backoffs are 60 seconds and 30 minutes respectively.
+        # Task Retry Policy is implemented on a best-effort basis. The default policy
+        # retries tasks with a minimum_backoff of 60 seconds, and a maximum_backoff of
+        # 12 hours. You can disable the policy by setting the task_retry_disabled field
+        # to true. Retry delay will be exponential based on provided minimum and maximum
+        # backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. Note that the
+        # delay between consecutive task restarts may not always precisely match the
+        # configured settings. This can happen when the ConnectCluster is in rebalancing
+        # state or if the ConnectCluster is unresponsive etc. The default values for
+        # minimum and maximum backoffs are 60 seconds and 12 hours respectively.
         # Corresponds to the JSON property `taskRestartPolicy`
         # @return [Google::Apis::ManagedkafkaV1::TaskRetryPolicy]
         attr_accessor :task_restart_policy
@@ -1111,6 +1113,13 @@ module Google
         # @return [Array<Google::Apis::ManagedkafkaV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1119,6 +1128,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1804,13 +1814,15 @@ module Google
         end
       end
       
-      # Task Retry Policy is implemented on a best-effort basis. Retry delay will be
-      # exponential based on provided minimum and maximum backoffs. https://en.
-      # wikipedia.org/wiki/Exponential_backoff. Note that the delay between
-      # consecutive task restarts may not always precisely match the configured
-      # settings. This can happen when the ConnectCluster is in rebalancing state or
-      # if the ConnectCluster is unresponsive etc. The default values for minimum and
-      # maximum backoffs are 60 seconds and 30 minutes respectively.
+      # Task Retry Policy is implemented on a best-effort basis. The default policy
+      # retries tasks with a minimum_backoff of 60 seconds, and a maximum_backoff of
+      # 12 hours. You can disable the policy by setting the task_retry_disabled field
+      # to true. Retry delay will be exponential based on provided minimum and maximum
+      # backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. Note that the
+      # delay between consecutive task restarts may not always precisely match the
+      # configured settings. This can happen when the ConnectCluster is in rebalancing
+      # state or if the ConnectCluster is unresponsive etc. The default values for
+      # minimum and maximum backoffs are 60 seconds and 12 hours respectively.
       class TaskRetryPolicy
         include Google::Apis::Core::Hashable
       
@@ -1826,6 +1838,12 @@ module Google
         # @return [String]
         attr_accessor :minimum_backoff
       
+        # Optional. If true, task retry is disabled.
+        # Corresponds to the JSON property `taskRetryDisabled`
+        # @return [Boolean]
+        attr_accessor :task_retry_disabled
+        alias_method :task_retry_disabled?, :task_retry_disabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1834,6 +1852,7 @@ module Google
         def update!(**args)
           @maximum_backoff = args[:maximum_backoff] if args.key?(:maximum_backoff)
           @minimum_backoff = args[:minimum_backoff] if args.key?(:minimum_backoff)
+          @task_retry_disabled = args[:task_retry_disabled] if args.key?(:task_retry_disabled)
         end
       end
       
