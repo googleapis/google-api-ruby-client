@@ -455,6 +455,7 @@ module Google
       
           property :error, as: 'error', class: Google::Apis::BigquerydatatransferV1::Status, decorator: Google::Apis::BigquerydatatransferV1::Status::Representation
       
+          property :managed_table_type, as: 'managedTableType'
           property :name, as: 'name'
           property :next_run_time, as: 'nextRunTime'
           property :notification_pubsub_topic, as: 'notificationPubsubTopic'

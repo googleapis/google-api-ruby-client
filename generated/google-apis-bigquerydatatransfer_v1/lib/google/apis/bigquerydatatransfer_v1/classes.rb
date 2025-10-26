@@ -956,6 +956,11 @@ module Google
         # @return [Google::Apis::BigquerydatatransferV1::Status]
         attr_accessor :error
       
+        # The classification of the destination table.
+        # Corresponds to the JSON property `managedTableType`
+        # @return [String]
+        attr_accessor :managed_table_type
+      
         # Identifier. The resource name of the transfer config. Transfer config names
         # have the form either `projects/`project_id`/locations/`region`/transferConfigs/
         # `config_id`` or `projects/`project_id`/transferConfigs/`config_id``, where `
@@ -1046,6 +1051,7 @@ module Google
           @email_preferences = args[:email_preferences] if args.key?(:email_preferences)
           @encryption_configuration = args[:encryption_configuration] if args.key?(:encryption_configuration)
           @error = args[:error] if args.key?(:error)
+          @managed_table_type = args[:managed_table_type] if args.key?(:managed_table_type)
           @name = args[:name] if args.key?(:name)
           @next_run_time = args[:next_run_time] if args.key?(:next_run_time)
           @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
