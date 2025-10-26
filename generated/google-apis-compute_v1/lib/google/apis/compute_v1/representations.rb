@@ -34,6 +34,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AcceleratorTopologiesInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorTopologiesInfoAcceleratorTopologyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceleratorType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1492,6 +1510,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GrpctlsHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GlobalAddressesMoveRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2860,6 +2884,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectAttachmentL2Forwarding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachmentL2ForwardingApplianceMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachmentL2ForwardingGeneveHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InterconnectAttachmentList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2874,6 +2922,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachmentParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3143,6 +3197,12 @@ module Google
       end
       
       class InterconnectOutageNotification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7606,6 +7666,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ZoneSetNestedPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ZoneSetPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7627,6 +7693,31 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_count, as: 'acceleratorCount'
           property :accelerator_type, as: 'acceleratorType'
+        end
+      end
+      
+      class AcceleratorTopologiesInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerator_topology_infos, as: 'acceleratorTopologyInfos', class: Google::Apis::ComputeV1::AcceleratorTopologiesInfoAcceleratorTopologyInfo, decorator: Google::Apis::ComputeV1::AcceleratorTopologiesInfoAcceleratorTopologyInfo::Representation
+      
+        end
+      end
+      
+      class AcceleratorTopologiesInfoAcceleratorTopologyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_topology, as: 'acceleratorTopology'
+          collection :info_per_topology_states, as: 'infoPerTopologyStates', class: Google::Apis::ComputeV1::AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState, decorator: Google::Apis::ComputeV1::AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState::Representation
+      
+        end
+      end
+      
+      class AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          property :state, as: 'state'
         end
       end
       
@@ -10228,6 +10319,7 @@ module Google
           property :name, as: 'name'
           property :name_prefix, as: 'namePrefix'
           property :planning_status, as: 'planningStatus'
+          property :reservation_mode, as: 'reservationMode'
           property :reservation_name, as: 'reservationName'
           property :scheduling_type, as: 'schedulingType'
           property :self_link, as: 'selfLink'
@@ -10438,6 +10530,15 @@ module Google
         end
       end
       
+      class GrpctlsHealthCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :grpc_service_name, as: 'grpcServiceName'
+          property :port, as: 'port'
+          property :port_specification, as: 'portSpecification'
+        end
+      end
+      
       class GlobalAddressesMoveRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10590,6 +10691,8 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :grpc_health_check, as: 'grpcHealthCheck', class: Google::Apis::ComputeV1::GrpcHealthCheck, decorator: Google::Apis::ComputeV1::GrpcHealthCheck::Representation
+      
+          property :grpc_tls_health_check, as: 'grpcTlsHealthCheck', class: Google::Apis::ComputeV1::GrpctlsHealthCheck, decorator: Google::Apis::ComputeV1::GrpctlsHealthCheck::Representation
       
           property :healthy_threshold, as: 'healthyThreshold'
           property :http2_health_check, as: 'http2HealthCheck', class: Google::Apis::ComputeV1::Http2HealthCheck, decorator: Google::Apis::ComputeV1::Http2HealthCheck::Representation
@@ -12714,6 +12817,8 @@ module Google
           property :name, as: 'name'
           property :noc_contact_email, as: 'nocContactEmail'
           property :operational_status, as: 'operationalStatus'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::InterconnectParams, decorator: Google::Apis::ComputeV1::InterconnectParams::Representation
+      
           property :peer_ip_address, as: 'peerIpAddress'
           property :provisioned_link_count, as: 'provisionedLinkCount'
           property :remote_location, as: 'remoteLocation'
@@ -12788,12 +12893,16 @@ module Google
           property :interconnect, as: 'interconnect'
           collection :ipsec_internal_addresses, as: 'ipsecInternalAddresses'
           property :kind, as: 'kind'
+          property :l2_forwarding, as: 'l2Forwarding', class: Google::Apis::ComputeV1::InterconnectAttachmentL2Forwarding, decorator: Google::Apis::ComputeV1::InterconnectAttachmentL2Forwarding::Representation
+      
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :mtu, as: 'mtu'
           property :name, as: 'name'
           property :operational_status, as: 'operationalStatus'
           property :pairing_key, as: 'pairingKey'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::InterconnectAttachmentParams, decorator: Google::Apis::ComputeV1::InterconnectAttachmentParams::Representation
+      
           property :partner_asn, :numeric_string => true, as: 'partnerAsn'
           property :partner_metadata, as: 'partnerMetadata', class: Google::Apis::ComputeV1::InterconnectAttachmentPartnerMetadata, decorator: Google::Apis::ComputeV1::InterconnectAttachmentPartnerMetadata::Representation
       
@@ -13039,6 +13148,44 @@ module Google
         end
       end
       
+      class InterconnectAttachmentL2Forwarding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :appliance_mappings, as: 'applianceMappings', class: Google::Apis::ComputeV1::InterconnectAttachmentL2ForwardingApplianceMapping, decorator: Google::Apis::ComputeV1::InterconnectAttachmentL2ForwardingApplianceMapping::Representation
+      
+          property :default_appliance_ip_address, as: 'defaultApplianceIpAddress'
+          property :geneve_header, as: 'geneveHeader', class: Google::Apis::ComputeV1::InterconnectAttachmentL2ForwardingGeneveHeader, decorator: Google::Apis::ComputeV1::InterconnectAttachmentL2ForwardingGeneveHeader::Representation
+      
+          property :network, as: 'network'
+          property :tunnel_endpoint_ip_address, as: 'tunnelEndpointIpAddress'
+        end
+      end
+      
+      class InterconnectAttachmentL2ForwardingApplianceMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :appliance_ip_address, as: 'applianceIpAddress'
+          collection :inner_vlan_to_appliance_mappings, as: 'innerVlanToApplianceMappings', class: Google::Apis::ComputeV1::InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping, decorator: Google::Apis::ComputeV1::InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inner_appliance_ip_address, as: 'innerApplianceIpAddress'
+          collection :inner_vlan_tags, as: 'innerVlanTags'
+        end
+      end
+      
+      class InterconnectAttachmentL2ForwardingGeneveHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :vni, as: 'vni'
+        end
+      end
+      
       class InterconnectAttachmentList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13068,6 +13215,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InterconnectAttachmentParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -13496,6 +13650,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expected_rtt_ms, :numeric_string => true, as: 'expectedRttMs'
+          property :l2_forwarding_enabled, as: 'l2ForwardingEnabled'
           property :location_presence, as: 'locationPresence'
           property :region, as: 'region'
         end
@@ -13547,6 +13702,13 @@ module Google
           property :source, as: 'source'
           property :start_time, :numeric_string => true, as: 'startTime'
           property :state, as: 'state'
+        end
+      end
+      
+      class InterconnectParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -14651,6 +14813,7 @@ module Google
           collection :alias_ip_ranges, as: 'aliasIpRanges', class: Google::Apis::ComputeV1::AliasIpRange, decorator: Google::Apis::ComputeV1::AliasIpRange::Representation
       
           property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :igmp_query, as: 'igmpQuery'
           property :internal_ipv6_prefix_length, as: 'internalIpv6PrefixLength'
           collection :ipv6_access_configs, as: 'ipv6AccessConfigs', class: Google::Apis::ComputeV1::AccessConfig, decorator: Google::Apis::ComputeV1::AccessConfig::Representation
       
@@ -14809,6 +14972,7 @@ module Google
           property :allow_ip_forwarding, as: 'allowIpForwarding'
           property :allow_load_balancing, as: 'allowLoadBalancing'
           property :allow_multi_nic_in_same_network, as: 'allowMultiNicInSameNetwork'
+          property :allow_multicast, as: 'allowMulticast'
           property :allow_ncc, as: 'allowNcc'
           property :allow_network_migration, as: 'allowNetworkMigration'
           property :allow_packet_mirroring, as: 'allowPacketMirroring'
@@ -14820,6 +14984,7 @@ module Google
           property :allow_vpc_peering, as: 'allowVpcPeering'
           property :allow_vpn, as: 'allowVpn'
           collection :interface_types, as: 'interfaceTypes'
+          property :multicast, as: 'multicast'
           collection :subnet_purposes, as: 'subnetPurposes'
           collection :subnet_stack_types, as: 'subnetStackTypes'
           collection :subnetwork_purposes, as: 'subnetworkPurposes'
@@ -16893,6 +17058,7 @@ module Google
           property :kind, as: 'kind'
           collection :linked_commitments, as: 'linkedCommitments'
           property :name, as: 'name'
+          property :protection_tier, as: 'protectionTier'
           property :reservation_sharing_policy, as: 'reservationSharingPolicy', class: Google::Apis::ComputeV1::AllocationReservationSharingPolicy, decorator: Google::Apis::ComputeV1::AllocationReservationSharingPolicy::Representation
       
           hash :resource_policies, as: 'resourcePolicies'
@@ -17096,6 +17262,8 @@ module Google
       class ReservationSubBlock
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_topologies_info, as: 'acceleratorTopologiesInfo', class: Google::Apis::ComputeV1::AcceleratorTopologiesInfo, decorator: Google::Apis::ComputeV1::AcceleratorTopologiesInfo::Representation
+      
           property :count, as: 'count'
           property :creation_timestamp, as: 'creationTimestamp'
           property :health_info, as: 'healthInfo', class: Google::Apis::ComputeV1::ReservationSubBlockHealthInfo, decorator: Google::Apis::ComputeV1::ReservationSubBlockHealthInfo::Representation
@@ -18907,6 +19075,10 @@ module Google
       class ShieldedInstanceIdentity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ecc_p256_encryption_key, as: 'eccP256EncryptionKey', class: Google::Apis::ComputeV1::ShieldedInstanceIdentityEntry, decorator: Google::Apis::ComputeV1::ShieldedInstanceIdentityEntry::Representation
+      
+          property :ecc_p256_signing_key, as: 'eccP256SigningKey', class: Google::Apis::ComputeV1::ShieldedInstanceIdentityEntry, decorator: Google::Apis::ComputeV1::ShieldedInstanceIdentityEntry::Representation
+      
           property :encryption_key, as: 'encryptionKey', class: Google::Apis::ComputeV1::ShieldedInstanceIdentityEntry, decorator: Google::Apis::ComputeV1::ShieldedInstanceIdentityEntry::Representation
       
           property :kind, as: 'kind'
@@ -21778,6 +21950,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+        end
+      end
+      
+      class ZoneSetNestedPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::ComputeV1::Binding, decorator: Google::Apis::ComputeV1::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :policy, as: 'policy', class: Google::Apis::ComputeV1::Policy, decorator: Google::Apis::ComputeV1::Policy::Representation
+      
         end
       end
       

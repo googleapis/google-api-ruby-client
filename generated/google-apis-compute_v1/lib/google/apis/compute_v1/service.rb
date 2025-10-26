@@ -56,7 +56,7 @@ module Google
         end
         
         # Retrieves an aggregated list of accelerator types.
-        # To prevent failure, Google recommends that you set the
+        # To prevent failure, it is recommended that you set the
         # `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
@@ -342,7 +342,7 @@ module Google
         end
         
         # Retrieves an aggregated list of addresses.
-        # To prevent failure, Google recommends that you set the
+        # To prevent failure, it is recommended that you set the
         # `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
@@ -886,7 +886,7 @@ module Google
         end
         
         # Retrieves an aggregated list of autoscalers.
-        # To prevent failure, Google recommends that you set the
+        # To prevent failure, it is recommended that you set the
         # `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
@@ -2084,7 +2084,7 @@ module Google
         
         # Retrieves the list of all BackendService resources, regional and global,
         # available to the specified project.
-        # To prevent failure, Google recommends that you set the
+        # To prevent failure, it is recommended that you set the
         # `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Name of the project scoping this request.
@@ -3362,7 +3362,7 @@ module Google
         end
         
         # Retrieves an aggregated list of disk types.
-        # To prevent failure, Google recommends that you set the
+        # To prevent failure, it is recommended that you set the
         # `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
@@ -3705,7 +3705,7 @@ module Google
         end
         
         # Retrieves an aggregated list of persistent disks.
-        # To prevent failure, Google recommends that you set the
+        # To prevent failure, it is recommended that you set the
         # `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
@@ -6299,6 +6299,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_firewall_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/firewalls/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the specified firewall rule with the data included in the
         # request.
         # Note that all fields will be updated if using PUT, even fields that are not
@@ -6355,7 +6394,7 @@ module Google
         end
         
         # Retrieves an aggregated list of forwarding rules.
-        # To prevent failure, Google recommends that you set the
+        # To prevent failure, it is recommended that you set the
         # `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
@@ -6918,7 +6957,7 @@ module Google
         end
         
         # Retrieves an aggregated list of future reservations.
-        # To prevent failure, recommendation is that you set the
+        # To prevent failure, it is recommended that you set the
         # `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
@@ -23689,7 +23728,7 @@ module Google
         # Retrieves an aggregated list of network firewall policies, listing network
         # firewall policies from all applicable scopes (global and regional) and
         # grouping the results per scope.
-        # To prevent failure, Google recommends that you set the
+        # To prevent failure, it is recommended that you set the
         # `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
@@ -29419,11 +29458,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Moves a persistent disk from one zone to another.
+        # *Note*: The moveDisk API will be deprecated on September 29, 2026.
         # Starting September 29, 2025, you can't use the moveDisk API on new
         # projects. To move a disk to a different region or zone, follow the steps in
         # [Change the location of a
-        # disk](https://`$universe.dns_names.final_documentation_domain`/compute/docs/
-        # disks/migrate-to-hyperdisk#migrate-to-hd).
+        # disk](https://cloud.google.com/compute/docs/disks/migrate-to-hyperdisk#migrate-
+        # to-hd).
         # Projects that already use the moveDisk API can continue usage until
         # September 29, 2026.
         # Starting November 1, 2025, API responses will include a warning message in
@@ -31799,7 +31840,7 @@ module Google
         end
         
         # Retrieves an aggregated list of commitments by region.
-        # To prevent failure, Google recommends that you set the
+        # To prevent failure, it is recommended that you set the
         # `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
@@ -41755,6 +41796,52 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the access control policy for a resource. May be empty if no such
+        # policy or resource exists.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] parent_resource
+        #   Name or id of parent resource of the resource for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_reservation_block_iam_policy(project, zone, parent_resource, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/zones/{zone}/reservations/{parentResource}/reservationBlocks/{resource}/getIamPolicy', options)
+          command.response_representation = Google::Apis::ComputeV1::Policy::Representation
+          command.response_class = Google::Apis::ComputeV1::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['parentResource'] = parent_resource unless parent_resource.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves a list of reservation blocks under a single reservation.
         # @param [String] project
         #   Project ID for this request.
@@ -41936,6 +42023,97 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets the access control policy on the specified resource.
+        # Replaces any existing policy.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] parent_resource
+        #   Name or id of parent resource of the resource for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::ZoneSetNestedPolicyRequest] zone_set_nested_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_reservation_block_iam_policy(project, zone, parent_resource, resource, zone_set_nested_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/zones/{zone}/reservations/{parentResource}/reservationBlocks/{resource}/setIamPolicy', options)
+          command.request_representation = Google::Apis::ComputeV1::ZoneSetNestedPolicyRequest::Representation
+          command.request_object = zone_set_nested_policy_request_object
+          command.response_representation = Google::Apis::ComputeV1::Policy::Representation
+          command.response_class = Google::Apis::ComputeV1::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['parentResource'] = parent_resource unless parent_resource.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] parent_resource
+        #   Name or id of parent resource of the resource for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_reservation_block_iam_permissions(project, zone, parent_resource, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/zones/{zone}/reservations/{parentResource}/reservationBlocks/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['parentResource'] = parent_resource unless parent_resource.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves information about the specified reservation subBlock.
         # @param [String] project
         #   Project ID for this request.
@@ -41947,6 +42125,8 @@ module Google
         # @param [String] reservation_sub_block
         #   The name of the reservation subBlock.
         #   Name should conform to RFC1035 or be a resource ID.
+        # @param [String] view
+        #   View of the subBlock.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -41966,7 +42146,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_reservation_sub_block(project, zone, parent_name, reservation_sub_block, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_reservation_sub_block(project, zone, parent_name, reservation_sub_block, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}', options)
           command.response_representation = Google::Apis::ComputeV1::ReservationSubBlocksGetResponse::Representation
           command.response_class = Google::Apis::ComputeV1::ReservationSubBlocksGetResponse
@@ -41974,6 +42154,53 @@ module Google
           command.params['zone'] = zone unless zone.nil?
           command.params['parentName'] = parent_name unless parent_name.nil?
           command.params['reservationSubBlock'] = reservation_sub_block unless reservation_sub_block.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the access control policy for a resource. May be empty if no such
+        # policy or resource exists.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] parent_resource
+        #   Name or id of parent resource of the resource for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_reservation_sub_block_iam_policy(project, zone, parent_resource, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/zones/{zone}/{parentResource}/reservationSubBlocks/{resource}/getIamPolicy', options)
+          command.response_representation = Google::Apis::ComputeV1::Policy::Representation
+          command.response_class = Google::Apis::ComputeV1::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['parentResource'] = parent_resource unless parent_resource.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -42218,8 +42445,99 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets the access control policy on the specified resource.
+        # Replaces any existing policy.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] parent_resource
+        #   Name or id of parent resource of the resource for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::ZoneSetNestedPolicyRequest] zone_set_nested_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_reservation_sub_block_iam_policy(project, zone, parent_resource, resource, zone_set_nested_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/zones/{zone}/{parentResource}/reservationSubBlocks/{resource}/setIamPolicy', options)
+          command.request_representation = Google::Apis::ComputeV1::ZoneSetNestedPolicyRequest::Representation
+          command.request_object = zone_set_nested_policy_request_object
+          command.response_representation = Google::Apis::ComputeV1::Policy::Representation
+          command.response_class = Google::Apis::ComputeV1::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['parentResource'] = parent_resource unless parent_resource.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] parent_resource
+        #   Name or id of parent resource of the resource for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_reservation_sub_block_iam_permissions(project, zone, parent_resource, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/zones/{zone}/{parentResource}/reservationSubBlocks/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['parentResource'] = parent_resource unless parent_resource.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of reservations.
-        # To prevent failure, Google recommends that you set the
+        # To prevent failure, it is recommended that you set the
         # `returnPartialSuccess` parameter to `true`.
         # @param [String] project
         #   Project ID for this request.
@@ -48829,6 +49147,12 @@ module Google
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
+        # @param [Array<String>, String] views
+        #   Defines the extra views returned back in the subnetwork resource.
+        #   Supported values:
+        #   
+        #   - WITH_UTILIZATION: Utilization data is included in the
+        #   response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -48848,7 +49172,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_subnetwork_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_subnetwork_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, views: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/subnetworks', options)
           command.response_representation = Google::Apis::ComputeV1::SubnetworkAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::SubnetworkAggregatedList
@@ -48860,6 +49184,7 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
+          command.query['views'] = views unless views.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
