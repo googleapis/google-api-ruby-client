@@ -5117,6 +5117,13 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig]
         attr_accessor :model_armor_config
       
+        # Optional. Whether to disable the notebook sharing feature for the project.
+        # Default to false if not specified.
+        # Corresponds to the JSON property `optOutNotebookSharing`
+        # @return [Boolean]
+        attr_accessor :opt_out_notebook_sharing
+        alias_method :opt_out_notebook_sharing?, :opt_out_notebook_sharing
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5124,6 +5131,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
+          @opt_out_notebook_sharing = args[:opt_out_notebook_sharing] if args.key?(:opt_out_notebook_sharing)
         end
       end
       
@@ -6568,6 +6576,62 @@ module Google
           @update_time = args[:update_time] if args.key?(:update_time)
           @user_principal = args[:user_principal] if args.key?(:user_principal)
           @user_profile = args[:user_profile] if args.key?(:user_profile)
+        end
+      end
+      
+      # Configures metadata that is used for End User entities.
+      class GoogleCloudDiscoveryengineV1UserStore
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The default subscription LicenseConfig for the UserStore, if
+        # UserStore.enable_license_auto_register is true, new users will automatically
+        # register under the default subscription. If default LicenseConfig doesn't have
+        # remaining license seats left, new users will not be assigned with license and
+        # will be blocked for Vertex AI Search features. This is used if `
+        # license_assignment_tier_rules` is not configured.
+        # Corresponds to the JSON property `defaultLicenseConfig`
+        # @return [String]
+        attr_accessor :default_license_config
+      
+        # The display name of the User Store.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Whether to enable license auto update for users in this User Store.
+        # If true, users with expired licenses will automatically be updated to use the
+        # default license config as long as the default license config has seats left.
+        # Corresponds to the JSON property `enableExpiredLicenseAutoUpdate`
+        # @return [Boolean]
+        attr_accessor :enable_expired_license_auto_update
+        alias_method :enable_expired_license_auto_update?, :enable_expired_license_auto_update
+      
+        # Optional. Whether to enable license auto register for users in this User Store.
+        # If true, new users will automatically register under the default license
+        # config as long as the default license config has seats left.
+        # Corresponds to the JSON property `enableLicenseAutoRegister`
+        # @return [Boolean]
+        attr_accessor :enable_license_auto_register
+        alias_method :enable_license_auto_register?, :enable_license_auto_register
+      
+        # Immutable. The full resource name of the User Store, in the format of `
+        # projects/`project`/locations/`location`/userStores/`user_store``. This field
+        # must be a UTF-8 encoded string with a length limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_license_config = args[:default_license_config] if args.key?(:default_license_config)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_expired_license_auto_update = args[:enable_expired_license_auto_update] if args.key?(:enable_expired_license_auto_update)
+          @enable_license_auto_register = args[:enable_license_auto_register] if args.key?(:enable_license_auto_register)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -10305,6 +10369,35 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the UserStoreService.DeleteUserStore
+      # operation. This will be returned by the google.longrunning.Operation.metadata
+      # field. Delete UserStore will delete all the end users under the user store,
+      # return the number of end users successfully deleted or failed to delete in the
+      # metadata.
+      class GoogleCloudDiscoveryengineV1alphaDeleteUserStoreMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The number of end users under the user store that failed to be deleted.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # The number of end users under the user store that were successfully deleted.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+        end
+      end
+      
       # Defines target endpoints used to connect to third-party sources.
       class GoogleCloudDiscoveryengineV1alphaDestinationConfig
         include Google::Apis::Core::Hashable
@@ -12571,6 +12664,13 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig]
         attr_accessor :model_armor_config
       
+        # Optional. Whether to disable the notebook sharing feature for the project.
+        # Default to false if not specified.
+        # Corresponds to the JSON property `optOutNotebookSharing`
+        # @return [Boolean]
+        attr_accessor :opt_out_notebook_sharing
+        alias_method :opt_out_notebook_sharing?, :opt_out_notebook_sharing
+      
         def initialize(**args)
            update!(**args)
         end
@@ -12578,6 +12678,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
+          @opt_out_notebook_sharing = args[:opt_out_notebook_sharing] if args.key?(:opt_out_notebook_sharing)
         end
       end
       
@@ -24945,6 +25046,13 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig]
         attr_accessor :model_armor_config
       
+        # Optional. Whether to disable the notebook sharing feature for the project.
+        # Default to false if not specified.
+        # Corresponds to the JSON property `optOutNotebookSharing`
+        # @return [Boolean]
+        attr_accessor :opt_out_notebook_sharing
+        alias_method :opt_out_notebook_sharing?, :opt_out_notebook_sharing
+      
         def initialize(**args)
            update!(**args)
         end
@@ -24952,6 +25060,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
+          @opt_out_notebook_sharing = args[:opt_out_notebook_sharing] if args.key?(:opt_out_notebook_sharing)
         end
       end
       
@@ -30619,6 +30728,62 @@ module Google
           @update_time = args[:update_time] if args.key?(:update_time)
           @user_principal = args[:user_principal] if args.key?(:user_principal)
           @user_profile = args[:user_profile] if args.key?(:user_profile)
+        end
+      end
+      
+      # Configures metadata that is used for End User entities.
+      class GoogleCloudDiscoveryengineV1betaUserStore
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The default subscription LicenseConfig for the UserStore, if
+        # UserStore.enable_license_auto_register is true, new users will automatically
+        # register under the default subscription. If default LicenseConfig doesn't have
+        # remaining license seats left, new users will not be assigned with license and
+        # will be blocked for Vertex AI Search features. This is used if `
+        # license_assignment_tier_rules` is not configured.
+        # Corresponds to the JSON property `defaultLicenseConfig`
+        # @return [String]
+        attr_accessor :default_license_config
+      
+        # The display name of the User Store.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Whether to enable license auto update for users in this User Store.
+        # If true, users with expired licenses will automatically be updated to use the
+        # default license config as long as the default license config has seats left.
+        # Corresponds to the JSON property `enableExpiredLicenseAutoUpdate`
+        # @return [Boolean]
+        attr_accessor :enable_expired_license_auto_update
+        alias_method :enable_expired_license_auto_update?, :enable_expired_license_auto_update
+      
+        # Optional. Whether to enable license auto register for users in this User Store.
+        # If true, new users will automatically register under the default license
+        # config as long as the default license config has seats left.
+        # Corresponds to the JSON property `enableLicenseAutoRegister`
+        # @return [Boolean]
+        attr_accessor :enable_license_auto_register
+        alias_method :enable_license_auto_register?, :enable_license_auto_register
+      
+        # Immutable. The full resource name of the User Store, in the format of `
+        # projects/`project`/locations/`location`/userStores/`user_store``. This field
+        # must be a UTF-8 encoded string with a length limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_license_config = args[:default_license_config] if args.key?(:default_license_config)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_expired_license_auto_update = args[:enable_expired_license_auto_update] if args.key?(:enable_expired_license_auto_update)
+          @enable_license_auto_register = args[:enable_license_auto_register] if args.key?(:enable_license_auto_register)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
