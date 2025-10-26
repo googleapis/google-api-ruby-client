@@ -1020,7 +1020,7 @@ module Google
         attr_accessor :create_time
       
         # Required. Customer managed crypto key resource full name. Format: projects/`
-        # project`/locations/`location`/keyRings/`key_ring`/cryptoKeys/`key`.
+        # project`/locations/`location`/keyRings/`key_ring`/cryptoKeys/`crypto_key`.
         # Corresponds to the JSON property `cryptoKeyName`
         # @return [String]
         attr_accessor :crypto_key_name
