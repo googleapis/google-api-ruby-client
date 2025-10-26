@@ -7448,6 +7448,107 @@ module Google
         end
       end
       
+      # Request message for PredictionService.EmbedContent.
+      class GoogleCloudAiplatformV1EmbedContentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to silently truncate the input content if it's longer than
+        # the maximum sequence length.
+        # Corresponds to the JSON property `autoTruncate`
+        # @return [Boolean]
+        attr_accessor :auto_truncate
+        alias_method :auto_truncate?, :auto_truncate
+      
+        # The base structured datatype containing multi-part content of a message. A `
+        # Content` includes a `role` field designating the producer of the `Content` and
+        # a `parts` field containing multi-part data that contains the content of the
+        # message turn.
+        # Corresponds to the JSON property `content`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
+        attr_accessor :content
+      
+        # Optional. Optional reduced dimension for the output embedding. If set,
+        # excessive values in the output embedding are truncated from the end.
+        # Corresponds to the JSON property `outputDimensionality`
+        # @return [Fixnum]
+        attr_accessor :output_dimensionality
+      
+        # Optional. The task type of the embedding.
+        # Corresponds to the JSON property `taskType`
+        # @return [String]
+        attr_accessor :task_type
+      
+        # Optional. An optional title for the text.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_truncate = args[:auto_truncate] if args.key?(:auto_truncate)
+          @content = args[:content] if args.key?(:content)
+          @output_dimensionality = args[:output_dimensionality] if args.key?(:output_dimensionality)
+          @task_type = args[:task_type] if args.key?(:task_type)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Response message for PredictionService.EmbedContent.
+      class GoogleCloudAiplatformV1EmbedContentResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of floats representing an embedding.
+        # Corresponds to the JSON property `embedding`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EmbedContentResponseEmbedding]
+        attr_accessor :embedding
+      
+        # Whether the input content was truncated before generating the embedding.
+        # Corresponds to the JSON property `truncated`
+        # @return [Boolean]
+        attr_accessor :truncated
+        alias_method :truncated?, :truncated
+      
+        # Usage metadata about the content generation request and response. This message
+        # provides a detailed breakdown of token usage and other relevant metrics.
+        # Corresponds to the JSON property `usageMetadata`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1UsageMetadata]
+        attr_accessor :usage_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @embedding = args[:embedding] if args.key?(:embedding)
+          @truncated = args[:truncated] if args.key?(:truncated)
+          @usage_metadata = args[:usage_metadata] if args.key?(:usage_metadata)
+        end
+      end
+      
+      # A list of floats representing an embedding.
+      class GoogleCloudAiplatformV1EmbedContentResponseEmbedding
+        include Google::Apis::Core::Hashable
+      
+        # Embedding vector values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Float>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Represents a customer-managed encryption key spec that can be applied to a top-
       # level resource.
       class GoogleCloudAiplatformV1EncryptionSpec
@@ -24753,6 +24854,12 @@ module Google
         # @return [Array<Object>]
         attr_accessor :instances
       
+        # Optional. The user labels for Imagen billing usage only. Only Imagen supports
+        # labels. For other use cases, it will be ignored.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The parameters that govern the prediction. The schema of the parameters may be
         # specified via Endpoint's DeployedModels' Model's PredictSchemata's
         # parameters_schema_uri.
@@ -24767,6 +24874,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @instances = args[:instances] if args.key?(:instances)
+          @labels = args[:labels] if args.key?(:labels)
           @parameters = args[:parameters] if args.key?(:parameters)
         end
       end
@@ -42824,6 +42932,97 @@ module Google
         def update!(**args)
           @retrieved_url = args[:retrieved_url] if args.key?(:retrieved_url)
           @url_retrieval_status = args[:url_retrieval_status] if args.key?(:url_retrieval_status)
+        end
+      end
+      
+      # Usage metadata about the content generation request and response. This message
+      # provides a detailed breakdown of token usage and other relevant metrics.
+      class GoogleCloudAiplatformV1UsageMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A detailed breakdown of the token count for each modality in the
+        # cached content.
+        # Corresponds to the JSON property `cacheTokensDetails`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount>]
+        attr_accessor :cache_tokens_details
+      
+        # Output only. The number of tokens in the cached content that was used for this
+        # request.
+        # Corresponds to the JSON property `cachedContentTokenCount`
+        # @return [Fixnum]
+        attr_accessor :cached_content_token_count
+      
+        # The total number of tokens in the generated candidates.
+        # Corresponds to the JSON property `candidatesTokenCount`
+        # @return [Fixnum]
+        attr_accessor :candidates_token_count
+      
+        # Output only. A detailed breakdown of the token count for each modality in the
+        # generated candidates.
+        # Corresponds to the JSON property `candidatesTokensDetails`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount>]
+        attr_accessor :candidates_tokens_details
+      
+        # The total number of tokens in the prompt. This includes any text, images, or
+        # other media provided in the request. When `cached_content` is set, this also
+        # includes the number of tokens in the cached content.
+        # Corresponds to the JSON property `promptTokenCount`
+        # @return [Fixnum]
+        attr_accessor :prompt_token_count
+      
+        # Output only. A detailed breakdown of the token count for each modality in the
+        # prompt.
+        # Corresponds to the JSON property `promptTokensDetails`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount>]
+        attr_accessor :prompt_tokens_details
+      
+        # Output only. The number of tokens that were part of the model's generated "
+        # thoughts" output, if applicable.
+        # Corresponds to the JSON property `thoughtsTokenCount`
+        # @return [Fixnum]
+        attr_accessor :thoughts_token_count
+      
+        # Output only. The number of tokens in the results from tool executions, which
+        # are provided back to the model as input, if applicable.
+        # Corresponds to the JSON property `toolUsePromptTokenCount`
+        # @return [Fixnum]
+        attr_accessor :tool_use_prompt_token_count
+      
+        # Output only. A detailed breakdown by modality of the token counts from the
+        # results of tool executions, which are provided back to the model as input.
+        # Corresponds to the JSON property `toolUsePromptTokensDetails`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount>]
+        attr_accessor :tool_use_prompt_tokens_details
+      
+        # The total number of tokens for the entire request. This is the sum of `
+        # prompt_token_count`, `candidates_token_count`, `tool_use_prompt_token_count`,
+        # and `thoughts_token_count`.
+        # Corresponds to the JSON property `totalTokenCount`
+        # @return [Fixnum]
+        attr_accessor :total_token_count
+      
+        # Output only. The traffic type for this request.
+        # Corresponds to the JSON property `trafficType`
+        # @return [String]
+        attr_accessor :traffic_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cache_tokens_details = args[:cache_tokens_details] if args.key?(:cache_tokens_details)
+          @cached_content_token_count = args[:cached_content_token_count] if args.key?(:cached_content_token_count)
+          @candidates_token_count = args[:candidates_token_count] if args.key?(:candidates_token_count)
+          @candidates_tokens_details = args[:candidates_tokens_details] if args.key?(:candidates_tokens_details)
+          @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
+          @prompt_tokens_details = args[:prompt_tokens_details] if args.key?(:prompt_tokens_details)
+          @thoughts_token_count = args[:thoughts_token_count] if args.key?(:thoughts_token_count)
+          @tool_use_prompt_token_count = args[:tool_use_prompt_token_count] if args.key?(:tool_use_prompt_token_count)
+          @tool_use_prompt_tokens_details = args[:tool_use_prompt_tokens_details] if args.key?(:tool_use_prompt_tokens_details)
+          @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
+          @traffic_type = args[:traffic_type] if args.key?(:traffic_type)
         end
       end
       

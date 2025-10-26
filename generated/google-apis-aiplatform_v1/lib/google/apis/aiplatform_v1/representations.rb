@@ -1300,6 +1300,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1EmbedContentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EmbedContentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EmbedContentResponseEmbedding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1EncryptionSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7210,6 +7228,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1UsageMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1UserActionReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -9523,6 +9547,36 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dynamic_threshold, as: 'dynamicThreshold'
           property :mode, as: 'mode'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EmbedContentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_truncate, as: 'autoTruncate'
+          property :content, as: 'content', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content::Representation
+      
+          property :output_dimensionality, as: 'outputDimensionality'
+          property :task_type, as: 'taskType'
+          property :title, as: 'title'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EmbedContentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :embedding, as: 'embedding', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EmbedContentResponseEmbedding, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EmbedContentResponseEmbedding::Representation
+      
+          property :truncated, as: 'truncated'
+          property :usage_metadata, as: 'usageMetadata', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1UsageMetadata, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1UsageMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EmbedContentResponseEmbedding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
         end
       end
       
@@ -14390,6 +14444,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
+          hash :labels, as: 'labels'
           property :parameters, as: 'parameters'
         end
       end
@@ -19625,6 +19680,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :retrieved_url, as: 'retrievedUrl'
           property :url_retrieval_status, as: 'urlRetrievalStatus'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1UsageMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cache_tokens_details, as: 'cacheTokensDetails', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount::Representation
+      
+          property :cached_content_token_count, as: 'cachedContentTokenCount'
+          property :candidates_token_count, as: 'candidatesTokenCount'
+          collection :candidates_tokens_details, as: 'candidatesTokensDetails', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount::Representation
+      
+          property :prompt_token_count, as: 'promptTokenCount'
+          collection :prompt_tokens_details, as: 'promptTokensDetails', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount::Representation
+      
+          property :thoughts_token_count, as: 'thoughtsTokenCount'
+          property :tool_use_prompt_token_count, as: 'toolUsePromptTokenCount'
+          collection :tool_use_prompt_tokens_details, as: 'toolUsePromptTokensDetails', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModalityTokenCount::Representation
+      
+          property :total_token_count, as: 'totalTokenCount'
+          property :traffic_type, as: 'trafficType'
         end
       end
       
