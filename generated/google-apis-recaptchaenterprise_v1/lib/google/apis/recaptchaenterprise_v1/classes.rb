@@ -346,9 +346,7 @@ module Google
         # Optional. Identifies the client module initiating the CreateAssessment request.
         # This can be the link to the client module's project. Examples include: - "
         # github.com/GoogleCloudPlatform/recaptcha-enterprise-google-tag-manager" - "
-        # cloud.google.com/recaptcha/docs/implement-waf-akamai" - "cloud.google.com/
-        # recaptcha/docs/implement-waf-cloudflare" - "wordpress.org/plugins/recaptcha-
-        # something"
+        # wordpress.org/plugins/recaptcha-something"
         # Corresponds to the JSON property `client`
         # @return [String]
         attr_accessor :client
