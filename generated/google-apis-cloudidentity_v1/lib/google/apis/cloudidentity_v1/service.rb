@@ -2568,7 +2568,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get a Policy
+        # Get a policy.
         # @param [String] name
         #   Required. The name of the policy to retrieve. Format: "policies/`policy`".
         # @param [String] fields
@@ -2598,7 +2598,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List Policies
+        # List policies.
         # @param [String] filter
         #   Optional. A CEL expression for filtering the results. Policies can be filtered
         #   by application with this expression: setting.type.matches('^settings/gmail\\..*
