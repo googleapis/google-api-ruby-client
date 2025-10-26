@@ -487,6 +487,31 @@ module Google
         end
       end
       
+      # Information about a device's Bluetooth adapter.
+      class BluetoothAdapterInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The MAC address of the adapter.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # Output only. The number of devices connected to this adapter.
+        # Corresponds to the JSON property `numConnectedDevices`
+        # @return [Fixnum]
+        attr_accessor :num_connected_devices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @num_connected_devices = args[:num_connected_devices] if args.key?(:num_connected_devices)
+        end
+      end
+      
       # Public API: Resources.buildings
       class Building
         include Google::Apis::Core::Hashable
@@ -1022,6 +1047,11 @@ module Google
         # @return [Array<Google::Apis::AdminDirectoryV1::BacklightInfo>]
         attr_accessor :backlight_info
       
+        # Output only. Information about bluetooth adapters of the device.
+        # Corresponds to the JSON property `bluetoothAdapterInfo`
+        # @return [Array<Google::Apis::AdminDirectoryV1::BluetoothAdapterInfo>]
+        attr_accessor :bluetooth_adapter_info
+      
         # The boot mode for the device. The possible values are: * `Verified`: The
         # device is running a valid version of the Chrome OS. * `Dev`: The devices's
         # developer hardware switch is enabled. When booted, the device has a command
@@ -1315,6 +1345,7 @@ module Google
           @auto_update_expiration = args[:auto_update_expiration] if args.key?(:auto_update_expiration)
           @auto_update_through = args[:auto_update_through] if args.key?(:auto_update_through)
           @backlight_info = args[:backlight_info] if args.key?(:backlight_info)
+          @bluetooth_adapter_info = args[:bluetooth_adapter_info] if args.key?(:bluetooth_adapter_info)
           @boot_mode = args[:boot_mode] if args.key?(:boot_mode)
           @chrome_os_type = args[:chrome_os_type] if args.key?(:chrome_os_type)
           @cpu_info = args[:cpu_info] if args.key?(:cpu_info)

@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BluetoothAdapterInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Building
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -900,6 +906,14 @@ module Google
         end
       end
       
+      class BluetoothAdapterInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :num_connected_devices, as: 'numConnectedDevices'
+        end
+      end
+      
       class Building
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1032,6 +1046,8 @@ module Google
           property :auto_update_expiration, :numeric_string => true, as: 'autoUpdateExpiration'
           property :auto_update_through, as: 'autoUpdateThrough'
           collection :backlight_info, as: 'backlightInfo', class: Google::Apis::AdminDirectoryV1::BacklightInfo, decorator: Google::Apis::AdminDirectoryV1::BacklightInfo::Representation
+      
+          collection :bluetooth_adapter_info, as: 'bluetoothAdapterInfo', class: Google::Apis::AdminDirectoryV1::BluetoothAdapterInfo, decorator: Google::Apis::AdminDirectoryV1::BluetoothAdapterInfo::Representation
       
           property :boot_mode, as: 'bootMode'
           property :chrome_os_type, as: 'chromeOsType'
