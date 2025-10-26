@@ -89,6 +89,39 @@ module Google
         end
       end
       
+      # AppHubService represents the App Hub Service.
+      class AppHubService
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output only. Immutable. The name of the App Hub Service. Format: `
+        # projects/`project`/locations/`location`/applications/`application`/services/`
+        # service``.
+        # Corresponds to the JSON property `apphubService`
+        # @return [String]
+        attr_accessor :apphub_service
+      
+        # Output only. The criticality of the App Hub Service.
+        # Corresponds to the JSON property `criticality`
+        # @return [String]
+        attr_accessor :criticality
+      
+        # Output only. The environment of the App Hub Service.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apphub_service = args[:apphub_service] if args.key?(:apphub_service)
+          @criticality = args[:criticality] if args.key?(:criticality)
+          @environment = args[:environment] if args.key?(:environment)
+        end
+      end
+      
       # AppHubWorkload represents the App Hub Workload.
       class AppHubWorkload
         include Google::Apis::Core::Hashable
@@ -1079,6 +1112,26 @@ module Google
         end
       end
       
+      # GoogleCloudRun represents the Cloud Run runtime.
+      class GoogleCloudRun
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The name of the Cloud Run service. Format: `projects/`
+        # project`/locations/`location`/services/`service``.
+        # Corresponds to the JSON property `serviceUri`
+        # @return [String]
+        attr_accessor :service_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_uri = args[:service_uri] if args.key?(:service_uri)
+        end
+      end
+      
       # Message that represents an arbitrary HTTP body. It should only be used for
       # payload formats that can't be represented as JSON, such as raw binary or an
       # HTML page. This message can be used both in streaming and non-streaming API
@@ -1915,6 +1968,11 @@ module Google
       class RuntimeConfig
         include Google::Apis::Core::Hashable
       
+        # AppHubService represents the App Hub Service.
+        # Corresponds to the JSON property `appHubService`
+        # @return [Google::Apis::DeveloperconnectV1::AppHubService]
+        attr_accessor :app_hub_service
+      
         # AppHubWorkload represents the App Hub Workload.
         # Corresponds to the JSON property `appHubWorkload`
         # @return [Google::Apis::DeveloperconnectV1::AppHubWorkload]
@@ -1924,6 +1982,11 @@ module Google
         # Corresponds to the JSON property `gkeWorkload`
         # @return [Google::Apis::DeveloperconnectV1::GkeWorkload]
         attr_accessor :gke_workload
+      
+        # GoogleCloudRun represents the Cloud Run runtime.
+        # Corresponds to the JSON property `googleCloudRun`
+        # @return [Google::Apis::DeveloperconnectV1::GoogleCloudRun]
+        attr_accessor :google_cloud_run
       
         # Output only. The state of the Runtime.
         # Corresponds to the JSON property `state`
@@ -1942,8 +2005,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_hub_service = args[:app_hub_service] if args.key?(:app_hub_service)
           @app_hub_workload = args[:app_hub_workload] if args.key?(:app_hub_workload)
           @gke_workload = args[:gke_workload] if args.key?(:gke_workload)
+          @google_cloud_run = args[:google_cloud_run] if args.key?(:google_cloud_run)
           @state = args[:state] if args.key?(:state)
           @uri = args[:uri] if args.key?(:uri)
         end
