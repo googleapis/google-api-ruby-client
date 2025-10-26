@@ -2386,6 +2386,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1UserStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1WorkspaceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2957,6 +2963,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaDeleteTargetSiteMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDeleteUserStoreMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4655,6 +4667,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaUserLicense
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaUserStore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7676,6 +7694,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model_armor_config, as: 'modelArmorConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig::Representation
       
+          property :opt_out_notebook_sharing, as: 'optOutNotebookSharing'
         end
       end
       
@@ -8819,6 +8838,17 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1UserStore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_license_config, as: 'defaultLicenseConfig'
+          property :display_name, as: 'displayName'
+          property :enable_expired_license_auto_update, as: 'enableExpiredLicenseAutoUpdate'
+          property :enable_license_auto_register, as: 'enableLicenseAutoRegister'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1WorkspaceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9850,6 +9880,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaDeleteUserStoreMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaDestinationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10472,6 +10510,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model_armor_config, as: 'modelArmorConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig::Representation
       
+          property :opt_out_notebook_sharing, as: 'optOutNotebookSharing'
         end
       end
       
@@ -12093,6 +12132,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model_armor_config, as: 'modelArmorConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig::Representation
       
+          property :opt_out_notebook_sharing, as: 'optOutNotebookSharing'
         end
       end
       
@@ -12672,6 +12712,17 @@ module Google
           property :update_time, as: 'updateTime'
           property :user_principal, as: 'userPrincipal'
           property :user_profile, as: 'userProfile'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaUserStore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_license_config, as: 'defaultLicenseConfig'
+          property :display_name, as: 'displayName'
+          property :enable_expired_license_auto_update, as: 'enableExpiredLicenseAutoUpdate'
+          property :enable_license_auto_register, as: 'enableLicenseAutoRegister'
+          property :name, as: 'name'
         end
       end
       
