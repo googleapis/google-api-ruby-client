@@ -1023,6 +1023,31 @@ module Google
         end
       end
       
+      # Swap on the node's boot disk.
+      class BootDiskProfile
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the size of the swap space in gibibytes (GiB).
+        # Corresponds to the JSON property `swapSizeGib`
+        # @return [Fixnum]
+        attr_accessor :swap_size_gib
+      
+        # Specifies the size of the swap space as a percentage of the boot disk size.
+        # Corresponds to the JSON property `swapSizePercent`
+        # @return [Fixnum]
+        attr_accessor :swap_size_percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @swap_size_gib = args[:swap_size_gib] if args.key?(:swap_size_gib)
+          @swap_size_percent = args[:swap_size_percent] if args.key?(:swap_size_percent)
+        end
+      end
+      
       # CancelOperationRequest cancels a single operation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -3152,6 +3177,25 @@ module Google
         end
       end
       
+      # Provisions a new, separate local NVMe SSD exclusively for swap.
+      class DedicatedLocalSsdProfile
+        include Google::Apis::Core::Hashable
+      
+        # The number of physical local NVMe SSD disks to attach.
+        # Corresponds to the JSON property `diskCount`
+        # @return [Fixnum]
+        attr_accessor :disk_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_count = args[:disk_count] if args.key?(:disk_count)
+        end
+      end
+      
       # DefaultComputeClassConfig defines default compute class configuration.
       class DefaultComputeClassConfig
         include Google::Apis::Core::Hashable
@@ -3271,6 +3315,27 @@ module Google
         end
       end
       
+      # Defines encryption settings for the swap space.
+      class EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, swap space will not be encrypted. Defaults to false (
+        # encrypted).
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
+        end
+      end
+      
       # EnterpriseConfig is the cluster enterprise configuration. Deprecated: GKE
       # Enterprise features are now available without an Enterprise tier.
       class EnterpriseConfig
@@ -3294,6 +3359,32 @@ module Google
         def update!(**args)
           @cluster_tier = args[:cluster_tier] if args.key?(:cluster_tier)
           @desired_tier = args[:desired_tier] if args.key?(:desired_tier)
+        end
+      end
+      
+      # Swap on the local SSD shared with pod ephemeral storage.
+      class EphemeralLocalSsdProfile
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the size of the swap space in gibibytes (GiB).
+        # Corresponds to the JSON property `swapSizeGib`
+        # @return [Fixnum]
+        attr_accessor :swap_size_gib
+      
+        # Specifies the size of the swap space as a percentage of the ephemeral local
+        # SSD capacity.
+        # Corresponds to the JSON property `swapSizePercent`
+        # @return [Fixnum]
+        attr_accessor :swap_size_percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @swap_size_gib = args[:swap_size_gib] if args.key?(:swap_size_gib)
+          @swap_size_percent = args[:swap_size_percent] if args.key?(:swap_size_percent)
         end
       end
       
@@ -4639,6 +4730,16 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::HugepagesConfig]
         attr_accessor :hugepages
       
+        # Configuration for kernel module loading on nodes.
+        # Corresponds to the JSON property `nodeKernelModuleLoading`
+        # @return [Google::Apis::ContainerV1beta1::NodeKernelModuleLoading]
+        attr_accessor :node_kernel_module_loading
+      
+        # Configuration for swap memory on a node pool.
+        # Corresponds to the JSON property `swapConfig`
+        # @return [Google::Apis::ContainerV1beta1::SwapConfig]
+        attr_accessor :swap_config
+      
         # The Linux kernel parameters to be applied to the nodes and all pods running on
         # the nodes. The following parameters are supported. net.core.busy_poll net.core.
         # busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.rmem_default
@@ -4683,6 +4784,8 @@ module Google
         def update!(**args)
           @cgroup_mode = args[:cgroup_mode] if args.key?(:cgroup_mode)
           @hugepages = args[:hugepages] if args.key?(:hugepages)
+          @node_kernel_module_loading = args[:node_kernel_module_loading] if args.key?(:node_kernel_module_loading)
+          @swap_config = args[:swap_config] if args.key?(:swap_config)
           @sysctls = args[:sysctls] if args.key?(:sysctls)
           @transparent_hugepage_defrag = args[:transparent_hugepage_defrag] if args.key?(:transparent_hugepage_defrag)
           @transparent_hugepage_enabled = args[:transparent_hugepage_enabled] if args.key?(:transparent_hugepage_enabled)
@@ -4975,6 +5078,11 @@ module Google
       class MaintenanceExclusionOptions
         include Google::Apis::Core::Hashable
       
+        # EndTimeBehavior specifies the behavior of the exclusion end time.
+        # Corresponds to the JSON property `endTimeBehavior`
+        # @return [String]
+        attr_accessor :end_time_behavior
+      
         # Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
         # Corresponds to the JSON property `scope`
         # @return [String]
@@ -4986,6 +5094,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @end_time_behavior = args[:end_time_behavior] if args.key?(:end_time_behavior)
           @scope = args[:scope] if args.key?(:scope)
         end
       end
@@ -6072,6 +6181,25 @@ module Google
         end
       end
       
+      # Configuration for kernel module loading on nodes.
+      class NodeKernelModuleLoading
+        include Google::Apis::Core::Hashable
+      
+        # Set the node module loading policy for nodes in the node pool.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
       # Node kubelet configs.
       class NodeKubeletConfig
         include Google::Apis::Core::Hashable
@@ -6335,6 +6463,14 @@ module Google
       class NodeNetworkConfig
         include Google::Apis::Core::Hashable
       
+        # Immutable. The accelerator network profile for the node pool. For now the only
+        # valid value is "auto". If specified, the network configuration of the nodes in
+        # this node pool will be managed by this profile for the supported machine types,
+        # zone, etc.
+        # Corresponds to the JSON property `acceleratorNetworkProfile`
+        # @return [String]
+        attr_accessor :accelerator_network_profile
+      
         # We specify the additional node networks for this node pool using this list.
         # Each node network corresponds to an additional interface
         # Corresponds to the JSON property `additionalNodeNetworkConfigs`
@@ -6422,6 +6558,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerator_network_profile = args[:accelerator_network_profile] if args.key?(:accelerator_network_profile)
           @additional_node_network_configs = args[:additional_node_network_configs] if args.key?(:additional_node_network_configs)
           @additional_pod_network_configs = args[:additional_pod_network_configs] if args.key?(:additional_pod_network_configs)
           @create_pod_range = args[:create_pod_range] if args.key?(:create_pod_range)
@@ -9261,6 +9398,50 @@ module Google
         end
       end
       
+      # Configuration for swap memory on a node pool.
+      class SwapConfig
+        include Google::Apis::Core::Hashable
+      
+        # Swap on the node's boot disk.
+        # Corresponds to the JSON property `bootDiskProfile`
+        # @return [Google::Apis::ContainerV1beta1::BootDiskProfile]
+        attr_accessor :boot_disk_profile
+      
+        # Provisions a new, separate local NVMe SSD exclusively for swap.
+        # Corresponds to the JSON property `dedicatedLocalSsdProfile`
+        # @return [Google::Apis::ContainerV1beta1::DedicatedLocalSsdProfile]
+        attr_accessor :dedicated_local_ssd_profile
+      
+        # Optional. Enables or disables swap for the node pool.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Defines encryption settings for the swap space.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::ContainerV1beta1::EncryptionConfig]
+        attr_accessor :encryption_config
+      
+        # Swap on the local SSD shared with pod ephemeral storage.
+        # Corresponds to the JSON property `ephemeralLocalSsdProfile`
+        # @return [Google::Apis::ContainerV1beta1::EphemeralLocalSsdProfile]
+        attr_accessor :ephemeral_local_ssd_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boot_disk_profile = args[:boot_disk_profile] if args.key?(:boot_disk_profile)
+          @dedicated_local_ssd_profile = args[:dedicated_local_ssd_profile] if args.key?(:dedicated_local_ssd_profile)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
+          @ephemeral_local_ssd_profile = args[:ephemeral_local_ssd_profile] if args.key?(:ephemeral_local_ssd_profile)
+        end
+      end
+      
       # SyncRotationConfig is config for secret manager auto rotation.
       class SyncRotationConfig
         include Google::Apis::Core::Hashable
@@ -9627,7 +9808,13 @@ module Google
         # final_documentation_domain`/compute/docs/zones#available) in which the node
         # pool's nodes should be located. Changing the locations for a node pool will
         # result in nodes being either created or removed from the node pool, depending
-        # on whether locations are being added or removed.
+        # on whether locations are being added or removed. Warning: It is recommended to
+        # update node pool locations in a standalone API call. Do not combine a location
+        # update with changes to other fields (such as `tags`, `labels`, `taints`, etc.)
+        # in the same request. Otherwise, the API performs a structural modification
+        # where changes to other fields will only apply to newly created nodes and will
+        # not be applied to existing nodes in the node pool. To ensure all nodes are
+        # updated consistently, use a separate API call for location changes.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
@@ -9929,6 +10116,11 @@ module Google
       class UpgradeEvent
         include Google::Apis::Core::Hashable
       
+        # The current emulated version before the upgrade.
+        # Corresponds to the JSON property `currentEmulatedVersion`
+        # @return [String]
+        attr_accessor :current_emulated_version
+      
         # The current version before the upgrade.
         # Corresponds to the JSON property `currentVersion`
         # @return [String]
@@ -9955,6 +10147,11 @@ module Google
         # @return [String]
         attr_accessor :resource_type
       
+        # The target emulated version for the upgrade.
+        # Corresponds to the JSON property `targetEmulatedVersion`
+        # @return [String]
+        attr_accessor :target_emulated_version
+      
         # The target version for the upgrade.
         # Corresponds to the JSON property `targetVersion`
         # @return [String]
@@ -9966,11 +10163,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @current_emulated_version = args[:current_emulated_version] if args.key?(:current_emulated_version)
           @current_version = args[:current_version] if args.key?(:current_version)
           @operation = args[:operation] if args.key?(:operation)
           @operation_start_time = args[:operation_start_time] if args.key?(:operation_start_time)
           @resource = args[:resource] if args.key?(:resource)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @target_emulated_version = args[:target_emulated_version] if args.key?(:target_emulated_version)
           @target_version = args[:target_version] if args.key?(:target_version)
         end
       end
@@ -9979,6 +10178,11 @@ module Google
       # information of a resource.
       class UpgradeInfoEvent
         include Google::Apis::Core::Hashable
+      
+        # The current emulated version before the upgrade.
+        # Corresponds to the JSON property `currentEmulatedVersion`
+        # @return [String]
+        attr_accessor :current_emulated_version
       
         # The current version before the upgrade.
         # Corresponds to the JSON property `currentVersion`
@@ -10036,6 +10240,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # The target emulated version for the upgrade.
+        # Corresponds to the JSON property `targetEmulatedVersion`
+        # @return [String]
+        attr_accessor :target_emulated_version
+      
         # The target version for the upgrade.
         # Corresponds to the JSON property `targetVersion`
         # @return [String]
@@ -10047,6 +10256,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @current_emulated_version = args[:current_emulated_version] if args.key?(:current_emulated_version)
           @current_version = args[:current_version] if args.key?(:current_version)
           @description = args[:description] if args.key?(:description)
           @end_time = args[:end_time] if args.key?(:end_time)
@@ -10058,6 +10268,7 @@ module Google
           @standard_support_end_time = args[:standard_support_end_time] if args.key?(:standard_support_end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
+          @target_emulated_version = args[:target_emulated_version] if args.key?(:target_emulated_version)
           @target_version = args[:target_version] if args.key?(:target_version)
         end
       end
