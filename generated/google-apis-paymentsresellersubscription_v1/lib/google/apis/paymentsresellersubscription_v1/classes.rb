@@ -110,6 +110,11 @@ module Google
       class CreateSubscriptionIntent
         include Google::Apis::Core::Hashable
       
+        # The cycle options when starting and resuming a subscription.
+        # Corresponds to the JSON property `cycleOptions`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::CycleOptions]
+        attr_accessor :cycle_options
+      
         # Required. The parent resource name, which is the identifier of the partner.
         # Corresponds to the JSON property `parent`
         # @return [String]
@@ -142,6 +147,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cycle_options = args[:cycle_options] if args.key?(:cycle_options)
           @parent = args[:parent] if args.key?(:parent)
           @subscription = args[:subscription] if args.key?(:subscription)
           @subscription_id = args[:subscription_id] if args.key?(:subscription_id)
