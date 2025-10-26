@@ -355,6 +355,8 @@ module Google
       class CreateSubscriptionIntent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cycle_options, as: 'cycleOptions', class: Google::Apis::PaymentsresellersubscriptionV1::CycleOptions, decorator: Google::Apis::PaymentsresellersubscriptionV1::CycleOptions::Representation
+      
           property :parent, as: 'parent'
           property :subscription, as: 'subscription', class: Google::Apis::PaymentsresellersubscriptionV1::Subscription, decorator: Google::Apis::PaymentsresellersubscriptionV1::Subscription::Representation
       
