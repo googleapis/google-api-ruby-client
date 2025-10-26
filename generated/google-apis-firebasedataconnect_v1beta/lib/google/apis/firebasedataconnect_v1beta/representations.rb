@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Workaround
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -312,7 +318,9 @@ module Google
           property :code, as: 'code'
           property :debug_details, as: 'debugDetails'
           property :file, as: 'file'
-          property :resource, as: 'resource'
+          property :warning_level, as: 'warningLevel'
+          collection :workarounds, as: 'workarounds', class: Google::Apis::FirebasedataconnectV1beta::Workaround, decorator: Google::Apis::FirebasedataconnectV1beta::Workaround::Representation
+      
         end
       end
       
@@ -388,6 +396,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::FirebasedataconnectV1beta::Operation, decorator: Google::Apis::FirebasedataconnectV1beta::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -516,6 +525,15 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class Workaround
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :reason, as: 'reason'
+          property :replace, as: 'replace'
         end
       end
     end
