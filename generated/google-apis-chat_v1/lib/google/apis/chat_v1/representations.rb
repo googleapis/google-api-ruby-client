@@ -2291,6 +2291,7 @@ module Google
       class PermissionSetting
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assistant_managers_allowed, as: 'assistantManagersAllowed'
           property :managers_allowed, as: 'managersAllowed'
           property :members_allowed, as: 'membersAllowed'
         end
