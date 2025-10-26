@@ -652,6 +652,11 @@ module Google
         # @return [String]
         attr_accessor :database_version
       
+        # Configuration for Dataplex integration.
+        # Corresponds to the JSON property `dataplexConfig`
+        # @return [Google::Apis::AlloydbV1::DataplexConfig]
+        attr_accessor :dataplex_config
+      
         # Output only. Delete time stamp
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
@@ -821,6 +826,7 @@ module Google
           @continuous_backup_info = args[:continuous_backup_info] if args.key?(:continuous_backup_info)
           @create_time = args[:create_time] if args.key?(:create_time)
           @database_version = args[:database_version] if args.key?(:database_version)
+          @dataplex_config = args[:dataplex_config] if args.key?(:dataplex_config)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
@@ -1175,6 +1181,28 @@ module Google
           @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
           @quote_character = args[:quote_character] if args.key?(:quote_character)
           @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # Configuration for Dataplex integration.
+      class DataplexConfig
+        include Google::Apis::Core::Hashable
+      
+        # Dataplex is enabled by default for resources such as clusters and instances.
+        # This flag controls the integration of AlloyDB PG resources (like databases,
+        # schemas, and tables) with Dataplex."
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
