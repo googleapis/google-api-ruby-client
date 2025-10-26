@@ -1328,6 +1328,22 @@ module Google
         attr_accessor :menu_for_children
         alias_method :menu_for_children?, :menu_for_children
       
+        # If this Place is permanently closed and has moved to a new Place, this field
+        # contains the new Place's resource name, in `places/`place_id`` format. If this
+        # Place moved multiple times, this field will represent the first moved place.
+        # This field will not be populated if this Place has not moved.
+        # Corresponds to the JSON property `movedPlace`
+        # @return [String]
+        attr_accessor :moved_place
+      
+        # If this Place is permanently closed and has moved to a new Place, this field
+        # contains the new Place's place ID. If this Place moved multiple times, this
+        # field will represent the first moved Place. This field will not be populated
+        # if this Place has not moved.
+        # Corresponds to the JSON property `movedPlaceId`
+        # @return [String]
+        attr_accessor :moved_place_id
+      
         # This Place's resource name, in `places/`place_id`` format. Can be used to look
         # up the Place.
         # Corresponds to the JSON property `name`
@@ -1636,6 +1652,8 @@ module Google
           @live_music = args[:live_music] if args.key?(:live_music)
           @location = args[:location] if args.key?(:location)
           @menu_for_children = args[:menu_for_children] if args.key?(:menu_for_children)
+          @moved_place = args[:moved_place] if args.key?(:moved_place)
+          @moved_place_id = args[:moved_place_id] if args.key?(:moved_place_id)
           @name = args[:name] if args.key?(:name)
           @national_phone_number = args[:national_phone_number] if args.key?(:national_phone_number)
           @neighborhood_summary = args[:neighborhood_summary] if args.key?(:neighborhood_summary)

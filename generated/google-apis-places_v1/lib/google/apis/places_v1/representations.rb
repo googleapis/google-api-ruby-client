@@ -806,6 +806,8 @@ module Google
           property :location, as: 'location', class: Google::Apis::PlacesV1::GoogleTypeLatLng, decorator: Google::Apis::PlacesV1::GoogleTypeLatLng::Representation
       
           property :menu_for_children, as: 'menuForChildren'
+          property :moved_place, as: 'movedPlace'
+          property :moved_place_id, as: 'movedPlaceId'
           property :name, as: 'name'
           property :national_phone_number, as: 'nationalPhoneNumber'
           property :neighborhood_summary, as: 'neighborhoodSummary', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceNeighborhoodSummary, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceNeighborhoodSummary::Representation
