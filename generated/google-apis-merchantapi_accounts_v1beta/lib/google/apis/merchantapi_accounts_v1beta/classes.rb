@@ -459,10 +459,10 @@ module Google
       class AddUser
         include Google::Apis::Core::Hashable
       
-        # The `User` message represents a user associated with a Merchant Center account.
-        # It is used to manage user permissions and access rights within the account.
-        # For more information, see [Frequently asked questions about people and access
-        # levels](//support.google.com/merchants/answer/12160472).
+        # The `User` resource represents a user associated with a Merchant Center
+        # account. It is used to manage user permissions and access rights within the
+        # account. For more information, see [Frequently asked questions about people
+        # and access levels](//support.google.com/merchants/answer/12160472).
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::MerchantapiAccountsV1beta::User]
         attr_accessor :user
@@ -1145,10 +1145,10 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # The `User` message represents a user associated with a Merchant Center account.
-        # It is used to manage user permissions and access rights within the account.
-        # For more information, see [Frequently asked questions about people and access
-        # levels](//support.google.com/merchants/answer/12160472).
+        # The `User` resource represents a user associated with a Merchant Center
+        # account. It is used to manage user permissions and access rights within the
+        # account. For more information, see [Frequently asked questions about people
+        # and access levels](//support.google.com/merchants/answer/12160472).
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::MerchantapiAccountsV1beta::User]
         attr_accessor :user
@@ -4302,10 +4302,10 @@ module Google
         end
       end
       
-      # The `User` message represents a user associated with a Merchant Center account.
-      # It is used to manage user permissions and access rights within the account.
-      # For more information, see [Frequently asked questions about people and access
-      # levels](//support.google.com/merchants/answer/12160472).
+      # The `User` resource represents a user associated with a Merchant Center
+      # account. It is used to manage user permissions and access rights within the
+      # account. For more information, see [Frequently asked questions about people
+      # and access levels](//support.google.com/merchants/answer/12160472).
       class User
         include Google::Apis::Core::Hashable
       
