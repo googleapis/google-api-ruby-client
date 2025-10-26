@@ -572,6 +572,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :anchor, as: 'anchor'
+          property :assignee_email_address, as: 'assigneeEmailAddress'
           property :author, as: 'author', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
       
           property :content, as: 'content'
@@ -581,6 +582,7 @@ module Google
           property :html_content, as: 'htmlContent'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          collection :mentioned_email_addresses, as: 'mentionedEmailAddresses'
           property :modified_time, as: 'modifiedTime', type: DateTime
       
           property :quoted_file_content, as: 'quotedFileContent', class: Google::Apis::DriveV3::Comment::QuotedFileContent, decorator: Google::Apis::DriveV3::Comment::QuotedFileContent::Representation
@@ -1133,6 +1135,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
+          property :assignee_email_address, as: 'assigneeEmailAddress'
           property :author, as: 'author', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
       
           property :content, as: 'content'
@@ -1142,6 +1145,7 @@ module Google
           property :html_content, as: 'htmlContent'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          collection :mentioned_email_addresses, as: 'mentionedEmailAddresses'
           property :modified_time, as: 'modifiedTime', type: DateTime
       
         end

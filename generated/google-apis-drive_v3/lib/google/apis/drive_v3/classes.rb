@@ -780,6 +780,12 @@ module Google
         # @return [String]
         attr_accessor :anchor
       
+        # Output only. The email of the user who is assigned to this comment, if none is
+        # assigned this will be unset.
+        # Corresponds to the JSON property `assigneeEmailAddress`
+        # @return [String]
+        attr_accessor :assignee_email_address
+      
         # Information about a Drive user.
         # Corresponds to the JSON property `author`
         # @return [Google::Apis::DriveV3::User]
@@ -819,6 +825,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Output only. The emails of the users who were mentioned in this comment, if
+        # none were mentioned this will be an empty list.
+        # Corresponds to the JSON property `mentionedEmailAddresses`
+        # @return [Array<String>]
+        attr_accessor :mentioned_email_addresses
+      
         # The last time the comment or any of its replies was modified (RFC 3339 date-
         # time).
         # Corresponds to the JSON property `modifiedTime`
@@ -850,6 +862,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @anchor = args[:anchor] if args.key?(:anchor)
+          @assignee_email_address = args[:assignee_email_address] if args.key?(:assignee_email_address)
           @author = args[:author] if args.key?(:author)
           @content = args[:content] if args.key?(:content)
           @created_time = args[:created_time] if args.key?(:created_time)
@@ -857,6 +870,7 @@ module Google
           @html_content = args[:html_content] if args.key?(:html_content)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @mentioned_email_addresses = args[:mentioned_email_addresses] if args.key?(:mentioned_email_addresses)
           @modified_time = args[:modified_time] if args.key?(:modified_time)
           @quoted_file_content = args[:quoted_file_content] if args.key?(:quoted_file_content)
           @replies = args[:replies] if args.key?(:replies)
@@ -3425,6 +3439,12 @@ module Google
         # @return [String]
         attr_accessor :action
       
+        # Output only. The email of the user who is assigned to this reply, if none is
+        # assigned this will be unset.
+        # Corresponds to the JSON property `assigneeEmailAddress`
+        # @return [String]
+        attr_accessor :assignee_email_address
+      
         # Information about a Drive user.
         # Corresponds to the JSON property `author`
         # @return [Google::Apis::DriveV3::User]
@@ -3465,6 +3485,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Output only. The emails of the users who were mentioned in this reply, if none
+        # were mentioned this will be an empty list.
+        # Corresponds to the JSON property `mentionedEmailAddresses`
+        # @return [Array<String>]
+        attr_accessor :mentioned_email_addresses
+      
         # The last time the reply was modified (RFC 3339 date-time).
         # Corresponds to the JSON property `modifiedTime`
         # @return [DateTime]
@@ -3477,6 +3503,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action = args[:action] if args.key?(:action)
+          @assignee_email_address = args[:assignee_email_address] if args.key?(:assignee_email_address)
           @author = args[:author] if args.key?(:author)
           @content = args[:content] if args.key?(:content)
           @created_time = args[:created_time] if args.key?(:created_time)
@@ -3484,6 +3511,7 @@ module Google
           @html_content = args[:html_content] if args.key?(:html_content)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @mentioned_email_addresses = args[:mentioned_email_addresses] if args.key?(:mentioned_email_addresses)
           @modified_time = args[:modified_time] if args.key?(:modified_time)
         end
       end
