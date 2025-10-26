@@ -2689,6 +2689,26 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata]
         attr_accessor :agent_dimension_metadata
       
+        # Metadata about the client sentiment category dimension.
+        # Corresponds to the JSON property `clientSentimentCategoryDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata]
+        attr_accessor :client_sentiment_category_dimension_metadata
+      
+        # Metadata about the conversation profile dimension.
+        # Corresponds to the JSON property `conversationProfileDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata]
+        attr_accessor :conversation_profile_dimension_metadata
+      
+        # Metadata about the Conversational Agents playbook dimension.
+        # Corresponds to the JSON property `conversationalAgentsPlaybookDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata]
+        attr_accessor :conversational_agents_playbook_dimension_metadata
+      
+        # Metadata about the Conversational Agents tool dimension.
+        # Corresponds to the JSON property `conversationalAgentsToolDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata]
+        attr_accessor :conversational_agents_tool_dimension_metadata
+      
         # The key of the dimension.
         # Corresponds to the JSON property `dimensionKey`
         # @return [String]
@@ -2698,6 +2718,11 @@ module Google
         # Corresponds to the JSON property `issueDimensionMetadata`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata]
         attr_accessor :issue_dimension_metadata
+      
+        # Metadata about the conversation medium dimension.
+        # Corresponds to the JSON property `mediumDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata]
+        attr_accessor :medium_dimension_metadata
       
         # Metadata about the QA question-answer dimension. This is useful for showing
         # the answer distribution for questions for a given scorecard.
@@ -2722,8 +2747,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent_dimension_metadata = args[:agent_dimension_metadata] if args.key?(:agent_dimension_metadata)
+          @client_sentiment_category_dimension_metadata = args[:client_sentiment_category_dimension_metadata] if args.key?(:client_sentiment_category_dimension_metadata)
+          @conversation_profile_dimension_metadata = args[:conversation_profile_dimension_metadata] if args.key?(:conversation_profile_dimension_metadata)
+          @conversational_agents_playbook_dimension_metadata = args[:conversational_agents_playbook_dimension_metadata] if args.key?(:conversational_agents_playbook_dimension_metadata)
+          @conversational_agents_tool_dimension_metadata = args[:conversational_agents_tool_dimension_metadata] if args.key?(:conversational_agents_tool_dimension_metadata)
           @dimension_key = args[:dimension_key] if args.key?(:dimension_key)
           @issue_dimension_metadata = args[:issue_dimension_metadata] if args.key?(:issue_dimension_metadata)
+          @medium_dimension_metadata = args[:medium_dimension_metadata] if args.key?(:medium_dimension_metadata)
           @qa_question_answer_dimension_metadata = args[:qa_question_answer_dimension_metadata] if args.key?(:qa_question_answer_dimension_metadata)
           @qa_question_dimension_metadata = args[:qa_question_dimension_metadata] if args.key?(:qa_question_dimension_metadata)
           @qa_scorecard_dimension_metadata = args[:qa_scorecard_dimension_metadata] if args.key?(:qa_scorecard_dimension_metadata)
@@ -2793,6 +2823,94 @@ module Google
         end
       end
       
+      # Metadata about the client sentiment category dimension.
+      class GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The client sentiment category.
+        # Corresponds to the JSON property `sentimentCategory`
+        # @return [String]
+        attr_accessor :sentiment_category
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sentiment_category = args[:sentiment_category] if args.key?(:sentiment_category)
+        end
+      end
+      
+      # Metadata about the conversation profile dimension.
+      class GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The conversation profile ID.
+        # Corresponds to the JSON property `conversationProfileId`
+        # @return [String]
+        attr_accessor :conversation_profile_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_profile_id = args[:conversation_profile_id] if args.key?(:conversation_profile_id)
+        end
+      end
+      
+      # Metadata about the Conversational Agents playbook dimension.
+      class GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The dialogflow playbook display name.
+        # Corresponds to the JSON property `playbookDisplayName`
+        # @return [String]
+        attr_accessor :playbook_display_name
+      
+        # Optional. The dialogflow playbook ID.
+        # Corresponds to the JSON property `playbookId`
+        # @return [String]
+        attr_accessor :playbook_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @playbook_display_name = args[:playbook_display_name] if args.key?(:playbook_display_name)
+          @playbook_id = args[:playbook_id] if args.key?(:playbook_id)
+        end
+      end
+      
+      # Metadata about the Conversational Agents tool dimension.
+      class GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The dialogflow tool display name.
+        # Corresponds to the JSON property `toolDisplayName`
+        # @return [String]
+        attr_accessor :tool_display_name
+      
+        # Optional. The dialogflow tool ID.
+        # Corresponds to the JSON property `toolId`
+        # @return [String]
+        attr_accessor :tool_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_display_name = args[:tool_display_name] if args.key?(:tool_display_name)
+          @tool_id = args[:tool_id] if args.key?(:tool_id)
+        end
+      end
+      
       # Metadata about the issue dimension.
       class GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata
         include Google::Apis::Core::Hashable
@@ -2821,6 +2939,25 @@ module Google
           @issue_display_name = args[:issue_display_name] if args.key?(:issue_display_name)
           @issue_id = args[:issue_id] if args.key?(:issue_id)
           @issue_model_id = args[:issue_model_id] if args.key?(:issue_model_id)
+        end
+      end
+      
+      # Metadata about the conversation medium dimension.
+      class GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The conversation medium. Currently supports : PHONE_CALL, CHAT.
+        # Corresponds to the JSON property `medium`
+        # @return [String]
+        attr_accessor :medium
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @medium = args[:medium] if args.key?(:medium)
         end
       end
       
@@ -9102,6 +9239,26 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata]
         attr_accessor :agent_dimension_metadata
       
+        # Metadata about the client sentiment category dimension.
+        # Corresponds to the JSON property `clientSentimentCategoryDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionClientSentimentCategoryDimensionMetadata]
+        attr_accessor :client_sentiment_category_dimension_metadata
+      
+        # Metadata about the conversation profile dimension.
+        # Corresponds to the JSON property `conversationProfileDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionConversationProfileDimensionMetadata]
+        attr_accessor :conversation_profile_dimension_metadata
+      
+        # Metadata about the Conversational Agents playbook dimension.
+        # Corresponds to the JSON property `conversationalAgentsPlaybookDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsPlaybookDimensionMetadata]
+        attr_accessor :conversational_agents_playbook_dimension_metadata
+      
+        # Metadata about the Conversational Agents tool dimension.
+        # Corresponds to the JSON property `conversationalAgentsToolDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsToolDimensionMetadata]
+        attr_accessor :conversational_agents_tool_dimension_metadata
+      
         # The key of the dimension.
         # Corresponds to the JSON property `dimensionKey`
         # @return [String]
@@ -9111,6 +9268,11 @@ module Google
         # Corresponds to the JSON property `issueDimensionMetadata`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata]
         attr_accessor :issue_dimension_metadata
+      
+        # Metadata about the conversation medium dimension.
+        # Corresponds to the JSON property `mediumDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata]
+        attr_accessor :medium_dimension_metadata
       
         # Metadata about the QA question-answer dimension. This is useful for showing
         # the answer distribution for questions for a given scorecard.
@@ -9135,8 +9297,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent_dimension_metadata = args[:agent_dimension_metadata] if args.key?(:agent_dimension_metadata)
+          @client_sentiment_category_dimension_metadata = args[:client_sentiment_category_dimension_metadata] if args.key?(:client_sentiment_category_dimension_metadata)
+          @conversation_profile_dimension_metadata = args[:conversation_profile_dimension_metadata] if args.key?(:conversation_profile_dimension_metadata)
+          @conversational_agents_playbook_dimension_metadata = args[:conversational_agents_playbook_dimension_metadata] if args.key?(:conversational_agents_playbook_dimension_metadata)
+          @conversational_agents_tool_dimension_metadata = args[:conversational_agents_tool_dimension_metadata] if args.key?(:conversational_agents_tool_dimension_metadata)
           @dimension_key = args[:dimension_key] if args.key?(:dimension_key)
           @issue_dimension_metadata = args[:issue_dimension_metadata] if args.key?(:issue_dimension_metadata)
+          @medium_dimension_metadata = args[:medium_dimension_metadata] if args.key?(:medium_dimension_metadata)
           @qa_question_answer_dimension_metadata = args[:qa_question_answer_dimension_metadata] if args.key?(:qa_question_answer_dimension_metadata)
           @qa_question_dimension_metadata = args[:qa_question_dimension_metadata] if args.key?(:qa_question_dimension_metadata)
           @qa_scorecard_dimension_metadata = args[:qa_scorecard_dimension_metadata] if args.key?(:qa_scorecard_dimension_metadata)
@@ -9206,6 +9373,94 @@ module Google
         end
       end
       
+      # Metadata about the client sentiment category dimension.
+      class GoogleCloudContactcenterinsightsV1alpha1DimensionClientSentimentCategoryDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The client sentiment category.
+        # Corresponds to the JSON property `sentimentCategory`
+        # @return [String]
+        attr_accessor :sentiment_category
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sentiment_category = args[:sentiment_category] if args.key?(:sentiment_category)
+        end
+      end
+      
+      # Metadata about the conversation profile dimension.
+      class GoogleCloudContactcenterinsightsV1alpha1DimensionConversationProfileDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The conversation profile ID.
+        # Corresponds to the JSON property `conversationProfileId`
+        # @return [String]
+        attr_accessor :conversation_profile_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_profile_id = args[:conversation_profile_id] if args.key?(:conversation_profile_id)
+        end
+      end
+      
+      # Metadata about the Conversational Agents playbook dimension.
+      class GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsPlaybookDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The dialogflow playbook display name.
+        # Corresponds to the JSON property `playbookDisplayName`
+        # @return [String]
+        attr_accessor :playbook_display_name
+      
+        # Optional. The dialogflow playbook ID.
+        # Corresponds to the JSON property `playbookId`
+        # @return [String]
+        attr_accessor :playbook_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @playbook_display_name = args[:playbook_display_name] if args.key?(:playbook_display_name)
+          @playbook_id = args[:playbook_id] if args.key?(:playbook_id)
+        end
+      end
+      
+      # Metadata about the Conversational Agents tool dimension.
+      class GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsToolDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The dialogflow tool display name.
+        # Corresponds to the JSON property `toolDisplayName`
+        # @return [String]
+        attr_accessor :tool_display_name
+      
+        # Optional. The dialogflow tool ID.
+        # Corresponds to the JSON property `toolId`
+        # @return [String]
+        attr_accessor :tool_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_display_name = args[:tool_display_name] if args.key?(:tool_display_name)
+          @tool_id = args[:tool_id] if args.key?(:tool_id)
+        end
+      end
+      
       # Metadata about the issue dimension.
       class GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata
         include Google::Apis::Core::Hashable
@@ -9234,6 +9489,25 @@ module Google
           @issue_display_name = args[:issue_display_name] if args.key?(:issue_display_name)
           @issue_id = args[:issue_id] if args.key?(:issue_id)
           @issue_model_id = args[:issue_model_id] if args.key?(:issue_model_id)
+        end
+      end
+      
+      # Metadata about the conversation medium dimension.
+      class GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The conversation medium. Currently supports : PHONE_CALL, CHAT.
+        # Corresponds to the JSON property `medium`
+        # @return [String]
+        attr_accessor :medium
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @medium = args[:medium] if args.key?(:medium)
         end
       end
       
