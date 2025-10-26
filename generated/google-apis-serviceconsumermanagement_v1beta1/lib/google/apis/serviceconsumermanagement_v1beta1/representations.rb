@@ -1684,6 +1684,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           property :name, as: 'name'
+          property :project_role, as: 'projectRole'
           property :tag, as: 'tag'
           property :unique_id, as: 'uniqueId'
         end

@@ -4525,6 +4525,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The project-level IAM role defined in the service agent's grant configuration.
+        # This is the standard role intended for this service agent. This field is
+        # populated regardless of the `skip_role_attach` option in the request. If `
+        # skip_role_attach` is true, the caller can use this value to know which role
+        # they are responsible for granting.
+        # Corresponds to the JSON property `projectRole`
+        # @return [String]
+        attr_accessor :project_role
+      
         # The P4 service identity configuration tag. This must be defined in
         # activation_grants. If not specified when creating the account, the tag is set
         # to "default".
@@ -4545,6 +4554,7 @@ module Google
         def update!(**args)
           @email = args[:email] if args.key?(:email)
           @name = args[:name] if args.key?(:name)
+          @project_role = args[:project_role] if args.key?(:project_role)
           @tag = args[:tag] if args.key?(:tag)
           @unique_id = args[:unique_id] if args.key?(:unique_id)
         end
