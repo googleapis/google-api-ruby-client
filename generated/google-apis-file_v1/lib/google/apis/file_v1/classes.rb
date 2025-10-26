@@ -278,6 +278,25 @@ module Google
         end
       end
       
+      # Directory Services configuration for Kerberos-based authentication.
+      class DirectoryServicesConfig
+        include Google::Apis::Core::Hashable
+      
+        # LdapConfig contains all the parameters for connecting to LDAP servers.
+        # Corresponds to the JSON property `ldap`
+        # @return [Google::Apis::FileV1::LdapConfig]
+        attr_accessor :ldap
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ldap = args[:ldap] if args.key?(:ldap)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -867,6 +886,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Directory Services configuration for Kerberos-based authentication.
+        # Corresponds to the JSON property `directoryServices`
+        # @return [Google::Apis::FileV1::DirectoryServicesConfig]
+        attr_accessor :directory_services
+      
         # Server-specified ETag for the instance resource to prevent simultaneous
         # updates from overwriting each other.
         # Corresponds to the JSON property `etag`
@@ -995,6 +1019,7 @@ module Google
           @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
           @deletion_protection_reason = args[:deletion_protection_reason] if args.key?(:deletion_protection_reason)
           @description = args[:description] if args.key?(:description)
+          @directory_services = args[:directory_services] if args.key?(:directory_services)
           @etag = args[:etag] if args.key?(:etag)
           @file_shares = args[:file_shares] if args.key?(:file_shares)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
@@ -1014,6 +1039,51 @@ module Google
           @suspension_reasons = args[:suspension_reasons] if args.key?(:suspension_reasons)
           @tags = args[:tags] if args.key?(:tags)
           @tier = args[:tier] if args.key?(:tier)
+        end
+      end
+      
+      # LdapConfig contains all the parameters for connecting to LDAP servers.
+      class LdapConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The LDAP domain name in the format of `my-domain.com`.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Optional. The groups Organizational Unit (OU) is optional. This parameter is a
+        # hint to allow faster lookup in the LDAP namespace. In case that this parameter
+        # is not provided, Filestore instance will query the whole LDAP namespace.
+        # Corresponds to the JSON property `groupsOu`
+        # @return [String]
+        attr_accessor :groups_ou
+      
+        # Required. The servers names are used for specifying the LDAP servers names.
+        # The LDAP servers names can come with two formats: 1. DNS name, for example: `
+        # ldap.example1.com`, `ldap.example2.com`. 2. IP address, for example: `10.0.0.1`
+        # , `10.0.0.2`, `10.0.0.3`. All servers names must be in the same format: either
+        # all DNS names or all IP addresses.
+        # Corresponds to the JSON property `servers`
+        # @return [Array<String>]
+        attr_accessor :servers
+      
+        # Optional. The users Organizational Unit (OU) is optional. This parameter is a
+        # hint to allow faster lookup in the LDAP namespace. In case that this parameter
+        # is not provided, Filestore instance will query the whole LDAP namespace.
+        # Corresponds to the JSON property `usersOu`
+        # @return [String]
+        attr_accessor :users_ou
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @groups_ou = args[:groups_ou] if args.key?(:groups_ou)
+          @servers = args[:servers] if args.key?(:servers)
+          @users_ou = args[:users_ou] if args.key?(:users_ou)
         end
       end
       
@@ -1128,6 +1198,13 @@ module Google
         # @return [Array<Google::Apis::FileV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1136,6 +1213,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
