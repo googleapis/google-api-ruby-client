@@ -543,6 +543,39 @@ module Google
         end
       end
       
+      # Request message for `ClearTestCaseCache`.
+      class GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of devices for which to clear the cache. If not present,
+        # clear all of them.
+        # Corresponds to the JSON property `testDevices`
+        # @return [Array<Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestDevice>]
+        attr_accessor :test_devices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @test_devices = args[:test_devices] if args.key?(:test_devices)
+        end
+      end
+      
+      # Response empty (google.protobuf.Empty) message for `ClearTestCaseCache`
+      class GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The request message for `CreateReleaseNotes`.
       class GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest
         include Google::Apis::Core::Hashable
