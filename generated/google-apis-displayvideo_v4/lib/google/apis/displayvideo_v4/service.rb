@@ -384,6 +384,201 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # BulkCreate video assets for Ad. Only supports youtube video assets for now.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser this ad asset belongs to.
+        # @param [Google::Apis::DisplayvideoV4::BulkCreateAdAssetsRequest] bulk_create_ad_assets_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::BulkCreateAdAssetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::BulkCreateAdAssetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_create_ad_assets(advertiser_id, bulk_create_ad_assets_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v4/advertisers/{+advertiserId}/adAssets:bulkCreate', options)
+          command.request_representation = Google::Apis::DisplayvideoV4::BulkCreateAdAssetsRequest::Representation
+          command.request_object = bulk_create_ad_assets_request_object
+          command.response_representation = Google::Apis::DisplayvideoV4::BulkCreateAdAssetsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::BulkCreateAdAssetsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create a video asset for Ad. Only supports youtube video assets for now.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser this ad asset belongs to.
+        # @param [Google::Apis::DisplayvideoV4::CreateAdAssetRequest] create_ad_asset_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::AdAsset] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::AdAsset]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_ad_asset(advertiser_id, create_ad_asset_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v4/advertisers/{+advertiserId}/adAssets', options)
+          command.request_representation = Google::Apis::DisplayvideoV4::CreateAdAssetRequest::Representation
+          command.request_object = create_ad_asset_request_object
+          command.response_representation = Google::Apis::DisplayvideoV4::AdAsset::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::AdAsset
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get an ad asset by ad asset ID. Only supports youtube video assets.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser this ad asset belongs to.
+        # @param [Fixnum] ad_asset_id
+        #   Required. The ID of the ad asset to fetch.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::AdAsset] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::AdAsset]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_advertiser_ad_asset(advertiser_id, ad_asset_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v4/advertisers/{+advertiserId}/adAssets/{+adAssetId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV4::AdAsset::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::AdAsset
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['adAssetId'] = ad_asset_id unless ad_asset_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List ad assets by advertiser ID. Only supports youtube video ad assets.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser to list assets for.
+        # @param [String] filter
+        #   Optional. Filter expression to restrict the ad assets to return. The supported
+        #   fields are: * `youtubeVideoAsset.youtubeVideoId` * `entityStatus` Examples: * `
+        #   entityStatus=ENTITY_STATUS_ACTIVE`
+        # @param [String] order_by
+        #   Optional. Field by which to sort the list. Acceptable values are: * `
+        #   entityStatus` * `youtubeVideoAsset.youtubeVideoId` * `adAssetId` (default) The
+        #   default sorting order is ascending. To specify descending order for a field, a
+        #   suffix "desc" should be added to the field name. Example: `assetId desc`.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Must be between `1` and `5000`. If unspecified
+        #   will default to `5000`. Returns error code `INVALID_ARGUMENT` if an invalid
+        #   value is specified.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        #   Typically, this is the value of next_page_token returned from the previous
+        #   call to `ListAssets` method. If not specified, the first page of results will
+        #   be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::ListAdAssetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::ListAdAssetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_advertiser_ad_assets(advertiser_id, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v4/advertisers/{+advertiserId}/adAssets', options)
+          command.response_representation = Google::Apis::DisplayvideoV4::ListAdAssetsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::ListAdAssetsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Uploads an ad asset. Returns the ID of the newly uploaded ad asset if
+        # successful.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser this ad asset belongs to.
+        # @param [Google::Apis::DisplayvideoV4::UploadAdAssetRequest] upload_ad_asset_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [String] content_type
+        #   Content type of the uploaded content.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::UploadAdAssetResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::UploadAdAssetResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_ad_asset(advertiser_id, upload_ad_asset_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+          if upload_source.nil?
+            command = make_simple_command(:post, 'v4/advertisers/{+advertiserId}/adAssets:uploadAdAsset', options)
+          else
+            command = make_upload_command(:post, 'v4/advertisers/{+advertiserId}/adAssets:uploadAdAsset', options)
+            command.upload_source = upload_source
+            command.upload_content_type = content_type
+          end
+          command.request_representation = Google::Apis::DisplayvideoV4::UploadAdAssetRequest::Representation
+          command.request_object = upload_ad_asset_request_object
+          command.response_representation = Google::Apis::DisplayvideoV4::UploadAdAssetResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::UploadAdAssetResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets an ad group ad.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser this ad group ad belongs to.
@@ -749,6 +944,151 @@ module Google
           command.params['adGroupId'] = ad_group_id unless ad_group_id.nil?
           command.params['targetingType'] = targeting_type unless targeting_type.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new association between an entity (line item or ad group) and a
+        # YouTube asset. Returns the newly created association if successful.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser this request is for.
+        # @param [Fixnum] ad_group_id
+        #   The unique ID of the ad group linked.
+        # @param [String] youtube_asset_type
+        #   Required. The type of the linked YouTube asset in the association.
+        # @param [Google::Apis::DisplayvideoV4::YoutubeAssetAssociation] youtube_asset_association_object
+        # @param [Fixnum] linked_entity_line_item_id
+        #   The unique ID of the line item linked.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::YoutubeAssetAssociation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::YoutubeAssetAssociation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_advertiser_ad_group_youtube_asset_type_youtube_asset_association(advertiser_id, ad_group_id, youtube_asset_type, youtube_asset_association_object = nil, linked_entity_line_item_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations', options)
+          command.request_representation = Google::Apis::DisplayvideoV4::YoutubeAssetAssociation::Representation
+          command.request_object = youtube_asset_association_object
+          command.response_representation = Google::Apis::DisplayvideoV4::YoutubeAssetAssociation::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::YoutubeAssetAssociation
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['adGroupId'] = ad_group_id unless ad_group_id.nil?
+          command.params['youtubeAssetType'] = youtube_asset_type unless youtube_asset_type.nil?
+          command.query['linkedEntity.lineItemId'] = linked_entity_line_item_id unless linked_entity_line_item_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing association between an entity (line item or ad group) and
+        # a YouTube asset.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser this request is for.
+        # @param [Fixnum] ad_group_id
+        #   The unique ID of the ad group linked.
+        # @param [String] youtube_asset_type
+        #   Required. The YouTube asset type this request is for.
+        # @param [Fixnum] youtube_asset_association_id
+        #   Required. The ID of the YouTube asset in the association. For location
+        #   associations: This should be the ID of the asset set linked, or 0 if the
+        #   association stands for location asset is disabled. For affiliate location
+        #   associations: This should be the ID of the asset set linked, or 0 if the
+        #   association stands for affiliate location asset is disabled. For sitelink
+        #   associations: This should be the ID of the sitelink asset linked.
+        # @param [Fixnum] linked_entity_line_item_id
+        #   The unique ID of the line item linked.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_advertiser_ad_group_youtube_asset_type_youtube_asset_association(advertiser_id, ad_group_id, youtube_asset_type, youtube_asset_association_id, linked_entity_line_item_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations/{+youtubeAssetAssociationId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV4::Empty::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::Empty
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['adGroupId'] = ad_group_id unless ad_group_id.nil?
+          command.params['youtubeAssetType'] = youtube_asset_type unless youtube_asset_type.nil?
+          command.params['youtubeAssetAssociationId'] = youtube_asset_association_id unless youtube_asset_association_id.nil?
+          command.query['linkedEntity.lineItemId'] = linked_entity_line_item_id unless linked_entity_line_item_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the YouTube asset associations for given resource.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser this request is for.
+        # @param [Fixnum] ad_group_id
+        #   The unique ID of the ad group linked.
+        # @param [String] youtube_asset_type
+        #   Required. The type of YouTube asset in the association.
+        # @param [Fixnum] linked_entity_line_item_id
+        #   The unique ID of the line item linked.
+        # @param [String] order_by
+        #   Optional. Field by which to sort the list. The only acceptable values are: `
+        #   linkedYoutubeAsset.locationAssetFilter.assetSetId`, `linkedYoutubeAsset.
+        #   affiliateLocationAssetFilter.assetSetId`, `linkedYoutubeAsset.sitelinkAsset.
+        #   assetId` The default sorting order is ascending. To specify descending order
+        #   for a field, a suffix " desc" should be added to the field name. Example: `
+        #   linkedYoutubeAsset.sitelinkAsset.assetId desc`.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Must be between `1` and `10000`. If unspecified
+        #   will default to `100`.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::ListYoutubeAssetAssociationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::ListYoutubeAssetAssociationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_advertiser_ad_group_youtube_asset_type_youtube_asset_associations(advertiser_id, ad_group_id, youtube_asset_type, linked_entity_line_item_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations', options)
+          command.response_representation = Google::Apis::DisplayvideoV4::ListYoutubeAssetAssociationsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::ListYoutubeAssetAssociationsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['adGroupId'] = ad_group_id unless ad_group_id.nil?
+          command.params['youtubeAssetType'] = youtube_asset_type unless youtube_asset_type.nil?
+          command.query['linkedEntity.lineItemId'] = linked_entity_line_item_id unless linked_entity_line_item_id.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -3205,6 +3545,151 @@ module Google
           command.params['lineItemId'] = line_item_id unless line_item_id.nil?
           command.params['targetingType'] = targeting_type unless targeting_type.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new association between an entity (line item or ad group) and a
+        # YouTube asset. Returns the newly created association if successful.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser this request is for.
+        # @param [Fixnum] line_item_id
+        #   The unique ID of the line item linked.
+        # @param [String] youtube_asset_type
+        #   Required. The type of the linked YouTube asset in the association.
+        # @param [Google::Apis::DisplayvideoV4::YoutubeAssetAssociation] youtube_asset_association_object
+        # @param [Fixnum] linked_entity_ad_group_id
+        #   The unique ID of the ad group linked.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::YoutubeAssetAssociation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::YoutubeAssetAssociation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_advertiser_line_item_youtube_asset_type_youtube_asset_association(advertiser_id, line_item_id, youtube_asset_type, youtube_asset_association_object = nil, linked_entity_ad_group_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations', options)
+          command.request_representation = Google::Apis::DisplayvideoV4::YoutubeAssetAssociation::Representation
+          command.request_object = youtube_asset_association_object
+          command.response_representation = Google::Apis::DisplayvideoV4::YoutubeAssetAssociation::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::YoutubeAssetAssociation
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['lineItemId'] = line_item_id unless line_item_id.nil?
+          command.params['youtubeAssetType'] = youtube_asset_type unless youtube_asset_type.nil?
+          command.query['linkedEntity.adGroupId'] = linked_entity_ad_group_id unless linked_entity_ad_group_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing association between an entity (line item or ad group) and
+        # a YouTube asset.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser this request is for.
+        # @param [Fixnum] line_item_id
+        #   The unique ID of the line item linked.
+        # @param [String] youtube_asset_type
+        #   Required. The YouTube asset type this request is for.
+        # @param [Fixnum] youtube_asset_association_id
+        #   Required. The ID of the YouTube asset in the association. For location
+        #   associations: This should be the ID of the asset set linked, or 0 if the
+        #   association stands for location asset is disabled. For affiliate location
+        #   associations: This should be the ID of the asset set linked, or 0 if the
+        #   association stands for affiliate location asset is disabled. For sitelink
+        #   associations: This should be the ID of the sitelink asset linked.
+        # @param [Fixnum] linked_entity_ad_group_id
+        #   The unique ID of the ad group linked.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_advertiser_line_item_youtube_asset_type_youtube_asset_association(advertiser_id, line_item_id, youtube_asset_type, youtube_asset_association_id, linked_entity_ad_group_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations/{+youtubeAssetAssociationId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV4::Empty::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::Empty
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['lineItemId'] = line_item_id unless line_item_id.nil?
+          command.params['youtubeAssetType'] = youtube_asset_type unless youtube_asset_type.nil?
+          command.params['youtubeAssetAssociationId'] = youtube_asset_association_id unless youtube_asset_association_id.nil?
+          command.query['linkedEntity.adGroupId'] = linked_entity_ad_group_id unless linked_entity_ad_group_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the YouTube asset associations for given resource.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser this request is for.
+        # @param [Fixnum] line_item_id
+        #   The unique ID of the line item linked.
+        # @param [String] youtube_asset_type
+        #   Required. The type of YouTube asset in the association.
+        # @param [Fixnum] linked_entity_ad_group_id
+        #   The unique ID of the ad group linked.
+        # @param [String] order_by
+        #   Optional. Field by which to sort the list. The only acceptable values are: `
+        #   linkedYoutubeAsset.locationAssetFilter.assetSetId`, `linkedYoutubeAsset.
+        #   affiliateLocationAssetFilter.assetSetId`, `linkedYoutubeAsset.sitelinkAsset.
+        #   assetId` The default sorting order is ascending. To specify descending order
+        #   for a field, a suffix " desc" should be added to the field name. Example: `
+        #   linkedYoutubeAsset.sitelinkAsset.assetId desc`.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Must be between `1` and `10000`. If unspecified
+        #   will default to `100`.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::ListYoutubeAssetAssociationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::ListYoutubeAssetAssociationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_advertiser_line_item_youtube_asset_type_youtube_asset_associations(advertiser_id, line_item_id, youtube_asset_type, linked_entity_ad_group_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v4/advertisers/{+advertiserId}/lineItems/{+lineItemId}/youtubeAssetTypes/{+youtubeAssetType}/youtubeAssetAssociations', options)
+          command.response_representation = Google::Apis::DisplayvideoV4::ListYoutubeAssetAssociationsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::ListYoutubeAssetAssociationsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['lineItemId'] = line_item_id unless line_item_id.nil?
+          command.params['youtubeAssetType'] = youtube_asset_type unless youtube_asset_type.nil?
+          command.query['linkedEntity.adGroupId'] = linked_entity_ad_group_id unless linked_entity_ad_group_id.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?

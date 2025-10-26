@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +47,138 @@ module Google
       end
       
       class AdGroupAssignedTargetingOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyCriterionRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicAppealInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicConstraintAdPolicyCountryConstraintList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicConstraintAdPolicyResellerConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicEvidence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicEvidenceCounterfeit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicEvidenceDestinationMismatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicEvidenceDestinationNotWorking
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicEvidenceDestinationTextList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicEvidenceLegalRemoval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicEvidenceLegalRemovalDmca
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicEvidenceLegalRemovalLocalLegal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicEvidenceRegionalRequirements
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicEvidenceTextList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicEvidenceTrademark
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdPolicyTopicEvidenceWebsiteList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -293,6 +431,18 @@ module Google
       end
       
       class BudgetSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkCreateAdAssetsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkCreateAdAssetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -653,6 +803,12 @@ module Google
       end
       
       class CounterEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateAdAssetRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1270,6 +1426,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAdAssetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAdGroupAdsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1475,6 +1637,12 @@ module Google
       end
       
       class ListUsersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListYoutubeAssetAssociationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1948,6 +2116,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UploadAdAssetRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadAdAssetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UrlAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2044,7 +2224,61 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class YoutubeAssetAssociation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeAssetAssociationAffiliateLocationAssetFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeAssetAssociationLinkedYouTubeAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeAssetAssociationLocationAssetFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeAssetAssociationSitelinkAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class YoutubeChannelAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YoutubeVideoAsset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2073,6 +2307,18 @@ module Google
         end
       end
       
+      class AdAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_asset_id, :numeric_string => true, as: 'adAssetId'
+          property :ad_asset_type, as: 'adAssetType'
+          property :entity_status, as: 'entityStatus'
+          property :name, as: 'name'
+          property :youtube_video_asset, as: 'youtubeVideoAsset', class: Google::Apis::DisplayvideoV4::YoutubeVideoAsset, decorator: Google::Apis::DisplayvideoV4::YoutubeVideoAsset::Representation
+      
+        end
+      end
+      
       class AdGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2097,6 +2343,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_group_ad_id, :numeric_string => true, as: 'adGroupAdId'
           property :ad_group_id, :numeric_string => true, as: 'adGroupId'
+          property :ad_policy, as: 'adPolicy', class: Google::Apis::DisplayvideoV4::AdPolicy, decorator: Google::Apis::DisplayvideoV4::AdPolicy::Representation
+      
           collection :ad_urls, as: 'adUrls', class: Google::Apis::DisplayvideoV4::AdUrl, decorator: Google::Apis::DisplayvideoV4::AdUrl::Representation
       
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
@@ -2128,6 +2376,223 @@ module Google
           property :ad_group_id, :numeric_string => true, as: 'adGroupId'
           property :assigned_targeting_option, as: 'assignedTargetingOption', class: Google::Apis::DisplayvideoV4::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV4::AssignedTargetingOption::Representation
       
+        end
+      end
+      
+      class AdPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_policy_approval_status, as: 'adPolicyApprovalStatus'
+          property :ad_policy_review_status, as: 'adPolicyReviewStatus'
+          collection :ad_policy_topic_entry, as: 'adPolicyTopicEntry', class: Google::Apis::DisplayvideoV4::AdPolicyTopicEntry, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicEntry::Representation
+      
+        end
+      end
+      
+      class AdPolicyCriterionRestriction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country_criterion_id, :numeric_string => true, as: 'countryCriterionId'
+          property :country_label, as: 'countryLabel'
+        end
+      end
+      
+      class AdPolicyTopicAppealInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :appeal_form_link, as: 'appealFormLink'
+          property :appeal_type, as: 'appealType'
+        end
+      end
+      
+      class AdPolicyTopicConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_domain_mismatch_country_list, as: 'certificateDomainMismatchCountryList', class: Google::Apis::DisplayvideoV4::AdPolicyTopicConstraintAdPolicyCountryConstraintList, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicConstraintAdPolicyCountryConstraintList::Representation
+      
+          property :certificate_missing_country_list, as: 'certificateMissingCountryList', class: Google::Apis::DisplayvideoV4::AdPolicyTopicConstraintAdPolicyCountryConstraintList, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicConstraintAdPolicyCountryConstraintList::Representation
+      
+          property :country_constraint, as: 'countryConstraint', class: Google::Apis::DisplayvideoV4::AdPolicyTopicConstraintAdPolicyCountryConstraintList, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicConstraintAdPolicyCountryConstraintList::Representation
+      
+          property :global_certificate_domain_mismatch, as: 'globalCertificateDomainMismatch', class: Google::Apis::DisplayvideoV4::AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint::Representation
+      
+          property :global_certificate_missing, as: 'globalCertificateMissing', class: Google::Apis::DisplayvideoV4::AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint::Representation
+      
+          property :request_certificate_form_link, as: 'requestCertificateFormLink'
+          property :reseller_constraint, as: 'resellerConstraint', class: Google::Apis::DisplayvideoV4::AdPolicyTopicConstraintAdPolicyResellerConstraint, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicConstraintAdPolicyResellerConstraint::Representation
+      
+        end
+      end
+      
+      class AdPolicyTopicConstraintAdPolicyCountryConstraintList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :countries, as: 'countries', class: Google::Apis::DisplayvideoV4::AdPolicyCriterionRestriction, decorator: Google::Apis::DisplayvideoV4::AdPolicyCriterionRestriction::Representation
+      
+        end
+      end
+      
+      class AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AdPolicyTopicConstraintAdPolicyResellerConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AdPolicyTopicEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :appeal_info, as: 'appealInfo', class: Google::Apis::DisplayvideoV4::AdPolicyTopicAppealInfo, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicAppealInfo::Representation
+      
+          property :help_center_link, as: 'helpCenterLink'
+          property :policy_decision_type, as: 'policyDecisionType'
+          property :policy_enforcement_means, as: 'policyEnforcementMeans'
+          property :policy_label, as: 'policyLabel'
+          property :policy_topic, as: 'policyTopic'
+          collection :policy_topic_constraints, as: 'policyTopicConstraints', class: Google::Apis::DisplayvideoV4::AdPolicyTopicConstraint, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicConstraint::Representation
+      
+          property :policy_topic_description, as: 'policyTopicDescription'
+          collection :policy_topic_evidences, as: 'policyTopicEvidences', class: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidence, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidence::Representation
+      
+          property :policy_topic_type, as: 'policyTopicType'
+        end
+      end
+      
+      class AdPolicyTopicEvidence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :counterfeit, as: 'counterfeit', class: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceCounterfeit, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceCounterfeit::Representation
+      
+          property :destination_mismatch, as: 'destinationMismatch', class: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceDestinationMismatch, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceDestinationMismatch::Representation
+      
+          property :destination_not_working, as: 'destinationNotWorking', class: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceDestinationNotWorking, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceDestinationNotWorking::Representation
+      
+          property :destination_text_list, as: 'destinationTextList', class: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceDestinationTextList, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceDestinationTextList::Representation
+      
+          property :http_code, as: 'httpCode'
+          property :language_code, as: 'languageCode'
+          property :legal_removal, as: 'legalRemoval', class: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceLegalRemoval, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceLegalRemoval::Representation
+      
+          property :regional_requirements, as: 'regionalRequirements', class: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceRegionalRequirements, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceRegionalRequirements::Representation
+      
+          property :text_list, as: 'textList', class: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceTextList, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceTextList::Representation
+      
+          property :trademark, as: 'trademark', class: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceTrademark, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceTrademark::Representation
+      
+          property :website_list, as: 'websiteList', class: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceWebsiteList, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceWebsiteList::Representation
+      
+        end
+      end
+      
+      class AdPolicyTopicEvidenceCounterfeit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :owners, as: 'owners'
+        end
+      end
+      
+      class AdPolicyTopicEvidenceDestinationMismatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :uri_types, as: 'uriTypes'
+        end
+      end
+      
+      class AdPolicyTopicEvidenceDestinationNotWorking
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device, as: 'device'
+          property :dns_error_type, as: 'dnsErrorType'
+          property :expanded_uri, as: 'expandedUri'
+          property :http_error_code, :numeric_string => true, as: 'httpErrorCode'
+          property :last_checked_time, as: 'lastCheckedTime'
+        end
+      end
+      
+      class AdPolicyTopicEvidenceDestinationTextList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :destination_texts, as: 'destinationTexts'
+        end
+      end
+      
+      class AdPolicyTopicEvidenceLegalRemoval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complaint_type, as: 'complaintType'
+          collection :country_restrictions, as: 'countryRestrictions', class: Google::Apis::DisplayvideoV4::AdPolicyCriterionRestriction, decorator: Google::Apis::DisplayvideoV4::AdPolicyCriterionRestriction::Representation
+      
+          property :dmca, as: 'dmca', class: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceLegalRemovalDmca, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceLegalRemovalDmca::Representation
+      
+          property :local_legal, as: 'localLegal', class: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceLegalRemovalLocalLegal, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceLegalRemovalLocalLegal::Representation
+      
+          collection :restricted_uris, as: 'restrictedUris'
+        end
+      end
+      
+      class AdPolicyTopicEvidenceLegalRemovalDmca
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complainant, as: 'complainant'
+        end
+      end
+      
+      class AdPolicyTopicEvidenceLegalRemovalLocalLegal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :law_type, as: 'lawType'
+        end
+      end
+      
+      class AdPolicyTopicEvidenceRegionalRequirements
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :regional_requirements_entries, as: 'regionalRequirementsEntries', class: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry, decorator: Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry::Representation
+      
+        end
+      end
+      
+      class AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :country_restrictions, as: 'countryRestrictions', class: Google::Apis::DisplayvideoV4::AdPolicyCriterionRestriction, decorator: Google::Apis::DisplayvideoV4::AdPolicyCriterionRestriction::Representation
+      
+          property :legal_policy, as: 'legalPolicy'
+        end
+      end
+      
+      class AdPolicyTopicEvidenceTextList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :texts, as: 'texts'
+        end
+      end
+      
+      class AdPolicyTopicEvidenceTrademark
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :country_restrictions, as: 'countryRestrictions', class: Google::Apis::DisplayvideoV4::AdPolicyCriterionRestriction, decorator: Google::Apis::DisplayvideoV4::AdPolicyCriterionRestriction::Representation
+      
+          property :owner, as: 'owner'
+          property :term, as: 'term'
+        end
+      end
+      
+      class AdPolicyTopicEvidenceWebsiteList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :websites, as: 'websites'
         end
       end
       
@@ -2664,6 +3129,22 @@ module Google
       
           property :tax_amount_micros, :numeric_string => true, as: 'taxAmountMicros'
           property :total_amount_micros, :numeric_string => true, as: 'totalAmountMicros'
+        end
+      end
+      
+      class BulkCreateAdAssetsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ad_assets, as: 'adAssets', class: Google::Apis::DisplayvideoV4::AdAsset, decorator: Google::Apis::DisplayvideoV4::AdAsset::Representation
+      
+        end
+      end
+      
+      class BulkCreateAdAssetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ad_assets, as: 'adAssets', class: Google::Apis::DisplayvideoV4::AdAsset, decorator: Google::Apis::DisplayvideoV4::AdAsset::Representation
+      
         end
       end
       
@@ -3220,6 +3701,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :reporting_name, as: 'reportingName'
+        end
+      end
+      
+      class CreateAdAssetRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_asset, as: 'adAsset', class: Google::Apis::DisplayvideoV4::AdAsset, decorator: Google::Apis::DisplayvideoV4::AdAsset::Representation
+      
         end
       end
       
@@ -4336,6 +4825,15 @@ module Google
         end
       end
       
+      class ListAdAssetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ad_assets, as: 'adAssets', class: Google::Apis::DisplayvideoV4::AdAsset, decorator: Google::Apis::DisplayvideoV4::AdAsset::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListAdGroupAdsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4647,6 +5145,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :users, as: 'users', class: Google::Apis::DisplayvideoV4::User, decorator: Google::Apis::DisplayvideoV4::User::Representation
+      
+        end
+      end
+      
+      class ListYoutubeAssetAssociationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :youtube_asset_associations, as: 'youtubeAssetAssociations', class: Google::Apis::DisplayvideoV4::YoutubeAssetAssociation, decorator: Google::Apis::DisplayvideoV4::YoutubeAssetAssociation::Representation
       
         end
       end
@@ -5439,6 +5946,22 @@ module Google
         end
       end
       
+      class UploadAdAssetRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_asset_type, as: 'adAssetType'
+          property :filename, as: 'filename'
+        end
+      end
+      
+      class UploadAdAssetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_asset, as: 'adAsset', class: Google::Apis::DisplayvideoV4::AdAsset, decorator: Google::Apis::DisplayvideoV4::AdAsset::Representation
+      
+        end
+      end
+      
       class UrlAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5605,11 +6128,91 @@ module Google
         end
       end
       
+      class YoutubeAssetAssociation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :linked_youtube_asset, as: 'linkedYoutubeAsset', class: Google::Apis::DisplayvideoV4::YoutubeAssetAssociationLinkedYouTubeAsset, decorator: Google::Apis::DisplayvideoV4::YoutubeAssetAssociationLinkedYouTubeAsset::Representation
+      
+          property :name, as: 'name'
+          property :youtube_asset_type, as: 'youtubeAssetType'
+        end
+      end
+      
+      class YoutubeAssetAssociationAffiliateLocationAssetFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :affiliate_location_matching_function, as: 'affiliateLocationMatchingFunction', class: Google::Apis::DisplayvideoV4::YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction, decorator: Google::Apis::DisplayvideoV4::YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction::Representation
+      
+          property :affiliate_location_matching_type, as: 'affiliateLocationMatchingType'
+          property :asset_set_id, :numeric_string => true, as: 'assetSetId'
+        end
+      end
+      
+      class YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chain_id, :numeric_string => true, as: 'chainId'
+        end
+      end
+      
+      class YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :chains, as: 'chains', class: Google::Apis::DisplayvideoV4::YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain, decorator: Google::Apis::DisplayvideoV4::YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain::Representation
+      
+        end
+      end
+      
+      class YoutubeAssetAssociationLinkedYouTubeAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :affiliate_location_asset_filter, as: 'affiliateLocationAssetFilter', class: Google::Apis::DisplayvideoV4::YoutubeAssetAssociationAffiliateLocationAssetFilter, decorator: Google::Apis::DisplayvideoV4::YoutubeAssetAssociationAffiliateLocationAssetFilter::Representation
+      
+          property :location_asset_filter, as: 'locationAssetFilter', class: Google::Apis::DisplayvideoV4::YoutubeAssetAssociationLocationAssetFilter, decorator: Google::Apis::DisplayvideoV4::YoutubeAssetAssociationLocationAssetFilter::Representation
+      
+          property :sitelink_asset, as: 'sitelinkAsset', class: Google::Apis::DisplayvideoV4::YoutubeAssetAssociationSitelinkAsset, decorator: Google::Apis::DisplayvideoV4::YoutubeAssetAssociationSitelinkAsset::Representation
+      
+        end
+      end
+      
+      class YoutubeAssetAssociationLocationAssetFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_set_id, :numeric_string => true, as: 'assetSetId'
+          property :location_matching_function, as: 'locationMatchingFunction', class: Google::Apis::DisplayvideoV4::YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction, decorator: Google::Apis::DisplayvideoV4::YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction::Representation
+      
+          property :location_matching_type, as: 'locationMatchingType'
+        end
+      end
+      
+      class YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :business, as: 'business'
+          collection :labels, as: 'labels'
+          collection :location_asset_ids, as: 'locationAssetIds'
+        end
+      end
+      
+      class YoutubeAssetAssociationSitelinkAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_id, :numeric_string => true, as: 'assetId'
+        end
+      end
+      
       class YoutubeChannelAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel_id, as: 'channelId'
           property :negative, as: 'negative'
+        end
+      end
+      
+      class YoutubeVideoAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :youtube_video_id, as: 'youtubeVideoId'
         end
       end
       
