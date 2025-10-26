@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupGcpResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -370,6 +376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FetchBackupsForResourceTypeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FetchDataSourceReferencesForResourceTypeResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -479,6 +491,12 @@ module Google
       end
       
       class ListBackupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDataSourceReferencesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -882,6 +900,8 @@ module Google
           property :expire_time, as: 'expireTime'
           property :gcp_backup_plan_info, as: 'gcpBackupPlanInfo', class: Google::Apis::BackupdrV1::GcpBackupPlanInfo, decorator: Google::Apis::BackupdrV1::GcpBackupPlanInfo::Representation
       
+          property :gcp_resource, as: 'gcpResource', class: Google::Apis::BackupdrV1::BackupGcpResource, decorator: Google::Apis::BackupdrV1::BackupGcpResource::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :resource_size_bytes, :numeric_string => true, as: 'resourceSizeBytes'
@@ -985,6 +1005,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :first_party_management_uri, as: 'firstPartyManagementUri'
           property :third_party_management_uri, as: 'thirdPartyManagementUri'
+        end
+      end
+      
+      class BackupGcpResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcp_resourcename, as: 'gcpResourcename'
+          property :location, as: 'location'
+          property :type, as: 'type'
         end
       end
       
@@ -1129,6 +1158,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :database_installed_version, as: 'databaseInstalledVersion'
           property :final_backup, as: 'finalBackup'
+          property :instance_create_time, as: 'instanceCreateTime'
+          property :instance_delete_time, as: 'instanceDeleteTime'
           property :instance_tier, as: 'instanceTier'
           property :source_instance, as: 'sourceInstance'
         end
@@ -1352,6 +1383,7 @@ module Google
           property :data_source_gcp_resource_info, as: 'dataSourceGcpResourceInfo', class: Google::Apis::BackupdrV1::DataSourceGcpResourceInfo, decorator: Google::Apis::BackupdrV1::DataSourceGcpResourceInfo::Representation
       
           property :name, as: 'name'
+          property :total_stored_bytes, :numeric_string => true, as: 'totalStoredBytes'
         end
       end
       
@@ -1474,6 +1506,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :backup_plan_associations, as: 'backupPlanAssociations', class: Google::Apis::BackupdrV1::BackupPlanAssociation, decorator: Google::Apis::BackupdrV1::BackupPlanAssociation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class FetchBackupsForResourceTypeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backups, as: 'backups', class: Google::Apis::BackupdrV1::Backup, decorator: Google::Apis::BackupdrV1::Backup::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -1652,6 +1693,15 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListDataSourceReferencesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_source_references, as: 'dataSourceReferences', class: Google::Apis::BackupdrV1::DataSourceReference, decorator: Google::Apis::BackupdrV1::DataSourceReference::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

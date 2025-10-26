@@ -580,6 +580,11 @@ module Google
         # @return [Google::Apis::BackupdrV1::GcpBackupPlanInfo]
         attr_accessor :gcp_backup_plan_info
       
+        # Minimum details to identify a Google Cloud resource for a backup.
+        # Corresponds to the JSON property `gcpResource`
+        # @return [Google::Apis::BackupdrV1::BackupGcpResource]
+        attr_accessor :gcp_resource
+      
         # Optional. Resource labels to represent user provided metadata. No labels
         # currently defined.
         # Corresponds to the JSON property `labels`
@@ -647,6 +652,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @gcp_backup_plan_info = args[:gcp_backup_plan_info] if args.key?(:gcp_backup_plan_info)
+          @gcp_resource = args[:gcp_resource] if args.key?(:gcp_resource)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @resource_size_bytes = args[:resource_size_bytes] if args.key?(:resource_size_bytes)
@@ -1022,6 +1028,38 @@ module Google
         def update!(**args)
           @first_party_management_uri = args[:first_party_management_uri] if args.key?(:first_party_management_uri)
           @third_party_management_uri = args[:third_party_management_uri] if args.key?(:third_party_management_uri)
+        end
+      end
+      
+      # Minimum details to identify a Google Cloud resource for a backup.
+      class BackupGcpResource
+        include Google::Apis::Core::Hashable
+      
+        # Name of the Google Cloud resource.
+        # Corresponds to the JSON property `gcpResourcename`
+        # @return [String]
+        attr_accessor :gcp_resourcename
+      
+        # Location of the resource: //"global"/"unspecified".
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Type of the resource. Use the Unified Resource Type, eg. compute.googleapis.
+        # com/Instance.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcp_resourcename = args[:gcp_resourcename] if args.key?(:gcp_resourcename)
+          @location = args[:location] if args.key?(:location)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1703,6 +1741,16 @@ module Google
         attr_accessor :final_backup
         alias_method :final_backup?, :final_backup
       
+        # Output only. The instance creation timestamp.
+        # Corresponds to the JSON property `instanceCreateTime`
+        # @return [String]
+        attr_accessor :instance_create_time
+      
+        # Output only. The instance delete timestamp.
+        # Corresponds to the JSON property `instanceDeleteTime`
+        # @return [String]
+        attr_accessor :instance_delete_time
+      
         # Output only. The tier (or machine type) for this instance. Example: `db-custom-
         # 1-3840`
         # Corresponds to the JSON property `instanceTier`
@@ -1723,6 +1771,8 @@ module Google
         def update!(**args)
           @database_installed_version = args[:database_installed_version] if args.key?(:database_installed_version)
           @final_backup = args[:final_backup] if args.key?(:final_backup)
+          @instance_create_time = args[:instance_create_time] if args.key?(:instance_create_time)
+          @instance_delete_time = args[:instance_delete_time] if args.key?(:instance_delete_time)
           @instance_tier = args[:instance_tier] if args.key?(:instance_tier)
           @source_instance = args[:source_instance] if args.key?(:source_instance)
         end
@@ -2584,6 +2634,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Total size of the storage used by all backup resources for the
+        # referenced datasource.
+        # Corresponds to the JSON property `totalStoredBytes`
+        # @return [Fixnum]
+        attr_accessor :total_stored_bytes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2597,6 +2653,7 @@ module Google
           @data_source_backup_count = args[:data_source_backup_count] if args.key?(:data_source_backup_count)
           @data_source_gcp_resource_info = args[:data_source_gcp_resource_info] if args.key?(:data_source_gcp_resource_info)
           @name = args[:name] if args.key?(:name)
+          @total_stored_bytes = args[:total_stored_bytes] if args.key?(:total_stored_bytes)
         end
       end
       
@@ -3105,6 +3162,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup_plan_associations = args[:backup_plan_associations] if args.key?(:backup_plan_associations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for the FetchBackupsForResourceType method.
+      class FetchBackupsForResourceTypeResponse
+        include Google::Apis::Core::Hashable
+      
+        # The Backups from the specified parent.
+        # Corresponds to the JSON property `backups`
+        # @return [Array<Google::Apis::BackupdrV1::Backup>]
+        attr_accessor :backups
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backups = args[:backups] if args.key?(:backups)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -3757,6 +3840,32 @@ module Google
           @backups = args[:backups] if args.key?(:backups)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for the ListDataSourceReferences method.
+      class ListDataSourceReferencesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The DataSourceReferences from the specified parent.
+        # Corresponds to the JSON property `dataSourceReferences`
+        # @return [Array<Google::Apis::BackupdrV1::DataSourceReference>]
+        attr_accessor :data_source_references
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source_references = args[:data_source_references] if args.key?(:data_source_references)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
