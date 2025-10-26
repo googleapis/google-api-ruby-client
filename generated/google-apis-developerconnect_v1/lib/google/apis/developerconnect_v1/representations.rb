@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppHubService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppHubWorkload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +191,12 @@ module Google
       end
       
       class GoogleArtifactRegistry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRun
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -364,6 +376,15 @@ module Google
           property :provider_oauth_config, as: 'providerOauthConfig', class: Google::Apis::DeveloperconnectV1::ProviderOAuthConfig, decorator: Google::Apis::DeveloperconnectV1::ProviderOAuthConfig::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AppHubService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apphub_service, as: 'apphubService'
+          property :criticality, as: 'criticality'
+          property :environment, as: 'environment'
         end
       end
       
@@ -651,6 +672,13 @@ module Google
         end
       end
       
+      class GoogleCloudRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_uri, as: 'serviceUri'
+        end
+      end
+      
       class HttpBody
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -869,9 +897,13 @@ module Google
       class RuntimeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_hub_service, as: 'appHubService', class: Google::Apis::DeveloperconnectV1::AppHubService, decorator: Google::Apis::DeveloperconnectV1::AppHubService::Representation
+      
           property :app_hub_workload, as: 'appHubWorkload', class: Google::Apis::DeveloperconnectV1::AppHubWorkload, decorator: Google::Apis::DeveloperconnectV1::AppHubWorkload::Representation
       
           property :gke_workload, as: 'gkeWorkload', class: Google::Apis::DeveloperconnectV1::GkeWorkload, decorator: Google::Apis::DeveloperconnectV1::GkeWorkload::Representation
+      
+          property :google_cloud_run, as: 'googleCloudRun', class: Google::Apis::DeveloperconnectV1::GoogleCloudRun, decorator: Google::Apis::DeveloperconnectV1::GoogleCloudRun::Representation
       
           property :state, as: 'state'
           property :uri, as: 'uri'
