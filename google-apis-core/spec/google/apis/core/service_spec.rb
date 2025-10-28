@@ -301,7 +301,7 @@ RSpec.describe Google::Apis::Core::BaseService do
           .to_return(status: 404)
       end
       it 'should return false' do
-        expect(command).to be_falsey
+        expect(command).to be(false)
       end
     end
 
@@ -345,7 +345,7 @@ RSpec.describe Google::Apis::Core::BaseService do
           .to_return(status: 404)
       end
       it 'should return false' do
-        expect(command).to be_falsey
+        expect(command).to be(false)
       end
     end
   end
