@@ -225,7 +225,7 @@ module Google
           response = client.put(@upload_url, "", request_header)
           handle_resumable_upload_http_response_codes(response)
           if response.status.to_i == 404
-            logger.debug { sprintf("Failed to fetch upload session. Response: #{response.status.to_i} - #{response.body}") }
+            logger.debug { "Failed to fetch upload session. Response: #{response.status.to_i} - #{response.body}" }
             false
           end
         end
