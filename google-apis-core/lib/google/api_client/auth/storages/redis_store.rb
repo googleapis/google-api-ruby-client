@@ -37,6 +37,12 @@ module Google
 
       ##
       # Attempt to read in credentials from redis.
+      #
+      # @note Warning: This method is part of a deprecated credentials flow.
+      #   Providing an unvalidated credential configuration to Google APIs can
+      #   compromise the security of your systems and data. Use
+      #   google-auth-library-ruby instead.
+      #
       # @return [Hash]
       def load_credentials
         credentials = redis.get redis_credentials_key
