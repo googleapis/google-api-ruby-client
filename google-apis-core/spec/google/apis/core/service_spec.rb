@@ -287,6 +287,24 @@ RSpec.describe Google::Apis::Core::BaseService do
         expect(a_request(:put, upload_url)).to have_been_made
       end
     end
+    context 'Should return false if wrong upload id is provided' do
+      let(:upload_id) { 'wrong_id' }
+      let(:command) do
+        service.send(
+          :restart_resumable_upload,
+          bucket_name, file, upload_id,
+          options: { upload_chunk_size: 11}
+        )
+      end
+      before(:example) do
+        stub_request(:put, upload_url)
+          .to_return(status: 404)
+      end
+      it 'should return false' do
+        expect(command).to be(false)
+      end
+    end
+
   end
 
   context 'delete resumable upload with upload_id' do
@@ -311,6 +329,24 @@ RSpec.describe Google::Apis::Core::BaseService do
       command
       expect(a_request(:delete, upload_url)).to have_been_made
       expect(command).to be_truthy
+    end
+
+    context 'Should return false if wrong upload id is provided' do
+      let(:upload_id) { 'wrong_id' }
+      let(:command) do
+      service.send(
+        :delete_resumable_upload,
+        bucket_name, upload_id,
+        options: { upload_chunk_size: 11}
+      )
+    end
+      before(:example) do
+        stub_request(:delete, upload_url)
+          .to_return(status: 404)
+      end
+      it 'should return false' do
+        expect(command).to be(false)
+      end
     end
   end
 
