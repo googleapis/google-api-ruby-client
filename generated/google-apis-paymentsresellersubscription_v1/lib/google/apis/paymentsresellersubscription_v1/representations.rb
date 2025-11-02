@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IntentPayloadIntentOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListProductsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -513,6 +519,15 @@ module Google
       
           property :entitle_intent, as: 'entitleIntent', class: Google::Apis::PaymentsresellersubscriptionV1::EntitleSubscriptionIntent, decorator: Google::Apis::PaymentsresellersubscriptionV1::EntitleSubscriptionIntent::Representation
       
+          property :intent_options, as: 'intentOptions', class: Google::Apis::PaymentsresellersubscriptionV1::IntentPayloadIntentOptions, decorator: Google::Apis::PaymentsresellersubscriptionV1::IntentPayloadIntentOptions::Representation
+      
+        end
+      end
+      
+      class IntentPayloadIntentOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_offer_override, as: 'enableOfferOverride'
         end
       end
       

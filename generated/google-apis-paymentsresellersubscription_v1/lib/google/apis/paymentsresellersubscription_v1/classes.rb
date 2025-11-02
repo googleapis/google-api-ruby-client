@@ -641,6 +641,11 @@ module Google
         # @return [Google::Apis::PaymentsresellersubscriptionV1::EntitleSubscriptionIntent]
         attr_accessor :entitle_intent
       
+        # The options for the intent.
+        # Corresponds to the JSON property `intentOptions`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::IntentPayloadIntentOptions]
+        attr_accessor :intent_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -649,6 +654,29 @@ module Google
         def update!(**args)
           @create_intent = args[:create_intent] if args.key?(:create_intent)
           @entitle_intent = args[:entitle_intent] if args.key?(:entitle_intent)
+          @intent_options = args[:intent_options] if args.key?(:intent_options)
+        end
+      end
+      
+      # The options for the intent.
+      class IntentPayloadIntentOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, Google may use a different product and promotion id from
+        # the ones in the `create_intent` based on the user's eligibility. Only
+        # applicable for certain YouTube free trial offers.
+        # Corresponds to the JSON property `enableOfferOverride`
+        # @return [Boolean]
+        attr_accessor :enable_offer_override
+        alias_method :enable_offer_override?, :enable_offer_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_offer_override = args[:enable_offer_override] if args.key?(:enable_offer_override)
         end
       end
       
