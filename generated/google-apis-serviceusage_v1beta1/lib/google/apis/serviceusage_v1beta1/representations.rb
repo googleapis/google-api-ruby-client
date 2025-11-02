@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContentSecurityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContentSecurityProvider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -886,6 +892,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateContentSecurityPolicyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateMcpPolicyMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1222,6 +1234,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :content_security_providers, as: 'contentSecurityProviders', class: Google::Apis::ServiceusageV1beta1::ContentSecurityProvider, decorator: Google::Apis::ServiceusageV1beta1::ContentSecurityProvider::Representation
       
+        end
+      end
+      
+      class ContentSecurityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mcp_content_security, as: 'mcpContentSecurity', class: Google::Apis::ServiceusageV1beta1::ContentSecurity, decorator: Google::Apis::ServiceusageV1beta1::ContentSecurity::Representation
+      
+          property :name, as: 'name'
         end
       end
       
@@ -1673,7 +1694,6 @@ module Google
       class GoogleApiServiceusageV2betaConsumerPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          hash :annotations, as: 'annotations'
           property :create_time, as: 'createTime'
           collection :enable_rules, as: 'enableRules', class: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaEnableRule, decorator: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaEnableRule::Representation
       
@@ -1865,6 +1885,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ServiceusageV1beta1::Operation, decorator: Google::Apis::ServiceusageV1beta1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1927,8 +1948,6 @@ module Google
       class McpPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :content_security, as: 'contentSecurity', class: Google::Apis::ServiceusageV1beta1::ContentSecurity, decorator: Google::Apis::ServiceusageV1beta1::ContentSecurity::Representation
-      
           property :create_time, as: 'createTime'
           property :etag, as: 'etag'
           collection :mcp_enable_rules, as: 'mcpEnableRules', class: Google::Apis::ServiceusageV1beta1::McpEnableRule, decorator: Google::Apis::ServiceusageV1beta1::McpEnableRule::Representation
@@ -2376,6 +2395,12 @@ module Google
       end
       
       class UpdateConsumerPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UpdateContentSecurityPolicyMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
