@@ -913,10 +913,10 @@ module Google
         # Creates a Cloud SQL instance as a clone of the source instance. Using this
         # operation might cause your instance to restart.
         # @param [String] project
-        #   Project ID of the source as well as the clone Cloud SQL instance.
+        #   Required. Project ID of the source as well as the clone Cloud SQL instance.
         # @param [String] instance
-        #   The ID of the Cloud SQL instance to be cloned (source). This does not include
-        #   the project ID.
+        #   Required. The ID of the Cloud SQL instance to be cloned (source). This does
+        #   not include the project ID.
         # @param [Google::Apis::SqladminV1::InstancesCloneRequest] instances_clone_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
