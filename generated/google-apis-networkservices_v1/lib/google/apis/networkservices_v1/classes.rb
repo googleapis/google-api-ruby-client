@@ -2372,6 +2372,80 @@ module Google
         end
       end
       
+      # `LbEdgeExtension` is a resource that lets the extension service influence the
+      # selection of backend services and Cloud CDN cache keys by modifying request
+      # headers.
+      class LbEdgeExtension
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A human-readable description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. A set of ordered extension chains that contain the match conditions
+        # and extensions to execute. Match conditions for each extension chain are
+        # evaluated in sequence for a given request. The first extension chain that has
+        # a condition that matches the request is executed. Any subsequent extension
+        # chains do not execute. Limited to 5 extension chains per resource.
+        # Corresponds to the JSON property `extensionChains`
+        # @return [Array<Google::Apis::NetworkservicesV1::ExtensionChain>]
+        attr_accessor :extension_chains
+      
+        # Required. A list of references to the forwarding rules to which this service
+        # extension is attached. At least one forwarding rule is required. Only one `
+        # LbEdgeExtension` resource can be associated with a forwarding rule.
+        # Corresponds to the JSON property `forwardingRules`
+        # @return [Array<String>]
+        attr_accessor :forwarding_rules
+      
+        # Optional. Set of labels associated with the `LbEdgeExtension` resource. The
+        # format must comply with [the requirements for labels](https://cloud.google.com/
+        # compute/docs/labeling-resources#requirements) for Google Cloud resources.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. All forwarding rules referenced by this extension must share the
+        # same load balancing scheme. Supported values: `EXTERNAL_MANAGED`.
+        # Corresponds to the JSON property `loadBalancingScheme`
+        # @return [String]
+        attr_accessor :load_balancing_scheme
+      
+        # Required. Identifier. Name of the `LbEdgeExtension` resource in the following
+        # format: `projects/`project`/locations/`location`/lbEdgeExtensions/`
+        # lb_edge_extension``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @extension_chains = args[:extension_chains] if args.key?(:extension_chains)
+          @forwarding_rules = args[:forwarding_rules] if args.key?(:forwarding_rules)
+          @labels = args[:labels] if args.key?(:labels)
+          @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # `LbRouteExtension` is a resource that lets you control where traffic is routed
       # to for a given request.
       class LbRouteExtension
@@ -2761,6 +2835,37 @@ module Google
         end
       end
       
+      # Message for response to listing `LbEdgeExtension` resources.
+      class ListLbEdgeExtensionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of `LbEdgeExtension` resources.
+        # Corresponds to the JSON property `lbEdgeExtensions`
+        # @return [Array<Google::Apis::NetworkservicesV1::LbEdgeExtension>]
+        attr_accessor :lb_edge_extensions
+      
+        # A token identifying a page of results that the server returns.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lb_edge_extensions = args[:lb_edge_extensions] if args.key?(:lb_edge_extensions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Message for response to listing `LbRouteExtension` resources.
       class ListLbRouteExtensionsResponse
         include Google::Apis::Core::Hashable
@@ -2931,6 +3036,13 @@ module Google
         # @return [Array<Google::Apis::NetworkservicesV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2939,6 +3051,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
