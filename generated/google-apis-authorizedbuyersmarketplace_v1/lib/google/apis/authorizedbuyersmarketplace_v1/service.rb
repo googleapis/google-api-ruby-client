@@ -169,6 +169,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets the given finalized deal as ready to serve. By default, deals are set as
+        # ready to serve as soon as they're finalized. If you want to opt out of the
+        # default behavior, and manually indicate that deals are ready to serve, ask
+        # your Technical Account Manager to add you to the allowlist. If you choose to
+        # use this method, finalized deals belonging to the bidder and its child seats
+        # don't start serving until after you call `setReadyToServe`, and after the
+        # deals become active. For example, you can use this method to delay receiving
+        # bid requests until your creative is ready. In addition, bidders can use the
+        # URL path "/v1/bidders/`accountId`/finalizedDeals/`dealId`" to set ready to
+        # serve for the finalized deals belong to itself, its child seats and all their
+        # clients. This method only applies to programmatic guaranteed deals.
+        # @param [String] deal
+        #   Required. Format: `buyers/`accountId`/finalizedDeals/`dealId`` or `bidders/`
+        #   accountId`/finalizedDeals/`dealId``
+        # @param [Google::Apis::AuthorizedbuyersmarketplaceV1::SetReadyToServeRequest] set_ready_to_serve_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AuthorizedbuyersmarketplaceV1::FinalizedDeal] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1::FinalizedDeal]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_bidder_finalized_deal_ready_to_serve(deal, set_ready_to_serve_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+deal}:setReadyToServe', options)
+          command.request_representation = Google::Apis::AuthorizedbuyersmarketplaceV1::SetReadyToServeRequest::Representation
+          command.request_object = set_ready_to_serve_request_object
+          command.response_representation = Google::Apis::AuthorizedbuyersmarketplaceV1::FinalizedDeal::Representation
+          command.response_class = Google::Apis::AuthorizedbuyersmarketplaceV1::FinalizedDeal
+          command.params['deal'] = deal unless deal.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets an auction package given its name.
         # @param [String] name
         #   Required. Name of auction package to get. Format: `buyers/`accountId`/
@@ -1047,10 +1091,13 @@ module Google
         # use this method, finalized deals belonging to the bidder and its child seats
         # don't start serving until after you call `setReadyToServe`, and after the
         # deals become active. For example, you can use this method to delay receiving
-        # bid requests until your creative is ready. This method only applies to
-        # programmatic guaranteed deals.
+        # bid requests until your creative is ready. In addition, bidders can use the
+        # URL path "/v1/bidders/`accountId`/finalizedDeals/`dealId`" to set ready to
+        # serve for the finalized deals belong to itself, its child seats and all their
+        # clients. This method only applies to programmatic guaranteed deals.
         # @param [String] deal
-        #   Required. Format: `buyers/`accountId`/finalizedDeals/`dealId``
+        #   Required. Format: `buyers/`accountId`/finalizedDeals/`dealId`` or `bidders/`
+        #   accountId`/finalizedDeals/`dealId``
         # @param [Google::Apis::AuthorizedbuyersmarketplaceV1::SetReadyToServeRequest] set_ready_to_serve_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
