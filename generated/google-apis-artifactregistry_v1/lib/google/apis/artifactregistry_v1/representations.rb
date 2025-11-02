@@ -112,6 +112,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportArtifactMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportArtifactRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportArtifactResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportedFile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -822,6 +846,41 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ExportArtifactMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exported_files, as: 'exportedFiles', class: Google::Apis::ArtifactregistryV1::ExportedFile, decorator: Google::Apis::ArtifactregistryV1::ExportedFile::Representation
+      
+        end
+      end
+      
+      class ExportArtifactRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_path, as: 'gcsPath'
+          property :source_tag, as: 'sourceTag'
+          property :source_version, as: 'sourceVersion'
+        end
+      end
+      
+      class ExportArtifactResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exported_version, as: 'exportedVersion', class: Google::Apis::ArtifactregistryV1::Version, decorator: Google::Apis::ArtifactregistryV1::Version::Representation
+      
+        end
+      end
+      
+      class ExportedFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_object_path, as: 'gcsObjectPath'
+          collection :hashes, as: 'hashes', class: Google::Apis::ArtifactregistryV1::HashProp, decorator: Google::Apis::ArtifactregistryV1::HashProp::Representation
+      
+          property :name, as: 'name'
         end
       end
       
