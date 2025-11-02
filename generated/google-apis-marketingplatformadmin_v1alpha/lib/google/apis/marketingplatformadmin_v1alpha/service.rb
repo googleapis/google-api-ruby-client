@@ -55,6 +55,42 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Returns a list of clients managed by the sales partner organization. User
+        # needs to be an OrgAdmin/BillingAdmin on the sales partner organization in
+        # order to view the end clients.
+        # @param [String] organization
+        #   Required. The name of the sales partner organization. Format: organizations/`
+        #   org_id`
+        # @param [Google::Apis::MarketingplatformadminV1alpha::FindSalesPartnerManagedClientsRequest] find_sales_partner_managed_clients_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MarketingplatformadminV1alpha::FindSalesPartnerManagedClientsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MarketingplatformadminV1alpha::FindSalesPartnerManagedClientsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def find_organization_sales_partner_managed_clients(organization, find_sales_partner_managed_clients_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+organization}:findSalesPartnerManagedClients', options)
+          command.request_representation = Google::Apis::MarketingplatformadminV1alpha::FindSalesPartnerManagedClientsRequest::Representation
+          command.request_object = find_sales_partner_managed_clients_request_object
+          command.response_representation = Google::Apis::MarketingplatformadminV1alpha::FindSalesPartnerManagedClientsResponse::Representation
+          command.response_class = Google::Apis::MarketingplatformadminV1alpha::FindSalesPartnerManagedClientsResponse
+          command.params['organization'] = organization unless organization.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lookup for a single organization.
         # @param [String] name
         #   Required. The name of the Organization to retrieve. Format: organizations/`
@@ -81,6 +117,85 @@ module Google
           command.response_representation = Google::Apis::MarketingplatformadminV1alpha::Organization::Representation
           command.response_class = Google::Apis::MarketingplatformadminV1alpha::Organization
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of organizations that the user has access to.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of organizations to return in one call. The
+        #   service may return fewer than this value. If unspecified, at most 50
+        #   organizations will be returned. The maximum value is 1000; values above 1000
+        #   will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous ListOrganizations call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListOrganizations` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MarketingplatformadminV1alpha::ListOrganizationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MarketingplatformadminV1alpha::ListOrganizationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organizations(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/organizations', options)
+          command.response_representation = Google::Apis::MarketingplatformadminV1alpha::ListOrganizationsResponse::Representation
+          command.response_class = Google::Apis::MarketingplatformadminV1alpha::ListOrganizationsResponse
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the usage and billing data for properties within the organization for the
+        # specified month. Per direct client org, user needs to be OrgAdmin/BillingAdmin
+        # on the organization in order to view the billing and usage data. Per sales
+        # partner client org, user needs to be OrgAdmin/BillingAdmin on the sales
+        # partner org in order to view the billing and usage data, or OrgAdmin/
+        # BillingAdmin on the sales partner client org in order to view the usage data
+        # only.
+        # @param [String] organization
+        #   Required. Specifies the organization whose property usage will be listed.
+        #   Format: organizations/`org_id`
+        # @param [Google::Apis::MarketingplatformadminV1alpha::ReportPropertyUsageRequest] report_property_usage_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MarketingplatformadminV1alpha::ReportPropertyUsageResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MarketingplatformadminV1alpha::ReportPropertyUsageResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def report_organization_property_usage(organization, report_property_usage_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+organization}:reportPropertyUsage', options)
+          command.request_representation = Google::Apis::MarketingplatformadminV1alpha::ReportPropertyUsageRequest::Representation
+          command.request_object = report_property_usage_request_object
+          command.response_representation = Google::Apis::MarketingplatformadminV1alpha::ReportPropertyUsageResponse::Representation
+          command.response_class = Google::Apis::MarketingplatformadminV1alpha::ReportPropertyUsageResponse
+          command.params['organization'] = organization unless organization.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
