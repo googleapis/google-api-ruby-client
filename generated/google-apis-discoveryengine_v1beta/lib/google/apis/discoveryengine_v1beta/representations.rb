@@ -772,6 +772,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1522,6 +1528,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaDeleteAgentMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaDeleteCmekConfigMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1949,6 +1961,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaProject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4012,6 +4030,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5766,6 +5790,7 @@ module Google
           property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1CmekConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1CmekConfig::Representation
       
           property :configurable_billing_approach, as: 'configurableBillingApproach'
+          property :configurable_billing_approach_update_time, as: 'configurableBillingApproachUpdateTime'
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -6260,6 +6285,8 @@ module Google
       class GoogleCloudDiscoveryengineV1Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :configurable_billing_status, as: 'configurableBillingStatus', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus::Representation
+      
           property :create_time, as: 'createTime'
           property :customer_provided_config, as: 'customerProvidedConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfig::Representation
       
@@ -6267,6 +6294,15 @@ module Google
           property :provision_completion_time, as: 'provisionCompletionTime'
           hash :service_terms_map, as: 'serviceTermsMap', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ProjectServiceTerms, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ProjectServiceTerms::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_indexing_core_threshold, :numeric_string => true, as: 'effectiveIndexingCoreThreshold'
+          property :effective_search_qpm_threshold, :numeric_string => true, as: 'effectiveSearchQpmThreshold'
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -7548,6 +7584,7 @@ module Google
           property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCmekConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCmekConfig::Representation
       
           property :configurable_billing_approach, as: 'configurableBillingApproach'
+          property :configurable_billing_approach_update_time, as: 'configurableBillingApproachUpdateTime'
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -7607,6 +7644,14 @@ module Google
       
           property :user_triggered_crawl_rate, as: 'userTriggeredCrawlRate', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCrawlRateTimeSeries::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDeleteAgentMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -8288,6 +8333,8 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaProject
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :configurable_billing_status, as: 'configurableBillingStatus', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus::Representation
+      
           property :create_time, as: 'createTime'
           property :customer_provided_config, as: 'customerProvidedConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfig::Representation
       
@@ -8295,6 +8342,15 @@ module Google
           property :provision_completion_time, as: 'provisionCompletionTime'
           hash :service_terms_map, as: 'serviceTermsMap', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaProjectServiceTerms, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaProjectServiceTerms::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_indexing_core_threshold, :numeric_string => true, as: 'effectiveIndexingCoreThreshold'
+          property :effective_search_qpm_threshold, :numeric_string => true, as: 'effectiveSearchQpmThreshold'
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -10610,6 +10666,7 @@ module Google
           property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCmekConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCmekConfig::Representation
       
           property :configurable_billing_approach, as: 'configurableBillingApproach'
+          property :configurable_billing_approach_update_time, as: 'configurableBillingApproachUpdateTime'
           property :content_config, as: 'contentConfig'
           property :create_time, as: 'createTime'
           property :default_schema_id, as: 'defaultSchemaId'
@@ -11735,6 +11792,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaProject
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :configurable_billing_status, as: 'configurableBillingStatus', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus::Representation
+      
           property :create_time, as: 'createTime'
           property :customer_provided_config, as: 'customerProvidedConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfig::Representation
       
@@ -11742,6 +11801,15 @@ module Google
           property :provision_completion_time, as: 'provisionCompletionTime'
           hash :service_terms_map, as: 'serviceTermsMap', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProjectServiceTerms, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProjectServiceTerms::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_indexing_core_threshold, :numeric_string => true, as: 'effectiveIndexingCoreThreshold'
+          property :effective_search_qpm_threshold, :numeric_string => true, as: 'effectiveSearchQpmThreshold'
+          property :start_time, as: 'startTime'
         end
       end
       
