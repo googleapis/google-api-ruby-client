@@ -1048,6 +1048,7 @@ module Google
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :log_retention_days, :numeric_string => true, as: 'logRetentionDays'
+          property :max_custom_on_demand_retention_days, as: 'maxCustomOnDemandRetentionDays'
           property :name, as: 'name'
           property :resource_type, as: 'resourceType'
           property :revision_id, as: 'revisionId'
@@ -2110,6 +2111,7 @@ module Google
       class TriggerBackupRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_retention_days, as: 'customRetentionDays'
           property :request_id, as: 'requestId'
           property :rule_id, as: 'ruleId'
         end
