@@ -16,13 +16,13 @@ module Google
   module Apis
     module BigtableadminV2
       # Version of the google-apis-bigtableadmin_v2 gem
-      GEM_VERSION = "0.79.0"
+      GEM_VERSION = "0.80.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.18.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20251012"
+      REVISION = "20251026"
     end
   end
 end
