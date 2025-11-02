@@ -3507,6 +3507,11 @@ module Google
         # @return [Hash<String,Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue>]
         attr_accessor :secret_versions_for_request_headers
       
+        # Configuration for authentication using a service account.
+        # Corresponds to the JSON property `serviceAccountAuthConfig`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig]
+        attr_accessor :service_account_auth_config
+      
         # Optional. Indicate the auth token type generated from the [Diglogflow service
         # agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-
         # agent). The generated token is sent in the Authorization header.
@@ -3545,6 +3550,7 @@ module Google
           @request_headers = args[:request_headers] if args.key?(:request_headers)
           @secret_version_for_username_password = args[:secret_version_for_username_password] if args.key?(:secret_version_for_username_password)
           @secret_versions_for_request_headers = args[:secret_versions_for_request_headers] if args.key?(:secret_versions_for_request_headers)
+          @service_account_auth_config = args[:service_account_auth_config] if args.key?(:service_account_auth_config)
           @service_agent_auth = args[:service_agent_auth] if args.key?(:service_agent_auth)
           @uri = args[:uri] if args.key?(:uri)
           @username = args[:username] if args.key?(:username)
@@ -3617,6 +3623,30 @@ module Google
         # Update properties of this object
         def update!(**args)
           @secret_version = args[:secret_version] if args.key?(:secret_version)
+        end
+      end
+      
+      # Configuration for authentication using a service account.
+      class GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The email address of the service account used to authenticate the
+        # webhook call. Dialogflow uses this service account to exchange an access token
+        # and the access token is then sent in the `Authorization` header of the webhook
+        # request. The service account must have the `roles/iam.
+        # serviceAccountTokenCreator` role granted to the [Dialogflow service agent](
+        # https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
       
@@ -5421,6 +5451,25 @@ module Google
           @resource = args[:resource] if args.key?(:resource)
           @type = args[:type] if args.key?(:type)
           @user_email = args[:user_email] if args.key?(:user_email)
+        end
+      end
+      
+      # Represents a code block.
+      class GoogleCloudDialogflowCxV3beta1CodeBlock
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Source code of the block in Python.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
         end
       end
       
@@ -11618,6 +11667,11 @@ module Google
       class GoogleCloudDialogflowCxV3beta1Playbook
         include Google::Apis::Core::Hashable
       
+        # Represents a code block.
+        # Corresponds to the JSON property `codeBlock`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1CodeBlock]
+        attr_accessor :code_block
+      
         # Output only. The timestamp of initial playbook creation.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -11640,6 +11694,14 @@ module Google
         # Corresponds to the JSON property `handlers`
         # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Handler>]
         attr_accessor :handlers
+      
+        # Optional. Output only. Names of inline actions scoped to this playbook. These
+        # actions are in addition to those belonging to referenced tools, child
+        # playbooks, and flows, e.g. actions that are defined in the playbook's code
+        # block.
+        # Corresponds to the JSON property `inlineActions`
+        # @return [Array<String>]
+        attr_accessor :inline_actions
       
         # Optional. Defined structured input parameters for this playbook.
         # Corresponds to the JSON property `inputParameterDefinitions`
@@ -11713,10 +11775,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @code_block = args[:code_block] if args.key?(:code_block)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @goal = args[:goal] if args.key?(:goal)
           @handlers = args[:handlers] if args.key?(:handlers)
+          @inline_actions = args[:inline_actions] if args.key?(:inline_actions)
           @input_parameter_definitions = args[:input_parameter_definitions] if args.key?(:input_parameter_definitions)
           @instruction = args[:instruction] if args.key?(:instruction)
           @llm_model_settings = args[:llm_model_settings] if args.key?(:llm_model_settings)
@@ -14197,6 +14261,11 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ToolAuthenticationOAuthConfig]
         attr_accessor :oauth_config
       
+        # Configuration for authentication using a service account.
+        # Corresponds to the JSON property `serviceAccountAuthConfig`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAccountAuthConfig]
+        attr_accessor :service_account_auth_config
+      
         # Config for auth using [Diglogflow service agent](https://cloud.google.com/iam/
         # docs/service-agents#dialogflow-service-agent).
         # Corresponds to the JSON property `serviceAgentAuthConfig`
@@ -14212,6 +14281,7 @@ module Google
           @api_key_config = args[:api_key_config] if args.key?(:api_key_config)
           @bearer_token_config = args[:bearer_token_config] if args.key?(:bearer_token_config)
           @oauth_config = args[:oauth_config] if args.key?(:oauth_config)
+          @service_account_auth_config = args[:service_account_auth_config] if args.key?(:service_account_auth_config)
           @service_agent_auth_config = args[:service_agent_auth_config] if args.key?(:service_agent_auth_config)
         end
       end
@@ -14338,6 +14408,30 @@ module Google
           @scopes = args[:scopes] if args.key?(:scopes)
           @secret_version_for_client_secret = args[:secret_version_for_client_secret] if args.key?(:secret_version_for_client_secret)
           @token_endpoint = args[:token_endpoint] if args.key?(:token_endpoint)
+        end
+      end
+      
+      # Configuration for authentication using a service account.
+      class GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAccountAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The email address of the service account used to authenticate the
+        # tool call. Dialogflow uses this service account to exchange an access token
+        # and the access token is then sent in the `Authorization` header of the tool
+        # request. The service account must have the `roles/iam.
+        # serviceAccountTokenCreator` role granted to the [Dialogflow service agent](
+        # https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
       
@@ -15878,6 +15972,11 @@ module Google
         # @return [Hash<String,Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue>]
         attr_accessor :secret_versions_for_request_headers
       
+        # Configuration for authentication using a service account.
+        # Corresponds to the JSON property `serviceAccountAuthConfig`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig]
+        attr_accessor :service_account_auth_config
+      
         # Optional. Indicate the auth token type generated from the [Diglogflow service
         # agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-
         # agent). The generated token is sent in the Authorization header.
@@ -15916,6 +16015,7 @@ module Google
           @request_headers = args[:request_headers] if args.key?(:request_headers)
           @secret_version_for_username_password = args[:secret_version_for_username_password] if args.key?(:secret_version_for_username_password)
           @secret_versions_for_request_headers = args[:secret_versions_for_request_headers] if args.key?(:secret_versions_for_request_headers)
+          @service_account_auth_config = args[:service_account_auth_config] if args.key?(:service_account_auth_config)
           @service_agent_auth = args[:service_agent_auth] if args.key?(:service_agent_auth)
           @uri = args[:uri] if args.key?(:uri)
           @username = args[:username] if args.key?(:username)
@@ -15988,6 +16088,30 @@ module Google
         # Update properties of this object
         def update!(**args)
           @secret_version = args[:secret_version] if args.key?(:secret_version)
+        end
+      end
+      
+      # Configuration for authentication using a service account.
+      class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The email address of the service account used to authenticate the
+        # webhook call. Dialogflow uses this service account to exchange an access token
+        # and the access token is then sent in the `Authorization` header of the webhook
+        # request. The service account must have the `roles/iam.
+        # serviceAccountTokenCreator` role granted to the [Dialogflow service agent](
+        # https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
       

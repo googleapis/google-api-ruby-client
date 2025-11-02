@@ -604,6 +604,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3WebhookRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -875,6 +881,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1Changelog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1CodeBlock
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2290,6 +2302,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAccountAuthConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAgentAuthConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2567,6 +2585,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5001,6 +5025,8 @@ module Google
           property :secret_version_for_username_password, as: 'secretVersionForUsernamePassword'
           hash :secret_versions_for_request_headers, as: 'secretVersionsForRequestHeaders', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue::Representation
       
+          property :service_account_auth_config, as: 'serviceAccountAuthConfig', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig::Representation
+      
           property :service_agent_auth, as: 'serviceAgentAuth'
           property :uri, as: 'uri'
           property :username, as: 'username'
@@ -5023,6 +5049,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :secret_version, as: 'secretVersion'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_account, as: 'serviceAccount'
         end
       end
       
@@ -5526,6 +5559,13 @@ module Google
           property :resource, as: 'resource'
           property :type, as: 'type'
           property :user_email, as: 'userEmail'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1CodeBlock
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
         end
       end
       
@@ -7220,11 +7260,14 @@ module Google
       class GoogleCloudDialogflowCxV3beta1Playbook
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :code_block, as: 'codeBlock', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1CodeBlock, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1CodeBlock::Representation
+      
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :goal, as: 'goal'
           collection :handlers, as: 'handlers', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Handler, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Handler::Representation
       
+          collection :inline_actions, as: 'inlineActions'
           collection :input_parameter_definitions, as: 'inputParameterDefinitions', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ParameterDefinition, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ParameterDefinition::Representation
       
           property :instruction, as: 'instruction', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookInstruction, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookInstruction::Representation
@@ -7911,6 +7954,8 @@ module Google
       
           property :oauth_config, as: 'oauthConfig', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ToolAuthenticationOAuthConfig, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ToolAuthenticationOAuthConfig::Representation
       
+          property :service_account_auth_config, as: 'serviceAccountAuthConfig', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAccountAuthConfig, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAccountAuthConfig::Representation
+      
           property :service_agent_auth_config, as: 'serviceAgentAuthConfig', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAgentAuthConfig, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAgentAuthConfig::Representation
       
         end
@@ -7943,6 +7988,13 @@ module Google
           collection :scopes, as: 'scopes'
           property :secret_version_for_client_secret, as: 'secretVersionForClientSecret'
           property :token_endpoint, as: 'tokenEndpoint'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAccountAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_account, as: 'serviceAccount'
         end
       end
       
@@ -8384,6 +8436,8 @@ module Google
           property :secret_version_for_username_password, as: 'secretVersionForUsernamePassword'
           hash :secret_versions_for_request_headers, as: 'secretVersionsForRequestHeaders', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue::Representation
       
+          property :service_account_auth_config, as: 'serviceAccountAuthConfig', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig::Representation
+      
           property :service_agent_auth, as: 'serviceAgentAuth'
           property :uri, as: 'uri'
           property :username, as: 'username'
@@ -8406,6 +8460,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :secret_version, as: 'secretVersion'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_account, as: 'serviceAccount'
         end
       end
       
