@@ -618,6 +618,114 @@ module Google
         end
       end
       
+      # The LRO metadata for exporting an artifact.
+      class ExportArtifactMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The exported artifact files.
+        # Corresponds to the JSON property `exportedFiles`
+        # @return [Array<Google::Apis::ArtifactregistryV1::ExportedFile>]
+        attr_accessor :exported_files
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exported_files = args[:exported_files] if args.key?(:exported_files)
+        end
+      end
+      
+      # The request for exporting an artifact to a destination.
+      class ExportArtifactRequest
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Storage path to export the artifact to. Should start with the bucket
+        # name, and optionally have a directory path. Examples: `dst_bucket`, `
+        # dst_bucket/sub_dir`. Existing objects with the same path will be overwritten.
+        # Corresponds to the JSON property `gcsPath`
+        # @return [String]
+        attr_accessor :gcs_path
+      
+        # The artifact tag to export. Format:projects/`project`/locations/`location`/
+        # repositories/`repository`/packages/`package`/tags/`tag`
+        # Corresponds to the JSON property `sourceTag`
+        # @return [String]
+        attr_accessor :source_tag
+      
+        # The artifact version to export. Format: projects/`project`/locations/`location`
+        # /repositories/`repository`/packages/`package`/versions/`version`
+        # Corresponds to the JSON property `sourceVersion`
+        # @return [String]
+        attr_accessor :source_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_path = args[:gcs_path] if args.key?(:gcs_path)
+          @source_tag = args[:source_tag] if args.key?(:source_tag)
+          @source_version = args[:source_version] if args.key?(:source_version)
+        end
+      end
+      
+      # The response for exporting an artifact to a destination.
+      class ExportArtifactResponse
+        include Google::Apis::Core::Hashable
+      
+        # The body of a version resource. A version resource represents a collection of
+        # components, such as files and other data. This may correspond to a version in
+        # many package management schemes.
+        # Corresponds to the JSON property `exportedVersion`
+        # @return [Google::Apis::ArtifactregistryV1::Version]
+        attr_accessor :exported_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exported_version = args[:exported_version] if args.key?(:exported_version)
+        end
+      end
+      
+      # The exported artifact file.
+      class ExportedFile
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage Object path of the exported file. Examples: `dst_bucket/file1`, `
+        # dst_bucket/sub_dir/file1`
+        # Corresponds to the JSON property `gcsObjectPath`
+        # @return [String]
+        attr_accessor :gcs_object_path
+      
+        # The hashes of the file content.
+        # Corresponds to the JSON property `hashes`
+        # @return [Array<Google::Apis::ArtifactregistryV1::HashProp>]
+        attr_accessor :hashes
+      
+        # Name of the exported artifact file. Format: `projects/p1/locations/us/
+        # repositories/repo1/files/file1`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_object_path = args[:gcs_object_path] if args.key?(:gcs_object_path)
+          @hashes = args[:hashes] if args.key?(:hashes)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
