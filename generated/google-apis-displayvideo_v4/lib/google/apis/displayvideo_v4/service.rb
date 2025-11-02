@@ -384,9 +384,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # BulkCreate video assets for Ad. Only supports youtube video assets for now.
+        # Creates multiple ad assets in a single request. Returns the newly-created ad
+        # assets if successful. Only supports the creation of assets of AdAssetType `
+        # AD_ASSET_TYPE_YOUTUBE_VIDEO`.
         # @param [Fixnum] advertiser_id
-        #   Required. The ID of the advertiser this ad asset belongs to.
+        #   Required. The ID of the advertiser these ad assets belong to.
         # @param [Google::Apis::DisplayvideoV4::BulkCreateAdAssetsRequest] bulk_create_ad_assets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -417,7 +419,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a video asset for Ad. Only supports youtube video assets for now.
+        # Creates an ad asset. Returns the newly-created ad asset if successful. Only
+        # supports the creation of assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser this ad asset belongs to.
         # @param [Google::Apis::DisplayvideoV4::CreateAdAssetRequest] create_ad_asset_request_object
@@ -450,11 +453,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get an ad asset by ad asset ID. Only supports youtube video assets.
+        # Gets an ad asset. Only supports the retrieval of assets of AdAssetType `
+        # AD_ASSET_TYPE_YOUTUBE_VIDEO`.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser this ad asset belongs to.
         # @param [Fixnum] ad_asset_id
-        #   Required. The ID of the ad asset to fetch.
+        #   Required. The ID of the ad asset to fetch. Only supports assets of AdAssetType
+        #   `AD_ASSET_TYPE_YOUTUBE_VIDEO`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -483,18 +488,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List ad assets by advertiser ID. Only supports youtube video ad assets.
+        # Lists ad assets under an advertiser ID. Only supports the retrieval of assets
+        # of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`.
         # @param [Fixnum] advertiser_id
-        #   Required. The ID of the advertiser to list assets for.
+        #   Required. The ID of the advertiser the ad assets belong to.
         # @param [String] filter
-        #   Optional. Filter expression to restrict the ad assets to return. The supported
-        #   fields are: * `youtubeVideoAsset.youtubeVideoId` * `entityStatus` Examples: * `
-        #   entityStatus=ENTITY_STATUS_ACTIVE`
+        #   Optional. Allows filtering of the results by ad asset fields. Supported syntax:
+        #   * A restriction has the form of ``field` `operator` `value``. * All fields
+        #   must use the `EQUALS (=)` operator. Supported fields: * `youtubeVideoAsset.
+        #   youtubeVideoId` * `entityStatus` Examples: * All active YouTube video ad
+        #   assets under an advertiser: `entityStatus=ENTITY_STATUS_ACTIVE`
         # @param [String] order_by
         #   Optional. Field by which to sort the list. Acceptable values are: * `
         #   entityStatus` * `youtubeVideoAsset.youtubeVideoId` * `adAssetId` (default) The
         #   default sorting order is ascending. To specify descending order for a field, a
-        #   suffix "desc" should be added to the field name. Example: `assetId desc`.
+        #   suffix "desc" should be added to the field name. Example: `adAssetId desc`.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Must be between `1` and `5000`. If unspecified
         #   will default to `5000`. Returns error code `INVALID_ARGUMENT` if an invalid
@@ -502,8 +510,8 @@ module Google
         # @param [String] page_token
         #   Optional. A token identifying a page of results the server should return.
         #   Typically, this is the value of next_page_token returned from the previous
-        #   call to `ListAssets` method. If not specified, the first page of results will
-        #   be returned.
+        #   call to `ListAdAssets` method. If not specified, the first page of results
+        #   will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -535,8 +543,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads an ad asset. Returns the ID of the newly uploaded ad asset if
-        # successful.
+        # Uploads and creates an ad asset. Returns the ID of the newly-created ad asset
+        # if successful. Only supports the uploading of assets with the AdAssetType `
+        # AD_ASSET_TYPE_IMAGE`.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser this ad asset belongs to.
         # @param [Google::Apis::DisplayvideoV4::UploadAdAssetRequest] upload_ad_asset_request_object
@@ -952,17 +961,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new association between an entity (line item or ad group) and a
-        # YouTube asset. Returns the newly created association if successful.
+        # Creates a new association between the identified resource and a YouTube asset.
+        # Returns the newly-created association. *Warning:* This method is only
+        # available to an informed subset of users.
         # @param [Fixnum] advertiser_id
-        #   Required. The ID of the advertiser this request is for.
+        #   Required. The ID of the advertiser that the linked entity belongs to.
         # @param [Fixnum] ad_group_id
-        #   The unique ID of the ad group linked.
+        #   The ID of an ad group.
         # @param [String] youtube_asset_type
-        #   Required. The type of the linked YouTube asset in the association.
+        #   Required. The type of YouTube asset associated with the resource.
         # @param [Google::Apis::DisplayvideoV4::YoutubeAssetAssociation] youtube_asset_association_object
         # @param [Fixnum] linked_entity_line_item_id
-        #   The unique ID of the line item linked.
+        #   The ID of a line item.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -995,23 +1005,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing association between an entity (line item or ad group) and
-        # a YouTube asset.
+        # Deletes an existing association between the identified resource and a YouTube
+        # asset. *Warning:* This method is only available to an informed subset of users.
         # @param [Fixnum] advertiser_id
-        #   Required. The ID of the advertiser this request is for.
+        #   Required. The ID of the advertiser that the linked entity belongs to.
         # @param [Fixnum] ad_group_id
-        #   The unique ID of the ad group linked.
+        #   The ID of an ad group.
         # @param [String] youtube_asset_type
-        #   Required. The YouTube asset type this request is for.
+        #   Required. The type of YouTube asset associated with the resource.
         # @param [Fixnum] youtube_asset_association_id
-        #   Required. The ID of the YouTube asset in the association. For location
+        #   Required. The ID of the YouTube asset in the association. For `
+        #   YOUTUBE_ASSET_TYPE_LOCATION` and `YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION`
         #   associations: This should be the ID of the asset set linked, or 0 if the
-        #   association stands for location asset is disabled. For affiliate location
-        #   associations: This should be the ID of the asset set linked, or 0 if the
-        #   association stands for affiliate location asset is disabled. For sitelink
-        #   associations: This should be the ID of the sitelink asset linked.
+        #   location_asset_filter or affiliate_location_asset_filter is `DISABLED`. For `
+        #   YOUTUBE_ASSET_TYPE_SITELINK` associations: This should be the ID of the
+        #   sitelink asset linked.
         # @param [Fixnum] linked_entity_line_item_id
-        #   The unique ID of the line item linked.
+        #   The ID of a line item.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1043,27 +1053,31 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the YouTube asset associations for given resource.
+        # Lists the YouTube asset associations linked to the given resource.
         # @param [Fixnum] advertiser_id
-        #   Required. The ID of the advertiser this request is for.
+        #   Required. The ID of the advertiser that the linked entity belongs to.
         # @param [Fixnum] ad_group_id
-        #   The unique ID of the ad group linked.
+        #   The ID of an ad group.
         # @param [String] youtube_asset_type
-        #   Required. The type of YouTube asset in the association.
+        #   Required. The type of YouTube asset being associated with the resource.
         # @param [Fixnum] linked_entity_line_item_id
-        #   The unique ID of the line item linked.
+        #   The ID of a line item.
         # @param [String] order_by
-        #   Optional. Field by which to sort the list. The only acceptable values are: `
-        #   linkedYoutubeAsset.locationAssetFilter.assetSetId`, `linkedYoutubeAsset.
-        #   affiliateLocationAssetFilter.assetSetId`, `linkedYoutubeAsset.sitelinkAsset.
+        #   Optional. Field by which to sort the list. The only acceptable values are: * `
+        #   linkedYoutubeAsset.locationAssetFilter.assetSetId`, * `linkedYoutubeAsset.
+        #   affiliateLocationAssetFilter.assetSetId`, * `linkedYoutubeAsset.sitelinkAsset.
         #   assetId` The default sorting order is ascending. To specify descending order
         #   for a field, a suffix " desc" should be added to the field name. Example: `
         #   linkedYoutubeAsset.sitelinkAsset.assetId desc`.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Must be between `1` and `10000`. If unspecified
-        #   will default to `100`.
+        #   will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid
+        #   value is specified.
         # @param [String] page_token
         #   Optional. A token identifying a page of results the server should return.
+        #   Typically, this is the value of next_page_token returned from the previous
+        #   call to `ListYoutubeAssetAssociations` method. If not specified, the first
+        #   page of results will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3553,17 +3567,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new association between an entity (line item or ad group) and a
-        # YouTube asset. Returns the newly created association if successful.
+        # Creates a new association between the identified resource and a YouTube asset.
+        # Returns the newly-created association. *Warning:* This method is only
+        # available to an informed subset of users.
         # @param [Fixnum] advertiser_id
-        #   Required. The ID of the advertiser this request is for.
+        #   Required. The ID of the advertiser that the linked entity belongs to.
         # @param [Fixnum] line_item_id
-        #   The unique ID of the line item linked.
+        #   The ID of a line item.
         # @param [String] youtube_asset_type
-        #   Required. The type of the linked YouTube asset in the association.
+        #   Required. The type of YouTube asset associated with the resource.
         # @param [Google::Apis::DisplayvideoV4::YoutubeAssetAssociation] youtube_asset_association_object
         # @param [Fixnum] linked_entity_ad_group_id
-        #   The unique ID of the ad group linked.
+        #   The ID of an ad group.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3596,23 +3611,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing association between an entity (line item or ad group) and
-        # a YouTube asset.
+        # Deletes an existing association between the identified resource and a YouTube
+        # asset. *Warning:* This method is only available to an informed subset of users.
         # @param [Fixnum] advertiser_id
-        #   Required. The ID of the advertiser this request is for.
+        #   Required. The ID of the advertiser that the linked entity belongs to.
         # @param [Fixnum] line_item_id
-        #   The unique ID of the line item linked.
+        #   The ID of a line item.
         # @param [String] youtube_asset_type
-        #   Required. The YouTube asset type this request is for.
+        #   Required. The type of YouTube asset associated with the resource.
         # @param [Fixnum] youtube_asset_association_id
-        #   Required. The ID of the YouTube asset in the association. For location
+        #   Required. The ID of the YouTube asset in the association. For `
+        #   YOUTUBE_ASSET_TYPE_LOCATION` and `YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION`
         #   associations: This should be the ID of the asset set linked, or 0 if the
-        #   association stands for location asset is disabled. For affiliate location
-        #   associations: This should be the ID of the asset set linked, or 0 if the
-        #   association stands for affiliate location asset is disabled. For sitelink
-        #   associations: This should be the ID of the sitelink asset linked.
+        #   location_asset_filter or affiliate_location_asset_filter is `DISABLED`. For `
+        #   YOUTUBE_ASSET_TYPE_SITELINK` associations: This should be the ID of the
+        #   sitelink asset linked.
         # @param [Fixnum] linked_entity_ad_group_id
-        #   The unique ID of the ad group linked.
+        #   The ID of an ad group.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3644,27 +3659,31 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the YouTube asset associations for given resource.
+        # Lists the YouTube asset associations linked to the given resource.
         # @param [Fixnum] advertiser_id
-        #   Required. The ID of the advertiser this request is for.
+        #   Required. The ID of the advertiser that the linked entity belongs to.
         # @param [Fixnum] line_item_id
-        #   The unique ID of the line item linked.
+        #   The ID of a line item.
         # @param [String] youtube_asset_type
-        #   Required. The type of YouTube asset in the association.
+        #   Required. The type of YouTube asset being associated with the resource.
         # @param [Fixnum] linked_entity_ad_group_id
-        #   The unique ID of the ad group linked.
+        #   The ID of an ad group.
         # @param [String] order_by
-        #   Optional. Field by which to sort the list. The only acceptable values are: `
-        #   linkedYoutubeAsset.locationAssetFilter.assetSetId`, `linkedYoutubeAsset.
-        #   affiliateLocationAssetFilter.assetSetId`, `linkedYoutubeAsset.sitelinkAsset.
+        #   Optional. Field by which to sort the list. The only acceptable values are: * `
+        #   linkedYoutubeAsset.locationAssetFilter.assetSetId`, * `linkedYoutubeAsset.
+        #   affiliateLocationAssetFilter.assetSetId`, * `linkedYoutubeAsset.sitelinkAsset.
         #   assetId` The default sorting order is ascending. To specify descending order
         #   for a field, a suffix " desc" should be added to the field name. Example: `
         #   linkedYoutubeAsset.sitelinkAsset.assetId desc`.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Must be between `1` and `10000`. If unspecified
-        #   will default to `100`.
+        #   will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid
+        #   value is specified.
         # @param [String] page_token
         #   Optional. A token identifying a page of results the server should return.
+        #   Typically, this is the value of next_page_token returned from the previous
+        #   call to `ListYoutubeAssetAssociations` method. If not specified, the first
+        #   page of results will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
