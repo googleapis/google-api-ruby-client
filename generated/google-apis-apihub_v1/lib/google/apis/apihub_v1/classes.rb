@@ -203,7 +203,9 @@ module Google
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1Documentation]
         attr_accessor :documentation
       
-        # Optional. Fingerprint of the API resource.
+        # Optional. Fingerprint of the API resource. This must be unique for each API
+        # resource. It can neither be unset nor be updated to an existing fingerprint of
+        # another API resource.
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
@@ -4534,6 +4536,13 @@ module Google
         # @return [Array<Google::Apis::ApihubV1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4542,6 +4551,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
