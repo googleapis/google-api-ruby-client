@@ -660,6 +660,11 @@ module Google
         # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestDevice]
         attr_accessor :device
       
+        # Output only. The type of execution for the test.
+        # Corresponds to the JSON property `executionType`
+        # @return [String]
+        attr_accessor :execution_type
+      
         # Output only. The reason why the test failed.
         # Corresponds to the JSON property `failedReason`
         # @return [String]
@@ -713,6 +718,7 @@ module Google
           @app_crash = args[:app_crash] if args.key?(:app_crash)
           @crawl_graph_uri = args[:crawl_graph_uri] if args.key?(:crawl_graph_uri)
           @device = args[:device] if args.key?(:device)
+          @execution_type = args[:execution_type] if args.key?(:execution_type)
           @failed_reason = args[:failed_reason] if args.key?(:failed_reason)
           @inconclusive_reason = args[:inconclusive_reason] if args.key?(:inconclusive_reason)
           @results_storage_path = args[:results_storage_path] if args.key?(:results_storage_path)

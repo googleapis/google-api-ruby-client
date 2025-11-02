@@ -564,6 +564,7 @@ module Google
           property :crawl_graph_uri, as: 'crawlGraphUri'
           property :device, as: 'device', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestDevice, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestDevice::Representation
       
+          property :execution_type, as: 'executionType'
           property :failed_reason, as: 'failedReason'
           property :inconclusive_reason, as: 'inconclusiveReason'
           property :results_storage_path, as: 'resultsStoragePath'
