@@ -3507,6 +3507,11 @@ module Google
         # @return [Hash<String,Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue>]
         attr_accessor :secret_versions_for_request_headers
       
+        # Configuration for authentication using a service account.
+        # Corresponds to the JSON property `serviceAccountAuthConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig]
+        attr_accessor :service_account_auth_config
+      
         # Optional. Indicate the auth token type generated from the [Diglogflow service
         # agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-
         # agent). The generated token is sent in the Authorization header.
@@ -3545,6 +3550,7 @@ module Google
           @request_headers = args[:request_headers] if args.key?(:request_headers)
           @secret_version_for_username_password = args[:secret_version_for_username_password] if args.key?(:secret_version_for_username_password)
           @secret_versions_for_request_headers = args[:secret_versions_for_request_headers] if args.key?(:secret_versions_for_request_headers)
+          @service_account_auth_config = args[:service_account_auth_config] if args.key?(:service_account_auth_config)
           @service_agent_auth = args[:service_agent_auth] if args.key?(:service_agent_auth)
           @uri = args[:uri] if args.key?(:uri)
           @username = args[:username] if args.key?(:username)
@@ -3617,6 +3623,30 @@ module Google
         # Update properties of this object
         def update!(**args)
           @secret_version = args[:secret_version] if args.key?(:secret_version)
+        end
+      end
+      
+      # Configuration for authentication using a service account.
+      class GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The email address of the service account used to authenticate the
+        # webhook call. Dialogflow uses this service account to exchange an access token
+        # and the access token is then sent in the `Authorization` header of the webhook
+        # request. The service account must have the `roles/iam.
+        # serviceAccountTokenCreator` role granted to the [Dialogflow service agent](
+        # https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
       
@@ -7432,6 +7462,11 @@ module Google
         # @return [Hash<String,Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue>]
         attr_accessor :secret_versions_for_request_headers
       
+        # Configuration for authentication using a service account.
+        # Corresponds to the JSON property `serviceAccountAuthConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig]
+        attr_accessor :service_account_auth_config
+      
         # Optional. Indicate the auth token type generated from the [Diglogflow service
         # agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-
         # agent). The generated token is sent in the Authorization header.
@@ -7470,6 +7505,7 @@ module Google
           @request_headers = args[:request_headers] if args.key?(:request_headers)
           @secret_version_for_username_password = args[:secret_version_for_username_password] if args.key?(:secret_version_for_username_password)
           @secret_versions_for_request_headers = args[:secret_versions_for_request_headers] if args.key?(:secret_versions_for_request_headers)
+          @service_account_auth_config = args[:service_account_auth_config] if args.key?(:service_account_auth_config)
           @service_agent_auth = args[:service_agent_auth] if args.key?(:service_agent_auth)
           @uri = args[:uri] if args.key?(:uri)
           @username = args[:username] if args.key?(:username)
@@ -7542,6 +7578,30 @@ module Google
         # Update properties of this object
         def update!(**args)
           @secret_version = args[:secret_version] if args.key?(:secret_version)
+        end
+      end
+      
+      # Configuration for authentication using a service account.
+      class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The email address of the service account used to authenticate the
+        # webhook call. Dialogflow uses this service account to exchange an access token
+        # and the access token is then sent in the `Authorization` header of the webhook
+        # request. The service account must have the `roles/iam.
+        # serviceAccountTokenCreator` role granted to the [Dialogflow service agent](
+        # https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
       
@@ -19276,9 +19336,9 @@ module Google
         # unspecified, Dialogflow will use Google's default trust store to verify
         # certificates. N.B. Make sure the HTTPS server certificates are signed with "
         # subject alt name". For instance a certificate can be self-signed using the
-        # following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey
-        # example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='
-        # DNS:www.example.com'")
+        # following command, ``` openssl x509 -req -days 200 -in example.com.csr \ -
+        # signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\
+        # nsubjectAltName='DNS:www.example.com'") ```
         # Corresponds to the JSON property `cert`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
