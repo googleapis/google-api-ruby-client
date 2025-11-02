@@ -2107,6 +2107,8 @@ module Google
       
           property :desired_secret_manager_config, as: 'desiredSecretManagerConfig', class: Google::Apis::ContainerV1beta1::SecretManagerConfig, decorator: Google::Apis::ContainerV1beta1::SecretManagerConfig::Representation
       
+          property :desired_secret_sync_config, as: 'desiredSecretSyncConfig', class: Google::Apis::ContainerV1beta1::SecretSyncConfig, decorator: Google::Apis::ContainerV1beta1::SecretSyncConfig::Representation
+      
           property :desired_security_posture_config, as: 'desiredSecurityPostureConfig', class: Google::Apis::ContainerV1beta1::SecurityPostureConfig, decorator: Google::Apis::ContainerV1beta1::SecurityPostureConfig::Representation
       
           property :desired_service_external_ips_config, as: 'desiredServiceExternalIpsConfig', class: Google::Apis::ContainerV1beta1::ServiceExternalIPsConfig, decorator: Google::Apis::ContainerV1beta1::ServiceExternalIPsConfig::Representation
