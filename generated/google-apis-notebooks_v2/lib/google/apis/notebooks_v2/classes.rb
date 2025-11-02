@@ -743,6 +743,11 @@ module Google
         # @return [Google::Apis::NotebooksV2::GpuDriverConfig]
         attr_accessor :gpu_driver_config
       
+        # Output only. The unique ID of the Compute Engine instance resource.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
         # Optional. The machine type of the VM instance. https://cloud.google.com/
         # compute/docs/machine-resource
         # Corresponds to the JSON property `machineType`
@@ -810,6 +815,7 @@ module Google
           @disable_public_ip = args[:disable_public_ip] if args.key?(:disable_public_ip)
           @enable_ip_forwarding = args[:enable_ip_forwarding] if args.key?(:enable_ip_forwarding)
           @gpu_driver_config = args[:gpu_driver_config] if args.key?(:gpu_driver_config)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)

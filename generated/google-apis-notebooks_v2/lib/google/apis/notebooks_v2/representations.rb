@@ -517,6 +517,7 @@ module Google
           property :enable_ip_forwarding, as: 'enableIpForwarding'
           property :gpu_driver_config, as: 'gpuDriverConfig', class: Google::Apis::NotebooksV2::GpuDriverConfig, decorator: Google::Apis::NotebooksV2::GpuDriverConfig::Representation
       
+          property :instance_id, as: 'instanceId'
           property :machine_type, as: 'machineType'
           hash :metadata, as: 'metadata'
           property :min_cpu_platform, as: 'minCpuPlatform'
