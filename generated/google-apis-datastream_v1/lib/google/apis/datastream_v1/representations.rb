@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EventFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FetchStaticIpsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1057,6 +1063,13 @@ module Google
         end
       end
       
+      class EventFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sql_where_clause, as: 'sqlWhereClause'
+        end
+      end
+      
       class FetchStaticIpsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1144,6 +1157,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DatastreamV1::Operation, decorator: Google::Apis::DatastreamV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1999,6 +2013,8 @@ module Google
       class StartBackfillJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_filter, as: 'eventFilter', class: Google::Apis::DatastreamV1::EventFilter, decorator: Google::Apis::DatastreamV1::EventFilter::Representation
+      
         end
       end
       

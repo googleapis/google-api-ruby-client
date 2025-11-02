@@ -806,6 +806,26 @@ module Google
         end
       end
       
+      # Represents a filter for included data on a stream object.
+      class EventFilter
+        include Google::Apis::Core::Hashable
+      
+        # An SQL-query Where clause selecting which data should be included, not
+        # including the "WHERE" keyword. E.g., "t.key1 = 'value1' AND t.key2 = 'value2'".
+        # Corresponds to the JSON property `sqlWhereClause`
+        # @return [String]
+        attr_accessor :sql_where_clause
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sql_where_clause = args[:sql_where_clause] if args.key?(:sql_where_clause)
+        end
+      end
+      
       # Response message for a 'FetchStaticIps' response.
       class FetchStaticIpsResponse
         include Google::Apis::Core::Hashable
@@ -1080,6 +1100,13 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1088,6 +1115,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1335,7 +1363,7 @@ module Google
       class MongodbChangeStreamPosition
         include Google::Apis::Core::Hashable
       
-        # Required. The timestamp (in epoch seconds) to start change stream from.
+        # Required. The timestamp to start change stream from.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -3929,12 +3957,18 @@ module Google
       class StartBackfillJobRequest
         include Google::Apis::Core::Hashable
       
+        # Represents a filter for included data on a stream object.
+        # Corresponds to the JSON property `eventFilter`
+        # @return [Google::Apis::DatastreamV1::EventFilter]
+        attr_accessor :event_filter
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @event_filter = args[:event_filter] if args.key?(:event_filter)
         end
       end
       
