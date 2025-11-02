@@ -1572,9 +1572,9 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1UserInfo]
         attr_accessor :user_info
       
-        # A unique identifier for tracking visitors. For example, this could be
-        # implemented with an HTTP cookie, which should be able to uniquely identify a
-        # visitor on a single device. This unique identifier should not change if the
+        # Optional. A unique identifier for tracking visitors. For example, this could
+        # be implemented with an HTTP cookie, which should be able to uniquely identify
+        # a visitor on a single device. This unique identifier should not change if the
         # visitor logs in or out of the website. This field should NOT have a fixed
         # value such as `unknown_visitor`. This should be the same identifier as
         # UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a
@@ -7299,6 +7299,11 @@ module Google
         # @return [String]
         attr_accessor :configurable_billing_approach
       
+        # Output only. The timestamp when configurable_billing_approach was last updated.
+        # Corresponds to the JSON property `configurableBillingApproachUpdateTime`
+        # @return [String]
+        attr_accessor :configurable_billing_approach_update_time
+      
         # Immutable. The content config of the data store. If this field is unset, the
         # server behavior defaults to ContentConfig.NO_CONTENT.
         # Corresponds to the JSON property `contentConfig`
@@ -7403,6 +7408,7 @@ module Google
           @billing_estimation = args[:billing_estimation] if args.key?(:billing_estimation)
           @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @configurable_billing_approach = args[:configurable_billing_approach] if args.key?(:configurable_billing_approach)
+          @configurable_billing_approach_update_time = args[:configurable_billing_approach_update_time] if args.key?(:configurable_billing_approach_update_time)
           @content_config = args[:content_config] if args.key?(:content_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
@@ -10416,6 +10422,31 @@ module Google
         end
       end
       
+      # Response for ListServingConfigs method.
+      class GoogleCloudDiscoveryengineV1ListServingConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Pagination token, if not returned indicates the last page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # All the ServingConfigs for a given dataStore.
+        # Corresponds to the JSON property `servingConfigs`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ServingConfig>]
+        attr_accessor :serving_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @serving_configs = args[:serving_configs] if args.key?(:serving_configs)
+        end
+      end
+      
       # Response for ListSessions method.
       class GoogleCloudDiscoveryengineV1ListSessionsResponse
         include Google::Apis::Core::Hashable
@@ -10672,6 +10703,16 @@ module Google
       class GoogleCloudDiscoveryengineV1Project
         include Google::Apis::Core::Hashable
       
+        # Represents the currently effective configurable billing parameters. These
+        # values are derived from the customer's subscription history stored internally
+        # and reflect the thresholds actively being used for billing purposes at the
+        # time of the GetProject call. This includes the start_time of the subscription
+        # and may differ from the values in `customer_provided_config` due to billing
+        # rules (e.g., scale-downs taking effect only at the start of a new month).
+        # Corresponds to the JSON property `configurableBillingStatus`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus]
+        attr_accessor :configurable_billing_status
+      
         # Output only. The timestamp when this project is created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -10706,11 +10747,52 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @configurable_billing_status = args[:configurable_billing_status] if args.key?(:configurable_billing_status)
           @create_time = args[:create_time] if args.key?(:create_time)
           @customer_provided_config = args[:customer_provided_config] if args.key?(:customer_provided_config)
           @name = args[:name] if args.key?(:name)
           @provision_completion_time = args[:provision_completion_time] if args.key?(:provision_completion_time)
           @service_terms_map = args[:service_terms_map] if args.key?(:service_terms_map)
+        end
+      end
+      
+      # Represents the currently effective configurable billing parameters. These
+      # values are derived from the customer's subscription history stored internally
+      # and reflect the thresholds actively being used for billing purposes at the
+      # time of the GetProject call. This includes the start_time of the subscription
+      # and may differ from the values in `customer_provided_config` due to billing
+      # rules (e.g., scale-downs taking effect only at the start of a new month).
+      class GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The currently effective Indexing Core threshold. This is the
+        # threshold against which Indexing Core usage is compared for overage
+        # calculations.
+        # Corresponds to the JSON property `effectiveIndexingCoreThreshold`
+        # @return [Fixnum]
+        attr_accessor :effective_indexing_core_threshold
+      
+        # Optional. The currently effective Search QPM threshold in queries per minute.
+        # This is the threshold against which QPM usage is compared for overage
+        # calculations.
+        # Corresponds to the JSON property `effectiveSearchQpmThreshold`
+        # @return [Fixnum]
+        attr_accessor :effective_search_qpm_threshold
+      
+        # Optional. The start time of the currently active billing subscription.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_indexing_core_threshold = args[:effective_indexing_core_threshold] if args.key?(:effective_indexing_core_threshold)
+          @effective_search_qpm_threshold = args[:effective_search_qpm_threshold] if args.key?(:effective_search_qpm_threshold)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -12154,9 +12236,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :user_labels
       
-        # A unique identifier for tracking visitors. For example, this could be
-        # implemented with an HTTP cookie, which should be able to uniquely identify a
-        # visitor on a single device. This unique identifier should not change if the
+        # Optional. A unique identifier for tracking visitors. For example, this could
+        # be implemented with an HTTP cookie, which should be able to uniquely identify
+        # a visitor on a single device. This unique identifier should not change if the
         # visitor logs in or out of the website. This field should NOT have a fixed
         # value such as `unknown_visitor`. This should be the same identifier as
         # UserEvent.user_pseudo_id and CompleteQueryRequest.user_pseudo_id The field
@@ -18670,6 +18752,11 @@ module Google
         # @return [String]
         attr_accessor :configurable_billing_approach
       
+        # Output only. The timestamp when configurable_billing_approach was last updated.
+        # Corresponds to the JSON property `configurableBillingApproachUpdateTime`
+        # @return [String]
+        attr_accessor :configurable_billing_approach_update_time
+      
         # Immutable. The content config of the data store. If this field is unset, the
         # server behavior defaults to ContentConfig.NO_CONTENT.
         # Corresponds to the JSON property `contentConfig`
@@ -18789,6 +18876,7 @@ module Google
           @billing_estimation = args[:billing_estimation] if args.key?(:billing_estimation)
           @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @configurable_billing_approach = args[:configurable_billing_approach] if args.key?(:configurable_billing_approach)
+          @configurable_billing_approach_update_time = args[:configurable_billing_approach_update_time] if args.key?(:configurable_billing_approach_update_time)
           @content_config = args[:content_config] if args.key?(:content_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
@@ -18916,6 +19004,33 @@ module Google
           @auto_refresh_crawl_rate = args[:auto_refresh_crawl_rate] if args.key?(:auto_refresh_crawl_rate)
           @user_triggered_crawl_error_rate = args[:user_triggered_crawl_error_rate] if args.key?(:user_triggered_crawl_error_rate)
           @user_triggered_crawl_rate = args[:user_triggered_crawl_rate] if args.key?(:user_triggered_crawl_rate)
+        end
+      end
+      
+      # Metadata related to the progress of the AgentService.DeleteAgent operation.
+      # This will be returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaDeleteAgentMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -21385,6 +21500,16 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaProject
         include Google::Apis::Core::Hashable
       
+        # Represents the currently effective configurable billing parameters. These
+        # values are derived from the customer's subscription history stored internally
+        # and reflect the thresholds actively being used for billing purposes at the
+        # time of the GetProject call. This includes the start_time of the subscription
+        # and may differ from the values in `customer_provided_config` due to billing
+        # rules (e.g., scale-downs taking effect only at the start of a new month).
+        # Corresponds to the JSON property `configurableBillingStatus`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus]
+        attr_accessor :configurable_billing_status
+      
         # Output only. The timestamp when this project is created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -21419,11 +21544,52 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @configurable_billing_status = args[:configurable_billing_status] if args.key?(:configurable_billing_status)
           @create_time = args[:create_time] if args.key?(:create_time)
           @customer_provided_config = args[:customer_provided_config] if args.key?(:customer_provided_config)
           @name = args[:name] if args.key?(:name)
           @provision_completion_time = args[:provision_completion_time] if args.key?(:provision_completion_time)
           @service_terms_map = args[:service_terms_map] if args.key?(:service_terms_map)
+        end
+      end
+      
+      # Represents the currently effective configurable billing parameters. These
+      # values are derived from the customer's subscription history stored internally
+      # and reflect the thresholds actively being used for billing purposes at the
+      # time of the GetProject call. This includes the start_time of the subscription
+      # and may differ from the values in `customer_provided_config` due to billing
+      # rules (e.g., scale-downs taking effect only at the start of a new month).
+      class GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The currently effective Indexing Core threshold. This is the
+        # threshold against which Indexing Core usage is compared for overage
+        # calculations.
+        # Corresponds to the JSON property `effectiveIndexingCoreThreshold`
+        # @return [Fixnum]
+        attr_accessor :effective_indexing_core_threshold
+      
+        # Optional. The currently effective Search QPM threshold in queries per minute.
+        # This is the threshold against which QPM usage is compared for overage
+        # calculations.
+        # Corresponds to the JSON property `effectiveSearchQpmThreshold`
+        # @return [Fixnum]
+        attr_accessor :effective_search_qpm_threshold
+      
+        # Optional. The start time of the currently active billing subscription.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_indexing_core_threshold = args[:effective_indexing_core_threshold] if args.key?(:effective_indexing_core_threshold)
+          @effective_search_qpm_threshold = args[:effective_search_qpm_threshold] if args.key?(:effective_search_qpm_threshold)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -22621,9 +22787,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :user_labels
       
-        # A unique identifier for tracking visitors. For example, this could be
-        # implemented with an HTTP cookie, which should be able to uniquely identify a
-        # visitor on a single device. This unique identifier should not change if the
+        # Optional. A unique identifier for tracking visitors. For example, this could
+        # be implemented with an HTTP cookie, which should be able to uniquely identify
+        # a visitor on a single device. This unique identifier should not change if the
         # visitor logs in or out of the website. This field should NOT have a fixed
         # value such as `unknown_visitor`. This should be the same identifier as
         # UserEvent.user_pseudo_id and CompleteQueryRequest.user_pseudo_id The field
@@ -25432,6 +25598,11 @@ module Google
         # @return [String]
         attr_accessor :configurable_billing_approach
       
+        # Output only. The timestamp when configurable_billing_approach was last updated.
+        # Corresponds to the JSON property `configurableBillingApproachUpdateTime`
+        # @return [String]
+        attr_accessor :configurable_billing_approach_update_time
+      
         # Immutable. The content config of the data store. If this field is unset, the
         # server behavior defaults to ContentConfig.NO_CONTENT.
         # Corresponds to the JSON property `contentConfig`
@@ -25546,6 +25717,7 @@ module Google
           @billing_estimation = args[:billing_estimation] if args.key?(:billing_estimation)
           @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @configurable_billing_approach = args[:configurable_billing_approach] if args.key?(:configurable_billing_approach)
+          @configurable_billing_approach_update_time = args[:configurable_billing_approach_update_time] if args.key?(:configurable_billing_approach_update_time)
           @content_config = args[:content_config] if args.key?(:content_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
@@ -27478,6 +27650,16 @@ module Google
       class GoogleCloudDiscoveryengineV1betaProject
         include Google::Apis::Core::Hashable
       
+        # Represents the currently effective configurable billing parameters. These
+        # values are derived from the customer's subscription history stored internally
+        # and reflect the thresholds actively being used for billing purposes at the
+        # time of the GetProject call. This includes the start_time of the subscription
+        # and may differ from the values in `customer_provided_config` due to billing
+        # rules (e.g., scale-downs taking effect only at the start of a new month).
+        # Corresponds to the JSON property `configurableBillingStatus`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus]
+        attr_accessor :configurable_billing_status
+      
         # Output only. The timestamp when this project is created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -27512,11 +27694,52 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @configurable_billing_status = args[:configurable_billing_status] if args.key?(:configurable_billing_status)
           @create_time = args[:create_time] if args.key?(:create_time)
           @customer_provided_config = args[:customer_provided_config] if args.key?(:customer_provided_config)
           @name = args[:name] if args.key?(:name)
           @provision_completion_time = args[:provision_completion_time] if args.key?(:provision_completion_time)
           @service_terms_map = args[:service_terms_map] if args.key?(:service_terms_map)
+        end
+      end
+      
+      # Represents the currently effective configurable billing parameters. These
+      # values are derived from the customer's subscription history stored internally
+      # and reflect the thresholds actively being used for billing purposes at the
+      # time of the GetProject call. This includes the start_time of the subscription
+      # and may differ from the values in `customer_provided_config` due to billing
+      # rules (e.g., scale-downs taking effect only at the start of a new month).
+      class GoogleCloudDiscoveryengineV1betaProjectConfigurableBillingStatus
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The currently effective Indexing Core threshold. This is the
+        # threshold against which Indexing Core usage is compared for overage
+        # calculations.
+        # Corresponds to the JSON property `effectiveIndexingCoreThreshold`
+        # @return [Fixnum]
+        attr_accessor :effective_indexing_core_threshold
+      
+        # Optional. The currently effective Search QPM threshold in queries per minute.
+        # This is the threshold against which QPM usage is compared for overage
+        # calculations.
+        # Corresponds to the JSON property `effectiveSearchQpmThreshold`
+        # @return [Fixnum]
+        attr_accessor :effective_search_qpm_threshold
+      
+        # Optional. The start time of the currently active billing subscription.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_indexing_core_threshold = args[:effective_indexing_core_threshold] if args.key?(:effective_indexing_core_threshold)
+          @effective_search_qpm_threshold = args[:effective_search_qpm_threshold] if args.key?(:effective_search_qpm_threshold)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -28338,9 +28561,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :user_labels
       
-        # A unique identifier for tracking visitors. For example, this could be
-        # implemented with an HTTP cookie, which should be able to uniquely identify a
-        # visitor on a single device. This unique identifier should not change if the
+        # Optional. A unique identifier for tracking visitors. For example, this could
+        # be implemented with an HTTP cookie, which should be able to uniquely identify
+        # a visitor on a single device. This unique identifier should not change if the
         # visitor logs in or out of the website. This field should NOT have a fixed
         # value such as `unknown_visitor`. This should be the same identifier as
         # UserEvent.user_pseudo_id and CompleteQueryRequest.user_pseudo_id The field
