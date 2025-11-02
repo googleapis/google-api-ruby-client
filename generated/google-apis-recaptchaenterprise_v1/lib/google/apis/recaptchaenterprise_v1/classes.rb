@@ -158,9 +158,7 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
-        # Optional. The annotation that is assigned to the Event. This field can be left
-        # empty to provide reasons that apply to an event without concluding whether the
-        # event is legitimate or fraudulent.
+        # 
         # Corresponds to the JSON property `annotation`
         # @return [String]
         attr_accessor :annotation
@@ -179,7 +177,7 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent]
         attr_accessor :phone_authentication_event
       
-        # Optional. Reasons for the annotation that are assigned to the event.
+        # 
         # Corresponds to the JSON property `reasons`
         # @return [Array<String>]
         attr_accessor :reasons
