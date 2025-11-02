@@ -119,8 +119,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
-        #   field which is primarily intended for internal usage.
+        #   Optional. Do not use this field. It is unsupported and is ignored unless
+        #   explicitly documented otherwise. This is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -605,9 +605,10 @@ module Google
         
         # Update an API resource in the API hub. The following fields in the API can be
         # updated: * display_name * description * owner * documentation * target_user *
-        # team * business_unit * maturity_level * api_style * attributes The update_mask
-        # should be used to specify the fields being updated. Updating the owner field
-        # requires complete owner message and updates both owner and email fields.
+        # team * business_unit * maturity_level * api_style * attributes * fingerprint
+        # The update_mask should be used to specify the fields being updated. Updating
+        # the owner field requires complete owner message and updates both owner and
+        # email fields.
         # @param [String] name
         #   Identifier. The name of the API resource in the API Hub. Format: `projects/`
         #   project`/locations/`location`/apis/`api``
@@ -1147,10 +1148,15 @@ module Google
         # Update an operation in an API version. The following fields in the
         # ApiOperation resource can be updated: * details.description * details.
         # documentation * details.http_operation.path * details.http_operation.method *
-        # details.deprecated * attributes The update_mask should be used to specify the
-        # fields being updated. An operation can be updated only if the operation was
-        # created via CreateApiOperation API. If the operation was created by parsing
-        # the spec, then it can be edited by updating the spec.
+        # details.deprecated * attributes * details.mcp_tool.title * details.mcp_tool.
+        # description * details.input_schema * details.output_schema * details.mcp_tool.
+        # annotations.title * details.mcp_tool.annotations.read_only_hint * details.
+        # mcp_tool.annotations.destructive_hint * details.mcp_tool.annotations.
+        # idempotent_hint * details.mcp_tool.annotations.open_world_hint * details.
+        # mcp_tool.annotations.additional_hints The update_mask should be used to
+        # specify the fields being updated. An operation can be updated only if the
+        # operation was created via CreateApiOperation API. If the operation was created
+        # by parsing the spec, then it can be edited by updating the spec.
         # @param [String] name
         #   Identifier. The name of the operation. Format: `projects/`project`/locations/`
         #   location`/apis/`api`/versions/`version`/operations/`operation``
@@ -3015,6 +3021,13 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the [ListOperationsResponse.
+        #   unreachable] field. This can only be `true` when reading across collections e.
+        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
+        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
+        #   explicitly documented otherwise in service or product specific documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3032,7 +3045,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::ApihubV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::ApihubV1::GoogleLongrunningListOperationsResponse
@@ -3040,6 +3053,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
