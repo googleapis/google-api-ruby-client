@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DirectVpcNetworkInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EventFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -384,6 +390,15 @@ module Google
       class DetachFunctionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DirectVpcNetworkInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+          property :subnetwork, as: 'subnetwork'
+          collection :tags, as: 'tags'
         end
       end
       
@@ -696,6 +711,9 @@ module Google
           property :available_cpu, as: 'availableCpu'
           property :available_memory, as: 'availableMemory'
           property :binary_authorization_policy, as: 'binaryAuthorizationPolicy'
+          property :direct_vpc_egress, as: 'directVpcEgress'
+          collection :direct_vpc_network_interface, as: 'directVpcNetworkInterface', class: Google::Apis::CloudfunctionsV2beta::DirectVpcNetworkInterface, decorator: Google::Apis::CloudfunctionsV2beta::DirectVpcNetworkInterface::Representation
+      
           hash :environment_variables, as: 'environmentVariables'
           property :ingress_settings, as: 'ingressSettings'
           property :max_instance_count, as: 'maxInstanceCount'
