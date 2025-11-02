@@ -340,6 +340,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContextualKeyword
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContextualKeywordTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Conversion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1781,6 +1793,8 @@ module Google
       
           property :comments, as: 'comments'
           property :compatibility, as: 'compatibility'
+          property :contextual_keyword_targeting, as: 'contextualKeywordTargeting', class: Google::Apis::DfareportingV5::ContextualKeywordTargeting, decorator: Google::Apis::DfareportingV5::ContextualKeywordTargeting::Representation
+      
           property :create_info, as: 'createInfo', class: Google::Apis::DfareportingV5::LastModifiedInfo, decorator: Google::Apis::DfareportingV5::LastModifiedInfo::Representation
       
           collection :creative_group_assignments, as: 'creativeGroupAssignments', class: Google::Apis::DfareportingV5::CreativeGroupAssignment, decorator: Google::Apis::DfareportingV5::CreativeGroupAssignment::Representation
@@ -2335,6 +2349,21 @@ module Google
           collection :field_names, as: 'fieldNames'
           property :row_number, as: 'rowNumber'
           property :separator, as: 'separator'
+        end
+      end
+      
+      class ContextualKeyword
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :keyword, as: 'keyword'
+        end
+      end
+      
+      class ContextualKeywordTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :keywords, as: 'keywords', class: Google::Apis::DfareportingV5::ContextualKeyword, decorator: Google::Apis::DfareportingV5::ContextualKeyword::Representation
+      
         end
       end
       
@@ -4847,6 +4876,8 @@ module Google
           property :account_id, :numeric_string => true, as: 'accountId'
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :advertiser_id_dimension_value, as: 'advertiserIdDimensionValue', class: Google::Apis::DfareportingV5::DimensionValue, decorator: Google::Apis::DfareportingV5::DimensionValue::Representation
+      
+          property :contextual_keyword_targeting, as: 'contextualKeywordTargeting', class: Google::Apis::DfareportingV5::ContextualKeywordTargeting, decorator: Google::Apis::DfareportingV5::ContextualKeywordTargeting::Representation
       
           property :day_part_targeting, as: 'dayPartTargeting', class: Google::Apis::DfareportingV5::DayPartTargeting, decorator: Google::Apis::DfareportingV5::DayPartTargeting::Representation
       

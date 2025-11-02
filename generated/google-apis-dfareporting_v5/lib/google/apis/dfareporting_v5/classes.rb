@@ -650,6 +650,11 @@ module Google
         # @return [String]
         attr_accessor :compatibility
       
+        # Contextual Keyword Targeting.
+        # Corresponds to the JSON property `contextualKeywordTargeting`
+        # @return [Google::Apis::DfareportingV5::ContextualKeywordTargeting]
+        attr_accessor :contextual_keyword_targeting
+      
         # Modification timestamp.
         # Corresponds to the JSON property `createInfo`
         # @return [Google::Apis::DfareportingV5::LastModifiedInfo]
@@ -820,6 +825,7 @@ module Google
           @click_through_url_suffix_properties = args[:click_through_url_suffix_properties] if args.key?(:click_through_url_suffix_properties)
           @comments = args[:comments] if args.key?(:comments)
           @compatibility = args[:compatibility] if args.key?(:compatibility)
+          @contextual_keyword_targeting = args[:contextual_keyword_targeting] if args.key?(:contextual_keyword_targeting)
           @create_info = args[:create_info] if args.key?(:create_info)
           @creative_group_assignments = args[:creative_group_assignments] if args.key?(:creative_group_assignments)
           @creative_rotation = args[:creative_rotation] if args.key?(:creative_rotation)
@@ -2790,6 +2796,44 @@ module Google
           @field_names = args[:field_names] if args.key?(:field_names)
           @row_number = args[:row_number] if args.key?(:row_number)
           @separator = args[:separator] if args.key?(:separator)
+        end
+      end
+      
+      # Contains information about a Contextual Keyword that can be targeted by ads.
+      class ContextualKeyword
+        include Google::Apis::Core::Hashable
+      
+        # The keyword that can be targeted by ads.
+        # Corresponds to the JSON property `keyword`
+        # @return [String]
+        attr_accessor :keyword
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @keyword = args[:keyword] if args.key?(:keyword)
+        end
+      end
+      
+      # Contextual Keyword Targeting.
+      class ContextualKeywordTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Contextual keywords that this ad targets
+        # Corresponds to the JSON property `keywords`
+        # @return [Array<Google::Apis::DfareportingV5::ContextualKeyword>]
+        attr_accessor :keywords
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @keywords = args[:keywords] if args.key?(:keywords)
         end
       end
       
@@ -9269,7 +9313,8 @@ module Google
         # DV360 (DBM) * `9`, Innovid * `10`, MediaMath * `11`, Roku OneView DSP * `12`,
         # TabMo Hawk * `13`, The Trade Desk * `14`, Xandr Invest DSP * `15`, Yahoo DSP *
         # `16`, Zeta Global * `17`, Scaleout * `18`, Bidtellect * `19`, Unicorn * `20`,
-        # Teads * `21`, Quantcast * `22`, Cognitiv
+        # Teads * `21`, Quantcast * `22`, Cognitiv * `23`, AdTheorent * `24`, DeepIntent
+        # * `25`, Pulsepoint
         # Corresponds to the JSON property `adServingPlatformId`
         # @return [Fixnum]
         attr_accessor :ad_serving_platform_id
@@ -11637,7 +11682,8 @@ module Google
         # Innovid * `10`, MediaMath * `11`, Roku OneView DSP * `12`, TabMo Hawk * `13`,
         # The Trade Desk * `14`, Xandr Invest DSP * `15`, Yahoo DSP * `16`, Zeta Global *
         # `17`, Scaleout * `18`, Bidtellect * `19`, Unicorn * `20`, Teads * `21`,
-        # Quantcast * `22`, Cognitiv
+        # Quantcast * `22`, Cognitiv * `23`, AdTheorent * `24`, DeepIntent * `25`,
+        # Pulsepoint
         # Corresponds to the JSON property `adServingPlatformId`
         # @return [Fixnum]
         attr_accessor :ad_serving_platform_id
@@ -12815,6 +12861,11 @@ module Google
         # @return [Google::Apis::DfareportingV5::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
+        # Contextual Keyword Targeting.
+        # Corresponds to the JSON property `contextualKeywordTargeting`
+        # @return [Google::Apis::DfareportingV5::ContextualKeywordTargeting]
+        attr_accessor :contextual_keyword_targeting
+      
         # Day Part Targeting.
         # Corresponds to the JSON property `dayPartTargeting`
         # @return [Google::Apis::DfareportingV5::DayPartTargeting]
@@ -12877,6 +12928,7 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
           @advertiser_id_dimension_value = args[:advertiser_id_dimension_value] if args.key?(:advertiser_id_dimension_value)
+          @contextual_keyword_targeting = args[:contextual_keyword_targeting] if args.key?(:contextual_keyword_targeting)
           @day_part_targeting = args[:day_part_targeting] if args.key?(:day_part_targeting)
           @geo_targeting = args[:geo_targeting] if args.key?(:geo_targeting)
           @id = args[:id] if args.key?(:id)
