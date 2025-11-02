@@ -631,9 +631,9 @@ module Google
         #   values: * `document` is the default model for regular dataStores. * `search-
         #   history` is the default model for site search dataStores.
         # @param [String] user_pseudo_id
-        #   A unique identifier for tracking visitors. For example, this could be
-        #   implemented with an HTTP cookie, which should be able to uniquely identify a
-        #   visitor on a single device. This unique identifier should not change if the
+        #   Optional. A unique identifier for tracking visitors. For example, this could
+        #   be implemented with an HTTP cookie, which should be able to uniquely identify
+        #   a visitor on a single device. This unique identifier should not change if the
         #   visitor logs in or out of the website. This field should NOT have a fixed
         #   value such as `unknown_visitor`. This should be the same identifier as
         #   UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a
@@ -5444,9 +5444,9 @@ module Google
         #   values: * `document` is the default model for regular dataStores. * `search-
         #   history` is the default model for site search dataStores.
         # @param [String] user_pseudo_id
-        #   A unique identifier for tracking visitors. For example, this could be
-        #   implemented with an HTTP cookie, which should be able to uniquely identify a
-        #   visitor on a single device. This unique identifier should not change if the
+        #   Optional. A unique identifier for tracking visitors. For example, this could
+        #   be implemented with an HTTP cookie, which should be able to uniquely identify
+        #   a visitor on a single device. This unique identifier should not change if the
         #   visitor logs in or out of the website. This field should NOT have a fixed
         #   value such as `unknown_visitor`. This should be the same identifier as
         #   UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a
