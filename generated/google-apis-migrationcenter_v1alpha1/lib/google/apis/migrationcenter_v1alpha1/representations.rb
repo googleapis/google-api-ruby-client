@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AwsDynamoDbTableDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AwsEc2PlatformDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -214,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AwsNatGatewayDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AwsRds
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +233,12 @@ module Google
       end
       
       class AwsRedshiftDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsRoute53HostedZoneDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1644,6 +1662,8 @@ module Google
           hash :attributes, as: 'attributes'
           property :aws_cloud_front_distribution_details, as: 'awsCloudFrontDistributionDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsCloudFrontDistributionDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsCloudFrontDistributionDetails::Representation
       
+          property :aws_dynamodb_table_details, as: 'awsDynamodbTableDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsDynamoDbTableDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsDynamoDbTableDetails::Representation
+      
           property :aws_ecs_cluster_details, as: 'awsEcsClusterDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsEcsClusterDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsEcsClusterDetails::Representation
       
           property :aws_efs_file_system_details, as: 'awsEfsFileSystemDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsEfsFileSystemDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsEfsFileSystemDetails::Representation
@@ -1654,7 +1674,11 @@ module Google
       
           property :aws_lambda_function_details, as: 'awsLambdaFunctionDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsLambdaFunctionDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsLambdaFunctionDetails::Representation
       
+          property :aws_nat_gateway_details, as: 'awsNatGatewayDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsNatGatewayDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsNatGatewayDetails::Representation
+      
           property :aws_redshift_details, as: 'awsRedshiftDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsRedshiftDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsRedshiftDetails::Representation
+      
+          property :aws_route53_hosted_zone_details, as: 'awsRoute53HostedZoneDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsRoute53HostedZoneDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsRoute53HostedZoneDetails::Representation
       
           property :aws_s3_bucket_details, as: 'awsS3BucketDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetails::Representation
       
@@ -1693,6 +1717,8 @@ module Google
           hash :attributes, as: 'attributes'
           property :aws_cloud_front_distribution_details, as: 'awsCloudFrontDistributionDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsCloudFrontDistributionDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsCloudFrontDistributionDetails::Representation
       
+          property :aws_dynamodb_table_details, as: 'awsDynamodbTableDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsDynamoDbTableDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsDynamoDbTableDetails::Representation
+      
           property :aws_ecs_cluster_details, as: 'awsEcsClusterDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsEcsClusterDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsEcsClusterDetails::Representation
       
           property :aws_efs_file_system_details, as: 'awsEfsFileSystemDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsEfsFileSystemDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsEfsFileSystemDetails::Representation
@@ -1703,7 +1729,11 @@ module Google
       
           property :aws_lambda_function_details, as: 'awsLambdaFunctionDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsLambdaFunctionDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsLambdaFunctionDetails::Representation
       
+          property :aws_nat_gateway_details, as: 'awsNatGatewayDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsNatGatewayDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsNatGatewayDetails::Representation
+      
           property :aws_redshift_details, as: 'awsRedshiftDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsRedshiftDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsRedshiftDetails::Representation
+      
+          property :aws_route53_hosted_zone_details, as: 'awsRoute53HostedZoneDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsRoute53HostedZoneDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsRoute53HostedZoneDetails::Representation
       
           property :aws_s3_bucket_details, as: 'awsS3BucketDetails', class: Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetails, decorator: Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetails::Representation
       
@@ -1808,7 +1838,6 @@ module Google
       class AssetsExportJobNetworkDependencies
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_days, as: 'maxDays'
         end
       end
       
@@ -1820,6 +1849,12 @@ module Google
       end
       
       class AwsCloudFrontDistributionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AwsDynamoDbTableDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1864,6 +1899,12 @@ module Google
         end
       end
       
+      class AwsNatGatewayDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AwsRds
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1871,6 +1912,12 @@ module Google
       end
       
       class AwsRedshiftDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AwsRoute53HostedZoneDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
