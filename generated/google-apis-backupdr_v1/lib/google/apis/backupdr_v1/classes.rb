@@ -1182,6 +1182,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :log_retention_days
       
+        # Optional. Optional field to configure the maximum number of days for which a
+        # backup can be retained. This field is only applicable for on-demand backups
+        # taken with custom retention value.
+        # Corresponds to the JSON property `maxCustomOnDemandRetentionDays`
+        # @return [Fixnum]
+        attr_accessor :max_custom_on_demand_retention_days
+      
         # Output only. Identifier. The resource name of the `BackupPlan`. Format: `
         # projects/`project`/locations/`location`/backupPlans/`backup_plan``
         # Corresponds to the JSON property `name`
@@ -1237,6 +1244,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @log_retention_days = args[:log_retention_days] if args.key?(:log_retention_days)
+          @max_custom_on_demand_retention_days = args[:max_custom_on_demand_retention_days] if args.key?(:max_custom_on_demand_retention_days)
           @name = args[:name] if args.key?(:name)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
@@ -5464,6 +5472,13 @@ module Google
       class TriggerBackupRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The duration for which backup data will be kept, while taking an on-
+        # demand backup with custom retention. It is defined in "days". It is mutually
+        # exclusive with rule_id. This field is required if rule_id is not provided.
+        # Corresponds to the JSON property `customRetentionDays`
+        # @return [Fixnum]
+        attr_accessor :custom_retention_days
+      
         # Optional. An optional request ID to identify requests. Specify a unique
         # request ID so that if you must retry your request, the server will know to
         # ignore the request if it has already been completed. The server will guarantee
@@ -5490,6 +5505,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_retention_days = args[:custom_retention_days] if args.key?(:custom_retention_days)
           @request_id = args[:request_id] if args.key?(:request_id)
           @rule_id = args[:rule_id] if args.key?(:rule_id)
         end
