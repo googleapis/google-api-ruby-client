@@ -1263,6 +1263,36 @@ module Google
         end
       end
       
+      # Content Security Policy contains the content security related policy of a
+      # resource.
+      class ContentSecurityPolicy
+        include Google::Apis::Core::Hashable
+      
+        # ContentSecurity defines the content security related fields of a MCP policy.
+        # Corresponds to the JSON property `mcpContentSecurity`
+        # @return [Google::Apis::ServiceusageV1beta1::ContentSecurity]
+        attr_accessor :mcp_content_security
+      
+        # Output only. The resource name of the policy. Only the `default` policy is
+        # supported. We allow the following formats: `projects/`PROJECT_NUMBER`/
+        # contentSecurityPolicies/default`, `projects/`PROJECT_ID`/
+        # contentSecurityPolicies/default`, We only support project level content
+        # security policy for now.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mcp_content_security = args[:mcp_content_security] if args.key?(:mcp_content_security)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # ContentSecurityProvider contains the name of content security provider.
       class ContentSecurityProvider
         include Google::Apis::Core::Hashable
@@ -3060,14 +3090,6 @@ module Google
       class GoogleApiServiceusageV2betaConsumerPolicy
         include Google::Apis::Core::Hashable
       
-        # Optional. Annotations is an unstructured key-value map stored with a policy
-        # that may be set by external tools to store and retrieve arbitrary metadata.
-        # They are not queryable and should be preserved when modifying objects. [AIP-
-        # 128](https://google.aip.dev/128#annotations)
-        # Corresponds to the JSON property `annotations`
-        # @return [Hash<String,String>]
-        attr_accessor :annotations
-      
         # Output only. The time the policy was created. For singleton policies, this is
         # the first touch of the policy.
         # Corresponds to the JSON property `createTime`
@@ -3105,7 +3127,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @annotations = args[:annotations] if args.key?(:annotations)
           @create_time = args[:create_time] if args.key?(:create_time)
           @enable_rules = args[:enable_rules] if args.key?(:enable_rules)
           @etag = args[:etag] if args.key?(:etag)
@@ -3848,6 +3869,13 @@ module Google
         # @return [Array<Google::Apis::ServiceusageV1beta1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3856,6 +3884,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -4065,11 +4094,6 @@ module Google
       class McpPolicy
         include Google::Apis::Core::Hashable
       
-        # ContentSecurity defines the content security related fields of a MCP policy.
-        # Corresponds to the JSON property `contentSecurity`
-        # @return [Google::Apis::ServiceusageV1beta1::ContentSecurity]
-        attr_accessor :content_security
-      
         # Output only. The time the policy was created. For singleton policies (such as
         # the `default` policy), this is the first touch of the policy.
         # Corresponds to the JSON property `createTime`
@@ -4106,7 +4130,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @content_security = args[:content_security] if args.key?(:content_security)
           @create_time = args[:create_time] if args.key?(:create_time)
           @etag = args[:etag] if args.key?(:etag)
           @mcp_enable_rules = args[:mcp_enable_rules] if args.key?(:mcp_enable_rules)
@@ -6021,6 +6044,19 @@ module Google
       
       # Metadata for the `UpdateConsumerPolicy` method.
       class UpdateConsumerPolicyMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for the `UpdateContentSecurityPolicy` method.
+      class UpdateContentSecurityPolicyMetadata
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
