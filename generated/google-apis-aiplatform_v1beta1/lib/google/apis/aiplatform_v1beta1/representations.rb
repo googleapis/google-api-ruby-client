@@ -1612,6 +1612,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1EvaluationInstanceAgentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1EvaluationInstanceAgentConfigTools
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1EvaluationInstanceAgentData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1EvaluationInstanceAgentDataEvents
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1EvaluationInstanceAgentDataTools
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1EvaluationInstanceInstanceData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1709,6 +1739,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1EvaluationRunInferenceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1EvaluationRunInferenceConfigAgentConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3046,6 +3082,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ImageConfigImageOutputOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1ImportDataConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3221,6 +3263,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1IntegratedGradientsAttribution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1IntermediateExtractedMemory
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5753,6 +5801,24 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecInlineSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecPythonSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10017,6 +10083,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :candidate, as: 'candidate'
+          collection :events, as: 'events', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content::Representation
+      
           property :text, as: 'text'
           property :value, as: 'value'
         end
@@ -11730,6 +11798,8 @@ module Google
       class GoogleCloudAiplatformV1beta1EvaluationInstance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_data, as: 'agentData', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceAgentData, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceAgentData::Representation
+      
           property :other_data, as: 'otherData', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceMapInstance, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceMapInstance::Representation
       
           property :prompt, as: 'prompt', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceInstanceData, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceInstanceData::Representation
@@ -11739,6 +11809,57 @@ module Google
           property :response, as: 'response', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceInstanceData, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceInstanceData::Representation
       
           hash :rubric_groups, as: 'rubricGroups', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RubricGroup, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RubricGroup::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1EvaluationInstanceAgentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :developer_instruction, as: 'developerInstruction', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceInstanceData, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceInstanceData::Representation
+      
+          property :tools, as: 'tools', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceAgentConfigTools, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceAgentConfigTools::Representation
+      
+          property :tools_text, as: 'toolsText'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1EvaluationInstanceAgentConfigTools
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tool, as: 'tool', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Tool, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Tool::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1EvaluationInstanceAgentData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_config, as: 'agentConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceAgentConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceAgentConfig::Representation
+      
+          property :developer_instruction, as: 'developerInstruction', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceInstanceData, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceInstanceData::Representation
+      
+          property :events, as: 'events', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceAgentDataEvents, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceAgentDataEvents::Representation
+      
+          property :events_text, as: 'eventsText'
+          property :tools, as: 'tools', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceAgentDataTools, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceAgentDataTools::Representation
+      
+          property :tools_text, as: 'toolsText'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1EvaluationInstanceAgentDataEvents
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event, as: 'event', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1EvaluationInstanceAgentDataTools
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tool, as: 'tool', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Tool, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Tool::Representation
       
         end
       end
@@ -11933,9 +12054,21 @@ module Google
       class GoogleCloudAiplatformV1beta1EvaluationRunInferenceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_config, as: 'agentConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunInferenceConfigAgentConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunInferenceConfigAgentConfig::Representation
+      
           property :generation_config, as: 'generationConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerationConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerationConfig::Representation
       
           property :model, as: 'model'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1EvaluationRunInferenceConfigAgentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :developer_instruction, as: 'developerInstruction', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content::Representation
+      
+          collection :tools, as: 'tools', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Tool, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Tool::Representation
+      
         end
       end
       
@@ -11945,6 +12078,8 @@ module Google
           property :llm_based_metric_spec, as: 'llmBasedMetricSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunMetricLlmBasedMetricSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunMetricLlmBasedMetricSpec::Representation
       
           property :metric, as: 'metric'
+          property :metric_config, as: 'metricConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Metric, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Metric::Representation
+      
           property :predefined_metric_spec, as: 'predefinedMetricSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunMetricPredefinedMetricSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunMetricPredefinedMetricSpec::Representation
       
           property :rubric_based_metric_spec, as: 'rubricBasedMetricSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunMetricRubricBasedMetricSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunMetricRubricBasedMetricSpec::Representation
@@ -13817,6 +13952,8 @@ module Google
       class GoogleCloudAiplatformV1beta1GenerateInstanceRubricsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_config, as: 'agentConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceAgentConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceAgentConfig::Representation
+      
           collection :contents, as: 'contents', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content::Representation
       
           property :predefined_rubric_generation_spec, as: 'predefinedRubricGenerationSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PredefinedMetricSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PredefinedMetricSpec::Representation
@@ -13880,6 +14017,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fact, as: 'fact'
+          collection :topics, as: 'topics', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryTopicId, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryTopicId::Representation
+      
         end
       end
       
@@ -14228,6 +14367,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aspect_ratio, as: 'aspectRatio'
+          property :image_output_options, as: 'imageOutputOptions', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ImageConfigImageOutputOptions, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ImageConfigImageOutputOptions::Representation
+      
+          property :person_generation, as: 'personGeneration'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ImageConfigImageOutputOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compression_quality, as: 'compressionQuality'
+          property :mime_type, as: 'mimeType'
         end
       end
       
@@ -14592,6 +14742,13 @@ module Google
           property :smooth_grad_config, as: 'smoothGradConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SmoothGradConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SmoothGradConfig::Representation
       
           property :step_count, as: 'stepCount'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1IntermediateExtractedMemory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fact, as: 'fact'
         end
       end
       
@@ -15380,6 +15537,8 @@ module Google
           property :revision_expire_time, as: 'revisionExpireTime'
           property :revision_ttl, as: 'revisionTtl'
           hash :scope, as: 'scope'
+          collection :topics, as: 'topics', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryTopicId, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryTopicId::Representation
+      
           property :ttl, as: 'ttl'
           property :update_time, as: 'updateTime'
         end
@@ -15461,6 +15620,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :expire_time, as: 'expireTime'
+          collection :extracted_memories, as: 'extractedMemories', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1IntermediateExtractedMemory, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1IntermediateExtractedMemory::Representation
+      
           property :fact, as: 'fact'
           hash :labels, as: 'labels'
           property :name, as: 'name'
@@ -17033,6 +17194,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content::Representation
       
+          property :optimization_target, as: 'optimizationTarget'
         end
       end
       
@@ -17659,8 +17821,6 @@ module Google
       class GoogleCloudAiplatformV1beta1PreferenceOptimizationSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :evaluation_config, as: 'evaluationConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationConfig::Representation
-      
           property :export_last_checkpoint_only, as: 'exportLastCheckpointOnly'
           property :hyper_parameters, as: 'hyperParameters', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PreferenceOptimizationHyperParameters, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PreferenceOptimizationHyperParameters::Representation
       
@@ -18920,6 +19080,8 @@ module Google
           property :package_spec, as: 'packageSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec::Representation
       
           property :service_account, as: 'serviceAccount'
+          property :source_code_spec, as: 'sourceCodeSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpec::Representation
+      
         end
       end
       
@@ -18947,6 +19109,33 @@ module Google
           property :pickle_object_gcs_uri, as: 'pickleObjectGcsUri'
           property :python_version, as: 'pythonVersion'
           property :requirements_gcs_uri, as: 'requirementsGcsUri'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inline_source, as: 'inlineSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecInlineSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecInlineSource::Representation
+      
+          property :python_spec, as: 'pythonSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecPythonSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecPythonSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecInlineSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_archive, :base64 => true, as: 'sourceArchive'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecPythonSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entrypoint_module, as: 'entrypointModule'
+          property :entrypoint_object, as: 'entrypointObject'
+          property :requirements_file, as: 'requirementsFile'
+          property :version, as: 'version'
         end
       end
       
@@ -19242,6 +19431,7 @@ module Google
       class GoogleCloudAiplatformV1beta1RetrieveMemoriesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
           hash :scope, as: 'scope'
           property :similarity_search_params, as: 'similaritySearchParams', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestSimilaritySearchParams, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestSimilaritySearchParams::Representation
       
