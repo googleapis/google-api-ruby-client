@@ -5452,6 +5452,11 @@ module Google
         # @return [String]
         attr_accessor :offer_id
       
+        # Details of a pre-order purchase.
+        # Corresponds to the JSON property `preorderDetails`
+        # @return [Google::Apis::AndroidpublisherV3::PreorderDetails]
+        attr_accessor :preorder_details
+      
         # ID of the purchase option. This field is set for both purchase options and
         # variant offers. For purchase options, this ID identifies the purchase option
         # itself. For variant offers, this ID refers to the associated purchase option,
@@ -5477,6 +5482,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @preorder_details = args[:preorder_details] if args.key?(:preorder_details)
           @purchase_option_id = args[:purchase_option_id] if args.key?(:purchase_option_id)
           @quantity = args[:quantity] if args.key?(:quantity)
           @rental_details = args[:rental_details] if args.key?(:rental_details)
@@ -5992,6 +5998,38 @@ module Google
         end
       end
       
+      # Details of a pre-order purchase.
+      class PreorderDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Offer details information related to a preorder line item.
+      class PreorderOfferDetails
+        include Google::Apis::Core::Hashable
+      
+        # The time when a preordered item is released for a preorder purchase.
+        # Corresponds to the JSON property `preorderReleaseTime`
+        # @return [String]
+        attr_accessor :preorder_release_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @preorder_release_time = args[:preorder_release_time] if args.key?(:preorder_release_time)
+        end
+      end
+      
       # Represents a base plan that does not automatically renew at the end of the
       # base plan, and must be manually renewed by the user.
       class PrepaidBasePlanType
@@ -6168,6 +6206,11 @@ module Google
         # @return [String]
         attr_accessor :offer_token
       
+        # Offer details information related to a preorder line item.
+        # Corresponds to the JSON property `preorderOfferDetails`
+        # @return [Google::Apis::AndroidpublisherV3::PreorderOfferDetails]
+        attr_accessor :preorder_offer_details
+      
         # The purchase option ID.
         # Corresponds to the JSON property `purchaseOptionId`
         # @return [String]
@@ -6199,6 +6242,7 @@ module Google
           @offer_id = args[:offer_id] if args.key?(:offer_id)
           @offer_tags = args[:offer_tags] if args.key?(:offer_tags)
           @offer_token = args[:offer_token] if args.key?(:offer_token)
+          @preorder_offer_details = args[:preorder_offer_details] if args.key?(:preorder_offer_details)
           @purchase_option_id = args[:purchase_option_id] if args.key?(:purchase_option_id)
           @quantity = args[:quantity] if args.key?(:quantity)
           @refundable_quantity = args[:refundable_quantity] if args.key?(:refundable_quantity)

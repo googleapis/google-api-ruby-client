@@ -1180,6 +1180,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PreorderDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreorderOfferDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrepaidBasePlanType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3574,6 +3586,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :offer_id, as: 'offerId'
+          property :preorder_details, as: 'preorderDetails', class: Google::Apis::AndroidpublisherV3::PreorderDetails, decorator: Google::Apis::AndroidpublisherV3::PreorderDetails::Representation
+      
           property :purchase_option_id, as: 'purchaseOptionId'
           property :quantity, as: 'quantity'
           property :rental_details, as: 'rentalDetails', class: Google::Apis::AndroidpublisherV3::RentalDetails, decorator: Google::Apis::AndroidpublisherV3::RentalDetails::Representation
@@ -3741,6 +3755,19 @@ module Google
         end
       end
       
+      class PreorderDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class PreorderOfferDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :preorder_release_time, as: 'preorderReleaseTime'
+        end
+      end
+      
       class PrepaidBasePlanType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3797,6 +3824,8 @@ module Google
           property :offer_id, as: 'offerId'
           collection :offer_tags, as: 'offerTags'
           property :offer_token, as: 'offerToken'
+          property :preorder_offer_details, as: 'preorderOfferDetails', class: Google::Apis::AndroidpublisherV3::PreorderOfferDetails, decorator: Google::Apis::AndroidpublisherV3::PreorderOfferDetails::Representation
+      
           property :purchase_option_id, as: 'purchaseOptionId'
           property :quantity, as: 'quantity'
           property :refundable_quantity, as: 'refundableQuantity'
