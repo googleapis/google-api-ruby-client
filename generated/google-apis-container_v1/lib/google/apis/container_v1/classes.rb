@@ -32,7 +32,7 @@ module Google
         attr_accessor :accelerator_count
       
         # The accelerator type resource name. List of supported accelerators [here](
-        # https://`$universe.dns_names.final_documentation_domain`/compute/docs/gpus)
+        # https://cloud.google.com/compute/docs/gpus)
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
@@ -604,8 +604,7 @@ module Google
         # each node in the node pool. This should be of the form projects/[
         # KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]
         # . For more information about protecting resources with Cloud KMS Keys please
-        # see: https://`$universe.dns_names.final_documentation_domain`/compute/docs/
-        # disks/customer-managed-encryption
+        # see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         # Corresponds to the JSON property `bootDiskKmsKey`
         # @return [String]
         attr_accessor :boot_disk_kms_key
@@ -622,9 +621,8 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
-        # The image type to use for NAP created node. Please see https://`$universe.
-        # dns_names.final_documentation_domain`/kubernetes-engine/docs/concepts/node-
-        # images for available image types.
+        # The image type to use for NAP created node. Please see https://cloud.google.
+        # com/kubernetes-engine/docs/concepts/node-images for available image types.
         # Corresponds to the JSON property `imageType`
         # @return [String]
         attr_accessor :image_type
@@ -645,11 +643,11 @@ module Google
         # instance may be scheduled on the specified or newer CPU platform. Applicable
         # values are the friendly names of CPU platforms, such as minCpuPlatform: Intel
         # Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how
-        # to specify min CPU platform](https://`$universe.dns_names.
-        # final_documentation_domain`/compute/docs/instances/specify-min-cpu-platform).
-        # This field is deprecated, min_cpu_platform should be specified using `cloud.
-        # google.com/requested-min-cpu-platform` label selector on the pod. To unset the
-        # min cpu platform field pass "automatic" as field value.
+        # to specify min CPU platform](https://cloud.google.com/compute/docs/instances/
+        # specify-min-cpu-platform). This field is deprecated, min_cpu_platform should
+        # be specified using `cloud.google.com/requested-min-cpu-platform` label
+        # selector on the pod. To unset the min cpu platform field pass "automatic" as
+        # field value.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
@@ -956,17 +954,15 @@ module Google
         attr_accessor :operation_id
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the operation resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the operation resides. This field
+        # has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -995,9 +991,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :fqdns
       
-        # GCPSecretManagerCertificateConfig configures a secret from [Google Secret
-        # Manager](https://`$universe.dns_names.final_documentation_domain`/secret-
-        # manager).
+        # GCPSecretManagerCertificateConfig configures a secret from [Secret Manager](
+        # https://cloud.google.com/secret-manager).
         # Corresponds to the JSON property `gcpSecretManagerCertificateConfig`
         # @return [Google::Apis::ContainerV1::GcpSecretManagerCertificateConfig]
         attr_accessor :gcp_secret_manager_certificate_config
@@ -1206,12 +1201,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_node_count
       
-        # Output only. Deprecated, use [NodePools.version](https://`$universe.dns_names.
-        # final_documentation_domain`/kubernetes-engine/docs/reference/rest/v1/projects.
-        # locations.clusters.nodePools) instead. The current version of the node
-        # software components. If they are currently at multiple versions because they'
-        # re in the process of being upgraded, this reflects the minimum version of all
-        # nodes.
+        # Output only. Deprecated, use [NodePools.version](https://cloud.google.com/
+        # kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools)
+        # instead. The current version of the node software components. If they are
+        # currently at multiple versions because they're in the process of being
+        # upgraded, this reflects the minimum version of all nodes.
         # Corresponds to the JSON property `currentNodeVersion`
         # @return [String]
         attr_accessor :current_node_version
@@ -1316,14 +1310,13 @@ module Google
         attr_accessor :initial_cluster_version
       
         # The number of nodes to create in this cluster. You must ensure that your
-        # Compute Engine [resource quota](https://`$universe.dns_names.
-        # final_documentation_domain`/compute/quotas) is sufficient for this number of
-        # instances. You must also have available firewall and routes quota. For
-        # requests, this field should only be used in lieu of a "node_pool" object,
-        # since this configuration (along with the "node_config") will be used to create
-        # a "NodePool" object with an auto-generated name. Do not use this and a
-        # node_pool at the same time. This field is deprecated, use node_pool.
-        # initial_node_count instead.
+        # Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is
+        # sufficient for this number of instances. You must also have available firewall
+        # and routes quota. For requests, this field should only be used in lieu of a "
+        # node_pool" object, since this configuration (along with the "node_config")
+        # will be used to create a "NodePool" object with an auto-generated name. Do not
+        # use this and a node_pool at the same time. This field is deprecated, use
+        # node_pool.initial_node_count instead.
         # Corresponds to the JSON property `initialNodeCount`
         # @return [Fixnum]
         attr_accessor :initial_node_count
@@ -1348,26 +1341,23 @@ module Google
         # @return [Google::Apis::ContainerV1::LegacyAbac]
         attr_accessor :legacy_abac
       
-        # Output only. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/regions-zones/regions-zones#
-        # available) or [region](https://`$universe.dns_names.final_documentation_domain`
-        # /compute/docs/regions-zones/regions-zones#available) in which the cluster
-        # resides.
+        # Output only. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/regions-zones/regions-zones#available) or [region](https://
+        # cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which
+        # the cluster resides.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # The list of Google Compute Engine [zones](https://`$universe.dns_names.
-        # final_documentation_domain`/compute/docs/zones#available) in which the cluster'
-        # s nodes should be located. This field provides a default value if [NodePool.
-        # Locations](https://`$universe.dns_names.final_documentation_domain`/kubernetes-
-        # engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.
-        # FIELDS.locations) are not specified during node pool creation. Warning:
-        # changing cluster locations will update the [NodePool.Locations](https://`$
-        # universe.dns_names.final_documentation_domain`/kubernetes-engine/docs/
-        # reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.
-        # locations) of all node pools and will result in nodes being added and/or
-        # removed.
+        # The list of Google Compute Engine [zones](https://cloud.google.com/compute/
+        # docs/zones#available) in which the cluster's nodes should be located. This
+        # field provides a default value if [NodePool.Locations](https://cloud.google.
+        # com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.
+        # nodePools#NodePool.FIELDS.locations) are not specified during node pool
+        # creation. Warning: changing cluster locations will update the [NodePool.
+        # Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/
+        # projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node
+        # pools and will result in nodes being added and/or removed.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
@@ -1436,10 +1426,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The name of the Google Compute Engine [network](https://`$universe.dns_names.
-        # final_documentation_domain`/compute/docs/networks-and-firewalls#networks) to
-        # which the cluster is connected. If left unspecified, the `default` network
-        # will be used.
+        # The name of the Google Compute Engine [network](https://cloud.google.com/
+        # compute/docs/networks-and-firewalls#networks) to which the cluster is
+        # connected. If left unspecified, the `default` network will be used.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -1586,9 +1575,8 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
-        # The name of the Google Compute Engine [subnetwork](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/subnetworks) to which the
-        # cluster is connected.
+        # The name of the Google Compute Engine [subnetwork](https://cloud.google.com/
+        # compute/docs/subnetworks) to which the cluster is connected.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -1619,9 +1607,9 @@ module Google
         # @return [Google::Apis::ContainerV1::WorkloadIdentityConfig]
         attr_accessor :workload_identity_config
       
-        # Output only. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field is deprecated, use location instead.
+        # Output only. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field is
+        # deprecated, use location instead.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -1720,9 +1708,8 @@ module Google
       class ClusterAutoscaling
         include Google::Apis::Core::Hashable
       
-        # The list of Google Compute Engine [zones](https://`$universe.dns_names.
-        # final_documentation_domain`/compute/docs/zones#available) in which the
-        # NodePool's nodes can be created by NAP.
+        # The list of Google Compute Engine [zones](https://cloud.google.com/compute/
+        # docs/zones#available) in which the NodePool's nodes can be created by NAP.
         # Corresponds to the JSON property `autoprovisioningLocations`
         # @return [Array<String>]
         attr_accessor :autoprovisioning_locations
@@ -1985,11 +1972,11 @@ module Google
         # @return [Google::Apis::ContainerV1::IlbSubsettingConfig]
         attr_accessor :desired_l4ilb_subsetting_config
       
-        # The desired list of Google Compute Engine [zones](https://`$universe.dns_names.
-        # final_documentation_domain`/compute/docs/zones#available) in which the cluster'
-        # s nodes should be located. This list must always include the cluster's primary
-        # zone. Warning: changing cluster locations will update the locations of all
-        # node pools and will result in nodes being added and/or removed.
+        # The desired list of Google Compute Engine [zones](https://cloud.google.com/
+        # compute/docs/zones#available) in which the cluster's nodes should be located.
+        # This list must always include the cluster's primary zone. Warning: changing
+        # cluster locations will update the locations of all node pools and will result
+        # in nodes being added and/or removed.
         # Corresponds to the JSON property `desiredLocations`
         # @return [Array<String>]
         attr_accessor :desired_locations
@@ -2083,10 +2070,9 @@ module Google
       
         # A map of resource manager tag keys and values to be attached to the nodes for
         # managing Compute Engine firewalls using Network Firewall Policies. Tags must
-        # be according to specifications in https://`$universe.dns_names.
-        # final_documentation_domain`/vpc/docs/tags-firewalls-overview#specifications. A
-        # maximum of 5 tag key-value pairs can be specified. Existing tags will be
-        # replaced with new values.
+        # be according to specifications in https://cloud.google.com/vpc/docs/tags-
+        # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
+        # specified. Existing tags will be replaced with new values.
         # Corresponds to the JSON property `desiredNodePoolAutoConfigResourceManagerTags`
         # @return [Google::Apis::ContainerV1::ResourceManagerTags]
         attr_accessor :desired_node_pool_auto_config_resource_manager_tags
@@ -2396,17 +2382,15 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -2638,17 +2622,15 @@ module Google
         attr_accessor :parent
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the parent field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the parent field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the parent
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the parent field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -2693,17 +2675,15 @@ module Google
         attr_accessor :parent
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the parent field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the parent field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the parent
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the parent field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3037,15 +3017,13 @@ module Google
         # used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds,
         # zero (or unset) means to disable using local SSDs as ephemeral storage. The
         # limit for this value is dependent upon the maximum number of disk available on
-        # a machine per zone. See: https://`$universe.dns_names.
-        # final_documentation_domain`/compute/docs/disks/local-ssd for more information.
-        # 2. For Gen3 machines which dictate a specific number of local ssds, zero (or
-        # unset) means to use the default number of local ssds that goes with that
-        # machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds
-        # would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0
-        # will be provisioned. See https://`$universe.dns_names.
-        # final_documentation_domain`/compute/docs/disks/local-ssd#
-        # choose_number_local_ssds for more info.
+        # a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd
+        # for more information. 2. For Gen3 machines which dictate a specific number of
+        # local ssds, zero (or unset) means to use the default number of local ssds that
+        # goes with that machine type. For example, for a c3-standard-8-lssd machine, 2
+        # local ssds would be provisioned. For c3-standard-8 (which doesn't support
+        # local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/
+        # disks/local-ssd#choose_number_local_ssds for more info.
         # Corresponds to the JSON property `localSsdCount`
         # @return [Fixnum]
         attr_accessor :local_ssd_count
@@ -3357,9 +3335,8 @@ module Google
         end
       end
       
-      # GCPSecretManagerCertificateConfig configures a secret from [Google Secret
-      # Manager](https://`$universe.dns_names.final_documentation_domain`/secret-
-      # manager).
+      # GCPSecretManagerCertificateConfig configures a secret from [Secret Manager](
+      # https://cloud.google.com/secret-manager).
       class GcpSecretManagerCertificateConfig
         include Google::Apis::Core::Hashable
       
@@ -4411,18 +4388,17 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Number of local NVMe SSDs to use. The limit for this value is dependent upon
-        # the maximum number of disk available on a machine per zone. See: https://`$
-        # universe.dns_names.final_documentation_domain`/compute/docs/disks/local-ssd
-        # for more information. A zero (or unset) value has different meanings depending
-        # on machine type being used: 1. For pre-Gen3 machines, which support flexible
-        # numbers of local ssds, zero (or unset) means to disable using local SSDs as
-        # ephemeral storage. 2. For Gen3 machines which dictate a specific number of
-        # local ssds, zero (or unset) means to use the default number of local ssds that
-        # goes with that machine type. For example, for a c3-standard-8-lssd machine, 2
-        # local ssds would be provisioned. For c3-standard-8 (which doesn't support
-        # local ssds), 0 will be provisioned. See https://`$universe.dns_names.
-        # final_documentation_domain`/compute/docs/disks/local-ssd#
-        # choose_number_local_ssds for more info.
+        # the maximum number of disk available on a machine per zone. See: https://cloud.
+        # google.com/compute/docs/disks/local-ssd for more information. A zero (or unset)
+        # value has different meanings depending on machine type being used: 1. For pre-
+        # Gen3 machines, which support flexible numbers of local ssds, zero (or unset)
+        # means to disable using local SSDs as ephemeral storage. 2. For Gen3 machines
+        # which dictate a specific number of local ssds, zero (or unset) means to use
+        # the default number of local ssds that goes with that machine type. For example,
+        # for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-
+        # standard-8 (which doesn't support local ssds), 0 will be provisioned. See
+        # https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds
+        # for more info.
         # Corresponds to the JSON property `localSsdCount`
         # @return [Fixnum]
         attr_accessor :local_ssd_count
@@ -4672,9 +4648,8 @@ module Google
         # strong password. If a password is provided for cluster creation, username must
         # be non-empty. Warning: basic authentication is deprecated, and will be removed
         # in GKE control plane versions 1.19 and newer. For a list of recommended
-        # authentication methods, see: https://`$universe.dns_names.
-        # final_documentation_domain`/kubernetes-engine/docs/how-to/api-server-
-        # authentication
+        # authentication methods, see: https://cloud.google.com/kubernetes-engine/docs/
+        # how-to/api-server-authentication
         # Corresponds to the JSON property `password`
         # @return [String]
         attr_accessor :password
@@ -4684,8 +4659,8 @@ module Google
         # username unspecified (or setting it to the empty string). Warning: basic
         # authentication is deprecated, and will be removed in GKE control plane
         # versions 1.19 and newer. For a list of recommended authentication methods, see:
-        # https://`$universe.dns_names.final_documentation_domain`/kubernetes-engine/
-        # docs/how-to/api-server-authentication
+        # https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-
+        # authentication
         # Corresponds to the JSON property `username`
         # @return [String]
         attr_accessor :username
@@ -4983,10 +4958,9 @@ module Google
         # @return [String]
         attr_accessor :in_transit_encryption_config
       
-        # Output only. The relative name of the Google Compute Engine [network](https://`
-        # $universe.dns_names.final_documentation_domain`/compute/docs/networks-and-
-        # firewalls#networks) to which the cluster is connected. Example: projects/my-
-        # project/global/networks/my-network
+        # Output only. The relative name of the Google Compute Engine [network](https://
+        # cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the
+        # cluster is connected. Example: projects/my-project/global/networks/my-network
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -5008,9 +4982,8 @@ module Google
         attr_accessor :service_external_ips_config
       
         # Output only. The relative name of the Google Compute Engine [subnetwork](https:
-        # //`$universe.dns_names.final_documentation_domain`/compute/docs/vpc) to which
-        # the cluster is connected. Example: projects/my-project/regions/us-central1/
-        # subnetworks/my-subnet
+        # //cloud.google.com/compute/docs/vpc) to which the cluster is connected.
+        # Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -5149,9 +5122,8 @@ module Google
       end
       
       # Specifies the NodeAffinity key, values, and affinity operator according to [
-      # shared sole tenant node group affinities](https://`$universe.dns_names.
-      # final_documentation_domain`/compute/docs/nodes/sole-tenant-nodes#
-      # node_affinity_and_anti-affinity).
+      # shared sole tenant node group affinities](https://cloud.google.com/compute/
+      # docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity).
       class NodeAffinity
         include Google::Apis::Core::Hashable
       
@@ -5188,9 +5160,8 @@ module Google
       class NodeConfig
         include Google::Apis::Core::Hashable
       
-        # A list of hardware accelerators to be attached to each node. See https://`$
-        # universe.dns_names.final_documentation_domain`/compute/docs/gpus for more
-        # information about support for GPUs.
+        # A list of hardware accelerators to be attached to each node. See https://cloud.
+        # google.com/compute/docs/gpus for more information about support for GPUs.
         # Corresponds to the JSON property `accelerators`
         # @return [Array<Google::Apis::ContainerV1::AcceleratorConfig>]
         attr_accessor :accelerators
@@ -5209,8 +5180,7 @@ module Google
         # each node in the node pool. This should be of the form projects/[
         # KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]
         # . For more information about protecting resources with Cloud KMS Keys please
-        # see: https://`$universe.dns_names.final_documentation_domain`/compute/docs/
-        # disks/customer-managed-encryption
+        # see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         # Corresponds to the JSON property `bootDiskKmsKey`
         # @return [String]
         attr_accessor :boot_disk_kms_key
@@ -5281,9 +5251,8 @@ module Google
         attr_accessor :gvnic
       
         # The image type to use for this node. Note that for a given image type, the
-        # latest version of it will be used. Please see https://`$universe.dns_names.
-        # final_documentation_domain`/kubernetes-engine/docs/concepts/node-images for
-        # available image types.
+        # latest version of it will be used. Please see https://cloud.google.com/
+        # kubernetes-engine/docs/concepts/node-images for available image types.
         # Corresponds to the JSON property `imageType`
         # @return [String]
         attr_accessor :image_type
@@ -5317,8 +5286,8 @@ module Google
       
         # The number of local SSD disks to be attached to the node. The limit for this
         # value is dependent upon the maximum number of disks available on a machine per
-        # zone. See: https://`$universe.dns_names.final_documentation_domain`/compute/
-        # docs/disks/local-ssd for more information.
+        # zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more
+        # information.
         # Corresponds to the JSON property `localSsdCount`
         # @return [Fixnum]
         attr_accessor :local_ssd_count
@@ -5334,9 +5303,9 @@ module Google
         # @return [Google::Apis::ContainerV1::NodePoolLoggingConfig]
         attr_accessor :logging_config
       
-        # The name of a Google Compute Engine [machine type](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/machine-types) If
-        # unspecified, the default machine type is `e2-medium`.
+        # The name of a Google Compute Engine [machine type](https://cloud.google.com/
+        # compute/docs/machine-types) If unspecified, the default machine type is `e2-
+        # medium`.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -5369,16 +5338,15 @@ module Google
         # scheduled on the specified or newer CPU platform. Applicable values are the
         # friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `
         # minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to
-        # specify min CPU platform](https://`$universe.dns_names.
-        # final_documentation_domain`/compute/docs/instances/specify-min-cpu-platform)
+        # specify min CPU platform](https://cloud.google.com/compute/docs/instances/
+        # specify-min-cpu-platform)
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
       
         # Setting this field will assign instances of this pool to run on the specified
         # node group. This is useful for running workloads on [sole tenant nodes](https:/
-        # /`$universe.dns_names.final_documentation_domain`/compute/docs/nodes/sole-
-        # tenant-nodes).
+        # /cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
         # Corresponds to the JSON property `nodeGroup`
         # @return [String]
         attr_accessor :node_group
@@ -5388,25 +5356,25 @@ module Google
         # required, and by default are not included: * `https://www.googleapis.com/auth/
         # compute` is required for mounting persistent storage on your nodes. * `https://
         # www.googleapis.com/auth/devstorage.read_only` is required for communicating
-        # with **gcr.io** (the [Google Container Registry](https://`$universe.dns_names.
-        # final_documentation_domain`/container-registry/)). If unspecified, no scopes
-        # are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case
-        # their required scopes will be added.
+        # with **gcr.io** (the [Artifact Registry](https://cloud.google.com/artifact-
+        # registry/)). If unspecified, no scopes are added, unless Cloud Logging or
+        # Cloud Monitoring are enabled, in which case their required scopes will be
+        # added.
         # Corresponds to the JSON property `oauthScopes`
         # @return [Array<String>]
         attr_accessor :oauth_scopes
       
-        # Whether the nodes are created as preemptible VM instances. See: https://`$
-        # universe.dns_names.final_documentation_domain`/compute/docs/instances/
-        # preemptible for more information about preemptible VM instances.
+        # Whether the nodes are created as preemptible VM instances. See: https://cloud.
+        # google.com/compute/docs/instances/preemptible for more information about
+        # preemptible VM instances.
         # Corresponds to the JSON property `preemptible`
         # @return [Boolean]
         attr_accessor :preemptible
         alias_method :preemptible?, :preemptible
       
-        # [ReservationAffinity](https://`$universe.dns_names.final_documentation_domain`/
-        # compute/docs/instances/reserving-zonal-resources) is the configuration of
-        # desired reservation which instances could take capacity from.
+        # [ReservationAffinity](https://cloud.google.com/compute/docs/instances/
+        # reserving-zonal-resources) is the configuration of desired reservation which
+        # instances could take capacity from.
         # Corresponds to the JSON property `reservationAffinity`
         # @return [Google::Apis::ContainerV1::ReservationAffinity]
         attr_accessor :reservation_affinity
@@ -5419,10 +5387,9 @@ module Google
       
         # A map of resource manager tag keys and values to be attached to the nodes for
         # managing Compute Engine firewalls using Network Firewall Policies. Tags must
-        # be according to specifications in https://`$universe.dns_names.
-        # final_documentation_domain`/vpc/docs/tags-firewalls-overview#specifications. A
-        # maximum of 5 tag key-value pairs can be specified. Existing tags will be
-        # replaced with new values.
+        # be according to specifications in https://cloud.google.com/vpc/docs/tags-
+        # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
+        # specified. Existing tags will be replaced with new values.
         # Corresponds to the JSON property `resourceManagerTags`
         # @return [Google::Apis::ContainerV1::ResourceManagerTags]
         attr_accessor :resource_manager_tags
@@ -6026,30 +5993,27 @@ module Google
         attr_accessor :etag
       
         # The initial node count for the pool. You must ensure that your Compute Engine [
-        # resource quota](https://`$universe.dns_names.final_documentation_domain`/
-        # compute/quotas) is sufficient for this number of instances. You must also have
-        # available firewall and routes quota.
+        # resource quota](https://cloud.google.com/compute/quotas) is sufficient for
+        # this number of instances. You must also have available firewall and routes
+        # quota.
         # Corresponds to the JSON property `initialNodeCount`
         # @return [Fixnum]
         attr_accessor :initial_node_count
       
-        # Output only. The resource URLs of the [managed instance groups](https://`$
-        # universe.dns_names.final_documentation_domain`/compute/docs/instance-groups/
-        # creating-groups-of-managed-instances) associated with this node pool. During
-        # the node pool blue-green upgrade operation, the URLs contain both blue and
-        # green resources.
+        # Output only. The resource URLs of the [managed instance groups](https://cloud.
+        # google.com/compute/docs/instance-groups/creating-groups-of-managed-instances)
+        # associated with this node pool. During the node pool blue-green upgrade
+        # operation, the URLs contain both blue and green resources.
         # Corresponds to the JSON property `instanceGroupUrls`
         # @return [Array<String>]
         attr_accessor :instance_group_urls
       
-        # The list of Google Compute Engine [zones](https://`$universe.dns_names.
-        # final_documentation_domain`/compute/docs/zones#available) in which the
-        # NodePool's nodes should be located. If this value is unspecified during node
-        # pool creation, the [Cluster.Locations](https://`$universe.dns_names.
-        # final_documentation_domain`/kubernetes-engine/docs/reference/rest/v1/projects.
-        # locations.clusters#Cluster.FIELDS.locations) value will be used, instead.
-        # Warning: changing node pool locations will result in nodes being added and/or
-        # removed.
+        # The list of Google Compute Engine [zones](https://cloud.google.com/compute/
+        # docs/zones#available) in which the NodePool's nodes should be located. If this
+        # value is unspecified during node pool creation, the [Cluster.Locations](https:/
+        # /cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.
+        # clusters#Cluster.FIELDS.locations) value will be used, instead. Warning:
+        # changing node pool locations will result in nodes being added and/or removed.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
@@ -6148,9 +6112,8 @@ module Google
         attr_accessor :upgrade_settings
       
         # The version of Kubernetes running on this NodePool's nodes. If unspecified, it
-        # defaults as described [here](https://`$universe.dns_names.
-        # final_documentation_domain`/kubernetes-engine/versioning#
-        # specifying_node_version).
+        # defaults as described [here](https://cloud.google.com/kubernetes-engine/
+        # versioning#specifying_node_version).
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -6209,10 +6172,9 @@ module Google
       
         # A map of resource manager tag keys and values to be attached to the nodes for
         # managing Compute Engine firewalls using Network Firewall Policies. Tags must
-        # be according to specifications in https://`$universe.dns_names.
-        # final_documentation_domain`/vpc/docs/tags-firewalls-overview#specifications. A
-        # maximum of 5 tag key-value pairs can be specified. Existing tags will be
-        # replaced with new values.
+        # be according to specifications in https://cloud.google.com/vpc/docs/tags-
+        # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
+        # specified. Existing tags will be replaced with new values.
         # Corresponds to the JSON property `resourceManagerTags`
         # @return [Google::Apis::ContainerV1::ResourceManagerTags]
         attr_accessor :resource_manager_tags
@@ -6493,11 +6455,10 @@ module Google
         # @return [Google::Apis::ContainerV1::Status]
         attr_accessor :error
       
-        # Output only. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/regions-zones/regions-zones#
-        # available) or [region](https://`$universe.dns_names.final_documentation_domain`
-        # /compute/docs/regions-zones/regions-zones#available) in which the cluster
-        # resides.
+        # Output only. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/regions-zones/regions-zones#available) or [region](https://
+        # cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which
+        # the cluster resides.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -6559,9 +6520,9 @@ module Google
         # @return [String]
         attr_accessor :target_link
       
-        # Output only. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the operation is taking place. This field is deprecated, use location instead.
+        # Output only. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the operation is taking place. This
+        # field is deprecated, use location instead.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -6720,8 +6681,8 @@ module Google
         # @return [String]
         attr_accessor :policy_name
       
-        # Optional. TPU placement topology for pod slice node pool. https://`$universe.
-        # dns_names.final_documentation_domain`/tpu/docs/types-topologies#tpu_topologies
+        # Optional. TPU placement topology for pod slice node pool. https://cloud.google.
+        # com/tpu/docs/types-topologies#tpu_topologies
         # Corresponds to the JSON property `tpuTopology`
         # @return [String]
         attr_accessor :tpu_topology
@@ -7217,9 +7178,9 @@ module Google
         end
       end
       
-      # [ReservationAffinity](https://`$universe.dns_names.final_documentation_domain`/
-      # compute/docs/instances/reserving-zonal-resources) is the configuration of
-      # desired reservation which instances could take capacity from.
+      # [ReservationAffinity](https://cloud.google.com/compute/docs/instances/
+      # reserving-zonal-resources) is the configuration of desired reservation which
+      # instances could take capacity from.
       class ReservationAffinity
         include Google::Apis::Core::Hashable
       
@@ -7252,8 +7213,8 @@ module Google
         end
       end
       
-      # Collection of [Resource Manager labels](https://`$universe.dns_names.
-      # final_documentation_domain`/resource-manager/docs/creating-managing-labels).
+      # Collection of [Resource Manager labels](https://cloud.google.com/resource-
+      # manager/docs/creating-managing-labels).
       class ResourceLabels
         include Google::Apis::Core::Hashable
       
@@ -7306,10 +7267,9 @@ module Google
       
       # A map of resource manager tag keys and values to be attached to the nodes for
       # managing Compute Engine firewalls using Network Firewall Policies. Tags must
-      # be according to specifications in https://`$universe.dns_names.
-      # final_documentation_domain`/vpc/docs/tags-firewalls-overview#specifications. A
-      # maximum of 5 tag key-value pairs can be specified. Existing tags will be
-      # replaced with new values.
+      # be according to specifications in https://cloud.google.com/vpc/docs/tags-
+      # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
+      # specified. Existing tags will be replaced with new values.
       class ResourceManagerTags
         include Google::Apis::Core::Hashable
       
@@ -7389,9 +7349,8 @@ module Google
         attr_accessor :node_pool_id
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -7402,10 +7361,9 @@ module Google
         attr_accessor :respect_pdb
         alias_method :respect_pdb?, :respect_pdb
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -7744,17 +7702,15 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -7801,9 +7757,8 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -7813,10 +7768,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :resource_labels
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -7860,17 +7814,15 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -7899,12 +7851,12 @@ module Google
         # @return [String]
         attr_accessor :cluster_id
       
-        # Required. The desired list of Google Compute Engine [zones](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster's nodes should be located. Changing the locations a cluster is in
-        # will result in nodes being either created or removed from the cluster,
-        # depending on whether locations are being added or removed. This list must
-        # always include the cluster's primary zone.
+        # Required. The desired list of Google Compute Engine [zones](https://cloud.
+        # google.com/compute/docs/zones#available) in which the cluster's nodes should
+        # be located. Changing the locations a cluster is in will result in nodes being
+        # either created or removed from the cluster, depending on whether locations are
+        # being added or removed. This list must always include the cluster's primary
+        # zone.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
@@ -7916,17 +7868,15 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -7973,17 +7923,15 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8023,15 +7971,13 @@ module Google
         attr_accessor :name
       
         # Required. The Google Developers Console [project ID or project number](https://
-        # `$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects).
+        # cloud.google.com/resource-manager/docs/creating-managing-projects).
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Required. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides.
+        # Required. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8072,9 +8018,8 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -8085,10 +8030,9 @@ module Google
         # @return [Google::Apis::ContainerV1::MasterAuth]
         attr_accessor :update
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8136,17 +8080,15 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8188,17 +8130,15 @@ module Google
         attr_accessor :network_policy
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8247,17 +8187,15 @@ module Google
         attr_accessor :node_pool_id
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8308,17 +8246,15 @@ module Google
         attr_accessor :node_pool_id
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8366,17 +8302,15 @@ module Google
         attr_accessor :node_pool_id
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8528,9 +8462,8 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -8541,10 +8474,9 @@ module Google
         attr_accessor :rotate_credentials
         alias_method :rotate_credentials?, :rotate_credentials
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8746,9 +8678,8 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -8759,10 +8690,9 @@ module Google
         # @return [Google::Apis::ContainerV1::ClusterUpdate]
         attr_accessor :update
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8829,17 +8759,15 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8862,9 +8790,8 @@ module Google
       class UpdateNodePoolRequest
         include Google::Apis::Core::Hashable
       
-        # A list of hardware accelerators to be attached to each node. See https://`$
-        # universe.dns_names.final_documentation_domain`/compute/docs/gpus for more
-        # information about support for GPUs.
+        # A list of hardware accelerators to be attached to each node. See https://cloud.
+        # google.com/compute/docs/gpus for more information about support for GPUs.
         # Corresponds to the JSON property `accelerators`
         # @return [Array<Google::Apis::ContainerV1::AcceleratorConfig>]
         attr_accessor :accelerators
@@ -8934,9 +8861,9 @@ module Google
         # @return [Google::Apis::ContainerV1::VirtualNic]
         attr_accessor :gvnic
       
-        # Required. The desired image type for the node pool. Please see https://`$
-        # universe.dns_names.final_documentation_domain`/kubernetes-engine/docs/concepts/
-        # node-images for available image types.
+        # Required. The desired image type for the node pool. Please see https://cloud.
+        # google.com/kubernetes-engine/docs/concepts/node-images for available image
+        # types.
         # Corresponds to the JSON property `imageType`
         # @return [String]
         attr_accessor :image_type
@@ -8957,17 +8884,17 @@ module Google
         # @return [Google::Apis::ContainerV1::LinuxNodeConfig]
         attr_accessor :linux_node_config
       
-        # The desired list of Google Compute Engine [zones](https://`$universe.dns_names.
-        # final_documentation_domain`/compute/docs/zones#available) in which the node
-        # pool's nodes should be located. Changing the locations for a node pool will
-        # result in nodes being either created or removed from the node pool, depending
-        # on whether locations are being added or removed. Warning: It is recommended to
-        # update node pool locations in a standalone API call. Do not combine a location
-        # update with changes to other fields (such as `tags`, `labels`, `taints`, etc.)
-        # in the same request. Otherwise, the API performs a structural modification
-        # where changes to other fields will only apply to newly created nodes and will
-        # not be applied to existing nodes in the node pool. To ensure all nodes are
-        # updated consistently, use a separate API call for location changes.
+        # The desired list of Google Compute Engine [zones](https://cloud.google.com/
+        # compute/docs/zones#available) in which the node pool's nodes should be located.
+        # Changing the locations for a node pool will result in nodes being either
+        # created or removed from the node pool, depending on whether locations are
+        # being added or removed. Warning: It is recommended to update node pool
+        # locations in a standalone API call. Do not combine a location update with
+        # changes to other fields (such as `tags`, `labels`, `taints`, etc.) in the same
+        # request. Otherwise, the API performs a structural modification where changes
+        # to other fields will only apply to newly created nodes and will not be applied
+        # to existing nodes in the node pool. To ensure all nodes are updated
+        # consistently, use a separate API call for location changes.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
@@ -8977,10 +8904,10 @@ module Google
         # @return [Google::Apis::ContainerV1::NodePoolLoggingConfig]
         attr_accessor :logging_config
       
-        # Optional. The desired [Google Compute Engine machine type](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/machine-types) for nodes in
-        # the node pool. Initiates an upgrade operation that migrates the nodes in the
-        # node pool to the specified machine type.
+        # Optional. The desired [Google Compute Engine machine type](https://cloud.
+        # google.com/compute/docs/machine-types) for nodes in the node pool. Initiates
+        # an upgrade operation that migrates the nodes in the node pool to the specified
+        # machine type.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -9020,9 +8947,8 @@ module Google
         attr_accessor :node_version
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //`$universe.dns_names.final_documentation_domain`/resource-manager/docs/
-        # creating-managing-projects). This field has been deprecated and replaced by
-        # the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -9032,18 +8958,17 @@ module Google
         # @return [Google::Apis::ContainerV1::QueuedProvisioning]
         attr_accessor :queued_provisioning
       
-        # Collection of [Resource Manager labels](https://`$universe.dns_names.
-        # final_documentation_domain`/resource-manager/docs/creating-managing-labels).
+        # Collection of [Resource Manager labels](https://cloud.google.com/resource-
+        # manager/docs/creating-managing-labels).
         # Corresponds to the JSON property `resourceLabels`
         # @return [Google::Apis::ContainerV1::ResourceLabels]
         attr_accessor :resource_labels
       
         # A map of resource manager tag keys and values to be attached to the nodes for
         # managing Compute Engine firewalls using Network Firewall Policies. Tags must
-        # be according to specifications in https://`$universe.dns_names.
-        # final_documentation_domain`/vpc/docs/tags-firewalls-overview#specifications. A
-        # maximum of 5 tag key-value pairs can be specified. Existing tags will be
-        # replaced with new values.
+        # be according to specifications in https://cloud.google.com/vpc/docs/tags-
+        # firewalls-overview#specifications. A maximum of 5 tag key-value pairs can be
+        # specified. Existing tags will be replaced with new values.
         # Corresponds to the JSON property `resourceManagerTags`
         # @return [Google::Apis::ContainerV1::ResourceManagerTags]
         attr_accessor :resource_manager_tags
@@ -9114,10 +9039,9 @@ module Google
         # @return [Google::Apis::ContainerV1::WorkloadMetadataConfig]
         attr_accessor :workload_metadata_config
       
-        # Deprecated. The name of the Google Compute Engine [zone](https://`$universe.
-        # dns_names.final_documentation_domain`/compute/docs/zones#available) in which
-        # the cluster resides. This field has been deprecated and replaced by the name
-        # field.
+        # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
+        # com/compute/docs/zones#available) in which the cluster resides. This field has
+        # been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
