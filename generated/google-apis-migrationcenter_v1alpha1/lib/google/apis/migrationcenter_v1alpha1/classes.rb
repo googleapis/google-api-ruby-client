@@ -402,6 +402,11 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsCloudFrontDistributionDetails]
         attr_accessor :aws_cloud_front_distribution_details
       
+        # Details of an AWS DynamoDB table.
+        # Corresponds to the JSON property `awsDynamodbTableDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsDynamoDbTableDetails]
+        attr_accessor :aws_dynamodb_table_details
+      
         # Details of an AWS ECS cluster.
         # Corresponds to the JSON property `awsEcsClusterDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsEcsClusterDetails]
@@ -427,10 +432,20 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsLambdaFunctionDetails]
         attr_accessor :aws_lambda_function_details
       
+        # Details of an AWS NAT Gateway.
+        # Corresponds to the JSON property `awsNatGatewayDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsNatGatewayDetails]
+        attr_accessor :aws_nat_gateway_details
+      
         # Details of an AWS Redshift cluster.
         # Corresponds to the JSON property `awsRedshiftDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsRedshiftDetails]
         attr_accessor :aws_redshift_details
+      
+        # Details of an AWS Route 53 Hosted Zone.
+        # Corresponds to the JSON property `awsRoute53HostedZoneDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsRoute53HostedZoneDetails]
+        attr_accessor :aws_route53_hosted_zone_details
       
         # Asset information specific for AWS S3 buckets.
         # Corresponds to the JSON property `awsS3BucketDetails`
@@ -537,12 +552,15 @@ module Google
           @assigned_groups = args[:assigned_groups] if args.key?(:assigned_groups)
           @attributes = args[:attributes] if args.key?(:attributes)
           @aws_cloud_front_distribution_details = args[:aws_cloud_front_distribution_details] if args.key?(:aws_cloud_front_distribution_details)
+          @aws_dynamodb_table_details = args[:aws_dynamodb_table_details] if args.key?(:aws_dynamodb_table_details)
           @aws_ecs_cluster_details = args[:aws_ecs_cluster_details] if args.key?(:aws_ecs_cluster_details)
           @aws_efs_file_system_details = args[:aws_efs_file_system_details] if args.key?(:aws_efs_file_system_details)
           @aws_eks_cluster_details = args[:aws_eks_cluster_details] if args.key?(:aws_eks_cluster_details)
           @aws_elb_load_balancer_details = args[:aws_elb_load_balancer_details] if args.key?(:aws_elb_load_balancer_details)
           @aws_lambda_function_details = args[:aws_lambda_function_details] if args.key?(:aws_lambda_function_details)
+          @aws_nat_gateway_details = args[:aws_nat_gateway_details] if args.key?(:aws_nat_gateway_details)
           @aws_redshift_details = args[:aws_redshift_details] if args.key?(:aws_redshift_details)
+          @aws_route53_hosted_zone_details = args[:aws_route53_hosted_zone_details] if args.key?(:aws_route53_hosted_zone_details)
           @aws_s3_bucket_details = args[:aws_s3_bucket_details] if args.key?(:aws_s3_bucket_details)
           @aws_vpc_details = args[:aws_vpc_details] if args.key?(:aws_vpc_details)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -579,6 +597,11 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsCloudFrontDistributionDetails]
         attr_accessor :aws_cloud_front_distribution_details
       
+        # Details of an AWS DynamoDB table.
+        # Corresponds to the JSON property `awsDynamodbTableDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsDynamoDbTableDetails]
+        attr_accessor :aws_dynamodb_table_details
+      
         # Details of an AWS ECS cluster.
         # Corresponds to the JSON property `awsEcsClusterDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsEcsClusterDetails]
@@ -604,10 +627,20 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsLambdaFunctionDetails]
         attr_accessor :aws_lambda_function_details
       
+        # Details of an AWS NAT Gateway.
+        # Corresponds to the JSON property `awsNatGatewayDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsNatGatewayDetails]
+        attr_accessor :aws_nat_gateway_details
+      
         # Details of an AWS Redshift cluster.
         # Corresponds to the JSON property `awsRedshiftDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsRedshiftDetails]
         attr_accessor :aws_redshift_details
+      
+        # Details of an AWS Route 53 Hosted Zone.
+        # Corresponds to the JSON property `awsRoute53HostedZoneDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsRoute53HostedZoneDetails]
+        attr_accessor :aws_route53_hosted_zone_details
       
         # Asset information specific for AWS S3 buckets.
         # Corresponds to the JSON property `awsS3BucketDetails`
@@ -685,12 +718,15 @@ module Google
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
           @aws_cloud_front_distribution_details = args[:aws_cloud_front_distribution_details] if args.key?(:aws_cloud_front_distribution_details)
+          @aws_dynamodb_table_details = args[:aws_dynamodb_table_details] if args.key?(:aws_dynamodb_table_details)
           @aws_ecs_cluster_details = args[:aws_ecs_cluster_details] if args.key?(:aws_ecs_cluster_details)
           @aws_efs_file_system_details = args[:aws_efs_file_system_details] if args.key?(:aws_efs_file_system_details)
           @aws_eks_cluster_details = args[:aws_eks_cluster_details] if args.key?(:aws_eks_cluster_details)
           @aws_elb_load_balancer_details = args[:aws_elb_load_balancer_details] if args.key?(:aws_elb_load_balancer_details)
           @aws_lambda_function_details = args[:aws_lambda_function_details] if args.key?(:aws_lambda_function_details)
+          @aws_nat_gateway_details = args[:aws_nat_gateway_details] if args.key?(:aws_nat_gateway_details)
           @aws_redshift_details = args[:aws_redshift_details] if args.key?(:aws_redshift_details)
+          @aws_route53_hosted_zone_details = args[:aws_route53_hosted_zone_details] if args.key?(:aws_route53_hosted_zone_details)
           @aws_s3_bucket_details = args[:aws_s3_bucket_details] if args.key?(:aws_s3_bucket_details)
           @aws_vpc_details = args[:aws_vpc_details] if args.key?(:aws_vpc_details)
           @collection_type = args[:collection_type] if args.key?(:collection_type)
@@ -956,20 +992,12 @@ module Google
       class AssetsExportJobNetworkDependencies
         include Google::Apis::Core::Hashable
       
-        # Optional. When this value is set to a positive integer, network connections
-        # data will be returned for the most recent days for which data is available.
-        # When this value is unset (or set to zero), all available data is returned.
-        # Corresponds to the JSON property `maxDays`
-        # @return [Fixnum]
-        attr_accessor :max_days
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @max_days = args[:max_days] if args.key?(:max_days)
         end
       end
       
@@ -998,6 +1026,19 @@ module Google
       
       # Details of an AWS CloudFront distribution.
       class AwsCloudFrontDistributionDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Details of an AWS DynamoDB table.
+      class AwsDynamoDbTableDetails
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1105,6 +1146,19 @@ module Google
         end
       end
       
+      # Details of an AWS NAT Gateway.
+      class AwsNatGatewayDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Specific details for an AWS RDS database deployment.
       class AwsRds
         include Google::Apis::Core::Hashable
@@ -1120,6 +1174,19 @@ module Google
       
       # Details of an AWS Redshift cluster.
       class AwsRedshiftDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Details of an AWS Route 53 Hosted Zone.
+      class AwsRoute53HostedZoneDetails
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
