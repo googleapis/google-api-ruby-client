@@ -177,6 +177,19 @@ module Google
         end
       end
       
+      # The request message for Operations.CancelOperation.
+      class CancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -340,12 +353,13 @@ module Google
         # The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/
         # JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
         # hyphens (-), colons (:), or periods (.). For more information, see [
-        # Identifying projects](https://cloud.google.com/resource-manager/docs/creating-
-        # managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID
-        # for the job's location. The list of available locations can be obtained by
-        # calling ListLocations. For more information, see https://cloud.google.com/
-        # about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-
-        # 9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
+        # Identifying projects](/resource-manager/docs/creating-managing-projects#
+        # identifying_projects) * `LOCATION_ID` is the canonical ID for the job's
+        # location. The list of available locations can be obtained by calling [
+        # locations.list](/scheduler/docs/reference/rest/v1beta1/projects.locations/list)
+        # . For more information, see [Cloud Scheduler locations](/scheduler/docs/
+        # locations). * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]),
+        # hyphens (-), or underscores (_). The maximum length is 500 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -357,10 +371,10 @@ module Google
         attr_accessor :pubsub_target
       
         # Settings that determine the retry behavior. For more information, see [Retry
-        # jobs](https://cloud.google.com/scheduler/docs/configuring/retry-jobs). By
-        # default, if a job does not complete successfully (meaning that an
-        # acknowledgement is not received from the handler, then it will be retried with
-        # exponential backoff according to the settings in RetryConfig.
+        # jobs](/scheduler/docs/configuring/retry-jobs). By default, if a job does not
+        # complete successfully (meaning that an acknowledgement is not received from
+        # the handler, then it will be retried with exponential backoff according to the
+        # settings in RetryConfig.
         # Corresponds to the JSON property `retryConfig`
         # @return [Google::Apis::CloudschedulerV1beta1::RetryConfig]
         attr_accessor :retry_config
@@ -375,19 +389,19 @@ module Google
         # Required, except when used with UpdateJob. Describes the schedule on which the
         # job will be executed. The schedule can be either of the following types: * [
         # Crontab](https://en.wikipedia.org/wiki/Cron#Overview) * English-like [schedule]
-        # (https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules) As a
-        # general rule, execution `n + 1` of a job will not begin until execution `n`
-        # has finished. Cloud Scheduler will never allow two simultaneously outstanding
-        # executions. For example, this implies that if the `n+1`th execution is
-        # scheduled to run at 16:00 but the `n`th execution takes until 16:15, the `n+1`
-        # th execution will not start until `16:15`. A scheduled start time will be
-        # delayed if the previous execution has not ended when its scheduled time occurs.
-        # If retry_count > 0 and a job attempt fails, the job will be tried a total of
-        # retry_count times, with exponential backoff, until the next scheduled start
-        # time. If retry_count is 0, a job attempt will not be retried if it fails.
-        # Instead the Cloud Scheduler system will wait for the next scheduled execution
-        # time. Setting retry_count to 0 does not prevent failed jobs from running
-        # according to schedule after the failure.
+        # (/scheduler/docs/configuring/cron-job-schedules) As a general rule, execution `
+        # n + 1` of a job will not begin until execution `n` has finished. Cloud
+        # Scheduler will never allow two simultaneously outstanding executions. For
+        # example, this implies that if the `n+1`th execution is scheduled to run at 16:
+        # 00 but the `n`th execution takes until 16:15, the `n+1`th execution will not
+        # start until `16:15`. A scheduled start time will be delayed if the previous
+        # execution has not ended when its scheduled time occurs. If retry_count > 0 and
+        # a job attempt fails, the job will be tried a total of retry_count times, with
+        # exponential backoff, until the next scheduled start time. If retry_count is 0,
+        # a job attempt will not be retried if it fails. Instead the Cloud Scheduler
+        # system will wait for the next scheduled execution time. Setting retry_count to
+        # 0 does not prevent failed jobs from running according to schedule after the
+        # failure.
         # Corresponds to the JSON property `schedule`
         # @return [String]
         attr_accessor :schedule
@@ -507,6 +521,39 @@ module Google
         end
       end
       
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::CloudschedulerV1beta1::Operation>]
+        attr_accessor :operations
+      
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
@@ -614,6 +661,68 @@ module Google
         def update!(**args)
           @audience = args[:audience] if args.key?(:audience)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+        end
+      end
+      
+      # This resource represents a long-running operation that is the result of a
+      # network API call.
+      class Operation
+        include Google::Apis::Core::Hashable
+      
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::CloudschedulerV1beta1::Status]
+        attr_accessor :error
+      
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -807,10 +916,10 @@ module Google
       end
       
       # Settings that determine the retry behavior. For more information, see [Retry
-      # jobs](https://cloud.google.com/scheduler/docs/configuring/retry-jobs). By
-      # default, if a job does not complete successfully (meaning that an
-      # acknowledgement is not received from the handler, then it will be retried with
-      # exponential backoff according to the settings in RetryConfig.
+      # jobs](/scheduler/docs/configuring/retry-jobs). By default, if a job does not
+      # complete successfully (meaning that an acknowledgement is not received from
+      # the handler, then it will be retried with exponential backoff according to the
+      # settings in RetryConfig.
       class RetryConfig
         include Google::Apis::Core::Hashable
       
@@ -823,9 +932,9 @@ module Google
         # The time between retries will double `max_doublings` times. A job's retry
         # interval starts at min_backoff_duration, then doubles `max_doublings` times,
         # then increases linearly, and finally retries at intervals of
-        # max_backoff_duration up to retry_count times. For examples, see [Retry jobs](
-        # https://cloud.google.com/scheduler/docs/configuring/retry-jobs#max-doublings).
-        # The default value of this field is 5.
+        # max_backoff_duration up to retry_count times. For examples, see [Retry jobs](/
+        # scheduler/docs/configuring/retry-jobs#max-doublings). The default value of
+        # this field is 5.
         # Corresponds to the JSON property `maxDoublings`
         # @return [Fixnum]
         attr_accessor :max_doublings
