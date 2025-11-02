@@ -6320,7 +6320,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. HCFS URIs of archives to be extracted into the working directory of
-        # each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        # each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.Note:
+        # Spark applications must be deployed in cluster mode (https://spark.apache.org/
+        # docs/latest/cluster-overview.html) for correct environment propagation.
         # Corresponds to the JSON property `archiveUris`
         # @return [Array<String>]
         attr_accessor :archive_uris
