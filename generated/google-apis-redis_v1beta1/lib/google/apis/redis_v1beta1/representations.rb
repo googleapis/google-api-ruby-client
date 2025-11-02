@@ -1568,7 +1568,6 @@ module Google
           property :phase, as: 'phase'
           property :time, as: 'time', class: Google::Apis::RedisV1beta1::TimeOfDay, decorator: Google::Apis::RedisV1beta1::TimeOfDay::Representation
       
-          property :week, as: 'week'
         end
       end
       
