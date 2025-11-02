@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LbEdgeExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LbRouteExtension
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +353,12 @@ module Google
       end
       
       class ListHttpRoutesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListLbEdgeExtensionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1144,6 +1156,21 @@ module Google
         end
       end
       
+      class LbEdgeExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          collection :extension_chains, as: 'extensionChains', class: Google::Apis::NetworkservicesV1::ExtensionChain, decorator: Google::Apis::NetworkservicesV1::ExtensionChain::Representation
+      
+          collection :forwarding_rules, as: 'forwardingRules'
+          hash :labels, as: 'labels'
+          property :load_balancing_scheme, as: 'loadBalancingScheme'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class LbRouteExtension
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1236,6 +1263,16 @@ module Google
         end
       end
       
+      class ListLbEdgeExtensionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :lb_edge_extensions, as: 'lbEdgeExtensions', class: Google::Apis::NetworkservicesV1::LbEdgeExtension, decorator: Google::Apis::NetworkservicesV1::LbEdgeExtension::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListLbRouteExtensionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1291,6 +1328,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::NetworkservicesV1::Operation, decorator: Google::Apis::NetworkservicesV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
