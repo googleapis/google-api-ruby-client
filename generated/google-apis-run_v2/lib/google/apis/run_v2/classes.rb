@@ -414,13 +414,6 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2ResourceRequirements]
         attr_accessor :resources
       
-        # Optional. Location of the source .tar.gz file in Cloud Storage. examples: - gs:
-        # //bucket/object.tar.gz. - gs://bucket/object.tar.gz#1234567890 (with object
-        # generation)
-        # Corresponds to the JSON property `source`
-        # @return [String]
-        attr_accessor :source
-      
         # Probe describes a health check to be performed against a container to
         # determine whether it is alive or ready to receive traffic.
         # Corresponds to the JSON property `startupProbe`
@@ -455,7 +448,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @ports = args[:ports] if args.key?(:ports)
           @resources = args[:resources] if args.key?(:resources)
-          @source = args[:source] if args.key?(:source)
           @startup_probe = args[:startup_probe] if args.key?(:startup_probe)
           @volume_mounts = args[:volume_mounts] if args.key?(:volume_mounts)
           @working_dir = args[:working_dir] if args.key?(:working_dir)
