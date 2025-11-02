@@ -1,5 +1,9 @@
 # Release history for google-apis-authorizedbuyersmarketplace_v1alpha
 
+### v0.8.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251028
+
 ### v0.7.0 (2025-06-22)
 
 * Regenerated from discovery document revision 20250616
