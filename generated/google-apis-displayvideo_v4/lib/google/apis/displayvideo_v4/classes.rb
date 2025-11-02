@@ -73,11 +73,12 @@ module Google
         end
       end
       
-      # A single ad asset. Next ID: 6
+      # A single ad asset.
       class AdAsset
         include Google::Apis::Core::Hashable
       
-        # Output only. Asset ID of the ad asset.
+        # Output only. The ID of the ad asset. Referred to as the asset ID when assigned
+        # to an ad.
         # Corresponds to the JSON property `adAssetId`
         # @return [Fixnum]
         attr_accessor :ad_asset_id
@@ -97,7 +98,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The youtube video asset data of the ad asset.
+        # Data for a YouTube video ad asset.
         # Corresponds to the JSON property `youtubeVideoAsset`
         # @return [Google::Apis::DisplayvideoV4::YoutubeVideoAsset]
         attr_accessor :youtube_video_asset
@@ -202,7 +203,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :ad_group_ad_id
       
-        # The unique ID of the ad group that the ad belongs to.
+        # The unique ID of the ad group that the ad belongs to. *Caution*: Parent ad
+        # groups for Demand Gen ads are not currently retrieveable using `advertisers.
+        # adGroups.list` or `advertisers.adGroups.get`. Demand Gen ads can be identified
+        # by the absence of the `ad_details` union field.
         # Corresponds to the JSON property `adGroupId`
         # @return [Fixnum]
         attr_accessor :ad_group_id
@@ -334,20 +338,20 @@ module Google
       class AdPolicy
         include Google::Apis::Core::Hashable
       
-        # The policy approval status of an ad. Indicating the ad policy approval
-        # decision.
+        # The policy approval status of an ad, indicating the approval decision.
         # Corresponds to the JSON property `adPolicyApprovalStatus`
         # @return [String]
         attr_accessor :ad_policy_approval_status
       
-        # The policy review status of an ad. Indicating where the review process the ad
-        # is currently at.
+        # The policy review status of an ad, indicating where in the review process the
+        # ad is currently.
         # Corresponds to the JSON property `adPolicyReviewStatus`
         # @return [String]
         attr_accessor :ad_policy_review_status
       
-        # The policy topic entries for the ad, including the topic, restriction level,
-        # and guidance on how to fix policy issues.
+        # The entries for each policy topic identified as relating to the ad. Each entry
+        # includes the topic, restriction level, and guidance on how to fix policy
+        # issues.
         # Corresponds to the JSON property `adPolicyTopicEntry`
         # @return [Array<Google::Apis::DisplayvideoV4::AdPolicyTopicEntry>]
         attr_accessor :ad_policy_topic_entry
@@ -364,17 +368,16 @@ module Google
         end
       end
       
-      # Represents a criterion that is restricted. Today only used to represent a
-      # country restriction. Used by both policy evidence and policy constraints.
+      # Represents a country restriction.
       class AdPolicyCriterionRestriction
         include Google::Apis::Core::Hashable
       
-        # Only used today to represent a country criterion id.
+        # The country criterion id.
         # Corresponds to the JSON property `countryCriterionId`
         # @return [Fixnum]
         attr_accessor :country_criterion_id
       
-        # Localized name for the country. Could be empty.
+        # Localized name for the country. May be empty.
         # Corresponds to the JSON property `countryLabel`
         # @return [String]
         attr_accessor :country_label
@@ -390,16 +393,17 @@ module Google
         end
       end
       
-      # Appeal related information for a policy topic.
+      # Information on how to appeal a policy decision.
       class AdPolicyTopicAppealInfo
         include Google::Apis::Core::Hashable
       
-        # Only available when appeal_type is APPEAL_FORM.
+        # Only available when appeal_type is `APPEAL_FORM`.
         # Corresponds to the JSON property `appealFormLink`
         # @return [String]
         attr_accessor :appeal_form_link
       
-        # Indicate whether the policy topic can be self-service appeal or appeal form.
+        # Whether the decision can be appealed through a self-service appeal or an
+        # appeal form.
         # Corresponds to the JSON property `appealType`
         # @return [String]
         attr_accessor :appeal_type
@@ -415,8 +419,7 @@ module Google
         end
       end
       
-      # Additional constraints information that explains restrictions applied to this
-      # policy.
+      # Details on ad serving constraints.
       class AdPolicyTopicConstraint
         include Google::Apis::Core::Hashable
       
@@ -446,7 +449,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV4::AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint]
         attr_accessor :global_certificate_missing
       
-        # Link to the form to request a certificate for the policy topic constraint.
+        # Link to the form to request a certificate for the constraint.
         # Corresponds to the JSON property `requestCertificateFormLink`
         # @return [String]
         attr_accessor :request_certificate_form_link
@@ -533,11 +536,11 @@ module Google
         end
       end
       
-      # Policy topic entry.
+      # An entry describing how an ad has been identified as relating to an ad policy.
       class AdPolicyTopicEntry
         include Google::Apis::Core::Hashable
       
-        # Appeal related information for a policy topic.
+        # Information on how to appeal a policy decision.
         # Corresponds to the JSON property `appealInfo`
         # @return [Google::Apis::DisplayvideoV4::AdPolicyTopicAppealInfo]
         attr_accessor :appeal_info
@@ -557,32 +560,33 @@ module Google
         # @return [String]
         attr_accessor :policy_enforcement_means
       
-        # Localized label text for policy. (Trademarks in text, Contains Alcohol, etc.)
+        # Localized label text for policy. Examples include "Trademarks in text", "
+        # Contains Alcohol", etc.
         # Corresponds to the JSON property `policyLabel`
         # @return [String]
         attr_accessor :policy_label
       
-        # The policy topic of an ad policy topic entry. (TRADEMARKS, ALCOHOL, etc.)
+        # The policy topic. Examples include "TRADEMARKS", "ALCOHOL", etc.
         # Corresponds to the JSON property `policyTopic`
         # @return [String]
         attr_accessor :policy_topic
       
-        # The policy topic constraints.
+        # The serving constraints relevant to the policy decision.
         # Corresponds to the JSON property `policyTopicConstraints`
         # @return [Array<Google::Apis::DisplayvideoV4::AdPolicyTopicConstraint>]
         attr_accessor :policy_topic_constraints
       
-        # Short summary description of the policy topic.
+        # A short summary description of the policy topic.
         # Corresponds to the JSON property `policyTopicDescription`
         # @return [String]
         attr_accessor :policy_topic_description
       
-        # The policy topic evidences.
+        # The evidence used in the policy decision.
         # Corresponds to the JSON property `policyTopicEvidences`
         # @return [Array<Google::Apis::DisplayvideoV4::AdPolicyTopicEvidence>]
         attr_accessor :policy_topic_evidences
       
-        # The policy topic entry type.
+        # How ad serving will be affected due to the relation to the ad policy topic.
         # Corresponds to the JSON property `policyTopicType`
         # @return [String]
         attr_accessor :policy_topic_type
@@ -606,21 +610,21 @@ module Google
         end
       end
       
-      # Additional evidence information that explains a policy decision.
+      # Evidence information used in the policy decision.
       class AdPolicyTopicEvidence
         include Google::Apis::Core::Hashable
       
-        # Counterfeit enforcement that caused a policy violation.
+        # Details on the counterfeit enforcement that caused a policy violation.
         # Corresponds to the JSON property `counterfeit`
         # @return [Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceCounterfeit]
         attr_accessor :counterfeit
       
-        # A list of destination mismatch URL types.
+        # Details on a mismatch between destination URL types.
         # Corresponds to the JSON property `destinationMismatch`
         # @return [Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceDestinationMismatch]
         attr_accessor :destination_mismatch
       
-        # Evidence details for destination not working policy violations.
+        # Details for on HTTP or DNS errors related to the ad destination.
         # Corresponds to the JSON property `destinationNotWorking`
         # @return [Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceDestinationNotWorking]
         attr_accessor :destination_not_working
@@ -635,20 +639,21 @@ module Google
         # @return [Fixnum]
         attr_accessor :http_code
       
-        # The language the ad was detected to be written in. This is an IETF language
-        # tag such as "en-US".
+        # The language the ad was detected to be written in. This field uses IETF
+        # language tags, such as "en-US".
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
       
-        # Legal related regulation enforcement, either from DMCA or local legal.
+        # Legal related regulation enforcement, either from DMCA or local legal
+        # regulation.
         # Corresponds to the JSON property `legalRemoval`
         # @return [Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceLegalRemoval]
         attr_accessor :legal_removal
       
-        # T&S proactive enforcement for policies meant to address regional requirements.
-        # This is considered as Google owned investigation instead of regulation notice
-        # since it's a T&S proactive enforcement.
+        # Trust & Safety (T&S) proactive enforcement for policies meant to address
+        # regional requirements. This is considered a Google-owned investigation instead
+        # of a regulation notice since it's proactive T&S enforcement.
         # Corresponds to the JSON property `regionalRequirements`
         # @return [Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceRegionalRequirements]
         attr_accessor :regional_requirements
@@ -688,11 +693,11 @@ module Google
         end
       end
       
-      # Counterfeit enforcement that caused a policy violation.
+      # Details on the counterfeit enforcement that caused a policy violation.
       class AdPolicyTopicEvidenceCounterfeit
         include Google::Apis::Core::Hashable
       
-        # The content or product owners that make the complainants.
+        # The content or product owners that made a complaint.
         # Corresponds to the JSON property `owners`
         # @return [Array<String>]
         attr_accessor :owners
@@ -707,15 +712,14 @@ module Google
         end
       end
       
-      # A list of destination mismatch URL types.
+      # Details on a mismatch between destination URL types.
       class AdPolicyTopicEvidenceDestinationMismatch
         include Google::Apis::Core::Hashable
       
-        # The set of URLs that do not match each other. The list can include single or
-        # multiple uri types. Example 1: [DISPLAY_URL, FINAL_URL] means ad display URL
-        # does not match with the ad final URL. Example 2: [FINAL_URL] means ad final
-        # URL did not match the crawled url, which is also considered as
-        # destinationmismatch.
+        # The set of URLs that do not match. The list can include single or multiple uri
+        # types. Example 1: [`DISPLAY_URL`, `FINAL_URL`] means ad display URL does not
+        # match with the ad final URL. Example 2: [`FINAL_URL`] means ad final URL did
+        # not match the crawled url, which is also considered as destination mismatch.
         # Corresponds to the JSON property `uriTypes`
         # @return [Array<String>]
         attr_accessor :uri_types
@@ -730,11 +734,11 @@ module Google
         end
       end
       
-      # Evidence details for destination not working policy violations.
+      # Details for on HTTP or DNS errors related to the ad destination.
       class AdPolicyTopicEvidenceDestinationNotWorking
         include Google::Apis::Core::Hashable
       
-        # The device platform of the not working url.
+        # The device where visiting the URL resulted in the error.
         # Corresponds to the JSON property `device`
         # @return [String]
         attr_accessor :device
@@ -754,7 +758,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :http_error_code
       
-        # The last checked time of the not working url.
+        # The last time the error was seen when navigating to URL.
         # Corresponds to the JSON property `lastCheckedTime`
         # @return [String]
         attr_accessor :last_checked_time
@@ -792,31 +796,32 @@ module Google
         end
       end
       
-      # Legal related regulation enforcement, either from DMCA or local legal.
+      # Legal related regulation enforcement, either from DMCA or local legal
+      # regulation.
       class AdPolicyTopicEvidenceLegalRemoval
         include Google::Apis::Core::Hashable
       
-        # The legal removal complaint type.
+        # The type of complaint causing the legal removal.
         # Corresponds to the JSON property `complaintType`
         # @return [String]
         attr_accessor :complaint_type
       
-        # The restricted countries due to the legal removal.
+        # The countries restricted due to the legal removal.
         # Corresponds to the JSON property `countryRestrictions`
         # @return [Array<Google::Apis::DisplayvideoV4::AdPolicyCriterionRestriction>]
         attr_accessor :country_restrictions
       
-        # DMCA related regulation enforcement.
+        # DMCA complaint details.
         # Corresponds to the JSON property `dmca`
         # @return [Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceLegalRemovalDmca]
         attr_accessor :dmca
       
-        # Local legal related regulation enforcement.
+        # Local legal regulation details.
         # Corresponds to the JSON property `localLegal`
         # @return [Google::Apis::DisplayvideoV4::AdPolicyTopicEvidenceLegalRemovalLocalLegal]
         attr_accessor :local_legal
       
-        # The urls that are restricted due to the legal removal.
+        # The urls restricted due to the legal removal.
         # Corresponds to the JSON property `restrictedUris`
         # @return [Array<String>]
         attr_accessor :restricted_uris
@@ -835,11 +840,11 @@ module Google
         end
       end
       
-      # DMCA related regulation enforcement.
+      # DMCA complaint details.
       class AdPolicyTopicEvidenceLegalRemovalDmca
         include Google::Apis::Core::Hashable
       
-        # The entity who makes the legal complaint.
+        # The entity who made the legal complaint.
         # Corresponds to the JSON property `complainant`
         # @return [String]
         attr_accessor :complainant
@@ -854,7 +859,7 @@ module Google
         end
       end
       
-      # Local legal related regulation enforcement.
+      # Local legal regulation details.
       class AdPolicyTopicEvidenceLegalRemovalLocalLegal
         include Google::Apis::Core::Hashable
       
@@ -873,9 +878,9 @@ module Google
         end
       end
       
-      # T&S proactive enforcement for policies meant to address regional requirements.
-      # This is considered as Google owned investigation instead of regulation notice
-      # since it's a T&S proactive enforcement.
+      # Trust & Safety (T&S) proactive enforcement for policies meant to address
+      # regional requirements. This is considered a Google-owned investigation instead
+      # of a regulation notice since it's proactive T&S enforcement.
       class AdPolicyTopicEvidenceRegionalRequirements
         include Google::Apis::Core::Hashable
       
@@ -898,12 +903,12 @@ module Google
       class AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry
         include Google::Apis::Core::Hashable
       
-        # The restricted countries due to the legal policy.
+        # The countries restricted due to the legal policy.
         # Corresponds to the JSON property `countryRestrictions`
         # @return [Array<Google::Apis::DisplayvideoV4::AdPolicyCriterionRestriction>]
         attr_accessor :country_restrictions
       
-        # The legal policy that is violated.
+        # The legal policy that is being violated.
         # Corresponds to the JSON property `legalPolicy`
         # @return [String]
         attr_accessor :legal_policy
@@ -942,7 +947,7 @@ module Google
       class AdPolicyTopicEvidenceTrademark
         include Google::Apis::Core::Hashable
       
-        # Criteria that are geo restrictions.
+        # Countries where the policy violation is relevant.
         # Corresponds to the JSON property `countryRestrictions`
         # @return [Array<Google::Apis::DisplayvideoV4::AdPolicyCriterionRestriction>]
         attr_accessor :country_restrictions
@@ -3055,7 +3060,8 @@ module Google
       class BulkCreateAdAssetsRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Ad assets to create. Only supports youtube video assets for now.
+        # Required. Ad assets to create. Only supports assets of AdAssetType `
+        # AD_ASSET_TYPE_YOUTUBE_VIDEO`.
         # Corresponds to the JSON property `adAssets`
         # @return [Array<Google::Apis::DisplayvideoV4::AdAsset>]
         attr_accessor :ad_assets
@@ -3074,7 +3080,7 @@ module Google
       class BulkCreateAdAssetsResponse
         include Google::Apis::Core::Hashable
       
-        # The uploaded video ad assets, if successful.
+        # The created ad assets.
         # Corresponds to the JSON property `adAssets`
         # @return [Array<Google::Apis::DisplayvideoV4::AdAsset>]
         attr_accessor :ad_assets
@@ -5051,7 +5057,7 @@ module Google
       class CreateAdAssetRequest
         include Google::Apis::Core::Hashable
       
-        # A single ad asset. Next ID: 6
+        # A single ad asset.
         # Corresponds to the JSON property `adAsset`
         # @return [Google::Apis::DisplayvideoV4::AdAsset]
         attr_accessor :ad_asset
@@ -9451,7 +9457,8 @@ module Google
       class ListAdAssetsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of ad assets. This list will be absent if empty.
+        # The list of ad assets. The list will only contain assets of AdAssetType `
+        # AD_ASSET_TYPE_YOUTUBE_VIDEO`. This list will be absent if empty.
         # Corresponds to the JSON property `adAssets`
         # @return [Array<Google::Apis::DisplayvideoV4::AdAsset>]
         attr_accessor :ad_assets
@@ -10440,12 +10447,14 @@ module Google
       class ListYoutubeAssetAssociationsResponse
         include Google::Apis::Core::Hashable
       
-        # A token to retrieve the next page of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListYoutubeAssetAssociations`
+        # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of associations. This list will be absent if empty.
+        # The list of asset associations. This list will be absent if empty.
         # Corresponds to the JSON property `youtubeAssetAssociations`
         # @return [Array<Google::Apis::DisplayvideoV4::YoutubeAssetAssociation>]
         attr_accessor :youtube_asset_associations
@@ -13359,11 +13368,11 @@ module Google
         end
       end
       
-      # A request message for UploadAdAsset. Next ID: 6
+      # A request message for UploadAdAsset.
       class UploadAdAssetRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The type of the ad asset. Only supports image assets for now.
+        # Required. The type of the ad asset. Only `AD_ASSET_TYPE_IMAGE` is supported.
         # Corresponds to the JSON property `adAssetType`
         # @return [String]
         attr_accessor :ad_asset_type
@@ -13389,7 +13398,7 @@ module Google
       class UploadAdAssetResponse
         include Google::Apis::Core::Hashable
       
-        # A single ad asset. Next ID: 6
+        # A single ad asset.
         # Corresponds to the JSON property `adAsset`
         # @return [Google::Apis::DisplayvideoV4::AdAsset]
         attr_accessor :ad_asset
@@ -14024,31 +14033,32 @@ module Google
         end
       end
       
-      # A YouTube asset association between one linked entity and one YouTube asset.
+      # An association between a resource and a YouTube asset.
       class YoutubeAssetAssociation
         include Google::Apis::Core::Hashable
       
-        # The YouTube asset linked with the entity in a YouTube asset association.
+        # A YouTube asset linked to a resource in a YoutubeAssetAssociation.
         # Corresponds to the JSON property `linkedYoutubeAsset`
         # @return [Google::Apis::DisplayvideoV4::YoutubeAssetAssociationLinkedYouTubeAsset]
         attr_accessor :linked_youtube_asset
       
-        # Identifier. The resource name of the association. For line item level
+        # Identifier. The resource name of the association. For line item-level
         # associations: The name pattern is `advertisers/`advertiser_id`/lineItems/`
         # line_item_id`/youtubeAssetTypes/`youtube_asset_type`/youtubeAssetAssociations/`
-        # youtube_asset_association_id``. For ad group level associations: The name
+        # youtube_asset_association_id``. For ad group-level associations: The name
         # pattern is `advertisers/`advertiser_id`/adGroups/`ad_group_id`/
         # youtubeAssetTypes/`youtube_asset_type`/youtubeAssetAssociations/`
-        # youtube_asset_association_id``. For location and affiliate location
-        # associations: `youtube_asset_association_id` is the linked asset set ID if the
-        # YouTube asset type (location or affiliate location) is enabled on the linked
-        # line item or ad group, 0 if disabled. For sitelink associations: `
-        # youtube_asset_association_id` is the linked asset ID.
+        # youtube_asset_association_id``. For `YOUTUBE_ASSET_TYPE_LOCATION` and `
+        # YOUTUBE_ASSET_TYPE_AFFILIATE_LOCATION` associations: `
+        # youtube_asset_association_id` is the ID of the asset set linked, or 0 if the
+        # location_matching_type or affiliate_location_matching_type is `DISABLED`. For `
+        # YOUTUBE_ASSET_TYPE_SITELINK` associations: `youtube_asset_association_id` is
+        # be the ID of the sitelink asset linked.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. The type of the linked YouTube asset in the association.
+        # Required. The type of YouTube asset associated with the resource.
         # Corresponds to the JSON property `youtubeAssetType`
         # @return [String]
         attr_accessor :youtube_asset_type
@@ -14097,7 +14107,7 @@ module Google
         end
       end
       
-      # A chain for affiliate locations.
+      # A chain of affiliate locations.
       class YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain
         include Google::Apis::Core::Hashable
       
@@ -14120,9 +14130,8 @@ module Google
       class YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction
         include Google::Apis::Core::Hashable
       
-        # Optional. The chains that match the affiliate location assets for serving.
-        # This is required to set when linking with affiliate location asset filters of
-        # AffiliateLocationMatchingType#SELECTED_CHAINS.
+        # Optional. The selected affiliate location chain IDs. This field is required if
+        # affiliate_location_matching_type is `SELECTED_CHAINS`.
         # Corresponds to the JSON property `chains`
         # @return [Array<Google::Apis::DisplayvideoV4::YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain>]
         attr_accessor :chains
@@ -14137,7 +14146,7 @@ module Google
         end
       end
       
-      # The YouTube asset linked with the entity in a YouTube asset association.
+      # A YouTube asset linked to a resource in a YoutubeAssetAssociation.
       class YoutubeAssetAssociationLinkedYouTubeAsset
         include Google::Apis::Core::Hashable
       
@@ -14204,23 +14213,20 @@ module Google
       class YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction
         include Google::Apis::Core::Hashable
       
-        # Optional. The business name filter. This can be set only when linking with
-        # location asset filters of LocationMatchingType#FILTER. This is optional when
-        # linking with location asset filters of LocationMatchingType#FILTER.
+        # Optional. The business name to match with. This field is optional and can only
+        # be set if location_matching_type is `FILTER`.
         # Corresponds to the JSON property `business`
         # @return [String]
         attr_accessor :business
       
-        # Optional. The label filters. Label filters are OR'ed together. This can be set
-        # only when linking with location asset filters of LocationMatchingType#FILTER.
-        # This is optional when linking with location asset filters of
-        # LocationMatchingType#FILTER.
+        # Optional. The labels to match with. Labels are logically OR'ed together. This
+        # field is optional and can only be set if location_matching_type is `FILTER`.
         # Corresponds to the JSON property `labels`
         # @return [Array<String>]
         attr_accessor :labels
       
-        # Optional. The selected location asset IDs. This is required to set when
-        # linking with location asset filters of LocationMatchingType#SELECTED_ASSETS.
+        # Optional. The selected location asset IDs. This field is required if
+        # location_matching_type is `SELECTED_ASSETS`.
         # Corresponds to the JSON property `locationAssetIds`
         # @return [Array<Fixnum>]
         attr_accessor :location_asset_ids
@@ -14284,12 +14290,12 @@ module Google
         end
       end
       
-      # The youtube video asset data of the ad asset.
+      # Data for a YouTube video ad asset.
       class YoutubeVideoAsset
         include Google::Apis::Core::Hashable
       
-        # Required. The youtube video id of the asset. This is the 11 char string value
-        # used in the Youtube video URL.
+        # Required. The YouTube video id of the asset. This is the 11 char string value
+        # used in the YouTube video URL.
         # Corresponds to the JSON property `youtubeVideoId`
         # @return [String]
         attr_accessor :youtube_video_id
