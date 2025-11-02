@@ -81,12 +81,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the Scheduler config in the project/region.
+        # @param [String] name
+        #   Required. The config name. For example: projects/PROJECT_ID/locations/
+        #   LOCATION_ID/cmekConfig
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudschedulerV1::CmekConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudschedulerV1::CmekConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_cmek_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudschedulerV1::CmekConfig::Representation
+          command.response_class = Google::Apis::CloudschedulerV1::CmekConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists information about the supported locations for this service.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
-        #   field which is primarily intended for internal usage.
+        #   Optional. Do not use this field. It is unsupported and is ignored unless
+        #   explicitly documented otherwise. This is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -123,6 +154,44 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Initializes or Updates the a scheduler config.
+        # @param [String] name
+        #   Identifier. The config resource name which includes the project and location
+        #   and must end in 'cmekConfig', in the format projects/PROJECT_ID/locations/
+        #   LOCATION_ID/cmekConfig`
+        # @param [Google::Apis::CloudschedulerV1::CmekConfig] cmek_config_object
+        # @param [String] update_mask
+        #   Optional. List of fields to be updated in this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudschedulerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudschedulerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_cmek_config(name, cmek_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudschedulerV1::CmekConfig::Representation
+          command.request_object = cmek_config_object
+          command.response_representation = Google::Apis::CloudschedulerV1::Operation::Representation
+          command.response_class = Google::Apis::CloudschedulerV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -276,12 +345,13 @@ module Google
         #   The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/
         #   JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
         #   hyphens (-), colons (:), or periods (.). For more information, see [
-        #   Identifying projects](https://cloud.google.com/resource-manager/docs/creating-
-        #   managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID
-        #   for the job's location. The list of available locations can be obtained by
-        #   calling ListLocations. For more information, see https://cloud.google.com/
-        #   about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-
-        #   9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
+        #   Identifying projects](/resource-manager/docs/creating-managing-projects#
+        #   identifying_projects) * `LOCATION_ID` is the canonical ID for the job's
+        #   location. The list of available locations can be obtained by calling [
+        #   locations.list](/scheduler/docs/reference/rest/v1/projects.locations/list).
+        #   For more information, see [Cloud Scheduler locations](/scheduler/docs/
+        #   locations). * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]),
+        #   hyphens (-), or underscores (_). The maximum length is 500 characters.
         # @param [Google::Apis::CloudschedulerV1::Job] job_object
         # @param [String] update_mask
         #   A mask used to specify which fields of the job are being updated.
