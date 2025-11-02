@@ -746,7 +746,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :database_names
       
-        # Name of the Cloud SQL instance to be created as a clone.
+        # Required. Name of the Cloud SQL instance to be created as a clone.
         # Corresponds to the JSON property `destinationInstanceName`
         # @return [String]
         attr_accessor :destination_instance_name
@@ -5024,6 +5024,12 @@ module Google
         attr_accessor :crash_safe_replication_enabled
         alias_method :crash_safe_replication_enabled?, :crash_safe_replication_enabled
       
+        # This parameter controls whether to allow using Data API to connect to the
+        # instance. Not allowed by default.
+        # Corresponds to the JSON property `dataApiAccess`
+        # @return [String]
+        attr_accessor :data_api_access
+      
         # Data cache configurations.
         # Corresponds to the JSON property `dataCacheConfig`
         # @return [Google::Apis::SqladminV1::DataCacheConfig]
@@ -5229,6 +5235,7 @@ module Google
           @connection_pool_config = args[:connection_pool_config] if args.key?(:connection_pool_config)
           @connector_enforcement = args[:connector_enforcement] if args.key?(:connector_enforcement)
           @crash_safe_replication_enabled = args[:crash_safe_replication_enabled] if args.key?(:crash_safe_replication_enabled)
+          @data_api_access = args[:data_api_access] if args.key?(:data_api_access)
           @data_cache_config = args[:data_cache_config] if args.key?(:data_cache_config)
           @data_disk_provisioned_iops = args[:data_disk_provisioned_iops] if args.key?(:data_disk_provisioned_iops)
           @data_disk_provisioned_throughput = args[:data_disk_provisioned_throughput] if args.key?(:data_disk_provisioned_throughput)

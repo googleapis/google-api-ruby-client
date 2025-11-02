@@ -2172,6 +2172,7 @@ module Google
       
           property :connector_enforcement, as: 'connectorEnforcement'
           property :crash_safe_replication_enabled, as: 'crashSafeReplicationEnabled'
+          property :data_api_access, as: 'dataApiAccess'
           property :data_cache_config, as: 'dataCacheConfig', class: Google::Apis::SqladminV1::DataCacheConfig, decorator: Google::Apis::SqladminV1::DataCacheConfig::Representation
       
           property :data_disk_provisioned_iops, :numeric_string => true, as: 'dataDiskProvisionedIops'
