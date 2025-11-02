@@ -1387,6 +1387,393 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Creates a schema.
+        # @param [String] parent
+        #   Required. The parent (project and location) under which to create the Schema.
+        #   Format: `projects/`project`/locations/`location``
+        # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema] google_cloud_documentai_v1beta3_next_schema_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_schema(parent, google_cloud_documentai_v1beta3_next_schema_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta3/{+parent}/schemas', options)
+          command.request_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema::Representation
+          command.request_object = google_cloud_documentai_v1beta3_next_schema_object
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a schema.
+        # @param [String] name
+        #   Required. The name of the Schema to be deleted. Format: `projects/`project`/
+        #   locations/`location`/schemas/`schema``
+        # @param [Boolean] force
+        #   Optional. If set to true, any child resources of this Schema will also be
+        #   deleted. (Otherwise, the request will only work if the Schema has no child
+        #   resources.)
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_schema(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta3/{+name}', options)
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a schema.
+        # @param [String] name
+        #   Required. The name of the Schema to get. Format: `projects/`project`/locations/
+        #   `location`/schemas/`schema``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_schema(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta3/{+name}', options)
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Schemas.
+        # @param [String] parent
+        #   Required. Format: `projects/`project`/locations/`location``
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of schema groups to return. If unspecified, at
+        #   most `10` Schema will be returned. The maximum value is `20`. Values above `20`
+        #   will be coerced to `20`.
+        # @param [String] page_token
+        #   Optional. We will return the schema groups sorted by creation time. The page
+        #   token will point to the next Schema.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ListSchemasResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ListSchemasResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_schemas(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta3/{+parent}/schemas', options)
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ListSchemasResponse::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ListSchemasResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a schema. Editable fields are: - `display_name` - `labels`
+        # @param [String] name
+        #   Identifier. The resource name of the Schema. Format: `projects/`project`/
+        #   locations/`location`/schemas/`schema``
+        # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema] google_cloud_documentai_v1beta3_next_schema_object
+        # @param [String] update_mask
+        #   Optional. The update mask to apply to the resource. **Note:** Only the
+        #   following fields can be updated: - display_name. - labels.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_schema(name, google_cloud_documentai_v1beta3_next_schema_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta3/{+name}', options)
+          command.request_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema::Representation
+          command.request_object = google_cloud_documentai_v1beta3_next_schema_object
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a schema version.
+        # @param [String] parent
+        #   Required. The parent (project and location) under which to create the
+        #   SchemaVersion. Format: `projects/`project`/locations/`location`/schemas/`
+        #   schema``
+        # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion] google_cloud_documentai_v1beta3_schema_version_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_schema_schema_version(parent, google_cloud_documentai_v1beta3_schema_version_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta3/{+parent}/schemaVersions', options)
+          command.request_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion::Representation
+          command.request_object = google_cloud_documentai_v1beta3_schema_version_object
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a schema version.
+        # @param [String] name
+        #   Required. The name of the SchemaVersion to delete. Format: `projects/`project`/
+        #   locations/`location`/schemas/`schema`/schemaVersions/`schema_version``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_schema_schema_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta3/{+name}', options)
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates a schema version.
+        # @param [String] parent
+        #   Required. The parent (project, location and schema) under which to generate
+        #   the SchemaVersion. Format: `projects/`project`/locations/`location`/schemas/`
+        #   schema``
+        # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GenerateSchemaVersionRequest] google_cloud_documentai_v1beta3_generate_schema_version_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GenerateSchemaVersionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GenerateSchemaVersionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_schema_schema_version(parent, google_cloud_documentai_v1beta3_generate_schema_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta3/{+parent}/schemaVersions:generate', options)
+          command.request_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GenerateSchemaVersionRequest::Representation
+          command.request_object = google_cloud_documentai_v1beta3_generate_schema_version_request_object
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GenerateSchemaVersionResponse::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GenerateSchemaVersionResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a schema version.
+        # @param [String] name
+        #   Required. The name of the SchemaVersion to get. Format: `projects/`project`/
+        #   locations/`location`/schemas/`schema`/schemaVersions/`schema_version``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_schema_schema_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta3/{+name}', options)
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists SchemaVersions.
+        # @param [String] parent
+        #   Required. Format: `projects/`project`/locations/`location`/schemas/`schema``
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of SchemaVersion to return. If unspecified, at
+        #   most `10` SchemaVersion will be returned. The maximum value is `20`. Values
+        #   above `20` will be coerced to `20`.
+        # @param [String] page_token
+        #   Optional. We will return the SchemaVersion sorted by creation time. The page
+        #   token will point to the next SchemaVersion.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ListSchemaVersionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ListSchemaVersionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_schema_schema_versions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta3/{+parent}/schemaVersions', options)
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ListSchemaVersionsResponse::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ListSchemaVersionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a schema version. Editable fields are: - `display_name` - `labels`
+        # @param [String] name
+        #   Identifier. The resource name of the SchemaVersion. Format: `projects/`project`
+        #   /locations/`location`/schemas/`schema`/schemaVersions/`schema_version``
+        # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion] google_cloud_documentai_v1beta3_schema_version_object
+        # @param [String] update_mask
+        #   Optional. The update mask to apply to the resource. **Note:** Only the
+        #   following fields can be updated: - display_name. - labels.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_schema_schema_version(name, google_cloud_documentai_v1beta3_schema_version_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta3/{+name}', options)
+          command.request_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion::Representation
+          command.request_object = google_cloud_documentai_v1beta3_schema_version_object
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
