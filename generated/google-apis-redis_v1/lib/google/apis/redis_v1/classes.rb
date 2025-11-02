@@ -3735,8 +3735,7 @@ module Google
         # maintenance. For example, for Cloud SQL resources, this can be used to capture
         # if the maintenance window is in Week1, Week2, Week5, etc. Non production
         # resources are usually part of early phase. For more details, refer to Cloud
-        # SQL resources - https://cloud.google.com/sql/docs/mysql/maintenance Deprecated.
-        # Use phase instead.
+        # SQL resources - https://cloud.google.com/sql/docs/mysql/maintenance
         # Corresponds to the JSON property `phase`
         # @return [String]
         attr_accessor :phase
@@ -3748,15 +3747,6 @@ module Google
         # @return [Google::Apis::RedisV1::TimeOfDay]
         attr_accessor :time
       
-        # Optional. Phase of the maintenance window. This is to capture order of
-        # maintenance. For example, for Cloud SQL resources, this can be used to capture
-        # if the maintenance window is in Week1, Week2, Week5, etc. Non production
-        # resources are usually part of early phase. For more details, refer to Cloud
-        # SQL resources - https://cloud.google.com/sql/docs/mysql/maintenance
-        # Corresponds to the JSON property `week`
-        # @return [String]
-        attr_accessor :week
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3766,7 +3756,6 @@ module Google
           @day = args[:day] if args.key?(:day)
           @phase = args[:phase] if args.key?(:phase)
           @time = args[:time] if args.key?(:time)
-          @week = args[:week] if args.key?(:week)
         end
       end
       
