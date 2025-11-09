@@ -85,8 +85,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
-        #   field which is primarily intended for internal usage.
+        #   Optional. Do not use this field. It is unsupported and is ignored unless
+        #   explicitly documented otherwise. This is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -714,7 +714,7 @@ module Google
         # Creates a new EndpointPolicy in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the EndpointPolicy. Must be in the format `
-        #   projects/*/locations/global`.
+        #   projects/*/locations/*`.
         # @param [Google::Apis::NetworkservicesV1::EndpointPolicy] endpoint_policy_object
         # @param [String] endpoint_policy_id
         #   Required. Short name of the EndpointPolicy resource to be created. E.g. "
@@ -752,7 +752,7 @@ module Google
         # Deletes a single EndpointPolicy.
         # @param [String] name
         #   Required. A name of the EndpointPolicy to delete. Must be in the format `
-        #   projects/*/locations/global/endpointPolicies/*`.
+        #   projects/*/locations/*/endpointPolicies/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -783,7 +783,7 @@ module Google
         # Gets details of a single EndpointPolicy.
         # @param [String] name
         #   Required. A name of the EndpointPolicy to get. Must be in the format `projects/
-        #   */locations/global/endpointPolicies/*`.
+        #   */locations/*/endpointPolicies/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -814,7 +814,7 @@ module Google
         # Lists EndpointPolicies in a given project and location.
         # @param [String] parent
         #   Required. The project and location from which the EndpointPolicies should be
-        #   listed, specified in the format `projects/*/locations/global`.
+        #   listed, specified in the format `projects/*/locations/*`.
         # @param [Fixnum] page_size
         #   Maximum number of EndpointPolicies to return per call.
         # @param [String] page_token
@@ -858,7 +858,7 @@ module Google
         # Updates the parameters of a single EndpointPolicy.
         # @param [String] name
         #   Identifier. Name of the EndpointPolicy resource. It matches pattern `projects/`
-        #   project`/locations/global/endpointPolicies/`endpoint_policy``.
+        #   project`/locations/*/endpointPolicies/`endpoint_policy``.
         # @param [Google::Apis::NetworkservicesV1::EndpointPolicy] endpoint_policy_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
@@ -1148,7 +1148,7 @@ module Google
         # Creates a new GrpcRoute in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the GrpcRoute. Must be in the format `
-        #   projects/*/locations/global`.
+        #   projects/*/locations/*`.
         # @param [Google::Apis::NetworkservicesV1::GrpcRoute] grpc_route_object
         # @param [String] grpc_route_id
         #   Required. Short name of the GrpcRoute resource to be created.
@@ -1185,7 +1185,7 @@ module Google
         # Deletes a single GrpcRoute.
         # @param [String] name
         #   Required. A name of the GrpcRoute to delete. Must be in the format `projects/*/
-        #   locations/global/grpcRoutes/*`.
+        #   locations/*/grpcRoutes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1216,7 +1216,7 @@ module Google
         # Gets details of a single GrpcRoute.
         # @param [String] name
         #   Required. A name of the GrpcRoute to get. Must be in the format `projects/*/
-        #   locations/global/grpcRoutes/*`.
+        #   locations/*/grpcRoutes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1247,7 +1247,7 @@ module Google
         # Lists GrpcRoutes in a given project and location.
         # @param [String] parent
         #   Required. The project and location from which the GrpcRoutes should be listed,
-        #   specified in the format `projects/*/locations/global`.
+        #   specified in the format `projects/*/locations/*`.
         # @param [Fixnum] page_size
         #   Maximum number of GrpcRoutes to return per call.
         # @param [String] page_token
@@ -1291,7 +1291,7 @@ module Google
         # Updates the parameters of a single GrpcRoute.
         # @param [String] name
         #   Identifier. Name of the GrpcRoute resource. It matches pattern `projects/*/
-        #   locations/global/grpcRoutes/`
+        #   locations/*/grpcRoutes/`
         # @param [Google::Apis::NetworkservicesV1::GrpcRoute] grpc_route_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
@@ -1332,7 +1332,7 @@ module Google
         # Creates a new HttpRoute in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the HttpRoute. Must be in the format `
-        #   projects/*/locations/global`.
+        #   projects/*/locations/*`.
         # @param [Google::Apis::NetworkservicesV1::HttpRoute] http_route_object
         # @param [String] http_route_id
         #   Required. Short name of the HttpRoute resource to be created.
@@ -1369,7 +1369,7 @@ module Google
         # Deletes a single HttpRoute.
         # @param [String] name
         #   Required. A name of the HttpRoute to delete. Must be in the format `projects/*/
-        #   locations/global/httpRoutes/*`.
+        #   locations/*/httpRoutes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1400,7 +1400,7 @@ module Google
         # Gets details of a single HttpRoute.
         # @param [String] name
         #   Required. A name of the HttpRoute to get. Must be in the format `projects/*/
-        #   locations/global/httpRoutes/*`.
+        #   locations/*/httpRoutes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1431,7 +1431,7 @@ module Google
         # Lists HttpRoute in a given project and location.
         # @param [String] parent
         #   Required. The project and location from which the HttpRoutes should be listed,
-        #   specified in the format `projects/*/locations/global`.
+        #   specified in the format `projects/*/locations/*`.
         # @param [Fixnum] page_size
         #   Maximum number of HttpRoutes to return per call.
         # @param [String] page_token
@@ -1475,7 +1475,7 @@ module Google
         # Updates the parameters of a single HttpRoute.
         # @param [String] name
         #   Identifier. Name of the HttpRoute resource. It matches pattern `projects/*/
-        #   locations/global/httpRoutes/http_route_name>`.
+        #   locations/*/httpRoutes/http_route_name>`.
         # @param [Google::Apis::NetworkservicesV1::HttpRoute] http_route_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
@@ -2179,7 +2179,7 @@ module Google
         # Creates a new Mesh in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the Mesh. Must be in the format `projects/*/
-        #   locations/global`.
+        #   locations/*`.
         # @param [Google::Apis::NetworkservicesV1::Mesh] mesh_object
         # @param [String] mesh_id
         #   Required. Short name of the Mesh resource to be created.
@@ -2216,7 +2216,7 @@ module Google
         # Deletes a single Mesh.
         # @param [String] name
         #   Required. A name of the Mesh to delete. Must be in the format `projects/*/
-        #   locations/global/meshes/*`.
+        #   locations/*/meshes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2247,7 +2247,7 @@ module Google
         # Gets details of a single Mesh.
         # @param [String] name
         #   Required. A name of the Mesh to get. Must be in the format `projects/*/
-        #   locations/global/meshes/*`.
+        #   locations/*/meshes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2278,7 +2278,7 @@ module Google
         # Lists Meshes in a given project and location.
         # @param [String] parent
         #   Required. The project and location from which the Meshes should be listed,
-        #   specified in the format `projects/*/locations/global`.
+        #   specified in the format `projects/*/locations/*`.
         # @param [Fixnum] page_size
         #   Maximum number of Meshes to return per call.
         # @param [String] page_token
@@ -2322,7 +2322,7 @@ module Google
         # Updates the parameters of a single Mesh.
         # @param [String] name
         #   Identifier. Name of the Mesh resource. It matches pattern `projects/*/
-        #   locations/global/meshes/`.
+        #   locations/*/meshes/`.
         # @param [Google::Apis::NetworkservicesV1::Mesh] mesh_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
@@ -2945,7 +2945,7 @@ module Google
         # Creates a new TcpRoute in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the TcpRoute. Must be in the format `projects/
-        #   */locations/global`.
+        #   */locations/*`.
         # @param [Google::Apis::NetworkservicesV1::TcpRoute] tcp_route_object
         # @param [String] tcp_route_id
         #   Required. Short name of the TcpRoute resource to be created.
@@ -2982,7 +2982,7 @@ module Google
         # Deletes a single TcpRoute.
         # @param [String] name
         #   Required. A name of the TcpRoute to delete. Must be in the format `projects/*/
-        #   locations/global/tcpRoutes/*`.
+        #   locations/*/tcpRoutes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3013,7 +3013,7 @@ module Google
         # Gets details of a single TcpRoute.
         # @param [String] name
         #   Required. A name of the TcpRoute to get. Must be in the format `projects/*/
-        #   locations/global/tcpRoutes/*`.
+        #   locations/*/tcpRoutes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3044,7 +3044,7 @@ module Google
         # Lists TcpRoute in a given project and location.
         # @param [String] parent
         #   Required. The project and location from which the TcpRoutes should be listed,
-        #   specified in the format `projects/*/locations/global`.
+        #   specified in the format `projects/*/locations/*`.
         # @param [Fixnum] page_size
         #   Maximum number of TcpRoutes to return per call.
         # @param [String] page_token
@@ -3088,7 +3088,7 @@ module Google
         # Updates the parameters of a single TcpRoute.
         # @param [String] name
         #   Identifier. Name of the TcpRoute resource. It matches pattern `projects/*/
-        #   locations/global/tcpRoutes/tcp_route_name>`.
+        #   locations/*/tcpRoutes/tcp_route_name>`.
         # @param [Google::Apis::NetworkservicesV1::TcpRoute] tcp_route_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
@@ -3129,7 +3129,7 @@ module Google
         # Creates a new TlsRoute in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the TlsRoute. Must be in the format `projects/
-        #   */locations/global`.
+        #   */locations/*`.
         # @param [Google::Apis::NetworkservicesV1::TlsRoute] tls_route_object
         # @param [String] tls_route_id
         #   Required. Short name of the TlsRoute resource to be created.
@@ -3166,7 +3166,7 @@ module Google
         # Deletes a single TlsRoute.
         # @param [String] name
         #   Required. A name of the TlsRoute to delete. Must be in the format `projects/*/
-        #   locations/global/tlsRoutes/*`.
+        #   locations/*/tlsRoutes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3197,7 +3197,7 @@ module Google
         # Gets details of a single TlsRoute.
         # @param [String] name
         #   Required. A name of the TlsRoute to get. Must be in the format `projects/*/
-        #   locations/global/tlsRoutes/*`.
+        #   locations/*/tlsRoutes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3228,7 +3228,7 @@ module Google
         # Lists TlsRoute in a given project and location.
         # @param [String] parent
         #   Required. The project and location from which the TlsRoutes should be listed,
-        #   specified in the format `projects/*/locations/global`.
+        #   specified in the format `projects/*/locations/*`.
         # @param [Fixnum] page_size
         #   Maximum number of TlsRoutes to return per call.
         # @param [String] page_token
@@ -3272,7 +3272,7 @@ module Google
         # Updates the parameters of a single TlsRoute.
         # @param [String] name
         #   Identifier. Name of the TlsRoute resource. It matches pattern `projects/*/
-        #   locations/global/tlsRoutes/tls_route_name>`.
+        #   locations/*/tlsRoutes/tls_route_name>`.
         # @param [Google::Apis::NetworkservicesV1::TlsRoute] tls_route_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the

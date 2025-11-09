@@ -765,6 +765,7 @@ module Google
           collection :forward_headers, as: 'forwardHeaders'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+          property :observability_mode, as: 'observabilityMode'
           property :request_body_send_mode, as: 'requestBodySendMode'
           property :response_body_send_mode, as: 'responseBodySendMode'
           property :service, as: 'service'
