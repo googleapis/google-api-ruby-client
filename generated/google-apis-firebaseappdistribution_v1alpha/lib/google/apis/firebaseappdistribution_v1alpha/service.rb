@@ -333,7 +333,7 @@ module Google
         # Gets configuration for automated tests.
         # @param [String] name
         #   Required. The name of the `TestConfig` resource to retrieve. Format: `projects/
-        #   `project_number`/apps/`app_id`/testConfig`
+        #   `project_number`/apps/`app`/testConfig`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -364,7 +364,7 @@ module Google
         # Updates automated test configuration.
         # @param [String] name
         #   Identifier. The name of the test configuration resource. Format: `projects/`
-        #   project_number`/apps/`app_id`/testConfig`
+        #   project_number`/apps/`app`/testConfig`
         # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestConfig] google_firebase_appdistro_v1alpha_test_config_object
         # @param [String] update_mask
         #   Optional. The list of fields to update.
@@ -401,7 +401,7 @@ module Google
         # Abort automated test run on release.
         # @param [String] name
         #   Required. The name of the release test resource. Format: `projects/`
-        #   project_number`/apps/`app_id`/releases/`release_id`/tests/`test_id``
+        #   project_number`/apps/`app`/releases/`release`/tests/`test``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -432,7 +432,7 @@ module Google
         # Run automated test(s) on release.
         # @param [String] parent
         #   Required. The name of the release resource, which is the parent of the test
-        #   Format: `projects/`project_number`/apps/`app_id`/releases/`release_id``
+        #   Format: `projects/`project_number`/apps/`app`/releases/`release``
         # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaReleaseTest] google_firebase_appdistro_v1alpha_release_test_object
         # @param [String] release_test_id
         #   Optional. The ID to use for the test, which will become the final component of
@@ -472,7 +472,7 @@ module Google
         # Get results for automated test run on release.
         # @param [String] name
         #   Required. The name of the release test resource. Format: `projects/`
-        #   project_number`/apps/`app_id`/releases/`release_id`/tests/`test_id``
+        #   project_number`/apps/`app`/releases/`release`/tests/`test``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -503,7 +503,7 @@ module Google
         # List results for automated tests run on release.
         # @param [String] parent
         #   Required. The name of the release resource, which is the parent of the tests
-        #   Format: `projects/`project_number`/apps/`app_id`/releases/`release_id``
+        #   Format: `projects/`project_number`/apps/`app`/releases/`release``
         # @param [Fixnum] page_size
         #   Optional. The maximum number of tests to return. The service may return fewer
         #   than this value.
@@ -546,7 +546,7 @@ module Google
         # Deletes multiple test cases.
         # @param [String] parent
         #   Required. The parent resource of the test cases being deleted. Format: `
-        #   projects/`project_number`/apps/`app_id``
+        #   projects/`project_number`/apps/`app``
         # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest] google_firebase_appdistro_v1alpha_batch_delete_test_cases_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -580,7 +580,7 @@ module Google
         # Updates multiple test cases.
         # @param [String] parent
         #   Required. The parent resource of the test cases being updated. Format: `
-        #   projects/`project_number`/apps/`app_id``
+        #   projects/`project_number`/apps/`app``
         # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest] google_firebase_appdistro_v1alpha_batch_update_test_cases_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -614,7 +614,7 @@ module Google
         # Clears cached test runs for a specific test case and device(s).
         # @param [String] test_case
         #   Required. The name of the test case resource for which to clear the cache.
-        #   Format: `projects/`project_number`/apps/`app_id`/testCases/`test_case_id``
+        #   Format: `projects/`project_number`/apps/`app`/testCases/`test_case``
         # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest] google_firebase_appdistro_v1alpha_clear_test_case_cache_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -648,7 +648,7 @@ module Google
         # Create a new test case.
         # @param [String] parent
         #   Required. The parent resource where this test case will be created. Format: `
-        #   projects/`project_number`/apps/`app_id``
+        #   projects/`project_number`/apps/`app``
         # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase] google_firebase_appdistro_v1alpha_test_case_object
         # @param [String] test_case_id
         #   Optional. The ID to use for the test case, which will become the final
@@ -687,7 +687,7 @@ module Google
         # Delete a test case.
         # @param [String] name
         #   Required. The name of the test case resource to delete. Format: `projects/`
-        #   project_number`/apps/`app_id`/testCases/`test_case_id``
+        #   project_number`/apps/`app`/testCases/`test_case``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -718,7 +718,7 @@ module Google
         # Get a test case.
         # @param [String] name
         #   Required. The name of the test case resource to retrieve. Format: `projects/`
-        #   project_number`/apps/`app_id`/testCases/`test_case_id``
+        #   project_number`/apps/`app`/testCases/`test_case``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -749,7 +749,7 @@ module Google
         # List test cases.
         # @param [String] parent
         #   Required. The parent resource from which to list test cases. Format: `projects/
-        #   `project_number`/apps/`app_id``
+        #   `project_number`/apps/`app``
         # @param [Fixnum] page_size
         #   Optional. The maximum number of test cases to return. The service may return
         #   fewer than this value. If unspecified, at most 50 test cases will be returned.
@@ -790,7 +790,7 @@ module Google
         # Update a test case.
         # @param [String] name
         #   Identifier. The name of the test case resource. Format: `projects/`
-        #   project_number`/apps/`app_id`/testCases/`test_case_id``
+        #   project_number`/apps/`app`/testCases/`test_case``
         # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase] google_firebase_appdistro_v1alpha_test_case_object
         # @param [Boolean] allow_missing
         #   Optional. If set to true, and the test case is not found, a new test case will

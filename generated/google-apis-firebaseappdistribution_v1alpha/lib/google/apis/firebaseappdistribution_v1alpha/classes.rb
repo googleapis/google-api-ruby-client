@@ -123,8 +123,8 @@ module Google
         # @return [String]
         attr_accessor :firebase_console_uri
       
-        # The name of the release resource. Format: `projects/`project_number`/apps/`
-        # app_id`/releases/`release_id``
+        # The name of the release resource. Format: `projects/`project_number`/apps/`app`
+        # /releases/`release``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -475,8 +475,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The name of the test cases to delete. A maximum number of 1000 test
-        # cases can be deleted in one batch Format: `projects/`project_number`/apps/`
-        # app_id`/testCases/`test_case_id``
+        # cases can be deleted in one batch Format: `projects/`project_number`/apps/`app`
+        # /testCases/`test_case``
         # Corresponds to the JSON property `names`
         # @return [Array<String>]
         attr_accessor :names
@@ -675,6 +675,22 @@ module Google
         # @return [String]
         attr_accessor :inconclusive_reason
       
+        # Identifier. The name of the device execution resource. Format: `projects/`
+        # project_number`/apps/`app`/releases/`release`/tests/`test`/deviceExecutions/`
+        # device_execution``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The device execution from which cached steps were used during
+        # this execution. Note: This field is only populated for ACTION_BASED_REPLAY
+        # executions. If the original device execution no longer exists, this field will
+        # be empty. Format: `projects/`project_number`/apps/`app`/releases/`release`/
+        # tests/`test`/deviceExecutions/`device_execution``
+        # Corresponds to the JSON property `originDeviceExecution`
+        # @return [String]
+        attr_accessor :origin_device_execution
+      
         # Output only. The path to a directory in Cloud Storage that will eventually
         # contain the results for this execution. For example, gs://bucket/Nexus5-18-en-
         # portrait.
@@ -721,6 +737,8 @@ module Google
           @execution_type = args[:execution_type] if args.key?(:execution_type)
           @failed_reason = args[:failed_reason] if args.key?(:failed_reason)
           @inconclusive_reason = args[:inconclusive_reason] if args.key?(:inconclusive_reason)
+          @name = args[:name] if args.key?(:name)
+          @origin_device_execution = args[:origin_device_execution] if args.key?(:origin_device_execution)
           @results_storage_path = args[:results_storage_path] if args.key?(:results_storage_path)
           @robo_stats = args[:robo_stats] if args.key?(:robo_stats)
           @screenshot_uris = args[:screenshot_uris] if args.key?(:screenshot_uris)
@@ -1411,7 +1429,7 @@ module Google
         attr_accessor :login_credential
       
         # The name of the release test resource. Format: `projects/`project_number`/apps/
-        # `app_id`/releases/`release_id`/tests/`test_id``
+        # `app`/releases/`release`/tests/`test``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1589,7 +1607,7 @@ module Google
         attr_accessor :display_name
       
         # Identifier. The name of the test case resource. Format: `projects/`
-        # project_number`/apps/`app_id`/testCases/`test_case_id``
+        # project_number`/apps/`app`/testCases/`test_case``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1625,7 +1643,7 @@ module Google
         attr_accessor :display_name
       
         # Identifier. The name of the test configuration resource. Format: `projects/`
-        # project_number`/apps/`app_id`/testConfig`
+        # project_number`/apps/`app`/testConfig`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
