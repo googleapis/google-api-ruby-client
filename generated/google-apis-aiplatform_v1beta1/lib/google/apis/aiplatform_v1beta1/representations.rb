@@ -1132,6 +1132,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1CustomCodeExecutionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1CustomCodeExecutionSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1CustomJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1889,6 +1901,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1ExecutableCode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ExecuteCodeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ExecuteCodeResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9247,6 +9271,8 @@ module Google
           property :aggregation_metric, as: 'aggregationMetric'
           property :bleu_metric_value, as: 'bleuMetricValue', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BleuMetricValue, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BleuMetricValue::Representation
       
+          property :custom_code_execution_result, as: 'customCodeExecutionResult', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CustomCodeExecutionResult, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CustomCodeExecutionResult::Representation
+      
           property :exact_match_metric_value, as: 'exactMatchMetricValue', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExactMatchMetricValue, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExactMatchMetricValue::Representation
       
           property :pairwise_metric_result, as: 'pairwiseMetricResult', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PairwiseMetricResult, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PairwiseMetricResult::Representation
@@ -10745,6 +10771,20 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1CustomCodeExecutionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1CustomCodeExecutionSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :evaluation_function, as: 'evaluationFunction'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1CustomJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11841,7 +11881,6 @@ module Google
       
           property :events, as: 'events', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceAgentDataEvents, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceAgentDataEvents::Representation
       
-          property :events_text, as: 'eventsText'
           property :tools, as: 'tools', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceAgentDataTools, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstanceAgentDataTools::Representation
       
           property :tools_text, as: 'toolsText'
@@ -12320,6 +12359,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :language, as: 'language'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ExecuteCodeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :inputs, as: 'inputs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Chunk, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Chunk::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ExecuteCodeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :outputs, as: 'outputs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Chunk, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Chunk::Representation
+      
         end
       end
       
@@ -15535,6 +15590,7 @@ module Google
           property :fact, as: 'fact'
           property :name, as: 'name'
           property :revision_expire_time, as: 'revisionExpireTime'
+          hash :revision_labels, as: 'revisionLabels'
           property :revision_ttl, as: 'revisionTtl'
           hash :scope, as: 'scope'
           collection :topics, as: 'topics', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryTopicId, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryTopicId::Representation
@@ -15697,6 +15753,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :aggregation_metrics, as: 'aggregationMetrics'
           property :bleu_spec, as: 'bleuSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BleuSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1BleuSpec::Representation
+      
+          property :custom_code_execution_spec, as: 'customCodeExecutionSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CustomCodeExecutionSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CustomCodeExecutionSpec::Representation
       
           property :exact_match_spec, as: 'exactMatchSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExactMatchSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExactMatchSpec::Representation
       
@@ -18454,6 +18512,8 @@ module Google
           property :rag_files_count, as: 'ragFilesCount'
           property :rag_vector_db_config, as: 'ragVectorDbConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagVectorDbConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagVectorDbConfig::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :update_time, as: 'updateTime'
           property :vector_db_config, as: 'vectorDbConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagVectorDbConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagVectorDbConfig::Representation
       
@@ -19073,10 +19133,13 @@ module Google
       class GoogleCloudAiplatformV1beta1ReasoningEngineSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :agent_card, as: 'agentCard'
           property :agent_framework, as: 'agentFramework'
           collection :class_methods, as: 'classMethods'
           property :deployment_spec, as: 'deploymentSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecDeploymentSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecDeploymentSpec::Representation
       
+          property :effective_identity, as: 'effectiveIdentity'
+          property :identity_type, as: 'identityType'
           property :package_spec, as: 'packageSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec::Representation
       
           property :service_account, as: 'serviceAccount'
@@ -21927,6 +21990,7 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :expire_time, as: 'expireTime'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           hash :session_state, as: 'sessionState'
           property :ttl, as: 'ttl'
