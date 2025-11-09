@@ -566,6 +566,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
           property :subscription, as: 'subscription'
+          hash :tags, as: 'tags'
         end
       end
       
@@ -934,6 +935,7 @@ module Google
           property :retry_policy, as: 'retryPolicy', class: Google::Apis::PubsubV1::RetryPolicy, decorator: Google::Apis::PubsubV1::RetryPolicy::Representation
       
           property :state, as: 'state'
+          hash :tags, as: 'tags'
           property :topic, as: 'topic'
           property :topic_message_retention_duration, as: 'topicMessageRetentionDuration'
         end
@@ -983,6 +985,7 @@ module Google
           property :schema_settings, as: 'schemaSettings', class: Google::Apis::PubsubV1::SchemaSettings, decorator: Google::Apis::PubsubV1::SchemaSettings::Representation
       
           property :state, as: 'state'
+          hash :tags, as: 'tags'
         end
       end
       
