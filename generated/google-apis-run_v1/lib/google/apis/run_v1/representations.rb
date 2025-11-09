@@ -1398,6 +1398,7 @@ module Google
       class GoogleDevtoolsCloudbuildV1BuiltImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :digest, as: 'digest'
           property :name, as: 'name'
           property :push_timing, as: 'pushTiming', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
@@ -1682,6 +1683,7 @@ module Google
       class GoogleDevtoolsCloudbuildV1UploadedGoModule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
@@ -1693,6 +1695,7 @@ module Google
       class GoogleDevtoolsCloudbuildV1UploadedMavenArtifact
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
@@ -1704,6 +1707,7 @@ module Google
       class GoogleDevtoolsCloudbuildV1UploadedNpmPackage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
@@ -1715,6 +1719,7 @@ module Google
       class GoogleDevtoolsCloudbuildV1UploadedPythonPackage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
