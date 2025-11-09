@@ -1008,6 +1008,55 @@ module Google
         end
       end
       
+      # CertificateConfig configures certificate for the registry.
+      class CertificateConfig
+        include Google::Apis::Core::Hashable
+      
+        # The URI configures a secret from [Secret Manager](https://cloud.google.com/
+        # secret-manager) in the format "projects/$PROJECT_ID/secrets/$SECRET_NAME/
+        # versions/$VERSION" for global secret or "projects/$PROJECT_ID/locations/$
+        # REGION/secrets/$SECRET_NAME/versions/$VERSION" for regional secret. Version
+        # can be fixed (e.g. "2") or "latest"
+        # Corresponds to the JSON property `gcpSecretManagerSecretUri`
+        # @return [String]
+        attr_accessor :gcp_secret_manager_secret_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcp_secret_manager_secret_uri = args[:gcp_secret_manager_secret_uri] if args.key?(:gcp_secret_manager_secret_uri)
+        end
+      end
+      
+      # CertificateConfigPair configures pairs of certificates, which is used for
+      # client certificate and key pairs under a registry.
+      class CertificateConfigPair
+        include Google::Apis::Core::Hashable
+      
+        # CertificateConfig configures certificate for the registry.
+        # Corresponds to the JSON property `cert`
+        # @return [Google::Apis::ContainerV1::CertificateConfig]
+        attr_accessor :cert
+      
+        # CertificateConfig configures certificate for the registry.
+        # Corresponds to the JSON property `key`
+        # @return [Google::Apis::ContainerV1::CertificateConfig]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cert = args[:cert] if args.key?(:cert)
+          @key = args[:key] if args.key?(:key)
+        end
+      end
+      
       # CheckAutopilotCompatibilityResponse has a list of compatibility issues.
       class CheckAutopilotCompatibilityResponse
         include Google::Apis::Core::Hashable
@@ -2545,6 +2594,13 @@ module Google
         # @return [Google::Apis::ContainerV1::PrivateRegistryAccessConfig]
         attr_accessor :private_registry_access_config
       
+        # RegistryHostConfig configures containerd registry host configuration. Each
+        # registry_hosts represents a hosts.toml file. At most 25 registry_hosts are
+        # allowed.
+        # Corresponds to the JSON property `registryHosts`
+        # @return [Array<Google::Apis::ContainerV1::RegistryHostConfig>]
+        attr_accessor :registry_hosts
+      
         # Defines writable cgroups configuration.
         # Corresponds to the JSON property `writableCgroups`
         # @return [Google::Apis::ContainerV1::WritableCgroups]
@@ -2557,6 +2613,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @private_registry_access_config = args[:private_registry_access_config] if args.key?(:private_registry_access_config)
+          @registry_hosts = args[:registry_hosts] if args.key?(:registry_hosts)
           @writable_cgroups = args[:writable_cgroups] if args.key?(:writable_cgroups)
         end
       end
@@ -3671,6 +3728,73 @@ module Google
         end
       end
       
+      # HostConfig configures the registry host under a given Server.
+      class HostConfig
+        include Google::Apis::Core::Hashable
+      
+        # CA configures the registry host certificate.
+        # Corresponds to the JSON property `ca`
+        # @return [Array<Google::Apis::ContainerV1::CertificateConfig>]
+        attr_accessor :ca
+      
+        # Capabilities represent the capabilities of the registry host, specifying what
+        # operations a host is capable of performing. If not set, containerd enables all
+        # capabilities by default.
+        # Corresponds to the JSON property `capabilities`
+        # @return [Array<String>]
+        attr_accessor :capabilities
+      
+        # Client configures the registry host client certificate and key.
+        # Corresponds to the JSON property `client`
+        # @return [Array<Google::Apis::ContainerV1::CertificateConfigPair>]
+        attr_accessor :client
+      
+        # Specifies the maximum duration allowed for a connection attempt to complete. A
+        # shorter timeout helps reduce delays when falling back to the original registry
+        # if the mirror is unreachable. Maximum allowed value is 180s. If not set,
+        # containerd sets default 30s. The value should be a decimal number of seconds
+        # with an `s` suffix.
+        # Corresponds to the JSON property `dialTimeout`
+        # @return [String]
+        attr_accessor :dial_timeout
+      
+        # Header configures the registry host headers.
+        # Corresponds to the JSON property `header`
+        # @return [Array<Google::Apis::ContainerV1::RegistryHeader>]
+        attr_accessor :header
+      
+        # Host configures the registry host/mirror. It supports fully qualified domain
+        # names (FQDN) and IP addresses: Specifying port is supported. Wildcards are NOT
+        # supported. Examples: - my.customdomain.com - 10.0.1.2:5000
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # OverridePath is used to indicate the host's API root endpoint is defined in
+        # the URL path rather than by the API specification. This may be used with non-
+        # compliant OCI registries which are missing the /v2 prefix. If not set,
+        # containerd sets default false.
+        # Corresponds to the JSON property `overridePath`
+        # @return [Boolean]
+        attr_accessor :override_path
+        alias_method :override_path?, :override_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca = args[:ca] if args.key?(:ca)
+          @capabilities = args[:capabilities] if args.key?(:capabilities)
+          @client = args[:client] if args.key?(:client)
+          @dial_timeout = args[:dial_timeout] if args.key?(:dial_timeout)
+          @header = args[:header] if args.key?(:header)
+          @host = args[:host] if args.key?(:host)
+          @override_path = args[:override_path] if args.key?(:override_path)
+        end
+      end
+      
       # RFC-2616: cache control support
       class HttpCacheControlResponseHeader
         include Google::Apis::Core::Hashable
@@ -4478,7 +4602,10 @@ module Google
         # port 6988. This serves as a workaround for a port conflict with the gke-
         # metadata-server. This field is required ONLY under the following conditions: 1.
         # The GKE node version is older than 1.33.2-gke.4655000. 2. You're connecting
-        # to a Lustre instance that has the 'gke-support-enabled' flag.
+        # to a Lustre instance that has the 'gke-support-enabled' flag. Deprecated: This
+        # flag is no longer required as of GKE node version 1.33.2-gke.4655000, unless
+        # you are connecting to a Lustre instance that has the `gke-support-enabled`
+        # flag.
         # Corresponds to the JSON property `enableLegacyLustrePort`
         # @return [Boolean]
         attr_accessor :enable_legacy_lustre_port
@@ -7116,6 +7243,62 @@ module Google
         def update!(**args)
           @recurrence = args[:recurrence] if args.key?(:recurrence)
           @window = args[:window] if args.key?(:window)
+        end
+      end
+      
+      # RegistryHeader configures headers for the registry.
+      class RegistryHeader
+        include Google::Apis::Core::Hashable
+      
+        # Key configures the header key.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Value configures the header value.
+        # Corresponds to the JSON property `value`
+        # @return [Array<String>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # RegistryHostConfig configures the top-level structure for a single containerd
+      # registry server's configuration, which represents one hosts.toml file on the
+      # node. It will override the same fqdns in PrivateRegistryAccessConfig.
+      class RegistryHostConfig
+        include Google::Apis::Core::Hashable
+      
+        # HostConfig configures a list of host-specific configurations for the server.
+        # Each server can have at most 10 host configurations.
+        # Corresponds to the JSON property `hosts`
+        # @return [Array<Google::Apis::ContainerV1::HostConfig>]
+        attr_accessor :hosts
+      
+        # Defines the host name of the registry server, which will be used to create
+        # configuration file as /etc/containerd/hosts.d//hosts.toml. It supports fully
+        # qualified domain names (FQDN) and IP addresses: Specifying port is supported.
+        # Wildcards are NOT supported. Examples: - my.customdomain.com - 10.0.1.2:5000
+        # Corresponds to the JSON property `server`
+        # @return [String]
+        attr_accessor :server
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hosts = args[:hosts] if args.key?(:hosts)
+          @server = args[:server] if args.key?(:server)
         end
       end
       
