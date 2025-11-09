@@ -152,6 +152,46 @@ module Google
         end
       end
       
+      # A data encryption key wrapped by an AWS KMS key.
+      class AwsWrappedKeyInfo
+        include Google::Apis::Core::Hashable
+      
+        # Required. The base64 encoded encrypted data encryption key.
+        # Corresponds to the JSON property `encryptedDek`
+        # @return [String]
+        attr_accessor :encrypted_dek
+      
+        # Required. The URI of the AWS KMS key used to decrypt the DEK. Should be in the
+        # format of "arn:`partition`:kms:`region`:`account_id`:key/`key_id`"
+        # Corresponds to the JSON property `kekUri`
+        # @return [String]
+        attr_accessor :kek_uri
+      
+        # Required. The type of algorithm used to encrypt the data.
+        # Corresponds to the JSON property `keyType`
+        # @return [String]
+        attr_accessor :key_type
+      
+        # Required. The Amazon Resource Name of the IAM Role to assume for KMS
+        # decryption access. Should be in the format of "arn:`partition`:iam::`
+        # account_id`:role/`role_name`"
+        # Corresponds to the JSON property `roleArn`
+        # @return [String]
+        attr_accessor :role_arn
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encrypted_dek = args[:encrypted_dek] if args.key?(:encrypted_dek)
+          @kek_uri = args[:kek_uri] if args.key?(:kek_uri)
+          @key_type = args[:key_type] if args.key?(:key_type)
+          @role_arn = args[:role_arn] if args.key?(:role_arn)
+        end
+      end
+      
       # The cart data associated with the event.
       class CartData
         include Google::Apis::Core::Hashable
@@ -340,6 +380,11 @@ module Google
       class EncryptionInfo
         include Google::Apis::Core::Hashable
       
+        # A data encryption key wrapped by an AWS KMS key.
+        # Corresponds to the JSON property `awsWrappedKeyInfo`
+        # @return [Google::Apis::DatamanagerV1::AwsWrappedKeyInfo]
+        attr_accessor :aws_wrapped_key_info
+      
         # Information about the Google Cloud Platform wrapped key.
         # Corresponds to the JSON property `gcpWrappedKeyInfo`
         # @return [Google::Apis::DatamanagerV1::GcpWrappedKeyInfo]
@@ -351,6 +396,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aws_wrapped_key_info = args[:aws_wrapped_key_info] if args.key?(:aws_wrapped_key_info)
           @gcp_wrapped_key_info = args[:gcp_wrapped_key_info] if args.key?(:gcp_wrapped_key_info)
         end
       end
@@ -410,10 +456,23 @@ module Google
         # @return [Google::Apis::DatamanagerV1::AdIdentifiers]
         attr_accessor :ad_identifiers
       
+        # Optional. A bucket of any [event parameters](https://developers.google.com/
+        # analytics/devguides/collection/protocol/ga4/reference/events) to be included
+        # within the event that were not already specified using other structured fields.
+        # Corresponds to the JSON property `additionalEventParameters`
+        # @return [Array<Google::Apis::DatamanagerV1::EventParameter>]
+        attr_accessor :additional_event_parameters
+      
         # The cart data associated with the event.
         # Corresponds to the JSON property `cartData`
         # @return [Google::Apis::DatamanagerV1::CartData]
         attr_accessor :cart_data
+      
+        # Optional. A unique identifier for the user instance of a web client for this
+        # GA4 web stream.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
       
         # [Digital Markets Act (DMA)](//digital-markets-act.ec.europa.eu/index_en)
         # consent settings for the user.
@@ -450,6 +509,11 @@ module Google
         # @return [Google::Apis::DatamanagerV1::DeviceInfo]
         attr_accessor :event_device_info
       
+        # Optional. The name of the event. Required for GA4 events.
+        # Corresponds to the JSON property `eventName`
+        # @return [String]
+        attr_accessor :event_name
+      
         # Optional. Signal for where the event happened (web, app, in-store, etc.).
         # Corresponds to the JSON property `eventSource`
         # @return [String]
@@ -482,6 +546,11 @@ module Google
         # @return [Google::Apis::DatamanagerV1::UserData]
         attr_accessor :user_data
       
+        # Optional. A unique identifier for a user, as defined by the advertiser.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
         # Advertiser-assessed information about the user at the time that the event
         # happened. See https://support.google.com/google-ads/answer/14007601 for more
         # details.
@@ -496,20 +565,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ad_identifiers = args[:ad_identifiers] if args.key?(:ad_identifiers)
+          @additional_event_parameters = args[:additional_event_parameters] if args.key?(:additional_event_parameters)
           @cart_data = args[:cart_data] if args.key?(:cart_data)
+          @client_id = args[:client_id] if args.key?(:client_id)
           @consent = args[:consent] if args.key?(:consent)
           @conversion_value = args[:conversion_value] if args.key?(:conversion_value)
           @currency = args[:currency] if args.key?(:currency)
           @custom_variables = args[:custom_variables] if args.key?(:custom_variables)
           @destination_references = args[:destination_references] if args.key?(:destination_references)
           @event_device_info = args[:event_device_info] if args.key?(:event_device_info)
+          @event_name = args[:event_name] if args.key?(:event_name)
           @event_source = args[:event_source] if args.key?(:event_source)
           @event_timestamp = args[:event_timestamp] if args.key?(:event_timestamp)
           @experimental_fields = args[:experimental_fields] if args.key?(:experimental_fields)
           @last_updated_timestamp = args[:last_updated_timestamp] if args.key?(:last_updated_timestamp)
           @transaction_id = args[:transaction_id] if args.key?(:transaction_id)
           @user_data = args[:user_data] if args.key?(:user_data)
+          @user_id = args[:user_id] if args.key?(:user_id)
           @user_properties = args[:user_properties] if args.key?(:user_properties)
+        end
+      end
+      
+      # Event parameter for GA4 events.
+      class EventParameter
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the parameter to use.
+        # Corresponds to the JSON property `parameterName`
+        # @return [String]
+        attr_accessor :parameter_name
+      
+        # Required. The string representation of the value of the parameter to set.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameter_name = args[:parameter_name] if args.key?(:parameter_name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -896,6 +994,19 @@ module Google
       class Item
         include Google::Apis::Core::Hashable
       
+        # Optional. A bucket of any [event parameters related to an item](https://
+        # developers.google.com/analytics/devguides/collection/protocol/ga4/reference/
+        # events) to be included within the event that were not already specified using
+        # other structured fields.
+        # Corresponds to the JSON property `additionalItemParameters`
+        # @return [Array<Google::Apis::DatamanagerV1::ItemParameter>]
+        attr_accessor :additional_item_parameters
+      
+        # Optional. A unique identifier to reference the item.
+        # Corresponds to the JSON property `itemId`
+        # @return [String]
+        attr_accessor :item_id
+      
         # Optional. The product ID within the Merchant Center account.
         # Corresponds to the JSON property `merchantProductId`
         # @return [String]
@@ -918,9 +1029,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_item_parameters = args[:additional_item_parameters] if args.key?(:additional_item_parameters)
+          @item_id = args[:item_id] if args.key?(:item_id)
           @merchant_product_id = args[:merchant_product_id] if args.key?(:merchant_product_id)
           @quantity = args[:quantity] if args.key?(:quantity)
           @unit_price = args[:unit_price] if args.key?(:unit_price)
+        end
+      end
+      
+      # A bucket of any [event parameters related to an item](https://developers.
+      # google.com/analytics/devguides/collection/protocol/ga4/reference/events) to be
+      # included within the event that were not already specified using other
+      # structured fields.
+      class ItemParameter
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the parameter to use.
+        # Corresponds to the JSON property `parameterName`
+        # @return [String]
+        attr_accessor :parameter_name
+      
+        # Required. The string representation of the value of the parameter to set.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameter_name = args[:parameter_name] if args.key?(:parameter_name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -1341,6 +1482,13 @@ module Google
       class UserProperties
         include Google::Apis::Core::Hashable
       
+        # Optional. A bucket of any additional [user properties](https://developers.
+        # google.com/analytics/devguides/collection/protocol/ga4/user-properties) for
+        # the user associated with this event.
+        # Corresponds to the JSON property `additionalUserProperties`
+        # @return [Array<Google::Apis::DatamanagerV1::UserProperty>]
+        attr_accessor :additional_user_properties
+      
         # Optional. Type of the customer associated with the event.
         # Corresponds to the JSON property `customerType`
         # @return [String]
@@ -1357,8 +1505,36 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_user_properties = args[:additional_user_properties] if args.key?(:additional_user_properties)
           @customer_type = args[:customer_type] if args.key?(:customer_type)
           @customer_value_bucket = args[:customer_value_bucket] if args.key?(:customer_value_bucket)
+        end
+      end
+      
+      # A bucket of any additional [user properties](https://developers.google.com/
+      # analytics/devguides/collection/protocol/ga4/user-properties) for the user
+      # associated with this event.
+      class UserProperty
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the user property to use.
+        # Corresponds to the JSON property `propertyName`
+        # @return [String]
+        attr_accessor :property_name
+      
+        # Required. The string representation of the value of the user property to use.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @property_name = args[:property_name] if args.key?(:property_name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
