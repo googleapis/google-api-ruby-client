@@ -18526,6 +18526,7 @@ module Google
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :parent, as: 'parent'
           property :recaptcha_options_config, as: 'recaptchaOptionsConfig', class: Google::Apis::ComputeV1::SecurityPolicyRecaptchaOptionsConfig, decorator: Google::Apis::ComputeV1::SecurityPolicyRecaptchaOptionsConfig::Representation
       
           property :region, as: 'region'

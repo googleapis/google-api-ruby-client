@@ -15847,7 +15847,7 @@ module Google
         # Only one of exactMatch, prefixMatch,suffixMatch, regexMatch,presentMatch or
         # rangeMatch must be set.
         # Regular expressions can only be used when the loadBalancingScheme is
-        # set to INTERNAL_SELF_MANAGED.
+        # set to INTERNAL_SELF_MANAGED, EXTERNAL_MANAGED orINTERNAL_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -16185,7 +16185,7 @@ module Google
         # more information about regular expression syntax, see Syntax.
         # Only one of presentMatch, exactMatch, orregexMatch must be set.
         # Regular expressions can only be used when the loadBalancingScheme is
-        # set to INTERNAL_SELF_MANAGED.
+        # set to INTERNAL_SELF_MANAGED, EXTERNAL_MANAGED orINTERNAL_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -16552,7 +16552,8 @@ module Google
         # any query parameters and anchor
         # that may be part of the original URL.
         # fullPathMatch must be from 1 to 1024 characters.
-        # Only one of prefixMatch, fullPathMatch or regexMatch must be
+        # Only one of prefixMatch, fullPathMatch,regexMatch or path_template_match must
+        # be
         # specified.
         # Corresponds to the JSON property `fullPathMatch`
         # @return [String]
@@ -16616,7 +16617,9 @@ module Google
         # For satisfying the matchRule condition, the request's
         # path must begin with the specified prefixMatch.prefixMatch must begin with a /.
         # The value must be from 1 to 1024 characters.
-        # Only one of prefixMatch, fullPathMatch or regexMatch must be
+        # Only one of prefixMatch, fullPathMatch,regexMatch or path_template_match must
+        # be
+        # specified.
         # specified.
         # Corresponds to the JSON property `prefixMatch`
         # @return [String]
@@ -16634,10 +16637,11 @@ module Google
         # removing any query parameters and anchor
         # supplied with the original URL. For
         # more information about regular expression syntax, see Syntax.
-        # Only one of prefixMatch, fullPathMatch orregexMatch must be
+        # Only one of prefixMatch, fullPathMatch,regexMatch or path_template_match must
+        # be
         # specified.
         # Regular expressions can only be used when the loadBalancingScheme is
-        # set to INTERNAL_SELF_MANAGED.
+        # set to INTERNAL_SELF_MANAGED, EXTERNAL_MANAGED orINTERNAL_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -47345,6 +47349,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] The parent of the security policy.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
         # 
         # Corresponds to the JSON property `recaptchaOptionsConfig`
         # @return [Google::Apis::ComputeV1::SecurityPolicyRecaptchaOptionsConfig]
@@ -47442,6 +47451,7 @@ module Google
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @parent = args[:parent] if args.key?(:parent)
           @recaptcha_options_config = args[:recaptcha_options_config] if args.key?(:recaptcha_options_config)
           @region = args[:region] if args.key?(:region)
           @rules = args[:rules] if args.key?(:rules)

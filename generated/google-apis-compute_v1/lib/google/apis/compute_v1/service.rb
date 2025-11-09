@@ -27373,8 +27373,10 @@ module Google
         # This has billing implications.  Projects in the hierarchy with effective
         # hierarchical security policies will be automatically enrolled into Cloud
         # Armor Enterprise if not already enrolled.
-        # Use of this API to modify firewall policies is deprecated. Use
-        # firewallPolicies.addAssociation instead if possible.
+        # Use this API to modify Cloud Armor policies. Previously, alpha and beta
+        # versions of this API were used to modify firewall policies. This usage is
+        # now disabled for most organizations. Use firewallPolicies.addAssociation
+        # instead.
         # @param [String] security_policy
         #   Name of the security policy to update.
         # @param [Google::Apis::ComputeV1::SecurityPolicyAssociation] security_policy_association_object
@@ -27429,6 +27431,9 @@ module Google
         end
         
         # Inserts a rule into a security policy.
+        # Use this API to modify Cloud Armor policies. Previously, alpha and beta
+        # versions of this API were used to modify firewall policies. This usage is
+        # now disabled for most organizations. Use firewallPolicies.addRule instead.
         # @param [String] security_policy
         #   Name of the security policy to update.
         # @param [Google::Apis::ComputeV1::SecurityPolicyRule] security_policy_rule_object
@@ -27478,8 +27483,10 @@ module Google
         end
         
         # Copies rules to the specified security policy.
-        # Use of this API to modify firewall policies is deprecated. Use
-        # firewallPolicies.copyRules instead.
+        # Use this API to modify Cloud Armor policies. Previously, alpha and beta
+        # versions of this API were used to modify firewall policies. This usage is
+        # now disabled for most organizations. Use firewallPolicies.cloneRules
+        # instead.
         # @param [String] security_policy
         #   Name of the security policy to update.
         # @param [String] request_id
@@ -27529,8 +27536,9 @@ module Google
         end
         
         # Deletes the specified policy.
-        # Use of this API to remove firewall policies is deprecated. Use
-        # firewallPolicies.delete instead.
+        # Use this API to remove Cloud Armor policies. Previously, alpha and beta
+        # versions of this API were used to remove firewall policies. This usage is
+        # now disabled for most organizations. Use firewallPolicies.delete instead.
         # @param [String] security_policy
         #   Name of the security policy to delete.
         # @param [String] request_id
@@ -27577,8 +27585,9 @@ module Google
         end
         
         # List all of the ordered rules present in a single specified policy.
-        # Use of this API to read firewall policies is deprecated. Use
-        # firewallPolicies.get instead.
+        # Use this API to read Cloud Armor policies. Previously, alpha and beta
+        # versions of this API were used to read firewall policies. This usage is now
+        # disabled for most organizations. Use firewallPolicies.get instead.
         # @param [String] security_policy
         #   Name of the security policy to get.
         # @param [String] fields
@@ -27612,8 +27621,10 @@ module Google
         end
         
         # Gets an association with the specified name.
-        # Use of this API to read firewall policies is deprecated. Use
-        # firewallPolicies.getAssociation instead if possible.
+        # Use this API to read Cloud Armor policies. Previously, alpha and beta
+        # versions of this API were used to read firewall policies. This usage is
+        # now disabled for most organizations. Use firewallPolicies.getAssociation
+        # instead.
         # @param [String] security_policy
         #   Name of the security policy to which the queried rule belongs.
         # @param [String] name
@@ -27650,8 +27661,9 @@ module Google
         end
         
         # Gets a rule at the specified priority.
-        # Use of this API to read firewall policies is deprecated. Use
-        # firewallPolicies.getRule instead.
+        # Use this API to read Cloud Armor policies. Previously, alpha and beta
+        # versions of this API were used to read firewall policies. This usage is now
+        # disabled for most organizations. Use firewallPolicies.getRule instead.
         # @param [String] security_policy
         #   Name of the security policy to which the queried rule belongs.
         # @param [Fixnum] priority
@@ -27689,8 +27701,9 @@ module Google
         
         # Creates a new policy in the specified organization using the data included
         # in the request.
-        # Use of this API to insert firewall policies is deprecated. Use
-        # firewallPolicies.insert instead.
+        # Use this API to add Cloud Armor policies. Previously, alpha and beta
+        # versions of this API were used to add firewall policies. This usage is now
+        # disabled for most organizations. Use firewallPolicies.insert instead.
         # @param [Google::Apis::ComputeV1::SecurityPolicy] security_policy_object
         # @param [String] parent_id
         #   Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]"
@@ -27743,8 +27756,9 @@ module Google
         
         # List all the policies that have been configured for the specified
         # organization.
-        # Use of this API to read firewall policies is deprecated. Use
-        # firewallPolicies.list instead.
+        # Use this API to read Cloud Armor policies. Previously, alpha and beta
+        # versions of this API were used to read firewall policies. This usage is now
+        # disabled for most organizations. Use firewallPolicies.list instead.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. Most
         #   Compute resources support two types of filter expressions:
@@ -27859,8 +27873,10 @@ module Google
         end
         
         # Lists associations of a specified target, i.e., organization or folder.
-        # Use of this API to read firewall policies is deprecated. Use
-        # firewallPolicies.listAssociations instead if possible.
+        # Use this API to read Cloud Armor policies. Previously, alpha and beta
+        # versions of this API were used to read firewall policies. This usage is
+        # now disabled for most organizations. Use firewallPolicies.listAssociations
+        # instead.
         # @param [String] target_resource
         #   The target resource to list associations. It is an organization, or a
         #   folder.
@@ -28010,8 +28026,9 @@ module Google
         end
         
         # Moves the specified security policy.
-        # Use of this API to modify firewall policies is deprecated. Use
-        # firewallPolicies.move instead.
+        # Use this API to modify Cloud Armor policies. Previously, alpha and beta
+        # versions of this API were used to modify firewall policies. This usage is
+        # now disabled for most organizations. Use firewallPolicies.move instead.
         # @param [String] security_policy
         #   Name of the security policy to update.
         # @param [String] parent_id
@@ -28061,8 +28078,9 @@ module Google
         end
         
         # Patches the specified policy with the data included in the request.
-        # Use of this API to modify firewall policies is deprecated. Use
-        # firewallPolicies.patch instead.
+        # Use this API to modify Cloud Armor policies. Previously, alpha and beta
+        # versions of this API were used to modify firewall policies. This usage is
+        # now disabled for most organizations. Use firewallPolicies.patch instead.
         # @param [String] security_policy
         #   Name of the security policy to update.
         # @param [Google::Apis::ComputeV1::SecurityPolicy] security_policy_object
@@ -28112,8 +28130,10 @@ module Google
         end
         
         # Patches a rule at the specified priority.
-        # Use of this API to modify firewall policies is deprecated. Use
-        # firewallPolicies.patchRule instead.
+        # Use this API to modify Cloud Armor policies. Previously, alpha and beta
+        # versions of this API were used to modify firewall policies. This usage is
+        # now disabled for most organizations. Use firewallPolicies.patchRule
+        # instead.
         # @param [String] security_policy
         #   Name of the security policy to update.
         # @param [Google::Apis::ComputeV1::SecurityPolicyRule] security_policy_rule_object
@@ -28166,8 +28186,10 @@ module Google
         end
         
         # Removes an association for the specified security policy.
-        # Use of this API to modify firewall policies is deprecated. Use
-        # firewallPolicies.removeAssociation instead if possible.
+        # Use this API to modify Cloud Armor policies. Previously, alpha and beta
+        # versions of this API were used to modify firewall policies. This usage is
+        # now disabled for most organizations. Use firewallPolicies.removeAssociation
+        # instead.
         # @param [String] security_policy
         #   Name of the security policy to update.
         # @param [String] name
@@ -28217,6 +28239,10 @@ module Google
         end
         
         # Deletes a rule at the specified priority.
+        # Use this API to modify Cloud Armor policies. Previously, alpha and beta
+        # versions of this API were used to modify firewall policies. This usage is
+        # now disabled for most organizations. Use firewallPolicies.removeRule
+        # instead.
         # @param [String] security_policy
         #   Name of the security policy to update.
         # @param [Fixnum] priority
