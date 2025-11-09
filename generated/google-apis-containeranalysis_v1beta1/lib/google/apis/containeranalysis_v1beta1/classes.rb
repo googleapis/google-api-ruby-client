@@ -2181,6 +2181,11 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1BuiltImage
         include Google::Apis::Core::Hashable
       
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
+      
         # Docker Registry 2.0 digest.
         # Corresponds to the JSON property `digest`
         # @return [String]
@@ -2203,6 +2208,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @digest = args[:digest] if args.key?(:digest)
           @name = args[:name] if args.key?(:name)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
@@ -2982,6 +2988,11 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGoModule
         include Google::Apis::Core::Hashable
       
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
+      
         # Container message for hashes of byte content of files, used in
         # SourceProvenance messages to verify integrity of source input to the build.
         # Corresponds to the JSON property `fileHashes`
@@ -3004,6 +3015,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
           @uri = args[:uri] if args.key?(:uri)
@@ -3014,6 +3026,11 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedMavenArtifact
         include Google::Apis::Core::Hashable
       
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
+      
         # Container message for hashes of byte content of files, used in
         # SourceProvenance messages to verify integrity of source input to the build.
         # Corresponds to the JSON property `fileHashes`
@@ -3036,6 +3053,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
           @uri = args[:uri] if args.key?(:uri)
@@ -3045,6 +3063,11 @@ module Google
       # An npm package uploaded to Artifact Registry using the NpmPackage directive.
       class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedNpmPackage
         include Google::Apis::Core::Hashable
+      
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
       
         # Container message for hashes of byte content of files, used in
         # SourceProvenance messages to verify integrity of source input to the build.
@@ -3068,6 +3091,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
           @uri = args[:uri] if args.key?(:uri)
@@ -3077,6 +3101,11 @@ module Google
       # Artifact uploaded using the PythonPackage directive.
       class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedPythonPackage
         include Google::Apis::Core::Hashable
+      
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
       
         # Container message for hashes of byte content of files, used in
         # SourceProvenance messages to verify integrity of source input to the build.
@@ -3100,6 +3129,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
           @uri = args[:uri] if args.key?(:uri)
