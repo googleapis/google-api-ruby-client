@@ -492,7 +492,11 @@ module Google
       class Config
         include Google::Apis::Core::Hashable
       
-        # Optional. Environment variables for this build.
+        # Optional. Supplied environment variables for a specific build. Provided at
+        # Build creation time and immutable afterwards. This field is only applicable
+        # for Builds using a build image - (e.g., ContainerSource or ArchiveSource with
+        # locally_build_source) Attempts to set this for other build types will result
+        # in an error
         # Corresponds to the JSON property `env`
         # @return [Array<Google::Apis::FirebaseapphostingV1::EnvironmentVariable>]
         attr_accessor :env
