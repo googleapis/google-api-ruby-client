@@ -1989,6 +1989,7 @@ module Google
           property :form_validation, as: 'formValidation', class: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation, decorator: Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation::Representation
       
           property :name, as: 'name'
+          property :rule_id, as: 'ruleId'
         end
       end
       
