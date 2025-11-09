@@ -279,6 +279,37 @@ module Google
         end
       end
       
+      # Cloud Storage source.
+      class GoogleCloudRunV2CloudStorageSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Cloud Storage bucket name.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # Optional. The Cloud Storage object generation.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Required. The Cloud Storage object name.
+        # Corresponds to the JSON property `object`
+        # @return [String]
+        attr_accessor :object
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @generation = args[:generation] if args.key?(:generation)
+          @object = args[:object] if args.key?(:object)
+        end
+      end
+      
       # Defines a status condition for a resource.
       class GoogleCloudRunV2Condition
         include Google::Apis::Core::Hashable
@@ -414,6 +445,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2ResourceRequirements]
         attr_accessor :resources
       
+        # Source type for the container.
+        # Corresponds to the JSON property `sourceCode`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2SourceCode]
+        attr_accessor :source_code
+      
         # Probe describes a health check to be performed against a container to
         # determine whether it is alive or ready to receive traffic.
         # Corresponds to the JSON property `startupProbe`
@@ -448,6 +484,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @ports = args[:ports] if args.key?(:ports)
           @resources = args[:resources] if args.key?(:resources)
+          @source_code = args[:source_code] if args.key?(:source_code)
           @startup_probe = args[:startup_probe] if args.key?(:startup_probe)
           @volume_mounts = args[:volume_mounts] if args.key?(:volume_mounts)
           @working_dir = args[:working_dir] if args.key?(:working_dir)
@@ -2857,6 +2894,25 @@ module Google
         end
       end
       
+      # Source type for the container.
+      class GoogleCloudRunV2SourceCode
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage source.
+        # Corresponds to the JSON property `cloudStorageSource`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2CloudStorageSource]
+        attr_accessor :cloud_storage_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_storage_source = args[:cloud_storage_source] if args.key?(:cloud_storage_source)
+        end
+      end
+      
       # Location of the source in an archive file in Google Cloud Storage.
       class GoogleCloudRunV2StorageSource
         include Google::Apis::Core::Hashable
@@ -4833,6 +4889,11 @@ module Google
       class GoogleDevtoolsCloudbuildV1BuiltImage
         include Google::Apis::Core::Hashable
       
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
+      
         # Docker Registry 2.0 digest.
         # Corresponds to the JSON property `digest`
         # @return [String]
@@ -4855,6 +4916,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @digest = args[:digest] if args.key?(:digest)
           @name = args[:name] if args.key?(:name)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
@@ -5848,6 +5910,11 @@ module Google
       class GoogleDevtoolsCloudbuildV1UploadedGoModule
         include Google::Apis::Core::Hashable
       
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
+      
         # Container message for hashes of byte content of files, used in
         # SourceProvenance messages to verify integrity of source input to the build.
         # Corresponds to the JSON property `fileHashes`
@@ -5870,6 +5937,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
           @uri = args[:uri] if args.key?(:uri)
@@ -5880,6 +5948,11 @@ module Google
       class GoogleDevtoolsCloudbuildV1UploadedMavenArtifact
         include Google::Apis::Core::Hashable
       
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
+      
         # Container message for hashes of byte content of files, used in
         # SourceProvenance messages to verify integrity of source input to the build.
         # Corresponds to the JSON property `fileHashes`
@@ -5902,6 +5975,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
           @uri = args[:uri] if args.key?(:uri)
@@ -5911,6 +5985,11 @@ module Google
       # An npm package uploaded to Artifact Registry using the NpmPackage directive.
       class GoogleDevtoolsCloudbuildV1UploadedNpmPackage
         include Google::Apis::Core::Hashable
+      
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
       
         # Container message for hashes of byte content of files, used in
         # SourceProvenance messages to verify integrity of source input to the build.
@@ -5934,6 +6013,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
           @uri = args[:uri] if args.key?(:uri)
@@ -5943,6 +6023,11 @@ module Google
       # Artifact uploaded using the PythonPackage directive.
       class GoogleDevtoolsCloudbuildV1UploadedPythonPackage
         include Google::Apis::Core::Hashable
+      
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
       
         # Container message for hashes of byte content of files, used in
         # SourceProvenance messages to verify integrity of source input to the build.
@@ -5966,6 +6051,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
           @uri = args[:uri] if args.key?(:uri)
