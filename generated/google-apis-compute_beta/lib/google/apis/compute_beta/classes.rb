@@ -10479,8 +10479,21 @@ module Google
       class DiskSettings
         include Google::Apis::Core::Hashable
       
-        # Policy of which locations are allowed to create regional
-        # snapshots.
+        # AccessLocation is only used for regional snapshot. It contains which
+        # regions are allowed to create a regional snapshot from disks located in the
+        # given region/zone.
+        # It includes key-value pairs designed to store the following structure. The
+        # keys should match their corresponding values, which must be provided:
+        # access_location: `
+        # locations `
+        # us-central1 `
+        # region: "us-central1"
+        # `,
+        # asia-west2 `
+        # region: "asia-west2"
+        # `
+        # `
+        # `
         # Corresponds to the JSON property `accessLocation`
         # @return [Google::Apis::ComputeBeta::DiskSettingsAccessLocation]
         attr_accessor :access_location
@@ -10495,16 +10508,31 @@ module Google
         end
       end
       
-      # 
+      # AccessLocation is only used for regional snapshot. It contains which
+      # regions are allowed to create a regional snapshot from disks located in the
+      # given region/zone.
+      # It includes key-value pairs designed to store the following structure. The
+      # keys should match their corresponding values, which must be provided:
+      # access_location: `
+      # locations `
+      # us-central1 `
+      # region: "us-central1"
+      # `,
+      # asia-west2 `
+      # region: "asia-west2"
+      # `
+      # `
+      # `
       class DiskSettingsAccessLocation
         include Google::Apis::Core::Hashable
       
-        # 
+        # List of regions that can create a regional
+        # snapshot from the current region
         # Corresponds to the JSON property `locations`
         # @return [Hash<String,Google::Apis::ComputeBeta::DiskSettingsAccessLocationAccessLocationPreference>]
         attr_accessor :locations
       
-        # 
+        # Policy of which location is allowed to access snapshot.
         # Corresponds to the JSON property `policy`
         # @return [String]
         attr_accessor :policy
@@ -10520,11 +10548,11 @@ module Google
         end
       end
       
-      # 
+      # A structure for specifying an allowed target region to create snapshot.
       class DiskSettingsAccessLocationAccessLocationPreference
         include Google::Apis::Core::Hashable
       
-        # 
+        # Accessible region name
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -16055,6 +16083,142 @@ module Google
         end
       end
       
+      # Response to list global VM extension policy resources.
+      class GlobalVmExtensionPolicyList
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of GlobalVmExtensionPolicy resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeBeta::GlobalVmExtensionPolicy>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for
+        # list requests. If the number of results is larger thanmaxResults, use the
+        # nextPageToken as a value for
+        # the query parameter pageToken in the next list request.
+        # Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::GlobalVmExtensionPolicyList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute
+          # Engine returns NO_RESULTS_ON_PAGE if there
+          # are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key:
+          # value format. For example:
+          # "data": [
+          # `
+          # "key": "scope",
+          # "value": "zones/us-east1-d"
+          # `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::GlobalVmExtensionPolicyList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being
+            # returned. For example, for warnings where there are no results in a list
+            # request for a particular zone, this key might be scope and
+            # the key value might be the zone name. Other examples might be a key
+            # indicating a deprecated resource and a suggested replacement, or a
+            # warning about invalid network settings (for example, if an instance
+            # attempts to perform IP forwarding but is not enabled for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # Represents the rollout operation
       class GlobalVmExtensionPolicyRolloutOperation
         include Google::Apis::Core::Hashable
@@ -19011,7 +19175,7 @@ module Google
         # Only one of exactMatch, prefixMatch,suffixMatch, regexMatch,presentMatch or
         # rangeMatch must be set.
         # Regular expressions can only be used when the loadBalancingScheme is
-        # set to INTERNAL_SELF_MANAGED.
+        # set to INTERNAL_SELF_MANAGED, EXTERNAL_MANAGED orINTERNAL_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -19349,7 +19513,7 @@ module Google
         # more information about regular expression syntax, see Syntax.
         # Only one of presentMatch, exactMatch, orregexMatch must be set.
         # Regular expressions can only be used when the loadBalancingScheme is
-        # set to INTERNAL_SELF_MANAGED.
+        # set to INTERNAL_SELF_MANAGED, EXTERNAL_MANAGED orINTERNAL_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -19741,7 +19905,8 @@ module Google
         # any query parameters and anchor
         # that may be part of the original URL.
         # fullPathMatch must be from 1 to 1024 characters.
-        # Only one of prefixMatch, fullPathMatch or regexMatch must be
+        # Only one of prefixMatch, fullPathMatch,regexMatch or path_template_match must
+        # be
         # specified.
         # Corresponds to the JSON property `fullPathMatch`
         # @return [String]
@@ -19805,7 +19970,9 @@ module Google
         # For satisfying the matchRule condition, the request's
         # path must begin with the specified prefixMatch.prefixMatch must begin with a /.
         # The value must be from 1 to 1024 characters.
-        # Only one of prefixMatch, fullPathMatch or regexMatch must be
+        # Only one of prefixMatch, fullPathMatch,regexMatch or path_template_match must
+        # be
+        # specified.
         # specified.
         # Corresponds to the JSON property `prefixMatch`
         # @return [String]
@@ -19823,10 +19990,11 @@ module Google
         # removing any query parameters and anchor
         # supplied with the original URL. For
         # more information about regular expression syntax, see Syntax.
-        # Only one of prefixMatch, fullPathMatch orregexMatch must be
+        # Only one of prefixMatch, fullPathMatch,regexMatch or path_template_match must
+        # be
         # specified.
         # Regular expressions can only be used when the loadBalancingScheme is
-        # set to INTERNAL_SELF_MANAGED.
+        # set to INTERNAL_SELF_MANAGED, EXTERNAL_MANAGED orINTERNAL_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -22352,10 +22520,22 @@ module Google
       class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
         include Google::Apis::Core::Hashable
       
+        # List of disks to be attached to the instances created from this
+        # selection.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::ComputeBeta::AttachedDisk>]
+        attr_accessor :disks
+      
         # Full machine-type names, e.g. "n1-standard-16".
         # Corresponds to the JSON property `machineTypes`
         # @return [Array<String>]
         attr_accessor :machine_types
+      
+        # Name of the minimum CPU platform to be used by this instance selection.
+        # e.g. 'Intel Ice Lake'.
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
       
         # Preference of this instance selection. Lower number means higher
         # preference. MIG will first try to create a VM based on the machine-type
@@ -22372,7 +22552,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
           @machine_types = args[:machine_types] if args.key?(:machine_types)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @rank = args[:rank] if args.key?(:rank)
         end
       end
@@ -33377,10 +33559,21 @@ module Google
       class ManagedInstancePropertiesFromFlexibilityPolicy
         include Google::Apis::Core::Hashable
       
+        # List of disks to be attached to the instance.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::ComputeBeta::AttachedDisk>]
+        attr_accessor :disks
+      
         # The machine type to be used for this instance.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
+      
+        # Name of the minimum CPU platform to be used by this instance.
+        # e.g. 'Intel Ice Lake'.
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
       
         # The provisioning model to be used for this instance.
         # Corresponds to the JSON property `provisioningModel`
@@ -33393,7 +33586,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
         end
       end
@@ -49452,6 +49647,585 @@ module Google
         end
       end
       
+      # Represent a Rollout resource.
+      class Rollout
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp at which the Rollout was cancelled.
+        # Corresponds to the JSON property `cancellationTime`
+        # @return [String]
+        attr_accessor :cancellation_time
+      
+        # Output only. The timestamp at which the Rollout was completed.
+        # Corresponds to the JSON property `completionTime`
+        # @return [String]
+        attr_accessor :completion_time
+      
+        # [Output Only] Creation timestamp inRFC3339
+        # text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # Output only. The number of the currently running wave.
+        # Ex. 1
+        # Corresponds to the JSON property `currentWaveNumber`
+        # @return [Fixnum]
+        attr_accessor :current_wave_number
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. etag of the Rollout
+        # Ex. abc1234
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#rollout
+        # for rollouts.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created.
+        # The name must be 1-63 characters long, and comply withRFC1035.
+        # Specifically, the name must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?`
+        # which means the first character must be a lowercase letter, and all
+        # following characters must be a dash, lowercase letter, or digit, except
+        # the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Specifications of the resource to roll out.
+        # Corresponds to the JSON property `rolloutEntity`
+        # @return [Google::Apis::ComputeBeta::RolloutRolloutEntity]
+        attr_accessor :rollout_entity
+      
+        # Required. Rollout Plan used to model the Rollout.
+        # Ex. compute.googleapis.com/v1/projects/1234/rolloutPlans/rp1
+        # Corresponds to the JSON property `rolloutPlan`
+        # @return [String]
+        attr_accessor :rollout_plan
+      
+        # [Output Only] Server-defined fully-qualified URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource's resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # Output only. The current state of the Rollout.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Details about each wave of the rollout.
+        # Corresponds to the JSON property `waveDetails`
+        # @return [Array<Google::Apis::ComputeBeta::RolloutWaveDetails>]
+        attr_accessor :wave_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancellation_time = args[:cancellation_time] if args.key?(:cancellation_time)
+          @completion_time = args[:completion_time] if args.key?(:completion_time)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @current_wave_number = args[:current_wave_number] if args.key?(:current_wave_number)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @rollout_entity = args[:rollout_entity] if args.key?(:rollout_entity)
+          @rollout_plan = args[:rollout_plan] if args.key?(:rollout_plan)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @state = args[:state] if args.key?(:state)
+          @wave_details = args[:wave_details] if args.key?(:wave_details)
+        end
+      end
+      
+      # Message describing RolloutPlan object
+      class RolloutPlan
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp inRFC3339
+        # text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#rolloutPlan
+        # for rolloutPlans.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The location scope of the rollout plan. If not specified, the location
+        # scope is considered as ZONAL.
+        # Corresponds to the JSON property `locationScope`
+        # @return [String]
+        attr_accessor :location_scope
+      
+        # Name of the resource. Provided by the client when the resource is created.
+        # The name must be 1-63 characters long, and comply withRFC1035.
+        # Specifically, the name must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?`
+        # which means the first character must be a lowercase letter, and all
+        # following characters must be a dash, lowercase letter, or digit, except
+        # the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] Server-defined fully-qualified URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource's resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # Required. The waves included in this rollout plan.
+        # Corresponds to the JSON property `waves`
+        # @return [Array<Google::Apis::ComputeBeta::RolloutPlanWave>]
+        attr_accessor :waves
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @location_scope = args[:location_scope] if args.key?(:location_scope)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @waves = args[:waves] if args.key?(:waves)
+        end
+      end
+      
+      # A single wave in a rollout plan.
+      class RolloutPlanWave
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The display name of this wave of the rollout plan.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The wave number.
+        # Corresponds to the JSON property `number`
+        # @return [Fixnum]
+        attr_accessor :number
+      
+        # Options to control the pace of orchestration of a wave. These options are
+        # required only if the resource being rolled out follows the Orchestrated
+        # pattern.
+        # Corresponds to the JSON property `orchestrationOptions`
+        # @return [Google::Apis::ComputeBeta::RolloutPlanWaveOrchestrationOptions]
+        attr_accessor :orchestration_options
+      
+        # Required. The selectors for this wave. There is a logical AND between each
+        # selector
+        # defined in a wave, so a resource must satisfy the criteria of *all* the
+        # specified selectors to be in scope for the wave.
+        # Corresponds to the JSON property `selectors`
+        # @return [Array<Google::Apis::ComputeBeta::RolloutPlanWaveSelector>]
+        attr_accessor :selectors
+      
+        # The validation to be performed before progressing to the next wave.
+        # Corresponds to the JSON property `validation`
+        # @return [Google::Apis::ComputeBeta::RolloutPlanWaveValidation]
+        attr_accessor :validation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @number = args[:number] if args.key?(:number)
+          @orchestration_options = args[:orchestration_options] if args.key?(:orchestration_options)
+          @selectors = args[:selectors] if args.key?(:selectors)
+          @validation = args[:validation] if args.key?(:validation)
+        end
+      end
+      
+      # Options to control the pace of orchestration of a wave. These options are
+      # required only if the resource being rolled out follows the Orchestrated
+      # pattern.
+      class RolloutPlanWaveOrchestrationOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Delays, if any, to be added between batches of projects. We allow
+        # multiple Delays to be specified, letting users set separate delays
+        # between batches of projects corresponding to different locations and
+        # batches of projects corresponding to the same location.
+        # Corresponds to the JSON property `delays`
+        # @return [Array<Google::Apis::ComputeBeta::RolloutPlanWaveOrchestrationOptionsDelay>]
+        attr_accessor :delays
+      
+        # Optional. Maximum number of locations to be orchestrated in parallel.
+        # Corresponds to the JSON property `maxConcurrentLocations`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_locations
+      
+        # Optional. Maximum number of resources to be orchestrated per location in
+        # parallel.
+        # Corresponds to the JSON property `maxConcurrentResourcesPerLocation`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_resources_per_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delays = args[:delays] if args.key?(:delays)
+          @max_concurrent_locations = args[:max_concurrent_locations] if args.key?(:max_concurrent_locations)
+          @max_concurrent_resources_per_location = args[:max_concurrent_resources_per_location] if args.key?(:max_concurrent_resources_per_location)
+        end
+      end
+      
+      # Options to control the delay, if any, between batches of projects.
+      class RolloutPlanWaveOrchestrationOptionsDelay
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Controls whether the delay should only be added between batches of
+        # projects corresponding to different locations, or also between
+        # batches of projects corresponding to the same location.
+        # Must be set to DELIMITER_UNSPECIFIED if no delay is to be added.
+        # Corresponds to the JSON property `delimiter`
+        # @return [String]
+        attr_accessor :delimiter
+      
+        # Optional. The duration of the delay, if any, to be added between batches of
+        # projects. A zero duration corresponds to no delay.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Optional. Controls whether the specified duration is to be added at the end of
+        # each batch, or if the total processing time for each batch will be
+        # padded if needed to meet the specified duration.
+        # Must be set to TYPE_UNSPECIFIED if no delay is to be added.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delimiter = args[:delimiter] if args.key?(:delimiter)
+          @duration = args[:duration] if args.key?(:duration)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A selector which specifies what resource(s) are included in a given wave.
+      class RolloutPlanWaveSelector
+        include Google::Apis::Core::Hashable
+      
+        # Roll out to resources by location.
+        # Corresponds to the JSON property `locationSelector`
+        # @return [Google::Apis::ComputeBeta::RolloutPlanWaveSelectorLocationSelector]
+        attr_accessor :location_selector
+      
+        # Roll out to resources by Cloud Resource Manager resource hierarchy
+        # nodes such as projects, folders, orgs.
+        # Corresponds to the JSON property `resourceHierarchySelector`
+        # @return [Google::Apis::ComputeBeta::RolloutPlanWaveSelectorResourceHierarchySelector]
+        attr_accessor :resource_hierarchy_selector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location_selector = args[:location_selector] if args.key?(:location_selector)
+          @resource_hierarchy_selector = args[:resource_hierarchy_selector] if args.key?(:resource_hierarchy_selector)
+        end
+      end
+      
+      # Roll out to resources by location.
+      class RolloutPlanWaveSelectorLocationSelector
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Example: "us-central1-a"
+        # Corresponds to the JSON property `includedLocations`
+        # @return [Array<String>]
+        attr_accessor :included_locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @included_locations = args[:included_locations] if args.key?(:included_locations)
+        end
+      end
+      
+      # Roll out to resources by Cloud Resource Manager resource hierarchy
+      # nodes such as projects, folders, orgs.
+      class RolloutPlanWaveSelectorResourceHierarchySelector
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Format: "folders/`folder_id`"
+        # Corresponds to the JSON property `includedFolders`
+        # @return [Array<String>]
+        attr_accessor :included_folders
+      
+        # Optional. Format: "organizations/`organization_id`"
+        # Corresponds to the JSON property `includedOrganizations`
+        # @return [Array<String>]
+        attr_accessor :included_organizations
+      
+        # Optional. Format: "projects/`project_id`"
+        # Corresponds to the JSON property `includedProjects`
+        # @return [Array<String>]
+        attr_accessor :included_projects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @included_folders = args[:included_folders] if args.key?(:included_folders)
+          @included_organizations = args[:included_organizations] if args.key?(:included_organizations)
+          @included_projects = args[:included_projects] if args.key?(:included_projects)
+        end
+      end
+      
+      # The validation to be performed before progressing to the next wave.
+      class RolloutPlanWaveValidation
+        include Google::Apis::Core::Hashable
+      
+        # Metadata required if type = "time".
+        # Corresponds to the JSON property `timeBasedValidationMetadata`
+        # @return [Google::Apis::ComputeBeta::RolloutPlanWaveValidationTimeBasedValidationMetadata]
+        attr_accessor :time_based_validation_metadata
+      
+        # Required. The type of the validation. If a type of validation is associated
+        # with
+        # a metadata object, the appropriate metadata field mapping to the
+        # validation type must be provided in the validation message. Possible
+        # values are in quotes below alongside an explanation:
+        # "manual": The system waits for an end-user approval API before
+        # progressing to the next wave.
+        # "time": The system waits for a user specified duration before
+        # progressing to the next wave. TimeBasedValidation must be provided.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @time_based_validation_metadata = args[:time_based_validation_metadata] if args.key?(:time_based_validation_metadata)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Metadata required if type = "time".
+      class RolloutPlanWaveValidationTimeBasedValidationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The duration that the system waits in between waves. This wait
+        # starts
+        # after all changes in the wave are rolled out.
+        # Corresponds to the JSON property `waitDuration`
+        # @return [String]
+        attr_accessor :wait_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @wait_duration = args[:wait_duration] if args.key?(:wait_duration)
+        end
+      end
+      
+      # Contains a list of RolloutPlan resources.
+      class RolloutPlansListResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of RolloutPlan resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeBeta::RolloutPlan>]
+        attr_accessor :items
+      
+        # [Output Only] This token allows you to get the next page of results for
+        # list requests. If the number of results is larger thanmaxResults, use the
+        # nextPageToken as a value for
+        # the query parameter pageToken in the next list request.
+        # Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # end_interface: MixerListResponseWithEtagBuilder
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::RolloutPlansListResponse::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute
+          # Engine returns NO_RESULTS_ON_PAGE if there
+          # are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key:
+          # value format. For example:
+          # "data": [
+          # `
+          # "key": "scope",
+          # "value": "zones/us-east1-d"
+          # `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::RolloutPlansListResponse::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being
+            # returned. For example, for warnings where there are no results in a list
+            # request for a particular zone, this key might be scope and
+            # the key value might be the zone name. Other examples might be a key
+            # indicating a deprecated resource and a suggested replacement, or a
+            # warning about invalid network settings (for example, if an instance
+            # attempts to perform IP forwarding but is not enabled for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # A rollout policy configuration.
       class RolloutPolicy
         include Google::Apis::Core::Hashable
@@ -49479,6 +50253,281 @@ module Google
         def update!(**args)
           @default_rollout_time = args[:default_rollout_time] if args.key?(:default_rollout_time)
           @location_rollout_policies = args[:location_rollout_policies] if args.key?(:location_rollout_policies)
+        end
+      end
+      
+      # Specifications of the resource to roll out.
+      class RolloutRolloutEntity
+        include Google::Apis::Core::Hashable
+      
+        # This message is used if the resource type follows the Orchestrated
+        # integration model with ProgressiveRollout.
+        # Corresponds to the JSON property `orchestratedEntity`
+        # @return [Google::Apis::ComputeBeta::RolloutRolloutEntityOrchestratedEntity]
+        attr_accessor :orchestrated_entity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @orchestrated_entity = args[:orchestrated_entity] if args.key?(:orchestrated_entity)
+        end
+      end
+      
+      # This message is used if the resource type follows the Orchestrated
+      # integration model with ProgressiveRollout.
+      class RolloutRolloutEntityOrchestratedEntity
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the behavior of the Rollout if an out of band update is
+        # detected in a project during a Rollout. It can be one of the following
+        # values:
+        # 1) overwrite : Overwrite the local value with the rollout value.
+        # 2) no_overwrite : Do not overwrite the local value with the rollout
+        # value.
+        # Corresponds to the JSON property `conflictBehavior`
+        # @return [String]
+        attr_accessor :conflict_behavior
+      
+        # Required. Orchestration action during the Rollout. It can be one of the
+        # following
+        # values:
+        # 1) "update": Resources will be updated by the rollout.
+        # 2) "delete": Resources will be deleted by the rollout.
+        # Corresponds to the JSON property `orchestrationAction`
+        # @return [String]
+        attr_accessor :orchestration_action
+      
+        # Required. Fully qualified resource name of the resource which contains the
+        # source
+        # of truth of the configuration being rolled out across
+        # locations/projects. For example, in the case of a global Rollout which
+        # is applied across regions, this contains the name of the global
+        # resource created by the user which contains a payload for a resource
+        # that is orchestrated across regions. This follows the following format:
+        # //.googleapis.com/projects//locations/global//
+        # e.g.
+        # //osconfig.googleapis.com/projects/1/locations/global/policyOrchestrators/po1
+        # Corresponds to the JSON property `orchestrationSource`
+        # @return [String]
+        attr_accessor :orchestration_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conflict_behavior = args[:conflict_behavior] if args.key?(:conflict_behavior)
+          @orchestration_action = args[:orchestration_action] if args.key?(:orchestration_action)
+          @orchestration_source = args[:orchestration_source] if args.key?(:orchestration_source)
+        end
+      end
+      
+      # Additional metadata about the status of each wave provided by the server.
+      class RolloutWaveDetails
+        include Google::Apis::Core::Hashable
+      
+        # Details of the wave for products using the Orchestrated integration
+        # model.
+        # Corresponds to the JSON property `orchestratedWaveDetails`
+        # @return [Google::Apis::ComputeBeta::RolloutWaveDetailsOrchestratedWaveDetails]
+        attr_accessor :orchestrated_wave_details
+      
+        # Output only. Wave name.
+        # Ex. wave1
+        # Corresponds to the JSON property `waveDisplayName`
+        # @return [String]
+        attr_accessor :wave_display_name
+      
+        # Output only. System generated number for the wave.
+        # Corresponds to the JSON property `waveNumber`
+        # @return [Fixnum]
+        attr_accessor :wave_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @orchestrated_wave_details = args[:orchestrated_wave_details] if args.key?(:orchestrated_wave_details)
+          @wave_display_name = args[:wave_display_name] if args.key?(:wave_display_name)
+          @wave_number = args[:wave_number] if args.key?(:wave_number)
+        end
+      end
+      
+      # Details of the wave for products using the Orchestrated integration
+      # model.
+      class RolloutWaveDetailsOrchestratedWaveDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Resource completed so far.
+        # Corresponds to the JSON property `completedResourcesCount`
+        # @return [Fixnum]
+        attr_accessor :completed_resources_count
+      
+        # Output only. Estimated total count of resources.
+        # Corresponds to the JSON property `estimatedTotalResourcesCount`
+        # @return [Fixnum]
+        attr_accessor :estimated_total_resources_count
+      
+        # Output only. Locations that failed during orchestration, and
+        # ProgressiveRollout
+        # stopped retrying. There may be some successful resources rolled out in
+        # the wave as the location may have failed later in the Rollout.
+        # Corresponds to the JSON property `failedLocations`
+        # @return [Array<String>]
+        attr_accessor :failed_locations
+      
+        # Output only. Resources failed.
+        # Corresponds to the JSON property `failedResourcesCount`
+        # @return [Fixnum]
+        attr_accessor :failed_resources_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completed_resources_count = args[:completed_resources_count] if args.key?(:completed_resources_count)
+          @estimated_total_resources_count = args[:estimated_total_resources_count] if args.key?(:estimated_total_resources_count)
+          @failed_locations = args[:failed_locations] if args.key?(:failed_locations)
+          @failed_resources_count = args[:failed_resources_count] if args.key?(:failed_resources_count)
+        end
+      end
+      
+      # 
+      class RolloutsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of Rollout resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeBeta::Rollout>]
+        attr_accessor :items
+      
+        # [Output Only] This token allows you to get the next page of results for
+        # list requests. If the number of results is larger thanmaxResults, use the
+        # nextPageToken as a value for
+        # the query parameter pageToken in the next list request.
+        # Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # end_interface: MixerListResponseWithEtagBuilder
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::RolloutsListResponse::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute
+          # Engine returns NO_RESULTS_ON_PAGE if there
+          # are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key:
+          # value format. For example:
+          # "data": [
+          # `
+          # "key": "scope",
+          # "value": "zones/us-east1-d"
+          # `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::RolloutsListResponse::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being
+            # returned. For example, for warnings where there are no results in a list
+            # request for a particular zone, this key might be scope and
+            # the key value might be the zone name. Other examples might be a key
+            # indicating a deprecated resource and a suggested replacement, or a
+            # warning about invalid network settings (for example, if an instance
+            # attempts to perform IP forwarding but is not enabled for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
