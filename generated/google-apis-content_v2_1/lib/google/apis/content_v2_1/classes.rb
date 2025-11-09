@@ -1336,19 +1336,22 @@ module Google
         # @return [String]
         attr_accessor :email_address
       
-        # Whether user is an order manager.
+        # This role is deprecated and can no longer be assigned. Any value set will be
+        # ignored.
         # Corresponds to the JSON property `orderManager`
         # @return [Boolean]
         attr_accessor :order_manager
         alias_method :order_manager?, :order_manager
       
-        # Whether user can access payment statements.
+        # This role is deprecated and can no longer be assigned. Any value set will be
+        # ignored.
         # Corresponds to the JSON property `paymentsAnalyst`
         # @return [Boolean]
         attr_accessor :payments_analyst
         alias_method :payments_analyst?, :payments_analyst
       
-        # Whether user can manage payment settings.
+        # This role is deprecated and can no longer be assigned. Any value set will be
+        # ignored.
         # Corresponds to the JSON property `paymentsManager`
         # @return [Boolean]
         attr_accessor :payments_manager
