@@ -244,7 +244,7 @@ module Google
         attr_accessor :labels
       
         # Identifier. Name of the EndpointPolicy resource. It matches pattern `projects/`
-        # project`/locations/global/endpointPolicies/`endpoint_policy``.
+        # project`/locations/*/endpointPolicies/`endpoint_policy``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -412,6 +412,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. When set to `TRUE`, enables `observability_mode` on the `ext_proc`
+        # filter. This makes `ext_proc` calls asynchronous. Envoy doesn't check for the
+        # response from `ext_proc` calls. For more information about the filter, see:
+        # https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/
+        # ext_proc/v3/ext_proc.proto#extensions-filters-http-ext-proc-v3-
+        # externalprocessor This field is helpful when you want to try out the extension
+        # in async log-only mode. Supported by regional `LbTrafficExtension` and `
+        # LbRouteExtension` resources. Only `STREAMED` (default) body processing mode is
+        # supported.
+        # Corresponds to the JSON property `observabilityMode`
+        # @return [Boolean]
+        attr_accessor :observability_mode
+        alias_method :observability_mode?, :observability_mode
+      
         # Optional. Configures the send mode for request body processing. The field can
         # only be set if `supported_events` includes `REQUEST_BODY`. If `
         # supported_events` includes `REQUEST_BODY`, but `request_body_send_mode` is
@@ -487,6 +501,7 @@ module Google
           @forward_headers = args[:forward_headers] if args.key?(:forward_headers)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+          @observability_mode = args[:observability_mode] if args.key?(:observability_mode)
           @request_body_send_mode = args[:request_body_send_mode] if args.key?(:request_body_send_mode)
           @response_body_send_mode = args[:response_body_send_mode] if args.key?(:response_body_send_mode)
           @service = args[:service] if args.key?(:service)
@@ -731,8 +746,7 @@ module Google
       
         # Optional. Gateways defines a list of gateways this GrpcRoute is attached to,
         # as one of the routing rules to route the requests served by the gateway. Each
-        # gateway reference should match the pattern: `projects/*/locations/global/
-        # gateways/`
+        # gateway reference should match the pattern: `projects/*/locations/*/gateways/`
         # Corresponds to the JSON property `gateways`
         # @return [Array<String>]
         attr_accessor :gateways
@@ -767,13 +781,13 @@ module Google
       
         # Optional. Meshes defines a list of meshes this GrpcRoute is attached to, as
         # one of the routing rules to route the requests served by the mesh. Each mesh
-        # reference should match the pattern: `projects/*/locations/global/meshes/`
+        # reference should match the pattern: `projects/*/locations/*/meshes/`
         # Corresponds to the JSON property `meshes`
         # @return [Array<String>]
         attr_accessor :meshes
       
         # Identifier. Name of the GrpcRoute resource. It matches pattern `projects/*/
-        # locations/global/grpcRoutes/`
+        # locations/*/grpcRoutes/`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1212,8 +1226,7 @@ module Google
       
         # Optional. Gateways defines a list of gateways this HttpRoute is attached to,
         # as one of the routing rules to route the requests served by the gateway. Each
-        # gateway reference should match the pattern: `projects/*/locations/global/
-        # gateways/`
+        # gateway reference should match the pattern: `projects/*/locations/*/gateways/`
         # Corresponds to the JSON property `gateways`
         # @return [Array<String>]
         attr_accessor :gateways
@@ -1246,14 +1259,14 @@ module Google
       
         # Optional. Meshes defines a list of meshes this HttpRoute is attached to, as
         # one of the routing rules to route the requests served by the mesh. Each mesh
-        # reference should match the pattern: `projects/*/locations/global/meshes/` The
+        # reference should match the pattern: `projects/*/locations/*/meshes/` The
         # attached Mesh should be of a type SIDECAR
         # Corresponds to the JSON property `meshes`
         # @return [Array<String>]
         attr_accessor :meshes
       
         # Identifier. Name of the HttpRoute resource. It matches pattern `projects/*/
-        # locations/global/httpRoutes/http_route_name>`.
+        # locations/*/httpRoutes/http_route_name>`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3210,7 +3223,7 @@ module Google
         attr_accessor :labels
       
         # Identifier. Name of the Mesh resource. It matches pattern `projects/*/
-        # locations/global/meshes/`.
+        # locations/*/meshes/`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3760,8 +3773,7 @@ module Google
       
         # Optional. Gateways defines a list of gateways this TcpRoute is attached to, as
         # one of the routing rules to route the requests served by the gateway. Each
-        # gateway reference should match the pattern: `projects/*/locations/global/
-        # gateways/`
+        # gateway reference should match the pattern: `projects/*/locations/*/gateways/`
         # Corresponds to the JSON property `gateways`
         # @return [Array<String>]
         attr_accessor :gateways
@@ -3773,14 +3785,14 @@ module Google
       
         # Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one
         # of the routing rules to route the requests served by the mesh. Each mesh
-        # reference should match the pattern: `projects/*/locations/global/meshes/` The
+        # reference should match the pattern: `projects/*/locations/*/meshes/` The
         # attached Mesh should be of a type SIDECAR
         # Corresponds to the JSON property `meshes`
         # @return [Array<String>]
         attr_accessor :meshes
       
         # Identifier. Name of the TcpRoute resource. It matches pattern `projects/*/
-        # locations/global/tcpRoutes/tcp_route_name>`.
+        # locations/*/tcpRoutes/tcp_route_name>`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3969,8 +3981,7 @@ module Google
       
         # Optional. Gateways defines a list of gateways this TlsRoute is attached to, as
         # one of the routing rules to route the requests served by the gateway. Each
-        # gateway reference should match the pattern: `projects/*/locations/global/
-        # gateways/`
+        # gateway reference should match the pattern: `projects/*/locations/*/gateways/`
         # Corresponds to the JSON property `gateways`
         # @return [Array<String>]
         attr_accessor :gateways
@@ -3982,14 +3993,14 @@ module Google
       
         # Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one
         # of the routing rules to route the requests served by the mesh. Each mesh
-        # reference should match the pattern: `projects/*/locations/global/meshes/` The
+        # reference should match the pattern: `projects/*/locations/*/meshes/` The
         # attached Mesh should be of a type SIDECAR
         # Corresponds to the JSON property `meshes`
         # @return [Array<String>]
         attr_accessor :meshes
       
         # Identifier. Name of the TlsRoute resource. It matches pattern `projects/*/
-        # locations/global/tlsRoutes/tls_route_name>`.
+        # locations/*/tlsRoutes/tls_route_name>`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

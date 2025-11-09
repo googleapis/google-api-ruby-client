@@ -16,13 +16,13 @@ module Google
   module Apis
     module NetworkservicesV1beta1
       # Version of the google-apis-networkservices_v1beta1 gem
-      GEM_VERSION = "0.60.0"
+      GEM_VERSION = "0.61.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.18.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20251017"
+      REVISION = "20251029"
     end
   end
 end
