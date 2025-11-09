@@ -909,8 +909,8 @@ module Google
         # @param [String] apps_id
         #   Part of `name`. The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
-        #   field which is primarily intended for internal usage.
+        #   Optional. Do not use this field. It is unsupported and is ignored unless
+        #   explicitly documented otherwise. This is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like "displayName=tokyo", and is documented in more detail in
@@ -2044,6 +2044,49 @@ module Google
           command.params['locationsId'] = locations_id unless locations_id.nil?
           command.params['applicationsId'] = applications_id unless applications_id.nil?
           command.params['domainMappingsId'] = domain_mappings_id unless domain_mappings_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the domain mappings on an application.
+        # @param [String] projects_id
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
+        # @param [String] locations_id
+        #   Part of `parent`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `parent`. See documentation of `projectsId`.
+        # @param [Fixnum] page_size
+        #   Maximum results to return per page.
+        # @param [String] page_token
+        #   Continuation token for fetching the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::ListDomainMappingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::ListDomainMappingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_application_domain_mappings(projects_id, locations_id, applications_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings', options)
+          command.response_representation = Google::Apis::AppengineV1::ListDomainMappingsResponse::Representation
+          command.response_class = Google::Apis::AppengineV1::ListDomainMappingsResponse
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
