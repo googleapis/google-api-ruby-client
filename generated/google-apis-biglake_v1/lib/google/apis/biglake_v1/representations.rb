@@ -22,6 +22,24 @@ module Google
   module Apis
     module BiglakeV1
       
+      class AuditConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuditLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Catalog
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -29,6 +47,12 @@ module Google
       end
       
       class Database
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -64,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RenameTableRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +101,12 @@ module Google
       end
       
       class SerDeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -86,6 +122,33 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuditConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::BiglakeV1::AuditLogConfig, decorator: Google::Apis::BiglakeV1::AuditLogConfig::Representation
+      
+          property :service, as: 'service'
+        end
+      end
+      
+      class AuditLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exempted_members, as: 'exemptedMembers'
+          property :log_type, as: 'logType'
+        end
+      end
+      
+      class Binding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::BiglakeV1::Expr, decorator: Google::Apis::BiglakeV1::Expr::Representation
+      
+          collection :members, as: 'members'
+          property :role, as: 'role'
+        end
       end
       
       class Catalog
@@ -110,6 +173,16 @@ module Google
           property :name, as: 'name'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
         end
       end
       
@@ -158,6 +231,18 @@ module Google
         end
       end
       
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::BiglakeV1::AuditConfig, decorator: Google::Apis::BiglakeV1::AuditConfig::Representation
+      
+          collection :bindings, as: 'bindings', class: Google::Apis::BiglakeV1::Binding, decorator: Google::Apis::BiglakeV1::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :version, as: 'version'
+        end
+      end
+      
       class RenameTableRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -169,6 +254,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :serialization_lib, as: 'serializationLib'
+        end
+      end
+      
+      class SetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::BiglakeV1::Policy, decorator: Google::Apis::BiglakeV1::Policy::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       
