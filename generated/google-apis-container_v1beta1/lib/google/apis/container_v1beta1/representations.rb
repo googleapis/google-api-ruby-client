@@ -196,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CertificateConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CertificateConfigPair
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckAutopilotCompatibilityResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +263,18 @@ module Google
       end
       
       class ClusterUpgradeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CompatibilityStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CompleteControlPlaneUpgradeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -545,6 +569,12 @@ module Google
       end
       
       class HorizontalPodAutoscaling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HostConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -988,6 +1018,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PodSnapshotConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PolicyBinding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1072,6 +1108,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegistryHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegistryHostConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReleaseChannel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1115,6 +1163,18 @@ module Google
       end
       
       class RollbackNodePoolUpgradeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RollbackSafeUpgrade
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RollbackSafeUpgradeStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1559,6 +1619,8 @@ module Google
       
           property :parallelstore_csi_driver_config, as: 'parallelstoreCsiDriverConfig', class: Google::Apis::ContainerV1beta1::ParallelstoreCsiDriverConfig, decorator: Google::Apis::ContainerV1beta1::ParallelstoreCsiDriverConfig::Representation
       
+          property :pod_snapshot_config, as: 'podSnapshotConfig', class: Google::Apis::ContainerV1beta1::PodSnapshotConfig, decorator: Google::Apis::ContainerV1beta1::PodSnapshotConfig::Representation
+      
           property :ray_operator_config, as: 'rayOperatorConfig', class: Google::Apis::ContainerV1beta1::RayOperatorConfig, decorator: Google::Apis::ContainerV1beta1::RayOperatorConfig::Representation
       
           property :stateful_ha_config, as: 'statefulHaConfig', class: Google::Apis::ContainerV1beta1::StatefulHaConfig, decorator: Google::Apis::ContainerV1beta1::StatefulHaConfig::Representation
@@ -1779,6 +1841,23 @@ module Google
         end
       end
       
+      class CertificateConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcp_secret_manager_secret_uri, as: 'gcpSecretManagerSecretUri'
+        end
+      end
+      
+      class CertificateConfigPair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cert, as: 'cert', class: Google::Apis::ContainerV1beta1::CertificateConfig, decorator: Google::Apis::ContainerV1beta1::CertificateConfig::Representation
+      
+          property :key, as: 'key', class: Google::Apis::ContainerV1beta1::CertificateConfig, decorator: Google::Apis::ContainerV1beta1::CertificateConfig::Representation
+      
+        end
+      end
+      
       class CheckAutopilotCompatibilityResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1841,6 +1920,7 @@ module Google
           property :cost_management_config, as: 'costManagementConfig', class: Google::Apis::ContainerV1beta1::CostManagementConfig, decorator: Google::Apis::ContainerV1beta1::CostManagementConfig::Representation
       
           property :create_time, as: 'createTime'
+          property :current_emulated_version, as: 'currentEmulatedVersion'
           property :current_master_version, as: 'currentMasterVersion'
           property :current_node_count, as: 'currentNodeCount'
           property :current_node_version, as: 'currentNodeVersion'
@@ -1926,6 +2006,8 @@ module Google
       
           hash :resource_labels, as: 'resourceLabels'
           property :resource_usage_export_config, as: 'resourceUsageExportConfig', class: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig::Representation
+      
+          property :rollback_safe_upgrade, as: 'rollbackSafeUpgrade', class: Google::Apis::ContainerV1beta1::RollbackSafeUpgrade, decorator: Google::Apis::ContainerV1beta1::RollbackSafeUpgrade::Representation
       
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
@@ -2105,6 +2187,8 @@ module Google
       
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig::Representation
       
+          property :desired_rollback_safe_upgrade, as: 'desiredRollbackSafeUpgrade', class: Google::Apis::ContainerV1beta1::RollbackSafeUpgrade, decorator: Google::Apis::ContainerV1beta1::RollbackSafeUpgrade::Representation
+      
           property :desired_secret_manager_config, as: 'desiredSecretManagerConfig', class: Google::Apis::ContainerV1beta1::SecretManagerConfig, decorator: Google::Apis::ContainerV1beta1::SecretManagerConfig::Representation
       
           property :desired_secret_sync_config, as: 'desiredSecretSyncConfig', class: Google::Apis::ContainerV1beta1::SecretSyncConfig, decorator: Google::Apis::ContainerV1beta1::SecretSyncConfig::Representation
@@ -2151,8 +2235,25 @@ module Google
           property :minor_target_version, as: 'minorTargetVersion'
           property :patch_target_version, as: 'patchTargetVersion'
           collection :paused_reason, as: 'pausedReason'
+          property :rollback_safe_upgrade_status, as: 'rollbackSafeUpgradeStatus', class: Google::Apis::ContainerV1beta1::RollbackSafeUpgradeStatus, decorator: Google::Apis::ContainerV1beta1::RollbackSafeUpgradeStatus::Representation
+      
           collection :upgrade_details, as: 'upgradeDetails', class: Google::Apis::ContainerV1beta1::UpgradeDetails, decorator: Google::Apis::ContainerV1beta1::UpgradeDetails::Representation
       
+        end
+      end
+      
+      class CompatibilityStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :downgradable_version, as: 'downgradableVersion'
+          property :emulated_version_time, as: 'emulatedVersionTime'
+        end
+      end
+      
+      class CompleteControlPlaneUpgradeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version'
         end
       end
       
@@ -2214,6 +2315,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :private_registry_access_config, as: 'privateRegistryAccessConfig', class: Google::Apis::ContainerV1beta1::PrivateRegistryAccessConfig, decorator: Google::Apis::ContainerV1beta1::PrivateRegistryAccessConfig::Representation
+      
+          collection :registry_hosts, as: 'registryHosts', class: Google::Apis::ContainerV1beta1::RegistryHostConfig, decorator: Google::Apis::ContainerV1beta1::RegistryHostConfig::Representation
       
           property :writable_cgroups, as: 'writableCgroups', class: Google::Apis::ContainerV1beta1::WritableCgroups, decorator: Google::Apis::ContainerV1beta1::WritableCgroups::Representation
       
@@ -2566,6 +2669,22 @@ module Google
         end
       end
       
+      class HostConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ca, as: 'ca', class: Google::Apis::ContainerV1beta1::CertificateConfig, decorator: Google::Apis::ContainerV1beta1::CertificateConfig::Representation
+      
+          collection :capabilities, as: 'capabilities'
+          collection :client, as: 'client', class: Google::Apis::ContainerV1beta1::CertificateConfigPair, decorator: Google::Apis::ContainerV1beta1::CertificateConfigPair::Representation
+      
+          property :dial_timeout, as: 'dialTimeout'
+          collection :header, as: 'header', class: Google::Apis::ContainerV1beta1::RegistryHeader, decorator: Google::Apis::ContainerV1beta1::RegistryHeader::Representation
+      
+          property :host, as: 'host'
+          property :override_path, as: 'overridePath'
+        end
+      end
+      
       class HostMaintenancePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2867,6 +2986,8 @@ module Google
       class Master
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :compatibility_status, as: 'compatibilityStatus', class: Google::Apis::ContainerV1beta1::CompatibilityStatus, decorator: Google::Apis::ContainerV1beta1::CompatibilityStatus::Representation
+      
         end
       end
       
@@ -3412,6 +3533,13 @@ module Google
         end
       end
       
+      class PodSnapshotConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class PolicyBinding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3533,6 +3661,23 @@ module Google
         end
       end
       
+      class RegistryHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          collection :value, as: 'value'
+        end
+      end
+      
+      class RegistryHostConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :hosts, as: 'hosts', class: Google::Apis::ContainerV1beta1::HostConfig, decorator: Google::Apis::ContainerV1beta1::HostConfig::Representation
+      
+          property :server, as: 'server'
+        end
+      end
+      
       class ReleaseChannel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3604,6 +3749,22 @@ module Google
           property :project_id, as: 'projectId'
           property :respect_pdb, as: 'respectPdb'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class RollbackSafeUpgrade
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_plane_soak_duration, as: 'controlPlaneSoakDuration'
+        end
+      end
+      
+      class RollbackSafeUpgradeStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_plane_upgrade_rollback_end_time, as: 'controlPlaneUpgradeRollbackEndTime'
+          property :mode, as: 'mode'
+          property :previous_version, as: 'previousVersion'
         end
       end
       
@@ -4073,10 +4234,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :initial_emulated_version, as: 'initialEmulatedVersion'
           property :initial_version, as: 'initialVersion'
           property :start_time, as: 'startTime'
           property :start_type, as: 'startType'
           property :state, as: 'state'
+          property :target_emulated_version, as: 'targetEmulatedVersion'
           property :target_version, as: 'targetVersion'
         end
       end
