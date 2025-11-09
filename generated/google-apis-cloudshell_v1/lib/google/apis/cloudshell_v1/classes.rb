@@ -277,6 +277,25 @@ module Google
         end
       end
       
+      # Response message for GenerateAccessToken.
+      class GenerateAccessTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # The access token.
+        # Corresponds to the JSON property `accessToken`
+        # @return [String]
+        attr_accessor :access_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable

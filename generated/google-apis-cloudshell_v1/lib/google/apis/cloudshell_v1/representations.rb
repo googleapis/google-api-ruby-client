@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateAccessTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -219,6 +225,13 @@ module Google
           property :ssh_username, as: 'sshUsername'
           property :state, as: 'state'
           property :web_host, as: 'webHost'
+        end
+      end
+      
+      class GenerateAccessTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'accessToken'
         end
       end
       
