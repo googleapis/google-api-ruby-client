@@ -3866,6 +3866,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3874,6 +3879,7 @@ module Google
         def update!(**args)
           @data_source_references = args[:data_source_references] if args.key?(:data_source_references)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
