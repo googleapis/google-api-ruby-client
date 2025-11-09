@@ -1195,7 +1195,7 @@ module Google
         # @return [Google::Apis::RedisV1beta1::DatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 29
+        # Common model for database resource instance metadata. Next ID: 30
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::RedisV1beta1::DatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -1393,7 +1393,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 29
+      # Common model for database resource instance metadata. Next ID: 30
       class DatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -1469,6 +1469,12 @@ module Google
         # Corresponds to the JSON property `instanceType`
         # @return [String]
         attr_accessor :instance_type
+      
+        # Optional. Whether deletion protection is enabled for this resource.
+        # Corresponds to the JSON property `isDeletionProtectionEnabled`
+        # @return [Boolean]
+        attr_accessor :is_deletion_protection_enabled
+        alias_method :is_deletion_protection_enabled?, :is_deletion_protection_enabled
       
         # The resource location. REQUIRED
         # Corresponds to the JSON property `location`
@@ -1567,6 +1573,7 @@ module Google
           @gcbdr_configuration = args[:gcbdr_configuration] if args.key?(:gcbdr_configuration)
           @id = args[:id] if args.key?(:id)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
+          @is_deletion_protection_enabled = args[:is_deletion_protection_enabled] if args.key?(:is_deletion_protection_enabled)
           @location = args[:location] if args.key?(:location)
           @machine_configuration = args[:machine_configuration] if args.key?(:machine_configuration)
           @maintenance_info = args[:maintenance_info] if args.key?(:maintenance_info)
