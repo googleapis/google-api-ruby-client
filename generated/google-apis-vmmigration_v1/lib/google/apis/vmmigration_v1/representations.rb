@@ -1181,6 +1181,7 @@ module Google
           collection :network_tags, as: 'networkTags'
           property :secure_boot, as: 'secureBoot'
           property :service_account, as: 'serviceAccount'
+          property :storage_pool, as: 'storagePool'
           property :target_project, as: 'targetProject'
           property :vm_name, as: 'vmName'
           property :zone, as: 'zone'
@@ -1217,6 +1218,7 @@ module Google
           property :project, as: 'project'
           property :secure_boot, as: 'secureBoot'
           property :service_account, as: 'serviceAccount'
+          property :storage_pool, as: 'storagePool'
           property :vm_name, as: 'vmName'
           property :zone, as: 'zone'
         end
