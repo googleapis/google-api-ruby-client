@@ -553,6 +553,55 @@ module Google
         end
       end
       
+      # A Persistent Directory backed by a Compute Engine Hyperdisk Balanced High
+      # Availability Disk. This is a high-availability block storage solution that
+      # offers a balance between performance and cost for most general-purpose
+      # workloads.
+      class GceHyperdiskBalancedHighAvailability
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Number of seconds to wait after initially creating or subsequently
+        # shutting down the workstation before converting its disk into a snapshot. This
+        # generally saves costs at the expense of greater startup time on next
+        # workstation start, as the service will need to create a disk from the archival
+        # snapshot. A value of `"0s"` indicates that the disk will never be archived.
+        # Corresponds to the JSON property `archiveTimeout`
+        # @return [String]
+        attr_accessor :archive_timeout
+      
+        # Optional. Whether the persistent disk should be deleted when the workstation
+        # is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
+        # Corresponds to the JSON property `reclaimPolicy`
+        # @return [String]
+        attr_accessor :reclaim_policy
+      
+        # Optional. The GB capacity of a persistent home directory for each workstation
+        # created with this configuration. Must be empty if source_snapshot is set.
+        # Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        # Optional. Name of the snapshot to use as the source for the disk. If set,
+        # size_gb must be empty. Must be formatted as ext4 file system with no
+        # partitions.
+        # Corresponds to the JSON property `sourceSnapshot`
+        # @return [String]
+        attr_accessor :source_snapshot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archive_timeout = args[:archive_timeout] if args.key?(:archive_timeout)
+          @reclaim_policy = args[:reclaim_policy] if args.key?(:reclaim_policy)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
+        end
+      end
+      
       # A runtime using a Compute Engine instance.
       class GceInstance
         include Google::Apis::Core::Hashable
@@ -677,6 +726,16 @@ module Google
         # @return [Google::Apis::WorkstationsV1beta::GceShieldedInstanceConfig]
         attr_accessor :shielded_instance_config
       
+        # Optional. Link to the startup script stored in Cloud Storage. This script will
+        # be run on the host workstation VM when the VM is created. The uri must be of
+        # the form gs://`bucket-name`/`object-name`. If specifying a startup script, the
+        # service account must have [Permission to access the bucket and script file in
+        # Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-
+        # permissions). Otherwise, the script must be publicly accessible.
+        # Corresponds to the JSON property `startupScriptUri`
+        # @return [String]
+        attr_accessor :startup_script_uri
+      
         # Optional. Network tags to add to the Compute Engine VMs backing the
         # workstations. This option applies [network tags](https://cloud.google.com/vpc/
         # docs/add-remove-network-tags) to VMs created with this configuration. These
@@ -714,6 +773,7 @@ module Google
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_account_scopes = args[:service_account_scopes] if args.key?(:service_account_scopes)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
+          @startup_script_uri = args[:startup_script_uri] if args.key?(:startup_script_uri)
           @tags = args[:tags] if args.key?(:tags)
           @vm_tags = args[:vm_tags] if args.key?(:vm_tags)
         end
@@ -1349,6 +1409,14 @@ module Google
       class PersistentDirectory
         include Google::Apis::Core::Hashable
       
+        # A Persistent Directory backed by a Compute Engine Hyperdisk Balanced High
+        # Availability Disk. This is a high-availability block storage solution that
+        # offers a balance between performance and cost for most general-purpose
+        # workloads.
+        # Corresponds to the JSON property `gceHd`
+        # @return [Google::Apis::WorkstationsV1beta::GceHyperdiskBalancedHighAvailability]
+        attr_accessor :gce_hd
+      
         # A Persistent Directory backed by a Compute Engine regional persistent disk.
         # The persistent_directories field is repeated, but it may contain only one
         # entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/
@@ -1371,6 +1439,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @gce_hd = args[:gce_hd] if args.key?(:gce_hd)
           @gce_pd = args[:gce_pd] if args.key?(:gce_pd)
           @mount_path = args[:mount_path] if args.key?(:mount_path)
         end
