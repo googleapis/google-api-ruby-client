@@ -203,6 +203,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # CompleteControlPlaneUpgrade completes the rollback-safe upgrade by performing
+        # the step two upgrade for a specific cluster.
+        # @param [String] name
+        #   The name (project, location, cluster) of the cluster to complete upgrade.
+        #   Specified in the format `projects/*/locations/*/clusters/*`.
+        # @param [Google::Apis::ContainerV1beta1::CompleteControlPlaneUpgradeRequest] complete_control_plane_upgrade_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContainerV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContainerV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def complete_project_location_cluster_control_plane_upgrade(name, complete_control_plane_upgrade_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:completeControlPlaneUpgrade', options)
+          command.request_representation = Google::Apis::ContainerV1beta1::CompleteControlPlaneUpgradeRequest::Representation
+          command.request_object = complete_control_plane_upgrade_request_object
+          command.response_representation = Google::Apis::ContainerV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ContainerV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Completes master IP rotation.
         # @param [String] name
         #   The name (project, location, cluster name) of the cluster to complete IP
@@ -1550,6 +1585,41 @@ module Google
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['clusterId'] = cluster_id unless cluster_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # CompleteControlPlaneUpgrade completes the rollback-safe upgrade by performing
+        # the step two upgrade for a specific cluster.
+        # @param [String] name
+        #   The name (project, location, cluster) of the cluster to complete upgrade.
+        #   Specified in the format `projects/*/locations/*/clusters/*`.
+        # @param [Google::Apis::ContainerV1beta1::CompleteControlPlaneUpgradeRequest] complete_control_plane_upgrade_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContainerV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContainerV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def complete_project_zone_cluster_control_plane_upgrade(name, complete_control_plane_upgrade_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:completeControlPlaneUpgrade', options)
+          command.request_representation = Google::Apis::ContainerV1beta1::CompleteControlPlaneUpgradeRequest::Representation
+          command.request_object = complete_control_plane_upgrade_request_object
+          command.response_representation = Google::Apis::ContainerV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ContainerV1beta1::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

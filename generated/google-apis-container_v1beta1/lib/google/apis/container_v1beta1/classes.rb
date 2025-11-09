@@ -287,6 +287,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ParallelstoreCsiDriverConfig]
         attr_accessor :parallelstore_csi_driver_config
       
+        # PodSnapshotConfig is the configuration for GKE Pod Snapshots feature.
+        # Corresponds to the JSON property `podSnapshotConfig`
+        # @return [Google::Apis::ContainerV1beta1::PodSnapshotConfig]
+        attr_accessor :pod_snapshot_config
+      
         # Configuration options for the Ray Operator add-on.
         # Corresponds to the JSON property `rayOperatorConfig`
         # @return [Google::Apis::ContainerV1beta1::RayOperatorConfig]
@@ -319,6 +324,7 @@ module Google
           @lustre_csi_driver_config = args[:lustre_csi_driver_config] if args.key?(:lustre_csi_driver_config)
           @network_policy_config = args[:network_policy_config] if args.key?(:network_policy_config)
           @parallelstore_csi_driver_config = args[:parallelstore_csi_driver_config] if args.key?(:parallelstore_csi_driver_config)
+          @pod_snapshot_config = args[:pod_snapshot_config] if args.key?(:pod_snapshot_config)
           @ray_operator_config = args[:ray_operator_config] if args.key?(:ray_operator_config)
           @stateful_ha_config = args[:stateful_ha_config] if args.key?(:stateful_ha_config)
         end
@@ -1117,6 +1123,55 @@ module Google
         end
       end
       
+      # CertificateConfig configures certificate for the registry.
+      class CertificateConfig
+        include Google::Apis::Core::Hashable
+      
+        # The URI configures a secret from [Secret Manager](https://cloud.google.com/
+        # secret-manager) in the format "projects/$PROJECT_ID/secrets/$SECRET_NAME/
+        # versions/$VERSION" for global secret or "projects/$PROJECT_ID/locations/$
+        # REGION/secrets/$SECRET_NAME/versions/$VERSION" for regional secret. Version
+        # can be fixed (e.g. "2") or "latest"
+        # Corresponds to the JSON property `gcpSecretManagerSecretUri`
+        # @return [String]
+        attr_accessor :gcp_secret_manager_secret_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcp_secret_manager_secret_uri = args[:gcp_secret_manager_secret_uri] if args.key?(:gcp_secret_manager_secret_uri)
+        end
+      end
+      
+      # CertificateConfigPair configures pairs of certificates, which is used for
+      # client certificate and key pairs under a registry.
+      class CertificateConfigPair
+        include Google::Apis::Core::Hashable
+      
+        # CertificateConfig configures certificate for the registry.
+        # Corresponds to the JSON property `cert`
+        # @return [Google::Apis::ContainerV1beta1::CertificateConfig]
+        attr_accessor :cert
+      
+        # CertificateConfig configures certificate for the registry.
+        # Corresponds to the JSON property `key`
+        # @return [Google::Apis::ContainerV1beta1::CertificateConfig]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cert = args[:cert] if args.key?(:cert)
+          @key = args[:key] if args.key?(:key)
+        end
+      end
+      
       # CheckAutopilotCompatibilityResponse has a list of compatibility issues.
       class CheckAutopilotCompatibilityResponse
         include Google::Apis::Core::Hashable
@@ -1303,6 +1358,13 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Output only. The current emulated version of the master endpoint. The version
+        # is in minor version format, e.g. 1.30. No value or empty string means the
+        # cluster has no emulated version.
+        # Corresponds to the JSON property `currentEmulatedVersion`
+        # @return [String]
+        attr_accessor :current_emulated_version
       
         # Output only. The current software version of the master endpoint.
         # Corresponds to the JSON property `currentMasterVersion`
@@ -1671,6 +1733,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ResourceUsageExportConfig]
         attr_accessor :resource_usage_export_config
       
+        # RollbackSafeUpgrade is the configuration for the rollback safe upgrade.
+        # Corresponds to the JSON property `rollbackSafeUpgrade`
+        # @return [Google::Apis::ContainerV1beta1::RollbackSafeUpgrade]
+        attr_accessor :rollback_safe_upgrade
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -1807,6 +1874,7 @@ module Google
           @control_plane_endpoints_config = args[:control_plane_endpoints_config] if args.key?(:control_plane_endpoints_config)
           @cost_management_config = args[:cost_management_config] if args.key?(:cost_management_config)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @current_emulated_version = args[:current_emulated_version] if args.key?(:current_emulated_version)
           @current_master_version = args[:current_master_version] if args.key?(:current_master_version)
           @current_node_count = args[:current_node_count] if args.key?(:current_node_count)
           @current_node_version = args[:current_node_version] if args.key?(:current_node_version)
@@ -1862,6 +1930,7 @@ module Google
           @release_channel = args[:release_channel] if args.key?(:release_channel)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_usage_export_config = args[:resource_usage_export_config] if args.key?(:resource_usage_export_config)
+          @rollback_safe_upgrade = args[:rollback_safe_upgrade] if args.key?(:rollback_safe_upgrade)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @secret_manager_config = args[:secret_manager_config] if args.key?(:secret_manager_config)
@@ -2383,6 +2452,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ResourceUsageExportConfig]
         attr_accessor :desired_resource_usage_export_config
       
+        # RollbackSafeUpgrade is the configuration for the rollback safe upgrade.
+        # Corresponds to the JSON property `desiredRollbackSafeUpgrade`
+        # @return [Google::Apis::ContainerV1beta1::RollbackSafeUpgrade]
+        attr_accessor :desired_rollback_safe_upgrade
+      
         # SecretManagerConfig is config for secret manager enablement.
         # Corresponds to the JSON property `desiredSecretManagerConfig`
         # @return [Google::Apis::ContainerV1beta1::SecretManagerConfig]
@@ -2557,6 +2631,7 @@ module Google
           @desired_rbac_binding_config = args[:desired_rbac_binding_config] if args.key?(:desired_rbac_binding_config)
           @desired_release_channel = args[:desired_release_channel] if args.key?(:desired_release_channel)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
+          @desired_rollback_safe_upgrade = args[:desired_rollback_safe_upgrade] if args.key?(:desired_rollback_safe_upgrade)
           @desired_secret_manager_config = args[:desired_secret_manager_config] if args.key?(:desired_secret_manager_config)
           @desired_secret_sync_config = args[:desired_secret_sync_config] if args.key?(:desired_secret_sync_config)
           @desired_security_posture_config = args[:desired_security_posture_config] if args.key?(:desired_security_posture_config)
@@ -2612,6 +2687,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :paused_reason
       
+        # RollbackSafeUpgradeStatus contains the rollback-safe upgrade status of a
+        # cluster.
+        # Corresponds to the JSON property `rollbackSafeUpgradeStatus`
+        # @return [Google::Apis::ContainerV1beta1::RollbackSafeUpgradeStatus]
+        attr_accessor :rollback_safe_upgrade_status
+      
         # The list of past auto upgrades.
         # Corresponds to the JSON property `upgradeDetails`
         # @return [Array<Google::Apis::ContainerV1beta1::UpgradeDetails>]
@@ -2629,7 +2710,57 @@ module Google
           @minor_target_version = args[:minor_target_version] if args.key?(:minor_target_version)
           @patch_target_version = args[:patch_target_version] if args.key?(:patch_target_version)
           @paused_reason = args[:paused_reason] if args.key?(:paused_reason)
+          @rollback_safe_upgrade_status = args[:rollback_safe_upgrade_status] if args.key?(:rollback_safe_upgrade_status)
           @upgrade_details = args[:upgrade_details] if args.key?(:upgrade_details)
+        end
+      end
+      
+      # CompatibilityStatus is the status regarding the control plane's compatibility.
+      class CompatibilityStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The GKE version that the cluster can be safely downgraded to if
+        # the cluster is emulating the previous minor version. It is usually the cluster'
+        # s previous version before a minor version upgrade.
+        # Corresponds to the JSON property `downgradableVersion`
+        # @return [String]
+        attr_accessor :downgradable_version
+      
+        # Output only. Last time the control plane became available after a minor
+        # version binary upgrade with emulated version set. It indicates the last time
+        # the cluster entered the rollback safe mode.
+        # Corresponds to the JSON property `emulatedVersionTime`
+        # @return [String]
+        attr_accessor :emulated_version_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @downgradable_version = args[:downgradable_version] if args.key?(:downgradable_version)
+          @emulated_version_time = args[:emulated_version_time] if args.key?(:emulated_version_time)
+        end
+      end
+      
+      # CompleteControlPlaneUpgradeRequest sets the name of target cluster to complete
+      # upgrade.
+      class CompleteControlPlaneUpgradeRequest
+        include Google::Apis::Core::Hashable
+      
+        # API request version that initiates this operation.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -2813,6 +2944,13 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::PrivateRegistryAccessConfig]
         attr_accessor :private_registry_access_config
       
+        # RegistryHostConfig configures containerd registry host configuration. Each
+        # registry_hosts represents a hosts.toml file. At most 25 registry_hosts are
+        # allowed.
+        # Corresponds to the JSON property `registryHosts`
+        # @return [Array<Google::Apis::ContainerV1beta1::RegistryHostConfig>]
+        attr_accessor :registry_hosts
+      
         # Defines writable cgroups configuration.
         # Corresponds to the JSON property `writableCgroups`
         # @return [Google::Apis::ContainerV1beta1::WritableCgroups]
@@ -2825,6 +2963,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @private_registry_access_config = args[:private_registry_access_config] if args.key?(:private_registry_access_config)
+          @registry_hosts = args[:registry_hosts] if args.key?(:registry_hosts)
           @writable_cgroups = args[:writable_cgroups] if args.key?(:writable_cgroups)
         end
       end
@@ -4070,6 +4209,73 @@ module Google
         end
       end
       
+      # HostConfig configures the registry host under a given Server.
+      class HostConfig
+        include Google::Apis::Core::Hashable
+      
+        # CA configures the registry host certificate.
+        # Corresponds to the JSON property `ca`
+        # @return [Array<Google::Apis::ContainerV1beta1::CertificateConfig>]
+        attr_accessor :ca
+      
+        # Capabilities represent the capabilities of the registry host, specifying what
+        # operations a host is capable of performing. If not set, containerd enables all
+        # capabilities by default.
+        # Corresponds to the JSON property `capabilities`
+        # @return [Array<String>]
+        attr_accessor :capabilities
+      
+        # Client configures the registry host client certificate and key.
+        # Corresponds to the JSON property `client`
+        # @return [Array<Google::Apis::ContainerV1beta1::CertificateConfigPair>]
+        attr_accessor :client
+      
+        # Specifies the maximum duration allowed for a connection attempt to complete. A
+        # shorter timeout helps reduce delays when falling back to the original registry
+        # if the mirror is unreachable. Maximum allowed value is 180s. If not set,
+        # containerd sets default 30s. The value should be a decimal number of seconds
+        # with an `s` suffix.
+        # Corresponds to the JSON property `dialTimeout`
+        # @return [String]
+        attr_accessor :dial_timeout
+      
+        # Header configures the registry host headers.
+        # Corresponds to the JSON property `header`
+        # @return [Array<Google::Apis::ContainerV1beta1::RegistryHeader>]
+        attr_accessor :header
+      
+        # Host configures the registry host/mirror. It supports fully qualified domain
+        # names (FQDN) and IP addresses: Specifying port is supported. Wildcards are NOT
+        # supported. Examples: - my.customdomain.com - 10.0.1.2:5000
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # OverridePath is used to indicate the host's API root endpoint is defined in
+        # the URL path rather than by the API specification. This may be used with non-
+        # compliant OCI registries which are missing the /v2 prefix. If not set,
+        # containerd sets default false.
+        # Corresponds to the JSON property `overridePath`
+        # @return [Boolean]
+        attr_accessor :override_path
+        alias_method :override_path?, :override_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca = args[:ca] if args.key?(:ca)
+          @capabilities = args[:capabilities] if args.key?(:capabilities)
+          @client = args[:client] if args.key?(:client)
+          @dial_timeout = args[:dial_timeout] if args.key?(:dial_timeout)
+          @header = args[:header] if args.key?(:header)
+          @host = args[:host] if args.key?(:host)
+          @override_path = args[:override_path] if args.key?(:override_path)
+        end
+      end
+      
       # HostMaintenancePolicy contains the maintenance policy for the hosts on which
       # the GKE VMs run on.
       class HostMaintenancePolicy
@@ -5033,7 +5239,10 @@ module Google
         # port 6988. This serves as a workaround for a port conflict with the gke-
         # metadata-server. This field is required ONLY under the following conditions: 1.
         # The GKE node version is older than 1.33.2-gke.4655000. 2. You're connecting
-        # to a Lustre instance that has the 'gke-support-enabled' flag.
+        # to a Lustre instance that has the 'gke-support-enabled' flag. Deprecated: This
+        # flag is no longer required as of GKE node version 1.33.2-gke.4655000, unless
+        # you are connecting to a Lustre instance that has the `gke-support-enabled`
+        # flag.
         # Corresponds to the JSON property `enableLegacyLustrePort`
         # @return [Boolean]
         attr_accessor :enable_legacy_lustre_port
@@ -5174,12 +5383,18 @@ module Google
       class Master
         include Google::Apis::Core::Hashable
       
+        # CompatibilityStatus is the status regarding the control plane's compatibility.
+        # Corresponds to the JSON property `compatibilityStatus`
+        # @return [Google::Apis::ContainerV1beta1::CompatibilityStatus]
+        attr_accessor :compatibility_status
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @compatibility_status = args[:compatibility_status] if args.key?(:compatibility_status)
         end
       end
       
@@ -7402,6 +7617,26 @@ module Google
         end
       end
       
+      # PodSnapshotConfig is the configuration for GKE Pod Snapshots feature.
+      class PodSnapshotConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether or not the Pod Snapshots feature is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # Binauthz policy that applies to this cluster.
       class PolicyBinding
         include Google::Apis::Core::Hashable
@@ -7823,6 +8058,62 @@ module Google
         end
       end
       
+      # RegistryHeader configures headers for the registry.
+      class RegistryHeader
+        include Google::Apis::Core::Hashable
+      
+        # Key configures the header key.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Value configures the header value.
+        # Corresponds to the JSON property `value`
+        # @return [Array<String>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # RegistryHostConfig configures the top-level structure for a single containerd
+      # registry server's configuration, which represents one hosts.toml file on the
+      # node. It will override the same fqdns in PrivateRegistryAccessConfig.
+      class RegistryHostConfig
+        include Google::Apis::Core::Hashable
+      
+        # HostConfig configures a list of host-specific configurations for the server.
+        # Each server can have at most 10 host configurations.
+        # Corresponds to the JSON property `hosts`
+        # @return [Array<Google::Apis::ContainerV1beta1::HostConfig>]
+        attr_accessor :hosts
+      
+        # Defines the host name of the registry server, which will be used to create
+        # configuration file as /etc/containerd/hosts.d//hosts.toml. It supports fully
+        # qualified domain names (FQDN) and IP addresses: Specifying port is supported.
+        # Wildcards are NOT supported. Examples: - my.customdomain.com - 10.0.1.2:5000
+        # Corresponds to the JSON property `server`
+        # @return [String]
+        attr_accessor :server
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hosts = args[:hosts] if args.key?(:hosts)
+          @server = args[:server] if args.key?(:server)
+        end
+      end
+      
       # ReleaseChannel indicates which release channel a cluster is subscribed to.
       # Release channels are arranged in order of risk. When a cluster is subscribed
       # to a release channel, Google maintains both the master version and the node
@@ -8091,6 +8382,58 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @respect_pdb = args[:respect_pdb] if args.key?(:respect_pdb)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # RollbackSafeUpgrade is the configuration for the rollback safe upgrade.
+      class RollbackSafeUpgrade
+        include Google::Apis::Core::Hashable
+      
+        # A user-defined period for the cluster remains in the rollbackable state. ex: `
+        # seconds: 21600`.
+        # Corresponds to the JSON property `controlPlaneSoakDuration`
+        # @return [String]
+        attr_accessor :control_plane_soak_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_plane_soak_duration = args[:control_plane_soak_duration] if args.key?(:control_plane_soak_duration)
+        end
+      end
+      
+      # RollbackSafeUpgradeStatus contains the rollback-safe upgrade status of a
+      # cluster.
+      class RollbackSafeUpgradeStatus
+        include Google::Apis::Core::Hashable
+      
+        # The rollback-safe mode expiration time.
+        # Corresponds to the JSON property `controlPlaneUpgradeRollbackEndTime`
+        # @return [String]
+        attr_accessor :control_plane_upgrade_rollback_end_time
+      
+        # The mode of the rollback-safe upgrade.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # The GKE version that the cluster previously used before step-one upgrade.
+        # Corresponds to the JSON property `previousVersion`
+        # @return [String]
+        attr_accessor :previous_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_plane_upgrade_rollback_end_time = args[:control_plane_upgrade_rollback_end_time] if args.key?(:control_plane_upgrade_rollback_end_time)
+          @mode = args[:mode] if args.key?(:mode)
+          @previous_version = args[:previous_version] if args.key?(:previous_version)
         end
       end
       
@@ -10001,6 +10344,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # The emulated version before the upgrade.
+        # Corresponds to the JSON property `initialEmulatedVersion`
+        # @return [String]
+        attr_accessor :initial_emulated_version
+      
         # The version before the upgrade.
         # Corresponds to the JSON property `initialVersion`
         # @return [String]
@@ -10021,6 +10369,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # The emulated version after the upgrade.
+        # Corresponds to the JSON property `targetEmulatedVersion`
+        # @return [String]
+        attr_accessor :target_emulated_version
+      
         # The version after the upgrade.
         # Corresponds to the JSON property `targetVersion`
         # @return [String]
@@ -10033,10 +10386,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @initial_emulated_version = args[:initial_emulated_version] if args.key?(:initial_emulated_version)
           @initial_version = args[:initial_version] if args.key?(:initial_version)
           @start_time = args[:start_time] if args.key?(:start_time)
           @start_type = args[:start_type] if args.key?(:start_type)
           @state = args[:state] if args.key?(:state)
+          @target_emulated_version = args[:target_emulated_version] if args.key?(:target_emulated_version)
           @target_version = args[:target_version] if args.key?(:target_version)
         end
       end
