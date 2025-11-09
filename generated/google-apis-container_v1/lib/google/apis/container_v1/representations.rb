@@ -178,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CertificateConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CertificateConfigPair
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckAutopilotCompatibilityResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -491,6 +503,12 @@ module Google
       end
       
       class HorizontalPodAutoscaling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HostConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -953,6 +971,18 @@ module Google
       end
       
       class RecurringTimeWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegistryHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegistryHostConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1579,6 +1609,23 @@ module Google
         end
       end
       
+      class CertificateConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcp_secret_manager_secret_uri, as: 'gcpSecretManagerSecretUri'
+        end
+      end
+      
+      class CertificateConfigPair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cert, as: 'cert', class: Google::Apis::ContainerV1::CertificateConfig, decorator: Google::Apis::ContainerV1::CertificateConfig::Representation
+      
+          property :key, as: 'key', class: Google::Apis::ContainerV1::CertificateConfig, decorator: Google::Apis::ContainerV1::CertificateConfig::Representation
+      
+        end
+      end
+      
       class CheckAutopilotCompatibilityResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1970,6 +2017,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :private_registry_access_config, as: 'privateRegistryAccessConfig', class: Google::Apis::ContainerV1::PrivateRegistryAccessConfig, decorator: Google::Apis::ContainerV1::PrivateRegistryAccessConfig::Representation
       
+          collection :registry_hosts, as: 'registryHosts', class: Google::Apis::ContainerV1::RegistryHostConfig, decorator: Google::Apis::ContainerV1::RegistryHostConfig::Representation
+      
           property :writable_cgroups, as: 'writableCgroups', class: Google::Apis::ContainerV1::WritableCgroups, decorator: Google::Apis::ContainerV1::WritableCgroups::Representation
       
         end
@@ -2280,6 +2329,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disabled, as: 'disabled'
+        end
+      end
+      
+      class HostConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ca, as: 'ca', class: Google::Apis::ContainerV1::CertificateConfig, decorator: Google::Apis::ContainerV1::CertificateConfig::Representation
+      
+          collection :capabilities, as: 'capabilities'
+          collection :client, as: 'client', class: Google::Apis::ContainerV1::CertificateConfigPair, decorator: Google::Apis::ContainerV1::CertificateConfigPair::Representation
+      
+          property :dial_timeout, as: 'dialTimeout'
+          collection :header, as: 'header', class: Google::Apis::ContainerV1::RegistryHeader, decorator: Google::Apis::ContainerV1::RegistryHeader::Representation
+      
+          property :host, as: 'host'
+          property :override_path, as: 'overridePath'
         end
       end
       
@@ -3156,6 +3221,23 @@ module Google
           property :recurrence, as: 'recurrence'
           property :window, as: 'window', class: Google::Apis::ContainerV1::TimeWindow, decorator: Google::Apis::ContainerV1::TimeWindow::Representation
       
+        end
+      end
+      
+      class RegistryHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          collection :value, as: 'value'
+        end
+      end
+      
+      class RegistryHostConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :hosts, as: 'hosts', class: Google::Apis::ContainerV1::HostConfig, decorator: Google::Apis::ContainerV1::HostConfig::Representation
+      
+          property :server, as: 'server'
         end
       end
       
