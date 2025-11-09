@@ -12265,7 +12265,7 @@ module Google
         attr_accessor :enable_completeness_evaluation
         alias_method :enable_completeness_evaluation?, :enable_completeness_evaluation
       
-        # Output only. Version for summarization evaluation.
+        # Optional. Version for summarization evaluation.
         # Corresponds to the JSON property `evaluatorVersion`
         # @return [String]
         attr_accessor :evaluator_version
