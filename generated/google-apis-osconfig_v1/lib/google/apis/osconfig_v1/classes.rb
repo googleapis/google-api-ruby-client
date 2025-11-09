@@ -2809,6 +2809,21 @@ module Google
         # @return [String]
         attr_accessor :reboot_config
       
+        # Optional. Enables enhanced reporting for the patch job: 1. Allows the patch
+        # job to skip unpatchable instances, reporting them as SKIPPED. An instance can
+        # be unpatchable for two reasons: a. The instance runs Container-Optimized OS (
+        # COS), which cannot be patched. b. The patch job's configuration prohibits
+        # patching on Managed Instance Groups (MIGs) through the PatchConfig.
+        # migInstancesAllowed field, and the instance is part of one. 2. The system
+        # reports the patch job as SUCCEEDED if it completes without errors, regardless
+        # of whether any instances were SKIPPED. 3. The system reports the patch job as
+        # COMPLETED_WITH_INACTIVE_VMS if it completes without errors, but some instances
+        # were INACTIVE and therefore not patched.
+        # Corresponds to the JSON property `skipUnpatchableVms`
+        # @return [Boolean]
+        attr_accessor :skip_unpatchable_vms
+        alias_method :skip_unpatchable_vms?, :skip_unpatchable_vms
+      
         # Windows patching is performed using the Windows Update Agent.
         # Corresponds to the JSON property `windowsUpdate`
         # @return [Google::Apis::OsconfigV1::WindowsUpdateSettings]
@@ -2839,6 +2854,7 @@ module Google
           @post_step = args[:post_step] if args.key?(:post_step)
           @pre_step = args[:pre_step] if args.key?(:pre_step)
           @reboot_config = args[:reboot_config] if args.key?(:reboot_config)
+          @skip_unpatchable_vms = args[:skip_unpatchable_vms] if args.key?(:skip_unpatchable_vms)
           @windows_update = args[:windows_update] if args.key?(:windows_update)
           @yum = args[:yum] if args.key?(:yum)
           @zypper = args[:zypper] if args.key?(:zypper)
@@ -3255,6 +3271,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :rebooting_instance_count
       
+        # Number of instances that were skipped during patching.
+        # Corresponds to the JSON property `skippedInstanceCount`
+        # @return [Fixnum]
+        attr_accessor :skipped_instance_count
+      
         # Number of instances that have started.
         # Corresponds to the JSON property `startedInstanceCount`
         # @return [Fixnum]
@@ -3292,6 +3313,7 @@ module Google
           @post_patch_step_instance_count = args[:post_patch_step_instance_count] if args.key?(:post_patch_step_instance_count)
           @pre_patch_step_instance_count = args[:pre_patch_step_instance_count] if args.key?(:pre_patch_step_instance_count)
           @rebooting_instance_count = args[:rebooting_instance_count] if args.key?(:rebooting_instance_count)
+          @skipped_instance_count = args[:skipped_instance_count] if args.key?(:skipped_instance_count)
           @started_instance_count = args[:started_instance_count] if args.key?(:started_instance_count)
           @succeeded_instance_count = args[:succeeded_instance_count] if args.key?(:succeeded_instance_count)
           @succeeded_reboot_required_instance_count = args[:succeeded_reboot_required_instance_count] if args.key?(:succeeded_reboot_required_instance_count)
