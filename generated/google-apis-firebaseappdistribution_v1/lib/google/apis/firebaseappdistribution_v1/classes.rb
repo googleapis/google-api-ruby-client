@@ -771,8 +771,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The names of the release resources to delete. Format: `projects/`
-        # project_number`/apps/`app_id`/releases/`release_id`` A maximum of 100 releases
-        # can be deleted per request.
+        # project_number`/apps/`app`/releases/`release`` A maximum of 100 releases can
+        # be deleted per request.
         # Corresponds to the JSON property `names`
         # @return [Array<String>]
         attr_accessor :names
@@ -1155,8 +1155,8 @@ module Google
         # @return [String]
         attr_accessor :firebase_console_uri
       
-        # The name of the release resource. Format: `projects/`project_number`/apps/`
-        # app_id`/releases/`release_id``
+        # The name of the release resource. Format: `projects/`project_number`/apps/`app`
+        # /releases/`release``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
