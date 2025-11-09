@@ -23,7 +23,7 @@ module Google
     module DocumentaiV1
       
       # Definition of the validation rules. Those are the input to the validator logic
-      # and they are used to validate a document.
+      # and they are used to validate a document. Next ID: 3
       class CloudAiDocumentaiLabHifiaToolsValidationValidatorInput
         include Google::Apis::Core::Hashable
       
@@ -42,7 +42,7 @@ module Google
         end
       end
       
-      # 
+      # Next ID: 9
       class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule
         include Google::Apis::Core::Hashable
       
@@ -81,6 +81,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Unique identifier of the rule. Optional.
+        # Corresponds to the JSON property `ruleId`
+        # @return [String]
+        attr_accessor :rule_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -94,6 +99,7 @@ module Google
           @field_regex = args[:field_regex] if args.key?(:field_regex)
           @form_validation = args[:form_validation] if args.key?(:form_validation)
           @name = args[:name] if args.key?(:name)
+          @rule_id = args[:rule_id] if args.key?(:rule_id)
         end
       end
       
