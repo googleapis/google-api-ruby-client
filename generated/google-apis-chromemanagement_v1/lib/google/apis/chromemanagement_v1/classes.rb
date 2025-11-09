@@ -826,6 +826,33 @@ module Google
         end
       end
       
+      # Response containing the number of active devices.
+      class GoogleChromeManagementV1CountActiveDevicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of active devices in the 7 days leading up to the date specified in the
+        # request.
+        # Corresponds to the JSON property `sevenDaysCount`
+        # @return [Fixnum]
+        attr_accessor :seven_days_count
+      
+        # Number of active devices in the 30 days leading up to the date specified in
+        # the request.
+        # Corresponds to the JSON property `thirtyDaysCount`
+        # @return [Fixnum]
+        attr_accessor :thirty_days_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @seven_days_count = args[:seven_days_count] if args.key?(:seven_days_count)
+          @thirty_days_count = args[:thirty_days_count] if args.key?(:thirty_days_count)
+        end
+      end
+      
       # Response containing summary of requested app installations.
       class GoogleChromeManagementV1CountChromeAppRequestsResponse
         include Google::Apis::Core::Hashable
@@ -1081,6 +1108,98 @@ module Google
           @browser_versions = args[:browser_versions] if args.key?(:browser_versions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Response containing the number of devices with the given boot type.
+      class GoogleChromeManagementV1CountDevicesPerBootTypeResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of devices with dev boot type.
+        # Corresponds to the JSON property `devBootTypeCount`
+        # @return [Fixnum]
+        attr_accessor :dev_boot_type_count
+      
+        # Number of devices with unreported boot type.
+        # Corresponds to the JSON property `unreportedBootTypeCount`
+        # @return [Fixnum]
+        attr_accessor :unreported_boot_type_count
+      
+        # Number of devices with verified boot type.
+        # Corresponds to the JSON property `verifiedBootTypeCount`
+        # @return [Fixnum]
+        attr_accessor :verified_boot_type_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dev_boot_type_count = args[:dev_boot_type_count] if args.key?(:dev_boot_type_count)
+          @unreported_boot_type_count = args[:unreported_boot_type_count] if args.key?(:unreported_boot_type_count)
+          @verified_boot_type_count = args[:verified_boot_type_count] if args.key?(:verified_boot_type_count)
+        end
+      end
+      
+      # Response containing the number of devices with the given channel.
+      class GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of devices with beta release channel.
+        # Corresponds to the JSON property `betaChannelCount`
+        # @return [Fixnum]
+        attr_accessor :beta_channel_count
+      
+        # Number of devices with canary release channel.
+        # Corresponds to the JSON property `canaryChannelCount`
+        # @return [Fixnum]
+        attr_accessor :canary_channel_count
+      
+        # Number of devices with dev release channel.
+        # Corresponds to the JSON property `devChannelCount`
+        # @return [Fixnum]
+        attr_accessor :dev_channel_count
+      
+        # Number of devices with ltc release channel.
+        # Corresponds to the JSON property `ltcChannelCount`
+        # @return [Fixnum]
+        attr_accessor :ltc_channel_count
+      
+        # Number of devices with lts release channel.
+        # Corresponds to the JSON property `ltsChannelCount`
+        # @return [Fixnum]
+        attr_accessor :lts_channel_count
+      
+        # Number of devices with stable release channel.
+        # Corresponds to the JSON property `stableChannelCount`
+        # @return [Fixnum]
+        attr_accessor :stable_channel_count
+      
+        # Number of devices with an unreported release channel.
+        # Corresponds to the JSON property `unreportedChannelCount`
+        # @return [Fixnum]
+        attr_accessor :unreported_channel_count
+      
+        # Number of devices with unsupported release channel.
+        # Corresponds to the JSON property `unsupportedChannelCount`
+        # @return [Fixnum]
+        attr_accessor :unsupported_channel_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @beta_channel_count = args[:beta_channel_count] if args.key?(:beta_channel_count)
+          @canary_channel_count = args[:canary_channel_count] if args.key?(:canary_channel_count)
+          @dev_channel_count = args[:dev_channel_count] if args.key?(:dev_channel_count)
+          @ltc_channel_count = args[:ltc_channel_count] if args.key?(:ltc_channel_count)
+          @lts_channel_count = args[:lts_channel_count] if args.key?(:lts_channel_count)
+          @stable_channel_count = args[:stable_channel_count] if args.key?(:stable_channel_count)
+          @unreported_channel_count = args[:unreported_channel_count] if args.key?(:unreported_channel_count)
+          @unsupported_channel_count = args[:unsupported_channel_count] if args.key?(:unsupported_channel_count)
         end
       end
       

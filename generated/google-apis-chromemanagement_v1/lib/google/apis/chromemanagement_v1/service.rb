@@ -744,6 +744,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get a count of active devices per set time frames.
+        # @param [String] customer
+        #   Required. Obfuscated customer ID prefixed with "customers/C" or "customers/
+        #   my_customer".
+        # @param [Fixnum] date_day
+        #   Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        #   specify a year by itself or a year and month where the day isn't significant.
+        # @param [Fixnum] date_month
+        #   Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        #   and day.
+        # @param [Fixnum] date_year
+        #   Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        #   year.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountActiveDevicesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountActiveDevicesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_customer_report_active_devices(customer, date_day: nil, date_month: nil, date_year: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:countActiveDevices', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountActiveDevicesResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountActiveDevicesResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['date.day'] = date_day unless date_day.nil?
+          command.query['date.month'] = date_month unless date_month.nil?
+          command.query['date.year'] = date_year unless date_year.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Count of Chrome Browsers that have been recently enrolled, have new policy to
         # be synced, or have no recent activity.
         # @param [String] customer
@@ -989,6 +1032,92 @@ module Google
           command.query['orgUnitId'] = org_unit_id unless org_unit_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a count of devices per boot type.
+        # @param [String] customer
+        #   Required. Obfuscated customer ID prefixed with "customers/C" or "customers/
+        #   my_customer".
+        # @param [Fixnum] date_day
+        #   Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        #   specify a year by itself or a year and month where the day isn't significant.
+        # @param [Fixnum] date_month
+        #   Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        #   and day.
+        # @param [Fixnum] date_year
+        #   Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        #   year.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountDevicesPerBootTypeResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountDevicesPerBootTypeResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_customer_report_devices_per_boot_type(customer, date_day: nil, date_month: nil, date_year: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:countDevicesPerBootType', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountDevicesPerBootTypeResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountDevicesPerBootTypeResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['date.day'] = date_day unless date_day.nil?
+          command.query['date.month'] = date_month unless date_month.nil?
+          command.query['date.year'] = date_year unless date_year.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a count of devices per channel.
+        # @param [String] customer
+        #   Required. Obfuscated customer ID prefixed with "customers/C" or "customers/
+        #   my_customer".
+        # @param [Fixnum] date_day
+        #   Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        #   specify a year by itself or a year and month where the day isn't significant.
+        # @param [Fixnum] date_month
+        #   Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        #   and day.
+        # @param [Fixnum] date_year
+        #   Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        #   year.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_customer_report_devices_per_release_channel(customer, date_day: nil, date_month: nil, date_year: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:countDevicesPerReleaseChannel', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['date.day'] = date_day unless date_day.nil?
+          command.query['date.month'] = date_month unless date_month.nil?
+          command.query['date.year'] = date_year unless date_year.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

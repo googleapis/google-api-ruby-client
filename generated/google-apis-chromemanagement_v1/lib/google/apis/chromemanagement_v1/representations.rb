@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1CountActiveDevicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1CountChromeAppRequestsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +161,18 @@ module Google
       end
       
       class GoogleChromeManagementV1CountChromeVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1CountDevicesPerBootTypeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1019,6 +1037,14 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1CountActiveDevicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :seven_days_count, :numeric_string => true, as: 'sevenDaysCount'
+          property :thirty_days_count, :numeric_string => true, as: 'thirtyDaysCount'
+        end
+      end
+      
       class GoogleChromeManagementV1CountChromeAppRequestsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1096,6 +1122,29 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class GoogleChromeManagementV1CountDevicesPerBootTypeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dev_boot_type_count, :numeric_string => true, as: 'devBootTypeCount'
+          property :unreported_boot_type_count, :numeric_string => true, as: 'unreportedBootTypeCount'
+          property :verified_boot_type_count, :numeric_string => true, as: 'verifiedBootTypeCount'
+        end
+      end
+      
+      class GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :beta_channel_count, :numeric_string => true, as: 'betaChannelCount'
+          property :canary_channel_count, :numeric_string => true, as: 'canaryChannelCount'
+          property :dev_channel_count, :numeric_string => true, as: 'devChannelCount'
+          property :ltc_channel_count, :numeric_string => true, as: 'ltcChannelCount'
+          property :lts_channel_count, :numeric_string => true, as: 'ltsChannelCount'
+          property :stable_channel_count, :numeric_string => true, as: 'stableChannelCount'
+          property :unreported_channel_count, :numeric_string => true, as: 'unreportedChannelCount'
+          property :unsupported_channel_count, :numeric_string => true, as: 'unsupportedChannelCount'
         end
       end
       
