@@ -173,6 +173,32 @@ module Google
         end
       end
       
+      # Represents a list of allowed locations for given service account.
+      class ServiceAccountAllowedLocations
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The hex encoded bitmap of the trust boundary locations
+        # Corresponds to the JSON property `encodedLocations`
+        # @return [String]
+        attr_accessor :encoded_locations
+      
+        # Output only. The human readable trust boundary locations. For example, ["us-
+        # central1", "europe-west1"]
+        # Corresponds to the JSON property `locations`
+        # @return [Array<String>]
+        attr_accessor :locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoded_locations = args[:encoded_locations] if args.key?(:encoded_locations)
+          @locations = args[:locations] if args.key?(:locations)
+        end
+      end
+      
       # 
       class SignBlobRequest
         include Google::Apis::Core::Hashable
@@ -312,6 +338,58 @@ module Google
         def update!(**args)
           @key_id = args[:key_id] if args.key?(:key_id)
           @signed_jwt = args[:signed_jwt] if args.key?(:signed_jwt)
+        end
+      end
+      
+      # Represents a list of allowed locations for given workforce pool.
+      class WorkforcePoolAllowedLocations
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The hex encoded bitmap of the trust boundary locations
+        # Corresponds to the JSON property `encodedLocations`
+        # @return [String]
+        attr_accessor :encoded_locations
+      
+        # Output only. The human readable trust boundary locations. For example, ["us-
+        # central1", "europe-west1"]
+        # Corresponds to the JSON property `locations`
+        # @return [Array<String>]
+        attr_accessor :locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoded_locations = args[:encoded_locations] if args.key?(:encoded_locations)
+          @locations = args[:locations] if args.key?(:locations)
+        end
+      end
+      
+      # Represents a list of allowed locations for given workload identity pool.
+      class WorkloadIdentityPoolAllowedLocations
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The hex encoded bitmap of the trust boundary locations
+        # Corresponds to the JSON property `encodedLocations`
+        # @return [String]
+        attr_accessor :encoded_locations
+      
+        # Output only. The human readable trust boundary locations. For example, ["us-
+        # central1", "europe-west1"]
+        # Corresponds to the JSON property `locations`
+        # @return [Array<String>]
+        attr_accessor :locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoded_locations = args[:encoded_locations] if args.key?(:encoded_locations)
+          @locations = args[:locations] if args.key?(:locations)
         end
       end
     end
