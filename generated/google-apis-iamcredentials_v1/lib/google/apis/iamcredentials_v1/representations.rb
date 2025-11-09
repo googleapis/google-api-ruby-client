@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceAccountAllowedLocations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SignBlobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +71,18 @@ module Google
       end
       
       class SignJwtResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkforcePoolAllowedLocations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadIdentityPoolAllowedLocations
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -104,6 +122,14 @@ module Google
         end
       end
       
+      class ServiceAccountAllowedLocations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoded_locations, as: 'encodedLocations'
+          collection :locations, as: 'locations'
+        end
+      end
+      
       class SignBlobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -133,6 +159,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key_id, as: 'keyId'
           property :signed_jwt, as: 'signedJwt'
+        end
+      end
+      
+      class WorkforcePoolAllowedLocations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoded_locations, as: 'encodedLocations'
+          collection :locations, as: 'locations'
+        end
+      end
+      
+      class WorkloadIdentityPoolAllowedLocations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoded_locations, as: 'encodedLocations'
+          collection :locations, as: 'locations'
         end
       end
     end
