@@ -1204,7 +1204,7 @@ module Google
         # @return [Array<Google::Apis::DeveloperconnectV1::ArtifactConfig>]
         attr_accessor :artifact_configs
       
-        # Output only. [Output only] Create timestamp
+        # Output only. Create timestamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1248,7 +1248,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only. [Output only] Update timestamp
+        # Output only. Update timestamp.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
