@@ -981,6 +981,7 @@ module Google
           property :id, as: 'id', class: Google::Apis::RedisV1::DatabaseResourceId, decorator: Google::Apis::RedisV1::DatabaseResourceId::Representation
       
           property :instance_type, as: 'instanceType'
+          property :is_deletion_protection_enabled, as: 'isDeletionProtectionEnabled'
           property :location, as: 'location'
           property :machine_configuration, as: 'machineConfiguration', class: Google::Apis::RedisV1::MachineConfiguration, decorator: Google::Apis::RedisV1::MachineConfiguration::Representation
       
