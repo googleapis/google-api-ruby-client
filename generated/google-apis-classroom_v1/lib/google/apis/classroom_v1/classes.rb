@@ -1277,12 +1277,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Title of the Gem. Read-only.
+        # Title of the Gem.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
       
-        # URL that can be used to access the Gem. Read-only.
+        # URL that can be used to access the Gem.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -2334,12 +2334,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Title of the Notebook. Read-only.
+        # Title of the Notebook.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
       
-        # URL that can be used to access the Notebook. Read-only.
+        # URL that can be used to access the Notebook.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
