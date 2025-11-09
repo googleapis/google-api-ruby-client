@@ -1312,6 +1312,7 @@ module Google
       
           property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::MongodbCluster, decorator: Google::Apis::DatastreamV1::MongodbCluster::Representation
       
+          property :json_mode, as: 'jsonMode'
           property :max_concurrent_backfill_tasks, as: 'maxConcurrentBackfillTasks'
         end
       end
