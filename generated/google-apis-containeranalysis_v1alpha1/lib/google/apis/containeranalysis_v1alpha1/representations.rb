@@ -1675,6 +1675,7 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1BuiltImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :digest, as: 'digest'
           property :name, as: 'name'
           property :push_timing, as: 'pushTiming', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan::Representation
@@ -1905,6 +1906,7 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGoModule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan::Representation
@@ -1916,6 +1918,7 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedMavenArtifact
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan::Representation
@@ -1927,6 +1930,7 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedNpmPackage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan::Representation
@@ -1938,6 +1942,7 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedPythonPackage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan::Representation
