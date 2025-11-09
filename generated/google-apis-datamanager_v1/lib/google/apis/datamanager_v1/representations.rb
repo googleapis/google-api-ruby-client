@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AwsWrappedKeyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CartData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +95,12 @@ module Google
       end
       
       class Event
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventParameter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -161,6 +173,12 @@ module Google
       end
       
       class Item
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ItemParameter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -256,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserProperty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WarningCount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -302,6 +326,16 @@ module Google
       
           property :user_data, as: 'userData', class: Google::Apis::DatamanagerV1::UserData, decorator: Google::Apis::DatamanagerV1::UserData::Representation
       
+        end
+      end
+      
+      class AwsWrappedKeyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encrypted_dek, as: 'encryptedDek'
+          property :kek_uri, as: 'kekUri'
+          property :key_type, as: 'keyType'
+          property :role_arn, as: 'roleArn'
         end
       end
       
@@ -359,6 +393,8 @@ module Google
       class EncryptionInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_wrapped_key_info, as: 'awsWrappedKeyInfo', class: Google::Apis::DatamanagerV1::AwsWrappedKeyInfo, decorator: Google::Apis::DatamanagerV1::AwsWrappedKeyInfo::Representation
+      
           property :gcp_wrapped_key_info, as: 'gcpWrappedKeyInfo', class: Google::Apis::DatamanagerV1::GcpWrappedKeyInfo, decorator: Google::Apis::DatamanagerV1::GcpWrappedKeyInfo::Representation
       
         end
@@ -385,8 +421,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_identifiers, as: 'adIdentifiers', class: Google::Apis::DatamanagerV1::AdIdentifiers, decorator: Google::Apis::DatamanagerV1::AdIdentifiers::Representation
       
+          collection :additional_event_parameters, as: 'additionalEventParameters', class: Google::Apis::DatamanagerV1::EventParameter, decorator: Google::Apis::DatamanagerV1::EventParameter::Representation
+      
           property :cart_data, as: 'cartData', class: Google::Apis::DatamanagerV1::CartData, decorator: Google::Apis::DatamanagerV1::CartData::Representation
       
+          property :client_id, as: 'clientId'
           property :consent, as: 'consent', class: Google::Apis::DatamanagerV1::Consent, decorator: Google::Apis::DatamanagerV1::Consent::Representation
       
           property :conversion_value, as: 'conversionValue'
@@ -396,6 +435,7 @@ module Google
           collection :destination_references, as: 'destinationReferences'
           property :event_device_info, as: 'eventDeviceInfo', class: Google::Apis::DatamanagerV1::DeviceInfo, decorator: Google::Apis::DatamanagerV1::DeviceInfo::Representation
       
+          property :event_name, as: 'eventName'
           property :event_source, as: 'eventSource'
           property :event_timestamp, as: 'eventTimestamp'
           collection :experimental_fields, as: 'experimentalFields', class: Google::Apis::DatamanagerV1::ExperimentalField, decorator: Google::Apis::DatamanagerV1::ExperimentalField::Representation
@@ -404,8 +444,17 @@ module Google
           property :transaction_id, as: 'transactionId'
           property :user_data, as: 'userData', class: Google::Apis::DatamanagerV1::UserData, decorator: Google::Apis::DatamanagerV1::UserData::Representation
       
+          property :user_id, as: 'userId'
           property :user_properties, as: 'userProperties', class: Google::Apis::DatamanagerV1::UserProperties, decorator: Google::Apis::DatamanagerV1::UserProperties::Representation
       
+        end
+      end
+      
+      class EventParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parameter_name, as: 'parameterName'
+          property :value, as: 'value'
         end
       end
       
@@ -522,9 +571,20 @@ module Google
       class Item
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_item_parameters, as: 'additionalItemParameters', class: Google::Apis::DatamanagerV1::ItemParameter, decorator: Google::Apis::DatamanagerV1::ItemParameter::Representation
+      
+          property :item_id, as: 'itemId'
           property :merchant_product_id, as: 'merchantProductId'
           property :quantity, :numeric_string => true, as: 'quantity'
           property :unit_price, as: 'unitPrice'
+        end
+      end
+      
+      class ItemParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parameter_name, as: 'parameterName'
+          property :value, as: 'value'
         end
       end
       
@@ -663,8 +723,18 @@ module Google
       class UserProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_user_properties, as: 'additionalUserProperties', class: Google::Apis::DatamanagerV1::UserProperty, decorator: Google::Apis::DatamanagerV1::UserProperty::Representation
+      
           property :customer_type, as: 'customerType'
           property :customer_value_bucket, as: 'customerValueBucket'
+        end
+      end
+      
+      class UserProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :property_name, as: 'propertyName'
+          property :value, as: 'value'
         end
       end
       
