@@ -2920,7 +2920,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Immutable. A unique name of the resource in the form of `projects/`
+        # Immutable. Identifier. A unique name of the resource in the form of `projects/`
         # project_number`/locations/global/PolicyBasedRoutes/`policy_based_route_id``
         # Corresponds to the JSON property `name`
         # @return [String]
