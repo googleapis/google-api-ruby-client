@@ -12970,6 +12970,7 @@ module Google
           collection :dest_address_groups, as: 'destAddressGroups'
           collection :dest_fqdns, as: 'destFqdns'
           collection :dest_ip_ranges, as: 'destIpRanges'
+          property :dest_network_context, as: 'destNetworkContext'
           property :dest_network_scope, as: 'destNetworkScope'
           property :dest_network_type, as: 'destNetworkType'
           collection :dest_region_codes, as: 'destRegionCodes'
@@ -12979,6 +12980,7 @@ module Google
           collection :src_address_groups, as: 'srcAddressGroups'
           collection :src_fqdns, as: 'srcFqdns'
           collection :src_ip_ranges, as: 'srcIpRanges'
+          property :src_network_context, as: 'srcNetworkContext'
           property :src_network_scope, as: 'srcNetworkScope'
           property :src_network_type, as: 'srcNetworkType'
           collection :src_networks, as: 'srcNetworks'
@@ -18538,7 +18540,10 @@ module Google
       class ManagedInstancePropertiesFromFlexibilityPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::AttachedDisk, decorator: Google::Apis::ComputeAlpha::AttachedDisk::Representation
+      
           property :machine_type, as: 'machineType'
+          property :min_cpu_platform, as: 'minCpuPlatform'
           property :provisioning_model, as: 'provisioningModel'
         end
       end
@@ -19656,8 +19661,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dscp_mode, as: 'dscpMode'
           property :dscp_value, as: 'dscpValue'
-          property :field_type, as: 'fieldType'
-          property :field_value, as: 'fieldValue'
           property :traffic_class, as: 'trafficClass'
           property :type, as: 'type'
         end
@@ -28050,6 +28053,7 @@ module Google
       class VpnTunnel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_tier, as: 'capacityTier'
           property :cipher_suite, as: 'cipherSuite', class: Google::Apis::ComputeAlpha::VpnTunnelCipherSuite, decorator: Google::Apis::ComputeAlpha::VpnTunnelCipherSuite::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
