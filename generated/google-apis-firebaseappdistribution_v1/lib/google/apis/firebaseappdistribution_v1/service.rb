@@ -56,7 +56,7 @@ module Google
         # binary already exists.
         # @param [String] app
         #   Required. The name of the app resource. Format: `projects/`project_number`/
-        #   apps/`app_id``
+        #   apps/`app``
         # @param [Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1UploadReleaseRequest] google_firebase_appdistro_v1_upload_release_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -100,7 +100,7 @@ module Google
         # Gets Android App Bundle (AAB) information for a Firebase app.
         # @param [String] name
         #   Required. The name of the `AabInfo` resource to retrieve. Format: `projects/`
-        #   project_number`/apps/`app_id`/aabInfo`
+        #   project_number`/apps/`app`/aabInfo`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -131,7 +131,7 @@ module Google
         # Deletes releases. A maximum of 100 releases can be deleted per request.
         # @param [String] parent
         #   Required. The name of the app resource, which is the parent of the release
-        #   resources. Format: `projects/`project_number`/apps/`app_id``
+        #   resources. Format: `projects/`project_number`/apps/`app``
         # @param [Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest] google_firebase_appdistro_v1_batch_delete_releases_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -169,7 +169,7 @@ module Google
         # INVALID_ARGUMENT` if it contains a group that doesn't exist.
         # @param [String] name
         #   Required. The name of the release resource to distribute. Format: `projects/`
-        #   project_number`/apps/`app_id`/releases/`release_id``
+        #   project_number`/apps/`app`/releases/`release``
         # @param [Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1DistributeReleaseRequest] google_firebase_appdistro_v1_distribute_release_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -203,7 +203,7 @@ module Google
         # Gets a release.
         # @param [String] name
         #   Required. The name of the release resource to retrieve. Format: projects/`
-        #   project_number`/apps/`app_id`/releases/`release_id`
+        #   project_number`/apps/`app`/releases/`release`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -234,7 +234,7 @@ module Google
         # Lists releases. By default, sorts by `createTime` in descending order.
         # @param [String] parent
         #   Required. The name of the app resource, which is the parent of the release
-        #   resources. Format: `projects/`project_number`/apps/`app_id``
+        #   resources. Format: `projects/`project_number`/apps/`app``
         # @param [String] filter
         #   Optional. The expression to filter releases listed in the response. To learn
         #   more about filtering, refer to [Google's AIP-160 standard](http://aip.dev/160).
@@ -289,8 +289,8 @@ module Google
         
         # Updates a release.
         # @param [String] name
-        #   The name of the release resource. Format: `projects/`project_number`/apps/`
-        #   app_id`/releases/`release_id``
+        #   The name of the release resource. Format: `projects/`project_number`/apps/`app`
+        #   /releases/`release``
         # @param [Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1Release] google_firebase_appdistro_v1_release_object
         # @param [String] update_mask
         #   Optional. The list of fields to update.
