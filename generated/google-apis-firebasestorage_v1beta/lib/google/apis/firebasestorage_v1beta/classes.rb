@@ -70,7 +70,7 @@ module Google
         # @return [String]
         attr_accessor :location
       
-        # Resource name of the default bucket.
+        # Identifier. Resource name of the default bucket.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
