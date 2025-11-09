@@ -341,6 +341,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :conference_properties, as: 'conferenceProperties', class: Google::Apis::CalendarV3::ConferenceProperties, decorator: Google::Apis::CalendarV3::ConferenceProperties::Representation
       
+          property :data_owner, as: 'dataOwner'
           property :description, as: 'description'
           property :etag, as: 'etag'
           property :id, as: 'id'
@@ -371,6 +372,7 @@ module Google
           property :color_id, as: 'colorId'
           property :conference_properties, as: 'conferenceProperties', class: Google::Apis::CalendarV3::ConferenceProperties, decorator: Google::Apis::CalendarV3::ConferenceProperties::Representation
       
+          property :data_owner, as: 'dataOwner'
           collection :default_reminders, as: 'defaultReminders', class: Google::Apis::CalendarV3::EventReminder, decorator: Google::Apis::CalendarV3::EventReminder::Representation
       
           property :deleted, as: 'deleted'
