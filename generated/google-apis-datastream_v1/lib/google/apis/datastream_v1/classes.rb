@@ -1573,6 +1573,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::MongodbCluster]
         attr_accessor :include_objects
       
+        # Optional. MongoDB JSON mode to use for the stream.
+        # Corresponds to the JSON property `jsonMode`
+        # @return [String]
+        attr_accessor :json_mode
+      
         # Optional. Maximum number of concurrent backfill tasks. The number should be
         # non-negative and less than or equal to 50. If not set (or set to 0), the
         # system's default value is used
@@ -1588,6 +1593,7 @@ module Google
         def update!(**args)
           @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
           @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @json_mode = args[:json_mode] if args.key?(:json_mode)
           @max_concurrent_backfill_tasks = args[:max_concurrent_backfill_tasks] if args.key?(:max_concurrent_backfill_tasks)
         end
       end
