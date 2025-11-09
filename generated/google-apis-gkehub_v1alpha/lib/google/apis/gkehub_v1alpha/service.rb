@@ -1860,6 +1860,267 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a new rollout sequence resource.
+        # @param [String] parent
+        #   Required. The parent resource where this rollout sequence will be created.
+        #   projects/`project`/locations/`location`
+        # @param [Google::Apis::GkehubV1alpha::RolloutSequence] rollout_sequence_object
+        # @param [String] rollout_sequence_id
+        #   Required. User provided identifier that is used as part of the resource name;
+        #   must conform to RFC-1034 and additionally restrict to lower-cased letters.
+        #   This comes out roughly to: /^a-z+[a-z0-9]$/
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_rollout_sequence(parent, rollout_sequence_object = nil, rollout_sequence_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/rolloutSequences', options)
+          command.request_representation = Google::Apis::GkehubV1alpha::RolloutSequence::Representation
+          command.request_object = rollout_sequence_object
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['rolloutSequenceId'] = rollout_sequence_id unless rollout_sequence_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Remove a RolloutSequence.
+        # @param [String] name
+        #   Required. The name of the rollout sequence to delete. projects/`project`/
+        #   locations/`location`/rolloutSequences/`rollout_sequence`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_rollout_sequence(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve a single rollout sequence.
+        # @param [String] name
+        #   Required. The name of the rollout sequence to retrieve. projects/`project`/
+        #   locations/`location`/rolloutSequences/`rollout_sequence`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::RolloutSequence] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::RolloutSequence]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_rollout_sequence(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::RolloutSequence::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::RolloutSequence
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve the list of all rollout sequences.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of rollout sequences. Format:
+        #   projects/`project`/locations/`location`
+        # @param [String] filter
+        #   Optional. Lists Rollout Sequences that match the filter expression, following
+        #   the syntax outlined in https://google.aip.dev/160.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of rollout sequences to return. The service may
+        #   return fewer than this value. If unspecified, at most 50 rollout sequences
+        #   will be returned. The maximum value is 1000; values above 1000 will be coerced
+        #   to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListRolloutSequences` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListRolloutSequences` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::ListRolloutSequencesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::ListRolloutSequencesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_rollout_sequences(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/rolloutSequences', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::ListRolloutSequencesResponse::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::ListRolloutSequencesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a rollout sequence.
+        # @param [String] name
+        #   Identifier. Name of the rollout sequence in the format of: projects/`
+        #   PROJECT_ID`/locations/global/rolloutSequences/`NAME`
+        # @param [Google::Apis::GkehubV1alpha::RolloutSequence] rollout_sequence_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_rollout_sequence(name, rollout_sequence_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::GkehubV1alpha::RolloutSequence::Representation
+          command.request_object = rollout_sequence_object
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve a single rollout.
+        # @param [String] name
+        #   Required. The name of the rollout to retrieve. projects/`project`/locations/`
+        #   location`/rollouts/`rollout`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Rollout] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::Rollout]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_rollout(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::Rollout::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Rollout
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve the list of all rollouts.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of rollout. Format: projects/`
+        #   project`/locations/`location`
+        # @param [String] filter
+        #   Optional. Lists Rollouts that match the filter expression, following the
+        #   syntax outlined in https://google.aip.dev/160.
+        # @param [Fixnum] page_size
+        #   The maximum number of rollout to return. The service may return fewer than
+        #   this value. If unspecified, at most 50 rollouts will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListRollouts` call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters provided
+        #   to `ListRollouts` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::ListRolloutsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::ListRolloutsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_rollouts(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/rollouts', options)
+          command.response_representation = Google::Apis::GkehubV1alpha::ListRolloutsResponse::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::ListRolloutsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Scope.
         # @param [String] parent
         #   Required. The parent (project and location) where the Scope will be created.
