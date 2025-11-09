@@ -739,7 +739,7 @@ module Google
         # @return [String]
         attr_accessor :flight_start_time
       
-        # Describes a single Media Planner account.
+        # Represents a media planner account.
         # Corresponds to the JSON property `mediaPlanner`
         # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::MediaPlanner]
         attr_accessor :media_planner
@@ -1388,7 +1388,7 @@ module Google
         end
       end
       
-      # Describes a single Media Planner account.
+      # Represents a media planner account.
       class MediaPlanner
         include Google::Apis::Core::Hashable
       
