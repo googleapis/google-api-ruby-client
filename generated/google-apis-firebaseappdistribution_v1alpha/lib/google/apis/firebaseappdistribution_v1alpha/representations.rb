@@ -567,6 +567,8 @@ module Google
           property :execution_type, as: 'executionType'
           property :failed_reason, as: 'failedReason'
           property :inconclusive_reason, as: 'inconclusiveReason'
+          property :name, as: 'name'
+          property :origin_device_execution, as: 'originDeviceExecution'
           property :results_storage_path, as: 'resultsStoragePath'
           property :robo_stats, as: 'roboStats', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaRoboStats, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaRoboStats::Representation
       
