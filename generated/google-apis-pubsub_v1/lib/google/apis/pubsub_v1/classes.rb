@@ -723,6 +723,13 @@ module Google
         # @return [String]
         attr_accessor :subscription
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -731,6 +738,7 @@ module Google
         def update!(**args)
           @labels = args[:labels] if args.key?(:labels)
           @subscription = args[:subscription] if args.key?(:subscription)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -2179,6 +2187,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Required. The name of the topic from which this subscription is receiving
         # messages. Format is `projects/`project`/topics/`topic``. The value of this
         # field will be `_deleted-topic_` if the topic has been deleted.
@@ -2220,6 +2235,7 @@ module Google
           @retain_acked_messages = args[:retain_acked_messages] if args.key?(:retain_acked_messages)
           @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
           @state = args[:state] if args.key?(:state)
+          @tags = args[:tags] if args.key?(:tags)
           @topic = args[:topic] if args.key?(:topic)
           @topic_message_retention_duration = args[:topic_message_retention_duration] if args.key?(:topic_message_retention_duration)
         end
@@ -2371,6 +2387,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2387,6 +2410,7 @@ module Google
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @schema_settings = args[:schema_settings] if args.key?(:schema_settings)
           @state = args[:state] if args.key?(:state)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
