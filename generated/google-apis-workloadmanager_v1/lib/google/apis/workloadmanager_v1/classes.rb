@@ -2893,7 +2893,7 @@ module Google
         # @return [String]
         attr_accessor :asset
       
-        # Details of the violation.
+        # Details of the violation. TODO(b/452163887)
         # Corresponds to the JSON property `observed`
         # @return [Hash<String,String>]
         attr_accessor :observed
