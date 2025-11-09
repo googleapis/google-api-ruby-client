@@ -14118,6 +14118,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :dest_ip_ranges
       
+        # Network context of the traffic destination. Allowed values are:
+        # 
+        # 
+        # - UNSPECIFIED
+        # - INTERNET
+        # - NON_INTERNET
+        # Corresponds to the JSON property `destNetworkContext`
+        # @return [String]
+        attr_accessor :dest_network_context
+      
         # Network scope of the traffic destination.
         # Corresponds to the JSON property `destNetworkScope`
         # @return [String]
@@ -14170,6 +14180,18 @@ module Google
         # Corresponds to the JSON property `srcIpRanges`
         # @return [Array<String>]
         attr_accessor :src_ip_ranges
+      
+        # Network context of the traffic source. Allowed values are:
+        # 
+        # 
+        # - UNSPECIFIED
+        # - INTERNET
+        # - INTRA_VPC
+        # - NON_INTERNET
+        # - VPC_NETWORKS
+        # Corresponds to the JSON property `srcNetworkContext`
+        # @return [String]
+        attr_accessor :src_network_context
       
         # Network scope of the traffic source.
         # Corresponds to the JSON property `srcNetworkScope`
@@ -14225,6 +14247,7 @@ module Google
           @dest_address_groups = args[:dest_address_groups] if args.key?(:dest_address_groups)
           @dest_fqdns = args[:dest_fqdns] if args.key?(:dest_fqdns)
           @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
+          @dest_network_context = args[:dest_network_context] if args.key?(:dest_network_context)
           @dest_network_scope = args[:dest_network_scope] if args.key?(:dest_network_scope)
           @dest_network_type = args[:dest_network_type] if args.key?(:dest_network_type)
           @dest_region_codes = args[:dest_region_codes] if args.key?(:dest_region_codes)
@@ -14233,6 +14256,7 @@ module Google
           @src_address_groups = args[:src_address_groups] if args.key?(:src_address_groups)
           @src_fqdns = args[:src_fqdns] if args.key?(:src_fqdns)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
+          @src_network_context = args[:src_network_context] if args.key?(:src_network_context)
           @src_network_scope = args[:src_network_scope] if args.key?(:src_network_scope)
           @src_network_type = args[:src_network_type] if args.key?(:src_network_type)
           @src_networks = args[:src_networks] if args.key?(:src_networks)
@@ -21688,7 +21712,7 @@ module Google
         # Only one of exactMatch, prefixMatch,suffixMatch, regexMatch,presentMatch or
         # rangeMatch must be set.
         # Regular expressions can only be used when the loadBalancingScheme is
-        # set to INTERNAL_SELF_MANAGED.
+        # set to INTERNAL_SELF_MANAGED, EXTERNAL_MANAGED orINTERNAL_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -22032,7 +22056,7 @@ module Google
         # more information about regular expression syntax, see Syntax.
         # Only one of presentMatch, exactMatch, orregexMatch must be set.
         # Regular expressions can only be used when the loadBalancingScheme is
-        # set to INTERNAL_SELF_MANAGED.
+        # set to INTERNAL_SELF_MANAGED, EXTERNAL_MANAGED orINTERNAL_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -22424,7 +22448,8 @@ module Google
         # any query parameters and anchor
         # that may be part of the original URL.
         # fullPathMatch must be from 1 to 1024 characters.
-        # Only one of prefixMatch, fullPathMatch or regexMatch must be
+        # Only one of prefixMatch, fullPathMatch,regexMatch or path_template_match must
+        # be
         # specified.
         # Corresponds to the JSON property `fullPathMatch`
         # @return [String]
@@ -22488,7 +22513,9 @@ module Google
         # For satisfying the matchRule condition, the request's
         # path must begin with the specified prefixMatch.prefixMatch must begin with a /.
         # The value must be from 1 to 1024 characters.
-        # Only one of prefixMatch, fullPathMatch or regexMatch must be
+        # Only one of prefixMatch, fullPathMatch,regexMatch or path_template_match must
+        # be
+        # specified.
         # specified.
         # Corresponds to the JSON property `prefixMatch`
         # @return [String]
@@ -22506,10 +22533,11 @@ module Google
         # removing any query parameters and anchor
         # supplied with the original URL. For
         # more information about regular expression syntax, see Syntax.
-        # Only one of prefixMatch, fullPathMatch orregexMatch must be
+        # Only one of prefixMatch, fullPathMatch,regexMatch or path_template_match must
+        # be
         # specified.
         # Regular expressions can only be used when the loadBalancingScheme is
-        # set to INTERNAL_SELF_MANAGED.
+        # set to INTERNAL_SELF_MANAGED, EXTERNAL_MANAGED orINTERNAL_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -37999,10 +38027,21 @@ module Google
       class ManagedInstancePropertiesFromFlexibilityPolicy
         include Google::Apis::Core::Hashable
       
+        # List of disks to be attached to the instance.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::ComputeAlpha::AttachedDisk>]
+        attr_accessor :disks
+      
         # The machine type to be used for this instance.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
+      
+        # Name of the minimum CPU platform to be used by this instance.
+        # e.g. 'Intel Ice Lake'.
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
       
         # The provisioning model to be used for this instance.
         # Corresponds to the JSON property `provisioningModel`
@@ -38015,7 +38054,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
         end
       end
@@ -42733,16 +42774,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :dscp_value
       
-        # The field type could be one of: TRAFFIC_CLASS or DSCP.
-        # Corresponds to the JSON property `fieldType`
-        # @return [String]
-        attr_accessor :field_type
-      
-        # For field_type = TRAFFIC_CLASS: 1 to 6. For field_type = DSCP: 0 to 63.
-        # Corresponds to the JSON property `fieldValue`
-        # @return [Fixnum]
-        attr_accessor :field_value
-      
         # The traffic class that should be applied to the matching packet.
         # Corresponds to the JSON property `trafficClass`
         # @return [String]
@@ -42761,8 +42792,6 @@ module Google
         def update!(**args)
           @dscp_mode = args[:dscp_mode] if args.key?(:dscp_mode)
           @dscp_value = args[:dscp_value] if args.key?(:dscp_value)
-          @field_type = args[:field_type] if args.key?(:field_type)
-          @field_value = args[:field_value] if args.key?(:field_value)
           @traffic_class = args[:traffic_class] if args.key?(:traffic_class)
           @type = args[:type] if args.key?(:type)
         end
@@ -50331,16 +50360,19 @@ module Google
         end
       end
       
-      # 
+      # [Output only] Result of queuing and provisioning based on deferred
+      # capacity.
       class QueuedResourceStatus
         include Google::Apis::Core::Hashable
       
-        # 
+        # Additional status detail for the FAILED state.
         # Corresponds to the JSON property `failedData`
         # @return [Google::Apis::ComputeAlpha::QueuedResourceStatusFailedData]
         attr_accessor :failed_data
       
-        # 
+        # [Output only] Fully qualified URL of the provisioning GCE operation to
+        # track the provisioning along with provisioning errors. The referenced
+        # operation may not exist after having been deleted or expired.
         # Corresponds to the JSON property `provisioningOperations`
         # @return [Array<String>]
         attr_accessor :provisioning_operations
@@ -50362,11 +50394,11 @@ module Google
         end
       end
       
-      # 
+      # Additional status detail for the FAILED state.
       class QueuedResourceStatusFailedData
         include Google::Apis::Core::Hashable
       
-        # 
+        # The error(s) that caused the QueuedResource to enter the FAILED state.
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::ComputeAlpha::QueuedResourceStatusFailedData::Error]
         attr_accessor :error
@@ -50380,7 +50412,7 @@ module Google
           @error = args[:error] if args.key?(:error)
         end
         
-        # 
+        # The error(s) that caused the QueuedResource to enter the FAILED state.
         class Error
           include Google::Apis::Core::Hashable
         
@@ -57501,8 +57533,7 @@ module Google
         attr_accessor :rollout_entity
       
         # Required. Rollout Plan used to model the Rollout.
-        # Ex. progressiverollout.googleapis.com/v1/organizations/1/rolloutPlans
-        # Ex. progressiverollout.googleapis.com/v1/folders/1/rolloutPlans
+        # Ex. compute.googleapis.com/v1/projects/1234/rolloutPlans/rp1
         # Corresponds to the JSON property `rolloutPlan`
         # @return [String]
         attr_accessor :rollout_plan
@@ -58095,10 +58126,9 @@ module Google
         # is applied across regions, this contains the name of the global
         # resource created by the user which contains a payload for a resource
         # that is orchestrated across regions. This follows the following format:
-        # //.googleapis.com/organizations//locations/global//
+        # //.googleapis.com/projects//locations/global//
         # e.g.
-        # //osconfig.googleapis.com/organizations/1/locations/global/policyOrchestrators/
-        # po1
+        # //osconfig.googleapis.com/projects/1/locations/global/policyOrchestrators/po1
         # Corresponds to the JSON property `orchestrationSource`
         # @return [String]
         attr_accessor :orchestration_source
@@ -77639,6 +77669,12 @@ module Google
       class VpnTunnel
         include Google::Apis::Core::Hashable
       
+        # Capacity tier of the VPN tunnel. This is used for IPsec over Interconnect
+        # tunnels to indicate different bandwidth limits.
+        # Corresponds to the JSON property `capacityTier`
+        # @return [String]
+        attr_accessor :capacity_tier
+      
         # User specified list of ciphers to use for the phase 1 and phase 2 of the
         # IKE protocol.
         # Corresponds to the JSON property `cipherSuite`
@@ -77861,6 +77897,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @capacity_tier = args[:capacity_tier] if args.key?(:capacity_tier)
           @cipher_suite = args[:cipher_suite] if args.key?(:cipher_suite)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
