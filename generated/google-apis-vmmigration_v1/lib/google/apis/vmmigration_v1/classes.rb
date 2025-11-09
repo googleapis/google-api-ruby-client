@@ -1329,6 +1329,15 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # Optional. If specified this will be the storage pool in which the disk is
+        # created. This is the full path of the storage pool resource, for example: "
+        # projects/my-project/zones/us-central1-a/storagePools/my-storage-pool". The
+        # storage pool must be in the same project and zone as the target disks. The
+        # storage pool's type must match the disk type.
+        # Corresponds to the JSON property `storagePool`
+        # @return [String]
+        attr_accessor :storage_pool
+      
         # The full path of the resource of type TargetProject which represents the
         # Compute Engine project in which to create this VM.
         # Corresponds to the JSON property `targetProject`
@@ -1372,6 +1381,7 @@ module Google
           @network_tags = args[:network_tags] if args.key?(:network_tags)
           @secure_boot = args[:secure_boot] if args.key?(:secure_boot)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
           @target_project = args[:target_project] if args.key?(:target_project)
           @vm_name = args[:vm_name] if args.key?(:vm_name)
           @zone = args[:zone] if args.key?(:zone)
@@ -1507,6 +1517,15 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # Optional. The storage pool used for the VM disks. If specified this will be
+        # the storage pool in which the disk is created. This is the full path of the
+        # storage pool resource, for example: "projects/my-project/zones/us-central1-a/
+        # storagePools/my-storage-pool". The storage pool must be in the same project
+        # and zone as the target disks. The storage pool's type must match the disk type.
+        # Corresponds to the JSON property `storagePool`
+        # @return [String]
+        attr_accessor :storage_pool
+      
         # The name of the VM to create.
         # Corresponds to the JSON property `vmName`
         # @return [String]
@@ -1545,6 +1564,7 @@ module Google
           @project = args[:project] if args.key?(:project)
           @secure_boot = args[:secure_boot] if args.key?(:secure_boot)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
           @vm_name = args[:vm_name] if args.key?(:vm_name)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -1843,7 +1863,7 @@ module Google
         end
       end
       
-      # Mentions that the image import is not using OS adaptation process.
+      # Used when the image import is not using OS adaptation process.
       class DataDiskImageImport
         include Google::Apis::Core::Hashable
       
@@ -2033,7 +2053,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :additional_licenses
       
-        # Mentions that the image import is not using OS adaptation process.
+        # Used when the image import is not using OS adaptation process.
         # Corresponds to the JSON property `dataDiskImageImport`
         # @return [Google::Apis::VmmigrationV1::DataDiskImageImport]
         attr_accessor :data_disk_image_import
