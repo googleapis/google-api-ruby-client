@@ -1533,7 +1533,9 @@ module Google
         attr_accessor :flip_enabled
         alias_method :flip_enabled?, :flip_enabled
       
-        # Generation config.
+        # Configuration for content generation. This message contains all the parameters
+        # that control how the model generates content. It allows you to influence the
+        # randomness, length, and structure of the output.
         # Corresponds to the JSON property `generationConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig]
         attr_accessor :generation_config
@@ -2823,20 +2825,21 @@ module Google
         end
       end
       
-      # Content blob.
+      # A content blob. A Blob contains data of a specific media type. It is used to
+      # represent images, audio, and video.
       class GoogleCloudAiplatformV1Blob
         include Google::Apis::Core::Hashable
       
-        # Required. Raw bytes.
+        # Required. The raw bytes of the data.
         # Corresponds to the JSON property `data`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :data
       
-        # Optional. Display name of the blob. Used to provide a label or filename to
-        # distinguish blobs. This field is only returned in PromptMessage for prompt
-        # management. It is currently used in the Gemini GenerateContent calls only when
-        # server side tools (code_execution, google_search, and url_context) are enabled.
+        # Optional. The display name of the blob. Used to provide a label or filename to
+        # distinguish blobs. This field is only returned in `PromptMessage` for prompt
+        # management. It is used in the Gemini calls only when server-side tools (`
+        # code_execution`, `google_search`, and `url_context`) are enabled.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -2975,10 +2978,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The base structured datatype containing multi-part content of a message. A `
-        # Content` includes a `role` field designating the producer of the `Content` and
-        # a `parts` field containing multi-part data that contains the content of the
-        # message turn.
+        # The structured data content of a message. A Content message contains a `role`
+        # field, which indicates the producer of the content, and a `parts` field, which
+        # contains the multi-part data of the message.
         # Corresponds to the JSON property `systemInstruction`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
         attr_accessor :system_instruction
@@ -3196,58 +3198,70 @@ module Google
       class GoogleCloudAiplatformV1Candidate
         include Google::Apis::Core::Hashable
       
-        # Output only. Average log probability score of the candidate.
+        # Output only. The average log probability of the tokens in this candidate. This
+        # is a length-normalized score that can be used to compare the quality of
+        # candidates of different lengths. A higher average log probability suggests a
+        # more confident and coherent response.
         # Corresponds to the JSON property `avgLogprobs`
         # @return [Float]
         attr_accessor :avg_logprobs
       
-        # A collection of source attributions for a piece of content.
+        # A collection of citations that apply to a piece of generated content.
         # Corresponds to the JSON property `citationMetadata`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CitationMetadata]
         attr_accessor :citation_metadata
       
-        # The base structured datatype containing multi-part content of a message. A `
-        # Content` includes a `role` field designating the producer of the `Content` and
-        # a `parts` field containing multi-part data that contains the content of the
-        # message turn.
+        # The structured data content of a message. A Content message contains a `role`
+        # field, which indicates the producer of the content, and a `parts` field, which
+        # contains the multi-part data of the message.
         # Corresponds to the JSON property `content`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
         attr_accessor :content
       
-        # Output only. Describes the reason the mode stopped generating tokens in more
-        # detail. This is only filled when `finish_reason` is set.
+        # Output only. Describes the reason the model stopped generating tokens in more
+        # detail. This field is returned only when `finish_reason` is set.
         # Corresponds to the JSON property `finishMessage`
         # @return [String]
         attr_accessor :finish_message
       
         # Output only. The reason why the model stopped generating tokens. If empty, the
-        # model has not stopped generating the tokens.
+        # model has not stopped generating.
         # Corresponds to the JSON property `finishReason`
         # @return [String]
         attr_accessor :finish_reason
       
-        # Metadata returned to client when grounding is enabled.
+        # Information about the sources that support the content of a response. When
+        # grounding is enabled, the model returns citations for claims in the response.
+        # This object contains the retrieved sources.
         # Corresponds to the JSON property `groundingMetadata`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingMetadata]
         attr_accessor :grounding_metadata
       
-        # Output only. Index of the candidate.
+        # Output only. The 0-based index of this candidate in the list of generated
+        # responses. This is useful for distinguishing between multiple candidates when `
+        # candidate_count` > 1.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
       
-        # Logprobs Result
+        # The log probabilities of the tokens generated by the model. This is useful for
+        # understanding the model's confidence in its predictions and for debugging. For
+        # example, you can use log probabilities to identify when the model is making a
+        # less confident prediction or to explore alternative responses that the model
+        # considered. A low log probability can also indicate that the model is "
+        # hallucinating" or generating factually incorrect information.
         # Corresponds to the JSON property `logprobsResult`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1LogprobsResult]
         attr_accessor :logprobs_result
       
-        # Output only. List of ratings for the safety of a response candidate. There is
-        # at most one rating per category.
+        # Output only. A list of ratings for the safety of a response candidate. There
+        # is at most one rating per category.
         # Corresponds to the JSON property `safetyRatings`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetyRating>]
         attr_accessor :safety_ratings
       
-        # Metadata related to url context retrieval tool.
+        # Metadata returned when the model uses the `url_context` tool to get
+        # information from a user-provided URL.
         # Corresponds to the JSON property `urlContextMetadata`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1UrlContextMetadata]
         attr_accessor :url_context_metadata
@@ -3448,16 +3462,16 @@ module Google
         end
       end
       
-      # Source attributions for content.
+      # A citation for a piece of generatedcontent.
       class GoogleCloudAiplatformV1Citation
         include Google::Apis::Core::Hashable
       
-        # Output only. End index into the content.
+        # Output only. The end index of the citation in the content.
         # Corresponds to the JSON property `endIndex`
         # @return [Fixnum]
         attr_accessor :end_index
       
-        # Output only. License of the attribution.
+        # Output only. The license of the source of the citation.
         # Corresponds to the JSON property `license`
         # @return [String]
         attr_accessor :license
@@ -3474,17 +3488,17 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleTypeDate]
         attr_accessor :publication_date
       
-        # Output only. Start index into the content.
+        # Output only. The start index of the citation in the content.
         # Corresponds to the JSON property `startIndex`
         # @return [Fixnum]
         attr_accessor :start_index
       
-        # Output only. Title of the attribution.
+        # Output only. The title of the source of the citation.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
       
-        # Output only. Url reference of the attribution.
+        # Output only. The URI of the source of the citation.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -3504,11 +3518,11 @@ module Google
         end
       end
       
-      # A collection of source attributions for a piece of content.
+      # A collection of citations that apply to a piece of generated content.
       class GoogleCloudAiplatformV1CitationMetadata
         include Google::Apis::Core::Hashable
       
-        # Output only. List of citations.
+        # Output only. A list of citations for the content.
         # Corresponds to the JSON property `citations`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Citation>]
         attr_accessor :citations
@@ -4036,22 +4050,21 @@ module Google
         end
       end
       
-      # The base structured datatype containing multi-part content of a message. A `
-      # Content` includes a `role` field designating the producer of the `Content` and
-      # a `parts` field containing multi-part data that contains the content of the
-      # message turn.
+      # The structured data content of a message. A Content message contains a `role`
+      # field, which indicates the producer of the content, and a `parts` field, which
+      # contains the multi-part data of the message.
       class GoogleCloudAiplatformV1Content
         include Google::Apis::Core::Hashable
       
-        # Required. Ordered `Parts` that constitute a single message. Parts may have
-        # different IANA MIME types.
+        # Required. A list of Part objects that make up a single message. Parts of a
+        # message can have different MIME types. A Content message must have at least
+        # one Part.
         # Corresponds to the JSON property `parts`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Part>]
         attr_accessor :parts
       
-        # Optional. The producer of the content. Must be either 'user' or 'model'.
-        # Useful to set for multi-turn conversations, otherwise can be left blank or
-        # unset.
+        # Optional. The producer of the content. Must be either 'user' or 'model'. If
+        # not set, the service will default to 'user'.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -4314,10 +4327,9 @@ module Google
       class GoogleCloudAiplatformV1CorroborateContentRequest
         include Google::Apis::Core::Hashable
       
-        # The base structured datatype containing multi-part content of a message. A `
-        # Content` includes a `role` field designating the producer of the `Content` and
-        # a `parts` field containing multi-part data that contains the content of the
-        # message turn.
+        # The structured data content of a message. A Content message contains a `role`
+        # field, which indicates the producer of the content, and a `parts` field, which
+        # contains the multi-part data of the message.
         # Corresponds to the JSON property `content`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
         attr_accessor :content
@@ -4400,7 +4412,9 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content>]
         attr_accessor :contents
       
-        # Generation config.
+        # Configuration for content generation. This message contains all the parameters
+        # that control how the model generates content. It allows you to influence the
+        # randomness, length, and structure of the output.
         # Corresponds to the JSON property `generationConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig]
         attr_accessor :generation_config
@@ -4417,10 +4431,9 @@ module Google
         # @return [String]
         attr_accessor :model
       
-        # The base structured datatype containing multi-part content of a message. A `
-        # Content` includes a `role` field designating the producer of the `Content` and
-        # a `parts` field containing multi-part data that contains the content of the
-        # message turn.
+        # The structured data content of a message. A Content message contains a `role`
+        # field, which indicates the producer of the content, and a `parts` field, which
+        # contains the multi-part data of the message.
         # Corresponds to the JSON property `systemInstruction`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
         attr_accessor :system_instruction
@@ -5109,6 +5122,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+        end
+      end
+      
+      # Specificies a metric that is populated by evaluating user-defined Python code.
+      class GoogleCloudAiplatformV1CustomCodeExecutionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. Python function. Expected user to define the following function, e.g.
+        # : def evaluate(instance: dict[str, Any]) -> float: Please include this
+        # function signature in the code snippet. Instance is the evaluation instance,
+        # any fields populated in the instance are available to the function as instance[
+        # field_name]. Example: Example input: ``` instance= EvaluationInstance(
+        # response=EvaluationInstance.InstanceData(text="The answer is 4."), reference=
+        # EvaluationInstance.InstanceData(text="4") ) ``` Example converted input: ``` `
+        # 'response': `'text': 'The answer is 4.'`, 'reference': `'text': '4'` ` ```
+        # Example python function: ``` def evaluate(instance: dict[str, Any]) -> float:
+        # if instance'response' == instance'reference': return 1.0 return 0.0 ```
+        # CustomCodeExecutionSpec is also supported in Batch Evaluation (EvalDataset RPC)
+        # and Tuning Evaluation. Each line in the input jsonl file will be converted to
+        # dict[str, Any] and passed to the evaluation function.
+        # Corresponds to the JSON property `evaluationFunction`
+        # @return [String]
+        attr_accessor :evaluation_function
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation_function = args[:evaluation_function] if args.key?(:evaluation_function)
         end
       end
       
@@ -5818,6 +5862,99 @@ module Google
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @saved_queries = args[:saved_queries] if args.key?(:saved_queries)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Distribution computed over a tuning dataset.
+      class GoogleCloudAiplatformV1DatasetDistribution
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Defines the histogram bucket.
+        # Corresponds to the JSON property `buckets`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetDistributionDistributionBucket>]
+        attr_accessor :buckets
+      
+        # Output only. The maximum of the population values.
+        # Corresponds to the JSON property `max`
+        # @return [Float]
+        attr_accessor :max
+      
+        # Output only. The arithmetic mean of the values in the population.
+        # Corresponds to the JSON property `mean`
+        # @return [Float]
+        attr_accessor :mean
+      
+        # Output only. The median of the values in the population.
+        # Corresponds to the JSON property `median`
+        # @return [Float]
+        attr_accessor :median
+      
+        # Output only. The minimum of the population values.
+        # Corresponds to the JSON property `min`
+        # @return [Float]
+        attr_accessor :min
+      
+        # Output only. The 5th percentile of the values in the population.
+        # Corresponds to the JSON property `p5`
+        # @return [Float]
+        attr_accessor :p5
+      
+        # Output only. The 95th percentile of the values in the population.
+        # Corresponds to the JSON property `p95`
+        # @return [Float]
+        attr_accessor :p95
+      
+        # Output only. Sum of a given population of values.
+        # Corresponds to the JSON property `sum`
+        # @return [Float]
+        attr_accessor :sum
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buckets = args[:buckets] if args.key?(:buckets)
+          @max = args[:max] if args.key?(:max)
+          @mean = args[:mean] if args.key?(:mean)
+          @median = args[:median] if args.key?(:median)
+          @min = args[:min] if args.key?(:min)
+          @p5 = args[:p5] if args.key?(:p5)
+          @p95 = args[:p95] if args.key?(:p95)
+          @sum = args[:sum] if args.key?(:sum)
+        end
+      end
+      
+      # Dataset bucket used to create a histogram for the distribution given a
+      # population of values.
+      class GoogleCloudAiplatformV1DatasetDistributionDistributionBucket
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Number of values in the bucket.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Output only. Left bound of the bucket.
+        # Corresponds to the JSON property `left`
+        # @return [Float]
+        attr_accessor :left
+      
+        # Output only. Right bound of the bucket.
+        # Corresponds to the JSON property `right`
+        # @return [Float]
+        attr_accessor :right
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @left = args[:left] if args.key?(:left)
+          @right = args[:right] if args.key?(:right)
         end
       end
       
@@ -7459,10 +7596,9 @@ module Google
         attr_accessor :auto_truncate
         alias_method :auto_truncate?, :auto_truncate
       
-        # The base structured datatype containing multi-part content of a message. A `
-        # Content` includes a `role` field designating the producer of the `Content` and
-        # a `parts` field containing multi-part data that contains the content of the
-        # message turn.
+        # The structured data content of a message. A Content message contains a `role`
+        # field, which indicates the producer of the content, and a `parts` field, which
+        # contains the multi-part data of the message.
         # Corresponds to the JSON property `content`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
         attr_accessor :content
@@ -8729,11 +8865,6 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceAgentDataEvents]
         attr_accessor :events
       
-        # A JSON string containing a sequence of events.
-        # Corresponds to the JSON property `eventsText`
-        # @return [String]
-        attr_accessor :events_text
-      
         # Represents a list of tools for an agent.
         # Corresponds to the JSON property `tools`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceAgentDataTools]
@@ -8759,7 +8890,6 @@ module Google
           @agent_config = args[:agent_config] if args.key?(:agent_config)
           @developer_instruction = args[:developer_instruction] if args.key?(:developer_instruction)
           @events = args[:events] if args.key?(:events)
-          @events_text = args[:events_text] if args.key?(:events_text)
           @tools = args[:tools] if args.key?(:tools)
           @tools_text = args[:tools_text] if args.key?(:tools_text)
         end
@@ -9340,7 +9470,9 @@ module Google
         # @return [String]
         attr_accessor :autorater_model
       
-        # Generation config.
+        # Configuration for content generation. This message contains all the parameters
+        # that control how the model generates content. It allows you to influence the
+        # randomness, length, and structure of the output.
         # Corresponds to the JSON property `generationConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig]
         attr_accessor :generation_config
@@ -9420,7 +9552,9 @@ module Google
       class GoogleCloudAiplatformV1EvaluationRunInferenceConfig
         include Google::Apis::Core::Hashable
       
-        # Generation config.
+        # Configuration for content generation. This message contains all the parameters
+        # that control how the model generates content. It allows you to influence the
+        # randomness, length, and structure of the output.
         # Corresponds to the JSON property `generationConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig]
         attr_accessor :generation_config
@@ -13464,20 +13598,21 @@ module Google
         end
       end
       
-      # URI based data.
+      # URI-based data. A FileData message contains a URI pointing to data of a
+      # specific media type. It is used to represent images, audio, and video stored
+      # in Google Cloud Storage.
       class GoogleCloudAiplatformV1FileData
         include Google::Apis::Core::Hashable
       
-        # Optional. Display name of the file data. Used to provide a label or filename
-        # to distinguish file datas. This field is only returned in PromptMessage for
-        # prompt management. It is currently used in the Gemini GenerateContent calls
-        # only when server side tools (code_execution, google_search, and url_context)
-        # are enabled.
+        # Optional. The display name of the file. Used to provide a label or filename to
+        # distinguish files. This field is only returned in `PromptMessage` for prompt
+        # management. It is used in the Gemini calls only when server side tools (`
+        # code_execution`, `google_search`, and `url_context`) are enabled.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Required. URI.
+        # Required. The URI of the file in Google Cloud Storage.
         # Corresponds to the JSON property `fileUri`
         # @return [String]
         attr_accessor :file_uri
@@ -14323,6 +14458,58 @@ module Google
         end
       end
       
+      # Input example for preference optimization.
+      class GoogleCloudAiplatformV1GeminiPreferenceExample
+        include Google::Apis::Core::Hashable
+      
+        # List of completions for a given prompt.
+        # Corresponds to the JSON property `completions`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GeminiPreferenceExampleCompletion>]
+        attr_accessor :completions
+      
+        # Multi-turn contents that represents the Prompt.
+        # Corresponds to the JSON property `contents`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content>]
+        attr_accessor :contents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completions = args[:completions] if args.key?(:completions)
+          @contents = args[:contents] if args.key?(:contents)
+        end
+      end
+      
+      # Completion and its preference score.
+      class GoogleCloudAiplatformV1GeminiPreferenceExampleCompletion
+        include Google::Apis::Core::Hashable
+      
+        # The structured data content of a message. A Content message contains a `role`
+        # field, which indicates the producer of the content, and a `parts` field, which
+        # contains the multi-part data of the message.
+        # Corresponds to the JSON property `completion`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
+        attr_accessor :completion
+      
+        # The score for the given completion.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completion = args[:completion] if args.key?(:completion)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
       # Configuration for GenAiAdvancedFeatures.
       class GoogleCloudAiplatformV1GenAiAdvancedFeaturesConfig
         include Google::Apis::Core::Hashable
@@ -14384,7 +14571,9 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content>]
         attr_accessor :contents
       
-        # Generation config.
+        # Configuration for content generation. This message contains all the parameters
+        # that control how the model generates content. It allows you to influence the
+        # randomness, length, and structure of the output.
         # Corresponds to the JSON property `generationConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig]
         attr_accessor :generation_config
@@ -14398,7 +14587,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Configuration for Model Armor integrations of prompt and responses.
+        # Configuration for Model Armor. Model Armor is a Google Cloud service that
+        # provides safety and security filtering for prompts and responses. It helps
+        # protect your AI applications from risks such as harmful content, sensitive
+        # data leakage, and prompt injection attacks.
         # Corresponds to the JSON property `modelArmorConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelArmorConfig]
         attr_accessor :model_armor_config
@@ -14409,10 +14601,9 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetySetting>]
         attr_accessor :safety_settings
       
-        # The base structured datatype containing multi-part content of a message. A `
-        # Content` includes a `role` field designating the producer of the `Content` and
-        # a `parts` field containing multi-part data that contains the content of the
-        # message turn.
+        # The structured data content of a message. A Content message contains a `role`
+        # field, which indicates the producer of the content, and a `parts` field, which
+        # contains the multi-part data of the message.
         # Corresponds to the JSON property `systemInstruction`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
         attr_accessor :system_instruction
@@ -14849,92 +15040,111 @@ module Google
         end
       end
       
-      # Generation config.
+      # Configuration for content generation. This message contains all the parameters
+      # that control how the model generates content. It allows you to influence the
+      # randomness, length, and structure of the output.
       class GoogleCloudAiplatformV1GenerationConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. If enabled, audio timestamp will be included in the request to the
-        # model.
+        # Optional. If enabled, audio timestamps will be included in the request to the
+        # model. This can be useful for synchronizing audio with other modalities in the
+        # response.
         # Corresponds to the JSON property `audioTimestamp`
         # @return [Boolean]
         attr_accessor :audio_timestamp
         alias_method :audio_timestamp?, :audio_timestamp
       
-        # Optional. Number of candidates to generate.
+        # Optional. The number of candidate responses to generate. A higher `
+        # candidate_count` can provide more options to choose from, but it also consumes
+        # more resources. This can be useful for generating a variety of responses and
+        # selecting the best one.
         # Corresponds to the JSON property `candidateCount`
         # @return [Fixnum]
         attr_accessor :candidate_count
       
         # Optional. If enabled, the model will detect emotions and adapt its responses
-        # accordingly.
+        # accordingly. For example, if the model detects that the user is frustrated, it
+        # may provide a more empathetic response.
         # Corresponds to the JSON property `enableAffectiveDialog`
         # @return [Boolean]
         attr_accessor :enable_affective_dialog
         alias_method :enable_affective_dialog?, :enable_affective_dialog
       
-        # Optional. Frequency penalties.
+        # Optional. Penalizes tokens based on their frequency in the generated text. A
+        # positive value helps to reduce the repetition of words and phrases. Valid
+        # values can range from [-2.0, 2.0].
         # Corresponds to the JSON property `frequencyPenalty`
         # @return [Float]
         attr_accessor :frequency_penalty
       
-        # Config for image generation features.
+        # Configuration for image generation. This message allows you to control various
+        # aspects of image generation, such as the output format, aspect ratio, and
+        # whether the model can generate images of people.
         # Corresponds to the JSON property `imageConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ImageConfig]
         attr_accessor :image_config
       
-        # Optional. Logit probabilities.
+        # Optional. The number of top log probabilities to return for each token. This
+        # can be used to see which other tokens were considered likely candidates for a
+        # given position. A higher value will return more options, but it will also
+        # increase the size of the response.
         # Corresponds to the JSON property `logprobs`
         # @return [Fixnum]
         attr_accessor :logprobs
       
-        # Optional. The maximum number of output tokens to generate per message.
+        # Optional. The maximum number of tokens to generate in the response. A token is
+        # approximately four characters. The default value varies by model. This
+        # parameter can be used to control the length of the generated text and prevent
+        # overly long responses.
         # Corresponds to the JSON property `maxOutputTokens`
         # @return [Fixnum]
         attr_accessor :max_output_tokens
       
-        # Optional. If specified, the media resolution specified will be used.
+        # Optional. The token resolution at which input media content is sampled. This
+        # is used to control the trade-off between the quality of the response and the
+        # number of tokens used to represent the media. A higher resolution allows the
+        # model to perceive more detail, which can lead to a more nuanced response, but
+        # it will also use more tokens. This does not affect the image dimensions sent
+        # to the model.
         # Corresponds to the JSON property `mediaResolution`
         # @return [String]
         attr_accessor :media_resolution
       
-        # Optional. Positive penalties.
+        # Optional. Penalizes tokens that have already appeared in the generated text. A
+        # positive value encourages the model to generate more diverse and less
+        # repetitive text. Valid values can range from [-2.0, 2.0].
         # Corresponds to the JSON property `presencePenalty`
         # @return [Float]
         attr_accessor :presence_penalty
       
-        # Optional. Output schema of the generated response. This is an alternative to `
-        # response_schema` that accepts [JSON Schema](https://json-schema.org/). If set,
-        # `response_schema` must be omitted, but `response_mime_type` is required. While
-        # the full JSON Schema may be sent, not all features are supported. Specifically,
-        # only the following properties are supported: - `$id` - `$defs` - `$ref` - `$
-        # anchor` - `type` - `format` - `title` - `description` - `enum` (for strings
-        # and numbers) - `items` - `prefixItems` - `minItems` - `maxItems` - `minimum` -
-        # `maximum` - `anyOf` - `oneOf` (interpreted the same as `anyOf`) - `properties`
-        # - `additionalProperties` - `required` The non-standard `propertyOrdering`
-        # property may also be set. Cyclic references are unrolled to a limited degree
-        # and, as such, may only be used within non-required properties. (Nullable
-        # properties are not sufficient.) If `$ref` is set on a sub-schema, no other
-        # properties, except for than those starting as a `$`, may be set.
+        # Optional. When this field is set, response_schema must be omitted and
+        # response_mime_type must be set to `application/json`.
         # Corresponds to the JSON property `responseJsonSchema`
         # @return [Object]
         attr_accessor :response_json_schema
       
-        # Optional. If true, export the logprobs results in response.
+        # Optional. If set to true, the log probabilities of the output tokens are
+        # returned. Log probabilities are the logarithm of the probability of a token
+        # appearing in the output. A higher log probability means the token is more
+        # likely to be generated. This can be useful for analyzing the model's
+        # confidence in its own output and for debugging.
         # Corresponds to the JSON property `responseLogprobs`
         # @return [Boolean]
         attr_accessor :response_logprobs
         alias_method :response_logprobs?, :response_logprobs
       
-        # Optional. Output response mimetype of the generated candidate text. Supported
-        # mimetype: - `text/plain`: (default) Text output. - `application/json`: JSON
-        # response in the candidates. The model needs to be prompted to output the
+        # Optional. The IANA standard MIME type of the response. The model will generate
+        # output that conforms to this MIME type. Supported values include 'text/plain' (
+        # default) and 'application/json'. The model needs to be prompted to output the
         # appropriate response type, otherwise the behavior is undefined. This is a
         # preview feature.
         # Corresponds to the JSON property `responseMimeType`
         # @return [String]
         attr_accessor :response_mime_type
       
-        # Optional. The modalities of the response.
+        # Optional. The modalities of the response. The model will generate a response
+        # that includes all the specified modalities. For example, if this is set to `[
+        # TEXT, IMAGE]`, the response will include both text and an image.
         # Corresponds to the JSON property `responseModalities`
         # @return [Array<String>]
         attr_accessor :response_modalities
@@ -14946,42 +15156,68 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Schema]
         attr_accessor :response_schema
       
-        # The configuration for routing the request to a specific model.
+        # The configuration for routing the request to a specific model. This can be
+        # used to control which model is used for the generation, either automatically
+        # or by specifying a model name.
         # Corresponds to the JSON property `routingConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfig]
         attr_accessor :routing_config
       
-        # Optional. Seed.
+        # Optional. A seed for the random number generator. By setting a seed, you can
+        # make the model's output mostly deterministic. For a given prompt and
+        # parameters (like temperature, top_p, etc.), the model will produce the same
+        # response every time. However, it's not a guaranteed absolute deterministic
+        # behavior. This is different from parameters like `temperature`, which control
+        # the *level* of randomness. `seed` ensures that the "random" choices the model
+        # makes are the same on every run, making it essential for testing and ensuring
+        # reproducible results.
         # Corresponds to the JSON property `seed`
         # @return [Fixnum]
         attr_accessor :seed
       
-        # The speech generation config.
+        # Configuration for speech generation.
         # Corresponds to the JSON property `speechConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SpeechConfig]
         attr_accessor :speech_config
       
-        # Optional. Stop sequences.
+        # Optional. A list of character sequences that will stop the model from
+        # generating further tokens. If a stop sequence is generated, the output will
+        # end at that point. This is useful for controlling the length and structure of
+        # the output. For example, you can use ["\n", "###"] to stop generation at a new
+        # line or a specific marker.
         # Corresponds to the JSON property `stopSequences`
         # @return [Array<String>]
         attr_accessor :stop_sequences
       
-        # Optional. Controls the randomness of predictions.
+        # Optional. Controls the randomness of the output. A higher temperature results
+        # in more creative and diverse responses, while a lower temperature makes the
+        # output more predictable and focused. The valid range is (0.0, 2.0].
         # Corresponds to the JSON property `temperature`
         # @return [Float]
         attr_accessor :temperature
       
-        # Config for thinking features.
+        # Configuration for the model's thinking features. "Thinking" is a process where
+        # the model breaks down a complex task into smaller, manageable steps. This
+        # allows the model to reason about the task, plan its approach, and execute the
+        # plan to generate a high-quality response.
         # Corresponds to the JSON property `thinkingConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigThinkingConfig]
         attr_accessor :thinking_config
       
-        # Optional. If specified, top-k sampling will be used.
+        # Optional. Specifies the top-k sampling threshold. The model considers only the
+        # top k most probable tokens for the next token. This can be useful for
+        # generating more coherent and less random text. For example, a `top_k` of 40
+        # means the model will choose the next word from the 40 most likely words.
         # Corresponds to the JSON property `topK`
         # @return [Float]
         attr_accessor :top_k
       
-        # Optional. If specified, nucleus sampling will be used.
+        # Optional. Specifies the nucleus sampling threshold. The model considers only
+        # the smallest set of tokens whose cumulative probability is at least `top_p`.
+        # This helps generate more diverse and less repetitive responses. For example, a
+        # `top_p` of 0.9 means the model considers tokens until the cumulative
+        # probability of the tokens to select from reaches 0.9. It's recommended to
+        # adjust either temperature or `top_p`, but not both.
         # Corresponds to the JSON property `topP`
         # @return [Float]
         attr_accessor :top_p
@@ -15017,17 +15253,21 @@ module Google
         end
       end
       
-      # The configuration for routing the request to a specific model.
+      # The configuration for routing the request to a specific model. This can be
+      # used to control which model is used for the generation, either automatically
+      # or by specifying a model name.
       class GoogleCloudAiplatformV1GenerationConfigRoutingConfig
         include Google::Apis::Core::Hashable
       
-        # When automated routing is specified, the routing will be determined by the
-        # pretrained routing model and customer provided model routing preference.
+        # The configuration for automated routing. When automated routing is specified,
+        # the routing will be determined by the pretrained routing model and customer
+        # provided model routing preference.
         # Corresponds to the JSON property `autoMode`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfigAutoRoutingMode]
         attr_accessor :auto_mode
       
-        # When manual routing is set, the specified model will be used directly.
+        # The configuration for manual routing. When manual routing is specified, the
+        # model will be selected based on the model name provided.
         # Corresponds to the JSON property `manualMode`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfigRoutingConfigManualRoutingMode]
         attr_accessor :manual_mode
@@ -15043,8 +15283,9 @@ module Google
         end
       end
       
-      # When automated routing is specified, the routing will be determined by the
-      # pretrained routing model and customer provided model routing preference.
+      # The configuration for automated routing. When automated routing is specified,
+      # the routing will be determined by the pretrained routing model and customer
+      # provided model routing preference.
       class GoogleCloudAiplatformV1GenerationConfigRoutingConfigAutoRoutingMode
         include Google::Apis::Core::Hashable
       
@@ -15063,13 +15304,12 @@ module Google
         end
       end
       
-      # When manual routing is set, the specified model will be used directly.
+      # The configuration for manual routing. When manual routing is specified, the
+      # model will be selected based on the model name provided.
       class GoogleCloudAiplatformV1GenerationConfigRoutingConfigManualRoutingMode
         include Google::Apis::Core::Hashable
       
-        # The model name to use. Only the public LLM models are accepted. See [Supported
-        # models](https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/
-        # inference#supported-models).
+        # The name of the model to use. Only public LLM models are accepted.
         # Corresponds to the JSON property `modelName`
         # @return [String]
         attr_accessor :model_name
@@ -15084,18 +15324,26 @@ module Google
         end
       end
       
-      # Config for thinking features.
+      # Configuration for the model's thinking features. "Thinking" is a process where
+      # the model breaks down a complex task into smaller, manageable steps. This
+      # allows the model to reason about the task, plan its approach, and execute the
+      # plan to generate a high-quality response.
       class GoogleCloudAiplatformV1GenerationConfigThinkingConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Indicates whether to include thoughts in the response. If true,
-        # thoughts are returned only when available.
+        # Optional. If true, the model will include its thoughts in the response. "
+        # Thoughts" are the intermediate steps the model takes to arrive at the final
+        # response. They can provide insights into the model's reasoning process and
+        # help with debugging. If this is true, thoughts are returned only when
+        # available.
         # Corresponds to the JSON property `includeThoughts`
         # @return [Boolean]
         attr_accessor :include_thoughts
         alias_method :include_thoughts?, :include_thoughts
       
-        # Optional. Indicates the thinking budget in tokens.
+        # Optional. The token budget for the model's thinking process. The model will
+        # make a best effort to stay within this budget. This can be used to control the
+        # trade-off between response quality and latency.
         # Corresponds to the JSON property `thinkingBudget`
         # @return [Fixnum]
         attr_accessor :thinking_budget
@@ -15349,21 +15597,30 @@ module Google
         end
       end
       
-      # Grounding chunk.
+      # A piece of evidence that supports a claim made by the model. This is used to
+      # show a citation for a claim made by the model. When grounding is enabled, the
+      # model returns a `GroundingChunk` that contains a reference to the source of
+      # the information.
       class GoogleCloudAiplatformV1GroundingChunk
         include Google::Apis::Core::Hashable
       
-        # Chunk from Google Maps.
+        # A `Maps` chunk is a piece of evidence that comes from Google Maps. It contains
+        # information about a place, such as its name, address, and reviews. This is
+        # used to provide the user with rich, location-based information.
         # Corresponds to the JSON property `maps`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunkMaps]
         attr_accessor :maps
       
-        # Chunk from context retrieved by the retrieval tools.
+        # Context retrieved from a data source to ground the model's response. This is
+        # used when a retrieval tool fetches information from a user-provided corpus or
+        # a public dataset.
         # Corresponds to the JSON property `retrievedContext`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunkRetrievedContext]
         attr_accessor :retrieved_context
       
-        # Chunk from the web.
+        # A `Web` chunk is a piece of evidence that comes from a web page. It contains
+        # the URI of the web page, the title of the page, and the domain of the page.
+        # This is used to provide the user with a link to the source of the information.
         # Corresponds to the JSON property `web`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunkWeb]
         attr_accessor :web
@@ -15380,32 +15637,36 @@ module Google
         end
       end
       
-      # Chunk from Google Maps.
+      # A `Maps` chunk is a piece of evidence that comes from Google Maps. It contains
+      # information about a place, such as its name, address, and reviews. This is
+      # used to provide the user with rich, location-based information.
       class GoogleCloudAiplatformV1GroundingChunkMaps
         include Google::Apis::Core::Hashable
       
-        # Sources used to generate the place answer.
+        # The sources that were used to generate the place answer. This includes review
+        # snippets and photos that were used to generate the answer, as well as URIs to
+        # flag content.
         # Corresponds to the JSON property `placeAnswerSources`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSources]
         attr_accessor :place_answer_sources
       
-        # This Place's resource name, in `places/`place_id`` format. Can be used to look
-        # up the Place.
+        # This Place's resource name, in `places/`place_id`` format. This can be used to
+        # look up the place in the Google Maps API.
         # Corresponds to the JSON property `placeId`
         # @return [String]
         attr_accessor :place_id
       
-        # Text of the place answer.
+        # The text of the place answer.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
       
-        # Title of the place.
+        # The title of the place.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
       
-        # URI reference of the place.
+        # The URI of the place.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -15424,11 +15685,13 @@ module Google
         end
       end
       
-      # Sources used to generate the place answer.
+      # The sources that were used to generate the place answer. This includes review
+      # snippets and photos that were used to generate the answer, as well as URIs to
+      # flag content.
       class GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSources
         include Google::Apis::Core::Hashable
       
-        # Snippets of reviews that are used to generate the answer.
+        # Snippets of reviews that were used to generate the answer.
         # Corresponds to the JSON property `reviewSnippets`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet>]
         attr_accessor :review_snippets
@@ -15443,7 +15706,7 @@ module Google
         end
       end
       
-      # Encapsulates a review snippet.
+      # A review snippet that is used to generate the answer.
       class GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet
         include Google::Apis::Core::Hashable
       
@@ -15452,12 +15715,12 @@ module Google
         # @return [String]
         attr_accessor :google_maps_uri
       
-        # Id of the review referencing the place.
+        # The ID of the review that is being referenced.
         # Corresponds to the JSON property `reviewId`
         # @return [String]
         attr_accessor :review_id
       
-        # Title of the review.
+        # The title of the review.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -15474,12 +15737,16 @@ module Google
         end
       end
       
-      # Chunk from context retrieved by the retrieval tools.
+      # Context retrieved from a data source to ground the model's response. This is
+      # used when a retrieval tool fetches information from a user-provided corpus or
+      # a public dataset.
       class GoogleCloudAiplatformV1GroundingChunkRetrievedContext
         include Google::Apis::Core::Hashable
       
-        # Output only. The full document name for the referenced Vertex AI Search
-        # document.
+        # Output only. The full resource name of the referenced Vertex AI Search
+        # document. This is used to identify the specific document that was retrieved.
+        # The format is `projects/`project`/locations/`location`/collections/`collection`
+        # /dataStores/`data_store`/branches/`branch`/documents/`document``.
         # Corresponds to the JSON property `documentName`
         # @return [String]
         attr_accessor :document_name
@@ -15490,17 +15757,17 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagChunk]
         attr_accessor :rag_chunk
       
-        # Text of the attribution.
+        # The content of the retrieved data source.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
       
-        # Title of the attribution.
+        # The title of the retrieved data source.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
       
-        # URI reference of the attribution.
+        # The URI of the retrieved data source.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -15519,21 +15786,24 @@ module Google
         end
       end
       
-      # Chunk from the web.
+      # A `Web` chunk is a piece of evidence that comes from a web page. It contains
+      # the URI of the web page, the title of the page, and the domain of the page.
+      # This is used to provide the user with a link to the source of the information.
       class GoogleCloudAiplatformV1GroundingChunkWeb
         include Google::Apis::Core::Hashable
       
-        # Domain of the (original) URI.
+        # The domain of the web page that contains the evidence. This can be used to
+        # filter out low-quality sources.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
       
-        # Title of the chunk.
+        # The title of the web page that contains the evidence.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
       
-        # URI reference of the chunk.
+        # The URI of the web page that contains the evidence.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -15550,44 +15820,56 @@ module Google
         end
       end
       
-      # Metadata returned to client when grounding is enabled.
+      # Information about the sources that support the content of a response. When
+      # grounding is enabled, the model returns citations for claims in the response.
+      # This object contains the retrieved sources.
       class GoogleCloudAiplatformV1GroundingMetadata
         include Google::Apis::Core::Hashable
       
-        # Optional. Output only. Resource name of the Google Maps widget context token
-        # to be used with the PlacesContextElement widget to render contextual data.
-        # This is populated only for Google Maps grounding.
+        # Optional. Output only. A token that can be used to render a Google Maps widget
+        # with the contextual data. This field is populated only when the grounding
+        # source is Google Maps.
         # Corresponds to the JSON property `googleMapsWidgetContextToken`
         # @return [String]
         attr_accessor :google_maps_widget_context_token
       
-        # List of supporting references retrieved from specified grounding source.
+        # A list of supporting references retrieved from the grounding source. This
+        # field is populated when the grounding source is Google Search, Vertex AI
+        # Search, or Google Maps.
         # Corresponds to the JSON property `groundingChunks`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunk>]
         attr_accessor :grounding_chunks
       
-        # Optional. List of grounding support.
+        # Optional. A list of grounding supports that connect the generated content to
+        # the grounding chunks. This field is populated when the grounding source is
+        # Google Search or Vertex AI Search.
         # Corresponds to the JSON property `groundingSupports`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingSupport>]
         attr_accessor :grounding_supports
       
-        # Metadata related to retrieval in the grounding flow.
+        # Metadata related to the retrieval grounding source. This is part of the `
+        # GroundingMetadata` returned when grounding is enabled.
         # Corresponds to the JSON property `retrievalMetadata`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RetrievalMetadata]
         attr_accessor :retrieval_metadata
       
-        # Google search entry point.
+        # An entry point for displaying Google Search results. A `SearchEntryPoint` is
+        # populated when the grounding source for a model's response is Google Search.
+        # It provides information that you can use to display the search results in your
+        # application.
         # Corresponds to the JSON property `searchEntryPoint`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SearchEntryPoint]
         attr_accessor :search_entry_point
       
-        # Optional. Output only. List of source flagging uris. This is currently
-        # populated only for Google Maps grounding.
+        # Optional. Output only. A list of URIs that can be used to flag a place or
+        # review for inappropriate content. This field is populated only when the
+        # grounding source is Google Maps.
         # Corresponds to the JSON property `sourceFlaggingUris`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingMetadataSourceFlaggingUri>]
         attr_accessor :source_flagging_uris
       
-        # Optional. Web search queries for the following-up web search.
+        # Optional. The web search queries that were used to generate the content. This
+        # field is populated only when the grounding source is Google Search.
         # Corresponds to the JSON property `webSearchQueries`
         # @return [Array<String>]
         attr_accessor :web_search_queries
@@ -15608,17 +15890,17 @@ module Google
         end
       end
       
-      # Source content flagging uri for a place or review. This is currently populated
-      # only for Google Maps grounding.
+      # A URI that can be used to flag a place or review for inappropriate content.
+      # This is populated only when the grounding source is Google Maps.
       class GoogleCloudAiplatformV1GroundingMetadataSourceFlaggingUri
         include Google::Apis::Core::Hashable
       
-        # A link where users can flag a problem with the source (place or review).
+        # The URI that can be used to flag the content.
         # Corresponds to the JSON property `flagContentUri`
         # @return [String]
         attr_accessor :flag_content_uri
       
-        # Id of the place or review.
+        # The ID of the place or review.
         # Corresponds to the JSON property `sourceId`
         # @return [String]
         attr_accessor :source_id
@@ -15634,27 +15916,30 @@ module Google
         end
       end
       
-      # Grounding support.
+      # A collection of supporting references for a segment of the model's response.
       class GoogleCloudAiplatformV1GroundingSupport
         include Google::Apis::Core::Hashable
       
-        # Confidence score of the support references. Ranges from 0 to 1. 1 is the most
-        # confident. For Gemini 2.0 and before, this list must have the same size as the
-        # grounding_chunk_indices. For Gemini 2.5 and after, this list will be empty and
+        # The confidence scores for the support references. This list is parallel to the
+        # `grounding_chunk_indices` list. A score is a value between 0.0 and 1.0, with a
+        # higher score indicating a higher confidence that the reference supports the
+        # claim. For Gemini 2.0 and before, this list has the same size as `
+        # grounding_chunk_indices`. For Gemini 2.5 and later, this list is empty and
         # should be ignored.
         # Corresponds to the JSON property `confidenceScores`
         # @return [Array<Float>]
         attr_accessor :confidence_scores
       
-        # A list of indices (into 'grounding_chunk') specifying the citations associated
-        # with the claim. For instance [1,3,4] means that grounding_chunk[1],
-        # grounding_chunk[3], grounding_chunk[4] are the retrieved content attributed to
-        # the claim.
+        # A list of indices into the `grounding_chunks` field of the `GroundingMetadata`
+        # message. These indices specify which grounding chunks support the claim made
+        # in the content segment. For example, if this field has the values `[1, 3]`, it
+        # means that `grounding_chunks[1]` and `grounding_chunks[3]` are the sources for
+        # the claim in the content segment.
         # Corresponds to the JSON property `groundingChunkIndices`
         # @return [Array<Fixnum>]
         attr_accessor :grounding_chunk_indices
       
-        # Segment of the content.
+        # A segment of the content.
         # Corresponds to the JSON property `segment`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Segment]
         attr_accessor :segment
@@ -15833,7 +16118,9 @@ module Google
         end
       end
       
-      # Config for image generation features.
+      # Configuration for image generation. This message allows you to control various
+      # aspects of image generation, such as the output format, aspect ratio, and
+      # whether the model can generate images of people.
       class GoogleCloudAiplatformV1ImageConfig
         include Google::Apis::Core::Hashable
       
@@ -18748,17 +19035,24 @@ module Google
         end
       end
       
-      # Logprobs Result
+      # The log probabilities of the tokens generated by the model. This is useful for
+      # understanding the model's confidence in its predictions and for debugging. For
+      # example, you can use log probabilities to identify when the model is making a
+      # less confident prediction or to explore alternative responses that the model
+      # considered. A low log probability can also indicate that the model is "
+      # hallucinating" or generating factually incorrect information.
       class GoogleCloudAiplatformV1LogprobsResult
         include Google::Apis::Core::Hashable
       
-        # Length = total number of decoding steps. The chosen candidates may or may not
-        # be in top_candidates.
+        # A list of the chosen candidate tokens at each decoding step. The length of
+        # this list is equal to the total number of decoding steps. Note that the chosen
+        # candidate might not be in `top_candidates`.
         # Corresponds to the JSON property `chosenCandidates`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1LogprobsResultCandidate>]
         attr_accessor :chosen_candidates
       
-        # Length = total number of decoding steps.
+        # A list of the top candidate tokens at each decoding step. The length of this
+        # list is equal to the total number of decoding steps.
         # Corresponds to the JSON property `topCandidates`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1LogprobsResultTopCandidates>]
         attr_accessor :top_candidates
@@ -18774,21 +19068,27 @@ module Google
         end
       end
       
-      # Candidate for the logprobs token and score.
+      # A single token and its associated log probability.
       class GoogleCloudAiplatformV1LogprobsResultCandidate
         include Google::Apis::Core::Hashable
       
-        # The candidate's log probability.
+        # The log probability of this token. A higher value indicates that the model was
+        # more confident in this token. The log probability can be used to assess the
+        # relative likelihood of different tokens and to identify when the model is
+        # uncertain.
         # Corresponds to the JSON property `logProbability`
         # @return [Float]
         attr_accessor :log_probability
       
-        # The candidate's token string value.
+        # The token's string representation.
         # Corresponds to the JSON property `token`
         # @return [String]
         attr_accessor :token
       
-        # The candidate's token id value.
+        # The token's numerical ID. While the `token` field provides the string
+        # representation of the token, the `token_id` is the numerical representation
+        # that the model uses internally. This can be useful for developers who want to
+        # build custom logic based on the model's vocabulary.
         # Corresponds to the JSON property `tokenId`
         # @return [Fixnum]
         attr_accessor :token_id
@@ -18805,11 +19105,12 @@ module Google
         end
       end
       
-      # Candidates with top log probabilities at each decoding step.
+      # A list of the top candidate tokens and their log probabilities at each
+      # decoding step. This can be used to see what other tokens the model considered.
       class GoogleCloudAiplatformV1LogprobsResultTopCandidates
         include Google::Apis::Core::Hashable
       
-        # Sorted by log probability in descending order.
+        # The list of candidate tokens, sorted by log probability in descending order.
         # Corresponds to the JSON property `candidates`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1LogprobsResultCandidate>]
         attr_accessor :candidates
@@ -19212,6 +19513,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BleuSpec]
         attr_accessor :bleu_spec
       
+        # Specificies a metric that is populated by evaluating user-defined Python code.
+        # Corresponds to the JSON property `customCodeExecutionSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CustomCodeExecutionSpec]
+        attr_accessor :custom_code_execution_spec
+      
         # Spec for exact match metric - returns 1 if prediction and reference exactly
         # matches, otherwise 0.
         # Corresponds to the JSON property `exactMatchSpec`
@@ -19252,6 +19558,7 @@ module Google
         def update!(**args)
           @aggregation_metrics = args[:aggregation_metrics] if args.key?(:aggregation_metrics)
           @bleu_spec = args[:bleu_spec] if args.key?(:bleu_spec)
+          @custom_code_execution_spec = args[:custom_code_execution_spec] if args.key?(:custom_code_execution_spec)
           @exact_match_spec = args[:exact_match_spec] if args.key?(:exact_match_spec)
           @llm_based_metric_spec = args[:llm_based_metric_spec] if args.key?(:llm_based_metric_spec)
           @pairwise_metric_spec = args[:pairwise_metric_spec] if args.key?(:pairwise_metric_spec)
@@ -19822,16 +20129,21 @@ module Google
         end
       end
       
-      # Represents token counting info for a single modality.
+      # Represents a breakdown of token usage by modality. This message is used in
+      # CountTokensResponse and GenerateContentResponse.UsageMetadata to provide a
+      # detailed view of how many tokens are used by each modality (e.g., text, image,
+      # video) in a request. This is particularly useful for multimodal models,
+      # allowing you to track and manage token consumption for billing and quota
+      # purposes.
       class GoogleCloudAiplatformV1ModalityTokenCount
         include Google::Apis::Core::Hashable
       
-        # The modality associated with this token count.
+        # The modality that this token count applies to.
         # Corresponds to the JSON property `modality`
         # @return [String]
         attr_accessor :modality
       
-        # Number of tokens.
+        # The number of tokens counted for this modality.
         # Corresponds to the JSON property `tokenCount`
         # @return [Fixnum]
         attr_accessor :token_count
@@ -20144,17 +20456,29 @@ module Google
         end
       end
       
-      # Configuration for Model Armor integrations of prompt and responses.
+      # Configuration for Model Armor. Model Armor is a Google Cloud service that
+      # provides safety and security filtering for prompts and responses. It helps
+      # protect your AI applications from risks such as harmful content, sensitive
+      # data leakage, and prompt injection attacks.
       class GoogleCloudAiplatformV1ModelArmorConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The name of the Model Armor template to use for prompt sanitization.
+        # Optional. The resource name of the Model Armor template to use for prompt
+        # screening. A Model Armor template is a set of customized filters and
+        # thresholds that define how Model Armor screens content. If specified, Model
+        # Armor will use this template to check the user's prompt for safety and
+        # security risks before it is sent to the model. The name must be in the format `
+        # projects/`project`/locations/`location`/templates/`template``.
         # Corresponds to the JSON property `promptTemplateName`
         # @return [String]
         attr_accessor :prompt_template_name
       
-        # Optional. The name of the Model Armor template to use for response
-        # sanitization.
+        # Optional. The resource name of the Model Armor template to use for response
+        # screening. A Model Armor template is a set of customized filters and
+        # thresholds that define how Model Armor screens content. If specified, Model
+        # Armor will use this template to check the model's response for safety and
+        # security risks before it is returned to the user. The name must be in the
+        # format `projects/`project`/locations/`location`/templates/`template``.
         # Corresponds to the JSON property `responseTemplateName`
         # @return [String]
         attr_accessor :response_template_name
@@ -21695,8 +22019,7 @@ module Google
         end
       end
       
-      # Configuration for a multi-speaker text-to-speech setup. Enables the use of up
-      # to two distinct voices in a single synthesis request.
+      # Configuration for a multi-speaker text-to-speech request.
       class GoogleCloudAiplatformV1MultiSpeakerVoiceConfig
         include Google::Apis::Core::Hashable
       
@@ -23981,11 +24304,11 @@ module Google
         end
       end
       
-      # A datatype containing media that is part of a multi-part `Content` message. A `
+      # A datatype containing media that is part of a multi-part Content message. A `
       # Part` consists of data which has an associated datatype. A `Part` can only
-      # contain one of the accepted types in `Part.data`. A `Part` must have a fixed
-      # IANA MIME type identifying the type and subtype of the media if `inline_data`
-      # or `file_data` field is filled with raw bytes.
+      # contain one of the accepted types in `Part.data`. For media types that are not
+      # text, `Part` must have a fixed IANA MIME type identifying the type and subtype
+      # of the media if `inline_data` or `file_data` field is filled with raw bytes.
       class GoogleCloudAiplatformV1Part
         include Google::Apis::Core::Hashable
       
@@ -24004,7 +24327,9 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ExecutableCode]
         attr_accessor :executable_code
       
-        # URI based data.
+        # URI-based data. A FileData message contains a URI pointing to data of a
+        # specific media type. It is used to represent images, audio, and video stored
+        # in Google Cloud Storage.
         # Corresponds to the JSON property `fileData`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FileData]
         attr_accessor :file_data
@@ -24024,17 +24349,19 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionResponse]
         attr_accessor :function_response
       
-        # Content blob.
+        # A content blob. A Blob contains data of a specific media type. It is used to
+        # represent images, audio, and video.
         # Corresponds to the JSON property `inlineData`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Blob]
         attr_accessor :inline_data
       
-        # Optional. Text part (can be code).
+        # Optional. The text content of the part.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
       
-        # Optional. Indicates if the part is thought from the model.
+        # Optional. Indicates whether the `part` represents the model's thought process
+        # or reasoning.
         # Corresponds to the JSON property `thought`
         # @return [Boolean]
         attr_accessor :thought
@@ -24047,7 +24374,8 @@ module Google
         # @return [String]
         attr_accessor :thought_signature
       
-        # Metadata describes the input video content.
+        # Provides metadata for a video, including the start and end offsets for
+        # clipping and the frame rate.
         # Corresponds to the JSON property `videoMetadata`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VideoMetadata]
         attr_accessor :video_metadata
@@ -25047,11 +25375,11 @@ module Google
         end
       end
       
-      # The configuration for the prebuilt speaker to use.
+      # Configuration for a prebuilt voice.
       class GoogleCloudAiplatformV1PrebuiltVoiceConfig
         include Google::Apis::Core::Hashable
       
-        # The name of the preset voice to use.
+        # The name of the prebuilt voice to use.
         # Corresponds to the JSON property `voiceName`
         # @return [String]
         attr_accessor :voice_name
@@ -25327,6 +25655,161 @@ module Google
           @instance_schema_uri = args[:instance_schema_uri] if args.key?(:instance_schema_uri)
           @parameters_schema_uri = args[:parameters_schema_uri] if args.key?(:parameters_schema_uri)
           @prediction_schema_uri = args[:prediction_schema_uri] if args.key?(:prediction_schema_uri)
+        end
+      end
+      
+      # Statistics computed for datasets used for preference optimization.
+      class GoogleCloudAiplatformV1PreferenceOptimizationDataStats
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A partial sample of the indices (starting from 1) of the dropped
+        # examples.
+        # Corresponds to the JSON property `droppedExampleIndices`
+        # @return [Array<Fixnum>]
+        attr_accessor :dropped_example_indices
+      
+        # Output only. For each index in `dropped_example_indices`, the user-facing
+        # reason why the example was dropped.
+        # Corresponds to the JSON property `droppedExampleReasons`
+        # @return [Array<String>]
+        attr_accessor :dropped_example_reasons
+      
+        # Distribution computed over a tuning dataset.
+        # Corresponds to the JSON property `scoreVariancePerExampleDistribution`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetDistribution]
+        attr_accessor :score_variance_per_example_distribution
+      
+        # Distribution computed over a tuning dataset.
+        # Corresponds to the JSON property `scoresDistribution`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetDistribution]
+        attr_accessor :scores_distribution
+      
+        # Output only. Number of billable tokens in the tuning dataset.
+        # Corresponds to the JSON property `totalBillableTokenCount`
+        # @return [Fixnum]
+        attr_accessor :total_billable_token_count
+      
+        # Output only. Number of examples in the tuning dataset.
+        # Corresponds to the JSON property `tuningDatasetExampleCount`
+        # @return [Fixnum]
+        attr_accessor :tuning_dataset_example_count
+      
+        # Output only. Number of tuning steps for this Tuning Job.
+        # Corresponds to the JSON property `tuningStepCount`
+        # @return [Fixnum]
+        attr_accessor :tuning_step_count
+      
+        # Output only. Sample user examples in the training dataset.
+        # Corresponds to the JSON property `userDatasetExamples`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GeminiPreferenceExample>]
+        attr_accessor :user_dataset_examples
+      
+        # Distribution computed over a tuning dataset.
+        # Corresponds to the JSON property `userInputTokenDistribution`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetDistribution]
+        attr_accessor :user_input_token_distribution
+      
+        # Distribution computed over a tuning dataset.
+        # Corresponds to the JSON property `userOutputTokenDistribution`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1DatasetDistribution]
+        attr_accessor :user_output_token_distribution
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dropped_example_indices = args[:dropped_example_indices] if args.key?(:dropped_example_indices)
+          @dropped_example_reasons = args[:dropped_example_reasons] if args.key?(:dropped_example_reasons)
+          @score_variance_per_example_distribution = args[:score_variance_per_example_distribution] if args.key?(:score_variance_per_example_distribution)
+          @scores_distribution = args[:scores_distribution] if args.key?(:scores_distribution)
+          @total_billable_token_count = args[:total_billable_token_count] if args.key?(:total_billable_token_count)
+          @tuning_dataset_example_count = args[:tuning_dataset_example_count] if args.key?(:tuning_dataset_example_count)
+          @tuning_step_count = args[:tuning_step_count] if args.key?(:tuning_step_count)
+          @user_dataset_examples = args[:user_dataset_examples] if args.key?(:user_dataset_examples)
+          @user_input_token_distribution = args[:user_input_token_distribution] if args.key?(:user_input_token_distribution)
+          @user_output_token_distribution = args[:user_output_token_distribution] if args.key?(:user_output_token_distribution)
+        end
+      end
+      
+      # Hyperparameters for Preference Optimization.
+      class GoogleCloudAiplatformV1PreferenceOptimizationHyperParameters
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Adapter size for preference optimization.
+        # Corresponds to the JSON property `adapterSize`
+        # @return [String]
+        attr_accessor :adapter_size
+      
+        # Optional. Weight for KL Divergence regularization.
+        # Corresponds to the JSON property `beta`
+        # @return [Float]
+        attr_accessor :beta
+      
+        # Optional. Number of complete passes the model makes over the entire training
+        # dataset during training.
+        # Corresponds to the JSON property `epochCount`
+        # @return [Fixnum]
+        attr_accessor :epoch_count
+      
+        # Optional. Multiplier for adjusting the default learning rate.
+        # Corresponds to the JSON property `learningRateMultiplier`
+        # @return [Float]
+        attr_accessor :learning_rate_multiplier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adapter_size = args[:adapter_size] if args.key?(:adapter_size)
+          @beta = args[:beta] if args.key?(:beta)
+          @epoch_count = args[:epoch_count] if args.key?(:epoch_count)
+          @learning_rate_multiplier = args[:learning_rate_multiplier] if args.key?(:learning_rate_multiplier)
+        end
+      end
+      
+      # Tuning Spec for Preference Optimization.
+      class GoogleCloudAiplatformV1PreferenceOptimizationSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, disable intermediate checkpoints for Preference
+        # Optimization and only the last checkpoint will be exported. Otherwise, enable
+        # intermediate checkpoints for Preference Optimization. Default is false.
+        # Corresponds to the JSON property `exportLastCheckpointOnly`
+        # @return [Boolean]
+        attr_accessor :export_last_checkpoint_only
+        alias_method :export_last_checkpoint_only?, :export_last_checkpoint_only
+      
+        # Hyperparameters for Preference Optimization.
+        # Corresponds to the JSON property `hyperParameters`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PreferenceOptimizationHyperParameters]
+        attr_accessor :hyper_parameters
+      
+        # Required. Cloud Storage path to file containing training dataset for
+        # preference optimization tuning. The dataset must be formatted as a JSONL file.
+        # Corresponds to the JSON property `trainingDatasetUri`
+        # @return [String]
+        attr_accessor :training_dataset_uri
+      
+        # Optional. Cloud Storage path to file containing validation dataset for
+        # preference optimization tuning. The dataset must be formatted as a JSONL file.
+        # Corresponds to the JSON property `validationDatasetUri`
+        # @return [String]
+        attr_accessor :validation_dataset_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @export_last_checkpoint_only = args[:export_last_checkpoint_only] if args.key?(:export_last_checkpoint_only)
+          @hyper_parameters = args[:hyper_parameters] if args.key?(:hyper_parameters)
+          @training_dataset_uri = args[:training_dataset_uri] if args.key?(:training_dataset_uri)
+          @validation_dataset_uri = args[:validation_dataset_uri] if args.key?(:validation_dataset_uri)
         end
       end
       
@@ -27254,6 +27737,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Timestamp when this RagCorpus was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -27281,6 +27776,8 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vector_db_config = args[:vector_db_config] if args.key?(:vector_db_config)
           @vertex_ai_search_config = args[:vertex_ai_search_config] if args.key?(:vertex_ai_search_config)
@@ -28701,8 +29198,8 @@ module Google
         # @return [String]
         attr_accessor :pickle_object_gcs_uri
       
-        # Optional. The Python version. Currently support 3.8, 3.9, 3.10, 3.11. If not
-        # specified, default value is 3.10.
+        # Optional. The Python version. Supported values are 3.9, 3.10, 3.11, 3.12, 3.13.
+        # If not specified, the default value is 3.10.
         # Corresponds to the JSON property `pythonVersion`
         # @return [String]
         attr_accessor :python_version
@@ -29272,15 +29769,17 @@ module Google
         end
       end
       
-      # Metadata related to retrieval in the grounding flow.
+      # Metadata related to the retrieval grounding source. This is part of the `
+      # GroundingMetadata` returned when grounding is enabled.
       class GoogleCloudAiplatformV1RetrievalMetadata
         include Google::Apis::Core::Hashable
       
-        # Optional. Score indicating how likely information from Google Search could
-        # help answer the prompt. The score is in the range `[0, 1]`, where 0 is the
-        # least likely and 1 is the most likely. This score is only populated when
-        # Google Search grounding and dynamic retrieval is enabled. It will be compared
-        # to the threshold to determine whether to trigger Google Search.
+        # Optional. A score indicating how likely it is that a Google Search query could
+        # help answer the prompt. The score is in the range of `[0, 1]`. A score of 1
+        # means the model is confident that a search will be helpful, and 0 means it is
+        # not. This score is populated only when Google Search grounding and dynamic
+        # retrieval are enabled. The score is used to determine whether to trigger a
+        # search.
         # Corresponds to the JSON property `googleSearchDynamicRetrievalScore`
         # @return [Float]
         attr_accessor :google_search_dynamic_retrieval_score
@@ -29866,18 +30365,18 @@ module Google
         end
       end
       
-      # Safety rating corresponding to the generated content.
+      # A safety rating for a piece of content. The safety rating contains the harm
+      # category and the harm probability level.
       class GoogleCloudAiplatformV1SafetyRating
         include Google::Apis::Core::Hashable
       
-        # Output only. Indicates whether the content was filtered out because of this
-        # rating.
+        # Output only. Indicates whether the content was blocked because of this rating.
         # Corresponds to the JSON property `blocked`
         # @return [Boolean]
         attr_accessor :blocked
         alias_method :blocked?, :blocked
       
-        # Output only. Harm category.
+        # Output only. The harm category of this rating.
         # Corresponds to the JSON property `category`
         # @return [String]
         attr_accessor :category
@@ -29889,22 +30388,22 @@ module Google
         # @return [String]
         attr_accessor :overwritten_threshold
       
-        # Output only. Harm probability levels in the content.
+        # Output only. The probability of harm for this category.
         # Corresponds to the JSON property `probability`
         # @return [String]
         attr_accessor :probability
       
-        # Output only. Harm probability score.
+        # Output only. The probability score of harm for this category.
         # Corresponds to the JSON property `probabilityScore`
         # @return [Float]
         attr_accessor :probability_score
       
-        # Output only. Harm severity levels in the content.
+        # Output only. The severity of harm for this category.
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
       
-        # Output only. Harm severity score.
+        # Output only. The severity score of harm for this category.
         # Corresponds to the JSON property `severityScore`
         # @return [Float]
         attr_accessor :severity_score
@@ -29956,22 +30455,24 @@ module Google
         end
       end
       
-      # Safety settings.
+      # A safety setting that affects the safety-blocking behavior. A SafetySetting
+      # consists of a harm category and a threshold for that category.
       class GoogleCloudAiplatformV1SafetySetting
         include Google::Apis::Core::Hashable
       
-        # Required. Harm category.
+        # Required. The harm category to be blocked.
         # Corresponds to the JSON property `category`
         # @return [String]
         attr_accessor :category
       
-        # Optional. Specify if the threshold is used for probability or severity score.
-        # If not specified, the threshold is used for probability score.
+        # Optional. The method for blocking content. If not specified, the default
+        # behavior is to use the probability score.
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
       
-        # Required. The harm block threshold.
+        # Required. The threshold for blocking content. If the harm probability exceeds
+        # this threshold, the content will be blocked.
         # Corresponds to the JSON property `threshold`
         # @return [String]
         attr_accessor :threshold
@@ -33401,7 +33902,9 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content>]
         attr_accessor :contents
       
-        # Generation config.
+        # Configuration for content generation. This message contains all the parameters
+        # that control how the model generates content. It allows you to influence the
+        # randomness, length, and structure of the output.
         # Corresponds to the JSON property `generationConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerationConfig]
         attr_accessor :generation_config
@@ -33417,10 +33920,9 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SafetySetting>]
         attr_accessor :safety_settings
       
-        # The base structured datatype containing multi-part content of a message. A `
-        # Content` includes a `role` field designating the producer of the `Content` and
-        # a `parts` field containing multi-part data that contains the content of the
-        # message turn.
+        # The structured data content of a message. A Content message contains a `role`
+        # field, which indicates the producer of the content, and a `parts` field, which
+        # contains the multi-part data of the message.
         # Corresponds to the JSON property `systemInstruction`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
         attr_accessor :system_instruction
@@ -33502,10 +34004,9 @@ module Google
       class GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt
         include Google::Apis::Core::Hashable
       
-        # The base structured datatype containing multi-part content of a message. A `
-        # Content` includes a `role` field designating the producer of the `Content` and
-        # a `parts` field containing multi-part data that contains the content of the
-        # message turn.
+        # The structured data content of a message. A Content message contains a `role`
+        # field, which indicates the producer of the content, and a `parts` field, which
+        # contains the multi-part data of the message.
         # Corresponds to the JSON property `context`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
         attr_accessor :context
@@ -37275,17 +37776,23 @@ module Google
         end
       end
       
-      # Google search entry point.
+      # An entry point for displaying Google Search results. A `SearchEntryPoint` is
+      # populated when the grounding source for a model's response is Google Search.
+      # It provides information that you can use to display the search results in your
+      # application.
       class GoogleCloudAiplatformV1SearchEntryPoint
         include Google::Apis::Core::Hashable
       
-        # Optional. Web content snippet that can be embedded in a web page or an app
-        # webview.
+        # Optional. An HTML snippet that can be embedded in a web page or an application'
+        # s webview. This snippet displays a search result, including the title, URL,
+        # and a brief description of the search result.
         # Corresponds to the JSON property `renderedContent`
         # @return [String]
         attr_accessor :rendered_content
       
-        # Optional. Base64 encoded JSON representing array of tuple.
+        # Optional. A base64-encoded JSON object that contains a list of search queries
+        # and their corresponding search URLs. This information can be used to build a
+        # custom search UI.
         # Corresponds to the JSON property `sdkBlob`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -37616,28 +38123,31 @@ module Google
         end
       end
       
-      # Segment of the content.
+      # A segment of the content.
       class GoogleCloudAiplatformV1Segment
         include Google::Apis::Core::Hashable
       
-        # Output only. End index in the given Part, measured in bytes. Offset from the
-        # start of the Part, exclusive, starting at zero.
+        # Output only. The end index of the segment in the `Part`, measured in bytes.
+        # This marks the end of the segment and is exclusive, meaning the segment
+        # includes content up to, but not including, the byte at this index.
         # Corresponds to the JSON property `endIndex`
         # @return [Fixnum]
         attr_accessor :end_index
       
-        # Output only. The index of a Part object within its parent Content object.
+        # Output only. The index of the `Part` object that this segment belongs to. This
+        # is useful for associating the segment with a specific part of the content.
         # Corresponds to the JSON property `partIndex`
         # @return [Fixnum]
         attr_accessor :part_index
       
-        # Output only. Start index in the given Part, measured in bytes. Offset from the
-        # start of the Part, inclusive, starting at zero.
+        # Output only. The start index of the segment in the `Part`, measured in bytes.
+        # This marks the beginning of the segment and is inclusive, meaning the byte at
+        # this index is the first byte of the segment.
         # Corresponds to the JSON property `startIndex`
         # @return [Fixnum]
         attr_accessor :start_index
       
-        # Output only. The text corresponding to the segment from the response.
+        # Output only. The text of the segment.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -37927,7 +38437,7 @@ module Google
         end
       end
       
-      # Configuration for a single speaker in a multi speaker setup.
+      # Configuration for a single speaker in a multi-speaker setup.
       class GoogleCloudAiplatformV1SpeakerVoiceConfig
         include Google::Apis::Core::Hashable
       
@@ -37937,7 +38447,7 @@ module Google
         # @return [String]
         attr_accessor :speaker
       
-        # The configuration for the voice to use.
+        # Configuration for a voice.
         # Corresponds to the JSON property `voiceConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VoiceConfig]
         attr_accessor :voice_config
@@ -38084,22 +38594,21 @@ module Google
         end
       end
       
-      # The speech generation config.
+      # Configuration for speech generation.
       class GoogleCloudAiplatformV1SpeechConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Language code (ISO 639. e.g. en-US) for the speech synthesization.
+        # Optional. The language code (ISO 639-1) for the speech synthesis.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
       
-        # Configuration for a multi-speaker text-to-speech setup. Enables the use of up
-        # to two distinct voices in a single synthesis request.
+        # Configuration for a multi-speaker text-to-speech request.
         # Corresponds to the JSON property `multiSpeakerVoiceConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MultiSpeakerVoiceConfig]
         attr_accessor :multi_speaker_voice_config
       
-        # The configuration for the voice to use.
+        # Configuration for a voice.
         # Corresponds to the JSON property `voiceConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VoiceConfig]
         attr_accessor :voice_config
@@ -39975,10 +40484,9 @@ module Google
       class GoogleCloudAiplatformV1SyntheticField
         include Google::Apis::Core::Hashable
       
-        # The base structured datatype containing multi-part content of a message. A `
-        # Content` includes a `role` field designating the producer of the `Content` and
-        # a `parts` field containing multi-part data that contains the content of the
-        # message turn.
+        # The structured data content of a message. A Content message contains a `role`
+        # field, which indicates the producer of the content, and a `parts` field, which
+        # contains the multi-part data of the message.
         # Corresponds to the JSON property `content`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
         attr_accessor :content
@@ -42457,6 +42965,11 @@ module Google
       class GoogleCloudAiplatformV1TuningDataStats
         include Google::Apis::Core::Hashable
       
+        # Statistics computed for datasets used for preference optimization.
+        # Corresponds to the JSON property `preferenceOptimizationDataStats`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PreferenceOptimizationDataStats]
+        attr_accessor :preference_optimization_data_stats
+      
         # Tuning data statistics for Supervised Tuning.
         # Corresponds to the JSON property `supervisedTuningDataStats`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SupervisedTuningDataStats]
@@ -42468,6 +42981,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @preference_optimization_data_stats = args[:preference_optimization_data_stats] if args.key?(:preference_optimization_data_stats)
           @supervised_tuning_data_stats = args[:supervised_tuning_data_stats] if args.key?(:supervised_tuning_data_stats)
         end
       end
@@ -42542,6 +43056,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PreTunedModel]
         attr_accessor :pre_tuned_model
       
+        # Tuning Spec for Preference Optimization.
+        # Corresponds to the JSON property `preferenceOptimizationSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PreferenceOptimizationSpec]
+        attr_accessor :preference_optimization_spec
+      
         # The service account that the tuningJob workload runs as. If not specified, the
         # Vertex AI Secure Fine-Tuned Service Agent in the project will be used. See
         # https://cloud.google.com/iam/docs/service-agents#vertex-ai-secure-fine-tuning-
@@ -42608,6 +43127,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @pre_tuned_model = args[:pre_tuned_model] if args.key?(:pre_tuned_model)
+          @preference_optimization_spec = args[:preference_optimization_spec] if args.key?(:preference_optimization_spec)
           @service_account = args[:service_account] if args.key?(:service_account)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
@@ -43330,11 +43850,13 @@ module Google
         end
       end
       
-      # Metadata related to url context retrieval tool.
+      # Metadata returned when the model uses the `url_context` tool to get
+      # information from a user-provided URL.
       class GoogleCloudAiplatformV1UrlContextMetadata
         include Google::Apis::Core::Hashable
       
-        # Output only. List of url context.
+        # Output only. A list of URL metadata, with one entry for each URL retrieved by
+        # the tool.
         # Corresponds to the JSON property `urlMetadata`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1UrlMetadata>]
         attr_accessor :url_metadata
@@ -43349,16 +43871,16 @@ module Google
         end
       end
       
-      # Context of the a single url retrieval.
+      # The metadata for a single URL retrieval.
       class GoogleCloudAiplatformV1UrlMetadata
         include Google::Apis::Core::Hashable
       
-        # Retrieved url by the tool.
+        # The URL retrieved by the tool.
         # Corresponds to the JSON property `retrievedUrl`
         # @return [String]
         attr_accessor :retrieved_url
       
-        # Status of the url retrieval.
+        # The status of the URL retrieval.
         # Corresponds to the JSON property `urlRetrievalStatus`
         # @return [String]
         attr_accessor :url_retrieval_status
@@ -43705,7 +44227,8 @@ module Google
         end
       end
       
-      # Metadata describes the input video content.
+      # Provides metadata for a video, including the start and end offsets for
+      # clipping and the frame rate.
       class GoogleCloudAiplatformV1VideoMetadata
         include Google::Apis::Core::Hashable
       
@@ -43715,7 +44238,7 @@ module Google
         attr_accessor :end_offset
       
         # Optional. The frame rate of the video sent to the model. If not specified, the
-        # default value will be 1.0. The fps range is (0.0, 24.0].
+        # default value is 1.0. The valid range is (0.0, 24.0].
         # Corresponds to the JSON property `fps`
         # @return [Float]
         attr_accessor :fps
@@ -43737,11 +44260,11 @@ module Google
         end
       end
       
-      # The configuration for the voice to use.
+      # Configuration for a voice.
       class GoogleCloudAiplatformV1VoiceConfig
         include Google::Apis::Core::Hashable
       
-        # The configuration for the prebuilt speaker to use.
+        # Configuration for a prebuilt voice.
         # Corresponds to the JSON property `prebuiltVoiceConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PrebuiltVoiceConfig]
         attr_accessor :prebuilt_voice_config
