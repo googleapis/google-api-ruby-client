@@ -1362,6 +1362,7 @@ module Google
           property :pre_step, as: 'preStep', class: Google::Apis::OsconfigV1::ExecStep, decorator: Google::Apis::OsconfigV1::ExecStep::Representation
       
           property :reboot_config, as: 'rebootConfig'
+          property :skip_unpatchable_vms, as: 'skipUnpatchableVms'
           property :windows_update, as: 'windowsUpdate', class: Google::Apis::OsconfigV1::WindowsUpdateSettings, decorator: Google::Apis::OsconfigV1::WindowsUpdateSettings::Representation
       
           property :yum, as: 'yum', class: Google::Apis::OsconfigV1::YumSettings, decorator: Google::Apis::OsconfigV1::YumSettings::Representation
@@ -1463,6 +1464,7 @@ module Google
           property :post_patch_step_instance_count, :numeric_string => true, as: 'postPatchStepInstanceCount'
           property :pre_patch_step_instance_count, :numeric_string => true, as: 'prePatchStepInstanceCount'
           property :rebooting_instance_count, :numeric_string => true, as: 'rebootingInstanceCount'
+          property :skipped_instance_count, :numeric_string => true, as: 'skippedInstanceCount'
           property :started_instance_count, :numeric_string => true, as: 'startedInstanceCount'
           property :succeeded_instance_count, :numeric_string => true, as: 'succeededInstanceCount'
           property :succeeded_reboot_required_instance_count, :numeric_string => true, as: 'succeededRebootRequiredInstanceCount'
