@@ -1828,6 +1828,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GlobalVmExtensionPolicyList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GlobalVmExtensionPolicyRolloutOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6172,8 +6190,128 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Rollout
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutPlan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutPlanWave
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutPlanWaveOrchestrationOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutPlanWaveOrchestrationOptionsDelay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutPlanWaveSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutPlanWaveSelectorLocationSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutPlanWaveSelectorResourceHierarchySelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutPlanWaveValidation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutPlanWaveValidationTimeBasedValidationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutPlansListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RolloutPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutRolloutEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutRolloutEntityOrchestratedEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutWaveDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutWaveDetailsOrchestratedWaveDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -12057,6 +12195,40 @@ module Google
         end
       end
       
+      class GlobalVmExtensionPolicyList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::GlobalVmExtensionPolicy, decorator: Google::Apis::ComputeBeta::GlobalVmExtensionPolicy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::GlobalVmExtensionPolicyList::Warning, decorator: Google::Apis::ComputeBeta::GlobalVmExtensionPolicyList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::GlobalVmExtensionPolicyList::Warning::Datum, decorator: Google::Apis::ComputeBeta::GlobalVmExtensionPolicyList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class GlobalVmExtensionPolicyRolloutOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13413,7 +13585,10 @@ module Google
       class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disks, as: 'disks', class: Google::Apis::ComputeBeta::AttachedDisk, decorator: Google::Apis::ComputeBeta::AttachedDisk::Representation
+      
           collection :machine_types, as: 'machineTypes'
+          property :min_cpu_platform, as: 'minCpuPlatform'
           property :rank, as: 'rank'
         end
       end
@@ -16150,7 +16325,10 @@ module Google
       class ManagedInstancePropertiesFromFlexibilityPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disks, as: 'disks', class: Google::Apis::ComputeBeta::AttachedDisk, decorator: Google::Apis::ComputeBeta::AttachedDisk::Representation
+      
           property :machine_type, as: 'machineType'
+          property :min_cpu_platform, as: 'minCpuPlatform'
           property :provisioning_model, as: 'provisioningModel'
         end
       end
@@ -20113,11 +20291,228 @@ module Google
         end
       end
       
+      class Rollout
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancellation_time, as: 'cancellationTime'
+          property :completion_time, as: 'completionTime'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :current_wave_number, :numeric_string => true, as: 'currentWaveNumber'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :rollout_entity, as: 'rolloutEntity', class: Google::Apis::ComputeBeta::RolloutRolloutEntity, decorator: Google::Apis::ComputeBeta::RolloutRolloutEntity::Representation
+      
+          property :rollout_plan, as: 'rolloutPlan'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :state, as: 'state'
+          collection :wave_details, as: 'waveDetails', class: Google::Apis::ComputeBeta::RolloutWaveDetails, decorator: Google::Apis::ComputeBeta::RolloutWaveDetails::Representation
+      
+        end
+      end
+      
+      class RolloutPlan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :location_scope, as: 'locationScope'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          collection :waves, as: 'waves', class: Google::Apis::ComputeBeta::RolloutPlanWave, decorator: Google::Apis::ComputeBeta::RolloutPlanWave::Representation
+      
+        end
+      end
+      
+      class RolloutPlanWave
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :number, :numeric_string => true, as: 'number'
+          property :orchestration_options, as: 'orchestrationOptions', class: Google::Apis::ComputeBeta::RolloutPlanWaveOrchestrationOptions, decorator: Google::Apis::ComputeBeta::RolloutPlanWaveOrchestrationOptions::Representation
+      
+          collection :selectors, as: 'selectors', class: Google::Apis::ComputeBeta::RolloutPlanWaveSelector, decorator: Google::Apis::ComputeBeta::RolloutPlanWaveSelector::Representation
+      
+          property :validation, as: 'validation', class: Google::Apis::ComputeBeta::RolloutPlanWaveValidation, decorator: Google::Apis::ComputeBeta::RolloutPlanWaveValidation::Representation
+      
+        end
+      end
+      
+      class RolloutPlanWaveOrchestrationOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :delays, as: 'delays', class: Google::Apis::ComputeBeta::RolloutPlanWaveOrchestrationOptionsDelay, decorator: Google::Apis::ComputeBeta::RolloutPlanWaveOrchestrationOptionsDelay::Representation
+      
+          property :max_concurrent_locations, :numeric_string => true, as: 'maxConcurrentLocations'
+          property :max_concurrent_resources_per_location, :numeric_string => true, as: 'maxConcurrentResourcesPerLocation'
+        end
+      end
+      
+      class RolloutPlanWaveOrchestrationOptionsDelay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delimiter, as: 'delimiter'
+          property :duration, as: 'duration'
+          property :type, as: 'type'
+        end
+      end
+      
+      class RolloutPlanWaveSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location_selector, as: 'locationSelector', class: Google::Apis::ComputeBeta::RolloutPlanWaveSelectorLocationSelector, decorator: Google::Apis::ComputeBeta::RolloutPlanWaveSelectorLocationSelector::Representation
+      
+          property :resource_hierarchy_selector, as: 'resourceHierarchySelector', class: Google::Apis::ComputeBeta::RolloutPlanWaveSelectorResourceHierarchySelector, decorator: Google::Apis::ComputeBeta::RolloutPlanWaveSelectorResourceHierarchySelector::Representation
+      
+        end
+      end
+      
+      class RolloutPlanWaveSelectorLocationSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :included_locations, as: 'includedLocations'
+        end
+      end
+      
+      class RolloutPlanWaveSelectorResourceHierarchySelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :included_folders, as: 'includedFolders'
+          collection :included_organizations, as: 'includedOrganizations'
+          collection :included_projects, as: 'includedProjects'
+        end
+      end
+      
+      class RolloutPlanWaveValidation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :time_based_validation_metadata, as: 'timeBasedValidationMetadata', class: Google::Apis::ComputeBeta::RolloutPlanWaveValidationTimeBasedValidationMetadata, decorator: Google::Apis::ComputeBeta::RolloutPlanWaveValidationTimeBasedValidationMetadata::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class RolloutPlanWaveValidationTimeBasedValidationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :wait_duration, as: 'waitDuration'
+        end
+      end
+      
+      class RolloutPlansListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::RolloutPlan, decorator: Google::Apis::ComputeBeta::RolloutPlan::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::RolloutPlansListResponse::Warning, decorator: Google::Apis::ComputeBeta::RolloutPlansListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::RolloutPlansListResponse::Warning::Datum, decorator: Google::Apis::ComputeBeta::RolloutPlansListResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class RolloutPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_rollout_time, as: 'defaultRolloutTime'
           hash :location_rollout_policies, as: 'locationRolloutPolicies'
+        end
+      end
+      
+      class RolloutRolloutEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :orchestrated_entity, as: 'orchestratedEntity', class: Google::Apis::ComputeBeta::RolloutRolloutEntityOrchestratedEntity, decorator: Google::Apis::ComputeBeta::RolloutRolloutEntityOrchestratedEntity::Representation
+      
+        end
+      end
+      
+      class RolloutRolloutEntityOrchestratedEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conflict_behavior, as: 'conflictBehavior'
+          property :orchestration_action, as: 'orchestrationAction'
+          property :orchestration_source, as: 'orchestrationSource'
+        end
+      end
+      
+      class RolloutWaveDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :orchestrated_wave_details, as: 'orchestratedWaveDetails', class: Google::Apis::ComputeBeta::RolloutWaveDetailsOrchestratedWaveDetails, decorator: Google::Apis::ComputeBeta::RolloutWaveDetailsOrchestratedWaveDetails::Representation
+      
+          property :wave_display_name, as: 'waveDisplayName'
+          property :wave_number, :numeric_string => true, as: 'waveNumber'
+        end
+      end
+      
+      class RolloutWaveDetailsOrchestratedWaveDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completed_resources_count, :numeric_string => true, as: 'completedResourcesCount'
+          property :estimated_total_resources_count, :numeric_string => true, as: 'estimatedTotalResourcesCount'
+          collection :failed_locations, as: 'failedLocations'
+          property :failed_resources_count, :numeric_string => true, as: 'failedResourcesCount'
+        end
+      end
+      
+      class RolloutsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::Rollout, decorator: Google::Apis::ComputeBeta::Rollout::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::RolloutsListResponse::Warning, decorator: Google::Apis::ComputeBeta::RolloutsListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::RolloutsListResponse::Warning::Datum, decorator: Google::Apis::ComputeBeta::RolloutsListResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
