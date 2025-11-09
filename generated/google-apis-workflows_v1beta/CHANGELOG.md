@@ -1,5 +1,9 @@
 # Release history for google-apis-workflows_v1beta
 
+### v0.31.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251026
+
 ### v0.30.0 (2025-10-26)
 
 * Regenerated from discovery document revision 20251013
