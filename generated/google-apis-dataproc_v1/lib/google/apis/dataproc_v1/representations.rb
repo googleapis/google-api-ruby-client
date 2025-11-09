@@ -1978,6 +1978,7 @@ module Google
           property :config_bucket, as: 'configBucket'
           property :dataproc_metric_config, as: 'dataprocMetricConfig', class: Google::Apis::DataprocV1::DataprocMetricConfig, decorator: Google::Apis::DataprocV1::DataprocMetricConfig::Representation
       
+          property :diagnostic_bucket, as: 'diagnosticBucket'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::DataprocV1::EncryptionConfig, decorator: Google::Apis::DataprocV1::EncryptionConfig::Representation
       
           property :endpoint_config, as: 'endpointConfig', class: Google::Apis::DataprocV1::EndpointConfig, decorator: Google::Apis::DataprocV1::EndpointConfig::Representation

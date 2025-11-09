@@ -1405,6 +1405,16 @@ module Google
         # @return [Google::Apis::DataprocV1::DataprocMetricConfig]
         attr_accessor :dataproc_metric_config
       
+        # Optional. A Cloud Storage bucket used to collect checkpoint diagnostic data (
+        # https://cloud.google.com/dataproc/docs/support/diagnose-clusters#
+        # checkpoint_diagnostic_data). If you do not specify a diagnostic bucket, Cloud
+        # Dataproc will use the Dataproc temp bucket to collect the checkpoint
+        # diagnostic data. This field requires a Cloud Storage bucket name, not a gs://..
+        # . URI to a Cloud Storage bucket.
+        # Corresponds to the JSON property `diagnosticBucket`
+        # @return [String]
+        attr_accessor :diagnostic_bucket
+      
         # Encryption settings for the cluster.
         # Corresponds to the JSON property `encryptionConfig`
         # @return [Google::Apis::DataprocV1::EncryptionConfig]
@@ -1501,6 +1511,7 @@ module Google
           @cluster_type = args[:cluster_type] if args.key?(:cluster_type)
           @config_bucket = args[:config_bucket] if args.key?(:config_bucket)
           @dataproc_metric_config = args[:dataproc_metric_config] if args.key?(:dataproc_metric_config)
+          @diagnostic_bucket = args[:diagnostic_bucket] if args.key?(:diagnostic_bucket)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @endpoint_config = args[:endpoint_config] if args.key?(:endpoint_config)
           @gce_cluster_config = args[:gce_cluster_config] if args.key?(:gce_cluster_config)
