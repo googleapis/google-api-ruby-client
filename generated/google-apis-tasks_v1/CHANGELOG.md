@@ -1,5 +1,10 @@
 # Release history for google-apis-tasks_v1
 
+### v0.31.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251102
+* Regenerated using generator version 0.18.0
+
 ### v0.30.0 (2025-05-21)
 
 * Regenerated from discovery document revision 20250518
