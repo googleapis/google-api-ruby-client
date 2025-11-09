@@ -137,6 +137,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :succeeded_object_count
       
+        # Output only. Number of bytes found from source. This field is only populated
+        # for jobs with a prefix list object configuration.
+        # Corresponds to the JSON property `totalBytesFound`
+        # @return [Fixnum]
+        attr_accessor :total_bytes_found
+      
         # Output only. Number of objects listed.
         # Corresponds to the JSON property `totalObjectCount`
         # @return [Fixnum]
@@ -150,6 +156,7 @@ module Google
         def update!(**args)
           @failed_object_count = args[:failed_object_count] if args.key?(:failed_object_count)
           @succeeded_object_count = args[:succeeded_object_count] if args.key?(:succeeded_object_count)
+          @total_bytes_found = args[:total_bytes_found] if args.key?(:total_bytes_found)
           @total_object_count = args[:total_object_count] if args.key?(:total_object_count)
         end
       end
@@ -290,6 +297,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. If true, the job will run in dry run mode, returning the total
+        # object count and, if the object configuration is a prefix list, the bytes
+        # found from source. No transformations will be performed.
+        # Corresponds to the JSON property `dryRun`
+        # @return [Boolean]
+        attr_accessor :dry_run
+        alias_method :dry_run?, :dry_run
+      
         # Output only. Summarizes errors encountered with sample error log entries.
         # Corresponds to the JSON property `errorSummaries`
         # @return [Array<Google::Apis::StoragebatchoperationsV1::ErrorSummary>]
@@ -345,6 +360,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_object = args[:delete_object] if args.key?(:delete_object)
           @description = args[:description] if args.key?(:description)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
           @error_summaries = args[:error_summaries] if args.key?(:error_summaries)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @name = args[:name] if args.key?(:name)

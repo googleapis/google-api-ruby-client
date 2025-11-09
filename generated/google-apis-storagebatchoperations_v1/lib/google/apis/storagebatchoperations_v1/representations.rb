@@ -215,6 +215,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :failed_object_count, :numeric_string => true, as: 'failedObjectCount'
           property :succeeded_object_count, :numeric_string => true, as: 'succeededObjectCount'
+          property :total_bytes_found, :numeric_string => true, as: 'totalBytesFound'
           property :total_object_count, :numeric_string => true, as: 'totalObjectCount'
         end
       end
@@ -262,6 +263,7 @@ module Google
           property :delete_object, as: 'deleteObject', class: Google::Apis::StoragebatchoperationsV1::DeleteObject, decorator: Google::Apis::StoragebatchoperationsV1::DeleteObject::Representation
       
           property :description, as: 'description'
+          property :dry_run, as: 'dryRun'
           collection :error_summaries, as: 'errorSummaries', class: Google::Apis::StoragebatchoperationsV1::ErrorSummary, decorator: Google::Apis::StoragebatchoperationsV1::ErrorSummary::Representation
       
           property :logging_config, as: 'loggingConfig', class: Google::Apis::StoragebatchoperationsV1::LoggingConfig, decorator: Google::Apis::StoragebatchoperationsV1::LoggingConfig::Representation
