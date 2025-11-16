@@ -58,6 +58,16 @@ module Google
         # @param [String] name
         #   Required. The name of the local inventory for the given product to delete.
         #   Format: `accounts/`account`/products/`product`/localInventories/`store_code``
+        # @param [Boolean] product_id_base64_url_encoded
+        #   Optional. If true, the ``product`` in the `name` field of the request will be
+        #   interpreted as unpadded base64url-encoded and decoded during request
+        #   processing to match the decoded value. Default value is `false`. Use this if
+        #   your ``product`` contains special characters, such as forward slash `/` or
+        #   other characters that are unpadded base64url-encoded (as per RFC 7515: https://
+        #   datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of
+        #   the API will only accept unpadded base64url-encoded product ids, so we
+        #   strongly recommend proactively setting this to `true` and encoding the product
+        #   ids.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -75,11 +85,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_account_product_local_inventory(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_account_product_local_inventory(name, product_id_base64_url_encoded: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'inventories/v1beta/{+name}', options)
           command.response_representation = Google::Apis::MerchantapiInventoriesV1beta::Empty::Representation
           command.response_class = Google::Apis::MerchantapiInventoriesV1beta::Empty
           command.params['name'] = name unless name.nil?
+          command.query['productIdBase64UrlEncoded'] = product_id_base64_url_encoded unless product_id_base64_url_encoded.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -93,6 +104,16 @@ module Google
         #   Required. The account and product where this inventory will be inserted.
         #   Format: `accounts/`account`/products/`product``
         # @param [Google::Apis::MerchantapiInventoriesV1beta::LocalInventory] local_inventory_object
+        # @param [Boolean] product_id_base64_url_encoded
+        #   Optional. If true, the ``product`` in the `parent` field of the request will
+        #   be interpreted as unpadded base64url-encoded and decoded during request
+        #   processing to match the decoded value. Default value is `false`. Use this if
+        #   your ``product`` contains special characters, such as forward slash `/` or
+        #   other characters that are unpadded base64url-encoded (as per RFC 7515: https://
+        #   datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of
+        #   the API will only accept unpadded base64url-encoded product ids, so we
+        #   strongly recommend proactively setting this to `true` and encoding the product
+        #   ids.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -110,13 +131,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_account_product_local_inventory(parent, local_inventory_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def insert_account_product_local_inventory(parent, local_inventory_object = nil, product_id_base64_url_encoded: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'inventories/v1beta/{+parent}/localInventories:insert', options)
           command.request_representation = Google::Apis::MerchantapiInventoriesV1beta::LocalInventory::Representation
           command.request_object = local_inventory_object
           command.response_representation = Google::Apis::MerchantapiInventoriesV1beta::LocalInventory::Representation
           command.response_class = Google::Apis::MerchantapiInventoriesV1beta::LocalInventory
           command.params['parent'] = parent unless parent.nil?
+          command.query['productIdBase64UrlEncoded'] = product_id_base64_url_encoded unless product_id_base64_url_encoded.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -142,6 +164,16 @@ module Google
         #   parameters provided to `ListLocalInventories` must match the call that
         #   provided the page token. The token returned as nextPageToken in the response
         #   to the previous request.
+        # @param [Boolean] product_id_base64_url_encoded
+        #   Optional. If true, the ``product`` in the `parent` field of the request will
+        #   be interpreted as unpadded base64url-encoded and decoded during request
+        #   processing to match the decoded value. Default value is `false`. Use this if
+        #   your ``product`` contains special characters, such as forward slash `/` or
+        #   other characters that are unpadded base64url-encoded (as per RFC 7515: https://
+        #   datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of
+        #   the API will only accept unpadded base64url-encoded product ids, so we
+        #   strongly recommend proactively setting this to `true` and encoding the product
+        #   ids.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -159,13 +191,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_product_local_inventories(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_account_product_local_inventories(parent, page_size: nil, page_token: nil, product_id_base64_url_encoded: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'inventories/v1beta/{+parent}/localInventories', options)
           command.response_representation = Google::Apis::MerchantapiInventoriesV1beta::ListLocalInventoriesResponse::Representation
           command.response_class = Google::Apis::MerchantapiInventoriesV1beta::ListLocalInventoriesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['productIdBase64UrlEncoded'] = product_id_base64_url_encoded unless product_id_base64_url_encoded.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -178,6 +211,16 @@ module Google
         # @param [String] name
         #   Required. The name of the `RegionalInventory` resource to delete. Format: `
         #   accounts/`account`/products/`product`/regionalInventories/`region``
+        # @param [Boolean] product_id_base64_url_encoded
+        #   Optional. If true, the ``product`` in the `name` field of the request will be
+        #   interpreted as unpadded base64url-encoded and decoded during request
+        #   processing to match the decoded value. Default value is `false`. Use this if
+        #   your ``product`` contains special characters, such as forward slash `/` or
+        #   other characters that are unpadded base64url-encoded (as per RFC 7515: https://
+        #   datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of
+        #   the API will only accept unpadded base64url-encoded product ids, so we
+        #   strongly recommend proactively setting this to `true` and encoding the product
+        #   ids.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -195,11 +238,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_account_product_regional_inventory(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_account_product_regional_inventory(name, product_id_base64_url_encoded: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'inventories/v1beta/{+name}', options)
           command.response_representation = Google::Apis::MerchantapiInventoriesV1beta::Empty::Representation
           command.response_class = Google::Apis::MerchantapiInventoriesV1beta::Empty
           command.params['name'] = name unless name.nil?
+          command.query['productIdBase64UrlEncoded'] = product_id_base64_url_encoded unless product_id_base64_url_encoded.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -213,6 +257,16 @@ module Google
         #   Required. The account and product where this inventory will be inserted.
         #   Format: `accounts/`account`/products/`product``
         # @param [Google::Apis::MerchantapiInventoriesV1beta::RegionalInventory] regional_inventory_object
+        # @param [Boolean] product_id_base64_url_encoded
+        #   Optional. If true, the ``product`` in the `parent` field of the request will
+        #   be interpreted as unpadded base64url-encoded and decoded during request
+        #   processing to match the decoded value. Default value is `false`. Use this if
+        #   your ``product`` contains special characters, such as forward slash `/` or
+        #   other characters that are unpadded base64url-encoded (as per RFC 7515: https://
+        #   datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of
+        #   the API will only accept unpadded base64url-encoded product ids, so we
+        #   strongly recommend proactively setting this to `true` and encoding the product
+        #   ids.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -230,13 +284,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_account_product_regional_inventory(parent, regional_inventory_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def insert_account_product_regional_inventory(parent, regional_inventory_object = nil, product_id_base64_url_encoded: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'inventories/v1beta/{+parent}/regionalInventories:insert', options)
           command.request_representation = Google::Apis::MerchantapiInventoriesV1beta::RegionalInventory::Representation
           command.request_object = regional_inventory_object
           command.response_representation = Google::Apis::MerchantapiInventoriesV1beta::RegionalInventory::Representation
           command.response_class = Google::Apis::MerchantapiInventoriesV1beta::RegionalInventory
           command.params['parent'] = parent unless parent.nil?
+          command.query['productIdBase64UrlEncoded'] = product_id_base64_url_encoded unless product_id_base64_url_encoded.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -262,6 +317,16 @@ module Google
         #   parameters provided to `ListRegionalInventories` must match the call that
         #   provided the page token. The token returned as nextPageToken in the response
         #   to the previous request.
+        # @param [Boolean] product_id_base64_url_encoded
+        #   Optional. If true, the ``product`` in the `parent` field of the request will
+        #   be interpreted as unpadded base64url-encoded and decoded during request
+        #   processing to match the decoded value. Default value is `false`. Use this if
+        #   your ``product`` contains special characters, such as forward slash `/` or
+        #   other characters that are unpadded base64url-encoded (as per RFC 7515: https://
+        #   datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of
+        #   the API will only accept unpadded base64url-encoded product ids, so we
+        #   strongly recommend proactively setting this to `true` and encoding the product
+        #   ids.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -279,13 +344,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_product_regional_inventories(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_account_product_regional_inventories(parent, page_size: nil, page_token: nil, product_id_base64_url_encoded: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'inventories/v1beta/{+parent}/regionalInventories', options)
           command.response_representation = Google::Apis::MerchantapiInventoriesV1beta::ListRegionalInventoriesResponse::Representation
           command.response_class = Google::Apis::MerchantapiInventoriesV1beta::ListRegionalInventoriesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['productIdBase64UrlEncoded'] = product_id_base64_url_encoded unless product_id_base64_url_encoded.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
