@@ -799,6 +799,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :cluster_deleted, as: 'clusterDeleted'
           property :cluster_name, as: 'clusterName'
           property :cluster_uid, as: 'clusterUid'
           property :create_completion_time, as: 'createCompletionTime'
@@ -1246,6 +1247,7 @@ module Google
           hash :labels, as: 'labels'
           property :machine_config, as: 'machineConfig', class: Google::Apis::AlloydbV1beta::MachineConfig, decorator: Google::Apis::AlloydbV1beta::MachineConfig::Representation
       
+          property :maintenance_version_name, as: 'maintenanceVersionName'
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::AlloydbV1beta::InstanceNetworkConfig, decorator: Google::Apis::AlloydbV1beta::InstanceNetworkConfig::Representation
       
@@ -1858,6 +1860,7 @@ module Google
           property :id, as: 'id', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
       
           property :instance_type, as: 'instanceType'
+          property :is_deletion_protection_enabled, as: 'isDeletionProtectionEnabled'
           property :location, as: 'location'
           property :machine_configuration, as: 'machineConfiguration', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainMachineConfiguration, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainMachineConfiguration::Representation
       
