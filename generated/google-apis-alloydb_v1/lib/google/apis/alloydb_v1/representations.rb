@@ -905,6 +905,7 @@ module Google
       
           property :maintenance_update_policy, as: 'maintenanceUpdatePolicy', class: Google::Apis::AlloydbV1::MaintenanceUpdatePolicy, decorator: Google::Apis::AlloydbV1::MaintenanceUpdatePolicy::Representation
       
+          property :maintenance_version_selection_policy, as: 'maintenanceVersionSelectionPolicy'
           property :migration_source, as: 'migrationSource', class: Google::Apis::AlloydbV1::MigrationSource, decorator: Google::Apis::AlloydbV1::MigrationSource::Representation
       
           property :name, as: 'name'
@@ -1179,6 +1180,7 @@ module Google
           hash :labels, as: 'labels'
           property :machine_config, as: 'machineConfig', class: Google::Apis::AlloydbV1::MachineConfig, decorator: Google::Apis::AlloydbV1::MachineConfig::Representation
       
+          property :maintenance_version_name, as: 'maintenanceVersionName'
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::AlloydbV1::InstanceNetworkConfig, decorator: Google::Apis::AlloydbV1::InstanceNetworkConfig::Representation
       
@@ -1761,6 +1763,7 @@ module Google
           property :id, as: 'id', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
       
           property :instance_type, as: 'instanceType'
+          property :is_deletion_protection_enabled, as: 'isDeletionProtectionEnabled'
           property :location, as: 'location'
           property :machine_configuration, as: 'machineConfiguration', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainMachineConfiguration, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainMachineConfiguration::Representation
       
