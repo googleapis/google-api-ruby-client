@@ -101,6 +101,117 @@ module Google
         end
       end
       
+      # Addon resource.
+      class GoogleCloudApihubV1Addon
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for the addon.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AddonConfig]
+        attr_accessor :config
+      
+        # Output only. The time at which the addon was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The data source on which the addon operates. This determines which
+        # field in the `config` oneof is used.
+        # Corresponds to the JSON property `dataSource`
+        # @return [String]
+        attr_accessor :data_source
+      
+        # Optional. The description of the addon.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The display name of the addon.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The name of the addon to enable. Format: `projects/`project`/
+        # locations/`location`/addons/`addon``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the addon.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time at which the addon was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @data_source = args[:data_source] if args.key?(:data_source)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Configuration for the addon.
+      class GoogleCloudApihubV1AddonConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for addons which act on all data in the API hub. This is used to
+        # specify if the addon is enabled for all data in the API hub.
+        # Corresponds to the JSON property `allDataAddonConfig`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AllDataAddonConfig]
+        attr_accessor :all_data_addon_config
+      
+        # Configuration for gateway plugin addons. This is used to specify the list of
+        # gateway plugin configs for which the addon is enabled.
+        # Corresponds to the JSON property `gatewayPluginAddonConfig`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1GatewayPluginAddonConfig]
+        attr_accessor :gateway_plugin_addon_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_data_addon_config = args[:all_data_addon_config] if args.key?(:all_data_addon_config)
+          @gateway_plugin_addon_config = args[:gateway_plugin_addon_config] if args.key?(:gateway_plugin_addon_config)
+        end
+      end
+      
+      # Configuration for addons which act on all data in the API hub. This is used to
+      # specify if the addon is enabled for all data in the API hub.
+      class GoogleCloudApihubV1AllDataAddonConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. If true, the addon is enabled for all data in the API hub.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # The value that can be assigned to the attribute when the data type is enum.
       class GoogleCloudApihubV1AllowedValue
         include Google::Apis::Core::Hashable
@@ -562,6 +673,72 @@ module Google
           @source_metadata = args[:source_metadata] if args.key?(:source_metadata)
           @spec = args[:spec] if args.key?(:spec)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Configuration for Apigee Edge gateways. Applicability of a filter is
+      # determined by the filter being provided. If none of the filters are provided
+      # the addon will be enabled for all data brought in by the gateway plugin
+      # instance.
+      class GoogleCloudApihubV1ApigeeEdgeConfig
+        include Google::Apis::Core::Hashable
+      
+        # Filter for environments.
+        # Corresponds to the JSON property `environmentFilter`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1EnvironmentFilter]
+        attr_accessor :environment_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment_filter = args[:environment_filter] if args.key?(:environment_filter)
+        end
+      end
+      
+      # Configuration for Apigee OPDK gateways. Applicability of a filter is
+      # determined by the filter being provided. If none of the filters are provided
+      # the addon will be enabled for all data brought in by the gateway plugin
+      # instance.
+      class GoogleCloudApihubV1ApigeeOpdkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Filter for environments.
+        # Corresponds to the JSON property `environmentFilter`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1EnvironmentFilter]
+        attr_accessor :environment_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment_filter = args[:environment_filter] if args.key?(:environment_filter)
+        end
+      end
+      
+      # Configuration for Apigee X and Apigee Hybrid gateways. Applicability of a
+      # filter is determined by the filter being provided. If none of the filters are
+      # provided the addon will be enabled for all data brought in by the gateway
+      # plugin instance.
+      class GoogleCloudApihubV1ApigeeXHybridConfig
+        include Google::Apis::Core::Hashable
+      
+        # Filter for environments.
+        # Corresponds to the JSON property `environmentFilter`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1EnvironmentFilter]
+        attr_accessor :environment_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment_filter = args[:environment_filter] if args.key?(:environment_filter)
         end
       end
       
@@ -1891,6 +2068,34 @@ module Google
         end
       end
       
+      # Filter for environments.
+      class GoogleCloudApihubV1EnvironmentFilter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates if this filter should match all environments or only a
+        # subset of environments. If set to true, all environments are matched.
+        # Corresponds to the JSON property `allEnvironments`
+        # @return [Boolean]
+        attr_accessor :all_environments
+        alias_method :all_environments?, :all_environments
+      
+        # Optional. If provided, only environments in this list are matched. This field
+        # is ignored if `all_environments` is true.
+        # Corresponds to the JSON property `environments`
+        # @return [Array<String>]
+        attr_accessor :environments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_environments = args[:all_environments] if args.key?(:all_environments)
+          @environments = args[:environments] if args.key?(:environments)
+        end
+      end
+      
       # The ExecutePluginInstanceAction method's request.
       class GoogleCloudApihubV1ExecutePluginInstanceActionRequest
         include Google::Apis::Core::Hashable
@@ -2006,6 +2211,76 @@ module Google
           @name = args[:name] if args.key?(:name)
           @paths = args[:paths] if args.key?(:paths)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Configuration for gateway plugin addons. This is used to specify the list of
+      # gateway plugin configs for which the addon is enabled.
+      class GoogleCloudApihubV1GatewayPluginAddonConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of gateway plugin configs for which the addon is enabled.
+        # Each gateway plugin config should have a unique plugin instance.
+        # Corresponds to the JSON property `gatewayPluginConfigs`
+        # @return [Array<Google::Apis::ApihubV1::GoogleCloudApihubV1GatewayPluginConfig>]
+        attr_accessor :gateway_plugin_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gateway_plugin_configs = args[:gateway_plugin_configs] if args.key?(:gateway_plugin_configs)
+        end
+      end
+      
+      # Configuration for a gateway plugin. This is used to specify configs for
+      # different gateways.
+      class GoogleCloudApihubV1GatewayPluginConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for Apigee Edge gateways. Applicability of a filter is
+        # determined by the filter being provided. If none of the filters are provided
+        # the addon will be enabled for all data brought in by the gateway plugin
+        # instance.
+        # Corresponds to the JSON property `apigeeEdgeConfig`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1ApigeeEdgeConfig]
+        attr_accessor :apigee_edge_config
+      
+        # Configuration for Apigee OPDK gateways. Applicability of a filter is
+        # determined by the filter being provided. If none of the filters are provided
+        # the addon will be enabled for all data brought in by the gateway plugin
+        # instance.
+        # Corresponds to the JSON property `apigeeOpdkConfig`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1ApigeeOpdkConfig]
+        attr_accessor :apigee_opdk_config
+      
+        # Configuration for Apigee X and Apigee Hybrid gateways. Applicability of a
+        # filter is determined by the filter being provided. If none of the filters are
+        # provided the addon will be enabled for all data brought in by the gateway
+        # plugin instance.
+        # Corresponds to the JSON property `apigeeXHybridConfig`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1ApigeeXHybridConfig]
+        attr_accessor :apigee_x_hybrid_config
+      
+        # Required. The name of the gateway plugin instance for which the config is to
+        # be specified. Format: projects/`project`/locations/`location`/plugins/`plugin`/
+        # pluginInstances/`plugin_instance`
+        # Corresponds to the JSON property `pluginInstance`
+        # @return [String]
+        attr_accessor :plugin_instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apigee_edge_config = args[:apigee_edge_config] if args.key?(:apigee_edge_config)
+          @apigee_opdk_config = args[:apigee_opdk_config] if args.key?(:apigee_opdk_config)
+          @apigee_x_hybrid_config = args[:apigee_x_hybrid_config] if args.key?(:apigee_x_hybrid_config)
+          @plugin_instance = args[:plugin_instance] if args.key?(:plugin_instance)
         end
       end
       
@@ -2377,6 +2652,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The ListAddons method's response.
+      class GoogleCloudApihubV1ListAddonsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of addons.
+        # Corresponds to the JSON property `addons`
+        # @return [Array<Google::Apis::ApihubV1::GoogleCloudApihubV1Addon>]
+        attr_accessor :addons
+      
+        # A token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @addons = args[:addons] if args.key?(:addons)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -2810,6 +3111,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @runtime_project_attachment = args[:runtime_project_attachment] if args.key?(:runtime_project_attachment)
+        end
+      end
+      
+      # The ManageAddonConfig method's request.
+      class GoogleCloudApihubV1ManageAddonConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for the addon.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AddonConfig]
+        attr_accessor :config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
         end
       end
       
@@ -3373,6 +3693,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The source environment's config present in the gateway instance
+        # linked to the plugin instance. The key is the `source_environment` name from
+        # the SourceEnvironment message.
+        # Corresponds to the JSON property `sourceEnvironmentsConfig`
+        # @return [Hash<String,Google::Apis::ApihubV1::GoogleCloudApihubV1SourceEnvironment>]
+        attr_accessor :source_environments_config
+      
         # Optional. The source project id of the plugin instance. This will be the id of
         # runtime project in case of gcp based plugins and org id in case of non gcp
         # based plugins. This field will be a required field for Google provided on-ramp
@@ -3405,6 +3732,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @error_message = args[:error_message] if args.key?(:error_message)
           @name = args[:name] if args.key?(:name)
+          @source_environments_config = args[:source_environments_config] if args.key?(:source_environments_config)
           @source_project_id = args[:source_project_id] if args.key?(:source_project_id)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -3829,6 +4157,46 @@ module Google
         # Update properties of this object
         def update!(**args)
           @secret_version = args[:secret_version] if args.key?(:secret_version)
+        end
+      end
+      
+      # Message representing the source environment details.
+      class GoogleCloudApihubV1SourceEnvironment
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The time at which the environment was created at the source.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The name of the environment at the source. This should map to
+        # Deployment.
+        # Corresponds to the JSON property `sourceEnvironment`
+        # @return [String]
+        attr_accessor :source_environment
+      
+        # The location where additional information about source environments can be
+        # found. The location should be relative path of the environment manifest with
+        # respect to a plugin instance.
+        # Corresponds to the JSON property `sourceEnvironmentUri`
+        # @return [String]
+        attr_accessor :source_environment_uri
+      
+        # Optional. The time at which the environment was last updated at the source.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @source_environment = args[:source_environment] if args.key?(:source_environment)
+          @source_environment_uri = args[:source_environment_uri] if args.key?(:source_environment_uri)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
