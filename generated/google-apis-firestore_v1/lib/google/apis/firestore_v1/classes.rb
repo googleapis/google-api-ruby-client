@@ -1932,8 +1932,8 @@ module Google
       class GoogleFirestoreAdminV1ExportDocumentsRequest
         include Google::Apis::Core::Hashable
       
-        # Which collection IDs to export. Unspecified means all collections. Each
-        # collection ID in this list must be unique.
+        # IDs of the collection groups to export. Unspecified means all collection
+        # groups. Each collection group in this list must be unique.
         # Corresponds to the JSON property `collectionIds`
         # @return [Array<String>]
         attr_accessor :collection_ids
@@ -2216,8 +2216,9 @@ module Google
       class GoogleFirestoreAdminV1ImportDocumentsRequest
         include Google::Apis::Core::Hashable
       
-        # Which collection IDs to import. Unspecified means all collections included in
-        # the import. Each collection ID in this list must be unique.
+        # IDs of the collection groups to import. Unspecified means all collection
+        # groups that were included in the export. Each collection group in this list
+        # must be unique.
         # Corresponds to the JSON property `collectionIds`
         # @return [Array<String>]
         attr_accessor :collection_ids
