@@ -1120,8 +1120,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A pagination token returned from a previous call to `ListTagValues` that
-        # indicates from where listing should continue. This is currently not used, but
-        # the server may at any point start supplying a valid token.
+        # indicates from where listing should continue.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1924,6 +1923,12 @@ module Google
       class TagKey
         include Google::Apis::Core::Hashable
       
+        # Optional. Regular expression constraint for freeform tag values. If present,
+        # it implicitly allows freeform values (constrained by the regex).
+        # Corresponds to the JSON property `allowedValuesRegex`
+        # @return [String]
+        attr_accessor :allowed_values_regex
+      
         # Output only. Creation time.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1997,6 +2002,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allowed_values_regex = args[:allowed_values_regex] if args.key?(:allowed_values_regex)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)

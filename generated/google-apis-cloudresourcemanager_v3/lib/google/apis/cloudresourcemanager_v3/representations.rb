@@ -881,6 +881,7 @@ module Google
       class TagKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowed_values_regex, as: 'allowedValuesRegex'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :etag, as: 'etag'
