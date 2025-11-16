@@ -1689,13 +1689,15 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Required. Endpoint matchers associated with an application. A combination of
-        # hostname and ports as endpoint matchers is used to match the application.
-        # Match conditions for OR logic. An array of match conditions to allow for
-        # multiple matching criteria. The rule is considered a match if one of the
-        # conditions is met. The conditions should be the following combination: (
-        # Hostname & Ports) EXAMPLES: Hostname and Ports - ("*.example.com", "443"), ("
-        # example.com" and "22"), ("example.com" and "22,33") etc
+        # Optional. An array of conditions to match the application's network endpoint.
+        # Each element in the array is an EndpointMatcher object, which defines a
+        # specific combination of a hostname pattern and one or more ports. The
+        # application is considered matched if at least one of the EndpointMatcher
+        # conditions in this array is met (the conditions are combined using OR logic).
+        # Each EndpointMatcher must contain a hostname pattern, such as "example.com",
+        # and one or more port numbers specified as a string, such as "443". Hostname
+        # and port number examples: "*.example.com", "443" "example.com" and "22" "
+        # example.com" and "22,33"
         # Corresponds to the JSON property `endpointMatchers`
         # @return [Array<Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher>]
         attr_accessor :endpoint_matchers
@@ -1816,12 +1818,12 @@ module Google
       class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders
         include Google::Apis::Core::Hashable
       
-        # Delegated device info configuration.
+        # The delegated device information configuration.
         # Corresponds to the JSON property `deviceInfo`
         # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo]
         attr_accessor :device_info
       
-        # Delegated group info configuration.
+        # The delegated group configuration details.
         # Corresponds to the JSON property `groupInfo`
         # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo]
         attr_accessor :group_info
@@ -1831,7 +1833,7 @@ module Google
         # @return [String]
         attr_accessor :output_type
       
-        # Delegated user info configuration.
+        # The configuration information for the delegated user.
         # Corresponds to the JSON property `userInfo`
         # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo]
         attr_accessor :user_info
@@ -1849,11 +1851,11 @@ module Google
         end
       end
       
-      # Delegated device info configuration.
+      # The delegated device information configuration.
       class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo
         include Google::Apis::Core::Hashable
       
-        # Optional. The output type of the delegated device info.
+        # Optional. The output type details for the delegated device.
         # Corresponds to the JSON property `outputType`
         # @return [String]
         attr_accessor :output_type
@@ -1868,11 +1870,11 @@ module Google
         end
       end
       
-      # Delegated group info configuration.
+      # The delegated group configuration details.
       class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo
         include Google::Apis::Core::Hashable
       
-        # Optional. The output type of the delegated group info.
+        # Optional. The output type of the delegated group information.
         # Corresponds to the JSON property `outputType`
         # @return [String]
         attr_accessor :output_type
@@ -1887,11 +1889,11 @@ module Google
         end
       end
       
-      # Delegated user info configuration.
+      # The configuration information for the delegated user.
       class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo
         include Google::Apis::Core::Hashable
       
-        # Optional. The output type of the delegated user info.
+        # Optional. The delegated user's information.
         # Corresponds to the JSON property `outputType`
         # @return [String]
         attr_accessor :output_type
@@ -1960,7 +1962,7 @@ module Google
         # @return [String]
         attr_accessor :hostname
       
-        # Required. Ports of the application.
+        # Required. The ports of the application.
         # Corresponds to the JSON property `ports`
         # @return [Array<Fixnum>]
         attr_accessor :ports
@@ -2099,15 +2101,15 @@ module Google
         # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders]
         attr_accessor :contextual_headers
       
-        # Optional. Gateway identity configuration.
+        # Optional. The security gateway identity configuration.
         # Corresponds to the JSON property `gatewayIdentity`
         # @return [String]
         attr_accessor :gateway_identity
       
         # Optional. Custom resource specific headers along with the values. The names
-        # should conform to RFC 9110: > Field names SHOULD constrain themselves to
-        # alphanumeric characters, "-", and ".", and SHOULD begin with a letter. Field
-        # values SHOULD contain only ASCII printable characters and tab.
+        # should conform to RFC 9110: >Field names can contain alphanumeric characters,
+        # hyphens, and periods, can contain only ASCII-printable characters and tabs,
+        # and must start with a letter.
         # Corresponds to the JSON property `metadataHeaders`
         # @return [Hash<String,String>]
         attr_accessor :metadata_headers
@@ -2304,7 +2306,7 @@ module Google
       class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor
         include Google::Apis::Core::Hashable
       
-        # Required. Contains uri path fragment where HTTP request is sent.
+        # Required. Contains the URI path fragment where HTTP request is sent.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
