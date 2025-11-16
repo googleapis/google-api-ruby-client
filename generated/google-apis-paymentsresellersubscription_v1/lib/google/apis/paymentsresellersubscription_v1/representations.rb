@@ -655,6 +655,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cycle_options, as: 'cycleOptions', class: Google::Apis::PaymentsresellersubscriptionV1::CycleOptions, decorator: Google::Apis::PaymentsresellersubscriptionV1::CycleOptions::Representation
       
+          property :resume_mode, as: 'resumeMode'
         end
       end
       

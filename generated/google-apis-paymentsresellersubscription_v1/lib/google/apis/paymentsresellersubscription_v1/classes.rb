@@ -1062,6 +1062,11 @@ module Google
         # @return [Google::Apis::PaymentsresellersubscriptionV1::CycleOptions]
         attr_accessor :cycle_options
       
+        # Required. The mode to resume the subscription.
+        # Corresponds to the JSON property `resumeMode`
+        # @return [String]
+        attr_accessor :resume_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1069,6 +1074,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cycle_options = args[:cycle_options] if args.key?(:cycle_options)
+          @resume_mode = args[:resume_mode] if args.key?(:resume_mode)
         end
       end
       
