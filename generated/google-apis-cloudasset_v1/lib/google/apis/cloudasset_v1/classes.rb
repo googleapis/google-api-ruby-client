@@ -6266,6 +6266,11 @@ module Google
       class VersionedResource
         include Google::Apis::Core::Hashable
       
+        # The exceptions of a resource.
+        # Corresponds to the JSON property `assetExceptions`
+        # @return [Array<Google::Apis::CloudassetV1::AssetException>]
+        attr_accessor :asset_exceptions
+      
         # JSON representation of the resource as defined by the corresponding service
         # providing this resource. Example: If the resource is an instance provided by
         # Compute Engine, this field will contain the JSON representation of the
@@ -6290,6 +6295,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @asset_exceptions = args[:asset_exceptions] if args.key?(:asset_exceptions)
           @resource = args[:resource] if args.key?(:resource)
           @version = args[:version] if args.key?(:version)
         end
