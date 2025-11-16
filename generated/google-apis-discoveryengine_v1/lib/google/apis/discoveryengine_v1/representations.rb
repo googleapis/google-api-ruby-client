@@ -1612,6 +1612,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1LicenseConfigUsageStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1ListCmekConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1661,6 +1667,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1ListIdentityMappingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1ListLicenseConfigsUsageStatsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2399,6 +2411,96 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1UserStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigAccessSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigAssistantSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigCustomerProvidedConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigFacetField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigHomepageSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigHomepageSettingShortcut
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigUiComponentField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigUiBrandingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigUiSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsGenerativeAnswerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7010,6 +7112,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_get_processed_document, as: 'enableGetProcessedDocument'
           property :enable_image_annotation, as: 'enableImageAnnotation'
+          property :enable_llm_layout_parsing, as: 'enableLlmLayoutParsing'
           property :enable_table_annotation, as: 'enableTableAnnotation'
           collection :exclude_html_classes, as: 'excludeHtmlClasses'
           collection :exclude_html_elements, as: 'excludeHtmlElements'
@@ -7061,6 +7164,8 @@ module Google
       
           property :chat_engine_metadata, as: 'chatEngineMetadata', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineChatEngineMetadata, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineChatEngineMetadata::Representation
       
+          property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CmekConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CmekConfig::Representation
+      
           property :common_config, as: 'commonConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineCommonConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineCommonConfig::Representation
       
           property :configurable_billing_approach, as: 'configurableBillingApproach'
@@ -7072,6 +7177,7 @@ module Google
           property :industry_vertical, as: 'industryVertical'
           property :media_recommendation_engine_config, as: 'mediaRecommendationEngineConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig::Representation
       
+          hash :model_configs, as: 'modelConfigs'
           property :name, as: 'name'
           property :search_engine_config, as: 'searchEngineConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineSearchEngineConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineSearchEngineConfig::Representation
       
@@ -7544,6 +7650,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1LicenseConfigUsageStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :license_config, as: 'licenseConfig'
+          property :used_license_count, :numeric_string => true, as: 'usedLicenseCount'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1ListCmekConfigsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7620,6 +7734,14 @@ module Google
           collection :identity_mapping_entries, as: 'identityMappingEntries', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1IdentityMappingEntry, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1IdentityMappingEntry::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1ListLicenseConfigsUsageStatsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :license_config_usage_stats, as: 'licenseConfigUsageStats', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1LicenseConfigUsageStats, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1LicenseConfigUsageStats::Representation
+      
         end
       end
       
@@ -8900,6 +9022,213 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1WidgetConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_settings, as: 'accessSettings', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigAccessSettings, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigAccessSettings::Representation
+      
+          property :allow_public_access, as: 'allowPublicAccess'
+          collection :allowlisted_domains, as: 'allowlistedDomains'
+          property :assistant_settings, as: 'assistantSettings', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigAssistantSettings, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigAssistantSettings::Representation
+      
+          collection :collection_components, as: 'collectionComponents', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponent, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponent::Representation
+      
+          property :config_id, as: 'configId'
+          property :content_search_spec, as: 'contentSearchSpec', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpec::Representation
+      
+          property :create_time, as: 'createTime'
+          property :customer_provided_config, as: 'customerProvidedConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigCustomerProvidedConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigCustomerProvidedConfig::Representation
+      
+          property :data_store_type, as: 'dataStoreType'
+          collection :data_store_ui_configs, as: 'dataStoreUiConfigs', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig::Representation
+      
+          property :default_search_request_order_by, as: 'defaultSearchRequestOrderBy'
+          property :display_name, as: 'displayName'
+          property :enable_autocomplete, as: 'enableAutocomplete'
+          property :enable_conversational_search, as: 'enableConversationalSearch'
+          property :enable_private_knowledge_graph, as: 'enablePrivateKnowledgeGraph'
+          property :enable_quality_feedback, as: 'enableQualityFeedback'
+          property :enable_result_score, as: 'enableResultScore'
+          property :enable_safe_search, as: 'enableSafeSearch'
+          property :enable_search_as_you_type, as: 'enableSearchAsYouType'
+          property :enable_snippet_result_summary, as: 'enableSnippetResultSummary'
+          property :enable_summarization, as: 'enableSummarization'
+          property :enable_web_app, as: 'enableWebApp'
+          collection :facet_field, as: 'facetField', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigFacetField, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigFacetField::Representation
+      
+          hash :fields_ui_components_map, as: 'fieldsUiComponentsMap', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigUiComponentField, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigUiComponentField::Representation
+      
+          property :gemini_bundle, as: 'geminiBundle'
+          property :homepage_setting, as: 'homepageSetting', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigHomepageSetting, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigHomepageSetting::Representation
+      
+          property :industry_vertical, as: 'industryVertical'
+          property :llm_enabled, as: 'llmEnabled'
+          property :minimum_data_term_accepted, as: 'minimumDataTermAccepted'
+          property :name, as: 'name'
+          property :result_display_type, as: 'resultDisplayType'
+          property :solution_type, as: 'solutionType'
+          property :ui_branding, as: 'uiBranding', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigUiBrandingSettings, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigUiBrandingSettings::Representation
+      
+          property :ui_settings, as: 'uiSettings', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigUiSettings, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigUiSettings::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigAccessSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_public_access, as: 'allowPublicAccess'
+          collection :allowlisted_domains, as: 'allowlistedDomains'
+          property :enable_web_app, as: 'enableWebApp'
+          property :language_code, as: 'languageCode'
+          property :workforce_identity_pool_provider, as: 'workforceIdentityPoolProvider'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigAssistantSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_web_grounding_toggle_off, as: 'defaultWebGroundingToggleOff'
+          property :disable_location_context, as: 'disableLocationContext'
+          property :google_search_grounding_enabled, as: 'googleSearchGroundingEnabled'
+          property :web_grounding_type, as: 'webGroundingType'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connector_icon_link, as: 'connectorIconLink'
+          property :data_source, as: 'dataSource'
+          property :data_source_display_name, as: 'dataSourceDisplayName'
+          collection :data_store_components, as: 'dataStoreComponents', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponent, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponent::Representation
+      
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigCustomerProvidedConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_type, as: 'customerType'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_store_config_type, as: 'dataStoreConfigType'
+          property :display_name, as: 'displayName'
+          property :entity_name, as: 'entityName'
+          property :id, as: 'id'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :facet_field, as: 'facetField', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigFacetField, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigFacetField::Representation
+      
+          hash :fields_ui_components_map, as: 'fieldsUiComponentsMap', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigUiComponentField, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigUiComponentField::Representation
+      
+          property :id, as: 'id'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigFacetField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :field, as: 'field'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigHomepageSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :shortcuts, as: 'shortcuts', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigHomepageSettingShortcut, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigHomepageSettingShortcut::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigHomepageSettingShortcut
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_uri, as: 'destinationUri'
+          property :icon, as: 'icon', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigImage, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigImage::Representation
+      
+          property :title, as: 'title'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :url, as: 'url'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigUiComponentField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device_visibility, as: 'deviceVisibility'
+          property :display_template, as: 'displayTemplate'
+          property :field, as: 'field'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigUiBrandingSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :logo, as: 'logo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigImage, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigImage::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigUiSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_store_ui_configs, as: 'dataStoreUiConfigs', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig::Representation
+      
+          property :default_search_request_order_by, as: 'defaultSearchRequestOrderBy'
+          property :disable_user_events_collection, as: 'disableUserEventsCollection'
+          property :enable_autocomplete, as: 'enableAutocomplete'
+          property :enable_create_agent_button, as: 'enableCreateAgentButton'
+          property :enable_people_search, as: 'enablePeopleSearch'
+          property :enable_quality_feedback, as: 'enableQualityFeedback'
+          property :enable_safe_search, as: 'enableSafeSearch'
+          property :enable_search_as_you_type, as: 'enableSearchAsYouType'
+          property :enable_visual_content_summary, as: 'enableVisualContentSummary'
+          hash :features, as: 'features'
+          property :generative_answer_config, as: 'generativeAnswerConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsGenerativeAnswerConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsGenerativeAnswerConfig::Representation
+      
+          property :interaction_type, as: 'interactionType'
+          hash :model_configs, as: 'modelConfigs'
+          property :result_description_type, as: 'resultDescriptionType'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsGenerativeAnswerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_related_questions, as: 'disableRelatedQuestions'
+          property :ignore_adversarial_query, as: 'ignoreAdversarialQuery'
+          property :ignore_low_relevant_content, as: 'ignoreLowRelevantContent'
+          property :ignore_non_answer_seeking_query, as: 'ignoreNonAnswerSeekingQuery'
+          property :image_source, as: 'imageSource'
+          property :language_code, as: 'languageCode'
+          property :max_rephrase_steps, as: 'maxRephraseSteps'
+          property :model_prompt_preamble, as: 'modelPromptPreamble'
+          property :model_version, as: 'modelVersion'
+          property :result_count, as: 'resultCount'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1WorkspaceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10033,6 +10362,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_get_processed_document, as: 'enableGetProcessedDocument'
           property :enable_image_annotation, as: 'enableImageAnnotation'
+          property :enable_llm_layout_parsing, as: 'enableLlmLayoutParsing'
           property :enable_table_annotation, as: 'enableTableAnnotation'
           collection :exclude_html_classes, as: 'excludeHtmlClasses'
           collection :exclude_html_elements, as: 'excludeHtmlElements'
@@ -10071,6 +10401,8 @@ module Google
       
           property :chat_engine_metadata, as: 'chatEngineMetadata', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata::Representation
       
+          property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCmekConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCmekConfig::Representation
+      
           property :common_config, as: 'commonConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineCommonConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineCommonConfig::Representation
       
           property :configurable_billing_approach, as: 'configurableBillingApproach'
@@ -10082,6 +10414,7 @@ module Google
           property :industry_vertical, as: 'industryVertical'
           property :media_recommendation_engine_config, as: 'mediaRecommendationEngineConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig::Representation
       
+          hash :model_configs, as: 'modelConfigs'
           property :name, as: 'name'
           property :recommendation_metadata, as: 'recommendationMetadata', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata::Representation
       
@@ -11781,6 +12114,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_get_processed_document, as: 'enableGetProcessedDocument'
           property :enable_image_annotation, as: 'enableImageAnnotation'
+          property :enable_llm_layout_parsing, as: 'enableLlmLayoutParsing'
           property :enable_table_annotation, as: 'enableTableAnnotation'
           collection :exclude_html_classes, as: 'excludeHtmlClasses'
           collection :exclude_html_elements, as: 'excludeHtmlElements'
@@ -11819,6 +12153,8 @@ module Google
       
           property :chat_engine_metadata, as: 'chatEngineMetadata', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata::Representation
       
+          property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaCmekConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaCmekConfig::Representation
+      
           property :common_config, as: 'commonConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineCommonConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineCommonConfig::Representation
       
           property :configurable_billing_approach, as: 'configurableBillingApproach'
@@ -11830,6 +12166,7 @@ module Google
           property :industry_vertical, as: 'industryVertical'
           property :media_recommendation_engine_config, as: 'mediaRecommendationEngineConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig::Representation
       
+          hash :model_configs, as: 'modelConfigs'
           property :name, as: 'name'
           property :search_engine_config, as: 'searchEngineConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig::Representation
       

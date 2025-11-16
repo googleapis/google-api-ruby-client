@@ -3905,6 +3905,90 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a WidgetConfig.
+        # @param [String] name
+        #   Required. Full WidgetConfig resource name. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id`/
+        #   widgetConfigs/`widget_config_id``
+        # @param [Boolean] accept_cache
+        #   Optional. Whether it's acceptable to load the widget config from cache. If set
+        #   to true, recent changes on widget configs may take a few minutes to reflect on
+        #   the end user's view. It's recommended to set to true for maturely developed
+        #   widgets, as it improves widget performance. Set to false to see changes
+        #   reflected in prod right away, if your widget is under development.
+        # @param [Boolean] get_widget_config_request_option_turn_off_collection_components
+        #   Optional. Whether to turn off collection_components in WidgetConfig to reduce
+        #   latency and data transmission.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_data_store_widget_config(name, accept_cache: nil, get_widget_config_request_option_turn_off_collection_components: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig
+          command.params['name'] = name unless name.nil?
+          command.query['acceptCache'] = accept_cache unless accept_cache.nil?
+          command.query['getWidgetConfigRequestOption.turnOffCollectionComponents'] = get_widget_config_request_option_turn_off_collection_components unless get_widget_config_request_option_turn_off_collection_components.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a WidgetConfig.
+        # @param [String] name
+        #   Immutable. The full resource name of the widget config. Format: `projects/`
+        #   project`/locations/`location`/collections/`collection_id`/dataStores/`
+        #   data_store_id`/widgetConfigs/`widget_config_id``. This field must be a UTF-8
+        #   encoded string with a length limit of 1024 characters.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig] google_cloud_discoveryengine_v1_widget_config_object
+        # @param [String] update_mask
+        #   Indicates which fields in the provided WidgetConfig to update. The following
+        #   are the only supported fields: * WidgetConfig.enable_autocomplete If not set,
+        #   all supported fields are updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_collection_data_store_widget_config(name, google_cloud_discoveryengine_v1_widget_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig::Representation
+          command.request_object = google_cloud_discoveryengine_v1_widget_config_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Engine.
         # @param [String] parent
         #   Required. The parent resource name, such as `projects/`project`/locations/`
@@ -5311,6 +5395,90 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Answer::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Answer
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a WidgetConfig.
+        # @param [String] name
+        #   Required. Full WidgetConfig resource name. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id`/
+        #   widgetConfigs/`widget_config_id``
+        # @param [Boolean] accept_cache
+        #   Optional. Whether it's acceptable to load the widget config from cache. If set
+        #   to true, recent changes on widget configs may take a few minutes to reflect on
+        #   the end user's view. It's recommended to set to true for maturely developed
+        #   widgets, as it improves widget performance. Set to false to see changes
+        #   reflected in prod right away, if your widget is under development.
+        # @param [Boolean] get_widget_config_request_option_turn_off_collection_components
+        #   Optional. Whether to turn off collection_components in WidgetConfig to reduce
+        #   latency and data transmission.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_engine_widget_config(name, accept_cache: nil, get_widget_config_request_option_turn_off_collection_components: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig
+          command.params['name'] = name unless name.nil?
+          command.query['acceptCache'] = accept_cache unless accept_cache.nil?
+          command.query['getWidgetConfigRequestOption.turnOffCollectionComponents'] = get_widget_config_request_option_turn_off_collection_components unless get_widget_config_request_option_turn_off_collection_components.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a WidgetConfig.
+        # @param [String] name
+        #   Immutable. The full resource name of the widget config. Format: `projects/`
+        #   project`/locations/`location`/collections/`collection_id`/dataStores/`
+        #   data_store_id`/widgetConfigs/`widget_config_id``. This field must be a UTF-8
+        #   encoded string with a length limit of 1024 characters.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig] google_cloud_discoveryengine_v1_widget_config_object
+        # @param [String] update_mask
+        #   Indicates which fields in the provided WidgetConfig to update. The following
+        #   are the only supported fields: * WidgetConfig.enable_autocomplete If not set,
+        #   all supported fields are updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_collection_engine_widget_config(name, google_cloud_discoveryengine_v1_widget_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig::Representation
+          command.request_object = google_cloud_discoveryengine_v1_widget_config_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -8229,6 +8397,90 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a WidgetConfig.
+        # @param [String] name
+        #   Required. Full WidgetConfig resource name. Format: `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id`/
+        #   widgetConfigs/`widget_config_id``
+        # @param [Boolean] accept_cache
+        #   Optional. Whether it's acceptable to load the widget config from cache. If set
+        #   to true, recent changes on widget configs may take a few minutes to reflect on
+        #   the end user's view. It's recommended to set to true for maturely developed
+        #   widgets, as it improves widget performance. Set to false to see changes
+        #   reflected in prod right away, if your widget is under development.
+        # @param [Boolean] get_widget_config_request_option_turn_off_collection_components
+        #   Optional. Whether to turn off collection_components in WidgetConfig to reduce
+        #   latency and data transmission.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_data_store_widget_config(name, accept_cache: nil, get_widget_config_request_option_turn_off_collection_components: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig
+          command.params['name'] = name unless name.nil?
+          command.query['acceptCache'] = accept_cache unless accept_cache.nil?
+          command.query['getWidgetConfigRequestOption.turnOffCollectionComponents'] = get_widget_config_request_option_turn_off_collection_components unless get_widget_config_request_option_turn_off_collection_components.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a WidgetConfig.
+        # @param [String] name
+        #   Immutable. The full resource name of the widget config. Format: `projects/`
+        #   project`/locations/`location`/collections/`collection_id`/dataStores/`
+        #   data_store_id`/widgetConfigs/`widget_config_id``. This field must be a UTF-8
+        #   encoded string with a length limit of 1024 characters.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig] google_cloud_discoveryengine_v1_widget_config_object
+        # @param [String] update_mask
+        #   Indicates which fields in the provided WidgetConfig to update. The following
+        #   are the only supported fields: * WidgetConfig.enable_autocomplete If not set,
+        #   all supported fields are updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_data_store_widget_config(name, google_cloud_discoveryengine_v1_widget_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig::Representation
+          command.request_object = google_cloud_discoveryengine_v1_widget_config_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Performs a grounding check.
         # @param [String] grounding_config
         #   Required. The resource name of the grounding config, such as `projects/*/
@@ -9172,18 +9424,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists all the LicenseConfigUsageStatss associated with the project.
+        # @param [String] parent
+        #   Required. The parent branch resource name, such as `projects/`project`/
+        #   locations/`location`/userStores/`user_store_id``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ListLicenseConfigsUsageStatsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ListLicenseConfigsUsageStatsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_user_store_license_configs_usage_stats(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/licenseConfigsUsageStats', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ListLicenseConfigsUsageStatsResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ListLicenseConfigsUsageStatsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the User Licenses.
         # @param [String] parent
         #   Required. The parent UserStore resource name, format: `projects/`project`/
         #   locations/`location`/userStores/`user_store_id``.
         # @param [String] filter
-        #   Optional. Filter for the list request. Supported fields: * `
-        #   license_assignment_state` Examples: * `license_assignment_state = ASSIGNED` to
-        #   list assigned user licenses. * `license_assignment_state = NO_LICENSE` to list
-        #   not licensed users. * `license_assignment_state = NO_LICENSE_ATTEMPTED_LOGIN`
-        #   to list users who attempted login but no license assigned. * `
-        #   license_assignment_state != NO_LICENSE_ATTEMPTED_LOGIN` to filter out users
-        #   who attempted login but no license assigned.
+        #   Optional. Filter for the list request. Supported fields: * `license`_`
+        #   assignment`_`state` * `user_principal` * `user_profile` Examples: * `license`_`
+        #   assignment`_`state = ASSIGNED` to list assigned user licenses. * `license`_`
+        #   assignment`_`state = NO_LICENSE` to list not licensed users. * `license`_`
+        #   assignment`_`state = NO_LICENSE_ATTEMPTED_LOGIN` to list users who attempted
+        #   login but no license assigned. * `license`_`assignment`_`state !=
+        #   NO_LICENSE_ATTEMPTED_LOGIN` to filter out users who attempted login but no
+        #   license assigned.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, defaults to 10. The maximum value is 50; values above 50 will
