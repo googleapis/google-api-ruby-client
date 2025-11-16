@@ -16,13 +16,13 @@ module Google
   module Apis
     module SheetsV4
       # Version of the google-apis-sheets_v4 gem
-      GEM_VERSION = "0.45.0"
+      GEM_VERSION = "0.46.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.18.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20250616"
+      REVISION = "20251110"
     end
   end
 end
