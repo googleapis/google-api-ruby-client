@@ -3322,6 +3322,38 @@ module Google
         end
       end
       
+      # Request to export a detailed pricing report.
+      class ExportReportRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for exporting report.
+      class ExportReportResponse
+        include Google::Apis::Core::Hashable
+      
+        # For large generated report, we may return multiple links
+        # Corresponds to the JSON property `reportArtifactLinks`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::ReportArtifactLink>]
+        attr_accessor :report_artifact_links
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @report_artifact_links = args[:report_artifact_links] if args.key?(:report_artifact_links)
+        end
+      end
+      
       # A resource that aggregates the validation errors found in an import job file.
       class FileValidationReport
         include Google::Apis::Core::Hashable
@@ -3515,6 +3547,25 @@ module Google
         def update!(**args)
           @format = args[:format] if args.key?(:format)
           @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # A request to generate a link to an artifact for a Report.
+      class GenerateReportArtifactLinkRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Type of the artifact requested.
+        # Corresponds to the JSON property `artifactType`
+        # @return [String]
+        attr_accessor :artifact_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_type = args[:artifact_type] if args.key?(:artifact_type)
         end
       end
       
@@ -4795,6 +4846,31 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @report_configs = args[:report_configs] if args.key?(:report_configs)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for listing report export jobs.
+      class ListReportExportJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. The list of report export jobs.
+        # Corresponds to the JSON property `reportExportJobs`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::ReportExportJob>]
+        attr_accessor :report_export_jobs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @report_export_jobs = args[:report_export_jobs] if args.key?(:report_export_jobs)
         end
       end
       
@@ -6550,6 +6626,11 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummary]
         attr_accessor :summary
       
+        # Detailed data related to Total Cost of Ownership (TCO) pricing.
+        # Corresponds to the JSON property `tcoDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportTotalCostOfOwnershipDetails]
+        attr_accessor :tco_details
+      
         # Report type.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -6572,8 +6653,40 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @summary = args[:summary] if args.key?(:summary)
+          @tco_details = args[:tco_details] if args.key?(:tco_details)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Describes a link to a generated artifact of the report.
+      class ReportArtifactLink
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Human friendly display name of the artifact.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. URI of the artifact.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # Output only. Expiration time of the URI.
+        # Corresponds to the JSON property `uriExpirationTime`
+        # @return [String]
+        attr_accessor :uri_expiration_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @uri = args[:uri] if args.key?(:uri)
+          @uri_expiration_time = args[:uri_expiration_time] if args.key?(:uri_expiration_time)
         end
       end
       
@@ -6661,6 +6774,124 @@ module Google
         def update!(**args)
           @group = args[:group] if args.key?(:group)
           @preference_set = args[:preference_set] if args.key?(:preference_set)
+        end
+      end
+      
+      # Execution status of report export operation.
+      class ReportExportExecution
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Completion time of the export.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Globally unique identifier of the execution.
+        # Corresponds to the JSON property `executionId`
+        # @return [String]
+        attr_accessor :execution_id
+      
+        # Output only. Expiration time for the export and artifacts.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. Represents the progress of the execution. It reaches 100 when the
+        # execution is successfully completed. When the execution finishes with a
+        # failure, the progress is set to 0.
+        # Corresponds to the JSON property `progressPercentage`
+        # @return [Fixnum]
+        attr_accessor :progress_percentage
+      
+        # Contains the result of the report export.
+        # Corresponds to the JSON property `result`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportExportExecutionResult]
+        attr_accessor :result
+      
+        # Output only. Execution start timestamp.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @execution_id = args[:execution_id] if args.key?(:execution_id)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @progress_percentage = args[:progress_percentage] if args.key?(:progress_percentage)
+          @result = args[:result] if args.key?(:result)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Contains the result of the report export.
+      class ReportExportExecutionResult
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::MigrationcenterV1alpha1::Status]
+        attr_accessor :error
+      
+        # Contains a list of output files.
+        # Corresponds to the JSON property `outputFiles`
+        # @return [Google::Apis::MigrationcenterV1alpha1::OutputFileList]
+        attr_accessor :output_files
+      
+        # Contains a list of Signed URIs.
+        # Corresponds to the JSON property `signedUris`
+        # @return [Google::Apis::MigrationcenterV1alpha1::SignedUris]
+        attr_accessor :signed_uris
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @output_files = args[:output_files] if args.key?(:output_files)
+          @signed_uris = args[:signed_uris] if args.key?(:signed_uris)
+        end
+      end
+      
+      # Report export job message.
+      class ReportExportJob
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Identifier. Resource name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Recent not expired executions of the export report job.
+        # Corresponds to the JSON property `recentExecutions`
+        # @return [Array<Google::Apis::MigrationcenterV1alpha1::ReportExportExecution>]
+        attr_accessor :recent_executions
+      
+        # Signed URI destination configuration.
+        # Corresponds to the JSON property `signedUriDestination`
+        # @return [Google::Apis::MigrationcenterV1alpha1::SignedUriDestination]
+        attr_accessor :signed_uri_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @recent_executions = args[:recent_executions] if args.key?(:recent_executions)
+          @signed_uri_destination = args[:signed_uri_destination] if args.key?(:signed_uri_destination)
         end
       end
       
@@ -7374,6 +7605,26 @@ module Google
         end
       end
       
+      # Detailed data related to Total Cost of Ownership (TCO) pricing.
+      class ReportTotalCostOfOwnershipDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Whether the report has detailed pricing data.
+        # Corresponds to the JSON property `hasPricingData`
+        # @return [Boolean]
+        attr_accessor :has_pricing_data
+        alias_method :has_pricing_data?, :has_pricing_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @has_pricing_data = args[:has_pricing_data] if args.key?(:has_pricing_data)
+        end
+      end
+      
       # Location of a resource.
       class ResourceLocation
         include Google::Apis::Core::Hashable
@@ -7465,6 +7716,53 @@ module Google
         # Update properties of this object
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # A request to run a report export job.
+      class RunReportExportJobRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes after the first request. For example, consider a
+        # situation where you make an initial request and the request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # Response message for running a report export job.
+      class RunReportExportJobResponse
+        include Google::Apis::Core::Hashable
+      
+        # Execution status of report export operation.
+        # Corresponds to the JSON property `reportExportExecution`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportExportExecution]
+        attr_accessor :report_export_execution
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @report_export_execution = args[:report_export_execution] if args.key?(:report_export_execution)
         end
       end
       
