@@ -2322,6 +2322,8 @@ module Google
       class VersionedResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :asset_exceptions, as: 'assetExceptions', class: Google::Apis::CloudassetV1::AssetException, decorator: Google::Apis::CloudassetV1::AssetException::Representation
+      
           hash :resource, as: 'resource'
           property :version, as: 'version'
         end
