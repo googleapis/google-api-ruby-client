@@ -30,7 +30,7 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
-      # View and manage G Suite licenses for your domain
+      # View and manage Google Workspace licenses for your domain
       AUTH_APPS_LICENSING = 'https://www.googleapis.com/auth/apps.licensing'
     end
   end
