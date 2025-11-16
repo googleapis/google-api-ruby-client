@@ -1000,6 +1000,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ToolVersionSupportedCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ToolVersions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VerifyJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2145,6 +2157,8 @@ module Google
       
           collection :target_snapshots, as: 'targetSnapshots', class: Google::Apis::ClouddeployV1::Target, decorator: Google::Apis::ClouddeployV1::Target::Representation
       
+          property :tool_versions, as: 'toolVersions', class: Google::Apis::ClouddeployV1::ToolVersions, decorator: Google::Apis::ClouddeployV1::ToolVersions::Representation
+      
           property :uid, as: 'uid'
         end
       end
@@ -2152,9 +2166,21 @@ module Google
       class ReleaseCondition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :docker_version_supported_condition, as: 'dockerVersionSupportedCondition', class: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition, decorator: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition::Representation
+      
+          property :helm_version_supported_condition, as: 'helmVersionSupportedCondition', class: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition, decorator: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition::Representation
+      
+          property :kpt_version_supported_condition, as: 'kptVersionSupportedCondition', class: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition, decorator: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition::Representation
+      
+          property :kubectl_version_supported_condition, as: 'kubectlVersionSupportedCondition', class: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition, decorator: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition::Representation
+      
+          property :kustomize_version_supported_condition, as: 'kustomizeVersionSupportedCondition', class: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition, decorator: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition::Representation
+      
           property :release_ready_condition, as: 'releaseReadyCondition', class: Google::Apis::ClouddeployV1::ReleaseReadyCondition, decorator: Google::Apis::ClouddeployV1::ReleaseReadyCondition::Representation
       
           property :skaffold_supported_condition, as: 'skaffoldSupportedCondition', class: Google::Apis::ClouddeployV1::SkaffoldSupportedCondition, decorator: Google::Apis::ClouddeployV1::SkaffoldSupportedCondition::Representation
+      
+          property :skaffold_version_supported_condition, as: 'skaffoldVersionSupportedCondition', class: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition, decorator: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition::Representation
       
         end
       end
@@ -2726,6 +2752,28 @@ module Google
           property :id, as: 'id'
           property :schedule, as: 'schedule'
           property :time_zone, as: 'timeZone'
+        end
+      end
+      
+      class ToolVersionSupportedCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_mode_time, as: 'maintenanceModeTime'
+          property :status, as: 'status'
+          property :support_expiration_time, as: 'supportExpirationTime'
+          property :tool_version_support_state, as: 'toolVersionSupportState'
+        end
+      end
+      
+      class ToolVersions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :docker, as: 'docker'
+          property :helm, as: 'helm'
+          property :kpt, as: 'kpt'
+          property :kubectl, as: 'kubectl'
+          property :kustomize, as: 'kustomize'
+          property :skaffold, as: 'skaffold'
         end
       end
       

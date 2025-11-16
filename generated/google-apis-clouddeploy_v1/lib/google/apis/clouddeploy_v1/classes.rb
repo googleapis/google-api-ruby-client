@@ -4220,6 +4220,11 @@ module Google
         # @return [Array<Google::Apis::ClouddeployV1::Target>]
         attr_accessor :target_snapshots
       
+        # Details of ToolVersions for the release.
+        # Corresponds to the JSON property `toolVersions`
+        # @return [Google::Apis::ClouddeployV1::ToolVersions]
+        attr_accessor :tool_versions
+      
         # Output only. Unique identifier of the `Release`.
         # Corresponds to the JSON property `uid`
         # @return [String]
@@ -4252,6 +4257,7 @@ module Google
           @target_artifacts = args[:target_artifacts] if args.key?(:target_artifacts)
           @target_renders = args[:target_renders] if args.key?(:target_renders)
           @target_snapshots = args[:target_snapshots] if args.key?(:target_snapshots)
+          @tool_versions = args[:tool_versions] if args.key?(:tool_versions)
           @uid = args[:uid] if args.key?(:uid)
         end
       end
@@ -4259,6 +4265,36 @@ module Google
       # ReleaseCondition contains all conditions relevant to a Release.
       class ReleaseCondition
         include Google::Apis::Core::Hashable
+      
+        # ToolVersionSupportedCondition contains information about when support for the
+        # release's version of a Tool ends.
+        # Corresponds to the JSON property `dockerVersionSupportedCondition`
+        # @return [Google::Apis::ClouddeployV1::ToolVersionSupportedCondition]
+        attr_accessor :docker_version_supported_condition
+      
+        # ToolVersionSupportedCondition contains information about when support for the
+        # release's version of a Tool ends.
+        # Corresponds to the JSON property `helmVersionSupportedCondition`
+        # @return [Google::Apis::ClouddeployV1::ToolVersionSupportedCondition]
+        attr_accessor :helm_version_supported_condition
+      
+        # ToolVersionSupportedCondition contains information about when support for the
+        # release's version of a Tool ends.
+        # Corresponds to the JSON property `kptVersionSupportedCondition`
+        # @return [Google::Apis::ClouddeployV1::ToolVersionSupportedCondition]
+        attr_accessor :kpt_version_supported_condition
+      
+        # ToolVersionSupportedCondition contains information about when support for the
+        # release's version of a Tool ends.
+        # Corresponds to the JSON property `kubectlVersionSupportedCondition`
+        # @return [Google::Apis::ClouddeployV1::ToolVersionSupportedCondition]
+        attr_accessor :kubectl_version_supported_condition
+      
+        # ToolVersionSupportedCondition contains information about when support for the
+        # release's version of a Tool ends.
+        # Corresponds to the JSON property `kustomizeVersionSupportedCondition`
+        # @return [Google::Apis::ClouddeployV1::ToolVersionSupportedCondition]
+        attr_accessor :kustomize_version_supported_condition
       
         # ReleaseReadyCondition contains information around the status of the Release.
         # If a release is not ready, you cannot create a rollout with the release.
@@ -4272,14 +4308,26 @@ module Google
         # @return [Google::Apis::ClouddeployV1::SkaffoldSupportedCondition]
         attr_accessor :skaffold_supported_condition
       
+        # ToolVersionSupportedCondition contains information about when support for the
+        # release's version of a Tool ends.
+        # Corresponds to the JSON property `skaffoldVersionSupportedCondition`
+        # @return [Google::Apis::ClouddeployV1::ToolVersionSupportedCondition]
+        attr_accessor :skaffold_version_supported_condition
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @docker_version_supported_condition = args[:docker_version_supported_condition] if args.key?(:docker_version_supported_condition)
+          @helm_version_supported_condition = args[:helm_version_supported_condition] if args.key?(:helm_version_supported_condition)
+          @kpt_version_supported_condition = args[:kpt_version_supported_condition] if args.key?(:kpt_version_supported_condition)
+          @kubectl_version_supported_condition = args[:kubectl_version_supported_condition] if args.key?(:kubectl_version_supported_condition)
+          @kustomize_version_supported_condition = args[:kustomize_version_supported_condition] if args.key?(:kustomize_version_supported_condition)
           @release_ready_condition = args[:release_ready_condition] if args.key?(:release_ready_condition)
           @skaffold_supported_condition = args[:skaffold_supported_condition] if args.key?(:skaffold_supported_condition)
+          @skaffold_version_supported_condition = args[:skaffold_version_supported_condition] if args.key?(:skaffold_version_supported_condition)
         end
       end
       
@@ -6414,6 +6462,96 @@ module Google
           @id = args[:id] if args.key?(:id)
           @schedule = args[:schedule] if args.key?(:schedule)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
+      # ToolVersionSupportedCondition contains information about when support for the
+      # release's version of a Tool ends.
+      class ToolVersionSupportedCondition
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which this release's version of the Tool will enter
+        # maintenance mode.
+        # Corresponds to the JSON property `maintenanceModeTime`
+        # @return [String]
+        attr_accessor :maintenance_mode_time
+      
+        # Output only. True if the version of Tool used by this release is supported.
+        # Corresponds to the JSON property `status`
+        # @return [Boolean]
+        attr_accessor :status
+        alias_method :status?, :status
+      
+        # Output only. The time at which this release's version of the Tool will no
+        # longer be supported.
+        # Corresponds to the JSON property `supportExpirationTime`
+        # @return [String]
+        attr_accessor :support_expiration_time
+      
+        # Output only. The Tool support state for this release's version of the Tool.
+        # Corresponds to the JSON property `toolVersionSupportState`
+        # @return [String]
+        attr_accessor :tool_version_support_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_mode_time = args[:maintenance_mode_time] if args.key?(:maintenance_mode_time)
+          @status = args[:status] if args.key?(:status)
+          @support_expiration_time = args[:support_expiration_time] if args.key?(:support_expiration_time)
+          @tool_version_support_state = args[:tool_version_support_state] if args.key?(:tool_version_support_state)
+        end
+      end
+      
+      # Details of ToolVersions for the release.
+      class ToolVersions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The docker version to use for Cloud Deploy operations.
+        # Corresponds to the JSON property `docker`
+        # @return [String]
+        attr_accessor :docker
+      
+        # Optional. The helm version to use for Cloud Deploy operations.
+        # Corresponds to the JSON property `helm`
+        # @return [String]
+        attr_accessor :helm
+      
+        # Optional. The kpt version to use for Cloud Deploy operations.
+        # Corresponds to the JSON property `kpt`
+        # @return [String]
+        attr_accessor :kpt
+      
+        # Optional. The kubectl version to use for Cloud Deploy operations.
+        # Corresponds to the JSON property `kubectl`
+        # @return [String]
+        attr_accessor :kubectl
+      
+        # Optional. The kustomize version to use for Cloud Deploy operations.
+        # Corresponds to the JSON property `kustomize`
+        # @return [String]
+        attr_accessor :kustomize
+      
+        # Optional. The skaffold version to use for Cloud Deploy operations.
+        # Corresponds to the JSON property `skaffold`
+        # @return [String]
+        attr_accessor :skaffold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @docker = args[:docker] if args.key?(:docker)
+          @helm = args[:helm] if args.key?(:helm)
+          @kpt = args[:kpt] if args.key?(:kpt)
+          @kubectl = args[:kubectl] if args.key?(:kubectl)
+          @kustomize = args[:kustomize] if args.key?(:kustomize)
+          @skaffold = args[:skaffold] if args.key?(:skaffold)
         end
       end
       
