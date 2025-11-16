@@ -2183,6 +2183,12 @@ module Google
         # @return [String]
         attr_accessor :desired_private_ipv6_google_access
       
+        # PrivilegedAdmissionConfig stores the list of authorized allowlist paths for
+        # the cluster.
+        # Corresponds to the JSON property `desiredPrivilegedAdmissionConfig`
+        # @return [Google::Apis::ContainerV1::PrivilegedAdmissionConfig]
+        attr_accessor :desired_privileged_admission_config
+      
         # RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings
         # that can be created.
         # Corresponds to the JSON property `desiredRbacBindingConfig`
@@ -2340,6 +2346,7 @@ module Google
           @desired_pod_autoscaling = args[:desired_pod_autoscaling] if args.key?(:desired_pod_autoscaling)
           @desired_private_cluster_config = args[:desired_private_cluster_config] if args.key?(:desired_private_cluster_config)
           @desired_private_ipv6_google_access = args[:desired_private_ipv6_google_access] if args.key?(:desired_private_ipv6_google_access)
+          @desired_privileged_admission_config = args[:desired_privileged_admission_config] if args.key?(:desired_privileged_admission_config)
           @desired_rbac_binding_config = args[:desired_rbac_binding_config] if args.key?(:desired_rbac_binding_config)
           @desired_release_channel = args[:desired_release_channel] if args.key?(:desired_release_channel)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
@@ -4361,16 +4368,20 @@ module Google
         # busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.rmem_default
         # net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn
         # net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse net.ipv4.
-        # tcp_max_orphans net.netfilter.nf_conntrack_max net.netfilter.
-        # nf_conntrack_buckets net.netfilter.nf_conntrack_tcp_timeout_close_wait net.
-        # netfilter.nf_conntrack_tcp_timeout_time_wait net.netfilter.
+        # tcp_mtu_probing net.ipv4.tcp_max_orphans net.ipv4.tcp_max_tw_buckets net.ipv4.
+        # tcp_syn_retries net.ipv4.tcp_ecn net.ipv4.tcp_congestion_control net.netfilter.
+        # nf_conntrack_max net.netfilter.nf_conntrack_buckets net.netfilter.
+        # nf_conntrack_tcp_timeout_close_wait net.netfilter.
+        # nf_conntrack_tcp_timeout_time_wait net.netfilter.
         # nf_conntrack_tcp_timeout_established net.netfilter.nf_conntrack_acct kernel.
-        # shmmni kernel.shmmax kernel.shmall fs.aio-max-nr fs.file-max fs.inotify.
-        # max_user_instances fs.inotify.max_user_watches fs.nr_open vm.
-        # dirty_background_ratio vm.dirty_expire_centisecs vm.dirty_ratio vm.
-        # dirty_writeback_centisecs vm.max_map_count vm.overcommit_memory vm.
-        # overcommit_ratio vm.vfs_cache_pressure vm.swappiness vm.watermark_scale_factor
-        # vm.min_free_kbytes
+        # shmmni kernel.shmmax kernel.shmall kernel.perf_event_paranoid kernel.
+        # sched_rt_runtime_us kernel.softlockup_panic kernel.yama.ptrace_scope kernel.
+        # kptr_restrict kernel.dmesg_restrict kernel.sysrq fs.aio-max-nr fs.file-max fs.
+        # inotify.max_user_instances fs.inotify.max_user_watches fs.nr_open vm.
+        # dirty_background_ratio vm.dirty_background_bytes vm.dirty_expire_centisecs vm.
+        # dirty_ratio vm.dirty_bytes vm.dirty_writeback_centisecs vm.max_map_count vm.
+        # overcommit_memory vm.overcommit_ratio vm.vfs_cache_pressure vm.swappiness vm.
+        # watermark_scale_factor vm.min_free_kbytes
         # Corresponds to the JSON property `sysctls`
         # @return [Hash<String,String>]
         attr_accessor :sysctls
@@ -9675,6 +9686,12 @@ module Google
         # @return [String]
         attr_accessor :control_plane_disk_encryption_key
       
+        # Output only. All of the versions of the Cloud KMS cryptoKey that are used by
+        # Confidential Hyperdisks on the control plane nodes.
+        # Corresponds to the JSON property `controlPlaneDiskEncryptionKeyVersions`
+        # @return [Array<String>]
+        attr_accessor :control_plane_disk_encryption_key_versions
+      
         # Resource path of the Certificate Authority Service caPool to use for the etcd
         # API CA in this cluster.
         # Corresponds to the JSON property `etcdApiCa`
@@ -9716,6 +9733,7 @@ module Google
           @aggregation_ca = args[:aggregation_ca] if args.key?(:aggregation_ca)
           @cluster_ca = args[:cluster_ca] if args.key?(:cluster_ca)
           @control_plane_disk_encryption_key = args[:control_plane_disk_encryption_key] if args.key?(:control_plane_disk_encryption_key)
+          @control_plane_disk_encryption_key_versions = args[:control_plane_disk_encryption_key_versions] if args.key?(:control_plane_disk_encryption_key_versions)
           @etcd_api_ca = args[:etcd_api_ca] if args.key?(:etcd_api_ca)
           @etcd_peer_ca = args[:etcd_peer_ca] if args.key?(:etcd_peer_ca)
           @gkeops_etcd_backup_encryption_key = args[:gkeops_etcd_backup_encryption_key] if args.key?(:gkeops_etcd_backup_encryption_key)
