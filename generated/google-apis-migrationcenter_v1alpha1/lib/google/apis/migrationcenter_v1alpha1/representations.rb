@@ -604,6 +604,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportReportRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportReportResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FileValidationReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -641,6 +653,12 @@ module Google
       end
       
       class GcsPayloadInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateReportArtifactLinkRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -863,6 +881,12 @@ module Google
       end
       
       class ListReportConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListReportExportJobsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1162,6 +1186,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReportArtifactLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReportAssetFramesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1175,6 +1205,24 @@ module Google
       end
       
       class ReportConfigGroupPreferenceSetAssignment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportExportExecution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportExportExecutionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportExportJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1282,6 +1330,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReportTotalCostOfOwnershipDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1301,6 +1355,18 @@ module Google
       end
       
       class RunImportJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RunReportExportJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RunReportExportJobResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2557,6 +2623,20 @@ module Google
         end
       end
       
+      class ExportReportRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ExportReportResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :report_artifact_links, as: 'reportArtifactLinks', class: Google::Apis::MigrationcenterV1alpha1::ReportArtifactLink, decorator: Google::Apis::MigrationcenterV1alpha1::ReportArtifactLink::Representation
+      
+        end
+      end
+      
       class FileValidationReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2617,6 +2697,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :format, as: 'format'
           property :path, as: 'path'
+        end
+      end
+      
+      class GenerateReportArtifactLinkRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_type, as: 'artifactType'
         end
       end
       
@@ -3012,6 +3099,15 @@ module Google
           collection :report_configs, as: 'reportConfigs', class: Google::Apis::MigrationcenterV1alpha1::ReportConfig, decorator: Google::Apis::MigrationcenterV1alpha1::ReportConfig::Representation
       
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListReportExportJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :report_export_jobs, as: 'reportExportJobs', class: Google::Apis::MigrationcenterV1alpha1::ReportExportJob, decorator: Google::Apis::MigrationcenterV1alpha1::ReportExportJob::Representation
+      
         end
       end
       
@@ -3538,8 +3634,19 @@ module Google
           property :state, as: 'state'
           property :summary, as: 'summary', class: Google::Apis::MigrationcenterV1alpha1::ReportSummary, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummary::Representation
       
+          property :tco_details, as: 'tcoDetails', class: Google::Apis::MigrationcenterV1alpha1::ReportTotalCostOfOwnershipDetails, decorator: Google::Apis::MigrationcenterV1alpha1::ReportTotalCostOfOwnershipDetails::Representation
+      
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ReportArtifactLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :uri, as: 'uri'
+          property :uri_expiration_time, as: 'uriExpirationTime'
         end
       end
       
@@ -3567,6 +3674,42 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :group, as: 'group'
           property :preference_set, as: 'preferenceSet'
+        end
+      end
+      
+      class ReportExportExecution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :execution_id, as: 'executionId'
+          property :expire_time, as: 'expireTime'
+          property :progress_percentage, as: 'progressPercentage'
+          property :result, as: 'result', class: Google::Apis::MigrationcenterV1alpha1::ReportExportExecutionResult, decorator: Google::Apis::MigrationcenterV1alpha1::ReportExportExecutionResult::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ReportExportExecutionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::MigrationcenterV1alpha1::Status, decorator: Google::Apis::MigrationcenterV1alpha1::Status::Representation
+      
+          property :output_files, as: 'outputFiles', class: Google::Apis::MigrationcenterV1alpha1::OutputFileList, decorator: Google::Apis::MigrationcenterV1alpha1::OutputFileList::Representation
+      
+          property :signed_uris, as: 'signedUris', class: Google::Apis::MigrationcenterV1alpha1::SignedUris, decorator: Google::Apis::MigrationcenterV1alpha1::SignedUris::Representation
+      
+        end
+      end
+      
+      class ReportExportJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :recent_executions, as: 'recentExecutions', class: Google::Apis::MigrationcenterV1alpha1::ReportExportExecution, decorator: Google::Apis::MigrationcenterV1alpha1::ReportExportExecution::Representation
+      
+          property :signed_uri_destination, as: 'signedUriDestination', class: Google::Apis::MigrationcenterV1alpha1::SignedUriDestination, decorator: Google::Apis::MigrationcenterV1alpha1::SignedUriDestination::Representation
+      
         end
       end
       
@@ -3789,6 +3932,13 @@ module Google
         end
       end
       
+      class ReportTotalCostOfOwnershipDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :has_pricing_data, as: 'hasPricingData'
+        end
+      end
+      
       class ResourceLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3815,6 +3965,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
+        end
+      end
+      
+      class RunReportExportJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+        end
+      end
+      
+      class RunReportExportJobResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :report_export_execution, as: 'reportExportExecution', class: Google::Apis::MigrationcenterV1alpha1::ReportExportExecution, decorator: Google::Apis::MigrationcenterV1alpha1::ReportExportExecution::Representation
+      
         end
       end
       
