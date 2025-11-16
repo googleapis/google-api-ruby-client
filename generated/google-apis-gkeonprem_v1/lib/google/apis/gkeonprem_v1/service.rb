@@ -1899,6 +1899,8 @@ module Google
         #   in RMS when the creation fails during standalone preflight checks. In that
         #   case the subsequent create call will fail with "cluster already exists" error
         #   and hence a update cluster is required to fix the cluster.
+        # @param [Array<String>, String] skip_validations
+        #   Optional. If set, skip the specified validations.
         # @param [Boolean] validate_only
         #   Validate the request without actually doing any updates.
         # @param [String] vmware_admin_cluster_id
@@ -1922,7 +1924,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_vmware_admin_cluster(parent, vmware_admin_cluster_object = nil, allow_preflight_failure: nil, validate_only: nil, vmware_admin_cluster_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_vmware_admin_cluster(parent, vmware_admin_cluster_object = nil, allow_preflight_failure: nil, skip_validations: nil, validate_only: nil, vmware_admin_cluster_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/vmwareAdminClusters', options)
           command.request_representation = Google::Apis::GkeonpremV1::VmwareAdminCluster::Representation
           command.request_object = vmware_admin_cluster_object
@@ -1930,6 +1932,7 @@ module Google
           command.response_class = Google::Apis::GkeonpremV1::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['allowPreflightFailure'] = allow_preflight_failure unless allow_preflight_failure.nil?
+          command.query['skipValidations'] = skip_validations unless skip_validations.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['vmwareAdminClusterId'] = vmware_admin_cluster_id unless vmware_admin_cluster_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2114,6 +2117,8 @@ module Google
         # @param [String] name
         #   Immutable. The VMware admin cluster resource name.
         # @param [Google::Apis::GkeonpremV1::VmwareAdminCluster] vmware_admin_cluster_object
+        # @param [Array<String>, String] skip_validations
+        #   Optional. If set, the server-side preflight checks will be skipped.
         # @param [String] update_mask
         #   Required. Field mask is used to specify the fields to be overwritten in the
         #   VMwareAdminCluster resource by the update. The fields specified in the
@@ -2140,13 +2145,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_vmware_admin_cluster(name, vmware_admin_cluster_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_vmware_admin_cluster(name, vmware_admin_cluster_object = nil, skip_validations: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::GkeonpremV1::VmwareAdminCluster::Representation
           command.request_object = vmware_admin_cluster_object
           command.response_representation = Google::Apis::GkeonpremV1::Operation::Representation
           command.response_class = Google::Apis::GkeonpremV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['skipValidations'] = skip_validations unless skip_validations.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2374,6 +2380,8 @@ module Google
         #   in RMS when the creation fails during standalone preflight checks. In that
         #   case the subsequent create call will fail with "cluster already exists" error
         #   and hence a update cluster is required to fix the cluster.
+        # @param [Array<String>, String] skip_validations
+        #   Optional. List of validations to skip during cluster creation.
         # @param [Boolean] validate_only
         #   Validate the request without actually doing any updates.
         # @param [String] vmware_cluster_id
@@ -2397,7 +2405,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_vmware_cluster(parent, vmware_cluster_object = nil, allow_preflight_failure: nil, validate_only: nil, vmware_cluster_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_vmware_cluster(parent, vmware_cluster_object = nil, allow_preflight_failure: nil, skip_validations: nil, validate_only: nil, vmware_cluster_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/vmwareClusters', options)
           command.request_representation = Google::Apis::GkeonpremV1::VmwareCluster::Representation
           command.request_object = vmware_cluster_object
@@ -2405,6 +2413,7 @@ module Google
           command.response_class = Google::Apis::GkeonpremV1::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['allowPreflightFailure'] = allow_preflight_failure unless allow_preflight_failure.nil?
+          command.query['skipValidations'] = skip_validations unless skip_validations.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['vmwareClusterId'] = vmware_cluster_id unless vmware_cluster_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2647,6 +2656,7 @@ module Google
         # @param [String] name
         #   Immutable. The VMware user cluster resource name.
         # @param [Google::Apis::GkeonpremV1::VmwareCluster] vmware_cluster_object
+        # @param [Array<String>, String] skip_validations
         # @param [String] update_mask
         #   Required. Field mask is used to specify the fields to be overwritten in the
         #   VMwareCluster resource by the update. The fields specified in the update_mask
@@ -2673,13 +2683,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_vmware_cluster(name, vmware_cluster_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_vmware_cluster(name, vmware_cluster_object = nil, skip_validations: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::GkeonpremV1::VmwareCluster::Representation
           command.request_object = vmware_cluster_object
           command.response_representation = Google::Apis::GkeonpremV1::Operation::Representation
           command.response_class = Google::Apis::GkeonpremV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['skipValidations'] = skip_validations unless skip_validations.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?

@@ -75,6 +75,87 @@ module Google
         end
       end
       
+      # BareMetalAdminBgpLbConfig represents configuration parameters for a Border
+      # Gateway Protocol (BGP) load balancer.
+      class BareMetalAdminBgpLbConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. AddressPools is a list of non-overlapping IP pools used by load
+        # balancer typed services. All addresses must be routable to load balancer nodes.
+        # IngressVIP must be included in the pools.
+        # Corresponds to the JSON property `addressPools`
+        # @return [Array<Google::Apis::GkeonpremV1::BareMetalAdminLoadBalancerAddressPool>]
+        attr_accessor :address_pools
+      
+        # Required. BGP autonomous system number (ASN) of the cluster. This field can be
+        # updated after cluster creation.
+        # Corresponds to the JSON property `asn`
+        # @return [Fixnum]
+        attr_accessor :asn
+      
+        # Required. The list of BGP peers that the cluster will connect to. At least one
+        # peer must be configured for each control plane node. Control plane nodes will
+        # connect to these peers to advertise the control plane VIP. The Services load
+        # balancer also uses these peers by default. This field can be updated after
+        # cluster creation.
+        # Corresponds to the JSON property `bgpPeerConfigs`
+        # @return [Array<Google::Apis::GkeonpremV1::BareMetalAdminBgpPeerConfig>]
+        attr_accessor :bgp_peer_configs
+      
+        # Specifies the load balancer's node pool configuration.
+        # Corresponds to the JSON property `loadBalancerNodePoolConfig`
+        # @return [Google::Apis::GkeonpremV1::BareMetalAdminLoadBalancerNodePoolConfig]
+        attr_accessor :load_balancer_node_pool_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address_pools = args[:address_pools] if args.key?(:address_pools)
+          @asn = args[:asn] if args.key?(:asn)
+          @bgp_peer_configs = args[:bgp_peer_configs] if args.key?(:bgp_peer_configs)
+          @load_balancer_node_pool_config = args[:load_balancer_node_pool_config] if args.key?(:load_balancer_node_pool_config)
+        end
+      end
+      
+      # BareMetalAdminBgpPeerConfig represents configuration parameters for a Border
+      # Gateway Protocol (BGP) peer.
+      class BareMetalAdminBgpPeerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. BGP autonomous system number (ASN) for the network that contains the
+        # external peer device.
+        # Corresponds to the JSON property `asn`
+        # @return [Fixnum]
+        attr_accessor :asn
+      
+        # The IP address of the control plane node that connects to the external peer.
+        # If you don't specify any control plane nodes, all control plane nodes can
+        # connect to the external peer. If you specify one or more IP addresses, only
+        # the nodes specified participate in peering sessions.
+        # Corresponds to the JSON property `controlPlaneNodes`
+        # @return [Array<String>]
+        attr_accessor :control_plane_nodes
+      
+        # Required. The IP address of the external peer device.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asn = args[:asn] if args.key?(:asn)
+          @control_plane_nodes = args[:control_plane_nodes] if args.key?(:control_plane_nodes)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+        end
+      end
+      
       # Resource that represents a bare metal admin cluster.
       class BareMetalAdminCluster
         include Google::Apis::Core::Hashable
@@ -435,9 +516,56 @@ module Google
         end
       end
       
+      # Represents an IP pool used by the load balancer.
+      class BareMetalAdminLoadBalancerAddressPool
+        include Google::Apis::Core::Hashable
+      
+        # Required. The addresses that are part of this pool. Each address must be
+        # either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5).
+        # Corresponds to the JSON property `addresses`
+        # @return [Array<String>]
+        attr_accessor :addresses
+      
+        # If true, avoid using IPs ending in .0 or .255. This avoids buggy consumer
+        # devices mistakenly dropping IPv4 traffic for those special IP addresses.
+        # Corresponds to the JSON property `avoidBuggyIps`
+        # @return [Boolean]
+        attr_accessor :avoid_buggy_ips
+        alias_method :avoid_buggy_ips?, :avoid_buggy_ips
+      
+        # If true, prevent IP addresses from being automatically assigned.
+        # Corresponds to the JSON property `manualAssign`
+        # @return [Boolean]
+        attr_accessor :manual_assign
+        alias_method :manual_assign?, :manual_assign
+      
+        # Required. The name of the address pool.
+        # Corresponds to the JSON property `pool`
+        # @return [String]
+        attr_accessor :pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @addresses = args[:addresses] if args.key?(:addresses)
+          @avoid_buggy_ips = args[:avoid_buggy_ips] if args.key?(:avoid_buggy_ips)
+          @manual_assign = args[:manual_assign] if args.key?(:manual_assign)
+          @pool = args[:pool] if args.key?(:pool)
+        end
+      end
+      
       # BareMetalAdminLoadBalancerConfig specifies the load balancer configuration.
       class BareMetalAdminLoadBalancerConfig
         include Google::Apis::Core::Hashable
+      
+        # BareMetalAdminBgpLbConfig represents configuration parameters for a Border
+        # Gateway Protocol (BGP) load balancer.
+        # Corresponds to the JSON property `bgpLbConfig`
+        # @return [Google::Apis::GkeonpremV1::BareMetalAdminBgpLbConfig]
+        attr_accessor :bgp_lb_config
       
         # BareMetalAdminManualLbConfig represents configuration parameters for a manual
         # load balancer.
@@ -461,9 +589,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bgp_lb_config = args[:bgp_lb_config] if args.key?(:bgp_lb_config)
           @manual_lb_config = args[:manual_lb_config] if args.key?(:manual_lb_config)
           @port_config = args[:port_config] if args.key?(:port_config)
           @vip_config = args[:vip_config] if args.key?(:vip_config)
+        end
+      end
+      
+      # Specifies the load balancer's node pool configuration.
+      class BareMetalAdminLoadBalancerNodePoolConfig
+        include Google::Apis::Core::Hashable
+      
+        # BareMetalNodePoolConfig describes the configuration of all nodes within a
+        # given bare metal node pool.
+        # Corresponds to the JSON property `nodePoolConfig`
+        # @return [Google::Apis::GkeonpremV1::BareMetalNodePoolConfig]
+        attr_accessor :node_pool_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_pool_config = args[:node_pool_config] if args.key?(:node_pool_config)
         end
       end
       
@@ -558,15 +707,16 @@ module Google
         end
       end
       
-      # BareMetalAdminNetworkConfig specifies the cluster network configuration.
-      class BareMetalAdminNetworkConfig
+      # Specifies the multiple networking interfaces cluster configuration.
+      class BareMetalAdminMultipleNetworkInterfacesConfig
         include Google::Apis::Core::Hashable
       
-        # BareMetalAdminIslandModeCidrConfig specifies the cluster CIDR configuration
-        # while running in island mode.
-        # Corresponds to the JSON property `islandModeCidr`
-        # @return [Google::Apis::GkeonpremV1::BareMetalAdminIslandModeCidrConfig]
-        attr_accessor :island_mode_cidr
+        # Whether to enable multiple network interfaces for your pods. When set
+        # network_config.advanced_networking is automatically set to true.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
       
         def initialize(**args)
            update!(**args)
@@ -574,7 +724,42 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # BareMetalAdminNetworkConfig specifies the cluster network configuration.
+      class BareMetalAdminNetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enables the use of advanced Anthos networking features, such as Bundled Load
+        # Balancing with BGP or the egress NAT gateway. Setting configuration for
+        # advanced networking features will automatically set this flag.
+        # Corresponds to the JSON property `advancedNetworking`
+        # @return [Boolean]
+        attr_accessor :advanced_networking
+        alias_method :advanced_networking?, :advanced_networking
+      
+        # BareMetalAdminIslandModeCidrConfig specifies the cluster CIDR configuration
+        # while running in island mode.
+        # Corresponds to the JSON property `islandModeCidr`
+        # @return [Google::Apis::GkeonpremV1::BareMetalAdminIslandModeCidrConfig]
+        attr_accessor :island_mode_cidr
+      
+        # Specifies the multiple networking interfaces cluster configuration.
+        # Corresponds to the JSON property `multipleNetworkInterfacesConfig`
+        # @return [Google::Apis::GkeonpremV1::BareMetalAdminMultipleNetworkInterfacesConfig]
+        attr_accessor :multiple_network_interfaces_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advanced_networking = args[:advanced_networking] if args.key?(:advanced_networking)
           @island_mode_cidr = args[:island_mode_cidr] if args.key?(:island_mode_cidr)
+          @multiple_network_interfaces_config = args[:multiple_network_interfaces_config] if args.key?(:multiple_network_interfaces_config)
         end
       end
       
