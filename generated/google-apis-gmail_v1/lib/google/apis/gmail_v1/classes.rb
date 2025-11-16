@@ -105,6 +105,63 @@ module Google
         end
       end
       
+      # Field values for a classification label.
+      class ClassificationLabelFieldValue
+        include Google::Apis::Core::Hashable
+      
+        # Required. The field ID for the Classification Label Value. Maps to the ID
+        # field of the Google Drive `Label.Field` object.
+        # Corresponds to the JSON property `fieldId`
+        # @return [String]
+        attr_accessor :field_id
+      
+        # Selection choice ID for the selection option. Should only be set if the field
+        # type is `SELECTION` in the Google Drive `Label.Field` object. Maps to the id
+        # field of the Google Drive `Label.Field.SelectionOptions` resource.
+        # Corresponds to the JSON property `selection`
+        # @return [String]
+        attr_accessor :selection
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_id = args[:field_id] if args.key?(:field_id)
+          @selection = args[:selection] if args.key?(:selection)
+        end
+      end
+      
+      # Classification Labels applied to the email message. Classification Labels are
+      # different from Gmail inbox labels. Only used for Google Workspace accounts. [
+      # Learn more about classification labels](https://support.google.com/a/answer/
+      # 9292382).
+      class ClassificationLabelValue
+        include Google::Apis::Core::Hashable
+      
+        # Field values for the given classification label ID.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::GmailV1::ClassificationLabelFieldValue>]
+        attr_accessor :fields
+      
+        # Required. The canonical or raw alphanumeric classification label ID. Maps to
+        # the ID field of the Google Drive Label resource.
+        # Corresponds to the JSON property `labelId`
+        # @return [String]
+        attr_accessor :label_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+          @label_id = args[:label_id] if args.key?(:label_id)
+        end
+      end
+      
       # The client-side encryption (CSE) configuration for the email address of an
       # authenticated user. Gmail uses CSE configurations to save drafts of client-
       # side encrypted email messages, and to sign and send encrypted email messages.
@@ -1217,6 +1274,15 @@ module Google
       class Message
         include Google::Apis::Core::Hashable
       
+        # Classification Label values on the message. Available Classification Label
+        # schemas can be queried using the Google Drive Labels API. Each classification
+        # label ID must be unique. If duplicate IDs are provided, only one will be
+        # retained, and the selection is arbitrary. Only used for Google Workspace
+        # accounts.
+        # Corresponds to the JSON property `classificationLabelValues`
+        # @return [Array<Google::Apis::GmailV1::ClassificationLabelValue>]
+        attr_accessor :classification_label_values
+      
         # The ID of the last history record that modified this message.
         # Corresponds to the JSON property `historyId`
         # @return [Fixnum]
@@ -1280,6 +1346,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @classification_label_values = args[:classification_label_values] if args.key?(:classification_label_values)
           @history_id = args[:history_id] if args.key?(:history_id)
           @id = args[:id] if args.key?(:id)
           @internal_date = args[:internal_date] if args.key?(:internal_date)
