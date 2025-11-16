@@ -326,8 +326,8 @@ module Google
         # @return [Google::Apis::ChatV1::DriveDataRef]
         attr_accessor :drive_data_ref
       
-        # Optional. Resource name of the attachment, in the form `spaces/`space`/
-        # messages/`message`/attachments/`attachment``.
+        # Identifier. Resource name of the attachment. Format: `spaces/`space`/messages/`
+        # message`/attachments/`attachment``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1866,8 +1866,10 @@ module Google
         # @return [String]
         attr_accessor :display_style
       
-        # The expression data for the card. Only supported by Google Workspace Workflow,
-        # but not Google Chat apps or Google Workspace add-ons.
+        # The expression data for the card. Available for Google Workspace add-ons that
+        # extend Google Workspace flows, which is available as part of the [Gemini Alpha
+        # program](https://support.google.com/a/answer/14170809). Unavailable for Google
+        # Chat apps.
         # Corresponds to the JSON property `expressionData`
         # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1ExpressionData>]
         attr_accessor :expression_data
@@ -2328,15 +2330,17 @@ module Google
         end
       end
       
-      # Represents an action that is not specific to a widget. Only supported by
-      # Google Workspace Workflow, but not Google Chat apps or Google Workspace add-
-      # ons.
+      # Represents an action that is not specific to a widget. Available for Google
+      # Workspace add-ons that extend Google Workspace flows, which is available as
+      # part of the [Gemini Alpha program](https://support.google.com/a/answer/
+      # 14170809). Unavailable for Google Chat apps.
       class GoogleAppsCardV1CommonWidgetAction
         include Google::Apis::Core::Hashable
       
-        # Represents an action that updates the visibility of a widget. Only supported
-        # by Google Workspace Workflow, but not Google Chat apps or Google Workspace add-
-        # ons.
+        # Represents an action that updates the visibility of a widget. Available for
+        # Google Workspace add-ons that extend Google Workspace flows, which is
+        # available as part of the [Gemini Alpha program](https://support.google.com/a/
+        # answer/14170809). Unavailable for Google Chat apps.
         # Corresponds to the JSON property `updateVisibilityAction`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1UpdateVisibilityAction]
         attr_accessor :update_visibility_action
@@ -2351,9 +2355,10 @@ module Google
         end
       end
       
-      # Represents a condition that can be used to trigger an action. Only supported
-      # by Google Workspace Workflow, but not Google Chat apps or Google Workspace add-
-      # ons.
+      # Represents a condition that can be used to trigger an action. Available for
+      # Google Workspace add-ons that extend Google Workspace flows, which is
+      # available as part of the [Gemini Alpha program](https://support.google.com/a/
+      # answer/14170809). Unavailable for Google Chat apps.
       class GoogleAppsCardV1Condition
         include Google::Apis::Core::Hashable
       
@@ -2362,8 +2367,10 @@ module Google
         # @return [String]
         attr_accessor :action_rule_id
       
-        # Represents a condition that is evaluated using CEL. Only supported by Google
-        # Workspace Workflow, but not Google Chat apps or Google Workspace add-ons.
+        # Represents a condition that is evaluated using CEL. Available for Google
+        # Workspace add-ons that extend Google Workspace flows, which is available as
+        # part of the [Gemini Alpha program](https://support.google.com/a/answer/
+        # 14170809). Unavailable for Google Chat apps.
         # Corresponds to the JSON property `expressionDataCondition`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ExpressionDataCondition]
         attr_accessor :expression_data_condition
@@ -2380,8 +2387,9 @@ module Google
       end
       
       # A configuration object that helps configure the data sources for a widget.
-      # Only supported by Google Workspace Workflow, but not Google Chat apps or
-      # Google Workspace add-ons.
+      # Available for Google Workspace add-ons that extend Google Workspace flows,
+      # which is available as part of the [Gemini Alpha program](https://support.
+      # google.com/a/answer/14170809). Unavailable for Google Chat apps.
       class GoogleAppsCardV1DataSourceConfig
         include Google::Apis::Core::Hashable
       
@@ -2672,9 +2680,10 @@ module Google
         end
       end
       
-      # Represents an actionthat can be performed on an ui element. Only supported by
-      # Google Workspace Workflow, but not Google Chat apps or Google Workspace add-
-      # ons.
+      # Represents an actionthat can be performed on an ui element. Available for
+      # Google Workspace add-ons that extend Google Workspace flows, which is
+      # available as part of the [Gemini Alpha program](https://support.google.com/a/
+      # answer/14170809). Unavailable for Google Chat apps.
       class GoogleAppsCardV1EventAction
         include Google::Apis::Core::Hashable
       
@@ -2683,9 +2692,10 @@ module Google
         # @return [String]
         attr_accessor :action_rule_id
       
-        # Represents an action that is not specific to a widget. Only supported by
-        # Google Workspace Workflow, but not Google Chat apps or Google Workspace add-
-        # ons.
+        # Represents an action that is not specific to a widget. Available for Google
+        # Workspace add-ons that extend Google Workspace flows, which is available as
+        # part of the [Gemini Alpha program](https://support.google.com/a/answer/
+        # 14170809). Unavailable for Google Chat apps.
         # Corresponds to the JSON property `commonWidgetAction`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1CommonWidgetAction]
         attr_accessor :common_widget_action
@@ -2707,9 +2717,10 @@ module Google
         end
       end
       
-      # Represents the data that is used to evaluate an expression. Only supported by
-      # Google Workspace Workflow, but not Google Chat apps or Google Workspace add-
-      # ons.
+      # Represents the data that is used to evaluate an expression. Available for
+      # Google Workspace add-ons that extend Google Workspace flows, which is
+      # available as part of the [Gemini Alpha program](https://support.google.com/a/
+      # answer/14170809). Unavailable for Google Chat apps.
       class GoogleAppsCardV1ExpressionData
         include Google::Apis::Core::Hashable
       
@@ -2746,8 +2757,10 @@ module Google
         end
       end
       
-      # Represents a condition that is evaluated using CEL. Only supported by Google
-      # Workspace Workflow, but not Google Chat apps or Google Workspace add-ons.
+      # Represents a condition that is evaluated using CEL. Available for Google
+      # Workspace add-ons that extend Google Workspace flows, which is available as
+      # part of the [Gemini Alpha program](https://support.google.com/a/answer/
+      # 14170809). Unavailable for Google Chat apps.
       class GoogleAppsCardV1ExpressionDataCondition
         include Google::Apis::Core::Hashable
       
@@ -3406,8 +3419,10 @@ module Google
       
         # A unique ID assigned to the section that's used to identify the section to be
         # mutated. The ID has a character limit of 64 characters and should be in the
-        # format of `[a-zA-Z0-9-]+`. Only supported by Google Workspace Workflow, but
-        # not Google Chat apps or Google Workspace add-ons.
+        # format of `[a-zA-Z0-9-]+`. Available for Google Workspace add-ons that extend
+        # Google Workspace flows, which is available as part of the [Gemini Alpha
+        # program](https://support.google.com/a/answer/14170809). Unavailable for Google
+        # Chat apps.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -3462,8 +3477,9 @@ module Google
         # provides more fine-grained control over the data source. If specified, the `
         # multi_select_max_selected_items` field, `multi_select_min_query_length` field,
         # `external_data_source` field and `platform_data_source` field are ignored.
-        # Only supported by Google Workspace Workflow, but not Google Chat apps or
-        # Google Workspace add-ons.
+        # Available for Google Workspace add-ons that extend Google Workspace flows,
+        # which is available as part of the [Gemini Alpha program](https://support.
+        # google.com/a/answer/14170809). Unavailable for Google Chat apps.
         # Corresponds to the JSON property `dataSourceConfigs`
         # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1DataSourceConfig>]
         attr_accessor :data_source_configs
@@ -3478,8 +3494,9 @@ module Google
       
         # Optional. Text that appears below the selection input field meant to assist
         # users by prompting them to enter a certain value. This text is always visible.
-        # Only supported by Google Workspace Workflows, but not Google Chat API or
-        # Google Workspace Add-ons.
+        # Available for Google Workspace add-ons that extend Google Workspace flows,
+        # which is available as part of the [Gemini Alpha program](https://support.
+        # google.com/a/answer/14170809). Unavailable for Google Chat apps.
         # Corresponds to the JSON property `hintText`
         # @return [String]
         attr_accessor :hint_text
@@ -3890,8 +3907,10 @@ module Google
         end
       end
       
-      # Represents a trigger. Only supported by Google Workspace Workflow, but not
-      # Google Chat apps or Google Workspace add-ons.
+      # Represents a trigger. Available for Google Workspace add-ons that extend
+      # Google Workspace flows, which is available as part of the [Gemini Alpha
+      # program](https://support.google.com/a/answer/14170809). Unavailable for Google
+      # Chat apps.
       class GoogleAppsCardV1Trigger
         include Google::Apis::Core::Hashable
       
@@ -3910,9 +3929,10 @@ module Google
         end
       end
       
-      # Represents an action that updates the visibility of a widget. Only supported
-      # by Google Workspace Workflow, but not Google Chat apps or Google Workspace add-
-      # ons.
+      # Represents an action that updates the visibility of a widget. Available for
+      # Google Workspace add-ons that extend Google Workspace flows, which is
+      # available as part of the [Gemini Alpha program](https://support.google.com/a/
+      # answer/14170809). Unavailable for Google Chat apps.
       class GoogleAppsCardV1UpdateVisibilityAction
         include Google::Apis::Core::Hashable
       
@@ -4053,9 +4073,10 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Divider]
         attr_accessor :divider
       
-        # Specifies the event actions that can be performed on the widget. Only
-        # supported by Google Workspace Workflow, but not Google Chat apps or Google
-        # Workspace add-ons.
+        # Specifies the event actions that can be performed on the widget. Available for
+        # Google Workspace add-ons that extend Google Workspace flows, which is
+        # available as part of the [Gemini Alpha program](https://support.google.com/a/
+        # answer/14170809). Unavailable for Google Chat apps.
         # Corresponds to the JSON property `eventActions`
         # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1EventAction>]
         attr_accessor :event_actions
@@ -4086,8 +4107,10 @@ module Google
       
         # A unique ID assigned to the widget that's used to identify the widget to be
         # mutated. The ID has a character limit of 64 characters and should be in the
-        # format of `[a-zA-Z0-9-]+` and. Only supported by Google Workspace Workflow,
-        # but not Google Chat apps or Google Workspace add-ons.
+        # format of `[a-zA-Z0-9-]+` and. Available for Google Workspace add-ons that
+        # extend Google Workspace flows, which is available as part of the [Gemini Alpha
+        # program](https://support.google.com/a/answer/14170809). Unavailable for Google
+        # Chat apps.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4148,8 +4171,9 @@ module Google
         attr_accessor :text_paragraph
       
         # Specifies whether the widget is visible or hidden. The default value is `
-        # VISIBLE`. Only supported by Google Workspace Workflow, but not Google Chat
-        # apps or Google Workspace add-ons.
+        # VISIBLE`. Available for Google Workspace add-ons that extend Google Workspace
+        # flows, which is available as part of the [Gemini Alpha program](https://
+        # support.google.com/a/answer/14170809). Unavailable for Google Chat apps.
         # Corresponds to the JSON property `visibility`
         # @return [String]
         attr_accessor :visibility
