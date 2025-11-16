@@ -397,7 +397,7 @@ module Google
         # Lists all `VpcFlowLogsConfigs` in a given organization.
         # @param [String] parent
         #   Required. The parent resource of the VpcFlowLogsConfig, in one of the
-        #   following formats: - For project-level resourcs: `projects/`project_id`/
+        #   following formats: - For project-level resources: `projects/`project_id`/
         #   locations/global` - For organization-level resources: `organizations/`
         #   organization_id`/locations/global`
         # @param [String] filter
@@ -1206,7 +1206,7 @@ module Google
         # Lists all `VpcFlowLogsConfigs` in a given project.
         # @param [String] parent
         #   Required. The parent resource of the VpcFlowLogsConfig, in one of the
-        #   following formats: - For project-level resourcs: `projects/`project_id`/
+        #   following formats: - For project-level resources: `projects/`project_id`/
         #   locations/global` - For organization-level resources: `organizations/`
         #   organization_id`/locations/global`
         # @param [String] filter
