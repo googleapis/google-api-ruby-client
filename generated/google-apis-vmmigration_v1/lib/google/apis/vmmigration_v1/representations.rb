@@ -1316,6 +1316,7 @@ module Google
       class DataDiskImageImport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :guest_os_features, as: 'guestOsFeatures'
         end
       end
       

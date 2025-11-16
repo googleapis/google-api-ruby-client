@@ -1867,12 +1867,24 @@ module Google
       class DataDiskImageImport
         include Google::Apis::Core::Hashable
       
+        # Optional. A list of guest OS features to apply to the imported image. These
+        # features are flags that are used by Compute Engine to enable certain
+        # capabilities for virtual machine instances that are created from the image.
+        # This field does not change the OS of the image; it only marks the image with
+        # the specified features. The user must ensure that the OS is compatible with
+        # the features. For a list of available features, see https://cloud.google.com/
+        # compute/docs/images/create-custom#guest-os-features.
+        # Corresponds to the JSON property `guestOsFeatures`
+        # @return [Array<String>]
+        attr_accessor :guest_os_features
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
         end
       end
       
