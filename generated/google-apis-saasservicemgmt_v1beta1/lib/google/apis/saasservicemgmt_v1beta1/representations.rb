@@ -541,6 +541,7 @@ module Google
           property :control, as: 'control', class: Google::Apis::SaasservicemgmtV1beta1::RolloutControl, decorator: Google::Apis::SaasservicemgmtV1beta1::RolloutControl::Representation
       
           property :create_time, as: 'createTime'
+          property :effective_unit_filter, as: 'effectiveUnitFilter'
           property :end_time, as: 'endTime'
           property :etag, as: 'etag'
           hash :labels, as: 'labels'

@@ -936,6 +936,16 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Output only. Output only snapshot of the effective unit filter at
+        # Rollout start time. Contains a CEL(https://github.com/google/cel-spec)
+        # expression consisting of a conjunction of Rollout.unit_filter and RolloutKind.
+        # unit_filter. This field captures the filter applied by the Rollout to
+        # determine the Unit population. If the associated RolloutKind's unit_filter is
+        # modified after the rollout is started, it will not be updated here.
+        # Corresponds to the JSON property `effectiveUnitFilter`
+        # @return [String]
+        attr_accessor :effective_unit_filter
+      
         # Optional. Output only. The time when the rollout finished execution (
         # regardless of success, failure, or cancellation). Will be empty if the rollout
         # hasn't finished yet. Once set, the rollout is in terminal state and all the
@@ -1062,6 +1072,7 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @control = args[:control] if args.key?(:control)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @effective_unit_filter = args[:effective_unit_filter] if args.key?(:effective_unit_filter)
           @end_time = args[:end_time] if args.key?(:end_time)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
