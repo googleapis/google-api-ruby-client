@@ -2179,6 +2179,8 @@ module Google
           property :desired_private_cluster_config, as: 'desiredPrivateClusterConfig', class: Google::Apis::ContainerV1beta1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1beta1::PrivateClusterConfig::Representation
       
           property :desired_private_ipv6_google_access, as: 'desiredPrivateIpv6GoogleAccess'
+          property :desired_privileged_admission_config, as: 'desiredPrivilegedAdmissionConfig', class: Google::Apis::ContainerV1beta1::PrivilegedAdmissionConfig, decorator: Google::Apis::ContainerV1beta1::PrivilegedAdmissionConfig::Representation
+      
           property :desired_protect_config, as: 'desiredProtectConfig', class: Google::Apis::ContainerV1beta1::ProtectConfig, decorator: Google::Apis::ContainerV1beta1::ProtectConfig::Representation
       
           property :desired_rbac_binding_config, as: 'desiredRbacBindingConfig', class: Google::Apis::ContainerV1beta1::RbacBindingConfig, decorator: Google::Apis::ContainerV1beta1::RbacBindingConfig::Representation
@@ -4316,6 +4318,7 @@ module Google
           property :aggregation_ca, as: 'aggregationCa'
           property :cluster_ca, as: 'clusterCa'
           property :control_plane_disk_encryption_key, as: 'controlPlaneDiskEncryptionKey'
+          collection :control_plane_disk_encryption_key_versions, as: 'controlPlaneDiskEncryptionKeyVersions'
           property :etcd_api_ca, as: 'etcdApiCa'
           property :etcd_peer_ca, as: 'etcdPeerCa'
           property :gkeops_etcd_backup_encryption_key, as: 'gkeopsEtcdBackupEncryptionKey'
