@@ -1,5 +1,9 @@
 # Release history for google-apis-merchantapi_products_v1beta
 
+### v0.22.0 (2025-11-16)
+
+* Regenerated from discovery document revision 20251109
+
 ### v0.21.0 (2025-10-12)
 
 * Regenerated from discovery document revision 20251007
