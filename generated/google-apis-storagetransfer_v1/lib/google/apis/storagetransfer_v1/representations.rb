@@ -315,6 +315,7 @@ module Google
           property :credentials_secret, as: 'credentialsSecret'
           property :managed_private_network, as: 'managedPrivateNetwork'
           property :path, as: 'path'
+          property :private_network_service, as: 'privateNetworkService'
           property :role_arn, as: 'roleArn'
         end
       end
@@ -329,6 +330,7 @@ module Google
           property :federated_identity_config, as: 'federatedIdentityConfig', class: Google::Apis::StoragetransferV1::FederatedIdentityConfig, decorator: Google::Apis::StoragetransferV1::FederatedIdentityConfig::Representation
       
           property :path, as: 'path'
+          property :private_network_service, as: 'privateNetworkService'
           property :storage_account, as: 'storageAccount'
         end
       end
@@ -502,6 +504,7 @@ module Google
           collection :include_prefixes, as: 'includePrefixes'
           property :last_modified_before, as: 'lastModifiedBefore'
           property :last_modified_since, as: 'lastModifiedSince'
+          property :match_glob, as: 'matchGlob'
           property :max_time_elapsed_since_last_modification, as: 'maxTimeElapsedSinceLastModification'
           property :min_time_elapsed_since_last_modification, as: 'minTimeElapsedSinceLastModification'
         end

@@ -188,6 +188,13 @@ module Google
         # @return [String]
         attr_accessor :path
       
+        # Service Directory Service to be used as the endpoint for transfers from a
+        # custom VPC. Format: `projects/`project_id`/locations/`location`/namespaces/`
+        # namespace`/services/`service``
+        # Corresponds to the JSON property `privateNetworkService`
+        # @return [String]
+        attr_accessor :private_network_service
+      
         # The Amazon Resource Name (ARN) of the role to support temporary credentials
         # via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM
         # ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.
@@ -210,6 +217,7 @@ module Google
           @credentials_secret = args[:credentials_secret] if args.key?(:credentials_secret)
           @managed_private_network = args[:managed_private_network] if args.key?(:managed_private_network)
           @path = args[:path] if args.key?(:path)
+          @private_network_service = args[:private_network_service] if args.key?(:private_network_service)
           @role_arn = args[:role_arn] if args.key?(:role_arn)
         end
       end
@@ -266,6 +274,13 @@ module Google
         # @return [String]
         attr_accessor :path
       
+        # Service Directory Service to be used as the endpoint for transfers from a
+        # custom VPC. Format: `projects/`project_id`/locations/`location`/namespaces/`
+        # namespace`/services/`service``
+        # Corresponds to the JSON property `privateNetworkService`
+        # @return [String]
+        attr_accessor :private_network_service
+      
         # Required. The name of the Azure Storage account.
         # Corresponds to the JSON property `storageAccount`
         # @return [String]
@@ -282,6 +297,7 @@ module Google
           @credentials_secret = args[:credentials_secret] if args.key?(:credentials_secret)
           @federated_identity_config = args[:federated_identity_config] if args.key?(:federated_identity_config)
           @path = args[:path] if args.key?(:path)
+          @private_network_service = args[:private_network_service] if args.key?(:private_network_service)
           @storage_account = args[:storage_account] if args.key?(:storage_account)
         end
       end
@@ -987,6 +1003,11 @@ module Google
         # @return [String]
         attr_accessor :last_modified_since
       
+        # Optional. If specified, only objects matching this glob are transferred.
+        # Corresponds to the JSON property `matchGlob`
+        # @return [String]
+        attr_accessor :match_glob
+      
         # Ensures that objects are not transferred if a specific maximum time has
         # elapsed since the "last modification time". When a TransferOperation begins,
         # objects with a "last modification time" are transferred only if the elapsed
@@ -1019,6 +1040,7 @@ module Google
           @include_prefixes = args[:include_prefixes] if args.key?(:include_prefixes)
           @last_modified_before = args[:last_modified_before] if args.key?(:last_modified_before)
           @last_modified_since = args[:last_modified_since] if args.key?(:last_modified_since)
+          @match_glob = args[:match_glob] if args.key?(:match_glob)
           @max_time_elapsed_since_last_modification = args[:max_time_elapsed_since_last_modification] if args.key?(:max_time_elapsed_since_last_modification)
           @min_time_elapsed_since_last_modification = args[:min_time_elapsed_since_last_modification] if args.key?(:min_time_elapsed_since_last_modification)
         end
