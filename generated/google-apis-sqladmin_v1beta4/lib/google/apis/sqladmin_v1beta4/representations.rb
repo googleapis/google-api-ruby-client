@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesListEntraIdCertificatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -449,6 +455,12 @@ module Google
       end
       
       class RestoreInstancesBackupRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesRotateEntraIdCertificateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -658,6 +670,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RotateEntraIdCertificateContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RotateServerCaContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -701,6 +719,12 @@ module Google
       end
       
       class SqlInstancesAcquireSsrsLeaseResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlInstancesAddEntraIdCertificateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -779,6 +803,12 @@ module Google
       end
       
       class SqlServerDatabaseDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerEntraIdConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1673,6 +1703,16 @@ module Google
         end
       end
       
+      class InstancesListEntraIdCertificatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_version, as: 'activeVersion'
+          collection :certs, as: 'certs', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
       class ListInstancesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1736,6 +1776,14 @@ module Google
         end
       end
       
+      class InstancesRotateEntraIdCertificateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rotate_entra_id_certificate_context, as: 'rotateEntraIdCertificateContext', class: Google::Apis::SqladminV1beta4::RotateEntraIdCertificateContext, decorator: Google::Apis::SqladminV1beta4::RotateEntraIdCertificateContext::Representation
+      
+        end
+      end
+      
       class InstancesRotateServerCaRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1783,6 +1831,7 @@ module Google
           property :require_ssl, as: 'requireSsl'
           property :server_ca_mode, as: 'serverCaMode'
           property :server_ca_pool, as: 'serverCaPool'
+          property :server_certificate_rotation_mode, as: 'serverCertificateRotationMode'
           property :ssl_mode, as: 'sslMode'
         end
       end
@@ -2123,6 +2172,14 @@ module Google
         end
       end
       
+      class RotateEntraIdCertificateContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :next_version, as: 'nextVersion'
+        end
+      end
+      
       class RotateServerCaContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2188,6 +2245,8 @@ module Google
           property :edition, as: 'edition'
           property :enable_dataplex_integration, as: 'enableDataplexIntegration'
           property :enable_google_ml_integration, as: 'enableGoogleMlIntegration'
+          property :entraid_config, as: 'entraidConfig', class: Google::Apis::SqladminV1beta4::SqlServerEntraIdConfig, decorator: Google::Apis::SqladminV1beta4::SqlServerEntraIdConfig::Representation
+      
           property :final_backup_config, as: 'finalBackupConfig', class: Google::Apis::SqladminV1beta4::FinalBackupConfig, decorator: Google::Apis::SqladminV1beta4::FinalBackupConfig::Representation
       
           property :insights_config, as: 'insightsConfig', class: Google::Apis::SqladminV1beta4::InsightsConfig, decorator: Google::Apis::SqladminV1beta4::InsightsConfig::Representation
@@ -2243,6 +2302,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :operation_id, as: 'operationId'
+        end
+      end
+      
+      class SqlInstancesAddEntraIdCertificateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2371,6 +2436,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compatibility_level, as: 'compatibilityLevel'
           property :recovery_model, as: 'recoveryModel'
+        end
+      end
+      
+      class SqlServerEntraIdConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_id, as: 'applicationId'
+          property :kind, as: 'kind'
+          property :tenant_id, as: 'tenantId'
         end
       end
       
@@ -2506,6 +2580,7 @@ module Google
       class User
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :database_roles, as: 'databaseRoles'
           property :dual_password_type, as: 'dualPasswordType'
           property :etag, as: 'etag'
           property :host, as: 'host'
