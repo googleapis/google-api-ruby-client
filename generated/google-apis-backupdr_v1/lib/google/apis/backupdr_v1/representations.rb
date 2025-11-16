@@ -346,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Entry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -885,6 +891,7 @@ module Google
       
           collection :backup_appliance_locks, as: 'backupApplianceLocks', class: Google::Apis::BackupdrV1::BackupLock, decorator: Google::Apis::BackupdrV1::BackupLock::Representation
       
+          property :backup_retention_inheritance, as: 'backupRetentionInheritance'
           property :backup_type, as: 'backupType'
           property :cloud_sql_instance_backup_properties, as: 'cloudSqlInstanceBackupProperties', class: Google::Apis::BackupdrV1::CloudSqlInstanceBackupProperties, decorator: Google::Apis::BackupdrV1::CloudSqlInstanceBackupProperties::Representation
       
@@ -902,6 +909,7 @@ module Google
       
           property :gcp_resource, as: 'gcpResource', class: Google::Apis::BackupdrV1::BackupGcpResource, decorator: Google::Apis::BackupdrV1::BackupGcpResource::Representation
       
+          collection :kms_key_versions, as: 'kmsKeyVersions'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :resource_size_bytes, :numeric_string => true, as: 'resourceSizeBytes'
@@ -1108,10 +1116,13 @@ module Google
           hash :annotations, as: 'annotations'
           property :backup_count, :numeric_string => true, as: 'backupCount'
           property :backup_minimum_enforced_retention_duration, as: 'backupMinimumEnforcedRetentionDuration'
+          property :backup_retention_inheritance, as: 'backupRetentionInheritance'
           property :create_time, as: 'createTime'
           property :deletable, as: 'deletable'
           property :description, as: 'description'
           property :effective_time, as: 'effectiveTime'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::BackupdrV1::EncryptionConfig, decorator: Google::Apis::BackupdrV1::EncryptionConfig::Representation
+      
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
@@ -1465,6 +1476,13 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
         end
       end
       
@@ -1942,6 +1960,7 @@ module Google
       class RestoreBackupRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :clear_overrides_field_mask, as: 'clearOverridesFieldMask'
           property :compute_instance_restore_properties, as: 'computeInstanceRestoreProperties', class: Google::Apis::BackupdrV1::ComputeInstanceRestoreProperties, decorator: Google::Apis::BackupdrV1::ComputeInstanceRestoreProperties::Representation
       
           property :compute_instance_target_environment, as: 'computeInstanceTargetEnvironment', class: Google::Apis::BackupdrV1::ComputeInstanceTargetEnvironment, decorator: Google::Apis::BackupdrV1::ComputeInstanceTargetEnvironment::Representation
@@ -2113,6 +2132,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_retention_days, as: 'customRetentionDays'
+          hash :labels, as: 'labels'
           property :request_id, as: 'requestId'
           property :rule_id, as: 'ruleId'
         end
