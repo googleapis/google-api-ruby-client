@@ -154,6 +154,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # Output only. Set to true if the cluster corresponding to this backup is
+        # deleted. This field is only populated for when using the
+        # BACKUP_VIEW_CLUSTER_DELETED view.
+        # Corresponds to the JSON property `clusterDeleted`
+        # @return [Boolean]
+        attr_accessor :cluster_deleted
+        alias_method :cluster_deleted?, :cluster_deleted
+      
         # Required. The full resource name of the backup source cluster (e.g., projects/`
         # project`/locations/`region`/clusters/`cluster_id`).
         # Corresponds to the JSON property `clusterName`
@@ -304,6 +312,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @cluster_deleted = args[:cluster_deleted] if args.key?(:cluster_deleted)
           @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
           @cluster_uid = args[:cluster_uid] if args.key?(:cluster_uid)
           @create_completion_time = args[:create_completion_time] if args.key?(:create_completion_time)
@@ -1994,6 +2003,13 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::MachineConfig]
         attr_accessor :machine_config
       
+        # Output only. Maintenance version of the instance, for example: POSTGRES_15.
+        # 2025_07_15.04_00. Output only. Update this field via the parent cluster's
+        # maintenance_version field(s).
+        # Corresponds to the JSON property `maintenanceVersionName`
+        # @return [String]
+        attr_accessor :maintenance_version_name
+      
         # Output only. The name of the instance resource with the format: * projects/`
         # project`/locations/`region`/clusters/`cluster_id`/instances/`instance_id`
         # where the cluster and instance ID segments should satisfy the regex expression
@@ -2116,6 +2132,7 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @labels = args[:labels] if args.key?(:labels)
           @machine_config = args[:machine_config] if args.key?(:machine_config)
+          @maintenance_version_name = args[:maintenance_version_name] if args.key?(:maintenance_version_name)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
           @nodes = args[:nodes] if args.key?(:nodes)
@@ -4065,7 +4082,7 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 29
+        # Common model for database resource instance metadata. Next ID: 30
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -4263,7 +4280,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 29
+      # Common model for database resource instance metadata. Next ID: 30
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -4339,6 +4356,12 @@ module Google
         # Corresponds to the JSON property `instanceType`
         # @return [String]
         attr_accessor :instance_type
+      
+        # Optional. Whether deletion protection is enabled for this resource.
+        # Corresponds to the JSON property `isDeletionProtectionEnabled`
+        # @return [Boolean]
+        attr_accessor :is_deletion_protection_enabled
+        alias_method :is_deletion_protection_enabled?, :is_deletion_protection_enabled
       
         # The resource location. REQUIRED
         # Corresponds to the JSON property `location`
@@ -4437,6 +4460,7 @@ module Google
           @gcbdr_configuration = args[:gcbdr_configuration] if args.key?(:gcbdr_configuration)
           @id = args[:id] if args.key?(:id)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
+          @is_deletion_protection_enabled = args[:is_deletion_protection_enabled] if args.key?(:is_deletion_protection_enabled)
           @location = args[:location] if args.key?(:location)
           @machine_configuration = args[:machine_configuration] if args.key?(:machine_configuration)
           @maintenance_info = args[:maintenance_info] if args.key?(:maintenance_info)
