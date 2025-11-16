@@ -1088,6 +1088,7 @@ module Google
       class BuiltImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :digest, as: 'digest'
           property :name, as: 'name'
           property :push_timing, as: 'pushTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
@@ -1930,6 +1931,7 @@ module Google
       class UploadedGoModule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
@@ -1941,6 +1943,7 @@ module Google
       class UploadedMavenArtifact
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
@@ -1952,6 +1955,7 @@ module Google
       class UploadedNpmPackage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
@@ -1963,6 +1967,7 @@ module Google
       class UploadedPythonPackage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
