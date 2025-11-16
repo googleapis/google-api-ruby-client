@@ -484,6 +484,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1595,6 +1601,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2949,6 +2961,8 @@ module Google
           property :dimension_key, as: 'dimensionKey'
           property :issue_dimension_metadata, as: 'issueDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata::Representation
       
+          property :label_dimension_metadata, as: 'labelDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata::Representation
+      
           property :medium_dimension_metadata, as: 'mediumDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata::Representation
       
           property :qa_question_answer_dimension_metadata, as: 'qaQuestionAnswerDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata::Representation
@@ -3009,6 +3023,14 @@ module Google
           property :issue_display_name, as: 'issueDisplayName'
           property :issue_id, as: 'issueId'
           property :issue_model_id, as: 'issueModelId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_key, as: 'labelKey'
+          property :label_value, as: 'labelValue'
         end
       end
       
@@ -4853,6 +4875,8 @@ module Google
           property :dimension_key, as: 'dimensionKey'
           property :issue_dimension_metadata, as: 'issueDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata::Representation
       
+          property :label_dimension_metadata, as: 'labelDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata::Representation
+      
           property :medium_dimension_metadata, as: 'mediumDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata::Representation
       
           property :qa_question_answer_dimension_metadata, as: 'qaQuestionAnswerDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata::Representation
@@ -4913,6 +4937,14 @@ module Google
           property :issue_display_name, as: 'issueDisplayName'
           property :issue_id, as: 'issueId'
           property :issue_model_id, as: 'issueModelId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_key, as: 'labelKey'
+          property :label_value, as: 'labelValue'
         end
       end
       

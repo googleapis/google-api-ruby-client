@@ -2719,6 +2719,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata]
         attr_accessor :issue_dimension_metadata
       
+        # Metadata about conversation labels.
+        # Corresponds to the JSON property `labelDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata]
+        attr_accessor :label_dimension_metadata
+      
         # Metadata about the conversation medium dimension.
         # Corresponds to the JSON property `mediumDimensionMetadata`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata]
@@ -2753,6 +2758,7 @@ module Google
           @conversational_agents_tool_dimension_metadata = args[:conversational_agents_tool_dimension_metadata] if args.key?(:conversational_agents_tool_dimension_metadata)
           @dimension_key = args[:dimension_key] if args.key?(:dimension_key)
           @issue_dimension_metadata = args[:issue_dimension_metadata] if args.key?(:issue_dimension_metadata)
+          @label_dimension_metadata = args[:label_dimension_metadata] if args.key?(:label_dimension_metadata)
           @medium_dimension_metadata = args[:medium_dimension_metadata] if args.key?(:medium_dimension_metadata)
           @qa_question_answer_dimension_metadata = args[:qa_question_answer_dimension_metadata] if args.key?(:qa_question_answer_dimension_metadata)
           @qa_question_dimension_metadata = args[:qa_question_dimension_metadata] if args.key?(:qa_question_dimension_metadata)
@@ -2939,6 +2945,31 @@ module Google
           @issue_display_name = args[:issue_display_name] if args.key?(:issue_display_name)
           @issue_id = args[:issue_id] if args.key?(:issue_id)
           @issue_model_id = args[:issue_model_id] if args.key?(:issue_model_id)
+        end
+      end
+      
+      # Metadata about conversation labels.
+      class GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The label key.
+        # Corresponds to the JSON property `labelKey`
+        # @return [String]
+        attr_accessor :label_key
+      
+        # Optional. The label value.
+        # Corresponds to the JSON property `labelValue`
+        # @return [String]
+        attr_accessor :label_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_key = args[:label_key] if args.key?(:label_key)
+          @label_value = args[:label_value] if args.key?(:label_value)
         end
       end
       
@@ -9269,6 +9300,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata]
         attr_accessor :issue_dimension_metadata
       
+        # Metadata about conversation labels.
+        # Corresponds to the JSON property `labelDimensionMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata]
+        attr_accessor :label_dimension_metadata
+      
         # Metadata about the conversation medium dimension.
         # Corresponds to the JSON property `mediumDimensionMetadata`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata]
@@ -9303,6 +9339,7 @@ module Google
           @conversational_agents_tool_dimension_metadata = args[:conversational_agents_tool_dimension_metadata] if args.key?(:conversational_agents_tool_dimension_metadata)
           @dimension_key = args[:dimension_key] if args.key?(:dimension_key)
           @issue_dimension_metadata = args[:issue_dimension_metadata] if args.key?(:issue_dimension_metadata)
+          @label_dimension_metadata = args[:label_dimension_metadata] if args.key?(:label_dimension_metadata)
           @medium_dimension_metadata = args[:medium_dimension_metadata] if args.key?(:medium_dimension_metadata)
           @qa_question_answer_dimension_metadata = args[:qa_question_answer_dimension_metadata] if args.key?(:qa_question_answer_dimension_metadata)
           @qa_question_dimension_metadata = args[:qa_question_dimension_metadata] if args.key?(:qa_question_dimension_metadata)
@@ -9489,6 +9526,31 @@ module Google
           @issue_display_name = args[:issue_display_name] if args.key?(:issue_display_name)
           @issue_id = args[:issue_id] if args.key?(:issue_id)
           @issue_model_id = args[:issue_model_id] if args.key?(:issue_model_id)
+        end
+      end
+      
+      # Metadata about conversation labels.
+      class GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The label key.
+        # Corresponds to the JSON property `labelKey`
+        # @return [String]
+        attr_accessor :label_key
+      
+        # Optional. The label value.
+        # Corresponds to the JSON property `labelValue`
+        # @return [String]
+        attr_accessor :label_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_key = args[:label_key] if args.key?(:label_key)
+          @label_value = args[:label_value] if args.key?(:label_value)
         end
       end
       
@@ -12727,8 +12789,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
