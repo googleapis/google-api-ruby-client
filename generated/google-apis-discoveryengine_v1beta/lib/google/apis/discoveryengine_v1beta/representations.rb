@@ -3856,6 +3856,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaListCmekConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3923,6 +3929,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaListIdentityMappingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaListLicenseConfigsUsageStatsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5982,6 +5994,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_get_processed_document, as: 'enableGetProcessedDocument'
           property :enable_image_annotation, as: 'enableImageAnnotation'
+          property :enable_llm_layout_parsing, as: 'enableLlmLayoutParsing'
           property :enable_table_annotation, as: 'enableTableAnnotation'
           collection :exclude_html_classes, as: 'excludeHtmlClasses'
           collection :exclude_html_elements, as: 'excludeHtmlElements'
@@ -6020,6 +6033,8 @@ module Google
       
           property :chat_engine_metadata, as: 'chatEngineMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineChatEngineMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineChatEngineMetadata::Representation
       
+          property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1CmekConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1CmekConfig::Representation
+      
           property :common_config, as: 'commonConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineCommonConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineCommonConfig::Representation
       
           property :configurable_billing_approach, as: 'configurableBillingApproach'
@@ -6031,6 +6046,7 @@ module Google
           property :industry_vertical, as: 'industryVertical'
           property :media_recommendation_engine_config, as: 'mediaRecommendationEngineConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig::Representation
       
+          hash :model_configs, as: 'modelConfigs'
           property :name, as: 'name'
           property :search_engine_config, as: 'searchEngineConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineSearchEngineConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineSearchEngineConfig::Representation
       
@@ -7819,6 +7835,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_get_processed_document, as: 'enableGetProcessedDocument'
           property :enable_image_annotation, as: 'enableImageAnnotation'
+          property :enable_llm_layout_parsing, as: 'enableLlmLayoutParsing'
           property :enable_table_annotation, as: 'enableTableAnnotation'
           collection :exclude_html_classes, as: 'excludeHtmlClasses'
           collection :exclude_html_elements, as: 'excludeHtmlElements'
@@ -7857,6 +7874,8 @@ module Google
       
           property :chat_engine_metadata, as: 'chatEngineMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata::Representation
       
+          property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCmekConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCmekConfig::Representation
+      
           property :common_config, as: 'commonConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineCommonConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineCommonConfig::Representation
       
           property :configurable_billing_approach, as: 'configurableBillingApproach'
@@ -7868,6 +7887,7 @@ module Google
           property :industry_vertical, as: 'industryVertical'
           property :media_recommendation_engine_config, as: 'mediaRecommendationEngineConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig::Representation
       
+          hash :model_configs, as: 'modelConfigs'
           property :name, as: 'name'
           property :recommendation_metadata, as: 'recommendationMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata::Representation
       
@@ -10916,6 +10936,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_get_processed_document, as: 'enableGetProcessedDocument'
           property :enable_image_annotation, as: 'enableImageAnnotation'
+          property :enable_llm_layout_parsing, as: 'enableLlmLayoutParsing'
           property :enable_table_annotation, as: 'enableTableAnnotation'
           collection :exclude_html_classes, as: 'excludeHtmlClasses'
           collection :exclude_html_elements, as: 'excludeHtmlElements'
@@ -10974,6 +10995,8 @@ module Google
       
           property :chat_engine_metadata, as: 'chatEngineMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata::Representation
       
+          property :cmek_config, as: 'cmekConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCmekConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCmekConfig::Representation
+      
           property :common_config, as: 'commonConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineCommonConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineCommonConfig::Representation
       
           property :configurable_billing_approach, as: 'configurableBillingApproach'
@@ -10985,6 +11008,7 @@ module Google
           property :industry_vertical, as: 'industryVertical'
           property :media_recommendation_engine_config, as: 'mediaRecommendationEngineConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig::Representation
       
+          hash :model_configs, as: 'modelConfigs'
           property :name, as: 'name'
           property :search_engine_config, as: 'searchEngineConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig::Representation
       
@@ -11536,6 +11560,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :license_config, as: 'licenseConfig'
+          property :used_license_count, :numeric_string => true, as: 'usedLicenseCount'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaListCmekConfigsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11640,6 +11672,14 @@ module Google
           collection :identity_mapping_entries, as: 'identityMappingEntries', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaIdentityMappingEntry, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaIdentityMappingEntry::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaListLicenseConfigsUsageStatsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :license_config_usage_stats, as: 'licenseConfigUsageStats', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStats, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStats::Representation
+      
         end
       end
       

@@ -3934,6 +3934,12 @@ module Google
         attr_accessor :enable_image_annotation
         alias_method :enable_image_annotation?, :enable_image_annotation
       
+        # Optional. If true, the pdf layout will be refined using an LLM.
+        # Corresponds to the JSON property `enableLlmLayoutParsing`
+        # @return [Boolean]
+        attr_accessor :enable_llm_layout_parsing
+        alias_method :enable_llm_layout_parsing?, :enable_llm_layout_parsing
+      
         # Optional. If true, the LLM based annotation is added to the table during
         # parsing.
         # Corresponds to the JSON property `enableTableAnnotation`
@@ -3970,6 +3976,7 @@ module Google
         def update!(**args)
           @enable_get_processed_document = args[:enable_get_processed_document] if args.key?(:enable_get_processed_document)
           @enable_image_annotation = args[:enable_image_annotation] if args.key?(:enable_image_annotation)
+          @enable_llm_layout_parsing = args[:enable_llm_layout_parsing] if args.key?(:enable_llm_layout_parsing)
           @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
           @exclude_html_classes = args[:exclude_html_classes] if args.key?(:exclude_html_classes)
           @exclude_html_elements = args[:exclude_html_elements] if args.key?(:exclude_html_elements)
@@ -4069,6 +4076,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineChatEngineMetadata]
         attr_accessor :chat_engine_metadata
       
+        # Configurations used to enable CMEK data encryption with Cloud KMS keys.
+        # Corresponds to the JSON property `cmekConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1CmekConfig]
+        attr_accessor :cmek_config
+      
         # Common configurations for an Engine.
         # Corresponds to the JSON property `commonConfig`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineCommonConfig]
@@ -4130,6 +4142,17 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig]
         attr_accessor :media_recommendation_engine_config
       
+        # Optional. Maps a model name to its specific configuration for this engine.
+        # This allows admin users to turn on/off individual models. This only stores
+        # models whose states are overridden by the admin. When the state is unspecified,
+        # or model_configs is empty for this model, the system will decide if this
+        # model should be available or not based on the default configuration. For
+        # example, a preview model should be disabled by default if the admin has not
+        # chosen to enable it.
+        # Corresponds to the JSON property `modelConfigs`
+        # @return [Hash<String,String>]
+        attr_accessor :model_configs
+      
         # Immutable. Identifier. The fully qualified resource name of the engine. This
         # field must be a UTF-8 encoded string with a length limit of 1024 characters.
         # Format: `projects/`project`/locations/`location`/collections/`collection`/
@@ -4163,6 +4186,7 @@ module Google
           @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
+          @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @common_config = args[:common_config] if args.key?(:common_config)
           @configurable_billing_approach = args[:configurable_billing_approach] if args.key?(:configurable_billing_approach)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -4172,6 +4196,7 @@ module Google
           @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
+          @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
@@ -10750,6 +10775,12 @@ module Google
         attr_accessor :enable_image_annotation
         alias_method :enable_image_annotation?, :enable_image_annotation
       
+        # Optional. If true, the pdf layout will be refined using an LLM.
+        # Corresponds to the JSON property `enableLlmLayoutParsing`
+        # @return [Boolean]
+        attr_accessor :enable_llm_layout_parsing
+        alias_method :enable_llm_layout_parsing?, :enable_llm_layout_parsing
+      
         # Optional. If true, the LLM based annotation is added to the table during
         # parsing.
         # Corresponds to the JSON property `enableTableAnnotation`
@@ -10786,6 +10817,7 @@ module Google
         def update!(**args)
           @enable_get_processed_document = args[:enable_get_processed_document] if args.key?(:enable_get_processed_document)
           @enable_image_annotation = args[:enable_image_annotation] if args.key?(:enable_image_annotation)
+          @enable_llm_layout_parsing = args[:enable_llm_layout_parsing] if args.key?(:enable_llm_layout_parsing)
           @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
           @exclude_html_classes = args[:exclude_html_classes] if args.key?(:exclude_html_classes)
           @exclude_html_elements = args[:exclude_html_elements] if args.key?(:exclude_html_elements)
@@ -10885,6 +10917,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata]
         attr_accessor :chat_engine_metadata
       
+        # Configurations used to enable CMEK data encryption with Cloud KMS keys.
+        # Corresponds to the JSON property `cmekConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCmekConfig]
+        attr_accessor :cmek_config
+      
         # Common configurations for an Engine.
         # Corresponds to the JSON property `commonConfig`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineCommonConfig]
@@ -10946,6 +10983,17 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig]
         attr_accessor :media_recommendation_engine_config
       
+        # Optional. Maps a model name to its specific configuration for this engine.
+        # This allows admin users to turn on/off individual models. This only stores
+        # models whose states are overridden by the admin. When the state is unspecified,
+        # or model_configs is empty for this model, the system will decide if this
+        # model should be available or not based on the default configuration. For
+        # example, a preview model should be disabled by default if the admin has not
+        # chosen to enable it.
+        # Corresponds to the JSON property `modelConfigs`
+        # @return [Hash<String,String>]
+        attr_accessor :model_configs
+      
         # Immutable. Identifier. The fully qualified resource name of the engine. This
         # field must be a UTF-8 encoded string with a length limit of 1024 characters.
         # Format: `projects/`project`/locations/`location`/collections/`collection`/
@@ -10989,6 +11037,7 @@ module Google
           @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
+          @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @common_config = args[:common_config] if args.key?(:common_config)
           @configurable_billing_approach = args[:configurable_billing_approach] if args.key?(:configurable_billing_approach)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -10998,6 +11047,7 @@ module Google
           @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
+          @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
           @recommendation_metadata = args[:recommendation_metadata] if args.key?(:recommendation_metadata)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
@@ -22181,6 +22231,12 @@ module Google
         attr_accessor :enable_image_annotation
         alias_method :enable_image_annotation?, :enable_image_annotation
       
+        # Optional. If true, the pdf layout will be refined using an LLM.
+        # Corresponds to the JSON property `enableLlmLayoutParsing`
+        # @return [Boolean]
+        attr_accessor :enable_llm_layout_parsing
+        alias_method :enable_llm_layout_parsing?, :enable_llm_layout_parsing
+      
         # Optional. If true, the LLM based annotation is added to the table during
         # parsing.
         # Corresponds to the JSON property `enableTableAnnotation`
@@ -22217,6 +22273,7 @@ module Google
         def update!(**args)
           @enable_get_processed_document = args[:enable_get_processed_document] if args.key?(:enable_get_processed_document)
           @enable_image_annotation = args[:enable_image_annotation] if args.key?(:enable_image_annotation)
+          @enable_llm_layout_parsing = args[:enable_llm_layout_parsing] if args.key?(:enable_llm_layout_parsing)
           @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
           @exclude_html_classes = args[:exclude_html_classes] if args.key?(:exclude_html_classes)
           @exclude_html_elements = args[:exclude_html_elements] if args.key?(:exclude_html_elements)
@@ -22367,6 +22424,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata]
         attr_accessor :chat_engine_metadata
       
+        # Configurations used to enable CMEK data encryption with Cloud KMS keys.
+        # Corresponds to the JSON property `cmekConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaCmekConfig]
+        attr_accessor :cmek_config
+      
         # Common configurations for an Engine.
         # Corresponds to the JSON property `commonConfig`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineCommonConfig]
@@ -22428,6 +22490,17 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig]
         attr_accessor :media_recommendation_engine_config
       
+        # Optional. Maps a model name to its specific configuration for this engine.
+        # This allows admin users to turn on/off individual models. This only stores
+        # models whose states are overridden by the admin. When the state is unspecified,
+        # or model_configs is empty for this model, the system will decide if this
+        # model should be available or not based on the default configuration. For
+        # example, a preview model should be disabled by default if the admin has not
+        # chosen to enable it.
+        # Corresponds to the JSON property `modelConfigs`
+        # @return [Hash<String,String>]
+        attr_accessor :model_configs
+      
         # Immutable. Identifier. The fully qualified resource name of the engine. This
         # field must be a UTF-8 encoded string with a length limit of 1024 characters.
         # Format: `projects/`project`/locations/`location`/collections/`collection`/
@@ -22461,6 +22534,7 @@ module Google
           @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
+          @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @common_config = args[:common_config] if args.key?(:common_config)
           @configurable_billing_approach = args[:configurable_billing_approach] if args.key?(:configurable_billing_approach)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -22470,6 +22544,7 @@ module Google
           @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
+          @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
@@ -24336,6 +24411,31 @@ module Google
         end
       end
       
+      # Stats about users' licenses.
+      class GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStats
+        include Google::Apis::Core::Hashable
+      
+        # Required. The LicenseConfig name.
+        # Corresponds to the JSON property `licenseConfig`
+        # @return [String]
+        attr_accessor :license_config
+      
+        # Required. The number of licenses used.
+        # Corresponds to the JSON property `usedLicenseCount`
+        # @return [Fixnum]
+        attr_accessor :used_license_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @license_config = args[:license_config] if args.key?(:license_config)
+          @used_license_count = args[:used_license_count] if args.key?(:used_license_count)
+        end
+      end
+      
       # Response message for CmekConfigService.ListCmekConfigs method.
       class GoogleCloudDiscoveryengineV1betaListCmekConfigsResponse
         include Google::Apis::Core::Hashable
@@ -24628,6 +24728,25 @@ module Google
         def update!(**args)
           @identity_mapping_entries = args[:identity_mapping_entries] if args.key?(:identity_mapping_entries)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for UserLicenseService.ListLicenseConfigUsageStats method.
+      class GoogleCloudDiscoveryengineV1betaListLicenseConfigsUsageStatsResponse
+        include Google::Apis::Core::Hashable
+      
+        # All the customer's LicenseConfigUsageStats.
+        # Corresponds to the JSON property `licenseConfigUsageStats`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStats>]
+        attr_accessor :license_config_usage_stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @license_config_usage_stats = args[:license_config_usage_stats] if args.key?(:license_config_usage_stats)
         end
       end
       
