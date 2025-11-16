@@ -1047,7 +1047,7 @@ module Google
         # @return [Array<Google::Apis::AdminDirectoryV1::BacklightInfo>]
         attr_accessor :backlight_info
       
-        # Output only. Information about bluetooth adapters of the device.
+        # Output only. Information about Bluetooth adapters of the device.
         # Corresponds to the JSON property `bluetoothAdapterInfo`
         # @return [Array<Google::Apis::AdminDirectoryV1::BluetoothAdapterInfo>]
         attr_accessor :bluetooth_adapter_info
