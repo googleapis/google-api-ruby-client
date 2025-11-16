@@ -262,6 +262,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1576,6 +1588,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1SecurityAssessmentResultScoringResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1655,6 +1673,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2437,6 +2461,10 @@ module Google
       class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_hub_apis, as: 'apiHubApis', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray::Representation
+      
+          property :api_hub_gateways, as: 'apiHubGateways', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray::Representation
+      
           property :include, as: 'include', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray::Representation
       
           property :include_all_resources, as: 'includeAllResources', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll::Representation
@@ -2445,6 +2473,20 @@ module Google
           property :page_token, as: 'pageToken'
           property :profile, as: 'profile'
           property :scope, as: 'scope'
+        end
+      end
+      
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apis, as: 'apis'
+        end
+      end
+      
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gateways, as: 'gateways'
         end
       end
       
@@ -4713,9 +4755,22 @@ module Google
       class GoogleCloudApigeeV1SecurityAssessmentResultResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_hub_deployment_details, as: 'apiHubDeploymentDetails', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails::Representation
+      
           property :name, as: 'name'
           property :resource_revision_id, as: 'resourceRevisionId'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :gateway, as: 'gateway'
+          property :gateway_type, as: 'gatewayType'
+          property :resource_uri, as: 'resourceUri'
+          property :source_project, as: 'sourceProject'
         end
       end
       
@@ -4871,6 +4926,7 @@ module Google
           property :name, as: 'name'
           hash :profile_assessment_configs, as: 'profileAssessmentConfigs', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig::Representation
       
+          property :risk_assessment_type, as: 'riskAssessmentType'
           property :update_time, as: 'updateTime'
         end
       end
@@ -4878,7 +4934,16 @@ module Google
       class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :include, as: 'include', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray::Representation
+      
           property :weight, as: 'weight'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gateway_types, as: 'gatewayTypes'
         end
       end
       

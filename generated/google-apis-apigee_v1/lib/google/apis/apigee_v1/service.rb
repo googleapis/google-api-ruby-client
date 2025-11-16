@@ -12514,6 +12514,9 @@ module Google
         # @param [String] name
         #   Required. The name of the security profile v2 to delete. Format: `
         #   organizations/`org`/securityProfilesV2/`profile``
+        # @param [String] risk_assessment_type
+        #   Optional. The risk assessment type of the security profile. Defaults to
+        #   ADVANCED_API_SECURITY.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12531,11 +12534,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_organization_security_profiles_v2(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_organization_security_profiles_v2(name, risk_assessment_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
+          command.query['riskAssessmentType'] = risk_assessment_type unless risk_assessment_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -12545,6 +12549,9 @@ module Google
         # @param [String] name
         #   Required. The name of the security profile v2 to get. Format: `organizations/`
         #   org`/securityProfilesV2/`profile``
+        # @param [String] risk_assessment_type
+        #   Optional. The risk assessment type of the security profile. Defaults to
+        #   ADVANCED_API_SECURITY.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12562,11 +12569,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_organization_security_profiles_v2(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_organization_security_profiles_v2(name, risk_assessment_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2
           command.params['name'] = name unless name.nil?
+          command.query['riskAssessmentType'] = risk_assessment_type unless risk_assessment_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -12581,6 +12589,9 @@ module Google
         # @param [String] page_token
         #   Optional. A page token, received from a previous `ListSecurityProfilesV2` call.
         #   Provide this to retrieve the subsequent page.
+        # @param [String] risk_assessment_type
+        #   Optional. The risk assessment type of the security profiles. Defaults to
+        #   ADVANCED_API_SECURITY.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12598,13 +12609,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_security_profiles_v2s(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_security_profiles_v2s(parent, page_size: nil, page_token: nil, risk_assessment_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/securityProfilesV2', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityProfilesV2Response::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityProfilesV2Response
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['riskAssessmentType'] = risk_assessment_type unless risk_assessment_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

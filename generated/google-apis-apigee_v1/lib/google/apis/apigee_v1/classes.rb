@@ -2068,6 +2068,16 @@ module Google
       class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
         include Google::Apis::Core::Hashable
       
+        # Message for the array of API Hub APIs.
+        # Corresponds to the JSON property `apiHubApis`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray]
+        attr_accessor :api_hub_apis
+      
+        # Message for the array of API Hub Gateways.
+        # Corresponds to the JSON property `apiHubGateways`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray]
+        attr_accessor :api_hub_gateways
+      
         # Message for the array of resources. For Apigee, the proxies are resources.
         # Corresponds to the JSON property `include`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray]
@@ -2096,8 +2106,10 @@ module Google
         # @return [String]
         attr_accessor :profile
       
-        # Optional. Scope of the resources for the computation. For Apigee, the
-        # environment is the scope of the resources.
+        # Optional. Scope of the resources for the computation. When computing scores
+        # for Apigee proxies, the scope should be set to the environment of the
+        # resources. When computing scores for API Hub deployments, api_hub_scope should
+        # be set instead.
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
@@ -2108,12 +2120,54 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_hub_apis = args[:api_hub_apis] if args.key?(:api_hub_apis)
+          @api_hub_gateways = args[:api_hub_gateways] if args.key?(:api_hub_gateways)
           @include = args[:include] if args.key?(:include)
           @include_all_resources = args[:include_all_resources] if args.key?(:include_all_resources)
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
           @profile = args[:profile] if args.key?(:profile)
           @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
+      # Message for the array of API Hub APIs.
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray
+        include Google::Apis::Core::Hashable
+      
+        # Required. The array of API Hub API IDs. Format: `projects/`project`/locations/`
+        # location`/apis/`api``
+        # Corresponds to the JSON property `apis`
+        # @return [Array<String>]
+        attr_accessor :apis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apis = args[:apis] if args.key?(:apis)
+        end
+      end
+      
+      # Message for the array of API Hub Gateways.
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray
+        include Google::Apis::Core::Hashable
+      
+        # Required. The array of API Hub Gateway IDs. Format: `projects/`project`/
+        # locations/`location`/plugins/`plugin`/instances/`instance``
+        # Corresponds to the JSON property `gateways`
+        # @return [Array<String>]
+        attr_accessor :gateways
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gateways = args[:gateways] if args.key?(:gateways)
         end
       end
       
@@ -2153,7 +2207,9 @@ module Google
       class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource
         include Google::Apis::Core::Hashable
       
-        # Required. Name of this resource.
+        # Required. Name of this resource. For an Apigee API Proxy, this should be the
+        # id of the API proxy. For an API Hub Deployment, this should be the id of the
+        # deployment.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -10330,7 +10386,14 @@ module Google
       class GoogleCloudApigeeV1SecurityAssessmentResultResource
         include Google::Apis::Core::Hashable
       
-        # Required. Name of this resource.
+        # Additional details if the resource is an API Hub deployment.
+        # Corresponds to the JSON property `apiHubDeploymentDetails`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails]
+        attr_accessor :api_hub_deployment_details
+      
+        # Required. Name of this resource. For an Apigee API Proxy, this should be the
+        # id of the API proxy. For an API Hub Deployment, this should be the id of the
+        # deployment.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -10351,9 +10414,54 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_hub_deployment_details = args[:api_hub_deployment_details] if args.key?(:api_hub_deployment_details)
           @name = args[:name] if args.key?(:name)
           @resource_revision_id = args[:resource_revision_id] if args.key?(:resource_revision_id)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Additional details if the resource is an API Hub deployment.
+      class GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the API Hub deployment.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The gateway for the API Hub deployment. Format: `projects/`project`/locations/`
+        # location`/plugins/`plugin`/instances/`instance``
+        # Corresponds to the JSON property `gateway`
+        # @return [String]
+        attr_accessor :gateway
+      
+        # The gateway type for the API Hub deployment.
+        # Corresponds to the JSON property `gatewayType`
+        # @return [String]
+        attr_accessor :gateway_type
+      
+        # The resource uri for the API Hub deployment.
+        # Corresponds to the JSON property `resourceUri`
+        # @return [String]
+        attr_accessor :resource_uri
+      
+        # The source project for the API Hub deployment.
+        # Corresponds to the JSON property `sourceProject`
+        # @return [String]
+        attr_accessor :source_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @gateway = args[:gateway] if args.key?(:gateway)
+          @gateway_type = args[:gateway_type] if args.key?(:gateway_type)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @source_project = args[:source_project] if args.key?(:source_project)
         end
       end
       
@@ -10937,6 +11045,12 @@ module Google
         # @return [Hash<String,Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig>]
         attr_accessor :profile_assessment_configs
       
+        # Optional. The risk assessment type of the security profile. Defaults to
+        # ADVANCED_API_SECURITY.
+        # Corresponds to the JSON property `riskAssessmentType`
+        # @return [String]
+        attr_accessor :risk_assessment_type
+      
         # Output only. The time of the security profile update.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -10953,6 +11067,7 @@ module Google
           @google_defined = args[:google_defined] if args.key?(:google_defined)
           @name = args[:name] if args.key?(:name)
           @profile_assessment_configs = args[:profile_assessment_configs] if args.key?(:profile_assessment_configs)
+          @risk_assessment_type = args[:risk_assessment_type] if args.key?(:risk_assessment_type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -10960,6 +11075,11 @@ module Google
       # The configuration definition for a specific assessment.
       class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig
         include Google::Apis::Core::Hashable
+      
+        # Message for the array of API Hub Gateway Types.
+        # Corresponds to the JSON property `include`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray]
+        attr_accessor :include
       
         # The weight of the assessment.
         # Corresponds to the JSON property `weight`
@@ -10972,7 +11092,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @include = args[:include] if args.key?(:include)
           @weight = args[:weight] if args.key?(:weight)
+        end
+      end
+      
+      # Message for the array of API Hub Gateway Types.
+      class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray
+        include Google::Apis::Core::Hashable
+      
+        # Required. The array of API Hub Gateway Types.
+        # Corresponds to the JSON property `gatewayTypes`
+        # @return [Array<String>]
+        attr_accessor :gateway_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gateway_types = args[:gateway_types] if args.key?(:gateway_types)
         end
       end
       
