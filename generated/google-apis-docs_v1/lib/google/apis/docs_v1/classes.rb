@@ -4776,21 +4776,20 @@ module Google
       class RichLinkProperties
         include Google::Apis::Core::Hashable
       
-        # Output only. The [MIME type](https://developers.google.com/drive/api/v3/mime-
-        # types) of the RichLink, if there's one (for example, when it's a file in Drive)
-        # .
+        # The [MIME type](https://developers.google.com/drive/api/v3/mime-types) of the
+        # RichLink, if there's one (for example, when it's a file in Drive).
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
       
-        # Output only. The title of the RichLink as displayed in the link. This title
-        # matches the title of the linked resource at the time of the insertion or last
-        # update of the link. This field is always present.
+        # The title of the RichLink as displayed in the link. This title matches the
+        # title of the linked resource at the time of the insertion or last update of
+        # the link. This field is always present.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
       
-        # Output only. The URI to the RichLink. This is always present.
+        # The URI to the RichLink. This is always present.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
