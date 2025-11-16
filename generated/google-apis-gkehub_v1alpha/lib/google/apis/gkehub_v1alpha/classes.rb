@@ -2696,7 +2696,7 @@ module Google
         end
       end
       
-      # LINT.IfChange Feature config to use for Rollout.
+      # Feature config to use for Rollout.
       class FeatureUpdate
         include Google::Apis::Core::Hashable
       
@@ -6155,7 +6155,7 @@ module Google
         # @return [Array<Google::Apis::GkehubV1alpha::ExcludedCluster>]
         attr_accessor :excluded_clusters
       
-        # LINT.IfChange Feature config to use for Rollout.
+        # Feature config to use for Rollout.
         # Corresponds to the JSON property `feature`
         # @return [Google::Apis::GkehubV1alpha::FeatureUpdate]
         attr_accessor :feature
