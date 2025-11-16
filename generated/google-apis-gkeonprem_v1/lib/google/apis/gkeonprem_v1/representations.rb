@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BareMetalAdminBgpLbConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BareMetalAdminBgpPeerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BareMetalAdminCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,7 +88,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BareMetalAdminLoadBalancerAddressPool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BareMetalAdminLoadBalancerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BareMetalAdminLoadBalancerNodePoolConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -101,6 +125,12 @@ module Google
       end
       
       class BareMetalAdminManualLbConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BareMetalAdminMultipleNetworkInterfacesConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -962,6 +992,28 @@ module Google
         end
       end
       
+      class BareMetalAdminBgpLbConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :address_pools, as: 'addressPools', class: Google::Apis::GkeonpremV1::BareMetalAdminLoadBalancerAddressPool, decorator: Google::Apis::GkeonpremV1::BareMetalAdminLoadBalancerAddressPool::Representation
+      
+          property :asn, :numeric_string => true, as: 'asn'
+          collection :bgp_peer_configs, as: 'bgpPeerConfigs', class: Google::Apis::GkeonpremV1::BareMetalAdminBgpPeerConfig, decorator: Google::Apis::GkeonpremV1::BareMetalAdminBgpPeerConfig::Representation
+      
+          property :load_balancer_node_pool_config, as: 'loadBalancerNodePoolConfig', class: Google::Apis::GkeonpremV1::BareMetalAdminLoadBalancerNodePoolConfig, decorator: Google::Apis::GkeonpremV1::BareMetalAdminLoadBalancerNodePoolConfig::Representation
+      
+        end
+      end
+      
+      class BareMetalAdminBgpPeerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asn, :numeric_string => true, as: 'asn'
+          collection :control_plane_nodes, as: 'controlPlaneNodes'
+          property :ip_address, as: 'ipAddress'
+        end
+      end
+      
       class BareMetalAdminCluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1061,14 +1113,34 @@ module Google
         end
       end
       
+      class BareMetalAdminLoadBalancerAddressPool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :addresses, as: 'addresses'
+          property :avoid_buggy_ips, as: 'avoidBuggyIps'
+          property :manual_assign, as: 'manualAssign'
+          property :pool, as: 'pool'
+        end
+      end
+      
       class BareMetalAdminLoadBalancerConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bgp_lb_config, as: 'bgpLbConfig', class: Google::Apis::GkeonpremV1::BareMetalAdminBgpLbConfig, decorator: Google::Apis::GkeonpremV1::BareMetalAdminBgpLbConfig::Representation
+      
           property :manual_lb_config, as: 'manualLbConfig', class: Google::Apis::GkeonpremV1::BareMetalAdminManualLbConfig, decorator: Google::Apis::GkeonpremV1::BareMetalAdminManualLbConfig::Representation
       
           property :port_config, as: 'portConfig', class: Google::Apis::GkeonpremV1::BareMetalAdminPortConfig, decorator: Google::Apis::GkeonpremV1::BareMetalAdminPortConfig::Representation
       
           property :vip_config, as: 'vipConfig', class: Google::Apis::GkeonpremV1::BareMetalAdminVipConfig, decorator: Google::Apis::GkeonpremV1::BareMetalAdminVipConfig::Representation
+      
+        end
+      end
+      
+      class BareMetalAdminLoadBalancerNodePoolConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_pool_config, as: 'nodePoolConfig', class: Google::Apis::GkeonpremV1::BareMetalNodePoolConfig, decorator: Google::Apis::GkeonpremV1::BareMetalNodePoolConfig::Representation
       
         end
       end
@@ -1105,10 +1177,20 @@ module Google
         end
       end
       
+      class BareMetalAdminMultipleNetworkInterfacesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class BareMetalAdminNetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_networking, as: 'advancedNetworking'
           property :island_mode_cidr, as: 'islandModeCidr', class: Google::Apis::GkeonpremV1::BareMetalAdminIslandModeCidrConfig, decorator: Google::Apis::GkeonpremV1::BareMetalAdminIslandModeCidrConfig::Representation
+      
+          property :multiple_network_interfaces_config, as: 'multipleNetworkInterfacesConfig', class: Google::Apis::GkeonpremV1::BareMetalAdminMultipleNetworkInterfacesConfig, decorator: Google::Apis::GkeonpremV1::BareMetalAdminMultipleNetworkInterfacesConfig::Representation
       
         end
       end
