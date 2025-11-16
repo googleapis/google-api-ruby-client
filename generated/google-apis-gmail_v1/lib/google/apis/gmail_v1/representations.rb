@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClassificationLabelFieldValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClassificationLabelValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CseIdentity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +383,23 @@ module Google
         end
       end
       
+      class ClassificationLabelFieldValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_id, as: 'fieldId'
+          property :selection, as: 'selection'
+        end
+      end
+      
+      class ClassificationLabelValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fields, as: 'fields', class: Google::Apis::GmailV1::ClassificationLabelFieldValue, decorator: Google::Apis::GmailV1::ClassificationLabelFieldValue::Representation
+      
+          property :label_id, as: 'labelId'
+        end
+      end
+      
       class CseIdentity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -695,6 +724,8 @@ module Google
       class Message
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :classification_label_values, as: 'classificationLabelValues', class: Google::Apis::GmailV1::ClassificationLabelValue, decorator: Google::Apis::GmailV1::ClassificationLabelValue::Representation
+      
           property :history_id, :numeric_string => true, as: 'historyId'
           property :id, as: 'id'
           property :internal_date, :numeric_string => true, as: 'internalDate'
