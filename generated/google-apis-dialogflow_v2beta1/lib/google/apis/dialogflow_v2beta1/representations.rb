@@ -9490,6 +9490,7 @@ module Google
       class GoogleCloudDialogflowV2beta1Participant
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_desktop_source, as: 'agentDesktopSource'
           hash :documents_metadata_filters, as: 'documentsMetadataFilters'
           property :name, as: 'name'
           property :obfuscated_external_user_id, as: 'obfuscatedExternalUserId'
