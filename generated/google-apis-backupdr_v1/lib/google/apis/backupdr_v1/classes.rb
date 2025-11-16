@@ -522,6 +522,12 @@ module Google
         # @return [Array<Google::Apis::BackupdrV1::BackupLock>]
         attr_accessor :backup_appliance_locks
       
+        # Output only. Setting for how the enforced retention end time is inherited.
+        # This value is copied from this backup's BackupVault.
+        # Corresponds to the JSON property `backupRetentionInheritance`
+        # @return [String]
+        attr_accessor :backup_retention_inheritance
+      
         # Output only. Type of the backup, unspecified, scheduled or ondemand.
         # Corresponds to the JSON property `backupType`
         # @return [String]
@@ -585,6 +591,11 @@ module Google
         # @return [Google::Apis::BackupdrV1::BackupGcpResource]
         attr_accessor :gcp_resource
       
+        # Optional. Output only. The list of KMS key versions used to encrypt the backup.
+        # Corresponds to the JSON property `kmsKeyVersions`
+        # @return [Array<String>]
+        attr_accessor :kms_key_versions
+      
         # Optional. Resource labels to represent user provided metadata. No labels
         # currently defined.
         # Corresponds to the JSON property `labels`
@@ -641,6 +652,7 @@ module Google
           @alloy_db_backup_properties = args[:alloy_db_backup_properties] if args.key?(:alloy_db_backup_properties)
           @backup_appliance_backup_properties = args[:backup_appliance_backup_properties] if args.key?(:backup_appliance_backup_properties)
           @backup_appliance_locks = args[:backup_appliance_locks] if args.key?(:backup_appliance_locks)
+          @backup_retention_inheritance = args[:backup_retention_inheritance] if args.key?(:backup_retention_inheritance)
           @backup_type = args[:backup_type] if args.key?(:backup_type)
           @cloud_sql_instance_backup_properties = args[:cloud_sql_instance_backup_properties] if args.key?(:cloud_sql_instance_backup_properties)
           @compute_instance_backup_properties = args[:compute_instance_backup_properties] if args.key?(:compute_instance_backup_properties)
@@ -653,6 +665,7 @@ module Google
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @gcp_backup_plan_info = args[:gcp_backup_plan_info] if args.key?(:gcp_backup_plan_info)
           @gcp_resource = args[:gcp_resource] if args.key?(:gcp_resource)
+          @kms_key_versions = args[:kms_key_versions] if args.key?(:kms_key_versions)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @resource_size_bytes = args[:resource_size_bytes] if args.key?(:resource_size_bytes)
@@ -1475,6 +1488,11 @@ module Google
         # @return [String]
         attr_accessor :backup_minimum_enforced_retention_duration
       
+        # Optional. Setting for how a backup's enforced retention end time is inherited.
+        # Corresponds to the JSON property `backupRetentionInheritance`
+        # @return [String]
+        attr_accessor :backup_retention_inheritance
+      
         # Output only. The time when the instance was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1496,6 +1514,12 @@ module Google
         # Corresponds to the JSON property `effectiveTime`
         # @return [String]
         attr_accessor :effective_time
+      
+        # Message describing the EncryptionConfig of backup vault. This determines how
+        # data within the vault is encrypted at rest.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::BackupdrV1::EncryptionConfig]
+        attr_accessor :encryption_config
       
         # Optional. Server specified ETag for the backup vault resource to prevent
         # simultaneous updates from overwiting each other.
@@ -1554,10 +1578,12 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @backup_count = args[:backup_count] if args.key?(:backup_count)
           @backup_minimum_enforced_retention_duration = args[:backup_minimum_enforced_retention_duration] if args.key?(:backup_minimum_enforced_retention_duration)
+          @backup_retention_inheritance = args[:backup_retention_inheritance] if args.key?(:backup_retention_inheritance)
           @create_time = args[:create_time] if args.key?(:create_time)
           @deletable = args[:deletable] if args.key?(:deletable)
           @description = args[:description] if args.key?(:description)
           @effective_time = args[:effective_time] if args.key?(:effective_time)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -3007,6 +3033,29 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Message describing the EncryptionConfig of backup vault. This determines how
+      # data within the vault is encrypted at rest.
+      class EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Cloud KMS key name to encrypt backups in this backup vault. Must
+        # be in the same region as the vault. Some workload backups like compute disk
+        # backups may use their inherited source key instead. Format: projects/`project`/
+        # locations/`location`/keyRings/`ring`/cryptoKeys/`key`
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
         end
       end
       
@@ -4848,6 +4897,17 @@ module Google
       class RestoreBackupRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. A field mask used to clear server-side default values for fields
+        # within the `instance_properties` oneof. When a field in this mask is cleared,
+        # the server will not apply its default logic (like inheriting a value from the
+        # source) for that field. The most common current use case is clearing default
+        # encryption keys. Examples of field mask paths: - Compute Instance Disks: `
+        # compute_instance_restore_properties.disks.*.disk_encryption_key` - Single Disk:
+        # `disk_restore_properties.disk_encryption_key`
+        # Corresponds to the JSON property `clearOverridesFieldMask`
+        # @return [String]
+        attr_accessor :clear_overrides_field_mask
+      
         # ComputeInstanceRestoreProperties represents Compute Engine instance properties
         # to be overridden during restore.
         # Corresponds to the JSON property `computeInstanceRestoreProperties`
@@ -4895,6 +4955,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @clear_overrides_field_mask = args[:clear_overrides_field_mask] if args.key?(:clear_overrides_field_mask)
           @compute_instance_restore_properties = args[:compute_instance_restore_properties] if args.key?(:compute_instance_restore_properties)
           @compute_instance_target_environment = args[:compute_instance_target_environment] if args.key?(:compute_instance_target_environment)
           @disk_restore_properties = args[:disk_restore_properties] if args.key?(:disk_restore_properties)
@@ -5485,6 +5546,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :custom_retention_days
       
+        # Optional. Labels to be applied on the backup.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Optional. An optional request ID to identify requests. Specify a unique
         # request ID so that if you must retry your request, the server will know to
         # ignore the request if it has already been completed. The server will guarantee
@@ -5512,6 +5578,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @custom_retention_days = args[:custom_retention_days] if args.key?(:custom_retention_days)
+          @labels = args[:labels] if args.key?(:labels)
           @request_id = args[:request_id] if args.key?(:request_id)
           @rule_id = args[:rule_id] if args.key?(:rule_id)
         end
