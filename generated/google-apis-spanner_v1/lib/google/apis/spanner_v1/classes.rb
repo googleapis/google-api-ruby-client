@@ -674,10 +674,11 @@ module Google
       class BatchCreateSessionsRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The number of sessions to be created in this batch call. The API can
-        # return fewer than the requested number of sessions. If a specific number of
-        # sessions are desired, the client can make additional calls to `
-        # BatchCreateSessions` (adjusting session_count as necessary).
+        # Required. The number of sessions to be created in this batch call. At least
+        # one session is created. The API can return fewer than the requested number of
+        # sessions. If a specific number of sessions are desired, the client can make
+        # additional calls to `BatchCreateSessions` (adjusting session_count as
+        # necessary).
         # Corresponds to the JSON property `sessionCount`
         # @return [Fixnum]
         attr_accessor :session_count
@@ -3469,6 +3470,11 @@ module Google
       class InstancePartition
         include Google::Apis::Core::Hashable
       
+        # Autoscaling configuration for an instance.
+        # Corresponds to the JSON property `autoscalingConfig`
+        # @return [Google::Apis::SpannerV1::AutoscalingConfig]
+        attr_accessor :autoscaling_config
+      
         # Required. The name of the instance partition's configuration. Values are of
         # the form `projects//instanceConfigs/`. See also InstanceConfig and
         # ListInstanceConfigs.
@@ -3556,6 +3562,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autoscaling_config = args[:autoscaling_config] if args.key?(:autoscaling_config)
           @config = args[:config] if args.key?(:config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -4158,6 +4165,13 @@ module Google
         # @return [Array<Google::Apis::SpannerV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
+        # when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4166,6 +4180,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
