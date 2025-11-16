@@ -1380,6 +1380,7 @@ module Google
           property :api_config, as: 'apiConfig', class: Google::Apis::AppengineV1beta::ApiConfigHandler, decorator: Google::Apis::AppengineV1beta::ApiConfigHandler::Representation
       
           property :app_engine_apis, as: 'appEngineApis'
+          collection :app_engine_bundled_services, as: 'appEngineBundledServices'
           property :automatic_scaling, as: 'automaticScaling', class: Google::Apis::AppengineV1beta::AutomaticScaling, decorator: Google::Apis::AppengineV1beta::AutomaticScaling::Representation
       
           property :basic_scaling, as: 'basicScaling', class: Google::Apis::AppengineV1beta::BasicScaling, decorator: Google::Apis::AppengineV1beta::BasicScaling::Representation

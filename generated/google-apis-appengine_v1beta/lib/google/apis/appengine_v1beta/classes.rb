@@ -3321,6 +3321,11 @@ module Google
         attr_accessor :app_engine_apis
         alias_method :app_engine_apis?, :app_engine_apis
       
+        # List of specific App Engine Bundled Services that are enabled for this Version.
+        # Corresponds to the JSON property `appEngineBundledServices`
+        # @return [Array<String>]
+        attr_accessor :app_engine_bundled_services
+      
         # Automatic scaling is based on request rate, response latencies, and other
         # application metrics.
         # Corresponds to the JSON property `automaticScaling`
@@ -3581,6 +3586,7 @@ module Google
         def update!(**args)
           @api_config = args[:api_config] if args.key?(:api_config)
           @app_engine_apis = args[:app_engine_apis] if args.key?(:app_engine_apis)
+          @app_engine_bundled_services = args[:app_engine_bundled_services] if args.key?(:app_engine_bundled_services)
           @automatic_scaling = args[:automatic_scaling] if args.key?(:automatic_scaling)
           @basic_scaling = args[:basic_scaling] if args.key?(:basic_scaling)
           @beta_settings = args[:beta_settings] if args.key?(:beta_settings)
