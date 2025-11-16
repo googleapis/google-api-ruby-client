@@ -551,6 +551,25 @@ module Google
         end
       end
       
+      # Additional metadata for a Service or Workload.
+      class ExtendedMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The metadata contents.
+        # Corresponds to the JSON property `metadataStruct`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata_struct
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata_struct = args[:metadata_struct] if args.key?(:metadata_struct)
+        end
+      end
+      
       # The functional type of a service or workload.
       class FunctionalType
         include Google::Apis::Core::Hashable
@@ -1169,6 +1188,25 @@ module Google
         end
       end
       
+      # The registration type of a service.
+      class RegistrationType
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The registration type of a service.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Scope of an application.
       class Scope
         include Google::Apis::Core::Hashable
@@ -1329,6 +1367,14 @@ module Google
       class ServiceProperties
         include Google::Apis::Core::Hashable
       
+        # Output only. Additional metadata specific to the resource type. The key is a
+        # string that identifies the type of metadata and the value is the metadata
+        # contents specific to that type. Key format: `apphub.googleapis.com/`
+        # metadataType``
+        # Corresponds to the JSON property `extendedMetadata`
+        # @return [Hash<String,Google::Apis::ApphubV1::ExtendedMetadata>]
+        attr_accessor :extended_metadata
+      
         # The functional type of a service or workload.
         # Corresponds to the JSON property `functionalType`
         # @return [Google::Apis::ApphubV1::FunctionalType]
@@ -1346,6 +1392,11 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # The registration type of a service.
+        # Corresponds to the JSON property `registrationType`
+        # @return [Google::Apis::ApphubV1::RegistrationType]
+        attr_accessor :registration_type
+      
         # Output only. The location that the underlying resource resides in if it is
         # zonal, for example, us-west1-a).
         # Corresponds to the JSON property `zone`
@@ -1358,9 +1409,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @extended_metadata = args[:extended_metadata] if args.key?(:extended_metadata)
           @functional_type = args[:functional_type] if args.key?(:functional_type)
           @gcp_project = args[:gcp_project] if args.key?(:gcp_project)
           @location = args[:location] if args.key?(:location)
+          @registration_type = args[:registration_type] if args.key?(:registration_type)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -1608,6 +1661,14 @@ module Google
       class WorkloadProperties
         include Google::Apis::Core::Hashable
       
+        # Output only. Additional metadata specific to the resource type. The key is a
+        # string that identifies the type of metadata and the value is the metadata
+        # contents specific to that type. Key format: `apphub.googleapis.com/`
+        # metadataType``
+        # Corresponds to the JSON property `extendedMetadata`
+        # @return [Hash<String,Google::Apis::ApphubV1::ExtendedMetadata>]
+        attr_accessor :extended_metadata
+      
         # The functional type of a service or workload.
         # Corresponds to the JSON property `functionalType`
         # @return [Google::Apis::ApphubV1::FunctionalType]
@@ -1637,6 +1698,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @extended_metadata = args[:extended_metadata] if args.key?(:extended_metadata)
           @functional_type = args[:functional_type] if args.key?(:functional_type)
           @gcp_project = args[:gcp_project] if args.key?(:gcp_project)
           @location = args[:location] if args.key?(:location)

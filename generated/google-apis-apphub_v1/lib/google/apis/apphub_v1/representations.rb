@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExtendedMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FunctionalType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +215,12 @@ module Google
       end
       
       class ReconciliationOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegistrationType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -424,6 +436,13 @@ module Google
         end
       end
       
+      class ExtendedMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata_struct, as: 'metadataStruct'
+        end
+      end
+      
       class FunctionalType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -590,6 +609,13 @@ module Google
         end
       end
       
+      class RegistrationType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
       class Scope
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -631,10 +657,14 @@ module Google
       class ServiceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :extended_metadata, as: 'extendedMetadata', class: Google::Apis::ApphubV1::ExtendedMetadata, decorator: Google::Apis::ApphubV1::ExtendedMetadata::Representation
+      
           property :functional_type, as: 'functionalType', class: Google::Apis::ApphubV1::FunctionalType, decorator: Google::Apis::ApphubV1::FunctionalType::Representation
       
           property :gcp_project, as: 'gcpProject'
           property :location, as: 'location'
+          property :registration_type, as: 'registrationType', class: Google::Apis::ApphubV1::RegistrationType, decorator: Google::Apis::ApphubV1::RegistrationType::Representation
+      
           property :zone, as: 'zone'
         end
       end
@@ -701,6 +731,8 @@ module Google
       class WorkloadProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :extended_metadata, as: 'extendedMetadata', class: Google::Apis::ApphubV1::ExtendedMetadata, decorator: Google::Apis::ApphubV1::ExtendedMetadata::Representation
+      
           property :functional_type, as: 'functionalType', class: Google::Apis::ApphubV1::FunctionalType, decorator: Google::Apis::ApphubV1::FunctionalType::Representation
       
           property :gcp_project, as: 'gcpProject'
