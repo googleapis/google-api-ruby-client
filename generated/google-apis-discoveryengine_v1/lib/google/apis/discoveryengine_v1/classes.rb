@@ -8286,6 +8286,12 @@ module Google
         attr_accessor :enable_image_annotation
         alias_method :enable_image_annotation?, :enable_image_annotation
       
+        # Optional. If true, the pdf layout will be refined using an LLM.
+        # Corresponds to the JSON property `enableLlmLayoutParsing`
+        # @return [Boolean]
+        attr_accessor :enable_llm_layout_parsing
+        alias_method :enable_llm_layout_parsing?, :enable_llm_layout_parsing
+      
         # Optional. If true, the LLM based annotation is added to the table during
         # parsing.
         # Corresponds to the JSON property `enableTableAnnotation`
@@ -8322,6 +8328,7 @@ module Google
         def update!(**args)
           @enable_get_processed_document = args[:enable_get_processed_document] if args.key?(:enable_get_processed_document)
           @enable_image_annotation = args[:enable_image_annotation] if args.key?(:enable_image_annotation)
+          @enable_llm_layout_parsing = args[:enable_llm_layout_parsing] if args.key?(:enable_llm_layout_parsing)
           @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
           @exclude_html_classes = args[:exclude_html_classes] if args.key?(:exclude_html_classes)
           @exclude_html_elements = args[:exclude_html_elements] if args.key?(:exclude_html_elements)
@@ -8453,6 +8460,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineChatEngineMetadata]
         attr_accessor :chat_engine_metadata
       
+        # Configurations used to enable CMEK data encryption with Cloud KMS keys.
+        # Corresponds to the JSON property `cmekConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1CmekConfig]
+        attr_accessor :cmek_config
+      
         # Common configurations for an Engine.
         # Corresponds to the JSON property `commonConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineCommonConfig]
@@ -8514,6 +8526,17 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig]
         attr_accessor :media_recommendation_engine_config
       
+        # Optional. Maps a model name to its specific configuration for this engine.
+        # This allows admin users to turn on/off individual models. This only stores
+        # models whose states are overridden by the admin. When the state is unspecified,
+        # or model_configs is empty for this model, the system will decide if this
+        # model should be available or not based on the default configuration. For
+        # example, a preview model should be disabled by default if the admin has not
+        # chosen to enable it.
+        # Corresponds to the JSON property `modelConfigs`
+        # @return [Hash<String,String>]
+        attr_accessor :model_configs
+      
         # Immutable. Identifier. The fully qualified resource name of the engine. This
         # field must be a UTF-8 encoded string with a length limit of 1024 characters.
         # Format: `projects/`project`/locations/`location`/collections/`collection`/
@@ -8547,6 +8570,7 @@ module Google
           @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
+          @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @common_config = args[:common_config] if args.key?(:common_config)
           @configurable_billing_approach = args[:configurable_billing_approach] if args.key?(:configurable_billing_approach)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -8556,6 +8580,7 @@ module Google
           @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
+          @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
@@ -10179,6 +10204,31 @@ module Google
         end
       end
       
+      # Stats about users' licenses.
+      class GoogleCloudDiscoveryengineV1LicenseConfigUsageStats
+        include Google::Apis::Core::Hashable
+      
+        # Required. The LicenseConfig name.
+        # Corresponds to the JSON property `licenseConfig`
+        # @return [String]
+        attr_accessor :license_config
+      
+        # Required. The number of licenses used.
+        # Corresponds to the JSON property `usedLicenseCount`
+        # @return [Fixnum]
+        attr_accessor :used_license_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @license_config = args[:license_config] if args.key?(:license_config)
+          @used_license_count = args[:used_license_count] if args.key?(:used_license_count)
+        end
+      end
+      
       # Response message for CmekConfigService.ListCmekConfigs method.
       class GoogleCloudDiscoveryengineV1ListCmekConfigsResponse
         include Google::Apis::Core::Hashable
@@ -10393,6 +10443,25 @@ module Google
         def update!(**args)
           @identity_mapping_entries = args[:identity_mapping_entries] if args.key?(:identity_mapping_entries)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for UserLicenseService.ListLicenseConfigUsageStats method.
+      class GoogleCloudDiscoveryengineV1ListLicenseConfigsUsageStatsResponse
+        include Google::Apis::Core::Hashable
+      
+        # All the customer's LicenseConfigUsageStats.
+        # Corresponds to the JSON property `licenseConfigUsageStats`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1LicenseConfigUsageStats>]
+        attr_accessor :license_config_usage_stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @license_config_usage_stats = args[:license_config_usage_stats] if args.key?(:license_config_usage_stats)
         end
       end
       
@@ -15509,6 +15578,910 @@ module Google
         end
       end
       
+      # WidgetConfig captures configs at the Widget level.
+      class GoogleCloudDiscoveryengineV1WidgetConfig
+        include Google::Apis::Core::Hashable
+      
+        # Describes widget access settings.
+        # Corresponds to the JSON property `accessSettings`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigAccessSettings]
+        attr_accessor :access_settings
+      
+        # Whether allow no-auth integration with widget. If set true, public access to
+        # search or other solutions from widget is allowed without authenication token
+        # provided by customer hosted backend server.
+        # Corresponds to the JSON property `allowPublicAccess`
+        # @return [Boolean]
+        attr_accessor :allow_public_access
+        alias_method :allow_public_access?, :allow_public_access
+      
+        # Allowlisted domains that can load this widget.
+        # Corresponds to the JSON property `allowlistedDomains`
+        # @return [Array<String>]
+        attr_accessor :allowlisted_domains
+      
+        # Describes the assistant settings of the widget.
+        # Corresponds to the JSON property `assistantSettings`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigAssistantSettings]
+        attr_accessor :assistant_settings
+      
+        # Output only. Collection components that lists all collections and child data
+        # stores associated with the widget config, those data sources can be used for
+        # filtering in widget service APIs, users can return results that from selected
+        # data sources.
+        # Corresponds to the JSON property `collectionComponents`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponent>]
+        attr_accessor :collection_components
+      
+        # Output only. Unique obfuscated identifier of a WidgetConfig.
+        # Corresponds to the JSON property `configId`
+        # @return [String]
+        attr_accessor :config_id
+      
+        # A specification for configuring the behavior of content search.
+        # Corresponds to the JSON property `contentSearchSpec`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpec]
+        attr_accessor :content_search_spec
+      
+        # Output only. Timestamp the WidgetConfig was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Customer provided configurations.
+        # Corresponds to the JSON property `customerProvidedConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigCustomerProvidedConfig]
+        attr_accessor :customer_provided_config
+      
+        # Output only. The type of the parent data store.
+        # Corresponds to the JSON property `dataStoreType`
+        # @return [String]
+        attr_accessor :data_store_type
+      
+        # Configurable UI configurations per data store.
+        # Corresponds to the JSON property `dataStoreUiConfigs`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig>]
+        attr_accessor :data_store_ui_configs
+      
+        # The default ordering for search results if specified. Used to set
+        # SearchRequest#order_by on applicable requests. https://cloud.google.com/
+        # generative-ai-app-builder/docs/reference/rest/v1alpha/projects.locations.
+        # dataStores.servingConfigs/search#request-body
+        # Corresponds to the JSON property `defaultSearchRequestOrderBy`
+        # @return [String]
+        attr_accessor :default_search_request_order_by
+      
+        # Required. The human readable widget config display name. Used in Discovery UI.
+        # This field must be a UTF-8 encoded string with a length limit of 128
+        # characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Whether or not to enable autocomplete.
+        # Corresponds to the JSON property `enableAutocomplete`
+        # @return [Boolean]
+        attr_accessor :enable_autocomplete
+        alias_method :enable_autocomplete?, :enable_autocomplete
+      
+        # Whether to allow conversational search (LLM, multi-turn) or not (non-LLM,
+        # single-turn).
+        # Corresponds to the JSON property `enableConversationalSearch`
+        # @return [Boolean]
+        attr_accessor :enable_conversational_search
+        alias_method :enable_conversational_search?, :enable_conversational_search
+      
+        # Optional. Output only. Whether to enable private knowledge graph.
+        # Corresponds to the JSON property `enablePrivateKnowledgeGraph`
+        # @return [Boolean]
+        attr_accessor :enable_private_knowledge_graph
+        alias_method :enable_private_knowledge_graph?, :enable_private_knowledge_graph
+      
+        # Turn on or off collecting the search result quality feedback from end users.
+        # Corresponds to the JSON property `enableQualityFeedback`
+        # @return [Boolean]
+        attr_accessor :enable_quality_feedback
+        alias_method :enable_quality_feedback?, :enable_quality_feedback
+      
+        # Whether to show the result score.
+        # Corresponds to the JSON property `enableResultScore`
+        # @return [Boolean]
+        attr_accessor :enable_result_score
+        alias_method :enable_result_score?, :enable_result_score
+      
+        # Whether to enable safe search.
+        # Corresponds to the JSON property `enableSafeSearch`
+        # @return [Boolean]
+        attr_accessor :enable_safe_search
+        alias_method :enable_safe_search?, :enable_safe_search
+      
+        # Whether to enable search-as-you-type behavior for the search widget
+        # Corresponds to the JSON property `enableSearchAsYouType`
+        # @return [Boolean]
+        attr_accessor :enable_search_as_you_type
+        alias_method :enable_search_as_you_type?, :enable_search_as_you_type
+      
+        # Turn on or off summary for each snippets result.
+        # Corresponds to the JSON property `enableSnippetResultSummary`
+        # @return [Boolean]
+        attr_accessor :enable_snippet_result_summary
+        alias_method :enable_snippet_result_summary?, :enable_snippet_result_summary
+      
+        # Turn on or off summarization for the search response.
+        # Corresponds to the JSON property `enableSummarization`
+        # @return [Boolean]
+        attr_accessor :enable_summarization
+        alias_method :enable_summarization?, :enable_summarization
+      
+        # Whether to enable standalone web app.
+        # Corresponds to the JSON property `enableWebApp`
+        # @return [Boolean]
+        attr_accessor :enable_web_app
+        alias_method :enable_web_app?, :enable_web_app
+      
+        # The configuration and appearance of facets in the end user view.
+        # Corresponds to the JSON property `facetField`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigFacetField>]
+        attr_accessor :facet_field
+      
+        # The key is the UI component. Mock. Currently supported `title`, `thumbnail`, `
+        # url`, `custom1`, `custom2`, `custom3`. The value is the name of the field
+        # along with its device visibility. The 3 custom fields are optional and can be
+        # added or removed. `title`, `thumbnail`, `url` are required UI components that
+        # cannot be removed.
+        # Corresponds to the JSON property `fieldsUiComponentsMap`
+        # @return [Hash<String,Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigUiComponentField>]
+        attr_accessor :fields_ui_components_map
+      
+        # Output only. Whether the subscription is gemini bundle or not.
+        # Corresponds to the JSON property `geminiBundle`
+        # @return [Boolean]
+        attr_accessor :gemini_bundle
+        alias_method :gemini_bundle?, :gemini_bundle
+      
+        # Describes the homepage setting of the widget. It includes all homepage related
+        # settings and configurations, such as shortcuts.
+        # Corresponds to the JSON property `homepageSetting`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigHomepageSetting]
+        attr_accessor :homepage_setting
+      
+        # Output only. The industry vertical that the WidgetConfig registers. The
+        # WidgetConfig industry vertical is based on the associated Engine.
+        # Corresponds to the JSON property `industryVertical`
+        # @return [String]
+        attr_accessor :industry_vertical
+      
+        # Output only. Whether LLM is enabled in the corresponding data store.
+        # Corresponds to the JSON property `llmEnabled`
+        # @return [Boolean]
+        attr_accessor :llm_enabled
+        alias_method :llm_enabled?, :llm_enabled
+      
+        # Output only. Whether the customer accepted data use terms.
+        # Corresponds to the JSON property `minimumDataTermAccepted`
+        # @return [Boolean]
+        attr_accessor :minimum_data_term_accepted
+        alias_method :minimum_data_term_accepted?, :minimum_data_term_accepted
+      
+        # Immutable. The full resource name of the widget config. Format: `projects/`
+        # project`/locations/`location`/collections/`collection_id`/dataStores/`
+        # data_store_id`/widgetConfigs/`widget_config_id``. This field must be a UTF-8
+        # encoded string with a length limit of 1024 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The type of snippet to display in UCS widget. -
+        # RESULT_DISPLAY_TYPE_UNSPECIFIED for existing users. - SNIPPET for new non-
+        # enterprise search users. - EXTRACTIVE_ANSWER for new enterprise search users.
+        # Corresponds to the JSON property `resultDisplayType`
+        # @return [String]
+        attr_accessor :result_display_type
+      
+        # Required. Immutable. Specifies the solution type that this WidgetConfig can be
+        # used for.
+        # Corresponds to the JSON property `solutionType`
+        # @return [String]
+        attr_accessor :solution_type
+      
+        # Describes widget UI branding settings.
+        # Corresponds to the JSON property `uiBranding`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigUiBrandingSettings]
+        attr_accessor :ui_branding
+      
+        # Describes general widget (or web app) UI settings as seen in the cloud console
+        # UI configuration page.
+        # Corresponds to the JSON property `uiSettings`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigUiSettings]
+        attr_accessor :ui_settings
+      
+        # Output only. Timestamp the WidgetConfig was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_settings = args[:access_settings] if args.key?(:access_settings)
+          @allow_public_access = args[:allow_public_access] if args.key?(:allow_public_access)
+          @allowlisted_domains = args[:allowlisted_domains] if args.key?(:allowlisted_domains)
+          @assistant_settings = args[:assistant_settings] if args.key?(:assistant_settings)
+          @collection_components = args[:collection_components] if args.key?(:collection_components)
+          @config_id = args[:config_id] if args.key?(:config_id)
+          @content_search_spec = args[:content_search_spec] if args.key?(:content_search_spec)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @customer_provided_config = args[:customer_provided_config] if args.key?(:customer_provided_config)
+          @data_store_type = args[:data_store_type] if args.key?(:data_store_type)
+          @data_store_ui_configs = args[:data_store_ui_configs] if args.key?(:data_store_ui_configs)
+          @default_search_request_order_by = args[:default_search_request_order_by] if args.key?(:default_search_request_order_by)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_autocomplete = args[:enable_autocomplete] if args.key?(:enable_autocomplete)
+          @enable_conversational_search = args[:enable_conversational_search] if args.key?(:enable_conversational_search)
+          @enable_private_knowledge_graph = args[:enable_private_knowledge_graph] if args.key?(:enable_private_knowledge_graph)
+          @enable_quality_feedback = args[:enable_quality_feedback] if args.key?(:enable_quality_feedback)
+          @enable_result_score = args[:enable_result_score] if args.key?(:enable_result_score)
+          @enable_safe_search = args[:enable_safe_search] if args.key?(:enable_safe_search)
+          @enable_search_as_you_type = args[:enable_search_as_you_type] if args.key?(:enable_search_as_you_type)
+          @enable_snippet_result_summary = args[:enable_snippet_result_summary] if args.key?(:enable_snippet_result_summary)
+          @enable_summarization = args[:enable_summarization] if args.key?(:enable_summarization)
+          @enable_web_app = args[:enable_web_app] if args.key?(:enable_web_app)
+          @facet_field = args[:facet_field] if args.key?(:facet_field)
+          @fields_ui_components_map = args[:fields_ui_components_map] if args.key?(:fields_ui_components_map)
+          @gemini_bundle = args[:gemini_bundle] if args.key?(:gemini_bundle)
+          @homepage_setting = args[:homepage_setting] if args.key?(:homepage_setting)
+          @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
+          @llm_enabled = args[:llm_enabled] if args.key?(:llm_enabled)
+          @minimum_data_term_accepted = args[:minimum_data_term_accepted] if args.key?(:minimum_data_term_accepted)
+          @name = args[:name] if args.key?(:name)
+          @result_display_type = args[:result_display_type] if args.key?(:result_display_type)
+          @solution_type = args[:solution_type] if args.key?(:solution_type)
+          @ui_branding = args[:ui_branding] if args.key?(:ui_branding)
+          @ui_settings = args[:ui_settings] if args.key?(:ui_settings)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Describes widget access settings.
+      class GoogleCloudDiscoveryengineV1WidgetConfigAccessSettings
+        include Google::Apis::Core::Hashable
+      
+        # Whether public unauthenticated access is allowed.
+        # Corresponds to the JSON property `allowPublicAccess`
+        # @return [Boolean]
+        attr_accessor :allow_public_access
+        alias_method :allow_public_access?, :allow_public_access
+      
+        # List of domains that are allowed to integrate the search widget.
+        # Corresponds to the JSON property `allowlistedDomains`
+        # @return [Array<String>]
+        attr_accessor :allowlisted_domains
+      
+        # Whether web app access is enabled.
+        # Corresponds to the JSON property `enableWebApp`
+        # @return [Boolean]
+        attr_accessor :enable_web_app
+        alias_method :enable_web_app?, :enable_web_app
+      
+        # Optional. Language code for user interface. Use language tags defined by [
+        # BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). If unset, the default
+        # language code is "en-US".
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Optional. The workforce identity pool provider used to access the widget.
+        # Corresponds to the JSON property `workforceIdentityPoolProvider`
+        # @return [String]
+        attr_accessor :workforce_identity_pool_provider
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_public_access = args[:allow_public_access] if args.key?(:allow_public_access)
+          @allowlisted_domains = args[:allowlisted_domains] if args.key?(:allowlisted_domains)
+          @enable_web_app = args[:enable_web_app] if args.key?(:enable_web_app)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @workforce_identity_pool_provider = args[:workforce_identity_pool_provider] if args.key?(:workforce_identity_pool_provider)
+        end
+      end
+      
+      # Describes the assistant settings of the widget.
+      class GoogleCloudDiscoveryengineV1WidgetConfigAssistantSettings
+        include Google::Apis::Core::Hashable
+      
+        # Output only. This field controls the default web grounding toggle for end
+        # users if `web_grounding_type` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or `
+        # WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`. By default, this field is set to
+        # false. If `web_grounding_type` is `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or `
+        # WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web grounding
+        # enabled by default on UI. If true, grounding toggle will be disabled by
+        # default on UI. End users can still enable web grounding in the UI if web
+        # grounding is enabled.
+        # Corresponds to the JSON property `defaultWebGroundingToggleOff`
+        # @return [Boolean]
+        attr_accessor :default_web_grounding_toggle_off
+        alias_method :default_web_grounding_toggle_off?, :default_web_grounding_toggle_off
+      
+        # Optional. Output only. Whether to disable user location context.
+        # Corresponds to the JSON property `disableLocationContext`
+        # @return [Boolean]
+        attr_accessor :disable_location_context
+        alias_method :disable_location_context?, :disable_location_context
+      
+        # Whether or not the Google search grounding toggle is shown. Deprecated. Use
+        # web_grounding_type instead.
+        # Corresponds to the JSON property `googleSearchGroundingEnabled`
+        # @return [Boolean]
+        attr_accessor :google_search_grounding_enabled
+        alias_method :google_search_grounding_enabled?, :google_search_grounding_enabled
+      
+        # Optional. The type of web grounding to use.
+        # Corresponds to the JSON property `webGroundingType`
+        # @return [String]
+        attr_accessor :web_grounding_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_web_grounding_toggle_off = args[:default_web_grounding_toggle_off] if args.key?(:default_web_grounding_toggle_off)
+          @disable_location_context = args[:disable_location_context] if args.key?(:disable_location_context)
+          @google_search_grounding_enabled = args[:google_search_grounding_enabled] if args.key?(:google_search_grounding_enabled)
+          @web_grounding_type = args[:web_grounding_type] if args.key?(:web_grounding_type)
+        end
+      end
+      
+      # Read-only collection component that contains data store collections fields
+      # that may be used for filtering
+      class GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponent
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The icon link of the connector source.
+        # Corresponds to the JSON property `connectorIconLink`
+        # @return [String]
+        attr_accessor :connector_icon_link
+      
+        # The name of the data source, retrieved from `Collection.data_connector.
+        # data_source`.
+        # Corresponds to the JSON property `dataSource`
+        # @return [String]
+        attr_accessor :data_source
+      
+        # Output only. The display name of the data source.
+        # Corresponds to the JSON property `dataSourceDisplayName`
+        # @return [String]
+        attr_accessor :data_source_display_name
+      
+        # For the data store collection, list of the children data stores.
+        # Corresponds to the JSON property `dataStoreComponents`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponent>]
+        attr_accessor :data_store_components
+      
+        # The display name of the collection.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. the identifier of the collection, used for widget service. For
+        # now it refers to collection_id, in the future we will migrate the field to
+        # encrypted collection name UUID.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The name of the collection. It should be collection resource name. Format: `
+        # projects/`project`/locations/`location`/collections/`collection_id``. For APIs
+        # under WidgetService, such as WidgetService.LookUpWidgetConfig, the project
+        # number and location part is erased in this field.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connector_icon_link = args[:connector_icon_link] if args.key?(:connector_icon_link)
+          @data_source = args[:data_source] if args.key?(:data_source)
+          @data_source_display_name = args[:data_source_display_name] if args.key?(:data_source_display_name)
+          @data_store_components = args[:data_store_components] if args.key?(:data_store_components)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Customer provided configurations.
+      class GoogleCloudDiscoveryengineV1WidgetConfigCustomerProvidedConfig
+        include Google::Apis::Core::Hashable
+      
+        # Customer type.
+        # Corresponds to the JSON property `customerType`
+        # @return [String]
+        attr_accessor :customer_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_type = args[:customer_type] if args.key?(:customer_type)
+        end
+      end
+      
+      # Read-only data store component that contains data stores fields that may be
+      # used for filtering, it's the child of `CollectionComponent`.
+      class GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponent
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The type of the data store config.
+        # Corresponds to the JSON property `dataStoreConfigType`
+        # @return [String]
+        attr_accessor :data_store_config_type
+      
+        # The display name of the data store.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The name of the entity, retrieved from `Collection.data_connector.entities.
+        # entityName`.
+        # Corresponds to the JSON property `entityName`
+        # @return [String]
+        attr_accessor :entity_name
+      
+        # Output only. the identifier of the data store, used for widget service. For
+        # now it refers to data_store_id, in the future we will migrate the field to
+        # encrypted data store name UUID.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The name of the data store. It should be data store resource name Format: `
+        # projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
+        # `data_store_id``. For APIs under WidgetService, such as WidgetService.
+        # LookUpWidgetConfig, the project number and location part is erased in this
+        # field.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store_config_type = args[:data_store_config_type] if args.key?(:data_store_config_type)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entity_name = args[:entity_name] if args.key?(:entity_name)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # UI component configuration for data store.
+      class GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig
+        include Google::Apis::Core::Hashable
+      
+        # Facet fields that store the mapping of fields to end user widget appearance.
+        # Corresponds to the JSON property `facetField`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigFacetField>]
+        attr_accessor :facet_field
+      
+        # The key is the UI component. Mock. Currently supported `title`, `thumbnail`, `
+        # url`, `custom1`, `custom2`, `custom3`. The value is the name of the field
+        # along with its device visibility. The 3 custom fields are optional and can be
+        # added or removed. `title`, `thumbnail`, `url` are required UI components that
+        # cannot be removed.
+        # Corresponds to the JSON property `fieldsUiComponentsMap`
+        # @return [Hash<String,Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigUiComponentField>]
+        attr_accessor :fields_ui_components_map
+      
+        # Output only. the identifier of the data store, used for widget service. For
+        # now it refers to data_store_id, in the future we will migrate the field to
+        # encrypted data store name UUID.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The name of the data store. It should be data store resource name Format: `
+        # projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
+        # `data_store_id``. For APIs under WidgetService, such as WidgetService.
+        # LookUpWidgetConfig, the project number and location part is erased in this
+        # field.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @facet_field = args[:facet_field] if args.key?(:facet_field)
+          @fields_ui_components_map = args[:fields_ui_components_map] if args.key?(:fields_ui_components_map)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Facet fields that store the mapping of fields to end user widget appearance.
+      class GoogleCloudDiscoveryengineV1WidgetConfigFacetField
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The field name that end users will see.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. Registered field name. The format is `field.abc`.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # Describes the homepage setting of the widget. It includes all homepage related
+      # settings and configurations, such as shortcuts.
+      class GoogleCloudDiscoveryengineV1WidgetConfigHomepageSetting
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The shortcuts to display on the homepage.
+        # Corresponds to the JSON property `shortcuts`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigHomepageSettingShortcut>]
+        attr_accessor :shortcuts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @shortcuts = args[:shortcuts] if args.key?(:shortcuts)
+        end
+      end
+      
+      # Describes an entity of shortcut (aka pinned content) on the homepage. The home
+      # page will render these shortcuts in the same order as what the API returns. If
+      # a customer wants to reorder or remove a shortcut, the UI should always provide
+      # the new full list of shortcuts.
+      class GoogleCloudDiscoveryengineV1WidgetConfigHomepageSettingShortcut
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Destination URL of shortcut.
+        # Corresponds to the JSON property `destinationUri`
+        # @return [String]
+        attr_accessor :destination_uri
+      
+        # Options to store an image.
+        # Corresponds to the JSON property `icon`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigImage]
+        attr_accessor :icon
+      
+        # Optional. Title of the shortcut.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_uri = args[:destination_uri] if args.key?(:destination_uri)
+          @icon = args[:icon] if args.key?(:icon)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Options to store an image.
+      class GoogleCloudDiscoveryengineV1WidgetConfigImage
+        include Google::Apis::Core::Hashable
+      
+        # Image URL.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Facet field that maps to a UI Component.
+      class GoogleCloudDiscoveryengineV1WidgetConfigUiComponentField
+        include Google::Apis::Core::Hashable
+      
+        # The field visibility on different types of devices.
+        # Corresponds to the JSON property `deviceVisibility`
+        # @return [Array<String>]
+        attr_accessor :device_visibility
+      
+        # The template to customize how the field is displayed. An example value would
+        # be a string that looks like: "Price: `value`".
+        # Corresponds to the JSON property `displayTemplate`
+        # @return [String]
+        attr_accessor :display_template
+      
+        # Required. Registered field name. The format is `field.abc`.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_visibility = args[:device_visibility] if args.key?(:device_visibility)
+          @display_template = args[:display_template] if args.key?(:display_template)
+          @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # Describes widget UI branding settings.
+      class GoogleCloudDiscoveryengineV1WidgetConfigUiBrandingSettings
+        include Google::Apis::Core::Hashable
+      
+        # Options to store an image.
+        # Corresponds to the JSON property `logo`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigImage]
+        attr_accessor :logo
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @logo = args[:logo] if args.key?(:logo)
+        end
+      end
+      
+      # Describes general widget (or web app) UI settings as seen in the cloud console
+      # UI configuration page.
+      class GoogleCloudDiscoveryengineV1WidgetConfigUiSettings
+        include Google::Apis::Core::Hashable
+      
+        # Per data store configuration.
+        # Corresponds to the JSON property `dataStoreUiConfigs`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig>]
+        attr_accessor :data_store_ui_configs
+      
+        # The default ordering for search results if specified. Used to set
+        # SearchRequest#order_by on applicable requests. https://cloud.google.com/
+        # generative-ai-app-builder/docs/reference/rest/v1alpha/projects.locations.
+        # dataStores.servingConfigs/search#request-body
+        # Corresponds to the JSON property `defaultSearchRequestOrderBy`
+        # @return [String]
+        attr_accessor :default_search_request_order_by
+      
+        # If set to true, the widget will not collect user events.
+        # Corresponds to the JSON property `disableUserEventsCollection`
+        # @return [Boolean]
+        attr_accessor :disable_user_events_collection
+        alias_method :disable_user_events_collection?, :disable_user_events_collection
+      
+        # Whether or not to enable autocomplete.
+        # Corresponds to the JSON property `enableAutocomplete`
+        # @return [Boolean]
+        attr_accessor :enable_autocomplete
+        alias_method :enable_autocomplete?, :enable_autocomplete
+      
+        # Optional. If set to true, the widget will enable the create agent button.
+        # Corresponds to the JSON property `enableCreateAgentButton`
+        # @return [Boolean]
+        attr_accessor :enable_create_agent_button
+        alias_method :enable_create_agent_button?, :enable_create_agent_button
+      
+        # Optional. If set to true, the widget will enable people search.
+        # Corresponds to the JSON property `enablePeopleSearch`
+        # @return [Boolean]
+        attr_accessor :enable_people_search
+        alias_method :enable_people_search?, :enable_people_search
+      
+        # Turn on or off collecting the search result quality feedback from end users.
+        # Corresponds to the JSON property `enableQualityFeedback`
+        # @return [Boolean]
+        attr_accessor :enable_quality_feedback
+        alias_method :enable_quality_feedback?, :enable_quality_feedback
+      
+        # Whether to enable safe search.
+        # Corresponds to the JSON property `enableSafeSearch`
+        # @return [Boolean]
+        attr_accessor :enable_safe_search
+        alias_method :enable_safe_search?, :enable_safe_search
+      
+        # Whether to enable search-as-you-type behavior for the search widget.
+        # Corresponds to the JSON property `enableSearchAsYouType`
+        # @return [Boolean]
+        attr_accessor :enable_search_as_you_type
+        alias_method :enable_search_as_you_type?, :enable_search_as_you_type
+      
+        # If set to true, the widget will enable visual content summary on applicable
+        # search requests. Only used by healthcare search.
+        # Corresponds to the JSON property `enableVisualContentSummary`
+        # @return [Boolean]
+        attr_accessor :enable_visual_content_summary
+        alias_method :enable_visual_content_summary?, :enable_visual_content_summary
+      
+        # Output only. Feature config for the engine to opt in or opt out of features.
+        # Supported keys: * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery`
+        # * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-
+        # chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
+        # personalization-memory` * `disable-agent-sharing` * `disable-image-generation`
+        # * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
+        # content` * `disable-google-drive-upload`
+        # Corresponds to the JSON property `features`
+        # @return [Hash<String,String>]
+        attr_accessor :features
+      
+        # Describes configuration for generative answer.
+        # Corresponds to the JSON property `generativeAnswerConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsGenerativeAnswerConfig]
+        attr_accessor :generative_answer_config
+      
+        # Describes widget (or web app) interaction type
+        # Corresponds to the JSON property `interactionType`
+        # @return [String]
+        attr_accessor :interaction_type
+      
+        # Output only. Maps a model name to its specific configuration for this engine.
+        # This allows admin users to turn on/off individual models. This only stores
+        # models whose states are overridden by the admin. When the state is unspecified,
+        # or model_configs is empty for this model, the system will decide if this
+        # model should be available or not based on the default configuration. For
+        # example, a preview model should be disabled by default if the admin has not
+        # chosen to enable it.
+        # Corresponds to the JSON property `modelConfigs`
+        # @return [Hash<String,String>]
+        attr_accessor :model_configs
+      
+        # Controls whether result extract is display and how (snippet or extractive
+        # answer). Default to no result if unspecified.
+        # Corresponds to the JSON property `resultDescriptionType`
+        # @return [String]
+        attr_accessor :result_description_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store_ui_configs = args[:data_store_ui_configs] if args.key?(:data_store_ui_configs)
+          @default_search_request_order_by = args[:default_search_request_order_by] if args.key?(:default_search_request_order_by)
+          @disable_user_events_collection = args[:disable_user_events_collection] if args.key?(:disable_user_events_collection)
+          @enable_autocomplete = args[:enable_autocomplete] if args.key?(:enable_autocomplete)
+          @enable_create_agent_button = args[:enable_create_agent_button] if args.key?(:enable_create_agent_button)
+          @enable_people_search = args[:enable_people_search] if args.key?(:enable_people_search)
+          @enable_quality_feedback = args[:enable_quality_feedback] if args.key?(:enable_quality_feedback)
+          @enable_safe_search = args[:enable_safe_search] if args.key?(:enable_safe_search)
+          @enable_search_as_you_type = args[:enable_search_as_you_type] if args.key?(:enable_search_as_you_type)
+          @enable_visual_content_summary = args[:enable_visual_content_summary] if args.key?(:enable_visual_content_summary)
+          @features = args[:features] if args.key?(:features)
+          @generative_answer_config = args[:generative_answer_config] if args.key?(:generative_answer_config)
+          @interaction_type = args[:interaction_type] if args.key?(:interaction_type)
+          @model_configs = args[:model_configs] if args.key?(:model_configs)
+          @result_description_type = args[:result_description_type] if args.key?(:result_description_type)
+        end
+      end
+      
+      # Describes configuration for generative answer.
+      class GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsGenerativeAnswerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether generated answer contains suggested related questions.
+        # Corresponds to the JSON property `disableRelatedQuestions`
+        # @return [Boolean]
+        attr_accessor :disable_related_questions
+        alias_method :disable_related_questions?, :disable_related_questions
+      
+        # Optional. Specifies whether to filter out queries that are adversarial.
+        # Corresponds to the JSON property `ignoreAdversarialQuery`
+        # @return [Boolean]
+        attr_accessor :ignore_adversarial_query
+        alias_method :ignore_adversarial_query?, :ignore_adversarial_query
+      
+        # Optional. Specifies whether to filter out queries that are not relevant to the
+        # content.
+        # Corresponds to the JSON property `ignoreLowRelevantContent`
+        # @return [Boolean]
+        attr_accessor :ignore_low_relevant_content
+        alias_method :ignore_low_relevant_content?, :ignore_low_relevant_content
+      
+        # Optional. Specifies whether to filter out queries that are not answer-seeking.
+        # The default value is `false`. No answer is returned if the search query is
+        # classified as a non-answer seeking query. If this field is set to `true`, we
+        # skip generating answers for non-answer seeking queries and return fallback
+        # messages instead.
+        # Corresponds to the JSON property `ignoreNonAnswerSeekingQuery`
+        # @return [Boolean]
+        attr_accessor :ignore_non_answer_seeking_query
+        alias_method :ignore_non_answer_seeking_query?, :ignore_non_answer_seeking_query
+      
+        # Optional. Source of image returned in the answer.
+        # Corresponds to the JSON property `imageSource`
+        # @return [String]
+        attr_accessor :image_source
+      
+        # Language code for Summary. Use language tags defined by [BCP47](https://www.
+        # rfc-editor.org/rfc/bcp/bcp47.txt). Note: This is an experimental feature.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Max rephrase steps. The max number is 5 steps. If not set or set to < 1, it
+        # will be set to 1 by default.
+        # Corresponds to the JSON property `maxRephraseSteps`
+        # @return [Fixnum]
+        attr_accessor :max_rephrase_steps
+      
+        # Text at the beginning of the prompt that instructs the model that generates
+        # the answer.
+        # Corresponds to the JSON property `modelPromptPreamble`
+        # @return [String]
+        attr_accessor :model_prompt_preamble
+      
+        # The model version used to generate the answer.
+        # Corresponds to the JSON property `modelVersion`
+        # @return [String]
+        attr_accessor :model_version
+      
+        # The number of top results to generate the answer from. Up to 10.
+        # Corresponds to the JSON property `resultCount`
+        # @return [Fixnum]
+        attr_accessor :result_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_related_questions = args[:disable_related_questions] if args.key?(:disable_related_questions)
+          @ignore_adversarial_query = args[:ignore_adversarial_query] if args.key?(:ignore_adversarial_query)
+          @ignore_low_relevant_content = args[:ignore_low_relevant_content] if args.key?(:ignore_low_relevant_content)
+          @ignore_non_answer_seeking_query = args[:ignore_non_answer_seeking_query] if args.key?(:ignore_non_answer_seeking_query)
+          @image_source = args[:image_source] if args.key?(:image_source)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @max_rephrase_steps = args[:max_rephrase_steps] if args.key?(:max_rephrase_steps)
+          @model_prompt_preamble = args[:model_prompt_preamble] if args.key?(:model_prompt_preamble)
+          @model_version = args[:model_version] if args.key?(:model_version)
+          @result_count = args[:result_count] if args.key?(:result_count)
+        end
+      end
+      
       # Config to store data store type configuration for workspace data
       class GoogleCloudDiscoveryengineV1WorkspaceConfig
         include Google::Apis::Core::Hashable
@@ -19567,6 +20540,12 @@ module Google
         attr_accessor :enable_image_annotation
         alias_method :enable_image_annotation?, :enable_image_annotation
       
+        # Optional. If true, the pdf layout will be refined using an LLM.
+        # Corresponds to the JSON property `enableLlmLayoutParsing`
+        # @return [Boolean]
+        attr_accessor :enable_llm_layout_parsing
+        alias_method :enable_llm_layout_parsing?, :enable_llm_layout_parsing
+      
         # Optional. If true, the LLM based annotation is added to the table during
         # parsing.
         # Corresponds to the JSON property `enableTableAnnotation`
@@ -19603,6 +20582,7 @@ module Google
         def update!(**args)
           @enable_get_processed_document = args[:enable_get_processed_document] if args.key?(:enable_get_processed_document)
           @enable_image_annotation = args[:enable_image_annotation] if args.key?(:enable_image_annotation)
+          @enable_llm_layout_parsing = args[:enable_llm_layout_parsing] if args.key?(:enable_llm_layout_parsing)
           @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
           @exclude_html_classes = args[:exclude_html_classes] if args.key?(:exclude_html_classes)
           @exclude_html_elements = args[:exclude_html_elements] if args.key?(:exclude_html_elements)
@@ -19702,6 +20682,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata]
         attr_accessor :chat_engine_metadata
       
+        # Configurations used to enable CMEK data encryption with Cloud KMS keys.
+        # Corresponds to the JSON property `cmekConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaCmekConfig]
+        attr_accessor :cmek_config
+      
         # Common configurations for an Engine.
         # Corresponds to the JSON property `commonConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineCommonConfig]
@@ -19763,6 +20748,17 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig]
         attr_accessor :media_recommendation_engine_config
       
+        # Optional. Maps a model name to its specific configuration for this engine.
+        # This allows admin users to turn on/off individual models. This only stores
+        # models whose states are overridden by the admin. When the state is unspecified,
+        # or model_configs is empty for this model, the system will decide if this
+        # model should be available or not based on the default configuration. For
+        # example, a preview model should be disabled by default if the admin has not
+        # chosen to enable it.
+        # Corresponds to the JSON property `modelConfigs`
+        # @return [Hash<String,String>]
+        attr_accessor :model_configs
+      
         # Immutable. Identifier. The fully qualified resource name of the engine. This
         # field must be a UTF-8 encoded string with a length limit of 1024 characters.
         # Format: `projects/`project`/locations/`location`/collections/`collection`/
@@ -19806,6 +20802,7 @@ module Google
           @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
+          @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @common_config = args[:common_config] if args.key?(:common_config)
           @configurable_billing_approach = args[:configurable_billing_approach] if args.key?(:configurable_billing_approach)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -19815,6 +20812,7 @@ module Google
           @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
+          @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
           @recommendation_metadata = args[:recommendation_metadata] if args.key?(:recommendation_metadata)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
@@ -26211,6 +27209,12 @@ module Google
         attr_accessor :enable_image_annotation
         alias_method :enable_image_annotation?, :enable_image_annotation
       
+        # Optional. If true, the pdf layout will be refined using an LLM.
+        # Corresponds to the JSON property `enableLlmLayoutParsing`
+        # @return [Boolean]
+        attr_accessor :enable_llm_layout_parsing
+        alias_method :enable_llm_layout_parsing?, :enable_llm_layout_parsing
+      
         # Optional. If true, the LLM based annotation is added to the table during
         # parsing.
         # Corresponds to the JSON property `enableTableAnnotation`
@@ -26247,6 +27251,7 @@ module Google
         def update!(**args)
           @enable_get_processed_document = args[:enable_get_processed_document] if args.key?(:enable_get_processed_document)
           @enable_image_annotation = args[:enable_image_annotation] if args.key?(:enable_image_annotation)
+          @enable_llm_layout_parsing = args[:enable_llm_layout_parsing] if args.key?(:enable_llm_layout_parsing)
           @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
           @exclude_html_classes = args[:exclude_html_classes] if args.key?(:exclude_html_classes)
           @exclude_html_elements = args[:exclude_html_elements] if args.key?(:exclude_html_elements)
@@ -26346,6 +27351,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata]
         attr_accessor :chat_engine_metadata
       
+        # Configurations used to enable CMEK data encryption with Cloud KMS keys.
+        # Corresponds to the JSON property `cmekConfig`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaCmekConfig]
+        attr_accessor :cmek_config
+      
         # Common configurations for an Engine.
         # Corresponds to the JSON property `commonConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineCommonConfig]
@@ -26407,6 +27417,17 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig]
         attr_accessor :media_recommendation_engine_config
       
+        # Optional. Maps a model name to its specific configuration for this engine.
+        # This allows admin users to turn on/off individual models. This only stores
+        # models whose states are overridden by the admin. When the state is unspecified,
+        # or model_configs is empty for this model, the system will decide if this
+        # model should be available or not based on the default configuration. For
+        # example, a preview model should be disabled by default if the admin has not
+        # chosen to enable it.
+        # Corresponds to the JSON property `modelConfigs`
+        # @return [Hash<String,String>]
+        attr_accessor :model_configs
+      
         # Immutable. Identifier. The fully qualified resource name of the engine. This
         # field must be a UTF-8 encoded string with a length limit of 1024 characters.
         # Format: `projects/`project`/locations/`location`/collections/`collection`/
@@ -26440,6 +27461,7 @@ module Google
           @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
+          @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @common_config = args[:common_config] if args.key?(:common_config)
           @configurable_billing_approach = args[:configurable_billing_approach] if args.key?(:configurable_billing_approach)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -26449,6 +27471,7 @@ module Google
           @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
+          @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
