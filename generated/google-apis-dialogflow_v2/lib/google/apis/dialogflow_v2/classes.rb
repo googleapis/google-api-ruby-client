@@ -12384,7 +12384,7 @@ module Google
       end
       
       # Custom conversation models used in agent assist feature. Supported feature:
-      # ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION.
+      # ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION
       class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig
         include Google::Apis::Core::Hashable
       
@@ -12557,7 +12557,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Custom conversation models used in agent assist feature. Supported feature:
-        # ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION.
+        # ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION
         # Corresponds to the JSON property `conversationModelConfig`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig]
         attr_accessor :conversation_model_config
@@ -15906,6 +15906,16 @@ module Google
       class GoogleCloudDialogflowV2Participant
         include Google::Apis::Core::Hashable
       
+        # Optional. For tracking the utilization of prebuilt Agent Assist integration
+        # modules. This field is only inscope for Integration type that include UI
+        # Modules, Backend Modules, and Agent Desktop connector, it is out of scope for
+        # CCaaS and Direct Integration. For each human agent, prebuilt UI Modules needs
+        # to trigger the UpdateParticipant API to update this field. Both
+        # CreateParticipantRequest and UpdateParticipantRequest will be supported.
+        # Corresponds to the JSON property `agentDesktopSource`
+        # @return [String]
+        attr_accessor :agent_desktop_source
+      
         # Optional. Key-value filters on the metadata of documents returned by article
         # suggestion. If specified, article suggestion only returns suggested documents
         # that match all filters in their Document.metadata. Multiple values for a
@@ -15959,6 +15969,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_desktop_source = args[:agent_desktop_source] if args.key?(:agent_desktop_source)
           @documents_metadata_filters = args[:documents_metadata_filters] if args.key?(:documents_metadata_filters)
           @name = args[:name] if args.key?(:name)
           @obfuscated_external_user_id = args[:obfuscated_external_user_id] if args.key?(:obfuscated_external_user_id)
