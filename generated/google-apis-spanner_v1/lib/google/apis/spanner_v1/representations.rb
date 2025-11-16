@@ -1918,6 +1918,8 @@ module Google
       class InstancePartition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_config, as: 'autoscalingConfig', class: Google::Apis::SpannerV1::AutoscalingConfig, decorator: Google::Apis::SpannerV1::AutoscalingConfig::Representation
+      
           property :config, as: 'config'
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
@@ -2106,6 +2108,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::SpannerV1::Operation, decorator: Google::Apis::SpannerV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
