@@ -5260,6 +5260,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1PurgeMemoriesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1PythonPackageSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6749,6 +6755,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1SchemaPromptInstanceVariableValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1SchemaPromptSpecAppBuilderData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1SchemaPromptSpecAppBuilderDataLinkedResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -18250,6 +18268,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1PurgeMemoriesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :force, as: 'force'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1PythonPackageSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -20700,6 +20726,24 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1SchemaPromptSpecAppBuilderData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code_repository_state, as: 'codeRepositoryState'
+          collection :linked_resources, as: 'linkedResources', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SchemaPromptSpecAppBuilderDataLinkedResource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SchemaPromptSpecAppBuilderDataLinkedResource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1SchemaPromptSpecAppBuilderDataLinkedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :type, as: 'type'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1SchemaPromptSpecMultimodalPrompt
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -20754,6 +20798,8 @@ module Google
       class GoogleCloudAiplatformV1beta1SchemaPromptSpecStructuredPrompt
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_builder_data, as: 'appBuilderData', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SchemaPromptSpecAppBuilderData, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SchemaPromptSpecAppBuilderData::Representation
+      
           property :context, as: 'context', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content::Representation
       
           collection :examples, as: 'examples', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SchemaPromptSpecPartList, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SchemaPromptSpecPartList::Representation

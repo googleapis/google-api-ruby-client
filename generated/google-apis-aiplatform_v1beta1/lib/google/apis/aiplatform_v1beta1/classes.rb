@@ -1871,7 +1871,8 @@ module Google
         # Required. The resource metric name. Supported metrics: * For Online Prediction:
         # * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `
         # aiplatform.googleapis.com/prediction/online/cpu/utilization` * `aiplatform.
-        # googleapis.com/prediction/online/request_count`
+        # googleapis.com/prediction/online/request_count` * `pubsub.googleapis.com/
+        # subscription/num_undelivered_messages`
         # Corresponds to the JSON property `metricName`
         # @return [String]
         attr_accessor :metric_name
@@ -32370,6 +32371,34 @@ module Google
         end
       end
       
+      # Request message for MemoryBankService.PurgeMemories.
+      class GoogleCloudAiplatformV1beta1PurgeMemoriesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The standard list filter to determine which memories to purge. More
+        # detail in [AIP-160](https://google.aip.dev/160).
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. If true, the memories will actually be purged. If false, the purge
+        # request will be validated but not executed.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @force = args[:force] if args.key?(:force)
+        end
+      end
+      
       # The spec of a Python packaged code.
       class GoogleCloudAiplatformV1beta1PythonPackageSpec
         include Google::Apis::Core::Hashable
@@ -36343,7 +36372,9 @@ module Google
       
         # Optional. The standard list filter that will be applied to the retrieved
         # memories. More detail in [AIP-160](https://google.aip.dev/160). Supported
-        # fields: * `fact` * `create_time` * `update_time`
+        # fields: * `fact` * `create_time` * `update_time` * `topics` (i.e. `topics.
+        # custom_memory_topic_label: "example topic" OR topics.managed_memory_topic:
+        # USER_PREFERENCES`)
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -40864,6 +40895,71 @@ module Google
         end
       end
       
+      # Defines data for an application builder.
+      class GoogleCloudAiplatformV1beta1SchemaPromptSpecAppBuilderData
+        include Google::Apis::Core::Hashable
+      
+        # Serialized state of the code repository. This string will typically contain a
+        # JSON representation of the UI's CodeRepositoryService state (files, folders,
+        # content, and any metadata). The UI is responsible for serialization and
+        # deserialization.
+        # Corresponds to the JSON property `codeRepositoryState`
+        # @return [String]
+        attr_accessor :code_repository_state
+      
+        # Linked resources attached to the application by the user.
+        # Corresponds to the JSON property `linkedResources`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SchemaPromptSpecAppBuilderDataLinkedResource>]
+        attr_accessor :linked_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code_repository_state = args[:code_repository_state] if args.key?(:code_repository_state)
+          @linked_resources = args[:linked_resources] if args.key?(:linked_resources)
+        end
+      end
+      
+      # A linked resource attached to the application by the user.
+      class GoogleCloudAiplatformV1beta1SchemaPromptSpecAppBuilderDataLinkedResource
+        include Google::Apis::Core::Hashable
+      
+        # A user-friendly name for the data source shown in the UI.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The unique resource name of the data source. The format is determined by the '
+        # type' field. For type "SAVED_PROMPT": projects/`project`/locations/`location`/
+        # datasets/`dataset` For type "AI_AGENT": projects/`project`/locations/`location`
+        # /agents/`agent`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The type of the linked resource. e.g., "SAVED_PROMPT", "AI_AGENT" This string
+        # corresponds to the name of the LinkedResourceType enum member. See: google3/
+        # cloud/console/web/ai/platform/llm/prompts/build/services/
+        # specs_repository_service/linked_resources/linked_resource.ts
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Prompt variation that embeds preambles to prompt string.
       class GoogleCloudAiplatformV1beta1SchemaPromptSpecMultimodalPrompt
         include Google::Apis::Core::Hashable
@@ -41017,6 +41113,11 @@ module Google
       class GoogleCloudAiplatformV1beta1SchemaPromptSpecStructuredPrompt
         include Google::Apis::Core::Hashable
       
+        # Defines data for an application builder.
+        # Corresponds to the JSON property `appBuilderData`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SchemaPromptSpecAppBuilderData]
+        attr_accessor :app_builder_data
+      
         # The structured data content of a message. A Content message contains a `role`
         # field, which indicates the producer of the content, and a `parts` field, which
         # contains the multi-part data of the message.
@@ -41067,6 +41168,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_builder_data = args[:app_builder_data] if args.key?(:app_builder_data)
           @context = args[:context] if args.key?(:context)
           @examples = args[:examples] if args.key?(:examples)
           @infill_prefix = args[:infill_prefix] if args.key?(:infill_prefix)
