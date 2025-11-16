@@ -5494,6 +5494,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1SchemaPromptSpecAppBuilderData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecAppBuilderDataLinkedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1SchemaPromptSpecMultimodalPrompt
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -17100,6 +17112,24 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1SchemaPromptSpecAppBuilderData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code_repository_state, as: 'codeRepositoryState'
+          collection :linked_resources, as: 'linkedResources', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecAppBuilderDataLinkedResource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecAppBuilderDataLinkedResource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SchemaPromptSpecAppBuilderDataLinkedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :type, as: 'type'
+        end
+      end
+      
       class GoogleCloudAiplatformV1SchemaPromptSpecMultimodalPrompt
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -17154,6 +17184,8 @@ module Google
       class GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_builder_data, as: 'appBuilderData', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecAppBuilderData, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecAppBuilderData::Representation
+      
           property :context, as: 'context', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content::Representation
       
           collection :examples, as: 'examples', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPartList, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecPartList::Representation
