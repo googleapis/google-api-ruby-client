@@ -2138,6 +2138,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the link to the generated artifact of a given type for a Report.
+        # @param [String] name
+        #   Required. Name of the resource.
+        # @param [Google::Apis::MigrationcenterV1::GenerateReportArtifactLinkRequest] generate_report_artifact_link_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MigrationcenterV1::ReportArtifactLink] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MigrationcenterV1::ReportArtifactLink]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def artifact_project_location_report_config_report_link(name, generate_report_artifact_link_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:artifactLink', options)
+          command.request_representation = Google::Apis::MigrationcenterV1::GenerateReportArtifactLinkRequest::Representation
+          command.request_object = generate_report_artifact_link_request_object
+          command.response_representation = Google::Apis::MigrationcenterV1::ReportArtifactLink::Representation
+          command.response_class = Google::Apis::MigrationcenterV1::ReportArtifactLink
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a report.
         # @param [String] parent
         #   Required. Value for parent.

@@ -412,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateReportArtifactLinkRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GenericInsight
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -851,6 +857,12 @@ module Google
       end
       
       class Report
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportArtifactLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1783,6 +1795,13 @@ module Google
         end
       end
       
+      class GenerateReportArtifactLinkRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_type, as: 'artifactType'
+        end
+      end
+      
       class GenericInsight
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2559,6 +2578,14 @@ module Google
       
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ReportArtifactLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+          property :uri_expiration_time, as: 'uriExpirationTime'
         end
       end
       

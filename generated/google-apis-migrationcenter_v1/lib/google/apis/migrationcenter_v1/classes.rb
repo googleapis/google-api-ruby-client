@@ -2175,6 +2175,25 @@ module Google
         end
       end
       
+      # A request to generate a link to an artifact for a Report.
+      class GenerateReportArtifactLinkRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Type of the artifact requested.
+        # Corresponds to the JSON property `artifactType`
+        # @return [String]
+        attr_accessor :artifact_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_type = args[:artifact_type] if args.key?(:artifact_type)
+        end
+      end
+      
       # A generic insight about an asset.
       class GenericInsight
         include Google::Apis::Core::Hashable
@@ -4783,6 +4802,31 @@ module Google
           @summary = args[:summary] if args.key?(:summary)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Describes a link to a generated artifact of the report.
+      class ReportArtifactLink
+        include Google::Apis::Core::Hashable
+      
+        # Output only. URI of the artifact.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # Output only. Expiration time of the URI.
+        # Corresponds to the JSON property `uriExpirationTime`
+        # @return [String]
+        attr_accessor :uri_expiration_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+          @uri_expiration_time = args[:uri_expiration_time] if args.key?(:uri_expiration_time)
         end
       end
       
