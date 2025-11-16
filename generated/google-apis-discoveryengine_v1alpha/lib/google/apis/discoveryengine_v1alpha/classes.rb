@@ -4148,6 +4148,12 @@ module Google
         attr_accessor :enable_image_annotation
         alias_method :enable_image_annotation?, :enable_image_annotation
       
+        # Optional. If true, the pdf layout will be refined using an LLM.
+        # Corresponds to the JSON property `enableLlmLayoutParsing`
+        # @return [Boolean]
+        attr_accessor :enable_llm_layout_parsing
+        alias_method :enable_llm_layout_parsing?, :enable_llm_layout_parsing
+      
         # Optional. If true, the LLM based annotation is added to the table during
         # parsing.
         # Corresponds to the JSON property `enableTableAnnotation`
@@ -4184,6 +4190,7 @@ module Google
         def update!(**args)
           @enable_get_processed_document = args[:enable_get_processed_document] if args.key?(:enable_get_processed_document)
           @enable_image_annotation = args[:enable_image_annotation] if args.key?(:enable_image_annotation)
+          @enable_llm_layout_parsing = args[:enable_llm_layout_parsing] if args.key?(:enable_llm_layout_parsing)
           @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
           @exclude_html_classes = args[:exclude_html_classes] if args.key?(:exclude_html_classes)
           @exclude_html_elements = args[:exclude_html_elements] if args.key?(:exclude_html_elements)
@@ -4283,6 +4290,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineChatEngineMetadata]
         attr_accessor :chat_engine_metadata
       
+        # Configurations used to enable CMEK data encryption with Cloud KMS keys.
+        # Corresponds to the JSON property `cmekConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1CmekConfig]
+        attr_accessor :cmek_config
+      
         # Common configurations for an Engine.
         # Corresponds to the JSON property `commonConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineCommonConfig]
@@ -4344,6 +4356,17 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig]
         attr_accessor :media_recommendation_engine_config
       
+        # Optional. Maps a model name to its specific configuration for this engine.
+        # This allows admin users to turn on/off individual models. This only stores
+        # models whose states are overridden by the admin. When the state is unspecified,
+        # or model_configs is empty for this model, the system will decide if this
+        # model should be available or not based on the default configuration. For
+        # example, a preview model should be disabled by default if the admin has not
+        # chosen to enable it.
+        # Corresponds to the JSON property `modelConfigs`
+        # @return [Hash<String,String>]
+        attr_accessor :model_configs
+      
         # Immutable. Identifier. The fully qualified resource name of the engine. This
         # field must be a UTF-8 encoded string with a length limit of 1024 characters.
         # Format: `projects/`project`/locations/`location`/collections/`collection`/
@@ -4377,6 +4400,7 @@ module Google
           @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
+          @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @common_config = args[:common_config] if args.key?(:common_config)
           @configurable_billing_approach = args[:configurable_billing_approach] if args.key?(:configurable_billing_approach)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -4386,6 +4410,7 @@ module Google
           @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
+          @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
@@ -7637,6 +7662,11 @@ module Google
         # @return [String]
         attr_accessor :rejection_reason
       
+        # Sharing related configuration.
+        # Corresponds to the JSON property `sharingConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentSharingConfig]
+        attr_accessor :sharing_config
+      
         # Optional. The starter prompt suggestions to show the user on the landing page
         # of the agent.
         # Corresponds to the JSON property `starterPrompts`
@@ -7678,6 +7708,7 @@ module Google
           @language_code = args[:language_code] if args.key?(:language_code)
           @name = args[:name] if args.key?(:name)
           @rejection_reason = args[:rejection_reason] if args.key?(:rejection_reason)
+          @sharing_config = args[:sharing_config] if args.key?(:sharing_config)
           @starter_prompts = args[:starter_prompts] if args.key?(:starter_prompts)
           @state = args[:state] if args.key?(:state)
           @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
@@ -7743,6 +7774,25 @@ module Google
         end
       end
       
+      # Sharing related configuration.
+      class GoogleCloudDiscoveryengineV1alphaAgentSharingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The sharing scope of the agent.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
       # The starter prompt suggestion to show the user on the landing page of the
       # agent.
       class GoogleCloudDiscoveryengineV1alphaAgentStarterPrompt
@@ -7760,6 +7810,204 @@ module Google
         # Update properties of this object
         def update!(**args)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # The data for displaying an Agent.
+      class GoogleCloudDiscoveryengineV1alphaAgentView
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The origin of the Agent.
+        # Corresponds to the JSON property `agentOrigin`
+        # @return [String]
+        attr_accessor :agent_origin
+      
+        # Output only. The sharing state of the agent.
+        # Corresponds to the JSON property `agentSharingState`
+        # @return [String]
+        attr_accessor :agent_sharing_state
+      
+        # Output only. The type of the agent.
+        # Corresponds to the JSON property `agentType`
+        # @return [String]
+        attr_accessor :agent_type
+      
+        # The custom placeholder text that appears in the text box before the user
+        # enters any text.
+        # Corresponds to the JSON property `customPlaceholderText`
+        # @return [String]
+        attr_accessor :custom_placeholder_text
+      
+        # The reason why the agent deployment failed. Only set if the state is
+        # DEPLOYMENT_FAILED.
+        # Corresponds to the JSON property `deploymentFailureReason`
+        # @return [String]
+        attr_accessor :deployment_failure_reason
+      
+        # Required. Human-readable description of the agent. This might be used by an
+        # LLM to automatically select an agent to respond to a user query and to
+        # generate the first version of the steps for the agent that can be modified by
+        # the user. The language of this is either Agent.language_code, or
+        # ListAvailableAgentViewsRequest.language_code if translations are enabled.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Display name of the agent. The language of this is either Agent.
+        # language_code, or ListAvailableAgentViewsRequest.language_code if translations
+        # are enabled.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Represents an image.
+        # Corresponds to the JSON property `icon`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentImage]
+        attr_accessor :icon
+      
+        # Resource name of the agent. Format: `projects/`project`/locations/`location`/
+        # collections/`collection`/engines/`engine`/assistants/`assistant`/agents/`agent`
+        # `
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The reason why the agent was rejected. Only set if the state is PRIVATE, and
+        # got there via rejection.
+        # Corresponds to the JSON property `rejectionReason`
+        # @return [String]
+        attr_accessor :rejection_reason
+      
+        # Output only. The state of the Agent.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Optional. The suggested prompts for the agent, to be shown on the agent
+        # landing page.
+        # Corresponds to the JSON property `suggestedPrompts`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentViewSuggestedPrompt>]
+        attr_accessor :suggested_prompts
+      
+        # The reason why the agent was suspended. Only set if the state is SUSPENDED.
+        # Corresponds to the JSON property `suspensionReason`
+        # @return [String]
+        attr_accessor :suspension_reason
+      
+        # Per-user annotations for an Agent, based on UserAnnotation.
+        # Corresponds to the JSON property `userAnnotations`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserAnnotations]
+        attr_accessor :user_annotations
+      
+        # The permissions of the user on an Agent.
+        # Corresponds to the JSON property `userPermissions`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentViewUserPermissions]
+        attr_accessor :user_permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_origin = args[:agent_origin] if args.key?(:agent_origin)
+          @agent_sharing_state = args[:agent_sharing_state] if args.key?(:agent_sharing_state)
+          @agent_type = args[:agent_type] if args.key?(:agent_type)
+          @custom_placeholder_text = args[:custom_placeholder_text] if args.key?(:custom_placeholder_text)
+          @deployment_failure_reason = args[:deployment_failure_reason] if args.key?(:deployment_failure_reason)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @icon = args[:icon] if args.key?(:icon)
+          @name = args[:name] if args.key?(:name)
+          @rejection_reason = args[:rejection_reason] if args.key?(:rejection_reason)
+          @state = args[:state] if args.key?(:state)
+          @suggested_prompts = args[:suggested_prompts] if args.key?(:suggested_prompts)
+          @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
+          @user_annotations = args[:user_annotations] if args.key?(:user_annotations)
+          @user_permissions = args[:user_permissions] if args.key?(:user_permissions)
+        end
+      end
+      
+      # A suggested prompt for the agent, to be shown on the agent landing page.
+      class GoogleCloudDiscoveryengineV1alphaAgentViewSuggestedPrompt
+        include Google::Apis::Core::Hashable
+      
+        # Required. The text of the suggested prompt. The language of this is either
+        # Agent.language_code, or ListAvailableAgentViewsRequest.language_code if
+        # translations are enabled.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # The permissions of the user on an Agent.
+      class GoogleCloudDiscoveryengineV1alphaAgentViewUserPermissions
+        include Google::Apis::Core::Hashable
+      
+        # If the user can delete this Agent.
+        # Corresponds to the JSON property `canDelete`
+        # @return [Boolean]
+        attr_accessor :can_delete
+        alias_method :can_delete?, :can_delete
+      
+        # If the user can edit this Agent.
+        # Corresponds to the JSON property `canEdit`
+        # @return [Boolean]
+        attr_accessor :can_edit
+        alias_method :can_edit?, :can_edit
+      
+        # If the user can propose other users to share the Agent with.
+        # Corresponds to the JSON property `canProposeUsers`
+        # @return [Boolean]
+        attr_accessor :can_propose_users
+        alias_method :can_propose_users?, :can_propose_users
+      
+        # If the user can request a review for this Agent.
+        # Corresponds to the JSON property `canRequestReview`
+        # @return [Boolean]
+        attr_accessor :can_request_review
+        alias_method :can_request_review?, :can_request_review
+      
+        # If the user can run this Agent.
+        # Corresponds to the JSON property `canRun`
+        # @return [Boolean]
+        attr_accessor :can_run
+        alias_method :can_run?, :can_run
+      
+        # If the user can view the source of this Agent.
+        # Corresponds to the JSON property `canView`
+        # @return [Boolean]
+        attr_accessor :can_view
+        alias_method :can_view?, :can_view
+      
+        # If the user can withdraw this Agent.
+        # Corresponds to the JSON property `canWithdraw`
+        # @return [Boolean]
+        attr_accessor :can_withdraw
+        alias_method :can_withdraw?, :can_withdraw
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @can_delete = args[:can_delete] if args.key?(:can_delete)
+          @can_edit = args[:can_edit] if args.key?(:can_edit)
+          @can_propose_users = args[:can_propose_users] if args.key?(:can_propose_users)
+          @can_request_review = args[:can_request_review] if args.key?(:can_request_review)
+          @can_run = args[:can_run] if args.key?(:can_run)
+          @can_view = args[:can_view] if args.key?(:can_view)
+          @can_withdraw = args[:can_withdraw] if args.key?(:can_withdraw)
         end
       end
       
@@ -15508,6 +15756,12 @@ module Google
         attr_accessor :enable_image_annotation
         alias_method :enable_image_annotation?, :enable_image_annotation
       
+        # Optional. If true, the pdf layout will be refined using an LLM.
+        # Corresponds to the JSON property `enableLlmLayoutParsing`
+        # @return [Boolean]
+        attr_accessor :enable_llm_layout_parsing
+        alias_method :enable_llm_layout_parsing?, :enable_llm_layout_parsing
+      
         # Optional. If true, the LLM based annotation is added to the table during
         # parsing.
         # Corresponds to the JSON property `enableTableAnnotation`
@@ -15544,6 +15798,7 @@ module Google
         def update!(**args)
           @enable_get_processed_document = args[:enable_get_processed_document] if args.key?(:enable_get_processed_document)
           @enable_image_annotation = args[:enable_image_annotation] if args.key?(:enable_image_annotation)
+          @enable_llm_layout_parsing = args[:enable_llm_layout_parsing] if args.key?(:enable_llm_layout_parsing)
           @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
           @exclude_html_classes = args[:exclude_html_classes] if args.key?(:exclude_html_classes)
           @exclude_html_elements = args[:exclude_html_elements] if args.key?(:exclude_html_elements)
@@ -15694,6 +15949,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata]
         attr_accessor :chat_engine_metadata
       
+        # Configurations used to enable CMEK data encryption with Cloud KMS keys.
+        # Corresponds to the JSON property `cmekConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCmekConfig]
+        attr_accessor :cmek_config
+      
         # Common configurations for an Engine.
         # Corresponds to the JSON property `commonConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineCommonConfig]
@@ -15755,6 +16015,17 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig]
         attr_accessor :media_recommendation_engine_config
       
+        # Optional. Maps a model name to its specific configuration for this engine.
+        # This allows admin users to turn on/off individual models. This only stores
+        # models whose states are overridden by the admin. When the state is unspecified,
+        # or model_configs is empty for this model, the system will decide if this
+        # model should be available or not based on the default configuration. For
+        # example, a preview model should be disabled by default if the admin has not
+        # chosen to enable it.
+        # Corresponds to the JSON property `modelConfigs`
+        # @return [Hash<String,String>]
+        attr_accessor :model_configs
+      
         # Immutable. Identifier. The fully qualified resource name of the engine. This
         # field must be a UTF-8 encoded string with a length limit of 1024 characters.
         # Format: `projects/`project`/locations/`location`/collections/`collection`/
@@ -15798,6 +16069,7 @@ module Google
           @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
+          @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @common_config = args[:common_config] if args.key?(:common_config)
           @configurable_billing_approach = args[:configurable_billing_approach] if args.key?(:configurable_billing_approach)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -15807,6 +16079,7 @@ module Google
           @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
+          @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
           @recommendation_metadata = args[:recommendation_metadata] if args.key?(:recommendation_metadata)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
@@ -17117,6 +17390,25 @@ module Google
         def update!(**args)
           @data_schema = args[:data_schema] if args.key?(:data_schema)
           @input_uris = args[:input_uris] if args.key?(:input_uris)
+        end
+      end
+      
+      # Response message for the AgentService.GetAgentView method.
+      class GoogleCloudDiscoveryengineV1alphaGetAgentViewResponse
+        include Google::Apis::Core::Hashable
+      
+        # The data for displaying an Agent.
+        # Corresponds to the JSON property `agentView`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentView]
+        attr_accessor :agent_view
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_view = args[:agent_view] if args.key?(:agent_view)
         end
       end
       
@@ -18560,6 +18852,31 @@ module Google
         end
       end
       
+      # Stats about users' licenses.
+      class GoogleCloudDiscoveryengineV1alphaLicenseConfigUsageStats
+        include Google::Apis::Core::Hashable
+      
+        # Required. The LicenseConfig name.
+        # Corresponds to the JSON property `licenseConfig`
+        # @return [String]
+        attr_accessor :license_config
+      
+        # Required. The number of licenses used.
+        # Corresponds to the JSON property `usedLicenseCount`
+        # @return [Fixnum]
+        attr_accessor :used_license_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @license_config = args[:license_config] if args.key?(:license_config)
+          @used_license_count = args[:used_license_count] if args.key?(:used_license_count)
+        end
+      end
+      
       # Response message for the AgentService.ListAgents method.
       class GoogleCloudDiscoveryengineV1alphaListAgentsResponse
         include Google::Apis::Core::Hashable
@@ -18608,6 +18925,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authorizations = args[:authorizations] if args.key?(:authorizations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for the AgentService.ListAvailableAgentViews method.
+      class GoogleCloudDiscoveryengineV1alphaListAvailableAgentViewsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The agent sources visible to the caller under the parent Assistant.
+        # Corresponds to the JSON property `agentViews`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentView>]
+        attr_accessor :agent_views
+      
+        # A token that can be sent as ListAvailableAgentViewsRequest.page_token to
+        # retrieve the next page. If this field is omitted, there are no subsequent
+        # pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_views = args[:agent_views] if args.key?(:agent_views)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -19082,6 +19426,25 @@ module Google
         def update!(**args)
           @identity_mapping_entries = args[:identity_mapping_entries] if args.key?(:identity_mapping_entries)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for UserLicenseService.ListLicenseConfigUsageStats method.
+      class GoogleCloudDiscoveryengineV1alphaListLicenseConfigsUsageStatsResponse
+        include Google::Apis::Core::Hashable
+      
+        # All the customer's LicenseConfigUsageStats.
+        # Corresponds to the JSON property `licenseConfigUsageStats`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaLicenseConfigUsageStats>]
+        attr_accessor :license_config_usage_stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @license_config_usage_stats = args[:license_config_usage_stats] if args.key?(:license_config_usage_stats)
         end
       end
       
@@ -26218,6 +26581,34 @@ module Google
         end
       end
       
+      # Per-user annotations for an Agent, based on UserAnnotation.
+      class GoogleCloudDiscoveryengineV1alphaUserAnnotations
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether the agent is pinned, pinned agent will be displayed on the
+        # top of the agent list.
+        # Corresponds to the JSON property `pinned`
+        # @return [Boolean]
+        attr_accessor :pinned
+        alias_method :pinned?, :pinned
+      
+        # Optional. Whether the agent has been viewed by the user.
+        # Corresponds to the JSON property `viewed`
+        # @return [Boolean]
+        attr_accessor :viewed
+        alias_method :viewed?, :viewed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pinned = args[:pinned] if args.key?(:pinned)
+          @viewed = args[:viewed] if args.key?(:viewed)
+        end
+      end
+      
       # UserEvent captures all metadata information Discovery Engine API needs to know
       # about how end users interact with your website.
       class GoogleCloudDiscoveryengineV1alphaUserEvent
@@ -27462,6 +27853,17 @@ module Google
         # @return [String]
         attr_accessor :interaction_type
       
+        # Output only. Maps a model name to its specific configuration for this engine.
+        # This allows admin users to turn on/off individual models. This only stores
+        # models whose states are overridden by the admin. When the state is unspecified,
+        # or model_configs is empty for this model, the system will decide if this
+        # model should be available or not based on the default configuration. For
+        # example, a preview model should be disabled by default if the admin has not
+        # chosen to enable it.
+        # Corresponds to the JSON property `modelConfigs`
+        # @return [Hash<String,String>]
+        attr_accessor :model_configs
+      
         # Controls whether result extract is display and how (snippet or extractive
         # answer). Default to no result if unspecified.
         # Corresponds to the JSON property `resultDescriptionType`
@@ -27493,6 +27895,7 @@ module Google
           @features = args[:features] if args.key?(:features)
           @generative_answer_config = args[:generative_answer_config] if args.key?(:generative_answer_config)
           @interaction_type = args[:interaction_type] if args.key?(:interaction_type)
+          @model_configs = args[:model_configs] if args.key?(:model_configs)
           @result_description_type = args[:result_description_type] if args.key?(:result_description_type)
           @search_addon_spec = args[:search_addon_spec] if args.key?(:search_addon_spec)
         end
@@ -29147,6 +29550,12 @@ module Google
         attr_accessor :enable_image_annotation
         alias_method :enable_image_annotation?, :enable_image_annotation
       
+        # Optional. If true, the pdf layout will be refined using an LLM.
+        # Corresponds to the JSON property `enableLlmLayoutParsing`
+        # @return [Boolean]
+        attr_accessor :enable_llm_layout_parsing
+        alias_method :enable_llm_layout_parsing?, :enable_llm_layout_parsing
+      
         # Optional. If true, the LLM based annotation is added to the table during
         # parsing.
         # Corresponds to the JSON property `enableTableAnnotation`
@@ -29183,6 +29592,7 @@ module Google
         def update!(**args)
           @enable_get_processed_document = args[:enable_get_processed_document] if args.key?(:enable_get_processed_document)
           @enable_image_annotation = args[:enable_image_annotation] if args.key?(:enable_image_annotation)
+          @enable_llm_layout_parsing = args[:enable_llm_layout_parsing] if args.key?(:enable_llm_layout_parsing)
           @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
           @exclude_html_classes = args[:exclude_html_classes] if args.key?(:exclude_html_classes)
           @exclude_html_elements = args[:exclude_html_elements] if args.key?(:exclude_html_elements)
@@ -29282,6 +29692,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata]
         attr_accessor :chat_engine_metadata
       
+        # Configurations used to enable CMEK data encryption with Cloud KMS keys.
+        # Corresponds to the JSON property `cmekConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaCmekConfig]
+        attr_accessor :cmek_config
+      
         # Common configurations for an Engine.
         # Corresponds to the JSON property `commonConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineCommonConfig]
@@ -29343,6 +29758,17 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig]
         attr_accessor :media_recommendation_engine_config
       
+        # Optional. Maps a model name to its specific configuration for this engine.
+        # This allows admin users to turn on/off individual models. This only stores
+        # models whose states are overridden by the admin. When the state is unspecified,
+        # or model_configs is empty for this model, the system will decide if this
+        # model should be available or not based on the default configuration. For
+        # example, a preview model should be disabled by default if the admin has not
+        # chosen to enable it.
+        # Corresponds to the JSON property `modelConfigs`
+        # @return [Hash<String,String>]
+        attr_accessor :model_configs
+      
         # Immutable. Identifier. The fully qualified resource name of the engine. This
         # field must be a UTF-8 encoded string with a length limit of 1024 characters.
         # Format: `projects/`project`/locations/`location`/collections/`collection`/
@@ -29376,6 +29802,7 @@ module Google
           @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
+          @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @common_config = args[:common_config] if args.key?(:common_config)
           @configurable_billing_approach = args[:configurable_billing_approach] if args.key?(:configurable_billing_approach)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -29385,6 +29812,7 @@ module Google
           @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
+          @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
@@ -34423,6 +34851,241 @@ module Google
         def update!(**args)
           @channel_name = args[:channel_name] if args.key?(:channel_name)
           @video_id = args[:video_id] if args.key?(:video_id)
+        end
+      end
+      
+      # Associates `members`, or principals, with a `role`.
+      class GoogleIamV1Binding
+        include Google::Apis::Core::Hashable
+      
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleTypeExpr]
+        attr_accessor :condition
+      
+        # Specifies the principals requesting access for a Google Cloud resource. `
+        # members` can have the following values: * `allUsers`: A special identifier
+        # that represents anyone who is on the internet; with or without a Google
+        # account. * `allAuthenticatedUsers`: A special identifier that represents
+        # anyone who is authenticated with a Google account or a service account. Does
+        # not include identities that come from external identity providers (IdPs)
+        # through identity federation. * `user:`emailid``: An email address that
+        # represents a specific Google account. For example, `alice@example.com` . * `
+        # serviceAccount:`emailid``: An email address that represents a Google service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`. * `
+        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]`: An
+        # identifier for a [Kubernetes service account](https://cloud.google.com/
+        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
+        # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
+        # email address that represents a Google group. For example, `admins@example.com`
+        # . * `domain:`domain``: The G Suite domain (primary) that represents all the
+        # users of that domain. For example, `google.com` or `example.com`. * `principal:
+        # //iam.googleapis.com/locations/global/workforcePools/`pool_id`/subject/`
+        # subject_attribute_value``: A single identity in a workforce identity pool. * `
+        # principalSet://iam.googleapis.com/locations/global/workforcePools/`pool_id`/
+        # group/`group_id``: All workforce identities in a group. * `principalSet://iam.
+        # googleapis.com/locations/global/workforcePools/`pool_id`/attribute.`
+        # attribute_name`/`attribute_value``: All workforce identities with a specific
+        # attribute value. * `principalSet://iam.googleapis.com/locations/global/
+        # workforcePools/`pool_id`/*`: All identities in a workforce identity pool. * `
+        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value``: A single
+        # identity in a workload identity pool. * `principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/
+        # group/`group_id``: A workload identity pool group. * `principalSet://iam.
+        # googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/attribute.`attribute_name`/`attribute_value``:
+        # All identities in a workload identity pool with a certain attribute. * `
+        # principalSet://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/*`: All identities in a workload identity pool.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901`. If the service account is undeleted, this value
+        # reverts to `serviceAccount:`emailid`` and the undeleted service account
+        # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
+        # An email address (plus unique identifier) representing a Google group that has
+        # been recently deleted. For example, `admins@example.com?uid=
+        # 123456789012345678901`. If the group is recovered, this value reverts to `
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # deleted:principal://iam.googleapis.com/locations/global/workforcePools/`
+        # pool_id`/subject/`subject_attribute_value``: Deleted single identity in a
+        # workforce identity pool. For example, `deleted:principal://iam.googleapis.com/
+        # locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        # Corresponds to the JSON property `members`
+        # @return [Array<String>]
+        attr_accessor :members
+      
+        # Role that is assigned to the list of `members`, or principals. For example, `
+        # roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM
+        # roles and permissions, see the [IAM documentation](https://cloud.google.com/
+        # iam/docs/roles-overview). For a list of the available pre-defined roles, see [
+        # here](https://cloud.google.com/iam/docs/understanding-roles).
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @members = args[:members] if args.key?(:members)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # An Identity and Access Management (IAM) policy, which specifies access
+      # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+      # A `binding` binds one or more `members`, or principals, to a single `role`.
+      # Principals can be user accounts, service accounts, Google groups, and domains (
+      # such as G Suite). A `role` is a named list of permissions; each `role` can be
+      # an IAM predefined role or a user-created custom role. For some types of Google
+      # Cloud resources, a `binding` can also specify a `condition`, which is a
+      # logical expression that allows access to a resource only if the expression
+      # evaluates to `true`. A condition can add constraints based on attributes of
+      # the request, the resource, or both. To learn which resources support
+      # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
+      # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+      # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+      # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+      # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+      # ], "condition": ` "title": "expirable access", "description": "Does not grant
+      # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+      # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+      # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+      # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+      # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+      # title: expirable access description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+      # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
+      class GoogleIamV1Policy
+        include Google::Apis::Core::Hashable
+      
+        # Associates a list of `members`, or principals, with a `role`. Optionally, may
+        # specify a `condition` that determines how and when the `bindings` are applied.
+        # Each of the `bindings` must contain at least one principal. The `bindings` in
+        # a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
+        # can be Google groups. Each occurrence of a principal counts towards these
+        # limits. For example, if the `bindings` grant 50 different roles to `user:alice@
+        # example.com`, and not to any other principal, then you can add another 1,450
+        # principals to the `bindings` in the `Policy`.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Binding>]
+        attr_accessor :bindings
+      
+        # `etag` is used for optimistic concurrency control as a way to help prevent
+        # simultaneous updates of a policy from overwriting each other. It is strongly
+        # suggested that systems make use of the `etag` in the read-modify-write cycle
+        # to perform policy updates in order to avoid race conditions: An `etag` is
+        # returned in the response to `getIamPolicy`, and systems are expected to put
+        # that etag in the request to `setIamPolicy` to ensure that their change will be
+        # applied to the same version of the policy. **Important:** If you use IAM
+        # Conditions, you must include the `etag` field whenever you call `setIamPolicy`.
+        # If you omit this field, then IAM allows you to overwrite a version `3` policy
+        # with a version `1` policy, and all of the conditions in the version `3` policy
+        # are lost.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
+        # Requests that specify an invalid value are rejected. Any operation that
+        # affects conditional role bindings must specify version `3`. This requirement
+        # applies to the following operations: * Getting a policy that includes a
+        # conditional role binding * Adding a conditional role binding to a policy *
+        # Changing a conditional role binding in a policy * Removing any role binding,
+        # with or without a condition, from a policy that includes conditions **
+        # Important:** If you use IAM Conditions, you must include the `etag` field
+        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows you
+        # to overwrite a version `3` policy with a version `1` policy, and all of the
+        # conditions in the version `3` policy are lost. If a policy does not include
+        # any conditions, operations on that policy may specify any valid version or
+        # leave the field unset. To learn which resources support conditions in their
+        # IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/
+        # conditions/resource-policies).
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Request message for `SetIamPolicy` method.
+      class GoogleIamV1SetIamPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # An Identity and Access Management (IAM) policy, which specifies access
+        # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+        # A `binding` binds one or more `members`, or principals, to a single `role`.
+        # Principals can be user accounts, service accounts, Google groups, and domains (
+        # such as G Suite). A `role` is a named list of permissions; each `role` can be
+        # an IAM predefined role or a user-created custom role. For some types of Google
+        # Cloud resources, a `binding` can also specify a `condition`, which is a
+        # logical expression that allows access to a resource only if the expression
+        # evaluates to `true`. A condition can add constraints based on attributes of
+        # the request, the resource, or both. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ``` ` "
+        # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+        # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` ``` **YAML
+        # example:** ``` bindings: - members: - user:mike@example.com - group:admins@
+        # example.com - domain:google.com - serviceAccount:my-project-id@appspot.
+        # gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+        # user:eve@example.com role: roles/resourcemanager.organizationViewer condition:
+        # title: expirable access description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag:
+        # BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
