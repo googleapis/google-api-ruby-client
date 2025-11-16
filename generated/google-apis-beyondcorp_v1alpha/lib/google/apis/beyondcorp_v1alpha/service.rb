@@ -22,10 +22,11 @@ module Google
     module BeyondcorpV1alpha
       # BeyondCorp API
       #
-      # Beyondcorp Enterprise provides identity and context aware access controls for
-      #  enterprise resources and enables zero-trust access. Using the Beyondcorp
-      #  Enterprise APIs, enterprises can set up multi-cloud and on-prem connectivity
-      #  solutions.
+      # Chrome Enterprise Premium is a secure enterprise browsing solution that
+      #  provides secure access to applications and resources, and offers integrated
+      #  threat and data protection. It adds an extra layer of security to safeguard
+      #  your Chrome browser environment, including Data Loss Prevention (DLP), real-
+      #  time URL and file scanning, and Context-Aware Access for SaaS and web apps.
       #
       # @example
       #    require 'google/apis/beyondcorp_v1alpha'
@@ -816,8 +817,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
-        #   field which is primarily intended for internal usage.
+        #   Optional. Do not use this field. It is unsupported and is ignored unless
+        #   explicitly documented otherwise. This is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
