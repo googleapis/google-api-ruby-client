@@ -5727,8 +5727,8 @@ module Google
         attr_accessor :screen_capture_disabled
         alias_method :screen_capture_disabled?, :screen_capture_disabled
       
-        # Whether changing the user icon is disabled. The setting has effect only on
-        # fully managed devices.
+        # Whether changing the user icon is disabled. This applies only on devices
+        # running Android 7 and above.
         # Corresponds to the JSON property `setUserIconDisabled`
         # @return [Boolean]
         attr_accessor :set_user_icon_disabled
@@ -5745,8 +5745,7 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::SetupAction>]
         attr_accessor :setup_actions
       
-        # Whether location sharing is disabled. share_location_disabled is supported for
-        # both fully managed devices and personally owned work profiles.
+        # Whether location sharing is disabled.
         # Corresponds to the JSON property `shareLocationDisabled`
         # @return [Boolean]
         attr_accessor :share_location_disabled
