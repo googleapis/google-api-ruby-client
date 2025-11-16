@@ -2666,7 +2666,7 @@ module Google
           attr_accessor :encryption_options
         
           # Whether or not the backup importing will restore database with NORECOVERY
-          # option Applies only to Cloud SQL for SQL Server.
+          # option. Applies only to Cloud SQL for SQL Server.
           # Corresponds to the JSON property `noRecovery`
           # @return [Boolean]
           attr_accessor :no_recovery
@@ -3136,6 +3136,37 @@ module Google
         end
       end
       
+      # Instances ListEntraIdCertificates response.
+      class InstancesListEntraIdCertificatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The `sha1_fingerprint` of the active certificate from `certs`.
+        # Corresponds to the JSON property `activeVersion`
+        # @return [String]
+        attr_accessor :active_version
+      
+        # List of Entra ID certificates for the instance.
+        # Corresponds to the JSON property `certs`
+        # @return [Array<Google::Apis::SqladminV1::SslCert>]
+        attr_accessor :certs
+      
+        # This is always `sql#instancesListEntraIdCertificates`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_version = args[:active_version] if args.key?(:active_version)
+          @certs = args[:certs] if args.key?(:certs)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
       # Database instances list response.
       class InstancesListResponse
         include Google::Apis::Core::Hashable
@@ -3332,6 +3363,25 @@ module Google
         end
       end
       
+      # Rotate Entra ID certificate request.
+      class InstancesRotateEntraIdCertificateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Instance rotate Entra ID certificate context.
+        # Corresponds to the JSON property `rotateEntraIdCertificateContext`
+        # @return [Google::Apis::SqladminV1::RotateEntraIdCertificateContext]
+        attr_accessor :rotate_entra_id_certificate_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rotate_entra_id_certificate_context = args[:rotate_entra_id_certificate_context] if args.key?(:rotate_entra_id_certificate_context)
+        end
+      end
+      
       # Rotate server CA request.
       class InstancesRotateServerCaRequest
         include Google::Apis::Core::Hashable
@@ -3494,6 +3544,16 @@ module Google
         # @return [String]
         attr_accessor :server_ca_pool
       
+        # Optional. Controls the automatic server certificate rotation feature. This
+        # feature is disabled by default. When enabled, the server certificate will be
+        # automatically rotated during Cloud SQL scheduled maintenance or self-service
+        # maintenance updates up to six months before it expires. This setting can only
+        # be set if server_ca_mode is either GOOGLE_MANAGED_CAS_CA or
+        # CUSTOMER_MANAGED_CAS_CA.
+        # Corresponds to the JSON property `serverCertificateRotationMode`
+        # @return [String]
+        attr_accessor :server_certificate_rotation_mode
+      
         # Specify how SSL/TLS is enforced in database connections. If you must use the `
         # require_ssl` flag for backward compatibility, then only the following value
         # pairs are valid: For PostgreSQL and MySQL: * `ssl_mode=
@@ -3527,6 +3587,7 @@ module Google
           @require_ssl = args[:require_ssl] if args.key?(:require_ssl)
           @server_ca_mode = args[:server_ca_mode] if args.key?(:server_ca_mode)
           @server_ca_pool = args[:server_ca_pool] if args.key?(:server_ca_pool)
+          @server_certificate_rotation_mode = args[:server_certificate_rotation_mode] if args.key?(:server_certificate_rotation_mode)
           @ssl_mode = args[:ssl_mode] if args.key?(:ssl_mode)
         end
       end
@@ -4313,7 +4374,7 @@ module Google
       end
       
       # The context to perform a point-in-time recovery of an instance managed by
-      # Google Cloud Backup and Disaster Recovery.
+      # Backup and Disaster Recovery (DR) Service.
       class PointInTimeRestoreContext
         include Google::Apis::Core::Hashable
       
@@ -4328,7 +4389,7 @@ module Google
         # @return [String]
         attr_accessor :allocated_ip_range
       
-        # The Google Cloud Backup and Disaster Recovery Datasource URI. Format: projects/
+        # The Backup and Disaster Recovery (DR) Service Datasource URI. Format: projects/
         # `project`/locations/`region`/backupVaults/`backupvault`/dataSources/`
         # datasource`.
         # Corresponds to the JSON property `datasource`
@@ -4853,6 +4914,33 @@ module Google
         end
       end
       
+      # Instance rotate Entra ID certificate context.
+      class RotateEntraIdCertificateContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. This is always `sql#rotateEntraIdCertificateContext`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Optional. The fingerprint of the next version to be rotated to. If left
+        # unspecified, will be rotated to the most recently added server certificate
+        # version.
+        # Corresponds to the JSON property `nextVersion`
+        # @return [String]
+        attr_accessor :next_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_version = args[:next_version] if args.key?(:next_version)
+        end
+      end
+      
       # Instance rotate server CA context.
       class RotateServerCaContext
         include Google::Apis::Core::Hashable
@@ -5024,8 +5112,8 @@ module Google
         attr_accessor :crash_safe_replication_enabled
         alias_method :crash_safe_replication_enabled?, :crash_safe_replication_enabled
       
-        # This parameter controls whether to allow using Data API to connect to the
-        # instance. Not allowed by default.
+        # This parameter controls whether to allow using ExecuteSql API to connect to
+        # the instance. Not allowed by default.
         # Corresponds to the JSON property `dataApiAccess`
         # @return [String]
         attr_accessor :data_api_access
@@ -5102,6 +5190,11 @@ module Google
         # @return [Boolean]
         attr_accessor :enable_google_ml_integration
         alias_method :enable_google_ml_integration?, :enable_google_ml_integration
+      
+        # SQL Server Entra ID configuration.
+        # Corresponds to the JSON property `entraidConfig`
+        # @return [Google::Apis::SqladminV1::SqlServerEntraIdConfig]
+        attr_accessor :entraid_config
       
         # Config used to determine the final backup settings for the instance.
         # Corresponds to the JSON property `finalBackupConfig`
@@ -5248,6 +5341,7 @@ module Google
           @edition = args[:edition] if args.key?(:edition)
           @enable_dataplex_integration = args[:enable_dataplex_integration] if args.key?(:enable_dataplex_integration)
           @enable_google_ml_integration = args[:enable_google_ml_integration] if args.key?(:enable_google_ml_integration)
+          @entraid_config = args[:entraid_config] if args.key?(:entraid_config)
           @final_backup_config = args[:final_backup_config] if args.key?(:final_backup_config)
           @insights_config = args[:insights_config] if args.key?(:insights_config)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
@@ -5809,6 +5903,37 @@ module Google
         end
       end
       
+      # SQL Server Entra ID configuration.
+      class SqlServerEntraIdConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The application ID for the Entra ID configuration.
+        # Corresponds to the JSON property `applicationId`
+        # @return [String]
+        attr_accessor :application_id
+      
+        # Output only. This is always sql#sqlServerEntraIdConfig
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Optional. The tenant ID for the Entra ID configuration.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_id = args[:application_id] if args.key?(:application_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+        end
+      end
+      
       # Represents a Sql Server user on the Cloud SQL instance.
       class SqlServerUserDetails
         include Google::Apis::Core::Hashable
@@ -6248,6 +6373,11 @@ module Google
       class User
         include Google::Apis::Core::Hashable
       
+        # Optional. Role memberships of the user
+        # Corresponds to the JSON property `databaseRoles`
+        # @return [Array<String>]
+        attr_accessor :database_roles
+      
         # Dual password status for the user.
         # Corresponds to the JSON property `dualPasswordType`
         # @return [String]
@@ -6329,6 +6459,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @database_roles = args[:database_roles] if args.key?(:database_roles)
           @dual_password_type = args[:dual_password_type] if args.key?(:dual_password_type)
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)
