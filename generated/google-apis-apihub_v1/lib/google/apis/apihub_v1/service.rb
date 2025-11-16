@@ -230,6 +230,122 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get an addon.
+        # @param [String] name
+        #   Required. The name of the addon to get. Format: `projects/`project`/locations/`
+        #   location`/addons/`addon``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApihubV1::GoogleCloudApihubV1Addon] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1Addon]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_addon(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApihubV1::GoogleCloudApihubV1Addon::Representation
+          command.response_class = Google::Apis::ApihubV1::GoogleCloudApihubV1Addon
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List addons.
+        # @param [String] parent
+        #   Required. The parent resource where this addon will be created. Format: `
+        #   projects/`project`/locations/`location``.
+        # @param [String] filter
+        #   Optional. An expression that filters the list of addons. The only supported
+        #   filter is `plugin_instance_name`. It can be used to filter addons that are
+        #   enabled for a given plugin instance. The format of the filter is `
+        #   plugin_instance_name = "projects/`project`/locations/`location`/plugins/`
+        #   plugin`/instances/`instance`"`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of hub addons to return. The service may return
+        #   fewer than this value. If unspecified, at most 50 hub addons will be returned.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListAddons` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters (
+        #   except page_size) provided to `ListAddons` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApihubV1::GoogleCloudApihubV1ListAddonsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1ListAddonsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_addons(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/addons', options)
+          command.response_representation = Google::Apis::ApihubV1::GoogleCloudApihubV1ListAddonsResponse::Representation
+          command.response_class = Google::Apis::ApihubV1::GoogleCloudApihubV1ListAddonsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Manage addon config. This RPC is used for managing the config of the addon.
+        # Calling this RPC moves the addon into an updating state until the long-running
+        # operation succeeds.
+        # @param [String] name
+        #   Required. The name of the addon for which the config is to be managed. Format:
+        #   `projects/`project`/locations/`location`/addons/`addon``.
+        # @param [Google::Apis::ApihubV1::GoogleCloudApihubV1ManageAddonConfigRequest] google_cloud_apihub_v1_manage_addon_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApihubV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApihubV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def manage_project_location_addon_config(name, google_cloud_apihub_v1_manage_addon_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:manageConfig', options)
+          command.request_representation = Google::Apis::ApihubV1::GoogleCloudApihubV1ManageAddonConfigRequest::Representation
+          command.request_object = google_cloud_apihub_v1_manage_addon_config_request_object
+          command.response_representation = Google::Apis::ApihubV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ApihubV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Provisions instance resources for the API Hub.
         # @param [String] parent
         #   Required. The parent resource for the Api Hub instance resource. Format: `
