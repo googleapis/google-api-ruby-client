@@ -212,6 +212,13 @@ module Google
         # @return [Google::Apis::StsV1beta::GoogleIdentityStsV1AccessBoundary]
         attr_accessor :access_boundary
       
+        # The unpadded, base64url-encoded SHA-256 hash of the certificate's DER encoding
+        # and it must be 43 characters long. The resulting token will be bound to this
+        # value.
+        # Corresponds to the JSON property `bindCertFingerprint`
+        # @return [String]
+        attr_accessor :bind_cert_fingerprint
+      
         # A Google project used for quota and billing purposes when the credential is
         # used to access Google APIs. The provided project overrides the project bound
         # to the credential. The value must be a project number or a project ID. Example:
@@ -227,6 +234,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_boundary = args[:access_boundary] if args.key?(:access_boundary)
+          @bind_cert_fingerprint = args[:bind_cert_fingerprint] if args.key?(:bind_cert_fingerprint)
           @user_project = args[:user_project] if args.key?(:user_project)
         end
       end

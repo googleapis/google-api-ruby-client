@@ -115,6 +115,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_boundary, as: 'accessBoundary', class: Google::Apis::StsV1beta::GoogleIdentityStsV1AccessBoundary, decorator: Google::Apis::StsV1beta::GoogleIdentityStsV1AccessBoundary::Representation
       
+          property :bind_cert_fingerprint, as: 'bindCertFingerprint'
           property :user_project, as: 'userProject'
         end
       end
