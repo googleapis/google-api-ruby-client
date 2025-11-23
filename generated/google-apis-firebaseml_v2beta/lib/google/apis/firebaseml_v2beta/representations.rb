@@ -388,6 +388,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1PartMediaResolution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1PartialArg
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -437,6 +449,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingRankService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReplicatedVoiceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -845,6 +863,9 @@ module Google
           hash :args, as: 'args'
           property :id, as: 'id'
           property :name, as: 'name'
+          collection :partial_args, as: 'partialArgs', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PartialArg, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PartialArg::Representation
+      
+          property :will_continue, as: 'willContinue'
         end
       end
       
@@ -853,6 +874,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_function_names, as: 'allowedFunctionNames'
           property :mode, as: 'mode'
+          property :stream_function_call_arguments, as: 'streamFunctionCallArguments'
         end
       end
       
@@ -1048,6 +1070,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :include_thoughts, as: 'includeThoughts'
           property :thinking_budget, as: 'thinkingBudget'
+          property :thinking_level, as: 'thinkingLevel'
         end
       end
       
@@ -1171,6 +1194,7 @@ module Google
           property :aspect_ratio, as: 'aspectRatio'
           property :image_output_options, as: 'imageOutputOptions', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ImageConfigImageOutputOptions, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ImageConfigImageOutputOptions::Representation
       
+          property :image_size, as: 'imageSize'
           property :person_generation, as: 'personGeneration'
         end
       end
@@ -1249,11 +1273,32 @@ module Google
       
           property :inline_data, as: 'inlineData', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Blob, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Blob::Representation
       
+          property :media_resolution, as: 'mediaResolution', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PartMediaResolution, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PartMediaResolution::Representation
+      
           property :text, as: 'text'
           property :thought, as: 'thought'
           property :thought_signature, :base64 => true, as: 'thoughtSignature'
           property :video_metadata, as: 'videoMetadata', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VideoMetadata, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1VideoMetadata::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1PartMediaResolution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :level, as: 'level'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1PartialArg
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :json_path, as: 'jsonPath'
+          property :null_value, as: 'nullValue'
+          property :number_value, as: 'numberValue'
+          property :string_value, as: 'stringValue'
+          property :will_continue, as: 'willContinue'
         end
       end
       
@@ -1331,6 +1376,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model_name, as: 'modelName'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReplicatedVoiceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mime_type, as: 'mimeType'
+          property :voice_sample_audio, :base64 => true, as: 'voiceSampleAudio'
         end
       end
       
@@ -1591,6 +1644,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :prebuilt_voice_config, as: 'prebuiltVoiceConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig::Representation
+      
+          property :replicated_voice_config, as: 'replicatedVoiceConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ReplicatedVoiceConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ReplicatedVoiceConfig::Representation
       
         end
       end
