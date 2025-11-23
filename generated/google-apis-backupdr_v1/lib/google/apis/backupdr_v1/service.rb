@@ -1538,10 +1538,14 @@ module Google
         # @param [String] filter
         #   Optional. A filter expression that filters the results fetched in the response.
         #   The expression must specify the field name, a comparison operator, and the
-        #   value that you want to use for filtering. Supported fields:
+        #   value that you want to use for filtering. Supported fields: * name * state *
+        #   backup_type * create_time * expire_time * enforced_retention_end_time *
+        #   gcp_backup_plan_info.backup_plan * cloud_sql_instance_backup_properties.
+        #   instance_tier * cloud_sql_instance_backup_properties.
+        #   database_installed_version
         # @param [String] order_by
         #   Optional. A comma-separated list of fields to order by, sorted in ascending
-        #   order. Use "desc" after a field name for descending.
+        #   order. Use "desc" after a field name for descending. Supported fields: * name
         # @param [Fixnum] page_size
         #   Optional. The maximum number of Backups to return. The service may return
         #   fewer than this value. If unspecified, at most 50 Backups will be returned.
@@ -2467,6 +2471,39 @@ module Google
           command.response_representation = Google::Apis::BackupdrV1::Operation::Representation
           command.response_class = Google::Apis::BackupdrV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Ends the trial for a project
+        # @param [String] parent
+        #   Required. The parent resource where this trial will be ended.
+        # @param [Google::Apis::BackupdrV1::EndTrialRequest] end_trial_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::Trial] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::Trial]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def end_trial(parent, end_trial_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/trial:end', options)
+          command.request_representation = Google::Apis::BackupdrV1::EndTrialRequest::Representation
+          command.request_object = end_trial_request_object
+          command.response_representation = Google::Apis::BackupdrV1::Trial::Representation
+          command.response_class = Google::Apis::BackupdrV1::Trial
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
