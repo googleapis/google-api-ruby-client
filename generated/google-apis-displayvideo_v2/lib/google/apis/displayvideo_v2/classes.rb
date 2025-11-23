@@ -2204,64 +2204,6 @@ module Google
         end
       end
       
-      # 
-      class BulkListCampaignAssignedTargetingOptionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of assigned targeting options. This list will be absent if empty.
-        # Corresponds to the JSON property `assignedTargetingOptions`
-        # @return [Array<Google::Apis::DisplayvideoV2::AssignedTargetingOption>]
-        attr_accessor :assigned_targeting_options
-      
-        # A token identifying the next page of results. This value should be specified
-        # as the pageToken in a subsequent
-        # BulkListCampaignAssignedTargetingOptionsRequest to fetch the next page of
-        # results. This token will be absent if there are no more
-        # assigned_targeting_options to return.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @assigned_targeting_options = args[:assigned_targeting_options] if args.key?(:assigned_targeting_options)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # 
-      class BulkListInsertionOrderAssignedTargetingOptionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of assigned targeting options. This list will be absent if empty.
-        # Corresponds to the JSON property `assignedTargetingOptions`
-        # @return [Array<Google::Apis::DisplayvideoV2::AssignedTargetingOption>]
-        attr_accessor :assigned_targeting_options
-      
-        # A token identifying the next page of results. This value should be specified
-        # as the pageToken in a subsequent
-        # BulkListInsertionOrderAssignedTargetingOptionsRequest to fetch the next page
-        # of results. This token will be absent if there are no more
-        # assigned_targeting_options to return.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @assigned_targeting_options = args[:assigned_targeting_options] if args.key?(:assigned_targeting_options)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
       # Request message for LineItemService.BulkUpdateLineItems.
       class BulkUpdateLineItemsRequest
         include Google::Apis::Core::Hashable
@@ -5513,56 +5455,6 @@ module Google
         end
       end
       
-      # Request message for LineItemService.GenerateDefaultLineItem.
-      class GenerateDefaultLineItemRequest
-        include Google::Apis::Core::Hashable
-      
-        # Whether this line item will serve European Union political ads. If
-        # contains_eu_political_ads has been set to `
-        # DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then this
-        # field will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if not
-        # otherwise specified. This field can then be updated using the UI, API, or
-        # Structured Data Files. This field must be assigned when creating a new line
-        # item. Otherwise, **the `advertisers.lineItems.create` request will fail**.
-        # Corresponds to the JSON property `containsEuPoliticalAds`
-        # @return [String]
-        attr_accessor :contains_eu_political_ads
-      
-        # Required. The display name of the line item. Must be UTF-8 encoded with a
-        # maximum size of 240 bytes.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Required. The unique ID of the insertion order that the line item belongs to.
-        # Corresponds to the JSON property `insertionOrderId`
-        # @return [Fixnum]
-        attr_accessor :insertion_order_id
-      
-        # Required. The type of the line item.
-        # Corresponds to the JSON property `lineItemType`
-        # @return [String]
-        attr_accessor :line_item_type
-      
-        # A mobile app promoted by a mobile app install line item.
-        # Corresponds to the JSON property `mobileApp`
-        # @return [Google::Apis::DisplayvideoV2::MobileApp]
-        attr_accessor :mobile_app
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @contains_eu_political_ads = args[:contains_eu_political_ads] if args.key?(:contains_eu_political_ads)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @insertion_order_id = args[:insertion_order_id] if args.key?(:insertion_order_id)
-          @line_item_type = args[:line_item_type] if args.key?(:line_item_type)
-          @mobile_app = args[:mobile_app] if args.key?(:mobile_app)
-        end
-      end
-      
       # Details for assigned geographic region targeting option. This will be
       # populated in the details field of an AssignedTargetingOption when
       # targeting_type is `TARGETING_TYPE_GEO_REGION`.
@@ -7443,34 +7335,6 @@ module Google
         end
       end
       
-      # Response message for ListCampaignAssignedTargetingOptions.
-      class ListCampaignAssignedTargetingOptionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of assigned targeting options. This list will be absent if empty.
-        # Corresponds to the JSON property `assignedTargetingOptions`
-        # @return [Array<Google::Apis::DisplayvideoV2::AssignedTargetingOption>]
-        attr_accessor :assigned_targeting_options
-      
-        # A token identifying the next page of results. This value should be specified
-        # as the pageToken in a subsequent ListCampaignAssignedTargetingOptionsRequest
-        # to fetch the next page of results. This token will be absent if there are no
-        # more assigned_targeting_options to return.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @assigned_targeting_options = args[:assigned_targeting_options] if args.key?(:assigned_targeting_options)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
       # 
       class ListCampaignsResponse
         include Google::Apis::Core::Hashable
@@ -7740,35 +7604,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @guaranteed_orders = args[:guaranteed_orders] if args.key?(:guaranteed_orders)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # 
-      class ListInsertionOrderAssignedTargetingOptionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of assigned targeting options. This list will be absent if empty.
-        # Corresponds to the JSON property `assignedTargetingOptions`
-        # @return [Array<Google::Apis::DisplayvideoV2::AssignedTargetingOption>]
-        attr_accessor :assigned_targeting_options
-      
-        # A token identifying the next page of results. This value should be specified
-        # as the pageToken in a subsequent
-        # ListInsertionOrderAssignedTargetingOptionsRequest to fetch the next page of
-        # results. This token will be absent if there are no more
-        # assigned_targeting_options to return.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @assigned_targeting_options = args[:assigned_targeting_options] if args.key?(:assigned_targeting_options)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
