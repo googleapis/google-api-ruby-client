@@ -356,6 +356,11 @@ module Google
         # @return [Google::Apis::MerchantapiAccountsV1beta::CampaignsManagement]
         attr_accessor :campaigns_management
       
+        # `ComparisonShopping` payload.
+        # Corresponds to the JSON property `comparisonShopping`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::ComparisonShopping]
+        attr_accessor :comparison_shopping
+      
         # Immutable. An optional, immutable identifier that Google uses to refer to this
         # account when communicating with the provider. This should be the unique
         # account ID within the provider's system (for example, your shop ID in Shopify).
@@ -417,6 +422,7 @@ module Google
           @account_aggregation = args[:account_aggregation] if args.key?(:account_aggregation)
           @account_management = args[:account_management] if args.key?(:account_management)
           @campaigns_management = args[:campaigns_management] if args.key?(:campaigns_management)
+          @comparison_shopping = args[:comparison_shopping] if args.key?(:comparison_shopping)
           @external_account_id = args[:external_account_id] if args.key?(:external_account_id)
           @handshake = args[:handshake] if args.key?(:handshake)
           @local_listing_management = args[:local_listing_management] if args.key?(:local_listing_management)
@@ -437,6 +443,40 @@ module Google
         # @return [Google::Apis::MerchantapiAccountsV1beta::AccountAggregation]
         attr_accessor :account_aggregation
       
+        # `AccountManagement` payload.
+        # Corresponds to the JSON property `accountManagement`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::AccountManagement]
+        attr_accessor :account_management
+      
+        # `CampaignManagement` payload.
+        # Corresponds to the JSON property `campaignsManagement`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::CampaignsManagement]
+        attr_accessor :campaigns_management
+      
+        # `ComparisonShopping` payload.
+        # Corresponds to the JSON property `comparisonShopping`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::ComparisonShopping]
+        attr_accessor :comparison_shopping
+      
+        # Immutable. An optional, immutable identifier that Google uses to refer to this
+        # account when communicating with the provider. This should be the unique
+        # account ID within the provider's system (for example, your shop ID in Shopify).
+        # If you have multiple accounts with the same provider - for instance,
+        # different accounts for various regions — the `external_account_id`
+        # differentiates between them, ensuring accurate linking and integration between
+        # Google and the provider. The external account ID must be specified for the
+        # campaigns management service type. The external account ID must not be
+        # specified for the account aggregation service type. The external account ID is
+        # optional / may be specified for all other service types.
+        # Corresponds to the JSON property `externalAccountId`
+        # @return [String]
+        attr_accessor :external_account_id
+      
+        # `ProductsManagement` payload.
+        # Corresponds to the JSON property `productsManagement`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::ProductsManagement]
+        attr_accessor :products_management
+      
         # Required. The provider of the service. Either the reference to an account such
         # as `providers/123` or a well-known service provider (one of `providers/
         # GOOGLE_ADS` or `providers/GOOGLE_BUSINESS_PROFILE`).
@@ -451,6 +491,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_aggregation = args[:account_aggregation] if args.key?(:account_aggregation)
+          @account_management = args[:account_management] if args.key?(:account_management)
+          @campaigns_management = args[:campaigns_management] if args.key?(:campaigns_management)
+          @comparison_shopping = args[:comparison_shopping] if args.key?(:comparison_shopping)
+          @external_account_id = args[:external_account_id] if args.key?(:external_account_id)
+          @products_management = args[:products_management] if args.key?(:products_management)
           @provider = args[:provider] if args.key?(:provider)
         end
       end
@@ -472,6 +517,11 @@ module Google
         # @return [String]
         attr_accessor :user_id
       
+        # Settings related to the verification email that is sent after adding a user.
+        # Corresponds to the JSON property `verificationMailSettings`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::VerificationMailSettings]
+        attr_accessor :verification_mail_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -480,6 +530,7 @@ module Google
         def update!(**args)
           @user = args[:user] if args.key?(:user)
           @user_id = args[:user_id] if args.key?(:user_id)
+          @verification_mail_settings = args[:verification_mail_settings] if args.key?(:verification_mail_settings)
         end
       end
       
@@ -1083,6 +1134,19 @@ module Google
         end
       end
       
+      # `ComparisonShopping` payload.
+      class ComparisonShopping
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for the `CreateAndConfigureAccount` method.
       class CreateAndConfigureAccountRequest
         include Google::Apis::Core::Hashable
@@ -1111,6 +1175,13 @@ module Google
         # @return [Array<Google::Apis::MerchantapiAccountsV1beta::AddAccountService>]
         attr_accessor :service
       
+        # Optional. If a relationship is created with a provider, you can set an alias
+        # for it with this field. The calling user must be an admin on the provider to
+        # be able to set an alias.
+        # Corresponds to the JSON property `setAlias`
+        # @return [Array<Google::Apis::MerchantapiAccountsV1beta::SetAliasForRelationship>]
+        attr_accessor :set_alias
+      
         # Optional. Users to be added to the account.
         # Corresponds to the JSON property `user`
         # @return [Array<Google::Apis::MerchantapiAccountsV1beta::AddUser>]
@@ -1130,6 +1201,7 @@ module Google
         def update!(**args)
           @account = args[:account] if args.key?(:account)
           @service = args[:service] if args.key?(:service)
+          @set_alias = args[:set_alias] if args.key?(:set_alias)
           @user = args[:user] if args.key?(:user)
           @users = args[:users] if args.key?(:users)
         end
@@ -3814,6 +3886,35 @@ module Google
         end
       end
       
+      # Set an alias for a relationship between a provider and the account to be
+      # created.
+      class SetAliasForRelationship
+        include Google::Apis::Core::Hashable
+      
+        # Required. The unique ID of this account in the provider's system. The value
+        # must be unique across all accounts on the platform for this provider.
+        # Corresponds to the JSON property `accountIdAlias`
+        # @return [String]
+        attr_accessor :account_id_alias
+      
+        # Required. The provider of the service. This is a reference to an account such
+        # as `providers/123` or `accounts/123`. The same provider must be specified in
+        # at least one of the `service` fields.
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id_alias = args[:account_id_alias] if args.key?(:account_id_alias)
+          @provider = args[:provider] if args.key?(:provider)
+        end
+      end
+      
       # The Merchant Center account's [shipping settings](https://support.google.com/
       # merchants/answer/6069284). The `ShippingSettings` resource lets you retrieve
       # and update the shipping settings of your advanced account and all its
@@ -4386,6 +4487,39 @@ module Google
           @no_shipping = args[:no_shipping] if args.key?(:no_shipping)
           @price_percentage = args[:price_percentage] if args.key?(:price_percentage)
           @subtable = args[:subtable] if args.key?(:subtable)
+        end
+      end
+      
+      # Settings related to the verification email that is sent after adding a user.
+      class VerificationMailSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Mode of the verification mail. If not set, the default is `
+        # SEND_VERIFICATION_MAIL`.
+        # Corresponds to the JSON property `verificationMailMode`
+        # @return [String]
+        attr_accessor :verification_mail_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @verification_mail_mode = args[:verification_mail_mode] if args.key?(:verification_mail_mode)
+        end
+      end
+      
+      # Request message for the `VerifySelf` method.
+      class VerifySelfRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

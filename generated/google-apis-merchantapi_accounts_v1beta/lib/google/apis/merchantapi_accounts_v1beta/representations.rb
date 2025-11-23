@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ComparisonShopping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateAndConfigureAccountRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -640,6 +646,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SetAliasForRelationship
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ShippingSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -731,6 +743,18 @@ module Google
       end
       
       class Value
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VerificationMailSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VerifySelfRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -844,6 +868,8 @@ module Google
       
           property :campaigns_management, as: 'campaignsManagement', class: Google::Apis::MerchantapiAccountsV1beta::CampaignsManagement, decorator: Google::Apis::MerchantapiAccountsV1beta::CampaignsManagement::Representation
       
+          property :comparison_shopping, as: 'comparisonShopping', class: Google::Apis::MerchantapiAccountsV1beta::ComparisonShopping, decorator: Google::Apis::MerchantapiAccountsV1beta::ComparisonShopping::Representation
+      
           property :external_account_id, as: 'externalAccountId'
           property :handshake, as: 'handshake', class: Google::Apis::MerchantapiAccountsV1beta::Handshake, decorator: Google::Apis::MerchantapiAccountsV1beta::Handshake::Representation
       
@@ -863,6 +889,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_aggregation, as: 'accountAggregation', class: Google::Apis::MerchantapiAccountsV1beta::AccountAggregation, decorator: Google::Apis::MerchantapiAccountsV1beta::AccountAggregation::Representation
       
+          property :account_management, as: 'accountManagement', class: Google::Apis::MerchantapiAccountsV1beta::AccountManagement, decorator: Google::Apis::MerchantapiAccountsV1beta::AccountManagement::Representation
+      
+          property :campaigns_management, as: 'campaignsManagement', class: Google::Apis::MerchantapiAccountsV1beta::CampaignsManagement, decorator: Google::Apis::MerchantapiAccountsV1beta::CampaignsManagement::Representation
+      
+          property :comparison_shopping, as: 'comparisonShopping', class: Google::Apis::MerchantapiAccountsV1beta::ComparisonShopping, decorator: Google::Apis::MerchantapiAccountsV1beta::ComparisonShopping::Representation
+      
+          property :external_account_id, as: 'externalAccountId'
+          property :products_management, as: 'productsManagement', class: Google::Apis::MerchantapiAccountsV1beta::ProductsManagement, decorator: Google::Apis::MerchantapiAccountsV1beta::ProductsManagement::Representation
+      
           property :provider, as: 'provider'
         end
       end
@@ -873,6 +908,8 @@ module Google
           property :user, as: 'user', class: Google::Apis::MerchantapiAccountsV1beta::User, decorator: Google::Apis::MerchantapiAccountsV1beta::User::Representation
       
           property :user_id, as: 'userId'
+          property :verification_mail_settings, as: 'verificationMailSettings', class: Google::Apis::MerchantapiAccountsV1beta::VerificationMailSettings, decorator: Google::Apis::MerchantapiAccountsV1beta::VerificationMailSettings::Representation
+      
         end
       end
       
@@ -1025,12 +1062,20 @@ module Google
         end
       end
       
+      class ComparisonShopping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CreateAndConfigureAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account, as: 'account', class: Google::Apis::MerchantapiAccountsV1beta::Account, decorator: Google::Apis::MerchantapiAccountsV1beta::Account::Representation
       
           collection :service, as: 'service', class: Google::Apis::MerchantapiAccountsV1beta::AddAccountService, decorator: Google::Apis::MerchantapiAccountsV1beta::AddAccountService::Representation
+      
+          collection :set_alias, as: 'setAlias', class: Google::Apis::MerchantapiAccountsV1beta::SetAliasForRelationship, decorator: Google::Apis::MerchantapiAccountsV1beta::SetAliasForRelationship::Representation
       
           collection :user, as: 'user', class: Google::Apis::MerchantapiAccountsV1beta::AddUser, decorator: Google::Apis::MerchantapiAccountsV1beta::AddUser::Representation
       
@@ -1777,6 +1822,14 @@ module Google
         end
       end
       
+      class SetAliasForRelationship
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id_alias, as: 'accountIdAlias'
+          property :provider, as: 'provider'
+        end
+      end
+      
       class ShippingSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1927,6 +1980,19 @@ module Google
           property :no_shipping, as: 'noShipping'
           property :price_percentage, as: 'pricePercentage'
           property :subtable, as: 'subtable'
+        end
+      end
+      
+      class VerificationMailSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :verification_mail_mode, as: 'verificationMailMode'
+        end
+      end
+      
+      class VerifySelfRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
