@@ -2847,7 +2847,7 @@ module Google
       class GooglePrivacyDlpV2DataSourceType
         include Google::Apis::Core::Hashable
       
-        # An identifying string to the type of resource being profiled. Current values: *
+        # A string that identifies the type of resource being profiled. Current values: *
         # google/bigquery/table * google/project * google/sql/table * google/gcs/bucket
         # Corresponds to the JSON property `dataSource`
         # @return [String]
@@ -4383,7 +4383,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AllOtherResources]
         attr_accessor :others
       
-        # Identifies a single Vertex AI resource. Currently only datasets are supported.
+        # Identifies a single Vertex AI resource. Only datasets are supported.
         # Corresponds to the JSON property `vertexDatasetResourceReference`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2VertexDatasetResourceReference]
         attr_accessor :vertex_dataset_resource_reference
@@ -11488,7 +11488,7 @@ module Google
         end
       end
       
-      # Identifies a single Vertex AI resource. Currently only datasets are supported.
+      # Identifies a single Vertex AI resource. Only datasets are supported.
       class GooglePrivacyDlpV2VertexDatasetResourceReference
         include Google::Apis::Core::Hashable
       
