@@ -58,16 +58,31 @@ module Google
         # @param [String] name
         #   Required. The name of the local inventory for the given product to delete.
         #   Format: `accounts/`account`/products/`product`/localInventories/`store_code``
-        # @param [Boolean] product_id_base64_url_encoded
-        #   Optional. If true, the ``product`` in the `name` field of the request will be
-        #   interpreted as unpadded base64url-encoded and decoded during request
-        #   processing to match the decoded value. Default value is `false`. Use this if
-        #   your ``product`` contains special characters, such as forward slash `/` or
-        #   other characters that are unpadded base64url-encoded (as per RFC 7515: https://
-        #   datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of
-        #   the API will only accept unpadded base64url-encoded product ids, so we
-        #   strongly recommend proactively setting this to `true` and encoding the product
-        #   ids.
+        #   The ``product`` segment is a unique identifier for the product. This
+        #   identifier must be unique within a merchant account and generally follows the
+        #   structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For
+        #   legacy local products, the structure is: `local~content_language~feed_label~
+        #   offer_id`. Example: `local~en~US~sku123` The format of the ``product`` segment
+        #   in the URL is automatically detected by the server, supporting two options: 1.
+        #   **Encoded Format**: The ``product`` segment is an unpadded base64url encoded
+        #   string (RFC 4648 Section 5). The decoded string must result in the `
+        #   content_language~feed_label~offer_id` structure. This encoding MUST be used if
+        #   any part of the product identifier (like `offer_id`) contains characters such
+        #   as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`
+        #   for `store_code` "store123", the ``product`` segment must be the base64url
+        #   encoding of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource name
+        #   for the local inventory would be `accounts/123/products/ZW5-VVMtc2t1LzEyMw/
+        #   localInventories/store123`. 2. **Plain Format**: The ``product`` segment is
+        #   the tilde-separated string `content_language~feed_label~offer_id`. This format
+        #   is suitable only when `content_language`, `feed_label`, and `offer_id` do not
+        #   contain URL-problematic characters like `/`, `%`, or `~`. We recommend using
+        #   the **Encoded Format** for all product IDs to ensure correct parsing,
+        #   especially those containing special characters. The presence of tilde (`~`)
+        #   characters in the ``product`` segment is used to differentiate between the two
+        #   formats. Note: For calls to the v1beta version, the plain format for the
+        #   product segment is `channel~content_language~feed_label~offer_id`. For example,
+        #   the full resource name for a local inventory at `store_code` "store123" would
+        #   be: `accounts/123/products/online~en~US~sku123/localInventories/store123`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -85,12 +100,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_account_product_local_inventory(name, product_id_base64_url_encoded: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_account_product_local_inventory(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'inventories/v1beta/{+name}', options)
           command.response_representation = Google::Apis::MerchantapiInventoriesV1beta::Empty::Representation
           command.response_class = Google::Apis::MerchantapiInventoriesV1beta::Empty
           command.params['name'] = name unless name.nil?
-          command.query['productIdBase64UrlEncoded'] = product_id_base64_url_encoded unless product_id_base64_url_encoded.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -102,18 +116,31 @@ module Google
         # the new or updated `LocalInventory` resource to appear in products.
         # @param [String] parent
         #   Required. The account and product where this inventory will be inserted.
-        #   Format: `accounts/`account`/products/`product``
+        #   Format: `accounts/`account`/products/`product`` The ``product`` segment is a
+        #   unique identifier for the product. This identifier must be unique within a
+        #   merchant account and generally follows the structure: `content_language~
+        #   feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the
+        #   structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~
+        #   US~sku123` The format of the ``product`` segment in the URL is automatically
+        #   detected by the server, supporting two options: 1. **Encoded Format**: The ``
+        #   product`` segment is an unpadded base64url encoded string (RFC 4648 Section 5).
+        #   The decoded string must result in the `content_language~feed_label~offer_id`
+        #   structure. This encoding MUST be used if any part of the product identifier (
+        #   like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To
+        #   represent the product ID `en~US~sku/123`, the ``product`` segment must be the
+        #   base64url encoding of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full
+        #   resource name for the product would be `accounts/123/products/ZW5-
+        #   VVMtc2t1LzEyMw`. 2. **Plain Format**: The ``product`` segment is the tilde-
+        #   separated string `content_language~feed_label~offer_id`. This format is
+        #   suitable only when `content_language`, `feed_label`, and `offer_id` do not
+        #   contain URL-problematic characters like `/`, `%`, or `~`. We recommend using
+        #   the **Encoded Format** for all product IDs to ensure correct parsing,
+        #   especially those containing special characters. The presence of tilde (`~`)
+        #   characters in the ``product`` segment is used to differentiate between the two
+        #   formats. Note: For calls to the v1beta version, the plain format is `channel~
+        #   content_language~feed_label~offer_id`, for example: `accounts/123/products/
+        #   online~en~US~sku123`.
         # @param [Google::Apis::MerchantapiInventoriesV1beta::LocalInventory] local_inventory_object
-        # @param [Boolean] product_id_base64_url_encoded
-        #   Optional. If true, the ``product`` in the `parent` field of the request will
-        #   be interpreted as unpadded base64url-encoded and decoded during request
-        #   processing to match the decoded value. Default value is `false`. Use this if
-        #   your ``product`` contains special characters, such as forward slash `/` or
-        #   other characters that are unpadded base64url-encoded (as per RFC 7515: https://
-        #   datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of
-        #   the API will only accept unpadded base64url-encoded product ids, so we
-        #   strongly recommend proactively setting this to `true` and encoding the product
-        #   ids.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -131,14 +158,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_account_product_local_inventory(parent, local_inventory_object = nil, product_id_base64_url_encoded: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def insert_account_product_local_inventory(parent, local_inventory_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'inventories/v1beta/{+parent}/localInventories:insert', options)
           command.request_representation = Google::Apis::MerchantapiInventoriesV1beta::LocalInventory::Representation
           command.request_object = local_inventory_object
           command.response_representation = Google::Apis::MerchantapiInventoriesV1beta::LocalInventory::Representation
           command.response_class = Google::Apis::MerchantapiInventoriesV1beta::LocalInventory
           command.params['parent'] = parent unless parent.nil?
-          command.query['productIdBase64UrlEncoded'] = product_id_base64_url_encoded unless product_id_base64_url_encoded.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -151,7 +177,30 @@ module Google
         # given account.
         # @param [String] parent
         #   Required. The `name` of the parent product to list local inventories for.
-        #   Format: `accounts/`account`/products/`product``
+        #   Format: `accounts/`account`/products/`product`` The ``product`` segment is a
+        #   unique identifier for the product. This identifier must be unique within a
+        #   merchant account and generally follows the structure: `content_language~
+        #   feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the
+        #   structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~
+        #   US~sku123` The format of the ``product`` segment in the URL is automatically
+        #   detected by the server, supporting two options: 1. **Encoded Format**: The ``
+        #   product`` segment is an unpadded base64url encoded string (RFC 4648 Section 5).
+        #   The decoded string must result in the `content_language~feed_label~offer_id`
+        #   structure. This encoding MUST be used if any part of the product identifier (
+        #   like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To
+        #   represent the product ID `en~US~sku/123`, the ``product`` segment must be the
+        #   base64url encoding of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full
+        #   resource name for the product would be `accounts/123/products/ZW5-
+        #   VVMtc2t1LzEyMw`. 2. **Plain Format**: The ``product`` segment is the tilde-
+        #   separated string `content_language~feed_label~offer_id`. This format is
+        #   suitable only when `content_language`, `feed_label`, and `offer_id` do not
+        #   contain URL-problematic characters like `/`, `%`, or `~`. We recommend using
+        #   the **Encoded Format** for all product IDs to ensure correct parsing,
+        #   especially those containing special characters. The presence of tilde (`~`)
+        #   characters in the ``product`` segment is used to differentiate between the two
+        #   formats. Note: For calls to the v1beta version, the plain format is `channel~
+        #   content_language~feed_label~offer_id`, for example: `accounts/123/products/
+        #   online~en~US~sku123`.
         # @param [Fixnum] page_size
         #   The maximum number of `LocalInventory` resources for the given product to
         #   return. The service returns fewer than this value if the number of inventories
@@ -164,16 +213,6 @@ module Google
         #   parameters provided to `ListLocalInventories` must match the call that
         #   provided the page token. The token returned as nextPageToken in the response
         #   to the previous request.
-        # @param [Boolean] product_id_base64_url_encoded
-        #   Optional. If true, the ``product`` in the `parent` field of the request will
-        #   be interpreted as unpadded base64url-encoded and decoded during request
-        #   processing to match the decoded value. Default value is `false`. Use this if
-        #   your ``product`` contains special characters, such as forward slash `/` or
-        #   other characters that are unpadded base64url-encoded (as per RFC 7515: https://
-        #   datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of
-        #   the API will only accept unpadded base64url-encoded product ids, so we
-        #   strongly recommend proactively setting this to `true` and encoding the product
-        #   ids.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -191,14 +230,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_product_local_inventories(parent, page_size: nil, page_token: nil, product_id_base64_url_encoded: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_account_product_local_inventories(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'inventories/v1beta/{+parent}/localInventories', options)
           command.response_representation = Google::Apis::MerchantapiInventoriesV1beta::ListLocalInventoriesResponse::Representation
           command.response_class = Google::Apis::MerchantapiInventoriesV1beta::ListLocalInventoriesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['productIdBase64UrlEncoded'] = product_id_base64_url_encoded unless product_id_base64_url_encoded.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -210,17 +248,32 @@ module Google
         # delete response, wait for that period before attempting a delete again.
         # @param [String] name
         #   Required. The name of the `RegionalInventory` resource to delete. Format: `
-        #   accounts/`account`/products/`product`/regionalInventories/`region``
-        # @param [Boolean] product_id_base64_url_encoded
-        #   Optional. If true, the ``product`` in the `name` field of the request will be
-        #   interpreted as unpadded base64url-encoded and decoded during request
-        #   processing to match the decoded value. Default value is `false`. Use this if
-        #   your ``product`` contains special characters, such as forward slash `/` or
-        #   other characters that are unpadded base64url-encoded (as per RFC 7515: https://
-        #   datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of
-        #   the API will only accept unpadded base64url-encoded product ids, so we
-        #   strongly recommend proactively setting this to `true` and encoding the product
-        #   ids.
+        #   accounts/`account`/products/`product`/regionalInventories/`region`` The ``
+        #   product`` segment is a unique identifier for the product. This identifier must
+        #   be unique within a merchant account and generally follows the structure: `
+        #   content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy
+        #   local products, the structure is: `local~content_language~feed_label~offer_id`.
+        #   Example: `local~en~US~sku123` The format of the ``product`` segment in the
+        #   URL is automatically detected by the server, supporting two options: 1. **
+        #   Encoded Format**: The ``product`` segment is an unpadded base64url encoded
+        #   string (RFC 4648 Section 5). The decoded string must result in the `
+        #   content_language~feed_label~offer_id` structure. This encoding MUST be used if
+        #   any part of the product identifier (like `offer_id`) contains characters such
+        #   as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`
+        #   for `region` "region123", the ``product`` segment must be the base64url
+        #   encoding of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource name
+        #   for the regional inventory would be `accounts/123/products/ZW5-VVMtc2t1LzEyMw/
+        #   regionalInventories/region123`. 2. **Plain Format**: The ``product`` segment
+        #   is the tilde-separated string `content_language~feed_label~offer_id`. This
+        #   format is suitable only when `content_language`, `feed_label`, and `offer_id`
+        #   do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend
+        #   using the **Encoded Format** for all product IDs to ensure correct parsing,
+        #   especially those containing special characters. The presence of tilde (`~`)
+        #   characters in the ``product`` segment is used to differentiate between the two
+        #   formats. Note: For calls to the v1beta version, the plain format for the
+        #   product segment is `channel~content_language~feed_label~offer_id`. For example,
+        #   the full resource name for a regional inventory in `region` "region123" would
+        #   be: `accounts/123/products/online~en~US~sku123/regionalInventories/region123`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -238,12 +291,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_account_product_regional_inventory(name, product_id_base64_url_encoded: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_account_product_regional_inventory(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'inventories/v1beta/{+name}', options)
           command.response_representation = Google::Apis::MerchantapiInventoriesV1beta::Empty::Representation
           command.response_class = Google::Apis::MerchantapiInventoriesV1beta::Empty
           command.params['name'] = name unless name.nil?
-          command.query['productIdBase64UrlEncoded'] = product_id_base64_url_encoded unless product_id_base64_url_encoded.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -255,18 +307,31 @@ module Google
         # new or updated `RegionalInventory` resource to appear in products.
         # @param [String] parent
         #   Required. The account and product where this inventory will be inserted.
-        #   Format: `accounts/`account`/products/`product``
+        #   Format: `accounts/`account`/products/`product`` The ``product`` segment is a
+        #   unique identifier for the product. This identifier must be unique within a
+        #   merchant account and generally follows the structure: `content_language~
+        #   feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the
+        #   structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~
+        #   US~sku123` The format of the ``product`` segment in the URL is automatically
+        #   detected by the server, supporting two options: 1. **Encoded Format**: The ``
+        #   product`` segment is an unpadded base64url encoded string (RFC 4648 Section 5).
+        #   The decoded string must result in the `content_language~feed_label~offer_id`
+        #   structure. This encoding MUST be used if any part of the product identifier (
+        #   like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To
+        #   represent the product ID `en~US~sku/123`, the ``product`` segment must be the
+        #   base64url encoding of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full
+        #   resource name for the product would be `accounts/123/products/ZW5-
+        #   VVMtc2t1LzEyMw`. 2. **Plain Format**: The ``product`` segment is the tilde-
+        #   separated string `content_language~feed_label~offer_id`. This format is
+        #   suitable only when `content_language`, `feed_label`, and `offer_id` do not
+        #   contain URL-problematic characters like `/`, `%`, or `~`. We recommend using
+        #   the **Encoded Format** for all product IDs to ensure correct parsing,
+        #   especially those containing special characters. The presence of tilde (`~`)
+        #   characters in the ``product`` segment is used to differentiate between the two
+        #   formats. Note: For calls to the v1beta version, the plain format is `channel~
+        #   content_language~feed_label~offer_id`, for example: `accounts/123/products/
+        #   online~en~US~sku123`.
         # @param [Google::Apis::MerchantapiInventoriesV1beta::RegionalInventory] regional_inventory_object
-        # @param [Boolean] product_id_base64_url_encoded
-        #   Optional. If true, the ``product`` in the `parent` field of the request will
-        #   be interpreted as unpadded base64url-encoded and decoded during request
-        #   processing to match the decoded value. Default value is `false`. Use this if
-        #   your ``product`` contains special characters, such as forward slash `/` or
-        #   other characters that are unpadded base64url-encoded (as per RFC 7515: https://
-        #   datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of
-        #   the API will only accept unpadded base64url-encoded product ids, so we
-        #   strongly recommend proactively setting this to `true` and encoding the product
-        #   ids.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -284,14 +349,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_account_product_regional_inventory(parent, regional_inventory_object = nil, product_id_base64_url_encoded: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def insert_account_product_regional_inventory(parent, regional_inventory_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'inventories/v1beta/{+parent}/regionalInventories:insert', options)
           command.request_representation = Google::Apis::MerchantapiInventoriesV1beta::RegionalInventory::Representation
           command.request_object = regional_inventory_object
           command.response_representation = Google::Apis::MerchantapiInventoriesV1beta::RegionalInventory::Representation
           command.response_class = Google::Apis::MerchantapiInventoriesV1beta::RegionalInventory
           command.params['parent'] = parent unless parent.nil?
-          command.query['productIdBase64UrlEncoded'] = product_id_base64_url_encoded unless product_id_base64_url_encoded.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -304,7 +368,30 @@ module Google
         # given account.
         # @param [String] parent
         #   Required. The `name` of the parent product to list `RegionalInventory`
-        #   resources for. Format: `accounts/`account`/products/`product``
+        #   resources for. Format: `accounts/`account`/products/`product`` The ``product``
+        #   segment is a unique identifier for the product. This identifier must be unique
+        #   within a merchant account and generally follows the structure: `
+        #   content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy
+        #   local products, the structure is: `local~content_language~feed_label~offer_id`.
+        #   Example: `local~en~US~sku123` The format of the ``product`` segment in the
+        #   URL is automatically detected by the server, supporting two options: 1. **
+        #   Encoded Format**: The ``product`` segment is an unpadded base64url encoded
+        #   string (RFC 4648 Section 5). The decoded string must result in the `
+        #   content_language~feed_label~offer_id` structure. This encoding MUST be used if
+        #   any part of the product identifier (like `offer_id`) contains characters such
+        #   as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`,
+        #   the ``product`` segment must be the base64url encoding of this string, which
+        #   is `ZW5-VVMtc2t1LzEyMw`. The full resource name for the product would be `
+        #   accounts/123/products/ZW5-VVMtc2t1LzEyMw`. 2. **Plain Format**: The ``product``
+        #   segment is the tilde-separated string `content_language~feed_label~offer_id`.
+        #   This format is suitable only when `content_language`, `feed_label`, and `
+        #   offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We
+        #   recommend using the **Encoded Format** for all product IDs to ensure correct
+        #   parsing, especially those containing special characters. The presence of tilde
+        #   (`~`) characters in the ``product`` segment is used to differentiate between
+        #   the two formats. Note: For calls to the v1beta version, the plain format is `
+        #   channel~content_language~feed_label~offer_id`, for example: `accounts/123/
+        #   products/online~en~US~sku123`.
         # @param [Fixnum] page_size
         #   The maximum number of `RegionalInventory` resources for the given product to
         #   return. The service returns fewer than this value if the number of inventories
@@ -317,16 +404,6 @@ module Google
         #   parameters provided to `ListRegionalInventories` must match the call that
         #   provided the page token. The token returned as nextPageToken in the response
         #   to the previous request.
-        # @param [Boolean] product_id_base64_url_encoded
-        #   Optional. If true, the ``product`` in the `parent` field of the request will
-        #   be interpreted as unpadded base64url-encoded and decoded during request
-        #   processing to match the decoded value. Default value is `false`. Use this if
-        #   your ``product`` contains special characters, such as forward slash `/` or
-        #   other characters that are unpadded base64url-encoded (as per RFC 7515: https://
-        #   datatracker.ietf.org/doc/html/rfc7515#section-2). Note that future versions of
-        #   the API will only accept unpadded base64url-encoded product ids, so we
-        #   strongly recommend proactively setting this to `true` and encoding the product
-        #   ids.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -344,14 +421,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_product_regional_inventories(parent, page_size: nil, page_token: nil, product_id_base64_url_encoded: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_account_product_regional_inventories(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'inventories/v1beta/{+parent}/regionalInventories', options)
           command.response_representation = Google::Apis::MerchantapiInventoriesV1beta::ListRegionalInventoriesResponse::Representation
           command.response_class = Google::Apis::MerchantapiInventoriesV1beta::ListRegionalInventoriesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['productIdBase64UrlEncoded'] = product_id_base64_url_encoded unless product_id_base64_url_encoded.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
