@@ -1312,6 +1312,40 @@ module Google
         end
       end
       
+      # Response message for GetTags.
+      class GetTagsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A checksum based on the current bindings. This field is always set in server
+        # responses.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. The full resource name of the service resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Tag keys/values directly bound to this resource. Each item in the
+        # map must be expressed as " : ". For example: "123/environment" : "production",
+        # "123/costCenter" : "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class GoogleLongrunningCancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -1340,8 +1374,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -3042,6 +3077,75 @@ module Google
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Request message for SetTags.
+      class SetTagsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A checksum based on the current bindings which can be passed to
+        # prevent race conditions. If not passed, etag check would be skipped.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. A unique identifier for this request. Must be a valid UUID. This
+        # request is only idempotent if a `request_id` is provided.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Required. These bindings will override any bindings previously set and will be
+        # effective immediately. Each item in the map must be expressed as " : ". For
+        # example: "123/environment" : "production", "123/costCenter" : "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # Response message for SetTags.
+      class SetTagsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A checksum based on the current bindings. This field is always set in server
+        # responses.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. The full resource name of the service resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Tag keys/values directly bound to this resource. Each item in the
+        # map must be expressed as " : ". For example: "123/environment" : "production",
+        # "123/costCenter" : "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
