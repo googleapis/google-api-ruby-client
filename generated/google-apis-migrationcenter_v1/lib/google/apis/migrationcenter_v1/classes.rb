@@ -3529,6 +3529,11 @@ module Google
         # @return [Google::Apis::MigrationcenterV1::NetworkAdapterList]
         attr_accessor :adapters
       
+        # Optional. Default gateway address.
+        # Corresponds to the JSON property `defaultGateway`
+        # @return [String]
+        attr_accessor :default_gateway
+      
         # The primary IP address of the machine.
         # Corresponds to the JSON property `primaryIpAddress`
         # @return [String]
@@ -3552,6 +3557,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @adapters = args[:adapters] if args.key?(:adapters)
+          @default_gateway = args[:default_gateway] if args.key?(:default_gateway)
           @primary_ip_address = args[:primary_ip_address] if args.key?(:primary_ip_address)
           @primary_mac_address = args[:primary_mac_address] if args.key?(:primary_mac_address)
           @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
