@@ -151,6 +151,45 @@ module Google
         #   nextPageToken` property in the response. In your follow-on request getting the
         #   next page of the report, enter the `nextPageToken` value in the `pageToken`
         #   query string.
+        # @param [String] resource_details_filter
+        #   Optional. The `resourceDetailsFilter` query string is an AND separated list
+        #   composed of [Resource Details](#resourcedetails) fields manipulated by
+        #   relational operators. Resource Details Filters are in the form ``
+        #   resourceDetails.field1``relational operator``field1 value` AND `
+        #   resourceDetails.field2``relational operator``field2 value`...` All the inner
+        #   fields are traversed using the `.` operator, as shown in the following example:
+        #   ``` resourceDetails.id = "resourceId" AND resourceDetails.appliedLabels.id = "
+        #   appliedLabelId" AND resourceDetails.appliedLabels.fieldValue.id = "
+        #   fieldValueId" ``` `resourceDetailsFilter` query supports these relational
+        #   operators: * `=`—'equal to'. * `!=`—'not equal to'. * `:`—'exists'. This is
+        #   used for filtering on repeated fields. [`FieldValue`](#fieldvalue) types that
+        #   are repeated in nature uses `exists` operator for filtering. The following [`
+        #   FieldValue`](#fieldvalue) types are repeated: * [`TextListValue`](#
+        #   textlistvalue) * [`SelectionListValue`](#selectionlistvalue) * [`UserListValue`
+        #   ](#userlistvalue) For example, in the following filter, [`SelectionListValue`](
+        #   #selectionlistvalue), is a repeated field. The filter checks whether [`
+        #   SelectionListValue`](#selectionlistvalue) contains `selection_id`: ```
+        #   resourceDetails.id = "resourceId" AND resourceDetails.appliedLabels.id = "
+        #   appliedLabelId" AND resourceDetails.appliedLabels.fieldValue.id = "
+        #   fieldValueId" AND resourceDetails.appliedLabels.fieldValue.type = "
+        #   SELECTION_LIST_VALUE" AND resourceDetails.appliedLabels.fieldValue.
+        #   selectionListValue.id: "id" ``` **Usage** ``` GET...&resourceDetailsFilter=
+        #   resourceDetails.id = "resourceId" AND resourceDetails.appliedLabels.id = "
+        #   appliedLabelId" GET...&resourceDetailsFilter=resourceDetails.id=%22resourceId%
+        #   22%20AND%20resourceDetails.appliedLabels.id=%22appliedLabelId%22 ``` **Note
+        #   the following**: * You must URL encode the query string before sending the
+        #   request. * The API supports a maximum of 5 fields separated by the AND
+        #   operator. - When filtering on deeper levels (e.g., [`AppliedLabel`](#
+        #   appliedlabel), [`FieldValue`](#fieldvalue)), the IDs of all preceding levels
+        #   in the hierarchy must be included in the filter. For example: Filtering on [`
+        #   FieldValue`](#fieldvalue) requires [`AppliedLabel`](#appliedlabel) ID and
+        #   resourceDetails ID to be present. *Sample Query*: ``` resourceDetails.id = "
+        #   resourceId" AND resourceDetails.appliedLabels.id = "appliedLabelId" AND
+        #   resourceDetails.appliedLabels.fieldValue.id = "fieldValueId" ``` * Filtering
+        #   on inner [`FieldValue`](#fieldvalue) types like `longTextValue` and `textValue`
+        #   requires `resourceDetails.appliedLabels.fieldValue.type` to be present. *
+        #   Only Filtering on a single [`AppliedLabel`](#appliedlabel) id and [`FieldValue`
+        #   ](#fieldvalue) id is supported.
         # @param [String] start_time
         #   Sets the beginning of the range of time shown in the report. The date is in
         #   the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The report returns
@@ -175,7 +214,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_activities(user_key, application_name, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, group_id_filter: nil, max_results: nil, org_unit_id: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_activities(user_key, application_name, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, group_id_filter: nil, max_results: nil, org_unit_id: nil, page_token: nil, resource_details_filter: nil, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'admin/reports/v1/activity/users/{userKey}/applications/{applicationName}', options)
           command.response_representation = Google::Apis::AdminReportsV1::Activities::Representation
           command.response_class = Google::Apis::AdminReportsV1::Activities
@@ -190,6 +229,7 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orgUnitID'] = org_unit_id unless org_unit_id.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['resourceDetailsFilter'] = resource_details_filter unless resource_details_filter.nil?
           command.query['startTime'] = start_time unless start_time.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
