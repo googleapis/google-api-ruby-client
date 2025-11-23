@@ -2570,7 +2570,7 @@ module Google
         
         # Get a policy.
         # @param [String] name
-        #   Required. The name of the policy to retrieve. Format: "policies/`policy`".
+        #   Required. The name of the policy to retrieve. Format: `policies/`policy``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
