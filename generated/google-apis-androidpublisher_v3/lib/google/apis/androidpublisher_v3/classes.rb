@@ -928,6 +928,19 @@ module Google
         end
       end
       
+      # Details of a base price pricing phase.
+      class BaseDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A single base plan for a subscription.
       class BasePlan
         include Google::Apis::Core::Hashable
@@ -2931,6 +2944,51 @@ module Google
         end
       end
       
+      # User account identifier in your app.
+      class ExternalAccountIds
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies an optional obfuscated string that is uniquely associated
+        # with the purchaser's user account in your app. If you pass this value, Google
+        # Play can use it to detect irregular activity. Do not use this field to store
+        # any Personally Identifiable Information (PII) such as emails in cleartext.
+        # Attempting to store PII in this field will result in purchases being blocked.
+        # Google Play recommends that you use either encryption or a one-way hash to
+        # generate an obfuscated identifier to send to Google Play. This identifier is
+        # limited to 64 characters. This field can only be set for resubscription
+        # purchases. See https://developer.android.com/reference/com/android/
+        # billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid to set this
+        # field for purchases made using the standard in-app billing flow.
+        # Corresponds to the JSON property `obfuscatedAccountId`
+        # @return [String]
+        attr_accessor :obfuscated_account_id
+      
+        # Optional. Specifies an optional obfuscated string that is uniquely associated
+        # with the purchaser's user profile in your app. If you pass this value, Google
+        # Play can use it to detect irregular activity. Do not use this field to store
+        # any Personally Identifiable Information (PII) such as emails in cleartext.
+        # Attempting to store PII in this field will result in purchases being blocked.
+        # Google Play recommends that you use either encryption or a one-way hash to
+        # generate an obfuscated identifier to send to Google Play. This identifier is
+        # limited to 64 characters. This field can only be set for resubscription
+        # purchases. See https://developer.android.com/reference/com/android/
+        # billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid to set this
+        # field for purchases made using the standard in-app billing flow.
+        # Corresponds to the JSON property `obfuscatedProfileId`
+        # @return [String]
+        attr_accessor :obfuscated_profile_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @obfuscated_account_id = args[:obfuscated_account_id] if args.key?(:obfuscated_account_id)
+          @obfuscated_profile_id = args[:obfuscated_profile_id] if args.key?(:obfuscated_profile_id)
+        end
+      end
+      
       # Details of an external subscription.
       class ExternalSubscription
         include Google::Apis::Core::Hashable
@@ -3211,6 +3269,19 @@ module Google
           @uses_permissions = args[:uses_permissions] if args.key?(:uses_permissions)
           @version_code = args[:version_code] if args.key?(:version_code)
           @version_name = args[:version_name] if args.key?(:version_name)
+        end
+      end
+      
+      # Details of a free trial pricing phase.
+      class FreeTrialDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -4159,6 +4230,19 @@ module Google
         end
       end
       
+      # Details of an introductory price pricing phase.
+      class IntroductoryPriceDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Contains the introductory price information for a subscription.
       class IntroductoryPriceInfo
         include Google::Apis::Core::Hashable
@@ -4200,6 +4284,43 @@ module Google
           @introductory_price_currency_code = args[:introductory_price_currency_code] if args.key?(:introductory_price_currency_code)
           @introductory_price_cycles = args[:introductory_price_cycles] if args.key?(:introductory_price_cycles)
           @introductory_price_period = args[:introductory_price_period] if args.key?(:introductory_price_period)
+        end
+      end
+      
+      # Details about a subscription line item that is being replaced.
+      class ItemReplacement
+        include Google::Apis::Core::Hashable
+      
+        # The base plan ID of the subscription line item being replaced.
+        # Corresponds to the JSON property `basePlanId`
+        # @return [String]
+        attr_accessor :base_plan_id
+      
+        # The offer ID of the subscription line item being replaced, if applicable.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # The product ID of the subscription line item being replaced.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # The replacement mode applied during the purchase.
+        # Corresponds to the JSON property `replacementMode`
+        # @return [String]
+        attr_accessor :replacement_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_plan_id = args[:base_plan_id] if args.key?(:base_plan_id)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @replacement_mode = args[:replacement_mode] if args.key?(:replacement_mode)
         end
       end
       
@@ -4850,6 +4971,50 @@ module Google
           @base_plan_id = args[:base_plan_id] if args.key?(:base_plan_id)
           @offer_id = args[:offer_id] if args.key?(:offer_id)
           @offer_tags = args[:offer_tags] if args.key?(:offer_tags)
+        end
+      end
+      
+      # Details of a pricing phase for the entitlement period funded by this order.
+      class OfferPhaseDetails
+        include Google::Apis::Core::Hashable
+      
+        # Details of a base price pricing phase.
+        # Corresponds to the JSON property `baseDetails`
+        # @return [Google::Apis::AndroidpublisherV3::BaseDetails]
+        attr_accessor :base_details
+      
+        # Details of a free trial pricing phase.
+        # Corresponds to the JSON property `freeTrialDetails`
+        # @return [Google::Apis::AndroidpublisherV3::FreeTrialDetails]
+        attr_accessor :free_trial_details
+      
+        # Details of an introductory price pricing phase.
+        # Corresponds to the JSON property `introductoryPriceDetails`
+        # @return [Google::Apis::AndroidpublisherV3::IntroductoryPriceDetails]
+        attr_accessor :introductory_price_details
+      
+        # Details of a proration period. A proration period can be a period calculated
+        # during a plan change to cover existing entitlements (For more information, see
+        # [Allow users to upgrade, downgrade, or change their subscription](https://
+        # developer.android.com/google/play/billing/subscriptions#allow-users-change),
+        # or a prorated period to align add-on renewal dates with the base (For more
+        # information, see [Rules applicable for items in the purchase](https://
+        # developer.android.com/google/play/billing/subscription-with-addons#rules-base-
+        # addons)).
+        # Corresponds to the JSON property `prorationPeriodDetails`
+        # @return [Google::Apis::AndroidpublisherV3::ProrationPeriodDetails]
+        attr_accessor :proration_period_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_details = args[:base_details] if args.key?(:base_details)
+          @free_trial_details = args[:free_trial_details] if args.key?(:free_trial_details)
+          @introductory_price_details = args[:introductory_price_details] if args.key?(:introductory_price_details)
+          @proration_period_details = args[:proration_period_details] if args.key?(:proration_period_details)
         end
       end
       
@@ -5810,6 +5975,34 @@ module Google
         end
       end
       
+      # Information specific to an out of app purchase.
+      class OutOfAppPurchaseContext
+        include Google::Apis::Core::Hashable
+      
+        # User account identifier in the third-party service.
+        # Corresponds to the JSON property `expiredExternalAccountIdentifiers`
+        # @return [Google::Apis::AndroidpublisherV3::ExternalAccountIdentifiers]
+        attr_accessor :expired_external_account_identifiers
+      
+        # The purchase token of the last expired subscription. This purchase token must
+        # only be used to help identify the user if the link between the purchaseToken
+        # and user is stored in your database. This cannot be used to call the Google
+        # Developer API if it has been more than 60 days since expiry.
+        # Corresponds to the JSON property `expiredPurchaseToken`
+        # @return [String]
+        attr_accessor :expired_purchase_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expired_external_account_identifiers = args[:expired_external_account_identifiers] if args.key?(:expired_external_account_identifiers)
+          @expired_purchase_token = args[:expired_purchase_token] if args.key?(:expired_purchase_token)
+        end
+      end
+      
       # Information about the current page. List operations that supports paging
       # return only one "page" of results. This protocol buffer message describes the
       # page that has been returned.
@@ -6476,6 +6669,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
+        end
+      end
+      
+      # Details of a proration period. A proration period can be a period calculated
+      # during a plan change to cover existing entitlements (For more information, see
+      # [Allow users to upgrade, downgrade, or change their subscription](https://
+      # developer.android.com/google/play/billing/subscriptions#allow-users-change),
+      # or a prorated period to align add-on renewal dates with the base (For more
+      # information, see [Rules applicable for items in the purchase](https://
+      # developer.android.com/google/play/billing/subscription-with-addons#rules-base-
+      # addons)).
+      class ProrationPeriodDetails
+        include Google::Apis::Core::Hashable
+      
+        # The last order id of the original subscription purchase prior to the plan
+        # change. This is only populated if this proration period is from an ugrade/
+        # downgrade from a previous subscription and carries the remaining offer phase
+        # from the linked order of the previous subscription.
+        # Corresponds to the JSON property `linkedOrderId`
+        # @return [String]
+        attr_accessor :linked_order_id
+      
+        # Represent the original offer phase from the purchased the line item if the
+        # proration period contains any of them. For example, a proration period from
+        # CHARGE_FULL_PRICE plan change may merge the 1st offer phase of the
+        # subscription offer of the new product user purchased. In this case, the
+        # original offer phase will be set here.
+        # Corresponds to the JSON property `originalOfferPhase`
+        # @return [String]
+        attr_accessor :original_offer_phase
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @linked_order_id = args[:linked_order_id] if args.key?(:linked_order_id)
+          @original_offer_phase = args[:original_offer_phase] if args.key?(:original_offer_phase)
         end
       end
       
@@ -7758,10 +7990,16 @@ module Google
         # @return [String]
         attr_accessor :offer_id
       
-        # The pricing phase for the billing period funded by this order.
+        # The pricing phase for the billing period funded by this order. Deprecated. Use
+        # offer_phase_details instead.
         # Corresponds to the JSON property `offerPhase`
         # @return [String]
         attr_accessor :offer_phase
+      
+        # Details of a pricing phase for the entitlement period funded by this order.
+        # Corresponds to the JSON property `offerPhaseDetails`
+        # @return [Google::Apis::AndroidpublisherV3::OfferPhaseDetails]
+        attr_accessor :offer_phase_details
       
         # The end of the billing period funded by this order. This is a snapshot of the
         # billing/service period end time at the moment the order was processed, and
@@ -7787,6 +8025,7 @@ module Google
           @base_plan_id = args[:base_plan_id] if args.key?(:base_plan_id)
           @offer_id = args[:offer_id] if args.key?(:offer_id)
           @offer_phase = args[:offer_phase] if args.key?(:offer_phase)
+          @offer_phase_details = args[:offer_phase_details] if args.key?(:offer_phase_details)
           @service_period_end_time = args[:service_period_end_time] if args.key?(:service_period_end_time)
           @service_period_start_time = args[:service_period_start_time] if args.key?(:service_period_start_time)
         end
@@ -8324,6 +8563,11 @@ module Google
         # @return [String]
         attr_accessor :expiry_time
       
+        # Details about a subscription line item that is being replaced.
+        # Corresponds to the JSON property `itemReplacement`
+        # @return [Google::Apis::AndroidpublisherV3::ItemReplacement]
+        attr_accessor :item_replacement
+      
         # The order id of the latest successful order associated with this item. Not
         # present if the item is not owned by the user yet (e.g. the item being deferred
         # replaced to).
@@ -8361,6 +8605,7 @@ module Google
           @deferred_item_removal = args[:deferred_item_removal] if args.key?(:deferred_item_removal)
           @deferred_item_replacement = args[:deferred_item_replacement] if args.key?(:deferred_item_replacement)
           @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
+          @item_replacement = args[:item_replacement] if args.key?(:item_replacement)
           @latest_successful_order_id = args[:latest_successful_order_id] if args.key?(:latest_successful_order_id)
           @offer_details = args[:offer_details] if args.key?(:offer_details)
           @prepaid_plan = args[:prepaid_plan] if args.key?(:prepaid_plan)
@@ -8420,6 +8665,11 @@ module Google
         # @return [String]
         attr_accessor :linked_purchase_token
       
+        # Information specific to an out of app purchase.
+        # Corresponds to the JSON property `outOfAppPurchaseContext`
+        # @return [Google::Apis::AndroidpublisherV3::OutOfAppPurchaseContext]
+        attr_accessor :out_of_app_purchase_context
+      
         # Information specific to a subscription in paused state.
         # Corresponds to the JSON property `pausedStateContext`
         # @return [Google::Apis::AndroidpublisherV3::PausedStateContext]
@@ -8465,6 +8715,7 @@ module Google
           @latest_order_id = args[:latest_order_id] if args.key?(:latest_order_id)
           @line_items = args[:line_items] if args.key?(:line_items)
           @linked_purchase_token = args[:linked_purchase_token] if args.key?(:linked_purchase_token)
+          @out_of_app_purchase_context = args[:out_of_app_purchase_context] if args.key?(:out_of_app_purchase_context)
           @paused_state_context = args[:paused_state_context] if args.key?(:paused_state_context)
           @region_code = args[:region_code] if args.key?(:region_code)
           @start_time = args[:start_time] if args.key?(:start_time)
@@ -8483,6 +8734,11 @@ module Google
         # @return [String]
         attr_accessor :developer_payload
       
+        # User account identifier in your app.
+        # Corresponds to the JSON property `externalAccountIds`
+        # @return [Google::Apis::AndroidpublisherV3::ExternalAccountIds]
+        attr_accessor :external_account_ids
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8490,6 +8746,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
+          @external_account_ids = args[:external_account_ids] if args.key?(:external_account_ids)
         end
       end
       
