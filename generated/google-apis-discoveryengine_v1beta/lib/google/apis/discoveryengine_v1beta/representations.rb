@@ -22,72 +22,6 @@ module Google
   module Apis
     module DiscoveryengineV1beta
       
-      class GdataBlobstore2Info
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GdataCompositeMedia
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GdataContentTypeInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GdataDiffChecksumsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GdataDiffDownloadResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GdataDiffUploadRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GdataDiffUploadResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GdataDiffVersionResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GdataDownloadParameters
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GdataMedia
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GdataObjectId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleApiDistribution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2200,6 +2134,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestCrowdingSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3862,6 +3802,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaListAssistantsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaListCmekConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4391,6 +4337,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4990,159 +4942,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GdataBlobstore2Info
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :blob_generation, :numeric_string => true, as: 'blobGeneration'
-          property :blob_id, as: 'blobId'
-          property :download_read_handle, :base64 => true, as: 'downloadReadHandle'
-          property :read_token, as: 'readToken'
-          property :upload_metadata_container, :base64 => true, as: 'uploadMetadataContainer'
-        end
-      end
-      
-      class GdataCompositeMedia
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :blob_ref, :base64 => true, as: 'blobRef'
-          property :blobstore2_info, as: 'blobstore2Info', class: Google::Apis::DiscoveryengineV1beta::GdataBlobstore2Info, decorator: Google::Apis::DiscoveryengineV1beta::GdataBlobstore2Info::Representation
-      
-          property :cosmo_binary_reference, :base64 => true, as: 'cosmoBinaryReference'
-          property :crc32c_hash, as: 'crc32cHash'
-          property :inline, :base64 => true, as: 'inline'
-          property :length, :numeric_string => true, as: 'length'
-          property :md5_hash, :base64 => true, as: 'md5Hash'
-          property :object_id_prop, as: 'objectId', class: Google::Apis::DiscoveryengineV1beta::GdataObjectId, decorator: Google::Apis::DiscoveryengineV1beta::GdataObjectId::Representation
-      
-          property :path, as: 'path'
-          property :reference_type, as: 'referenceType'
-          property :sha1_hash, :base64 => true, as: 'sha1Hash'
-        end
-      end
-      
-      class GdataContentTypeInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :best_guess, as: 'bestGuess'
-          property :from_bytes, as: 'fromBytes'
-          property :from_file_name, as: 'fromFileName'
-          property :from_header, as: 'fromHeader'
-          property :from_url_path, as: 'fromUrlPath'
-        end
-      end
-      
-      class GdataDiffChecksumsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :checksums_location, as: 'checksumsLocation', class: Google::Apis::DiscoveryengineV1beta::GdataCompositeMedia, decorator: Google::Apis::DiscoveryengineV1beta::GdataCompositeMedia::Representation
-      
-          property :chunk_size_bytes, :numeric_string => true, as: 'chunkSizeBytes'
-          property :object_location, as: 'objectLocation', class: Google::Apis::DiscoveryengineV1beta::GdataCompositeMedia, decorator: Google::Apis::DiscoveryengineV1beta::GdataCompositeMedia::Representation
-      
-          property :object_size_bytes, :numeric_string => true, as: 'objectSizeBytes'
-          property :object_version, as: 'objectVersion'
-        end
-      end
-      
-      class GdataDiffDownloadResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :object_location, as: 'objectLocation', class: Google::Apis::DiscoveryengineV1beta::GdataCompositeMedia, decorator: Google::Apis::DiscoveryengineV1beta::GdataCompositeMedia::Representation
-      
-        end
-      end
-      
-      class GdataDiffUploadRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :checksums_info, as: 'checksumsInfo', class: Google::Apis::DiscoveryengineV1beta::GdataCompositeMedia, decorator: Google::Apis::DiscoveryengineV1beta::GdataCompositeMedia::Representation
-      
-          property :object_info, as: 'objectInfo', class: Google::Apis::DiscoveryengineV1beta::GdataCompositeMedia, decorator: Google::Apis::DiscoveryengineV1beta::GdataCompositeMedia::Representation
-      
-          property :object_version, as: 'objectVersion'
-        end
-      end
-      
-      class GdataDiffUploadResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :object_version, as: 'objectVersion'
-          property :original_object, as: 'originalObject', class: Google::Apis::DiscoveryengineV1beta::GdataCompositeMedia, decorator: Google::Apis::DiscoveryengineV1beta::GdataCompositeMedia::Representation
-      
-        end
-      end
-      
-      class GdataDiffVersionResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :object_size_bytes, :numeric_string => true, as: 'objectSizeBytes'
-          property :object_version, as: 'objectVersion'
-        end
-      end
-      
-      class GdataDownloadParameters
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :allow_gzip_compression, as: 'allowGzipCompression'
-          property :ignore_range, as: 'ignoreRange'
-        end
-      end
-      
-      class GdataMedia
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :algorithm, as: 'algorithm'
-          property :bigstore_object_ref, :base64 => true, as: 'bigstoreObjectRef'
-          property :blob_ref, :base64 => true, as: 'blobRef'
-          property :blobstore2_info, as: 'blobstore2Info', class: Google::Apis::DiscoveryengineV1beta::GdataBlobstore2Info, decorator: Google::Apis::DiscoveryengineV1beta::GdataBlobstore2Info::Representation
-      
-          collection :composite_media, as: 'compositeMedia', class: Google::Apis::DiscoveryengineV1beta::GdataCompositeMedia, decorator: Google::Apis::DiscoveryengineV1beta::GdataCompositeMedia::Representation
-      
-          property :content_type, as: 'contentType'
-          property :content_type_info, as: 'contentTypeInfo', class: Google::Apis::DiscoveryengineV1beta::GdataContentTypeInfo, decorator: Google::Apis::DiscoveryengineV1beta::GdataContentTypeInfo::Representation
-      
-          property :cosmo_binary_reference, :base64 => true, as: 'cosmoBinaryReference'
-          property :crc32c_hash, as: 'crc32cHash'
-          property :diff_checksums_response, as: 'diffChecksumsResponse', class: Google::Apis::DiscoveryengineV1beta::GdataDiffChecksumsResponse, decorator: Google::Apis::DiscoveryengineV1beta::GdataDiffChecksumsResponse::Representation
-      
-          property :diff_download_response, as: 'diffDownloadResponse', class: Google::Apis::DiscoveryengineV1beta::GdataDiffDownloadResponse, decorator: Google::Apis::DiscoveryengineV1beta::GdataDiffDownloadResponse::Representation
-      
-          property :diff_upload_request, as: 'diffUploadRequest', class: Google::Apis::DiscoveryengineV1beta::GdataDiffUploadRequest, decorator: Google::Apis::DiscoveryengineV1beta::GdataDiffUploadRequest::Representation
-      
-          property :diff_upload_response, as: 'diffUploadResponse', class: Google::Apis::DiscoveryengineV1beta::GdataDiffUploadResponse, decorator: Google::Apis::DiscoveryengineV1beta::GdataDiffUploadResponse::Representation
-      
-          property :diff_version_response, as: 'diffVersionResponse', class: Google::Apis::DiscoveryengineV1beta::GdataDiffVersionResponse, decorator: Google::Apis::DiscoveryengineV1beta::GdataDiffVersionResponse::Representation
-      
-          property :download_parameters, as: 'downloadParameters', class: Google::Apis::DiscoveryengineV1beta::GdataDownloadParameters, decorator: Google::Apis::DiscoveryengineV1beta::GdataDownloadParameters::Representation
-      
-          property :filename, as: 'filename'
-          property :hash_prop, as: 'hash'
-          property :hash_verified, as: 'hashVerified'
-          property :inline, :base64 => true, as: 'inline'
-          property :is_potential_retry, as: 'isPotentialRetry'
-          property :length, :numeric_string => true, as: 'length'
-          property :md5_hash, :base64 => true, as: 'md5Hash'
-          property :media_id, :base64 => true, as: 'mediaId'
-          property :object_id_prop, as: 'objectId', class: Google::Apis::DiscoveryengineV1beta::GdataObjectId, decorator: Google::Apis::DiscoveryengineV1beta::GdataObjectId::Representation
-      
-          property :path, as: 'path'
-          property :reference_type, as: 'referenceType'
-          property :sha1_hash, :base64 => true, as: 'sha1Hash'
-          property :sha256_hash, :base64 => true, as: 'sha256Hash'
-          property :timestamp, :numeric_string => true, as: 'timestamp'
-          property :token, as: 'token'
-        end
-      end
-      
-      class GdataObjectId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bucket_name, as: 'bucketName'
-          property :generation, :numeric_string => true, as: 'generation'
-          property :object_name, as: 'objectName'
-        end
-      end
-      
       class GoogleApiDistribution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5392,6 +5191,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customer_policy, as: 'customerPolicy', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantCustomerPolicy, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantCustomerPolicy::Representation
       
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
           hash :enabled_tools, as: 'enabledTools', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantToolList, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantToolList::Representation
       
           property :generation_config, as: 'generationConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantGenerationConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantGenerationConfig::Representation
@@ -5432,7 +5233,9 @@ module Google
       class GoogleCloudDiscoveryengineV1AssistantGenerationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_model_ids, as: 'allowedModelIds'
           property :default_language, as: 'defaultLanguage'
+          property :default_model_id, as: 'defaultModelId'
           property :system_instruction, as: 'systemInstruction', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction::Representation
       
         end
@@ -8625,6 +8428,8 @@ module Google
           property :canonical_filter, as: 'canonicalFilter'
           property :content_search_spec, as: 'contentSearchSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec::Representation
       
+          collection :crowding_specs, as: 'crowdingSpecs', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestCrowdingSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestCrowdingSpec::Representation
+      
           property :custom_fine_tuning_spec, as: 'customFineTuningSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec::Representation
       
           collection :data_store_specs, as: 'dataStoreSpecs', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec::Representation
@@ -8644,6 +8449,7 @@ module Google
           property :offset, as: 'offset'
           property :one_box_page_size, as: 'oneBoxPageSize'
           property :order_by, as: 'orderBy'
+          collection :page_categories, as: 'pageCategories'
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
           hash :params, as: 'params'
@@ -8795,6 +8601,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :image_source, as: 'imageSource'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestCrowdingSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field'
+          property :max_count, as: 'maxCount'
+          property :mode, as: 'mode'
         end
       end
       
@@ -9891,6 +9706,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customer_policy, as: 'customerPolicy', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicy, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicy::Representation
       
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
           hash :enabled_tools, as: 'enabledTools', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantToolList, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantToolList::Representation
       
           property :generation_config, as: 'generationConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantGenerationConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantGenerationConfig::Representation
@@ -9979,7 +9796,9 @@ module Google
       class GoogleCloudDiscoveryengineV1betaAssistantGenerationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_model_ids, as: 'allowedModelIds'
           property :default_language, as: 'defaultLanguage'
+          property :default_model_id, as: 'defaultModelId'
           property :system_instruction, as: 'systemInstruction', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantGenerationConfigSystemInstruction, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantGenerationConfigSystemInstruction::Representation
       
         end
@@ -11568,6 +11387,15 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaListAssistantsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assistants, as: 'assistants', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistant, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistant::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaListCmekConfigsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12280,6 +12108,8 @@ module Google
           property :canonical_filter, as: 'canonicalFilter'
           property :content_search_spec, as: 'contentSearchSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec::Representation
       
+          collection :crowding_specs, as: 'crowdingSpecs', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec::Representation
+      
           collection :data_store_specs, as: 'dataStoreSpecs', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec::Representation
       
           property :display_spec, as: 'displaySpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec::Representation
@@ -12297,6 +12127,7 @@ module Google
           property :offset, as: 'offset'
           property :one_box_page_size, as: 'oneBoxPageSize'
           property :order_by, as: 'orderBy'
+          collection :page_categories, as: 'pageCategories'
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
           hash :params, as: 'params'
@@ -12447,6 +12278,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :image_source, as: 'imageSource'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field'
+          property :max_count, as: 'maxCount'
+          property :mode, as: 'mode'
         end
       end
       
@@ -13117,6 +12957,7 @@ module Google
           property :answer, as: 'answer', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistAnswer, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistAnswer::Representation
       
           property :assist_token, as: 'assistToken'
+          collection :invocation_tools, as: 'invocationTools'
           property :session_info, as: 'sessionInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistResponseSessionInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistResponseSessionInfo::Representation
       
         end
