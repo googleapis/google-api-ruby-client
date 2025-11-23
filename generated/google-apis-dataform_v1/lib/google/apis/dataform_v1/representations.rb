@@ -1497,9 +1497,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :additional_options, as: 'additionalOptions'
           collection :cluster_expressions, as: 'clusterExpressions'
+          property :connection, as: 'connection'
           collection :dependency_targets, as: 'dependencyTargets', class: Google::Apis::DataformV1::Target, decorator: Google::Apis::DataformV1::Target::Representation
       
           property :disabled, as: 'disabled'
+          property :file_format, as: 'fileFormat'
           property :incremental_table_config, as: 'incrementalTableConfig', class: Google::Apis::DataformV1::IncrementalTableConfig, decorator: Google::Apis::DataformV1::IncrementalTableConfig::Representation
       
           property :partition_expiration_days, as: 'partitionExpirationDays'
@@ -1511,6 +1513,8 @@ module Google
           property :relation_type, as: 'relationType'
           property :require_partition_filter, as: 'requirePartitionFilter'
           property :select_query, as: 'selectQuery'
+          property :storage_uri, as: 'storageUri'
+          property :table_format, as: 'tableFormat'
           collection :tags, as: 'tags'
         end
       end
