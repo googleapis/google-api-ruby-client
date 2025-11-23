@@ -1,5 +1,10 @@
 # Release history for google-apis-alertcenter_v1beta1
 
+### v0.46.0 (2025-11-23)
+
+* Regenerated from discovery document revision 20251117
+* Regenerated using generator version 0.18.0
+
 ### v0.45.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0

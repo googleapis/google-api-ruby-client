@@ -30,7 +30,7 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1beta1'
 
-      # See and delete your domain's G Suite alerts, and send alert feedback
+      # See and delete your domain's Google Workspace alerts, and send alert feedback
       AUTH_APPS_ALERTS = 'https://www.googleapis.com/auth/apps.alerts'
     end
   end
