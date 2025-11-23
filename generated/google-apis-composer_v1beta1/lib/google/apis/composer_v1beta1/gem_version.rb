@@ -16,13 +16,13 @@ module Google
   module Apis
     module ComposerV1beta1
       # Version of the google-apis-composer_v1beta1 gem
-      GEM_VERSION = "0.54.0"
+      GEM_VERSION = "0.55.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.18.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20251104"
+      REVISION = "20251114"
     end
   end
 end
