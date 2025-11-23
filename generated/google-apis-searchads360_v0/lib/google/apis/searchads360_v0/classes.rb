@@ -299,6 +299,36 @@ module Google
         end
       end
       
+      # A URL for deep linking into an app for the given operating system.
+      class GoogleAdsSearchads360V0CommonFinalAppUrl
+        include Google::Apis::Core::Hashable
+      
+        # The operating system targeted by this URL. Required.
+        # Corresponds to the JSON property `osType`
+        # @return [String]
+        attr_accessor :os_type
+      
+        # The app deep link URL. Deep links specify a location in an app that
+        # corresponds to the content you'd like to show, and should be of the form `
+        # scheme`://`host_path` The scheme identifies which app to open. For your app,
+        # you can use a custom scheme that starts with the app's name. The host and path
+        # specify the unique location in the app where your content exists. Example: "
+        # exampleapp://productid_1234". Required.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @os_type = args[:os_type] if args.key?(:os_type)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # A rule specifying the maximum number of times an ad (or some set of ads) can
       # be shown to a user over a particular time period.
       class GoogleAdsSearchads360V0CommonFrequencyCapEntry
@@ -774,6 +804,17 @@ module Google
         # @return [Float]
         attr_accessor :all_conversions_value_per_cost
       
+        # Average cart size is the average number of products in each order attributed
+        # to your ads. How it works: You report conversions with cart data for completed
+        # purchases on your website. Average cart size is the total number of products
+        # sold divided by the total number of orders you received. Example: You received
+        # 2 orders, the first included 3 products and the second included 2. The average
+        # cart size is 2.5 products = (3+2)/2. This metric is only available if you
+        # report conversions with cart data.
+        # Corresponds to the JSON property `averageCartSize`
+        # @return [Float]
+        attr_accessor :average_cart_size
+      
         # The average amount you pay per interaction. This amount is the total cost of
         # your ads divided by the total number of interactions.
         # Corresponds to the JSON property `averageCost`
@@ -795,6 +836,25 @@ module Google
         # Corresponds to the JSON property `averageCpm`
         # @return [Float]
         attr_accessor :average_cpm
+      
+        # The average number of times a unique user saw your ad during the requested
+        # time period. This metric cannot be aggregated, and can only be requested for
+        # date ranges of 92 days or less. This metric is available for following
+        # campaign types - Display, Video, Discovery and App.
+        # Corresponds to the JSON property `averageImpressionFrequencyPerUser`
+        # @return [Float]
+        attr_accessor :average_impression_frequency_per_user
+      
+        # Average order value is the average revenue you made per order attributed to
+        # your ads. How it works: You report conversions with cart data for completed
+        # purchases on your website. Average order value is the total revenue from your
+        # orders divided by the total number of orders. Example: You received 3 orders
+        # which made $10, $15 and $20 worth of revenue. The average order value is $15 =
+        # ($10 + $15 + $20)/3. This metric is only available if you report conversions
+        # with cart data.
+        # Corresponds to the JSON property `averageOrderValueMicros`
+        # @return [Fixnum]
+        attr_accessor :average_order_value_micros
       
         # The average quality score.
         # Corresponds to the JSON property `averageQualityScore`
@@ -1059,6 +1119,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :cost_micros
       
+        # Cost of goods sold (COGS) is the total cost of the products you sold in orders
+        # attributed to your ads. How it works: You can add a cost of goods sold value
+        # to every product in Merchant Center. If you report conversions with cart data,
+        # the products you sold are matched with their cost of goods sold value and this
+        # can be used to calculate the gross profit you made on each order. Example:
+        # Someone clicked on a Shopping ad for a hat then bought the same hat and a
+        # shirt. The hat has a cost of goods sold value of $3, the shirt has a cost of
+        # goods sold value of $5. The cost of goods sold for this order is $8 = $3 + $5.
+        # This metric is only available if you report conversions with cart data.
+        # Corresponds to the JSON property `costOfGoodsSoldMicros`
+        # @return [Fixnum]
+        attr_accessor :cost_of_goods_sold_micros
+      
         # The cost of ad interactions divided by all conversions.
         # Corresponds to the JSON property `costPerAllConversions`
         # @return [Float]
@@ -1202,6 +1275,36 @@ module Google
         # @return [Fixnum]
         attr_accessor :general_invalid_clicks
       
+        # Gross profit margin is the percentage gross profit you made from orders
+        # attributed to your ads, after taking out the cost of goods sold (COGS). How it
+        # works: You report conversions with cart data for completed purchases on your
+        # website. Gross profit margin is the gross profit you made divided by your
+        # total revenue and multiplied by 100%. Gross profit margin calculations only
+        # include products that have a cost of goods sold value in Merchant Center.
+        # Example: Someone bought a hat and a shirt in an order on your website. The hat
+        # is priced $10 and has a cost of goods sold value of $3. The shirt is priced $
+        # 20 but has no cost of goods sold value. Gross profit margin for this order
+        # will only take into account the hat because it has a cost of goods sold value,
+        # so it's 70% = ($10 - $3)/$10 x 100%. This metric is only available if you
+        # report conversions with cart data.
+        # Corresponds to the JSON property `grossProfitMargin`
+        # @return [Float]
+        attr_accessor :gross_profit_margin
+      
+        # Gross profit is the profit you made from orders attributed to your ads minus
+        # the cost of goods sold (COGS). How it works: Gross profit is the revenue you
+        # made from sales attributed to your ads minus cost of goods sold. Gross profit
+        # calculations only include products that have a cost of goods sold value in
+        # Merchant Center. Example: Someone clicked on a Shopping ad for a hat then
+        # bought the same hat and a shirt in an order from your website. The hat is
+        # priced $10 and the shirt is priced $20. The hat has a cost of goods sold value
+        # of $3, but the shirt has no cost of goods sold value. Gross profit for this
+        # order will only take into account the hat, so it's $7 = $10 - $3. This metric
+        # is only available if you report conversions with cart data.
+        # Corresponds to the JSON property `grossProfitMicros`
+        # @return [Fixnum]
+        attr_accessor :gross_profit_micros
+      
         # The creative historical quality score.
         # Corresponds to the JSON property `historicalCreativeQualityScore`
         # @return [String]
@@ -1331,10 +1434,34 @@ module Google
         # @return [Float]
         attr_accessor :mobile_friendly_clicks_percentage
       
+        # Orders is the total number of purchase conversions you received attributed to
+        # your ads. How it works: You report conversions with cart data for completed
+        # purchases on your website. If a conversion is attributed to previous
+        # interactions with your ads (clicks for text or Shopping ads, views for video
+        # ads etc.) it's counted as an order. Example: Someone clicked on a Shopping ad
+        # for a hat then bought the same hat and a shirt in an order on your website.
+        # Even though they bought 2 products, this would count as 1 order. This metric
+        # is only available if you report conversions with cart data.
+        # Corresponds to the JSON property `orders`
+        # @return [Float]
+        attr_accessor :orders
+      
         # The raw event conversion metrics.
         # Corresponds to the JSON property `rawEventConversionMetrics`
         # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue>]
         attr_accessor :raw_event_conversion_metrics
+      
+        # Revenue is the total amount you made from orders attributed to your ads. How
+        # it works: You report conversions with cart data for completed purchases on
+        # your website. Revenue is the total value of all the orders you received
+        # attributed to your ads, minus any discount. Example: Someone clicked on a
+        # Shopping ad for a hat then bought the same hat and a shirt in an order from
+        # your website. The hat is priced $10 and the shirt is priced $20. The entire
+        # order has a $5 discount. The revenue from this order is $25 = ($10 + $20) - $5.
+        # This metric is only available if you report conversions with cart data.
+        # Corresponds to the JSON property `revenueMicros`
+        # @return [Fixnum]
+        attr_accessor :revenue_micros
       
         # The percentage of the customer's Shopping or Search ad impressions that are
         # shown in the most prominent Shopping position. See https://support.google.com/
@@ -1432,6 +1559,25 @@ module Google
         # @return [Float]
         attr_accessor :top_impression_percentage
       
+        # The number of unique users who saw your ad during the requested time period.
+        # This metric cannot be aggregated, and can only be requested for date ranges of
+        # 92 days or less. This metric is available for following campaign types -
+        # Display, Video, Discovery and App.
+        # Corresponds to the JSON property `uniqueUsers`
+        # @return [Fixnum]
+        attr_accessor :unique_users
+      
+        # Units sold is the total number of products sold from orders attributed to your
+        # ads. How it works: You report conversions with cart data for completed
+        # purchases on your website. Units sold is the total number of products sold
+        # from all orders attributed to your ads. Example: Someone clicked on a Shopping
+        # ad for a hat then bought the same hat, a shirt and a jacket. The units sold in
+        # this order is 3. This metric is only available if you report conversions with
+        # cart data.
+        # Corresponds to the JSON property `unitsSold`
+        # @return [Float]
+        attr_accessor :units_sold
+      
         # The value of all conversions divided by the number of all conversions.
         # Corresponds to the JSON property `valuePerAllConversions`
         # @return [Float]
@@ -1486,9 +1632,12 @@ module Google
           @all_conversions_value = args[:all_conversions_value] if args.key?(:all_conversions_value)
           @all_conversions_value_by_conversion_date = args[:all_conversions_value_by_conversion_date] if args.key?(:all_conversions_value_by_conversion_date)
           @all_conversions_value_per_cost = args[:all_conversions_value_per_cost] if args.key?(:all_conversions_value_per_cost)
+          @average_cart_size = args[:average_cart_size] if args.key?(:average_cart_size)
           @average_cost = args[:average_cost] if args.key?(:average_cost)
           @average_cpc = args[:average_cpc] if args.key?(:average_cpc)
           @average_cpm = args[:average_cpm] if args.key?(:average_cpm)
+          @average_impression_frequency_per_user = args[:average_impression_frequency_per_user] if args.key?(:average_impression_frequency_per_user)
+          @average_order_value_micros = args[:average_order_value_micros] if args.key?(:average_order_value_micros)
           @average_quality_score = args[:average_quality_score] if args.key?(:average_quality_score)
           @clicks = args[:clicks] if args.key?(:clicks)
           @client_account_conversions = args[:client_account_conversions] if args.key?(:client_account_conversions)
@@ -1514,6 +1663,7 @@ module Google
           @conversions_value_by_conversion_date = args[:conversions_value_by_conversion_date] if args.key?(:conversions_value_by_conversion_date)
           @conversions_value_per_cost = args[:conversions_value_per_cost] if args.key?(:conversions_value_per_cost)
           @cost_micros = args[:cost_micros] if args.key?(:cost_micros)
+          @cost_of_goods_sold_micros = args[:cost_of_goods_sold_micros] if args.key?(:cost_of_goods_sold_micros)
           @cost_per_all_conversions = args[:cost_per_all_conversions] if args.key?(:cost_per_all_conversions)
           @cost_per_conversion = args[:cost_per_conversion] if args.key?(:cost_per_conversion)
           @cost_per_current_model_attributed_conversion = args[:cost_per_current_model_attributed_conversion] if args.key?(:cost_per_current_model_attributed_conversion)
@@ -1528,6 +1678,8 @@ module Google
           @ctr = args[:ctr] if args.key?(:ctr)
           @general_invalid_click_rate = args[:general_invalid_click_rate] if args.key?(:general_invalid_click_rate)
           @general_invalid_clicks = args[:general_invalid_clicks] if args.key?(:general_invalid_clicks)
+          @gross_profit_margin = args[:gross_profit_margin] if args.key?(:gross_profit_margin)
+          @gross_profit_micros = args[:gross_profit_micros] if args.key?(:gross_profit_micros)
           @historical_creative_quality_score = args[:historical_creative_quality_score] if args.key?(:historical_creative_quality_score)
           @historical_landing_page_quality_score = args[:historical_landing_page_quality_score] if args.key?(:historical_landing_page_quality_score)
           @historical_quality_score = args[:historical_quality_score] if args.key?(:historical_quality_score)
@@ -1543,7 +1695,9 @@ module Google
           @lead_revenue_micros = args[:lead_revenue_micros] if args.key?(:lead_revenue_micros)
           @lead_units_sold = args[:lead_units_sold] if args.key?(:lead_units_sold)
           @mobile_friendly_clicks_percentage = args[:mobile_friendly_clicks_percentage] if args.key?(:mobile_friendly_clicks_percentage)
+          @orders = args[:orders] if args.key?(:orders)
           @raw_event_conversion_metrics = args[:raw_event_conversion_metrics] if args.key?(:raw_event_conversion_metrics)
+          @revenue_micros = args[:revenue_micros] if args.key?(:revenue_micros)
           @search_absolute_top_impression_share = args[:search_absolute_top_impression_share] if args.key?(:search_absolute_top_impression_share)
           @search_budget_lost_absolute_top_impression_share = args[:search_budget_lost_absolute_top_impression_share] if args.key?(:search_budget_lost_absolute_top_impression_share)
           @search_budget_lost_impression_share = args[:search_budget_lost_impression_share] if args.key?(:search_budget_lost_impression_share)
@@ -1556,6 +1710,8 @@ module Google
           @search_rank_lost_top_impression_share = args[:search_rank_lost_top_impression_share] if args.key?(:search_rank_lost_top_impression_share)
           @search_top_impression_share = args[:search_top_impression_share] if args.key?(:search_top_impression_share)
           @top_impression_percentage = args[:top_impression_percentage] if args.key?(:top_impression_percentage)
+          @unique_users = args[:unique_users] if args.key?(:unique_users)
+          @units_sold = args[:units_sold] if args.key?(:units_sold)
           @value_per_all_conversions = args[:value_per_all_conversions] if args.key?(:value_per_all_conversions)
           @value_per_all_conversions_by_conversion_date = args[:value_per_all_conversions_by_conversion_date] if args.key?(:value_per_all_conversions_by_conversion_date)
           @value_per_conversion = args[:value_per_conversion] if args.key?(:value_per_conversion)
@@ -4043,6 +4199,23 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ExpandedTextAdInfo]
         attr_accessor :expanded_text_ad
       
+        # A list of final app URLs that will be used on mobile if the user has the
+        # specific app installed.
+        # Corresponds to the JSON property `finalAppUrls`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonFinalAppUrl>]
+        attr_accessor :final_app_urls
+      
+        # The list of possible final mobile URLs after all cross-domain redirects for
+        # the ad.
+        # Corresponds to the JSON property `finalMobileUrls`
+        # @return [Array<String>]
+        attr_accessor :final_mobile_urls
+      
+        # The suffix to use when constructing a final URL.
+        # Corresponds to the JSON property `finalUrlSuffix`
+        # @return [String]
+        attr_accessor :final_url_suffix
+      
         # The list of possible final URLs after all cross-domain redirects for the ad.
         # Corresponds to the JSON property `finalUrls`
         # @return [Array<String>]
@@ -4080,6 +4253,11 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo]
         attr_accessor :text_ad
       
+        # The URL template for constructing a tracking URL.
+        # Corresponds to the JSON property `trackingUrlTemplate`
+        # @return [String]
+        attr_accessor :tracking_url_template
+      
         # Output only. The type of ad.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -4094,6 +4272,9 @@ module Google
           @display_url = args[:display_url] if args.key?(:display_url)
           @expanded_dynamic_search_ad = args[:expanded_dynamic_search_ad] if args.key?(:expanded_dynamic_search_ad)
           @expanded_text_ad = args[:expanded_text_ad] if args.key?(:expanded_text_ad)
+          @final_app_urls = args[:final_app_urls] if args.key?(:final_app_urls)
+          @final_mobile_urls = args[:final_mobile_urls] if args.key?(:final_mobile_urls)
+          @final_url_suffix = args[:final_url_suffix] if args.key?(:final_url_suffix)
           @final_urls = args[:final_urls] if args.key?(:final_urls)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
@@ -4101,6 +4282,7 @@ module Google
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @responsive_search_ad = args[:responsive_search_ad] if args.key?(:responsive_search_ad)
           @text_ad = args[:text_ad] if args.key?(:text_ad)
+          @tracking_url_template = args[:tracking_url_template] if args.key?(:tracking_url_template)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -4151,6 +4333,11 @@ module Google
         # Corresponds to the JSON property `engineStatus`
         # @return [String]
         attr_accessor :engine_status
+      
+        # URL template for appending params to Final URL.
+        # Corresponds to the JSON property `finalUrlSuffix`
+        # @return [String]
+        attr_accessor :final_url_suffix
       
         # Output only. The ID of the ad group.
         # Corresponds to the JSON property `id`
@@ -4212,6 +4399,11 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTargetingSetting]
         attr_accessor :targeting_setting
       
+        # The URL template for constructing a tracking URL.
+        # Corresponds to the JSON property `trackingUrlTemplate`
+        # @return [String]
+        attr_accessor :tracking_url_template
+      
         # Immutable. The type of the ad group.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -4230,6 +4422,7 @@ module Google
           @end_date = args[:end_date] if args.key?(:end_date)
           @engine_id = args[:engine_id] if args.key?(:engine_id)
           @engine_status = args[:engine_status] if args.key?(:engine_status)
+          @final_url_suffix = args[:final_url_suffix] if args.key?(:final_url_suffix)
           @id = args[:id] if args.key?(:id)
           @labels = args[:labels] if args.key?(:labels)
           @language_code = args[:language_code] if args.key?(:language_code)
@@ -4239,6 +4432,7 @@ module Google
           @start_date = args[:start_date] if args.key?(:start_date)
           @status = args[:status] if args.key?(:status)
           @targeting_setting = args[:targeting_setting] if args.key?(:targeting_setting)
+          @tracking_url_template = args[:tracking_url_template] if args.key?(:tracking_url_template)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -4340,7 +4534,7 @@ module Google
         attr_accessor :owner_customer_id
       
         # Immutable. The resource name of the ad group ad effective label. Ad group ad
-        # effective label resource names have the form: `customers/`customer_id`/
+        # effective label resource names have the form: `customers/`owner_customer_id`/
         # adGroupAdEffectiveLabels/`ad_group_id`~`ad_id`~`label_id``
         # Corresponds to the JSON property `resourceName`
         # @return [String]
@@ -4379,7 +4573,7 @@ module Google
         attr_accessor :owner_customer_id
       
         # Immutable. The resource name of the ad group ad label. Ad group ad label
-        # resource names have the form: `customers/`customer_id`/adGroupAdLabels/`
+        # resource names have the form: `customers/`owner_customer_id`/adGroupAdLabels/`
         # ad_group_id`~`ad_id`~`label_id``
         # Corresponds to the JSON property `resourceName`
         # @return [String]
@@ -4597,6 +4791,11 @@ module Google
         # @return [String]
         attr_accessor :engine_status
       
+        # The list of possible final mobile URLs after all cross-domain redirects.
+        # Corresponds to the JSON property `finalMobileUrls`
+        # @return [Array<String>]
+        attr_accessor :final_mobile_urls
+      
         # URL template for appending params to final URL.
         # Corresponds to the JSON property `finalUrlSuffix`
         # @return [String]
@@ -4686,6 +4885,12 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # The list of mappings used to substitute custom parameter tags in a `
+        # tracking_url_template`, `final_urls`, or `mobile_final_urls`.
+        # Corresponds to the JSON property `urlCustomParameters`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonCustomParameter>]
+        attr_accessor :url_custom_parameters
+      
         # A User List criterion. Represents a user list that is defined by the
         # advertiser to be targeted.
         # Corresponds to the JSON property `userList`
@@ -4713,6 +4918,7 @@ module Google
           @effective_labels = args[:effective_labels] if args.key?(:effective_labels)
           @engine_id = args[:engine_id] if args.key?(:engine_id)
           @engine_status = args[:engine_status] if args.key?(:engine_status)
+          @final_mobile_urls = args[:final_mobile_urls] if args.key?(:final_mobile_urls)
           @final_url_suffix = args[:final_url_suffix] if args.key?(:final_url_suffix)
           @final_urls = args[:final_urls] if args.key?(:final_urls)
           @gender = args[:gender] if args.key?(:gender)
@@ -4728,6 +4934,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @tracking_url_template = args[:tracking_url_template] if args.key?(:tracking_url_template)
           @type = args[:type] if args.key?(:type)
+          @url_custom_parameters = args[:url_custom_parameters] if args.key?(:url_custom_parameters)
           @user_list = args[:user_list] if args.key?(:user_list)
           @webpage = args[:webpage] if args.key?(:webpage)
         end
@@ -4756,8 +4963,8 @@ module Google
       
         # Immutable. The resource name of the ad group criterion effective label. Ad
         # group criterion effective label resource names have the form: `customers/`
-        # customer_id`/adGroupCriterionEffectiveLabels/`ad_group_id`~`criterion_id`~`
-        # label_id``
+        # owner_customer_id`/adGroupCriterionEffectiveLabels/`ad_group_id`~`criterion_id`
+        # ~`label_id``
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
@@ -4795,7 +5002,7 @@ module Google
         attr_accessor :owner_customer_id
       
         # Immutable. The resource name of the ad group criterion label. Ad group
-        # criterion label resource names have the form: `customers/`customer_id`/
+        # criterion label resource names have the form: `customers/`owner_customer_id`/
         # adGroupCriterionLabels/`ad_group_id`~`criterion_id`~`label_id``
         # Corresponds to the JSON property `resourceName`
         # @return [String]
@@ -4835,7 +5042,7 @@ module Google
         attr_accessor :owner_customer_id
       
         # Immutable. The resource name of the ad group effective label. Ad group
-        # effective label resource names have the form: `customers/`customer_id`/
+        # effective label resource names have the form: `customers/`owner_customer_id`/
         # adGroupEffectiveLabels/`ad_group_id`~`label_id``
         # Corresponds to the JSON property `resourceName`
         # @return [String]
@@ -4874,8 +5081,8 @@ module Google
         attr_accessor :owner_customer_id
       
         # Immutable. The resource name of the ad group label. Ad group label resource
-        # names have the form: `customers/`customer_id`/adGroupLabels/`ad_group_id`~`
-        # label_id``
+        # names have the form: `customers/`owner_customer_id`/adGroupLabels/`ad_group_id`
+        # ~`label_id``
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
@@ -4946,6 +5153,17 @@ module Google
         # Corresponds to the JSON property `engineStatus`
         # @return [String]
         attr_accessor :engine_status
+      
+        # A list of possible final mobile URLs after all cross domain redirects.
+        # Corresponds to the JSON property `finalMobileUrls`
+        # @return [Array<String>]
+        attr_accessor :final_mobile_urls
+      
+        # URL template for appending params to landing page URLs served with parallel
+        # tracking.
+        # Corresponds to the JSON property `finalUrlSuffix`
+        # @return [String]
+        attr_accessor :final_url_suffix
       
         # A list of possible final URLs after all cross domain redirects.
         # Corresponds to the JSON property `finalUrls`
@@ -5019,6 +5237,12 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # A list of mappings to be used for substituting URL custom parameter tags in
+        # the tracking_url_template, final_urls, and/or final_mobile_urls.
+        # Corresponds to the JSON property `urlCustomParameters`
+        # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonCustomParameter>]
+        attr_accessor :url_custom_parameters
+      
         # A YouTube asset.
         # Corresponds to the JSON property `youtubeVideoAsset`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonYoutubeVideoAsset]
@@ -5035,6 +5259,8 @@ module Google
           @callout_asset = args[:callout_asset] if args.key?(:callout_asset)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @engine_status = args[:engine_status] if args.key?(:engine_status)
+          @final_mobile_urls = args[:final_mobile_urls] if args.key?(:final_mobile_urls)
+          @final_url_suffix = args[:final_url_suffix] if args.key?(:final_url_suffix)
           @final_urls = args[:final_urls] if args.key?(:final_urls)
           @id = args[:id] if args.key?(:id)
           @image_asset = args[:image_asset] if args.key?(:image_asset)
@@ -5049,6 +5275,7 @@ module Google
           @text_asset = args[:text_asset] if args.key?(:text_asset)
           @tracking_url_template = args[:tracking_url_template] if args.key?(:tracking_url_template)
           @type = args[:type] if args.key?(:type)
+          @url_custom_parameters = args[:url_custom_parameters] if args.key?(:url_custom_parameters)
           @youtube_video_asset = args[:youtube_video_asset] if args.key?(:youtube_video_asset)
         end
       end
@@ -5687,6 +5914,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :excluded_parent_asset_field_types
       
+        # Output only. Types of feeds that are attached directly to this campaign.
+        # Corresponds to the JSON property `feedTypes`
+        # @return [Array<String>]
+        attr_accessor :feed_types
+      
         # Suffix used to append query parameters to landing pages that are served with
         # parallel tracking.
         # Corresponds to the JSON property `finalUrlSuffix`
@@ -5892,6 +6124,7 @@ module Google
           @end_date = args[:end_date] if args.key?(:end_date)
           @engine_id = args[:engine_id] if args.key?(:engine_id)
           @excluded_parent_asset_field_types = args[:excluded_parent_asset_field_types] if args.key?(:excluded_parent_asset_field_types)
+          @feed_types = args[:feed_types] if args.key?(:feed_types)
           @final_url_suffix = args[:final_url_suffix] if args.key?(:final_url_suffix)
           @frequency_caps = args[:frequency_caps] if args.key?(:frequency_caps)
           @geo_target_type_setting = args[:geo_target_type_setting] if args.key?(:geo_target_type_setting)
@@ -6217,8 +6450,8 @@ module Google
         attr_accessor :owner_customer_id
       
         # Immutable. Name of the resource. CampaignEffectivelabel resource names have
-        # the form: `customers/`customer_id`/campaignEffectiveLabels/`campaign_id`~`
-        # label_id``
+        # the form: `customers/`owner_customer_id`/campaignEffectiveLabels/`campaign_id`~
+        # `label_id``
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
@@ -6256,7 +6489,7 @@ module Google
         attr_accessor :owner_customer_id
       
         # Immutable. Name of the resource. Campaign label resource names have the form: `
-        # customers/`customer_id`/campaignLabels/`campaign_id`~`label_id``
+        # customers/`owner_customer_id`/campaignLabels/`campaign_id`~`label_id``
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
@@ -7415,7 +7648,7 @@ module Google
         attr_accessor :name
       
         # Immutable. Name of the resource. Label resource names have the form: `
-        # customers/`customer_id`/labels/`label_id``
+        # customers/`owner_customer_id`/labels/`label_id``
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
@@ -7799,7 +8032,15 @@ module Google
       # several product dimension levels. Product dimension values from Merchant
       # Center such as brand, category, custom attributes, product condition and
       # product type will reflect the state of each dimension as of the date and time
-      # when the corresponding event was recorded.
+      # when the corresponding event was recorded. The number of impressions and
+      # clicks that shopping_performance_view returns stats for may be different from
+      # campaign reports. shopping_performance_view shows impressions and clicks on
+      # products appearing in ads, while campaign reports show impressions and clicks
+      # on the ads themselves. Depending on the format, an ad can show from zero to
+      # several products, so the numbers may not match. In Google Ads UI, you can
+      # query impressions and clicks of products appearing in ads by selecting a
+      # column from "Product attributes" in the report editor. For example, selecting
+      # the "Brand" column is equivalent to selecting `segments.product_brand`.
       class GoogleAdsSearchads360V0ResourcesShoppingPerformanceView
         include Google::Apis::Core::Hashable
       
@@ -8512,7 +8753,15 @@ module Google
         # several product dimension levels. Product dimension values from Merchant
         # Center such as brand, category, custom attributes, product condition and
         # product type will reflect the state of each dimension as of the date and time
-        # when the corresponding event was recorded.
+        # when the corresponding event was recorded. The number of impressions and
+        # clicks that shopping_performance_view returns stats for may be different from
+        # campaign reports. shopping_performance_view shows impressions and clicks on
+        # products appearing in ads, while campaign reports show impressions and clicks
+        # on the ads themselves. Depending on the format, an ad can show from zero to
+        # several products, so the numbers may not match. In Google Ads UI, you can
+        # query impressions and clicks of products appearing in ads by selecting a
+        # column from "Product attributes" in the report editor. For example, selecting
+        # the "Brand" column is equivalent to selecting `segments.product_brand`.
         # Corresponds to the JSON property `shoppingPerformanceView`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesShoppingPerformanceView]
         attr_accessor :shopping_performance_view
