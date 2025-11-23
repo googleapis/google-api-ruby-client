@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Boundary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +125,12 @@ module Google
       end
       
       class FunctionalType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Identity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -358,6 +370,17 @@ module Google
         end
       end
       
+      class Boundary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :crm_node, as: 'crmNode'
+          property :name, as: 'name'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -447,6 +470,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
+        end
+      end
+      
+      class Identity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :principal, as: 'principal'
         end
       end
       
@@ -662,6 +692,8 @@ module Google
           property :functional_type, as: 'functionalType', class: Google::Apis::ApphubV1::FunctionalType, decorator: Google::Apis::ApphubV1::FunctionalType::Representation
       
           property :gcp_project, as: 'gcpProject'
+          property :identity, as: 'identity', class: Google::Apis::ApphubV1::Identity, decorator: Google::Apis::ApphubV1::Identity::Representation
+      
           property :location, as: 'location'
           property :registration_type, as: 'registrationType', class: Google::Apis::ApphubV1::RegistrationType, decorator: Google::Apis::ApphubV1::RegistrationType::Representation
       
@@ -736,6 +768,8 @@ module Google
           property :functional_type, as: 'functionalType', class: Google::Apis::ApphubV1::FunctionalType, decorator: Google::Apis::ApphubV1::FunctionalType::Representation
       
           property :gcp_project, as: 'gcpProject'
+          property :identity, as: 'identity', class: Google::Apis::ApphubV1::Identity, decorator: Google::Apis::ApphubV1::Identity::Representation
+      
           property :location, as: 'location'
           property :zone, as: 'zone'
         end

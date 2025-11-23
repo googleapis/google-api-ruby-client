@@ -310,6 +310,51 @@ module Google
         end
       end
       
+      # Application management boundary.
+      class Boundary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The resource name of the CRM node being attached to the boundary.
+        # Format: `projects/`project-number`` or `projects/`project-id``
+        # Corresponds to the JSON property `crmNode`
+        # @return [String]
+        attr_accessor :crm_node
+      
+        # Identifier. The resource name of the boundary. Format: "projects/`project`/
+        # locations/`location`/boundary"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Boundary type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. Update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @crm_node = args[:crm_node] if args.key?(:crm_node)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -589,6 +634,28 @@ module Google
         end
       end
       
+      # The identity associated with a service or workload.
+      class Identity
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Principal of the identity. Supported formats: * `sa://my-sa@xxxx.
+        # iam.gserviceaccount.com` for GCP Service Account * `principal://POOL_ID.global.
+        # PROJECT_NUMBER.workload.id.goog/ns/NAMESPACE_ID/sa/MANAGED_IDENTITY_ID` for
+        # Managed Workload Identity
+        # Corresponds to the JSON property `principal`
+        # @return [String]
+        attr_accessor :principal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @principal = args[:principal] if args.key?(:principal)
+        end
+      end
+      
       # Response for ListApplications.
       class ListApplicationsResponse
         include Google::Apis::Core::Hashable
@@ -722,8 +789,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1386,6 +1454,11 @@ module Google
         # @return [String]
         attr_accessor :gcp_project
       
+        # The identity associated with a service or workload.
+        # Corresponds to the JSON property `identity`
+        # @return [Google::Apis::ApphubV1::Identity]
+        attr_accessor :identity
+      
         # Output only. The location that the underlying resource resides in, for example,
         # us-west1.
         # Corresponds to the JSON property `location`
@@ -1412,6 +1485,7 @@ module Google
           @extended_metadata = args[:extended_metadata] if args.key?(:extended_metadata)
           @functional_type = args[:functional_type] if args.key?(:functional_type)
           @gcp_project = args[:gcp_project] if args.key?(:gcp_project)
+          @identity = args[:identity] if args.key?(:identity)
           @location = args[:location] if args.key?(:location)
           @registration_type = args[:registration_type] if args.key?(:registration_type)
           @zone = args[:zone] if args.key?(:zone)
@@ -1680,6 +1754,11 @@ module Google
         # @return [String]
         attr_accessor :gcp_project
       
+        # The identity associated with a service or workload.
+        # Corresponds to the JSON property `identity`
+        # @return [Google::Apis::ApphubV1::Identity]
+        attr_accessor :identity
+      
         # Output only. The location that the underlying compute resource resides in (for
         # example, us-west1).
         # Corresponds to the JSON property `location`
@@ -1701,6 +1780,7 @@ module Google
           @extended_metadata = args[:extended_metadata] if args.key?(:extended_metadata)
           @functional_type = args[:functional_type] if args.key?(:functional_type)
           @gcp_project = args[:gcp_project] if args.key?(:gcp_project)
+          @identity = args[:identity] if args.key?(:identity)
           @location = args[:location] if args.key?(:location)
           @zone = args[:zone] if args.key?(:zone)
         end
