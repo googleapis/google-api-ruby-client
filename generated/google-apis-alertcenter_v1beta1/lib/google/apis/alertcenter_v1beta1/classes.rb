@@ -1766,6 +1766,11 @@ module Google
         # @return [String]
         attr_accessor :document_id
       
+        # RFC2822 message ID.
+        # Corresponds to the JSON property `messageId`
+        # @return [String]
+        attr_accessor :message_id
+      
         # Title of the resource, for example email subject, or document title.
         # Corresponds to the JSON property `resourceTitle`
         # @return [String]
@@ -1781,6 +1786,7 @@ module Google
           @chat_message_id = args[:chat_message_id] if args.key?(:chat_message_id)
           @device_id = args[:device_id] if args.key?(:device_id)
           @document_id = args[:document_id] if args.key?(:document_id)
+          @message_id = args[:message_id] if args.key?(:message_id)
           @resource_title = args[:resource_title] if args.key?(:resource_title)
         end
       end

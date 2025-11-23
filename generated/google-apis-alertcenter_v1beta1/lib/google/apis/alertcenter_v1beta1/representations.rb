@@ -943,6 +943,7 @@ module Google
           property :chat_message_id, as: 'chatMessageId'
           property :device_id, as: 'deviceId'
           property :document_id, as: 'documentId'
+          property :message_id, as: 'messageId'
           property :resource_title, as: 'resourceTitle'
         end
       end
