@@ -7120,7 +7120,7 @@ module Google
         # @return [String]
         attr_accessor :audience_source
       
-        # Output only. The type of the audience.
+        # Immutable. The type of the audience.
         # Corresponds to the JSON property `audienceType`
         # @return [String]
         attr_accessor :audience_type
@@ -7131,7 +7131,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV4::ContactInfoList]
         attr_accessor :contact_info_list
       
-        # Output only. The user-provided description of the audience. Only applicable to
+        # Optional. The user-provided description of the audience. Only applicable to
         # first party audiences.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -7172,7 +7172,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :display_mobile_web_audience_size
       
-        # Output only. The display name of the first party and partner audience.
+        # Optional. The display name of the first party and partner audience.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -7196,11 +7196,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :gmail_audience_size
       
-        # Output only. The duration in days that an entry remains in the audience after
-        # the qualifying event. The set value must be greater than 0 and less than or
-        # equal to 540. Only applicable to first party audiences. This field is required
-        # if one of the following audience_type is used: * `CUSTOMER_MATCH_CONTACT_INFO`
-        # * `CUSTOMER_MATCH_DEVICE_ID`
+        # Optional. The duration in days that an entry remains in the audience after the
+        # qualifying event. The set value must be greater than 0 and less than or equal
+        # to 540. Only applicable to first party audiences. This field is required if
+        # one of the following audience_type is used: * `CUSTOMER_MATCH_CONTACT_INFO` * `
+        # CUSTOMER_MATCH_DEVICE_ID`
         # Corresponds to the JSON property `membershipDurationDays`
         # @return [Fixnum]
         attr_accessor :membership_duration_days
