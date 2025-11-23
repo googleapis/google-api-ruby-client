@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0CommonFinalAppUrl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0CommonFrequencyCapEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1097,6 +1103,14 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0CommonFinalAppUrl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :os_type, as: 'osType'
+          property :url, as: 'url'
+        end
+      end
+      
       class GoogleAdsSearchads360V0CommonFrequencyCapEntry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1232,9 +1246,12 @@ module Google
           property :all_conversions_value, as: 'allConversionsValue'
           property :all_conversions_value_by_conversion_date, as: 'allConversionsValueByConversionDate'
           property :all_conversions_value_per_cost, as: 'allConversionsValuePerCost'
+          property :average_cart_size, as: 'averageCartSize'
           property :average_cost, as: 'averageCost'
           property :average_cpc, as: 'averageCpc'
           property :average_cpm, as: 'averageCpm'
+          property :average_impression_frequency_per_user, as: 'averageImpressionFrequencyPerUser'
+          property :average_order_value_micros, :numeric_string => true, as: 'averageOrderValueMicros'
           property :average_quality_score, as: 'averageQualityScore'
           property :clicks, :numeric_string => true, as: 'clicks'
           property :client_account_conversions, as: 'clientAccountConversions'
@@ -1261,6 +1278,7 @@ module Google
           property :conversions_value_by_conversion_date, as: 'conversionsValueByConversionDate'
           property :conversions_value_per_cost, as: 'conversionsValuePerCost'
           property :cost_micros, :numeric_string => true, as: 'costMicros'
+          property :cost_of_goods_sold_micros, :numeric_string => true, as: 'costOfGoodsSoldMicros'
           property :cost_per_all_conversions, as: 'costPerAllConversions'
           property :cost_per_conversion, as: 'costPerConversion'
           property :cost_per_current_model_attributed_conversion, as: 'costPerCurrentModelAttributedConversion'
@@ -1275,6 +1293,8 @@ module Google
           property :ctr, as: 'ctr'
           property :general_invalid_click_rate, as: 'generalInvalidClickRate'
           property :general_invalid_clicks, :numeric_string => true, as: 'generalInvalidClicks'
+          property :gross_profit_margin, as: 'grossProfitMargin'
+          property :gross_profit_micros, :numeric_string => true, as: 'grossProfitMicros'
           property :historical_creative_quality_score, as: 'historicalCreativeQualityScore'
           property :historical_landing_page_quality_score, as: 'historicalLandingPageQualityScore'
           property :historical_quality_score, :numeric_string => true, as: 'historicalQualityScore'
@@ -1290,8 +1310,10 @@ module Google
           property :lead_revenue_micros, :numeric_string => true, as: 'leadRevenueMicros'
           property :lead_units_sold, as: 'leadUnitsSold'
           property :mobile_friendly_clicks_percentage, as: 'mobileFriendlyClicksPercentage'
+          property :orders, as: 'orders'
           collection :raw_event_conversion_metrics, as: 'rawEventConversionMetrics', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue::Representation
       
+          property :revenue_micros, :numeric_string => true, as: 'revenueMicros'
           property :search_absolute_top_impression_share, as: 'searchAbsoluteTopImpressionShare'
           property :search_budget_lost_absolute_top_impression_share, as: 'searchBudgetLostAbsoluteTopImpressionShare'
           property :search_budget_lost_impression_share, as: 'searchBudgetLostImpressionShare'
@@ -1304,6 +1326,8 @@ module Google
           property :search_rank_lost_top_impression_share, as: 'searchRankLostTopImpressionShare'
           property :search_top_impression_share, as: 'searchTopImpressionShare'
           property :top_impression_percentage, as: 'topImpressionPercentage'
+          property :unique_users, :numeric_string => true, as: 'uniqueUsers'
+          property :units_sold, as: 'unitsSold'
           property :value_per_all_conversions, as: 'valuePerAllConversions'
           property :value_per_all_conversions_by_conversion_date, as: 'valuePerAllConversionsByConversionDate'
           property :value_per_conversion, as: 'valuePerConversion'
@@ -1965,6 +1989,10 @@ module Google
       
           property :expanded_text_ad, as: 'expandedTextAd', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ExpandedTextAdInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ExpandedTextAdInfo::Representation
       
+          collection :final_app_urls, as: 'finalAppUrls', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonFinalAppUrl, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonFinalAppUrl::Representation
+      
+          collection :final_mobile_urls, as: 'finalMobileUrls'
+          property :final_url_suffix, as: 'finalUrlSuffix'
           collection :final_urls, as: 'finalUrls'
           property :id, :numeric_string => true, as: 'id'
           property :name, as: 'name'
@@ -1975,6 +2003,7 @@ module Google
       
           property :text_ad, as: 'textAd', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo::Representation
       
+          property :tracking_url_template, as: 'trackingUrlTemplate'
           property :type, as: 'type'
         end
       end
@@ -1989,6 +2018,7 @@ module Google
           property :end_date, as: 'endDate'
           property :engine_id, as: 'engineId'
           property :engine_status, as: 'engineStatus'
+          property :final_url_suffix, as: 'finalUrlSuffix'
           property :id, :numeric_string => true, as: 'id'
           collection :labels, as: 'labels'
           property :language_code, as: 'languageCode'
@@ -1999,6 +2029,7 @@ module Google
           property :status, as: 'status'
           property :targeting_setting, as: 'targetingSetting', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTargetingSetting, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTargetingSetting::Representation
       
+          property :tracking_url_template, as: 'trackingUrlTemplate'
           property :type, as: 'type'
         end
       end
@@ -2090,6 +2121,7 @@ module Google
           collection :effective_labels, as: 'effectiveLabels'
           property :engine_id, as: 'engineId'
           property :engine_status, as: 'engineStatus'
+          collection :final_mobile_urls, as: 'finalMobileUrls'
           property :final_url_suffix, as: 'finalUrlSuffix'
           collection :final_urls, as: 'finalUrls'
           property :gender, as: 'gender', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonGenderInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonGenderInfo::Representation
@@ -2111,6 +2143,8 @@ module Google
           property :status, as: 'status'
           property :tracking_url_template, as: 'trackingUrlTemplate'
           property :type, as: 'type'
+          collection :url_custom_parameters, as: 'urlCustomParameters', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonCustomParameter, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonCustomParameter::Representation
+      
           property :user_list, as: 'userList', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUserListInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUserListInfo::Representation
       
           property :webpage, as: 'webpage', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonWebpageInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonWebpageInfo::Representation
@@ -2176,6 +2210,8 @@ module Google
       
           property :creation_time, as: 'creationTime'
           property :engine_status, as: 'engineStatus'
+          collection :final_mobile_urls, as: 'finalMobileUrls'
+          property :final_url_suffix, as: 'finalUrlSuffix'
           collection :final_urls, as: 'finalUrls'
           property :id, :numeric_string => true, as: 'id'
           property :image_asset, as: 'imageAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonImageAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonImageAsset::Representation
@@ -2196,6 +2232,8 @@ module Google
       
           property :tracking_url_template, as: 'trackingUrlTemplate'
           property :type, as: 'type'
+          collection :url_custom_parameters, as: 'urlCustomParameters', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonCustomParameter, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonCustomParameter::Representation
+      
           property :youtube_video_asset, as: 'youtubeVideoAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonYoutubeVideoAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonYoutubeVideoAsset::Representation
       
         end
@@ -2349,6 +2387,7 @@ module Google
           property :end_date, as: 'endDate'
           property :engine_id, as: 'engineId'
           collection :excluded_parent_asset_field_types, as: 'excludedParentAssetFieldTypes'
+          collection :feed_types, as: 'feedTypes'
           property :final_url_suffix, as: 'finalUrlSuffix'
           collection :frequency_caps, as: 'frequencyCaps', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonFrequencyCapEntry, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonFrequencyCapEntry::Representation
       
