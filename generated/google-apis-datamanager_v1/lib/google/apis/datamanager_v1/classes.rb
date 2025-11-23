@@ -162,7 +162,8 @@ module Google
         attr_accessor :encrypted_dek
       
         # Required. The URI of the AWS KMS key used to decrypt the DEK. Should be in the
-        # format of "arn:`partition`:kms:`region`:`account_id`:key/`key_id`"
+        # format of `arn:`partition`:kms:`region`:`account_id`:key/`key_id`` or `aws-kms:
+        # //arn:`partition`:kms:`region`:`account_id`:key/`key_id``
         # Corresponds to the JSON property `kekUri`
         # @return [String]
         attr_accessor :kek_uri
@@ -173,8 +174,8 @@ module Google
         attr_accessor :key_type
       
         # Required. The Amazon Resource Name of the IAM Role to assume for KMS
-        # decryption access. Should be in the format of "arn:`partition`:iam::`
-        # account_id`:role/`role_name`"
+        # decryption access. Should be in the format of `arn:`partition`:iam::`
+        # account_id`:role/`role_name``
         # Corresponds to the JSON property `roleArn`
         # @return [String]
         attr_accessor :role_arn
@@ -646,8 +647,10 @@ module Google
         attr_accessor :encrypted_dek
       
         # Required. Google Cloud Platform [Cloud Key Management Service resource ID](//
-        # cloud.google.com/kms/docs/getting-resource-ids). Should be in the format of "
-        # projects/`project`/locations/`location`/keyRings/`key_ring`/cryptoKeys/`key`".
+        # cloud.google.com/kms/docs/getting-resource-ids). Should be in the format of `
+        # projects/`project`/locations/`location`/keyRings/`key_ring`/cryptoKeys/`key``
+        # or `gcp-kms://projects/`project`/locations/`location`/keyRings/`key_ring`/
+        # cryptoKeys/`key``
         # Corresponds to the JSON property `kekUri`
         # @return [String]
         attr_accessor :kek_uri
