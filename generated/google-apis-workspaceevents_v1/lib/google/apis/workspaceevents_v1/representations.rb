@@ -22,54 +22,6 @@ module Google
   module Apis
     module WorkspaceeventsV1
       
-      class ApiKeySecurityScheme
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AgentCapabilities
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AgentCard
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AgentCardSignature
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AgentExtension
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AgentInterface
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AgentProvider
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AgentSkill
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Artifact
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -82,19 +34,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuthorizationCodeOAuthFlow
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CancelTaskRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ClientCredentialsOAuthFlow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,18 +58,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class HttpAuthSecurityScheme
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ImplicitOAuthFlow
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListSubscriptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -148,31 +76,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MutualTlsSecurityScheme
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class NotificationEndpoint
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OAuth2SecurityScheme
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OAuthFlows
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OpenIdConnectSecurityScheme
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -185,12 +89,6 @@ module Google
       end
       
       class Part
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PasswordOAuthFlow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -209,18 +107,6 @@ module Google
       end
       
       class ReactivateSubscriptionRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Security
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SecurityScheme
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -245,12 +131,6 @@ module Google
       end
       
       class StreamResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class StringList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -292,106 +172,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ApiKeySecurityScheme
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :location, as: 'location'
-          property :name, as: 'name'
-        end
-      end
-      
-      class AgentCapabilities
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :extensions, as: 'extensions', class: Google::Apis::WorkspaceeventsV1::AgentExtension, decorator: Google::Apis::WorkspaceeventsV1::AgentExtension::Representation
-      
-          property :push_notifications, as: 'pushNotifications'
-          property :streaming, as: 'streaming'
-        end
-      end
-      
-      class AgentCard
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :additional_interfaces, as: 'additionalInterfaces', class: Google::Apis::WorkspaceeventsV1::AgentInterface, decorator: Google::Apis::WorkspaceeventsV1::AgentInterface::Representation
-      
-          property :capabilities, as: 'capabilities', class: Google::Apis::WorkspaceeventsV1::AgentCapabilities, decorator: Google::Apis::WorkspaceeventsV1::AgentCapabilities::Representation
-      
-          collection :default_input_modes, as: 'defaultInputModes'
-          collection :default_output_modes, as: 'defaultOutputModes'
-          property :description, as: 'description'
-          property :documentation_url, as: 'documentationUrl'
-          property :icon_url, as: 'iconUrl'
-          property :name, as: 'name'
-          property :preferred_transport, as: 'preferredTransport'
-          property :protocol_version, as: 'protocolVersion'
-          property :provider, as: 'provider', class: Google::Apis::WorkspaceeventsV1::AgentProvider, decorator: Google::Apis::WorkspaceeventsV1::AgentProvider::Representation
-      
-          collection :security, as: 'security', class: Google::Apis::WorkspaceeventsV1::Security, decorator: Google::Apis::WorkspaceeventsV1::Security::Representation
-      
-          hash :security_schemes, as: 'securitySchemes', class: Google::Apis::WorkspaceeventsV1::SecurityScheme, decorator: Google::Apis::WorkspaceeventsV1::SecurityScheme::Representation
-      
-          collection :signatures, as: 'signatures', class: Google::Apis::WorkspaceeventsV1::AgentCardSignature, decorator: Google::Apis::WorkspaceeventsV1::AgentCardSignature::Representation
-      
-          collection :skills, as: 'skills', class: Google::Apis::WorkspaceeventsV1::AgentSkill, decorator: Google::Apis::WorkspaceeventsV1::AgentSkill::Representation
-      
-          property :supports_authenticated_extended_card, as: 'supportsAuthenticatedExtendedCard'
-          property :url, as: 'url'
-          property :version, as: 'version'
-        end
-      end
-      
-      class AgentCardSignature
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :header, as: 'header'
-          property :protected, as: 'protected'
-          property :signature, as: 'signature'
-        end
-      end
-      
-      class AgentExtension
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          hash :params, as: 'params'
-          property :required, as: 'required'
-          property :uri, as: 'uri'
-        end
-      end
-      
-      class AgentInterface
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :transport, as: 'transport'
-          property :url, as: 'url'
-        end
-      end
-      
-      class AgentProvider
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :organization, as: 'organization'
-          property :url, as: 'url'
-        end
-      end
-      
-      class AgentSkill
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          collection :examples, as: 'examples'
-          property :id, as: 'id'
-          collection :input_modes, as: 'inputModes'
-          property :name, as: 'name'
-          collection :output_modes, as: 'outputModes'
-          collection :security, as: 'security', class: Google::Apis::WorkspaceeventsV1::Security, decorator: Google::Apis::WorkspaceeventsV1::Security::Representation
-      
-          collection :tags, as: 'tags'
-        end
-      end
-      
       class Artifact
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -413,28 +193,9 @@ module Google
         end
       end
       
-      class AuthorizationCodeOAuthFlow
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :authorization_url, as: 'authorizationUrl'
-          property :refresh_url, as: 'refreshUrl'
-          hash :scopes, as: 'scopes'
-          property :token_url, as: 'tokenUrl'
-        end
-      end
-      
       class CancelTaskRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class ClientCredentialsOAuthFlow
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :refresh_url, as: 'refreshUrl'
-          hash :scopes, as: 'scopes'
-          property :token_url, as: 'tokenUrl'
         end
       end
       
@@ -458,24 +219,6 @@ module Google
           property :file_with_uri, as: 'fileWithUri'
           property :mime_type, as: 'mimeType'
           property :name, as: 'name'
-        end
-      end
-      
-      class HttpAuthSecurityScheme
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bearer_format, as: 'bearerFormat'
-          property :description, as: 'description'
-          property :scheme, as: 'scheme'
-        end
-      end
-      
-      class ImplicitOAuthFlow
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :authorization_url, as: 'authorizationUrl'
-          property :refresh_url, as: 'refreshUrl'
-          hash :scopes, as: 'scopes'
         end
       end
       
@@ -511,49 +254,10 @@ module Google
         end
       end
       
-      class MutualTlsSecurityScheme
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-        end
-      end
-      
       class NotificationEndpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :pubsub_topic, as: 'pubsubTopic'
-        end
-      end
-      
-      class OAuth2SecurityScheme
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :flows, as: 'flows', class: Google::Apis::WorkspaceeventsV1::OAuthFlows, decorator: Google::Apis::WorkspaceeventsV1::OAuthFlows::Representation
-      
-          property :oauth2_metadata_url, as: 'oauth2MetadataUrl'
-        end
-      end
-      
-      class OAuthFlows
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :authorization_code, as: 'authorizationCode', class: Google::Apis::WorkspaceeventsV1::AuthorizationCodeOAuthFlow, decorator: Google::Apis::WorkspaceeventsV1::AuthorizationCodeOAuthFlow::Representation
-      
-          property :client_credentials, as: 'clientCredentials', class: Google::Apis::WorkspaceeventsV1::ClientCredentialsOAuthFlow, decorator: Google::Apis::WorkspaceeventsV1::ClientCredentialsOAuthFlow::Representation
-      
-          property :implicit, as: 'implicit', class: Google::Apis::WorkspaceeventsV1::ImplicitOAuthFlow, decorator: Google::Apis::WorkspaceeventsV1::ImplicitOAuthFlow::Representation
-      
-          property :password, as: 'password', class: Google::Apis::WorkspaceeventsV1::PasswordOAuthFlow, decorator: Google::Apis::WorkspaceeventsV1::PasswordOAuthFlow::Representation
-      
-        end
-      end
-      
-      class OpenIdConnectSecurityScheme
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :open_id_connect_url, as: 'openIdConnectUrl'
         end
       end
       
@@ -581,15 +285,6 @@ module Google
         end
       end
       
-      class PasswordOAuthFlow
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :refresh_url, as: 'refreshUrl'
-          hash :scopes, as: 'scopes'
-          property :token_url, as: 'tokenUrl'
-        end
-      end
-      
       class PayloadOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -612,30 +307,6 @@ module Google
       class ReactivateSubscriptionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class Security
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :schemes, as: 'schemes', class: Google::Apis::WorkspaceeventsV1::StringList, decorator: Google::Apis::WorkspaceeventsV1::StringList::Representation
-      
-        end
-      end
-      
-      class SecurityScheme
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_key_security_scheme, as: 'apiKeySecurityScheme', class: Google::Apis::WorkspaceeventsV1::ApiKeySecurityScheme, decorator: Google::Apis::WorkspaceeventsV1::ApiKeySecurityScheme::Representation
-      
-          property :http_auth_security_scheme, as: 'httpAuthSecurityScheme', class: Google::Apis::WorkspaceeventsV1::HttpAuthSecurityScheme, decorator: Google::Apis::WorkspaceeventsV1::HttpAuthSecurityScheme::Representation
-      
-          property :mtls_security_scheme, as: 'mtlsSecurityScheme', class: Google::Apis::WorkspaceeventsV1::MutualTlsSecurityScheme, decorator: Google::Apis::WorkspaceeventsV1::MutualTlsSecurityScheme::Representation
-      
-          property :oauth2_security_scheme, as: 'oauth2SecurityScheme', class: Google::Apis::WorkspaceeventsV1::OAuth2SecurityScheme, decorator: Google::Apis::WorkspaceeventsV1::OAuth2SecurityScheme::Representation
-      
-          property :open_id_connect_security_scheme, as: 'openIdConnectSecurityScheme', class: Google::Apis::WorkspaceeventsV1::OpenIdConnectSecurityScheme, decorator: Google::Apis::WorkspaceeventsV1::OpenIdConnectSecurityScheme::Representation
-      
         end
       end
       
@@ -681,13 +352,6 @@ module Google
       
           property :task, as: 'task', class: Google::Apis::WorkspaceeventsV1::Task, decorator: Google::Apis::WorkspaceeventsV1::Task::Representation
       
-        end
-      end
-      
-      class StringList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :list, as: 'list'
         end
       end
       
