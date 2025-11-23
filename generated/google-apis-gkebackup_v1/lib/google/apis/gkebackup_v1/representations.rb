@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetTagsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleLongrunningCancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -365,6 +371,18 @@ module Google
       end
       
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetTagsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetTagsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -704,6 +722,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :signed_url, as: 'signedUrl'
+        end
+      end
+      
+      class GetTagsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          hash :tags, as: 'tags'
         end
       end
       
@@ -1121,6 +1148,24 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::GkebackupV1::Policy, decorator: Google::Apis::GkebackupV1::Policy::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class SetTagsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :request_id, as: 'requestId'
+          hash :tags, as: 'tags'
+        end
+      end
+      
+      class SetTagsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          hash :tags, as: 'tags'
         end
       end
       
