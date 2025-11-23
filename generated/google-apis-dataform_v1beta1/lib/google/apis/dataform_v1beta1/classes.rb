@@ -2694,6 +2694,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :cluster_expressions
       
+        # Optional. The connection specifying the credentials to be used to read and
+        # write to external storage, such as Cloud Storage. The connection can have the
+        # form ``project`.`location`.`connection_id`` or `projects/`project`/locations/`
+        # location`/connections/`connection_id`", or be set to DEFAULT.
+        # Corresponds to the JSON property `connection`
+        # @return [String]
+        attr_accessor :connection
+      
         # A list of actions that this action depends on.
         # Corresponds to the JSON property `dependencyTargets`
         # @return [Array<Google::Apis::DataformV1beta1::Target>]
@@ -2704,6 +2712,11 @@ module Google
         # @return [Boolean]
         attr_accessor :disabled
         alias_method :disabled?, :disabled
+      
+        # Optional. The file format for the BigQuery table.
+        # Corresponds to the JSON property `fileFormat`
+        # @return [String]
+        attr_accessor :file_format
       
         # Contains settings for relations of type `INCREMENTAL_TABLE`.
         # Corresponds to the JSON property `incrementalTableConfig`
@@ -2752,6 +2765,18 @@ module Google
         # @return [String]
         attr_accessor :select_query
       
+        # Optional. The fully qualified location prefix of the external folder where
+        # table data is stored. The URI should be in the format `gs://bucket/
+        # path_to_table/`.
+        # Corresponds to the JSON property `storageUri`
+        # @return [String]
+        attr_accessor :storage_uri
+      
+        # Optional. The table format for the BigQuery table.
+        # Corresponds to the JSON property `tableFormat`
+        # @return [String]
+        attr_accessor :table_format
+      
         # Arbitrary, user-defined tags on this action.
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
@@ -2765,8 +2790,10 @@ module Google
         def update!(**args)
           @additional_options = args[:additional_options] if args.key?(:additional_options)
           @cluster_expressions = args[:cluster_expressions] if args.key?(:cluster_expressions)
+          @connection = args[:connection] if args.key?(:connection)
           @dependency_targets = args[:dependency_targets] if args.key?(:dependency_targets)
           @disabled = args[:disabled] if args.key?(:disabled)
+          @file_format = args[:file_format] if args.key?(:file_format)
           @incremental_table_config = args[:incremental_table_config] if args.key?(:incremental_table_config)
           @partition_expiration_days = args[:partition_expiration_days] if args.key?(:partition_expiration_days)
           @partition_expression = args[:partition_expression] if args.key?(:partition_expression)
@@ -2776,6 +2803,8 @@ module Google
           @relation_type = args[:relation_type] if args.key?(:relation_type)
           @require_partition_filter = args[:require_partition_filter] if args.key?(:require_partition_filter)
           @select_query = args[:select_query] if args.key?(:select_query)
+          @storage_uri = args[:storage_uri] if args.key?(:storage_uri)
+          @table_format = args[:table_format] if args.key?(:table_format)
           @tags = args[:tags] if args.key?(:tags)
         end
       end
