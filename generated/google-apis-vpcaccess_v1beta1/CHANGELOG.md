@@ -1,5 +1,9 @@
 # Release history for google-apis-vpcaccess_v1beta1
 
+### v0.18.0 (2025-11-23)
+
+* Regenerated from discovery document revision 20251116
+
 ### v0.17.0 (2025-11-02)
 
 * Regenerated from discovery document revision 20251021
