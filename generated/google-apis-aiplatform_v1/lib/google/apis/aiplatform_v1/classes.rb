@@ -14152,6 +14152,19 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The partial argument value of the function call. If provided,
+        # represents the arguments/fields that are streamed incrementally.
+        # Corresponds to the JSON property `partialArgs`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PartialArg>]
+        attr_accessor :partial_args
+      
+        # Optional. Whether this is the last part of the FunctionCall. If true, another
+        # partial message for the current FunctionCall is expected to follow.
+        # Corresponds to the JSON property `willContinue`
+        # @return [Boolean]
+        attr_accessor :will_continue
+        alias_method :will_continue?, :will_continue
+      
         def initialize(**args)
            update!(**args)
         end
@@ -14160,6 +14173,8 @@ module Google
         def update!(**args)
           @args = args[:args] if args.key?(:args)
           @name = args[:name] if args.key?(:name)
+          @partial_args = args[:partial_args] if args.key?(:partial_args)
+          @will_continue = args[:will_continue] if args.key?(:will_continue)
         end
       end
       
@@ -14179,6 +14194,14 @@ module Google
         # @return [String]
         attr_accessor :mode
       
+        # Optional. When set to true, arguments of a single function call will be
+        # streamed out in multiple parts/contents/responses. Partial parameter results
+        # will be returned in the [FunctionCall.partial_args] field.
+        # Corresponds to the JSON property `streamFunctionCallArguments`
+        # @return [Boolean]
+        attr_accessor :stream_function_call_arguments
+        alias_method :stream_function_call_arguments?, :stream_function_call_arguments
+      
         def initialize(**args)
            update!(**args)
         end
@@ -14187,6 +14210,7 @@ module Google
         def update!(**args)
           @allowed_function_names = args[:allowed_function_names] if args.key?(:allowed_function_names)
           @mode = args[:mode] if args.key?(:mode)
+          @stream_function_call_arguments = args[:stream_function_call_arguments] if args.key?(:stream_function_call_arguments)
         end
       end
       
@@ -14205,8 +14229,8 @@ module Google
         attr_accessor :description
       
         # Required. The name of the function to call. Must start with a letter or an
-        # underscore. Must be a-z, A-Z, 0-9, or contain underscores, dots and dashes,
-        # with a maximum length of 64.
+        # underscore. Must be a-z, A-Z, 0-9, or contain underscores, dots, colons and
+        # dashes, with a maximum length of 64.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -15349,6 +15373,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :thinking_budget
       
+        # Optional. The number of thoughts tokens that the model should generate.
+        # Corresponds to the JSON property `thinkingLevel`
+        # @return [String]
+        attr_accessor :thinking_level
+      
         def initialize(**args)
            update!(**args)
         end
@@ -15357,6 +15386,7 @@ module Google
         def update!(**args)
           @include_thoughts = args[:include_thoughts] if args.key?(:include_thoughts)
           @thinking_budget = args[:thinking_budget] if args.key?(:thinking_budget)
+          @thinking_level = args[:thinking_level] if args.key?(:thinking_level)
         end
       end
       
@@ -16137,6 +16167,12 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ImageConfigImageOutputOptions]
         attr_accessor :image_output_options
       
+        # Optional. Specifies the size of generated images. Supported values are `1K`, `
+        # 2K`, `4K`. If not specified, the model will use default value `1K`.
+        # Corresponds to the JSON property `imageSize`
+        # @return [String]
+        attr_accessor :image_size
+      
         # Optional. Controls whether the model can generate people.
         # Corresponds to the JSON property `personGeneration`
         # @return [String]
@@ -16150,6 +16186,7 @@ module Google
         def update!(**args)
           @aspect_ratio = args[:aspect_ratio] if args.key?(:aspect_ratio)
           @image_output_options = args[:image_output_options] if args.key?(:image_output_options)
+          @image_size = args[:image_size] if args.key?(:image_size)
           @person_generation = args[:person_generation] if args.key?(:person_generation)
         end
       end
@@ -19318,6 +19355,236 @@ module Google
         def update!(**args)
           @metric_id = args[:metric_id] if args.key?(:metric_id)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Configuration for organizing memories for a particular scope.
+      class GoogleCloudAiplatformV1MemoryBankCustomizationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Examples of how to generate memories for a particular scope.
+        # Corresponds to the JSON property `generateMemoriesExamples`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExample>]
+        attr_accessor :generate_memories_examples
+      
+        # Optional. Topics of information that should be extracted from conversations
+        # and stored as memories. If not set, then Memory Bank's default topics will be
+        # used.
+        # Corresponds to the JSON property `memoryTopics`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopic>]
+        attr_accessor :memory_topics
+      
+        # Optional. The scope keys (i.e. 'user_id') for which to use this config. A
+        # request's scope must include all of the provided keys for the config to be
+        # used (order does not matter). If empty, then the config will be used for all
+        # requests that do not have a more specific config. Only one default config is
+        # allowed per Memory Bank.
+        # Corresponds to the JSON property `scopeKeys`
+        # @return [Array<String>]
+        attr_accessor :scope_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generate_memories_examples = args[:generate_memories_examples] if args.key?(:generate_memories_examples)
+          @memory_topics = args[:memory_topics] if args.key?(:memory_topics)
+          @scope_keys = args[:scope_keys] if args.key?(:scope_keys)
+        end
+      end
+      
+      # An example of how to generate memories for a particular scope.
+      class GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExample
+        include Google::Apis::Core::Hashable
+      
+        # A conversation source for the example. This is similar to `
+        # DirectContentsSource`.
+        # Corresponds to the JSON property `conversationSource`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSource]
+        attr_accessor :conversation_source
+      
+        # Optional. The memories that are expected to be generated from the input
+        # conversation. An empty list indicates that no memories are expected to be
+        # generated for the input conversation.
+        # Corresponds to the JSON property `generatedMemories`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleGeneratedMemory>]
+        attr_accessor :generated_memories
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_source = args[:conversation_source] if args.key?(:conversation_source)
+          @generated_memories = args[:generated_memories] if args.key?(:generated_memories)
+        end
+      end
+      
+      # A conversation source for the example. This is similar to `
+      # DirectContentsSource`.
+      class GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The input conversation events for the example.
+        # Corresponds to the JSON property `events`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSourceEvent>]
+        attr_accessor :events
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @events = args[:events] if args.key?(:events)
+        end
+      end
+      
+      # A single conversation event.
+      class GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSourceEvent
+        include Google::Apis::Core::Hashable
+      
+        # The structured data content of a message. A Content message contains a `role`
+        # field, which indicates the producer of the content, and a `parts` field, which
+        # contains the multi-part data of the message.
+        # Corresponds to the JSON property `content`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
+        attr_accessor :content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+        end
+      end
+      
+      # A memory generated by the operation.
+      class GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleGeneratedMemory
+        include Google::Apis::Core::Hashable
+      
+        # Required. The fact to generate a memory from.
+        # Corresponds to the JSON property `fact`
+        # @return [String]
+        attr_accessor :fact
+      
+        # Optional. The list of topics that the memory should be associated with. For
+        # example, use `custom_memory_topic_label = "jargon"` if the extracted memory is
+        # an example of memory extraction for the custom topic `jargon`.
+        # Corresponds to the JSON property `topics`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MemoryTopicId>]
+        attr_accessor :topics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fact = args[:fact] if args.key?(:fact)
+          @topics = args[:topics] if args.key?(:topics)
+        end
+      end
+      
+      # A topic of information that should be extracted from conversations and stored
+      # as memories.
+      class GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopic
+        include Google::Apis::Core::Hashable
+      
+        # A custom memory topic defined by the developer.
+        # Corresponds to the JSON property `customMemoryTopic`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopicCustomMemoryTopic]
+        attr_accessor :custom_memory_topic
+      
+        # A managed memory topic defined by the system.
+        # Corresponds to the JSON property `managedMemoryTopic`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopicManagedMemoryTopic]
+        attr_accessor :managed_memory_topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_memory_topic = args[:custom_memory_topic] if args.key?(:custom_memory_topic)
+          @managed_memory_topic = args[:managed_memory_topic] if args.key?(:managed_memory_topic)
+        end
+      end
+      
+      # A custom memory topic defined by the developer.
+      class GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopicCustomMemoryTopic
+        include Google::Apis::Core::Hashable
+      
+        # Required. Description of the memory topic. This should explain what
+        # information should be extracted for this topic.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The label of the topic.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @label = args[:label] if args.key?(:label)
+        end
+      end
+      
+      # A managed memory topic defined by the system.
+      class GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopicManagedMemoryTopic
+        include Google::Apis::Core::Hashable
+      
+        # Required. The managed topic.
+        # Corresponds to the JSON property `managedTopicEnum`
+        # @return [String]
+        attr_accessor :managed_topic_enum
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @managed_topic_enum = args[:managed_topic_enum] if args.key?(:managed_topic_enum)
+        end
+      end
+      
+      # A memory topic identifier. This will be used to label a Memory and to restrict
+      # which topics are eligible for generation or retrieval.
+      class GoogleCloudAiplatformV1MemoryTopicId
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The custom memory topic label.
+        # Corresponds to the JSON property `customMemoryTopicLabel`
+        # @return [String]
+        attr_accessor :custom_memory_topic_label
+      
+        # Optional. The managed memory topic.
+        # Corresponds to the JSON property `managedMemoryTopic`
+        # @return [String]
+        attr_accessor :managed_memory_topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_memory_topic_label = args[:custom_memory_topic_label] if args.key?(:custom_memory_topic_label)
+          @managed_memory_topic = args[:managed_memory_topic] if args.key?(:managed_memory_topic)
         end
       end
       
@@ -24356,6 +24623,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Blob]
         attr_accessor :inline_data
       
+        # per part media resolution. Media resolution for the input media.
+        # Corresponds to the JSON property `mediaResolution`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PartMediaResolution]
+        attr_accessor :media_resolution
+      
         # Optional. The text content of the part.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -24393,10 +24665,83 @@ module Google
           @function_call = args[:function_call] if args.key?(:function_call)
           @function_response = args[:function_response] if args.key?(:function_response)
           @inline_data = args[:inline_data] if args.key?(:inline_data)
+          @media_resolution = args[:media_resolution] if args.key?(:media_resolution)
           @text = args[:text] if args.key?(:text)
           @thought = args[:thought] if args.key?(:thought)
           @thought_signature = args[:thought_signature] if args.key?(:thought_signature)
           @video_metadata = args[:video_metadata] if args.key?(:video_metadata)
+        end
+      end
+      
+      # per part media resolution. Media resolution for the input media.
+      class GoogleCloudAiplatformV1PartMediaResolution
+        include Google::Apis::Core::Hashable
+      
+        # The tokenization quality used for given media.
+        # Corresponds to the JSON property `level`
+        # @return [String]
+        attr_accessor :level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @level = args[:level] if args.key?(:level)
+        end
+      end
+      
+      # Partial argument value of the function call.
+      class GoogleCloudAiplatformV1PartialArg
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Represents a boolean value.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # Required. A JSON Path (RFC 9535) to the argument being streamed. https://
+        # datatracker.ietf.org/doc/html/rfc9535. e.g. "$.foo.bar[0].data".
+        # Corresponds to the JSON property `jsonPath`
+        # @return [String]
+        attr_accessor :json_path
+      
+        # Optional. Represents a null value.
+        # Corresponds to the JSON property `nullValue`
+        # @return [String]
+        attr_accessor :null_value
+      
+        # Optional. Represents a double value.
+        # Corresponds to the JSON property `numberValue`
+        # @return [Float]
+        attr_accessor :number_value
+      
+        # Optional. Represents a string value.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        # Optional. Whether this is not the last part of the same json_path. If true,
+        # another PartialArg message for the current json_path is expected to follow.
+        # Corresponds to the JSON property `willContinue`
+        # @return [Boolean]
+        attr_accessor :will_continue
+        alias_method :will_continue?, :will_continue
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @json_path = args[:json_path] if args.key?(:json_path)
+          @null_value = args[:null_value] if args.key?(:null_value)
+          @number_value = args[:number_value] if args.key?(:number_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+          @will_continue = args[:will_continue] if args.key?(:will_continue)
         end
       end
       
@@ -28992,6 +29337,11 @@ module Google
       class GoogleCloudAiplatformV1ReasoningEngine
         include Google::Apis::Core::Hashable
       
+        # Configuration for how Agent Engine sub-resources should manage context.
+        # Corresponds to the JSON property `contextSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineContextSpec]
+        attr_accessor :context_spec
+      
         # Output only. Timestamp when this ReasoningEngine was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -29046,6 +29396,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @context_spec = args[:context_spec] if args.key?(:context_spec)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -29055,6 +29406,185 @@ module Google
           @name = args[:name] if args.key?(:name)
           @spec = args[:spec] if args.key?(:spec)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Configuration for how Agent Engine sub-resources should manage context.
+      class GoogleCloudAiplatformV1ReasoningEngineContextSpec
+        include Google::Apis::Core::Hashable
+      
+        # Specification for a Memory Bank.
+        # Corresponds to the JSON property `memoryBankConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineContextSpecMemoryBankConfig]
+        attr_accessor :memory_bank_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @memory_bank_config = args[:memory_bank_config] if args.key?(:memory_bank_config)
+        end
+      end
+      
+      # Specification for a Memory Bank.
+      class GoogleCloudAiplatformV1ReasoningEngineContextSpecMemoryBankConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Configuration for how to customize Memory Bank behavior for a
+        # particular scope.
+        # Corresponds to the JSON property `customizationConfigs`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MemoryBankCustomizationConfig>]
+        attr_accessor :customization_configs
+      
+        # If true, no memory revisions will be created for any requests to the Memory
+        # Bank.
+        # Corresponds to the JSON property `disableMemoryRevisions`
+        # @return [Boolean]
+        attr_accessor :disable_memory_revisions
+        alias_method :disable_memory_revisions?, :disable_memory_revisions
+      
+        # Configuration for how to generate memories.
+        # Corresponds to the JSON property `generationConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineContextSpecMemoryBankConfigGenerationConfig]
+        attr_accessor :generation_config
+      
+        # Configuration for how to perform similarity search on memories.
+        # Corresponds to the JSON property `similaritySearchConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig]
+        attr_accessor :similarity_search_config
+      
+        # Configuration for automatically setting the TTL ("time-to-live") of the
+        # memories in the Memory Bank.
+        # Corresponds to the JSON property `ttlConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineContextSpecMemoryBankConfigTtlConfig]
+        attr_accessor :ttl_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customization_configs = args[:customization_configs] if args.key?(:customization_configs)
+          @disable_memory_revisions = args[:disable_memory_revisions] if args.key?(:disable_memory_revisions)
+          @generation_config = args[:generation_config] if args.key?(:generation_config)
+          @similarity_search_config = args[:similarity_search_config] if args.key?(:similarity_search_config)
+          @ttl_config = args[:ttl_config] if args.key?(:ttl_config)
+        end
+      end
+      
+      # Configuration for how to generate memories.
+      class GoogleCloudAiplatformV1ReasoningEngineContextSpecMemoryBankConfigGenerationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The model used to generate memories. Format: `projects/`project`/
+        # locations/`location`/publishers/google/models/`model``.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model = args[:model] if args.key?(:model)
+        end
+      end
+      
+      # Configuration for how to perform similarity search on memories.
+      class GoogleCloudAiplatformV1ReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The model used to generate embeddings to lookup similar memories.
+        # Format: `projects/`project`/locations/`location`/publishers/google/models/`
+        # model``.
+        # Corresponds to the JSON property `embeddingModel`
+        # @return [String]
+        attr_accessor :embedding_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @embedding_model = args[:embedding_model] if args.key?(:embedding_model)
+        end
+      end
+      
+      # Configuration for automatically setting the TTL ("time-to-live") of the
+      # memories in the Memory Bank.
+      class GoogleCloudAiplatformV1ReasoningEngineContextSpecMemoryBankConfigTtlConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The default TTL duration of the memories in the Memory Bank. This
+        # applies to all operations that create or update a memory.
+        # Corresponds to the JSON property `defaultTtl`
+        # @return [String]
+        attr_accessor :default_ttl
+      
+        # Configuration for TTL of the memories in the Memory Bank based on the action
+        # that created or updated the memory.
+        # Corresponds to the JSON property `granularTtlConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig]
+        attr_accessor :granular_ttl_config
+      
+        # Optional. The default TTL duration of the memory revisions in the Memory Bank.
+        # This applies to all operations that create a memory revision. If not set, a
+        # default TTL of 365 days will be used.
+        # Corresponds to the JSON property `memoryRevisionDefaultTtl`
+        # @return [String]
+        attr_accessor :memory_revision_default_ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_ttl = args[:default_ttl] if args.key?(:default_ttl)
+          @granular_ttl_config = args[:granular_ttl_config] if args.key?(:granular_ttl_config)
+          @memory_revision_default_ttl = args[:memory_revision_default_ttl] if args.key?(:memory_revision_default_ttl)
+        end
+      end
+      
+      # Configuration for TTL of the memories in the Memory Bank based on the action
+      # that created or updated the memory.
+      class GoogleCloudAiplatformV1ReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The TTL duration for memories uploaded via CreateMemory.
+        # Corresponds to the JSON property `createTtl`
+        # @return [String]
+        attr_accessor :create_ttl
+      
+        # Optional. The TTL duration for memories newly generated via GenerateMemories (
+        # GenerateMemoriesResponse.GeneratedMemory.Action.CREATED).
+        # Corresponds to the JSON property `generateCreatedTtl`
+        # @return [String]
+        attr_accessor :generate_created_ttl
+      
+        # Optional. The TTL duration for memories updated via GenerateMemories (
+        # GenerateMemoriesResponse.GeneratedMemory.Action.UPDATED). In the case of an
+        # UPDATE action, the `expire_time` of the existing memory will be updated to the
+        # new value (now + TTL).
+        # Corresponds to the JSON property `generateUpdatedTtl`
+        # @return [String]
+        attr_accessor :generate_updated_ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_ttl = args[:create_ttl] if args.key?(:create_ttl)
+          @generate_created_ttl = args[:generate_created_ttl] if args.key?(:generate_created_ttl)
+          @generate_updated_ttl = args[:generate_updated_ttl] if args.key?(:generate_updated_ttl)
         end
       end
       
@@ -29451,6 +29981,34 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The configuration for the replicated voice to use.
+      class GoogleCloudAiplatformV1ReplicatedVoiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The mimetype of the voice sample. Currently only mime_type=audio/pcm
+        # is supported, which is raw mono 16-bit signed little-endian pcm data, with 24k
+        # sampling rate.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Optional. The sample of the custom voice.
+        # Corresponds to the JSON property `voiceSampleAudio`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :voice_sample_audio
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @voice_sample_audio = args[:voice_sample_audio] if args.key?(:voice_sample_audio)
         end
       end
       
@@ -44341,6 +44899,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PrebuiltVoiceConfig]
         attr_accessor :prebuilt_voice_config
       
+        # The configuration for the replicated voice to use.
+        # Corresponds to the JSON property `replicatedVoiceConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReplicatedVoiceConfig]
+        attr_accessor :replicated_voice_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -44348,6 +44911,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @prebuilt_voice_config = args[:prebuilt_voice_config] if args.key?(:prebuilt_voice_config)
+          @replicated_voice_config = args[:replicated_voice_config] if args.key?(:replicated_voice_config)
         end
       end
       
@@ -44926,8 +45490,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
