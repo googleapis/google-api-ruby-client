@@ -780,8 +780,8 @@ module Google
         # @return [String]
         attr_accessor :anchor
       
-        # Output only. The email of the user who is assigned to this comment, if none is
-        # assigned this will be unset.
+        # Output only. The email address of the user assigned to this comment. If no
+        # user is assigned, the field is unset.
         # Corresponds to the JSON property `assigneeEmailAddress`
         # @return [String]
         attr_accessor :assignee_email_address
@@ -825,8 +825,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Output only. The emails of the users who were mentioned in this comment, if
-        # none were mentioned this will be an empty list.
+        # Output only. A list of email addresses for users mentioned in this comment. If
+        # no users are mentioned, the list is empty.
         # Corresponds to the JSON property `mentionedEmailAddresses`
         # @return [Array<String>]
         attr_accessor :mentioned_email_addresses
@@ -3439,8 +3439,8 @@ module Google
         # @return [String]
         attr_accessor :action
       
-        # Output only. The email of the user who is assigned to this reply, if none is
-        # assigned this will be unset.
+        # Output only. The email address of the user assigned to this comment. If no
+        # user is assigned, the field is unset.
         # Corresponds to the JSON property `assigneeEmailAddress`
         # @return [String]
         attr_accessor :assignee_email_address
@@ -3485,8 +3485,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Output only. The emails of the users who were mentioned in this reply, if none
-        # were mentioned this will be an empty list.
+        # Output only. A list of email addresses for users mentioned in this comment. If
+        # no users are mentioned, the list is empty.
         # Corresponds to the JSON property `mentionedEmailAddresses`
         # @return [Array<String>]
         attr_accessor :mentioned_email_addresses
