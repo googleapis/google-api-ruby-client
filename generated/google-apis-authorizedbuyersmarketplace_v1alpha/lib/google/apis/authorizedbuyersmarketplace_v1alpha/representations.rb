@@ -494,6 +494,8 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           collection :eligible_seat_ids, as: 'eligibleSeatIds'
+          property :floor_price_cpm, as: 'floorPriceCpm', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::Money, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::Money::Representation
+      
           property :name, as: 'name'
           collection :subscribed_buyers, as: 'subscribedBuyers'
           collection :subscribed_clients, as: 'subscribedClients'
