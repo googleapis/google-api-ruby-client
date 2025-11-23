@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PeriodicExportConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PscConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -358,6 +364,8 @@ module Google
           property :name, as: 'name'
           property :oauth_config, as: 'oauthConfig', class: Google::Apis::LookerV1::OAuthConfig, decorator: Google::Apis::LookerV1::OAuthConfig::Representation
       
+          property :periodic_export_config, as: 'periodicExportConfig', class: Google::Apis::LookerV1::PeriodicExportConfig, decorator: Google::Apis::LookerV1::PeriodicExportConfig::Representation
+      
           property :platform_edition, as: 'platformEdition'
           property :private_ip_enabled, as: 'privateIpEnabled'
           property :psc_config, as: 'pscConfig', class: Google::Apis::LookerV1::PscConfig, decorator: Google::Apis::LookerV1::PscConfig::Representation
@@ -483,6 +491,16 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class PeriodicExportConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_uri, as: 'gcsUri'
+          property :kms_key, as: 'kmsKey'
+          property :start_time, as: 'startTime', class: Google::Apis::LookerV1::TimeOfDay, decorator: Google::Apis::LookerV1::TimeOfDay::Representation
+      
         end
       end
       
