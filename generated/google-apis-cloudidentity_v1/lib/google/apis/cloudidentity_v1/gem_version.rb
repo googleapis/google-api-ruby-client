@@ -16,13 +16,13 @@ module Google
   module Apis
     module CloudidentityV1
       # Version of the google-apis-cloudidentity_v1 gem
-      GEM_VERSION = "0.53.0"
+      GEM_VERSION = "0.54.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.18.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20251021"
+      REVISION = "20251118"
     end
   end
 end
