@@ -516,6 +516,11 @@ module Google
         # @return [Google::Apis::LookerV1::OAuthConfig]
         attr_accessor :oauth_config
       
+        # Configuration for periodic export.
+        # Corresponds to the JSON property `periodicExportConfig`
+        # @return [Google::Apis::LookerV1::PeriodicExportConfig]
+        attr_accessor :periodic_export_config
+      
         # Platform edition.
         # Corresponds to the JSON property `platformEdition`
         # @return [String]
@@ -608,6 +613,7 @@ module Google
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @name = args[:name] if args.key?(:name)
           @oauth_config = args[:oauth_config] if args.key?(:oauth_config)
+          @periodic_export_config = args[:periodic_export_config] if args.key?(:periodic_export_config)
           @platform_edition = args[:platform_edition] if args.key?(:platform_edition)
           @private_ip_enabled = args[:private_ip_enabled] if args.key?(:private_ip_enabled)
           @psc_config = args[:psc_config] if args.key?(:psc_config)
@@ -773,8 +779,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1034,6 +1041,41 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Configuration for periodic export.
+      class PeriodicExportConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Cloud Storage bucket URI for periodic export. Format: gs://`
+        # bucket_name`
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        # Required. Name of the CMEK key in KMS. Format: projects/`project`/locations/`
+        # location`/keyRings/`key_ring`/cryptoKeys/`crypto_key`
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::LookerV1::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
