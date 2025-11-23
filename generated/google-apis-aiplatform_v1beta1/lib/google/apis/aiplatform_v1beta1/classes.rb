@@ -8289,7 +8289,8 @@ module Google
         end
       end
       
-      # Statistics computed for datasets used for distillation.
+      # Statistics for distillation prompt dataset. These statistics do not include
+      # the responses sampled from the teacher model.
       class GoogleCloudAiplatformV1beta1DistillationDataStats
         include Google::Apis::Core::Hashable
       
@@ -16490,6 +16491,19 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The partial argument value of the function call. If provided,
+        # represents the arguments/fields that are streamed incrementally.
+        # Corresponds to the JSON property `partialArgs`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PartialArg>]
+        attr_accessor :partial_args
+      
+        # Optional. Whether this is the last part of the FunctionCall. If true, another
+        # partial message for the current FunctionCall is expected to follow.
+        # Corresponds to the JSON property `willContinue`
+        # @return [Boolean]
+        attr_accessor :will_continue
+        alias_method :will_continue?, :will_continue
+      
         def initialize(**args)
            update!(**args)
         end
@@ -16499,6 +16513,8 @@ module Google
           @args = args[:args] if args.key?(:args)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
+          @partial_args = args[:partial_args] if args.key?(:partial_args)
+          @will_continue = args[:will_continue] if args.key?(:will_continue)
         end
       end
       
@@ -16518,6 +16534,14 @@ module Google
         # @return [String]
         attr_accessor :mode
       
+        # Optional. When set to true, arguments of a single function call will be
+        # streamed out in multiple parts/contents/responses. Partial parameter results
+        # will be returned in the [FunctionCall.partial_args] field.
+        # Corresponds to the JSON property `streamFunctionCallArguments`
+        # @return [Boolean]
+        attr_accessor :stream_function_call_arguments
+        alias_method :stream_function_call_arguments?, :stream_function_call_arguments
+      
         def initialize(**args)
            update!(**args)
         end
@@ -16526,6 +16550,7 @@ module Google
         def update!(**args)
           @allowed_function_names = args[:allowed_function_names] if args.key?(:allowed_function_names)
           @mode = args[:mode] if args.key?(:mode)
+          @stream_function_call_arguments = args[:stream_function_call_arguments] if args.key?(:stream_function_call_arguments)
         end
       end
       
@@ -16544,8 +16569,8 @@ module Google
         attr_accessor :description
       
         # Required. The name of the function to call. Must start with a letter or an
-        # underscore. Must be a-z, A-Z, 0-9, or contain underscores, dots and dashes,
-        # with a maximum length of 64.
+        # underscore. Must be a-z, A-Z, 0-9, or contain underscores, dots, colons and
+        # dashes, with a maximum length of 64.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -18124,6 +18149,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :thinking_budget
       
+        # Optional. The number of thoughts tokens that the model should generate.
+        # Corresponds to the JSON property `thinkingLevel`
+        # @return [String]
+        attr_accessor :thinking_level
+      
         def initialize(**args)
            update!(**args)
         end
@@ -18132,6 +18162,7 @@ module Google
         def update!(**args)
           @include_thoughts = args[:include_thoughts] if args.key?(:include_thoughts)
           @thinking_budget = args[:thinking_budget] if args.key?(:thinking_budget)
+          @thinking_level = args[:thinking_level] if args.key?(:thinking_level)
         end
       end
       
@@ -18920,6 +18951,12 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ImageConfigImageOutputOptions]
         attr_accessor :image_output_options
       
+        # Optional. Specifies the size of generated images. Supported values are `1K`, `
+        # 2K`, `4K`. If not specified, the model will use default value `1K`.
+        # Corresponds to the JSON property `imageSize`
+        # @return [String]
+        attr_accessor :image_size
+      
         # Optional. Controls whether the model can generate people.
         # Corresponds to the JSON property `personGeneration`
         # @return [String]
@@ -18933,6 +18970,7 @@ module Google
         def update!(**args)
           @aspect_ratio = args[:aspect_ratio] if args.key?(:aspect_ratio)
           @image_output_options = args[:image_output_options] if args.key?(:image_output_options)
+          @image_size = args[:image_size] if args.key?(:image_size)
           @person_generation = args[:person_generation] if args.key?(:person_generation)
         end
       end
@@ -22582,6 +22620,13 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # Optional. Immutable. The minimum GPU driver version that this machine requires.
+        # For example, "535.104.06". If not specified, the default GPU driver version
+        # will be used by the underlying infrastructure.
+        # Corresponds to the JSON property `minGpuDriverVersion`
+        # @return [String]
+        attr_accessor :min_gpu_driver_version
+      
         # Optional. Immutable. The number of nodes per replica for multihost GPU
         # deployments.
         # Corresponds to the JSON property `multihostGpuNodeCount`
@@ -22611,6 +22656,7 @@ module Google
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @gpu_partition_size = args[:gpu_partition_size] if args.key?(:gpu_partition_size)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @min_gpu_driver_version = args[:min_gpu_driver_version] if args.key?(:min_gpu_driver_version)
           @multihost_gpu_node_count = args[:multihost_gpu_node_count] if args.key?(:multihost_gpu_node_count)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @tpu_topology = args[:tpu_topology] if args.key?(:tpu_topology)
@@ -29407,6 +29453,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Blob]
         attr_accessor :inline_data
       
+        # per part media resolution. Media resolution for the input media.
+        # Corresponds to the JSON property `mediaResolution`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PartMediaResolution]
+        attr_accessor :media_resolution
+      
         # Optional. The text content of the part.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -29444,10 +29495,83 @@ module Google
           @function_call = args[:function_call] if args.key?(:function_call)
           @function_response = args[:function_response] if args.key?(:function_response)
           @inline_data = args[:inline_data] if args.key?(:inline_data)
+          @media_resolution = args[:media_resolution] if args.key?(:media_resolution)
           @text = args[:text] if args.key?(:text)
           @thought = args[:thought] if args.key?(:thought)
           @thought_signature = args[:thought_signature] if args.key?(:thought_signature)
           @video_metadata = args[:video_metadata] if args.key?(:video_metadata)
+        end
+      end
+      
+      # per part media resolution. Media resolution for the input media.
+      class GoogleCloudAiplatformV1beta1PartMediaResolution
+        include Google::Apis::Core::Hashable
+      
+        # The tokenization quality used for given media.
+        # Corresponds to the JSON property `level`
+        # @return [String]
+        attr_accessor :level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @level = args[:level] if args.key?(:level)
+        end
+      end
+      
+      # Partial argument value of the function call.
+      class GoogleCloudAiplatformV1beta1PartialArg
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Represents a boolean value.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # Required. A JSON Path (RFC 9535) to the argument being streamed. https://
+        # datatracker.ietf.org/doc/html/rfc9535. e.g. "$.foo.bar[0].data".
+        # Corresponds to the JSON property `jsonPath`
+        # @return [String]
+        attr_accessor :json_path
+      
+        # Optional. Represents a null value.
+        # Corresponds to the JSON property `nullValue`
+        # @return [String]
+        attr_accessor :null_value
+      
+        # Optional. Represents a double value.
+        # Corresponds to the JSON property `numberValue`
+        # @return [Float]
+        attr_accessor :number_value
+      
+        # Optional. Represents a string value.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        # Optional. Whether this is not the last part of the same json_path. If true,
+        # another PartialArg message for the current json_path is expected to follow.
+        # Corresponds to the JSON property `willContinue`
+        # @return [Boolean]
+        attr_accessor :will_continue
+        alias_method :will_continue?, :will_continue
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @json_path = args[:json_path] if args.key?(:json_path)
+          @null_value = args[:null_value] if args.key?(:null_value)
+          @number_value = args[:number_value] if args.key?(:number_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+          @will_continue = args[:will_continue] if args.key?(:will_continue)
         end
       end
       
@@ -35795,6 +35919,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @example_ids = args[:example_ids] if args.key?(:example_ids)
+        end
+      end
+      
+      # The configuration for the replicated voice to use.
+      class GoogleCloudAiplatformV1beta1ReplicatedVoiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The mimetype of the voice sample. Currently only mime_type=audio/pcm
+        # is supported, which is raw mono 16-bit signed little-endian pcm data, with 24k
+        # sampling rate.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Optional. The sample of the custom voice.
+        # Corresponds to the JSON property `voiceSampleAudio`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :voice_sample_audio
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @voice_sample_audio = args[:voice_sample_audio] if args.key?(:voice_sample_audio)
         end
       end
       
@@ -50962,7 +51114,8 @@ module Google
       class GoogleCloudAiplatformV1beta1TuningDataStats
         include Google::Apis::Core::Hashable
       
-        # Statistics computed for datasets used for distillation.
+        # Statistics for distillation prompt dataset. These statistics do not include
+        # the responses sampled from the teacher model.
         # Corresponds to the JSON property `distillationDataStats`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DistillationDataStats]
         attr_accessor :distillation_data_stats
@@ -52568,6 +52721,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PrebuiltVoiceConfig]
         attr_accessor :prebuilt_voice_config
       
+        # The configuration for the replicated voice to use.
+        # Corresponds to the JSON property `replicatedVoiceConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReplicatedVoiceConfig]
+        attr_accessor :replicated_voice_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -52575,6 +52733,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @prebuilt_voice_config = args[:prebuilt_voice_config] if args.key?(:prebuilt_voice_config)
+          @replicated_voice_config = args[:replicated_voice_config] if args.key?(:replicated_voice_config)
         end
       end
       
@@ -53221,8 +53380,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
