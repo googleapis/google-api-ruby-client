@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BaseDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BasePlan
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -658,6 +664,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalAccountIds
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExternalSubscription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -683,6 +695,12 @@ module Google
       end
       
       class ExternallyHostedApk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FreeTrialDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -850,7 +868,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IntroductoryPriceDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IntroductoryPriceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ItemReplacement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -977,6 +1007,12 @@ module Google
       end
       
       class OfferDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OfferPhaseDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1138,6 +1174,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OutOfAppPurchaseContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PageInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1247,6 +1289,12 @@ module Google
       end
       
       class ProductPurchasesAcknowledgeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProrationPeriodDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2165,6 +2213,12 @@ module Google
         end
       end
       
+      class BaseDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class BasePlan
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2845,6 +2899,14 @@ module Google
         end
       end
       
+      class ExternalAccountIds
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :obfuscated_account_id, as: 'obfuscatedAccountId'
+          property :obfuscated_profile_id, as: 'obfuscatedProfileId'
+        end
+      end
+      
       class ExternalSubscription
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2913,6 +2975,12 @@ module Google
       
           property :version_code, as: 'versionCode'
           property :version_name, as: 'versionName'
+        end
+      end
+      
+      class FreeTrialDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -3190,6 +3258,12 @@ module Google
         end
       end
       
+      class IntroductoryPriceDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class IntroductoryPriceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3197,6 +3271,16 @@ module Google
           property :introductory_price_currency_code, as: 'introductoryPriceCurrencyCode'
           property :introductory_price_cycles, as: 'introductoryPriceCycles'
           property :introductory_price_period, as: 'introductoryPricePeriod'
+        end
+      end
+      
+      class ItemReplacement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_plan_id, as: 'basePlanId'
+          property :offer_id, as: 'offerId'
+          property :product_id, as: 'productId'
+          property :replacement_mode, as: 'replacementMode'
         end
       end
       
@@ -3405,6 +3489,20 @@ module Google
           property :base_plan_id, as: 'basePlanId'
           property :offer_id, as: 'offerId'
           collection :offer_tags, as: 'offerTags'
+        end
+      end
+      
+      class OfferPhaseDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_details, as: 'baseDetails', class: Google::Apis::AndroidpublisherV3::BaseDetails, decorator: Google::Apis::AndroidpublisherV3::BaseDetails::Representation
+      
+          property :free_trial_details, as: 'freeTrialDetails', class: Google::Apis::AndroidpublisherV3::FreeTrialDetails, decorator: Google::Apis::AndroidpublisherV3::FreeTrialDetails::Representation
+      
+          property :introductory_price_details, as: 'introductoryPriceDetails', class: Google::Apis::AndroidpublisherV3::IntroductoryPriceDetails, decorator: Google::Apis::AndroidpublisherV3::IntroductoryPriceDetails::Representation
+      
+          property :proration_period_details, as: 'prorationPeriodDetails', class: Google::Apis::AndroidpublisherV3::ProrationPeriodDetails, decorator: Google::Apis::AndroidpublisherV3::ProrationPeriodDetails::Representation
+      
         end
       end
       
@@ -3696,6 +3794,15 @@ module Google
         end
       end
       
+      class OutOfAppPurchaseContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expired_external_account_identifiers, as: 'expiredExternalAccountIdentifiers', class: Google::Apis::AndroidpublisherV3::ExternalAccountIdentifiers, decorator: Google::Apis::AndroidpublisherV3::ExternalAccountIdentifiers::Representation
+      
+          property :expired_purchase_token, as: 'expiredPurchaseToken'
+        end
+      end
+      
       class PageInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3878,6 +3985,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :developer_payload, as: 'developerPayload'
+        end
+      end
+      
+      class ProrationPeriodDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :linked_order_id, as: 'linkedOrderId'
+          property :original_offer_phase, as: 'originalOfferPhase'
         end
       end
       
@@ -4293,6 +4408,8 @@ module Google
           property :base_plan_id, as: 'basePlanId'
           property :offer_id, as: 'offerId'
           property :offer_phase, as: 'offerPhase'
+          property :offer_phase_details, as: 'offerPhaseDetails', class: Google::Apis::AndroidpublisherV3::OfferPhaseDetails, decorator: Google::Apis::AndroidpublisherV3::OfferPhaseDetails::Representation
+      
           property :service_period_end_time, as: 'servicePeriodEndTime'
           property :service_period_start_time, as: 'servicePeriodStartTime'
         end
@@ -4419,6 +4536,8 @@ module Google
           property :deferred_item_replacement, as: 'deferredItemReplacement', class: Google::Apis::AndroidpublisherV3::DeferredItemReplacement, decorator: Google::Apis::AndroidpublisherV3::DeferredItemReplacement::Representation
       
           property :expiry_time, as: 'expiryTime'
+          property :item_replacement, as: 'itemReplacement', class: Google::Apis::AndroidpublisherV3::ItemReplacement, decorator: Google::Apis::AndroidpublisherV3::ItemReplacement::Representation
+      
           property :latest_successful_order_id, as: 'latestSuccessfulOrderId'
           property :offer_details, as: 'offerDetails', class: Google::Apis::AndroidpublisherV3::OfferDetails, decorator: Google::Apis::AndroidpublisherV3::OfferDetails::Representation
       
@@ -4443,6 +4562,8 @@ module Google
           collection :line_items, as: 'lineItems', class: Google::Apis::AndroidpublisherV3::SubscriptionPurchaseLineItem, decorator: Google::Apis::AndroidpublisherV3::SubscriptionPurchaseLineItem::Representation
       
           property :linked_purchase_token, as: 'linkedPurchaseToken'
+          property :out_of_app_purchase_context, as: 'outOfAppPurchaseContext', class: Google::Apis::AndroidpublisherV3::OutOfAppPurchaseContext, decorator: Google::Apis::AndroidpublisherV3::OutOfAppPurchaseContext::Representation
+      
           property :paused_state_context, as: 'pausedStateContext', class: Google::Apis::AndroidpublisherV3::PausedStateContext, decorator: Google::Apis::AndroidpublisherV3::PausedStateContext::Representation
       
           property :region_code, as: 'regionCode'
@@ -4459,6 +4580,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :developer_payload, as: 'developerPayload'
+          property :external_account_ids, as: 'externalAccountIds', class: Google::Apis::AndroidpublisherV3::ExternalAccountIds, decorator: Google::Apis::AndroidpublisherV3::ExternalAccountIds::Representation
+      
         end
       end
       
