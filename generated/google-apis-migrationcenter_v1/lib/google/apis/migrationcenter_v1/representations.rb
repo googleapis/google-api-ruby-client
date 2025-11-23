@@ -2207,6 +2207,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adapters, as: 'adapters', class: Google::Apis::MigrationcenterV1::NetworkAdapterList, decorator: Google::Apis::MigrationcenterV1::NetworkAdapterList::Representation
       
+          property :default_gateway, as: 'defaultGateway'
           property :primary_ip_address, as: 'primaryIpAddress'
           property :primary_mac_address, as: 'primaryMacAddress'
           property :public_ip_address, as: 'publicIpAddress'
