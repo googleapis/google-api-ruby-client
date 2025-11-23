@@ -352,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EndTrialRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Entry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1483,6 +1489,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
+      class EndTrialRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_reason, as: 'endReason'
         end
       end
       

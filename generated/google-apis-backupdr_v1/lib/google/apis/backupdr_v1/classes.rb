@@ -3059,6 +3059,25 @@ module Google
         end
       end
       
+      # Request message for ending a trial.
+      class EndTrialRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The reason for ending the trial.
+        # Corresponds to the JSON property `endReason`
+        # @return [String]
+        attr_accessor :end_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_reason = args[:end_reason] if args.key?(:end_reason)
+        end
+      end
+      
       # A key/value pair to be used for storing metadata.
       class Entry
         include Google::Apis::Core::Hashable
