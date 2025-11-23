@@ -195,6 +195,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :eligible_seat_ids
       
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `floorPriceCpm`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::Money]
+        attr_accessor :floor_price_cpm
+      
         # Immutable. The unique identifier for the auction package. Format: `buyers/`
         # accountId`/auctionPackages/`auctionPackageId`` The auction_package_id part of
         # name is sent in the BidRequest to all RTB bidders and is returned as deal_id
@@ -243,6 +248,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @eligible_seat_ids = args[:eligible_seat_ids] if args.key?(:eligible_seat_ids)
+          @floor_price_cpm = args[:floor_price_cpm] if args.key?(:floor_price_cpm)
           @name = args[:name] if args.key?(:name)
           @subscribed_buyers = args[:subscribed_buyers] if args.key?(:subscribed_buyers)
           @subscribed_clients = args[:subscribed_clients] if args.key?(:subscribed_clients)
