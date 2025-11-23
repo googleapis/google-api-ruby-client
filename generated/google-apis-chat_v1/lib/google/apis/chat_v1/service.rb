@@ -683,9 +683,11 @@ module Google
         # @param [String] update_mask
         #   Required. The updated field paths, comma separated if there are multiple. You
         #   can update the following fields for a space: `space_details`: Updates the
-        #   space's description. Supports up to 150 characters. `display_name`: Only
-        #   supports updating the display name for spaces where `spaceType` field is `
-        #   SPACE`. If you receive the error message `ALREADY_EXISTS`, try a different
+        #   space's description and guidelines. You must pass both description and
+        #   guidelines in the update request as `SpaceDetails`. If you only want to update
+        #   one of the fields, pass the existing value for the other field. `display_name`:
+        #   Only supports updating the display name for spaces where `spaceType` field is
+        #   `SPACE`. If you receive the error message `ALREADY_EXISTS`, try a different
         #   value. An existing space within the Google Workspace organization might
         #   already use this display name. `space_type`: Only supports changing a `
         #   GROUP_CHAT` space type to `SPACE`. Include `display_name` together with `
