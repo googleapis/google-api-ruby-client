@@ -442,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataQualityResultPostScanActionsResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2155,6 +2161,8 @@ module Google
       class GoogleCloudDataplexV1DataQualityResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :anomaly_detection_generated_assets, as: 'anomalyDetectionGeneratedAssets', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets::Representation
+      
           property :catalog_publishing_status, as: 'catalogPublishingStatus', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanCatalogPublishingStatus, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanCatalogPublishingStatus::Representation
       
           collection :columns, as: 'columns', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityColumnResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityColumnResult::Representation
@@ -2170,6 +2178,16 @@ module Google
           property :scanned_data, as: 'scannedData', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedData, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedData::Representation
       
           property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_intermediate_table, as: 'dataIntermediateTable'
+          property :freshness_intermediate_table, as: 'freshnessIntermediateTable'
+          property :result_table, as: 'resultTable'
+          property :volume_intermediate_table, as: 'volumeIntermediateTable'
         end
       end
       
