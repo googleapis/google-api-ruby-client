@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirewallPolicyRuleOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GlobalSetPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -702,6 +708,13 @@ module Google
         end
       end
       
+      class FirewallPolicyRuleOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_priority, as: 'allocatedPriority'
+        end
+      end
+      
       class GlobalSetPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -800,6 +813,8 @@ module Google
           property :description, as: 'description'
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::DeploymentmanagerV2beta::Operation::Error, decorator: Google::Apis::DeploymentmanagerV2beta::Operation::Error::Representation
+      
+          property :firewall_policy_rule_operation_metadata, as: 'firewallPolicyRuleOperationMetadata', class: Google::Apis::DeploymentmanagerV2beta::FirewallPolicyRuleOperationMetadata, decorator: Google::Apis::DeploymentmanagerV2beta::FirewallPolicyRuleOperationMetadata::Representation
       
           property :http_error_message, as: 'httpErrorMessage'
           property :http_error_status_code, as: 'httpErrorStatusCode'
