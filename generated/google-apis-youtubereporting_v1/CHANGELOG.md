@@ -1,5 +1,10 @@
 # Release history for google-apis-youtubereporting_v1
 
+### v0.19.0 (2025-11-30)
+
+* Regenerated from discovery document revision 20251123
+* Regenerated using generator version 0.18.0
+
 ### v0.18.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0
