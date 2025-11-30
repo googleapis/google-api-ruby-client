@@ -3712,6 +3712,7 @@ module Google
           property :points_details, as: 'pointsDetails', class: Google::Apis::AndroidpublisherV3::PointsDetails, decorator: Google::Apis::AndroidpublisherV3::PointsDetails::Representation
       
           property :purchase_token, as: 'purchaseToken'
+          property :sales_channel, as: 'salesChannel'
           property :state, as: 'state'
           property :tax, as: 'tax', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
       
