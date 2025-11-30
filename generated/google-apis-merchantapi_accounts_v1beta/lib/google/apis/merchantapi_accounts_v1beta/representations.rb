@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LatLng
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LfpLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -563,6 +569,12 @@ module Google
       end
       
       class ProposeAccountServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RadiusArea
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1318,6 +1330,14 @@ module Google
         end
       end
       
+      class LatLng
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latitude, as: 'latitude'
+          property :longitude, as: 'longitude'
+        end
+      end
+      
       class LfpLink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1685,6 +1705,17 @@ module Google
         end
       end
       
+      class RadiusArea
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :lat_lng, as: 'latLng', class: Google::Apis::MerchantapiAccountsV1beta::LatLng, decorator: Google::Apis::MerchantapiAccountsV1beta::LatLng::Representation
+      
+          property :radius, as: 'radius'
+          property :radius_units, as: 'radiusUnits'
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
       class RateGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1709,6 +1740,8 @@ module Google
       
           property :name, as: 'name'
           property :postal_code_area, as: 'postalCodeArea', class: Google::Apis::MerchantapiAccountsV1beta::PostalCodeArea, decorator: Google::Apis::MerchantapiAccountsV1beta::PostalCodeArea::Representation
+      
+          property :radius_area, as: 'radiusArea', class: Google::Apis::MerchantapiAccountsV1beta::RadiusArea, decorator: Google::Apis::MerchantapiAccountsV1beta::RadiusArea::Representation
       
           property :regional_inventory_eligible, as: 'regionalInventoryEligible'
           property :shipping_eligible, as: 'shippingEligible'
