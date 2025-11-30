@@ -2292,6 +2292,25 @@ module Google
         end
       end
       
+      # Directory users guest creation request message.
+      class DirectoryUsersCreateGuestRequest
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. External email of the guest user being created.
+        # Corresponds to the JSON property `primaryGuestEmail`
+        # @return [String]
+        attr_accessor :primary_guest_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @primary_guest_email = args[:primary_guest_email] if args.key?(:primary_guest_email)
+        end
+      end
+      
       # 
       class DomainAlias
         include Google::Apis::Core::Hashable
@@ -2820,6 +2839,25 @@ module Google
           @groups = args[:groups] if args.key?(:groups)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Account info specific to Guest users.
+      class GuestAccountInfo
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The guest's external email.
+        # Corresponds to the JSON property `primaryGuestEmail`
+        # @return [String]
+        attr_accessor :primary_guest_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @primary_guest_email = args[:primary_guest_email] if args.key?(:primary_guest_email)
         end
       end
       
@@ -4589,6 +4627,11 @@ module Google
         # @return [Object]
         attr_accessor :gender
       
+        # Account info specific to Guest users.
+        # Corresponds to the JSON property `guestAccountInfo`
+        # @return [Google::Apis::AdminDirectoryV1::GuestAccountInfo]
+        attr_accessor :guest_account_info
+      
         # Stores the hash format of the `password` property. The following `hashFunction`
         # values are allowed: * `MD5` - Accepts simple hex-encoded values. * `SHA-1` -
         # Accepts simple hex-encoded values. * `crypt` - Compliant with the [C crypt
@@ -4664,6 +4707,12 @@ module Google
         # @return [Boolean]
         attr_accessor :is_enrolled_in2_sv
         alias_method :is_enrolled_in2_sv?, :is_enrolled_in2_sv
+      
+        # Immutable. Indicates if the inserted user is a guest.
+        # Corresponds to the JSON property `isGuestUser`
+        # @return [Boolean]
+        attr_accessor :is_guest_user
+        alias_method :is_guest_user?, :is_guest_user
       
         # Output only. Indicates if the user's Google mailbox is created. This property
         # is only applicable if the user has been assigned a Gmail license.
@@ -4828,6 +4877,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @external_ids = args[:external_ids] if args.key?(:external_ids)
           @gender = args[:gender] if args.key?(:gender)
+          @guest_account_info = args[:guest_account_info] if args.key?(:guest_account_info)
           @hash_function = args[:hash_function] if args.key?(:hash_function)
           @id = args[:id] if args.key?(:id)
           @ims = args[:ims] if args.key?(:ims)
@@ -4837,6 +4887,7 @@ module Google
           @is_delegated_admin = args[:is_delegated_admin] if args.key?(:is_delegated_admin)
           @is_enforced_in2_sv = args[:is_enforced_in2_sv] if args.key?(:is_enforced_in2_sv)
           @is_enrolled_in2_sv = args[:is_enrolled_in2_sv] if args.key?(:is_enrolled_in2_sv)
+          @is_guest_user = args[:is_guest_user] if args.key?(:is_guest_user)
           @is_mailbox_setup = args[:is_mailbox_setup] if args.key?(:is_mailbox_setup)
           @keywords = args[:keywords] if args.key?(:keywords)
           @kind = args[:kind] if args.key?(:kind)
