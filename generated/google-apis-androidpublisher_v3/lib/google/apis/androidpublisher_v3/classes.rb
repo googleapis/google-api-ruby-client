@@ -5726,6 +5726,11 @@ module Google
         # @return [String]
         attr_accessor :purchase_token
       
+        # The originating sales channel of the order.
+        # Corresponds to the JSON property `salesChannel`
+        # @return [String]
+        attr_accessor :sales_channel
+      
         # The state of the order.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -5757,6 +5762,7 @@ module Google
           @order_id = args[:order_id] if args.key?(:order_id)
           @points_details = args[:points_details] if args.key?(:points_details)
           @purchase_token = args[:purchase_token] if args.key?(:purchase_token)
+          @sales_channel = args[:sales_channel] if args.key?(:sales_channel)
           @state = args[:state] if args.key?(:state)
           @tax = args[:tax] if args.key?(:tax)
           @total = args[:total] if args.key?(:total)
