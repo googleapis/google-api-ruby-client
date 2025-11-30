@@ -697,6 +697,40 @@ module Google
         end
       end
       
+      # Response for the Videos.stats API. Returns VideoStat information about a batch
+      # of videos. VideoStat contains a subset of the information in Video that is
+      # relevant to statistics and content details.
+      class BatchGetStatsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The videos' stats information.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubeV3::VideoStat>]
+        attr_accessor :items
+      
+        # Output only. Identifies what kind of resource this is. Value: the fixed string
+        # "youtube#batchGetStatsResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
       # A *caption* resource represents a YouTube caption track. A caption track is
       # associated with exactly one YouTube video.
       class Caption
@@ -9015,6 +9049,66 @@ module Google
         end
       end
       
+      # A *VideoStat* resource represents a YouTube video's stats.
+      class VideoStat
+        include Google::Apis::Core::Hashable
+      
+        # Details about the content of a YouTube Video. This is a subset of the
+        # information in VideoContentDetails specifically for the Videos.stats API.
+        # Corresponds to the JSON property `contentDetails`
+        # @return [Google::Apis::YoutubeV3::VideoStatsContentDetails]
+        attr_accessor :content_details
+      
+        # Output only. Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. Identifies what kind of resource this is. Value: the fixed string
+        # "youtube#videoStats".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Output only. Identifier. The resource name for the `VideoStats` resource, in
+        # the format `videoStats/`video_stat``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Basic details about a video. This is a subset of the information in
+        # VideoSnippet specifically for the Videos.stats API.
+        # Corresponds to the JSON property `snippet`
+        # @return [Google::Apis::YoutubeV3::VideoStatsSnippet]
+        attr_accessor :snippet
+      
+        # Statistics about the video, such as the number of times the video was viewed
+        # or liked.
+        # Corresponds to the JSON property `statistics`
+        # @return [Google::Apis::YoutubeV3::VideoStatsStatistics]
+        attr_accessor :statistics
+      
+        # Output only. The ID that YouTube uses to uniquely identify the video.
+        # Corresponds to the JSON property `videoId`
+        # @return [String]
+        attr_accessor :video_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_details = args[:content_details] if args.key?(:content_details)
+          @etag = args[:etag] if args.key?(:etag)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @statistics = args[:statistics] if args.key?(:statistics)
+          @video_id = args[:video_id] if args.key?(:video_id)
+        end
+      end
+      
       # Statistics about the video, such as the number of times the video was viewed
       # or liked.
       class VideoStatistics
@@ -9056,6 +9150,83 @@ module Google
           @comment_count = args[:comment_count] if args.key?(:comment_count)
           @dislike_count = args[:dislike_count] if args.key?(:dislike_count)
           @favorite_count = args[:favorite_count] if args.key?(:favorite_count)
+          @like_count = args[:like_count] if args.key?(:like_count)
+          @view_count = args[:view_count] if args.key?(:view_count)
+        end
+      end
+      
+      # Details about the content of a YouTube Video. This is a subset of the
+      # information in VideoContentDetails specifically for the Videos.stats API.
+      class VideoStatsContentDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The length of the video. The property value is a [`google.
+        # protobuf.Duration`](https://developers.google.com/protocol-buffers/docs/
+        # reference/google.protobuf#duration) object.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+        end
+      end
+      
+      # Basic details about a video. This is a subset of the information in
+      # VideoSnippet specifically for the Videos.stats API.
+      class VideoStatsSnippet
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The date and time that the video was uploaded. The property value
+        # is a [`google.protobuf.Timestamp`](https://developers.google.com/protocol-
+        # buffers/docs/reference/google.protobuf#timestamp) object.
+        # Corresponds to the JSON property `publishTime`
+        # @return [String]
+        attr_accessor :publish_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @publish_time = args[:publish_time] if args.key?(:publish_time)
+        end
+      end
+      
+      # Statistics about the video, such as the number of times the video was viewed
+      # or liked.
+      class VideoStatsStatistics
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of comments for the video.
+        # Corresponds to the JSON property `commentCount`
+        # @return [Fixnum]
+        attr_accessor :comment_count
+      
+        # Output only. The number of users who have indicated that they liked the video
+        # by giving it a positive rating.
+        # Corresponds to the JSON property `likeCount`
+        # @return [Fixnum]
+        attr_accessor :like_count
+      
+        # Output only. The number of times the video has been viewed.
+        # Corresponds to the JSON property `viewCount`
+        # @return [Fixnum]
+        attr_accessor :view_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment_count = args[:comment_count] if args.key?(:comment_count)
           @like_count = args[:like_count] if args.key?(:like_count)
           @view_count = args[:view_count] if args.key?(:view_count)
         end
