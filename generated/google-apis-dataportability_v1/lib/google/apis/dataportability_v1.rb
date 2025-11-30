@@ -194,6 +194,9 @@ module Google
       # Move a copy of your YouTube comments
       AUTH_DATAPORTABILITY_YOUTUBE_COMMENTS = 'https://www.googleapis.com/auth/dataportability.youtube.comments'
 
+      # Move a copy of all your YouTube messages
+      AUTH_DATAPORTABILITY_YOUTUBE_CONVERSATIONS = 'https://www.googleapis.com/auth/dataportability.youtube.conversations'
+
       # Move a copy of your YouTube messages in live chat
       AUTH_DATAPORTABILITY_YOUTUBE_LIVE_CHAT = 'https://www.googleapis.com/auth/dataportability.youtube.live_chat'
 
