@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DirectoryUsersCreateGuestRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DomainAlias
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -419,6 +425,12 @@ module Google
       end
       
       class Groups
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GuestAccountInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1362,6 +1374,13 @@ module Google
         end
       end
       
+      class DirectoryUsersCreateGuestRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :primary_guest_email, as: 'primaryGuestEmail'
+        end
+      end
+      
       class DomainAlias
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1502,6 +1521,13 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GuestAccountInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :primary_guest_email, as: 'primaryGuestEmail'
         end
       end
       
@@ -1912,6 +1938,8 @@ module Google
           property :etag, as: 'etag'
           property :external_ids, as: 'externalIds'
           property :gender, as: 'gender'
+          property :guest_account_info, as: 'guestAccountInfo', class: Google::Apis::AdminDirectoryV1::GuestAccountInfo, decorator: Google::Apis::AdminDirectoryV1::GuestAccountInfo::Representation
+      
           property :hash_function, as: 'hashFunction'
           property :id, as: 'id'
           property :ims, as: 'ims'
@@ -1921,6 +1949,7 @@ module Google
           property :is_delegated_admin, as: 'isDelegatedAdmin'
           property :is_enforced_in2_sv, as: 'isEnforcedIn2Sv'
           property :is_enrolled_in2_sv, as: 'isEnrolledIn2Sv'
+          property :is_guest_user, as: 'isGuestUser'
           property :is_mailbox_setup, as: 'isMailboxSetup'
           property :keywords, as: 'keywords'
           property :kind, as: 'kind'
