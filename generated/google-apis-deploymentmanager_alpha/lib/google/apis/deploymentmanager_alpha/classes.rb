@@ -1034,6 +1034,26 @@ module Google
       end
       
       # 
+      class FirewallPolicyRuleOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The priority allocated for the firewall policy rule if query parameters
+        # specified minPriority/maxPriority.
+        # Corresponds to the JSON property `allocatedPriority`
+        # @return [Fixnum]
+        attr_accessor :allocated_priority
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allocated_priority = args[:allocated_priority] if args.key?(:allocated_priority)
+        end
+      end
+      
+      # 
       class GlobalSetPolicyRequest
         include Google::Apis::Core::Hashable
       
@@ -1451,6 +1471,11 @@ module Google
         # @return [Google::Apis::DeploymentmanagerAlpha::Operation::Error]
         attr_accessor :error
       
+        # 
+        # Corresponds to the JSON property `firewallPolicyRuleOperationMetadata`
+        # @return [Google::Apis::DeploymentmanagerAlpha::FirewallPolicyRuleOperationMetadata]
+        attr_accessor :firewall_policy_rule_operation_metadata
+      
         # [Output Only] If the operation fails, this field contains the HTTP error
         # message that was returned, such as `NOT FOUND`.
         # Corresponds to the JSON property `httpErrorMessage`
@@ -1600,6 +1625,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
+          @firewall_policy_rule_operation_metadata = args[:firewall_policy_rule_operation_metadata] if args.key?(:firewall_policy_rule_operation_metadata)
           @http_error_message = args[:http_error_message] if args.key?(:http_error_message)
           @http_error_status_code = args[:http_error_status_code] if args.key?(:http_error_status_code)
           @id = args[:id] if args.key?(:id)
