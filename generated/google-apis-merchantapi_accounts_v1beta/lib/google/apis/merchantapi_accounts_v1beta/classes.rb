@@ -2052,6 +2052,34 @@ module Google
         end
       end
       
+      # An object that represents a latitude/longitude pair. This is expressed as a
+      # pair of doubles to represent degrees latitude and degrees longitude. Unless
+      # specified otherwise, this object must conform to the WGS84 standard. Values
+      # must be within normalized ranges.
+      class LatLng
+        include Google::Apis::Core::Hashable
+      
+        # The latitude in degrees. It must be in the range [-90.0, +90.0].
+        # Corresponds to the JSON property `latitude`
+        # @return [Float]
+        attr_accessor :latitude
+      
+        # The longitude in degrees. It must be in the range [-180.0, +180.0].
+        # Corresponds to the JSON property `longitude`
+        # @return [Float]
+        attr_accessor :longitude
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latitude = args[:latitude] if args.key?(:latitude)
+          @longitude = args[:longitude] if args.key?(:longitude)
+        end
+      end
+      
       # Collection of information related to the LFP link.
       class LfpLink
         include Google::Apis::Core::Hashable
@@ -3412,6 +3440,47 @@ module Google
         end
       end
       
+      # A radius area that defines the region area.
+      class RadiusArea
+        include Google::Apis::Core::Hashable
+      
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
+        # specified otherwise, this object must conform to the WGS84 standard. Values
+        # must be within normalized ranges.
+        # Corresponds to the JSON property `latLng`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::LatLng]
+        attr_accessor :lat_lng
+      
+        # Required. The radius distance of the area.
+        # Corresponds to the JSON property `radius`
+        # @return [Float]
+        attr_accessor :radius
+      
+        # Optional. The unit of the radius.
+        # Corresponds to the JSON property `radiusUnits`
+        # @return [String]
+        attr_accessor :radius_units
+      
+        # Required. [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/
+        # common/main/en.xml) or the country the radius area applies to.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lat_lng = args[:lat_lng] if args.key?(:lat_lng)
+          @radius = args[:radius] if args.key?(:radius)
+          @radius_units = args[:radius_units] if args.key?(:radius_units)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
       # Shipping rate group definitions. Only the last one is allowed to have an empty
       # `applicable_shipping_labels`, which means "everything else". The other `
       # applicable_shipping_labels` must not overlap.
@@ -3503,6 +3572,11 @@ module Google
         # @return [Google::Apis::MerchantapiAccountsV1beta::PostalCodeArea]
         attr_accessor :postal_code_area
       
+        # A radius area that defines the region area.
+        # Corresponds to the JSON property `radiusArea`
+        # @return [Google::Apis::MerchantapiAccountsV1beta::RadiusArea]
+        attr_accessor :radius_area
+      
         # Output only. Indicates if the region is eligible for use in the Regional
         # Inventory configuration.
         # Corresponds to the JSON property `regionalInventoryEligible`
@@ -3527,6 +3601,7 @@ module Google
           @geotarget_area = args[:geotarget_area] if args.key?(:geotarget_area)
           @name = args[:name] if args.key?(:name)
           @postal_code_area = args[:postal_code_area] if args.key?(:postal_code_area)
+          @radius_area = args[:radius_area] if args.key?(:radius_area)
           @regional_inventory_eligible = args[:regional_inventory_eligible] if args.key?(:regional_inventory_eligible)
           @shipping_eligible = args[:shipping_eligible] if args.key?(:shipping_eligible)
         end
