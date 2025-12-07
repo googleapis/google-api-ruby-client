@@ -158,6 +158,13 @@ module Google
       class Calendar
         include Google::Apis::Core::Hashable
       
+        # Whether this calendar automatically accepts invitations. Only valid for
+        # resource calendars.
+        # Corresponds to the JSON property `autoAcceptInvitations`
+        # @return [Boolean]
+        attr_accessor :auto_accept_invitations
+        alias_method :auto_accept_invitations?, :auto_accept_invitations
+      
         # Conferencing properties for this calendar, for example what types of
         # conferences are allowed.
         # Corresponds to the JSON property `conferenceProperties`
@@ -213,6 +220,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_accept_invitations = args[:auto_accept_invitations] if args.key?(:auto_accept_invitations)
           @conference_properties = args[:conference_properties] if args.key?(:conference_properties)
           @data_owner = args[:data_owner] if args.key?(:data_owner)
           @description = args[:description] if args.key?(:description)
