@@ -5940,6 +5940,7 @@ module Google
       class GoogleCloudDiscoveryengineV1EngineSearchEngineConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :required_subscription_tier, as: 'requiredSubscriptionTier'
           collection :search_add_ons, as: 'searchAddOns'
           property :search_tier, as: 'searchTier'
         end
@@ -7796,6 +7797,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :required_subscription_tier, as: 'requiredSubscriptionTier'
           collection :search_add_ons, as: 'searchAddOns'
           property :search_tier, as: 'searchTier'
         end
@@ -10918,6 +10920,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :required_subscription_tier, as: 'requiredSubscriptionTier'
           collection :search_add_ons, as: 'searchAddOns'
           property :search_tier, as: 'searchTier'
         end
@@ -11045,6 +11048,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :external_identity, as: 'externalIdentity'
+          property :external_identity_name, as: 'externalIdentityName'
           property :group_id, as: 'groupId'
           property :user_id, as: 'userId'
         end
@@ -12443,6 +12447,7 @@ module Google
       
           collection :search_link_promotions, as: 'searchLinkPromotions', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchLinkPromotion, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchLinkPromotion::Representation
       
+          property :semantic_state, as: 'semanticState'
           property :session_info, as: 'sessionInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSessionInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSessionInfo::Representation
       
           property :suggested_query, as: 'suggestedQuery'
