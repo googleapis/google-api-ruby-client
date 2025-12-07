@@ -1718,6 +1718,12 @@ module Google
       class ComposeRequest
         include Google::Apis::Core::Hashable
       
+        # If true, the source objects will be deleted.
+        # Corresponds to the JSON property `deleteSourceObjects`
+        # @return [Boolean]
+        attr_accessor :delete_source_objects
+        alias_method :delete_source_objects?, :delete_source_objects
+      
         # An object.
         # Corresponds to the JSON property `destination`
         # @return [Google::Apis::StorageV1::Object]
@@ -1739,6 +1745,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @delete_source_objects = args[:delete_source_objects] if args.key?(:delete_source_objects)
           @destination = args[:destination] if args.key?(:destination)
           @kind = args[:kind] if args.key?(:kind)
           @source_objects = args[:source_objects] if args.key?(:source_objects)
