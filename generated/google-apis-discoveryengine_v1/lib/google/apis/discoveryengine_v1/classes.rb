@@ -8230,6 +8230,14 @@ module Google
       class GoogleCloudDiscoveryengineV1EngineSearchEngineConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. The required subscription tier of this engine. They cannot be
+        # modified after engine creation. If the required subscription tier is search,
+        # user with higher license tier like assist can still access the standalone app
+        # associated with this engine.
+        # Corresponds to the JSON property `requiredSubscriptionTier`
+        # @return [String]
+        attr_accessor :required_subscription_tier
+      
         # The add-on that this search engine enables.
         # Corresponds to the JSON property `searchAddOns`
         # @return [Array<String>]
@@ -8248,6 +8256,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @required_subscription_tier = args[:required_subscription_tier] if args.key?(:required_subscription_tier)
           @search_add_ons = args[:search_add_ons] if args.key?(:search_add_ons)
           @search_tier = args[:search_tier] if args.key?(:search_tier)
         end
@@ -8584,6 +8593,11 @@ module Google
         # @return [String]
         attr_accessor :external_identity
       
+        # Optional. The name of the external identity.
+        # Corresponds to the JSON property `externalIdentityName`
+        # @return [String]
+        attr_accessor :external_identity_name
+      
         # Group identifier. For Google Workspace user account, group_id should be the
         # google workspace group email. For non-google identity provider, group_id is
         # the mapped group identifier configured during the workforcepool config.
@@ -8605,6 +8619,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @external_identity = args[:external_identity] if args.key?(:external_identity)
+          @external_identity_name = args[:external_identity_name] if args.key?(:external_identity_name)
           @group_id = args[:group_id] if args.key?(:group_id)
           @user_id = args[:user_id] if args.key?(:user_id)
         end
@@ -12764,6 +12779,11 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchLinkPromotion>]
         attr_accessor :search_link_promotions
       
+        # Output only. Indicates the semantic state of the search response.
+        # Corresponds to the JSON property `semanticState`
+        # @return [String]
+        attr_accessor :semantic_state
+      
         # Information about the session.
         # Corresponds to the JSON property `sessionInfo`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseSessionInfo]
@@ -12795,6 +12815,7 @@ module Google
           @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
           @results = args[:results] if args.key?(:results)
           @search_link_promotions = args[:search_link_promotions] if args.key?(:search_link_promotions)
+          @semantic_state = args[:semantic_state] if args.key?(:semantic_state)
           @session_info = args[:session_info] if args.key?(:session_info)
           @summary = args[:summary] if args.key?(:summary)
           @total_size = args[:total_size] if args.key?(:total_size)
@@ -20617,6 +20638,14 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. The required subscription tier of this engine. They cannot be
+        # modified after engine creation. If the required subscription tier is search,
+        # user with higher license tier like assist can still access the standalone app
+        # associated with this engine.
+        # Corresponds to the JSON property `requiredSubscriptionTier`
+        # @return [String]
+        attr_accessor :required_subscription_tier
+      
         # The add-on that this search engine enables.
         # Corresponds to the JSON property `searchAddOns`
         # @return [Array<String>]
@@ -20635,6 +20664,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @required_subscription_tier = args[:required_subscription_tier] if args.key?(:required_subscription_tier)
           @search_add_ons = args[:search_add_ons] if args.key?(:search_add_ons)
           @search_tier = args[:search_tier] if args.key?(:search_tier)
         end
@@ -27287,6 +27317,14 @@ module Google
       class GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. The required subscription tier of this engine. They cannot be
+        # modified after engine creation. If the required subscription tier is search,
+        # user with higher license tier like assist can still access the standalone app
+        # associated with this engine.
+        # Corresponds to the JSON property `requiredSubscriptionTier`
+        # @return [String]
+        attr_accessor :required_subscription_tier
+      
         # The add-on that this search engine enables.
         # Corresponds to the JSON property `searchAddOns`
         # @return [Array<String>]
@@ -27305,6 +27343,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @required_subscription_tier = args[:required_subscription_tier] if args.key?(:required_subscription_tier)
           @search_add_ons = args[:search_add_ons] if args.key?(:search_add_ons)
           @search_tier = args[:search_tier] if args.key?(:search_tier)
         end
