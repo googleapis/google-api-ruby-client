@@ -274,6 +274,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1GraphSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1ImportEntriesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1016,6 +1040,8 @@ module Google
           property :fully_qualified_name, as: 'fullyQualifiedName'
           property :gcs_fileset_spec, as: 'gcsFilesetSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GcsFilesetSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GcsFilesetSpec::Representation
       
+          property :graph_spec, as: 'graphSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpec::Representation
+      
           property :integrated_system, as: 'integratedSystem'
           hash :labels, as: 'labels'
           property :linked_resource, as: 'linkedResource'
@@ -1126,6 +1152,51 @@ module Google
           collection :file_patterns, as: 'filePatterns'
           collection :sample_gcs_file_specs, as: 'sampleGcsFileSpecs', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GcsFileSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GcsFileSpec::Representation
       
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1GraphSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :edge_tables, as: 'edgeTables', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTable, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTable::Representation
+      
+          property :name, as: 'name'
+          collection :node_tables, as: 'nodeTables', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTable, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTable::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias, as: 'alias'
+          property :data_source, as: 'dataSource'
+          property :destination_node_reference, as: 'destinationNodeReference'
+          property :dynamic_label_enabled, as: 'dynamicLabelEnabled'
+          property :dynamic_properties_enabled, as: 'dynamicPropertiesEnabled'
+          collection :element_keys, as: 'elementKeys'
+          property :input_source, as: 'inputSource'
+          property :kind, as: 'kind'
+          collection :label_and_properties, as: 'labelAndProperties', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties::Representation
+      
+          property :source_node_reference, as: 'sourceNodeReference'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label, as: 'label'
+          collection :properties, as: 'properties', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
