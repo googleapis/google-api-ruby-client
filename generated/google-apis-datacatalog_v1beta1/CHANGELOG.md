@@ -1,5 +1,9 @@
 # Release history for google-apis-datacatalog_v1beta1
 
+### v0.52.0 (2025-12-07)
+
+* Regenerated from discovery document revision 20251112
+
 ### v0.51.0 (2025-06-15)
 
 * Regenerated from discovery document revision 20250609
