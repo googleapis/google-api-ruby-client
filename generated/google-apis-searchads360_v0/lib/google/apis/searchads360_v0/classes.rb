@@ -2062,6 +2062,11 @@ module Google
         # @return [String]
         attr_accessor :geo_target_metro
       
+        # Resource name of the geo target constant that represents a postal code.
+        # Corresponds to the JSON property `geoTargetPostalCode`
+        # @return [String]
+        attr_accessor :geo_target_postal_code
+      
         # Resource name of the geo target constant that represents a region.
         # Corresponds to the JSON property `geoTargetRegion`
         # @return [String]
@@ -2340,6 +2345,7 @@ module Google
           @geo_target_city = args[:geo_target_city] if args.key?(:geo_target_city)
           @geo_target_country = args[:geo_target_country] if args.key?(:geo_target_country)
           @geo_target_metro = args[:geo_target_metro] if args.key?(:geo_target_metro)
+          @geo_target_postal_code = args[:geo_target_postal_code] if args.key?(:geo_target_postal_code)
           @geo_target_region = args[:geo_target_region] if args.key?(:geo_target_region)
           @hour = args[:hour] if args.key?(:hour)
           @keyword = args[:keyword] if args.key?(:keyword)
@@ -4699,8 +4705,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The modifier for the bid when the criterion matches. The modifier must be in
-        # the range: 0.1 - 10.0. The range is 1.0 - 6.0 for PreferredContent. Use 0 to
-        # opt out of a Device type.
+        # the range: 0.1 - 10.0. Use 0 to opt out of a Device type.
         # Corresponds to the JSON property `bidModifier`
         # @return [Float]
         attr_accessor :bid_modifier
