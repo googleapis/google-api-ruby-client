@@ -58,7 +58,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigQueryClustering
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryDestinationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BigQueryPartitioning
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -101,6 +113,12 @@ module Google
       end
       
       class ConnectionProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomizationRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -197,6 +215,18 @@ module Google
       end
       
       class HostAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestionTimePartition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IntegerRangePartition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -412,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ObjectFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -557,6 +593,12 @@ module Google
       end
       
       class Route
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RuleSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -778,6 +820,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimeUnitPartition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserCredentials
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -862,6 +910,13 @@ module Google
         end
       end
       
+      class BigQueryClustering
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns'
+        end
+      end
+      
       class BigQueryDestinationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -875,6 +930,19 @@ module Google
           property :single_target_dataset, as: 'singleTargetDataset', class: Google::Apis::DatastreamV1::SingleTargetDataset, decorator: Google::Apis::DatastreamV1::SingleTargetDataset::Representation
       
           property :source_hierarchy_datasets, as: 'sourceHierarchyDatasets', class: Google::Apis::DatastreamV1::SourceHierarchyDatasets, decorator: Google::Apis::DatastreamV1::SourceHierarchyDatasets::Representation
+      
+        end
+      end
+      
+      class BigQueryPartitioning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ingestion_time_partition, as: 'ingestionTimePartition', class: Google::Apis::DatastreamV1::IngestionTimePartition, decorator: Google::Apis::DatastreamV1::IngestionTimePartition::Representation
+      
+          property :integer_range_partition, as: 'integerRangePartition', class: Google::Apis::DatastreamV1::IntegerRangePartition, decorator: Google::Apis::DatastreamV1::IntegerRangePartition::Representation
+      
+          property :require_partition_filter, as: 'requirePartitionFilter'
+          property :time_unit_partition, as: 'timeUnitPartition', class: Google::Apis::DatastreamV1::TimeUnitPartition, decorator: Google::Apis::DatastreamV1::TimeUnitPartition::Representation
       
         end
       end
@@ -962,6 +1030,16 @@ module Google
           property :static_service_ip_connectivity, as: 'staticServiceIpConnectivity', class: Google::Apis::DatastreamV1::StaticServiceIpConnectivity, decorator: Google::Apis::DatastreamV1::StaticServiceIpConnectivity::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class CustomizationRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_clustering, as: 'bigqueryClustering', class: Google::Apis::DatastreamV1::BigQueryClustering, decorator: Google::Apis::DatastreamV1::BigQueryClustering::Representation
+      
+          property :bigquery_partitioning, as: 'bigqueryPartitioning', class: Google::Apis::DatastreamV1::BigQueryPartitioning, decorator: Google::Apis::DatastreamV1::BigQueryPartitioning::Representation
+      
         end
       end
       
@@ -1121,6 +1199,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :hostname, as: 'hostname'
           property :port, as: 'port'
+        end
+      end
+      
+      class IngestionTimePartition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :partitioning_time_granularity, as: 'partitioningTimeGranularity'
+        end
+      end
+      
+      class IntegerRangePartition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :end, :numeric_string => true, as: 'end'
+          property :interval, :numeric_string => true, as: 'interval'
+          property :start, :numeric_string => true, as: 'start'
         end
       end
       
@@ -1456,6 +1551,14 @@ module Google
         end
       end
       
+      class ObjectFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_object_identifier, as: 'sourceObjectIdentifier', class: Google::Apis::DatastreamV1::SourceObjectIdentifier, decorator: Google::Apis::DatastreamV1::SourceObjectIdentifier::Representation
+      
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1735,6 +1838,16 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class RuleSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :customization_rules, as: 'customizationRules', class: Google::Apis::DatastreamV1::CustomizationRule, decorator: Google::Apis::DatastreamV1::CustomizationRule::Representation
+      
+          property :object_filter, as: 'objectFilter', class: Google::Apis::DatastreamV1::ObjectFilter, decorator: Google::Apis::DatastreamV1::ObjectFilter::Representation
+      
         end
       end
       
@@ -2073,6 +2186,8 @@ module Google
           hash :labels, as: 'labels'
           property :last_recovery_time, as: 'lastRecoveryTime'
           property :name, as: 'name'
+          collection :rule_sets, as: 'ruleSets', class: Google::Apis::DatastreamV1::RuleSet, decorator: Google::Apis::DatastreamV1::RuleSet::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :source_config, as: 'sourceConfig', class: Google::Apis::DatastreamV1::SourceConfig, decorator: Google::Apis::DatastreamV1::SourceConfig::Representation
@@ -2094,6 +2209,8 @@ module Google
           property :backfill_job, as: 'backfillJob', class: Google::Apis::DatastreamV1::BackfillJob, decorator: Google::Apis::DatastreamV1::BackfillJob::Representation
       
           property :create_time, as: 'createTime'
+          collection :customization_rules, as: 'customizationRules', class: Google::Apis::DatastreamV1::CustomizationRule, decorator: Google::Apis::DatastreamV1::CustomizationRule::Representation
+      
           property :display_name, as: 'displayName'
           collection :errors, as: 'errors', class: Google::Apis::DatastreamV1::Error, decorator: Google::Apis::DatastreamV1::Error::Representation
       
@@ -2101,6 +2218,14 @@ module Google
           property :source_object, as: 'sourceObject', class: Google::Apis::DatastreamV1::SourceObjectIdentifier, decorator: Google::Apis::DatastreamV1::SourceObjectIdentifier::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class TimeUnitPartition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :partitioning_time_granularity, as: 'partitioningTimeGranularity'
         end
       end
       
