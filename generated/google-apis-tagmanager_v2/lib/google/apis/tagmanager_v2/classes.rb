@@ -182,6 +182,26 @@ module Google
       end
       
       # 
+      class BulkUpdateWorkspaceResponse
+        include Google::Apis::Core::Hashable
+      
+        # The entities that were added or updated during the bulk-update. Does not
+        # include entities that were deleted or updated by the system.
+        # Corresponds to the JSON property `changes`
+        # @return [Array<Google::Apis::TagmanagerV2::Entity>]
+        attr_accessor :changes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @changes = args[:changes] if args.key?(:changes)
+        end
+      end
+      
+      # 
       class Client
         include Google::Apis::Core::Hashable
       
@@ -1981,6 +2001,25 @@ module Google
           @map = args[:map] if args.key?(:map)
           @type = args[:type] if args.key?(:type)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
+      class ProposedChange
+        include Google::Apis::Core::Hashable
+      
+        # The list of workspace changes to be applied.
+        # Corresponds to the JSON property `changes`
+        # @return [Array<Google::Apis::TagmanagerV2::Entity>]
+        attr_accessor :changes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @changes = args[:changes] if args.key?(:changes)
         end
       end
       
