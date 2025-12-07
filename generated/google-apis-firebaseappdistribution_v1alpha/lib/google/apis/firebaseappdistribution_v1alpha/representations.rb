@@ -566,6 +566,7 @@ module Google
       
           property :execution_type, as: 'executionType'
           property :failed_reason, as: 'failedReason'
+          property :final_ai_assertion_missing, as: 'finalAiAssertionMissing'
           property :inconclusive_reason, as: 'inconclusiveReason'
           property :name, as: 'name'
           property :origin_device_execution, as: 'originDeviceExecution'
