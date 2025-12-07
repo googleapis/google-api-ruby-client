@@ -339,6 +339,7 @@ module Google
       class Calendar
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_accept_invitations, as: 'autoAcceptInvitations'
           property :conference_properties, as: 'conferenceProperties', class: Google::Apis::CalendarV3::ConferenceProperties, decorator: Google::Apis::CalendarV3::ConferenceProperties::Representation
       
           property :data_owner, as: 'dataOwner'
