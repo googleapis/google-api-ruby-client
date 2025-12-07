@@ -364,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisruptionEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DnsCacheConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -772,6 +778,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeDrainConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeKernelModuleLoading
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -881,6 +893,12 @@ module Google
       end
       
       class ParentProductConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PdbBlockedPod
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2135,6 +2153,17 @@ module Google
         end
       end
       
+      class DisruptionEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disruption_type, as: 'disruptionType'
+          property :pdb_blocked_node, as: 'pdbBlockedNode'
+          collection :pdb_blocked_pod, as: 'pdbBlockedPod', class: Google::Apis::ContainerV1::PdbBlockedPod, decorator: Google::Apis::ContainerV1::PdbBlockedPod::Representation
+      
+          property :pdb_violation_timeout, as: 'pdbViolationTimeout'
+        end
+      end
+      
       class DnsCacheConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2838,6 +2867,13 @@ module Google
         end
       end
       
+      class NodeDrainConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :respect_pdb_during_node_pool_deletion, as: 'respectPdbDuringNodePoolDeletion'
+        end
+      end
+      
       class NodeKernelModuleLoading
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2938,6 +2974,8 @@ module Google
       
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::ContainerV1::NodeNetworkConfig, decorator: Google::Apis::ContainerV1::NodeNetworkConfig::Representation
+      
+          property :node_drain_config, as: 'nodeDrainConfig', class: Google::Apis::ContainerV1::NodeDrainConfig, decorator: Google::Apis::ContainerV1::NodeDrainConfig::Representation
       
           property :placement_policy, as: 'placementPolicy', class: Google::Apis::ContainerV1::PlacementPolicy, decorator: Google::Apis::ContainerV1::PlacementPolicy::Representation
       
@@ -3095,6 +3133,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
           property :product_name, as: 'productName'
+        end
+      end
+      
+      class PdbBlockedPod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :namespace, as: 'namespace'
         end
       end
       
@@ -3694,6 +3740,8 @@ module Google
           property :machine_type, as: 'machineType'
           property :max_run_duration, as: 'maxRunDuration'
           property :name, as: 'name'
+          property :node_drain_config, as: 'nodeDrainConfig', class: Google::Apis::ContainerV1::NodeDrainConfig, decorator: Google::Apis::ContainerV1::NodeDrainConfig::Representation
+      
           property :node_network_config, as: 'nodeNetworkConfig', class: Google::Apis::ContainerV1::NodeNetworkConfig, decorator: Google::Apis::ContainerV1::NodeNetworkConfig::Representation
       
           property :node_pool_id, as: 'nodePoolId'
@@ -3760,6 +3808,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_version, as: 'currentVersion'
           property :description, as: 'description'
+          property :disruption_event, as: 'disruptionEvent', class: Google::Apis::ContainerV1::DisruptionEvent, decorator: Google::Apis::ContainerV1::DisruptionEvent::Representation
+      
           property :end_time, as: 'endTime'
           property :event_type, as: 'eventType'
           property :extended_support_end_time, as: 'extendedSupportEndTime'
