@@ -63,8 +63,8 @@ module Google
         attr_accessor :action_type
       
         # A Common Expression Language (CEL) condition which is used in the evaluation
-        # of the constraint. For example: `resource.instanceName.matches("[production|
-        # test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max
+        # of the constraint. For example: `resource.instanceName.matches("(production|
+        # test)_(.+_)?[\d]+")` or, `resource.management.auto_upgrade == true` The max
         # length of the condition is 1000 characters.
         # Corresponds to the JSON property `condition`
         # @return [String]
@@ -1865,8 +1865,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
