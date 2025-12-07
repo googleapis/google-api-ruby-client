@@ -919,6 +919,7 @@ module Google
       class ComposeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_source_objects, as: 'deleteSourceObjects'
           property :destination, as: 'destination', class: Google::Apis::StorageV1::Object, decorator: Google::Apis::StorageV1::Object::Representation
       
           property :kind, as: 'kind'
