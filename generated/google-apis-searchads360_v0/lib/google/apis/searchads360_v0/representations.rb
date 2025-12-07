@@ -1430,6 +1430,7 @@ module Google
           property :geo_target_city, as: 'geoTargetCity'
           property :geo_target_country, as: 'geoTargetCountry'
           property :geo_target_metro, as: 'geoTargetMetro'
+          property :geo_target_postal_code, as: 'geoTargetPostalCode'
           property :geo_target_region, as: 'geoTargetRegion'
           property :hour, as: 'hour'
           property :keyword, as: 'keyword', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeyword, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonKeyword::Representation
