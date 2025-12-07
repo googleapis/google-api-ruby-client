@@ -812,10 +812,11 @@ module Google
       class AutoRenewingBasePlanType
         include Google::Apis::Core::Hashable
       
-        # Optional. Account hold period of the subscription, specified in ISO 8601
-        # format. Acceptable values must be in days and between P0D and P60D. If not
-        # specified, the default value is P30D. The sum of gracePeriodDuration and
-        # accountHoldDuration must be between P30D and P60D days, inclusive.
+        # Optional. Custom account hold period of the subscription, specified in ISO
+        # 8601 format. Acceptable values must be in days and between P0D and P60D. An
+        # empty field represents a recommended account hold, calculated as 60 days minus
+        # grace period. The sum of gracePeriodDuration and accountHoldDuration must be
+        # between P30D and P60D days, inclusive.
         # Corresponds to the JSON property `accountHoldDuration`
         # @return [String]
         attr_accessor :account_hold_duration
@@ -4130,10 +4131,11 @@ module Google
       class InstallmentsBasePlanType
         include Google::Apis::Core::Hashable
       
-        # Optional. Account hold period of the subscription, specified in ISO 8601
-        # format. Acceptable values must be in days and between P0D and P60D. If not
-        # specified, the default value is P30D. The sum of gracePeriodDuration and
-        # accountHoldDuration must be between P30D and P60D days, inclusive.
+        # Optional. Custom account hold period of the subscription, specified in ISO
+        # 8601 format. Acceptable values must be in days and between P0D and P60D. An
+        # empty field represents a recommended account hold, calculated as 60 days minus
+        # grace period. The sum of gracePeriodDuration and accountHoldDuration must be
+        # between P30D and P60D days, inclusive.
         # Corresponds to the JSON property `accountHoldDuration`
         # @return [String]
         attr_accessor :account_hold_duration
