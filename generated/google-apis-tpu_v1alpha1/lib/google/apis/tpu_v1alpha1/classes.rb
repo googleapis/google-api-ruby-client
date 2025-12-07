@@ -22,7 +22,8 @@ module Google
   module Apis
     module TpuV1alpha1
       
-      # A accelerator type that a Node can be configured with.
+      # DEPRECATED: Please use TPU API v2alpha1 instead. A accelerator type that a
+      # Node can be configured with.
       class AcceleratorType
         include Google::Apis::Core::Hashable
       
@@ -63,7 +64,8 @@ module Google
         end
       end
       
-      # Response for ListAcceleratorTypes.
+      # DEPRECATED: Please use TPU API v2alpha1 instead. Response for
+      # ListAcceleratorTypes.
       class ListAcceleratorTypesResponse
         include Google::Apis::Core::Hashable
       
@@ -119,7 +121,7 @@ module Google
         end
       end
       
-      # Response for ListNodes.
+      # DEPRECATED: Please use TPU API v2alpha1 instead. Response for ListNodes.
       class ListNodesResponse
         include Google::Apis::Core::Hashable
       
@@ -165,8 +167,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -183,7 +186,8 @@ module Google
         end
       end
       
-      # Response for ListTensorFlowVersions.
+      # DEPRECATED: Please use TPU API v2alpha1 instead. Response for
+      # ListTensorFlowVersions.
       class ListTensorFlowVersionsResponse
         include Google::Apis::Core::Hashable
       
@@ -261,7 +265,8 @@ module Google
         end
       end
       
-      # A network endpoint over which a TPU worker can be reached.
+      # DEPRECATED: Please use TPU API v2alpha1 instead. A network endpoint over which
+      # a TPU worker can be reached.
       class NetworkEndpoint
         include Google::Apis::Core::Hashable
       
@@ -286,7 +291,7 @@ module Google
         end
       end
       
-      # A TPU instance.
+      # DEPRECATED: Please use TPU API v2alpha1 instead. A TPU instance.
       class Node
         include Google::Apis::Core::Hashable
       
@@ -368,7 +373,8 @@ module Google
         # @return [String]
         attr_accessor :port
       
-        # Sets the scheduling options for this node.
+        # DEPRECATED: Please use TPU API v2alpha1 instead. Sets the scheduling options
+        # for this node.
         # Corresponds to the JSON property `schedulingConfig`
         # @return [Google::Apis::TpuV1alpha1::SchedulingConfig]
         attr_accessor :scheduling_config
@@ -496,7 +502,8 @@ module Google
         end
       end
       
-      # Metadata describing an Operation
+      # DEPRECATED: Please use TPU API v2alpha1 instead. Metadata describing an
+      # Operation
       class OperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -553,7 +560,7 @@ module Google
         end
       end
       
-      # Request for ReimageNode.
+      # DEPRECATED: Please use TPU API v2alpha1 instead. Request for ReimageNode.
       class ReimageNodeRequest
         include Google::Apis::Core::Hashable
       
@@ -572,7 +579,8 @@ module Google
         end
       end
       
-      # Sets the scheduling options for this node.
+      # DEPRECATED: Please use TPU API v2alpha1 instead. Sets the scheduling options
+      # for this node.
       class SchedulingConfig
         include Google::Apis::Core::Hashable
       
@@ -599,7 +607,7 @@ module Google
         end
       end
       
-      # Request for StartNode.
+      # DEPRECATED: Please use TPU API v2alpha1 instead. Request for StartNode.
       class StartNodeRequest
         include Google::Apis::Core::Hashable
       
@@ -651,7 +659,7 @@ module Google
         end
       end
       
-      # Request for StopNode.
+      # DEPRECATED: Please use TPU API v2alpha1 instead. Request for StopNode.
       class StopNodeRequest
         include Google::Apis::Core::Hashable
       
@@ -664,7 +672,7 @@ module Google
         end
       end
       
-      # A Symptom instance.
+      # DEPRECATED: Please use TPU API v2alpha1 instead. A Symptom instance.
       class Symptom
         include Google::Apis::Core::Hashable
       
@@ -701,7 +709,8 @@ module Google
         end
       end
       
-      # A tensorflow version that a Node can be configured with.
+      # DEPRECATED: Please use TPU API v2alpha1 instead. A tensorflow version that a
+      # Node can be configured with.
       class TensorFlowVersion
         include Google::Apis::Core::Hashable
       
