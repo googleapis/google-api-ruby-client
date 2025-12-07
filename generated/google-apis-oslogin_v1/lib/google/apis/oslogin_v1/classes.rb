@@ -177,6 +177,27 @@ module Google
         end
       end
       
+      # A request message for creating a POSIX account entry.
+      class ProvisionPosixAccountRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The regions to wait for a POSIX account to be written to before
+        # returning a response. If unspecified, defaults to all regions. Regions are
+        # listed at https://cloud.google.com/about/locations#region.
+        # Corresponds to the JSON property `regions`
+        # @return [Array<String>]
+        attr_accessor :regions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @regions = args[:regions] if args.key?(:regions)
+        end
+      end
+      
       # A request message for signing an SSH public key.
       class SignSshPublicKeyRequest
         include Google::Apis::Core::Hashable
