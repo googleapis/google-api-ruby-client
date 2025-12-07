@@ -246,8 +246,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -463,8 +464,8 @@ module Google
         # @return [Google::Apis::TexttospeechV1beta1::CustomPronunciations]
         attr_accessor :custom_pronunciations
       
-        # Markup for HD voices specifically. This field may not be used with any other
-        # voices.
+        # Markup for Chirp 3: HD voices specifically. This field may not be used with
+        # any other voices.
         # Corresponds to the JSON property `markup`
         # @return [String]
         attr_accessor :markup
