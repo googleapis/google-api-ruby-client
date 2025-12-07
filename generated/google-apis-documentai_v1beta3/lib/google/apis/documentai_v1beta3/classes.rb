@@ -942,6 +942,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Document level prompt provided by the user. This custom text is
+        # injected into the AI model's prompt to provide extra, document-wide guidance
+        # for processing.
+        # Corresponds to the JSON property `documentPrompt`
+        # @return [String]
+        attr_accessor :document_prompt
+      
         # Entity types of the schema.
         # Corresponds to the JSON property `entityTypes`
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType>]
@@ -960,6 +967,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @document_prompt = args[:document_prompt] if args.key?(:document_prompt)
           @entity_types = args[:entity_types] if args.key?(:entity_types)
           @metadata = args[:metadata] if args.key?(:metadata)
         end
@@ -8085,6 +8093,14 @@ module Google
         # @return [String]
         attr_accessor :dataset_split
       
+        # Optional. The type of the documents to be imported in this batch. This will be
+        # used to auto-label the documents with a single entity of the provided type.
+        # This field can only be used with a classifier or splitter processor. Providing
+        # this field is mutually exclusive with `entities` and `auto_labeling_config`.
+        # Corresponds to the JSON property `documentType`
+        # @return [String]
+        attr_accessor :document_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8094,6 +8110,7 @@ module Google
           @auto_split_config = args[:auto_split_config] if args.key?(:auto_split_config)
           @batch_input_config = args[:batch_input_config] if args.key?(:batch_input_config)
           @dataset_split = args[:dataset_split] if args.key?(:dataset_split)
+          @document_type = args[:document_type] if args.key?(:document_type)
         end
       end
       
@@ -8779,6 +8796,12 @@ module Google
         attr_accessor :enable_table_annotation
         alias_method :enable_table_annotation?, :enable_table_annotation
       
+        # Optional. Whether to split table.
+        # Corresponds to the JSON property `enableTableSplit`
+        # @return [Boolean]
+        attr_accessor :enable_table_split
+        alias_method :enable_table_split?, :enable_table_split
+      
         # Optional. Whether to include bounding boxes in layout parser processor
         # response.
         # Corresponds to the JSON property `returnBoundingBoxes`
@@ -8803,6 +8826,7 @@ module Google
           @enable_image_extraction = args[:enable_image_extraction] if args.key?(:enable_image_extraction)
           @enable_llm_layout_parsing = args[:enable_llm_layout_parsing] if args.key?(:enable_llm_layout_parsing)
           @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
+          @enable_table_split = args[:enable_table_split] if args.key?(:enable_table_split)
           @return_bounding_boxes = args[:return_bounding_boxes] if args.key?(:return_bounding_boxes)
           @return_images = args[:return_images] if args.key?(:return_images)
         end
@@ -10209,8 +10233,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
