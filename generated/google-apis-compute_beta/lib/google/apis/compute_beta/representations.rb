@@ -4630,6 +4630,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworksCancelRequestRemovePeeringRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworksGetEffectiveFirewallsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5585,6 +5591,12 @@ module Google
       end
       
       class RegionInstanceGroupManagersAbandonInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersAdoptInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11557,6 +11569,7 @@ module Google
           collection :dest_address_groups, as: 'destAddressGroups'
           collection :dest_fqdns, as: 'destFqdns'
           collection :dest_ip_ranges, as: 'destIpRanges'
+          property :dest_network_context, as: 'destNetworkContext'
           property :dest_network_scope, as: 'destNetworkScope'
           property :dest_network_type, as: 'destNetworkType'
           collection :dest_region_codes, as: 'destRegionCodes'
@@ -11566,6 +11579,7 @@ module Google
           collection :src_address_groups, as: 'srcAddressGroups'
           collection :src_fqdns, as: 'srcFqdns'
           collection :src_ip_ranges, as: 'srcIpRanges'
+          property :src_network_context, as: 'srcNetworkContext'
           property :src_network_scope, as: 'srcNetworkScope'
           property :src_network_type, as: 'srcNetworkType'
           collection :src_networks, as: 'srcNetworks'
@@ -13508,6 +13522,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :abandoning, as: 'abandoning'
+          property :adopting, as: 'adopting'
           property :creating, as: 'creating'
           property :creating_without_retries, as: 'creatingWithoutRetries'
           property :deleting, as: 'deleting'
@@ -17500,6 +17515,13 @@ module Google
         end
       end
       
+      class NetworksCancelRequestRemovePeeringRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class NetworksGetEffectiveFirewallsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -19260,6 +19282,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
+        end
+      end
+      
+      class RegionInstanceGroupManagersAdoptInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::ComputeBeta::PerInstanceConfig, decorator: Google::Apis::ComputeBeta::PerInstanceConfig::Representation
+      
         end
       end
       
@@ -21425,6 +21455,8 @@ module Google
       class SecurityPolicyDdosProtectionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ddos_adaptive_protection, as: 'ddosAdaptiveProtection'
+          property :ddos_impacted_baseline_threshold, as: 'ddosImpactedBaselineThreshold'
           property :ddos_protection, as: 'ddosProtection'
         end
       end
@@ -21600,6 +21632,8 @@ module Google
       class SecurityPolicyRulePreconfiguredWafConfigExclusion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :request_bodies_to_exclude, as: 'requestBodiesToExclude', class: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams, decorator: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams::Representation
+      
           collection :request_cookies_to_exclude, as: 'requestCookiesToExclude', class: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams, decorator: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams::Representation
       
           collection :request_headers_to_exclude, as: 'requestHeadersToExclude', class: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams, decorator: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams::Representation
@@ -23820,6 +23854,7 @@ module Google
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :load_balancing_scheme, as: 'loadBalancingScheme'
           property :name, as: 'name'
           property :proxy_bind, as: 'proxyBind'
           property :proxy_header, as: 'proxyHeader'
