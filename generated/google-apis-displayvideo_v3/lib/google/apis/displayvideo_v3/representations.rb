@@ -544,18 +544,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BulkListCampaignAssignedTargetingOptionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BulkListInsertionOrderAssignedTargetingOptionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class BulkUpdateLineItemsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1162,12 +1150,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GenerateDefaultLineItemRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GeoRegionAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1444,12 +1426,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListCampaignAssignedTargetingOptionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListCampaignsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1517,12 +1493,6 @@ module Google
       end
       
       class ListGuaranteedOrdersResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListInsertionOrderAssignedTargetingOptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3197,24 +3167,6 @@ module Google
         end
       end
       
-      class BulkListCampaignAssignedTargetingOptionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV3::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV3::AssignedTargetingOption::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class BulkListInsertionOrderAssignedTargetingOptionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV3::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV3::AssignedTargetingOption::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class BulkUpdateLineItemsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4220,18 +4172,6 @@ module Google
         end
       end
       
-      class GenerateDefaultLineItemRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :contains_eu_political_ads, as: 'containsEuPoliticalAds'
-          property :display_name, as: 'displayName'
-          property :insertion_order_id, :numeric_string => true, as: 'insertionOrderId'
-          property :line_item_type, as: 'lineItemType'
-          property :mobile_app, as: 'mobileApp', class: Google::Apis::DisplayvideoV3::MobileApp, decorator: Google::Apis::DisplayvideoV3::MobileApp::Representation
-      
-        end
-      end
-      
       class GeoRegionAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4755,15 +4695,6 @@ module Google
         end
       end
       
-      class ListCampaignAssignedTargetingOptionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV3::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV3::AssignedTargetingOption::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class ListCampaignsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4867,15 +4798,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :guaranteed_orders, as: 'guaranteedOrders', class: Google::Apis::DisplayvideoV3::GuaranteedOrder, decorator: Google::Apis::DisplayvideoV3::GuaranteedOrder::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class ListInsertionOrderAssignedTargetingOptionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV3::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV3::AssignedTargetingOption::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
