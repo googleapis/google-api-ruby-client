@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DateElementProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteContentRangeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +359,12 @@ module Google
       end
       
       class InlineObjectPropertiesSuggestionState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsertDateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1177,6 +1189,18 @@ module Google
         end
       end
       
+      class DateElementProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_format, as: 'dateFormat'
+          property :display_text, as: 'displayText'
+          property :locale, as: 'locale'
+          property :time_format, as: 'timeFormat'
+          property :time_zone_id, as: 'timeZoneId'
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
       class DeleteContentRangeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1611,6 +1635,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :embedded_object_suggestion_state, as: 'embeddedObjectSuggestionState', class: Google::Apis::DocsV1::EmbeddedObjectSuggestionState, decorator: Google::Apis::DocsV1::EmbeddedObjectSuggestionState::Representation
+      
+        end
+      end
+      
+      class InsertDateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_element_properties, as: 'dateElementProperties', class: Google::Apis::DocsV1::DateElementProperties, decorator: Google::Apis::DocsV1::DateElementProperties::Representation
+      
+          property :end_of_segment_location, as: 'endOfSegmentLocation', class: Google::Apis::DocsV1::EndOfSegmentLocation, decorator: Google::Apis::DocsV1::EndOfSegmentLocation::Representation
+      
+          property :location, as: 'location', class: Google::Apis::DocsV1::Location, decorator: Google::Apis::DocsV1::Location::Representation
       
         end
       end
@@ -2197,6 +2233,8 @@ module Google
           property :delete_table_column, as: 'deleteTableColumn', class: Google::Apis::DocsV1::DeleteTableColumnRequest, decorator: Google::Apis::DocsV1::DeleteTableColumnRequest::Representation
       
           property :delete_table_row, as: 'deleteTableRow', class: Google::Apis::DocsV1::DeleteTableRowRequest, decorator: Google::Apis::DocsV1::DeleteTableRowRequest::Representation
+      
+          property :insert_date, as: 'insertDate', class: Google::Apis::DocsV1::InsertDateRequest, decorator: Google::Apis::DocsV1::InsertDateRequest::Representation
       
           property :insert_inline_image, as: 'insertInlineImage', class: Google::Apis::DocsV1::InsertInlineImageRequest, decorator: Google::Apis::DocsV1::InsertInlineImageRequest::Representation
       
