@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BlockDevice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CacheConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HostGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HourlySchedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +167,12 @@ module Google
       end
       
       class ListBackupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListHostGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -486,6 +504,17 @@ module Google
         end
       end
       
+      class BlockDevice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :host_groups, as: 'hostGroups'
+          property :identifier, as: 'identifier'
+          property :name, as: 'name'
+          property :os_type, as: 'osType'
+          property :size_gib, :numeric_string => true, as: 'sizeGib'
+        end
+      end
+      
       class CacheConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -565,6 +594,20 @@ module Google
       class GoogleProtobufEmpty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class HostGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          collection :hosts, as: 'hosts'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :os_type, as: 'osType'
+          property :state, as: 'state'
+          property :type, as: 'type'
         end
       end
       
@@ -655,6 +698,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :backups, as: 'backups', class: Google::Apis::NetappV1::Backup, decorator: Google::Apis::NetappV1::Backup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListHostGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :host_groups, as: 'hostGroups', class: Google::Apis::NetappV1::HostGroup, decorator: Google::Apis::NetappV1::HostGroup::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
@@ -979,6 +1032,7 @@ module Google
           property :state_details, as: 'stateDetails'
           property :total_iops, :numeric_string => true, as: 'totalIops'
           property :total_throughput_mibps, :numeric_string => true, as: 'totalThroughputMibps'
+          property :type, as: 'type'
           property :volume_capacity_gib, :numeric_string => true, as: 'volumeCapacityGib'
           property :volume_count, as: 'volumeCount'
           property :zone, as: 'zone'
@@ -1054,6 +1108,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active_directory, as: 'activeDirectory'
           property :backup_config, as: 'backupConfig', class: Google::Apis::NetappV1::BackupConfig, decorator: Google::Apis::NetappV1::BackupConfig::Representation
+      
+          collection :block_devices, as: 'blockDevices', class: Google::Apis::NetappV1::BlockDevice, decorator: Google::Apis::NetappV1::BlockDevice::Representation
       
           property :cache_parameters, as: 'cacheParameters', class: Google::Apis::NetappV1::CacheParameters, decorator: Google::Apis::NetappV1::CacheParameters::Representation
       
