@@ -561,6 +561,116 @@ module Google
         end
       end
       
+      # Metadata for an approval. An approval is a review/approve process for a Drive
+      # item.
+      class Approval
+        include Google::Apis::Core::Hashable
+      
+        # The Approval ID.
+        # Corresponds to the JSON property `approvalId`
+        # @return [String]
+        attr_accessor :approval_id
+      
+        # Output only. The time time the approval was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Output only. The time the approval was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time that the approval is due.
+        # Corresponds to the JSON property `dueTime`
+        # @return [String]
+        attr_accessor :due_time
+      
+        # Information about a Drive user.
+        # Corresponds to the JSON property `initiator`
+        # @return [Google::Apis::DriveV3::User]
+        attr_accessor :initiator
+      
+        # This is always drive#approval.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Output only. The most recent time the approval was modified.
+        # Corresponds to the JSON property `modifyTime`
+        # @return [String]
+        attr_accessor :modify_time
+      
+        # The responses made on the Approval by reviewers.
+        # Corresponds to the JSON property `reviewerResponses`
+        # @return [Array<Google::Apis::DriveV3::ReviewerResponse>]
+        attr_accessor :reviewer_responses
+      
+        # Output only. The status of the approval at the time this resource was
+        # requested.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Target file id of the approval.
+        # Corresponds to the JSON property `targetFileId`
+        # @return [String]
+        attr_accessor :target_file_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approval_id = args[:approval_id] if args.key?(:approval_id)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @due_time = args[:due_time] if args.key?(:due_time)
+          @initiator = args[:initiator] if args.key?(:initiator)
+          @kind = args[:kind] if args.key?(:kind)
+          @modify_time = args[:modify_time] if args.key?(:modify_time)
+          @reviewer_responses = args[:reviewer_responses] if args.key?(:reviewer_responses)
+          @status = args[:status] if args.key?(:status)
+          @target_file_id = args[:target_file_id] if args.key?(:target_file_id)
+        end
+      end
+      
+      # The response of an Approvals list request.
+      class ApprovalList
+        include Google::Apis::Core::Hashable
+      
+        # The list of Approvals. If nextPageToken is populated, then this list may be
+        # incomplete and an additional page of results should be fetched.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::DriveV3::Approval>]
+        attr_accessor :items
+      
+        # This is always drive#approvalList
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The page token for the next page of Approvals. This will be absent if the end
+        # of the Approvals list has been reached. If the token is rejected for any
+        # reason, it should be discarded, and pagination should be restarted from the
+        # first page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # A change to a file or shared drive.
       class Change
         include Google::Apis::Core::Hashable
@@ -3593,6 +3703,37 @@ module Google
           @role = args[:role] if args.key?(:role)
           @send_notification = args[:send_notification] if args.key?(:send_notification)
           @view = args[:view] if args.key?(:view)
+        end
+      end
+      
+      # A response on an Approval made by a specific Reviewer.
+      class ReviewerResponse
+        include Google::Apis::Core::Hashable
+      
+        # This is always drive#reviewerResponse.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A Reviewer’s Response for the Approval.
+        # Corresponds to the JSON property `response`
+        # @return [String]
+        attr_accessor :response
+      
+        # Information about a Drive user.
+        # Corresponds to the JSON property `reviewer`
+        # @return [Google::Apis::DriveV3::User]
+        attr_accessor :reviewer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @response = args[:response] if args.key?(:response)
+          @reviewer = args[:reviewer] if args.key?(:reviewer)
         end
       end
       

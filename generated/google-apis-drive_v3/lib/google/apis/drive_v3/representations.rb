@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Approval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApprovalList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Change
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReviewerResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Revision
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -517,6 +535,34 @@ module Google
       
           property :kind, as: 'kind'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class Approval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval_id, as: 'approvalId'
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :due_time, as: 'dueTime'
+          property :initiator, as: 'initiator', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
+      
+          property :kind, as: 'kind'
+          property :modify_time, as: 'modifyTime'
+          collection :reviewer_responses, as: 'reviewerResponses', class: Google::Apis::DriveV3::ReviewerResponse, decorator: Google::Apis::DriveV3::ReviewerResponse::Representation
+      
+          property :status, as: 'status'
+          property :target_file_id, as: 'targetFileId'
+        end
+      end
+      
+      class ApprovalList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::DriveV3::Approval, decorator: Google::Apis::DriveV3::Approval::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -1168,6 +1214,16 @@ module Google
           collection :role, as: 'role'
           property :send_notification, as: 'sendNotification'
           property :view, as: 'view'
+        end
+      end
+      
+      class ReviewerResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :response, as: 'response'
+          property :reviewer, as: 'reviewer', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
+      
         end
       end
       
