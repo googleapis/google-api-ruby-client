@@ -3412,6 +3412,48 @@ module Google
         end
       end
       
+      # DisruptionEvent is a notification sent to customers about the disruption event
+      # of a resource.
+      class DisruptionEvent
+        include Google::Apis::Core::Hashable
+      
+        # The type of the disruption event.
+        # Corresponds to the JSON property `disruptionType`
+        # @return [String]
+        attr_accessor :disruption_type
+      
+        # The node whose drain is blocked by PDB. This field is set for both
+        # POD_PDB_VIOLATION and POD_NOT_ENOUGH_PDB event.
+        # Corresponds to the JSON property `pdbBlockedNode`
+        # @return [String]
+        attr_accessor :pdb_blocked_node
+      
+        # The pods whose evictions are blocked by PDB. This field is set for both
+        # POD_PDB_VIOLATION and POD_NOT_ENOUGH_PDB event.
+        # Corresponds to the JSON property `pdbBlockedPod`
+        # @return [Array<Google::Apis::ContainerV1beta1::PdbBlockedPod>]
+        attr_accessor :pdb_blocked_pod
+      
+        # The timeout in seconds for which the node drain is blocked by PDB. After this
+        # timeout, pods are forcefully evicted. This field is only populated when
+        # event_type is POD_PDB_VIOLATION.
+        # Corresponds to the JSON property `pdbViolationTimeout`
+        # @return [String]
+        attr_accessor :pdb_violation_timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disruption_type = args[:disruption_type] if args.key?(:disruption_type)
+          @pdb_blocked_node = args[:pdb_blocked_node] if args.key?(:pdb_blocked_node)
+          @pdb_blocked_pod = args[:pdb_blocked_pod] if args.key?(:pdb_blocked_pod)
+          @pdb_violation_timeout = args[:pdb_violation_timeout] if args.key?(:pdb_violation_timeout)
+        end
+      end
+      
       # Configuration for NodeLocal DNSCache
       class DnsCacheConfig
         include Google::Apis::Core::Hashable
@@ -6380,6 +6422,27 @@ module Google
         end
       end
       
+      # NodeDrainConfig contains the node drain related configurations for this
+      # nodepool.
+      class NodeDrainConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to respect PDB during node pool deletion.
+        # Corresponds to the JSON property `respectPdbDuringNodePoolDeletion`
+        # @return [Boolean]
+        attr_accessor :respect_pdb_during_node_pool_deletion
+        alias_method :respect_pdb_during_node_pool_deletion?, :respect_pdb_during_node_pool_deletion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @respect_pdb_during_node_pool_deletion = args[:respect_pdb_during_node_pool_deletion] if args.key?(:respect_pdb_during_node_pool_deletion)
+        end
+      end
+      
       # Configuration for kernel module loading on nodes.
       class NodeKernelModuleLoading
         include Google::Apis::Core::Hashable
@@ -6743,10 +6806,10 @@ module Google
         # @return [String]
         attr_accessor :pod_range
       
-        # Output only. The subnetwork path for the node pool. Format: projects/`project`/
-        # regions/`region`/subnetworks/`subnetwork` If the cluster is associated with
-        # multiple subnetworks, the subnetwork for the node pool is picked based on the
-        # IP utilization during node pool creation and is immutable.
+        # The subnetwork path for the node pool. Format: projects/`project`/regions/`
+        # region`/subnetworks/`subnetwork` If the cluster is associated with multiple
+        # subnetworks, the subnetwork for the node pool is picked based on the IP
+        # utilization during node pool creation and is immutable.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -6863,6 +6926,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodeNetworkConfig]
         attr_accessor :network_config
       
+        # NodeDrainConfig contains the node drain related configurations for this
+        # nodepool.
+        # Corresponds to the JSON property `nodeDrainConfig`
+        # @return [Google::Apis::ContainerV1beta1::NodeDrainConfig]
+        attr_accessor :node_drain_config
+      
         # PlacementPolicy defines the placement policy used by the node pool.
         # Corresponds to the JSON property `placementPolicy`
         # @return [Google::Apis::ContainerV1beta1::PlacementPolicy]
@@ -6961,6 +7030,7 @@ module Google
           @max_pods_constraint = args[:max_pods_constraint] if args.key?(:max_pods_constraint)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
+          @node_drain_config = args[:node_drain_config] if args.key?(:node_drain_config)
           @placement_policy = args[:placement_policy] if args.key?(:placement_policy)
           @pod_ipv4_cidr_size = args[:pod_ipv4_cidr_size] if args.key?(:pod_ipv4_cidr_size)
           @queued_provisioning = args[:queued_provisioning] if args.key?(:queued_provisioning)
@@ -7529,6 +7599,31 @@ module Google
         def update!(**args)
           @labels = args[:labels] if args.key?(:labels)
           @product_name = args[:product_name] if args.key?(:product_name)
+        end
+      end
+      
+      # The namespace/name of the pod whose eviction is blocked by PDB.
+      class PdbBlockedPod
+        include Google::Apis::Core::Hashable
+      
+        # The name of the pod.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The namespace of the pod.
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @namespace = args[:namespace] if args.key?(:namespace)
         end
       end
       
@@ -10130,6 +10225,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # NodeDrainConfig contains the node drain related configurations for this
+        # nodepool.
+        # Corresponds to the JSON property `nodeDrainConfig`
+        # @return [Google::Apis::ContainerV1beta1::NodeDrainConfig]
+        attr_accessor :node_drain_config
+      
         # Parameters for node pool-level network config.
         # Corresponds to the JSON property `nodeNetworkConfig`
         # @return [Google::Apis::ContainerV1beta1::NodeNetworkConfig]
@@ -10280,6 +10381,7 @@ module Google
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @max_run_duration = args[:max_run_duration] if args.key?(:max_run_duration)
           @name = args[:name] if args.key?(:name)
+          @node_drain_config = args[:node_drain_config] if args.key?(:node_drain_config)
           @node_network_config = args[:node_network_config] if args.key?(:node_network_config)
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
           @node_version = args[:node_version] if args.key?(:node_version)
@@ -10490,6 +10592,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # DisruptionEvent is a notification sent to customers about the disruption event
+        # of a resource.
+        # Corresponds to the JSON property `disruptionEvent`
+        # @return [Google::Apis::ContainerV1beta1::DisruptionEvent]
+        attr_accessor :disruption_event
+      
         # The time when the operation ended.
         # Corresponds to the JSON property `endTime`
         # @return [String]
@@ -10555,6 +10663,7 @@ module Google
           @current_emulated_version = args[:current_emulated_version] if args.key?(:current_emulated_version)
           @current_version = args[:current_version] if args.key?(:current_version)
           @description = args[:description] if args.key?(:description)
+          @disruption_event = args[:disruption_event] if args.key?(:disruption_event)
           @end_time = args[:end_time] if args.key?(:end_time)
           @event_type = args[:event_type] if args.key?(:event_type)
           @extended_support_end_time = args[:extended_support_end_time] if args.key?(:extended_support_end_time)
