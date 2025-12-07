@@ -562,6 +562,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV1ResourceApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV1ResourceSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1295,6 +1325,36 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2Resource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2052,6 +2112,7 @@ module Google
           property :location, as: 'location'
           property :name, as: 'name'
           property :publisher, as: 'publisher'
+          property :usage_category, as: 'usageCategory'
         end
       end
       
@@ -3011,6 +3072,8 @@ module Google
       class GoogleCloudSecuritycenterV1Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :application, as: 'application', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplication, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplication::Representation
+      
           property :aws_metadata, as: 'awsMetadata', class: Google::Apis::SecuritycenterV1::AwsMetadata, decorator: Google::Apis::SecuritycenterV1::AwsMetadata::Representation
       
           property :azure_metadata, as: 'azureMetadata', class: Google::Apis::SecuritycenterV1::AzureMetadata, decorator: Google::Apis::SecuritycenterV1::AzureMetadata::Representation
@@ -3030,6 +3093,52 @@ module Google
       
           property :resource_path_string, as: 'resourcePathString'
           property :service, as: 'service'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attributes, as: 'attributes', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributes, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributes::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :business_owners, as: 'businessOwners', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo::Representation
+      
+          property :criticality, as: 'criticality', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality::Representation
+      
+          collection :developer_owners, as: 'developerOwners', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo::Representation
+      
+          property :environment, as: 'environment', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment::Representation
+      
+          collection :operator_owners, as: 'operatorOwners', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
         end
       end
@@ -3222,6 +3331,7 @@ module Google
           property :location, as: 'location'
           property :name, as: 'name'
           property :publisher, as: 'publisher'
+          property :usage_category, as: 'usageCategory'
         end
       end
       
@@ -4401,6 +4511,8 @@ module Google
       class GoogleCloudSecuritycenterV2Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :application, as: 'application', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplication, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplication::Representation
+      
           property :aws_metadata, as: 'awsMetadata', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AwsMetadata, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AwsMetadata::Representation
       
           property :azure_metadata, as: 'azureMetadata', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AzureMetadata, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2AzureMetadata::Representation
@@ -4415,6 +4527,52 @@ module Google
       
           property :resource_path_string, as: 'resourcePathString'
           property :service, as: 'service'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attributes, as: 'attributes', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributes, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributes::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :business_owners, as: 'businessOwners', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo::Representation
+      
+          property :criticality, as: 'criticality', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality::Representation
+      
+          collection :developer_owners, as: 'developerOwners', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo::Representation
+      
+          property :environment, as: 'environment', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment::Representation
+      
+          collection :operator_owners, as: 'operatorOwners', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
         end
       end
@@ -5205,6 +5363,8 @@ module Google
       class Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :application, as: 'application', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplication, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplication::Representation
+      
           property :aws_metadata, as: 'awsMetadata', class: Google::Apis::SecuritycenterV1::AwsMetadata, decorator: Google::Apis::SecuritycenterV1::AwsMetadata::Representation
       
           property :azure_metadata, as: 'azureMetadata', class: Google::Apis::SecuritycenterV1::AzureMetadata, decorator: Google::Apis::SecuritycenterV1::AzureMetadata::Representation

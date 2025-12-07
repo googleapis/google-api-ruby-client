@@ -269,6 +269,11 @@ module Google
         # @return [String]
         attr_accessor :publisher
       
+        # The purpose of the model, for example, "Inteference" or "Training".
+        # Corresponds to the JSON property `usageCategory`
+        # @return [String]
+        attr_accessor :usage_category
+      
         def initialize(**args)
            update!(**args)
         end
@@ -282,6 +287,7 @@ module Google
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @publisher = args[:publisher] if args.key?(:publisher)
+          @usage_category = args[:usage_category] if args.key?(:usage_category)
         end
       end
       
@@ -4035,6 +4041,11 @@ module Google
       class GoogleCloudSecuritycenterV1Resource
         include Google::Apis::Core::Hashable
       
+        # The App Hub Application associated with the finding's resource.
+        # Corresponds to the JSON property `application`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplication]
+        attr_accessor :application
+      
         # AWS metadata associated with the resource, only applicable if the finding's
         # cloud provider is Amazon Web Services.
         # Corresponds to the JSON property `awsMetadata`
@@ -4137,6 +4148,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @application = args[:application] if args.key?(:application)
           @aws_metadata = args[:aws_metadata] if args.key?(:aws_metadata)
           @azure_metadata = args[:azure_metadata] if args.key?(:azure_metadata)
           @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
@@ -4152,6 +4164,132 @@ module Google
           @resource_path = args[:resource_path] if args.key?(:resource_path)
           @resource_path_string = args[:resource_path_string] if args.key?(:resource_path_string)
           @service = args[:service] if args.key?(:service)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The App Hub Application associated with the finding's resource.
+      class GoogleCloudSecuritycenterV1ResourceApplication
+        include Google::Apis::Core::Hashable
+      
+        # Consumer provided attributes for the application
+        # Corresponds to the JSON property `attributes`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributes]
+        attr_accessor :attributes
+      
+        # The resource name of an Application. Format: `projects/`host-project-id`/
+        # locations/`location`/applications/`application-id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Consumer provided attributes for the application
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributes
+        include Google::Apis::Core::Hashable
+      
+        # Business team that ensures user needs are met and value is delivered
+        # Corresponds to the JSON property `businessOwners`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo>]
+        attr_accessor :business_owners
+      
+        # Criticality of the Application, Service, or Workload
+        # Corresponds to the JSON property `criticality`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality]
+        attr_accessor :criticality
+      
+        # Developer team that owns development and coding.
+        # Corresponds to the JSON property `developerOwners`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo>]
+        attr_accessor :developer_owners
+      
+        # Environment of the Application, Service, or Workload
+        # Corresponds to the JSON property `environment`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment]
+        attr_accessor :environment
+      
+        # Operator team that ensures runtime and operations.
+        # Corresponds to the JSON property `operatorOwners`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo>]
+        attr_accessor :operator_owners
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business_owners = args[:business_owners] if args.key?(:business_owners)
+          @criticality = args[:criticality] if args.key?(:criticality)
+          @developer_owners = args[:developer_owners] if args.key?(:developer_owners)
+          @environment = args[:environment] if args.key?(:environment)
+          @operator_owners = args[:operator_owners] if args.key?(:operator_owners)
+        end
+      end
+      
+      # Contact information of stakeholders.
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo
+        include Google::Apis::Core::Hashable
+      
+        # Email address of the contacts.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+        end
+      end
+      
+      # Criticality of the Application, Service, or Workload
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality
+        include Google::Apis::Core::Hashable
+      
+        # Criticality Type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Environment of the Application, Service, or Workload
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment
+        include Google::Apis::Core::Hashable
+      
+        # Environment Type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -4973,6 +5111,11 @@ module Google
         # @return [String]
         attr_accessor :publisher
       
+        # The purpose of the model, for example, "Inteference" or "Training".
+        # Corresponds to the JSON property `usageCategory`
+        # @return [String]
+        attr_accessor :usage_category
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4986,6 +5129,7 @@ module Google
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @publisher = args[:publisher] if args.key?(:publisher)
+          @usage_category = args[:usage_category] if args.key?(:usage_category)
         end
       end
       
@@ -9296,6 +9440,11 @@ module Google
       class GoogleCloudSecuritycenterV2Resource
         include Google::Apis::Core::Hashable
       
+        # The App Hub Application associated with the finding's resource.
+        # Corresponds to the JSON property `application`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplication]
+        attr_accessor :application
+      
         # AWS metadata associated with the resource, only applicable if the finding's
         # cloud provider is Amazon Web Services.
         # Corresponds to the JSON property `awsMetadata`
@@ -9370,6 +9519,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @application = args[:application] if args.key?(:application)
           @aws_metadata = args[:aws_metadata] if args.key?(:aws_metadata)
           @azure_metadata = args[:azure_metadata] if args.key?(:azure_metadata)
           @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
@@ -9380,6 +9530,132 @@ module Google
           @resource_path = args[:resource_path] if args.key?(:resource_path)
           @resource_path_string = args[:resource_path_string] if args.key?(:resource_path_string)
           @service = args[:service] if args.key?(:service)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The App Hub Application associated with the finding's resource.
+      class GoogleCloudSecuritycenterV2ResourceApplication
+        include Google::Apis::Core::Hashable
+      
+        # Consumer provided attributes for the application
+        # Corresponds to the JSON property `attributes`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributes]
+        attr_accessor :attributes
+      
+        # The resource name of an Application. Format: `projects/`host-project-id`/
+        # locations/`location`/applications/`application-id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Consumer provided attributes for the application
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributes
+        include Google::Apis::Core::Hashable
+      
+        # Business team that ensures user needs are met and value is delivered
+        # Corresponds to the JSON property `businessOwners`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo>]
+        attr_accessor :business_owners
+      
+        # Criticality of the Application, Service, or Workload
+        # Corresponds to the JSON property `criticality`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality]
+        attr_accessor :criticality
+      
+        # Developer team that owns development and coding.
+        # Corresponds to the JSON property `developerOwners`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo>]
+        attr_accessor :developer_owners
+      
+        # Environment of the Application, Service, or Workload
+        # Corresponds to the JSON property `environment`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment]
+        attr_accessor :environment
+      
+        # Operator team that ensures runtime and operations.
+        # Corresponds to the JSON property `operatorOwners`
+        # @return [Array<Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo>]
+        attr_accessor :operator_owners
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business_owners = args[:business_owners] if args.key?(:business_owners)
+          @criticality = args[:criticality] if args.key?(:criticality)
+          @developer_owners = args[:developer_owners] if args.key?(:developer_owners)
+          @environment = args[:environment] if args.key?(:environment)
+          @operator_owners = args[:operator_owners] if args.key?(:operator_owners)
+        end
+      end
+      
+      # Contact information of stakeholders.
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo
+        include Google::Apis::Core::Hashable
+      
+        # Email address of the contacts.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+        end
+      end
+      
+      # Criticality of the Application, Service, or Workload
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality
+        include Google::Apis::Core::Hashable
+      
+        # Criticality Type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Environment of the Application, Service, or Workload
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment
+        include Google::Apis::Core::Hashable
+      
+        # Environment Type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -11240,8 +11516,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -12331,6 +12608,11 @@ module Google
       class Resource
         include Google::Apis::Core::Hashable
       
+        # The App Hub Application associated with the finding's resource.
+        # Corresponds to the JSON property `application`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceApplication]
+        attr_accessor :application
+      
         # AWS metadata associated with the resource, only applicable if the finding's
         # cloud provider is Amazon Web Services.
         # Corresponds to the JSON property `awsMetadata`
@@ -12430,6 +12712,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @application = args[:application] if args.key?(:application)
           @aws_metadata = args[:aws_metadata] if args.key?(:aws_metadata)
           @azure_metadata = args[:azure_metadata] if args.key?(:azure_metadata)
           @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
