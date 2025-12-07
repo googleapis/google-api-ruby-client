@@ -1083,6 +1083,11 @@ module Google
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GcsFilesetSpec]
         attr_accessor :gcs_fileset_spec
       
+        # Specification that applies to a graph.
+        # Corresponds to the JSON property `graphSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpec]
+        attr_accessor :graph_spec
+      
         # Output only. Indicates the entry's source system that Data Catalog integrates
         # with, such as BigQuery, Pub/Sub, or Dataproc Metastore.
         # Corresponds to the JSON property `integratedSystem`
@@ -1215,6 +1220,7 @@ module Google
           @fileset_spec = args[:fileset_spec] if args.key?(:fileset_spec)
           @fully_qualified_name = args[:fully_qualified_name] if args.key?(:fully_qualified_name)
           @gcs_fileset_spec = args[:gcs_fileset_spec] if args.key?(:gcs_fileset_spec)
+          @graph_spec = args[:graph_spec] if args.key?(:graph_spec)
           @integrated_system = args[:integrated_system] if args.key?(:integrated_system)
           @labels = args[:labels] if args.key?(:labels)
           @linked_resource = args[:linked_resource] if args.key?(:linked_resource)
@@ -1363,6 +1369,169 @@ module Google
         def update!(**args)
           @file_patterns = args[:file_patterns] if args.key?(:file_patterns)
           @sample_gcs_file_specs = args[:sample_gcs_file_specs] if args.key?(:sample_gcs_file_specs)
+        end
+      end
+      
+      # Specification that applies to a graph.
+      class GoogleCloudDatacatalogV1GraphSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Edge tables of the graph.
+        # Corresponds to the JSON property `edgeTables`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTable>]
+        attr_accessor :edge_tables
+      
+        # Output only. Fully qualified graph name. e.g. `named_catalog.MyGraph`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Node tables of the graph.
+        # Corresponds to the JSON property `nodeTables`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTable>]
+        attr_accessor :node_tables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @edge_tables = args[:edge_tables] if args.key?(:edge_tables)
+          @name = args[:name] if args.key?(:name)
+          @node_tables = args[:node_tables] if args.key?(:node_tables)
+        end
+      end
+      
+      # Element table definition.
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTable
+        include Google::Apis::Core::Hashable
+      
+        # Required. The alias name of the graph element.
+        # Corresponds to the JSON property `alias`
+        # @return [String]
+        attr_accessor :alias
+      
+        # Required. The name of the data source. This is either a table name or a view
+        # name that is used for graph element input source. E.g. `Person` table or `
+        # PersonView` view.
+        # Corresponds to the JSON property `dataSource`
+        # @return [String]
+        attr_accessor :data_source
+      
+        # Optional. Only applies to `kind = EDGE`.
+        # Corresponds to the JSON property `destinationNodeReference`
+        # @return [String]
+        attr_accessor :destination_node_reference
+      
+        # Optional. If true, the graph element has a dynamic label in schemaless model.
+        # Corresponds to the JSON property `dynamicLabelEnabled`
+        # @return [Boolean]
+        attr_accessor :dynamic_label_enabled
+        alias_method :dynamic_label_enabled?, :dynamic_label_enabled
+      
+        # Optional. If true, the graph element has dynamic properties in schemaless
+        # model.
+        # Corresponds to the JSON property `dynamicPropertiesEnabled`
+        # @return [Boolean]
+        attr_accessor :dynamic_properties_enabled
+        alias_method :dynamic_properties_enabled?, :dynamic_properties_enabled
+      
+        # Required. The name of the keys of the elements in the table.
+        # Corresponds to the JSON property `elementKeys`
+        # @return [Array<String>]
+        attr_accessor :element_keys
+      
+        # Required. The input source of the graph element.
+        # Corresponds to the JSON property `inputSource`
+        # @return [String]
+        attr_accessor :input_source
+      
+        # Required. The kind of the graph element.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Required. The labels and their properties for the graph element.
+        # Corresponds to the JSON property `labelAndProperties`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties>]
+        attr_accessor :label_and_properties
+      
+        # Optional. Only applies to `kind = EDGE`. The reference to the source node of
+        # the edge. This name must be a valid `alias` of a node element in the same
+        # graph. Example, `Person` node can be a source node of an edge element `
+        # Person_to_Address`. Similar rule applies to `destination_node_reference`.
+        # Corresponds to the JSON property `sourceNodeReference`
+        # @return [String]
+        attr_accessor :source_node_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alias = args[:alias] if args.key?(:alias)
+          @data_source = args[:data_source] if args.key?(:data_source)
+          @destination_node_reference = args[:destination_node_reference] if args.key?(:destination_node_reference)
+          @dynamic_label_enabled = args[:dynamic_label_enabled] if args.key?(:dynamic_label_enabled)
+          @dynamic_properties_enabled = args[:dynamic_properties_enabled] if args.key?(:dynamic_properties_enabled)
+          @element_keys = args[:element_keys] if args.key?(:element_keys)
+          @input_source = args[:input_source] if args.key?(:input_source)
+          @kind = args[:kind] if args.key?(:kind)
+          @label_and_properties = args[:label_and_properties] if args.key?(:label_and_properties)
+          @source_node_reference = args[:source_node_reference] if args.key?(:source_node_reference)
+        end
+      end
+      
+      # The label and its properties. Each label is associated with a set of
+      # properties.
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the label.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Optional. The properties associated with the label.
+        # Corresponds to the JSON property `properties`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty>]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label = args[:label] if args.key?(:label)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # A property declaration.
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty
+        include Google::Apis::Core::Hashable
+      
+        # Required. Property name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Property data type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
