@@ -2680,6 +2680,14 @@ module Google
         # @return [String]
         attr_accessor :artifact_id
       
+        # Optional. Path to a folder containing the files to upload to Artifact Registry.
+        # This can be either an absolute path, e.g. `/workspace/my-app/target/`, or a
+        # relative path from /workspace, e.g. `my-app/target/`. This field is mutually
+        # exclusive with the `path` field.
+        # Corresponds to the JSON property `deployFolder`
+        # @return [String]
+        attr_accessor :deploy_folder
+      
         # Maven `groupId` value used when uploading the artifact to Artifact Registry.
         # Corresponds to the JSON property `groupId`
         # @return [String]
@@ -2712,6 +2720,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @artifact_id = args[:artifact_id] if args.key?(:artifact_id)
+          @deploy_folder = args[:deploy_folder] if args.key?(:deploy_folder)
           @group_id = args[:group_id] if args.key?(:group_id)
           @path = args[:path] if args.key?(:path)
           @repository = args[:repository] if args.key?(:repository)
@@ -3470,8 +3479,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -4499,9 +4509,11 @@ module Google
         # zonal-redundancy-disabled`: Revision. * `run.googleapis.com/health-check-
         # disabled`: Revision. * `run.googleapis.com/ingress`: Service. * `run.
         # googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`:
-        # Service * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.
-        # googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.
-        # com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`:
+        # Service. * `run.googleapis.com/maxScale`: Service. * `run.googleapis.com/
+        # manualInstanceCount`: Service. * `run.googleapis.com/network-interfaces`:
+        # Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`:
+        # Revision. `run.googleapis.com/scalingMode`: Service. * `run.googleapis.com/
+        # secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`:
         # Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.
         # com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`:
         # Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision,
