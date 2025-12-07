@@ -205,8 +205,9 @@ module Google
         attr_accessor :read_authorizer_credential
       
         # Required. Immutable. SecretManager resource containing the webhook secret used
-        # to verify webhook events, formatted as `projects/*/secrets/*/versions/*`. This
-        # is used to validate and create webhooks.
+        # to verify webhook events, formatted as `projects/*/secrets/*/versions/*` or `
+        # projects/*/locations/*/secrets/*/versions/*` (if regional secrets are
+        # supported in that location). This is used to validate and create webhooks.
         # Corresponds to the JSON property `webhookSecretSecretVersion`
         # @return [String]
         attr_accessor :webhook_secret_secret_version
@@ -270,8 +271,9 @@ module Google
         attr_accessor :ssl_ca_certificate
       
         # Required. Immutable. SecretManager resource containing the webhook secret used
-        # to verify webhook events, formatted as `projects/*/secrets/*/versions/*`. This
-        # is used to validate webhooks.
+        # to verify webhook events, formatted as `projects/*/secrets/*/versions/*` or `
+        # projects/*/locations/*/secrets/*/versions/*` (if regional secrets are
+        # supported in that location). This is used to validate webhooks.
         # Corresponds to the JSON property `webhookSecretSecretVersion`
         # @return [String]
         attr_accessor :webhook_secret_secret_version
@@ -814,7 +816,8 @@ module Google
         attr_accessor :installation_uri
       
         # Optional. SecretManager resource containing the private key of the GitHub App,
-        # formatted as `projects/*/secrets/*/versions/*`.
+        # formatted as `projects/*/secrets/*/versions/*` or `projects/*/locations/*/
+        # secrets/*/versions/*` (if regional secrets are supported in that location).
         # Corresponds to the JSON property `privateKeySecretVersion`
         # @return [String]
         attr_accessor :private_key_secret_version
@@ -836,7 +839,8 @@ module Google
         attr_accessor :ssl_ca_certificate
       
         # Optional. SecretManager resource containing the webhook secret of the GitHub
-        # App, formatted as `projects/*/secrets/*/versions/*`.
+        # App, formatted as `projects/*/secrets/*/versions/*` or `projects/*/locations/*/
+        # secrets/*/versions/*` (if regional secrets are supported in that location).
         # Corresponds to the JSON property `webhookSecretSecretVersion`
         # @return [String]
         attr_accessor :webhook_secret_secret_version
@@ -877,8 +881,9 @@ module Google
         attr_accessor :read_authorizer_credential
       
         # Required. Immutable. SecretManager resource containing the webhook secret of a
-        # GitLab project, formatted as `projects/*/secrets/*/versions/*`. This is used
-        # to validate webhooks.
+        # GitLab project, formatted as `projects/*/secrets/*/versions/*` or `projects/*/
+        # locations/*/secrets/*/versions/*` (if regional secrets are supported in that
+        # location). This is used to validate webhooks.
         # Corresponds to the JSON property `webhookSecretSecretVersion`
         # @return [String]
         attr_accessor :webhook_secret_secret_version
@@ -934,8 +939,9 @@ module Google
         attr_accessor :ssl_ca_certificate
       
         # Required. Immutable. SecretManager resource containing the webhook secret of a
-        # GitLab project, formatted as `projects/*/secrets/*/versions/*`. This is used
-        # to validate webhooks.
+        # GitLab project, formatted as `projects/*/secrets/*/versions/*` or `projects/*/
+        # locations/*/secrets/*/versions/*` (if regional secrets are supported in that
+        # location). This is used to validate webhooks.
         # Corresponds to the JSON property `webhookSecretSecretVersion`
         # @return [String]
         attr_accessor :webhook_secret_secret_version
@@ -1625,7 +1631,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. A SecretManager resource containing the OAuth token that authorizes
-        # the connection. Format: `projects/*/secrets/*/versions/*`.
+        # the connection. Format: `projects/*/secrets/*/versions/*` or `projects/*/
+        # locations/*/secrets/*/versions/*` (if regional secrets are supported in that
+        # location).
         # Corresponds to the JSON property `oauthTokenSecretVersion`
         # @return [String]
         attr_accessor :oauth_token_secret_version
@@ -2121,7 +2129,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. A SecretManager resource containing the user token that authorizes
-        # the Developer Connect connection. Format: `projects/*/secrets/*/versions/*`.
+        # the Developer Connect connection. Format: `projects/*/secrets/*/versions/*` or
+        # `projects/*/locations/*/secrets/*/versions/*` (if regional secrets are
+        # supported in that location).
         # Corresponds to the JSON property `userTokenSecretVersion`
         # @return [String]
         attr_accessor :user_token_secret_version
