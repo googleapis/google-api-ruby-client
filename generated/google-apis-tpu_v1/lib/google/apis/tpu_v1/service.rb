@@ -85,8 +85,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
-        #   field which is primarily intended for internal usage.
+        #   Optional. Do not use this field. It is unsupported and is ignored unless
+        #   explicitly documented otherwise. This is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -544,11 +544,12 @@ module Google
         #   The standard list page token.
         # @param [Boolean] return_partial_success
         #   When set to `true`, operations that are reachable are returned as normal, and
-        #   those that are unreachable are returned in the [ListOperationsResponse.
-        #   unreachable] field. This can only be `true` when reading across collections e.
-        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
-        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
-        #   explicitly documented otherwise in service or product specific documentation.
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
