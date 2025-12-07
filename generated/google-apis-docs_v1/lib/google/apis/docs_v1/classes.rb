@@ -692,6 +692,71 @@ module Google
         end
       end
       
+      # Properties of a DateElement.
+      class DateElementProperties
+        include Google::Apis::Core::Hashable
+      
+        # Determines how the date part of the DateElement will be displayed in the
+        # document. If unset, the default value is
+        # DATE_FORMAT_MONTH_DAY_YEAR_ABBREVIATED, indicating the DateElement will be
+        # formatted as `MMM d, y` in `en_US`, or locale specific equivalent.
+        # Corresponds to the JSON property `dateFormat`
+        # @return [String]
+        attr_accessor :date_format
+      
+        # Output only. Indicates how the DateElement is displayed in the document.
+        # Corresponds to the JSON property `displayText`
+        # @return [String]
+        attr_accessor :display_text
+      
+        # The locale of the document, as defined by the Unicode Common Locale Data
+        # Repository (CLDR) project. For example, `en_US`. If unset, the default locale
+        # is `en_US`.
+        # Corresponds to the JSON property `locale`
+        # @return [String]
+        attr_accessor :locale
+      
+        # Determines how the time part of the DateElement will be displayed in the
+        # document. If unset, the default value is TIME_FORMAT_DISABLED, indicating no
+        # time should be shown.
+        # Corresponds to the JSON property `timeFormat`
+        # @return [String]
+        attr_accessor :time_format
+      
+        # The time zone of the DateElement, as defined by the Unicode Common Locale Data
+        # Repository (CLDR) project. For example, `America/New York`. If unset, the
+        # default time zone is `etc/UTC`.
+        # Corresponds to the JSON property `timeZoneId`
+        # @return [String]
+        attr_accessor :time_zone_id
+      
+        # The point in time to represent, in seconds and nanoseconds since Unix epoch:
+        # January 1, 1970 at midnight UTC. Timestamp is expected to be in UTC. If
+        # time_zone_id is set, the timestamp is adjusted according to the time zone. For
+        # example, a timestamp of `18000` with a date format of `DATE_FORMAT_ISO8601`
+        # and time format of `TIME_FORMAT_HOUR_MINUTE` would be displayed as `1970-01-01
+        # 5:00 AM`. A timestamp of `18000` with date format of `DATE_FORMAT_8SO8601`,
+        # time format of `TIME_FORMAT_HOUR_MINUTE`, and time zone set to `America/
+        # New_York` will instead be `1970-01-01 12:00 AM`.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_format = args[:date_format] if args.key?(:date_format)
+          @display_text = args[:display_text] if args.key?(:display_text)
+          @locale = args[:locale] if args.key?(:locale)
+          @time_format = args[:time_format] if args.key?(:time_format)
+          @time_zone_id = args[:time_zone_id] if args.key?(:time_zone_id)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+      end
+      
       # Deletes content from the document.
       class DeleteContentRangeRequest
         include Google::Apis::Core::Hashable
@@ -2351,6 +2416,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @embedded_object_suggestion_state = args[:embedded_object_suggestion_state] if args.key?(:embedded_object_suggestion_state)
+        end
+      end
+      
+      # Inserts a date at the specified location.
+      class InsertDateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Properties of a DateElement.
+        # Corresponds to the JSON property `dateElementProperties`
+        # @return [Google::Apis::DocsV1::DateElementProperties]
+        attr_accessor :date_element_properties
+      
+        # Location at the end of a body, header, footer or footnote. The location is
+        # immediately before the last newline in the document segment.
+        # Corresponds to the JSON property `endOfSegmentLocation`
+        # @return [Google::Apis::DocsV1::EndOfSegmentLocation]
+        attr_accessor :end_of_segment_location
+      
+        # A particular location in the document.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::DocsV1::Location]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_element_properties = args[:date_element_properties] if args.key?(:date_element_properties)
+          @end_of_segment_location = args[:end_of_segment_location] if args.key?(:end_of_segment_location)
+          @location = args[:location] if args.key?(:location)
         end
       end
       
@@ -4465,6 +4562,11 @@ module Google
         # @return [Google::Apis::DocsV1::DeleteTableRowRequest]
         attr_accessor :delete_table_row
       
+        # Inserts a date at the specified location.
+        # Corresponds to the JSON property `insertDate`
+        # @return [Google::Apis::DocsV1::InsertDateRequest]
+        attr_accessor :insert_date
+      
         # Inserts an InlineObject containing an image at the given location.
         # Corresponds to the JSON property `insertInlineImage`
         # @return [Google::Apis::DocsV1::InsertInlineImageRequest]
@@ -4598,6 +4700,7 @@ module Google
           @delete_positioned_object = args[:delete_positioned_object] if args.key?(:delete_positioned_object)
           @delete_table_column = args[:delete_table_column] if args.key?(:delete_table_column)
           @delete_table_row = args[:delete_table_row] if args.key?(:delete_table_row)
+          @insert_date = args[:insert_date] if args.key?(:insert_date)
           @insert_inline_image = args[:insert_inline_image] if args.key?(:insert_inline_image)
           @insert_page_break = args[:insert_page_break] if args.key?(:insert_page_break)
           @insert_person = args[:insert_person] if args.key?(:insert_person)
