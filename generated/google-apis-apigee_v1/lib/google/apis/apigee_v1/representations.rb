@@ -1084,6 +1084,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1LlmOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1LlmOperationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1LlmOperationGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1LlmTokenQuota
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1MaintenanceUpdatePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2223,6 +2247,11 @@ module Google
           property :grpc_operation_group, as: 'grpcOperationGroup', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GrpcOperationGroup, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GrpcOperationGroup::Representation
       
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
+          property :llm_operation_group, as: 'llmOperationGroup', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperationGroup, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperationGroup::Representation
+      
+          property :llm_quota, as: 'llmQuota'
+          property :llm_quota_interval, as: 'llmQuotaInterval'
+          property :llm_quota_time_unit, as: 'llmQuotaTimeUnit'
           property :name, as: 'name'
           property :operation_group, as: 'operationGroup', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationGroup, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationGroup::Representation
       
@@ -3485,6 +3514,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :encrypted, as: 'encrypted'
+          property :masked_values, as: 'maskedValues'
           property :name, as: 'name'
         end
       end
@@ -3877,6 +3907,45 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :trace_config_overrides, as: 'traceConfigOverrides', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride::Representation
       
+        end
+      end
+      
+      class GoogleCloudApigeeV1LlmOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :methods_prop, as: 'methods'
+          property :model, as: 'model'
+          property :resource, as: 'resource'
+        end
+      end
+      
+      class GoogleCloudApigeeV1LlmOperationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_source, as: 'apiSource'
+          collection :attributes, as: 'attributes', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
+      
+          collection :llm_operations, as: 'llmOperations', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperation::Representation
+      
+          property :llm_token_quota, as: 'llmTokenQuota', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmTokenQuota, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmTokenQuota::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1LlmOperationGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :operation_configs, as: 'operationConfigs', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperationConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1LlmTokenQuota
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interval, as: 'interval'
+          property :limit, as: 'limit'
+          property :time_unit, as: 'timeUnit'
         end
       end
       
