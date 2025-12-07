@@ -2294,6 +2294,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :document_prompt, as: 'documentPrompt'
           collection :entity_types, as: 'entityTypes', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType::Representation
       
           property :metadata, as: 'metadata', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata::Representation
@@ -4482,6 +4483,7 @@ module Google
           property :batch_input_config, as: 'batchInputConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig::Representation
       
           property :dataset_split, as: 'datasetSplit'
+          property :document_type, as: 'documentType'
         end
       end
       
@@ -4688,6 +4690,7 @@ module Google
           property :enable_image_extraction, as: 'enableImageExtraction'
           property :enable_llm_layout_parsing, as: 'enableLlmLayoutParsing'
           property :enable_table_annotation, as: 'enableTableAnnotation'
+          property :enable_table_split, as: 'enableTableSplit'
           property :return_bounding_boxes, as: 'returnBoundingBoxes'
           property :return_images, as: 'returnImages'
         end
