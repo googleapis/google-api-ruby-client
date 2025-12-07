@@ -994,6 +994,32 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_modified_at
       
+        # List of LLM operation configuration details associated with Apigee API proxies.
+        # Corresponds to the JSON property `llmOperationGroup`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperationGroup]
+        attr_accessor :llm_operation_group
+      
+        # Optional. Number of LLM tokens permitted per app by this API product for the
+        # specified `llm_quota_interval` and `llm_quota_time_unit`. For example, an `
+        # llm_quota` of 50,000, for an `llm_quota_interval` of 12 and an `
+        # llm_quota_time_unit` of hours means 50,000 llm tokens are allowed to be used
+        # every 12 hours.
+        # Corresponds to the JSON property `llmQuota`
+        # @return [String]
+        attr_accessor :llm_quota
+      
+        # Optional. Time interval over which the number of tokens from LLM responses is
+        # calculated.
+        # Corresponds to the JSON property `llmQuotaInterval`
+        # @return [String]
+        attr_accessor :llm_quota_interval
+      
+        # Optional. Time unit defined for the `llm_quota_interval`. Valid values include
+        # `minute`, `hour`, `day`, or `month`.
+        # Corresponds to the JSON property `llmQuotaTimeUnit`
+        # @return [String]
+        attr_accessor :llm_quota_time_unit
+      
         # Internal name of the API product. Characters you can use in the name are
         # restricted to: `A-Z0-9._\-$ %`. **Note:** The internal name cannot be edited
         # when updating the API product.
@@ -1079,6 +1105,10 @@ module Google
           @graphql_operation_group = args[:graphql_operation_group] if args.key?(:graphql_operation_group)
           @grpc_operation_group = args[:grpc_operation_group] if args.key?(:grpc_operation_group)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
+          @llm_operation_group = args[:llm_operation_group] if args.key?(:llm_operation_group)
+          @llm_quota = args[:llm_quota] if args.key?(:llm_quota)
+          @llm_quota_interval = args[:llm_quota_interval] if args.key?(:llm_quota_interval)
+          @llm_quota_time_unit = args[:llm_quota_time_unit] if args.key?(:llm_quota_time_unit)
           @name = args[:name] if args.key?(:name)
           @operation_group = args[:operation_group] if args.key?(:operation_group)
           @proxies = args[:proxies] if args.key?(:proxies)
@@ -5963,6 +5993,13 @@ module Google
         attr_accessor :encrypted
         alias_method :encrypted?, :encrypted
       
+        # Optional. Flag that specifies whether entry values will be masked when
+        # returned.
+        # Corresponds to the JSON property `maskedValues`
+        # @return [Boolean]
+        attr_accessor :masked_values
+        alias_method :masked_values?, :masked_values
+      
         # Required. ID of the key value map.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -5975,6 +6012,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @encrypted = args[:encrypted] if args.key?(:encrypted)
+          @masked_values = args[:masked_values] if args.key?(:masked_values)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -7092,6 +7130,143 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @trace_config_overrides = args[:trace_config_overrides] if args.key?(:trace_config_overrides)
+        end
+      end
+      
+      # Represents the pairing of REST resource path, model and the actions (verbs)
+      # allowed on the resource path.
+      class GoogleCloudApigeeV1LlmOperation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. methods refers to the REST verbs as in https://httpwg.org/specs/
+        # rfc9110.html For example: GET, POST, PUT, DELETE, etc. They need to be in
+        # uppercase. When none specified, all verb types are allowed.
+        # Corresponds to the JSON property `methods`
+        # @return [Array<String>]
+        attr_accessor :methods_prop
+      
+        # Required. LLM model name associated with the API proxy
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # Required. REST resource path associated with the API proxy or remote service.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
+          @model = args[:model] if args.key?(:model)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # Binds the resources in an API proxy or remote service with the allowed REST
+      # methods and associated quota enforcement.
+      class GoogleCloudApigeeV1LlmOperationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the API proxy or remote service with which the resources,
+        # methods, and quota are associated.
+        # Corresponds to the JSON property `apiSource`
+        # @return [String]
+        attr_accessor :api_source
+      
+        # Optional. Custom attributes associated with the operation.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
+        attr_accessor :attributes
+      
+        # Required. List of resource/method/model for the API proxy to which quota will
+        # applied. **Note**: Currently, you can specify only a single resource/method/
+        # model mapping. The call will fail if more than one resource/method/model
+        # mappings are provided.
+        # Corresponds to the JSON property `llmOperations`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperation>]
+        attr_accessor :llm_operations
+      
+        # LLM Token Quota contains the essential parameters needed that can be applied
+        # on the resources, methods, models, API source combination associated with this
+        # API product. While LLM Token Quota is optional, setting it prevents requests
+        # from exceeding the provisioned parameters.
+        # Corresponds to the JSON property `llmTokenQuota`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmTokenQuota]
+        attr_accessor :llm_token_quota
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_source = args[:api_source] if args.key?(:api_source)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @llm_operations = args[:llm_operations] if args.key?(:llm_operations)
+          @llm_token_quota = args[:llm_token_quota] if args.key?(:llm_token_quota)
+        end
+      end
+      
+      # List of LLM operation configuration details associated with Apigee API proxies.
+      class GoogleCloudApigeeV1LlmOperationGroup
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of LLM operation configurations for either Apigee API proxies
+        # that are associated with this API product.
+        # Corresponds to the JSON property `operationConfigs`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperationConfig>]
+        attr_accessor :operation_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_configs = args[:operation_configs] if args.key?(:operation_configs)
+        end
+      end
+      
+      # LLM Token Quota contains the essential parameters needed that can be applied
+      # on the resources, methods, models, API source combination associated with this
+      # API product. While LLM Token Quota is optional, setting it prevents requests
+      # from exceeding the provisioned parameters.
+      class GoogleCloudApigeeV1LlmTokenQuota
+        include Google::Apis::Core::Hashable
+      
+        # Required. Time interval over which the number of request messages is
+        # calculated.
+        # Corresponds to the JSON property `interval`
+        # @return [String]
+        attr_accessor :interval
+      
+        # Required. Upper limit of LLM tokens allowed for the time interval and time
+        # unit specified. Requests exceeding this limit will be rejected.
+        # Corresponds to the JSON property `limit`
+        # @return [String]
+        attr_accessor :limit
+      
+        # Optional. Time unit defined for the `interval`. Valid values include `minute`,
+        # `hour`, `day`, or `month`. If `limit` and `interval` are valid, the default
+        # value is `hour`; otherwise, the default is null.
+        # Corresponds to the JSON property `timeUnit`
+        # @return [String]
+        attr_accessor :time_unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interval = args[:interval] if args.key?(:interval)
+          @limit = args[:limit] if args.key?(:limit)
+          @time_unit = args[:time_unit] if args.key?(:time_unit)
         end
       end
       
@@ -12873,8 +13048,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
