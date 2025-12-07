@@ -1598,6 +1598,12 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Service>]
         attr_accessor :services
       
+        # Output only. For global requests, returns the list of regions that could not
+        # be reached within the deadline.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1606,6 +1612,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @services = args[:services] if args.key?(:services)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -3757,11 +3764,7 @@ module Google
         # @return [String]
         attr_accessor :creator
       
-        # One or more custom audiences that you want this worker pool to support.
-        # Specify each custom audience as the full URL in a string. The custom audiences
-        # are encoded in the token and used to authenticate requests. For more
-        # information, see https://cloud.google.com/run/docs/configuring/custom-
-        # audiences.
+        # Not supported, and ignored by Cloud Run.
         # Corresponds to the JSON property `customAudiences`
         # @return [Array<String>]
         attr_accessor :custom_audiences
@@ -3916,6 +3919,13 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2Condition]
         attr_accessor :terminal_condition
       
+        # Output only. Indicates whether Cloud Run Threat Detection monitoring is
+        # enabled for the parent project of this worker pool.
+        # Corresponds to the JSON property `threatDetectionEnabled`
+        # @return [Boolean]
+        attr_accessor :threat_detection_enabled
+        alias_method :threat_detection_enabled?, :threat_detection_enabled
+      
         # Output only. Server assigned unique identifier for the trigger. The value is a
         # UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         # Corresponds to the JSON property `uid`
@@ -3960,6 +3970,7 @@ module Google
           @scaling = args[:scaling] if args.key?(:scaling)
           @template = args[:template] if args.key?(:template)
           @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
+          @threat_detection_enabled = args[:threat_detection_enabled] if args.key?(:threat_detection_enabled)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -5338,6 +5349,14 @@ module Google
         # @return [String]
         attr_accessor :artifact_id
       
+        # Optional. Path to a folder containing the files to upload to Artifact Registry.
+        # This can be either an absolute path, e.g. `/workspace/my-app/target/`, or a
+        # relative path from /workspace, e.g. `my-app/target/`. This field is mutually
+        # exclusive with the `path` field.
+        # Corresponds to the JSON property `deployFolder`
+        # @return [String]
+        attr_accessor :deploy_folder
+      
         # Maven `groupId` value used when uploading the artifact to Artifact Registry.
         # Corresponds to the JSON property `groupId`
         # @return [String]
@@ -5370,6 +5389,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @artifact_id = args[:artifact_id] if args.key?(:artifact_id)
+          @deploy_folder = args[:deploy_folder] if args.key?(:deploy_folder)
           @group_id = args[:group_id] if args.key?(:group_id)
           @path = args[:path] if args.key?(:path)
           @repository = args[:repository] if args.key?(:repository)
@@ -6488,8 +6508,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable

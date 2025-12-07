@@ -1170,6 +1170,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :services, as: 'services', class: Google::Apis::RunV2::GoogleCloudRunV2Service, decorator: Google::Apis::RunV2::GoogleCloudRunV2Service::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1689,6 +1690,7 @@ module Google
       
           property :terminal_condition, as: 'terminalCondition', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
       
+          property :threat_detection_enabled, as: 'threatDetectionEnabled'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -2022,6 +2024,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :artifact_id, as: 'artifactId'
+          property :deploy_folder, as: 'deployFolder'
           property :group_id, as: 'groupId'
           property :path, as: 'path'
           property :repository, as: 'repository'
