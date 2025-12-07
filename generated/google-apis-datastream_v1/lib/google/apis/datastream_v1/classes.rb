@@ -170,6 +170,25 @@ module Google
         end
       end
       
+      # BigQuery clustering configuration.
+      class BigQueryClustering
+        include Google::Apis::Core::Hashable
+      
+        # Required. Column names to set as clustering columns.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<String>]
+        attr_accessor :columns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+        end
+      end
+      
       # BigQuery destination configuration
       class BigQueryDestinationConfig
         include Google::Apis::Core::Hashable
@@ -222,6 +241,47 @@ module Google
           @merge = args[:merge] if args.key?(:merge)
           @single_target_dataset = args[:single_target_dataset] if args.key?(:single_target_dataset)
           @source_hierarchy_datasets = args[:source_hierarchy_datasets] if args.key?(:source_hierarchy_datasets)
+        end
+      end
+      
+      # BigQuery partitioning configuration.
+      class BigQueryPartitioning
+        include Google::Apis::Core::Hashable
+      
+        # Ingestion time partitioning. see https://cloud.google.com/bigquery/docs/
+        # partitioned-tables#ingestion_time
+        # Corresponds to the JSON property `ingestionTimePartition`
+        # @return [Google::Apis::DatastreamV1::IngestionTimePartition]
+        attr_accessor :ingestion_time_partition
+      
+        # Integer range partitioning. see https://cloud.google.com/bigquery/docs/
+        # partitioned-tables#integer_range
+        # Corresponds to the JSON property `integerRangePartition`
+        # @return [Google::Apis::DatastreamV1::IntegerRangePartition]
+        attr_accessor :integer_range_partition
+      
+        # Optional. If true, queries over the table require a partition filter.
+        # Corresponds to the JSON property `requirePartitionFilter`
+        # @return [Boolean]
+        attr_accessor :require_partition_filter
+        alias_method :require_partition_filter?, :require_partition_filter
+      
+        # Time unit column partitioning. see https://cloud.google.com/bigquery/docs/
+        # partitioned-tables#date_timestamp_partitioned_tables
+        # Corresponds to the JSON property `timeUnitPartition`
+        # @return [Google::Apis::DatastreamV1::TimeUnitPartition]
+        attr_accessor :time_unit_partition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ingestion_time_partition = args[:ingestion_time_partition] if args.key?(:ingestion_time_partition)
+          @integer_range_partition = args[:integer_range_partition] if args.key?(:integer_range_partition)
+          @require_partition_filter = args[:require_partition_filter] if args.key?(:require_partition_filter)
+          @time_unit_partition = args[:time_unit_partition] if args.key?(:time_unit_partition)
         end
       end
       
@@ -487,6 +547,31 @@ module Google
           @sql_server_profile = args[:sql_server_profile] if args.key?(:sql_server_profile)
           @static_service_ip_connectivity = args[:static_service_ip_connectivity] if args.key?(:static_service_ip_connectivity)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A customization rule to apply to a set of objects.
+      class CustomizationRule
+        include Google::Apis::Core::Hashable
+      
+        # BigQuery clustering configuration.
+        # Corresponds to the JSON property `bigqueryClustering`
+        # @return [Google::Apis::DatastreamV1::BigQueryClustering]
+        attr_accessor :bigquery_clustering
+      
+        # BigQuery partitioning configuration.
+        # Corresponds to the JSON property `bigqueryPartitioning`
+        # @return [Google::Apis::DatastreamV1::BigQueryPartitioning]
+        attr_accessor :bigquery_partitioning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_clustering = args[:bigquery_clustering] if args.key?(:bigquery_clustering)
+          @bigquery_partitioning = args[:bigquery_partitioning] if args.key?(:bigquery_partitioning)
         end
       end
       
@@ -1001,6 +1086,64 @@ module Google
         def update!(**args)
           @hostname = args[:hostname] if args.key?(:hostname)
           @port = args[:port] if args.key?(:port)
+        end
+      end
+      
+      # Ingestion time partitioning. see https://cloud.google.com/bigquery/docs/
+      # partitioned-tables#ingestion_time
+      class IngestionTimePartition
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Partition granularity
+        # Corresponds to the JSON property `partitioningTimeGranularity`
+        # @return [String]
+        attr_accessor :partitioning_time_granularity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partitioning_time_granularity = args[:partitioning_time_granularity] if args.key?(:partitioning_time_granularity)
+        end
+      end
+      
+      # Integer range partitioning. see https://cloud.google.com/bigquery/docs/
+      # partitioned-tables#integer_range
+      class IntegerRangePartition
+        include Google::Apis::Core::Hashable
+      
+        # Required. The partitioning column.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # Required. The ending value for range partitioning (exclusive).
+        # Corresponds to the JSON property `end`
+        # @return [Fixnum]
+        attr_accessor :end
+      
+        # Required. The interval of each range within the partition.
+        # Corresponds to the JSON property `interval`
+        # @return [Fixnum]
+        attr_accessor :interval
+      
+        # Required. The starting value for range partitioning (inclusive).
+        # Corresponds to the JSON property `start`
+        # @return [Fixnum]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @end = args[:end] if args.key?(:end)
+          @interval = args[:interval] if args.key?(:interval)
+          @start = args[:start] if args.key?(:start)
         end
       end
       
@@ -2092,6 +2235,25 @@ module Google
         end
       end
       
+      # Object filter to apply the rules to.
+      class ObjectFilter
+        include Google::Apis::Core::Hashable
+      
+        # Represents an identifier of an object in the data source.
+        # Corresponds to the JSON property `sourceObjectIdentifier`
+        # @return [Google::Apis::DatastreamV1::SourceObjectIdentifier]
+        attr_accessor :source_object_identifier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_object_identifier = args[:source_object_identifier] if args.key?(:source_object_identifier)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -3121,6 +3283,31 @@ module Google
         end
       end
       
+      # A set of rules to apply to a set of objects.
+      class RuleSet
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of customization rules to apply.
+        # Corresponds to the JSON property `customizationRules`
+        # @return [Array<Google::Apis::DatastreamV1::CustomizationRule>]
+        attr_accessor :customization_rules
+      
+        # Object filter to apply the rules to.
+        # Corresponds to the JSON property `objectFilter`
+        # @return [Google::Apis::DatastreamV1::ObjectFilter]
+        attr_accessor :object_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customization_rules = args[:customization_rules] if args.key?(:customization_rules)
+          @object_filter = args[:object_filter] if args.key?(:object_filter)
+        end
+      end
+      
       # Request message for running a stream.
       class RunStreamRequest
         include Google::Apis::Core::Hashable
@@ -4142,6 +4329,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Rule sets to apply to the stream.
+        # Corresponds to the JSON property `ruleSets`
+        # @return [Array<Google::Apis::DatastreamV1::RuleSet>]
+        attr_accessor :rule_sets
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -4185,6 +4377,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @last_recovery_time = args[:last_recovery_time] if args.key?(:last_recovery_time)
           @name = args[:name] if args.key?(:name)
+          @rule_sets = args[:rule_sets] if args.key?(:rule_sets)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @source_config = args[:source_config] if args.key?(:source_config)
@@ -4220,6 +4413,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. The customization rules for the object. These rules are derived
+        # from the parent Stream's `rule_sets` and represent the intended configuration
+        # for the object.
+        # Corresponds to the JSON property `customizationRules`
+        # @return [Array<Google::Apis::DatastreamV1::CustomizationRule>]
+        attr_accessor :customization_rules
+      
         # Required. Display name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -4253,11 +4453,38 @@ module Google
         def update!(**args)
           @backfill_job = args[:backfill_job] if args.key?(:backfill_job)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @customization_rules = args[:customization_rules] if args.key?(:customization_rules)
           @display_name = args[:display_name] if args.key?(:display_name)
           @errors = args[:errors] if args.key?(:errors)
           @name = args[:name] if args.key?(:name)
           @source_object = args[:source_object] if args.key?(:source_object)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Time unit column partitioning. see https://cloud.google.com/bigquery/docs/
+      # partitioned-tables#date_timestamp_partitioned_tables
+      class TimeUnitPartition
+        include Google::Apis::Core::Hashable
+      
+        # Required. The partitioning column.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # Optional. Partition granularity.
+        # Corresponds to the JSON property `partitioningTimeGranularity`
+        # @return [String]
+        attr_accessor :partitioning_time_granularity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @partitioning_time_granularity = args[:partitioning_time_granularity] if args.key?(:partitioning_time_granularity)
         end
       end
       
