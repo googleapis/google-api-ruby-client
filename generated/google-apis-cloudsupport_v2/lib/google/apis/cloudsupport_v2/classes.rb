@@ -141,6 +141,12 @@ module Google
         attr_accessor :blob_id
       
         # # gdata.* are outside protos with mising documentation
+        # Corresponds to the JSON property `downloadExternalReadToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :download_external_read_token
+      
+        # # gdata.* are outside protos with mising documentation
         # Corresponds to the JSON property `downloadReadHandle`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -165,6 +171,7 @@ module Google
         def update!(**args)
           @blob_generation = args[:blob_generation] if args.key?(:blob_generation)
           @blob_id = args[:blob_id] if args.key?(:blob_id)
+          @download_external_read_token = args[:download_external_read_token] if args.key?(:download_external_read_token)
           @download_read_handle = args[:download_read_handle] if args.key?(:download_read_handle)
           @read_token = args[:read_token] if args.key?(:read_token)
           @upload_metadata_container = args[:upload_metadata_container] if args.key?(:upload_metadata_container)
