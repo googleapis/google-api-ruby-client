@@ -1053,6 +1053,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Applies multiple entity changes to a workspace in one call. When creating new
+        # entities, their entity IDs must be unique and in correct format. That is, they
+        # must start with "new_" and followed by number, e.g. "new_1", "new_2". Example
+        # body snippet to create myNewTag under myNewFolder is: ``` "changes": [ ` "
+        # folder": ` "folderId": "new_1", "name": "myNewFolder", ... `, "changeStatus": "
+        # added" `, ` "tag": ` "tagId": "new_2", "name": "myNewTag", "parentFolderId": "
+        # new_1", ... `, "changeStatus": "added" ` ] ```
+        # @param [String] path
+        #   GTM Workspace's API relative path.
+        # @param [Google::Apis::TagmanagerV2::ProposedChange] proposed_change_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::BulkUpdateWorkspaceResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::BulkUpdateWorkspaceResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_account_container_workspace_update(path, proposed_change_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tagmanager/v2/{+path}/bulk_update', options)
+          command.request_representation = Google::Apis::TagmanagerV2::ProposedChange::Representation
+          command.request_object = proposed_change_object
+          command.response_representation = Google::Apis::TagmanagerV2::BulkUpdateWorkspaceResponse::Representation
+          command.response_class = Google::Apis::TagmanagerV2::BulkUpdateWorkspaceResponse
+          command.params['path'] = path unless path.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Workspace.
         # @param [String] parent
         #   GTM parent Container's API relative path.

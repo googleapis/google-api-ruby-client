@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkUpdateWorkspaceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Client
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProposedChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PublishContainerVersionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -480,6 +492,14 @@ module Google
           property :path, as: 'path'
           property :type, as: 'type'
           property :workspace_id, as: 'workspaceId'
+        end
+      end
+      
+      class BulkUpdateWorkspaceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :changes, as: 'changes', class: Google::Apis::TagmanagerV2::Entity, decorator: Google::Apis::TagmanagerV2::Entity::Representation
+      
         end
       end
       
@@ -974,6 +994,14 @@ module Google
       
           property :type, as: 'type'
           property :value, as: 'value'
+        end
+      end
+      
+      class ProposedChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :changes, as: 'changes', class: Google::Apis::TagmanagerV2::Entity, decorator: Google::Apis::TagmanagerV2::Entity::Representation
+      
         end
       end
       
