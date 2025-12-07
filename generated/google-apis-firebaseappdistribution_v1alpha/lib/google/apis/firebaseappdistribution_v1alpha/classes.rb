@@ -670,6 +670,13 @@ module Google
         # @return [String]
         attr_accessor :failed_reason
       
+        # Output only. Indicates that the test replayed saved actions and concluded
+        # without a final AI assertion.
+        # Corresponds to the JSON property `finalAiAssertionMissing`
+        # @return [Boolean]
+        attr_accessor :final_ai_assertion_missing
+        alias_method :final_ai_assertion_missing?, :final_ai_assertion_missing
+      
         # Output only. The reason why the test was inconclusive.
         # Corresponds to the JSON property `inconclusiveReason`
         # @return [String]
@@ -736,6 +743,7 @@ module Google
           @device = args[:device] if args.key?(:device)
           @execution_type = args[:execution_type] if args.key?(:execution_type)
           @failed_reason = args[:failed_reason] if args.key?(:failed_reason)
+          @final_ai_assertion_missing = args[:final_ai_assertion_missing] if args.key?(:final_ai_assertion_missing)
           @inconclusive_reason = args[:inconclusive_reason] if args.key?(:inconclusive_reason)
           @name = args[:name] if args.key?(:name)
           @origin_device_execution = args[:origin_device_execution] if args.key?(:origin_device_execution)
