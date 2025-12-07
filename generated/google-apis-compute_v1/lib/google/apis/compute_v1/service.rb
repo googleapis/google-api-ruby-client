@@ -885,6 +885,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Advise how, where and when to create the requested amount of instances
+        # with specified accelerators, within the specified time and location limits.
+        # The method recommends creating future reservations for the requested
+        # resources.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [Google::Apis::ComputeV1::CalendarModeAdviceRequest] calendar_mode_advice_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::CalendarModeAdviceResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::CalendarModeAdviceResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def calendar_mode_advice(project, region, calendar_mode_advice_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/advice/calendarMode', options)
+          command.request_representation = Google::Apis::ComputeV1::CalendarModeAdviceRequest::Representation
+          command.request_object = calendar_mode_advice_request_object
+          command.response_representation = Google::Apis::ComputeV1::CalendarModeAdviceResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::CalendarModeAdviceResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of autoscalers.
         # To prevent failure, it is recommended that you set the
         # `returnPartialSuccess` parameter to `true`.
