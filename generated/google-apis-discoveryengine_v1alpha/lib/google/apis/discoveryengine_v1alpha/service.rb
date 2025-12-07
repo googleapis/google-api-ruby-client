@@ -5735,6 +5735,11 @@ module Google
         # @param [String] parent
         #   Required. The parent resource name. Format: `projects/`project`/locations/`
         #   location`/collections/`collection`/engines/`engine`/assistants/`assistant``
+        # @param [Boolean] admin_view
+        #   Optional. Indicates whether to consider if the caller is an admin. If set, and
+        #   the caller is an admin, the response will consider admin-only permissions.
+        #   Otherwise, a caller with admin permissions will get a response as an
+        #   unprivileged user.
         # @param [String] agent_origin
         #   Optional. The origin of the Agent.
         # @param [String] filter
@@ -5781,11 +5786,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_collection_engine_assistant_available_agent_views(parent, agent_origin: nil, filter: nil, language_code: nil, max_suggested_prompts: nil, page_size: nil, page_token: nil, sort_by: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_collection_engine_assistant_available_agent_views(parent, admin_view: nil, agent_origin: nil, filter: nil, language_code: nil, max_suggested_prompts: nil, page_size: nil, page_token: nil, sort_by: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1alpha/{+parent}:listAvailableAgentViews', options)
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListAvailableAgentViewsResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListAvailableAgentViewsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['adminView'] = admin_view unless admin_view.nil?
           command.query['agentOrigin'] = agent_origin unless agent_origin.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
@@ -6046,6 +6052,11 @@ module Google
         #   Required. The name of the Agent to get. Format: `projects/`project`/locations/`
         #   location`/collections/`collection`/engines/`engine`/assistants/`assistant`/
         #   agents/`agent``
+        # @param [Boolean] admin_view
+        #   Optional. Indicates whether to consider if the caller is an admin. If set, and
+        #   the caller is an admin, the response will consider admin-only permissions.
+        #   Otherwise, a caller with admin permissions will get a response as an
+        #   unprivileged user.
         # @param [String] language_code
         #   Optional. The UI language currently shown to the user. Specifying this field
         #   request that the texts in the AgentView in the response should be translated
@@ -6069,11 +6080,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_collection_engine_assistant_agent_agent_view(name, language_code: nil, max_suggested_prompts: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_collection_engine_assistant_agent_agent_view(name, admin_view: nil, language_code: nil, max_suggested_prompts: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+name}:getAgentView', options)
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGetAgentViewResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGetAgentViewResponse
           command.params['name'] = name unless name.nil?
+          command.query['adminView'] = admin_view unless admin_view.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
           command.query['maxSuggestedPrompts'] = max_suggested_prompts unless max_suggested_prompts.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -7635,6 +7647,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_engine_session_alpha_evolve_experiment_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a Answer.
         # @param [String] name
         #   Required. The resource name of the Answer to get. Format: `projects/`project`/
@@ -7731,6 +7774,37 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_engine_session_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

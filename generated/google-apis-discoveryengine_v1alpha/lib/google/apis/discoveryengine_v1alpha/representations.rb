@@ -6522,6 +6522,7 @@ module Google
       class GoogleCloudDiscoveryengineV1EngineSearchEngineConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :required_subscription_tier, as: 'requiredSubscriptionTier'
           collection :search_add_ons, as: 'searchAddOns'
           property :search_tier, as: 'searchTier'
         end
@@ -8018,6 +8019,7 @@ module Google
           property :customer_policy, as: 'customerPolicy', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicy, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicy::Representation
       
           property :description, as: 'description'
+          property :disable_location_context, as: 'disableLocationContext'
           property :display_name, as: 'displayName'
           hash :enabled_tools, as: 'enabledTools', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistantToolList, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistantToolList::Representation
       
@@ -9679,6 +9681,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :required_subscription_tier, as: 'requiredSubscriptionTier'
           collection :search_add_ons, as: 'searchAddOns'
           property :search_tier, as: 'searchTier'
         end
@@ -9991,6 +9994,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :external_identity, as: 'externalIdentity'
+          property :external_identity_name, as: 'externalIdentityName'
           property :group_id, as: 'groupId'
           property :user_id, as: 'userId'
         end
@@ -11744,6 +11748,7 @@ module Google
       
           collection :search_link_promotions, as: 'searchLinkPromotions', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchLinkPromotion::Representation
       
+          property :semantic_state, as: 'semanticState'
           property :session_info, as: 'sessionInfo', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSessionInfo, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchResponseSessionInfo::Representation
       
           property :suggested_query, as: 'suggestedQuery'
@@ -13392,6 +13397,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :required_subscription_tier, as: 'requiredSubscriptionTier'
           collection :search_add_ons, as: 'searchAddOns'
           property :search_tier, as: 'searchTier'
         end
