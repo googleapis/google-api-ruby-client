@@ -352,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RetryPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -957,6 +963,13 @@ module Google
         end
       end
       
+      class RetryPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_attempts, as: 'maxAttempts'
+        end
+      end
+      
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1011,6 +1024,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :retry_policy, as: 'retryPolicy', class: Google::Apis::EventarcV1::RetryPolicy, decorator: Google::Apis::EventarcV1::RetryPolicy::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_account, as: 'serviceAccount'
           property :transport, as: 'transport', class: Google::Apis::EventarcV1::Transport, decorator: Google::Apis::EventarcV1::Transport::Representation

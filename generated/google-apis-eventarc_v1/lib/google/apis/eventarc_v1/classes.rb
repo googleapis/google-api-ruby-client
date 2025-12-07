@@ -1448,8 +1448,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -2464,6 +2465,27 @@ module Google
         end
       end
       
+      # The retry policy configuration for the Trigger. Can only be set with Cloud Run
+      # destinations.
+      class RetryPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The maximum number of delivery attempts for any message. The only
+        # valid value is 1.
+        # Corresponds to the JSON property `maxAttempts`
+        # @return [Fixnum]
+        attr_accessor :max_attempts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_attempts = args[:max_attempts] if args.key?(:max_attempts)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -2661,6 +2683,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The retry policy configuration for the Trigger. Can only be set with Cloud Run
+        # destinations.
+        # Corresponds to the JSON property `retryPolicy`
+        # @return [Google::Apis::EventarcV1::RetryPolicy]
+        attr_accessor :retry_policy
+      
         # Output only. Whether or not this Trigger satisfies the requirements of
         # physical zone separation
         # Corresponds to the JSON property `satisfiesPzs`
@@ -2710,6 +2738,7 @@ module Google
           @event_filters = args[:event_filters] if args.key?(:event_filters)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
           @transport = args[:transport] if args.key?(:transport)
