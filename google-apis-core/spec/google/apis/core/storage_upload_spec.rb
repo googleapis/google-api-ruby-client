@@ -117,7 +117,7 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
 
     before(:example) do
       stub_request(:put, 'https://www.googleapis.com/zoo/animals')
-        .with(headers: { 'Content-Range' => 'bytes 11-21/22' })
+        .with(headers: { 'Content-Range' => 'bytes 11-21/22'})
         .to_return(body: %(OK))
     end
 
@@ -307,4 +307,224 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
       expect { command.execute(client) }.to raise_error Google::Apis::ServerError
     end
   end
+  context 'when uploading with md5 checksum' do
+
+    let(:file) { StringIO.new(file_content) }
+    let(:md5_checksum) {"md5_checksum" }
+    let(:body_with_md5) { { "md5Hash" => md5_checksum }.to_json }
+
+    context 'with single shot upload' do
+      let(:file_content) { "Hello world" }
+
+      before(:example) do
+        command.body = body_with_md5
+        allow(command).to receive(:formatted_checksum_header).and_call_original
+
+        stub_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+          .to_return(headers: { 'Location' => 'https://www.googleapis.com/zoo/animals' }, body: %(OK))
+        stub_request(:put, 'https://www.googleapis.com/zoo/animals')
+          .with { |req| req.headers['X-Goog-Hash'] == "md5=#{md5_checksum}" }
+          .to_return(body: %(OK))
+      end
+
+      it 'should not include X-Goog-Hash header during initiation' do
+        command.execute(client)
+        expect(a_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+          .with { |req| req.headers['X-Goog-Hash'] == "md5=#{md5_checksum}" }).to_not have_been_made
+      end
+
+      it 'calls formatted_checksum_header and returns correct value' do
+        expect(command.formatted_checksum_header).to eq("md5=#{md5_checksum}")
+      end
+    end
+
+    context 'with chunked upload' do
+      let(:file_content) { "Hello world" * 2 }
+
+      before(:example) do
+        command.body = body_with_md5
+        allow(command).to receive(:formatted_checksum_header).and_call_original
+
+        stub_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+          .to_return(headers: { 'Location' => 'https://www.googleapis.com/zoo/animals' }, body: %(OK))
+        stub_request(:put, 'https://www.googleapis.com/zoo/animals')
+          .with(headers: { 'Content-Range' => 'bytes 0-10/22' })
+          .to_return(status: [308, 'Resume Incomplete'])
+        stub_request(:put, 'https://www.googleapis.com/zoo/animals')
+          .with(headers: { 
+            'Content-Range' => 'bytes 11-21/22',
+            'X-Goog-Hash' => "md5=#{md5_checksum}"
+          })
+          .to_return(body: %(OK))
+      end
+
+      it 'should not include X-Goog-Hash header during initiation' do
+        command.options.upload_chunk_size = 11
+        command.execute(client)
+        expect(a_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+          .with { |req| req.headers['X-Goog-Hash'] == "md5=#{md5_checksum}" }).to_not have_been_made
+      end
+
+      it 'includes md5 checksum in X-Goog-Hash header only in the last chunk' do
+        command.options.upload_chunk_size = 11
+        command.execute(client)
+        
+        # First chunk should NOT have the X-Goog-Hash header
+        expect(a_request(:put, 'https://www.googleapis.com/zoo/animals')
+          .with { |req| req.headers['Content-Range'] == 'bytes 0-10/22' && !req.headers.key?('X-Goog-Hash') }).to have_been_made
+        
+          # Last chunk should have the X-Goog-Hash header
+        expect(a_request(:put, 'https://www.googleapis.com/zoo/animals')
+          .with { |req| req.headers['Content-Range'] == 'bytes 11-21/22' && req.headers['X-Goog-Hash'] == "md5=#{md5_checksum}" }).to have_been_made
+      end
+    end
+  end
+
+  context 'when uploading with crc32c checksum' do
+
+    let(:file) { StringIO.new(file_content) }
+    let(:crc32c_checksum) { "abc_checksum" }
+    let(:body_with_crc32c) { { "crc32c" => crc32c_checksum }.to_json }
+
+    context 'with single shot upload' do
+      let(:file_content) { "Hello world" }
+
+      before(:example) do
+        command.body = body_with_crc32c
+        allow(command).to receive(:formatted_checksum_header).and_call_original
+
+        stub_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+          .to_return(headers: { 'Location' => 'https://www.googleapis.com/zoo/animals' }, body: %(OK))
+        stub_request(:put, 'https://www.googleapis.com/zoo/animals')
+          .with { |req| req.headers['X-Goog-Hash'] == "crc32c=#{crc32c_checksum}" }
+          .to_return(body: %(OK))
+      end
+
+      it 'should not include X-Goog-Hash header during initiation' do
+        command.execute(client)
+        expect(a_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+          .with { |req| req.headers['X-Goog-Hash'] == "crc32c=#{crc32c_checksum}" }).to_not have_been_made
+      end
+
+      it 'calls formatted_checksum_header and returns correct value' do
+        expect(command.formatted_checksum_header).to eq("crc32c=#{crc32c_checksum}")
+      end
+    end
+
+    context 'with chunked upload' do
+      let(:file_content) { "Hello world" * 2 }
+
+      before(:example) do
+        command.body = body_with_crc32c
+        allow(command).to receive(:formatted_checksum_header).and_call_original
+
+        stub_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+          .to_return(headers: { 'Location' => 'https://www.googleapis.com/zoo/animals' }, body: %(OK))
+        stub_request(:put, 'https://www.googleapis.com/zoo/animals')
+          .with(headers: { 'Content-Range' => 'bytes 0-10/22' })
+          .to_return(status: [308, 'Resume Incomplete'])
+        stub_request(:put, 'https://www.googleapis.com/zoo/animals')
+          .with(headers: { 
+            'Content-Range' => 'bytes 11-21/22',
+            'X-Goog-Hash' => "crc32c=#{crc32c_checksum}"
+          })
+          .to_return(body: %(OK))
+      end
+
+      it 'should not include X-Goog-Hash header during initiation' do
+        command.options.upload_chunk_size = 11
+        command.execute(client)
+        expect(a_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+          .with { |req| req.headers['X-Goog-Hash'] == "crc32c=#{crc32c_checksum}" }).to_not have_been_made
+      end
+
+      it 'includes md5 checksum in X-Goog-Hash header only in the last chunk' do
+        command.options.upload_chunk_size = 11
+        command.execute(client)
+        
+        # First chunk should NOT have the X-Goog-Hash header
+        expect(a_request(:put, 'https://www.googleapis.com/zoo/animals')
+          .with { |req| req.headers['Content-Range'] == 'bytes 0-10/22' && !req.headers.key?('X-Goog-Hash') }).to have_been_made
+        
+          # Last chunk should have the X-Goog-Hash header
+        expect(a_request(:put, 'https://www.googleapis.com/zoo/animals')
+          .with { |req| req.headers['Content-Range'] == 'bytes 11-21/22' && req.headers['X-Goog-Hash'] == "crc32c=#{crc32c_checksum}" }).to have_been_made
+      end
+
+    end
+  end
+
+  context 'when uploading with md5 and crc32c checksum' do
+     let(:file) { StringIO.new(file_content) }
+     let(:md5_checksum) { "md5_checksum"}
+     let(:crc32c_checksum) { "crc32c_checksum" }
+     let(:body_with_md5_crc32c) { { "md5Hash" => md5_checksum, "crc32c" => crc32c_checksum }.to_json }
+
+    context 'with single shot upload' do
+      let(:file_content) { "Hello world" }
+
+      before(:example) do
+        command.body = body_with_md5_crc32c
+        allow(command).to receive(:formatted_checksum_header).and_call_original
+        stub_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+          .to_return(headers: { 'Location' => 'https://www.googleapis.com/zoo/animals' }, body: %(OK))
+        stub_request(:put, 'https://www.googleapis.com/zoo/animals')
+          .with { |req| req.headers['X-Goog-Hash'] == "crc32c=#{crc32c_checksum},md5=#{md5_checksum}" }
+          .to_return(body: %(OK))
+      end
+
+      it 'should not include X-Goog-Hash header during initiation' do
+        command.execute(client)
+        expect(a_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+          .with { |req| req.headers['X-Goog-Hash'] == "crc32c=#{crc32c_checksum},md5=#{md5_checksum}" }).to_not have_been_made
+      end
+
+      it 'calls formatted_checksum_header and returns correct value' do
+        expect(command.formatted_checksum_header).to eq("crc32c=#{crc32c_checksum},md5=#{md5_checksum}")
+      end
+    end
+
+    context 'with chunked upload' do
+      let(:file_content) { "Hello world" * 2 }
+    
+      before(:example) do
+        command.body = body_with_md5_crc32c
+        allow(command).to receive(:formatted_checksum_header).and_call_original
+
+        stub_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+          .to_return(headers: { 'Location' => 'https://www.googleapis.com/zoo/animals' }, body: %(OK))
+        stub_request(:put, 'https://www.googleapis.com/zoo/animals')
+          .with(headers: { 'Content-Range' => 'bytes 0-10/22' })
+          .to_return(status: [308, 'Resume Incomplete'])
+        stub_request(:put, 'https://www.googleapis.com/zoo/animals')
+          .with(headers: { 
+            'Content-Range' => 'bytes 11-21/22',
+            'X-Goog-Hash' => "crc32c=#{crc32c_checksum},md5=#{md5_checksum}"
+          })
+          .to_return(body: %(OK))
+      end
+
+      it 'should not includeX-Goog-Hash header during initiation' do
+        command.options.upload_chunk_size = 11
+        command.execute(client)
+        expect(a_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+          .with { |req| req.headers['X-Goog-Hash'] == "crc32c=#{crc32c_checksum},md5=#{md5_checksum}" }).to_not have_been_made
+      end
+
+      it 'includes md5 and crc32c checksum in X-Goog-Hash header only in the last chunk' do
+        command.options.upload_chunk_size = 11
+        command.execute(client)
+        
+        # First chunk should NOT have the X-Goog-Hash header
+        expect(a_request(:put, 'https://www.googleapis.com/zoo/animals')
+          .with { |req| req.headers['Content-Range'] == 'bytes 0-10/22' && !req.headers.key?('X-Goog-Hash') }).to have_been_made
+        
+          # Last chunk should have the X-Goog-Hash header
+        expect(a_request(:put, 'https://www.googleapis.com/zoo/animals')
+          .with { |req| req.headers['Content-Range'] == 'bytes 11-21/22' && req.headers['X-Goog-Hash'] == "crc32c=#{crc32c_checksum},md5=#{md5_checksum}" }).to have_been_made
+      end
+
+    end
+  end
+
 end
