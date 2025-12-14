@@ -7835,6 +7835,247 @@ module Google
         end
       end
       
+      # Message containing CachePolicy configuration for URL Map's Route Action.
+      class CachePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Bypass the cache when the specified request headers are matched by name,
+        # e.g. Pragma or Authorization headers. Values are case-insensitive. Up to 5
+        # header names can be specified. The cache is bypassed for all
+        # cachePolicy.cacheMode settings.
+        # Corresponds to the JSON property `cacheBypassRequestHeaderNames`
+        # @return [Array<String>]
+        attr_accessor :cache_bypass_request_header_names
+      
+        # Message containing what to include in the cache key for a request for Cache
+        # Policy defined on Route Action.
+        # Corresponds to the JSON property `cacheKeyPolicy`
+        # @return [Google::Apis::ComputeAlpha::CachePolicyCacheKeyPolicy]
+        attr_accessor :cache_key_policy
+      
+        # Specifies the cache setting for all responses from this route.
+        # If not specified, the default value is CACHE_ALL_STATIC.
+        # Corresponds to the JSON property `cacheMode`
+        # @return [String]
+        attr_accessor :cache_mode
+      
+        # A Duration represents a fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". Range is approximately 10,000 years.
+        # Corresponds to the JSON property `clientTtl`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :client_ttl
+      
+        # A Duration represents a fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". Range is approximately 10,000 years.
+        # Corresponds to the JSON property `defaultTtl`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :default_ttl
+      
+        # A Duration represents a fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". Range is approximately 10,000 years.
+        # Corresponds to the JSON property `maxTtl`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :max_ttl
+      
+        # Negative caching allows per-status code TTLs to be set, in order
+        # to apply fine-grained caching for common errors or redirects.
+        # This can reduce the load on your origin and improve end-user
+        # experience by reducing response latency.
+        # When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS,
+        # negative caching applies to responses with the specified response code
+        # that lack any Cache-Control, Expires, or Pragma: no-cache directives.
+        # When the cache mode is set to FORCE_CACHE_ALL, negative caching applies
+        # to all responses with the specified response code, and override any
+        # caching headers.
+        # By default, Cloud CDN will apply the following default TTLs to these
+        # status codes:
+        # HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
+        # HTTP 404 (Not Found), 410 (Gone),
+        # 451 (Unavailable For Legal Reasons): 120s
+        # HTTP 405 (Method Not Found), 501 (Not Implemented): 60s.
+        # These defaults can be overridden in negative_caching_policy.
+        # Corresponds to the JSON property `negativeCaching`
+        # @return [Boolean]
+        attr_accessor :negative_caching
+        alias_method :negative_caching?, :negative_caching
+      
+        # Sets a cache TTL for the specified HTTP status code.
+        # negative_caching must be enabled to configure negative_caching_policy.
+        # Omitting the policy and leaving negative_caching enabled will use
+        # Cloud CDN's default cache TTLs.
+        # Note that when specifying an explicit negative_caching_policy, you
+        # should take care to specify a cache TTL for all response codes
+        # that you wish to cache. Cloud CDN will not apply any default
+        # negative caching when a policy exists.
+        # Corresponds to the JSON property `negativeCachingPolicy`
+        # @return [Array<Google::Apis::ComputeAlpha::CachePolicyNegativeCachingPolicy>]
+        attr_accessor :negative_caching_policy
+      
+        # If true then Cloud CDN will combine multiple concurrent cache fill
+        # requests into a small number of requests to the origin.
+        # Corresponds to the JSON property `requestCoalescing`
+        # @return [Boolean]
+        attr_accessor :request_coalescing
+        alias_method :request_coalescing?, :request_coalescing
+      
+        # A Duration represents a fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". Range is approximately 10,000 years.
+        # Corresponds to the JSON property `serveWhileStale`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :serve_while_stale
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cache_bypass_request_header_names = args[:cache_bypass_request_header_names] if args.key?(:cache_bypass_request_header_names)
+          @cache_key_policy = args[:cache_key_policy] if args.key?(:cache_key_policy)
+          @cache_mode = args[:cache_mode] if args.key?(:cache_mode)
+          @client_ttl = args[:client_ttl] if args.key?(:client_ttl)
+          @default_ttl = args[:default_ttl] if args.key?(:default_ttl)
+          @max_ttl = args[:max_ttl] if args.key?(:max_ttl)
+          @negative_caching = args[:negative_caching] if args.key?(:negative_caching)
+          @negative_caching_policy = args[:negative_caching_policy] if args.key?(:negative_caching_policy)
+          @request_coalescing = args[:request_coalescing] if args.key?(:request_coalescing)
+          @serve_while_stale = args[:serve_while_stale] if args.key?(:serve_while_stale)
+        end
+      end
+      
+      # Message containing what to include in the cache key for a request for Cache
+      # Policy defined on Route Action.
+      class CachePolicyCacheKeyPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Names of query string parameters to exclude in cache keys. All other
+        # parameters will be included. Either specify excluded_query_parameters or
+        # included_query_parameters, not both. '&' and '=' will be percent encoded
+        # and not treated as delimiters.
+        # Note: This field applies to routes that use backend services. Attempting
+        # to set it on a route that points exclusively to Backend Buckets will
+        # result in a configuration error. For routes that point to a Backend
+        # Bucket, use includedQueryParameters to define which parameters should
+        # be a part of the cache key.
+        # Corresponds to the JSON property `excludedQueryParameters`
+        # @return [Array<String>]
+        attr_accessor :excluded_query_parameters
+      
+        # If true, requests to different hosts will be cached separately.
+        # Note: This setting is only applicable to routes that use a Backend
+        # Service. It does not affect requests served by a Backend Bucket, as the
+        # host is never included in a Backend Bucket's cache key. Attempting to set
+        # it on a route that points exclusively to Backend Buckets will result in a
+        # configuration error.
+        # Corresponds to the JSON property `includeHost`
+        # @return [Boolean]
+        attr_accessor :include_host
+        alias_method :include_host?, :include_host
+      
+        # If true, http and https requests will be cached separately.
+        # Note: This setting is only applicable to routes that use a Backend
+        # Service. It does not affect requests served by a Backend Bucket, as the
+        # protocol is never included in a Backend Bucket's cache key. Attempting to
+        # set on a route that points exclusively to Backend Buckets will result in
+        # a configuration error.
+        # Corresponds to the JSON property `includeProtocol`
+        # @return [Boolean]
+        attr_accessor :include_protocol
+        alias_method :include_protocol?, :include_protocol
+      
+        # If true, include query string parameters in the cache key according to
+        # included_query_parameters and excluded_query_parameters. If neither is
+        # set, the entire query string will be included. If false, the query string
+        # will be excluded from the cache key entirely.
+        # Note: This field applies to routes that use backend services. Attempting
+        # to set it on a route that points exclusively to Backend Buckets will
+        # result in a configuration error.  For routes that point to a Backend
+        # Bucket, use includedQueryParameters to define which parameters should
+        # be a part of the cache key.
+        # Corresponds to the JSON property `includeQueryString`
+        # @return [Boolean]
+        attr_accessor :include_query_string
+        alias_method :include_query_string?, :include_query_string
+      
+        # Allows HTTP cookies (by name) to be used in the cache key.
+        # The name=value pair will be used in the cache key Cloud CDN generates.
+        # Note: This setting is only applicable to routes that use a Backend
+        # Service. It does not affect requests served by a Backend Bucket.
+        # Attempting to set it on a route that points exclusively to Backend
+        # Buckets will result in a configuration error. Up to 5 cookie names can be
+        # specified.
+        # Corresponds to the JSON property `includedCookieNames`
+        # @return [Array<String>]
+        attr_accessor :included_cookie_names
+      
+        # Allows HTTP request headers (by name) to be used in the cache key.
+        # Corresponds to the JSON property `includedHeaderNames`
+        # @return [Array<String>]
+        attr_accessor :included_header_names
+      
+        # Names of query string parameters to include in cache keys. All other
+        # parameters will be excluded. Either specify included_query_parameters or
+        # excluded_query_parameters, not both. '&' and '=' will be percent encoded
+        # and not treated as delimiters.
+        # Corresponds to the JSON property `includedQueryParameters`
+        # @return [Array<String>]
+        attr_accessor :included_query_parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @excluded_query_parameters = args[:excluded_query_parameters] if args.key?(:excluded_query_parameters)
+          @include_host = args[:include_host] if args.key?(:include_host)
+          @include_protocol = args[:include_protocol] if args.key?(:include_protocol)
+          @include_query_string = args[:include_query_string] if args.key?(:include_query_string)
+          @included_cookie_names = args[:included_cookie_names] if args.key?(:included_cookie_names)
+          @included_header_names = args[:included_header_names] if args.key?(:included_header_names)
+          @included_query_parameters = args[:included_query_parameters] if args.key?(:included_query_parameters)
+        end
+      end
+      
+      # Specify CDN TTLs for response error codes.
+      class CachePolicyNegativeCachingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP status code to define a TTL against. Only HTTP status codes
+        # 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 can be
+        # specified as values, and you cannot specify a status code more than
+        # once.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A Duration represents a fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". Range is approximately 10,000 years.
+        # Corresponds to the JSON property `ttl`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
       # A request to recommend the best way to consume the specified resources in the
       # future.
       class CalendarModeAdviceRequest
@@ -14563,6 +14804,11 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # 
+        # Corresponds to the JSON property `IPAddresses`
+        # @return [Array<String>]
+        attr_accessor :ip_addresses
+      
         # The IP protocol to which this rule applies.
         # For protocol forwarding, valid
         # options are TCP, UDP, ESP,AH, SCTP, ICMP andL3_DEFAULT.
@@ -15020,6 +15266,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
           @all_ports = args[:all_ports] if args.key?(:all_ports)
           @allow_global_access = args[:allow_global_access] if args.key?(:allow_global_access)
@@ -17475,17 +17722,19 @@ module Google
       class GlobalVmExtensionPolicyRolloutOperationRolloutInput
         include Google::Apis::Core::Hashable
       
-        # Optional. [Optional] Specifies the behavior of the Rollout if a conflict is
-        # detected in a project during a Rollout. It can be one of the following
-        # values:
-        # 1) empty : don't overwrite the local value if conflict happens. This is
-        # the default behavior.
-        # 2) "overwrite" : Overwrite the local value with the rollout value.
-        # The concept of "conflict" applies to:
-        # 1) Insert action. If the zonal policy already exists when Insert
-        # happens, it's a conflict.
-        # 2) Update action. If the zonal policy was updated out of band by a
-        # zonal API, it's a conflict.
+        # Optional. Specifies the behavior of the rollout if a conflict is detected in a
+        # project during a rollout. This only applies to `insert` and `update`
+        # methods.
+        # A conflict occurs in the following cases:
+        # * `insert` method: If the zonal policy already exists when the insert
+        # happens.
+        # * `update` method: If the zonal policy was modified by a zonal API call
+        # outside of this rollout.
+        # Possible values are the following:
+        # * `""` (empty string): If a conflict occurs, the local value is not
+        # overwritten. This is the default behavior.
+        # * `"overwrite"`: If a conflict occurs, the local value is overwritten
+        # with the rollout value.
         # Corresponds to the JSON property `conflictBehavior`
         # @return [String]
         attr_accessor :conflict_behavior
@@ -17502,10 +17751,16 @@ module Google
         # @return [String]
         attr_accessor :predefined_rollout_plan
       
-        # Optional. The UUID of the retry action. Only set it if this is a retry
-        # for an existing resource. This is for the user re-populate the resource
-        # without changes. An error will be returned if the retry_uuid is set but
-        # the resource get modified.
+        # Optional. The UUID that identifies a policy rollout retry attempt for update
+        # and
+        # delete operations. Set this field only when retrying a rollout for an
+        # existing extension policy.
+        # * `update` method: Lets you retry policy rollout without changes.
+        # An error occurs if you set retry_uuid but the policy is modified.
+        # * `delete` method: Lets you retry policy deletion rollout if the
+        # previous deletion rollout is not finished and the policy is in the
+        # DELETING state. If you set this field when the policy is not in the
+        # DELETING state, an error occurs.
         # Corresponds to the JSON property `retryUuid`
         # @return [String]
         attr_accessor :retry_uuid
@@ -22364,6 +22619,11 @@ module Google
       class HttpRouteAction
         include Google::Apis::Core::Hashable
       
+        # Message containing CachePolicy configuration for URL Map's Route Action.
+        # Corresponds to the JSON property `cachePolicy`
+        # @return [Google::Apis::ComputeAlpha::CachePolicy]
+        attr_accessor :cache_policy
+      
         # The specification for allowing client-side cross-origin requests. For more
         # information about the W3C recommendation for cross-origin resource sharing
         # (CORS), see Fetch API Living
@@ -22437,6 +22697,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cache_policy = args[:cache_policy] if args.key?(:cache_policy)
           @cors_policy = args[:cors_policy] if args.key?(:cors_policy)
           @fault_injection_policy = args[:fault_injection_policy] if args.key?(:fault_injection_policy)
           @max_stream_duration = args[:max_stream_duration] if args.key?(:max_stream_duration)
@@ -41997,6 +42258,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Output only. [Output Only] MAC address assigned to this network interface.
+        # Corresponds to the JSON property `macAddress`
+        # @return [String]
+        attr_accessor :mac_address
+      
         # [Output Only] The name of the network interface, which is generated by the
         # server. For a VM, the network interface uses the nicN naming
         # format. Where N is a value between 0 and7. The default interface value is nic0.
@@ -42118,6 +42384,7 @@ module Google
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
           @kind = args[:kind] if args.key?(:kind)
+          @mac_address = args[:mac_address] if args.key?(:mac_address)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
@@ -70468,7 +70735,8 @@ module Google
         # explicitly set, it will not appear in get listings. If not set
         # the default behavior is determined by the org policy, if there is no org
         # policy specified, then it will default to disabled. This field isn't
-        # supported if the subnet purpose field is set toREGIONAL_MANAGED_PROXY.
+        # supported if the subnet purpose field is set toREGIONAL_MANAGED_PROXY. It is
+        # recommended to uselogConfig.enable field instead.
         # Corresponds to the JSON property `enableFlowLogs`
         # @return [Boolean]
         attr_accessor :enable_flow_logs
