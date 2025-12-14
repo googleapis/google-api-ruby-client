@@ -119,8 +119,10 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Optional. The format of communication supported by the callout extension. If
-        # not specified, the default value `EXT_PROC_GRPC` is used.
+        # Optional. The format of communication supported by the callout extension. This
+        # field is supported only for regional `AuthzExtension` resources. If not
+        # specified, the default value `EXT_PROC_GRPC` is used. Global `AuthzExtension`
+        # resources use the `EXT_PROC_GRPC` wire format.
         # Corresponds to the JSON property `wireFormat`
         # @return [String]
         attr_accessor :wire_format
@@ -2888,8 +2890,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -4194,6 +4197,31 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. The name of the customer managed Cloud KMS key to be used to encrypt
+        # the `WasmPlugin` image (provided by image_uri) and configuration (provided by
+        # plugin_config_data or plugin_config_uri) that are stored by the `Service
+        # Extensions` product at rest. Format: "projects/`project`/locations/`location`/
+        # keyRings/`keyring`/cryptoKeys/`key`" By default, Google Cloud automatically
+        # encrypts all data at rest using Google-owned and Google-managed encryption
+        # keys. If you need ownership and control of the keys that protect your data at
+        # rest, you can specify a customer-managed encryption key (CMEK) to encrypt your
+        # `WasmPlugin` data. For more information, see [Using customer-managed
+        # encryption keys](https://cloud.google.com/kms/docs/cmek).
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # Output only. The name of the specific CryptoKeyVersion used to encrypt the `
+        # WasmPlugin` data, if the kms_key_name field is set. Format: "projects/`project`
+        # /locations/`location`/keyRings/`keyring`/cryptoKeys/`key`/cryptoKeyVersions/`
+        # version`" This is a read-only field. `WasmPlugin` data is automatically
+        # encrypted using the most recent `CryptoKeyVersion` of the `CryptoKey` provided
+        # in the `kms_key_name` field. See [Cloud KMS resources](https://cloud.google.
+        # com/kms/docs/resource-hierarchy) for more information.
+        # Corresponds to the JSON property `kmsKeyVersion`
+        # @return [String]
+        attr_accessor :kms_key_version
+      
         # Optional. Set of labels associated with the `WasmPlugin` resource. The format
         # must comply with [the following requirements](/compute/docs/labeling-resources#
         # requirements).
@@ -4254,6 +4282,8 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
           @labels = args[:labels] if args.key?(:labels)
           @log_config = args[:log_config] if args.key?(:log_config)
           @main_version_id = args[:main_version_id] if args.key?(:main_version_id)

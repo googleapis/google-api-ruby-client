@@ -1599,6 +1599,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :kms_key_name, as: 'kmsKeyName'
+          property :kms_key_version, as: 'kmsKeyVersion'
           hash :labels, as: 'labels'
           property :log_config, as: 'logConfig', class: Google::Apis::NetworkservicesV1beta1::WasmPluginLogConfig, decorator: Google::Apis::NetworkservicesV1beta1::WasmPluginLogConfig::Representation
       
