@@ -868,6 +868,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CachePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CachePolicyCacheKeyPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CachePolicyNegativeCachingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CalendarModeAdviceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -11627,6 +11645,50 @@ module Google
         end
       end
       
+      class CachePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cache_bypass_request_header_names, as: 'cacheBypassRequestHeaderNames'
+          property :cache_key_policy, as: 'cacheKeyPolicy', class: Google::Apis::ComputeAlpha::CachePolicyCacheKeyPolicy, decorator: Google::Apis::ComputeAlpha::CachePolicyCacheKeyPolicy::Representation
+      
+          property :cache_mode, as: 'cacheMode'
+          property :client_ttl, as: 'clientTtl', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
+          property :default_ttl, as: 'defaultTtl', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
+          property :max_ttl, as: 'maxTtl', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
+          property :negative_caching, as: 'negativeCaching'
+          collection :negative_caching_policy, as: 'negativeCachingPolicy', class: Google::Apis::ComputeAlpha::CachePolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeAlpha::CachePolicyNegativeCachingPolicy::Representation
+      
+          property :request_coalescing, as: 'requestCoalescing'
+          property :serve_while_stale, as: 'serveWhileStale', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
+        end
+      end
+      
+      class CachePolicyCacheKeyPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :excluded_query_parameters, as: 'excludedQueryParameters'
+          property :include_host, as: 'includeHost'
+          property :include_protocol, as: 'includeProtocol'
+          property :include_query_string, as: 'includeQueryString'
+          collection :included_cookie_names, as: 'includedCookieNames'
+          collection :included_header_names, as: 'includedHeaderNames'
+          collection :included_query_parameters, as: 'includedQueryParameters'
+        end
+      end
+      
+      class CachePolicyNegativeCachingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :ttl, as: 'ttl', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
+        end
+      end
+      
       class CalendarModeAdviceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13100,6 +13162,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_address, as: 'IPAddress'
+          collection :ip_addresses, as: 'IPAddresses'
           property :ip_protocol, as: 'IPProtocol'
           property :all_ports, as: 'allPorts'
           property :allow_global_access, as: 'allowGlobalAccess'
@@ -14873,6 +14936,8 @@ module Google
       class HttpRouteAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_policy, as: 'cachePolicy', class: Google::Apis::ComputeAlpha::CachePolicy, decorator: Google::Apis::ComputeAlpha::CachePolicy::Representation
+      
           property :cors_policy, as: 'corsPolicy', class: Google::Apis::ComputeAlpha::CorsPolicy, decorator: Google::Apis::ComputeAlpha::CorsPolicy::Representation
       
           property :fault_injection_policy, as: 'faultInjectionPolicy', class: Google::Apis::ComputeAlpha::HttpFaultInjection, decorator: Google::Apis::ComputeAlpha::HttpFaultInjection::Representation
@@ -19483,6 +19548,7 @@ module Google
           property :ipv6_access_type, as: 'ipv6AccessType'
           property :ipv6_address, as: 'ipv6Address'
           property :kind, as: 'kind'
+          property :mac_address, as: 'macAddress'
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_attachment, as: 'networkAttachment'
