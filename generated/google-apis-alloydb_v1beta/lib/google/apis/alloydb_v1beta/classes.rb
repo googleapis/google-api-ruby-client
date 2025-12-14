@@ -2370,8 +2370,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -3933,6 +3934,73 @@ module Google
         end
       end
       
+      # BigQueryResourceMetadata contains information about the BigQuery resource.
+      # Next ID: 9
+      class StorageDatabasecenterPartnerapiV1mainBigQueryResourceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The creation time of the resource, i.e. the time when resource is created and
+        # recorded in partner service.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Full resource name of this instance.
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        # Required. location of the resource
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Product specification for Condor resources.
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterProtoCommonProduct]
+        attr_accessor :product
+      
+        # Closest parent Cloud Resource Manager container of this resource. It must be
+        # resource name of a Cloud Resource Manager project with the format of "/", such
+        # as "projects/123". For GCP provided resources, number should be project number.
+        # Corresponds to the JSON property `resourceContainer`
+        # @return [String]
+        attr_accessor :resource_container
+      
+        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
+        attr_accessor :resource_id
+      
+        # The time at which the resource was updated and recorded at partner service.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Message type for storing user labels. User labels are used to tag App Engine
+        # resources, allowing users to search for resources matching a set of labels and
+        # to aggregate usage data by labels.
+        # Corresponds to the JSON property `userLabelSet`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainUserLabels]
+        attr_accessor :user_label_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+          @location = args[:location] if args.key?(:location)
+          @product = args[:product] if args.key?(:product)
+          @resource_container = args[:resource_container] if args.key?(:resource_container)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @user_label_set = args[:user_label_set] if args.key?(:user_label_set)
+        end
+      end
+      
       # Contains compliance information about a security standard indicating unmet
       # recommendations.
       class StorageDatabasecenterPartnerapiV1mainCompliance
@@ -4038,6 +4106,12 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupDrMetadata]
         attr_accessor :backupdr_metadata
       
+        # BigQueryResourceMetadata contains information about the BigQuery resource.
+        # Next ID: 9
+        # Corresponds to the JSON property `bigqueryResourceMetadata`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBigQueryResourceMetadata]
+        attr_accessor :bigquery_resource_metadata
+      
         # Config based signal data. This is used to send signals to Condor which are
         # based on the DB level configurations. These will be used to send signals for
         # self managed databases.
@@ -4104,6 +4178,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backupdr_metadata = args[:backupdr_metadata] if args.key?(:backupdr_metadata)
+          @bigquery_resource_metadata = args[:bigquery_resource_metadata] if args.key?(:bigquery_resource_metadata)
           @config_based_signal_data = args[:config_based_signal_data] if args.key?(:config_based_signal_data)
           @database_resource_signal_data = args[:database_resource_signal_data] if args.key?(:database_resource_signal_data)
           @feed_timestamp = args[:feed_timestamp] if args.key?(:feed_timestamp)
@@ -4249,14 +4324,15 @@ module Google
         attr_accessor :provider_description
       
         # Required. The type of resource this ID is identifying. Ex go/keep-sorted start
-        # alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigtableadmin.
-        # googleapis.com/Cluster, bigtableadmin.googleapis.com/Instance compute.
-        # googleapis.com/Instance firestore.googleapis.com/Database, redis.googleapis.
-        # com/Instance, redis.googleapis.com/Cluster, oracledatabase.googleapis.com/
-        # CloudExadataInfrastructure oracledatabase.googleapis.com/CloudVmCluster
-        # oracledatabase.googleapis.com/AutonomousDatabase spanner.googleapis.com/
-        # Instance, spanner.googleapis.com/Database, sqladmin.googleapis.com/Instance,
-        # go/keep-sorted end REQUIRED Please refer go/condor-common-datamodel
+        # alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigquery.
+        # googleapis.com/Dataset, bigtableadmin.googleapis.com/Cluster, bigtableadmin.
+        # googleapis.com/Instance compute.googleapis.com/Instance firestore.googleapis.
+        # com/Database, redis.googleapis.com/Instance, redis.googleapis.com/Cluster,
+        # oracledatabase.googleapis.com/CloudExadataInfrastructure oracledatabase.
+        # googleapis.com/CloudVmCluster oracledatabase.googleapis.com/AutonomousDatabase
+        # spanner.googleapis.com/Instance, spanner.googleapis.com/Database, sqladmin.
+        # googleapis.com/Instance, go/keep-sorted end REQUIRED Please refer go/condor-
+        # common-datamodel
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
