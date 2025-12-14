@@ -1432,6 +1432,12 @@ module Google
         # @return [Google::Apis::ContainerV1::MaintenancePolicy]
         attr_accessor :maintenance_policy
       
+        # ManagedOpenTelemetryConfig is the configuration for the GKE Managed
+        # OpenTelemetry pipeline.
+        # Corresponds to the JSON property `managedOpentelemetryConfig`
+        # @return [Google::Apis::ContainerV1::ManagedOpenTelemetryConfig]
+        attr_accessor :managed_opentelemetry_config
+      
         # The authentication information for accessing the master endpoint.
         # Authentication can be done using HTTP basic auth or using client certificates.
         # Corresponds to the JSON property `masterAuth`
@@ -1711,6 +1717,7 @@ module Google
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @logging_service = args[:logging_service] if args.key?(:logging_service)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
+          @managed_opentelemetry_config = args[:managed_opentelemetry_config] if args.key?(:managed_opentelemetry_config)
           @master_auth = args[:master_auth] if args.key?(:master_auth)
           @master_authorized_networks_config = args[:master_authorized_networks_config] if args.key?(:master_authorized_networks_config)
           @mesh_certificates = args[:mesh_certificates] if args.key?(:mesh_certificates)
@@ -2046,6 +2053,12 @@ module Google
         # @return [String]
         attr_accessor :desired_logging_service
       
+        # ManagedOpenTelemetryConfig is the configuration for the GKE Managed
+        # OpenTelemetry pipeline.
+        # Corresponds to the JSON property `desiredManagedOpentelemetryConfig`
+        # @return [Google::Apis::ContainerV1::ManagedOpenTelemetryConfig]
+        attr_accessor :desired_managed_opentelemetry_config
+      
         # Configuration options for the master authorized networks feature. Enabled
         # master authorized networks will disallow all external traffic to access
         # Kubernetes master through HTTPS except traffic from the given CIDR blocks,
@@ -2325,6 +2338,7 @@ module Google
           @desired_locations = args[:desired_locations] if args.key?(:desired_locations)
           @desired_logging_config = args[:desired_logging_config] if args.key?(:desired_logging_config)
           @desired_logging_service = args[:desired_logging_service] if args.key?(:desired_logging_service)
+          @desired_managed_opentelemetry_config = args[:desired_managed_opentelemetry_config] if args.key?(:desired_managed_opentelemetry_config)
           @desired_master_authorized_networks_config = args[:desired_master_authorized_networks_config] if args.key?(:desired_master_authorized_networks_config)
           @desired_master_version = args[:desired_master_version] if args.key?(:desired_master_version)
           @desired_mesh_certificates = args[:desired_mesh_certificates] if args.key?(:desired_mesh_certificates)
@@ -4764,6 +4778,26 @@ module Google
           @daily_maintenance_window = args[:daily_maintenance_window] if args.key?(:daily_maintenance_window)
           @maintenance_exclusions = args[:maintenance_exclusions] if args.key?(:maintenance_exclusions)
           @recurring_window = args[:recurring_window] if args.key?(:recurring_window)
+        end
+      end
+      
+      # ManagedOpenTelemetryConfig is the configuration for the GKE Managed
+      # OpenTelemetry pipeline.
+      class ManagedOpenTelemetryConfig
+        include Google::Apis::Core::Hashable
+      
+        # Scope of the Managed OpenTelemetry pipeline.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope = args[:scope] if args.key?(:scope)
         end
       end
       
