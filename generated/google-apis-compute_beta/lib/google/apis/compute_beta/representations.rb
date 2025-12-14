@@ -7420,6 +7420,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StoragePoolExapoolProvisionedCapacityGb
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StoragePoolList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -22585,6 +22591,8 @@ module Google
           property :capacity_provisioning_type, as: 'capacityProvisioningType'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :exapool_provisioned_capacity_gb, as: 'exapoolProvisionedCapacityGb', class: Google::Apis::ComputeBeta::StoragePoolExapoolProvisionedCapacityGb, decorator: Google::Apis::ComputeBeta::StoragePoolExapoolProvisionedCapacityGb::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
@@ -22654,6 +22662,15 @@ module Google
           property :status, as: 'status'
           property :type, as: 'type'
           property :used_bytes, :numeric_string => true, as: 'usedBytes'
+        end
+      end
+      
+      class StoragePoolExapoolProvisionedCapacityGb
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_optimized, :numeric_string => true, as: 'capacityOptimized'
+          property :read_optimized, :numeric_string => true, as: 'readOptimized'
+          property :write_optimized, :numeric_string => true, as: 'writeOptimized'
         end
       end
       
@@ -22729,6 +22746,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disk_count, :numeric_string => true, as: 'diskCount'
+          property :exapool_max_read_iops, :numeric_string => true, as: 'exapoolMaxReadIops'
+          property :exapool_max_read_throughput, :numeric_string => true, as: 'exapoolMaxReadThroughput'
+          property :exapool_max_write_iops, :numeric_string => true, as: 'exapoolMaxWriteIops'
+          property :exapool_max_write_throughput, :numeric_string => true, as: 'exapoolMaxWriteThroughput'
           property :last_resize_timestamp, as: 'lastResizeTimestamp'
           property :max_total_provisioned_disk_capacity_gb, :numeric_string => true, as: 'maxTotalProvisionedDiskCapacityGb'
           property :pool_used_capacity_bytes, :numeric_string => true, as: 'poolUsedCapacityBytes'
