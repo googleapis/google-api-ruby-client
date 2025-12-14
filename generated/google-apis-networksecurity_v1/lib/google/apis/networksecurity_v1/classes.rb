@@ -1048,9 +1048,9 @@ module Google
       class CustomMirroringProfile
         include Google::Apis::Core::Hashable
       
-        # Required. The target MirroringEndpointGroup. When a mirroring rule with this
-        # security profile attached matches a packet, a replica will be mirrored to the
-        # location-local target in this group.
+        # Required. Immutable. The target MirroringEndpointGroup. When a mirroring rule
+        # with this security profile attached matches a packet, a replica will be
+        # mirrored to the location-local target in this group.
         # Corresponds to the JSON property `mirroringEndpointGroup`
         # @return [String]
         attr_accessor :mirroring_endpoint_group
@@ -1103,6 +1103,60 @@ module Google
           @http_header_match = args[:http_header_match] if args.key?(:http_header_match)
           @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
           @ports = args[:ports] if args.key?(:ports)
+        end
+      end
+      
+      # A DNS threat detector sends DNS query logs to a _provider_ that then analyzes
+      # the logs to identify threat events in the DNS queries. By default, all VPC
+      # networks in your projects are included. You can exclude specific networks by
+      # supplying `excluded_networks`.
+      class DnsThreatDetector
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time stamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A list of network resource names which aren't monitored by this
+        # DnsThreatDetector. Example: `projects/PROJECT_ID/global/networks/NETWORK_NAME`.
+        # Corresponds to the JSON property `excludedNetworks`
+        # @return [Array<String>]
+        attr_accessor :excluded_networks
+      
+        # Optional. Any labels associated with the DnsThreatDetector, listed as key
+        # value pairs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. Identifier. Name of the DnsThreatDetector resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The provider used for DNS threat analysis.
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        # Output only. Update time stamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @excluded_networks = args[:excluded_networks] if args.key?(:excluded_networks)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @provider = args[:provider] if args.key?(:provider)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -2702,6 +2756,37 @@ module Google
         end
       end
       
+      # The response message to requesting a list of DnsThreatDetectors.
+      class ListDnsThreatDetectorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of DnsThreatDetector resources.
+        # Corresponds to the JSON property `dnsThreatDetectors`
+        # @return [Array<Google::Apis::NetworksecurityV1::DnsThreatDetector>]
+        attr_accessor :dns_threat_detectors
+      
+        # A token, which can be sent as `page_token`, to retrieve the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Unreachable `DnsThreatDetector` resources.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_threat_detectors = args[:dns_threat_detectors] if args.key?(:dns_threat_detectors)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Message for response to listing Associations
       class ListFirewallEndpointAssociationsResponse
         include Google::Apis::Core::Hashable
@@ -3098,8 +3183,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
