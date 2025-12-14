@@ -1103,6 +1103,19 @@ module Google
         end
       end
       
+      # Container for various pieces of client-owned context attached to a request.
+      class ClientContext
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Metadata for a column.
       class ColumnMetadata
         include Google::Apis::Core::Hashable
@@ -5949,6 +5962,11 @@ module Google
       class RequestOptions
         include Google::Apis::Core::Hashable
       
+        # Container for various pieces of client-owned context attached to a request.
+        # Corresponds to the JSON property `clientContext`
+        # @return [Google::Apis::SpannerV1::ClientContext]
+        attr_accessor :client_context
+      
         # Priority for the request.
         # Corresponds to the JSON property `priority`
         # @return [String]
@@ -5985,6 +6003,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @client_context = args[:client_context] if args.key?(:client_context)
           @priority = args[:priority] if args.key?(:priority)
           @request_tag = args[:request_tag] if args.key?(:request_tag)
           @transaction_tag = args[:transaction_tag] if args.key?(:transaction_tag)
@@ -6409,10 +6428,10 @@ module Google
         attr_accessor :labels
       
         # Optional. If `true`, specifies a multiplexed session. Use a multiplexed
-        # session for multiple, concurrent read-only operations. Don't use them for read-
-        # write transactions, partitioned reads, or partitioned queries. Use `sessions.
-        # create` to create multiplexed sessions. Don't use BatchCreateSessions to
-        # create a multiplexed session. You can't delete or list multiplexed sessions.
+        # session for multiple, concurrent operations including any combination of read-
+        # only and read-write transactions. Use `sessions.create` to create multiplexed
+        # sessions. Don't use BatchCreateSessions to create a multiplexed session. You
+        # can't delete or list multiplexed sessions.
         # Corresponds to the JSON property `multiplexed`
         # @return [Boolean]
         attr_accessor :multiplexed
