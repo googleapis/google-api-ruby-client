@@ -766,6 +766,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedOpenTelemetryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedPrometheusConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1978,6 +1984,8 @@ module Google
           property :logging_service, as: 'loggingService'
           property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::ContainerV1beta1::MaintenancePolicy, decorator: Google::Apis::ContainerV1beta1::MaintenancePolicy::Representation
       
+          property :managed_opentelemetry_config, as: 'managedOpentelemetryConfig', class: Google::Apis::ContainerV1beta1::ManagedOpenTelemetryConfig, decorator: Google::Apis::ContainerV1beta1::ManagedOpenTelemetryConfig::Representation
+      
           property :master, as: 'master', class: Google::Apis::ContainerV1beta1::Master, decorator: Google::Apis::ContainerV1beta1::Master::Representation
       
           property :master_auth, as: 'masterAuth', class: Google::Apis::ContainerV1beta1::MasterAuth, decorator: Google::Apis::ContainerV1beta1::MasterAuth::Representation
@@ -2156,6 +2164,8 @@ module Google
           property :desired_logging_config, as: 'desiredLoggingConfig', class: Google::Apis::ContainerV1beta1::LoggingConfig, decorator: Google::Apis::ContainerV1beta1::LoggingConfig::Representation
       
           property :desired_logging_service, as: 'desiredLoggingService'
+          property :desired_managed_opentelemetry_config, as: 'desiredManagedOpentelemetryConfig', class: Google::Apis::ContainerV1beta1::ManagedOpenTelemetryConfig, decorator: Google::Apis::ContainerV1beta1::ManagedOpenTelemetryConfig::Representation
+      
           property :desired_master, as: 'desiredMaster', class: Google::Apis::ContainerV1beta1::Master, decorator: Google::Apis::ContainerV1beta1::Master::Representation
       
           property :desired_master_authorized_networks_config, as: 'desiredMasterAuthorizedNetworksConfig', class: Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig::Representation
@@ -3002,6 +3012,13 @@ module Google
       
           property :recurring_window, as: 'recurringWindow', class: Google::Apis::ContainerV1beta1::RecurringTimeWindow, decorator: Google::Apis::ContainerV1beta1::RecurringTimeWindow::Representation
       
+        end
+      end
+      
+      class ManagedOpenTelemetryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scope, as: 'scope'
         end
       end
       
