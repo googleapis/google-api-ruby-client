@@ -1268,6 +1268,11 @@ module Google
         # @return [String]
         attr_accessor :default_skaffold_version
       
+        # Details of ToolVersions for the release.
+        # Corresponds to the JSON property `defaultToolVersions`
+        # @return [Google::Apis::ClouddeployV1::ToolVersions]
+        attr_accessor :default_tool_versions
+      
         # Name of the configuration.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1285,6 +1290,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @default_skaffold_version = args[:default_skaffold_version] if args.key?(:default_skaffold_version)
+          @default_tool_versions = args[:default_tool_versions] if args.key?(:default_tool_versions)
           @name = args[:name] if args.key?(:name)
           @supported_versions = args[:supported_versions] if args.key?(:supported_versions)
         end
@@ -3065,8 +3071,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
