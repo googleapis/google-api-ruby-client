@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1120,15 +1126,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alias, as: 'alias'
           property :data_source, as: 'dataSource'
-          property :destination_node_reference, as: 'destinationNodeReference'
-          property :dynamic_label_enabled, as: 'dynamicLabelEnabled'
-          property :dynamic_properties_enabled, as: 'dynamicPropertiesEnabled'
+          property :destination_node_reference, as: 'destinationNodeReference', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference::Representation
+      
+          property :dynamic_label_column, as: 'dynamicLabelColumn'
+          property :dynamic_properties_column, as: 'dynamicPropertiesColumn'
           collection :element_keys, as: 'elementKeys'
           property :input_source, as: 'inputSource'
           property :kind, as: 'kind'
           collection :label_and_properties, as: 'labelAndProperties', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties::Representation
       
-          property :source_node_reference, as: 'sourceNodeReference'
+          property :source_node_reference, as: 'sourceNodeReference', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :edge_table_columns, as: 'edgeTableColumns'
+          property :node_alias, as: 'nodeAlias'
+          collection :node_table_columns, as: 'nodeTableColumns'
         end
       end
       
