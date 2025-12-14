@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClientContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ColumnMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1339,6 +1345,12 @@ module Google
           property :child_index, as: 'childIndex'
           property :type, as: 'type'
           property :variable, as: 'variable'
+        end
+      end
+      
+      class ClientContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2548,6 +2560,8 @@ module Google
       class RequestOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_context, as: 'clientContext', class: Google::Apis::SpannerV1::ClientContext, decorator: Google::Apis::SpannerV1::ClientContext::Representation
+      
           property :priority, as: 'priority'
           property :request_tag, as: 'requestTag'
           property :transaction_tag, as: 'transactionTag'
