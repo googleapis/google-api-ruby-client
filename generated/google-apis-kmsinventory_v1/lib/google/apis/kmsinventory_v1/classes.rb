@@ -227,8 +227,11 @@ module Google
         # for all CryptoKeyVersions associated with this CryptoKey reside and where all
         # related cryptographic operations are performed. Only applicable if
         # CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource
-        # name in the format `projects/*/locations/*/ekmConnections/*`. Note, this list
-        # is non-exhaustive and may apply to additional ProtectionLevels in the future.
+        # name in the format `projects/*/locations/*/ekmConnections/*`. Only applicable
+        # if CryptoKeyVersions have a ProtectionLevel of HSM_SINGLE_TENANT, with the
+        # resource name in the format `projects/*/locations/*/singleTenantHsmInstances/*`
+        # . Note, this list is non-exhaustive and may apply to additional
+        # ProtectionLevels in the future.
         # Corresponds to the JSON property `cryptoKeyBackend`
         # @return [String]
         attr_accessor :crypto_key_backend
