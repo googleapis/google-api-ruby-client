@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CachePrePopulate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -493,9 +499,12 @@ module Google
           property :backup_retention_policy, as: 'backupRetentionPolicy', class: Google::Apis::NetappV1::BackupRetentionPolicy, decorator: Google::Apis::NetappV1::BackupRetentionPolicy::Representation
       
           property :backup_vault_type, as: 'backupVaultType'
+          property :backups_crypto_key_version, as: 'backupsCryptoKeyVersion'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :destination_backup_vault, as: 'destinationBackupVault'
+          property :encryption_state, as: 'encryptionState'
+          property :kms_config, as: 'kmsConfig'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :source_backup_vault, as: 'sourceBackupVault'
@@ -518,7 +527,11 @@ module Google
       class CacheConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_pre_populate, as: 'cachePrePopulate', class: Google::Apis::NetappV1::CachePrePopulate, decorator: Google::Apis::NetappV1::CachePrePopulate::Representation
+      
+          property :cache_pre_populate_state, as: 'cachePrePopulateState'
           property :cifs_change_notify_enabled, as: 'cifsChangeNotifyEnabled'
+          property :writeback_enabled, as: 'writebackEnabled'
         end
       end
       
@@ -537,6 +550,15 @@ module Google
           property :peer_volume_name, as: 'peerVolumeName'
           property :peering_command_expiry_time, as: 'peeringCommandExpiryTime'
           property :state_details, as: 'stateDetails'
+        end
+      end
+      
+      class CachePrePopulate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclude_path_list, as: 'excludePathList'
+          collection :path_list, as: 'pathList'
+          property :recursion, as: 'recursion'
         end
       end
       
