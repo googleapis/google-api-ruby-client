@@ -82,12 +82,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListReplicationsInternalResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListRolloutKindsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -160,18 +154,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ReplicationInternal
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ReplicationStats
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Rollout
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,12 +191,6 @@ module Google
       end
       
       class Schedule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -369,16 +345,6 @@ module Google
         end
       end
       
-      class ListReplicationsInternalResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :replications_internal, as: 'replicationsInternal', class: Google::Apis::SaasservicemgmtV1beta1::ReplicationInternal, decorator: Google::Apis::SaasservicemgmtV1beta1::ReplicationInternal::Representation
-      
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
       class ListRolloutKindsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -503,37 +469,6 @@ module Google
         end
       end
       
-      class ReplicationInternal
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :annotations, as: 'annotations'
-          property :create_time, as: 'createTime'
-          property :etag, as: 'etag'
-          hash :labels, as: 'labels'
-          property :max_retry_count, as: 'maxRetryCount'
-          property :name, as: 'name'
-          hash :payload, as: 'payload'
-          property :state, as: 'state'
-          hash :stats, as: 'stats', class: Google::Apis::SaasservicemgmtV1beta1::ReplicationStats, decorator: Google::Apis::SaasservicemgmtV1beta1::ReplicationStats::Representation
-      
-          collection :target_locations, as: 'targetLocations'
-          property :uid, as: 'uid'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class ReplicationStats
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :errors, as: 'errors', class: Google::Apis::SaasservicemgmtV1beta1::Status, decorator: Google::Apis::SaasservicemgmtV1beta1::Status::Representation
-      
-          collection :failed_resources, as: 'failedResources'
-          collection :finished_resources, as: 'finishedResources'
-          collection :pending_resources, as: 'pendingResources'
-          collection :retry_count, as: 'retryCount'
-        end
-      end
-      
       class Rollout
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -581,6 +516,7 @@ module Google
       
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
+          property :maintenance_policy_enforcement, as: 'maintenancePolicyEnforcement'
           property :name, as: 'name'
           property :rollout_orchestration_strategy, as: 'rolloutOrchestrationStrategy'
           property :uid, as: 'uid'
@@ -625,15 +561,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :start_time, as: 'startTime'
-        end
-      end
-      
-      class Status
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :code, as: 'code'
-          collection :details, as: 'details'
-          property :message, as: 'message'
         end
       end
       
