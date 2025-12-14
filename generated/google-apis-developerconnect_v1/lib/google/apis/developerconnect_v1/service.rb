@@ -512,6 +512,54 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Finishes OAuth flow for an account connector.
+        # @param [String] account_connector
+        #   Required. The resource name of the AccountConnector in the format `projects/*/
+        #   locations/*/accountConnectors/*`.
+        # @param [Array<String>, String] google_oauth_params_scopes
+        #   Required. The scopes returned by Google OAuth flow.
+        # @param [String] google_oauth_params_ticket
+        #   Required. The ticket to be used for post processing the callback from Google
+        #   OAuth flow.
+        # @param [String] google_oauth_params_version_info
+        #   Optional. The version info returned by Google OAuth flow.
+        # @param [String] oauth_params_code
+        #   Required. The code to be used for getting the token from SCM provider.
+        # @param [String] oauth_params_ticket
+        #   Required. The ticket to be used for post processing the callback from SCM
+        #   provider.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeveloperconnectV1::FinishOAuthResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeveloperconnectV1::FinishOAuthResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def finish_project_location_account_connector_user_o_auth_flow(account_connector, google_oauth_params_scopes: nil, google_oauth_params_ticket: nil, google_oauth_params_version_info: nil, oauth_params_code: nil, oauth_params_ticket: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+accountConnector}/users:finishOAuthFlow', options)
+          command.response_representation = Google::Apis::DeveloperconnectV1::FinishOAuthResponse::Representation
+          command.response_class = Google::Apis::DeveloperconnectV1::FinishOAuthResponse
+          command.params['accountConnector'] = account_connector unless account_connector.nil?
+          command.query['googleOauthParams.scopes'] = google_oauth_params_scopes unless google_oauth_params_scopes.nil?
+          command.query['googleOauthParams.ticket'] = google_oauth_params_ticket unless google_oauth_params_ticket.nil?
+          command.query['googleOauthParams.versionInfo'] = google_oauth_params_version_info unless google_oauth_params_version_info.nil?
+          command.query['oauthParams.code'] = oauth_params_code unless oauth_params_code.nil?
+          command.query['oauthParams.ticket'] = oauth_params_ticket unless oauth_params_ticket.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists Users in a given project, location, and account_connector.
         # @param [String] parent
         #   Required. Parent value for ListUsersRequest
@@ -550,6 +598,37 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts OAuth flow for an account connector.
+        # @param [String] account_connector
+        #   Required. The resource name of the AccountConnector in the format `projects/*/
+        #   locations/*/accountConnectors/*`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeveloperconnectV1::StartOAuthResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeveloperconnectV1::StartOAuthResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_project_location_account_connector_user_o_auth_flow(account_connector, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+accountConnector}/users:startOAuthFlow', options)
+          command.response_representation = Google::Apis::DeveloperconnectV1::StartOAuthResponse::Representation
+          command.response_class = Google::Apis::DeveloperconnectV1::StartOAuthResponse
+          command.params['accountConnector'] = account_connector unless account_connector.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1543,6 +1622,86 @@ module Google
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a single Deployment Event.
+        # @param [String] name
+        #   Required. The name of the deployment event to retrieve. Format: projects/`
+        #   project`/locations/`location`/insightsConfigs/`insights_config`/
+        #   deploymentEvents/`uuid`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeveloperconnectV1::DeploymentEvent] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeveloperconnectV1::DeploymentEvent]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_insights_config_deployment_event(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DeveloperconnectV1::DeploymentEvent::Representation
+          command.response_class = Google::Apis::DeveloperconnectV1::DeploymentEvent
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Deployment Events in a given insights config.
+        # @param [String] parent
+        #   Required. The parent insights config that owns this collection of deployment
+        #   events. Format: projects/`project`/locations/`location`/insightsConfigs/`
+        #   insights_config`
+        # @param [String] filter
+        #   Optional. Filter expression that matches a subset of the DeploymentEvents.
+        #   https://google.aip.dev/160.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of deployment events to return. The service may
+        #   return fewer than this value. If unspecified, at most 50 deployment events
+        #   will be returned. The maximum value is 1000; values above 1000 will be coerced
+        #   to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListDeploymentEvents` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListDeploymentEvents` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeveloperconnectV1::ListDeploymentEventsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeveloperconnectV1::ListDeploymentEventsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_insights_config_deployment_events(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/deploymentEvents', options)
+          command.response_representation = Google::Apis::DeveloperconnectV1::ListDeploymentEventsResponse::Representation
+          command.response_class = Google::Apis::DeveloperconnectV1::ListDeploymentEventsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

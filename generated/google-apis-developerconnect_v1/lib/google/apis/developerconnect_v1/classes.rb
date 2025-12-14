@@ -188,6 +188,67 @@ module Google
         end
       end
       
+      # The ArtifactDeployment resource represents the deployment of the artifact
+      # within the InsightsConfig resource.
+      class ArtifactDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The artifact alias in the deployment spec, with Tag/SHA. e.g. us-
+        # docker.pkg.dev/my-project/my-repo/image:1.0.0
+        # Corresponds to the JSON property `artifactAlias`
+        # @return [String]
+        attr_accessor :artifact_alias
+      
+        # Output only. The artifact that is deployed.
+        # Corresponds to the JSON property `artifactReference`
+        # @return [String]
+        attr_accessor :artifact_reference
+      
+        # Output only. The summary of container status of the artifact deployment.
+        # Format as `ContainerStatusState-Reason : restartCount` e.g. "Waiting-
+        # ImagePullBackOff : 3"
+        # Corresponds to the JSON property `containerStatusSummary`
+        # @return [String]
+        attr_accessor :container_status_summary
+      
+        # Output only. The time at which the deployment was deployed.
+        # Corresponds to the JSON property `deployTime`
+        # @return [String]
+        attr_accessor :deploy_time
+      
+        # Output only. Unique identifier of `ArtifactDeployment`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. The source commits at which this artifact was built. Extracted
+        # from provenance.
+        # Corresponds to the JSON property `sourceCommitUris`
+        # @return [Array<String>]
+        attr_accessor :source_commit_uris
+      
+        # Output only. The time at which the deployment was undeployed, all artifacts
+        # are considered undeployed once this time is set.
+        # Corresponds to the JSON property `undeployTime`
+        # @return [String]
+        attr_accessor :undeploy_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_alias = args[:artifact_alias] if args.key?(:artifact_alias)
+          @artifact_reference = args[:artifact_reference] if args.key?(:artifact_reference)
+          @container_status_summary = args[:container_status_summary] if args.key?(:container_status_summary)
+          @deploy_time = args[:deploy_time] if args.key?(:deploy_time)
+          @id = args[:id] if args.key?(:id)
+          @source_commit_uris = args[:source_commit_uris] if args.key?(:source_commit_uris)
+          @undeploy_time = args[:undeploy_time] if args.key?(:undeploy_time)
+        end
+      end
+      
       # Configuration for connections to an instance of Bitbucket Cloud.
       class BitbucketCloudConfig
         include Google::Apis::Core::Hashable
@@ -466,6 +527,85 @@ module Google
         end
       end
       
+      # The DeploymentEvent resource represents the deployment of the artifact within
+      # the InsightsConfig resource.
+      class DeploymentEvent
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The artifact deployments of the DeploymentEvent. Each artifact
+        # deployment contains the artifact uri and the runtime configuration uri. For
+        # GKE, this would be all the containers images that are deployed in the pod.
+        # Corresponds to the JSON property `artifactDeployments`
+        # @return [Array<Google::Apis::DeveloperconnectV1::ArtifactDeployment>]
+        attr_accessor :artifact_deployments
+      
+        # Output only. The create time of the DeploymentEvent.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time at which the DeploymentEvent was deployed. This would be
+        # the min of all ArtifactDeployment deploy_times.
+        # Corresponds to the JSON property `deployTime`
+        # @return [String]
+        attr_accessor :deploy_time
+      
+        # Identifier. The name of the DeploymentEvent. This name is provided by DCI.
+        # Format: projects/`project`/locations/`location`/insightsConfigs/`
+        # insights_config`/deploymentEvents/`uuid`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # RuntimeConfig represents the runtimes where the application is deployed.
+        # Corresponds to the JSON property `runtimeConfig`
+        # @return [Google::Apis::DeveloperconnectV1::RuntimeConfig]
+        attr_accessor :runtime_config
+      
+        # Output only. The runtime assigned URI of the DeploymentEvent. For GKE, this is
+        # the fully qualified replica set uri. e.g. container.googleapis.com/projects/`
+        # project`/locations/`location`/clusters/`cluster`/k8s/namespaces/`namespace`/
+        # apps/replicasets/`replica-set-id` For Cloud Run, this is the revision name.
+        # Corresponds to the JSON property `runtimeDeploymentUri`
+        # @return [String]
+        attr_accessor :runtime_deployment_uri
+      
+        # Output only. The state of the DeploymentEvent.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time at which the DeploymentEvent was undeployed, all
+        # artifacts are considered undeployed once this time is set. This would be the
+        # max of all ArtifactDeployment undeploy_times. If any ArtifactDeployment is
+        # still active (i.e. does not have an undeploy_time), this field will be empty.
+        # Corresponds to the JSON property `undeployTime`
+        # @return [String]
+        attr_accessor :undeploy_time
+      
+        # Output only. The update time of the DeploymentEvent.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_deployments = args[:artifact_deployments] if args.key?(:artifact_deployments)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @deploy_time = args[:deploy_time] if args.key?(:deploy_time)
+          @name = args[:name] if args.key?(:name)
+          @runtime_config = args[:runtime_config] if args.key?(:runtime_config)
+          @runtime_deployment_uri = args[:runtime_deployment_uri] if args.key?(:runtime_deployment_uri)
+          @state = args[:state] if args.key?(:state)
+          @undeploy_time = args[:undeploy_time] if args.key?(:undeploy_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -714,6 +854,25 @@ module Google
           @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @git_username = args[:git_username] if args.key?(:git_username)
           @token = args[:token] if args.key?(:token)
+        end
+      end
+      
+      # Message for responding to finishing an OAuth flow.
+      class FinishOAuthResponse
+        include Google::Apis::Core::Hashable
+      
+        # Message for representing an error from exchanging OAuth tokens.
+        # Corresponds to the JSON property `exchangeError`
+        # @return [Google::Apis::DeveloperconnectV1::ExchangeError]
+        attr_accessor :exchange_error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exchange_error = args[:exchange_error] if args.key?(:exchange_error)
         end
       end
       
@@ -1234,6 +1393,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Projects represents the projects to track with the InsightsConfig.
+        # Corresponds to the JSON property `projects`
+        # @return [Google::Apis::DeveloperconnectV1::Projects]
+        attr_accessor :projects
+      
         # Output only. Reconciling (https://google.aip.dev/128#reconciliation). Set to
         # true if the current state of InsightsConfig does not match the user's intended
         # state, and the service is actively updating the resource to reconcile them.
@@ -1272,6 +1436,7 @@ module Google
           @errors = args[:errors] if args.key?(:errors)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @projects = args[:projects] if args.key?(:projects)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @runtime_configs = args[:runtime_configs] if args.key?(:runtime_configs)
           @state = args[:state] if args.key?(:state)
@@ -1423,6 +1588,32 @@ module Google
           @connections = args[:connections] if args.key?(:connections)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response to listing DeploymentEvents.
+      class ListDeploymentEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of DeploymentEvents.
+        # Corresponds to the JSON property `deploymentEvents`
+        # @return [Array<Google::Apis::DeveloperconnectV1::DeploymentEvent>]
+        attr_accessor :deployment_events
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_events = args[:deployment_events] if args.key?(:deployment_events)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1946,6 +2137,25 @@ module Google
         end
       end
       
+      # Projects represents the projects to track with the InsightsConfig.
+      class Projects
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The GCP Project IDs. Format: projects/`project`
+        # Corresponds to the JSON property `projectIds`
+        # @return [Array<String>]
+        attr_accessor :project_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_ids = args[:project_ids] if args.key?(:project_ids)
+        end
+      end
+      
       # ProviderOAuthConfig is the OAuth config for a provider.
       class ProviderOAuthConfig
         include Google::Apis::Core::Hashable
@@ -2041,6 +2251,63 @@ module Google
         # Update properties of this object
         def update!(**args)
           @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # Message for responding to starting an OAuth flow.
+      class StartOAuthResponse
+        include Google::Apis::Core::Hashable
+      
+        # The authorization server URL to the OAuth flow of the service provider.
+        # Corresponds to the JSON property `authUri`
+        # @return [String]
+        attr_accessor :auth_uri
+      
+        # The client ID to the OAuth App of the service provider.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # https://datatracker.ietf.org/doc/html/rfc7636#section-4.1 Follow http://shortn/
+        # _WFYl6U0NyC to include it in the AutoCodeURL.
+        # Corresponds to the JSON property `codeChallenge`
+        # @return [String]
+        attr_accessor :code_challenge
+      
+        # https://datatracker.ietf.org/doc/html/rfc7636#section-4.2
+        # Corresponds to the JSON property `codeChallengeMethod`
+        # @return [String]
+        attr_accessor :code_challenge_method
+      
+        # The list of scopes requested by the application.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        # The ID of the system provider.
+        # Corresponds to the JSON property `systemProviderId`
+        # @return [String]
+        attr_accessor :system_provider_id
+      
+        # The ticket to be used for post processing the callback from the service
+        # provider.
+        # Corresponds to the JSON property `ticket`
+        # @return [String]
+        attr_accessor :ticket
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_uri = args[:auth_uri] if args.key?(:auth_uri)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @code_challenge = args[:code_challenge] if args.key?(:code_challenge)
+          @code_challenge_method = args[:code_challenge_method] if args.key?(:code_challenge_method)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @system_provider_id = args[:system_provider_id] if args.key?(:system_provider_id)
+          @ticket = args[:ticket] if args.key?(:ticket)
         end
       end
       

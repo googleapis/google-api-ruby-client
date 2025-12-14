@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ArtifactDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BitbucketCloudConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +77,12 @@ module Google
       end
       
       class CryptoKeyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeploymentEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -137,6 +149,12 @@ module Google
       end
       
       class FetchReadWriteTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FinishOAuthResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -244,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListDeploymentEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListGitRepositoryLinksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Projects
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProviderOAuthConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +371,12 @@ module Google
       end
       
       class ServiceDirectoryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StartOAuthResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -405,6 +441,19 @@ module Google
           property :google_artifact_registry, as: 'googleArtifactRegistry', class: Google::Apis::DeveloperconnectV1::GoogleArtifactRegistry, decorator: Google::Apis::DeveloperconnectV1::GoogleArtifactRegistry::Representation
       
           property :uri, as: 'uri'
+        end
+      end
+      
+      class ArtifactDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_alias, as: 'artifactAlias'
+          property :artifact_reference, as: 'artifactReference'
+          property :container_status_summary, as: 'containerStatusSummary'
+          property :deploy_time, as: 'deployTime'
+          property :id, as: 'id'
+          collection :source_commit_uris, as: 'sourceCommitUris'
+          property :undeploy_time, as: 'undeployTime'
         end
       end
       
@@ -480,6 +529,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key_reference, as: 'keyReference'
+        end
+      end
+      
+      class DeploymentEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :artifact_deployments, as: 'artifactDeployments', class: Google::Apis::DeveloperconnectV1::ArtifactDeployment, decorator: Google::Apis::DeveloperconnectV1::ArtifactDeployment::Representation
+      
+          property :create_time, as: 'createTime'
+          property :deploy_time, as: 'deployTime'
+          property :name, as: 'name'
+          property :runtime_config, as: 'runtimeConfig', class: Google::Apis::DeveloperconnectV1::RuntimeConfig, decorator: Google::Apis::DeveloperconnectV1::RuntimeConfig::Representation
+      
+          property :runtime_deployment_uri, as: 'runtimeDeploymentUri'
+          property :state, as: 'state'
+          property :undeploy_time, as: 'undeployTime'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -566,6 +632,14 @@ module Google
           property :expiration_time, as: 'expirationTime'
           property :git_username, as: 'gitUsername'
           property :token, as: 'token'
+        end
+      end
+      
+      class FinishOAuthResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exchange_error, as: 'exchangeError', class: Google::Apis::DeveloperconnectV1::ExchangeError, decorator: Google::Apis::DeveloperconnectV1::ExchangeError::Representation
+      
         end
       end
       
@@ -700,6 +774,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :projects, as: 'projects', class: Google::Apis::DeveloperconnectV1::Projects, decorator: Google::Apis::DeveloperconnectV1::Projects::Representation
+      
           property :reconciling, as: 'reconciling'
           collection :runtime_configs, as: 'runtimeConfigs', class: Google::Apis::DeveloperconnectV1::RuntimeConfig, decorator: Google::Apis::DeveloperconnectV1::RuntimeConfig::Representation
       
@@ -750,6 +826,15 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListDeploymentEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deployment_events, as: 'deploymentEvents', class: Google::Apis::DeveloperconnectV1::DeploymentEvent, decorator: Google::Apis::DeveloperconnectV1::DeploymentEvent::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -886,6 +971,13 @@ module Google
         end
       end
       
+      class Projects
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :project_ids, as: 'projectIds'
+        end
+      end
+      
       class ProviderOAuthConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -914,6 +1006,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :service, as: 'service'
+        end
+      end
+      
+      class StartOAuthResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_uri, as: 'authUri'
+          property :client_id, as: 'clientId'
+          property :code_challenge, as: 'codeChallenge'
+          property :code_challenge_method, as: 'codeChallengeMethod'
+          collection :scopes, as: 'scopes'
+          property :system_provider_id, as: 'systemProviderId'
+          property :ticket, as: 'ticket'
         end
       end
       
