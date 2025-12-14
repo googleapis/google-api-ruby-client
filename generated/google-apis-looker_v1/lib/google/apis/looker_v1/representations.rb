@@ -238,6 +238,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :egress_fqdns, as: 'egressFqdns'
           property :marketplace_enabled, as: 'marketplaceEnabled'
+          collection :web_proxy_ips, as: 'webProxyIps'
         end
       end
       
