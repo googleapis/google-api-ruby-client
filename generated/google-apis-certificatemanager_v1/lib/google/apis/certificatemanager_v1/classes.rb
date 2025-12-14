@@ -173,6 +173,13 @@ module Google
         # @return [Google::Apis::CertificatemanagerV1::ManagedCertificate]
         attr_accessor :managed
       
+        # Configuration and state of a Managed Identity Certificate. Certificate Manager
+        # provisions and renews Managed Identity Certificates automatically, for as long
+        # as it's authorized to do so.
+        # Corresponds to the JSON property `managedIdentity`
+        # @return [Google::Apis::CertificatemanagerV1::ManagedIdentityCertificate]
+        attr_accessor :managed_identity
+      
         # Identifier. A user-defined name of the certificate. Certificate names must be
         # unique globally and match pattern `projects/*/locations/*/certificates/*`.
         # Corresponds to the JSON property `name`
@@ -225,6 +232,7 @@ module Google
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @labels = args[:labels] if args.key?(:labels)
           @managed = args[:managed] if args.key?(:managed)
+          @managed_identity = args[:managed_identity] if args.key?(:managed_identity)
           @name = args[:name] if args.key?(:name)
           @pem_certificate = args[:pem_certificate] if args.key?(:pem_certificate)
           @san_dnsnames = args[:san_dnsnames] if args.key?(:san_dnsnames)
@@ -912,8 +920,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1063,6 +1072,40 @@ module Google
           @dns_authorizations = args[:dns_authorizations] if args.key?(:dns_authorizations)
           @domains = args[:domains] if args.key?(:domains)
           @issuance_config = args[:issuance_config] if args.key?(:issuance_config)
+          @provisioning_issue = args[:provisioning_issue] if args.key?(:provisioning_issue)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Configuration and state of a Managed Identity Certificate. Certificate Manager
+      # provisions and renews Managed Identity Certificates automatically, for as long
+      # as it's authorized to do so.
+      class ManagedIdentityCertificate
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. SPIFFE ID of the Managed Identity used for this
+        # certificate.
+        # Corresponds to the JSON property `identity`
+        # @return [String]
+        attr_accessor :identity
+      
+        # Information about issues with provisioning a Managed Certificate.
+        # Corresponds to the JSON property `provisioningIssue`
+        # @return [Google::Apis::CertificatemanagerV1::ProvisioningIssue]
+        attr_accessor :provisioning_issue
+      
+        # Output only. State of the managed certificate resource.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identity = args[:identity] if args.key?(:identity)
           @provisioning_issue = args[:provisioning_issue] if args.key?(:provisioning_issue)
           @state = args[:state] if args.key?(:state)
         end
@@ -1374,6 +1417,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Defines a mapping from a trust domain to a TrustStore. This is used
+        # for SPIFFE certificate validation.
+        # Corresponds to the JSON property `spiffeTrustStores`
+        # @return [Hash<String,Google::Apis::CertificatemanagerV1::TrustStore>]
+        attr_accessor :spiffe_trust_stores
+      
         # Optional. Set of trust stores to perform validation against. This field is
         # supported when TrustConfig is configured with Load Balancers, currently not
         # supported for SPIFFE certificate validation. Only one TrustStore specified is
@@ -1399,6 +1448,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @spiffe_trust_stores = args[:spiffe_trust_stores] if args.key?(:spiffe_trust_stores)
           @trust_stores = args[:trust_stores] if args.key?(:trust_stores)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
