@@ -347,6 +347,50 @@ module Google
         end
       end
       
+      # Describes the settings associated with a project, organization, or folder.
+      class Settings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The location which should be used when any regional resources are
+        # provisioned by GCP.
+        # Corresponds to the JSON property `defaultStorageLocation`
+        # @return [String]
+        attr_accessor :default_storage_location
+      
+        # Optional. The resource name for the configured Cloud KMS key. KMS key name
+        # format: "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/
+        # cryptoKeys/[KEY]" For example: `"projects/my-project/locations/us-central1/
+        # keyRings/my-ring/cryptoKeys/my-key"`
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # Identifier. The resource name of the settings.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The service account for the given resource container, such as
+        # project or folder. This will be used by Cloud Observability to perform actions
+        # in the container's project like access KMS keys or create Links. Always the
+        # same service account per resource container regardless of region.
+        # Corresponds to the JSON property `serviceAccountId`
+        # @return [String]
+        attr_accessor :service_account_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_storage_location = args[:default_storage_location] if args.key?(:default_storage_location)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @name = args[:name] if args.key?(:name)
+          @service_account_id = args[:service_account_id] if args.key?(:service_account_id)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
