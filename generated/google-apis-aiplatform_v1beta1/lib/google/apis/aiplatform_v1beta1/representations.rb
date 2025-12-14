@@ -2710,6 +2710,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1FullFineTunedResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1FullFineTuningSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5656,6 +5662,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1RagVectorDbConfigRagManagedVertexVectorSearch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1RagVectorDbConfigVertexFeatureStore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5849,6 +5861,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecDeveloperConnectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecDeveloperConnectSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11329,6 +11353,8 @@ module Google
       
           property :faster_deployment_config, as: 'fasterDeploymentConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FasterDeploymentConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FasterDeploymentConfig::Representation
       
+          property :full_fine_tuned_resources, as: 'fullFineTunedResources', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FullFineTunedResources, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FullFineTunedResources::Representation
+      
           property :gdc_connected_model, as: 'gdcConnectedModel'
           property :id, as: 'id'
           property :model, as: 'model'
@@ -11648,6 +11674,7 @@ module Google
       
           property :dataset, as: 'dataset', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationDataset, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationDataset::Representation
       
+          property :location, as: 'location'
           collection :metrics, as: 'metrics', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Metric, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Metric::Representation
       
           property :output_config, as: 'outputConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1OutputConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1OutputConfig::Representation
@@ -11698,6 +11725,7 @@ module Google
       
           property :instance, as: 'instance', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstance, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationInstance::Representation
       
+          property :location, as: 'location'
           collection :metrics, as: 'metrics', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Metric, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Metric::Representation
       
           property :metricx_input, as: 'metricxInput', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MetricxInput, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MetricxInput::Representation
@@ -13072,6 +13100,7 @@ module Google
           property :bigtable_metadata, as: 'bigtableMetadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableBigtableMetadata, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableBigtableMetadata::Representation
       
           property :enable_direct_bigtable_access, as: 'enableDirectBigtableAccess'
+          property :zone, as: 'zone'
         end
       end
       
@@ -13767,6 +13796,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1FullFineTunedResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment_type, as: 'deploymentType'
+          property :model_inference_unit_count, as: 'modelInferenceUnitCount'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1FullFineTuningSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14051,6 +14088,7 @@ module Google
       
           collection :contents, as: 'contents', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content::Representation
       
+          property :location, as: 'location'
           property :predefined_rubric_generation_spec, as: 'predefinedRubricGenerationSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PredefinedMetricSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PredefinedMetricSpec::Representation
       
           property :rubric_generation_spec, as: 'rubricGenerationSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RubricGenerationSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RubricGenerationSpec::Representation
@@ -15646,6 +15684,7 @@ module Google
       class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_third_person_memories, as: 'enableThirdPersonMemories'
           collection :generate_memories_examples, as: 'generateMemoriesExamples', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExample, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExample::Representation
       
           collection :memory_topics, as: 'memoryTopics', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigMemoryTopic, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigMemoryTopic::Representation
@@ -18903,6 +18942,8 @@ module Google
       
           property :rag_managed_db, as: 'ragManagedDb', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagVectorDbConfigRagManagedDb, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagVectorDbConfigRagManagedDb::Representation
       
+          property :rag_managed_vertex_vector_search, as: 'ragManagedVertexVectorSearch', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagVectorDbConfigRagManagedVertexVectorSearch, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagVectorDbConfigRagManagedVertexVectorSearch::Representation
+      
           property :vertex_feature_store, as: 'vertexFeatureStore', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagVectorDbConfigVertexFeatureStore, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagVectorDbConfigVertexFeatureStore::Representation
       
           property :vertex_vector_search, as: 'vertexVectorSearch', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagVectorDbConfigVertexVectorSearch, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RagVectorDbConfigVertexVectorSearch::Representation
@@ -18940,6 +18981,13 @@ module Google
       class GoogleCloudAiplatformV1beta1RagVectorDbConfigRagManagedDbKnn
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1RagVectorDbConfigRagManagedVertexVectorSearch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collection_name, as: 'collectionName'
         end
       end
       
@@ -19250,9 +19298,28 @@ module Google
       class GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :developer_connect_source, as: 'developerConnectSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecDeveloperConnectSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecDeveloperConnectSource::Representation
+      
           property :inline_source, as: 'inlineSource', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecInlineSource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecInlineSource::Representation
       
           property :python_spec, as: 'pythonSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecPythonSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecPythonSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecDeveloperConnectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dir, as: 'dir'
+          property :git_repository_link, as: 'gitRepositoryLink'
+          property :revision, as: 'revision'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecDeveloperConnectSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecDeveloperConnectConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpecDeveloperConnectConfig::Representation
       
         end
       end
