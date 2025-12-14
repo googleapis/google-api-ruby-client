@@ -610,6 +610,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudHealthcareV1beta1DicomGcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1084,7 +1090,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SchemaFlattened
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SchemaGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchemaJson
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1115,12 +1133,6 @@ module Google
       end
       
       class SearchParameter
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SearchResourcesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2225,9 +2237,22 @@ module Google
       class GoogleCloudHealthcareV1beta1DicomBigQueryDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :change_data_capture_config, as: 'changeDataCaptureConfig', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig::Representation
+      
           property :force, as: 'force'
+          property :include_source_store, as: 'includeSourceStore'
+          property :schema_flattened, as: 'schemaFlattened', class: Google::Apis::HealthcareV1beta1::SchemaFlattened, decorator: Google::Apis::HealthcareV1beta1::SchemaFlattened::Representation
+      
+          property :schema_json, as: 'schemaJson', class: Google::Apis::HealthcareV1beta1::SchemaJson, decorator: Google::Apis::HealthcareV1beta1::SchemaJson::Representation
+      
           property :table_uri, as: 'tableUri'
           property :write_disposition, as: 'writeDisposition'
+        end
+      end
+      
+      class GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2927,6 +2952,12 @@ module Google
         end
       end
       
+      class SchemaFlattened
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class SchemaGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2936,6 +2967,12 @@ module Google
       
           property :min_occurs, as: 'minOccurs'
           property :name, as: 'name'
+        end
+      end
+      
+      class SchemaJson
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2982,13 +3019,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :canonical_url, as: 'canonicalUrl'
           property :parameter, as: 'parameter'
-        end
-      end
-      
-      class SearchResourcesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :resource_type, as: 'resourceType'
         end
       end
       

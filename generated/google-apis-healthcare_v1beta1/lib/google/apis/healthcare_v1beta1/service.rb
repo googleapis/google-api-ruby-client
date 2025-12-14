@@ -5535,7 +5535,7 @@ module Google
         
         # Bulk exports all resources from the FHIR store to the specified destination.
         # Implements the FHIR implementation guide [system level $export](https://build.
-        # fhir.org/ig/HL7/bulk-data/export.html#endpoint---system-level-export. The
+        # fhir.org/ig/HL7/bulk-data/export.html#endpoint---system-level-export). The
         # following headers must be set in the request: * `Accept`: specifies the format
         # of the `OperationOutcome` response. Only `application/fhir+json` is supported.
         # * `Prefer`: specifies whether the response is immediate or asynchronous. Must
@@ -6214,7 +6214,13 @@ module Google
         # //cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
         # @param [String] parent
         #   Required. Name of the FHIR store to retrieve resources from.
-        # @param [Google::Apis::HealthcareV1beta1::SearchResourcesRequest] search_resources_request_object
+        # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
+        # @param [String] resource_type
+        #   Optional. The FHIR resource type to search, such as Patient or Observation.
+        #   For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/
+        #   DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
+        #   [R4](https://hl7.org/fhir/R4/resourcelist.html), [R5](https://hl7.org/fhir/R5/
+        #   resourcelist.html)).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6232,13 +6238,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_fhir_resources(parent, search_resources_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_fhir_resources(parent, http_body_object = nil, resource_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1beta1/{+parent}/fhir/_search', options)
-          command.request_representation = Google::Apis::HealthcareV1beta1::SearchResourcesRequest::Representation
-          command.request_object = search_resources_request_object
+          command.request_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.request_object = http_body_object
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
+          command.query['resourceType'] = resource_type unless resource_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -6312,7 +6319,7 @@ module Google
         #   DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
         #   [R4](https://hl7.org/fhir/R4/resourcelist.html), [R5](https://hl7.org/fhir/R5/
         #   resourcelist.html)).
-        # @param [Google::Apis::HealthcareV1beta1::SearchResourcesRequest] search_resources_request_object
+        # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6330,10 +6337,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_project_location_dataset_fhir_store_fhir_type(parent, resource_type, search_resources_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_project_location_dataset_fhir_store_fhir_type(parent, resource_type, http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1beta1/{+parent}/fhir/{resourceType}/_search', options)
-          command.request_representation = Google::Apis::HealthcareV1beta1::SearchResourcesRequest::Representation
-          command.request_object = search_resources_request_object
+          command.request_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.request_object = http_body_object
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['parent'] = parent unless parent.nil?
@@ -7408,11 +7415,12 @@ module Google
         #   The standard list page token.
         # @param [Boolean] return_partial_success
         #   When set to `true`, operations that are reachable are returned as normal, and
-        #   those that are unreachable are returned in the [ListOperationsResponse.
-        #   unreachable] field. This can only be `true` when reading across collections e.
-        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
-        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
-        #   explicitly documented otherwise in service or product specific documentation.
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
