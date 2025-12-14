@@ -1998,7 +1998,8 @@ module Google
         # @return [Google::Apis::MerchantapiProductsV1beta::Price]
         attr_accessor :amount
       
-        # The type of subscription period. Supported values are: * "`month`" * "`year`"
+        # The type of subscription period. Supported values are: * "`month`" * "`year`" *
+        # "`week`"
         # Corresponds to the JSON property `period`
         # @return [String]
         attr_accessor :period
