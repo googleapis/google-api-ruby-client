@@ -2990,6 +2990,50 @@ module Google
         end
       end
       
+      # Reporting details unique to the external offers program.
+      class ExternalOfferDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The external transaction id associated with the app download event
+        # through an external link. Required when reporting transactions made in
+        # externally installed apps.
+        # Corresponds to the JSON property `appDownloadEventExternalTransactionId`
+        # @return [String]
+        attr_accessor :app_download_event_external_transaction_id
+      
+        # Optional. The category of the downloaded app though this transaction. This
+        # must match the category provided in Play Console during the external app
+        # verification process. Only required for app downloads.
+        # Corresponds to the JSON property `installedAppCategory`
+        # @return [String]
+        attr_accessor :installed_app_category
+      
+        # Optional. The package name of the app downloaded through this transaction.
+        # Required when link_type is LINK_TO_APP_DOWNLOAD.
+        # Corresponds to the JSON property `installedAppPackage`
+        # @return [String]
+        attr_accessor :installed_app_package
+      
+        # Optional. The type of content being reported by this transaction. Required
+        # when reporting app downloads or purchased digital content offers made in app
+        # installed through Google Play.
+        # Corresponds to the JSON property `linkType`
+        # @return [String]
+        attr_accessor :link_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_download_event_external_transaction_id = args[:app_download_event_external_transaction_id] if args.key?(:app_download_event_external_transaction_id)
+          @installed_app_category = args[:installed_app_category] if args.key?(:installed_app_category)
+          @installed_app_package = args[:installed_app_package] if args.key?(:installed_app_package)
+          @link_type = args[:link_type] if args.key?(:link_type)
+        end
+      end
+      
       # Details of an external subscription.
       class ExternalSubscription
         include Google::Apis::Core::Hashable
@@ -3028,6 +3072,11 @@ module Google
         # Corresponds to the JSON property `currentTaxAmount`
         # @return [Google::Apis::AndroidpublisherV3::Price]
         attr_accessor :current_tax_amount
+      
+        # Reporting details unique to the external offers program.
+        # Corresponds to the JSON property `externalOfferDetails`
+        # @return [Google::Apis::AndroidpublisherV3::ExternalOfferDetails]
+        attr_accessor :external_offer_details
       
         # Output only. The id of this transaction. All transaction ids under the same
         # package name must be unique. Set when creating the external transaction.
@@ -3104,6 +3153,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_pre_tax_amount = args[:current_pre_tax_amount] if args.key?(:current_pre_tax_amount)
           @current_tax_amount = args[:current_tax_amount] if args.key?(:current_tax_amount)
+          @external_offer_details = args[:external_offer_details] if args.key?(:external_offer_details)
           @external_transaction_id = args[:external_transaction_id] if args.key?(:external_transaction_id)
           @one_time_transaction = args[:one_time_transaction] if args.key?(:one_time_transaction)
           @original_pre_tax_amount = args[:original_pre_tax_amount] if args.key?(:original_pre_tax_amount)
@@ -4705,6 +4755,14 @@ module Google
         attr_accessor :is_tokenized_digital_asset
         alias_method :is_tokenized_digital_asset?, :is_tokenized_digital_asset
       
+        # Product tax category code to assign to the in-app product. Product tax
+        # category determines the transaction tax rates applied to the product. Refer to
+        # the [Help Center article](https://support.google.com/googleplay/android-
+        # developer/answer/16408159) for more information.
+        # Corresponds to the JSON property `productTaxCategoryCode`
+        # @return [String]
+        attr_accessor :product_tax_category_code
+      
         # A mapping from region code to tax rate details. The keys are region codes as
         # defined by Unicode's "CLDR".
         # Corresponds to the JSON property `taxRateInfoByRegionCode`
@@ -4719,6 +4777,7 @@ module Google
         def update!(**args)
           @eea_withdrawal_right_type = args[:eea_withdrawal_right_type] if args.key?(:eea_withdrawal_right_type)
           @is_tokenized_digital_asset = args[:is_tokenized_digital_asset] if args.key?(:is_tokenized_digital_asset)
+          @product_tax_category_code = args[:product_tax_category_code] if args.key?(:product_tax_category_code)
           @tax_rate_info_by_region_code = args[:tax_rate_info_by_region_code] if args.key?(:tax_rate_info_by_region_code)
         end
       end
@@ -5594,6 +5653,14 @@ module Google
         attr_accessor :is_tokenized_digital_asset
         alias_method :is_tokenized_digital_asset?, :is_tokenized_digital_asset
       
+        # Product tax category code to assign to the one-time product. Product tax
+        # category determines the transaction tax rates applied to the product. Refer to
+        # the [Help Center article](https://support.google.com/googleplay/android-
+        # developer/answer/16408159) for more information.
+        # Corresponds to the JSON property `productTaxCategoryCode`
+        # @return [String]
+        attr_accessor :product_tax_category_code
+      
         # Regional tax configuration.
         # Corresponds to the JSON property `regionalTaxConfigs`
         # @return [Array<Google::Apis::AndroidpublisherV3::RegionalTaxConfig>]
@@ -5606,6 +5673,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @is_tokenized_digital_asset = args[:is_tokenized_digital_asset] if args.key?(:is_tokenized_digital_asset)
+          @product_tax_category_code = args[:product_tax_category_code] if args.key?(:product_tax_category_code)
           @regional_tax_configs = args[:regional_tax_configs] if args.key?(:regional_tax_configs)
         end
       end
@@ -8818,6 +8886,14 @@ module Google
         attr_accessor :is_tokenized_digital_asset
         alias_method :is_tokenized_digital_asset?, :is_tokenized_digital_asset
       
+        # Product tax category code to assign to the subscription. Product tax category
+        # determines the transaction tax rates applied to the subscription. Refer to the
+        # [Help Center article](https://support.google.com/googleplay/android-developer/
+        # answer/16408159) for more information.
+        # Corresponds to the JSON property `productTaxCategoryCode`
+        # @return [String]
+        attr_accessor :product_tax_category_code
+      
         # A mapping from region code to tax rate details. The keys are region codes as
         # defined by Unicode's "CLDR".
         # Corresponds to the JSON property `taxRateInfoByRegionCode`
@@ -8832,6 +8908,7 @@ module Google
         def update!(**args)
           @eea_withdrawal_right_type = args[:eea_withdrawal_right_type] if args.key?(:eea_withdrawal_right_type)
           @is_tokenized_digital_asset = args[:is_tokenized_digital_asset] if args.key?(:is_tokenized_digital_asset)
+          @product_tax_category_code = args[:product_tax_category_code] if args.key?(:product_tax_category_code)
           @tax_rate_info_by_region_code = args[:tax_rate_info_by_region_code] if args.key?(:tax_rate_info_by_region_code)
         end
       end

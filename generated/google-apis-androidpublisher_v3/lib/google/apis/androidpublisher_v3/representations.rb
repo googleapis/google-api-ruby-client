@@ -670,6 +670,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalOfferDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExternalSubscription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2907,6 +2913,16 @@ module Google
         end
       end
       
+      class ExternalOfferDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_download_event_external_transaction_id, as: 'appDownloadEventExternalTransactionId'
+          property :installed_app_category, as: 'installedAppCategory'
+          property :installed_app_package, as: 'installedAppPackage'
+          property :link_type, as: 'linkType'
+        end
+      end
+      
       class ExternalSubscription
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2921,6 +2937,8 @@ module Google
           property :current_pre_tax_amount, as: 'currentPreTaxAmount', class: Google::Apis::AndroidpublisherV3::Price, decorator: Google::Apis::AndroidpublisherV3::Price::Representation
       
           property :current_tax_amount, as: 'currentTaxAmount', class: Google::Apis::AndroidpublisherV3::Price, decorator: Google::Apis::AndroidpublisherV3::Price::Representation
+      
+          property :external_offer_details, as: 'externalOfferDetails', class: Google::Apis::AndroidpublisherV3::ExternalOfferDetails, decorator: Google::Apis::AndroidpublisherV3::ExternalOfferDetails::Representation
       
           property :external_transaction_id, as: 'externalTransactionId'
           property :one_time_transaction, as: 'oneTimeTransaction', class: Google::Apis::AndroidpublisherV3::OneTimeExternalTransaction, decorator: Google::Apis::AndroidpublisherV3::OneTimeExternalTransaction::Representation
@@ -3407,6 +3425,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :eea_withdrawal_right_type, as: 'eeaWithdrawalRightType'
           property :is_tokenized_digital_asset, as: 'isTokenizedDigitalAsset'
+          property :product_tax_category_code, as: 'productTaxCategoryCode'
           hash :tax_rate_info_by_region_code, as: 'taxRateInfoByRegionCode', class: Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo, decorator: Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo::Representation
       
         end
@@ -3675,6 +3694,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_tokenized_digital_asset, as: 'isTokenizedDigitalAsset'
+          property :product_tax_category_code, as: 'productTaxCategoryCode'
           collection :regional_tax_configs, as: 'regionalTaxConfigs', class: Google::Apis::AndroidpublisherV3::RegionalTaxConfig, decorator: Google::Apis::AndroidpublisherV3::RegionalTaxConfig::Representation
       
         end
@@ -4606,6 +4626,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :eea_withdrawal_right_type, as: 'eeaWithdrawalRightType'
           property :is_tokenized_digital_asset, as: 'isTokenizedDigitalAsset'
+          property :product_tax_category_code, as: 'productTaxCategoryCode'
           hash :tax_rate_info_by_region_code, as: 'taxRateInfoByRegionCode', class: Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo, decorator: Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo::Representation
       
         end
