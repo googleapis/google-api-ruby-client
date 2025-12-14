@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GceHyperdiskBalancedHighAvailability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GceInstance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -418,6 +424,16 @@ module Google
         end
       end
       
+      class GceHyperdiskBalancedHighAvailability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive_timeout, as: 'archiveTimeout'
+          property :reclaim_policy, as: 'reclaimPolicy'
+          property :size_gb, as: 'sizeGb'
+          property :source_snapshot, as: 'sourceSnapshot'
+        end
+      end
+      
       class GceInstance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -438,6 +454,7 @@ module Google
           collection :service_account_scopes, as: 'serviceAccountScopes'
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::WorkstationsV1::GceShieldedInstanceConfig, decorator: Google::Apis::WorkstationsV1::GceShieldedInstanceConfig::Representation
       
+          property :startup_script_uri, as: 'startupScriptUri'
           collection :tags, as: 'tags'
           hash :vm_tags, as: 'vmTags'
         end
@@ -621,6 +638,8 @@ module Google
       class PersistentDirectory
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :gce_hd, as: 'gceHd', class: Google::Apis::WorkstationsV1::GceHyperdiskBalancedHighAvailability, decorator: Google::Apis::WorkstationsV1::GceHyperdiskBalancedHighAvailability::Representation
+      
           property :gce_pd, as: 'gcePd', class: Google::Apis::WorkstationsV1::GceRegionalPersistentDisk, decorator: Google::Apis::WorkstationsV1::GceRegionalPersistentDisk::Representation
       
           property :mount_path, as: 'mountPath'
