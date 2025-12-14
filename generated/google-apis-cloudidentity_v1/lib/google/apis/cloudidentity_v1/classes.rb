@@ -719,7 +719,8 @@ module Google
         attr_accessor :is_bulk_data_entry_analysis_enabled
         alias_method :is_bulk_data_entry_analysis_enabled?, :is_bulk_data_entry_analysis_enabled
       
-        # Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#
+        # Deprecated: This field is not used for Chrome version 118 and later. Current
+        # state of [Chrome Cleanup](https://chromeenterprise.google/policies/#
         # ChromeCleanupEnabled).
         # Corresponds to the JSON property `isChromeCleanupEnabled`
         # @return [Boolean]
