@@ -556,6 +556,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainBigQueryResourceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainCompliance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1766,6 +1772,23 @@ module Google
         end
       end
       
+      class StorageDatabasecenterPartnerapiV1mainBigQueryResourceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :full_resource_name, as: 'fullResourceName'
+          property :location, as: 'location'
+          property :product, as: 'product', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterProtoCommonProduct, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterProtoCommonProduct::Representation
+      
+          property :resource_container, as: 'resourceContainer'
+          property :resource_id, as: 'resourceId', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
+      
+          property :update_time, as: 'updateTime'
+          property :user_label_set, as: 'userLabelSet', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainUserLabels, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainUserLabels::Representation
+      
+        end
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainCompliance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1798,6 +1821,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backupdr_metadata, as: 'backupdrMetadata', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupDrMetadata, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupDrMetadata::Representation
+      
+          property :bigquery_resource_metadata, as: 'bigqueryResourceMetadata', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBigQueryResourceMetadata, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBigQueryResourceMetadata::Representation
       
           property :config_based_signal_data, as: 'configBasedSignalData', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData::Representation
       
