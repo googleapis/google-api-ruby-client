@@ -1302,6 +1302,26 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
+        # Output only. The ancestor names of the media planner. Format: `mediaPlanners/`
+        # mediaPlannerAccountId`` Can be used to filter the response of the
+        # mediaPlanners.list method.
+        # Corresponds to the JSON property `ancestorNames`
+        # @return [Array<String>]
+        attr_accessor :ancestor_names
+      
+        # Output only. The display name of the media planner. Can be used to filter the
+        # response of the mediaPlanners.list method.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The unique resource name of the media planner. Format: `
+        # mediaPlanners/`mediaPlannerAccountId`` Can be used to filter the response of
+        # the mediaPlanners.list method.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1309,6 +1329,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
+          @ancestor_names = args[:ancestor_names] if args.key?(:ancestor_names)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
