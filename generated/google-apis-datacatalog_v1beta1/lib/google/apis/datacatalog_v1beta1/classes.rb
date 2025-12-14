@@ -1419,23 +1419,22 @@ module Google
         # @return [String]
         attr_accessor :data_source
       
-        # Optional. Only applies to `kind = EDGE`.
+        # A reference to a source or destination node in a graph edge.
         # Corresponds to the JSON property `destinationNodeReference`
-        # @return [String]
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference]
         attr_accessor :destination_node_reference
       
-        # Optional. If true, the graph element has a dynamic label in schemaless model.
-        # Corresponds to the JSON property `dynamicLabelEnabled`
-        # @return [Boolean]
-        attr_accessor :dynamic_label_enabled
-        alias_method :dynamic_label_enabled?, :dynamic_label_enabled
+        # Optional. If set, this is the input column for dynamic label in schemaless
+        # data model.
+        # Corresponds to the JSON property `dynamicLabelColumn`
+        # @return [String]
+        attr_accessor :dynamic_label_column
       
-        # Optional. If true, the graph element has dynamic properties in schemaless
-        # model.
-        # Corresponds to the JSON property `dynamicPropertiesEnabled`
-        # @return [Boolean]
-        attr_accessor :dynamic_properties_enabled
-        alias_method :dynamic_properties_enabled?, :dynamic_properties_enabled
+        # Optional. If set, this is the input column for dynamic properties in
+        # schemaless data model.
+        # Corresponds to the JSON property `dynamicPropertiesColumn`
+        # @return [String]
+        attr_accessor :dynamic_properties_column
       
         # Required. The name of the keys of the elements in the table.
         # Corresponds to the JSON property `elementKeys`
@@ -1457,12 +1456,9 @@ module Google
         # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties>]
         attr_accessor :label_and_properties
       
-        # Optional. Only applies to `kind = EDGE`. The reference to the source node of
-        # the edge. This name must be a valid `alias` of a node element in the same
-        # graph. Example, `Person` node can be a source node of an edge element `
-        # Person_to_Address`. Similar rule applies to `destination_node_reference`.
+        # A reference to a source or destination node in a graph edge.
         # Corresponds to the JSON property `sourceNodeReference`
-        # @return [String]
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference]
         attr_accessor :source_node_reference
       
         def initialize(**args)
@@ -1474,13 +1470,47 @@ module Google
           @alias = args[:alias] if args.key?(:alias)
           @data_source = args[:data_source] if args.key?(:data_source)
           @destination_node_reference = args[:destination_node_reference] if args.key?(:destination_node_reference)
-          @dynamic_label_enabled = args[:dynamic_label_enabled] if args.key?(:dynamic_label_enabled)
-          @dynamic_properties_enabled = args[:dynamic_properties_enabled] if args.key?(:dynamic_properties_enabled)
+          @dynamic_label_column = args[:dynamic_label_column] if args.key?(:dynamic_label_column)
+          @dynamic_properties_column = args[:dynamic_properties_column] if args.key?(:dynamic_properties_column)
           @element_keys = args[:element_keys] if args.key?(:element_keys)
           @input_source = args[:input_source] if args.key?(:input_source)
           @kind = args[:kind] if args.key?(:kind)
           @label_and_properties = args[:label_and_properties] if args.key?(:label_and_properties)
           @source_node_reference = args[:source_node_reference] if args.key?(:source_node_reference)
+        end
+      end
+      
+      # A reference to a source or destination node in a graph edge.
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference
+        include Google::Apis::Core::Hashable
+      
+        # Required. The referencing columns in the edge table. The size of `
+        # edge_table_columns` must be equal to the size of `node_table_columns`.
+        # Corresponds to the JSON property `edgeTableColumns`
+        # @return [Array<String>]
+        attr_accessor :edge_table_columns
+      
+        # Required. The reference to the source/destination node of the edge. This name
+        # must be a valid `alias` of a node element in the same graph. Example, `Person`
+        # node can be a source node name of an edge element `Person_to_Address`.
+        # Corresponds to the JSON property `nodeAlias`
+        # @return [String]
+        attr_accessor :node_alias
+      
+        # Required. The referenced columns of the source node table.
+        # Corresponds to the JSON property `nodeTableColumns`
+        # @return [Array<String>]
+        attr_accessor :node_table_columns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @edge_table_columns = args[:edge_table_columns] if args.key?(:edge_table_columns)
+          @node_alias = args[:node_alias] if args.key?(:node_alias)
+          @node_table_columns = args[:node_table_columns] if args.key?(:node_table_columns)
         end
       end
       
