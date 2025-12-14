@@ -466,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrivateResourceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PullGitCommitsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -923,6 +929,8 @@ module Google
           property :git_commitish, as: 'gitCommitish'
           property :internal_metadata, as: 'internalMetadata'
           property :name, as: 'name'
+          property :private_resource_metadata, as: 'privateResourceMetadata', class: Google::Apis::DataformV1::PrivateResourceMetadata, decorator: Google::Apis::DataformV1::PrivateResourceMetadata::Representation
+      
           property :release_config, as: 'releaseConfig'
           property :resolved_git_commit_sha, as: 'resolvedGitCommitSha'
           property :workspace, as: 'workspace'
@@ -1414,6 +1422,13 @@ module Google
         end
       end
       
+      class PrivateResourceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :user_scoped, as: 'userScoped'
+        end
+      end
+      
       class PullGitCommitsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1749,6 +1764,8 @@ module Google
           property :invocation_timing, as: 'invocationTiming', class: Google::Apis::DataformV1::Interval, decorator: Google::Apis::DataformV1::Interval::Representation
       
           property :name, as: 'name'
+          property :private_resource_metadata, as: 'privateResourceMetadata', class: Google::Apis::DataformV1::PrivateResourceMetadata, decorator: Google::Apis::DataformV1::PrivateResourceMetadata::Representation
+      
           property :resolved_compilation_result, as: 'resolvedCompilationResult'
           property :state, as: 'state'
           property :workflow_config, as: 'workflowConfig'
@@ -1784,6 +1801,8 @@ module Google
       
           property :internal_metadata, as: 'internalMetadata'
           property :name, as: 'name'
+          property :private_resource_metadata, as: 'privateResourceMetadata', class: Google::Apis::DataformV1::PrivateResourceMetadata, decorator: Google::Apis::DataformV1::PrivateResourceMetadata::Representation
+      
         end
       end
       
