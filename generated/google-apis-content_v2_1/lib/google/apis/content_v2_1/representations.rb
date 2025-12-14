@@ -4461,6 +4461,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :approved_countries, as: 'approvedCountries'
+          property :channel, as: 'channel'
           property :destination, as: 'destination'
           collection :disapproved_countries, as: 'disapprovedCountries'
           collection :pending_countries, as: 'pendingCountries'
