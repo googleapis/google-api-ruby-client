@@ -6720,7 +6720,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. The user-defined name of the Schema.
+        # Required. The user-defined name of the Schema.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -7777,7 +7777,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. The user-defined name of the SchemaVersion.
+        # Required. The user-defined name of the SchemaVersion.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
