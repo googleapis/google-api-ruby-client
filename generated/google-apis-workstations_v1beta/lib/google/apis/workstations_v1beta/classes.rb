@@ -553,9 +553,10 @@ module Google
         end
       end
       
-      # A Persistent Directory backed by a Compute Engine Hyperdisk Balanced High
-      # Availability Disk. This is a high-availability block storage solution that
-      # offers a balance between performance and cost for most general-purpose
+      # A Persistent Directory backed by a Compute Engine [Hyperdisk Balanced High
+      # Availability Disk](https://cloud.google.com/compute/docs/disks/hd-types/
+      # hyperdisk-balanced-ha). This is a high-availability block storage solution
+      # that offers a balance between performance and cost for most general-purpose
       # workloads.
       class GceHyperdiskBalancedHighAvailability
         include Google::Apis::Core::Hashable
@@ -671,6 +672,11 @@ module Google
         attr_accessor :enable_nested_virtualization
         alias_method :enable_nested_virtualization?, :enable_nested_virtualization
       
+        # Optional. Custom metadata to apply to Compute Engine instances.
+        # Corresponds to the JSON property `instanceMetadata`
+        # @return [Hash<String,String>]
+        attr_accessor :instance_metadata
+      
         # Optional. The type of machine to use for VM instances—for example, `"e2-
         # standard-4"`. For more information about machine types that Cloud Workstations
         # supports, see the list of [available machine types](https://cloud.google.com/
@@ -727,11 +733,13 @@ module Google
         attr_accessor :shielded_instance_config
       
         # Optional. Link to the startup script stored in Cloud Storage. This script will
-        # be run on the host workstation VM when the VM is created. The uri must be of
+        # be run on the host workstation VM when the VM is created. The URI must be of
         # the form gs://`bucket-name`/`object-name`. If specifying a startup script, the
         # service account must have [Permission to access the bucket and script file in
         # Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-
-        # permissions). Otherwise, the script must be publicly accessible.
+        # permissions). Otherwise, the script must be publicly accessible. Note that the
+        # service regularly updates the OS version used, and it is the responsibility of
+        # the user to ensure the script stays compatible with the OS version.
         # Corresponds to the JSON property `startupScriptUri`
         # @return [String]
         attr_accessor :startup_script_uri
@@ -766,6 +774,7 @@ module Google
           @disable_public_ip_addresses = args[:disable_public_ip_addresses] if args.key?(:disable_public_ip_addresses)
           @disable_ssh = args[:disable_ssh] if args.key?(:disable_ssh)
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
+          @instance_metadata = args[:instance_metadata] if args.key?(:instance_metadata)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @pool_size = args[:pool_size] if args.key?(:pool_size)
           @pooled_instances = args[:pooled_instances] if args.key?(:pooled_instances)
@@ -1107,8 +1116,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1409,9 +1419,10 @@ module Google
       class PersistentDirectory
         include Google::Apis::Core::Hashable
       
-        # A Persistent Directory backed by a Compute Engine Hyperdisk Balanced High
-        # Availability Disk. This is a high-availability block storage solution that
-        # offers a balance between performance and cost for most general-purpose
+        # A Persistent Directory backed by a Compute Engine [Hyperdisk Balanced High
+        # Availability Disk](https://cloud.google.com/compute/docs/disks/hd-types/
+        # hyperdisk-balanced-ha). This is a high-availability block storage solution
+        # that offers a balance between performance and cost for most general-purpose
         # workloads.
         # Corresponds to the JSON property `gceHd`
         # @return [Google::Apis::WorkstationsV1beta::GceHyperdiskBalancedHighAvailability]
