@@ -1512,6 +1512,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :artifact_id, as: 'artifactId'
+          property :deploy_folder, as: 'deployFolder'
           property :group_id, as: 'groupId'
           property :path, as: 'path'
           property :repository, as: 'repository'
