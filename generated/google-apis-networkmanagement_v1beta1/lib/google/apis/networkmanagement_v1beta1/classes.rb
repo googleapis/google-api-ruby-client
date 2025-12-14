@@ -1714,8 +1714,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1983,6 +1984,11 @@ module Google
       class NatInfo
         include Google::Apis::Core::Hashable
       
+        # Type of Cloud NAT gateway. Only valid when `type` is CLOUD_NAT.
+        # Corresponds to the JSON property `cloudNatGatewayType`
+        # @return [String]
+        attr_accessor :cloud_nat_gateway_type
+      
         # The name of Cloud NAT Gateway. Only valid when type is CLOUD_NAT.
         # Corresponds to the JSON property `natGatewayName`
         # @return [String]
@@ -2055,6 +2061,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_nat_gateway_type = args[:cloud_nat_gateway_type] if args.key?(:cloud_nat_gateway_type)
           @nat_gateway_name = args[:nat_gateway_name] if args.key?(:nat_gateway_name)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
           @new_destination_ip = args[:new_destination_ip] if args.key?(:new_destination_ip)

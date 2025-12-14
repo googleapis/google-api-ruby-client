@@ -895,6 +895,7 @@ module Google
       class NatInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_nat_gateway_type, as: 'cloudNatGatewayType'
           property :nat_gateway_name, as: 'natGatewayName'
           property :network_uri, as: 'networkUri'
           property :new_destination_ip, as: 'newDestinationIp'
