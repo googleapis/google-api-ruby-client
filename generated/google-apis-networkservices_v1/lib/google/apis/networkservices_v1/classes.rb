@@ -190,8 +190,10 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Optional. The format of communication supported by the callout extension. If
-        # not specified, the default value `EXT_PROC_GRPC` is used.
+        # Optional. The format of communication supported by the callout extension. This
+        # field is supported only for regional `AuthzExtension` resources. If not
+        # specified, the default value `EXT_PROC_GRPC` is used. Global `AuthzExtension`
+        # resources use the `EXT_PROC_GRPC` wire format.
         # Corresponds to the JSON property `wireFormat`
         # @return [String]
         attr_accessor :wire_format
@@ -3050,8 +3052,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
