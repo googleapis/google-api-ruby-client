@@ -1048,9 +1048,9 @@ module Google
       class CustomMirroringProfile
         include Google::Apis::Core::Hashable
       
-        # Required. The target MirroringEndpointGroup. When a mirroring rule with this
-        # security profile attached matches a packet, a replica will be mirrored to the
-        # location-local target in this group.
+        # Required. Immutable. The target MirroringEndpointGroup. When a mirroring rule
+        # with this security profile attached matches a packet, a replica will be
+        # mirrored to the location-local target in this group.
         # Corresponds to the JSON property `mirroringEndpointGroup`
         # @return [String]
         attr_accessor :mirroring_endpoint_group
@@ -1107,9 +1107,9 @@ module Google
       end
       
       # A DNS threat detector sends DNS query logs to a _provider_ that then analyzes
-      # the logs to identify malicious activity in the DNS queries. By default, all
-      # VPC networks in your projects are included. You can exclude specific networks
-      # by supplying `excluded_networks`.
+      # the logs to identify threat events in the DNS queries. By default, all VPC
+      # networks in your projects are included. You can exclude specific networks by
+      # supplying `excluded_networks`.
       class DnsThreatDetector
         include Google::Apis::Core::Hashable
       
@@ -3183,8 +3183,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
