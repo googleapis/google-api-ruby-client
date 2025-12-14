@@ -984,8 +984,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of host groups in a location. Use '-' as location to list host
-        # groups across all locations.
+        # Returns a list of host groups in a `location`. Use `-` as location to list
+        # host groups across all locations.
         # @param [String] parent
         #   Required. Parent value for ListHostGroupsRequest
         # @param [String] filter
