@@ -3543,8 +3543,8 @@ module Google
       class Reply
         include Google::Apis::Core::Hashable
       
-        # The action the reply performed to the parent comment. Valid values are: * `
-        # resolve` * `reopen`
+        # The action the reply performed to the parent comment. The supported values are:
+        # * `resolve` * `reopen`
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -3561,8 +3561,8 @@ module Google
         attr_accessor :author
       
         # The plain text content of the reply. This field is used for setting the
-        # content, while `htmlContent` should be displayed. This is required on creates
-        # if no `action` is specified.
+        # content, while `htmlContent` should be displayed. This field is required by
+        # the `create` method if no `action` value is specified.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
@@ -3645,7 +3645,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of replies. If nextPageToken is populated, then this list may be
+        # The list of replies. If `nextPageToken` is populated, then this list may be
         # incomplete and an additional page of results should be fetched.
         # Corresponds to the JSON property `replies`
         # @return [Array<Google::Apis::DriveV3::Reply>]

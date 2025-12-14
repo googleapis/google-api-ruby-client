@@ -2133,7 +2133,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a reply to a comment.
+        # Creates a reply to a comment. For more information, see [Manage comments and
+        # replies](https://developers.google.com/workspace/drive/api/guides/manage-
+        # comments).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
@@ -2169,7 +2171,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a reply.
+        # Deletes a reply. For more information, see [Manage comments and replies](https:
+        # //developers.google.com/workspace/drive/api/guides/manage-comments).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
@@ -2203,7 +2206,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a reply by ID.
+        # Gets a reply by ID. For more information, see [Manage comments and replies](
+        # https://developers.google.com/workspace/drive/api/guides/manage-comments).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
@@ -2211,7 +2215,7 @@ module Google
         # @param [String] reply_id
         #   The ID of the reply.
         # @param [Boolean] include_deleted
-        #   Whether to return deleted replies. Deleted replies will not include their
+        #   Whether to return deleted replies. Deleted replies don't include their
         #   original content.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2243,19 +2247,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists a comment's replies.
+        # Lists a comment's replies. For more information, see [Manage comments and
+        # replies](https://developers.google.com/workspace/drive/api/guides/manage-
+        # comments).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
         #   The ID of the comment.
         # @param [Boolean] include_deleted
-        #   Whether to include deleted replies. Deleted replies will not include their
+        #   Whether to include deleted replies. Deleted replies don't include their
         #   original content.
         # @param [Fixnum] page_size
         #   The maximum number of replies to return per page.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
-        #   be set to the value of 'nextPageToken' from the previous response.
+        #   be set to the value of `nextPageToken` from the previous response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2287,7 +2293,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a reply with patch semantics.
+        # Updates a reply with patch semantics. For more information, see [Manage
+        # comments and replies](https://developers.google.com/workspace/drive/api/guides/
+        # manage-comments).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
