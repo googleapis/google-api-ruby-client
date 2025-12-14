@@ -3004,7 +3004,7 @@ module Google
       class GoogleChromeManagementV1RiskAssessmentEntry
         include Google::Apis::Core::Hashable
       
-        # The risk assessment provider from which this entry comes from.
+        # Output only. The risk assessment provider from which this entry comes from.
         # Corresponds to the JSON property `provider`
         # @return [String]
         attr_accessor :provider
@@ -3014,7 +3014,7 @@ module Google
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RiskAssessment]
         attr_accessor :risk_assessment
       
-        # The bucketed risk level for the risk assessment.
+        # Output only. The bucketed risk level for the risk assessment.
         # Corresponds to the JSON property `riskLevel`
         # @return [String]
         attr_accessor :risk_level
