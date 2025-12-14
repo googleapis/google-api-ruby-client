@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PauseReplicaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PerformanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +263,12 @@ module Google
       end
       
       class RestoreInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResumeReplicaRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -686,6 +698,12 @@ module Google
         end
       end
       
+      class PauseReplicaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class PerformanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -746,6 +764,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :file_share, as: 'fileShare'
           property :source_backup, as: 'sourceBackup'
+        end
+      end
+      
+      class ResumeReplicaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
