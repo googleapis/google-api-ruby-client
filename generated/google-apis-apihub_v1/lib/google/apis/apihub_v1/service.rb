@@ -195,6 +195,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieve API views.
+        # @param [String] parent
+        #   Required. The parent resource name. Format: `projects/`project`/locations/`
+        #   location``.
+        # @param [String] filter
+        #   Optional. The filter expression.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return. Default to 100.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `RetrieveApiViews` call.
+        #   Provide this to retrieve the subsequent page.
+        # @param [String] view
+        #   Required. The view type to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApihubV1::GoogleCloudApihubV1RetrieveApiViewsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1RetrieveApiViewsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retrieve_project_location_api_views(parent, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}:retrieveApiViews', options)
+          command.response_representation = Google::Apis::ApihubV1::GoogleCloudApihubV1RetrieveApiViewsResponse::Representation
+          command.response_class = Google::Apis::ApihubV1::GoogleCloudApihubV1RetrieveApiViewsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Search across API-Hub resources.
         # @param [String] location
         #   Required. The resource name of the location which will be of the type `
@@ -654,9 +698,13 @@ module Google
         #   id of the resource name. For example, `id(name) = \"api-1\"` is equivalent to `
         #   name = \"projects/test-project-id/locations/test-location-id/apis/api-1\"`
         #   provided the parent is `projects/test-project-id/locations/test-location-id`.
-        #   Expressions are combined with either `AND` logic operator or `OR` logical
-        #   operator but not both of them together i.e. only one of the `AND` or `OR`
-        #   operator can be used throughout the filter string and both the operators
+        #   Another supported filter function is `plugins(source_metadata)`. This function
+        #   filters for resources that are associated with a specific plugin. For example,
+        #   `plugins(source_metadata) : "projects/test-project-id/locations/test-location-
+        #   id/plugins/test-plugin-id"` will return resources sourced from the given
+        #   plugin. Expressions are combined with either `AND` logic operator or `OR`
+        #   logical operator but not both of them together i.e. only one of the `AND` or `
+        #   OR` operator can be used throughout the filter string and both the operators
         #   cannot be used together. No other logical operators are supported. At most
         #   three filter fields are allowed in the filter string and if provided more than
         #   that then `INVALID_ARGUMENT` error is returned by the API. Here are a few
@@ -1265,14 +1313,15 @@ module Google
         # ApiOperation resource can be updated: * details.description * details.
         # documentation * details.http_operation.path * details.http_operation.method *
         # details.deprecated * attributes * details.mcp_tool.title * details.mcp_tool.
-        # description * details.input_schema * details.output_schema * details.mcp_tool.
-        # annotations.title * details.mcp_tool.annotations.read_only_hint * details.
-        # mcp_tool.annotations.destructive_hint * details.mcp_tool.annotations.
-        # idempotent_hint * details.mcp_tool.annotations.open_world_hint * details.
-        # mcp_tool.annotations.additional_hints The update_mask should be used to
-        # specify the fields being updated. An operation can be updated only if the
-        # operation was created via CreateApiOperation API. If the operation was created
-        # by parsing the spec, then it can be edited by updating the spec.
+        # description * details.mcp_tool.input_schema * details.mcp_tool.output_schema *
+        # details.input_schema * details.output_schema * details.mcp_tool.annotations.
+        # title * details.mcp_tool.annotations.read_only_hint * details.mcp_tool.
+        # annotations.destructive_hint * details.mcp_tool.annotations.idempotent_hint *
+        # details.mcp_tool.annotations.open_world_hint * details.mcp_tool.annotations.
+        # additional_hints The update_mask should be used to specify the fields being
+        # updated. An operation can be updated only if the operation was created via
+        # CreateApiOperation API. If the operation was created by parsing the spec, then
+        # it can be edited by updating the spec.
         # @param [String] name
         #   Identifier. The name of the operation. Format: `projects/`project`/locations/`
         #   location`/apis/`api`/versions/`version`/operations/`operation``
@@ -1392,6 +1441,41 @@ module Google
           command.response_representation = Google::Apis::ApihubV1::Empty::Representation
           command.response_class = Google::Apis::ApihubV1::Empty
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetch additional spec content.
+        # @param [String] name
+        #   Required. The name of the spec whose contents need to be retrieved. Format: `
+        #   projects/`project`/locations/`location`/apis/`api`/versions/`version`/specs/`
+        #   spec``
+        # @param [String] spec_content_type
+        #   Optional. The type of the spec contents to be retrieved.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApihubV1::GoogleCloudApihubV1FetchAdditionalSpecContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1FetchAdditionalSpecContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_api_version_spec_additional_spec_content(name, spec_content_type: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:fetchAdditionalSpecContent', options)
+          command.response_representation = Google::Apis::ApihubV1::GoogleCloudApihubV1FetchAdditionalSpecContentResponse::Representation
+          command.response_class = Google::Apis::ApihubV1::GoogleCloudApihubV1FetchAdditionalSpecContentResponse
+          command.params['name'] = name unless name.nil?
+          command.query['specContentType'] = spec_content_type unless spec_content_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3139,11 +3223,12 @@ module Google
         #   The standard list page token.
         # @param [Boolean] return_partial_success
         #   When set to `true`, operations that are reachable are returned as normal, and
-        #   those that are unreachable are returned in the [ListOperationsResponse.
-        #   unreachable] field. This can only be `true` when reading across collections e.
-        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
-        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
-        #   explicitly documented otherwise in service or product specific documentation.
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3694,19 +3779,21 @@ module Google
         #   filtering. The value must be a string. The comparison operator must be one of:
         #   `<`, `>` or `=`. Filters are not case sensitive. The following fields in the `
         #   PluginInstances` are eligible for filtering: * `state` - The state of the
-        #   Plugin Instance. Allowed comparison operators: `=`. A filter function is also
-        #   supported in the filter string. The filter function is `id(name)`. The `id(
-        #   name)` function returns the id of the resource name. For example, `id(name) = \
-        #   "plugin-instance-1\"` is equivalent to `name = \"projects/test-project-id/
-        #   locations/test-location-id/plugins/plugin-1/instances/plugin-instance-1\"`
-        #   provided the parent is `projects/test-project-id/locations/test-location-id/
-        #   plugins/plugin-1`. Expressions are combined with either `AND` logic operator
-        #   or `OR` logical operator but not both of them together i.e. only one of the `
-        #   AND` or `OR` operator can be used throughout the filter string and both the
-        #   operators cannot be used together. No other logical operators are supported.
-        #   At most three filter fields are allowed in the filter string and if provided
-        #   more than that then `INVALID_ARGUMENT` error is returned by the API. Here are
-        #   a few examples: * `state = ENABLED` - The plugin instance is in enabled state.
+        #   Plugin Instance. Allowed comparison operators: `=`. * `source_project_id` -
+        #   The source project id of the Plugin Instance. Allowed comparison operators: `=`
+        #   . A filter function is also supported in the filter string. The filter
+        #   function is `id(name)`. The `id(name)` function returns the id of the resource
+        #   name. For example, `id(name) = \"plugin-instance-1\"` is equivalent to `name =
+        #   \"projects/test-project-id/locations/test-location-id/plugins/plugin-1/
+        #   instances/plugin-instance-1\"` provided the parent is `projects/test-project-
+        #   id/locations/test-location-id/plugins/plugin-1`. Expressions are combined with
+        #   either `AND` logic operator or `OR` logical operator but not both of them
+        #   together i.e. only one of the `AND` or `OR` operator can be used throughout
+        #   the filter string and both the operators cannot be used together. No other
+        #   logical operators are supported. At most three filter fields are allowed in
+        #   the filter string and if provided more than that then `INVALID_ARGUMENT` error
+        #   is returned by the API. Here are a few examples: * `state = ENABLED` - The
+        #   plugin instance is in enabled state.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of hub plugins to return. The service may return
         #   fewer than this value. If unspecified, at most 50 hub plugins will be returned.
