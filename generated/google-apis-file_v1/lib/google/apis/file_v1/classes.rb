@@ -852,7 +852,8 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
-        # Output only. The increase/decrease capacity step size in GB.
+        # Output only. The incremental increase or decrease in capacity, designated in
+        # some number of GB.
         # Corresponds to the JSON property `capacityStepSizeGb`
         # @return [Fixnum]
         attr_accessor :capacity_step_size_gb
@@ -913,12 +914,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The max capacity of the instance in GB.
+        # Output only. The maximum capacity of the instance in GB.
         # Corresponds to the JSON property `maxCapacityGb`
         # @return [Fixnum]
         attr_accessor :max_capacity_gb
       
-        # Output only. The min capacity of the instance in GB.
+        # Output only. The minimum capacity of the instance in GB.
         # Corresponds to the JSON property `minCapacityGb`
         # @return [Fixnum]
         attr_accessor :min_capacity_gb
@@ -958,7 +959,7 @@ module Google
         # @return [String]
         attr_accessor :protocol
       
-        # Replication specifications.
+        # Optional. The configuration used to replicate an instance.
         # Corresponds to the JSON property `replication`
         # @return [Google::Apis::FileV1::Replication]
         attr_accessor :replication
@@ -1199,8 +1200,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1634,6 +1636,19 @@ module Google
         end
       end
       
+      # PauseReplicaRequest pauses a Filestore standby instance (replica).
+      class PauseReplicaRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Used for setting the performance configuration. If the user doesn't specify
       # PerformanceConfig, automatically provision the default performance settings as
       # described in https://cloud.google.com/filestore/docs/performance. Larger
@@ -1669,27 +1684,27 @@ module Google
       class PerformanceLimits
         include Google::Apis::Core::Hashable
       
-        # Output only. The max IOPS.
+        # Output only. The maximum IOPS.
         # Corresponds to the JSON property `maxIops`
         # @return [Fixnum]
         attr_accessor :max_iops
       
-        # Output only. The max read IOPS.
+        # Output only. The maximum read IOPS.
         # Corresponds to the JSON property `maxReadIops`
         # @return [Fixnum]
         attr_accessor :max_read_iops
       
-        # Output only. The max read throughput in bytes per second.
+        # Output only. The maximum read throughput in bytes per second.
         # Corresponds to the JSON property `maxReadThroughputBps`
         # @return [Fixnum]
         attr_accessor :max_read_throughput_bps
       
-        # Output only. The max write IOPS.
+        # Output only. The maximum write IOPS.
         # Corresponds to the JSON property `maxWriteIops`
         # @return [Fixnum]
         attr_accessor :max_write_iops
       
-        # Output only. The max write throughput in bytes per second.
+        # Output only. The maximum write throughput in bytes per second.
         # Corresponds to the JSON property `maxWriteThroughputBps`
         # @return [Fixnum]
         attr_accessor :max_write_throughput_bps
@@ -1761,7 +1776,9 @@ module Google
         # @return [String]
         attr_accessor :last_active_sync_time
       
-        # Optional. The peer instance.
+        # Optional. The name of the source instance for the replica, in the format `
+        # projects/`project`/locations/`location`/instances/`instance``. This field is
+        # required when creating a replica.
         # Corresponds to the JSON property `peerInstance`
         # @return [String]
         attr_accessor :peer_instance
@@ -1795,7 +1812,7 @@ module Google
         end
       end
       
-      # Replication specifications.
+      # Optional. The configuration used to replicate an instance.
       class Replication
         include Google::Apis::Core::Hashable
       
@@ -1805,7 +1822,8 @@ module Google
         # @return [Array<Google::Apis::FileV1::ReplicaConfig>]
         attr_accessor :replicas
       
-        # Optional. The replication role.
+        # Optional. The replication role. When creating a new replica, this field must
+        # be set to `STANDBY`.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -1846,6 +1864,19 @@ module Google
         def update!(**args)
           @file_share = args[:file_share] if args.key?(:file_share)
           @source_backup = args[:source_backup] if args.key?(:source_backup)
+        end
+      end
+      
+      # ResumeReplicaRequest resumes a Filestore standby instance (replica).
+      class ResumeReplicaRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
