@@ -412,12 +412,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GenerateReportArtifactLinkRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GenericInsight
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -857,12 +851,6 @@ module Google
       end
       
       class Report
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ReportArtifactLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1795,13 +1783,6 @@ module Google
         end
       end
       
-      class GenerateReportArtifactLinkRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :artifact_type, as: 'artifactType'
-        end
-      end
-      
       class GenericInsight
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2582,14 +2563,6 @@ module Google
         end
       end
       
-      class ReportArtifactLink
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :uri, as: 'uri'
-          property :uri_expiration_time, as: 'uriExpirationTime'
-        end
-      end
-      
       class ReportAssetFramesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2637,6 +2610,8 @@ module Google
           property :memory_utilization_chart, as: 'memoryUtilizationChart', class: Google::Apis::MigrationcenterV1::ReportSummaryUtilizationChartData, decorator: Google::Apis::MigrationcenterV1::ReportSummaryUtilizationChartData::Representation
       
           property :operating_system, as: 'operatingSystem', class: Google::Apis::MigrationcenterV1::ReportSummaryChartData, decorator: Google::Apis::MigrationcenterV1::ReportSummaryChartData::Representation
+      
+          property :software_instances, as: 'softwareInstances', class: Google::Apis::MigrationcenterV1::ReportSummaryChartData, decorator: Google::Apis::MigrationcenterV1::ReportSummaryChartData::Representation
       
           property :storage_bytes_histogram, as: 'storageBytesHistogram', class: Google::Apis::MigrationcenterV1::ReportSummaryHistogramChartData, decorator: Google::Apis::MigrationcenterV1::ReportSummaryHistogramChartData::Representation
       
