@@ -2140,6 +2140,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1SearchConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5899,6 +5911,7 @@ module Google
       
           property :query_params, as: 'queryParams', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryParameters, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryParameters::Representation
       
+          property :response_view, as: 'responseView'
           property :session, as: 'session'
         end
       end
@@ -7690,7 +7703,11 @@ module Google
           collection :banned_phrases, as: 'bannedPhrases', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase::Representation
       
           property :default_banned_phrase_match_strategy, as: 'defaultBannedPhraseMatchStrategy'
+          property :default_rai_settings, as: 'defaultRaiSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettings::Representation
+      
           property :prompt_security_settings, as: 'promptSecuritySettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SafetySettingsPromptSecuritySettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SafetySettingsPromptSecuritySettings::Representation
+      
+          property :rai_settings, as: 'raiSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettings::Representation
       
         end
       end
@@ -7707,6 +7724,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_prompt_security, as: 'enablePromptSecurity'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :category_filters, as: 'categoryFilters', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilter, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilter::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :filter_level, as: 'filterLevel'
         end
       end
       
