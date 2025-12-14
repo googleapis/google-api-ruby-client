@@ -3680,6 +3680,11 @@ module Google
       class GoogleCloudHealthcareV1beta1DicomBigQueryDestination
         include Google::Apis::Core::Hashable
       
+        # BigQuery Change Data Capture configuration.
+        # Corresponds to the JSON property `changeDataCaptureConfig`
+        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig]
+        attr_accessor :change_data_capture_config
+      
         # Use `write_disposition` instead. If `write_disposition` is specified, this
         # parameter is ignored. force=false is equivalent to write_disposition=
         # WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
@@ -3687,6 +3692,40 @@ module Google
         # @return [Boolean]
         attr_accessor :force
         alias_method :force?, :force
+      
+        # Optional. If true, the source store name will be included as a column in the
+        # BigQuery schema.
+        # Corresponds to the JSON property `includeSourceStore`
+        # @return [Boolean]
+        attr_accessor :include_source_store
+        alias_method :include_source_store?, :include_source_store
+      
+        # Using this field will flatten the DICOM instances into a BigQuery table. The
+        # table will have one column for each DICOM tag. The column name will be the
+        # DICOM tag's textual representation.
+        # Corresponds to the JSON property `schemaFlattened`
+        # @return [Google::Apis::HealthcareV1beta1::SchemaFlattened]
+        attr_accessor :schema_flattened
+      
+        # Using this field will set the schema such that all DICOM tags will be included
+        # in the BigQuery table as a single JSON type column. The BigQuery table schema
+        # will include the following columns: * `StudyInstanceUID` (Type: STRING): DICOM
+        # Tag 0020000D. * `SeriesInstanceUID` (Type: STRING): DICOM Tag 0020000E. * `
+        # SOPInstanceUID` (Type: STRING): DICOM Tag 00080018. * `SourceDicomStore` (Type:
+        # STRING): The name of the source DICOM store. This field is only included if
+        # the `include_source_store` option is set to true. * `Metadata` (Type: JSON):
+        # All DICOM tags for the instance, stored in a single JSON object. * `
+        # StructuredStorageSize` (Type: INTEGER): Size of the structured storage in
+        # bytes. * `DroppedTags` (Type: STRING, Repeated: Yes): List of tags that were
+        # dropped during the conversion. * `StorageClass` (Type: STRING): The storage
+        # class of the instance. * `LastUpdated` (Type: TIMESTAMP): Timestamp of the
+        # last update to the instance. * `BlobStorageSize` (Type: INTEGER): Size of the
+        # blob storage in bytes. * `Type` (Type: STRING): Indicates the type of
+        # operation (e.g., INSERT, DELETE). This field is *omitted* if `
+        # ChangeDataCaptureConfig` is enabled.
+        # Corresponds to the JSON property `schemaJson`
+        # @return [Google::Apis::HealthcareV1beta1::SchemaJson]
+        attr_accessor :schema_json
       
         # BigQuery URI to a table, up to 2000 characters long, in the format `bq://
         # projectId.bqDatasetId.tableId`
@@ -3707,9 +3746,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @change_data_capture_config = args[:change_data_capture_config] if args.key?(:change_data_capture_config)
           @force = args[:force] if args.key?(:force)
+          @include_source_store = args[:include_source_store] if args.key?(:include_source_store)
+          @schema_flattened = args[:schema_flattened] if args.key?(:schema_flattened)
+          @schema_json = args[:schema_json] if args.key?(:schema_json)
           @table_uri = args[:table_uri] if args.key?(:table_uri)
           @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
+        end
+      end
+      
+      # BigQuery Change Data Capture configuration.
+      class GoogleCloudHealthcareV1beta1DicomChangeDataCaptureConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -5006,8 +5062,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -6166,6 +6223,21 @@ module Google
         end
       end
       
+      # Using this field will flatten the DICOM instances into a BigQuery table. The
+      # table will have one column for each DICOM tag. The column name will be the
+      # DICOM tag's textual representation.
+      class SchemaFlattened
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # An HL7v2 logical group construct.
       class SchemaGroup
         include Google::Apis::Core::Hashable
@@ -6209,6 +6281,34 @@ module Google
           @members = args[:members] if args.key?(:members)
           @min_occurs = args[:min_occurs] if args.key?(:min_occurs)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Using this field will set the schema such that all DICOM tags will be included
+      # in the BigQuery table as a single JSON type column. The BigQuery table schema
+      # will include the following columns: * `StudyInstanceUID` (Type: STRING): DICOM
+      # Tag 0020000D. * `SeriesInstanceUID` (Type: STRING): DICOM Tag 0020000E. * `
+      # SOPInstanceUID` (Type: STRING): DICOM Tag 00080018. * `SourceDicomStore` (Type:
+      # STRING): The name of the source DICOM store. This field is only included if
+      # the `include_source_store` option is set to true. * `Metadata` (Type: JSON):
+      # All DICOM tags for the instance, stored in a single JSON object. * `
+      # StructuredStorageSize` (Type: INTEGER): Size of the structured storage in
+      # bytes. * `DroppedTags` (Type: STRING, Repeated: Yes): List of tags that were
+      # dropped during the conversion. * `StorageClass` (Type: STRING): The storage
+      # class of the instance. * `LastUpdated` (Type: TIMESTAMP): Timestamp of the
+      # last update to the instance. * `BlobStorageSize` (Type: INTEGER): Size of the
+      # blob storage in bytes. * `Type` (Type: STRING): Indicates the type of
+      # operation (e.g., INSERT, DELETE). This field is *omitted* if `
+      # ChangeDataCaptureConfig` is enabled.
+      class SchemaJson
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -6370,29 +6470,6 @@ module Google
         def update!(**args)
           @canonical_url = args[:canonical_url] if args.key?(:canonical_url)
           @parameter = args[:parameter] if args.key?(:parameter)
-        end
-      end
-      
-      # Request to search the resources in the specified FHIR store.
-      class SearchResourcesRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The FHIR resource type to search, such as Patient or Observation.
-        # For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/
-        # DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-        # [R4](https://hl7.org/fhir/R4/resourcelist.html), [R5](https://hl7.org/fhir/R5/
-        # resourcelist.html)).
-        # Corresponds to the JSON property `resourceType`
-        # @return [String]
-        attr_accessor :resource_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @resource_type = args[:resource_type] if args.key?(:resource_type)
         end
       end
       
@@ -7127,9 +7204,10 @@ module Google
         # ImplementationGuides. The Cloud Healthcare API does not currently enforce all
         # of the rules in a StructureDefinition. The following rules are supported: -
         # min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on
-        # simple types - slicing, when using "value" as the discriminator type When a
-        # URL cannot be resolved (for example, in a type assertion), the server does not
-        # return an error.
+        # simple types - slicing, when using "value" as the discriminator type -
+        # FHIRPath constraints (only when `enable_fhirpath_profile_validation` is true)
+        # When a URL cannot be resolved (for example, in a type assertion), the server
+        # does not return an error.
         # Corresponds to the JSON property `enabledImplementationGuides`
         # @return [Array<String>]
         attr_accessor :enabled_implementation_guides
