@@ -4295,7 +4295,10 @@ module Google
         end
       end
       
-      # Database instance local user password validation policy
+      # Database instance local user password validation policy. This message defines
+      # the password policy for local database users. When enabled, it enforces
+      # constraints on password complexity, length, and reuse. Keep this policy
+      # enabled to help prevent unauthorized access.
       class PasswordValidationPolicy
         include Google::Apis::Core::Hashable
       
@@ -4316,7 +4319,9 @@ module Google
         attr_accessor :disallow_username_substring
         alias_method :disallow_username_substring?, :disallow_username_substring
       
-        # Whether the password policy is enabled or not.
+        # Whether to enable the password policy or not. When enabled, passwords must
+        # meet complexity requirements. Keep this policy enabled to help prevent
+        # unauthorized access. Disabling this policy allows weak passwords.
         # Corresponds to the JSON property `enablePasswordPolicy`
         # @return [Boolean]
         attr_accessor :enable_password_policy
@@ -4370,6 +4375,60 @@ module Google
         # Update properties of this object
         def update!(**args)
           @target_size_gb = args[:target_size_gb] if args.key?(:target_size_gb)
+        end
+      end
+      
+      # Performance Capture configuration.
+      class PerformanceCaptureConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Enable or disable the Performance Capture feature.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Optional. The minimum number of consecutive readings above threshold that
+        # triggers instance state capture.
+        # Corresponds to the JSON property `probeThreshold`
+        # @return [Fixnum]
+        attr_accessor :probe_threshold
+      
+        # Optional. The time interval in seconds between any two probes.
+        # Corresponds to the JSON property `probingIntervalSeconds`
+        # @return [Fixnum]
+        attr_accessor :probing_interval_seconds
+      
+        # Optional. The minimum number of server threads running to trigger the capture
+        # on primary.
+        # Corresponds to the JSON property `runningThreadsThreshold`
+        # @return [Fixnum]
+        attr_accessor :running_threads_threshold
+      
+        # Optional. The minimum number of seconds replica must be lagging behind primary
+        # to trigger capture on replica.
+        # Corresponds to the JSON property `secondsBehindSourceThreshold`
+        # @return [Fixnum]
+        attr_accessor :seconds_behind_source_threshold
+      
+        # Optional. The amount of time in seconds that a transaction needs to have been
+        # open before the watcher starts recording it.
+        # Corresponds to the JSON property `transactionDurationThreshold`
+        # @return [Fixnum]
+        attr_accessor :transaction_duration_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @probe_threshold = args[:probe_threshold] if args.key?(:probe_threshold)
+          @probing_interval_seconds = args[:probing_interval_seconds] if args.key?(:probing_interval_seconds)
+          @running_threads_threshold = args[:running_threads_threshold] if args.key?(:running_threads_threshold)
+          @seconds_behind_source_threshold = args[:seconds_behind_source_threshold] if args.key?(:seconds_behind_source_threshold)
+          @transaction_duration_threshold = args[:transaction_duration_threshold] if args.key?(:transaction_duration_threshold)
         end
       end
       
@@ -4473,6 +4532,19 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The list of settings for requested automatically-setup Private
+        # Service Connect (PSC) consumer endpoints that can be used to connect to this
+        # read pool node.
+        # Corresponds to the JSON property `pscAutoConnections`
+        # @return [Array<Google::Apis::SqladminV1::PscAutoConnectionConfig>]
+        attr_accessor :psc_auto_connections
+      
+        # Output only. The Private Service Connect (PSC) service attachment of the read
+        # pool node.
+        # Corresponds to the JSON property `pscServiceAttachmentLink`
+        # @return [String]
+        attr_accessor :psc_service_attachment_link
+      
         # Output only. The current state of the read pool node.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -4489,6 +4561,8 @@ module Google
           @gce_zone = args[:gce_zone] if args.key?(:gce_zone)
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @name = args[:name] if args.key?(:name)
+          @psc_auto_connections = args[:psc_auto_connections] if args.key?(:psc_auto_connections)
+          @psc_service_attachment_link = args[:psc_service_attachment_link] if args.key?(:psc_service_attachment_link)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -5230,10 +5304,18 @@ module Google
         # @return [Google::Apis::SqladminV1::MaintenanceWindow]
         attr_accessor :maintenance_window
       
-        # Database instance local user password validation policy
+        # Database instance local user password validation policy. This message defines
+        # the password policy for local database users. When enabled, it enforces
+        # constraints on password complexity, length, and reuse. Keep this policy
+        # enabled to help prevent unauthorized access.
         # Corresponds to the JSON property `passwordValidationPolicy`
         # @return [Google::Apis::SqladminV1::PasswordValidationPolicy]
         attr_accessor :password_validation_policy
+      
+        # Performance Capture configuration.
+        # Corresponds to the JSON property `performanceCaptureConfig`
+        # @return [Google::Apis::SqladminV1::PerformanceCaptureConfig]
+        attr_accessor :performance_capture_config
       
         # The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`.
         # Only `PER_USE` is supported for Second Generation instances.
@@ -5349,6 +5431,7 @@ module Google
           @location_preference = args[:location_preference] if args.key?(:location_preference)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @password_validation_policy = args[:password_validation_policy] if args.key?(:password_validation_policy)
+          @performance_capture_config = args[:performance_capture_config] if args.key?(:performance_capture_config)
           @pricing_plan = args[:pricing_plan] if args.key?(:pricing_plan)
           @read_pool_auto_scale_config = args[:read_pool_auto_scale_config] if args.key?(:read_pool_auto_scale_config)
           @replication_lag_max_seconds = args[:replication_lag_max_seconds] if args.key?(:replication_lag_max_seconds)

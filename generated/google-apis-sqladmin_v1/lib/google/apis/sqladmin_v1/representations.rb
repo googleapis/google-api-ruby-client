@@ -598,6 +598,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PerformanceCaptureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PointInTimeRestoreContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2032,6 +2038,18 @@ module Google
         end
       end
       
+      class PerformanceCaptureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :probe_threshold, as: 'probeThreshold'
+          property :probing_interval_seconds, as: 'probingIntervalSeconds'
+          property :running_threads_threshold, as: 'runningThreadsThreshold'
+          property :seconds_behind_source_threshold, as: 'secondsBehindSourceThreshold'
+          property :transaction_duration_threshold, as: 'transactionDurationThreshold'
+        end
+      end
+      
       class PointInTimeRestoreContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2055,6 +2073,9 @@ module Google
           collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1::IpMapping, decorator: Google::Apis::SqladminV1::IpMapping::Representation
       
           property :name, as: 'name'
+          collection :psc_auto_connections, as: 'pscAutoConnections', class: Google::Apis::SqladminV1::PscAutoConnectionConfig, decorator: Google::Apis::SqladminV1::PscAutoConnectionConfig::Representation
+      
+          property :psc_service_attachment_link, as: 'pscServiceAttachmentLink'
           property :state, as: 'state'
         end
       end
@@ -2253,6 +2274,8 @@ module Google
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::SqladminV1::MaintenanceWindow, decorator: Google::Apis::SqladminV1::MaintenanceWindow::Representation
       
           property :password_validation_policy, as: 'passwordValidationPolicy', class: Google::Apis::SqladminV1::PasswordValidationPolicy, decorator: Google::Apis::SqladminV1::PasswordValidationPolicy::Representation
+      
+          property :performance_capture_config, as: 'performanceCaptureConfig', class: Google::Apis::SqladminV1::PerformanceCaptureConfig, decorator: Google::Apis::SqladminV1::PerformanceCaptureConfig::Representation
       
           property :pricing_plan, as: 'pricingPlan'
           property :read_pool_auto_scale_config, as: 'readPoolAutoScaleConfig', class: Google::Apis::SqladminV1::ReadPoolAutoScaleConfig, decorator: Google::Apis::SqladminV1::ReadPoolAutoScaleConfig::Representation

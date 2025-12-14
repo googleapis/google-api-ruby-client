@@ -907,6 +907,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Adds a new Entra ID certificate for the specified instance. If an Entra ID
+        # certificate was previously added but never used in a certificate rotation,
+        # this operation replaces that version.
+        # @param [String] project
+        #   Required. Project ID of the project that contains the instance.
+        # @param [String] instance
+        #   Required. Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_instance_entra_id_certificate(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/addEntraIdCertificate', options)
+          command.response_representation = Google::Apis::SqladminV1::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Adds a new trusted Certificate Authority (CA) version for the specified
         # instance. Required to prepare for a certificate rotation. If a CA version was
         # previously added but never used in a certificate rotation, this operation
