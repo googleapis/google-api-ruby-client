@@ -121,7 +121,7 @@ module Google
         # determine where to create the resulting CryptoKey.
         # @param [String] name
         #   Identifier. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
-        #   autokeyConfig` `projects/`PROJECT_NUMBER`/autokeyConfig`.
+        #   autokeyConfig`
         # @param [Google::Apis::CloudkmsV1::AutokeyConfig] autokey_config_object
         # @param [String] update_mask
         #   Required. Masks which fields of the AutokeyConfig to update, e.g. `keyProject`.
