@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommitFunctionUpgradeAsGen2Request
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CommitFunctionUpgradeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -369,6 +375,12 @@ module Google
       
           property :source_token, as: 'sourceToken'
           property :worker_pool, as: 'workerPool'
+        end
+      end
+      
+      class CommitFunctionUpgradeAsGen2Request
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
