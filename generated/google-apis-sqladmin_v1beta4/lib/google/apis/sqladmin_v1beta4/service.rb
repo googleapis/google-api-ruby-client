@@ -913,7 +913,6 @@ module Google
         #   Required. Project ID of the project that contains the instance.
         # @param [String] instance
         #   Required. Cloud SQL instance ID. This does not include the project ID.
-        # @param [Google::Apis::SqladminV1beta4::SqlInstancesAddEntraIdCertificateRequest] sql_instances_add_entra_id_certificate_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -931,10 +930,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_instance_entra_id_certificate(project, instance, sql_instances_add_entra_id_certificate_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def add_instance_entra_id_certificate(project, instance, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/addEntraIdCertificate', options)
-          command.request_representation = Google::Apis::SqladminV1beta4::SqlInstancesAddEntraIdCertificateRequest::Representation
-          command.request_object = sql_instances_add_entra_id_certificate_request_object
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?

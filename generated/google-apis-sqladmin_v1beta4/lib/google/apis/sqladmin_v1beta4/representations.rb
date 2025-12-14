@@ -598,6 +598,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PerformanceCaptureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PointInTimeRestoreContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -719,12 +725,6 @@ module Google
       end
       
       class SqlInstancesAcquireSsrsLeaseResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SqlInstancesAddEntraIdCertificateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2038,6 +2038,18 @@ module Google
         end
       end
       
+      class PerformanceCaptureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :probe_threshold, as: 'probeThreshold'
+          property :probing_interval_seconds, as: 'probingIntervalSeconds'
+          property :running_threads_threshold, as: 'runningThreadsThreshold'
+          property :seconds_behind_source_threshold, as: 'secondsBehindSourceThreshold'
+          property :transaction_duration_threshold, as: 'transactionDurationThreshold'
+        end
+      end
+      
       class PointInTimeRestoreContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2061,6 +2073,9 @@ module Google
           collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1beta4::IpMapping, decorator: Google::Apis::SqladminV1beta4::IpMapping::Representation
       
           property :name, as: 'name'
+          collection :psc_auto_connections, as: 'pscAutoConnections', class: Google::Apis::SqladminV1beta4::PscAutoConnectionConfig, decorator: Google::Apis::SqladminV1beta4::PscAutoConnectionConfig::Representation
+      
+          property :psc_service_attachment_link, as: 'pscServiceAttachmentLink'
           property :state, as: 'state'
         end
       end
@@ -2260,6 +2275,8 @@ module Google
       
           property :password_validation_policy, as: 'passwordValidationPolicy', class: Google::Apis::SqladminV1beta4::PasswordValidationPolicy, decorator: Google::Apis::SqladminV1beta4::PasswordValidationPolicy::Representation
       
+          property :performance_capture_config, as: 'performanceCaptureConfig', class: Google::Apis::SqladminV1beta4::PerformanceCaptureConfig, decorator: Google::Apis::SqladminV1beta4::PerformanceCaptureConfig::Representation
+      
           property :pricing_plan, as: 'pricingPlan'
           property :read_pool_auto_scale_config, as: 'readPoolAutoScaleConfig', class: Google::Apis::SqladminV1beta4::ReadPoolAutoScaleConfig, decorator: Google::Apis::SqladminV1beta4::ReadPoolAutoScaleConfig::Representation
       
@@ -2302,12 +2319,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :operation_id, as: 'operationId'
-        end
-      end
-      
-      class SqlInstancesAddEntraIdCertificateRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
