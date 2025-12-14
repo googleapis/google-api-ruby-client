@@ -369,6 +369,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_role, as: 'accessRole'
+          property :auto_accept_invitations, as: 'autoAcceptInvitations'
           property :background_color, as: 'backgroundColor'
           property :color_id, as: 'colorId'
           property :conference_properties, as: 'conferenceProperties', class: Google::Apis::CalendarV3::ConferenceProperties, decorator: Google::Apis::CalendarV3::ConferenceProperties::Representation

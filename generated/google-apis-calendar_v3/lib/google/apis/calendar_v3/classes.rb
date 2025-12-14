@@ -299,6 +299,13 @@ module Google
         # @return [String]
         attr_accessor :access_role
       
+        # Whether this calendar automatically accepts invitations. Only valid for
+        # resource calendars. Read-only.
+        # Corresponds to the JSON property `autoAcceptInvitations`
+        # @return [Boolean]
+        attr_accessor :auto_accept_invitations
+        alias_method :auto_accept_invitations?, :auto_accept_invitations
+      
         # The main color of the calendar in the hexadecimal format "#0088aa". This
         # property supersedes the index-based colorId property. To set or change this
         # property, you need to specify colorRgbFormat=true in the parameters of the
@@ -420,6 +427,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_role = args[:access_role] if args.key?(:access_role)
+          @auto_accept_invitations = args[:auto_accept_invitations] if args.key?(:auto_accept_invitations)
           @background_color = args[:background_color] if args.key?(:background_color)
           @color_id = args[:color_id] if args.key?(:color_id)
           @conference_properties = args[:conference_properties] if args.key?(:conference_properties)
