@@ -81,7 +81,7 @@ module Google
         # @return [String]
         attr_accessor :filter
       
-        # Optional. When this value is set to 'true,' the response will include all
+        # Optional. When this value is set to 'true' the response will include all
         # assets, including those that are hidden.
         # Corresponds to the JSON property `showHidden`
         # @return [Boolean]
@@ -2175,25 +2175,6 @@ module Google
         end
       end
       
-      # A request to generate a link to an artifact for a Report.
-      class GenerateReportArtifactLinkRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. Type of the artifact requested.
-        # Corresponds to the JSON property `artifactType`
-        # @return [String]
-        attr_accessor :artifact_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @artifact_type = args[:artifact_type] if args.key?(:artifact_type)
-        end
-      end
-      
       # A generic insight about an asset.
       class GenericInsight
         include Google::Apis::Core::Hashable
@@ -2576,7 +2557,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # User-friendly display name. Maximum length is 63 characters.
+        # Optional. User-friendly display name. Maximum length is 63 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -3122,8 +3103,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -4811,31 +4793,6 @@ module Google
         end
       end
       
-      # Describes a link to a generated artifact of the report.
-      class ReportArtifactLink
-        include Google::Apis::Core::Hashable
-      
-        # Output only. URI of the artifact.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        # Output only. Expiration time of the URI.
-        # Corresponds to the JSON property `uriExpirationTime`
-        # @return [String]
-        attr_accessor :uri_expiration_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @uri = args[:uri] if args.key?(:uri)
-          @uri_expiration_time = args[:uri_expiration_time] if args.key?(:uri_expiration_time)
-        end
-      end
-      
       # A response to a call to `ReportAssetFrame`.
       class ReportAssetFramesResponse
         include Google::Apis::Core::Hashable
@@ -4976,6 +4933,11 @@ module Google
         # @return [Google::Apis::MigrationcenterV1::ReportSummaryChartData]
         attr_accessor :operating_system
       
+        # Describes a collection of data points rendered as a Chart.
+        # Corresponds to the JSON property `softwareInstances`
+        # @return [Google::Apis::MigrationcenterV1::ReportSummaryChartData]
+        attr_accessor :software_instances
+      
         # A Histogram Chart shows a distribution of values into buckets, showing a count
         # of values which fall into a bucket.
         # Corresponds to the JSON property `storageBytesHistogram`
@@ -5018,6 +4980,7 @@ module Google
           @memory_bytes_histogram = args[:memory_bytes_histogram] if args.key?(:memory_bytes_histogram)
           @memory_utilization_chart = args[:memory_utilization_chart] if args.key?(:memory_utilization_chart)
           @operating_system = args[:operating_system] if args.key?(:operating_system)
+          @software_instances = args[:software_instances] if args.key?(:software_instances)
           @storage_bytes_histogram = args[:storage_bytes_histogram] if args.key?(:storage_bytes_histogram)
           @storage_utilization_chart = args[:storage_utilization_chart] if args.key?(:storage_utilization_chart)
           @total_assets = args[:total_assets] if args.key?(:total_assets)
