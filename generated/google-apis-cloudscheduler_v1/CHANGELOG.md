@@ -1,5 +1,9 @@
 # Release history for google-apis-cloudscheduler_v1
 
+### v0.43.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251205
+
 ### v0.42.0 (2025-11-02)
 
 * Regenerated from discovery document revision 20251022
