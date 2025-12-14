@@ -364,7 +364,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports an artifact.
+        # Exports an artifact to a Cloud Storage bucket.
         # @param [String] repository
         #   Required. The repository of the artifact to export. Format: projects/`project`/
         #   locations/`location`/repositories/`repository`

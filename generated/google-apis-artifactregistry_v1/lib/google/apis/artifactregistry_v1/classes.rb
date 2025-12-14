@@ -468,6 +468,14 @@ module Google
       class DockerImage
         include Google::Apis::Core::Hashable
       
+        # ArtifactType of this image, e.g. "application/vnd.example+type". If the `
+        # subject_digest` is set and no `artifact_type` is given, the `media_type` will
+        # be considered as the `artifact_type`. This field is returned as the `metadata.
+        # artifactType` field in the Version resource.
+        # Corresponds to the JSON property `artifactType`
+        # @return [String]
+        attr_accessor :artifact_type
+      
         # The time this image was built. This field is returned as the 'metadata.
         # buildTime' field in the Version resource. The build time is returned to the
         # client as an RFC 3339 string, which can be easily used with the JavaScript
@@ -475,6 +483,12 @@ module Google
         # Corresponds to the JSON property `buildTime`
         # @return [String]
         attr_accessor :build_time
+      
+        # Optional. For multi-arch images (manifest lists), this field contains the list
+        # of image manifests.
+        # Corresponds to the JSON property `imageManifests`
+        # @return [Array<Google::Apis::ArtifactregistryV1::ImageManifest>]
+        attr_accessor :image_manifests
       
         # Calculated size of the image. This field is returned as the 'metadata.
         # imageSizeBytes' field in the Version resource.
@@ -530,7 +544,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_type = args[:artifact_type] if args.key?(:artifact_type)
           @build_time = args[:build_time] if args.key?(:build_time)
+          @image_manifests = args[:image_manifests] if args.key?(:image_manifests)
           @image_size_bytes = args[:image_size_bytes] if args.key?(:image_size_bytes)
           @media_type = args[:media_type] if args.key?(:media_type)
           @name = args[:name] if args.key?(:name)
@@ -1209,6 +1225,69 @@ module Google
         def update!(**args)
           @type = args[:type] if args.key?(:type)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Details of a single image manifest within a multi-arch image.
+      class ImageManifest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The CPU architecture of the image. Values are provided by the Docker
+        # client and are not validated by Artifact Registry. Example values include "
+        # amd64", "arm64", "ppc64le", "s390x", "riscv64", "mips64le", etc.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
+        # Optional. The manifest digest, in the format "sha256:".
+        # Corresponds to the JSON property `digest`
+        # @return [String]
+        attr_accessor :digest
+      
+        # Optional. The media type of the manifest, e.g., "application/vnd.docker.
+        # distribution.manifest.v2+json"
+        # Corresponds to the JSON property `mediaType`
+        # @return [String]
+        attr_accessor :media_type
+      
+        # Optional. The operating system of the image. Values are provided by the Docker
+        # client and are not validated by Artifact Registry. Example values include "
+        # linux", "windows", "darwin", "aix", etc.
+        # Corresponds to the JSON property `os`
+        # @return [String]
+        attr_accessor :os
+      
+        # Optional. The required OS features for the image, for example on Windows `
+        # win32k`.
+        # Corresponds to the JSON property `osFeatures`
+        # @return [Array<String>]
+        attr_accessor :os_features
+      
+        # Optional. The OS version of the image, for example on Windows `10.0.14393.1066`
+        # .
+        # Corresponds to the JSON property `osVersion`
+        # @return [String]
+        attr_accessor :os_version
+      
+        # Optional. The variant of the CPU in the image, for example `v7` to specify
+        # ARMv7 when architecture is `arm`.
+        # Corresponds to the JSON property `variant`
+        # @return [String]
+        attr_accessor :variant
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
+          @digest = args[:digest] if args.key?(:digest)
+          @media_type = args[:media_type] if args.key?(:media_type)
+          @os = args[:os] if args.key?(:os)
+          @os_features = args[:os_features] if args.key?(:os_features)
+          @os_version = args[:os_version] if args.key?(:os_version)
+          @variant = args[:variant] if args.key?(:variant)
         end
       end
       

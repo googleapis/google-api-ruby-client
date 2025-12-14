@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImageManifest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportAptArtifactsErrorInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -810,7 +816,10 @@ module Google
       class DockerImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_type, as: 'artifactType'
           property :build_time, as: 'buildTime'
+          collection :image_manifests, as: 'imageManifests', class: Google::Apis::ArtifactregistryV1::ImageManifest, decorator: Google::Apis::ArtifactregistryV1::ImageManifest::Representation
+      
           property :image_size_bytes, :numeric_string => true, as: 'imageSizeBytes'
           property :media_type, as: 'mediaType'
           property :name, as: 'name'
@@ -1013,6 +1022,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
           property :value, :base64 => true, as: 'value'
+        end
+      end
+      
+      class ImageManifest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :digest, as: 'digest'
+          property :media_type, as: 'mediaType'
+          property :os, as: 'os'
+          collection :os_features, as: 'osFeatures'
+          property :os_version, as: 'osVersion'
+          property :variant, as: 'variant'
         end
       end
       
