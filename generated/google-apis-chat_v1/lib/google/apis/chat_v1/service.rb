@@ -716,8 +716,7 @@ module Google
         #   Supports changing the [permission settings](https://support.google.com/chat/
         #   answer/13340792) of a space. When updating permission settings, you can only
         #   specify `permissionSettings` field masks; you cannot update other field masks
-        #   at the same time. `permissionSettings` is not supported with `useAdminAccess`.
-        #   The supported field masks include: - `permission_settings.
+        #   at the same time. The supported field masks include: - `permission_settings.
         #   manageMembersAndGroups` - `permission_settings.modifySpaceDetails` - `
         #   permission_settings.toggleHistory` - `permission_settings.useAtMentionAll` - `
         #   permission_settings.manageApps` - `permission_settings.manageWebhooks` - `
