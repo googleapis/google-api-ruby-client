@@ -299,39 +299,6 @@ module Google
         end
       end
       
-      # The response structure for the ListReplicationsInternal method.
-      class ListReplicationsInternalResponse
-        include Google::Apis::Core::Hashable
-      
-        # If present, the next page token can be provided to a subsequent
-        # ListReplicationsInternal call to list the next page. If empty, there are no
-        # more pages.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The resulting replication internals.
-        # Corresponds to the JSON property `replicationsInternal`
-        # @return [Array<Google::Apis::SaasservicemgmtV1beta1::ReplicationInternal>]
-        attr_accessor :replications_internal
-      
-        # Locations that could not be reached.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @replications_internal = args[:replications_internal] if args.key?(:replications_internal)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
-        end
-      end
-      
       # The response structure for the ListRolloutKinds method.
       class ListRolloutKindsResponse
         include Google::Apis::Core::Hashable
@@ -762,157 +729,6 @@ module Google
         end
       end
       
-      # ReplicationInternal is a resource that represents the replication of a
-      # resource to multiple locations. This is an internal resource to achieve
-      # replication before GA and will not expose to the public API.
-      class ReplicationInternal
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Annotations is an unstructured key-value map stored with a resource
-        # that may be set by external tools to store and retrieve arbitrary metadata.
-        # They are not queryable and should be preserved when modifying objects. More
-        # info: https://kubernetes.io/docs/user-guide/annotations
-        # Corresponds to the JSON property `annotations`
-        # @return [Hash<String,String>]
-        attr_accessor :annotations
-      
-        # Output only. The timestamp when the resource was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Output only. An opaque value that uniquely identifies a version or generation
-        # of a resource. It can be used to confirm that the client and server agree on
-        # the ordering of a resource being written.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # Optional. The labels on the resource, which can be used for categorization.
-        # similar to Kubernetes resource labels.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Optional. The maximum number of retries for the replication. If the
-        # replication fails from a retryable error, it will be retried for this number
-        # of times.
-        # Corresponds to the JSON property `maxRetryCount`
-        # @return [Fixnum]
-        attr_accessor :max_retry_count
-      
-        # Identifier. The resource name (full URI of the resource) following the
-        # standard naming scheme: "projects/`project`/locations/`location`/
-        # replicationInternal/`replication_internal_id`"
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Required. The payload of the request for replication. It could be any request
-        # type that is supported by the replication service. e.g. CreateUnitKindRequest,
-        # UpdateUnitKindRequest, DeleteReleaseRequest, etc.
-        # Corresponds to the JSON property `payload`
-        # @return [Hash<String,Object>]
-        attr_accessor :payload
-      
-        # Output only. The state of the replication.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Output only. The stats of the replication. One key for each location in
-        # target_locations
-        # Corresponds to the JSON property `stats`
-        # @return [Hash<String,Google::Apis::SaasservicemgmtV1beta1::ReplicationStats>]
-        attr_accessor :stats
-      
-        # Optional. The target locations to replicate the resource to.
-        # Corresponds to the JSON property `targetLocations`
-        # @return [Array<String>]
-        attr_accessor :target_locations
-      
-        # Output only. The unique identifier of the resource. UID is unique in the time
-        # and space for this resource within the scope of the service. It is typically
-        # generated by the server on successful creation of a resource and must not be
-        # changed. UID is used to uniquely identify resources with resource name reuses.
-        # This should be a UUID4.
-        # Corresponds to the JSON property `uid`
-        # @return [String]
-        attr_accessor :uid
-      
-        # Output only. The timestamp when the resource was last updated. Any change to
-        # the resource made by users must refresh this value. Changes to a resource made
-        # by the service should refresh this value.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @annotations = args[:annotations] if args.key?(:annotations)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @etag = args[:etag] if args.key?(:etag)
-          @labels = args[:labels] if args.key?(:labels)
-          @max_retry_count = args[:max_retry_count] if args.key?(:max_retry_count)
-          @name = args[:name] if args.key?(:name)
-          @payload = args[:payload] if args.key?(:payload)
-          @state = args[:state] if args.key?(:state)
-          @stats = args[:stats] if args.key?(:stats)
-          @target_locations = args[:target_locations] if args.key?(:target_locations)
-          @uid = args[:uid] if args.key?(:uid)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # ReplicationStats contains the stats of the replication. It contains the
-      # resources that are pending, finished, failed, and the errors if any.
-      class ReplicationStats
-        include Google::Apis::Core::Hashable
-      
-        # The errors that occurred during replication, one error for each failed
-        # resource.
-        # Corresponds to the JSON property `errors`
-        # @return [Array<Google::Apis::SaasservicemgmtV1beta1::Status>]
-        attr_accessor :errors
-      
-        # The resources that are failed replication.
-        # Corresponds to the JSON property `failedResources`
-        # @return [Array<String>]
-        attr_accessor :failed_resources
-      
-        # The resources that are finished replication.
-        # Corresponds to the JSON property `finishedResources`
-        # @return [Array<String>]
-        attr_accessor :finished_resources
-      
-        # The resources that are pending replication.
-        # Corresponds to the JSON property `pendingResources`
-        # @return [Array<String>]
-        attr_accessor :pending_resources
-      
-        # The number of retries for the failed resources.
-        # Corresponds to the JSON property `retryCount`
-        # @return [Array<Fixnum>]
-        attr_accessor :retry_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @errors = args[:errors] if args.key?(:errors)
-          @failed_resources = args[:failed_resources] if args.key?(:failed_resources)
-          @finished_resources = args[:finished_resources] if args.key?(:finished_resources)
-          @pending_resources = args[:pending_resources] if args.key?(:pending_resources)
-          @retry_count = args[:retry_count] if args.key?(:retry_count)
-        end
-      end
-      
       # Represents a single rollout execution and its results
       class Rollout
         include Google::Apis::Core::Hashable
@@ -1158,6 +974,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Optional. Value among strict (enforcing maintenance policy and only looking at
+        # Units with maintenance policy), ignore (ignoring maintenance policy) and skip (
+        # skipping Units with maintenance policy)
+        # Corresponds to the JSON property `maintenancePolicyEnforcement`
+        # @return [String]
+        attr_accessor :maintenance_policy_enforcement
+      
         # Identifier. The resource name (full URI of the resource) following the
         # standard naming scheme: "projects/`project`/locations/`location`/rolloutKinds/`
         # rollout_kind_id`"
@@ -1223,6 +1046,7 @@ module Google
           @error_budget = args[:error_budget] if args.key?(:error_budget)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
+          @maintenance_policy_enforcement = args[:maintenance_policy_enforcement] if args.key?(:maintenance_policy_enforcement)
           @name = args[:name] if args.key?(:name)
           @rollout_orchestration_strategy = args[:rollout_orchestration_strategy] if args.key?(:rollout_orchestration_strategy)
           @uid = args[:uid] if args.key?(:uid)
@@ -1372,45 +1196,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @start_time = args[:start_time] if args.key?(:start_time)
-        end
-      end
-      
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by [
-      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
-      # data: error code, error message, and error details. You can find out more
-      # about this error model and how to work with it in the [API Design Guide](https:
-      # //cloud.google.com/apis/design/errors).
-      class Status
-        include Google::Apis::Core::Hashable
-      
-        # The status code, which should be an enum value of google.rpc.Code.
-        # Corresponds to the JSON property `code`
-        # @return [Fixnum]
-        attr_accessor :code
-      
-        # A list of messages that carry the error details. There is a common set of
-        # message types for APIs to use.
-        # Corresponds to the JSON property `details`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :details
-      
-        # A developer-facing error message, which should be in English. Any user-facing
-        # error message should be localized and sent in the google.rpc.Status.details
-        # field, or localized by the client.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @code = args[:code] if args.key?(:code)
-          @details = args[:details] if args.key?(:details)
-          @message = args[:message] if args.key?(:message)
         end
       end
       
