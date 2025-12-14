@@ -1374,6 +1374,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_skaffold_version, as: 'defaultSkaffoldVersion'
+          property :default_tool_versions, as: 'defaultToolVersions', class: Google::Apis::ClouddeployV1::ToolVersions, decorator: Google::Apis::ClouddeployV1::ToolVersions::Representation
+      
           property :name, as: 'name'
           collection :supported_versions, as: 'supportedVersions', class: Google::Apis::ClouddeployV1::SkaffoldVersion, decorator: Google::Apis::ClouddeployV1::SkaffoldVersion::Representation
       
