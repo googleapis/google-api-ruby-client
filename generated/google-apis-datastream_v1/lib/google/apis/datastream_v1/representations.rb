@@ -1385,6 +1385,7 @@ module Google
       class MongodbProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_options, as: 'additionalOptions'
           collection :host_addresses, as: 'hostAddresses', class: Google::Apis::DatastreamV1::HostAddress, decorator: Google::Apis::DatastreamV1::HostAddress::Representation
       
           property :password, as: 'password'
