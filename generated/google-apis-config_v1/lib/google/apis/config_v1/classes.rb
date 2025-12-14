@@ -126,6 +126,39 @@ module Google
         end
       end
       
+      # AutoMigrationConfig contains the automigration configuration for a project.
+      class AutoMigrationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether the auto migration is enabled for the project.
+        # Corresponds to the JSON property `autoMigrationEnabled`
+        # @return [Boolean]
+        attr_accessor :auto_migration_enabled
+        alias_method :auto_migration_enabled?, :auto_migration_enabled
+      
+        # Identifier. The name of the AutoMigrationConfig. Format: 'projects/`project_id`
+        # /locations/`location`/AutoMigrationConfig'.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Time the AutoMigrationConfig was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_migration_enabled = args[:auto_migration_enabled] if args.key?(:auto_migration_enabled)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -744,8 +777,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable

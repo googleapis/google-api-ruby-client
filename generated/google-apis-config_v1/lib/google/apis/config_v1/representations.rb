@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoMigrationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -388,6 +394,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
           property :log_type, as: 'logType'
+        end
+      end
+      
+      class AutoMigrationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_migration_enabled, as: 'autoMigrationEnabled'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       
