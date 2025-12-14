@@ -52668,6 +52668,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Exapool provisioned capacities for each SKU type
+        # Corresponds to the JSON property `exapoolProvisionedCapacityGb`
+        # @return [Google::Apis::ComputeV1::StoragePoolExapoolProvisionedCapacityGb]
+        attr_accessor :exapool_provisioned_capacity_gb
+      
         # Output only. [Output Only] The unique identifier for the resource. This
         # identifier is
         # defined by the server.
@@ -52789,6 +52794,7 @@ module Google
           @capacity_provisioning_type = args[:capacity_provisioning_type] if args.key?(:capacity_provisioning_type)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @exapool_provisioned_capacity_gb = args[:exapool_provisioned_capacity_gb] if args.key?(:exapool_provisioned_capacity_gb)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
@@ -53025,6 +53031,40 @@ module Google
           @status = args[:status] if args.key?(:status)
           @type = args[:type] if args.key?(:type)
           @used_bytes = args[:used_bytes] if args.key?(:used_bytes)
+        end
+      end
+      
+      # Exapool provisioned capacities for each SKU type
+      class StoragePoolExapoolProvisionedCapacityGb
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Size, in GiB, of provisioned capacity-optimized capacity for this
+        # Exapool
+        # Corresponds to the JSON property `capacityOptimized`
+        # @return [Fixnum]
+        attr_accessor :capacity_optimized
+      
+        # Output only. Size, in GiB, of provisioned read-optimized capacity for this
+        # Exapool
+        # Corresponds to the JSON property `readOptimized`
+        # @return [Fixnum]
+        attr_accessor :read_optimized
+      
+        # Output only. Size, in GiB, of provisioned write-optimized capacity for this
+        # Exapool
+        # Corresponds to the JSON property `writeOptimized`
+        # @return [Fixnum]
+        attr_accessor :write_optimized
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @capacity_optimized = args[:capacity_optimized] if args.key?(:capacity_optimized)
+          @read_optimized = args[:read_optimized] if args.key?(:read_optimized)
+          @write_optimized = args[:write_optimized] if args.key?(:write_optimized)
         end
       end
       
@@ -53316,6 +53356,28 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_count
       
+        # Output only. [Output Only] Maximum allowed read IOPS for this Exapool.
+        # Corresponds to the JSON property `exapoolMaxReadIops`
+        # @return [Fixnum]
+        attr_accessor :exapool_max_read_iops
+      
+        # Output only. [Output Only] Maximum allowed read throughput in MiB/s for
+        # this Exapool.
+        # Corresponds to the JSON property `exapoolMaxReadThroughput`
+        # @return [Fixnum]
+        attr_accessor :exapool_max_read_throughput
+      
+        # Output only. [Output Only] Maximum allowed write IOPS for this Exapool.
+        # Corresponds to the JSON property `exapoolMaxWriteIops`
+        # @return [Fixnum]
+        attr_accessor :exapool_max_write_iops
+      
+        # Output only. [Output Only] Maximum allowed write throughput in MiB/s
+        # for this Exapool.
+        # Corresponds to the JSON property `exapoolMaxWriteThroughput`
+        # @return [Fixnum]
+        attr_accessor :exapool_max_write_throughput
+      
         # Output only. [Output Only] Timestamp of the last successful resize inRFC3339
         # text format.
         # Corresponds to the JSON property `lastResizeTimestamp`
@@ -53379,6 +53441,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disk_count = args[:disk_count] if args.key?(:disk_count)
+          @exapool_max_read_iops = args[:exapool_max_read_iops] if args.key?(:exapool_max_read_iops)
+          @exapool_max_read_throughput = args[:exapool_max_read_throughput] if args.key?(:exapool_max_read_throughput)
+          @exapool_max_write_iops = args[:exapool_max_write_iops] if args.key?(:exapool_max_write_iops)
+          @exapool_max_write_throughput = args[:exapool_max_write_throughput] if args.key?(:exapool_max_write_throughput)
           @last_resize_timestamp = args[:last_resize_timestamp] if args.key?(:last_resize_timestamp)
           @max_total_provisioned_disk_capacity_gb = args[:max_total_provisioned_disk_capacity_gb] if args.key?(:max_total_provisioned_disk_capacity_gb)
           @pool_used_capacity_bytes = args[:pool_used_capacity_bytes] if args.key?(:pool_used_capacity_bytes)
@@ -54001,7 +54067,8 @@ module Google
         # explicitly set, it will not appear in get listings. If not set
         # the default behavior is determined by the org policy, if there is no org
         # policy specified, then it will default to disabled. This field isn't
-        # supported if the subnet purpose field is set toREGIONAL_MANAGED_PROXY.
+        # supported if the subnet purpose field is set toREGIONAL_MANAGED_PROXY. It is
+        # recommended to uselogConfig.enable field instead.
         # Corresponds to the JSON property `enableFlowLogs`
         # @return [Boolean]
         attr_accessor :enable_flow_logs
