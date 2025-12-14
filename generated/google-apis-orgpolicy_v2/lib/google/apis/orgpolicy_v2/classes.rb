@@ -169,8 +169,8 @@ module Google
         # @return [String]
         attr_accessor :action_type
       
-        # Org policy condition/expression. For example: `resource.instanceName.matches("[
-        # production|test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true`
+        # Org policy condition/expression. For example: `resource.instanceName.matches("(
+        # production|test)_(.+_)?[\d]+")` or, `resource.management.auto_upgrade == true`
         # The max length of the condition is 1000 characters.
         # Corresponds to the JSON property `condition`
         # @return [String]
@@ -317,8 +317,8 @@ module Google
         attr_accessor :action_type
       
         # A Common Expression Language (CEL) condition which is used in the evaluation
-        # of the constraint. For example: `resource.instanceName.matches("[production|
-        # test]_.*_(\d)+")` or, `resource.management.auto_upgrade == true` The max
+        # of the constraint. For example: `resource.instanceName.matches("(production|
+        # test)_(.+_)?[\d]+")` or, `resource.management.auto_upgrade == true` The max
         # length of the condition is 1000 characters.
         # Corresponds to the JSON property `condition`
         # @return [String]
