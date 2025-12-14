@@ -168,6 +168,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Commits a function upgrade from GCF Gen1 to GCF Gen2. This action deletes the
+        # Gen1 function, leaving the Gen2 function active and manageable by the GCFv2
+        # API.
+        # @param [String] name
+        #   Required. The name of the function for which upgrade should be committed to
+        #   Gen2.
+        # @param [Google::Apis::CloudfunctionsV2alpha::CommitFunctionUpgradeAsGen2Request] commit_function_upgrade_as_gen2_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudfunctionsV2alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudfunctionsV2alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def commit_function_upgrade_as_gen2(name, commit_function_upgrade_as_gen2_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2alpha/{+name}:commitFunctionUpgradeAsGen2', options)
+          command.request_representation = Google::Apis::CloudfunctionsV2alpha::CommitFunctionUpgradeAsGen2Request::Representation
+          command.request_object = commit_function_upgrade_as_gen2_request_object
+          command.response_representation = Google::Apis::CloudfunctionsV2alpha::Operation::Representation
+          command.response_class = Google::Apis::CloudfunctionsV2alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new function. If a function with the given name already exists in
         # the specified project, the long running operation will return `ALREADY_EXISTS`
         # error.
@@ -761,11 +797,12 @@ module Google
         #   The standard list page token.
         # @param [Boolean] return_partial_success
         #   When set to `true`, operations that are reachable are returned as normal, and
-        #   those that are unreachable are returned in the [ListOperationsResponse.
-        #   unreachable] field. This can only be `true` when reading across collections e.
-        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
-        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
-        #   explicitly documented otherwise in service or product specific documentation.
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

@@ -344,6 +344,19 @@ module Google
         end
       end
       
+      # Request for the `CommitFunctionUpgradeAsGen2` method.
+      class CommitFunctionUpgradeAsGen2Request
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request for the `CommitFunctionUpgrade` method.
       class CommitFunctionUpgradeRequest
         include Google::Apis::Core::Hashable
@@ -1108,8 +1121,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
