@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MonitoringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -339,6 +345,8 @@ module Google
       
           property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::DatafusionV1::MaintenancePolicy, decorator: Google::Apis::DatafusionV1::MaintenancePolicy::Representation
       
+          property :monitoring_config, as: 'monitoringConfig', class: Google::Apis::DatafusionV1::MonitoringConfig, decorator: Google::Apis::DatafusionV1::MonitoringConfig::Representation
+      
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::DatafusionV1::NetworkConfig, decorator: Google::Apis::DatafusionV1::NetworkConfig::Representation
       
@@ -453,6 +461,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :recurring_time_window, as: 'recurringTimeWindow', class: Google::Apis::DatafusionV1::RecurringTimeWindow, decorator: Google::Apis::DatafusionV1::RecurringTimeWindow::Representation
       
+        end
+      end
+      
+      class MonitoringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_instance_v2_metrics, as: 'enableInstanceV2Metrics'
         end
       end
       
