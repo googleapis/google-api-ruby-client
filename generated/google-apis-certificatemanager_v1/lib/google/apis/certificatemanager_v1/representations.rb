@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedIdentityCertificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +293,8 @@ module Google
           property :expire_time, as: 'expireTime'
           hash :labels, as: 'labels'
           property :managed, as: 'managed', class: Google::Apis::CertificatemanagerV1::ManagedCertificate, decorator: Google::Apis::CertificatemanagerV1::ManagedCertificate::Representation
+      
+          property :managed_identity, as: 'managedIdentity', class: Google::Apis::CertificatemanagerV1::ManagedIdentityCertificate, decorator: Google::Apis::CertificatemanagerV1::ManagedIdentityCertificate::Representation
       
           property :name, as: 'name'
           property :pem_certificate, as: 'pemCertificate'
@@ -527,6 +535,16 @@ module Google
         end
       end
       
+      class ManagedIdentityCertificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :identity, as: 'identity'
+          property :provisioning_issue, as: 'provisioningIssue', class: Google::Apis::CertificatemanagerV1::ProvisioningIssue, decorator: Google::Apis::CertificatemanagerV1::ProvisioningIssue::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -605,6 +623,8 @@ module Google
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          hash :spiffe_trust_stores, as: 'spiffeTrustStores', class: Google::Apis::CertificatemanagerV1::TrustStore, decorator: Google::Apis::CertificatemanagerV1::TrustStore::Representation
+      
           collection :trust_stores, as: 'trustStores', class: Google::Apis::CertificatemanagerV1::TrustStore, decorator: Google::Apis::CertificatemanagerV1::TrustStore::Representation
       
           property :update_time, as: 'updateTime'
