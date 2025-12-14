@@ -1,5 +1,9 @@
 # Release history for google-apis-dataform_v1
 
+### v0.4.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251202
+
 ### v0.3.0 (2025-11-23)
 
 * Regenerated from discovery document revision 20251111
