@@ -1244,8 +1244,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1638,6 +1639,16 @@ module Google
       class MongodbProfile
         include Google::Apis::Core::Hashable
       
+        # Optional. Specifies additional options for the MongoDB connection. The options
+        # should be sent as key-value pairs, for example: `additional_options = `"
+        # serverSelectionTimeoutMS": "10000", "directConnection": "true"``. Keys are
+        # case-sensitive and should match the official MongoDB connection string options:
+        # https://www.mongodb.com/docs/manual/reference/connection-string-options/ The
+        # server will not modify the values provided by the user.
+        # Corresponds to the JSON property `additionalOptions`
+        # @return [Hash<String,String>]
+        attr_accessor :additional_options
+      
         # Required. List of host addresses for a MongoDB cluster. For SRV connection
         # format, this list must contain exactly one DNS host without a port. For
         # Standard connection format, this list must contain all the required hosts in
@@ -1691,6 +1702,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_options = args[:additional_options] if args.key?(:additional_options)
           @host_addresses = args[:host_addresses] if args.key?(:host_addresses)
           @password = args[:password] if args.key?(:password)
           @replica_set = args[:replica_set] if args.key?(:replica_set)
@@ -4129,8 +4141,10 @@ module Google
       class StandardConnectionFormat
         include Google::Apis::Core::Hashable
       
-        # Optional. Specifies whether the client connects directly to the host[:port] in
-        # the connection URI.
+        # Optional. Deprecated: Use the `additional_options` map to specify the `
+        # directConnection` parameter instead. For example: `additional_options = `"
+        # directConnection": "true"``. Specifies whether the client connects directly to
+        # the host[:port] in the connection URI.
         # Corresponds to the JSON property `directConnection`
         # @return [Boolean]
         attr_accessor :direct_connection
