@@ -70,6 +70,12 @@ module Google
         attr_accessor :marketplace_enabled
         alias_method :marketplace_enabled?, :marketplace_enabled
       
+        # Output only. The list of IP addresses used by Secure Web Proxy for outbound
+        # traffic.
+        # Corresponds to the JSON property `webProxyIps`
+        # @return [Array<String>]
+        attr_accessor :web_proxy_ips
+      
         def initialize(**args)
            update!(**args)
         end
@@ -78,6 +84,7 @@ module Google
         def update!(**args)
           @egress_fqdns = args[:egress_fqdns] if args.key?(:egress_fqdns)
           @marketplace_enabled = args[:marketplace_enabled] if args.key?(:marketplace_enabled)
+          @web_proxy_ips = args[:web_proxy_ips] if args.key?(:web_proxy_ips)
         end
       end
       
