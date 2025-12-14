@@ -1465,7 +1465,7 @@ module Google
         attr_accessor :database_id
       
         # Encryption configuration for a new database being created from another source.
-        # The source could be a Backup .
+        # The source could be a Backup or a PitrSnapshot.
         # Corresponds to the JSON property `encryptionConfig`
         # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EncryptionConfig]
         attr_accessor :encryption_config
@@ -1823,7 +1823,7 @@ module Google
       end
       
       # Encryption configuration for a new database being created from another source.
-      # The source could be a Backup .
+      # The source could be a Backup or a PitrSnapshot.
       class GoogleFirestoreAdminV1EncryptionConfig
         include Google::Apis::Core::Hashable
       
@@ -2843,7 +2843,7 @@ module Google
         attr_accessor :database_id
       
         # Encryption configuration for a new database being created from another source.
-        # The source could be a Backup .
+        # The source could be a Backup or a PitrSnapshot.
         # Corresponds to the JSON property `encryptionConfig`
         # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EncryptionConfig]
         attr_accessor :encryption_config
@@ -3124,8 +3124,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
