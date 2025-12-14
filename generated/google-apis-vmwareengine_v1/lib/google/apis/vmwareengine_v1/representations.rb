@@ -82,6 +82,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Datastore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatastoreMountConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatastoreNetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DnsBindPermission
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -130,6 +148,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFileService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleVmwareFileService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GrantDnsBindPermissionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +197,12 @@ module Google
       end
       
       class ListClustersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDatastoresResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -310,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MountDatastoreRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +371,12 @@ module Google
       end
       
       class NetworkService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NfsDatastore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -466,6 +514,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ThirdPartyFileService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Thresholds
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -485,6 +539,12 @@ module Google
       end
       
       class UndeletePrivateCloudRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UnmountDatastoreRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -611,6 +671,8 @@ module Google
           property :autoscaling_settings, as: 'autoscalingSettings', class: Google::Apis::VmwareengineV1::AutoscalingSettings, decorator: Google::Apis::VmwareengineV1::AutoscalingSettings::Representation
       
           property :create_time, as: 'createTime'
+          collection :datastore_mount_config, as: 'datastoreMountConfig', class: Google::Apis::VmwareengineV1::DatastoreMountConfig, decorator: Google::Apis::VmwareengineV1::DatastoreMountConfig::Representation
+      
           property :management, as: 'management'
           property :name, as: 'name'
           hash :node_type_configs, as: 'nodeTypeConfigs', class: Google::Apis::VmwareengineV1::NodeTypeConfig, decorator: Google::Apis::VmwareengineV1::NodeTypeConfig::Representation
@@ -640,6 +702,46 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :password, as: 'password'
           property :username, as: 'username'
+        end
+      end
+      
+      class Datastore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :clusters, as: 'clusters'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :nfs_datastore, as: 'nfsDatastore', class: Google::Apis::VmwareengineV1::NfsDatastore, decorator: Google::Apis::VmwareengineV1::NfsDatastore::Representation
+      
+          property :state, as: 'state'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class DatastoreMountConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_mode, as: 'accessMode'
+          property :datastore, as: 'datastore'
+          property :datastore_network, as: 'datastoreNetwork', class: Google::Apis::VmwareengineV1::DatastoreNetwork, decorator: Google::Apis::VmwareengineV1::DatastoreNetwork::Representation
+      
+          property :file_share, as: 'fileShare'
+          property :nfs_version, as: 'nfsVersion'
+          property :security_type, as: 'securityType'
+          collection :servers, as: 'servers'
+        end
+      end
+      
+      class DatastoreNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_count, as: 'connectionCount'
+          property :mtu, as: 'mtu'
+          property :network_peering, as: 'networkPeering'
+          property :subnet, as: 'subnet'
         end
       end
       
@@ -731,6 +833,20 @@ module Google
         end
       end
       
+      class GoogleFileService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filestore_instance, as: 'filestoreInstance'
+          property :netapp_volume, as: 'netappVolume'
+        end
+      end
+      
+      class GoogleVmwareFileService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GrantDnsBindPermissionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -792,6 +908,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :clusters, as: 'clusters', class: Google::Apis::VmwareengineV1::Cluster, decorator: Google::Apis::VmwareengineV1::Cluster::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListDatastoresResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :datastores, as: 'datastores', class: Google::Apis::VmwareengineV1::Datastore, decorator: Google::Apis::VmwareengineV1::Datastore::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
@@ -1031,6 +1157,16 @@ module Google
         end
       end
       
+      class MountDatastoreRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :datastore_mount_config, as: 'datastoreMountConfig', class: Google::Apis::VmwareengineV1::DatastoreMountConfig, decorator: Google::Apis::VmwareengineV1::DatastoreMountConfig::Representation
+      
+          property :ignore_colocation, as: 'ignoreColocation'
+          property :request_id, as: 'requestId'
+        end
+      end
+      
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1087,6 +1223,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :state, as: 'state'
+        end
+      end
+      
+      class NfsDatastore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_file_service, as: 'googleFileService', class: Google::Apis::VmwareengineV1::GoogleFileService, decorator: Google::Apis::VmwareengineV1::GoogleFileService::Representation
+      
+          property :google_vmware_file_service, as: 'googleVmwareFileService', class: Google::Apis::VmwareengineV1::GoogleVmwareFileService, decorator: Google::Apis::VmwareengineV1::GoogleVmwareFileService::Representation
+      
+          property :third_party_file_service, as: 'thirdPartyFileService', class: Google::Apis::VmwareengineV1::ThirdPartyFileService, decorator: Google::Apis::VmwareengineV1::ThirdPartyFileService::Representation
+      
         end
       end
       
@@ -1336,6 +1484,15 @@ module Google
         end
       end
       
+      class ThirdPartyFileService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_share, as: 'fileShare'
+          property :network, as: 'network'
+          collection :servers, as: 'servers'
+        end
+      end
+      
       class Thresholds
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1367,6 +1524,14 @@ module Google
       class UndeletePrivateCloudRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+        end
+      end
+      
+      class UnmountDatastoreRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :datastore, as: 'datastore'
           property :request_id, as: 'requestId'
         end
       end

@@ -123,8 +123,8 @@ module Google
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
-        #   field which is primarily intended for internal usage.
+        #   Optional. Do not use this field. It is unsupported and is ignored unless
+        #   explicitly documented otherwise. This is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -258,6 +258,251 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new `Datastore` resource in a given project and location. Datastores
+        # are regional resources
+        # @param [String] parent
+        #   Required. The resource name of the location to create the new datastore in.
+        #   Resource names are schemeless URIs that follow the conventions in https://
+        #   cloud.google.com/apis/design/resource_names. For example: `projects/my-project/
+        #   locations/us-central1`
+        # @param [Google::Apis::VmwareengineV1::Datastore] datastore_object
+        # @param [String] datastore_id
+        #   Required. The user-provided identifier of the datastore to be created. This
+        #   identifier must be unique among each `Datastore` within the parent and becomes
+        #   the final token in the name URI. The identifier must meet the following
+        #   requirements: * Only contains 1-63 alphanumeric characters and hyphens *
+        #   Begins with an alphabetical character * Ends with a non-hyphen character * Not
+        #   formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/
+        #   doc/html/rfc1034) (section 3.5)
+        # @param [String] request_id
+        #   Optional. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmwareengineV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmwareengineV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_datastore(parent, datastore_object = nil, datastore_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/datastores', options)
+          command.request_representation = Google::Apis::VmwareengineV1::Datastore::Representation
+          command.request_object = datastore_object
+          command.response_representation = Google::Apis::VmwareengineV1::Operation::Representation
+          command.response_class = Google::Apis::VmwareengineV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['datastoreId'] = datastore_id unless datastore_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a `Datastore` resource. You can only delete a Datastore after all
+        # resources that refer to it are deleted. For example, multiple clusters of the
+        # same private cloud or different private clouds can refer to the same datastore.
+        # @param [String] name
+        #   Required. The resource name of the Datastore to be deleted. Resource names are
+        #   schemeless URIs that follow the conventions in https://cloud.google.com/apis/
+        #   design/resource_names. For example: `projects/my-project/locations/us-central1/
+        #   datastore/my-datastore`
+        # @param [String] etag
+        #   Optional. Checksum used to ensure that the user-provided value is up to date
+        #   before the server processes the request. The server compares provided checksum
+        #   with the current checksum of the resource. If the user-provided value is out
+        #   of date, this request returns an `ABORTED` error.
+        # @param [String] request_id
+        #   Optional. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmwareengineV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmwareengineV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_datastore(name, etag: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::VmwareengineV1::Operation::Representation
+          command.response_class = Google::Apis::VmwareengineV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a `Datastore` resource by its resource name. The resource contains
+        # details of the Datastore, such as its description, subnets, type, and more.
+        # @param [String] name
+        #   Required. The resource name of the Datastore to retrieve. Resource names are
+        #   schemeless URIs that follow the conventions in https://cloud.google.com/apis/
+        #   design/resource_names. For example: `projects/my-project/locations/us-central1/
+        #   datastores/my-datastore`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmwareengineV1::Datastore] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmwareengineV1::Datastore]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_datastore(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::VmwareengineV1::Datastore::Representation
+          command.response_class = Google::Apis::VmwareengineV1::Datastore
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists `Datastore` resources in a given project and location.
+        # @param [String] parent
+        #   Required. The resource name of the location to query for Datastores. Resource
+        #   names are schemeless URIs that follow the conventions in https://cloud.google.
+        #   com/apis/design/resource_names. For example: `projects/my-project/locations/us-
+        #   central1`
+        # @param [String] filter
+        #   Optional. A filter expression that matches resources returned in the response.
+        #   The expression must specify the field name, a comparison operator, and the
+        #   value that you want to use for filtering. The value must be a string, a number,
+        #   or a boolean. The comparison operator must be `=`, `!=`, `>`, or `<`. For
+        #   example, if you are filtering a list of datastores, you can exclude the ones
+        #   named `example-datastore` by specifying `name != "example-datastore"`. To
+        #   filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example: ``` (name = "example-datastore") (createTime > "2021-
+        #   04-12T08:15:10.40Z") ``` By default, each expression is an `AND` expression.
+        #   However, you can include `AND` and `OR` expressions explicitly. For example: ``
+        #   ` (name = "example-datastore-1") AND (createTime > "2021-04-12T08:15:10.40Z")
+        #   OR (name = "example-datastore-2") ```
+        # @param [String] order_by
+        #   Optional. Sorts list results by a certain order. By default, returned results
+        #   are ordered by `name` in ascending order. You can also sort results in
+        #   descending order based on the `name` value using `orderBy="name desc"`.
+        #   Currently, only ordering by `name` is supported.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return in one page. The maximum
+        #   value is coerced to 1000. The default value of this field is 500.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListDatastores` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListDatastores` must match the call that provided the
+        #   page token.
+        # @param [String] request_id
+        #   Optional. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmwareengineV1::ListDatastoresResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmwareengineV1::ListDatastoresResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_datastores(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/datastores', options)
+          command.response_representation = Google::Apis::VmwareengineV1::ListDatastoresResponse::Representation
+          command.response_class = Google::Apis::VmwareengineV1::ListDatastoresResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Modifies a Datastore resource. Only the following fields can be updated: `
+        # description`. Only fields specified in `updateMask` are applied.
+        # @param [String] name
+        #   Output only. Identifier. The resource name of this datastore. Resource names
+        #   are schemeless URIs that follow the conventions in https://cloud.google.com/
+        #   apis/design/resource_names. For example: `projects/my-project/locations/us-
+        #   central1/datastores/datastore`
+        # @param [Google::Apis::VmwareengineV1::Datastore] datastore_object
+        # @param [String] request_id
+        #   Optional. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   Datastore resource by the update. The fields specified in the `update_mask`
+        #   are relative to the resource, not the full request. A field will be
+        #   overwritten if it is in the mask. If the user does not provide a mask then all
+        #   fields will be overwritten. Only the following fields can be updated: `
+        #   description`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmwareengineV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmwareengineV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_datastore(name, datastore_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::VmwareengineV1::Datastore::Representation
+          command.request_object = datastore_object
+          command.response_representation = Google::Apis::VmwareengineV1::Operation::Representation
+          command.response_class = Google::Apis::VmwareengineV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1403,11 +1648,12 @@ module Google
         #   The standard list page token.
         # @param [Boolean] return_partial_success
         #   When set to `true`, operations that are reachable are returned as normal, and
-        #   those that are unreachable are returned in the [ListOperationsResponse.
-        #   unreachable] field. This can only be `true` when reading across collections e.
-        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
-        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
-        #   explicitly documented otherwise in service or product specific documentation.
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2374,6 +2620,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Mounts a `Datastore` on a cluster resource Datastores are zonal resources
+        # @param [String] name
+        #   Required. The resource name of the cluster to mount the datastore. Resource
+        #   names are schemeless URIs that follow the conventions in https://cloud.google.
+        #   com/apis/design/resource_names. For example: `projects/my-project/locations/us-
+        #   central1-a/privateClouds/my-cloud/clusters/my-cluster`
+        # @param [Google::Apis::VmwareengineV1::MountDatastoreRequest] mount_datastore_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmwareengineV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmwareengineV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def mount_cluster_datastore(name, mount_datastore_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:mountDatastore', options)
+          command.request_representation = Google::Apis::VmwareengineV1::MountDatastoreRequest::Representation
+          command.request_object = mount_datastore_request_object
+          command.response_representation = Google::Apis::VmwareengineV1::Operation::Representation
+          command.response_class = Google::Apis::VmwareengineV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Modifies a `Cluster` resource. Only fields specified in `updateMask` are
         # applied. During operation processing, the resource is temporarily in the `
         # ACTIVE` state before the operation fully completes. For that period of time,
@@ -2500,6 +2782,42 @@ module Google
           command.response_representation = Google::Apis::VmwareengineV1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::VmwareengineV1::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Mounts a `Datastore` on a cluster resource Datastores are zonal resources
+        # @param [String] name
+        #   Required. The resource name of the cluster to unmount the datastore. Resource
+        #   names are schemeless URIs that follow the conventions in https://cloud.google.
+        #   com/apis/design/resource_names. For example: `projects/my-project/locations/us-
+        #   central1-a/privateClouds/my-cloud/clusters/my-cluster`
+        # @param [Google::Apis::VmwareengineV1::UnmountDatastoreRequest] unmount_datastore_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmwareengineV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmwareengineV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def unmount_cluster_datastore(name, unmount_datastore_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:unmountDatastore', options)
+          command.request_representation = Google::Apis::VmwareengineV1::UnmountDatastoreRequest::Representation
+          command.request_object = unmount_datastore_request_object
+          command.response_representation = Google::Apis::VmwareengineV1::Operation::Representation
+          command.response_class = Google::Apis::VmwareengineV1::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
