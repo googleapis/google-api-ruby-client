@@ -700,6 +700,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1Project
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3029,6 +3035,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaListUserLicensesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaManagedAgentDefinition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6201,6 +6213,8 @@ module Google
           property :is_infobot_faq_data_store, as: 'isInfobotFaqDataStore'
           property :kms_key_name, as: 'kmsKeyName'
           property :name, as: 'name'
+          property :natural_language_query_understanding_config, as: 'naturalLanguageQueryUnderstandingConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig::Representation
+      
           property :serving_config_data_store, as: 'servingConfigDataStore', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore::Representation
       
           collection :solution_types, as: 'solutionTypes'
@@ -6681,6 +6695,13 @@ module Google
           property :state, as: 'state'
           property :subscription_term, as: 'subscriptionTerm'
           property :subscription_tier, as: 'subscriptionTier'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
         end
       end
       
@@ -7286,6 +7307,8 @@ module Google
           property :icon, as: 'icon', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentImage, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentImage::Representation
       
           property :language_code, as: 'languageCode'
+          property :managed_agent_definition, as: 'managedAgentDefinition', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaManagedAgentDefinition, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaManagedAgentDefinition::Representation
+      
           property :name, as: 'name'
           property :rejection_reason, as: 'rejectionReason'
           property :sharing_config, as: 'sharingConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentSharingConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentSharingConfig::Representation
@@ -10661,6 +10684,12 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :user_licenses, as: 'userLicenses', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserLicense, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserLicense::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaManagedAgentDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
