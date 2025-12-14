@@ -2352,6 +2352,7 @@ module Google
       class GceClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_zone_exclude_zone_uris, as: 'autoZoneExcludeZoneUris'
           property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::DataprocV1::ConfidentialInstanceConfig, decorator: Google::Apis::DataprocV1::ConfidentialInstanceConfig::Representation
       
           property :internal_ip_only, as: 'internalIpOnly'

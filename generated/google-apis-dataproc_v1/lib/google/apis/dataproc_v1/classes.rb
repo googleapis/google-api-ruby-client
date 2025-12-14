@@ -2971,6 +2971,19 @@ module Google
       class GceClusterConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. An optional list of Compute Engine zones where the Dataproc cluster
+        # will not be located when Auto Zone is enabled. Only one of zone_uri or
+        # auto_zone_exclude_zone_uris can be set. If both are omitted, the service will
+        # pick a zone in the cluster Compute Engine region. If
+        # auto_zone_exclude_zone_uris is set and there is more than one non-excluded
+        # zone, the service will pick one of the non-excluded zones. Otherwise, cluster
+        # creation will fail with INVALID_ARGUMENT error.A full URL, partial URI, or
+        # short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/
+        # [project_id]/zones/[zone] projects/[project_id]/zones/[zone] [zone]
+        # Corresponds to the JSON property `autoZoneExcludeZoneUris`
+        # @return [Array<String>]
+        attr_accessor :auto_zone_exclude_zone_uris
+      
         # Confidential Instance Config for clusters using Confidential VMs (https://
         # cloud.google.com/compute/confidential-vm/docs)
         # Corresponds to the JSON property `confidentialInstanceConfig`
@@ -3093,6 +3106,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_zone_exclude_zone_uris = args[:auto_zone_exclude_zone_uris] if args.key?(:auto_zone_exclude_zone_uris)
           @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @internal_ip_only = args[:internal_ip_only] if args.key?(:internal_ip_only)
           @metadata = args[:metadata] if args.key?(:metadata)
