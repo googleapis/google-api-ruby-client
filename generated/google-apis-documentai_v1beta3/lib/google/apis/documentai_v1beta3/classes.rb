@@ -8093,10 +8093,11 @@ module Google
         # @return [String]
         attr_accessor :dataset_split
       
-        # Optional. The type of the documents to be imported in this batch. This will be
-        # used to auto-label the documents with a single entity of the provided type.
-        # This field can only be used with a classifier or splitter processor. Providing
-        # this field is mutually exclusive with `entities` and `auto_labeling_config`.
+        # Optional. If set, determines the type of the documents to be imported in this
+        # batch. It can be used to auto-label the documents with a single entity of the
+        # provided type. This field can only be used with a classifier or splitter
+        # processor. Providing this field is mutually exclusive with `entities` and `
+        # auto_labeling_config`.
         # Corresponds to the JSON property `documentType`
         # @return [String]
         attr_accessor :document_type
@@ -8499,7 +8500,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. The user-defined name of the Schema.
+        # Required. The user-defined name of the Schema.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -9703,7 +9704,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. The user-defined name of the SchemaVersion.
+        # Required. The user-defined name of the SchemaVersion.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
