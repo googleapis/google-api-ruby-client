@@ -10067,6 +10067,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :approved_countries
       
+        # The channel of the destination.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
         # The name of the destination
         # Corresponds to the JSON property `destination`
         # @return [String]
@@ -10094,6 +10099,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @approved_countries = args[:approved_countries] if args.key?(:approved_countries)
+          @channel = args[:channel] if args.key?(:channel)
           @destination = args[:destination] if args.key?(:destination)
           @disapproved_countries = args[:disapproved_countries] if args.key?(:disapproved_countries)
           @pending_countries = args[:pending_countries] if args.key?(:pending_countries)
