@@ -3070,6 +3070,13 @@ module Google
         # @return [String]
         attr_accessor :constraint
       
+        # Optional. Provides extra information for the specific violated constraint. See
+        # the constraint's documentation to determine if this field is populated and
+        # what the structure of the message should be.
+        # Corresponds to the JSON property `constraintViolationInfo`
+        # @return [Hash<String,Object>]
+        attr_accessor :constraint_violation_info
+      
         # Optional. Error message that policy is indicating.
         # Corresponds to the JSON property `errorMessage`
         # @return [String]
@@ -3088,6 +3095,7 @@ module Google
         def update!(**args)
           @checked_value = args[:checked_value] if args.key?(:checked_value)
           @constraint = args[:constraint] if args.key?(:constraint)
+          @constraint_violation_info = args[:constraint_violation_info] if args.key?(:constraint_violation_info)
           @error_message = args[:error_message] if args.key?(:error_message)
           @policy_type = args[:policy_type] if args.key?(:policy_type)
         end

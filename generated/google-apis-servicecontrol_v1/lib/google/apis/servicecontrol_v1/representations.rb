@@ -1078,6 +1078,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :checked_value, as: 'checkedValue'
           property :constraint, as: 'constraint'
+          hash :constraint_violation_info, as: 'constraintViolationInfo'
           property :error_message, as: 'errorMessage'
           property :policy_type, as: 'policyType'
         end
