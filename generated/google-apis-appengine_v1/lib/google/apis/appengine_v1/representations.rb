@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportAppImageRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FeatureSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -769,6 +775,14 @@ module Google
           property :error_code, as: 'errorCode'
           property :mime_type, as: 'mimeType'
           property :static_file, as: 'staticFile'
+        end
+      end
+      
+      class ExportAppImageRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_repository, as: 'destinationRepository'
+          property :service_account, as: 'serviceAccount'
         end
       end
       
