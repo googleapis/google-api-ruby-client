@@ -1647,6 +1647,14 @@ module Google
         # @return [String]
         attr_accessor :artifact_id
       
+        # Optional. Path to a folder containing the files to upload to Artifact Registry.
+        # This can be either an absolute path, e.g. `/workspace/my-app/target/`, or a
+        # relative path from /workspace, e.g. `my-app/target/`. This field is mutually
+        # exclusive with the `path` field.
+        # Corresponds to the JSON property `deployFolder`
+        # @return [String]
+        attr_accessor :deploy_folder
+      
         # Maven `groupId` value used when uploading the artifact to Artifact Registry.
         # Corresponds to the JSON property `groupId`
         # @return [String]
@@ -1679,6 +1687,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @artifact_id = args[:artifact_id] if args.key?(:artifact_id)
+          @deploy_folder = args[:deploy_folder] if args.key?(:deploy_folder)
           @group_id = args[:group_id] if args.key?(:group_id)
           @path = args[:path] if args.key?(:path)
           @repository = args[:repository] if args.key?(:repository)
