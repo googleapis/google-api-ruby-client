@@ -2681,6 +2681,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Configuration for Natural Language Query Understanding.
+        # Corresponds to the JSON property `naturalLanguageQueryUnderstandingConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig]
+        attr_accessor :natural_language_query_understanding_config
+      
         # Stores information regarding the serving configurations at DataStore level.
         # Corresponds to the JSON property `servingConfigDataStore`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore]
@@ -2727,6 +2732,7 @@ module Google
           @is_infobot_faq_data_store = args[:is_infobot_faq_data_store] if args.key?(:is_infobot_faq_data_store)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @name = args[:name] if args.key?(:name)
+          @natural_language_query_understanding_config = args[:natural_language_query_understanding_config] if args.key?(:natural_language_query_understanding_config)
           @serving_config_data_store = args[:serving_config_data_store] if args.key?(:serving_config_data_store)
           @solution_types = args[:solution_types] if args.key?(:solution_types)
           @starting_schema = args[:starting_schema] if args.key?(:starting_schema)
@@ -4432,6 +4438,26 @@ module Google
           @state = args[:state] if args.key?(:state)
           @subscription_term = args[:subscription_term] if args.key?(:subscription_term)
           @subscription_tier = args[:subscription_tier] if args.key?(:subscription_tier)
+        end
+      end
+      
+      # Configuration for Natural Language Query Understanding.
+      class GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Mode of Natural Language Query Understanding. If this field is unset, the
+        # behavior defaults to NaturalLanguageQueryUnderstandingConfig.Mode.DISABLED.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
       
@@ -6797,6 +6823,11 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
+        # Stores the definition of a Google managed agent.
+        # Corresponds to the JSON property `managedAgentDefinition`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaManagedAgentDefinition]
+        attr_accessor :managed_agent_definition
+      
         # Identifier. Resource name of the agent. Format: `projects/`project`/locations/`
         # location`/collections/`collection`/engines/`engine`/assistants/`assistant`/
         # agents/`agent``
@@ -6854,6 +6885,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @icon = args[:icon] if args.key?(:icon)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @managed_agent_definition = args[:managed_agent_definition] if args.key?(:managed_agent_definition)
           @name = args[:name] if args.key?(:name)
           @rejection_reason = args[:rejection_reason] if args.key?(:rejection_reason)
           @sharing_config = args[:sharing_config] if args.key?(:sharing_config)
@@ -18822,6 +18854,19 @@ module Google
         end
       end
       
+      # Stores the definition of a Google managed agent.
+      class GoogleCloudDiscoveryengineV1alphaManagedAgentDefinition
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Media-specific user event information.
       class GoogleCloudDiscoveryengineV1alphaMediaInfo
         include Google::Apis::Core::Hashable
@@ -21640,11 +21685,12 @@ module Google
         # be the same as UserEvent.PageInfo.page_category. This field is the equivalent
         # of the query for browse (navigation) queries. It's used by the browse model
         # when the query is empty. If the field is empty, it will not be used by the
-        # browse model. To represent full path of a category, use '>' character to
-        # separate different hierarchies. If '>' is part of the category name, replace
-        # it with other character(s). For example, `Graphics Cards > RTX>4090 > Founders
-        # Edition` where "RTX > 4090" represents one level, can be rewritten as `
-        # Graphics Cards > RTX_4090 > Founders Edition`
+        # browse model. If the field contains more than one element, only the first
+        # element will be used. To represent full path of a category, use '>' character
+        # to separate different hierarchies. If '>' is part of the category name,
+        # replace it with other character(s). For example, `Graphics Cards > RTX>4090 >
+        # Founders Edition` where "RTX > 4090" represents one level, can be rewritten as
+        # `Graphics Cards > RTX_4090 > Founders Edition`
         # Corresponds to the JSON property `pageCategories`
         # @return [Array<String>]
         attr_accessor :page_categories
@@ -25907,15 +25953,15 @@ module Google
         # @return [String]
         attr_accessor :event_type
       
-        # The filter syntax consists of an expression language for constructing a
-        # predicate from one or more fields of the documents being filtered. One example
-        # is for `search` events, the associated SearchRequest may contain a filter
-        # expression in SearchRequest.filter conforming to https://google.aip.dev/160#
-        # filtering. Similarly, for `view-item-list` events that are generated from a
-        # RecommendRequest, this field may be populated directly from RecommendRequest.
-        # filter conforming to https://google.aip.dev/160#filtering. The value must be a
-        # UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an `
-        # INVALID_ARGUMENT` error is returned.
+        # Optional. The filter syntax consists of an expression language for
+        # constructing a predicate from one or more fields of the documents being
+        # filtered. One example is for `search` events, the associated SearchRequest may
+        # contain a filter expression in SearchRequest.filter conforming to https://
+        # google.aip.dev/160#filtering. Similarly, for `view-item-list` events that are
+        # generated from a RecommendRequest, this field may be populated directly from
+        # RecommendRequest.filter conforming to https://google.aip.dev/160#filtering.
+        # The value must be a UTF-8 encoded string with a length limit of 1,000
+        # characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -30932,11 +30978,12 @@ module Google
         # be the same as UserEvent.PageInfo.page_category. This field is the equivalent
         # of the query for browse (navigation) queries. It's used by the browse model
         # when the query is empty. If the field is empty, it will not be used by the
-        # browse model. To represent full path of a category, use '>' character to
-        # separate different hierarchies. If '>' is part of the category name, replace
-        # it with other character(s). For example, `Graphics Cards > RTX>4090 > Founders
-        # Edition` where "RTX > 4090" represents one level, can be rewritten as `
-        # Graphics Cards > RTX_4090 > Founders Edition`
+        # browse model. If the field contains more than one element, only the first
+        # element will be used. To represent full path of a category, use '>' character
+        # to separate different hierarchies. If '>' is part of the category name,
+        # replace it with other character(s). For example, `Graphics Cards > RTX>4090 >
+        # Founders Edition` where "RTX > 4090" represents one level, can be rewritten as
+        # `Graphics Cards > RTX_4090 > Founders Edition`
         # Corresponds to the JSON property `pageCategories`
         # @return [Array<String>]
         attr_accessor :page_categories
