@@ -785,6 +785,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
+          collection :ancestor_names, as: 'ancestorNames'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
         end
       end
       
