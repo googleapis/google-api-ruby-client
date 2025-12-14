@@ -1951,6 +1951,12 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryParameters]
         attr_accessor :query_params
       
+        # Optional. Specifies which fields in the QueryResult to return. If not set, the
+        # default is DETECT_INTENT_RESPONSE_VIEW_FULL.
+        # Corresponds to the JSON property `responseView`
+        # @return [String]
+        attr_accessor :response_view
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1960,6 +1966,7 @@ module Google
           @output_audio_config = args[:output_audio_config] if args.key?(:output_audio_config)
           @query_input = args[:query_input] if args.key?(:query_input)
           @query_params = args[:query_params] if args.key?(:query_params)
+          @response_view = args[:response_view] if args.key?(:response_view)
         end
       end
       
@@ -8172,10 +8179,20 @@ module Google
         # @return [String]
         attr_accessor :default_banned_phrase_match_strategy
       
+        # Settings for Responsible AI.
+        # Corresponds to the JSON property `defaultRaiSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SafetySettingsRaiSettings]
+        attr_accessor :default_rai_settings
+      
         # Settings for prompt security checks.
         # Corresponds to the JSON property `promptSecuritySettings`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings]
         attr_accessor :prompt_security_settings
+      
+        # Settings for Responsible AI.
+        # Corresponds to the JSON property `raiSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SafetySettingsRaiSettings]
+        attr_accessor :rai_settings
       
         def initialize(**args)
            update!(**args)
@@ -8185,7 +8202,9 @@ module Google
         def update!(**args)
           @banned_phrases = args[:banned_phrases] if args.key?(:banned_phrases)
           @default_banned_phrase_match_strategy = args[:default_banned_phrase_match_strategy] if args.key?(:default_banned_phrase_match_strategy)
+          @default_rai_settings = args[:default_rai_settings] if args.key?(:default_rai_settings)
           @prompt_security_settings = args[:prompt_security_settings] if args.key?(:prompt_security_settings)
+          @rai_settings = args[:rai_settings] if args.key?(:rai_settings)
         end
       end
       
@@ -8231,6 +8250,50 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_prompt_security = args[:enable_prompt_security] if args.key?(:enable_prompt_security)
+        end
+      end
+      
+      # Settings for Responsible AI.
+      class GoogleCloudDialogflowCxV3SafetySettingsRaiSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. RAI blocking configurations.
+        # Corresponds to the JSON property `categoryFilters`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilter>]
+        attr_accessor :category_filters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category_filters = args[:category_filters] if args.key?(:category_filters)
+        end
+      end
+      
+      # Configuration of the sensitivity level for blocking an RAI category.
+      class GoogleCloudDialogflowCxV3SafetySettingsRaiSettingsCategoryFilter
+        include Google::Apis::Core::Hashable
+      
+        # RAI category to configure.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Blocking sensitivity level to configure for the RAI category.
+        # Corresponds to the JSON property `filterLevel`
+        # @return [String]
+        attr_accessor :filter_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @filter_level = args[:filter_level] if args.key?(:filter_level)
         end
       end
       
@@ -23796,8 +23859,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
