@@ -749,6 +749,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Metadata used to identify if a resource is user scoped.
+        # Corresponds to the JSON property `privateResourceMetadata`
+        # @return [Google::Apis::DataformV1beta1::PrivateResourceMetadata]
+        attr_accessor :private_resource_metadata
+      
         # Immutable. The name of the release config to compile. Must be in the format `
         # projects/*/locations/*/repositories/*/releaseConfigs/*`.
         # Corresponds to the JSON property `releaseConfig`
@@ -781,6 +786,7 @@ module Google
           @git_commitish = args[:git_commitish] if args.key?(:git_commitish)
           @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @name = args[:name] if args.key?(:name)
+          @private_resource_metadata = args[:private_resource_metadata] if args.key?(:private_resource_metadata)
           @release_config = args[:release_config] if args.key?(:release_config)
           @resolved_git_commit_sha = args[:resolved_git_commit_sha] if args.key?(:resolved_git_commit_sha)
           @workspace = args[:workspace] if args.key?(:workspace)
@@ -1691,8 +1697,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -2458,6 +2465,27 @@ module Google
           @id = args[:id] if args.key?(:id)
           @region = args[:region] if args.key?(:region)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Metadata used to identify if a resource is user scoped.
+      class PrivateResourceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. If true, this resource is user-scoped, meaning it is either a
+        # workspace or sourced from a workspace.
+        # Corresponds to the JSON property `userScoped`
+        # @return [Boolean]
+        attr_accessor :user_scoped
+        alias_method :user_scoped?, :user_scoped
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_scoped = args[:user_scoped] if args.key?(:user_scoped)
         end
       end
       
@@ -3641,6 +3669,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Metadata used to identify if a resource is user scoped.
+        # Corresponds to the JSON property `privateResourceMetadata`
+        # @return [Google::Apis::DataformV1beta1::PrivateResourceMetadata]
+        attr_accessor :private_resource_metadata
+      
         # Output only. The resolved compilation result that was used to create this
         # invocation. Will be in the format `projects/*/locations/*/repositories/*/
         # compilationResults/*`.
@@ -3671,6 +3704,7 @@ module Google
           @invocation_config = args[:invocation_config] if args.key?(:invocation_config)
           @invocation_timing = args[:invocation_timing] if args.key?(:invocation_timing)
           @name = args[:name] if args.key?(:name)
+          @private_resource_metadata = args[:private_resource_metadata] if args.key?(:private_resource_metadata)
           @resolved_compilation_result = args[:resolved_compilation_result] if args.key?(:resolved_compilation_result)
           @state = args[:state] if args.key?(:state)
           @workflow_config = args[:workflow_config] if args.key?(:workflow_config)
@@ -3777,6 +3811,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Metadata used to identify if a resource is user scoped.
+        # Corresponds to the JSON property `privateResourceMetadata`
+        # @return [Google::Apis::DataformV1beta1::PrivateResourceMetadata]
+        attr_accessor :private_resource_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3787,6 +3826,7 @@ module Google
           @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
           @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @name = args[:name] if args.key?(:name)
+          @private_resource_metadata = args[:private_resource_metadata] if args.key?(:private_resource_metadata)
         end
       end
       
