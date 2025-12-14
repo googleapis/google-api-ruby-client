@@ -1108,6 +1108,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1RegexMatchConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1RuntimeAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2105,6 +2111,882 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1UploadConversationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnalysis
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnalysisResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnnotationBoundary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnnotatorSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnswerFeedback
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainArticleSuggestionData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainCallAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationCallMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationDataSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationLevelSilence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationParticipant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscript
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainCreateAnalysisOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainCreateIssueMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainCreateIssueModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainCreateIssueRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDataset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDeleteIssueModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDeployIssueModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDeployIssueModelResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDialogflowIntent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDialogflowSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainEncryptionSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainEntityMentionData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainExportInsightsDataMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainExportInsightsDataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainExportIssueModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainExportIssueModelResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainFaqAnswerData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainFeedbackLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainGcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainHoldData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainImportIssueModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainImportIssueModelResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIngestConversationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIntent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIntentMatchData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainInterruptionData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIssue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIssueAssignment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIssueMatchData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIssueModel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIssueModelResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainListFeedbackLabelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainPhraseMatchData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQaAnswer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQaQuestionTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQaScorecardResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainRedactionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSampleConversationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSampleRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSentimentData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSilenceData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSmartReplyData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSpeechConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainUndeployIssueModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainUndeployIssueModelResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainUploadConversationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainUploadConversationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3696,6 +4578,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :exact_match_config, as: 'exactMatchConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExactMatchConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ExactMatchConfig::Representation
       
+          property :regex_match_config, as: 'regexMatchConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RegexMatchConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RegexMatchConfig::Representation
+      
         end
       end
       
@@ -4037,6 +4921,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deidentify_template, as: 'deidentifyTemplate'
           property :inspect_template, as: 'inspectTemplate'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1RegexMatchConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -5771,6 +6661,1530 @@ module Google
           property :redaction_config, as: 'redactionConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RedactionConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RedactionConfig::Representation
       
           property :speech_config, as: 'speechConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SpeechConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SpeechConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnalysis
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis_result, as: 'analysisResult', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnalysisResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnalysisResult::Representation
+      
+          property :annotator_selector, as: 'annotatorSelector', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotatorSelector, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotatorSelector::Representation
+      
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :request_time, as: 'requestTime'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnalysisResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :call_analysis_metadata, as: 'callAnalysisMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata::Representation
+      
+          property :end_time, as: 'endTime'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :annotations, as: 'annotations', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainCallAnnotation, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainCallAnnotation::Representation
+      
+          hash :entities, as: 'entities', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainEntity, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainEntity::Representation
+      
+          hash :intents, as: 'intents', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIntent, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIntent::Representation
+      
+          property :issue_model_result, as: 'issueModelResult', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueModelResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueModelResult::Representation
+      
+          hash :phrase_matchers, as: 'phraseMatchers', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainPhraseMatchData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainPhraseMatchData::Representation
+      
+          collection :qa_scorecard_results, as: 'qaScorecardResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaScorecardResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaScorecardResult::Representation
+      
+          collection :sentiments, as: 'sentiments', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment::Representation
+      
+          property :silence, as: 'silence', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationLevelSilence, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationLevelSilence::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnnotationBoundary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :transcript_index, as: 'transcriptIndex'
+          property :word_index, as: 'wordIndex'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnnotatorSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :issue_models, as: 'issueModels'
+          collection :phrase_matchers, as: 'phraseMatchers'
+          property :qa_config, as: 'qaConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig::Representation
+      
+          property :run_entity_annotator, as: 'runEntityAnnotator'
+          property :run_intent_annotator, as: 'runIntentAnnotator'
+          property :run_interruption_annotator, as: 'runInterruptionAnnotator'
+          property :run_issue_model_annotator, as: 'runIssueModelAnnotator'
+          property :run_phrase_matcher_annotator, as: 'runPhraseMatcherAnnotator'
+          property :run_qa_annotator, as: 'runQaAnnotator'
+          property :run_sentiment_annotator, as: 'runSentimentAnnotator'
+          property :run_silence_annotator, as: 'runSilenceAnnotator'
+          property :run_summarization_annotator, as: 'runSummarizationAnnotator'
+          property :summarization_config, as: 'summarizationConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scorecard_list, as: 'scorecardList', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :qa_scorecard_revisions, as: 'qaScorecardRevisions'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_profile, as: 'conversationProfile'
+          property :generator, as: 'generator'
+          property :summarization_model, as: 'summarizationModel'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainAnswerFeedback
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :clicked, as: 'clicked'
+          property :correctness_level, as: 'correctnessLevel'
+          property :displayed, as: 'displayed'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainArticleSuggestionData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence_score, as: 'confidenceScore'
+          hash :metadata, as: 'metadata'
+          property :query_record, as: 'queryRecord'
+          property :source, as: 'source'
+          property :title, as: 'title'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completed_analyses_count, as: 'completedAnalysesCount'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :failed_analyses_count, as: 'failedAnalysesCount'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest::Representation
+      
+          property :total_requested_analyses_count, as: 'totalRequestedAnalysesCount'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis_percentage, as: 'analysisPercentage'
+          property :annotator_selector, as: 'annotatorSelector', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotatorSelector, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotatorSelector::Representation
+      
+          property :filter, as: 'filter'
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failed_analysis_count, as: 'failedAnalysisCount'
+          property :successful_analysis_count, as: 'successfulAnalysisCount'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :force, as: 'force'
+          property :max_delete_count, as: 'maxDeleteCount'
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :download_stats, as: 'downloadStats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats::Representation
+      
+          property :end_time, as: 'endTime'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :file_names, as: 'fileNames'
+          property :processed_object_count, as: 'processedObjectCount'
+          property :successful_download_count, as: 'successfulDownloadCount'
+          property :total_files_written, as: 'totalFilesWritten'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_filter, as: 'conversationFilter'
+          property :feedback_label_type, as: 'feedbackLabelType'
+          property :filter, as: 'filter'
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination::Representation
+      
+          property :max_download_count, as: 'maxDownloadCount'
+          property :parent, as: 'parent'
+          property :sheets_destination, as: 'sheetsDestination', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination::Representation
+      
+          collection :template_qa_scorecard_id, as: 'templateQaScorecardId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_whitespace, as: 'addWhitespace'
+          property :always_print_empty_fields, as: 'alwaysPrintEmptyFields'
+          property :format, as: 'format'
+          property :object_uri, as: 'objectUri'
+          property :records_per_file_count, :numeric_string => true, as: 'recordsPerFileCount'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sheet_title, as: 'sheetTitle'
+          property :spreadsheet_uri, as: 'spreadsheetUri'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainCallAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotation_end_boundary, as: 'annotationEndBoundary', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotationBoundary, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotationBoundary::Representation
+      
+          property :annotation_start_boundary, as: 'annotationStartBoundary', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotationBoundary, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotationBoundary::Representation
+      
+          property :channel_tag, as: 'channelTag'
+          property :entity_mention_data, as: 'entityMentionData', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainEntityMentionData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainEntityMentionData::Representation
+      
+          property :hold_data, as: 'holdData', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainHoldData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainHoldData::Representation
+      
+          property :intent_match_data, as: 'intentMatchData', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIntentMatchData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIntentMatchData::Representation
+      
+          property :interruption_data, as: 'interruptionData', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainInterruptionData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainInterruptionData::Representation
+      
+          property :issue_match_data, as: 'issueMatchData', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueMatchData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueMatchData::Representation
+      
+          property :phrase_match_data, as: 'phraseMatchData', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainPhraseMatchData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainPhraseMatchData::Representation
+      
+          property :sentiment_data, as: 'sentimentData', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSentimentData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSentimentData::Representation
+      
+          property :silence_data, as: 'silenceData', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSilenceData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSilenceData::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_id, as: 'agentId'
+          property :call_metadata, as: 'callMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationCallMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationCallMetadata::Representation
+      
+          property :create_time, as: 'createTime'
+          property :data_source, as: 'dataSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationDataSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationDataSource::Representation
+      
+          hash :dialogflow_intents, as: 'dialogflowIntents', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDialogflowIntent, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDialogflowIntent::Representation
+      
+          property :duration, as: 'duration'
+          property :expire_time, as: 'expireTime'
+          hash :labels, as: 'labels'
+          property :language_code, as: 'languageCode'
+          property :latest_analysis, as: 'latestAnalysis', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnalysis, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnalysis::Representation
+      
+          property :latest_summary, as: 'latestSummary', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData::Representation
+      
+          property :medium, as: 'medium'
+          property :metadata_json, as: 'metadataJson'
+          property :name, as: 'name'
+          property :obfuscated_user_id, as: 'obfuscatedUserId'
+          property :quality_metadata, as: 'qualityMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata::Representation
+      
+          collection :runtime_annotations, as: 'runtimeAnnotations', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation::Representation
+      
+          property :start_time, as: 'startTime'
+          property :transcript, as: 'transcript', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscript, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscript::Representation
+      
+          property :ttl, as: 'ttl'
+          property :turn_count, as: 'turnCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationCallMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_channel, as: 'agentChannel'
+          property :customer_channel, as: 'customerChannel'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationDataSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dialogflow_source, as: 'dialogflowSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDialogflowSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDialogflowSource::Representation
+      
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainGcsSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainGcsSource::Representation
+      
+          property :metadata_uri, as: 'metadataUri'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_tag, as: 'channelTag'
+          property :sentiment_data, as: 'sentimentData', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSentimentData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSentimentData::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationLevelSilence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :silence_duration, as: 'silenceDuration'
+          property :silence_percentage, as: 'silencePercentage'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationParticipant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dialogflow_participant, as: 'dialogflowParticipant'
+          property :dialogflow_participant_name, as: 'dialogflowParticipantName'
+          property :obfuscated_external_user_id, as: 'obfuscatedExternalUserId'
+          property :role, as: 'role'
+          property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_info, as: 'agentInfo', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo::Representation
+      
+          property :customer_satisfaction_rating, as: 'customerSatisfactionRating'
+          collection :feedback_labels, as: 'feedbackLabels', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainFeedbackLabel, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainFeedbackLabel::Representation
+      
+          property :menu_path, as: 'menuPath'
+          property :wait_duration, as: 'waitDuration'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_id, as: 'agentId'
+          property :agent_type, as: 'agentType'
+          property :deployment_display_name, as: 'deploymentDisplayName'
+          property :deployment_id, as: 'deploymentId'
+          property :display_name, as: 'displayName'
+          property :disposition_code, as: 'dispositionCode'
+          property :location, as: 'location'
+          property :team, as: 'team'
+          collection :teams, as: 'teams'
+          property :version_display_name, as: 'versionDisplayName'
+          property :version_id, as: 'versionId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_record, as: 'answerRecord'
+          property :confidence, as: 'confidence'
+          property :conversation_model, as: 'conversationModel'
+          property :generator_id, as: 'generatorId'
+          hash :metadata, as: 'metadata'
+          property :text, as: 'text'
+          hash :text_sections, as: 'textSections'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscript
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :transcript_segments, as: 'transcriptSegments', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_tag, as: 'channelTag'
+          property :confidence, as: 'confidence'
+          property :dialogflow_segment_metadata, as: 'dialogflowSegmentMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata::Representation
+      
+          property :language_code, as: 'languageCode'
+          property :message_time, as: 'messageTime'
+          property :segment_participant, as: 'segmentParticipant', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationParticipant, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationParticipant::Representation
+      
+          property :sentiment, as: 'sentiment', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSentimentData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSentimentData::Representation
+      
+          property :text, as: 'text'
+          collection :words, as: 'words', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :smart_reply_allowlist_covered, as: 'smartReplyAllowlistCovered'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :end_offset, as: 'endOffset'
+          property :start_offset, as: 'startOffset'
+          property :word, as: 'word'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainCreateAnalysisOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotator_selector, as: 'annotatorSelector', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotatorSelector, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotatorSelector::Representation
+      
+          property :conversation, as: 'conversation'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainCreateIssueMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainCreateIssueRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainCreateIssueRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainCreateIssueModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :issue_model, as: 'issueModel', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueModel, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueModel::Representation
+      
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainCreateIssueRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :issue, as: 'issue', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssue, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssue::Representation
+      
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDataset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :ttl, as: 'ttl'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDeleteIssueModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDeployIssueModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDeployIssueModelResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDialogflowIntent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :dialogflow_intent_id, as: 'dialogflowIntentId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDialogflowSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_uri, as: 'audioUri'
+          property :dialogflow_conversation, as: 'dialogflowConversation'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_dimension_metadata, as: 'agentDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata::Representation
+      
+          property :client_sentiment_category_dimension_metadata, as: 'clientSentimentCategoryDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata::Representation
+      
+          property :conversation_profile_dimension_metadata, as: 'conversationProfileDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata::Representation
+      
+          property :conversational_agents_playbook_dimension_metadata, as: 'conversationalAgentsPlaybookDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata::Representation
+      
+          property :conversational_agents_tool_dimension_metadata, as: 'conversationalAgentsToolDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata::Representation
+      
+          property :dimension_key, as: 'dimensionKey'
+          property :issue_dimension_metadata, as: 'issueDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata::Representation
+      
+          property :label_dimension_metadata, as: 'labelDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata::Representation
+      
+          property :medium_dimension_metadata, as: 'mediumDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata::Representation
+      
+          property :qa_question_answer_dimension_metadata, as: 'qaQuestionAnswerDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata::Representation
+      
+          property :qa_question_dimension_metadata, as: 'qaQuestionDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata::Representation
+      
+          property :qa_scorecard_dimension_metadata, as: 'qaScorecardDimensionMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_deployment_display_name, as: 'agentDeploymentDisplayName'
+          property :agent_deployment_id, as: 'agentDeploymentId'
+          property :agent_display_name, as: 'agentDisplayName'
+          property :agent_id, as: 'agentId'
+          property :agent_team, as: 'agentTeam'
+          property :agent_version_display_name, as: 'agentVersionDisplayName'
+          property :agent_version_id, as: 'agentVersionId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sentiment_category, as: 'sentimentCategory'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_profile_id, as: 'conversationProfileId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :playbook_display_name, as: 'playbookDisplayName'
+          property :playbook_id, as: 'playbookId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tool_display_name, as: 'toolDisplayName'
+          property :tool_id, as: 'toolId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :issue_display_name, as: 'issueDisplayName'
+          property :issue_id, as: 'issueId'
+          property :issue_model_id, as: 'issueModelId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_key, as: 'labelKey'
+          property :label_value, as: 'labelValue'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :medium, as: 'medium'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_value, as: 'answerValue'
+          property :qa_question_id, as: 'qaQuestionId'
+          property :qa_scorecard_id, as: 'qaScorecardId'
+          property :question_body, as: 'questionBody'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :qa_question_id, as: 'qaQuestionId'
+          property :qa_scorecard_id, as: 'qaScorecardId'
+          property :question_body, as: 'questionBody'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :qa_scorecard_id, as: 'qaScorecardId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainEncryptionSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key, as: 'kmsKey'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          hash :metadata, as: 'metadata'
+          property :salience, as: 'salience'
+          property :sentiment, as: 'sentiment', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSentimentData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSentimentData::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainEntityMentionData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_unique_id, as: 'entityUniqueId'
+          property :sentiment, as: 'sentiment', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSentimentData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSentimentData::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainExportInsightsDataMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completed_export_count, as: 'completedExportCount'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :failed_export_count, as: 'failedExportCount'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :big_query_destination, as: 'bigQueryDestination', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination::Representation
+      
+          property :export_schema_version, as: 'exportSchemaVersion'
+          property :filter, as: 'filter'
+          property :kms_key, as: 'kmsKey'
+          property :parent, as: 'parent'
+          property :write_disposition, as: 'writeDisposition'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset, as: 'dataset'
+          property :project_id, as: 'projectId'
+          property :table, as: 'table'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainExportInsightsDataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainExportIssueModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_uri, as: 'objectUri'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainExportIssueModelResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainFaqAnswerData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer, as: 'answer'
+          property :confidence_score, as: 'confidenceScore'
+          hash :metadata, as: 'metadata'
+          property :query_record, as: 'queryRecord'
+          property :question, as: 'question'
+          property :source, as: 'source'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainFeedbackLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :label, as: 'label'
+          property :labeled_resource, as: 'labeledResource'
+          property :name, as: 'name'
+          property :qa_answer_label, as: 'qaAnswerLabel', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainGcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_uri, as: 'audioUri'
+          property :transcript_uri, as: 'transcriptUri'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainHoldData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainImportIssueModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_new_model, as: 'createNewModel'
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource::Representation
+      
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_uri, as: 'objectUri'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainImportIssueModelResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :issue_model, as: 'issueModel', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueModel, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueModel::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :ingest_conversations_stats, as: 'ingestConversationsStats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats::Representation
+      
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest::Representation
+      
+          collection :sampled_conversations, as: 'sampledConversations'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duplicates_skipped_count, as: 'duplicatesSkippedCount'
+          property :failed_ingest_count, as: 'failedIngestCount'
+          property :processed_object_count, as: 'processedObjectCount'
+          property :successful_ingest_count, as: 'successfulIngestCount'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_config, as: 'conversationConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig::Representation
+      
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource::Representation
+      
+          property :parent, as: 'parent'
+          property :redaction_config, as: 'redactionConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainRedactionConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainRedactionConfig::Representation
+      
+          property :sample_size, as: 'sampleSize'
+          property :speech_config, as: 'speechConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSpeechConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSpeechConfig::Representation
+      
+          property :transcript_object_config, as: 'transcriptObjectConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_channel, as: 'agentChannel'
+          property :agent_id, as: 'agentId'
+          property :customer_channel, as: 'customerChannel'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_bucket_uri, as: 'audioBucketUri'
+          property :bucket_object_type, as: 'bucketObjectType'
+          property :bucket_uri, as: 'bucketUri'
+          collection :custom_metadata_keys, as: 'customMetadataKeys'
+          property :metadata_bucket_uri, as: 'metadataBucketUri'
+          property :transcript_bucket_uri, as: 'transcriptBucketUri'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :medium, as: 'medium'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIngestConversationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainEncryptionSpec, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainEncryptionSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIntent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIntentMatchData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :intent_unique_id, as: 'intentUniqueId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainInterruptionData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIssue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_description, as: 'displayDescription'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          collection :sample_utterances, as: 'sampleUtterances'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIssueAssignment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :issue, as: 'issue'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIssueMatchData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :issue_assignment, as: 'issueAssignment', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueAssignment, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueAssignment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIssueModel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :input_data_config, as: 'inputDataConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig::Representation
+      
+          property :issue_count, :numeric_string => true, as: 'issueCount'
+          property :language_code, as: 'languageCode'
+          property :model_type, as: 'modelType'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :training_stats, as: 'trainingStats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :medium, as: 'medium'
+          property :training_conversations_count, :numeric_string => true, as: 'trainingConversationsCount'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analyzed_conversations_count, :numeric_string => true, as: 'analyzedConversationsCount'
+          hash :issue_stats, as: 'issueStats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats::Representation
+      
+          property :unclassified_conversations_count, :numeric_string => true, as: 'unclassifiedConversationsCount'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :issue, as: 'issue'
+          property :labeled_conversations_count, :numeric_string => true, as: 'labeledConversationsCount'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainIssueModelResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :issue_model, as: 'issueModel'
+          collection :issues, as: 'issues', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueAssignment, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainIssueAssignment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :feedback_labels, as: 'feedbackLabels', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainFeedbackLabel, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainFeedbackLabel::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainListFeedbackLabelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :feedback_labels, as: 'feedbackLabels', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainFeedbackLabel, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainFeedbackLabel::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainPhraseMatchData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :phrase_matcher, as: 'phraseMatcher'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQaAnswer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :answer_sources, as: 'answerSources', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource::Representation
+      
+          property :answer_value, as: 'answerValue', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue::Representation
+      
+          property :conversation, as: 'conversation'
+          property :qa_question, as: 'qaQuestion'
+          property :question_body, as: 'questionBody'
+          collection :tags, as: 'tags'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_value, as: 'answerValue', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue::Representation
+      
+          property :source_type, as: 'sourceType'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :key, as: 'key'
+          property :na_value, as: 'naValue'
+          property :normalized_score, as: 'normalizedScore'
+          property :num_value, as: 'numValue'
+          property :potential_score, as: 'potentialScore'
+          property :score, as: 'score'
+          property :skip_value, as: 'skipValue'
+          property :str_value, as: 'strValue'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQaQuestionTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          collection :qa_question_ids, as: 'qaQuestionIds'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQaScorecardResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_id, as: 'agentId'
+          property :conversation, as: 'conversation'
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :normalized_score, as: 'normalizedScore'
+          property :potential_score, as: 'potentialScore'
+          collection :qa_answers, as: 'qaAnswers', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaAnswer, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaAnswer::Representation
+      
+          property :qa_scorecard_revision, as: 'qaScorecardRevision'
+          collection :qa_tag_results, as: 'qaTagResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult::Representation
+      
+          property :score, as: 'score'
+          collection :score_sources, as: 'scoreSources', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :normalized_score, as: 'normalizedScore'
+          property :potential_score, as: 'potentialScore'
+          property :score, as: 'score'
+          property :tag, as: 'tag'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :normalized_score, as: 'normalizedScore'
+          property :potential_score, as: 'potentialScore'
+          collection :qa_tag_results, as: 'qaTagResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult::Representation
+      
+          property :score, as: 'score'
+          property :source_type, as: 'sourceType'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :result_is_truncated, as: 'resultIsTruncated'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          property :macro_average_slice, as: 'macroAverageSlice', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice::Representation
+      
+          collection :slices, as: 'slices', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimensions, as: 'dimensions', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimension, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDimension::Representation
+      
+          property :time_series, as: 'timeSeries', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries::Representation
+      
+          property :total, as: 'total', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_measure, as: 'conversationMeasure', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure::Representation
+      
+          property :interval, as: 'interval', class: Google::Apis::ContactcenterinsightsV1::GoogleTypeInterval, decorator: Google::Apis::ContactcenterinsightsV1::GoogleTypeInterval::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :average_agent_sentiment_score, as: 'averageAgentSentimentScore'
+          property :average_client_sentiment_score, as: 'averageClientSentimentScore'
+          property :average_customer_satisfaction_rating, as: 'averageCustomerSatisfactionRating'
+          property :average_duration, as: 'averageDuration'
+          property :average_qa_normalized_score, as: 'averageQaNormalizedScore'
+          property :average_qa_question_normalized_score, as: 'averageQaQuestionNormalizedScore'
+          property :average_silence_percentage, as: 'averageSilencePercentage'
+          property :average_turn_count, as: 'averageTurnCount'
+          property :conversation_count, as: 'conversationCount'
+          collection :qa_tag_scores, as: 'qaTagScores', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :average_tag_normalized_score, as: 'averageTagNormalizedScore'
+          property :tag, as: 'tag'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_points, as: 'dataPoints', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :summary_text, as: 'summaryText'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainRedactionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deidentify_template, as: 'deidentifyTemplate'
+          property :inspect_template, as: 'inspectTemplate'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotation_id, as: 'annotationId'
+          property :answer_feedback, as: 'answerFeedback', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnswerFeedback, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnswerFeedback::Representation
+      
+          property :article_suggestion, as: 'articleSuggestion', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainArticleSuggestionData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainArticleSuggestionData::Representation
+      
+          property :conversation_summarization_suggestion, as: 'conversationSummarizationSuggestion', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData::Representation
+      
+          property :create_time, as: 'createTime'
+          property :dialogflow_interaction, as: 'dialogflowInteraction', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData::Representation
+      
+          property :end_boundary, as: 'endBoundary', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotationBoundary, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotationBoundary::Representation
+      
+          property :faq_answer, as: 'faqAnswer', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainFaqAnswerData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainFaqAnswerData::Representation
+      
+          property :smart_compose_suggestion, as: 'smartComposeSuggestion', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData::Representation
+      
+          property :smart_reply, as: 'smartReply', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSmartReplyData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSmartReplyData::Representation
+      
+          property :start_boundary, as: 'startBoundary', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotationBoundary, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotationBoundary::Representation
+      
+          property :user_input, as: 'userInput', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generator_name, as: 'generatorName'
+          property :query, as: 'query'
+          property :query_source, as: 'querySource'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest::Representation
+      
+          property :sample_conversations_stats, as: 'sampleConversationsStats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failed_sample_count, as: 'failedSampleCount'
+          property :successful_sample_count, as: 'successfulSampleCount'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_dataset, as: 'destinationDataset', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDataset, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainDataset::Representation
+      
+          property :parent, as: 'parent'
+          property :sample_rule, as: 'sampleRule', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSampleRule, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSampleRule::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSampleConversationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSampleRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_filter, as: 'conversationFilter'
+          property :dimension, as: 'dimension'
+          property :sample_percentage, as: 'samplePercentage'
+          property :sample_row, :numeric_string => true, as: 'sampleRow'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSentimentData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :magnitude, as: 'magnitude'
+          property :score, as: 'score'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSilenceData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence_score, as: 'confidenceScore'
+          hash :metadata, as: 'metadata'
+          property :query_record, as: 'queryRecord'
+          property :suggestion, as: 'suggestion'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSmartReplyData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence_score, as: 'confidenceScore'
+          hash :metadata, as: 'metadata'
+          property :query_record, as: 'queryRecord'
+          property :reply, as: 'reply'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainSpeechConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :speech_recognizer, as: 'speechRecognizer'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainUndeployIssueModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainUndeployIssueModelResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :qa_question_tag, as: 'qaQuestionTag', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaQuestionTag, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaQuestionTag::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainUploadConversationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis_operation, as: 'analysisOperation'
+          property :applied_redaction_config, as: 'appliedRedactionConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainRedactionConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainRedactionConfig::Representation
+      
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainUploadConversationRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainUploadConversationRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainUploadConversationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation, as: 'conversation', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversation, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversation::Representation
+      
+          property :conversation_id, as: 'conversationId'
+          property :parent, as: 'parent'
+          property :redaction_config, as: 'redactionConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainRedactionConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainRedactionConfig::Representation
+      
+          property :speech_config, as: 'speechConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSpeechConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSpeechConfig::Representation
       
         end
       end
