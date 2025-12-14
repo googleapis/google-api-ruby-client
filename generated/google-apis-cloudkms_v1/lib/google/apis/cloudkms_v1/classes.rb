@@ -319,7 +319,7 @@ module Google
         end
       end
       
-      # Cloud KMS Autokey configuration for a folder or project.
+      # Cloud KMS Autokey configuration for a folder.
       class AutokeyConfig
         include Google::Apis::Core::Hashable
       
@@ -344,7 +344,7 @@ module Google
         attr_accessor :key_project
       
         # Identifier. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
-        # autokeyConfig` `projects/`PROJECT_NUMBER`/autokeyConfig`.
+        # autokeyConfig`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -627,8 +627,11 @@ module Google
         # for all CryptoKeyVersions associated with this CryptoKey reside and where all
         # related cryptographic operations are performed. Only applicable if
         # CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource
-        # name in the format `projects/*/locations/*/ekmConnections/*`. Note, this list
-        # is non-exhaustive and may apply to additional ProtectionLevels in the future.
+        # name in the format `projects/*/locations/*/ekmConnections/*`. Only applicable
+        # if CryptoKeyVersions have a ProtectionLevel of HSM_SINGLE_TENANT, with the
+        # resource name in the format `projects/*/locations/*/singleTenantHsmInstances/*`
+        # . Note, this list is non-exhaustive and may apply to additional
+        # ProtectionLevels in the future.
         # Corresponds to the JSON property `cryptoKeyBackend`
         # @return [String]
         attr_accessor :crypto_key_backend
@@ -1621,6 +1624,15 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Immutable. The resource name of the backend environment where the key material
+        # for the wrapping key resides and where all related cryptographic operations
+        # are performed. Currently, this field is only populated for keys stored in
+        # HSM_SINGLE_TENANT. Note, this list is non-exhaustive and may apply to
+        # additional ProtectionLevels in the future.
+        # Corresponds to the JSON property `cryptoKeyBackend`
+        # @return [String]
+        attr_accessor :crypto_key_backend
+      
         # Output only. The time this ImportJob expired. Only present if state is EXPIRED.
         # Corresponds to the JSON property `expireEventTime`
         # @return [String]
@@ -1674,6 +1686,7 @@ module Google
         def update!(**args)
           @attestation = args[:attestation] if args.key?(:attestation)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @crypto_key_backend = args[:crypto_key_backend] if args.key?(:crypto_key_backend)
           @expire_event_time = args[:expire_event_time] if args.key?(:expire_event_time)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @generate_time = args[:generate_time] if args.key?(:generate_time)
@@ -2146,6 +2159,13 @@ module Google
         attr_accessor :hsm_available
         alias_method :hsm_available?, :hsm_available
       
+        # Indicates whether CryptoKeys with protection_level HSM_SINGLE_TENANT can be
+        # created in this location.
+        # Corresponds to the JSON property `hsmSingleTenantAvailable`
+        # @return [Boolean]
+        attr_accessor :hsm_single_tenant_available
+        alias_method :hsm_single_tenant_available?, :hsm_single_tenant_available
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2154,6 +2174,7 @@ module Google
         def update!(**args)
           @ekm_available = args[:ekm_available] if args.key?(:ekm_available)
           @hsm_available = args[:hsm_available] if args.key?(:hsm_available)
+          @hsm_single_tenant_available = args[:hsm_single_tenant_available] if args.key?(:hsm_single_tenant_available)
         end
       end
       

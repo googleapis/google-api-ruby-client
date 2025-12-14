@@ -741,6 +741,7 @@ module Google
           property :attestation, as: 'attestation', class: Google::Apis::CloudkmsV1::KeyOperationAttestation, decorator: Google::Apis::CloudkmsV1::KeyOperationAttestation::Representation
       
           property :create_time, as: 'createTime'
+          property :crypto_key_backend, as: 'cryptoKeyBackend'
           property :expire_event_time, as: 'expireEventTime'
           property :expire_time, as: 'expireTime'
           property :generate_time, as: 'generateTime'
@@ -888,6 +889,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ekm_available, as: 'ekmAvailable'
           property :hsm_available, as: 'hsmAvailable'
+          property :hsm_single_tenant_available, as: 'hsmSingleTenantAvailable'
         end
       end
       
