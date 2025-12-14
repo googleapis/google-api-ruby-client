@@ -1805,8 +1805,8 @@ module Google
         attr_accessor :action_type
       
         # Organization Policy condition/expression. For example: `resource.instanceName.
-        # matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade =
-        # = true`
+        # matches("(production|test)_(.+_)?[\d]+")'` or, `resource.management.
+        # auto_upgrade == true`
         # Corresponds to the JSON property `condition`
         # @return [String]
         attr_accessor :condition
