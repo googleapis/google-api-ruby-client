@@ -999,10 +999,11 @@ module Google
         # @param [Boolean] return_partial_success
         #   When set to true, operations that are reachable are returned as normal, and
         #   those that are unreachable are returned in the ListOperationsResponse.
-        #   unreachable field.This can only be true when reading across collections e.g.
-        #   when parent is set to "projects/example/locations/-".This field is not by
-        #   default supported and will result in an UNIMPLEMENTED error if set unless
-        #   explicitly documented otherwise in service or product specific documentation.
+        #   unreachable field.This can only be true when reading across collections. For
+        #   example, when parent is set to "projects/example/locations/-".This field is
+        #   not supported by default and will result in an UNIMPLEMENTED error if set
+        #   unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1260,6 +1261,46 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_app_service_version(apps_id, services_id, versions_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}', options)
+          command.response_representation = Google::Apis::AppengineV1beta::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1beta::Operation
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.params['servicesId'] = services_id unless services_id.nil?
+          command.params['versionsId'] = versions_id unless versions_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Exports a user image to Artifact Registry.
+        # @param [String] apps_id
+        #   Part of `name`. Required. Name of the App Engine version resource. Format:
+        #   apps/`app`/services/`service`/versions/`version`
+        # @param [String] services_id
+        #   Part of `name`. See documentation of `appsId`.
+        # @param [String] versions_id
+        #   Part of `name`. See documentation of `appsId`.
+        # @param [Google::Apis::AppengineV1beta::ExportAppImageRequest] export_app_image_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_app_service_version_app_image(apps_id, services_id, versions_id, export_app_image_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}:exportAppImage', options)
+          command.request_representation = Google::Apis::AppengineV1beta::ExportAppImageRequest::Representation
+          command.request_object = export_app_image_request_object
           command.response_representation = Google::Apis::AppengineV1beta::Operation::Representation
           command.response_class = Google::Apis::AppengineV1beta::Operation
           command.params['appsId'] = apps_id unless apps_id.nil?
@@ -2370,6 +2411,52 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Exports a user image to Artifact Registry.
+        # @param [String] projects_id
+        #   Part of `name`. Required. Name of the App Engine version resource. Format:
+        #   apps/`app`/services/`service`/versions/`version`
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] services_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] versions_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [Google::Apis::AppengineV1beta::ExportAppImageRequest] export_app_image_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_project_location_application_service_version_app_image(projects_id, locations_id, applications_id, services_id, versions_id, export_app_image_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}:exportAppImage', options)
+          command.request_representation = Google::Apis::AppengineV1beta::ExportAppImageRequest::Representation
+          command.request_object = export_app_image_request_object
+          command.response_representation = Google::Apis::AppengineV1beta::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1beta::Operation
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['servicesId'] = services_id unless services_id.nil?
+          command.params['versionsId'] = versions_id unless versions_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the specified Version resource. You can specify the following fields
         # depending on the App Engine environment and type of scaling that the version
         # resource uses:Standard environment instance_class (https://cloud.google.com/
@@ -2509,10 +2596,11 @@ module Google
         # @param [Boolean] return_partial_success
         #   When set to true, operations that are reachable are returned as normal, and
         #   those that are unreachable are returned in the ListOperationsResponse.
-        #   unreachable field.This can only be true when reading across collections e.g.
-        #   when parent is set to "projects/example/locations/-".This field is not by
-        #   default supported and will result in an UNIMPLEMENTED error if set unless
-        #   explicitly documented otherwise in service or product specific documentation.
+        #   unreachable field.This can only be true when reading across collections. For
+        #   example, when parent is set to "projects/example/locations/-".This field is
+        #   not supported by default and will result in an UNIMPLEMENTED error if set
+        #   unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
