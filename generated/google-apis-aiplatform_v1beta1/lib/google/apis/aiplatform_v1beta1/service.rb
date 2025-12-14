@@ -28957,7 +28957,12 @@ module Google
         # @param [String] update_mask
         #   Required. The update mask applies to the resource. For the `FieldMask`
         #   definition, see google.protobuf.FieldMask. Input format: ``paths: "$`
-        #   updated_filed`"`` Updatable fields: * `encryption_spec.kms_key_name`
+        #   updated_field`"`` Updatable fields: * `encryption_spec.kms_key_name` * `
+        #   display_name` * `software_config.post_startup_script_config.
+        #   post_startup_script` * `software_config.post_startup_script_config.
+        #   post_startup_script_url` * `software_config.post_startup_script_config.
+        #   post_startup_script_behavior` * `software_config.env` * `software_config.
+        #   colab_image.release_name`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -44257,6 +44262,99 @@ module Google
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Evaluates a dataset based on a set of given metrics.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluateDatasetRequest] google_cloud_aiplatform_v1beta1_evaluate_dataset_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def evaluate_dataset(google_cloud_aiplatform_v1beta1_evaluate_dataset_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1:evaluateDataset', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluateDatasetRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_evaluate_dataset_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Evaluates instances based on a given metric.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluateInstancesRequest] google_cloud_aiplatform_v1beta1_evaluate_instances_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluateInstancesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluateInstancesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def evaluate_instances(google_cloud_aiplatform_v1beta1_evaluate_instances_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1:evaluateInstances', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluateInstancesRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_evaluate_instances_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluateInstancesResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluateInstancesResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates rubrics for a given prompt. A rubric represents a single testable
+        # criterion for evaluation. One input prompt could have multiple rubrics This
+        # RPC allows users to get suggested rubrics based on provided prompt, which can
+        # then be reviewed and used for subsequent evaluations.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateInstanceRubricsRequest] google_cloud_aiplatform_v1beta1_generate_instance_rubrics_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateInstanceRubricsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateInstanceRubricsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_instance_rubrics(google_cloud_aiplatform_v1beta1_generate_instance_rubrics_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1:generateInstanceRubrics', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateInstanceRubricsRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_generate_instance_rubrics_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateInstanceRubricsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateInstanceRubricsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
