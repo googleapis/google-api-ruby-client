@@ -3322,38 +3322,6 @@ module Google
         end
       end
       
-      # Request to export a detailed pricing report.
-      class ExportReportRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Response message for exporting report.
-      class ExportReportResponse
-        include Google::Apis::Core::Hashable
-      
-        # For large generated report, we may return multiple links
-        # Corresponds to the JSON property `reportArtifactLinks`
-        # @return [Array<Google::Apis::MigrationcenterV1alpha1::ReportArtifactLink>]
-        attr_accessor :report_artifact_links
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @report_artifact_links = args[:report_artifact_links] if args.key?(:report_artifact_links)
-        end
-      end
-      
       # A resource that aggregates the validation errors found in an import job file.
       class FileValidationReport
         include Google::Apis::Core::Hashable
@@ -3547,25 +3515,6 @@ module Google
         def update!(**args)
           @format = args[:format] if args.key?(:format)
           @path = args[:path] if args.key?(:path)
-        end
-      end
-      
-      # A request to generate a link to an artifact for a Report.
-      class GenerateReportArtifactLinkRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. Type of the artifact requested.
-        # Corresponds to the JSON property `artifactType`
-        # @return [String]
-        attr_accessor :artifact_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @artifact_type = args[:artifact_type] if args.key?(:artifact_type)
         end
       end
       
@@ -4744,8 +4693,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -6626,11 +6576,6 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummary]
         attr_accessor :summary
       
-        # Detailed data related to Total Cost of Ownership (TCO) pricing.
-        # Corresponds to the JSON property `tcoDetails`
-        # @return [Google::Apis::MigrationcenterV1alpha1::ReportTotalCostOfOwnershipDetails]
-        attr_accessor :tco_details
-      
         # Report type.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -6653,40 +6598,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @summary = args[:summary] if args.key?(:summary)
-          @tco_details = args[:tco_details] if args.key?(:tco_details)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # Describes a link to a generated artifact of the report.
-      class ReportArtifactLink
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Human friendly display name of the artifact.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Output only. URI of the artifact.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        # Output only. Expiration time of the URI.
-        # Corresponds to the JSON property `uriExpirationTime`
-        # @return [String]
-        attr_accessor :uri_expiration_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @uri = args[:uri] if args.key?(:uri)
-          @uri_expiration_time = args[:uri_expiration_time] if args.key?(:uri_expiration_time)
         end
       end
       
@@ -6975,6 +6888,11 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData]
         attr_accessor :operating_system
       
+        # Describes a collection of data points rendered as a Chart.
+        # Corresponds to the JSON property `softwareInstances`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData]
+        attr_accessor :software_instances
+      
         # A Histogram Chart shows a distribution of values into buckets, showing a count
         # of values which fall into a bucket.
         # Corresponds to the JSON property `storageBytesHistogram`
@@ -7025,6 +6943,7 @@ module Google
           @memory_utilization = args[:memory_utilization] if args.key?(:memory_utilization)
           @memory_utilization_chart = args[:memory_utilization_chart] if args.key?(:memory_utilization_chart)
           @operating_system = args[:operating_system] if args.key?(:operating_system)
+          @software_instances = args[:software_instances] if args.key?(:software_instances)
           @storage_bytes_histogram = args[:storage_bytes_histogram] if args.key?(:storage_bytes_histogram)
           @storage_utilization = args[:storage_utilization] if args.key?(:storage_utilization)
           @storage_utilization_chart = args[:storage_utilization_chart] if args.key?(:storage_utilization_chart)
@@ -7602,26 +7521,6 @@ module Google
           @allocated_asset_count = args[:allocated_asset_count] if args.key?(:allocated_asset_count)
           @node_count = args[:node_count] if args.key?(:node_count)
           @vmware_node = args[:vmware_node] if args.key?(:vmware_node)
-        end
-      end
-      
-      # Detailed data related to Total Cost of Ownership (TCO) pricing.
-      class ReportTotalCostOfOwnershipDetails
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Whether the report has detailed pricing data.
-        # Corresponds to the JSON property `hasPricingData`
-        # @return [Boolean]
-        attr_accessor :has_pricing_data
-        alias_method :has_pricing_data?, :has_pricing_data
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @has_pricing_data = args[:has_pricing_data] if args.key?(:has_pricing_data)
         end
       end
       

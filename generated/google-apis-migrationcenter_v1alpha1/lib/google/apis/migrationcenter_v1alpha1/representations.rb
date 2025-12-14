@@ -604,18 +604,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ExportReportRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ExportReportResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class FileValidationReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -653,12 +641,6 @@ module Google
       end
       
       class GcsPayloadInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GenerateReportArtifactLinkRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1186,12 +1168,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ReportArtifactLink
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ReportAssetFramesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1325,12 +1301,6 @@ module Google
       end
       
       class ReportSummaryVmWareNodeAllocation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ReportTotalCostOfOwnershipDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2623,20 +2593,6 @@ module Google
         end
       end
       
-      class ExportReportRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class ExportReportResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :report_artifact_links, as: 'reportArtifactLinks', class: Google::Apis::MigrationcenterV1alpha1::ReportArtifactLink, decorator: Google::Apis::MigrationcenterV1alpha1::ReportArtifactLink::Representation
-      
-        end
-      end
-      
       class FileValidationReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2697,13 +2653,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :format, as: 'format'
           property :path, as: 'path'
-        end
-      end
-      
-      class GenerateReportArtifactLinkRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :artifact_type, as: 'artifactType'
         end
       end
       
@@ -3634,19 +3583,8 @@ module Google
           property :state, as: 'state'
           property :summary, as: 'summary', class: Google::Apis::MigrationcenterV1alpha1::ReportSummary, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummary::Representation
       
-          property :tco_details, as: 'tcoDetails', class: Google::Apis::MigrationcenterV1alpha1::ReportTotalCostOfOwnershipDetails, decorator: Google::Apis::MigrationcenterV1alpha1::ReportTotalCostOfOwnershipDetails::Representation
-      
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class ReportArtifactLink
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          property :uri, as: 'uri'
-          property :uri_expiration_time, as: 'uriExpirationTime'
         end
       end
       
@@ -3743,6 +3681,8 @@ module Google
           property :memory_utilization_chart, as: 'memoryUtilizationChart', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryUtilizationChartData, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryUtilizationChartData::Representation
       
           property :operating_system, as: 'operatingSystem', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData::Representation
+      
+          property :software_instances, as: 'softwareInstances', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData::Representation
       
           property :storage_bytes_histogram, as: 'storageBytesHistogram', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryHistogramChartData, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryHistogramChartData::Representation
       
@@ -3929,13 +3869,6 @@ module Google
           property :node_count, :numeric_string => true, as: 'nodeCount'
           property :vmware_node, as: 'vmwareNode', class: Google::Apis::MigrationcenterV1alpha1::ReportSummaryVmWareNode, decorator: Google::Apis::MigrationcenterV1alpha1::ReportSummaryVmWareNode::Representation
       
-        end
-      end
-      
-      class ReportTotalCostOfOwnershipDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :has_pricing_data, as: 'hasPricingData'
         end
       end
       
