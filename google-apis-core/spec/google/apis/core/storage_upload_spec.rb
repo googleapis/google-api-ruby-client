@@ -117,7 +117,7 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
 
     before(:example) do
       stub_request(:put, 'https://www.googleapis.com/zoo/animals')
-        .with(headers: { 'Content-Range' => 'bytes 11-21/22'})
+        .with(headers: { 'Content-Range' => 'bytes 11-21/22' })
         .to_return(body: %(OK))
     end
 
