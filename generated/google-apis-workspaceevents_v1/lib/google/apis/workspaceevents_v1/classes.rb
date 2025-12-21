@@ -103,12 +103,19 @@ module Google
       class CancelTaskRequest
         include Google::Apis::Core::Hashable
       
+        # Optional tenant, provided as a path parameter. Experimental, might still
+        # change for 1.0 release.
+        # Corresponds to the JSON property `tenant`
+        # @return [String]
+        attr_accessor :tenant
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @tenant = args[:tenant] if args.key?(:tenant)
         end
       end
       
@@ -589,6 +596,12 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
+        # Optional tenant, provided as a path parameter. Experimental, might still
+        # change for 1.0 release.
+        # Corresponds to the JSON property `tenant`
+        # @return [String]
+        attr_accessor :tenant
+      
         def initialize(**args)
            update!(**args)
         end
@@ -598,6 +611,7 @@ module Google
           @configuration = args[:configuration] if args.key?(:configuration)
           @message = args[:message] if args.key?(:message)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @tenant = args[:tenant] if args.key?(:tenant)
         end
       end
       

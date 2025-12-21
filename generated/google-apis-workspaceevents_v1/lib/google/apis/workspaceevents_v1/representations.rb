@@ -196,6 +196,7 @@ module Google
       class CancelTaskRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :tenant, as: 'tenant'
         end
       end
       
@@ -329,6 +330,7 @@ module Google
           property :message, as: 'message', class: Google::Apis::WorkspaceeventsV1::Message, decorator: Google::Apis::WorkspaceeventsV1::Message::Representation
       
           hash :metadata, as: 'metadata'
+          property :tenant, as: 'tenant'
         end
       end
       
