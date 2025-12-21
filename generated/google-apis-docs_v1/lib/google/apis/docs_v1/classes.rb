@@ -692,6 +692,75 @@ module Google
         end
       end
       
+      # A date instance mentioned in a document.
+      class DateElement
+        include Google::Apis::Core::Hashable
+      
+        # Properties of a DateElement.
+        # Corresponds to the JSON property `dateElementProperties`
+        # @return [Google::Apis::DocsV1::DateElementProperties]
+        attr_accessor :date_element_properties
+      
+        # Output only. The unique ID of this date.
+        # Corresponds to the JSON property `dateId`
+        # @return [String]
+        attr_accessor :date_id
+      
+        # The suggested changes to the date element properties, keyed by suggestion ID.
+        # Corresponds to the JSON property `suggestedDateElementPropertiesChanges`
+        # @return [Hash<String,Google::Apis::DocsV1::SuggestedDateElementProperties>]
+        attr_accessor :suggested_date_element_properties_changes
+      
+        # IDs for suggestions that remove this date from the document. A DateElement
+        # might have multiple deletion IDs if, for example, multiple users suggest
+        # deleting it. If empty, then this date isn't suggested for deletion.
+        # Corresponds to the JSON property `suggestedDeletionIds`
+        # @return [Array<String>]
+        attr_accessor :suggested_deletion_ids
+      
+        # IDs for suggestions that insert this date into the document. A DateElement
+        # might have multiple insertion IDs if it's a nested suggested change (a
+        # suggestion within a suggestion made by a different user, for example). If
+        # empty, then this date isn't a suggested insertion.
+        # Corresponds to the JSON property `suggestedInsertionIds`
+        # @return [Array<String>]
+        attr_accessor :suggested_insertion_ids
+      
+        # The suggested text style changes to this DateElement, keyed by suggestion ID.
+        # Corresponds to the JSON property `suggestedTextStyleChanges`
+        # @return [Hash<String,Google::Apis::DocsV1::SuggestedTextStyle>]
+        attr_accessor :suggested_text_style_changes
+      
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that's contained in a table may
+        # inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
+        # Corresponds to the JSON property `textStyle`
+        # @return [Google::Apis::DocsV1::TextStyle]
+        attr_accessor :text_style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_element_properties = args[:date_element_properties] if args.key?(:date_element_properties)
+          @date_id = args[:date_id] if args.key?(:date_id)
+          @suggested_date_element_properties_changes = args[:suggested_date_element_properties_changes] if args.key?(:suggested_date_element_properties_changes)
+          @suggested_deletion_ids = args[:suggested_deletion_ids] if args.key?(:suggested_deletion_ids)
+          @suggested_insertion_ids = args[:suggested_insertion_ids] if args.key?(:suggested_insertion_ids)
+          @suggested_text_style_changes = args[:suggested_text_style_changes] if args.key?(:suggested_text_style_changes)
+          @text_style = args[:text_style] if args.key?(:text_style)
+        end
+      end
+      
       # Properties of a DateElement.
       class DateElementProperties
         include Google::Apis::Core::Hashable
@@ -754,6 +823,56 @@ module Google
           @time_format = args[:time_format] if args.key?(:time_format)
           @time_zone_id = args[:time_zone_id] if args.key?(:time_zone_id)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+      end
+      
+      # A mask that indicates which of the fields on the base DateElementProperties
+      # have been changed in this suggestion. For any field set to true, there's a new
+      # suggested value.
+      class DateElementPropertiesSuggestionState
+        include Google::Apis::Core::Hashable
+      
+        # Indicates if there was a suggested change to date_format.
+        # Corresponds to the JSON property `dateFormatSuggested`
+        # @return [Boolean]
+        attr_accessor :date_format_suggested
+        alias_method :date_format_suggested?, :date_format_suggested
+      
+        # Indicates if there was a suggested change to locale.
+        # Corresponds to the JSON property `localeSuggested`
+        # @return [Boolean]
+        attr_accessor :locale_suggested
+        alias_method :locale_suggested?, :locale_suggested
+      
+        # Indicates if there was a suggested change to time_format.
+        # Corresponds to the JSON property `timeFormatSuggested`
+        # @return [Boolean]
+        attr_accessor :time_format_suggested
+        alias_method :time_format_suggested?, :time_format_suggested
+      
+        # Indicates if there was a suggested change to time_zone_id.
+        # Corresponds to the JSON property `timeZoneIdSuggested`
+        # @return [Boolean]
+        attr_accessor :time_zone_id_suggested
+        alias_method :time_zone_id_suggested?, :time_zone_id_suggested
+      
+        # Indicates if there was a suggested change to timestamp.
+        # Corresponds to the JSON property `timestampSuggested`
+        # @return [Boolean]
+        attr_accessor :timestamp_suggested
+        alias_method :timestamp_suggested?, :timestamp_suggested
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_format_suggested = args[:date_format_suggested] if args.key?(:date_format_suggested)
+          @locale_suggested = args[:locale_suggested] if args.key?(:locale_suggested)
+          @time_format_suggested = args[:time_format_suggested] if args.key?(:time_format_suggested)
+          @time_zone_id_suggested = args[:time_zone_id_suggested] if args.key?(:time_zone_id_suggested)
+          @timestamp_suggested = args[:timestamp_suggested] if args.key?(:timestamp_suggested)
         end
       end
       
@@ -3586,6 +3705,11 @@ module Google
         # @return [Google::Apis::DocsV1::ColumnBreak]
         attr_accessor :column_break
       
+        # A date instance mentioned in a document.
+        # Corresponds to the JSON property `dateElement`
+        # @return [Google::Apis::DocsV1::DateElement]
+        attr_accessor :date_element
+      
         # The zero-base end index of this paragraph element, exclusive, in UTF-16 code
         # units.
         # Corresponds to the JSON property `endIndex`
@@ -3649,6 +3773,7 @@ module Google
         def update!(**args)
           @auto_text = args[:auto_text] if args.key?(:auto_text)
           @column_break = args[:column_break] if args.key?(:column_break)
+          @date_element = args[:date_element] if args.key?(:date_element)
           @end_index = args[:end_index] if args.key?(:end_index)
           @equation = args[:equation] if args.key?(:equation)
           @footnote_reference = args[:footnote_reference] if args.key?(:footnote_reference)
@@ -5419,6 +5544,33 @@ module Google
         def update!(**args)
           @bullet = args[:bullet] if args.key?(:bullet)
           @bullet_suggestion_state = args[:bullet_suggestion_state] if args.key?(:bullet_suggestion_state)
+        end
+      end
+      
+      # A suggested change to a DateElementProperties.
+      class SuggestedDateElementProperties
+        include Google::Apis::Core::Hashable
+      
+        # Properties of a DateElement.
+        # Corresponds to the JSON property `dateElementProperties`
+        # @return [Google::Apis::DocsV1::DateElementProperties]
+        attr_accessor :date_element_properties
+      
+        # A mask that indicates which of the fields on the base DateElementProperties
+        # have been changed in this suggestion. For any field set to true, there's a new
+        # suggested value.
+        # Corresponds to the JSON property `dateElementPropertiesSuggestionState`
+        # @return [Google::Apis::DocsV1::DateElementPropertiesSuggestionState]
+        attr_accessor :date_element_properties_suggestion_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_element_properties = args[:date_element_properties] if args.key?(:date_element_properties)
+          @date_element_properties_suggestion_state = args[:date_element_properties_suggestion_state] if args.key?(:date_element_properties_suggestion_state)
         end
       end
       
