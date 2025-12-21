@@ -36,7 +36,7 @@ module Google
       # Administer your Spanner databases
       AUTH_SPANNER_ADMIN = 'https://www.googleapis.com/auth/spanner.admin'
 
-      # View and manage the contents of your Spanner databases
+      # See, edit, configure, and delete your Google Cloud Spanner data and see the email address for your Google Account
       AUTH_SPANNER_DATA = 'https://www.googleapis.com/auth/spanner.data'
     end
   end

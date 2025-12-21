@@ -22,6 +22,12 @@ module Google
   module Apis
     module SpannerV1
       
+      class Ack
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdaptMessageRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -172,12 +178,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ClientContext
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ColumnMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +197,12 @@ module Google
       end
       
       class CommitStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CompactDatabaseMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -928,6 +934,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SendProp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Session
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1082,6 +1094,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Ack
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ignore_not_found, as: 'ignoreNotFound'
+          collection :key, as: 'key'
+          property :queue, as: 'queue'
+        end
       end
       
       class AdaptMessageRequest
@@ -1348,12 +1369,6 @@ module Google
         end
       end
       
-      class ClientContext
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class ColumnMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1398,6 +1413,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mutation_count, :numeric_string => true, as: 'mutationCount'
+        end
+      end
+      
+      class CompactDatabaseMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancel_time, as: 'cancelTime'
+          property :database, as: 'database'
+          property :progress, as: 'progress', class: Google::Apis::SpannerV1::OperationProgress, decorator: Google::Apis::SpannerV1::OperationProgress::Representation
+      
         end
       end
       
@@ -2246,6 +2271,8 @@ module Google
       class Mutation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ack, as: 'ack', class: Google::Apis::SpannerV1::Ack, decorator: Google::Apis::SpannerV1::Ack::Representation
+      
           property :delete, as: 'delete', class: Google::Apis::SpannerV1::Delete, decorator: Google::Apis::SpannerV1::Delete::Representation
       
           property :insert, as: 'insert', class: Google::Apis::SpannerV1::Write, decorator: Google::Apis::SpannerV1::Write::Representation
@@ -2253,6 +2280,8 @@ module Google
           property :insert_or_update, as: 'insertOrUpdate', class: Google::Apis::SpannerV1::Write, decorator: Google::Apis::SpannerV1::Write::Representation
       
           property :replace, as: 'replace', class: Google::Apis::SpannerV1::Write, decorator: Google::Apis::SpannerV1::Write::Representation
+      
+          property :send_prop, as: 'send', class: Google::Apis::SpannerV1::SendProp, decorator: Google::Apis::SpannerV1::SendProp::Representation
       
           property :update, as: 'update', class: Google::Apis::SpannerV1::Write, decorator: Google::Apis::SpannerV1::Write::Representation
       
@@ -2560,8 +2589,6 @@ module Google
       class RequestOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :client_context, as: 'clientContext', class: Google::Apis::SpannerV1::ClientContext, decorator: Google::Apis::SpannerV1::ClientContext::Representation
-      
           property :priority, as: 'priority'
           property :request_tag, as: 'requestTag'
           property :transaction_tag, as: 'transactionTag'
@@ -2676,6 +2703,16 @@ module Google
       
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class SendProp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deliver_time, as: 'deliverTime'
+          collection :key, as: 'key'
+          property :payload, as: 'payload'
+          property :queue, as: 'queue'
         end
       end
       
