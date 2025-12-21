@@ -4274,31 +4274,31 @@ module Google
         include Google::Apis::Core::Hashable
       
         # ToolVersionSupportedCondition contains information about when support for the
-        # release's version of a Tool ends.
+        # release's version of a tool ends.
         # Corresponds to the JSON property `dockerVersionSupportedCondition`
         # @return [Google::Apis::ClouddeployV1::ToolVersionSupportedCondition]
         attr_accessor :docker_version_supported_condition
       
         # ToolVersionSupportedCondition contains information about when support for the
-        # release's version of a Tool ends.
+        # release's version of a tool ends.
         # Corresponds to the JSON property `helmVersionSupportedCondition`
         # @return [Google::Apis::ClouddeployV1::ToolVersionSupportedCondition]
         attr_accessor :helm_version_supported_condition
       
         # ToolVersionSupportedCondition contains information about when support for the
-        # release's version of a Tool ends.
+        # release's version of a tool ends.
         # Corresponds to the JSON property `kptVersionSupportedCondition`
         # @return [Google::Apis::ClouddeployV1::ToolVersionSupportedCondition]
         attr_accessor :kpt_version_supported_condition
       
         # ToolVersionSupportedCondition contains information about when support for the
-        # release's version of a Tool ends.
+        # release's version of a tool ends.
         # Corresponds to the JSON property `kubectlVersionSupportedCondition`
         # @return [Google::Apis::ClouddeployV1::ToolVersionSupportedCondition]
         attr_accessor :kubectl_version_supported_condition
       
         # ToolVersionSupportedCondition contains information about when support for the
-        # release's version of a Tool ends.
+        # release's version of a tool ends.
         # Corresponds to the JSON property `kustomizeVersionSupportedCondition`
         # @return [Google::Apis::ClouddeployV1::ToolVersionSupportedCondition]
         attr_accessor :kustomize_version_supported_condition
@@ -4316,7 +4316,7 @@ module Google
         attr_accessor :skaffold_supported_condition
       
         # ToolVersionSupportedCondition contains information about when support for the
-        # release's version of a Tool ends.
+        # release's version of a tool ends.
         # Corresponds to the JSON property `skaffoldVersionSupportedCondition`
         # @return [Google::Apis::ClouddeployV1::ToolVersionSupportedCondition]
         attr_accessor :skaffold_version_supported_condition
@@ -6473,11 +6473,11 @@ module Google
       end
       
       # ToolVersionSupportedCondition contains information about when support for the
-      # release's version of a Tool ends.
+      # release's version of a tool ends.
       class ToolVersionSupportedCondition
         include Google::Apis::Core::Hashable
       
-        # Output only. The time at which this release's version of the Tool will enter
+        # Output only. The time at which this release's version of the tool will enter
         # maintenance mode.
         # Corresponds to the JSON property `maintenanceModeTime`
         # @return [String]
@@ -6489,13 +6489,13 @@ module Google
         attr_accessor :status
         alias_method :status?, :status
       
-        # Output only. The time at which this release's version of the Tool will no
+        # Output only. The time at which this release's version of the tool will no
         # longer be supported.
         # Corresponds to the JSON property `supportExpirationTime`
         # @return [String]
         attr_accessor :support_expiration_time
       
-        # Output only. The Tool support state for this release's version of the Tool.
+        # Output only. The tool support state for this release's version of the tool.
         # Corresponds to the JSON property `toolVersionSupportState`
         # @return [String]
         attr_accessor :tool_version_support_state
@@ -6517,12 +6517,12 @@ module Google
       class ToolVersions
         include Google::Apis::Core::Hashable
       
-        # Optional. The docker version to use for Cloud Deploy operations.
+        # Optional. The Docker version to use for Cloud Deploy operations.
         # Corresponds to the JSON property `docker`
         # @return [String]
         attr_accessor :docker
       
-        # Optional. The helm version to use for Cloud Deploy operations.
+        # Optional. The Helm version to use for Cloud Deploy operations.
         # Corresponds to the JSON property `helm`
         # @return [String]
         attr_accessor :helm
@@ -6532,17 +6532,17 @@ module Google
         # @return [String]
         attr_accessor :kpt
       
-        # Optional. The kubectl version to use for Cloud Deploy operations.
+        # Optional. The Kubectl version to use for Cloud Deploy operations.
         # Corresponds to the JSON property `kubectl`
         # @return [String]
         attr_accessor :kubectl
       
-        # Optional. The kustomize version to use for Cloud Deploy operations.
+        # Optional. The Kustomize version to use for Cloud Deploy operations.
         # Corresponds to the JSON property `kustomize`
         # @return [String]
         attr_accessor :kustomize
       
-        # Optional. The skaffold version to use for Cloud Deploy operations.
+        # Optional. The Skaffold version to use for Cloud Deploy operations.
         # Corresponds to the JSON property `skaffold`
         # @return [String]
         attr_accessor :skaffold
