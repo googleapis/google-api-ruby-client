@@ -22,6 +22,41 @@ module Google
   module Apis
     module SpannerV1
       
+      # Arguments to ack operations.
+      class Ack
+        include Google::Apis::Core::Hashable
+      
+        # By default, an attempt to ack a message that does not exist will fail with a `
+        # NOT_FOUND` error. With `ignore_not_found` set to true, the ack will succeed
+        # even if the message does not exist. This is useful for unconditionally acking
+        # a message, even if it is missing or has already been acked.
+        # Corresponds to the JSON property `ignoreNotFound`
+        # @return [Boolean]
+        attr_accessor :ignore_not_found
+        alias_method :ignore_not_found?, :ignore_not_found
+      
+        # Required. The primary key of the message to be acked.
+        # Corresponds to the JSON property `key`
+        # @return [Array<Object>]
+        attr_accessor :key
+      
+        # Required. The queue where the message to be acked is stored.
+        # Corresponds to the JSON property `queue`
+        # @return [String]
+        attr_accessor :queue
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ignore_not_found = args[:ignore_not_found] if args.key?(:ignore_not_found)
+          @key = args[:key] if args.key?(:key)
+          @queue = args[:queue] if args.key?(:queue)
+        end
+      end
+      
       # Message sent by the client to the adapter.
       class AdaptMessageRequest
         include Google::Apis::Core::Hashable
@@ -1103,19 +1138,6 @@ module Google
         end
       end
       
-      # Container for various pieces of client-owned context attached to a request.
-      class ClientContext
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Metadata for a column.
       class ColumnMetadata
         include Google::Apis::Core::Hashable
@@ -1286,6 +1308,46 @@ module Google
         # Update properties of this object
         def update!(**args)
           @mutation_count = args[:mutation_count] if args.key?(:mutation_count)
+        end
+      end
+      
+      # Metadata type for the long-running operation returned by `CALL compact_all()`,
+      # which can be executed using ExecuteSql or ExecuteStreamingSql APIs.
+      class CompactDatabaseMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which cancellation of this operation was received.
+        # Operations.CancelOperation starts asynchronous cancellation on a long-running
+        # operation. The server makes a best effort to cancel the operation, but success
+        # is not guaranteed. Clients can use Operations.GetOperation or other methods to
+        # check whether the cancellation succeeded or whether the operation completed
+        # despite cancellation. On successful cancellation, the operation is not deleted;
+        # instead, it becomes an operation with an Operation.error value with a google.
+        # rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        # Corresponds to the JSON property `cancelTime`
+        # @return [String]
+        attr_accessor :cancel_time
+      
+        # Output only. The database being compacted.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Encapsulates progress related information for a Cloud Spanner long running
+        # operation.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::SpannerV1::OperationProgress]
+        attr_accessor :progress
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancel_time = args[:cancel_time] if args.key?(:cancel_time)
+          @database = args[:database] if args.key?(:database)
+          @progress = args[:progress] if args.key?(:progress)
         end
       end
       
@@ -4179,8 +4241,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -4597,6 +4660,11 @@ module Google
       class Mutation
         include Google::Apis::Core::Hashable
       
+        # Arguments to ack operations.
+        # Corresponds to the JSON property `ack`
+        # @return [Google::Apis::SpannerV1::Ack]
+        attr_accessor :ack
+      
         # Arguments to delete operations.
         # Corresponds to the JSON property `delete`
         # @return [Google::Apis::SpannerV1::Delete]
@@ -4617,6 +4685,11 @@ module Google
         # @return [Google::Apis::SpannerV1::Write]
         attr_accessor :replace
       
+        # Arguments to send operations.
+        # Corresponds to the JSON property `send`
+        # @return [Google::Apis::SpannerV1::SendProp]
+        attr_accessor :send_prop
+      
         # Arguments to insert, update, insert_or_update, and replace operations.
         # Corresponds to the JSON property `update`
         # @return [Google::Apis::SpannerV1::Write]
@@ -4628,10 +4701,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ack = args[:ack] if args.key?(:ack)
           @delete = args[:delete] if args.key?(:delete)
           @insert = args[:insert] if args.key?(:insert)
           @insert_or_update = args[:insert_or_update] if args.key?(:insert_or_update)
           @replace = args[:replace] if args.key?(:replace)
+          @send_prop = args[:send_prop] if args.key?(:send_prop)
           @update = args[:update] if args.key?(:update)
         end
       end
@@ -5962,11 +6037,6 @@ module Google
       class RequestOptions
         include Google::Apis::Core::Hashable
       
-        # Container for various pieces of client-owned context attached to a request.
-        # Corresponds to the JSON property `clientContext`
-        # @return [Google::Apis::SpannerV1::ClientContext]
-        attr_accessor :client_context
-      
         # Priority for the request.
         # Corresponds to the JSON property `priority`
         # @return [String]
@@ -6003,7 +6073,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @client_context = args[:client_context] if args.key?(:client_context)
           @priority = args[:priority] if args.key?(:priority)
           @request_tag = args[:request_tag] if args.key?(:request_tag)
           @transaction_tag = args[:transaction_tag] if args.key?(:transaction_tag)
@@ -6394,6 +6463,46 @@ module Google
           @data = args[:data] if args.key?(:data)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Arguments to send operations.
+      class SendProp
+        include Google::Apis::Core::Hashable
+      
+        # The time at which Spanner will begin attempting to deliver the message. If `
+        # deliver_time` is not set, Spanner will deliver the message immediately. If `
+        # deliver_time` is in the past, Spanner will replace it with a value closer to
+        # the current time.
+        # Corresponds to the JSON property `deliverTime`
+        # @return [String]
+        attr_accessor :deliver_time
+      
+        # Required. The primary key of the message to be sent.
+        # Corresponds to the JSON property `key`
+        # @return [Array<Object>]
+        attr_accessor :key
+      
+        # The payload of the message.
+        # Corresponds to the JSON property `payload`
+        # @return [Object]
+        attr_accessor :payload
+      
+        # Required. The queue to which the message will be sent.
+        # Corresponds to the JSON property `queue`
+        # @return [String]
+        attr_accessor :queue
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deliver_time = args[:deliver_time] if args.key?(:deliver_time)
+          @key = args[:key] if args.key?(:key)
+          @payload = args[:payload] if args.key?(:payload)
+          @queue = args[:queue] if args.key?(:queue)
         end
       end
       
