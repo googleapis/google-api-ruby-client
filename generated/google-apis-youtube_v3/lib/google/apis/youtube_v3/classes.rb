@@ -9064,17 +9064,16 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Output only. The ID that YouTube uses to uniquely identify the video.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         # Output only. Identifies what kind of resource this is. Value: the fixed string
         # "youtube#videoStats".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
-        # Output only. Identifier. The resource name for the `VideoStats` resource, in
-        # the format `videoStats/`video_stat``.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
       
         # Basic details about a video. This is a subset of the information in
         # VideoSnippet specifically for the Videos.stats API.
@@ -9088,11 +9087,6 @@ module Google
         # @return [Google::Apis::YoutubeV3::VideoStatsStatistics]
         attr_accessor :statistics
       
-        # Output only. The ID that YouTube uses to uniquely identify the video.
-        # Corresponds to the JSON property `videoId`
-        # @return [String]
-        attr_accessor :video_id
-      
         def initialize(**args)
            update!(**args)
         end
@@ -9101,11 +9095,10 @@ module Google
         def update!(**args)
           @content_details = args[:content_details] if args.key?(:content_details)
           @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
-          @name = args[:name] if args.key?(:name)
           @snippet = args[:snippet] if args.key?(:snippet)
           @statistics = args[:statistics] if args.key?(:statistics)
-          @video_id = args[:video_id] if args.key?(:video_id)
         end
       end
       
