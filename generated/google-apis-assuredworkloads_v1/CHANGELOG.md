@@ -1,5 +1,9 @@
 # Release history for google-apis-assuredworkloads_v1
 
+### v0.63.0 (2025-12-21)
+
+* Regenerated from discovery document revision 20251209
+
 ### v0.62.0 (2025-10-12)
 
 * Regenerated from discovery document revision 20251002
