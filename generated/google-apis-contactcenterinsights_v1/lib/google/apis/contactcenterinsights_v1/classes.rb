@@ -1790,6 +1790,31 @@ module Google
         end
       end
       
+      # A wrapper for holding the audio for any given turn.
+      class GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio
+        include Google::Apis::Core::Hashable
+      
+        # The duration of the audio.
+        # Corresponds to the JSON property `audioDuration`
+        # @return [String]
+        attr_accessor :audio_duration
+      
+        # The Cloud Storage URI of the audio for any given turn.
+        # Corresponds to the JSON property `audioGcsUri`
+        # @return [String]
+        attr_accessor :audio_gcs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_duration = args[:audio_duration] if args.key?(:audio_duration)
+          @audio_gcs_uri = args[:audio_gcs_uri] if args.key?(:audio_gcs_uri)
+        end
+      end
+      
       # One channel of conversation-level sentiment data.
       class GoogleCloudContactcenterinsightsV1ConversationLevelSentiment
         include Google::Apis::Core::Hashable
@@ -3606,6 +3631,25 @@ module Google
         end
       end
       
+      # The response from a GenerateConversationSignedAudio request.
+      class GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse
+        include Google::Apis::Core::Hashable
+      
+        # Signed audio URIs for a conversation.
+        # Corresponds to the JSON property `signedAudioUris`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SignedAudioUris]
+        attr_accessor :signed_audio_uris
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signed_audio_uris = args[:signed_audio_uris] if args.key?(:signed_audio_uris)
+        end
+      end
+      
       # The data for a hold annotation.
       class GoogleCloudContactcenterinsightsV1HoldData
         include Google::Apis::Core::Hashable
@@ -5259,7 +5303,9 @@ module Google
       class GoogleCloudContactcenterinsightsV1QaAnswer
         include Google::Apis::Core::Hashable
       
-        # List of all individual answers given to the question.
+        # Lists all answer sources containing one or more answer values of a specific
+        # source type, e.g., all system-generated answer sources, or all manual edit
+        # answer sources.
         # Corresponds to the JSON property `answerSources`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource>]
         attr_accessor :answer_sources
@@ -6949,6 +6995,37 @@ module Google
         end
       end
       
+      # Signed audio URIs for a conversation.
+      class GoogleCloudContactcenterinsightsV1SignedAudioUris
+        include Google::Apis::Core::Hashable
+      
+        # The signed URI for the audio from the Dialogflow conversation source.
+        # Corresponds to the JSON property `signedDialogflowAudioUri`
+        # @return [String]
+        attr_accessor :signed_dialogflow_audio_uri
+      
+        # The signed URI for the audio from the Cloud Storage conversation source.
+        # Corresponds to the JSON property `signedGcsAudioUri`
+        # @return [String]
+        attr_accessor :signed_gcs_audio_uri
+      
+        # The signed URI for the audio corresponding to each turn in the conversation.
+        # Corresponds to the JSON property `signedTurnLevelAudios`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>]
+        attr_accessor :signed_turn_level_audios
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signed_dialogflow_audio_uri = args[:signed_dialogflow_audio_uri] if args.key?(:signed_dialogflow_audio_uri)
+          @signed_gcs_audio_uri = args[:signed_gcs_audio_uri] if args.key?(:signed_gcs_audio_uri)
+          @signed_turn_level_audios = args[:signed_turn_level_audios] if args.key?(:signed_turn_level_audios)
+        end
+      end
+      
       # The data for a silence annotation.
       class GoogleCloudContactcenterinsightsV1SilenceData
         include Google::Apis::Core::Hashable
@@ -7051,6 +7128,13 @@ module Google
       class GoogleCloudContactcenterinsightsV1SpeechConfig
         include Google::Apis::Core::Hashable
       
+        # Whether to disable word time offsets. If true, the `enable_word_time_offsets`
+        # field in the recognition config will be set to false.
+        # Corresponds to the JSON property `disableWordTimeOffsets`
+        # @return [Boolean]
+        attr_accessor :disable_word_time_offsets
+        alias_method :disable_word_time_offsets?, :disable_word_time_offsets
+      
         # The fully-qualified Speech Recognizer resource name. Format: `projects/`
         # project_id`/locations/`location`/recognizer/`recognizer``
         # Corresponds to the JSON property `speechRecognizer`
@@ -7063,6 +7147,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disable_word_time_offsets = args[:disable_word_time_offsets] if args.key?(:disable_word_time_offsets)
           @speech_recognizer = args[:speech_recognizer] if args.key?(:speech_recognizer)
         end
       end
@@ -11096,7 +11181,9 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1QaAnswer
         include Google::Apis::Core::Hashable
       
-        # List of all individual answers given to the question.
+        # Lists all answer sources containing one or more answer values of a specific
+        # source type, e.g., all system-generated answer sources, or all manual edit
+        # answer sources.
         # Corresponds to the JSON property `answerSources`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource>]
         attr_accessor :answer_sources
@@ -12189,6 +12276,13 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1SpeechConfig
         include Google::Apis::Core::Hashable
       
+        # Whether to disable word time offsets. If true, the `enable_word_time_offsets`
+        # field in the recognition config will be set to false.
+        # Corresponds to the JSON property `disableWordTimeOffsets`
+        # @return [Boolean]
+        attr_accessor :disable_word_time_offsets
+        alias_method :disable_word_time_offsets?, :disable_word_time_offsets
+      
         # The fully-qualified Speech Recognizer resource name. Format: `projects/`
         # project_id`/locations/`location`/recognizer/`recognizer``
         # Corresponds to the JSON property `speechRecognizer`
@@ -12201,6 +12295,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disable_word_time_offsets = args[:disable_word_time_offsets] if args.key?(:disable_word_time_offsets)
           @speech_recognizer = args[:speech_recognizer] if args.key?(:speech_recognizer)
         end
       end
@@ -16374,7 +16469,9 @@ module Google
       class GoogleCloudContactcenterinsightsV1mainQaAnswer
         include Google::Apis::Core::Hashable
       
-        # List of all individual answers given to the question.
+        # Lists all answer sources containing one or more answer values of a specific
+        # source type, e.g., all system-generated answer sources, or all manual edit
+        # answer sources.
         # Corresponds to the JSON property `answerSources`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource>]
         attr_accessor :answer_sources
@@ -17467,6 +17564,13 @@ module Google
       class GoogleCloudContactcenterinsightsV1mainSpeechConfig
         include Google::Apis::Core::Hashable
       
+        # Whether to disable word time offsets. If true, the `enable_word_time_offsets`
+        # field in the recognition config will be set to false.
+        # Corresponds to the JSON property `disableWordTimeOffsets`
+        # @return [Boolean]
+        attr_accessor :disable_word_time_offsets
+        alias_method :disable_word_time_offsets?, :disable_word_time_offsets
+      
         # The fully-qualified Speech Recognizer resource name. Format: `projects/`
         # project_id`/locations/`location`/recognizer/`recognizer``
         # Corresponds to the JSON property `speechRecognizer`
@@ -17479,6 +17583,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disable_word_time_offsets = args[:disable_word_time_offsets] if args.key?(:disable_word_time_offsets)
           @speech_recognizer = args[:speech_recognizer] if args.key?(:speech_recognizer)
         end
       end
