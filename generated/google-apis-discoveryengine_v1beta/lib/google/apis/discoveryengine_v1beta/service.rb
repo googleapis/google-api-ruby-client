@@ -2377,6 +2377,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a ServingConfig. Note: The Google Cloud console works only with the
+        # default serving config. Additional ServingConfigs can be created and managed
+        # only via the API. A maximum of 100 ServingConfigs are allowed in an Engine,
+        # otherwise a RESOURCE_EXHAUSTED error is returned.
+        # @param [String] parent
+        #   Required. Full resource name of parent. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/engines/`engine``
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig] google_cloud_discoveryengine_v1beta_serving_config_object
+        # @param [String] serving_config_id
+        #   Required. The ID to use for the ServingConfig, which will become the final
+        #   component of the ServingConfig's resource name. This value should be 4-63
+        #   characters, and valid characters are /a-zA-Z0-9+/.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_collection_data_store_serving_config(parent, google_cloud_discoveryengine_v1beta_serving_config_object = nil, serving_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+parent}/servingConfigs', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_serving_config_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['servingConfigId'] = serving_config_id unless serving_config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does
         # not exist.
         # @param [String] name
@@ -4979,6 +5021,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a ServingConfig. Note: The Google Cloud console works only with the
+        # default serving config. Additional ServingConfigs can be created and managed
+        # only via the API. A maximum of 100 ServingConfigs are allowed in an Engine,
+        # otherwise a RESOURCE_EXHAUSTED error is returned.
+        # @param [String] parent
+        #   Required. Full resource name of parent. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/engines/`engine``
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig] google_cloud_discoveryengine_v1beta_serving_config_object
+        # @param [String] serving_config_id
+        #   Required. The ID to use for the ServingConfig, which will become the final
+        #   component of the ServingConfig's resource name. This value should be 4-63
+        #   characters, and valid characters are /a-zA-Z0-9+/.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_collection_engine_serving_config(parent, google_cloud_discoveryengine_v1beta_serving_config_object = nil, serving_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+parent}/servingConfigs', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_serving_config_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['servingConfigId'] = serving_config_id unless serving_config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does
         # not exist.
         # @param [String] name
@@ -7259,6 +7343,48 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerQueryResponse
           command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a ServingConfig. Note: The Google Cloud console works only with the
+        # default serving config. Additional ServingConfigs can be created and managed
+        # only via the API. A maximum of 100 ServingConfigs are allowed in an Engine,
+        # otherwise a RESOURCE_EXHAUSTED error is returned.
+        # @param [String] parent
+        #   Required. Full resource name of parent. Format: `projects/`project`/locations/`
+        #   location`/collections/`collection`/engines/`engine``
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig] google_cloud_discoveryengine_v1beta_serving_config_object
+        # @param [String] serving_config_id
+        #   Required. The ID to use for the ServingConfig, which will become the final
+        #   component of the ServingConfig's resource name. This value should be 4-63
+        #   characters, and valid characters are /a-zA-Z0-9+/.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_data_store_serving_config(parent, google_cloud_discoveryengine_v1beta_serving_config_object = nil, serving_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+parent}/servingConfigs', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_serving_config_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaServingConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['servingConfigId'] = serving_config_id unless serving_config_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
