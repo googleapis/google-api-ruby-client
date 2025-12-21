@@ -1132,6 +1132,14 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
+        # Output only. The base URI for the HTTP proxy endpoint. Has the format `https://
+        # `generatedID`-c-h-`shortRegion`.developerconnect.dev` Populated only when
+        # enabled is set to true. This endpoint is used by other Google services that
+        # integrate with Developer Connect.
+        # Corresponds to the JSON property `httpProxyBaseUri`
+        # @return [String]
+        attr_accessor :http_proxy_base_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1139,6 +1147,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @http_proxy_base_uri = args[:http_proxy_base_uri] if args.key?(:http_proxy_base_uri)
         end
       end
       
