@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BrokerDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -440,6 +446,15 @@ module Google
         end
       end
       
+      class BrokerDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :broker_index, :numeric_string => true, as: 'brokerIndex'
+          property :node_id, :numeric_string => true, as: 'nodeId'
+          property :rack, as: 'rack'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -483,11 +498,14 @@ module Google
       class Cluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :broker_details, as: 'brokerDetails', class: Google::Apis::ManagedkafkaV1::BrokerDetails, decorator: Google::Apis::ManagedkafkaV1::BrokerDetails::Representation
+      
           property :capacity_config, as: 'capacityConfig', class: Google::Apis::ManagedkafkaV1::CapacityConfig, decorator: Google::Apis::ManagedkafkaV1::CapacityConfig::Representation
       
           property :create_time, as: 'createTime'
           property :gcp_config, as: 'gcpConfig', class: Google::Apis::ManagedkafkaV1::GcpConfig, decorator: Google::Apis::ManagedkafkaV1::GcpConfig::Representation
       
+          property :kafka_version, as: 'kafkaVersion'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :rebalance_config, as: 'rebalanceConfig', class: Google::Apis::ManagedkafkaV1::RebalanceConfig, decorator: Google::Apis::ManagedkafkaV1::RebalanceConfig::Representation
