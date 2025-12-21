@@ -2479,6 +2479,7 @@ module Google
       class RuntimeUpdatableParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acceptable_backlog_duration, as: 'acceptableBacklogDuration'
           property :max_num_workers, as: 'maxNumWorkers'
           property :min_num_workers, as: 'minNumWorkers'
           property :worker_utilization_hint, as: 'workerUtilizationHint'

@@ -4837,6 +4837,12 @@ module Google
       class RuntimeUpdatableParams
         include Google::Apis::Core::Hashable
       
+        # Optional. The backlog threshold duration in seconds for autoscaling. Value
+        # must be non-negative.
+        # Corresponds to the JSON property `acceptableBacklogDuration`
+        # @return [String]
+        attr_accessor :acceptable_backlog_duration
+      
         # The maximum number of workers to cap autoscaling at. This field is currently
         # only supported for Streaming Engine jobs.
         # Corresponds to the JSON property `maxNumWorkers`
@@ -4864,6 +4870,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acceptable_backlog_duration = args[:acceptable_backlog_duration] if args.key?(:acceptable_backlog_duration)
           @max_num_workers = args[:max_num_workers] if args.key?(:max_num_workers)
           @min_num_workers = args[:min_num_workers] if args.key?(:min_num_workers)
           @worker_utilization_hint = args[:worker_utilization_hint] if args.key?(:worker_utilization_hint)
