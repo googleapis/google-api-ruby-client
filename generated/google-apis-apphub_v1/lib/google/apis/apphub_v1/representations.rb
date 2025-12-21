@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExtendedMetadataSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FunctionalType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +155,12 @@ module Google
       end
       
       class ListDiscoveredWorkloadsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListExtendedMetadataSchemasResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -466,6 +478,15 @@ module Google
         end
       end
       
+      class ExtendedMetadataSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :json_schema, as: 'jsonSchema'
+          property :name, as: 'name'
+          property :schema_version, :numeric_string => true, as: 'schemaVersion'
+        end
+      end
+      
       class FunctionalType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -507,6 +528,15 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListExtendedMetadataSchemasResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :extended_metadata_schemas, as: 'extendedMetadataSchemas', class: Google::Apis::ApphubV1::ExtendedMetadataSchema, decorator: Google::Apis::ApphubV1::ExtendedMetadataSchema::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

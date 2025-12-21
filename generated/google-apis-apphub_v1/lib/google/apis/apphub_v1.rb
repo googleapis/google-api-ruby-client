@@ -21,7 +21,7 @@ module Google
   module Apis
     # App Hub API
     #
-    # 
+    # App Hub lets you build, operate, and manage applications on Google Cloud.
     #
     # @see https://cloud.google.com/app-hub/docs/
     module ApphubV1

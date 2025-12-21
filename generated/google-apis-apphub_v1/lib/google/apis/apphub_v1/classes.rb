@@ -320,7 +320,7 @@ module Google
         attr_accessor :create_time
       
         # Optional. The resource name of the CRM node being attached to the boundary.
-        # Format: `projects/`project-number`` or `projects/`project-id``
+        # Format: `projects/`project-number``
         # Corresponds to the JSON property `crmNode`
         # @return [String]
         attr_accessor :crm_node
@@ -615,6 +615,40 @@ module Google
         end
       end
       
+      # ExtendedMetadataSchema represents a schema for extended metadata of a service
+      # or workload.
+      class ExtendedMetadataSchema
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The JSON schema as a string.
+        # Corresponds to the JSON property `jsonSchema`
+        # @return [String]
+        attr_accessor :json_schema
+      
+        # Identifier. Resource name of the schema. Format: projects//locations//
+        # extendedMetadataSchemas/
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The version of the schema. New versions are required to be
+        # backwards compatible.
+        # Corresponds to the JSON property `schemaVersion`
+        # @return [Fixnum]
+        attr_accessor :schema_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @json_schema = args[:json_schema] if args.key?(:json_schema)
+          @name = args[:name] if args.key?(:name)
+          @schema_version = args[:schema_version] if args.key?(:schema_version)
+        end
+      end
+      
       # The functional type of a service or workload.
       class FunctionalType
         include Google::Apis::Core::Hashable
@@ -638,10 +672,10 @@ module Google
       class Identity
         include Google::Apis::Core::Hashable
       
-        # Output only. Principal of the identity. Supported formats: * `sa://my-sa@xxxx.
-        # iam.gserviceaccount.com` for GCP Service Account * `principal://POOL_ID.global.
-        # PROJECT_NUMBER.workload.id.goog/ns/NAMESPACE_ID/sa/MANAGED_IDENTITY_ID` for
-        # Managed Workload Identity
+        # Output only. The principal of the identity. Supported formats: * `sa://my-sa@
+        # PROJECT_ID.iam.gserviceaccount.com` for GCP Service Account * `principal://
+        # POOL_ID.global.PROJECT_NUMBER.workload.id.goog/ns/NAMESPACE_ID/sa/
+        # MANAGED_IDENTITY_ID` for Managed Workload Identity
         # Corresponds to the JSON property `principal`
         # @return [String]
         attr_accessor :principal
@@ -746,6 +780,31 @@ module Google
           @discovered_workloads = args[:discovered_workloads] if args.key?(:discovered_workloads)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for ListExtendedMetadataSchemas.
+      class ListExtendedMetadataSchemasResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of Extended Metadata Schemas.
+        # Corresponds to the JSON property `extendedMetadataSchemas`
+        # @return [Array<Google::Apis::ApphubV1::ExtendedMetadataSchema>]
+        attr_accessor :extended_metadata_schemas
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extended_metadata_schemas = args[:extended_metadata_schemas] if args.key?(:extended_metadata_schemas)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
