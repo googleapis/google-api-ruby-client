@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1AdjustAppGroupBalanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1AdjustDeveloperBalanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,6 +202,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ApimServiceExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ApimServiceExtensionExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1App
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -220,7 +244,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1AppGroupBalance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1AppGroupBalanceWallet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1AppGroupMonetizationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1AppGroupSubscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ArchiveDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1AsyncApiDocumentation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -377,6 +431,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1Credential
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1CreditAppGroupBalanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -652,6 +712,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -862,7 +928,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListApimServiceExtensionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListAppGroupAppsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2098,6 +2176,14 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1AdjustAppGroupBalanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adjustment, as: 'adjustment', class: Google::Apis::ApigeeV1::GoogleTypeMoney, decorator: Google::Apis::ApigeeV1::GoogleTypeMoney::Representation
+      
+        end
+      end
+      
       class GoogleCloudApigeeV1AdjustDeveloperBalanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2200,6 +2286,8 @@ module Google
       class GoogleCloudApigeeV1ApiDocDocumentation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_api_documentation, as: 'asyncApiDocumentation', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncApiDocumentation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncApiDocumentation::Representation
+      
           property :graphql_documentation, as: 'graphqlDocumentation', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphqlDocumentation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphqlDocumentation::Representation
       
           property :oas_documentation, as: 'oasDocumentation', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OasDocumentation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OasDocumentation::Representation
@@ -2340,6 +2428,42 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ApimServiceExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :extension_processor, as: 'extensionProcessor'
+          collection :extensions, as: 'extensions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtensionExtension, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtensionExtension::Representation
+      
+          property :lb_forwarding_rule, as: 'lbForwardingRule'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          collection :network_configs, as: 'networkConfigs', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig::Representation
+      
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ApimServiceExtensionExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fail_open, as: 'failOpen'
+          property :hostname, as: 'hostname'
+          property :match_condition, as: 'matchCondition'
+          property :name, as: 'name'
+          collection :supported_events, as: 'supportedEvents'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :region, as: 'region'
+          property :subnet, as: 'subnet'
+        end
+      end
+      
       class GoogleCloudApigeeV1App
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2374,6 +2498,7 @@ module Google
           property :channel_uri, as: 'channelUri'
           property :created_at, :numeric_string => true, as: 'createdAt'
           property :display_name, as: 'displayName'
+          property :email, as: 'email'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :name, as: 'name'
           property :organization, as: 'organization'
@@ -2418,6 +2543,42 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1AppGroupBalance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :wallets, as: 'wallets', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupBalanceWallet, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupBalanceWallet::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1AppGroupBalanceWallet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :balance, as: 'balance', class: Google::Apis::ApigeeV1::GoogleTypeMoney, decorator: Google::Apis::ApigeeV1::GoogleTypeMoney::Representation
+      
+          property :last_credit_time, :numeric_string => true, as: 'lastCreditTime'
+        end
+      end
+      
+      class GoogleCloudApigeeV1AppGroupMonetizationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_type, as: 'billingType'
+        end
+      end
+      
+      class GoogleCloudApigeeV1AppGroupSubscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apiproduct, as: 'apiproduct'
+          property :created_at, :numeric_string => true, as: 'createdAt'
+          property :end_time, :numeric_string => true, as: 'endTime'
+          property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
+          property :name, as: 'name'
+          property :start_time, :numeric_string => true, as: 'startTime'
+        end
+      end
+      
       class GoogleCloudApigeeV1ArchiveDeployment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2427,6 +2588,14 @@ module Google
           property :name, as: 'name'
           property :operation, as: 'operation'
           property :updated_at, :numeric_string => true, as: 'updatedAt'
+        end
+      end
+      
+      class GoogleCloudApigeeV1AsyncApiDocumentation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :spec, as: 'spec', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DocumentationFile, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DocumentationFile::Representation
+      
         end
       end
       
@@ -2691,6 +2860,15 @@ module Google
           property :issued_at, :numeric_string => true, as: 'issuedAt'
           collection :scopes, as: 'scopes'
           property :status, as: 'status'
+        end
+      end
+      
+      class GoogleCloudApigeeV1CreditAppGroupBalanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :transaction_amount, as: 'transactionAmount', class: Google::Apis::ApigeeV1::GoogleTypeMoney, decorator: Google::Apis::ApigeeV1::GoogleTypeMoney::Representation
+      
+          property :transaction_id, as: 'transactionId'
         end
       end
       
@@ -3247,6 +3425,12 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3586,10 +3770,28 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ListApimServiceExtensionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apim_service_extensions, as: 'apimServiceExtensions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtension, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtension::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudApigeeV1ListAppGroupAppsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :app_group_apps, as: 'appGroupApps', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_group_subscriptions, as: 'appGroupSubscriptions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
