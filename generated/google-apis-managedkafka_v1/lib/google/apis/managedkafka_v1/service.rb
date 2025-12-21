@@ -225,6 +225,9 @@ module Google
         # Returns the properties of a single cluster.
         # @param [String] name
         #   Required. The name of the cluster whose configuration to return.
+        # @param [String] view
+        #   Optional. Specifies the view of the Cluster resource to be returned. Defaults
+        #   to CLUSTER_VIEW_BASIC. See the ClusterView enum for possible values.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -242,11 +245,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_cluster(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_cluster(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ManagedkafkaV1::Cluster::Representation
           command.response_class = Google::Apis::ManagedkafkaV1::Cluster
           command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

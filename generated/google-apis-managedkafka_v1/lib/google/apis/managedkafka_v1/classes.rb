@@ -186,6 +186,37 @@ module Google
         end
       end
       
+      # Details of a broker in the Kafka cluster.
+      class BrokerDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The index of the broker.
+        # Corresponds to the JSON property `brokerIndex`
+        # @return [Fixnum]
+        attr_accessor :broker_index
+      
+        # Output only. The node id of the broker.
+        # Corresponds to the JSON property `nodeId`
+        # @return [Fixnum]
+        attr_accessor :node_id
+      
+        # Output only. The rack of the broker.
+        # Corresponds to the JSON property `rack`
+        # @return [String]
+        attr_accessor :rack
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @broker_index = args[:broker_index] if args.key?(:broker_index)
+          @node_id = args[:node_id] if args.key?(:node_id)
+          @rack = args[:rack] if args.key?(:rack)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -316,6 +347,12 @@ module Google
       class Cluster
         include Google::Apis::Core::Hashable
       
+        # Output only. Only populated when FULL view is requested. Details of each
+        # broker in the cluster.
+        # Corresponds to the JSON property `brokerDetails`
+        # @return [Array<Google::Apis::ManagedkafkaV1::BrokerDetails>]
+        attr_accessor :broker_details
+      
         # A capacity configuration of a Kafka cluster.
         # Corresponds to the JSON property `capacityConfig`
         # @return [Google::Apis::ManagedkafkaV1::CapacityConfig]
@@ -330,6 +367,12 @@ module Google
         # Corresponds to the JSON property `gcpConfig`
         # @return [Google::Apis::ManagedkafkaV1::GcpConfig]
         attr_accessor :gcp_config
+      
+        # Output only. Only populated when FULL view is requested. The Kafka version of
+        # the cluster.
+        # Corresponds to the JSON property `kafkaVersion`
+        # @return [String]
+        attr_accessor :kafka_version
       
         # Optional. Labels as key value pairs.
         # Corresponds to the JSON property `labels`
@@ -387,9 +430,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @broker_details = args[:broker_details] if args.key?(:broker_details)
           @capacity_config = args[:capacity_config] if args.key?(:capacity_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @gcp_config = args[:gcp_config] if args.key?(:gcp_config)
+          @kafka_version = args[:kafka_version] if args.key?(:kafka_version)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @rebalance_config = args[:rebalance_config] if args.key?(:rebalance_config)
