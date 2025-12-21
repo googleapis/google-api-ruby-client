@@ -55,7 +55,7 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Get the latest contents of a hash list. A hash list may either by a threat
+        # Gets the latest contents of a hash list. A hash list may either by a threat
         # list or a non-threat list such as the Global Cache. This is a standard Get
         # method as defined by https://google.aip.dev/131 and the HTTP method is also
         # GET.
@@ -109,10 +109,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get multiple hash lists at once. It is very common for a client to need to get
-        # multiple hash lists. Using this method is preferred over using the regular Get
-        # method multiple times. This is a standard batch Get method as defined by https:
-        # //google.aip.dev/231 and the HTTP method is also GET.
+        # Gets multiple hash lists at once. It is very common for a client to need to
+        # get multiple hash lists. Using this method is preferred over using the regular
+        # Get method multiple times. This is a standard batch Get method as defined by
+        # https://google.aip.dev/231 and the HTTP method is also GET.
         # @param [Array<String>, String] names
         #   Required. The names of the particular hash lists. The list MAY be a threat
         #   list, or it may be the Global Cache. The names MUST NOT contain duplicates; if
@@ -167,7 +167,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List hash lists. In the V5 API, Google will never remove a hash list that has
+        # Lists hash lists. In the V5 API, Google will never remove a hash list that has
         # ever been returned by this method. This enables clients to skip using this
         # method and simply hard-code all hash lists they need. This is a standard List
         # method as defined by https://google.aip.dev/132 and the HTTP method is GET.
@@ -206,7 +206,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Search for full hashes matching the specified prefixes. This is a custom
+        # Searches for full hashes matching the specified prefixes. This is a custom
         # method as defined by https://google.aip.dev/136 (the custom method refers to
         # this method having a custom name within Google's general API development
         # nomenclature; it does not refer to using a custom HTTP method).
@@ -237,6 +237,39 @@ module Google
           command.response_representation = Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5SearchHashesResponse::Representation
           command.response_class = Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5SearchHashesResponse
           command.query['hashPrefixes'] = hash_prefixes unless hash_prefixes.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Searches for URLs matching known threats. Each URL and it's host-suffix and
+        # path-prefix expressions (up to a limited depth) are checked. This means that
+        # the response may contain URLs that were not included in the request, but are
+        # expressions of the requested URLs.
+        # @param [Array<String>, String] urls
+        #   Required. The URLs to be looked up. Clients MUST NOT send more than 50 URLs.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5SearchUrlsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5SearchUrlsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_urls(urls: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v5/urls:search', options)
+          command.response_representation = Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5SearchUrlsResponse::Representation
+          command.response_class = Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5SearchUrlsResponse
+          command.query['urls'] = urls unless urls.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
