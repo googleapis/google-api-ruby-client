@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1ConversationLevelSentiment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -605,6 +611,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1GcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1181,6 +1193,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1SignedAudioUris
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3564,6 +3582,14 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_duration, as: 'audioDuration'
+          property :audio_gcs_uri, as: 'audioGcsUri'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1ConversationLevelSentiment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4096,6 +4122,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_uri, as: 'audioUri'
           property :transcript_uri, as: 'transcriptUri'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :signed_audio_uris, as: 'signedAudioUris', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SignedAudioUris, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SignedAudioUris::Representation
+      
         end
       end
       
@@ -5072,6 +5106,16 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1SignedAudioUris
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :signed_dialogflow_audio_uri, as: 'signedDialogflowAudioUri'
+          property :signed_gcs_audio_uri, as: 'signedGcsAudioUri'
+          collection :signed_turn_level_audios, as: 'signedTurnLevelAudios', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio::Representation
+      
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1SilenceData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5101,6 +5145,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1SpeechConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_word_time_offsets, as: 'disableWordTimeOffsets'
           property :speech_recognizer, as: 'speechRecognizer'
         end
       end
@@ -6592,6 +6637,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1SpeechConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_word_time_offsets, as: 'disableWordTimeOffsets'
           property :speech_recognizer, as: 'speechRecognizer'
         end
       end
@@ -8116,6 +8162,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1mainSpeechConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_word_time_offsets, as: 'disableWordTimeOffsets'
           property :speech_recognizer, as: 'speechRecognizer'
         end
       end
