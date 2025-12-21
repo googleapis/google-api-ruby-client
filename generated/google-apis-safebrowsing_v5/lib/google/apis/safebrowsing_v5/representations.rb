@@ -88,6 +88,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleSecuritySafebrowsingV5SearchUrlsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleSecuritySafebrowsingV5ThreatUrl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleSecuritySafebrowsingV5BatchGetHashListsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -205,6 +217,23 @@ module Google
           property :cache_duration, as: 'cacheDuration'
           collection :full_hashes, as: 'fullHashes', class: Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5FullHash, decorator: Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5FullHash::Representation
       
+        end
+      end
+      
+      class GoogleSecuritySafebrowsingV5SearchUrlsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_duration, as: 'cacheDuration'
+          collection :threats, as: 'threats', class: Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5ThreatUrl, decorator: Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5ThreatUrl::Representation
+      
+        end
+      end
+      
+      class GoogleSecuritySafebrowsingV5ThreatUrl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :threat_types, as: 'threatTypes'
+          property :url, as: 'url'
         end
       end
     end
