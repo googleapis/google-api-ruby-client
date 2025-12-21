@@ -3868,6 +3868,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1MemoryConjunctionFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryMetadataValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1MemoryRevision
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8285,6 +8303,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1ToolNameMatchSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ToolParallelAiSearch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -14113,6 +14137,9 @@ module Google
       
           property :disable_consolidation, as: 'disableConsolidation'
           property :disable_memory_revisions, as: 'disableMemoryRevisions'
+          hash :metadata, as: 'metadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryMetadataValue, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryMetadataValue::Representation
+      
+          property :metadata_merge_strategy, as: 'metadataMergeStrategy'
           property :revision_expire_time, as: 'revisionExpireTime'
           hash :revision_labels, as: 'revisionLabels'
           property :revision_ttl, as: 'revisionTtl'
@@ -15669,6 +15696,8 @@ module Google
           property :display_name, as: 'displayName'
           property :expire_time, as: 'expireTime'
           property :fact, as: 'fact'
+          hash :metadata, as: 'metadata', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryMetadataValue, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryMetadataValue::Representation
+      
           property :name, as: 'name'
           property :revision_expire_time, as: 'revisionExpireTime'
           hash :revision_labels, as: 'revisionLabels'
@@ -15750,6 +15779,35 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :managed_topic_enum, as: 'managedTopicEnum'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryConjunctionFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :filters, as: 'filters', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryFilter, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryFilter::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :negate, as: 'negate'
+          property :op, as: 'op'
+          property :value, as: 'value', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryMetadataValue, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryMetadataValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryMetadataValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :double_value, as: 'doubleValue'
+          property :string_value, as: 'stringValue'
+          property :timestamp_value, as: 'timestampValue'
         end
       end
       
@@ -19642,6 +19700,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :filter, as: 'filter'
+          collection :filter_groups, as: 'filterGroups', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryConjunctionFilter, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryConjunctionFilter::Representation
+      
           hash :scope, as: 'scope'
           property :similarity_search_params, as: 'similaritySearchParams', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestSimilaritySearchParams, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesRequestSimilaritySearchParams::Representation
       
@@ -20851,6 +20911,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code_repository_state, as: 'codeRepositoryState'
+          property :framework, as: 'framework'
           collection :linked_resources, as: 'linkedResources', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SchemaPromptSpecAppBuilderDataLinkedResource, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SchemaPromptSpecAppBuilderDataLinkedResource::Representation
       
         end
@@ -23163,6 +23224,8 @@ module Google
       
           property :google_search_retrieval, as: 'googleSearchRetrieval', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GoogleSearchRetrieval, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GoogleSearchRetrieval::Representation
       
+          property :parallel_ai_search, as: 'parallelAiSearch', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolParallelAiSearch, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolParallelAiSearch::Representation
+      
           property :retrieval, as: 'retrieval', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Retrieval, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Retrieval::Representation
       
           property :url_context, as: 'urlContext', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UrlContext, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UrlContext::Representation
@@ -23285,6 +23348,14 @@ module Google
       class GoogleCloudAiplatformV1beta1ToolNameMatchSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ToolParallelAiSearch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_key, as: 'apiKey'
+          hash :custom_configs, as: 'customConfigs'
         end
       end
       
@@ -24180,6 +24251,7 @@ module Google
           property :epoch_count, :numeric_string => true, as: 'epochCount'
           property :learning_rate_multiplier, as: 'learningRateMultiplier'
           property :tuning_task, as: 'tuningTask'
+          property :veo_data_mixture_ratio, as: 'veoDataMixtureRatio'
         end
       end
       
