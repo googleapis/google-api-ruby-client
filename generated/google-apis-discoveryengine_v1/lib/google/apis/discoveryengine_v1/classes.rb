@@ -11684,10 +11684,12 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestRelevanceScoreSpec]
         attr_accessor :relevance_score_spec
       
-        # The relevance threshold of the search results. Default to Google defined
-        # threshold, leveraging a balance of precision and recall to deliver both highly
-        # accurate results and comprehensive coverage of relevant information. This
-        # feature is not supported for healthcare search.
+        # The global relevance threshold of the search results. Defaults to Google
+        # defined threshold, leveraging a balance of precision and recall to deliver
+        # both highly accurate results and comprehensive coverage of relevant
+        # information. If more granular relevance filtering is required, use the `
+        # relevance_filter_spec` instead. This feature is not supported for healthcare
+        # search.
         # Corresponds to the JSON property `relevanceThreshold`
         # @return [String]
         attr_accessor :relevance_threshold
@@ -23222,15 +23224,22 @@ module Google
         # @return [String]
         attr_accessor :region_code
       
+        # Relevance filtering specification.
+        # Corresponds to the JSON property `relevanceFilterSpec`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpec]
+        attr_accessor :relevance_filter_spec
+      
         # The specification for returning the document relevance score.
         # Corresponds to the JSON property `relevanceScoreSpec`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceScoreSpec]
         attr_accessor :relevance_score_spec
       
-        # The relevance threshold of the search results. Default to Google defined
-        # threshold, leveraging a balance of precision and recall to deliver both highly
-        # accurate results and comprehensive coverage of relevant information. This
-        # feature is not supported for healthcare search.
+        # The global relevance threshold of the search results. Defaults to Google
+        # defined threshold, leveraging a balance of precision and recall to deliver
+        # both highly accurate results and comprehensive coverage of relevant
+        # information. If more granular relevance filtering is required, use the `
+        # relevance_filter_spec` instead. This feature is not supported for healthcare
+        # search.
         # Corresponds to the JSON property `relevanceThreshold`
         # @return [String]
         attr_accessor :relevance_threshold
@@ -23366,6 +23375,7 @@ module Google
           @ranking_expression = args[:ranking_expression] if args.key?(:ranking_expression)
           @ranking_expression_backend = args[:ranking_expression_backend] if args.key?(:ranking_expression_backend)
           @region_code = args[:region_code] if args.key?(:region_code)
+          @relevance_filter_spec = args[:relevance_filter_spec] if args.key?(:relevance_filter_spec)
           @relevance_score_spec = args[:relevance_score_spec] if args.key?(:relevance_score_spec)
           @relevance_threshold = args[:relevance_threshold] if args.key?(:relevance_threshold)
           @safe_search = args[:safe_search] if args.key?(:safe_search)
@@ -24316,6 +24326,56 @@ module Google
         def update!(**args)
           @condition = args[:condition] if args.key?(:condition)
           @pin_unexpanded_results = args[:pin_unexpanded_results] if args.key?(:pin_unexpanded_results)
+        end
+      end
+      
+      # Relevance filtering specification.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpec
+        include Google::Apis::Core::Hashable
+      
+        # Specification for relevance filtering on a specific sub-search.
+        # Corresponds to the JSON property `keywordSearchThreshold`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec]
+        attr_accessor :keyword_search_threshold
+      
+        # Specification for relevance filtering on a specific sub-search.
+        # Corresponds to the JSON property `semanticSearchThreshold`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec]
+        attr_accessor :semantic_search_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @keyword_search_threshold = args[:keyword_search_threshold] if args.key?(:keyword_search_threshold)
+          @semantic_search_threshold = args[:semantic_search_threshold] if args.key?(:semantic_search_threshold)
+        end
+      end
+      
+      # Specification for relevance filtering on a specific sub-search.
+      class GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec
+        include Google::Apis::Core::Hashable
+      
+        # Pre-defined relevance threshold for the sub-search.
+        # Corresponds to the JSON property `relevanceThreshold`
+        # @return [String]
+        attr_accessor :relevance_threshold
+      
+        # Custom relevance threshold for the sub-search. The value must be in [0.0, 1.0].
+        # Corresponds to the JSON property `semanticRelevanceThreshold`
+        # @return [Float]
+        attr_accessor :semantic_relevance_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @relevance_threshold = args[:relevance_threshold] if args.key?(:relevance_threshold)
+          @semantic_relevance_threshold = args[:semantic_relevance_threshold] if args.key?(:semantic_relevance_threshold)
         end
       end
       
@@ -29107,15 +29167,22 @@ module Google
         # @return [String]
         attr_accessor :region_code
       
+        # Relevance filtering specification.
+        # Corresponds to the JSON property `relevanceFilterSpec`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpec]
+        attr_accessor :relevance_filter_spec
+      
         # The specification for returning the document relevance score.
         # Corresponds to the JSON property `relevanceScoreSpec`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceScoreSpec]
         attr_accessor :relevance_score_spec
       
-        # The relevance threshold of the search results. Default to Google defined
-        # threshold, leveraging a balance of precision and recall to deliver both highly
-        # accurate results and comprehensive coverage of relevant information. This
-        # feature is not supported for healthcare search.
+        # The global relevance threshold of the search results. Defaults to Google
+        # defined threshold, leveraging a balance of precision and recall to deliver
+        # both highly accurate results and comprehensive coverage of relevant
+        # information. If more granular relevance filtering is required, use the `
+        # relevance_filter_spec` instead. This feature is not supported for healthcare
+        # search.
         # Corresponds to the JSON property `relevanceThreshold`
         # @return [String]
         attr_accessor :relevance_threshold
@@ -29241,6 +29308,7 @@ module Google
           @ranking_expression = args[:ranking_expression] if args.key?(:ranking_expression)
           @ranking_expression_backend = args[:ranking_expression_backend] if args.key?(:ranking_expression_backend)
           @region_code = args[:region_code] if args.key?(:region_code)
+          @relevance_filter_spec = args[:relevance_filter_spec] if args.key?(:relevance_filter_spec)
           @relevance_score_spec = args[:relevance_score_spec] if args.key?(:relevance_score_spec)
           @relevance_threshold = args[:relevance_threshold] if args.key?(:relevance_threshold)
           @safe_search = args[:safe_search] if args.key?(:safe_search)
@@ -30190,6 +30258,56 @@ module Google
         def update!(**args)
           @condition = args[:condition] if args.key?(:condition)
           @pin_unexpanded_results = args[:pin_unexpanded_results] if args.key?(:pin_unexpanded_results)
+        end
+      end
+      
+      # Relevance filtering specification.
+      class GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpec
+        include Google::Apis::Core::Hashable
+      
+        # Specification for relevance filtering on a specific sub-search.
+        # Corresponds to the JSON property `keywordSearchThreshold`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec]
+        attr_accessor :keyword_search_threshold
+      
+        # Specification for relevance filtering on a specific sub-search.
+        # Corresponds to the JSON property `semanticSearchThreshold`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec]
+        attr_accessor :semantic_search_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @keyword_search_threshold = args[:keyword_search_threshold] if args.key?(:keyword_search_threshold)
+          @semantic_search_threshold = args[:semantic_search_threshold] if args.key?(:semantic_search_threshold)
+        end
+      end
+      
+      # Specification for relevance filtering on a specific sub-search.
+      class GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec
+        include Google::Apis::Core::Hashable
+      
+        # Pre-defined relevance threshold for the sub-search.
+        # Corresponds to the JSON property `relevanceThreshold`
+        # @return [String]
+        attr_accessor :relevance_threshold
+      
+        # Custom relevance threshold for the sub-search. The value must be in [0.0, 1.0].
+        # Corresponds to the JSON property `semanticRelevanceThreshold`
+        # @return [Float]
+        attr_accessor :semantic_relevance_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @relevance_threshold = args[:relevance_threshold] if args.key?(:relevance_threshold)
+          @semantic_relevance_threshold = args[:semantic_relevance_threshold] if args.key?(:semantic_relevance_threshold)
         end
       end
       
