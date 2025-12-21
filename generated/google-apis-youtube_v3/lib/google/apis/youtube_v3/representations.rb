@@ -3650,13 +3650,12 @@ module Google
           property :content_details, as: 'contentDetails', class: Google::Apis::YoutubeV3::VideoStatsContentDetails, decorator: Google::Apis::YoutubeV3::VideoStatsContentDetails::Representation
       
           property :etag, as: 'etag'
+          property :id, as: 'id'
           property :kind, as: 'kind'
-          property :name, as: 'name'
           property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::VideoStatsSnippet, decorator: Google::Apis::YoutubeV3::VideoStatsSnippet::Representation
       
           property :statistics, as: 'statistics', class: Google::Apis::YoutubeV3::VideoStatsStatistics, decorator: Google::Apis::YoutubeV3::VideoStatsStatistics::Representation
       
-          property :video_id, as: 'videoId'
         end
       end
       

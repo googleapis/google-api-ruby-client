@@ -4244,6 +4244,8 @@ module Google
         end
         
         # Retrieves a batch of VideoStat resources, possibly filtered.
+        # @param [Array<String>, String] id
+        #   Required. Return videos with the given ids.
         # @param [String] on_behalf_of_content_owner
         #   Optional. **Note:** This parameter is intended exclusively for YouTube content
         #   partners. The `onBehalfOfContentOwner` parameter indicates that the request's
@@ -4262,8 +4264,6 @@ module Google
         #   resource, the `statistics` property contains `view_count` and `like_count`. As
         #   such, if you set `**part=snippet**`, the API response will contain all of
         #   those properties.
-        # @param [Array<String>, String] video_ids
-        #   Required. Return videos with the given ids.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4281,13 +4281,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_youtube_v3_video_get_stats(on_behalf_of_content_owner: nil, part: nil, video_ids: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def batch_youtube_v3_video_get_stats(id: nil, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'youtube/v3/videos:batchGetStats', options)
           command.response_representation = Google::Apis::YoutubeV3::BatchGetStatsResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::BatchGetStatsResponse
+          command.query['id'] = id unless id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['part'] = part unless part.nil?
-          command.query['videoIds'] = video_ids unless video_ids.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
