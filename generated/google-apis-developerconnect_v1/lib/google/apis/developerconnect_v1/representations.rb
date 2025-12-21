@@ -710,6 +710,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+          property :http_proxy_base_uri, as: 'httpProxyBaseUri'
         end
       end
       
