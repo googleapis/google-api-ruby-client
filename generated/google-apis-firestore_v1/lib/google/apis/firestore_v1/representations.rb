@@ -178,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExecutePipelineRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutePipelineResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExecutionStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +209,12 @@ module Google
       end
       
       class ExplainOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExplainStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -227,6 +245,12 @@ module Google
       end
       
       class FindNearest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Function
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -634,6 +658,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Pipeline
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PlanSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -700,6 +730,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Stage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -707,6 +743,12 @@ module Google
       end
       
       class StructuredAggregationQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StructuredPipeline
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1009,6 +1051,30 @@ module Google
         end
       end
       
+      class ExecutePipelineRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1::TransactionOptions, decorator: Google::Apis::FirestoreV1::TransactionOptions::Representation
+      
+          property :read_time, as: 'readTime'
+          property :structured_pipeline, as: 'structuredPipeline', class: Google::Apis::FirestoreV1::StructuredPipeline, decorator: Google::Apis::FirestoreV1::StructuredPipeline::Representation
+      
+          property :transaction, :base64 => true, as: 'transaction'
+        end
+      end
+      
+      class ExecutePipelineResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_time, as: 'executionTime'
+          property :explain_stats, as: 'explainStats', class: Google::Apis::FirestoreV1::ExplainStats, decorator: Google::Apis::FirestoreV1::ExplainStats::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::FirestoreV1::Document, decorator: Google::Apis::FirestoreV1::Document::Representation
+      
+          property :transaction, :base64 => true, as: 'transaction'
+        end
+      end
+      
       class ExecutionStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1043,6 +1109,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :analyze, as: 'analyze'
+        end
+      end
+      
+      class ExplainStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :data, as: 'data'
         end
       end
       
@@ -1104,6 +1177,17 @@ module Google
           property :query_vector, as: 'queryVector', class: Google::Apis::FirestoreV1::Value, decorator: Google::Apis::FirestoreV1::Value::Representation
       
           property :vector_field, as: 'vectorField', class: Google::Apis::FirestoreV1::FieldReference, decorator: Google::Apis::FirestoreV1::FieldReference::Representation
+      
+        end
+      end
+      
+      class Function
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :args, as: 'args', class: Google::Apis::FirestoreV1::Value, decorator: Google::Apis::FirestoreV1::Value::Representation
+      
+          property :name, as: 'name'
+          hash :options, as: 'options', class: Google::Apis::FirestoreV1::Value, decorator: Google::Apis::FirestoreV1::Value::Representation
       
         end
       end
@@ -1774,6 +1858,14 @@ module Google
         end
       end
       
+      class Pipeline
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :stages, as: 'stages', class: Google::Apis::FirestoreV1::Stage, decorator: Google::Apis::FirestoreV1::Stage::Representation
+      
+        end
+      end
+      
       class PlanSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1881,6 +1973,17 @@ module Google
         end
       end
       
+      class Stage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :args, as: 'args', class: Google::Apis::FirestoreV1::Value, decorator: Google::Apis::FirestoreV1::Value::Representation
+      
+          property :name, as: 'name'
+          hash :options, as: 'options', class: Google::Apis::FirestoreV1::Value, decorator: Google::Apis::FirestoreV1::Value::Representation
+      
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1896,6 +1999,16 @@ module Google
           collection :aggregations, as: 'aggregations', class: Google::Apis::FirestoreV1::Aggregation, decorator: Google::Apis::FirestoreV1::Aggregation::Representation
       
           property :structured_query, as: 'structuredQuery', class: Google::Apis::FirestoreV1::StructuredQuery, decorator: Google::Apis::FirestoreV1::StructuredQuery::Representation
+      
+        end
+      end
+      
+      class StructuredPipeline
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :options, as: 'options', class: Google::Apis::FirestoreV1::Value, decorator: Google::Apis::FirestoreV1::Value::Representation
+      
+          property :pipeline, as: 'pipeline', class: Google::Apis::FirestoreV1::Pipeline, decorator: Google::Apis::FirestoreV1::Pipeline::Representation
       
         end
       end
@@ -1984,12 +2097,17 @@ module Google
           property :boolean_value, as: 'booleanValue'
           property :bytes_value, :base64 => true, as: 'bytesValue'
           property :double_value, as: 'doubleValue'
+          property :field_reference_value, as: 'fieldReferenceValue'
+          property :function_value, as: 'functionValue', class: Google::Apis::FirestoreV1::Function, decorator: Google::Apis::FirestoreV1::Function::Representation
+      
           property :geo_point_value, as: 'geoPointValue', class: Google::Apis::FirestoreV1::LatLng, decorator: Google::Apis::FirestoreV1::LatLng::Representation
       
           property :integer_value, :numeric_string => true, as: 'integerValue'
           property :map_value, as: 'mapValue', class: Google::Apis::FirestoreV1::MapValue, decorator: Google::Apis::FirestoreV1::MapValue::Representation
       
           property :null_value, as: 'nullValue'
+          property :pipeline_value, as: 'pipelineValue', class: Google::Apis::FirestoreV1::Pipeline, decorator: Google::Apis::FirestoreV1::Pipeline::Representation
+      
           property :reference_value, as: 'referenceValue'
           property :string_value, as: 'stringValue'
           property :timestamp_value, as: 'timestampValue'
