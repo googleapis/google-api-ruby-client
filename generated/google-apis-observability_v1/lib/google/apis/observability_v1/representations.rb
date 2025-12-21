@@ -76,12 +76,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Settings
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -177,16 +171,6 @@ module Google
           property :name, as: 'name'
           property :trace_scope, as: 'traceScope'
           property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class Settings
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :default_storage_location, as: 'defaultStorageLocation'
-          property :kms_key_name, as: 'kmsKeyName'
-          property :name, as: 'name'
-          property :service_account_id, as: 'serviceAccountId'
         end
       end
       
