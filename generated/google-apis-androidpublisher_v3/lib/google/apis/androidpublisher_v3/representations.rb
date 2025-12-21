@@ -4012,7 +4012,6 @@ module Google
       class ProrationPeriodDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :linked_order_id, as: 'linkedOrderId'
           property :original_offer_phase, as: 'originalOfferPhase'
         end
       end

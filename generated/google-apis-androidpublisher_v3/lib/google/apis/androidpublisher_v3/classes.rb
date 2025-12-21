@@ -6759,14 +6759,6 @@ module Google
       class ProrationPeriodDetails
         include Google::Apis::Core::Hashable
       
-        # The last order id of the original subscription purchase prior to the plan
-        # change. This is only populated if this proration period is from an ugrade/
-        # downgrade from a previous subscription and carries the remaining offer phase
-        # from the linked order of the previous subscription.
-        # Corresponds to the JSON property `linkedOrderId`
-        # @return [String]
-        attr_accessor :linked_order_id
-      
         # Represent the original offer phase from the purchased the line item if the
         # proration period contains any of them. For example, a proration period from
         # CHARGE_FULL_PRICE plan change may merge the 1st offer phase of the
@@ -6782,7 +6774,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @linked_order_id = args[:linked_order_id] if args.key?(:linked_order_id)
           @original_offer_phase = args[:original_offer_phase] if args.key?(:original_offer_phase)
         end
       end
