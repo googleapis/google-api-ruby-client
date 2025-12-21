@@ -154,7 +154,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DateElement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DateElementProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DateElementPropertiesSuggestionState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -754,6 +766,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SuggestedDateElementProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SuggestedDocumentStyle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1189,6 +1207,23 @@ module Google
         end
       end
       
+      class DateElement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_element_properties, as: 'dateElementProperties', class: Google::Apis::DocsV1::DateElementProperties, decorator: Google::Apis::DocsV1::DateElementProperties::Representation
+      
+          property :date_id, as: 'dateId'
+          hash :suggested_date_element_properties_changes, as: 'suggestedDateElementPropertiesChanges', class: Google::Apis::DocsV1::SuggestedDateElementProperties, decorator: Google::Apis::DocsV1::SuggestedDateElementProperties::Representation
+      
+          collection :suggested_deletion_ids, as: 'suggestedDeletionIds'
+          collection :suggested_insertion_ids, as: 'suggestedInsertionIds'
+          hash :suggested_text_style_changes, as: 'suggestedTextStyleChanges', class: Google::Apis::DocsV1::SuggestedTextStyle, decorator: Google::Apis::DocsV1::SuggestedTextStyle::Representation
+      
+          property :text_style, as: 'textStyle', class: Google::Apis::DocsV1::TextStyle, decorator: Google::Apis::DocsV1::TextStyle::Representation
+      
+        end
+      end
+      
       class DateElementProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1198,6 +1233,17 @@ module Google
           property :time_format, as: 'timeFormat'
           property :time_zone_id, as: 'timeZoneId'
           property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class DateElementPropertiesSuggestionState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_format_suggested, as: 'dateFormatSuggested'
+          property :locale_suggested, as: 'localeSuggested'
+          property :time_format_suggested, as: 'timeFormatSuggested'
+          property :time_zone_id_suggested, as: 'timeZoneIdSuggested'
+          property :timestamp_suggested, as: 'timestampSuggested'
         end
       end
       
@@ -1982,6 +2028,8 @@ module Google
       
           property :column_break, as: 'columnBreak', class: Google::Apis::DocsV1::ColumnBreak, decorator: Google::Apis::DocsV1::ColumnBreak::Representation
       
+          property :date_element, as: 'dateElement', class: Google::Apis::DocsV1::DateElement, decorator: Google::Apis::DocsV1::DateElement::Representation
+      
           property :end_index, as: 'endIndex'
           property :equation, as: 'equation', class: Google::Apis::DocsV1::Equation, decorator: Google::Apis::DocsV1::Equation::Representation
       
@@ -2466,6 +2514,16 @@ module Google
           property :bullet, as: 'bullet', class: Google::Apis::DocsV1::Bullet, decorator: Google::Apis::DocsV1::Bullet::Representation
       
           property :bullet_suggestion_state, as: 'bulletSuggestionState', class: Google::Apis::DocsV1::BulletSuggestionState, decorator: Google::Apis::DocsV1::BulletSuggestionState::Representation
+      
+        end
+      end
+      
+      class SuggestedDateElementProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_element_properties, as: 'dateElementProperties', class: Google::Apis::DocsV1::DateElementProperties, decorator: Google::Apis::DocsV1::DateElementProperties::Representation
+      
+          property :date_element_properties_suggestion_state, as: 'dateElementPropertiesSuggestionState', class: Google::Apis::DocsV1::DateElementPropertiesSuggestionState, decorator: Google::Apis::DocsV1::DateElementPropertiesSuggestionState::Representation
       
         end
       end
