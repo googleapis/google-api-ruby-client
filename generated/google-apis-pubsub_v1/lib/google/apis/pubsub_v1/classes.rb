@@ -712,13 +712,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. The subscription whose backlog the snapshot retains. Specifically,
-        # the created snapshot is guaranteed to retain: (a) The existing backlog on the
-        # subscription. More precisely, this is defined as the messages in the
-        # subscription's backlog that are unacknowledged upon the successful completion
-        # of the `CreateSnapshot` request; as well as: (b) Any messages published to the
-        # subscription's topic following the successful completion of the CreateSnapshot
-        # request. Format is `projects/`project`/subscriptions/`sub``.
+        # Required. Identifier. The subscription whose backlog the snapshot retains.
+        # Specifically, the created snapshot is guaranteed to retain: (a) The existing
+        # backlog on the subscription. More precisely, this is defined as the messages
+        # in the subscription's backlog that are unacknowledged upon the successful
+        # completion of the `CreateSnapshot` request; as well as: (b) Any messages
+        # published to the subscription's topic following the successful completion of
+        # the CreateSnapshot request. Format is `projects/`project`/subscriptions/`sub``.
         # Corresponds to the JSON property `subscription`
         # @return [String]
         attr_accessor :subscription
@@ -2144,12 +2144,12 @@ module Google
         # @return [Array<Google::Apis::PubsubV1::MessageTransform>]
         attr_accessor :message_transforms
       
-        # Required. The name of the subscription. It must have the format `"projects/`
-        # project`/subscriptions/`subscription`"`. ``subscription`` must start with a
-        # letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
-        # underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`
-        # %`). It must be between 3 and 255 characters in length, and it must not start
-        # with `"goog"`.
+        # Required. Identifier. The name of the subscription. It must have the format `"
+        # projects/`project`/subscriptions/`subscription`"`. ``subscription`` must start
+        # with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`),
+        # dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or
+        # percent signs (`%`). It must be between 3 and 255 characters in length, and it
+        # must not start with `"goog"`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2194,9 +2194,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :tags
       
-        # Required. The name of the topic from which this subscription is receiving
-        # messages. Format is `projects/`project`/topics/`topic``. The value of this
-        # field will be `_deleted-topic_` if the topic has been deleted.
+        # Required. Identifier. The name of the topic from which this subscription is
+        # receiving messages. Format is `projects/`project`/topics/`topic``. The value
+        # of this field will be `_deleted-topic_` if the topic has been deleted.
         # Corresponds to the JSON property `topic`
         # @return [String]
         attr_accessor :topic
@@ -2361,11 +2361,12 @@ module Google
         # @return [Array<Google::Apis::PubsubV1::MessageTransform>]
         attr_accessor :message_transforms
       
-        # Required. The name of the topic. It must have the format `"projects/`project`/
-        # topics/`topic`"`. ``topic`` must start with a letter, and contain only letters
-        # (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`)
-        # , tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and
-        # 255 characters in length, and it must not start with `"goog"`.
+        # Required. Identifier. The name of the topic. It must have the format `"
+        # projects/`project`/topics/`topic`"`. ``topic`` must start with a letter, and
+        # contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+        # underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%
+        # `). It must be between 3 and 255 characters in length, and it must not start
+        # with `"goog"`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
