@@ -42,6 +42,28 @@ module Google
         end
       end
       
+      # Settings for controlling access to a curated package.
+      class AccessControlSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The list of media planners that are explicitly granted
+        # access to the curated package. Eligible media planners can be found in the
+        # mediaPlanners.list method. Only a single media planner may be allowlisted at
+        # this time. Format: `mediaPlanners/`mediaPlannerAccountId``
+        # Corresponds to the JSON property `allowlistedMediaPlanners`
+        # @return [Array<String>]
+        attr_accessor :allowlisted_media_planners
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowlisted_media_planners = args[:allowlisted_media_planners] if args.key?(:allowlisted_media_planners)
+        end
+      end
+      
       # Request message for activating a client.
       class ActivateClientRequest
         include Google::Apis::Core::Hashable
@@ -57,6 +79,19 @@ module Google
       
       # Request message for activating a client user.
       class ActivateClientUserRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for ActivateCuratedPackage.
+      class ActivateCuratedPackageRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -508,6 +543,84 @@ module Google
         end
       end
       
+      # Represents a curated package of inventory created and managed by a Curator.
+      class CuratedPackage
+        include Google::Apis::Core::Hashable
+      
+        # Settings for controlling access to a curated package.
+        # Corresponds to the JSON property `accessSettings`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::AccessControlSettings]
+        attr_accessor :access_settings
+      
+        # Output only. The timestamp when the curated package was created. Can be used
+        # to filter the response of the curatedPackages.list method.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A description of the curated package, provided by the curator.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The display name assigned to the curated package by the curator. Can
+        # be used to filter the response of the curatedPackages.list method.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `feeCpm`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::Money]
+        attr_accessor :fee_cpm
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `floorPriceCpm`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::Money]
+        attr_accessor :floor_price_cpm
+      
+        # Identifier. The unique resource name for the curated package. Format: `
+        # curators/`accountId`/curatedPackages/`curatedPackageId``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the curated package. Can be used to filter the
+        # response of the curatedPackages.list method.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Targeting criteria for curated and auction packages.
+        # Corresponds to the JSON property `targeting`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::PackageTargeting]
+        attr_accessor :targeting
+      
+        # Output only. The timestamp when the curated package was last updated. Can be
+        # used to filter the response of the curatedPackages.list method.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_settings = args[:access_settings] if args.key?(:access_settings)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @fee_cpm = args[:fee_cpm] if args.key?(:fee_cpm)
+          @floor_price_cpm = args[:floor_price_cpm] if args.key?(:floor_price_cpm)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @targeting = args[:targeting] if args.key?(:targeting)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Defines an identifier for a segment of inventory that can be targeted by
       # curators or media planners in the deals or auction packages UI. Curation of
       # inventory is done by curators on external platforms.
@@ -631,6 +744,19 @@ module Google
       
       # Request message for deactivating a client user.
       class DeactivateClientUserRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for DeactivateCuratedPackage.
+      class DeactivateCuratedPackageRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1181,6 +1307,34 @@ module Google
         end
       end
       
+      # Response message for ListCuratedPackages.
+      class ListCuratedPackagesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of curated packages.
+        # Corresponds to the JSON property `curatedPackages`
+        # @return [Array<Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage>]
+        attr_accessor :curated_packages
+      
+        # A token to retrieve the next page of results. Pass this value in the
+        # ListCuratedPackagesRequest.pageToken field in the subsequent call to `
+        # ListCuratedPackages` method to retrieve the next page of results. If empty,
+        # then there are no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @curated_packages = args[:curated_packages] if args.key?(:curated_packages)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for listing data segments.
       class ListDataSegmentsResponse
         include Google::Apis::Core::Hashable
@@ -1254,6 +1408,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @finalized_deals = args[:finalized_deals] if args.key?(:finalized_deals)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # A response containing media planner account information.
+      class ListMediaPlannersResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of media planners.
+        # Corresponds to the JSON property `mediaPlanners`
+        # @return [Array<Google::Apis::AuthorizedbuyersmarketplaceV1alpha::MediaPlanner>]
+        attr_accessor :media_planners
+      
+        # A token which can be passed to a subsequent call to the `ListMediaPlanners`
+        # method to retrieve the next page of results in ListMediaPlannersRequest.
+        # pageToken.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @media_planners = args[:media_planners] if args.key?(:media_planners)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -1403,6 +1584,26 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
+        # Output only. The ancestor names of the media planner. Format: `mediaPlanners/`
+        # mediaPlannerAccountId`` Can be used to filter the response of the
+        # mediaPlanners.list method.
+        # Corresponds to the JSON property `ancestorNames`
+        # @return [Array<String>]
+        attr_accessor :ancestor_names
+      
+        # Output only. The display name of the media planner. Can be used to filter the
+        # response of the mediaPlanners.list method.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The unique resource name of the media planner. Format: `
+        # mediaPlanners/`mediaPlannerAccountId`` Can be used to filter the response of
+        # the mediaPlanners.list method.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1410,6 +1611,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
+          @ancestor_names = args[:ancestor_names] if args.key?(:ancestor_names)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1530,6 +1734,309 @@ module Google
         def update!(**args)
           @operating_system_criteria = args[:operating_system_criteria] if args.key?(:operating_system_criteria)
           @operating_system_version_criteria = args[:operating_system_version_criteria] if args.key?(:operating_system_version_criteria)
+        end
+      end
+      
+      # Represents targeting about where the ads can appear, for example, certain
+      # sites or mobile applications. Different placement targeting types will be
+      # logically OR'ed.
+      class PackagePlacementTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of targeted mobile app categories.
+        # Corresponds to the JSON property `includedMobileAppCategoryTargeting`
+        # @return [Array<Fixnum>]
+        attr_accessor :included_mobile_app_category_targeting
+      
+        # Generic targeting with string values.
+        # Corresponds to the JSON property `mobileAppTargeting`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::StringTargetingDimension]
+        attr_accessor :mobile_app_targeting
+      
+        # Generic targeting with string values.
+        # Corresponds to the JSON property `uriTargeting`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::StringTargetingDimension]
+        attr_accessor :uri_targeting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @included_mobile_app_category_targeting = args[:included_mobile_app_category_targeting] if args.key?(:included_mobile_app_category_targeting)
+          @mobile_app_targeting = args[:mobile_app_targeting] if args.key?(:mobile_app_targeting)
+          @uri_targeting = args[:uri_targeting] if args.key?(:uri_targeting)
+        end
+      end
+      
+      # Represents targeting about publisher provided signals. Different publisher
+      # provided signals types will be logically OR'ed.
+      class PackagePublisherProvidedSignalsTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Defines targeting criteria for handling the IAB audience and content Taxonomy
+        # ID space.
+        # Corresponds to the JSON property `audienceTargeting`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::TaxonomyTargeting]
+        attr_accessor :audience_targeting
+      
+        # Defines targeting criteria for handling the IAB audience and content Taxonomy
+        # ID space.
+        # Corresponds to the JSON property `contentTargeting`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::TaxonomyTargeting]
+        attr_accessor :content_targeting
+      
+        # Generic targeting with string values.
+        # Corresponds to the JSON property `videoAndAudioSignalsTargeting`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::StringTargetingDimension]
+        attr_accessor :video_and_audio_signals_targeting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audience_targeting = args[:audience_targeting] if args.key?(:audience_targeting)
+          @content_targeting = args[:content_targeting] if args.key?(:content_targeting)
+          @video_and_audio_signals_targeting = args[:video_and_audio_signals_targeting] if args.key?(:video_and_audio_signals_targeting)
+        end
+      end
+      
+      # Targeting criteria for curated and auction packages.
+      class PackageTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Generic targeting used for targeting dimensions that contains a list of
+        # included and excluded numeric IDs. This cannot be filtered using list filter
+        # syntax.
+        # Corresponds to the JSON property `geoTargeting`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CriteriaTargeting]
+        attr_accessor :geo_targeting
+      
+        # Optional. The targeted accelerated mobile page type. If unset, inventory will
+        # be targeted regardless of AMP status.
+        # Corresponds to the JSON property `includedAcceleratedMobilePageType`
+        # @return [String]
+        attr_accessor :included_accelerated_mobile_page_type
+      
+        # Optional. The list of ad sizes to target. If unset, inventory will be targeted
+        # regardless of ad size. Curated packages supports `PIXEL` and `INTERSTITIAL` ad
+        # sizes.
+        # Corresponds to the JSON property `includedAdSizes`
+        # @return [Array<Google::Apis::AuthorizedbuyersmarketplaceV1alpha::AdSize>]
+        attr_accessor :included_ad_sizes
+      
+        # Optional. The included list of targeted authorized seller statuses. If empty,
+        # inventory will be targeted regardless of seller status.
+        # Corresponds to the JSON property `includedAuthorizedSellerStatuses`
+        # @return [Array<String>]
+        attr_accessor :included_authorized_seller_statuses
+      
+        # Optional. The creative format to target. If unset, all creative markup types
+        # are targeted.
+        # Corresponds to the JSON property `includedCreativeFormat`
+        # @return [String]
+        attr_accessor :included_creative_format
+      
+        # Optional. The active data segments to be targeted. If unset, inventory will be
+        # targeted regardless of data segments. Format: `curators/`account_id`/
+        # dataSegments/`data_segment_id``
+        # Corresponds to the JSON property `includedDataSegments`
+        # @return [Array<String>]
+        attr_accessor :included_data_segments
+      
+        # Optional. The list of included device types to target. If empty, all device
+        # types are targeted.
+        # Corresponds to the JSON property `includedDeviceTypes`
+        # @return [Array<String>]
+        attr_accessor :included_device_types
+      
+        # Optional. The environment to target. If unspecified, all environments are
+        # targeted.
+        # Corresponds to the JSON property `includedEnvironment`
+        # @return [String]
+        attr_accessor :included_environment
+      
+        # Optional. The targeted native inventory types. If empty, inventory will be
+        # targeted regardless of native inventory type.
+        # Corresponds to the JSON property `includedNativeInventoryTypes`
+        # @return [Array<String>]
+        attr_accessor :included_native_inventory_types
+      
+        # Optional. The list of targeted open measurement types. If empty, inventory
+        # will be targeted regardless of Open Measurement support.
+        # Corresponds to the JSON property `includedOpenMeasurementTypes`
+        # @return [Array<String>]
+        attr_accessor :included_open_measurement_types
+      
+        # Optional. The list of targeted restricted categories. If empty, inventory will
+        # be targeted regardless of restricted categories.
+        # Corresponds to the JSON property `includedRestrictedCategories`
+        # @return [Array<String>]
+        attr_accessor :included_restricted_categories
+      
+        # Optional. The targeted rewarded type. If unset, inventory will be targeted
+        # regardless of rewarded type.
+        # Corresponds to the JSON property `includedRewardedType`
+        # @return [String]
+        attr_accessor :included_rewarded_type
+      
+        # Generic targeting with string values.
+        # Corresponds to the JSON property `languageTargeting`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::StringTargetingDimension]
+        attr_accessor :language_targeting
+      
+        # Optional. The targeted minimum predicted click through rate, ranging in values
+        # [10, 10000] (0.01% - 10%). A value of 50 means that the configuration will
+        # only match adslots for which we predict at least 0.05% click through rate. An
+        # unset value indicates inventory will be targeted regardless of predicted click
+        # through rate.
+        # Corresponds to the JSON property `minimumPredictedClickThroughRatePercentageMillis`
+        # @return [Fixnum]
+        attr_accessor :minimum_predicted_click_through_rate_percentage_millis
+      
+        # Optional. The targeted minimum predicted viewability percentage. This value
+        # must be a multiple of 10 between 10 and 90 (inclusive). For example, 10 is
+        # valid, but 0, 15, and 100 are not. A value of 10 means that the configuration
+        # will only match adslots for which we predict at least 10% viewability. An
+        # unset value indicates inventory will be targeted regardless of predicted
+        # viewability.
+        # Corresponds to the JSON property `minimumPredictedViewabilityPercentage`
+        # @return [Fixnum]
+        attr_accessor :minimum_predicted_viewability_percentage
+      
+        # Represents targeting about where the ads can appear, for example, certain
+        # sites or mobile applications. Different placement targeting types will be
+        # logically OR'ed.
+        # Corresponds to the JSON property `placementTargeting`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::PackagePlacementTargeting]
+        attr_accessor :placement_targeting
+      
+        # Represents targeting about publisher provided signals. Different publisher
+        # provided signals types will be logically OR'ed.
+        # Corresponds to the JSON property `publisherProvidedSignalsTargeting`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::PackagePublisherProvidedSignalsTargeting]
+        attr_accessor :publisher_provided_signals_targeting
+      
+        # Generic targeting with string values.
+        # Corresponds to the JSON property `publisherTargeting`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::StringTargetingDimension]
+        attr_accessor :publisher_targeting
+      
+        # Generic targeting used for targeting dimensions that contains a list of
+        # included and excluded numeric IDs. This cannot be filtered using list filter
+        # syntax.
+        # Corresponds to the JSON property `verticalTargeting`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CriteriaTargeting]
+        attr_accessor :vertical_targeting
+      
+        # Video specific targeting criteria.
+        # Corresponds to the JSON property `videoTargeting`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::PackageVideoTargeting]
+        attr_accessor :video_targeting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @geo_targeting = args[:geo_targeting] if args.key?(:geo_targeting)
+          @included_accelerated_mobile_page_type = args[:included_accelerated_mobile_page_type] if args.key?(:included_accelerated_mobile_page_type)
+          @included_ad_sizes = args[:included_ad_sizes] if args.key?(:included_ad_sizes)
+          @included_authorized_seller_statuses = args[:included_authorized_seller_statuses] if args.key?(:included_authorized_seller_statuses)
+          @included_creative_format = args[:included_creative_format] if args.key?(:included_creative_format)
+          @included_data_segments = args[:included_data_segments] if args.key?(:included_data_segments)
+          @included_device_types = args[:included_device_types] if args.key?(:included_device_types)
+          @included_environment = args[:included_environment] if args.key?(:included_environment)
+          @included_native_inventory_types = args[:included_native_inventory_types] if args.key?(:included_native_inventory_types)
+          @included_open_measurement_types = args[:included_open_measurement_types] if args.key?(:included_open_measurement_types)
+          @included_restricted_categories = args[:included_restricted_categories] if args.key?(:included_restricted_categories)
+          @included_rewarded_type = args[:included_rewarded_type] if args.key?(:included_rewarded_type)
+          @language_targeting = args[:language_targeting] if args.key?(:language_targeting)
+          @minimum_predicted_click_through_rate_percentage_millis = args[:minimum_predicted_click_through_rate_percentage_millis] if args.key?(:minimum_predicted_click_through_rate_percentage_millis)
+          @minimum_predicted_viewability_percentage = args[:minimum_predicted_viewability_percentage] if args.key?(:minimum_predicted_viewability_percentage)
+          @placement_targeting = args[:placement_targeting] if args.key?(:placement_targeting)
+          @publisher_provided_signals_targeting = args[:publisher_provided_signals_targeting] if args.key?(:publisher_provided_signals_targeting)
+          @publisher_targeting = args[:publisher_targeting] if args.key?(:publisher_targeting)
+          @vertical_targeting = args[:vertical_targeting] if args.key?(:vertical_targeting)
+          @video_targeting = args[:video_targeting] if args.key?(:video_targeting)
+        end
+      end
+      
+      # Video specific targeting criteria.
+      class PackageVideoTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The targeted video delivery method. If unset, inventory will be
+        # targeted regardless of video delivery method.
+        # Corresponds to the JSON property `includedContentDeliveryMethod`
+        # @return [String]
+        attr_accessor :included_content_delivery_method
+      
+        # Optional. The targeted maximum video ad duration. If unset, inventory will be
+        # targeted regardless of maximum video ad duration.
+        # Corresponds to the JSON property `includedMaximumAdDurationTargeting`
+        # @return [String]
+        attr_accessor :included_maximum_ad_duration_targeting
+      
+        # Optional. The list of targeted video mime types using the IANA published MIME
+        # type strings (https://www.iana.org/assignments/media-types/media-types.xhtml).
+        # If empty, inventory will be targeted regardless of video mime type.
+        # Corresponds to the JSON property `includedMimeTypes`
+        # @return [Array<String>]
+        attr_accessor :included_mime_types
+      
+        # Optional. The list of targeted video playback methods. If empty, inventory
+        # will be targeted regardless of video playback method.
+        # Corresponds to the JSON property `includedPlaybackMethods`
+        # @return [Array<String>]
+        attr_accessor :included_playback_methods
+      
+        # Represents the size of the video player that can be targeted. Both width and
+        # height are required to be set to non-zero values.
+        # Corresponds to the JSON property `includedPlayerSizeTargeting`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::VideoPlayerSizeTargeting]
+        attr_accessor :included_player_size_targeting
+      
+        # Optional. The targeted video ad position types. If empty, inventory will be
+        # targeted regardless of video ad position type.
+        # Corresponds to the JSON property `includedPositionTypes`
+        # @return [Array<String>]
+        attr_accessor :included_position_types
+      
+        # Optional. The targeted minimum predicted completion rate percentage. This
+        # value must be a multiple of 10 between 10 and 90 (inclusive). For example, 10
+        # is valid, but 0, 15, and 100 are not. A value of 10 means that the
+        # configuration will only match adslots for which we predict at least 10%
+        # completion rate. An unset value indicates inventory will be targeted
+        # regardless of predicted completion rate.
+        # Corresponds to the JSON property `minimumPredictedCompletionRatePercentage`
+        # @return [Fixnum]
+        attr_accessor :minimum_predicted_completion_rate_percentage
+      
+        # Defines targeting criteria based on the video placement type, often
+        # corresponding to the IAB OpenRTB 'plcmt' field.
+        # Corresponds to the JSON property `plcmtTargeting`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::VideoPlcmtTargeting]
+        attr_accessor :plcmt_targeting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @included_content_delivery_method = args[:included_content_delivery_method] if args.key?(:included_content_delivery_method)
+          @included_maximum_ad_duration_targeting = args[:included_maximum_ad_duration_targeting] if args.key?(:included_maximum_ad_duration_targeting)
+          @included_mime_types = args[:included_mime_types] if args.key?(:included_mime_types)
+          @included_playback_methods = args[:included_playback_methods] if args.key?(:included_playback_methods)
+          @included_player_size_targeting = args[:included_player_size_targeting] if args.key?(:included_player_size_targeting)
+          @included_position_types = args[:included_position_types] if args.key?(:included_position_types)
+          @minimum_predicted_completion_rate_percentage = args[:minimum_predicted_completion_rate_percentage] if args.key?(:minimum_predicted_completion_rate_percentage)
+          @plcmt_targeting = args[:plcmt_targeting] if args.key?(:plcmt_targeting)
         end
       end
       
@@ -2212,6 +2719,31 @@ module Google
         end
       end
       
+      # Generic targeting with string values.
+      class StringTargetingDimension
+        include Google::Apis::Core::Hashable
+      
+        # Required. How the items in this list should be targeted.
+        # Corresponds to the JSON property `selectionType`
+        # @return [String]
+        attr_accessor :selection_type
+      
+        # Required. The values specified.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @selection_type = args[:selection_type] if args.key?(:selection_type)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Request message for SubscribeAuctionPackage.
       class SubscribeAuctionPackageRequest
         include Google::Apis::Core::Hashable
@@ -2244,6 +2776,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @clients = args[:clients] if args.key?(:clients)
+        end
+      end
+      
+      # Defines targeting criteria for handling the IAB audience and content Taxonomy
+      # ID space.
+      class TaxonomyTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of excluded content taxonomy IDs.
+        # Corresponds to the JSON property `excludedTaxonomyIds`
+        # @return [Array<String>]
+        attr_accessor :excluded_taxonomy_ids
+      
+        # Optional. The list of targeted content taxonomy IDs.
+        # Corresponds to the JSON property `targetedTaxonomyIds`
+        # @return [Array<String>]
+        attr_accessor :targeted_taxonomy_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @excluded_taxonomy_ids = args[:excluded_taxonomy_ids] if args.key?(:excluded_taxonomy_ids)
+          @targeted_taxonomy_ids = args[:targeted_taxonomy_ids] if args.key?(:targeted_taxonomy_ids)
         end
       end
       
@@ -2445,6 +3003,59 @@ module Google
         def update!(**args)
           @excluded_uris = args[:excluded_uris] if args.key?(:excluded_uris)
           @targeted_uris = args[:targeted_uris] if args.key?(:targeted_uris)
+        end
+      end
+      
+      # Represents the size of the video player that can be targeted. Both width and
+      # height are required to be set to non-zero values.
+      class VideoPlayerSizeTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Required. The minimum height of the video player in pixels.
+        # Corresponds to the JSON property `minimumHeight`
+        # @return [Fixnum]
+        attr_accessor :minimum_height
+      
+        # Required. The minimum width of the video player in pixels.
+        # Corresponds to the JSON property `minimumWidth`
+        # @return [Fixnum]
+        attr_accessor :minimum_width
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @minimum_height = args[:minimum_height] if args.key?(:minimum_height)
+          @minimum_width = args[:minimum_width] if args.key?(:minimum_width)
+        end
+      end
+      
+      # Defines targeting criteria based on the video placement type, often
+      # corresponding to the IAB OpenRTB 'plcmt' field.
+      class VideoPlcmtTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Required. The selection type for the list of video plcmts.
+        # Corresponds to the JSON property `selectionType`
+        # @return [String]
+        attr_accessor :selection_type
+      
+        # Required. The list of targeted video plcmts types. If empty, inventory will be
+        # targeted regardless of video plcmt type.
+        # Corresponds to the JSON property `videoPlcmtTypes`
+        # @return [Array<String>]
+        attr_accessor :video_plcmt_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @selection_type = args[:selection_type] if args.key?(:selection_type)
+          @video_plcmt_types = args[:video_plcmt_types] if args.key?(:video_plcmt_types)
         end
       end
       

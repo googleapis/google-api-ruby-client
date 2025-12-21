@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccessControlSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ActivateClientRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -35,6 +41,12 @@ module Google
       end
       
       class ActivateClientUserRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActivateCuratedPackageRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CuratedPackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataSegment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -143,6 +161,12 @@ module Google
       end
       
       class DeactivateClientUserRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeactivateCuratedPackageRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListCuratedPackagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDataSegmentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +269,12 @@ module Google
       end
       
       class ListFinalizedDealsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMediaPlannersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -287,6 +323,30 @@ module Google
       end
       
       class OperatingSystemTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PackagePlacementTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PackagePublisherProvidedSignalsTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PackageTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PackageVideoTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -376,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StringTargetingDimension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubscribeAuctionPackageRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -383,6 +449,12 @@ module Google
       end
       
       class SubscribeClientsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TaxonomyTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -430,6 +502,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VideoPlayerSizeTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VideoPlcmtTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VideoTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -443,6 +527,13 @@ module Google
         end
       end
       
+      class AccessControlSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowlisted_media_planners, as: 'allowlistedMediaPlanners'
+        end
+      end
+      
       class ActivateClientRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -450,6 +541,12 @@ module Google
       end
       
       class ActivateClientUserRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ActivateCuratedPackageRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -576,6 +673,26 @@ module Google
         end
       end
       
+      class CuratedPackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_settings, as: 'accessSettings', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::AccessControlSettings, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::AccessControlSettings::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :fee_cpm, as: 'feeCpm', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::Money, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::Money::Representation
+      
+          property :floor_price_cpm, as: 'floorPriceCpm', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::Money, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::Money::Representation
+      
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :targeting, as: 'targeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::PackageTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::PackageTargeting::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class DataSegment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -615,6 +732,12 @@ module Google
       end
       
       class DeactivateClientUserRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeactivateCuratedPackageRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -768,6 +891,15 @@ module Google
         end
       end
       
+      class ListCuratedPackagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :curated_packages, as: 'curatedPackages', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListDataSegmentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -790,6 +922,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :finalized_deals, as: 'finalizedDeals', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::FinalizedDeal, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::FinalizedDeal::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListMediaPlannersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :media_planners, as: 'mediaPlanners', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::MediaPlanner, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::MediaPlanner::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -842,6 +983,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
+          collection :ancestor_names, as: 'ancestorNames'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
         end
       end
       
@@ -877,6 +1021,79 @@ module Google
           property :operating_system_criteria, as: 'operatingSystemCriteria', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CriteriaTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CriteriaTargeting::Representation
       
           property :operating_system_version_criteria, as: 'operatingSystemVersionCriteria', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CriteriaTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CriteriaTargeting::Representation
+      
+        end
+      end
+      
+      class PackagePlacementTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :included_mobile_app_category_targeting, as: 'includedMobileAppCategoryTargeting'
+          property :mobile_app_targeting, as: 'mobileAppTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::StringTargetingDimension, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::StringTargetingDimension::Representation
+      
+          property :uri_targeting, as: 'uriTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::StringTargetingDimension, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::StringTargetingDimension::Representation
+      
+        end
+      end
+      
+      class PackagePublisherProvidedSignalsTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audience_targeting, as: 'audienceTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::TaxonomyTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::TaxonomyTargeting::Representation
+      
+          property :content_targeting, as: 'contentTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::TaxonomyTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::TaxonomyTargeting::Representation
+      
+          property :video_and_audio_signals_targeting, as: 'videoAndAudioSignalsTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::StringTargetingDimension, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::StringTargetingDimension::Representation
+      
+        end
+      end
+      
+      class PackageTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :geo_targeting, as: 'geoTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CriteriaTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CriteriaTargeting::Representation
+      
+          property :included_accelerated_mobile_page_type, as: 'includedAcceleratedMobilePageType'
+          collection :included_ad_sizes, as: 'includedAdSizes', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::AdSize, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::AdSize::Representation
+      
+          collection :included_authorized_seller_statuses, as: 'includedAuthorizedSellerStatuses'
+          property :included_creative_format, as: 'includedCreativeFormat'
+          collection :included_data_segments, as: 'includedDataSegments'
+          collection :included_device_types, as: 'includedDeviceTypes'
+          property :included_environment, as: 'includedEnvironment'
+          collection :included_native_inventory_types, as: 'includedNativeInventoryTypes'
+          collection :included_open_measurement_types, as: 'includedOpenMeasurementTypes'
+          collection :included_restricted_categories, as: 'includedRestrictedCategories'
+          property :included_rewarded_type, as: 'includedRewardedType'
+          property :language_targeting, as: 'languageTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::StringTargetingDimension, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::StringTargetingDimension::Representation
+      
+          property :minimum_predicted_click_through_rate_percentage_millis, :numeric_string => true, as: 'minimumPredictedClickThroughRatePercentageMillis'
+          property :minimum_predicted_viewability_percentage, :numeric_string => true, as: 'minimumPredictedViewabilityPercentage'
+          property :placement_targeting, as: 'placementTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::PackagePlacementTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::PackagePlacementTargeting::Representation
+      
+          property :publisher_provided_signals_targeting, as: 'publisherProvidedSignalsTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::PackagePublisherProvidedSignalsTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::PackagePublisherProvidedSignalsTargeting::Representation
+      
+          property :publisher_targeting, as: 'publisherTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::StringTargetingDimension, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::StringTargetingDimension::Representation
+      
+          property :vertical_targeting, as: 'verticalTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CriteriaTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CriteriaTargeting::Representation
+      
+          property :video_targeting, as: 'videoTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::PackageVideoTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::PackageVideoTargeting::Representation
+      
+        end
+      end
+      
+      class PackageVideoTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :included_content_delivery_method, as: 'includedContentDeliveryMethod'
+          property :included_maximum_ad_duration_targeting, as: 'includedMaximumAdDurationTargeting'
+          collection :included_mime_types, as: 'includedMimeTypes'
+          collection :included_playback_methods, as: 'includedPlaybackMethods'
+          property :included_player_size_targeting, as: 'includedPlayerSizeTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::VideoPlayerSizeTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::VideoPlayerSizeTargeting::Representation
+      
+          collection :included_position_types, as: 'includedPositionTypes'
+          property :minimum_predicted_completion_rate_percentage, :numeric_string => true, as: 'minimumPredictedCompletionRatePercentage'
+          property :plcmt_targeting, as: 'plcmtTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::VideoPlcmtTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::VideoPlcmtTargeting::Representation
       
         end
       end
@@ -1052,6 +1269,14 @@ module Google
         end
       end
       
+      class StringTargetingDimension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :selection_type, as: 'selectionType'
+          collection :values, as: 'values'
+        end
+      end
+      
       class SubscribeAuctionPackageRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1062,6 +1287,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :clients, as: 'clients'
+        end
+      end
+      
+      class TaxonomyTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :excluded_taxonomy_ids, as: 'excludedTaxonomyIds'
+          collection :targeted_taxonomy_ids, as: 'targetedTaxonomyIds'
         end
       end
       
@@ -1122,6 +1355,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :excluded_uris, as: 'excludedUris'
           collection :targeted_uris, as: 'targetedUris'
+        end
+      end
+      
+      class VideoPlayerSizeTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :minimum_height, :numeric_string => true, as: 'minimumHeight'
+          property :minimum_width, :numeric_string => true, as: 'minimumWidth'
+        end
+      end
+      
+      class VideoPlcmtTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :selection_type, as: 'selectionType'
+          collection :video_plcmt_types, as: 'videoPlcmtTypes'
         end
       end
       

@@ -1867,6 +1867,275 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Activates an existing curated package.
+        # @param [String] name
+        #   Required. The name of the curated package to activate. Format: `curators/`
+        #   accountId`/curatedPackages/`curatedPackageId``
+        # @param [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::ActivateCuratedPackageRequest] activate_curated_package_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def activate_curated_package(name, activate_curated_package_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:activate', options)
+          command.request_representation = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::ActivateCuratedPackageRequest::Representation
+          command.request_object = activate_curated_package_request_object
+          command.response_representation = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage::Representation
+          command.response_class = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new curated package.
+        # @param [String] parent
+        #   Required. The parent curator account where this curated package will be
+        #   created. Format: `curators/`accountId``
+        # @param [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage] curated_package_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_curator_curated_package(parent, curated_package_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/curatedPackages', options)
+          command.request_representation = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage::Representation
+          command.request_object = curated_package_object
+          command.response_representation = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage::Representation
+          command.response_class = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deactivates an existing curated package.
+        # @param [String] name
+        #   Required. The name of the curated package to deactivate. Format: `curators/`
+        #   accountId`/curatedPackages/`curatedPackageId``
+        # @param [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::DeactivateCuratedPackageRequest] deactivate_curated_package_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def deactivate_curated_package(name, deactivate_curated_package_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:deactivate', options)
+          command.request_representation = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::DeactivateCuratedPackageRequest::Representation
+          command.request_object = deactivate_curated_package_request_object
+          command.response_representation = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage::Representation
+          command.response_class = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a curated package given its resource name.
+        # @param [String] name
+        #   Required. The name of the curated package to retrieve. Format: `curators/`
+        #   accountId`/curatedPackages/`curatedPackageId``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_curator_curated_package(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage::Representation
+          command.response_class = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists curated packages owned by the specified curator.
+        # @param [String] parent
+        #   Required. The parent curator account which owns this collection of curated
+        #   packages. Format: `curators/`accountId``
+        # @param [String] filter
+        #   Optional. Optional query string using the [Cloud API list filtering syntax](/
+        #   authorized-buyers/apis/guides/list-filters). Supported columns for filtering
+        #   are: * displayName * createTime * updateTime * state * feeCpm.currencyCode *
+        #   feeCpm.units * feeCpm.nanos * floorPriceCpm.currencyCode * floorPriceCpm.units
+        #   * floorPriceCpm.nanos
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. The server may return fewer results than
+        #   requested. Max allowed page size is 500. If unspecified, the server will
+        #   default to 500.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListCuratedPackages` call.
+        #   Provide this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::ListCuratedPackagesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::ListCuratedPackagesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_curator_curated_packages(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/curatedPackages', options)
+          command.response_representation = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::ListCuratedPackagesResponse::Representation
+          command.response_class = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::ListCuratedPackagesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing curated package.
+        # @param [String] name
+        #   Identifier. The unique resource name for the curated package. Format: `
+        #   curators/`accountId`/curatedPackages/`curatedPackageId``
+        # @param [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage] curated_package_object
+        # @param [String] update_mask
+        #   Optional. List of fields to be updated. If empty or unspecified, the service
+        #   will update all fields populated in the update request excluding the output
+        #   only fields and primitive fields with default value. Note that explicit field
+        #   mask is required in order to reset a primitive field back to its default value,
+        #   for example, false for boolean fields, 0 for integer fields. A special field
+        #   mask consisting of a single path "*" can be used to indicate full replacement (
+        #   the equivalent of PUT method), updatable fields unset or unspecified in the
+        #   input will be cleared or set to default value. Output only fields will be
+        #   ignored regardless of the value of updateMask.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_curator_curated_package(name, curated_package_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage::Representation
+          command.request_object = curated_package_object
+          command.response_representation = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage::Representation
+          command.response_class = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::CuratedPackage
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all media planner accounts that the caller has access to. For curators,
+        # this will return all media planners that have accepted curator terms. For
+        # other accounts, attempting to list media planners will return an error.
+        # @param [String] filter
+        #   Optional query string using the [Cloud API list filtering syntax](/authorized-
+        #   buyers/apis/guides/list-filters). Supported columns for filtering are: * `name`
+        #   * `displayName` * `ancestorNames`
+        # @param [Fixnum] page_size
+        #   The maximum number of media planners to return. If unspecified, at most 100
+        #   media planners will be returned. The maximum value is 500; values above 500
+        #   will be coerced to 500.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. This value is
+        #   received from a previous `ListMediaPlanners` call in ListMediaPlannersResponse.
+        #   nextPageToken.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::ListMediaPlannersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::ListMediaPlannersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_media_planners(filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/mediaPlanners', options)
+          command.response_representation = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::ListMediaPlannersResponse::Representation
+          command.response_class = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::ListMediaPlannersResponse
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
