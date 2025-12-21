@@ -826,6 +826,104 @@ module Google
         end
       end
       
+      # The request for Firestore.ExecutePipeline.
+      class ExecutePipelineRequest
+        include Google::Apis::Core::Hashable
+      
+        # Options for creating a new transaction.
+        # Corresponds to the JSON property `newTransaction`
+        # @return [Google::Apis::FirestoreV1beta1::TransactionOptions]
+        attr_accessor :new_transaction
+      
+        # Execute the pipeline in a snapshot transaction at the given time. This must be
+        # a microsecond precision timestamp within the past one hour, or if Point-in-
+        # Time Recovery is enabled, can additionally be a whole minute timestamp within
+        # the past 7 days.
+        # Corresponds to the JSON property `readTime`
+        # @return [String]
+        attr_accessor :read_time
+      
+        # A Firestore query represented as an ordered list of operations / stages. This
+        # is considered the top-level function which plans and executes a query. It is
+        # logically equivalent to `query(stages, options)`, but prevents the client from
+        # having to build a function wrapper.
+        # Corresponds to the JSON property `structuredPipeline`
+        # @return [Google::Apis::FirestoreV1beta1::StructuredPipeline]
+        attr_accessor :structured_pipeline
+      
+        # Run the query within an already active transaction. The value here is the
+        # opaque transaction ID to execute the query in.
+        # Corresponds to the JSON property `transaction`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :transaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_transaction = args[:new_transaction] if args.key?(:new_transaction)
+          @read_time = args[:read_time] if args.key?(:read_time)
+          @structured_pipeline = args[:structured_pipeline] if args.key?(:structured_pipeline)
+          @transaction = args[:transaction] if args.key?(:transaction)
+        end
+      end
+      
+      # The response for Firestore.Execute.
+      class ExecutePipelineResponse
+        include Google::Apis::Core::Hashable
+      
+        # The time at which the results are valid. This is a (not strictly)
+        # monotonically increasing value across multiple responses in the same stream.
+        # The API guarantees that all previously returned results are still valid at the
+        # latest `execution_time`. This allows the API consumer to treat the query if it
+        # ran at the latest `execution_time` returned. If the query returns no results,
+        # a response with `execution_time` and no `results` will be sent, and this
+        # represents the time at which the operation was run.
+        # Corresponds to the JSON property `executionTime`
+        # @return [String]
+        attr_accessor :execution_time
+      
+        # Pipeline explain stats. Depending on the explain options in the original
+        # request, this can contain the optimized plan and / or execution stats.
+        # Corresponds to the JSON property `explainStats`
+        # @return [Google::Apis::FirestoreV1beta1::ExplainStats]
+        attr_accessor :explain_stats
+      
+        # An ordered batch of results returned executing a pipeline. The batch size is
+        # variable, and can even be zero for when only a partial progress message is
+        # returned. The fields present in the returned documents are only those that
+        # were explicitly requested in the pipeline, this includes those like `__name__`
+        # and `__update_time__`. This is explicitly a divergence from `Firestore.
+        # RunQuery` / `Firestore.GetDocument` RPCs which always return such fields even
+        # when they are not specified in the `mask`.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::FirestoreV1beta1::Document>]
+        attr_accessor :results
+      
+        # Newly created transaction identifier. This field is only specified as part of
+        # the first response from the server, alongside the `results` field when the
+        # original request specified ExecuteRequest.new_transaction.
+        # Corresponds to the JSON property `transaction`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :transaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_time = args[:execution_time] if args.key?(:execution_time)
+          @explain_stats = args[:explain_stats] if args.key?(:explain_stats)
+          @results = args[:results] if args.key?(:results)
+          @transaction = args[:transaction] if args.key?(:transaction)
+        end
+      end
+      
       # Execution statistics for the query.
       class ExecutionStats
         include Google::Apis::Core::Hashable
@@ -956,6 +1054,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @analyze = args[:analyze] if args.key?(:analyze)
+        end
+      end
+      
+      # Pipeline explain stats. Depending on the explain options in the original
+      # request, this can contain the optimized plan and / or execution stats.
+      class ExplainStats
+        include Google::Apis::Core::Hashable
+      
+        # The format depends on the `output_format` options in the request. Currently
+        # there are two supported options: `TEXT` and `JSON`. Both supply a `google.
+        # protobuf.StringValue`.
+        # Corresponds to the JSON property `data`
+        # @return [Hash<String,Object>]
+        attr_accessor :data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
         end
       end
       
@@ -1153,6 +1273,40 @@ module Google
           @limit = args[:limit] if args.key?(:limit)
           @query_vector = args[:query_vector] if args.key?(:query_vector)
           @vector_field = args[:vector_field] if args.key?(:vector_field)
+        end
+      end
+      
+      # Represents an unevaluated scalar expression. For example, the expression `like(
+      # user_name, "%alice%")` is represented as: ``` name: "like" args `
+      # field_reference: "user_name" ` args ` string_value: "%alice%" ` ```
+      class Function
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Ordered list of arguments the given function expects.
+        # Corresponds to the JSON property `args`
+        # @return [Array<Google::Apis::FirestoreV1beta1::Value>]
+        attr_accessor :args
+      
+        # Required. The name of the function to evaluate. **Requires:** * must be in
+        # snake case (lower case with underscore separator).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Optional named arguments that certain functions may support.
+        # Corresponds to the JSON property `options`
+        # @return [Hash<String,Google::Apis::FirestoreV1beta1::Value>]
+        attr_accessor :options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @name = args[:name] if args.key?(:name)
+          @options = args[:options] if args.key?(:options)
         end
       end
       
@@ -2211,6 +2365,25 @@ module Google
         end
       end
       
+      # A Firestore query represented as an ordered list of operations / stages.
+      class Pipeline
+        include Google::Apis::Core::Hashable
+      
+        # Required. Ordered list of stages to evaluate.
+        # Corresponds to the JSON property `stages`
+        # @return [Array<Google::Apis::FirestoreV1beta1::Stage>]
+        attr_accessor :stages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stages = args[:stages] if args.key?(:stages)
+        end
+      end
+      
       # Planning phase information for the query.
       class PlanSummary
         include Google::Apis::Core::Hashable
@@ -2574,6 +2747,43 @@ module Google
         end
       end
       
+      # A single operation within a pipeline. A stage is made up of a unique name, and
+      # a list of arguments. The exact number of arguments & types is dependent on the
+      # stage type. To give an example, the stage `filter(state = "MD")` would be
+      # encoded as: ``` name: "filter" args ` function_value ` name: "eq" args `
+      # field_reference_value: "state" ` args ` string_value: "MD" ` ` ` ``` See
+      # public documentation for the full list.
+      class Stage
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Ordered list of arguments the given stage expects.
+        # Corresponds to the JSON property `args`
+        # @return [Array<Google::Apis::FirestoreV1beta1::Value>]
+        attr_accessor :args
+      
+        # Required. The name of the stage to evaluate. **Requires:** * must be in snake
+        # case (lower case with underscore separator).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Optional named arguments that certain functions may support.
+        # Corresponds to the JSON property `options`
+        # @return [Hash<String,Google::Apis::FirestoreV1beta1::Value>]
+        attr_accessor :options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @name = args[:name] if args.key?(:name)
+          @options = args[:options] if args.key?(:options)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -2639,6 +2849,34 @@ module Google
         def update!(**args)
           @aggregations = args[:aggregations] if args.key?(:aggregations)
           @structured_query = args[:structured_query] if args.key?(:structured_query)
+        end
+      end
+      
+      # A Firestore query represented as an ordered list of operations / stages. This
+      # is considered the top-level function which plans and executes a query. It is
+      # logically equivalent to `query(stages, options)`, but prevents the client from
+      # having to build a function wrapper.
+      class StructuredPipeline
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional query-level arguments.
+        # Corresponds to the JSON property `options`
+        # @return [Hash<String,Google::Apis::FirestoreV1beta1::Value>]
+        attr_accessor :options
+      
+        # A Firestore query represented as an ordered list of operations / stages.
+        # Corresponds to the JSON property `pipeline`
+        # @return [Google::Apis::FirestoreV1beta1::Pipeline]
+        attr_accessor :pipeline
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @options = args[:options] if args.key?(:options)
+          @pipeline = args[:pipeline] if args.key?(:pipeline)
         end
       end
       
@@ -2970,6 +3208,21 @@ module Google
         # @return [Float]
         attr_accessor :double_value
       
+        # Value which references a field. This is considered relative (vs absolute)
+        # since it only refers to a field and not a field within a particular document. *
+        # *Requires:** * Must follow field reference limitations. * Not allowed to be
+        # used when writing documents.
+        # Corresponds to the JSON property `fieldReferenceValue`
+        # @return [String]
+        attr_accessor :field_reference_value
+      
+        # Represents an unevaluated scalar expression. For example, the expression `like(
+        # user_name, "%alice%")` is represented as: ``` name: "like" args `
+        # field_reference: "user_name" ` args ` string_value: "%alice%" ` ```
+        # Corresponds to the JSON property `functionValue`
+        # @return [Google::Apis::FirestoreV1beta1::Function]
+        attr_accessor :function_value
+      
         # An object that represents a latitude/longitude pair. This is expressed as a
         # pair of doubles to represent degrees latitude and degrees longitude. Unless
         # specified otherwise, this object must conform to the WGS84 standard. Values
@@ -2992,6 +3245,11 @@ module Google
         # Corresponds to the JSON property `nullValue`
         # @return [String]
         attr_accessor :null_value
+      
+        # A Firestore query represented as an ordered list of operations / stages.
+        # Corresponds to the JSON property `pipelineValue`
+        # @return [Google::Apis::FirestoreV1beta1::Pipeline]
+        attr_accessor :pipeline_value
       
         # A reference to a document. For example: `projects/`project_id`/databases/`
         # database_id`/documents/`document_path``.
@@ -3022,10 +3280,13 @@ module Google
           @boolean_value = args[:boolean_value] if args.key?(:boolean_value)
           @bytes_value = args[:bytes_value] if args.key?(:bytes_value)
           @double_value = args[:double_value] if args.key?(:double_value)
+          @field_reference_value = args[:field_reference_value] if args.key?(:field_reference_value)
+          @function_value = args[:function_value] if args.key?(:function_value)
           @geo_point_value = args[:geo_point_value] if args.key?(:geo_point_value)
           @integer_value = args[:integer_value] if args.key?(:integer_value)
           @map_value = args[:map_value] if args.key?(:map_value)
           @null_value = args[:null_value] if args.key?(:null_value)
+          @pipeline_value = args[:pipeline_value] if args.key?(:pipeline_value)
           @reference_value = args[:reference_value] if args.key?(:reference_value)
           @string_value = args[:string_value] if args.key?(:string_value)
           @timestamp_value = args[:timestamp_value] if args.key?(:timestamp_value)
