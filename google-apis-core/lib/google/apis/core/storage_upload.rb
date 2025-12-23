@@ -195,7 +195,7 @@ module Google
           success(result)
         rescue => e
           logger.warn {
-            "error occurred please use uploadId-#{response.headers['X-GUploader-UploadID']} to resume your upload , error==> #{e}"
+            "error occurred please use uploadId-#{response.headers['X-GUploader-UploadID']} to resume your upload"
           } unless response.nil?
           upload_io.pos = @offset
           error(e, rethrow: true)
