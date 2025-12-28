@@ -7194,6 +7194,15 @@ module Google
         attr_accessor :disable_required_field_validation
         alias_method :disable_required_field_validation?, :disable_required_field_validation
       
+        # Optional. Whether to enable FHIRPath validation for incoming resource types
+        # that have profiles configured for them in the `enabled_implementation_guides`
+        # list. Set this to true to enable checking incoming resources for conformance
+        # against FHIRPath requirements defined in the configured profiles.
+        # Corresponds to the JSON property `enableFhirpathProfileValidation`
+        # @return [Boolean]
+        attr_accessor :enable_fhirpath_profile_validation
+        alias_method :enable_fhirpath_profile_validation?, :enable_fhirpath_profile_validation
+      
         # A list of ImplementationGuide URLs in this FHIR store that are used to
         # configure the profiles to use for validation. For example, to use the US Core
         # profiles for validation, set `enabled_implementation_guides` to `["http://hl7.
@@ -7222,6 +7231,7 @@ module Google
           @disable_profile_validation = args[:disable_profile_validation] if args.key?(:disable_profile_validation)
           @disable_reference_type_validation = args[:disable_reference_type_validation] if args.key?(:disable_reference_type_validation)
           @disable_required_field_validation = args[:disable_required_field_validation] if args.key?(:disable_required_field_validation)
+          @enable_fhirpath_profile_validation = args[:enable_fhirpath_profile_validation] if args.key?(:enable_fhirpath_profile_validation)
           @enabled_implementation_guides = args[:enabled_implementation_guides] if args.key?(:enabled_implementation_guides)
         end
       end
