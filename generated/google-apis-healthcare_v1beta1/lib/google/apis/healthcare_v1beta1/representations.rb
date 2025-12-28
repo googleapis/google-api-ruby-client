@@ -3225,6 +3225,7 @@ module Google
           property :disable_profile_validation, as: 'disableProfileValidation'
           property :disable_reference_type_validation, as: 'disableReferenceTypeValidation'
           property :disable_required_field_validation, as: 'disableRequiredFieldValidation'
+          property :enable_fhirpath_profile_validation, as: 'enableFhirpathProfileValidation'
           collection :enabled_implementation_guides, as: 'enabledImplementationGuides'
         end
       end
