@@ -4763,6 +4763,12 @@ module Google
         # @return [String]
         attr_accessor :product_tax_category_code
       
+        # Regional age rating information. Currently this field is only supported for
+        # region code `US`.
+        # Corresponds to the JSON property `regionalProductAgeRatingInfos`
+        # @return [Array<Google::Apis::AndroidpublisherV3::RegionalProductAgeRatingInfo>]
+        attr_accessor :regional_product_age_rating_infos
+      
         # A mapping from region code to tax rate details. The keys are region codes as
         # defined by Unicode's "CLDR".
         # Corresponds to the JSON property `taxRateInfoByRegionCode`
@@ -4778,6 +4784,7 @@ module Google
           @eea_withdrawal_right_type = args[:eea_withdrawal_right_type] if args.key?(:eea_withdrawal_right_type)
           @is_tokenized_digital_asset = args[:is_tokenized_digital_asset] if args.key?(:is_tokenized_digital_asset)
           @product_tax_category_code = args[:product_tax_category_code] if args.key?(:product_tax_category_code)
+          @regional_product_age_rating_infos = args[:regional_product_age_rating_infos] if args.key?(:regional_product_age_rating_infos)
           @tax_rate_info_by_region_code = args[:tax_rate_info_by_region_code] if args.key?(:tax_rate_info_by_region_code)
         end
       end
@@ -5661,6 +5668,12 @@ module Google
         # @return [String]
         attr_accessor :product_tax_category_code
       
+        # Regional age rating information. Currently this field is only supported for
+        # region code `US`.
+        # Corresponds to the JSON property `regionalProductAgeRatingInfos`
+        # @return [Array<Google::Apis::AndroidpublisherV3::RegionalProductAgeRatingInfo>]
+        attr_accessor :regional_product_age_rating_infos
+      
         # Regional tax configuration.
         # Corresponds to the JSON property `regionalTaxConfigs`
         # @return [Array<Google::Apis::AndroidpublisherV3::RegionalTaxConfig>]
@@ -5674,6 +5687,7 @@ module Google
         def update!(**args)
           @is_tokenized_digital_asset = args[:is_tokenized_digital_asset] if args.key?(:is_tokenized_digital_asset)
           @product_tax_category_code = args[:product_tax_category_code] if args.key?(:product_tax_category_code)
+          @regional_product_age_rating_infos = args[:regional_product_age_rating_infos] if args.key?(:regional_product_age_rating_infos)
           @regional_tax_configs = args[:regional_tax_configs] if args.key?(:regional_tax_configs)
         end
       end
@@ -7028,6 +7042,31 @@ module Google
         def update!(**args)
           @oldest_allowed_price_version_time = args[:oldest_allowed_price_version_time] if args.key?(:oldest_allowed_price_version_time)
           @price_increase_type = args[:price_increase_type] if args.key?(:price_increase_type)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # Details about the age rating for a specific geographic region.
+      class RegionalProductAgeRatingInfo
+        include Google::Apis::Core::Hashable
+      
+        # The age rating tier of a product for the given region.
+        # Corresponds to the JSON property `productAgeRatingTier`
+        # @return [String]
+        attr_accessor :product_age_rating_tier
+      
+        # Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US".
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_age_rating_tier = args[:product_age_rating_tier] if args.key?(:product_age_rating_tier)
           @region_code = args[:region_code] if args.key?(:region_code)
         end
       end
@@ -8885,6 +8924,12 @@ module Google
         # @return [String]
         attr_accessor :product_tax_category_code
       
+        # Regional age rating information. Currently this field is only supported for
+        # region code `US`.
+        # Corresponds to the JSON property `regionalProductAgeRatingInfos`
+        # @return [Array<Google::Apis::AndroidpublisherV3::RegionalProductAgeRatingInfo>]
+        attr_accessor :regional_product_age_rating_infos
+      
         # A mapping from region code to tax rate details. The keys are region codes as
         # defined by Unicode's "CLDR".
         # Corresponds to the JSON property `taxRateInfoByRegionCode`
@@ -8900,6 +8945,7 @@ module Google
           @eea_withdrawal_right_type = args[:eea_withdrawal_right_type] if args.key?(:eea_withdrawal_right_type)
           @is_tokenized_digital_asset = args[:is_tokenized_digital_asset] if args.key?(:is_tokenized_digital_asset)
           @product_tax_category_code = args[:product_tax_category_code] if args.key?(:product_tax_category_code)
+          @regional_product_age_rating_infos = args[:regional_product_age_rating_infos] if args.key?(:regional_product_age_rating_infos)
           @tax_rate_info_by_region_code = args[:tax_rate_info_by_region_code] if args.key?(:tax_rate_info_by_region_code)
         end
       end
