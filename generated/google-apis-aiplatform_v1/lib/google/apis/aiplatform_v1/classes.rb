@@ -2291,6 +2291,11 @@ module Google
         # @return [String]
         attr_accessor :instances_format
       
+        # The Vertex Multimodal Dataset for the input content.
+        # Corresponds to the JSON property `vertexMultimodalDatasetSource`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexMultimodalDatasetSource]
+        attr_accessor :vertex_multimodal_dataset_source
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2300,6 +2305,7 @@ module Google
           @bigquery_source = args[:bigquery_source] if args.key?(:bigquery_source)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @instances_format = args[:instances_format] if args.key?(:instances_format)
+          @vertex_multimodal_dataset_source = args[:vertex_multimodal_dataset_source] if args.key?(:vertex_multimodal_dataset_source)
         end
       end
       
@@ -2399,6 +2405,11 @@ module Google
         # @return [String]
         attr_accessor :predictions_format
       
+        # The details for a Vertex Multimodal Dataset output.
+        # Corresponds to the JSON property `vertexMultimodalDatasetDestination`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexMultimodalDatasetDestination]
+        attr_accessor :vertex_multimodal_dataset_destination
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2408,6 +2419,7 @@ module Google
           @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
           @predictions_format = args[:predictions_format] if args.key?(:predictions_format)
+          @vertex_multimodal_dataset_destination = args[:vertex_multimodal_dataset_destination] if args.key?(:vertex_multimodal_dataset_destination)
         end
       end
       
@@ -2434,6 +2446,13 @@ module Google
         # @return [String]
         attr_accessor :gcs_output_directory
       
+        # Output only. The resource name of the Vertex Managed Dataset created, into
+        # which the prediction output is written. Format: `projects/`project`/locations/`
+        # location`/datasets/`dataset``
+        # Corresponds to the JSON property `vertexMultimodalDatasetName`
+        # @return [String]
+        attr_accessor :vertex_multimodal_dataset_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2443,6 +2462,7 @@ module Google
           @bigquery_output_dataset = args[:bigquery_output_dataset] if args.key?(:bigquery_output_dataset)
           @bigquery_output_table = args[:bigquery_output_table] if args.key?(:bigquery_output_table)
           @gcs_output_directory = args[:gcs_output_directory] if args.key?(:gcs_output_directory)
+          @vertex_multimodal_dataset_name = args[:vertex_multimodal_dataset_name] if args.key?(:vertex_multimodal_dataset_name)
         end
       end
       
@@ -46410,6 +46430,51 @@ module Google
         # Update properties of this object
         def update!(**args)
           @serving_config = args[:serving_config] if args.key?(:serving_config)
+        end
+      end
+      
+      # The details for a Vertex Multimodal Dataset output.
+      class GoogleCloudAiplatformV1VertexMultimodalDatasetDestination
+        include Google::Apis::Core::Hashable
+      
+        # The BigQuery location for the output content.
+        # Corresponds to the JSON property `bigqueryDestination`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQueryDestination]
+        attr_accessor :bigquery_destination
+      
+        # Optional. Display name of the output dataset.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
+          @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
+      # The Vertex Multimodal Dataset for the input content.
+      class GoogleCloudAiplatformV1VertexMultimodalDatasetSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the Vertex Dataset. Format: `projects/`project`/
+        # locations/`location`/datasets/`dataset``
+        # Corresponds to the JSON property `datasetName`
+        # @return [String]
+        attr_accessor :dataset_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_name = args[:dataset_name] if args.key?(:dataset_name)
         end
       end
       
