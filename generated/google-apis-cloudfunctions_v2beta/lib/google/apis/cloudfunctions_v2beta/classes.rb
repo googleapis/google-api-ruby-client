@@ -344,6 +344,31 @@ module Google
         end
       end
       
+      # Contains overrides related to the function's build configuration.
+      class BuildConfigOverrides
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the desired runtime for the new Cloud Run function. (e.g.,
+        # `"nodejs20"`, `"python312"`). Constraints: 1. This field CANNOT be used to
+        # change the runtime language (e.g., from `NODEJS` to `PYTHON`). The backend
+        # will enforce this. 2. This field can ONLY be used to upgrade the runtime
+        # version (e.g., `nodejs18` to `nodejs20`). Downgrading the version is not
+        # permitted. The backend will validate the version change. If provided and valid,
+        # this overrides the runtime of the Gen1 function.
+        # Corresponds to the JSON property `runtime`
+        # @return [String]
+        attr_accessor :runtime
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @runtime = args[:runtime] if args.key?(:runtime)
+        end
+      end
+      
       # Request for the `CommitFunctionUpgradeAsGen2` method.
       class CommitFunctionUpgradeAsGen2Request
         include Google::Apis::Core::Hashable
@@ -1896,6 +1921,27 @@ module Google
         end
       end
       
+      # Contains overrides related to the function's service configuration.
+      class ServiceConfigOverrides
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the maximum number of instances for the new Cloud Run
+        # function. If provided, this overrides the max_instance_count setting of the
+        # Gen1 function.
+        # Corresponds to the JSON property `maxInstanceCount`
+        # @return [Fixnum]
+        attr_accessor :max_instance_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_instance_count = args[:max_instance_count] if args.key?(:max_instance_count)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -1953,6 +1999,16 @@ module Google
       class SetupFunctionUpgradeConfigRequest
         include Google::Apis::Core::Hashable
       
+        # Contains overrides related to the function's build configuration.
+        # Corresponds to the JSON property `buildConfigOverrides`
+        # @return [Google::Apis::CloudfunctionsV2beta::BuildConfigOverrides]
+        attr_accessor :build_config_overrides
+      
+        # Contains overrides related to the function's service configuration.
+        # Corresponds to the JSON property `serviceConfigOverrides`
+        # @return [Google::Apis::CloudfunctionsV2beta::ServiceConfigOverrides]
+        attr_accessor :service_config_overrides
+      
         # Optional. The trigger's service account. The service account must have
         # permission to invoke Cloud Run services, the permission is `run.routes.invoke`.
         # If empty, defaults to the Compute Engine default service account: ``
@@ -1967,6 +2023,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @build_config_overrides = args[:build_config_overrides] if args.key?(:build_config_overrides)
+          @service_config_overrides = args[:service_config_overrides] if args.key?(:service_config_overrides)
           @trigger_service_account = args[:trigger_service_account] if args.key?(:trigger_service_account)
         end
       end
