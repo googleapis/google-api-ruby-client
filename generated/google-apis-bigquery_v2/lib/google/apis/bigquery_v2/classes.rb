@@ -765,8 +765,10 @@ module Google
         # Optional. The encoding of the values when the type is not STRING. Acceptable
         # encoding values are: TEXT - indicates values are alphanumeric text strings.
         # BINARY - indicates values are encoded using HBase Bytes.toBytes family of
-        # functions. 'encoding' can also be set at the column family level. However, the
-        # setting at this level takes precedence if 'encoding' is set at both levels.
+        # functions. PROTO_BINARY - indicates values are encoded using serialized proto
+        # messages. This can only be used in combination with JSON type. 'encoding' can
+        # also be set at the column family level. However, the setting at this level
+        # takes precedence if 'encoding' is set at both levels.
         # Corresponds to the JSON property `encoding`
         # @return [String]
         attr_accessor :encoding
@@ -786,6 +788,11 @@ module Google
         # @return [Boolean]
         attr_accessor :only_read_latest
         alias_method :only_read_latest?, :only_read_latest
+      
+        # Information related to a Bigtable protobuf column.
+        # Corresponds to the JSON property `protoConfig`
+        # @return [Google::Apis::BigqueryV2::BigtableProtoConfig]
+        attr_accessor :proto_config
       
         # [Required] Qualifier of the column. Columns in the parent column family that
         # has this exact qualifier are exposed as `.` field. If the qualifier is valid
@@ -823,6 +830,7 @@ module Google
           @encoding = args[:encoding] if args.key?(:encoding)
           @field_name = args[:field_name] if args.key?(:field_name)
           @only_read_latest = args[:only_read_latest] if args.key?(:only_read_latest)
+          @proto_config = args[:proto_config] if args.key?(:proto_config)
           @qualifier_encoded = args[:qualifier_encoded] if args.key?(:qualifier_encoded)
           @qualifier_string = args[:qualifier_string] if args.key?(:qualifier_string)
           @type = args[:type] if args.key?(:type)
@@ -844,8 +852,10 @@ module Google
         # Optional. The encoding of the values when the type is not STRING. Acceptable
         # encoding values are: TEXT - indicates values are alphanumeric text strings.
         # BINARY - indicates values are encoded using HBase Bytes.toBytes family of
-        # functions. This can be overridden for a specific column by listing that column
-        # in 'columns' and specifying an encoding for it.
+        # functions. PROTO_BINARY - indicates values are encoded using serialized proto
+        # messages. This can only be used in combination with JSON type. This can be
+        # overridden for a specific column by listing that column in 'columns' and
+        # specifying an encoding for it.
         # Corresponds to the JSON property `encoding`
         # @return [String]
         attr_accessor :encoding
@@ -863,6 +873,11 @@ module Google
         # @return [Boolean]
         attr_accessor :only_read_latest
         alias_method :only_read_latest?, :only_read_latest
+      
+        # Information related to a Bigtable protobuf column.
+        # Corresponds to the JSON property `protoConfig`
+        # @return [Google::Apis::BigqueryV2::BigtableProtoConfig]
+        attr_accessor :proto_config
       
         # Optional. The type to convert the value in cells of this column family. The
         # values are expected to be encoded using HBase Bytes.toBytes function when
@@ -884,6 +899,7 @@ module Google
           @encoding = args[:encoding] if args.key?(:encoding)
           @family_id = args[:family_id] if args.key?(:family_id)
           @only_read_latest = args[:only_read_latest] if args.key?(:only_read_latest)
+          @proto_config = args[:proto_config] if args.key?(:proto_config)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -937,6 +953,36 @@ module Google
           @ignore_unspecified_column_families = args[:ignore_unspecified_column_families] if args.key?(:ignore_unspecified_column_families)
           @output_column_families_as_json = args[:output_column_families_as_json] if args.key?(:output_column_families_as_json)
           @read_rowkey_as_string = args[:read_rowkey_as_string] if args.key?(:read_rowkey_as_string)
+        end
+      end
+      
+      # Information related to a Bigtable protobuf column.
+      class BigtableProtoConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The fully qualified proto message name of the protobuf. In the
+        # format of "foo.bar.Message".
+        # Corresponds to the JSON property `protoMessageName`
+        # @return [String]
+        attr_accessor :proto_message_name
+      
+        # Optional. The ID of the Bigtable SchemaBundle resource associated with this
+        # protobuf. The ID should be referred to within the parent table, e.g., `foo`
+        # rather than `projects/`project`/instances/`instance`/tables/`table`/
+        # schemaBundles/foo`. See [more details on Bigtable SchemaBundles](https://docs.
+        # cloud.google.com/bigtable/docs/create-manage-protobuf-schemas).
+        # Corresponds to the JSON property `schemaBundleId`
+        # @return [String]
+        attr_accessor :schema_bundle_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @proto_message_name = args[:proto_message_name] if args.key?(:proto_message_name)
+          @schema_bundle_id = args[:schema_bundle_id] if args.key?(:schema_bundle_id)
         end
       end
       
