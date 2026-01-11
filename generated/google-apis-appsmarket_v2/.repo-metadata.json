@@ -1,0 +1,7 @@
+{
+    "api_id": "appsmarket:v2",
+    "name_pretty": "Google Workspace Marketplace API",
+    "distribution_name": "google-apis-appsmarket_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}

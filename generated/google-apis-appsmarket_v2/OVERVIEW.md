@@ -1,6 +1,6 @@
-# Simple REST client for version V2 of the G Suite Marketplace API
+# Simple REST client for version V2 of the Google Workspace Marketplace API
 
-This is a simple client library for version V2 of the G Suite Marketplace API. It provides:
+This is a simple client library for version V2 of the Google Workspace Marketplace API. It provides:
 
 * A client object that connects to the HTTP/JSON REST endpoint for the service.
 * Ruby objects for data structures related to the service.
@@ -48,10 +48,10 @@ Once the gem is installed, you can load the client code and instantiate a client
 require "google/apis/appsmarket_v2"
 
 # Create a client object
-client = Google::Apis::AppsmarketV2::GoogleWorkspaceMarketplaceAPIService.new
+client = Google::Apis::AppsmarketV2::GSuiteMarketplaceAPIService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
@@ -60,12 +60,12 @@ See the class reference docs for information on the methods you can call from a 
 
 More detailed descriptions of the Google simple REST clients are available in two documents.
 
- *  The [Usage Guide](https://github.com/googleapis/google-api-ruby-client/blob/master/docs/usage-guide.md) discusses how to make API calls, how to use the provided data structures, and how to work the various features of the client library, including media upload and download, error handling, retries, pagination, and logging.
- *  The [Auth Guide](https://github.com/googleapis/google-api-ruby-client/blob/master/docs/auth-guide.md) discusses authentication in the client libraries, including API keys, OAuth 2.0, service accounts, and environment variables.
+ *  The [Usage Guide](https://github.com/googleapis/google-api-ruby-client/blob/main/docs/usage-guide.md) discusses how to make API calls, how to use the provided data structures, and how to work the various features of the client library, including media upload and download, error handling, retries, pagination, and logging.
+ *  The [Auth Guide](https://github.com/googleapis/google-api-ruby-client/blob/main/docs/auth-guide.md) discusses authentication in the client libraries, including API keys, OAuth 2.0, service accounts, and environment variables.
 
 (Note: the above documents are written for the simple REST clients in general, and their examples may not reflect the Appsmarket service in particular.)
 
-For reference information on specific calls in the G Suite Marketplace API, see the {Google::Apis::AppsmarketV2::GoogleWorkspaceMarketplaceAPIService class reference docs}.
+For reference information on specific calls in the Google Workspace Marketplace API, see the {Google::Apis::AppsmarketV2::GSuiteMarketplaceAPIService class reference docs}.
 
 ## Which client should I use?
 
@@ -79,13 +79,13 @@ Gem names for modern clients are often of the form `google-cloud-<service_name>`
 
 **For most users, we recommend the modern client, if one is available.** Compared with simple clients, modern clients are generally much easier to use and more Ruby-like, support more advanced features such as streaming and long-running operations, and often provide much better performance. You may consider using a simple client instead, if a modern client is not yet available for the service you want to use, or if you are not able to use gRPC on your infrastructure.
 
-The [product documentation](https://developers.google.com/apps-marketplace) may provide guidance regarding the preferred client library to use.
+The [product documentation](https://developers.google.com/workspace/marketplace) may provide guidance regarding the preferred client library to use.
 
 ## Supported Ruby versions
 
-This library is supported on Ruby 2.5+.
+This library is supported on Ruby 3.1+.
 
-Google provides official support for Ruby versions that are actively supported by Ruby Core -- that is, Ruby versions that are either in normal maintenance or in security maintenance, and not end of life. Currently, this means Ruby 2.5 and later. Older versions of Ruby _may_ still work, but are unsupported and not recommended. See https://www.ruby-lang.org/en/downloads/branches/ for details about the Ruby support schedule.
+Google provides official support for Ruby versions that are actively supported by Ruby Core -- that is, Ruby versions that are either in normal maintenance or in security maintenance, and not end of life. Older versions of Ruby _may_ still work, but are unsupported and not recommended. See https://www.ruby-lang.org/en/downloads/branches/ for details about the Ruby support schedule.
 
 ## License
 

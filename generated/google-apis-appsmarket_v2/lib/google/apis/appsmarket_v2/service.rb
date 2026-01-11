@@ -20,19 +20,21 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AppsmarketV2
-      # G Suite Marketplace API
+      # Google Workspace Marketplace API
       #
       # Lets your Google Workspace Marketplace applications integrate with Google's
-      #  licensing and billing services.
+      #  installtion and licensing services.
       #
       # @example
       #    require 'google/apis/appsmarket_v2'
       #
       #    Appsmarket = Google::Apis::AppsmarketV2 # Alias the module
-      #    service = Appsmarket::GoogleWorkspaceMarketplaceAPIService.new
+      #    service = Appsmarket::GSuiteMarketplaceAPIService.new
       #
-      # @see https://developers.google.com/apps-marketplace
-      class GoogleWorkspaceMarketplaceAPIService < Google::Apis::Core::BaseService
+      # @see https://developers.google.com/workspace/marketplace
+      class GSuiteMarketplaceAPIService < Google::Apis::Core::BaseService
+        DEFAULT_ENDPOINT_TEMPLATE = "https://appsmarket.$UNIVERSE_DOMAIN$/"
+
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -44,13 +46,13 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://appsmarket.googleapis.com/', '',
+          super(DEFAULT_ENDPOINT_TEMPLATE, '',
                 client_name: 'google-apis-appsmarket_v2',
                 client_version: Google::Apis::AppsmarketV2::GEM_VERSION)
           @batch_path = 'batch'
         end
         
-        # Get the status of a license for a customer to determine if they have access
+        # Gets the status of a license for a customer to determine if they have access
         # for a given app.
         # @param [String] application_id
         #   Application Id
@@ -84,44 +86,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get a list of licensing notifications with regards to a given app.
-        # @param [String] application_id
-        #   Application Id
-        # @param [Fixnum] max_results
-        # @param [String] start_token
-        # @param [Fixnum] timestamp
-        #   Timestamp in milliseconds since epoch
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AppsmarketV2::LicenseNotificationList] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AppsmarketV2::LicenseNotificationList]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_license_notifications(application_id, max_results: nil, start_token: nil, timestamp: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'appsmarket/v2/licenseNotification/{applicationId}', options)
-          command.response_representation = Google::Apis::AppsmarketV2::LicenseNotificationList::Representation
-          command.response_class = Google::Apis::AppsmarketV2::LicenseNotificationList
-          command.params['applicationId'] = application_id unless application_id.nil?
-          command.query['max-results'] = max_results unless max_results.nil?
-          command.query['start-token'] = start_token unless start_token.nil?
-          command.query['timestamp'] = timestamp unless timestamp.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Get the user's licensing status for their permission to use a given app.
+        # Gets the user's licensing status for their permission to use a given app.
         # @param [String] application_id
         #   Application Id
         # @param [String] user_id
