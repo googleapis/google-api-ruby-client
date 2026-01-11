@@ -3814,6 +3814,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LicenseParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LicenseResourceCommitment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4049,6 +4055,36 @@ module Google
       end
       
       class MultiMig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiMigMember
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiMigMemberList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiMigMemberStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4589,6 +4625,12 @@ module Google
       end
       
       class NetworkProfileNetworkFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkProfileNetworkFeaturesPredefinedSubnetworkRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7458,6 +7500,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoragePoolParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -15944,6 +15992,8 @@ module Google
           property :multi_tenant_only, as: 'multiTenantOnly'
           property :name, as: 'name'
           property :os_license, as: 'osLicense'
+          property :params, as: 'params', class: Google::Apis::ComputeBeta::LicenseParams, decorator: Google::Apis::ComputeBeta::LicenseParams::Representation
+      
           property :removable_from_disk, as: 'removableFromDisk'
           collection :required_coattached_licenses, as: 'requiredCoattachedLicenses'
           property :resource_requirements, as: 'resourceRequirements', class: Google::Apis::ComputeBeta::LicenseResourceRequirements, decorator: Google::Apis::ComputeBeta::LicenseResourceRequirements::Representation
@@ -15977,6 +16027,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class LicenseParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -16421,6 +16478,59 @@ module Google
         end
       end
       
+      class MultiMigMember
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :status, as: 'status', class: Google::Apis::ComputeBeta::MultiMigMemberStatus, decorator: Google::Apis::ComputeBeta::MultiMigMemberStatus::Representation
+      
+        end
+      end
+      
+      class MultiMigMemberList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::MultiMigMember, decorator: Google::Apis::ComputeBeta::MultiMigMember::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::MultiMigMemberList::Warning, decorator: Google::Apis::ComputeBeta::MultiMigMemberList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::MultiMigMemberList::Warning::Datum, decorator: Google::Apis::ComputeBeta::MultiMigMemberList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class MultiMigMemberStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_group_manager, as: 'instanceGroupManager'
+        end
+      end
+      
       class MultiMigResourcePolicies
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -16433,6 +16543,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :applied_accelerator_topologies, as: 'appliedAcceleratorTopologies', class: Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopology, decorator: Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopology::Representation
       
+          property :members_count, as: 'membersCount'
         end
       end
       
@@ -17105,6 +17216,7 @@ module Google
           property :ipv6_access_type, as: 'ipv6AccessType'
           property :ipv6_address, as: 'ipv6Address'
           property :kind, as: 'kind'
+          property :mac_address, as: 'macAddress'
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_attachment, as: 'networkAttachment'
@@ -17420,6 +17532,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :address_purposes, as: 'addressPurposes'
+          property :allow_address_creation, as: 'allowAddressCreation'
           property :allow_alias_ip_ranges, as: 'allowAliasIpRanges'
           property :allow_auto_mode_subnet, as: 'allowAutoModeSubnet'
           property :allow_class_d_firewalls, as: 'allowClassDFirewalls'
@@ -17432,6 +17545,7 @@ module Google
           property :allow_ip_forwarding, as: 'allowIpForwarding'
           property :allow_load_balancing, as: 'allowLoadBalancing'
           property :allow_multi_nic_in_same_network, as: 'allowMultiNicInSameNetwork'
+          property :allow_multi_nic_in_same_subnetwork, as: 'allowMultiNicInSameSubnetwork'
           property :allow_multicast, as: 'allowMulticast'
           property :allow_ncc, as: 'allowNcc'
           property :allow_network_migration, as: 'allowNetworkMigration'
@@ -17441,16 +17555,29 @@ module Google
           property :allow_same_network_unicast, as: 'allowSameNetworkUnicast'
           property :allow_static_routes, as: 'allowStaticRoutes'
           property :allow_sub_interfaces, as: 'allowSubInterfaces'
+          property :allow_subnetwork_creation, as: 'allowSubnetworkCreation'
+          property :allow_vpc_firewall_rules, as: 'allowVpcFirewallRules'
           property :allow_vpc_peering, as: 'allowVpcPeering'
           property :allow_vpn, as: 'allowVpn'
           collection :firewall_policy_types, as: 'firewallPolicyTypes'
           collection :interface_types, as: 'interfaceTypes'
           property :multicast, as: 'multicast'
+          property :predefined_network_internal_ipv6_range, as: 'predefinedNetworkInternalIpv6Range'
+          collection :predefined_subnetwork_ranges, as: 'predefinedSubnetworkRanges', class: Google::Apis::ComputeBeta::NetworkProfileNetworkFeaturesPredefinedSubnetworkRange, decorator: Google::Apis::ComputeBeta::NetworkProfileNetworkFeaturesPredefinedSubnetworkRange::Representation
+      
           collection :subnet_purposes, as: 'subnetPurposes'
           collection :subnet_stack_types, as: 'subnetStackTypes'
           collection :subnetwork_purposes, as: 'subnetworkPurposes'
           collection :subnetwork_stack_types, as: 'subnetworkStackTypes'
           property :unicast, as: 'unicast'
+        end
+      end
+      
+      class NetworkProfileNetworkFeaturesPredefinedSubnetworkRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ipv6_range, as: 'ipv6Range'
+          property :name_prefix, as: 'namePrefix'
         end
       end
       
@@ -22598,6 +22725,8 @@ module Google
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeBeta::StoragePoolParams, decorator: Google::Apis::ComputeBeta::StoragePoolParams::Representation
+      
           property :performance_provisioning_type, as: 'performanceProvisioningType'
           property :pool_provisioned_capacity_gb, :numeric_string => true, as: 'poolProvisionedCapacityGb'
           property :pool_provisioned_iops, :numeric_string => true, as: 'poolProvisionedIops'
@@ -22739,6 +22868,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class StoragePoolParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -24748,6 +24884,7 @@ module Google
       class VpnTunnel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_tier, as: 'capacityTier'
           property :cipher_suite, as: 'cipherSuite', class: Google::Apis::ComputeBeta::VpnTunnelCipherSuite, decorator: Google::Apis::ComputeBeta::VpnTunnelCipherSuite::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'

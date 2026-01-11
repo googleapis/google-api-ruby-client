@@ -32194,6 +32194,11 @@ module Google
         attr_accessor :os_license
         alias_method :os_license?, :os_license
       
+        # Additional license params.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeBeta::LicenseParams]
+        attr_accessor :params
+      
         # If true, this license can be removed from a disk's set of licenses, with no
         # replacement license needed.
         # Corresponds to the JSON property `removableFromDisk`
@@ -32262,6 +32267,7 @@ module Google
           @multi_tenant_only = args[:multi_tenant_only] if args.key?(:multi_tenant_only)
           @name = args[:name] if args.key?(:name)
           @os_license = args[:os_license] if args.key?(:os_license)
+          @params = args[:params] if args.key?(:params)
           @removable_from_disk = args[:removable_from_disk] if args.key?(:removable_from_disk)
           @required_coattached_licenses = args[:required_coattached_licenses] if args.key?(:required_coattached_licenses)
           @resource_requirements = args[:resource_requirements] if args.key?(:resource_requirements)
@@ -32377,6 +32383,32 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # Additional license params.
+      class LicenseParams
+        include Google::Apis::Core::Hashable
+      
+        # Input only. Resource manager tags to be bound to the license. Tag keys and
+        # values
+        # have the same definition as resource
+        # manager tags. Keys and values can be either in numeric format,
+        # such as `tagKeys/`tag_key_id`` and `tagValues/456` or in namespaced
+        # format such as ``org_id|project_id`/`tag_key_short_name`` and
+        # ``tag_value_short_name``. The field is ignored (both PUT &
+        # PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -34155,6 +34187,210 @@ module Google
         end
       end
       
+      # Represents a Multi-MIG member resource.
+      class MultiMigMember
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] Creation timestamp of this multi-MIG member
+        # inRFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # Output only. [Output only] The unique identifier for this resource type. The
+        # server
+        # generates this identifier.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Output only. Type of the resource. Alwayscompute#multiMigMember for a list of
+        # multi-MIG members.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Output only. [Output Only] Server-defined name for the multi-MIG member.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. [Output Only] The URL of the region where the multi-MIG resides.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Output only. [Output Only] Server-defined fully-qualified URL for this
+        # resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. [Output Only] The status of this multi-MIG member
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ComputeBeta::MultiMigMemberStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class MultiMigMemberList
+        include Google::Apis::Core::Hashable
+      
+        # Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of multi-MIG member resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeBeta::MultiMigMember>]
+        attr_accessor :items
+      
+        # Output only. Type of the resource. Alwayscompute#multiMigMember for a list of
+        # multi-MIG members.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # This token allows you to get the next page of results for
+        # list requests. If the number of results is larger thanmaxResults, use the
+        # nextPageToken as a value for
+        # the query parameter pageToken in the next list request.
+        # Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. [Output only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::MultiMigMemberList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute
+          # Engine returns NO_RESULTS_ON_PAGE if there
+          # are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key:
+          # value format. For example:
+          # "data": [
+          # `
+          # "key": "scope",
+          # "value": "zones/us-east1-d"
+          # `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::MultiMigMemberList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being
+            # returned. For example, for warnings where there are no results in a list
+            # request for a particular zone, this key might be scope and
+            # the key value might be the zone name. Other examples might be a key
+            # indicating a deprecated resource and a suggested replacement, or a
+            # warning about invalid network settings (for example, if an instance
+            # attempts to perform IP forwarding but is not enabled for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class MultiMigMemberStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] URL of member instance group manager
+        # Corresponds to the JSON property `instanceGroupManager`
+        # @return [String]
+        attr_accessor :instance_group_manager
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_group_manager = args[:instance_group_manager] if args.key?(:instance_group_manager)
+        end
+      end
+      
       # Resource policies message for a multi-MIG. Specifies the workload policy
       # configuration of the multi-MIG.
       class MultiMigResourcePolicies
@@ -34193,6 +34429,13 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::MultiMigStatusAcceleratorTopology>]
         attr_accessor :applied_accelerator_topologies
       
+        # Output only. [Output Only] The number of instance group manager members in
+        # this
+        # multi-MIG.
+        # Corresponds to the JSON property `membersCount`
+        # @return [Fixnum]
+        attr_accessor :members_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -34200,6 +34443,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @applied_accelerator_topologies = args[:applied_accelerator_topologies] if args.key?(:applied_accelerator_topologies)
+          @members_count = args[:members_count] if args.key?(:members_count)
         end
       end
       
@@ -37030,6 +37274,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Output only. [Output Only] MAC address assigned to this network interface.
+        # Corresponds to the JSON property `macAddress`
+        # @return [String]
+        attr_accessor :mac_address
+      
         # [Output Only] The name of the network interface, which is generated by the
         # server. For a VM, the network interface uses the nicN naming
         # format. Where N is a value between 0 and7. The default interface value is nic0.
@@ -37134,6 +37383,7 @@ module Google
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
           @kind = args[:kind] if args.key?(:kind)
+          @mac_address = args[:mac_address] if args.key?(:mac_address)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
@@ -38388,6 +38638,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :address_purposes
       
+        # Specifies whether address creation is allowed.
+        # Corresponds to the JSON property `allowAddressCreation`
+        # @return [String]
+        attr_accessor :allow_address_creation
+      
         # Specifies whether alias IP ranges (and secondary address ranges) are
         # allowed.
         # Corresponds to the JSON property `allowAliasIpRanges`
@@ -38450,6 +38705,11 @@ module Google
         # @return [String]
         attr_accessor :allow_multi_nic_in_same_network
       
+        # Specifies whether multi-nic in the same subnetwork is allowed.
+        # Corresponds to the JSON property `allowMultiNicInSameSubnetwork`
+        # @return [String]
+        attr_accessor :allow_multi_nic_in_same_subnetwork
+      
         # Specifies whether multicast is allowed.
         # Corresponds to the JSON property `allowMulticast`
         # @return [String]
@@ -38495,6 +38755,16 @@ module Google
         # @return [String]
         attr_accessor :allow_sub_interfaces
       
+        # Specifies whether subnetwork creation is allowed.
+        # Corresponds to the JSON property `allowSubnetworkCreation`
+        # @return [String]
+        attr_accessor :allow_subnetwork_creation
+      
+        # Specifies whether VPC firewall rules can be created under the network.
+        # Corresponds to the JSON property `allowVpcFirewallRules`
+        # @return [String]
+        attr_accessor :allow_vpc_firewall_rules
+      
         # Specifies whether VPC peering is allowed.
         # Corresponds to the JSON property `allowVpcPeering`
         # @return [String]
@@ -38520,6 +38790,16 @@ module Google
         # Corresponds to the JSON property `multicast`
         # @return [String]
         attr_accessor :multicast
+      
+        # Specifies a predefined internal IPv6 range for the network.
+        # Corresponds to the JSON property `predefinedNetworkInternalIpv6Range`
+        # @return [String]
+        attr_accessor :predefined_network_internal_ipv6_range
+      
+        # Predefined subnetwork ranges for the network.
+        # Corresponds to the JSON property `predefinedSubnetworkRanges`
+        # @return [Array<Google::Apis::ComputeBeta::NetworkProfileNetworkFeaturesPredefinedSubnetworkRange>]
+        attr_accessor :predefined_subnetwork_ranges
       
         # Specifies which subnetwork purposes are supported.
         # Corresponds to the JSON property `subnetPurposes`
@@ -38553,6 +38833,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @address_purposes = args[:address_purposes] if args.key?(:address_purposes)
+          @allow_address_creation = args[:allow_address_creation] if args.key?(:allow_address_creation)
           @allow_alias_ip_ranges = args[:allow_alias_ip_ranges] if args.key?(:allow_alias_ip_ranges)
           @allow_auto_mode_subnet = args[:allow_auto_mode_subnet] if args.key?(:allow_auto_mode_subnet)
           @allow_class_d_firewalls = args[:allow_class_d_firewalls] if args.key?(:allow_class_d_firewalls)
@@ -38565,6 +38846,7 @@ module Google
           @allow_ip_forwarding = args[:allow_ip_forwarding] if args.key?(:allow_ip_forwarding)
           @allow_load_balancing = args[:allow_load_balancing] if args.key?(:allow_load_balancing)
           @allow_multi_nic_in_same_network = args[:allow_multi_nic_in_same_network] if args.key?(:allow_multi_nic_in_same_network)
+          @allow_multi_nic_in_same_subnetwork = args[:allow_multi_nic_in_same_subnetwork] if args.key?(:allow_multi_nic_in_same_subnetwork)
           @allow_multicast = args[:allow_multicast] if args.key?(:allow_multicast)
           @allow_ncc = args[:allow_ncc] if args.key?(:allow_ncc)
           @allow_network_migration = args[:allow_network_migration] if args.key?(:allow_network_migration)
@@ -38574,16 +38856,45 @@ module Google
           @allow_same_network_unicast = args[:allow_same_network_unicast] if args.key?(:allow_same_network_unicast)
           @allow_static_routes = args[:allow_static_routes] if args.key?(:allow_static_routes)
           @allow_sub_interfaces = args[:allow_sub_interfaces] if args.key?(:allow_sub_interfaces)
+          @allow_subnetwork_creation = args[:allow_subnetwork_creation] if args.key?(:allow_subnetwork_creation)
+          @allow_vpc_firewall_rules = args[:allow_vpc_firewall_rules] if args.key?(:allow_vpc_firewall_rules)
           @allow_vpc_peering = args[:allow_vpc_peering] if args.key?(:allow_vpc_peering)
           @allow_vpn = args[:allow_vpn] if args.key?(:allow_vpn)
           @firewall_policy_types = args[:firewall_policy_types] if args.key?(:firewall_policy_types)
           @interface_types = args[:interface_types] if args.key?(:interface_types)
           @multicast = args[:multicast] if args.key?(:multicast)
+          @predefined_network_internal_ipv6_range = args[:predefined_network_internal_ipv6_range] if args.key?(:predefined_network_internal_ipv6_range)
+          @predefined_subnetwork_ranges = args[:predefined_subnetwork_ranges] if args.key?(:predefined_subnetwork_ranges)
           @subnet_purposes = args[:subnet_purposes] if args.key?(:subnet_purposes)
           @subnet_stack_types = args[:subnet_stack_types] if args.key?(:subnet_stack_types)
           @subnetwork_purposes = args[:subnetwork_purposes] if args.key?(:subnetwork_purposes)
           @subnetwork_stack_types = args[:subnetwork_stack_types] if args.key?(:subnetwork_stack_types)
           @unicast = args[:unicast] if args.key?(:unicast)
+        end
+      end
+      
+      # 
+      class NetworkProfileNetworkFeaturesPredefinedSubnetworkRange
+        include Google::Apis::Core::Hashable
+      
+        # The IPv6 range of the predefined subnetwork.
+        # Corresponds to the JSON property `ipv6Range`
+        # @return [String]
+        attr_accessor :ipv6_range
+      
+        # The naming prefix of the predefined subnetwork.
+        # Corresponds to the JSON property `namePrefix`
+        # @return [String]
+        attr_accessor :name_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ipv6_range = args[:ipv6_range] if args.key?(:ipv6_range)
+          @name_prefix = args[:name_prefix] if args.key?(:name_prefix)
         end
       end
       
@@ -59902,6 +60213,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Additional storage pool params.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeBeta::StoragePoolParams]
+        attr_accessor :params
+      
         # Provisioning type of the performance-related parameters of the pool,
         # such as throughput and IOPS.
         # Corresponds to the JSON property `performanceProvisioningType`
@@ -59986,6 +60302,7 @@ module Google
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @performance_provisioning_type = args[:performance_provisioning_type] if args.key?(:performance_provisioning_type)
           @pool_provisioned_capacity_gb = args[:pool_provisioned_capacity_gb] if args.key?(:pool_provisioned_capacity_gb)
           @pool_provisioned_iops = args[:pool_provisioned_iops] if args.key?(:pool_provisioned_iops)
@@ -60530,6 +60847,32 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Additional storage pool params.
+      class StoragePoolParams
+        include Google::Apis::Core::Hashable
+      
+        # Input only. Resource manager tags to be bound to the storage pool. Tag keys
+        # and values
+        # have the same definition as resource
+        # manager tags. Keys and values can be either in numeric format,
+        # such as `tagKeys/`tag_key_id`` and `tagValues/456` or in namespaced
+        # format such as ``org_id|project_id`/`tag_key_short_name`` and
+        # ``tag_value_short_name``. The field is ignored (both PUT &
+        # PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -69104,6 +69447,12 @@ module Google
       class VpnTunnel
         include Google::Apis::Core::Hashable
       
+        # Capacity tier of the VPN tunnel. This is used for IPsec over Interconnect
+        # tunnels to indicate different bandwidth limits.
+        # Corresponds to the JSON property `capacityTier`
+        # @return [String]
+        attr_accessor :capacity_tier
+      
         # User specified list of ciphers to use for the phase 1 and phase 2 of the
         # IKE protocol.
         # Corresponds to the JSON property `cipherSuite`
@@ -69319,6 +69668,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @capacity_tier = args[:capacity_tier] if args.key?(:capacity_tier)
           @cipher_suite = args[:cipher_suite] if args.key?(:cipher_suite)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
