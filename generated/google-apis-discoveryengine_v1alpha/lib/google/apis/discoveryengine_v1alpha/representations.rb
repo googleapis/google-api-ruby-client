@@ -5815,6 +5815,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customer_policy, as: 'customerPolicy', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AssistantCustomerPolicy, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AssistantCustomerPolicy::Representation
       
+          property :default_web_grounding_toggle_off, as: 'defaultWebGroundingToggleOff'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           hash :enabled_tools, as: 'enabledTools', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AssistantToolList, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AssistantToolList::Representation
@@ -8081,6 +8082,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customer_policy, as: 'customerPolicy', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicy, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicy::Representation
       
+          property :default_web_grounding_toggle_off, as: 'defaultWebGroundingToggleOff'
           property :description, as: 'description'
           property :disable_location_context, as: 'disableLocationContext'
           property :display_name, as: 'displayName'
@@ -8281,6 +8283,7 @@ module Google
           property :authorization_uri, as: 'authorizationUri'
           property :client_id, as: 'clientId'
           property :client_secret, as: 'clientSecret'
+          property :pkce_verification_enabled, as: 'pkceVerificationEnabled'
           collection :scopes, as: 'scopes'
           property :token_uri, as: 'tokenUri'
         end

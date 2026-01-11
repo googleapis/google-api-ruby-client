@@ -1003,6 +1003,19 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AssistantCustomerPolicy]
         attr_accessor :customer_policy
       
+        # Optional. This field controls the default web grounding toggle for end users
+        # if `web_grounding_type` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or `
+        # WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`. By default, this field is set to
+        # false. If `web_grounding_type` is `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or `
+        # WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web grounding
+        # enabled by default on UI. If true, grounding toggle will be disabled by
+        # default on UI. End users can still enable web grounding in the UI if web
+        # grounding is enabled.
+        # Corresponds to the JSON property `defaultWebGroundingToggleOff`
+        # @return [Boolean]
+        attr_accessor :default_web_grounding_toggle_off
+        alias_method :default_web_grounding_toggle_off?, :default_web_grounding_toggle_off
+      
         # Optional. Description for additional information. Expected to be shown on the
         # configuration UI, not to the users of the assistant.
         # Corresponds to the JSON property `description`
@@ -1052,6 +1065,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @customer_policy = args[:customer_policy] if args.key?(:customer_policy)
+          @default_web_grounding_toggle_off = args[:default_web_grounding_toggle_off] if args.key?(:default_web_grounding_toggle_off)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enabled_tools = args[:enabled_tools] if args.key?(:enabled_tools)
@@ -9391,6 +9405,19 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAssistantCustomerPolicy]
         attr_accessor :customer_policy
       
+        # Optional. This field controls the default web grounding toggle for end users
+        # if `web_grounding_type` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or `
+        # WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`. By default, this field is set to
+        # false. If `web_grounding_type` is `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or `
+        # WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web grounding
+        # enabled by default on UI. If true, grounding toggle will be disabled by
+        # default on UI. End users can still enable web grounding in the UI if web
+        # grounding is enabled.
+        # Corresponds to the JSON property `defaultWebGroundingToggleOff`
+        # @return [Boolean]
+        attr_accessor :default_web_grounding_toggle_off
+        alias_method :default_web_grounding_toggle_off?, :default_web_grounding_toggle_off
+      
         # Optional. Description for additional information. Expected to be shown on the
         # configuration UI, not to the users of the assistant.
         # Corresponds to the JSON property `description`
@@ -9447,6 +9474,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @customer_policy = args[:customer_policy] if args.key?(:customer_policy)
+          @default_web_grounding_toggle_off = args[:default_web_grounding_toggle_off] if args.key?(:default_web_grounding_toggle_off)
           @description = args[:description] if args.key?(:description)
           @disable_location_context = args[:disable_location_context] if args.key?(:disable_location_context)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -10079,6 +10107,13 @@ module Google
         # @return [String]
         attr_accessor :client_secret
       
+        # Optional. Whether to enable PKCE verification. https://datatracker.ietf.org/
+        # doc/html/rfc7636#section-3.1/
+        # Corresponds to the JSON property `pkceVerificationEnabled`
+        # @return [Boolean]
+        attr_accessor :pkce_verification_enabled
+        alias_method :pkce_verification_enabled?, :pkce_verification_enabled
+      
         # Required. The scopes to request. Example: `https://www.googleapis.com/auth/
         # calendar.events`
         # Corresponds to the JSON property `scopes`
@@ -10100,6 +10135,7 @@ module Google
           @authorization_uri = args[:authorization_uri] if args.key?(:authorization_uri)
           @client_id = args[:client_id] if args.key?(:client_id)
           @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @pkce_verification_enabled = args[:pkce_verification_enabled] if args.key?(:pkce_verification_enabled)
           @scopes = args[:scopes] if args.key?(:scopes)
           @token_uri = args[:token_uri] if args.key?(:token_uri)
         end
