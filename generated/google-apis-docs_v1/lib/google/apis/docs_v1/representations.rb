@@ -22,6 +22,18 @@ module Google
   module Apis
     module DocsV1
       
+      class AddDocumentTabRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddDocumentTabResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutoText
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +215,12 @@ module Google
       end
       
       class DeletePositionedObjectRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteTabRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -958,6 +976,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateDocumentTabPropertiesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateParagraphStyleRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1004,6 +1028,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddDocumentTabRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tab_properties, as: 'tabProperties', class: Google::Apis::DocsV1::TabProperties, decorator: Google::Apis::DocsV1::TabProperties::Representation
+      
+        end
+      end
+      
+      class AddDocumentTabResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tab_properties, as: 'tabProperties', class: Google::Apis::DocsV1::TabProperties, decorator: Google::Apis::DocsV1::TabProperties::Representation
+      
+        end
       end
       
       class AutoText
@@ -1293,6 +1333,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :object_id_prop, as: 'objectId'
+          property :tab_id, as: 'tabId'
+        end
+      end
+      
+      class DeleteTabRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :tab_id, as: 'tabId'
         end
       end
@@ -2256,6 +2303,8 @@ module Google
       class Request
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_document_tab, as: 'addDocumentTab', class: Google::Apis::DocsV1::AddDocumentTabRequest, decorator: Google::Apis::DocsV1::AddDocumentTabRequest::Representation
+      
           property :create_footer, as: 'createFooter', class: Google::Apis::DocsV1::CreateFooterRequest, decorator: Google::Apis::DocsV1::CreateFooterRequest::Representation
       
           property :create_footnote, as: 'createFootnote', class: Google::Apis::DocsV1::CreateFootnoteRequest, decorator: Google::Apis::DocsV1::CreateFootnoteRequest::Representation
@@ -2277,6 +2326,8 @@ module Google
           property :delete_paragraph_bullets, as: 'deleteParagraphBullets', class: Google::Apis::DocsV1::DeleteParagraphBulletsRequest, decorator: Google::Apis::DocsV1::DeleteParagraphBulletsRequest::Representation
       
           property :delete_positioned_object, as: 'deletePositionedObject', class: Google::Apis::DocsV1::DeletePositionedObjectRequest, decorator: Google::Apis::DocsV1::DeletePositionedObjectRequest::Representation
+      
+          property :delete_tab, as: 'deleteTab', class: Google::Apis::DocsV1::DeleteTabRequest, decorator: Google::Apis::DocsV1::DeleteTabRequest::Representation
       
           property :delete_table_column, as: 'deleteTableColumn', class: Google::Apis::DocsV1::DeleteTableColumnRequest, decorator: Google::Apis::DocsV1::DeleteTableColumnRequest::Representation
       
@@ -2314,6 +2365,8 @@ module Google
       
           property :update_document_style, as: 'updateDocumentStyle', class: Google::Apis::DocsV1::UpdateDocumentStyleRequest, decorator: Google::Apis::DocsV1::UpdateDocumentStyleRequest::Representation
       
+          property :update_document_tab_properties, as: 'updateDocumentTabProperties', class: Google::Apis::DocsV1::UpdateDocumentTabPropertiesRequest, decorator: Google::Apis::DocsV1::UpdateDocumentTabPropertiesRequest::Representation
+      
           property :update_paragraph_style, as: 'updateParagraphStyle', class: Google::Apis::DocsV1::UpdateParagraphStyleRequest, decorator: Google::Apis::DocsV1::UpdateParagraphStyleRequest::Representation
       
           property :update_section_style, as: 'updateSectionStyle', class: Google::Apis::DocsV1::UpdateSectionStyleRequest, decorator: Google::Apis::DocsV1::UpdateSectionStyleRequest::Representation
@@ -2332,6 +2385,8 @@ module Google
       class Response
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_document_tab, as: 'addDocumentTab', class: Google::Apis::DocsV1::AddDocumentTabResponse, decorator: Google::Apis::DocsV1::AddDocumentTabResponse::Representation
+      
           property :create_footer, as: 'createFooter', class: Google::Apis::DocsV1::CreateFooterResponse, decorator: Google::Apis::DocsV1::CreateFooterResponse::Representation
       
           property :create_footnote, as: 'createFootnote', class: Google::Apis::DocsV1::CreateFootnoteResponse, decorator: Google::Apis::DocsV1::CreateFootnoteResponse::Representation
@@ -2891,6 +2946,15 @@ module Google
       
           property :fields, as: 'fields'
           property :tab_id, as: 'tabId'
+        end
+      end
+      
+      class UpdateDocumentTabPropertiesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fields, as: 'fields'
+          property :tab_properties, as: 'tabProperties', class: Google::Apis::DocsV1::TabProperties, decorator: Google::Apis::DocsV1::TabProperties::Representation
+      
         end
       end
       

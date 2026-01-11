@@ -22,6 +22,45 @@ module Google
   module Apis
     module DocsV1
       
+      # Adds a document tab. When a tab is added at a given index, all subsequent tabs'
+      # indexes are incremented.
+      class AddDocumentTabRequest
+        include Google::Apis::Core::Hashable
+      
+        # Properties of a tab.
+        # Corresponds to the JSON property `tabProperties`
+        # @return [Google::Apis::DocsV1::TabProperties]
+        attr_accessor :tab_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tab_properties = args[:tab_properties] if args.key?(:tab_properties)
+        end
+      end
+      
+      # The result of adding a document tab.
+      class AddDocumentTabResponse
+        include Google::Apis::Core::Hashable
+      
+        # Properties of a tab.
+        # Corresponds to the JSON property `tabProperties`
+        # @return [Google::Apis::DocsV1::TabProperties]
+        attr_accessor :tab_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tab_properties = args[:tab_properties] if args.key?(:tab_properties)
+        end
+      end
+      
       # A ParagraphElement representing a spot in the text that's dynamically replaced
       # with content that can change over time, like a page number.
       class AutoText
@@ -1042,6 +1081,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
+        end
+      end
+      
+      # Deletes a tab. If the tab has child tabs, they are deleted as well.
+      class DeleteTabRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the tab to delete.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @tab_id = args[:tab_id] if args.key?(:tab_id)
         end
       end
@@ -4606,6 +4664,12 @@ module Google
       class Request
         include Google::Apis::Core::Hashable
       
+        # Adds a document tab. When a tab is added at a given index, all subsequent tabs'
+        # indexes are incremented.
+        # Corresponds to the JSON property `addDocumentTab`
+        # @return [Google::Apis::DocsV1::AddDocumentTabRequest]
+        attr_accessor :add_document_tab
+      
         # Creates a Footer. The new footer is applied to the SectionStyle at the
         # location of the SectionBreak if specified, otherwise it is applied to the
         # DocumentStyle. If a footer of the specified type already exists, a 400 bad
@@ -4676,6 +4740,11 @@ module Google
         # Corresponds to the JSON property `deletePositionedObject`
         # @return [Google::Apis::DocsV1::DeletePositionedObjectRequest]
         attr_accessor :delete_positioned_object
+      
+        # Deletes a tab. If the tab has child tabs, they are deleted as well.
+        # Corresponds to the JSON property `deleteTab`
+        # @return [Google::Apis::DocsV1::DeleteTabRequest]
+        attr_accessor :delete_tab
       
         # Deletes a column from a table.
         # Corresponds to the JSON property `deleteTableColumn`
@@ -4776,6 +4845,11 @@ module Google
         # @return [Google::Apis::DocsV1::UpdateDocumentStyleRequest]
         attr_accessor :update_document_style
       
+        # Update the properties of a document tab.
+        # Corresponds to the JSON property `updateDocumentTabProperties`
+        # @return [Google::Apis::DocsV1::UpdateDocumentTabPropertiesRequest]
+        attr_accessor :update_document_tab_properties
+      
         # Update the styling of all paragraphs that overlap with the given range.
         # Corresponds to the JSON property `updateParagraphStyle`
         # @return [Google::Apis::DocsV1::UpdateParagraphStyleRequest]
@@ -4812,6 +4886,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @add_document_tab = args[:add_document_tab] if args.key?(:add_document_tab)
           @create_footer = args[:create_footer] if args.key?(:create_footer)
           @create_footnote = args[:create_footnote] if args.key?(:create_footnote)
           @create_header = args[:create_header] if args.key?(:create_header)
@@ -4823,6 +4898,7 @@ module Google
           @delete_named_range = args[:delete_named_range] if args.key?(:delete_named_range)
           @delete_paragraph_bullets = args[:delete_paragraph_bullets] if args.key?(:delete_paragraph_bullets)
           @delete_positioned_object = args[:delete_positioned_object] if args.key?(:delete_positioned_object)
+          @delete_tab = args[:delete_tab] if args.key?(:delete_tab)
           @delete_table_column = args[:delete_table_column] if args.key?(:delete_table_column)
           @delete_table_row = args[:delete_table_row] if args.key?(:delete_table_row)
           @insert_date = args[:insert_date] if args.key?(:insert_date)
@@ -4841,6 +4917,7 @@ module Google
           @replace_named_range_content = args[:replace_named_range_content] if args.key?(:replace_named_range_content)
           @unmerge_table_cells = args[:unmerge_table_cells] if args.key?(:unmerge_table_cells)
           @update_document_style = args[:update_document_style] if args.key?(:update_document_style)
+          @update_document_tab_properties = args[:update_document_tab_properties] if args.key?(:update_document_tab_properties)
           @update_paragraph_style = args[:update_paragraph_style] if args.key?(:update_paragraph_style)
           @update_section_style = args[:update_section_style] if args.key?(:update_section_style)
           @update_table_cell_style = args[:update_table_cell_style] if args.key?(:update_table_cell_style)
@@ -4853,6 +4930,11 @@ module Google
       # A single response from an update.
       class Response
         include Google::Apis::Core::Hashable
+      
+        # The result of adding a document tab.
+        # Corresponds to the JSON property `addDocumentTab`
+        # @return [Google::Apis::DocsV1::AddDocumentTabResponse]
+        attr_accessor :add_document_tab
       
         # The result of creating a footer.
         # Corresponds to the JSON property `createFooter`
@@ -4895,6 +4977,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @add_document_tab = args[:add_document_tab] if args.key?(:add_document_tab)
           @create_footer = args[:create_footer] if args.key?(:create_footer)
           @create_footnote = args[:create_footnote] if args.key?(:create_footnote)
           @create_header = args[:create_header] if args.key?(:create_header)
@@ -5898,7 +5981,7 @@ module Google
         # @return [String]
         attr_accessor :parent_tab_id
       
-        # Output only. The ID of the tab. This field can't be changed.
+        # The immutable ID of the tab.
         # Corresponds to the JSON property `tabId`
         # @return [String]
         attr_accessor :tab_id
@@ -6865,6 +6948,33 @@ module Google
           @document_style = args[:document_style] if args.key?(:document_style)
           @fields = args[:fields] if args.key?(:fields)
           @tab_id = args[:tab_id] if args.key?(:tab_id)
+        end
+      end
+      
+      # Update the properties of a document tab.
+      class UpdateDocumentTabPropertiesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The fields that should be updated. At least one field must be specified. The
+        # root `tab_properties` is implied and should not be specified. A single `"*"`
+        # can be used as short-hand for listing every field.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        # Properties of a tab.
+        # Corresponds to the JSON property `tabProperties`
+        # @return [Google::Apis::DocsV1::TabProperties]
+        attr_accessor :tab_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+          @tab_properties = args[:tab_properties] if args.key?(:tab_properties)
         end
       end
       
