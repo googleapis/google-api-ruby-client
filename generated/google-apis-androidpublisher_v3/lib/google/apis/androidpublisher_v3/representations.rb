@@ -1354,6 +1354,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionalProductAgeRatingInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionalSubscriptionOfferConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3426,6 +3432,8 @@ module Google
           property :eea_withdrawal_right_type, as: 'eeaWithdrawalRightType'
           property :is_tokenized_digital_asset, as: 'isTokenizedDigitalAsset'
           property :product_tax_category_code, as: 'productTaxCategoryCode'
+          collection :regional_product_age_rating_infos, as: 'regionalProductAgeRatingInfos', class: Google::Apis::AndroidpublisherV3::RegionalProductAgeRatingInfo, decorator: Google::Apis::AndroidpublisherV3::RegionalProductAgeRatingInfo::Representation
+      
           hash :tax_rate_info_by_region_code, as: 'taxRateInfoByRegionCode', class: Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo, decorator: Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo::Representation
       
         end
@@ -3695,6 +3703,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_tokenized_digital_asset, as: 'isTokenizedDigitalAsset'
           property :product_tax_category_code, as: 'productTaxCategoryCode'
+          collection :regional_product_age_rating_infos, as: 'regionalProductAgeRatingInfos', class: Google::Apis::AndroidpublisherV3::RegionalProductAgeRatingInfo, decorator: Google::Apis::AndroidpublisherV3::RegionalProductAgeRatingInfo::Representation
+      
           collection :regional_tax_configs, as: 'regionalTaxConfigs', class: Google::Apis::AndroidpublisherV3::RegionalTaxConfig, decorator: Google::Apis::AndroidpublisherV3::RegionalTaxConfig::Representation
       
         end
@@ -4089,6 +4099,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :oldest_allowed_price_version_time, as: 'oldestAllowedPriceVersionTime'
           property :price_increase_type, as: 'priceIncreaseType'
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class RegionalProductAgeRatingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product_age_rating_tier, as: 'productAgeRatingTier'
           property :region_code, as: 'regionCode'
         end
       end
@@ -4626,6 +4644,8 @@ module Google
           property :eea_withdrawal_right_type, as: 'eeaWithdrawalRightType'
           property :is_tokenized_digital_asset, as: 'isTokenizedDigitalAsset'
           property :product_tax_category_code, as: 'productTaxCategoryCode'
+          collection :regional_product_age_rating_infos, as: 'regionalProductAgeRatingInfos', class: Google::Apis::AndroidpublisherV3::RegionalProductAgeRatingInfo, decorator: Google::Apis::AndroidpublisherV3::RegionalProductAgeRatingInfo::Representation
+      
           hash :tax_rate_info_by_region_code, as: 'taxRateInfoByRegionCode', class: Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo, decorator: Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo::Representation
       
         end
