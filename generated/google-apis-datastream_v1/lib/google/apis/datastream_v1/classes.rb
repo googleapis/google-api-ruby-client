@@ -655,19 +655,20 @@ module Google
         # @return [Google::Apis::DatastreamV1::ConnectionProfile]
         attr_accessor :connection_profile
       
-        # A reference to an existing connection profile.
+        # Optional. A reference to an existing connection profile.
         # Corresponds to the JSON property `connectionProfileName`
         # @return [String]
         attr_accessor :connection_profile_name
       
-        # Whether to retrieve the full hierarchy of data objects (TRUE) or only the
-        # current level (FALSE).
+        # Optional. Whether to retrieve the full hierarchy of data objects (TRUE) or
+        # only the current level (FALSE).
         # Corresponds to the JSON property `fullHierarchy`
         # @return [Boolean]
         attr_accessor :full_hierarchy
         alias_method :full_hierarchy?, :full_hierarchy
       
-        # The number of hierarchy levels below the current level to be retrieved.
+        # Optional. The number of hierarchy levels below the current level to be
+        # retrieved.
         # Corresponds to the JSON property `hierarchyDepth`
         # @return [Fixnum]
         attr_accessor :hierarchy_depth
