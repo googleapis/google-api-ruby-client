@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigtableProtoConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BinaryClassificationMetrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1578,6 +1584,8 @@ module Google
           property :encoding, as: 'encoding'
           property :field_name, as: 'fieldName'
           property :only_read_latest, as: 'onlyReadLatest'
+          property :proto_config, as: 'protoConfig', class: Google::Apis::BigqueryV2::BigtableProtoConfig, decorator: Google::Apis::BigqueryV2::BigtableProtoConfig::Representation
+      
           property :qualifier_encoded, :base64 => true, as: 'qualifierEncoded'
           property :qualifier_string, as: 'qualifierString'
           property :type, as: 'type'
@@ -1592,6 +1600,8 @@ module Google
           property :encoding, as: 'encoding'
           property :family_id, as: 'familyId'
           property :only_read_latest, as: 'onlyReadLatest'
+          property :proto_config, as: 'protoConfig', class: Google::Apis::BigqueryV2::BigtableProtoConfig, decorator: Google::Apis::BigqueryV2::BigtableProtoConfig::Representation
+      
           property :type, as: 'type'
         end
       end
@@ -1604,6 +1614,14 @@ module Google
           property :ignore_unspecified_column_families, as: 'ignoreUnspecifiedColumnFamilies'
           property :output_column_families_as_json, as: 'outputColumnFamiliesAsJson'
           property :read_rowkey_as_string, as: 'readRowkeyAsString'
+        end
+      end
+      
+      class BigtableProtoConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :proto_message_name, as: 'protoMessageName'
+          property :schema_bundle_id, as: 'schemaBundleId'
         end
       end
       
