@@ -1646,7 +1646,7 @@ module Google
           property :stack_trace, as: 'stackTrace', class: Google::Apis::ToolresultsV1beta3::StackTrace, decorator: Google::Apis::ToolresultsV1beta3::StackTrace::Representation
       
           property :type, as: 'type'
-          property :warning, as: 'warning', class: Google::Apis::ToolresultsV1beta3::Any, decorator: Google::Apis::ToolresultsV1beta3::Any::Representation
+          property :warning_migration, as: 'warning_migration', class: Google::Apis::ToolresultsV1beta3::Any, decorator: Google::Apis::ToolresultsV1beta3::Any::Representation
       
         end
       end
