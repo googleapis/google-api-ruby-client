@@ -604,6 +604,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceNetworkPassThroughLbTrafficPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3358,6 +3370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LicenseParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LicenseResourceCommitment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3941,6 +3959,12 @@ module Google
       end
       
       class NetworkProfileNetworkFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkProfileNetworkFeaturesPredefinedSubnetworkRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6520,6 +6544,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StoragePoolParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StoragePoolResourceStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8624,6 +8654,8 @@ module Google
           hash :metadatas, as: 'metadatas'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_pass_through_lb_traffic_policy, as: 'networkPassThroughLbTrafficPolicy', class: Google::Apis::ComputeV1::BackendServiceNetworkPassThroughLbTrafficPolicy, decorator: Google::Apis::ComputeV1::BackendServiceNetworkPassThroughLbTrafficPolicy::Representation
+      
           property :outlier_detection, as: 'outlierDetection', class: Google::Apis::ComputeV1::OutlierDetection, decorator: Google::Apis::ComputeV1::OutlierDetection::Representation
       
           property :params, as: 'params', class: Google::Apis::ComputeV1::BackendServiceParams, decorator: Google::Apis::ComputeV1::BackendServiceParams::Representation
@@ -8898,6 +8930,22 @@ module Google
           collection :optional_fields, as: 'optionalFields'
           property :optional_mode, as: 'optionalMode'
           property :sample_rate, as: 'sampleRate'
+        end
+      end
+      
+      class BackendServiceNetworkPassThroughLbTrafficPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :zonal_affinity, as: 'zonalAffinity', class: Google::Apis::ComputeV1::BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity, decorator: Google::Apis::ComputeV1::BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity::Representation
+      
+        end
+      end
+      
+      class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :spillover, as: 'spillover'
+          property :spillover_ratio, as: 'spilloverRatio'
         end
       end
       
@@ -10211,6 +10259,7 @@ module Google
           collection :dest_address_groups, as: 'destAddressGroups'
           collection :dest_fqdns, as: 'destFqdns'
           collection :dest_ip_ranges, as: 'destIpRanges'
+          property :dest_network_context, as: 'destNetworkContext'
           property :dest_network_type, as: 'destNetworkType'
           collection :dest_region_codes, as: 'destRegionCodes'
           collection :dest_threat_intelligences, as: 'destThreatIntelligences'
@@ -10219,6 +10268,7 @@ module Google
           collection :src_address_groups, as: 'srcAddressGroups'
           collection :src_fqdns, as: 'srcFqdns'
           collection :src_ip_ranges, as: 'srcIpRanges'
+          property :src_network_context, as: 'srcNetworkContext'
           property :src_network_type, as: 'srcNetworkType'
           collection :src_networks, as: 'srcNetworks'
           collection :src_region_codes, as: 'srcRegionCodes'
@@ -14042,6 +14092,8 @@ module Google
           property :multi_tenant_only, as: 'multiTenantOnly'
           property :name, as: 'name'
           property :os_license, as: 'osLicense'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::LicenseParams, decorator: Google::Apis::ComputeV1::LicenseParams::Representation
+      
           property :removable_from_disk, as: 'removableFromDisk'
           collection :required_coattached_licenses, as: 'requiredCoattachedLicenses'
           property :resource_requirements, as: 'resourceRequirements', class: Google::Apis::ComputeV1::LicenseResourceRequirements, decorator: Google::Apis::ComputeV1::LicenseResourceRequirements::Representation
@@ -14075,6 +14127,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class LicenseParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -15170,6 +15229,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :address_purposes, as: 'addressPurposes'
+          property :allow_address_creation, as: 'allowAddressCreation'
           property :allow_alias_ip_ranges, as: 'allowAliasIpRanges'
           property :allow_auto_mode_subnet, as: 'allowAutoModeSubnet'
           property :allow_class_d_firewalls, as: 'allowClassDFirewalls'
@@ -15177,10 +15237,12 @@ module Google
           property :allow_cloud_router, as: 'allowCloudRouter'
           property :allow_default_nic_attachment, as: 'allowDefaultNicAttachment'
           property :allow_external_ip_access, as: 'allowExternalIpAccess'
+          property :allow_firewall_policy, as: 'allowFirewallPolicy'
           property :allow_interconnect, as: 'allowInterconnect'
           property :allow_ip_forwarding, as: 'allowIpForwarding'
           property :allow_load_balancing, as: 'allowLoadBalancing'
           property :allow_multi_nic_in_same_network, as: 'allowMultiNicInSameNetwork'
+          property :allow_multi_nic_in_same_subnetwork, as: 'allowMultiNicInSameSubnetwork'
           property :allow_multicast, as: 'allowMulticast'
           property :allow_ncc, as: 'allowNcc'
           property :allow_network_migration, as: 'allowNetworkMigration'
@@ -15190,15 +15252,29 @@ module Google
           property :allow_same_network_unicast, as: 'allowSameNetworkUnicast'
           property :allow_static_routes, as: 'allowStaticRoutes'
           property :allow_sub_interfaces, as: 'allowSubInterfaces'
+          property :allow_subnetwork_creation, as: 'allowSubnetworkCreation'
+          property :allow_vpc_firewall_rules, as: 'allowVpcFirewallRules'
           property :allow_vpc_peering, as: 'allowVpcPeering'
           property :allow_vpn, as: 'allowVpn'
+          collection :firewall_policy_types, as: 'firewallPolicyTypes'
           collection :interface_types, as: 'interfaceTypes'
           property :multicast, as: 'multicast'
+          property :predefined_network_internal_ipv6_range, as: 'predefinedNetworkInternalIpv6Range'
+          collection :predefined_subnetwork_ranges, as: 'predefinedSubnetworkRanges', class: Google::Apis::ComputeV1::NetworkProfileNetworkFeaturesPredefinedSubnetworkRange, decorator: Google::Apis::ComputeV1::NetworkProfileNetworkFeaturesPredefinedSubnetworkRange::Representation
+      
           collection :subnet_purposes, as: 'subnetPurposes'
           collection :subnet_stack_types, as: 'subnetStackTypes'
           collection :subnetwork_purposes, as: 'subnetworkPurposes'
           collection :subnetwork_stack_types, as: 'subnetworkStackTypes'
           property :unicast, as: 'unicast'
+        end
+      end
+      
+      class NetworkProfileNetworkFeaturesPredefinedSubnetworkRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ipv6_range, as: 'ipv6Range'
+          property :name_prefix, as: 'namePrefix'
         end
       end
       
@@ -17346,6 +17422,7 @@ module Google
       
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
+          property :in_use_host_count, as: 'inUseHostCount'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputeV1::ReservationBlockPhysicalTopology, decorator: Google::Apis::ComputeV1::ReservationBlockPhysicalTopology::Representation
@@ -17481,6 +17558,7 @@ module Google
       
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
+          property :in_use_host_count, as: 'inUseHostCount'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputeV1::ReservationSubBlockPhysicalTopology, decorator: Google::Apis::ComputeV1::ReservationSubBlockPhysicalTopology::Representation
@@ -19471,6 +19549,7 @@ module Google
           property :min_cpu_platform, as: 'minCpuPlatform'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeV1::NetworkInterface, decorator: Google::Apis::ComputeV1::NetworkInterface::Representation
       
+          property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeV1::Scheduling, decorator: Google::Apis::ComputeV1::Scheduling::Representation
       
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeV1::ServiceAccount, decorator: Google::Apis::ComputeV1::ServiceAccount::Representation
@@ -19814,6 +19893,8 @@ module Google
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::StoragePoolParams, decorator: Google::Apis::ComputeV1::StoragePoolParams::Representation
+      
           property :performance_provisioning_type, as: 'performanceProvisioningType'
           property :pool_provisioned_capacity_gb, :numeric_string => true, as: 'poolProvisionedCapacityGb'
           property :pool_provisioned_iops, :numeric_string => true, as: 'poolProvisionedIops'
@@ -19955,6 +20036,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class StoragePoolParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       

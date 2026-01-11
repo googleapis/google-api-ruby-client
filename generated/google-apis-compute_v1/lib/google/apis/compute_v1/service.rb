@@ -1376,6 +1376,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_autoscaler_iam_permissions(project, zone, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/zones/{zone}/autoscalers/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates an autoscaler in the specified project using the data
         # included in the request.
         # @param [String] project
@@ -10050,6 +10092,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_health_check_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/healthChecks/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates a HealthCheck resource in the specified project using the data
         # included in the request.
         # @param [String] project
@@ -10408,6 +10489,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_http_health_check_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/httpHealthChecks/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates a HttpHealthCheck resource in the specified project using the data
         # included in the request.
         # @param [String] project
@@ -10760,6 +10880,45 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['httpsHealthCheck'] = https_health_check unless https_health_check.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_https_health_check_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/httpsHealthChecks/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -31124,6 +31283,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_region_autoscaler_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/autoscalers/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates an autoscaler in the specified project using
         # the data included in the request.
         # @param [String] project
@@ -34055,6 +34256,48 @@ module Google
           command.params['region'] = region unless region.nil?
           command.params['healthCheck'] = health_check unless health_check.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_region_health_check_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/healthChecks/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -38599,6 +38842,48 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_region_notification_endpoint_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/notificationEndpoints/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -45344,6 +45629,45 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_route_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/routes/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -53277,6 +53601,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_target_ssl_proxy_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/targetSslProxies/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves the list of all TargetTcpProxy resources, regional and global,
         # available to the specified project.
         # To prevent failure, Google recommends that you set the
@@ -53756,6 +54119,45 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['targetTcpProxy'] = target_tcp_proxy unless target_tcp_proxy.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_target_tcp_proxy_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/targetTcpProxies/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -54694,6 +55096,45 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['urlMap'] = url_map unless url_map.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_url_map_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/urlMaps/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
