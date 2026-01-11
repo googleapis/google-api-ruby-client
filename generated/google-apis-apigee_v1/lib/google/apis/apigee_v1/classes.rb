@@ -8349,12 +8349,20 @@ module Google
         # @return [String]
         attr_accessor :billing_type
       
-        # Output only. Base64-encoded public certificate for the root CA of the Apigee
-        # organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`.
+        # Output only. Deprecated: Use `ca_certificates` instead. Base64-encoded public
+        # certificate for the root CA of the Apigee organization. Valid only when [
+        # RuntimeType](#RuntimeType) is `CLOUD`.
         # Corresponds to the JSON property `caCertificate`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :ca_certificate
+      
+        # Output only. Base64-encoded public certificates for the root CA of the Apigee
+        # organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`. Multiple
+        # certificates are used to support certificate rotation.
+        # Corresponds to the JSON property `caCertificates`
+        # @return [Array<String>]
+        attr_accessor :ca_certificates
       
         # Optional. Cloud KMS key name used for encrypting control plane data that is
         # stored in a multi region. Only used for the data residency region "US" or "EU".
@@ -8504,6 +8512,7 @@ module Google
           @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
           @billing_type = args[:billing_type] if args.key?(:billing_type)
           @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
+          @ca_certificates = args[:ca_certificates] if args.key?(:ca_certificates)
           @control_plane_encryption_key_name = args[:control_plane_encryption_key_name] if args.key?(:control_plane_encryption_key_name)
           @created_at = args[:created_at] if args.key?(:created_at)
           @customer_name = args[:customer_name] if args.key?(:customer_name)

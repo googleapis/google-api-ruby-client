@@ -4341,6 +4341,7 @@ module Google
           property :authorized_network, as: 'authorizedNetwork'
           property :billing_type, as: 'billingType'
           property :ca_certificate, :base64 => true, as: 'caCertificate'
+          collection :ca_certificates, as: 'caCertificates'
           property :control_plane_encryption_key_name, as: 'controlPlaneEncryptionKeyName'
           property :created_at, :numeric_string => true, as: 'createdAt'
           property :customer_name, as: 'customerName'
