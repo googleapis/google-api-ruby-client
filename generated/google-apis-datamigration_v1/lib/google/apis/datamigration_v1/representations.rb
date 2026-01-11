@@ -574,6 +574,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PostgresSourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostgresToSqlServerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrimaryInstanceSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -773,6 +785,12 @@ module Google
       end
       
       class SqlServerDatabaseBackup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerDestinationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1778,9 +1796,13 @@ module Google
       
           property :oracle_to_postgres_config, as: 'oracleToPostgresConfig', class: Google::Apis::DatamigrationV1::OracleToPostgresConfig, decorator: Google::Apis::DatamigrationV1::OracleToPostgresConfig::Representation
       
+          property :original_migration_name, as: 'originalMigrationName'
           property :performance_config, as: 'performanceConfig', class: Google::Apis::DatamigrationV1::PerformanceConfig, decorator: Google::Apis::DatamigrationV1::PerformanceConfig::Representation
       
           property :phase, as: 'phase'
+          property :postgres_to_sqlserver_config, as: 'postgresToSqlserverConfig', class: Google::Apis::DatamigrationV1::PostgresToSqlServerConfig, decorator: Google::Apis::DatamigrationV1::PostgresToSqlServerConfig::Representation
+      
+          property :purpose, as: 'purpose'
           property :reverse_ssh_connectivity, as: 'reverseSshConnectivity', class: Google::Apis::DatamigrationV1::ReverseSshConnectivity, decorator: Google::Apis::DatamigrationV1::ReverseSshConnectivity::Representation
       
           property :satisfies_pzi, as: 'satisfiesPzi'
@@ -1997,11 +2019,15 @@ module Google
           property :alloydb_cluster_id, as: 'alloydbClusterId'
           property :cloud_sql_id, as: 'cloudSqlId'
           property :database, as: 'database'
+          property :forward_ssh_connectivity, as: 'forwardSshConnectivity', class: Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity, decorator: Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity::Representation
+      
           property :host, as: 'host'
           property :network_architecture, as: 'networkArchitecture'
           property :password, as: 'password'
           property :password_set, as: 'passwordSet'
           property :port, as: 'port'
+          property :private_connectivity, as: 'privateConnectivity', class: Google::Apis::DatamigrationV1::PrivateConnectivity, decorator: Google::Apis::DatamigrationV1::PrivateConnectivity::Representation
+      
           property :private_service_connect_connectivity, as: 'privateServiceConnectConnectivity', class: Google::Apis::DatamigrationV1::PrivateServiceConnectConnectivity, decorator: Google::Apis::DatamigrationV1::PrivateServiceConnectConnectivity::Representation
       
           property :ssl, as: 'ssl', class: Google::Apis::DatamigrationV1::SslConfig, decorator: Google::Apis::DatamigrationV1::SslConfig::Representation
@@ -2017,6 +2043,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_concurrent_connections, as: 'maxConcurrentConnections'
           property :transaction_timeout, as: 'transactionTimeout'
+        end
+      end
+      
+      class PostgresSourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :skip_full_dump, as: 'skipFullDump'
+        end
+      end
+      
+      class PostgresToSqlServerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :postgres_source_config, as: 'postgresSourceConfig', class: Google::Apis::DatamigrationV1::PostgresSourceConfig, decorator: Google::Apis::DatamigrationV1::PostgresSourceConfig::Representation
+      
+          property :sqlserver_destination_config, as: 'sqlserverDestinationConfig', class: Google::Apis::DatamigrationV1::SqlServerDestinationConfig, decorator: Google::Apis::DatamigrationV1::SqlServerDestinationConfig::Representation
+      
         end
       end
       
@@ -2353,6 +2396,14 @@ module Google
           property :database, as: 'database'
           property :encryption_options, as: 'encryptionOptions', class: Google::Apis::DatamigrationV1::SqlServerEncryptionOptions, decorator: Google::Apis::DatamigrationV1::SqlServerEncryptionOptions::Representation
       
+        end
+      end
+      
+      class SqlServerDestinationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_concurrent_connections, as: 'maxConcurrentConnections'
+          property :transaction_timeout, as: 'transactionTimeout'
         end
       end
       

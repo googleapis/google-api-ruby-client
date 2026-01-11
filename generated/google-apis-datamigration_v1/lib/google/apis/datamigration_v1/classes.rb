@@ -130,8 +130,8 @@ module Google
         attr_accessor :dry_run
         alias_method :dry_run?, :dry_run
       
-        # Filter which entities to apply. Leaving this field empty will apply all of the
-        # entities. Supports Google AIP 160 based filtering.
+        # Optional. Filter which entities to apply. Leaving this field empty will apply
+        # all of the entities. Supports Google AIP 160 based filtering.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -3212,6 +3212,12 @@ module Google
         # @return [Google::Apis::DatamigrationV1::OracleToPostgresConfig]
         attr_accessor :oracle_to_postgres_config
       
+        # Optional. A failback replication pointer to the resource name (URI) of the
+        # original migration job.
+        # Corresponds to the JSON property `originalMigrationName`
+        # @return [String]
+        attr_accessor :original_migration_name
+      
         # Performance configuration definition.
         # Corresponds to the JSON property `performanceConfig`
         # @return [Google::Apis::DatamigrationV1::PerformanceConfig]
@@ -3221,6 +3227,18 @@ module Google
         # Corresponds to the JSON property `phase`
         # @return [String]
         attr_accessor :phase
+      
+        # Configuration for heterogeneous failback migrations from **PostgreSQL to SQL
+        # Server**.
+        # Corresponds to the JSON property `postgresToSqlserverConfig`
+        # @return [Google::Apis::DatamigrationV1::PostgresToSqlServerConfig]
+        attr_accessor :postgres_to_sqlserver_config
+      
+        # Output only. Migration job mode. Migration jobs can be standard forward jobs
+        # or failback migration jobs.
+        # Corresponds to the JSON property `purpose`
+        # @return [String]
+        attr_accessor :purpose
       
         # The details needed to configure a reverse SSH tunnel between the source and
         # destination databases. These details will be used when calling the
@@ -3320,8 +3338,11 @@ module Google
           @name = args[:name] if args.key?(:name)
           @objects_config = args[:objects_config] if args.key?(:objects_config)
           @oracle_to_postgres_config = args[:oracle_to_postgres_config] if args.key?(:oracle_to_postgres_config)
+          @original_migration_name = args[:original_migration_name] if args.key?(:original_migration_name)
           @performance_config = args[:performance_config] if args.key?(:performance_config)
           @phase = args[:phase] if args.key?(:phase)
+          @postgres_to_sqlserver_config = args[:postgres_to_sqlserver_config] if args.key?(:postgres_to_sqlserver_config)
+          @purpose = args[:purpose] if args.key?(:purpose)
           @reverse_ssh_connectivity = args[:reverse_ssh_connectivity] if args.key?(:reverse_ssh_connectivity)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
@@ -4125,6 +4146,11 @@ module Google
         # @return [String]
         attr_accessor :database
       
+        # Forward SSH Tunnel connectivity.
+        # Corresponds to the JSON property `forwardSshConnectivity`
+        # @return [Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity]
+        attr_accessor :forward_ssh_connectivity
+      
         # Required. The IP or hostname of the source PostgreSQL database.
         # Corresponds to the JSON property `host`
         # @return [String]
@@ -4154,6 +4180,11 @@ module Google
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
+      
+        # Private Connectivity.
+        # Corresponds to the JSON property `privateConnectivity`
+        # @return [Google::Apis::DatamigrationV1::PrivateConnectivity]
+        attr_accessor :private_connectivity
       
         # [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/
         # private-service-connect#service-attachments)
@@ -4189,11 +4220,13 @@ module Google
           @alloydb_cluster_id = args[:alloydb_cluster_id] if args.key?(:alloydb_cluster_id)
           @cloud_sql_id = args[:cloud_sql_id] if args.key?(:cloud_sql_id)
           @database = args[:database] if args.key?(:database)
+          @forward_ssh_connectivity = args[:forward_ssh_connectivity] if args.key?(:forward_ssh_connectivity)
           @host = args[:host] if args.key?(:host)
           @network_architecture = args[:network_architecture] if args.key?(:network_architecture)
           @password = args[:password] if args.key?(:password)
           @password_set = args[:password_set] if args.key?(:password_set)
           @port = args[:port] if args.key?(:port)
+          @private_connectivity = args[:private_connectivity] if args.key?(:private_connectivity)
           @private_service_connect_connectivity = args[:private_service_connect_connectivity] if args.key?(:private_service_connect_connectivity)
           @ssl = args[:ssl] if args.key?(:ssl)
           @static_ip_connectivity = args[:static_ip_connectivity] if args.key?(:static_ip_connectivity)
@@ -4224,6 +4257,52 @@ module Google
         def update!(**args)
           @max_concurrent_connections = args[:max_concurrent_connections] if args.key?(:max_concurrent_connections)
           @transaction_timeout = args[:transaction_timeout] if args.key?(:transaction_timeout)
+        end
+      end
+      
+      # Configuration for Postgres as a source in a migration.
+      class PostgresSourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to skip full dump or not.
+        # Corresponds to the JSON property `skipFullDump`
+        # @return [Boolean]
+        attr_accessor :skip_full_dump
+        alias_method :skip_full_dump?, :skip_full_dump
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @skip_full_dump = args[:skip_full_dump] if args.key?(:skip_full_dump)
+        end
+      end
+      
+      # Configuration for heterogeneous failback migrations from **PostgreSQL to SQL
+      # Server**.
+      class PostgresToSqlServerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for Postgres as a source in a migration.
+        # Corresponds to the JSON property `postgresSourceConfig`
+        # @return [Google::Apis::DatamigrationV1::PostgresSourceConfig]
+        attr_accessor :postgres_source_config
+      
+        # Configuration for SQL Server as a destination in a migration.
+        # Corresponds to the JSON property `sqlserverDestinationConfig`
+        # @return [Google::Apis::DatamigrationV1::SqlServerDestinationConfig]
+        attr_accessor :sqlserver_destination_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @postgres_source_config = args[:postgres_source_config] if args.key?(:postgres_source_config)
+          @sqlserver_destination_config = args[:sqlserver_destination_config] if args.key?(:sqlserver_destination_config)
         end
       end
       
@@ -5486,6 +5565,32 @@ module Google
         def update!(**args)
           @database = args[:database] if args.key?(:database)
           @encryption_options = args[:encryption_options] if args.key?(:encryption_options)
+        end
+      end
+      
+      # Configuration for SQL Server as a destination in a migration.
+      class SqlServerDestinationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Maximum number of connections Database Migration Service will open
+        # to the destination for data migration.
+        # Corresponds to the JSON property `maxConcurrentConnections`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_connections
+      
+        # Optional. Timeout for data migration transactions.
+        # Corresponds to the JSON property `transactionTimeout`
+        # @return [String]
+        attr_accessor :transaction_timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_concurrent_connections = args[:max_concurrent_connections] if args.key?(:max_concurrent_connections)
+          @transaction_timeout = args[:transaction_timeout] if args.key?(:transaction_timeout)
         end
       end
       
