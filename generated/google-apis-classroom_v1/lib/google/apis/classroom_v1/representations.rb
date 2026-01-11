@@ -636,6 +636,7 @@ module Google
           property :owner_id, as: 'ownerId'
           property :room, as: 'room'
           property :section, as: 'section'
+          property :subject, as: 'subject'
           property :teacher_folder, as: 'teacherFolder', class: Google::Apis::ClassroomV1::DriveFolder, decorator: Google::Apis::ClassroomV1::DriveFolder::Representation
       
           property :teacher_group_email, as: 'teacherGroupEmail'
