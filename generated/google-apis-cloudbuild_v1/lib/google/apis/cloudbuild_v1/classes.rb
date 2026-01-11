@@ -1834,7 +1834,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Identifier. Format: `projects/`project`/locations/`location`/
-        # defaultServiceAccount
+        # defaultServiceAccount`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
