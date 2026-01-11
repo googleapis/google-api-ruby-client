@@ -1730,6 +1730,12 @@ module Google
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
+        # Output only. Indicates if the location has ONTAP Proxy support.
+        # Corresponds to the JSON property `hasOntapProxy`
+        # @return [Boolean]
+        attr_accessor :has_ontap_proxy
+        alias_method :has_ontap_proxy?, :has_ontap_proxy
+      
         # Output only. Indicates if the location has VCP support.
         # Corresponds to the JSON property `hasVcp`
         # @return [Boolean]
@@ -1752,6 +1758,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @has_ontap_proxy = args[:has_ontap_proxy] if args.key?(:has_ontap_proxy)
           @has_vcp = args[:has_vcp] if args.key?(:has_vcp)
           @supported_flex_performance = args[:supported_flex_performance] if args.key?(:supported_flex_performance)
           @supported_service_levels = args[:supported_service_levels] if args.key?(:supported_service_levels)
