@@ -7762,6 +7762,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1VertexMultimodalDatasetDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1VertexMultimodalDatasetSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1VertexRagStore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8580,6 +8592,8 @@ module Google
           property :gcs_source, as: 'gcsSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsSource::Representation
       
           property :instances_format, as: 'instancesFormat'
+          property :vertex_multimodal_dataset_source, as: 'vertexMultimodalDatasetSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexMultimodalDatasetSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexMultimodalDatasetSource::Representation
+      
         end
       end
       
@@ -8601,6 +8615,8 @@ module Google
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination::Representation
       
           property :predictions_format, as: 'predictionsFormat'
+          property :vertex_multimodal_dataset_destination, as: 'vertexMultimodalDatasetDestination', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexMultimodalDatasetDestination, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VertexMultimodalDatasetDestination::Representation
+      
         end
       end
       
@@ -8610,6 +8626,7 @@ module Google
           property :bigquery_output_dataset, as: 'bigqueryOutputDataset'
           property :bigquery_output_table, as: 'bigqueryOutputTable'
           property :gcs_output_directory, as: 'gcsOutputDirectory'
+          property :vertex_multimodal_dataset_name, as: 'vertexMultimodalDatasetName'
         end
       end
       
@@ -21109,6 +21126,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :serving_config, as: 'servingConfig'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1VertexMultimodalDatasetDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQueryDestination, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BigQueryDestination::Representation
+      
+          property :display_name, as: 'displayName'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1VertexMultimodalDatasetSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_name, as: 'datasetName'
         end
       end
       
