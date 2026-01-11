@@ -1320,7 +1320,9 @@ module Google
       class MachineConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :baseline_slots, :numeric_string => true, as: 'baselineSlots'
           property :cpu_count, as: 'cpuCount'
+          property :max_reservation_slots, :numeric_string => true, as: 'maxReservationSlots'
           property :memory_size_in_bytes, :numeric_string => true, as: 'memorySizeInBytes'
           property :shard_count, as: 'shardCount'
           property :vcpu_count, as: 'vcpuCount'
