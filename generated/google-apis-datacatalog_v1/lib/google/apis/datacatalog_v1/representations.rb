@@ -562,6 +562,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1SpannerTableSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1065,6 +1089,8 @@ module Google
           property :service_spec, as: 'serviceSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ServiceSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ServiceSpec::Representation
       
           property :source_system_timestamps, as: 'sourceSystemTimestamps', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SystemTimestamps, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SystemTimestamps::Representation
+      
+          property :spanner_table_spec, as: 'spannerTableSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SpannerTableSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SpannerTableSpec::Representation
       
           property :sql_database_system_spec, as: 'sqlDatabaseSystemSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SqlDatabaseSystemSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SqlDatabaseSystemSpec::Representation
       
@@ -1610,6 +1636,41 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :catalog_ui_experience, as: 'catalogUiExperience'
           property :tag_template_migration, as: 'tagTemplateMigration'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1SpannerTableSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :foreign_keys, as: 'foreignKeys', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey::Representation
+      
+          property :primary_key, as: 'primaryKey', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :column_mappings, as: 'columnMappings', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping::Representation
+      
+          property :entry, as: 'entry'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :reference_column, as: 'referenceColumn'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns'
         end
       end
       
