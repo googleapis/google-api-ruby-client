@@ -3373,9 +3373,9 @@ module Google
         # will be embedded adding a field `value` which holds the custom JSON in
         # addition to the `@type` field. Example (for message google.protobuf.Duration):
         # ` "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" `
-        # Corresponds to the JSON property `warning`
+        # Corresponds to the JSON property `warning_migration`
         # @return [Google::Apis::ToolresultsV1beta3::Any]
-        attr_accessor :warning
+        attr_accessor :warning_migration
       
         def initialize(**args)
            update!(**args)
@@ -3388,7 +3388,7 @@ module Google
           @severity = args[:severity] if args.key?(:severity)
           @stack_trace = args[:stack_trace] if args.key?(:stack_trace)
           @type = args[:type] if args.key?(:type)
-          @warning = args[:warning] if args.key?(:warning)
+          @warning_migration = args[:warning_migration] if args.key?(:warning_migration)
         end
       end
       
