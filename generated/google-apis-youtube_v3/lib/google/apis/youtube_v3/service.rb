@@ -4245,7 +4245,8 @@ module Google
         
         # Retrieves a batch of VideoStat resources, possibly filtered.
         # @param [Array<String>, String] id
-        #   Required. Return videos with the given ids.
+        #   Required. Return videos with the given ids. The number of IDs specified cannot
+        #   exceed 50.
         # @param [String] on_behalf_of_content_owner
         #   Optional. **Note:** This parameter is intended exclusively for YouTube content
         #   partners. The `onBehalfOfContentOwner` parameter indicates that the request's
