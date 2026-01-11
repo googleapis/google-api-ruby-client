@@ -9649,6 +9649,56 @@ module Google
         end
       end
       
+      # Response message for RegionCompositeHealthChecks.GetHealth
+      class CompositeHealthChecksGetHealthResponse
+        include Google::Apis::Core::Hashable
+      
+        # Health sources and their corresponding health states.
+        # Corresponds to the JSON property `healthSources`
+        # @return [Array<Google::Apis::ComputeAlpha::CompositeHealthChecksGetHealthResponseHealthSourceHealth>]
+        attr_accessor :health_sources
+      
+        # Health state of the CompositeHealthCheck.
+        # Corresponds to the JSON property `healthState`
+        # @return [String]
+        attr_accessor :health_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @health_sources = args[:health_sources] if args.key?(:health_sources)
+          @health_state = args[:health_state] if args.key?(:health_state)
+        end
+      end
+      
+      # 
+      class CompositeHealthChecksGetHealthResponseHealthSourceHealth
+        include Google::Apis::Core::Hashable
+      
+        # Health state of the associated HealthSource resource.
+        # Corresponds to the JSON property `healthState`
+        # @return [String]
+        attr_accessor :health_state
+      
+        # URL of the associated HealthSource resource.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @health_state = args[:health_state] if args.key?(:health_state)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
       # 
       class CompositeHealthChecksScopedList
         include Google::Apis::Core::Hashable
@@ -13996,6 +14046,11 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # Represents progressive rollout input parameters and current status.
+        # Corresponds to the JSON property `rolloutOperation`
+        # @return [Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperation]
+        attr_accessor :rollout_operation
+      
         # Output only. [Output Only] Total count of all firewall policy rule tuples. A
         # firewall
         # policy can not exceed a set number of tuples.
@@ -14067,6 +14122,7 @@ module Google
           @policy_source = args[:policy_source] if args.key?(:policy_source)
           @policy_type = args[:policy_type] if args.key?(:policy_type)
           @region = args[:region] if args.key?(:region)
+          @rollout_operation = args[:rollout_operation] if args.key?(:rollout_operation)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
           @rules = args[:rules] if args.key?(:rules)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -14248,6 +14304,161 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Represents progressive rollout input parameters and current status.
+      class FirewallPolicyRolloutOperation
+        include Google::Apis::Core::Hashable
+      
+        # Represents progressive rollout input parameters.
+        # Corresponds to the JSON property `rolloutInput`
+        # @return [Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperationRolloutInput]
+        attr_accessor :rollout_input
+      
+        # Represents progressive rollout current status.
+        # Corresponds to the JSON property `rolloutStatus`
+        # @return [Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperationRolloutStatus]
+        attr_accessor :rollout_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rollout_input = args[:rollout_input] if args.key?(:rollout_input)
+          @rollout_status = args[:rollout_status] if args.key?(:rollout_status)
+        end
+      end
+      
+      # Represents progressive rollout input parameters.
+      class FirewallPolicyRolloutOperationRolloutInput
+        include Google::Apis::Core::Hashable
+      
+        # The name of the rollout plan. Ex.
+        # organizations//locations/global/rolloutPlans/.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Predefined rollout plan.
+        # Corresponds to the JSON property `predefinedRolloutPlan`
+        # @return [String]
+        attr_accessor :predefined_rollout_plan
+      
+        # The UUID of the retry action. Only needed if this is a retry for an
+        # existing rollout. This can be used after the user canceled a rollout
+        # and want to retry it with no changes.
+        # Corresponds to the JSON property `retryUuid`
+        # @return [String]
+        attr_accessor :retry_uuid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @predefined_rollout_plan = args[:predefined_rollout_plan] if args.key?(:predefined_rollout_plan)
+          @retry_uuid = args[:retry_uuid] if args.key?(:retry_uuid)
+        end
+      end
+      
+      # Represents progressive rollout current status.
+      class FirewallPolicyRolloutOperationRolloutStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output only] The next rollout.
+        # Corresponds to the JSON property `nextRollout`
+        # @return [Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperationRolloutStatusNextRollout]
+        attr_accessor :next_rollout
+      
+        # [Output only] The ongoing rollout.
+        # Corresponds to the JSON property `ongoingRollouts`
+        # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperationRolloutStatusRolloutMetadata>]
+        attr_accessor :ongoing_rollouts
+      
+        # Represents the status of the progressive rollout instance, either
+        # completed or ongoing.
+        # Corresponds to the JSON property `previousRollout`
+        # @return [Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperationRolloutStatusRolloutMetadata]
+        attr_accessor :previous_rollout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_rollout = args[:next_rollout] if args.key?(:next_rollout)
+          @ongoing_rollouts = args[:ongoing_rollouts] if args.key?(:ongoing_rollouts)
+          @previous_rollout = args[:previous_rollout] if args.key?(:previous_rollout)
+        end
+      end
+      
+      # 
+      class FirewallPolicyRolloutOperationRolloutStatusNextRollout
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output only] The id of the next rollout.
+        # Corresponds to the JSON property `rolloutId`
+        # @return [String]
+        attr_accessor :rollout_id
+      
+        # The name of the rollout plan to be used by the next not yet started
+        # rollout. This field is auto populated based on RolloutInput when a
+        # new rollout is scheduled. This can be manually changed before the
+        # scheduled rollout starts.
+        # Ex.
+        # organizations//locations/global/rolloutPlans/
+        # Corresponds to the JSON property `rolloutPlan`
+        # @return [String]
+        attr_accessor :rollout_plan
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rollout_id = args[:rollout_id] if args.key?(:rollout_id)
+          @rollout_plan = args[:rollout_plan] if args.key?(:rollout_plan)
+        end
+      end
+      
+      # Represents the status of the progressive rollout instance, either
+      # completed or ongoing.
+      class FirewallPolicyRolloutOperationRolloutStatusRolloutMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output only] The name of the rollout
+        # organizations//locations/global/rollouts/
+        # Corresponds to the JSON property `rollout`
+        # @return [String]
+        attr_accessor :rollout
+      
+        # Output only. [Output only] The name of the rollout plan used by this rollout
+        # organizations//locations/global/rolloutPlans/
+        # Corresponds to the JSON property `rolloutPlan`
+        # @return [String]
+        attr_accessor :rollout_plan
+      
+        # Output only. [Output only] The state of the rollout.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rollout = args[:rollout] if args.key?(:rollout)
+          @rollout_plan = args[:rollout_plan] if args.key?(:rollout_plan)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -26711,6 +26922,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAllInstancesConfig]
         attr_accessor :all_instances_config
       
+        # Output only. [Output Only] The accelerator topology applied to this MIG.
+        # Currently only one accelerator topology is supported.
+        # Corresponds to the JSON property `appliedAcceleratorTopologies`
+        # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAcceleratorTopology>]
+        attr_accessor :applied_accelerator_topologies
+      
         # Output only. [Output Only] The URL of theAutoscaler
         # that targets this instance group manager.
         # Corresponds to the JSON property `autoscaler`
@@ -26722,6 +26939,14 @@ module Google
         # Corresponds to the JSON property `bulkInstanceOperation`
         # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerStatusBulkInstanceOperation]
         attr_accessor :bulk_instance_operation
+      
+        # The list of instance statuses and the number of instances in this managed
+        # instance group that have the status. For more information about how to
+        # interpret each status check the instance lifecycle documentation.
+        # Currently only shown for TPU MIGs.
+        # Corresponds to the JSON property `currentInstanceStatuses`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerStatusInstanceStatusSummary]
+        attr_accessor :current_instance_statuses
       
         # Output only. [Output Only] A bit indicating whether the managed instance group
         # is in a
@@ -26755,11 +26980,195 @@ module Google
         # Update properties of this object
         def update!(**args)
           @all_instances_config = args[:all_instances_config] if args.key?(:all_instances_config)
+          @applied_accelerator_topologies = args[:applied_accelerator_topologies] if args.key?(:applied_accelerator_topologies)
           @autoscaler = args[:autoscaler] if args.key?(:autoscaler)
           @bulk_instance_operation = args[:bulk_instance_operation] if args.key?(:bulk_instance_operation)
+          @current_instance_statuses = args[:current_instance_statuses] if args.key?(:current_instance_statuses)
           @is_stable = args[:is_stable] if args.key?(:is_stable)
           @stateful = args[:stateful] if args.key?(:stateful)
           @version_target = args[:version_target] if args.key?(:version_target)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerStatusAcceleratorTopology
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] Topology in the format of: "16x16", "4x4x4", etc.
+        # The value is the same as configured in the WorkloadPolicy.
+        # Corresponds to the JSON property `acceleratorTopology`
+        # @return [String]
+        attr_accessor :accelerator_topology
+      
+        # Output only. [Output Only] The state of the accelerator topology.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. [Output Only] The result of the latest accelerator topology state
+        # check.
+        # Corresponds to the JSON property `stateDetails`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails]
+        attr_accessor :state_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_topology = args[:accelerator_topology] if args.key?(:accelerator_topology)
+          @state = args[:state] if args.key?(:state)
+          @state_details = args[:state_details] if args.key?(:state_details)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] Encountered errors.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails::Error]
+        attr_accessor :error
+      
+        # Output only. [Output Only] Timestamp is shown only if there is an error. The
+        # field
+        # has // RFC3339 //
+        # text format.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+        
+        # Output only. [Output Only] Encountered errors.
+        class Error
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] The array of errors encountered while processing this
+          # operation.
+          # Corresponds to the JSON property `errors`
+          # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails::Error::Error>]
+          attr_accessor :errors
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @errors = args[:errors] if args.key?(:errors)
+          end
+          
+          # 
+          class Error
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] The error type identifier for this error.
+            # Corresponds to the JSON property `code`
+            # @return [String]
+            attr_accessor :code
+          
+            # [Output Only] An optional list of messages that contain the error
+            # details. There is a set of defined message types to use for providing
+            # details.The syntax depends on the error code. For example,
+            # QuotaExceededInfo will have details when the error code is
+            # QUOTA_EXCEEDED.
+            # Corresponds to the JSON property `errorDetails`
+            # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails::Error::Error::ErrorDetail>]
+            attr_accessor :error_details
+          
+            # [Output Only] Indicates the field in the request that caused the error.
+            # This property is optional.
+            # Corresponds to the JSON property `location`
+            # @return [String]
+            attr_accessor :location
+          
+            # [Output Only] An optional, human-readable error message.
+            # Corresponds to the JSON property `message`
+            # @return [String]
+            attr_accessor :message
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @code = args[:code] if args.key?(:code)
+              @error_details = args[:error_details] if args.key?(:error_details)
+              @location = args[:location] if args.key?(:location)
+              @message = args[:message] if args.key?(:message)
+            end
+            
+            # 
+            class ErrorDetail
+              include Google::Apis::Core::Hashable
+            
+              # Describes the cause of the error with structured details.
+              # Example of an error when contacting the "pubsub.googleapis.com" API when it
+              # is not enabled:
+              # ` "reason": "API_DISABLED"
+              # "domain": "googleapis.com"
+              # "metadata": `
+              # "resource": "projects/123",
+              # "service": "pubsub.googleapis.com"
+              # `
+              # `
+              # This response indicates that the pubsub.googleapis.com API is not enabled.
+              # Example of an error that is returned when attempting to create a Spanner
+              # instance in a region that is out of stock:
+              # ` "reason": "STOCKOUT"
+              # "domain": "spanner.googleapis.com",
+              # "metadata": `
+              # "availableRegions": "us-central1,us-east2"
+              # `
+              # `
+              # Corresponds to the JSON property `errorInfo`
+              # @return [Google::Apis::ComputeAlpha::ErrorInfo]
+              attr_accessor :error_info
+            
+              # Provides links to documentation or for performing an out of band action.
+              # For example, if a quota check failed with an error indicating the calling
+              # project hasn't enabled the accessed service, this can contain a URL pointing
+              # directly to the right place in the developer console to flip the bit.
+              # Corresponds to the JSON property `help`
+              # @return [Google::Apis::ComputeAlpha::Help]
+              attr_accessor :help
+            
+              # Provides a localized error message that is safe to return to the user
+              # which can be attached to an RPC error.
+              # Corresponds to the JSON property `localizedMessage`
+              # @return [Google::Apis::ComputeAlpha::LocalizedMessage]
+              attr_accessor :localized_message
+            
+              # Additional details for quota exceeded error for resource quota.
+              # Corresponds to the JSON property `quotaInfo`
+              # @return [Google::Apis::ComputeAlpha::QuotaExceededInfo]
+              attr_accessor :quota_info
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @error_info = args[:error_info] if args.key?(:error_info)
+                @help = args[:help] if args.key?(:help)
+                @localized_message = args[:localized_message] if args.key?(:localized_message)
+                @quota_info = args[:quota_info] if args.key?(:quota_info)
+              end
+            end
+          end
         end
       end
       
@@ -26966,6 +27375,132 @@ module Google
               end
             end
           end
+        end
+      end
+      
+      # The list of instance statuses and the number of instances in this managed
+      # instance group that have the status. For more information about how to
+      # interpret each status check the instance lifecycle documentation.
+      # Currently only shown for TPU MIGs.
+      class InstanceGroupManagerStatusInstanceStatusSummary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have DEPROVISIONING status.
+        # Corresponds to the JSON property `deprovisioning`
+        # @return [Fixnum]
+        attr_accessor :deprovisioning
+      
+        # Output only. [Output Only] The number of instances that have not been created
+        # yet or
+        # have been deleted. Includes only instances that would be shown in the
+        # listManagedInstances method and not all instances that have been
+        # deleted in the lifetime of the MIG.
+        # Does not include FlexStart instances that are waiting for the resources
+        # availability, they are considered as 'pending'.
+        # Corresponds to the JSON property `nonExistent`
+        # @return [Fixnum]
+        attr_accessor :non_existent
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have PENDING status, that is FlexStart instances that are waiting
+        # for resources. Instances that do not exist because of the other reasons
+        # are counted as 'non_existent'.
+        # Corresponds to the JSON property `pending`
+        # @return [Fixnum]
+        attr_accessor :pending
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have PENDING_STOP status.
+        # Corresponds to the JSON property `pendingStop`
+        # @return [Fixnum]
+        attr_accessor :pending_stop
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have PROVISIONING status.
+        # Corresponds to the JSON property `provisioning`
+        # @return [Fixnum]
+        attr_accessor :provisioning
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have REPAIRING status.
+        # Corresponds to the JSON property `repairing`
+        # @return [Fixnum]
+        attr_accessor :repairing
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have RUNNING status.
+        # Corresponds to the JSON property `running`
+        # @return [Fixnum]
+        attr_accessor :running
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have STAGING status.
+        # Corresponds to the JSON property `staging`
+        # @return [Fixnum]
+        attr_accessor :staging
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have STOPPED status.
+        # Corresponds to the JSON property `stopped`
+        # @return [Fixnum]
+        attr_accessor :stopped
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have STOPPING status.
+        # Corresponds to the JSON property `stopping`
+        # @return [Fixnum]
+        attr_accessor :stopping
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have SUSPENDED status.
+        # Corresponds to the JSON property `suspended`
+        # @return [Fixnum]
+        attr_accessor :suspended
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have SUSPENDING status.
+        # Corresponds to the JSON property `suspending`
+        # @return [Fixnum]
+        attr_accessor :suspending
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have TERMINATED status.
+        # Corresponds to the JSON property `terminated`
+        # @return [Fixnum]
+        attr_accessor :terminated
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deprovisioning = args[:deprovisioning] if args.key?(:deprovisioning)
+          @non_existent = args[:non_existent] if args.key?(:non_existent)
+          @pending = args[:pending] if args.key?(:pending)
+          @pending_stop = args[:pending_stop] if args.key?(:pending_stop)
+          @provisioning = args[:provisioning] if args.key?(:provisioning)
+          @repairing = args[:repairing] if args.key?(:repairing)
+          @running = args[:running] if args.key?(:running)
+          @staging = args[:staging] if args.key?(:staging)
+          @stopped = args[:stopped] if args.key?(:stopped)
+          @stopping = args[:stopping] if args.key?(:stopping)
+          @suspended = args[:suspended] if args.key?(:suspended)
+          @suspending = args[:suspending] if args.key?(:suspending)
+          @terminated = args[:terminated] if args.key?(:terminated)
         end
       end
       
@@ -36701,9 +37236,11 @@ module Google
         # Input only. Resource manager tags to be bound to the license. Tag keys and
         # values
         # have the same definition as resource
-        # manager tags. Keys must be in the format `tagKeys/`tag_key_id``, and
-        # values are in the format `tagValues/`tag_value_id``. The field is ignored
-        # (both PUT & PATCH) when empty.
+        # manager tags. Keys and values can be either in numeric format,
+        # such as `tagKeys/`tag_key_id`` and `tagValues/456` or in namespaced
+        # format such as ``org_id|project_id`/`tag_key_short_name`` and
+        # ``tag_value_short_name``. The field is ignored (both PUT &
+        # PATCH) when empty.
         # Corresponds to the JSON property `resourceManagerTags`
         # @return [Hash<String,String>]
         attr_accessor :resource_manager_tags
@@ -37680,6 +38217,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :included_disks
       
+        # Input only. Resource manager tags to be bound to the machine image. Tag keys
+        # and values
+        # have the same definition as resource
+        # manager tags. Keys and values can be either in numeric format,
+        # such as `tagKeys/`tag_key_id`` and `tagValues/456` or in namespaced
+        # format such as ``org_id|project_id`/`tag_key_short_name`` and
+        # ``tag_value_short_name``. The field is ignored (both PUT &
+        # PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -37688,6 +38237,7 @@ module Google
         def update!(**args)
           @excluded_disks = args[:excluded_disks] if args.key?(:excluded_disks)
           @included_disks = args[:included_disks] if args.key?(:included_disks)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -39071,8 +39621,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Output only. [Output Only] The name of this multi-MIG member generated by
-        # Google Compute Engine.
+        # Output only. [Output Only] Server-defined name for the multi-MIG member.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -56037,6 +56586,11 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
+        # The share setting for reservations and sole tenancy node groups.
+        # Corresponds to the JSON property `shareSettings`
+        # @return [Google::Apis::ComputeAlpha::ShareSettings]
+        attr_accessor :share_settings
+      
         # Output only. [Output Only] State of the reservation slot.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -56065,6 +56619,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @share_settings = args[:share_settings] if args.key?(:share_settings)
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
           @zone = args[:zone] if args.key?(:zone)
@@ -69926,9 +70481,11 @@ module Google
         # Input only. Resource manager tags to be bound to the storage pool. Tag keys
         # and values
         # have the same definition as resource
-        # manager tags. Keys must be in the format `tagKeys/`tag_key_id``, and
-        # values are in the format `tagValues/`tag_value_id``. The field is ignored
-        # (both PUT & PATCH) when empty.
+        # manager tags. Keys and values can be either in numeric format,
+        # such as `tagKeys/`tag_key_id`` and `tagValues/456` or in namespaced
+        # format such as ``org_id|project_id`/`tag_key_short_name`` and
+        # ``tag_value_short_name``. The field is ignored (both PUT &
+        # PATCH) when empty.
         # Corresponds to the JSON property `resourceManagerTags`
         # @return [Hash<String,String>]
         attr_accessor :resource_manager_tags
