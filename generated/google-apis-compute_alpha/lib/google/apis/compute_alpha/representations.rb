@@ -1108,6 +1108,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CompositeHealthChecksGetHealthResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CompositeHealthChecksGetHealthResponseHealthSourceHealth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CompositeHealthChecksScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1644,6 +1656,36 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyRolloutOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyRolloutOperationRolloutInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyRolloutOperationRolloutStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyRolloutOperationRolloutStatusNextRollout
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyRolloutOperationRolloutStatusRolloutMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3010,6 +3052,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerStatusAcceleratorTopology
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Error
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerStatusAllInstancesConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3042,6 +3114,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerStatusInstanceStatusSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -12083,6 +12161,23 @@ module Google
         end
       end
       
+      class CompositeHealthChecksGetHealthResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :health_sources, as: 'healthSources', class: Google::Apis::ComputeAlpha::CompositeHealthChecksGetHealthResponseHealthSourceHealth, decorator: Google::Apis::ComputeAlpha::CompositeHealthChecksGetHealthResponseHealthSourceHealth::Representation
+      
+          property :health_state, as: 'healthState'
+        end
+      end
+      
+      class CompositeHealthChecksGetHealthResponseHealthSourceHealth
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_state, as: 'healthState'
+          property :source, as: 'source'
+        end
+      end
+      
       class CompositeHealthChecksScopedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13016,6 +13111,8 @@ module Google
           property :policy_source, as: 'policySource'
           property :policy_type, as: 'policyType'
           property :region, as: 'region'
+          property :rollout_operation, as: 'rolloutOperation', class: Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperation, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperation::Representation
+      
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::FirewallPolicyRule, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRule::Representation
       
@@ -13066,6 +13163,54 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class FirewallPolicyRolloutOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rollout_input, as: 'rolloutInput', class: Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperationRolloutInput, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperationRolloutInput::Representation
+      
+          property :rollout_status, as: 'rolloutStatus', class: Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperationRolloutStatus, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperationRolloutStatus::Representation
+      
+        end
+      end
+      
+      class FirewallPolicyRolloutOperationRolloutInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :predefined_rollout_plan, as: 'predefinedRolloutPlan'
+          property :retry_uuid, as: 'retryUuid'
+        end
+      end
+      
+      class FirewallPolicyRolloutOperationRolloutStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_rollout, as: 'nextRollout', class: Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperationRolloutStatusNextRollout, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperationRolloutStatusNextRollout::Representation
+      
+          collection :ongoing_rollouts, as: 'ongoingRollouts', class: Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperationRolloutStatusRolloutMetadata, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperationRolloutStatusRolloutMetadata::Representation
+      
+          property :previous_rollout, as: 'previousRollout', class: Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperationRolloutStatusRolloutMetadata, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRolloutOperationRolloutStatusRolloutMetadata::Representation
+      
+        end
+      end
+      
+      class FirewallPolicyRolloutOperationRolloutStatusNextRollout
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rollout_id, as: 'rolloutId'
+          property :rollout_plan, as: 'rolloutPlan'
+        end
+      end
+      
+      class FirewallPolicyRolloutOperationRolloutStatusRolloutMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rollout, as: 'rollout'
+          property :rollout_plan, as: 'rolloutPlan'
+          property :state, as: 'state'
         end
       end
       
@@ -15822,14 +15967,70 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :all_instances_config, as: 'allInstancesConfig', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAllInstancesConfig, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAllInstancesConfig::Representation
       
+          collection :applied_accelerator_topologies, as: 'appliedAcceleratorTopologies', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAcceleratorTopology, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAcceleratorTopology::Representation
+      
           property :autoscaler, as: 'autoscaler'
           property :bulk_instance_operation, as: 'bulkInstanceOperation', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusBulkInstanceOperation, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusBulkInstanceOperation::Representation
+      
+          property :current_instance_statuses, as: 'currentInstanceStatuses', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusInstanceStatusSummary, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusInstanceStatusSummary::Representation
       
           property :is_stable, as: 'isStable'
           property :stateful, as: 'stateful', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusStateful, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusStateful::Representation
       
           property :version_target, as: 'versionTarget', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusVersionTarget, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusVersionTarget::Representation
       
+        end
+      end
+      
+      class InstanceGroupManagerStatusAcceleratorTopology
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_topology, as: 'acceleratorTopology'
+          property :state, as: 'state'
+          property :state_details, as: 'stateDetails', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails::Representation
+      
+        end
+      end
+      
+      class InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails::Error, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails::Error::Representation
+      
+          property :timestamp, as: 'timestamp'
+        end
+        
+        class Error
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails::Error::Error, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails::Error::Error::Representation
+        
+          end
+          
+          class Error
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails::Error::Error::ErrorDetail, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetails::Error::Error::ErrorDetail::Representation
+          
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputeAlpha::ErrorInfo, decorator: Google::Apis::ComputeAlpha::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputeAlpha::Help, decorator: Google::Apis::ComputeAlpha::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeAlpha::LocalizedMessage, decorator: Google::Apis::ComputeAlpha::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeAlpha::QuotaExceededInfo, decorator: Google::Apis::ComputeAlpha::QuotaExceededInfo::Representation
+            
+              end
+            end
+          end
         end
       end
       
@@ -15889,6 +16090,25 @@ module Google
               end
             end
           end
+        end
+      end
+      
+      class InstanceGroupManagerStatusInstanceStatusSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deprovisioning, as: 'deprovisioning'
+          property :non_existent, as: 'nonExistent'
+          property :pending, as: 'pending'
+          property :pending_stop, as: 'pendingStop'
+          property :provisioning, as: 'provisioning'
+          property :repairing, as: 'repairing'
+          property :running, as: 'running'
+          property :staging, as: 'staging'
+          property :stopped, as: 'stopped'
+          property :stopping, as: 'stopping'
+          property :suspended, as: 'suspended'
+          property :suspending, as: 'suspending'
+          property :terminated, as: 'terminated'
         end
       end
       
@@ -18449,6 +18669,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :excluded_disks, as: 'excludedDisks'
           collection :included_disks, as: 'includedDisks'
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -22877,6 +23098,8 @@ module Google
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeAlpha::ShareSettings, decorator: Google::Apis::ComputeAlpha::ShareSettings::Representation
+      
           property :state, as: 'state'
           property :status, as: 'status', class: Google::Apis::ComputeAlpha::ReservationSlotStatus, decorator: Google::Apis::ComputeAlpha::ReservationSlotStatus::Representation
       
