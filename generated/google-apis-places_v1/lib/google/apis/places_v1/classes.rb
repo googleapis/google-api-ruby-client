@@ -729,13 +729,13 @@ module Google
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1ContextualContentJustification>]
         attr_accessor :justifications
       
-        # Information (including references) about photos of this place, contexual to
+        # Information (including references) about photos of this place, contextual to
         # the place query.
         # Corresponds to the JSON property `photos`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Photo>]
         attr_accessor :photos
       
-        # List of reviews about this place, contexual to the place query.
+        # List of reviews about this place, contextual to the place query.
         # Corresponds to the JSON property `reviews`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Review>]
         attr_accessor :reviews
