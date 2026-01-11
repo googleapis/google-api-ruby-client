@@ -57,9 +57,9 @@ module Google
         #   Required. The resource name for the location for which static IPs should be
         #   returned. Must be in the format `projects/*/locations/*`.
         # @param [Fixnum] page_size
-        #   Maximum number of IPs to return.
+        #   Optional. Maximum number of IPs to return.
         # @param [String] page_token
-        #   A page token, received from a previous `FetchStaticIps` call.
+        #   Optional. A page token, received from a previous `FetchStaticIps` call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -338,25 +338,26 @@ module Google
         # @param [String] parent
         #   Required. The parent which owns this collection of connection profiles.
         # @param [String] filter
-        #   A filter expression that filters connection profiles listed in the response.
-        #   The expression must specify the field name, a comparison operator, and the
-        #   value that you want to use for filtering. The value must be a string, a number,
-        #   or a boolean. The comparison operator must be either =, !=, >, or <. For
-        #   example, list connection profiles created this year by specifying **createTime
-        #   %gt; 2020-01-01T00:00:00.000000000Z**. You can also filter nested fields. For
-        #   example, you could specify **mySql.username = %lt;my_username%gt;** to list
-        #   all connection profiles configured to connect with a specific username.
+        #   Optional. A filter expression that filters connection profiles listed in the
+        #   response. The expression must specify the field name, a comparison operator,
+        #   and the value that you want to use for filtering. The value must be a string,
+        #   a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, list connection profiles created this year by specifying **
+        #   createTime %gt; 2020-01-01T00:00:00.000000000Z**. You can also filter nested
+        #   fields. For example, you could specify **mySql.username = %lt;my_username%gt;**
+        #   to list all connection profiles configured to connect with a specific
+        #   username.
         # @param [String] order_by
-        #   A comma-separated list of fields to order results according to.
+        #   Optional. A comma-separated list of fields to order results according to.
         # @param [Fixnum] page_size
         #   The maximum number of connection profiles to return. The service may return
         #   fewer than this value. If unspecified, at most 50 connection profiles will be
         #   returned. The maximum value is 1000; values above 1000 are coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListConnectionProfiles` call. Provide
-        #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListConnectionProfiles` must match the call that provided the
-        #   page token.
+        #   Optional. A page token, received from a previous `ListConnectionProfiles` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListConnectionProfiles` must match the call that
+        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -626,11 +627,11 @@ module Google
         # @param [String] conversion_workspace_id
         #   Required. The ID of the conversion workspace to create.
         # @param [String] request_id
-        #   A unique ID used to identify the request. If the server receives two requests
-        #   with the same ID, then the second request is ignored. It is recommended to
-        #   always set this value to a UUID. The ID must contain only letters (a-z, A-Z),
-        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
-        #   characters.
+        #   Optional. A unique ID used to identify the request. If the server receives two
+        #   requests with the same ID, then the second request is ignored. It is
+        #   recommended to always set this value to a UUID. The ID must contain only
+        #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        #   maximum length is 40 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -666,14 +667,14 @@ module Google
         # @param [String] name
         #   Required. Name of the conversion workspace resource to delete.
         # @param [Boolean] force
-        #   Force delete the conversion workspace, even if there's a running migration
-        #   that is using the workspace.
+        #   Optional. Force delete the conversion workspace, even if there's a running
+        #   migration that is using the workspace.
         # @param [String] request_id
-        #   A unique ID used to identify the request. If the server receives two requests
-        #   with the same ID, then the second request is ignored. It is recommended to
-        #   always set this value to a UUID. The ID must contain only letters (a-z, A-Z),
-        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
-        #   characters.
+        #   Optional. A unique ID used to identify the request. If the server receives two
+        #   requests with the same ID, then the second request is ignored. It is
+        #   recommended to always set this value to a UUID. The ID must contain only
+        #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        #   maximum length is 40 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -881,23 +882,23 @@ module Google
         # @param [String] parent
         #   Required. The parent which owns this collection of conversion workspaces.
         # @param [String] filter
-        #   A filter expression that filters conversion workspaces listed in the response.
-        #   The expression must specify the field name, a comparison operator, and the
-        #   value that you want to use for filtering. The value must be a string, a number,
-        #   or a boolean. The comparison operator must be either =, !=, >, or <. For
-        #   example, list conversion workspaces created this year by specifying **
+        #   Optional. A filter expression that filters conversion workspaces listed in the
+        #   response. The expression must specify the field name, a comparison operator,
+        #   and the value that you want to use for filtering. The value must be a string,
+        #   a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, list conversion workspaces created this year by specifying **
         #   createTime %gt; 2020-01-01T00:00:00.000000000Z.** You can also filter nested
         #   fields. For example, you could specify **source.version = "12.c.1"** to select
         #   all conversion workspaces with source database version equal to 12.c.1.
         # @param [Fixnum] page_size
-        #   The maximum number of conversion workspaces to return. The service may return
-        #   fewer than this value. If unspecified, at most 50 sets are returned.
+        #   Optional. The maximum number of conversion workspaces to return. The service
+        #   may return fewer than this value. If unspecified, at most 50 sets are returned.
         # @param [String] page_token
-        #   The nextPageToken value received in the previous call to conversionWorkspaces.
-        #   list, used in the subsequent request to retrieve the next page of results. On
-        #   first call this should be left blank. When paginating, all other parameters
-        #   provided to conversionWorkspaces.list must match the call that provided the
-        #   page token.
+        #   Optional. The nextPageToken value received in the previous call to
+        #   conversionWorkspaces.list, used in the subsequent request to retrieve the next
+        #   page of results. On first call this should be left blank. When paginating, all
+        #   other parameters provided to conversionWorkspaces.list must match the call
+        #   that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -934,11 +935,11 @@ module Google
         #   locations/`location`/conversionWorkspaces/`conversion_workspace`.
         # @param [Google::Apis::DatamigrationV1::ConversionWorkspace] conversion_workspace_object
         # @param [String] request_id
-        #   A unique ID used to identify the request. If the server receives two requests
-        #   with the same ID, then the second request is ignored. It is recommended to
-        #   always set this value to a UUID. The ID must contain only letters (a-z, A-Z),
-        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
-        #   characters.
+        #   Optional. A unique ID used to identify the request. If the server receives two
+        #   requests with the same ID, then the second request is ignored. It is
+        #   recommended to always set this value to a UUID. The ID must contain only
+        #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        #   maximum length is 40 characters.
         # @param [String] update_mask
         #   Required. Field mask is used to specify the fields to be overwritten by the
         #   update in the conversion workspace resource.
@@ -1171,11 +1172,11 @@ module Google
         # @param [String] mapping_rule_id
         #   Required. The ID of the rule to create.
         # @param [String] request_id
-        #   A unique ID used to identify the request. If the server receives two requests
-        #   with the same ID, then the second request is ignored. It is recommended to
-        #   always set this value to a UUID. The ID must contain only letters (a-z, A-Z),
-        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
-        #   characters.
+        #   Optional. A unique ID used to identify the request. If the server receives two
+        #   requests with the same ID, then the second request is ignored. It is
+        #   recommended to always set this value to a UUID. The ID must contain only
+        #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        #   maximum length is 40 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1319,13 +1320,14 @@ module Google
         #   listed in the form of: projects/`project`/locations/`location`/
         #   conversionWorkspaces/`conversion_workspace`.
         # @param [Fixnum] page_size
-        #   The maximum number of rules to return. The service may return fewer than this
-        #   value.
+        #   Optional. The maximum number of rules to return. The service may return fewer
+        #   than this value.
         # @param [String] page_token
-        #   The nextPageToken value received in the previous call to mappingRules.list,
-        #   used in the subsequent request to retrieve the next page of results. On first
-        #   call this should be left blank. When paginating, all other parameters provided
-        #   to mappingRules.list must match the call that provided the page token.
+        #   Optional. The nextPageToken value received in the previous call to
+        #   mappingRules.list, used in the subsequent request to retrieve the next page of
+        #   results. On first call this should be left blank. When paginating, all other
+        #   parameters provided to mappingRules.list must match the call that provided the
+        #   page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1402,15 +1404,15 @@ module Google
         # @param [String] name
         #   Required. Name of the migration job resource to delete.
         # @param [Boolean] force
-        #   The destination CloudSQL connection profile is always deleted with the
-        #   migration job. In case of force delete, the destination CloudSQL replica
+        #   Optional. The destination CloudSQL connection profile is always deleted with
+        #   the migration job. In case of force delete, the destination CloudSQL replica
         #   database is also deleted.
         # @param [String] request_id
-        #   A unique ID used to identify the request. If the server receives two requests
-        #   with the same ID, then the second request is ignored. It is recommended to
-        #   always set this value to a UUID. The ID must contain only letters (a-z, A-Z),
-        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
-        #   characters.
+        #   Optional. A unique ID used to identify the request. If the server receives two
+        #   requests with the same ID, then the second request is ignored. It is
+        #   recommended to always set this value to a UUID. The ID must contain only
+        #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        #   maximum length is 40 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1444,7 +1446,7 @@ module Google
         # is applicable for the following migrations: 1. MySQL to Cloud SQL for MySQL 2.
         # PostgreSQL to Cloud SQL for PostgreSQL 3. PostgreSQL to AlloyDB for PostgreSQL.
         # @param [String] name
-        #   Name of the migration job resource to demote its destination.
+        #   Required. Name of the migration job resource to demote its destination.
         # @param [Google::Apis::DatamigrationV1::DemoteDestinationRequest] demote_destination_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1654,26 +1656,27 @@ module Google
         # @param [String] parent
         #   Required. The parent which owns this collection of migrationJobs.
         # @param [String] filter
-        #   A filter expression that filters migration jobs listed in the response. The
-        #   expression must specify the field name, a comparison operator, and the value
-        #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <. For example,
-        #   list migration jobs created this year by specifying **createTime %gt; 2020-01-
-        #   01T00:00:00.000000000Z.** You can also filter nested fields. For example, you
-        #   could specify **reverseSshConnectivity.vmIp = "1.2.3.4"** to select all
-        #   migration jobs connecting through the specific SSH tunnel bastion.
+        #   Optional. A filter expression that filters migration jobs listed in the
+        #   response. The expression must specify the field name, a comparison operator,
+        #   and the value that you want to use for filtering. The value must be a string,
+        #   a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, list migration jobs created this year by specifying **createTime %
+        #   gt; 2020-01-01T00:00:00.000000000Z.** You can also filter nested fields. For
+        #   example, you could specify **reverseSshConnectivity.vmIp = "1.2.3.4"** to
+        #   select all migration jobs connecting through the specific SSH tunnel bastion.
         # @param [String] order_by
-        #   Sort the results based on the migration job name. Valid values are: "name", "
-        #   name asc", and "name desc".
+        #   Optional. Sort the results based on the migration job name. Valid values are: "
+        #   name", "name asc", and "name desc".
         # @param [Fixnum] page_size
-        #   The maximum number of migration jobs to return. The service may return fewer
-        #   than this value. If unspecified, at most 50 migration jobs will be returned.
-        #   The maximum value is 1000; values above 1000 are coerced to 1000.
+        #   Optional. The maximum number of migration jobs to return. The service may
+        #   return fewer than this value. If unspecified, at most 50 migration jobs will
+        #   be returned. The maximum value is 1000; values above 1000 are coerced to 1000.
         # @param [String] page_token
-        #   The nextPageToken value received in the previous call to migrationJobs.list,
-        #   used in the subsequent request to retrieve the next page of results. On first
-        #   call this should be left blank. When paginating, all other parameters provided
-        #   to migrationJobs.list must match the call that provided the page token.
+        #   Optional. The nextPageToken value received in the previous call to
+        #   migrationJobs.list, used in the subsequent request to retrieve the next page
+        #   of results. On first call this should be left blank. When paginating, all
+        #   other parameters provided to migrationJobs.list must match the call that
+        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1711,11 +1714,11 @@ module Google
         #   project`/locations/`location`/migrationJobs/`migrationJob`.
         # @param [Google::Apis::DatamigrationV1::MigrationJob] migration_job_object
         # @param [String] request_id
-        #   A unique ID used to identify the request. If the server receives two requests
-        #   with the same ID, then the second request is ignored. It is recommended to
-        #   always set this value to a UUID. The ID must contain only letters (a-z, A-Z),
-        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
-        #   characters.
+        #   Optional. A unique ID used to identify the request. If the server receives two
+        #   requests with the same ID, then the second request is ignored. It is
+        #   recommended to always set this value to a UUID. The ID must contain only
+        #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        #   maximum length is 40 characters.
         # @param [String] update_mask
         #   Required. Field mask is used to specify the fields to be overwritten by the
         #   update in the conversion workspace resource.
@@ -2107,11 +2110,11 @@ module Google
         # @param [String] parent
         #   Required. The parent migration job that owns the collection of objects.
         # @param [Fixnum] page_size
-        #   Maximum number of objects to return. Default is 50. The maximum value is 1000;
-        #   values above 1000 will be coerced to 1000.
+        #   Optional. Maximum number of objects to return. Default is 50. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   Page token received from a previous `ListMigrationJObObjectsRequest` call.
-        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   Optional. Page token received from a previous `ListMigrationJObObjectsRequest`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
         #   parameters provided to `ListMigrationJobObjectsRequest` must match the call
         #   that provided the page token.
         # @param [String] fields
@@ -2572,23 +2575,23 @@ module Google
         # @param [String] parent
         #   Required. The parent that owns the collection of private connections.
         # @param [String] filter
-        #   A filter expression that filters private connections listed in the response.
-        #   The expression must specify the field name, a comparison operator, and the
-        #   value that you want to use for filtering. The value must be a string, a number,
-        #   or a boolean. The comparison operator must be either =, !=, >, or <. For
-        #   example, list private connections created this year by specifying **createTime
-        #   %gt; 2021-01-01T00:00:00.000000000Z**.
+        #   Optional. A filter expression that filters private connections listed in the
+        #   response. The expression must specify the field name, a comparison operator,
+        #   and the value that you want to use for filtering. The value must be a string,
+        #   a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, list private connections created this year by specifying **
+        #   createTime %gt; 2021-01-01T00:00:00.000000000Z**.
         # @param [String] order_by
-        #   Order by fields for the result.
+        #   Optional. Order by fields for the result.
         # @param [Fixnum] page_size
-        #   Maximum number of private connections to return. If unspecified, at most 50
-        #   private connections that are returned. The maximum value is 1000; values above
-        #   1000 are coerced to 1000.
+        #   Optional. Maximum number of private connections to return. If unspecified, at
+        #   most 50 private connections that are returned. The maximum value is 1000;
+        #   values above 1000 are coerced to 1000.
         # @param [String] page_token
-        #   Page token received from a previous `ListPrivateConnections` call. Provide
-        #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListPrivateConnections` must match the call that provided the
-        #   page token.
+        #   Optional. Page token received from a previous `ListPrivateConnections` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListPrivateConnections` must match the call that
+        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
