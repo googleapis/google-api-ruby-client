@@ -3850,6 +3850,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityValidationOutput]
         attr_accessor :entity_validation_output
       
+        # Structure to identify provenance relationships between annotations in
+        # different revisions.
+        # Corresponds to the JSON property `provenance`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentProvenance]
+        attr_accessor :provenance
+      
         # The revision id.
         # Corresponds to the JSON property `revisionId`
         # @return [String]
@@ -3863,6 +3869,7 @@ module Google
         def update!(**args)
           @entities = args[:entities] if args.key?(:entities)
           @entity_validation_output = args[:entity_validation_output] if args.key?(:entity_validation_output)
+          @provenance = args[:provenance] if args.key?(:provenance)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
         end
       end
