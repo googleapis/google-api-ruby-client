@@ -544,6 +544,11 @@ module Google
         # @return [String]
         attr_accessor :section
       
+        # Optional. The subject of the course.
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
         # Representation of a Google Drive folder.
         # Corresponds to the JSON property `teacherFolder`
         # @return [Google::Apis::ClassroomV1::DriveFolder]
@@ -584,6 +589,7 @@ module Google
           @owner_id = args[:owner_id] if args.key?(:owner_id)
           @room = args[:room] if args.key?(:room)
           @section = args[:section] if args.key?(:section)
+          @subject = args[:subject] if args.key?(:subject)
           @teacher_folder = args[:teacher_folder] if args.key?(:teacher_folder)
           @teacher_group_email = args[:teacher_group_email] if args.key?(:teacher_group_email)
           @update_time = args[:update_time] if args.key?(:update_time)

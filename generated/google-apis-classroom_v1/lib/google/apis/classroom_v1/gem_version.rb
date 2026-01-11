@@ -16,13 +16,13 @@ module Google
   module Apis
     module ClassroomV1
       # Version of the google-apis-classroom_v1 gem
-      GEM_VERSION = "0.48.0"
+      GEM_VERSION = "0.49.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.18.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20251202"
+      REVISION = "20260106"
     end
   end
 end
