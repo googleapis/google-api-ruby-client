@@ -56,10 +56,10 @@ module Google
         #   Required. The resource name for the location for which static IPs should be
         #   returned. Must be in the format `projects/*/locations/*`.
         # @param [Fixnum] page_size
-        #   Maximum number of Ips to return, will likely not be specified.
+        #   Optional. Maximum number of Ips to return, will likely not be specified.
         # @param [String] page_token
-        #   A page token, received from a previous `ListStaticIps` call. will likely not
-        #   be specified.
+        #   Optional. A page token, received from a previous `ListStaticIps` call. will
+        #   likely not be specified.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -334,18 +334,18 @@ module Google
         # @param [String] parent
         #   Required. The parent that owns the collection of connection profiles.
         # @param [String] filter
-        #   Filter request.
+        #   Optional. Filter request.
         # @param [String] order_by
-        #   Order by fields for the result.
+        #   Optional. Order by fields for the result.
         # @param [Fixnum] page_size
-        #   Maximum number of connection profiles to return. If unspecified, at most 50
-        #   connection profiles will be returned. The maximum value is 1000; values above
-        #   1000 will be coerced to 1000.
+        #   Optional. Maximum number of connection profiles to return. If unspecified, at
+        #   most 50 connection profiles will be returned. The maximum value is 1000;
+        #   values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   Page token received from a previous `ListConnectionProfiles` call. Provide
-        #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListConnectionProfiles` must match the call that provided the
-        #   page token.
+        #   Optional. Page token received from a previous `ListConnectionProfiles` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListConnectionProfiles` must match the call that
+        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -727,18 +727,18 @@ module Google
         #   Required. The parent that owns the collection of private connectivity
         #   configurations.
         # @param [String] filter
-        #   Filter request.
+        #   Optional. Filter request.
         # @param [String] order_by
-        #   Order by fields for the result.
+        #   Optional. Order by fields for the result.
         # @param [Fixnum] page_size
         #   Maximum number of private connectivity configurations to return. If
         #   unspecified, at most 50 private connectivity configurations that will be
         #   returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   Page token received from a previous `ListPrivateConnections` call. Provide
-        #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListPrivateConnections` must match the call that provided the
-        #   page token.
+        #   Optional. Page token received from a previous `ListPrivateConnections` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListPrivateConnections` must match the call that
+        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -896,17 +896,17 @@ module Google
         # @param [String] parent
         #   Required. The parent that owns the collection of Routess.
         # @param [String] filter
-        #   Filter request.
+        #   Optional. Filter request.
         # @param [String] order_by
-        #   Order by fields for the result.
+        #   Optional. Order by fields for the result.
         # @param [Fixnum] page_size
-        #   Maximum number of Routes to return. The service may return fewer than this
-        #   value. If unspecified, at most 50 Routes will be returned. The maximum value
-        #   is 1000; values above 1000 will be coerced to 1000.
+        #   Optional. Maximum number of Routes to return. The service may return fewer
+        #   than this value. If unspecified, at most 50 Routes will be returned. The
+        #   maximum value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   Page token received from a previous `ListRoutes` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListRoutes` must match the call that provided the page token.
+        #   Optional. Page token received from a previous `ListRoutes` call. Provide this
+        #   to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListRoutes` must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1069,17 +1069,17 @@ module Google
         # @param [String] parent
         #   Required. The parent that owns the collection of streams.
         # @param [String] filter
-        #   Filter request.
+        #   Optional. Filter request.
         # @param [String] order_by
-        #   Order by fields for the result.
+        #   Optional. Order by fields for the result.
         # @param [Fixnum] page_size
-        #   Maximum number of streams to return. If unspecified, at most 50 streams will
-        #   be returned. The maximum value is 1000; values above 1000 will be coerced to
-        #   1000.
+        #   Optional. Maximum number of streams to return. If unspecified, at most 50
+        #   streams will be returned. The maximum value is 1000; values above 1000 will be
+        #   coerced to 1000.
         # @param [String] page_token
-        #   Page token received from a previous `ListStreams` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListStreams` must match the call that provided the page token.
+        #   Optional. Page token received from a previous `ListStreams` call. Provide this
+        #   to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListStreams` must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1239,13 +1239,13 @@ module Google
         # @param [String] parent
         #   Required. The parent stream that owns the collection of objects.
         # @param [Fixnum] page_size
-        #   Maximum number of objects to return. Default is 50. The maximum value is 1000;
-        #   values above 1000 will be coerced to 1000.
+        #   Optional. Maximum number of objects to return. Default is 50. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   Page token received from a previous `ListStreamObjectsRequest` call. Provide
-        #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListStreamObjectsRequest` must match the call that provided the
-        #   page token.
+        #   Optional. Page token received from a previous `ListStreamObjectsRequest` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListStreamObjectsRequest` must match the call that
+        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
