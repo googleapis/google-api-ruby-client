@@ -3245,6 +3245,19 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AssistantCustomerPolicy]
         attr_accessor :customer_policy
       
+        # Optional. This field controls the default web grounding toggle for end users
+        # if `web_grounding_type` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or `
+        # WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`. By default, this field is set to
+        # false. If `web_grounding_type` is `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or `
+        # WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web grounding
+        # enabled by default on UI. If true, grounding toggle will be disabled by
+        # default on UI. End users can still enable web grounding in the UI if web
+        # grounding is enabled.
+        # Corresponds to the JSON property `defaultWebGroundingToggleOff`
+        # @return [Boolean]
+        attr_accessor :default_web_grounding_toggle_off
+        alias_method :default_web_grounding_toggle_off?, :default_web_grounding_toggle_off
+      
         # Optional. Description for additional information. Expected to be shown on the
         # configuration UI, not to the users of the assistant.
         # Corresponds to the JSON property `description`
@@ -3294,6 +3307,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @customer_policy = args[:customer_policy] if args.key?(:customer_policy)
+          @default_web_grounding_toggle_off = args[:default_web_grounding_toggle_off] if args.key?(:default_web_grounding_toggle_off)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enabled_tools = args[:enabled_tools] if args.key?(:enabled_tools)
