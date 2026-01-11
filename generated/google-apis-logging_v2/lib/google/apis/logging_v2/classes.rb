@@ -1365,16 +1365,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. A filter that chooses which log entries to return. For more
-        # information, see Logging query language (https://cloud.google.com/logging/docs/
-        # view/logging-query-language).Only log entries that match the filter are
-        # returned. An empty filter matches all log entries in the resources listed in
-        # resource_names. Referencing a parent resource that is not listed in
-        # resource_names will cause the filter to return no results. The maximum length
-        # of a filter is 20,000 characters.To make queries faster, you can make the
-        # filter more selective by using restrictions on indexed fields (https://cloud.
-        # google.com/logging/docs/view/logging-query-language#indexed-fields) as well as
-        # limit the time range of the query by adding range restrictions on the
-        # timestamp field.
+        # information, see Logging query language (https://`$universe.dns_names.
+        # final_documentation_domain`/logging/docs/view/logging-query-language).Only log
+        # entries that match the filter are returned. An empty filter matches all log
+        # entries in the resources listed in resource_names. Referencing a parent
+        # resource that is not listed in resource_names will cause the filter to return
+        # no results. The maximum length of a filter is 20,000 characters.To make
+        # queries faster, you can make the filter more selective by using restrictions
+        # on indexed fields (https://`$universe.dns_names.final_documentation_domain`/
+        # logging/docs/view/logging-query-language#indexed-fields) as well as limit the
+        # time range of the query by adding range restrictions on the timestamp field.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -1941,6 +1941,11 @@ module Google
         # @return [Google::Apis::LoggingV2::AppHub]
         attr_accessor :apphub_destination
       
+        # Metadata associated with App Hub.
+        # Corresponds to the JSON property `apphubSource`
+        # @return [Google::Apis::LoggingV2::AppHub]
+        attr_accessor :apphub_source
+      
         # Output only. The Error Reporting (https://cloud.google.com/error-reporting)
         # error groups associated with this LogEntry. Error Reporting sets the values
         # for this field during error group creation.For more information, see View
@@ -2138,6 +2143,7 @@ module Google
         def update!(**args)
           @apphub = args[:apphub] if args.key?(:apphub)
           @apphub_destination = args[:apphub_destination] if args.key?(:apphub_destination)
+          @apphub_source = args[:apphub_source] if args.key?(:apphub_source)
           @error_groups = args[:error_groups] if args.key?(:error_groups)
           @http_request = args[:http_request] if args.key?(:http_request)
           @insert_id = args[:insert_id] if args.key?(:insert_id)
@@ -4000,10 +4006,13 @@ module Google
         # @return [String]
         attr_accessor :buffer_window
       
-        # Optional. Only log entries that match the filter are returned. An empty filter
-        # matches all log entries in the resources listed in resource_names. Referencing
-        # a parent resource that is not listed in resource_names will cause the filter
-        # to return no results. The maximum length of a filter is 20,000 characters.
+        # Optional. A filter that chooses which log entries to return. For more
+        # information, see Logging query language (https://`$universe.dns_names.
+        # final_documentation_domain`/logging/docs/view/logging-query-language).Only log
+        # entries that match the filter are returned. An empty filter matches all log
+        # entries in the resources listed in resource_names. Referencing a parent
+        # resource that is not listed in resource_names will cause the filter to return
+        # no results. The maximum length of a filter is 20,000 characters.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
