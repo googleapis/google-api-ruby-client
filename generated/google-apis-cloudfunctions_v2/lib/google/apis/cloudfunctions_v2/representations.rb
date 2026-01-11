@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BuildConfigOverrides
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CommitFunctionUpgradeAsGen2Request
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -256,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceConfigOverrides
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -369,6 +381,13 @@ module Google
       
           property :source_token, as: 'sourceToken'
           property :worker_pool, as: 'workerPool'
+        end
+      end
+      
+      class BuildConfigOverrides
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :runtime, as: 'runtime'
         end
       end
       
@@ -728,6 +747,13 @@ module Google
         end
       end
       
+      class ServiceConfigOverrides
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_instance_count, as: 'maxInstanceCount'
+        end
+      end
+      
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -740,6 +766,10 @@ module Google
       class SetupFunctionUpgradeConfigRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_config_overrides, as: 'buildConfigOverrides', class: Google::Apis::CloudfunctionsV2::BuildConfigOverrides, decorator: Google::Apis::CloudfunctionsV2::BuildConfigOverrides::Representation
+      
+          property :service_config_overrides, as: 'serviceConfigOverrides', class: Google::Apis::CloudfunctionsV2::ServiceConfigOverrides, decorator: Google::Apis::CloudfunctionsV2::ServiceConfigOverrides::Representation
+      
           property :trigger_service_account, as: 'triggerServiceAccount'
         end
       end
