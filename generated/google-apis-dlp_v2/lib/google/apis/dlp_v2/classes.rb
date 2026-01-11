@@ -6026,6 +6026,11 @@ module Google
         # @return [String]
         attr_accessor :example
       
+        # The launch status of the infoType.
+        # Corresponds to the JSON property `launchStatus`
+        # @return [String]
+        attr_accessor :launch_status
+      
         # Locations at which a feature can be used.
         # Corresponds to the JSON property `locationSupport`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2LocationSupport]
@@ -6071,6 +6076,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @example = args[:example] if args.key?(:example)
+          @launch_status = args[:launch_status] if args.key?(:launch_status)
           @location_support = args[:location_support] if args.key?(:location_support)
           @name = args[:name] if args.key?(:name)
           @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
