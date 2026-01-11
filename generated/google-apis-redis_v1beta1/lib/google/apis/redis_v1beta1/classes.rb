@@ -2727,8 +2727,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -2799,11 +2800,23 @@ module Google
       class MachineConfiguration
         include Google::Apis::Core::Hashable
       
+        # Optional. Baseline slots for BigQuery Reservations. Baseline slots are in
+        # increments of 50.
+        # Corresponds to the JSON property `baselineSlots`
+        # @return [Fixnum]
+        attr_accessor :baseline_slots
+      
         # The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482) add
         # proto validations again after bug fix.
         # Corresponds to the JSON property `cpuCount`
         # @return [Fixnum]
         attr_accessor :cpu_count
+      
+        # Optional. Max slots for BigQuery Reservations. Max slots are in increments of
+        # 50.
+        # Corresponds to the JSON property `maxReservationSlots`
+        # @return [Fixnum]
+        attr_accessor :max_reservation_slots
       
         # Memory size in bytes. TODO(b/342344482) add proto validations again after bug
         # fix.
@@ -2828,7 +2841,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @baseline_slots = args[:baseline_slots] if args.key?(:baseline_slots)
           @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
+          @max_reservation_slots = args[:max_reservation_slots] if args.key?(:max_reservation_slots)
           @memory_size_in_bytes = args[:memory_size_in_bytes] if args.key?(:memory_size_in_bytes)
           @shard_count = args[:shard_count] if args.key?(:shard_count)
           @vcpu_count = args[:vcpu_count] if args.key?(:vcpu_count)
