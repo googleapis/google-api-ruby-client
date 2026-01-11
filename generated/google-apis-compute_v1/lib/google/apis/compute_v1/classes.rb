@@ -4312,6 +4312,13 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Configures traffic steering properties of internal passthrough Network
+        # Load Balancers.
+        # networkPassThroughLbTrafficPolicy cannot be specified with haPolicy.
+        # Corresponds to the JSON property `networkPassThroughLbTrafficPolicy`
+        # @return [Google::Apis::ComputeV1::BackendServiceNetworkPassThroughLbTrafficPolicy]
+        attr_accessor :network_pass_through_lb_traffic_policy
+      
         # Settings controlling the eviction of unhealthy hosts from the load balancing
         # pool for the backend service.
         # Corresponds to the JSON property `outlierDetection`
@@ -4484,6 +4491,7 @@ module Google
           @metadatas = args[:metadatas] if args.key?(:metadatas)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @network_pass_through_lb_traffic_policy = args[:network_pass_through_lb_traffic_policy] if args.key?(:network_pass_through_lb_traffic_policy)
           @outlier_detection = args[:outlier_detection] if args.key?(:outlier_detection)
           @params = args[:params] if args.key?(:params)
           @port = args[:port] if args.key?(:port)
@@ -5708,6 +5716,74 @@ module Google
           @optional_fields = args[:optional_fields] if args.key?(:optional_fields)
           @optional_mode = args[:optional_mode] if args.key?(:optional_mode)
           @sample_rate = args[:sample_rate] if args.key?(:sample_rate)
+        end
+      end
+      
+      # 
+      class BackendServiceNetworkPassThroughLbTrafficPolicy
+        include Google::Apis::Core::Hashable
+      
+        # When configured, new connections are load balanced across healthy backend
+        # endpoints in the local zone.
+        # Corresponds to the JSON property `zonalAffinity`
+        # @return [Google::Apis::ComputeV1::BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity]
+        attr_accessor :zonal_affinity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @zonal_affinity = args[:zonal_affinity] if args.key?(:zonal_affinity)
+        end
+      end
+      
+      # 
+      class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity
+        include Google::Apis::Core::Hashable
+      
+        # This field indicates whether zonal affinity is enabled or not. The
+        # possible values are:
+        # 
+        # - ZONAL_AFFINITY_DISABLED: Default Value. Zonal Affinity
+        # is disabled. The load balancer distributes new connections to all
+        # healthy backend endpoints across all zones.
+        # - ZONAL_AFFINITY_STAY_WITHIN_ZONE: Zonal Affinity is
+        # enabled. The load balancer distributes new connections to all healthy
+        # backend endpoints in the local zone only. If there are no healthy
+        # backend endpoints in the local zone, the load balancer distributes
+        # new connections to all backend endpoints in the local zone.
+        # - ZONAL_AFFINITY_SPILL_CROSS_ZONE: Zonal Affinity is
+        # enabled. The load balancer distributes new connections to all healthy
+        # backend endpoints in the local zone only. If there aren't enough
+        # healthy backend endpoints in the local zone, the load balancer
+        # distributes new connections to all healthy backend endpoints across all
+        # zones.
+        # Corresponds to the JSON property `spillover`
+        # @return [String]
+        attr_accessor :spillover
+      
+        # The value of the field must be in [0, 1]. When the ratio of the count
+        # of healthy backend endpoints in a zone to the count of backend
+        # endpoints in that same zone is equal to or above this threshold, the
+        # load balancer distributes new connections to all healthy endpoints in
+        # the local zone only. When the ratio of the count of healthy backend
+        # endpoints in a zone to the count of backend endpoints in that same
+        # zone is below this threshold, the load balancer distributes all new
+        # connections to all healthy endpoints across all zones.
+        # Corresponds to the JSON property `spilloverRatio`
+        # @return [Float]
+        attr_accessor :spillover_ratio
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spillover = args[:spillover] if args.key?(:spillover)
+          @spillover_ratio = args[:spillover_ratio] if args.key?(:spillover_ratio)
         end
       end
       
@@ -11730,6 +11806,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :dest_ip_ranges
       
+        # Network context of the traffic destination. Allowed values are:
+        # 
+        # 
+        # - UNSPECIFIED
+        # - INTERNET
+        # - NON_INTERNET
+        # Corresponds to the JSON property `destNetworkContext`
+        # @return [String]
+        attr_accessor :dest_network_context
+      
         # Network type of the traffic destination. Allowed values are:
         # 
         # 
@@ -11777,6 +11863,18 @@ module Google
         # Corresponds to the JSON property `srcIpRanges`
         # @return [Array<String>]
         attr_accessor :src_ip_ranges
+      
+        # Network context of the traffic source. Allowed values are:
+        # 
+        # 
+        # - UNSPECIFIED
+        # - INTERNET
+        # - INTRA_VPC
+        # - NON_INTERNET
+        # - VPC_NETWORKS
+        # Corresponds to the JSON property `srcNetworkContext`
+        # @return [String]
+        attr_accessor :src_network_context
       
         # Network type of the traffic source. Allowed values are:
         # 
@@ -11827,6 +11925,7 @@ module Google
           @dest_address_groups = args[:dest_address_groups] if args.key?(:dest_address_groups)
           @dest_fqdns = args[:dest_fqdns] if args.key?(:dest_fqdns)
           @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
+          @dest_network_context = args[:dest_network_context] if args.key?(:dest_network_context)
           @dest_network_type = args[:dest_network_type] if args.key?(:dest_network_type)
           @dest_region_codes = args[:dest_region_codes] if args.key?(:dest_region_codes)
           @dest_threat_intelligences = args[:dest_threat_intelligences] if args.key?(:dest_threat_intelligences)
@@ -11834,6 +11933,7 @@ module Google
           @src_address_groups = args[:src_address_groups] if args.key?(:src_address_groups)
           @src_fqdns = args[:src_fqdns] if args.key?(:src_fqdns)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
+          @src_network_context = args[:src_network_context] if args.key?(:src_network_context)
           @src_network_type = args[:src_network_type] if args.key?(:src_network_type)
           @src_networks = args[:src_networks] if args.key?(:src_networks)
           @src_region_codes = args[:src_region_codes] if args.key?(:src_region_codes)
@@ -28511,6 +28611,11 @@ module Google
         attr_accessor :os_license
         alias_method :os_license?, :os_license
       
+        # Additional license params.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeV1::LicenseParams]
+        attr_accessor :params
+      
         # If true, this license can be removed from a disk's set of licenses, with no
         # replacement license needed.
         # Corresponds to the JSON property `removableFromDisk`
@@ -28579,6 +28684,7 @@ module Google
           @multi_tenant_only = args[:multi_tenant_only] if args.key?(:multi_tenant_only)
           @name = args[:name] if args.key?(:name)
           @os_license = args[:os_license] if args.key?(:os_license)
+          @params = args[:params] if args.key?(:params)
           @removable_from_disk = args[:removable_from_disk] if args.key?(:removable_from_disk)
           @required_coattached_licenses = args[:required_coattached_licenses] if args.key?(:required_coattached_licenses)
           @resource_requirements = args[:resource_requirements] if args.key?(:resource_requirements)
@@ -28694,6 +28800,32 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # Additional license params.
+      class LicenseParams
+        include Google::Apis::Core::Hashable
+      
+        # Input only. Resource manager tags to be bound to the license. Tag keys and
+        # values
+        # have the same definition as resource
+        # manager tags. Keys and values can be either in numeric format,
+        # such as `tagKeys/`tag_key_id`` and `tagValues/456` or in namespaced
+        # format such as ``org_id|project_id`/`tag_key_short_name`` and
+        # ``tag_value_short_name``. The field is ignored (both PUT &
+        # PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -33330,6 +33462,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :address_purposes
       
+        # Specifies whether address creation is allowed.
+        # Corresponds to the JSON property `allowAddressCreation`
+        # @return [String]
+        attr_accessor :allow_address_creation
+      
         # Specifies whether alias IP ranges (and secondary address ranges) are
         # allowed.
         # Corresponds to the JSON property `allowAliasIpRanges`
@@ -33367,6 +33504,11 @@ module Google
         # @return [String]
         attr_accessor :allow_external_ip_access
       
+        # Specifies whether firewall policy can be attached to the network.
+        # Corresponds to the JSON property `allowFirewallPolicy`
+        # @return [String]
+        attr_accessor :allow_firewall_policy
+      
         # Specifies whether Cloud Interconnect creation is allowed.
         # Corresponds to the JSON property `allowInterconnect`
         # @return [String]
@@ -33386,6 +33528,11 @@ module Google
         # Corresponds to the JSON property `allowMultiNicInSameNetwork`
         # @return [String]
         attr_accessor :allow_multi_nic_in_same_network
+      
+        # Specifies whether multi-nic in the same subnetwork is allowed.
+        # Corresponds to the JSON property `allowMultiNicInSameSubnetwork`
+        # @return [String]
+        attr_accessor :allow_multi_nic_in_same_subnetwork
       
         # Specifies whether multicast is allowed.
         # Corresponds to the JSON property `allowMulticast`
@@ -33432,6 +33579,16 @@ module Google
         # @return [String]
         attr_accessor :allow_sub_interfaces
       
+        # Specifies whether subnetwork creation is allowed.
+        # Corresponds to the JSON property `allowSubnetworkCreation`
+        # @return [String]
+        attr_accessor :allow_subnetwork_creation
+      
+        # Specifies whether VPC firewall rules can be created under the network.
+        # Corresponds to the JSON property `allowVpcFirewallRules`
+        # @return [String]
+        attr_accessor :allow_vpc_firewall_rules
+      
         # Specifies whether VPC peering is allowed.
         # Corresponds to the JSON property `allowVpcPeering`
         # @return [String]
@@ -33441,6 +33598,11 @@ module Google
         # Corresponds to the JSON property `allowVpn`
         # @return [String]
         attr_accessor :allow_vpn
+      
+        # 
+        # Corresponds to the JSON property `firewallPolicyTypes`
+        # @return [Array<String>]
+        attr_accessor :firewall_policy_types
       
         # If set, limits the interface types that the network supports. If
         # empty, all interface types are supported.
@@ -33452,6 +33614,16 @@ module Google
         # Corresponds to the JSON property `multicast`
         # @return [String]
         attr_accessor :multicast
+      
+        # Specifies a predefined internal IPv6 range for the network.
+        # Corresponds to the JSON property `predefinedNetworkInternalIpv6Range`
+        # @return [String]
+        attr_accessor :predefined_network_internal_ipv6_range
+      
+        # Predefined subnetwork ranges for the network.
+        # Corresponds to the JSON property `predefinedSubnetworkRanges`
+        # @return [Array<Google::Apis::ComputeV1::NetworkProfileNetworkFeaturesPredefinedSubnetworkRange>]
+        attr_accessor :predefined_subnetwork_ranges
       
         # Specifies which subnetwork purposes are supported.
         # Corresponds to the JSON property `subnetPurposes`
@@ -33485,6 +33657,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @address_purposes = args[:address_purposes] if args.key?(:address_purposes)
+          @allow_address_creation = args[:allow_address_creation] if args.key?(:allow_address_creation)
           @allow_alias_ip_ranges = args[:allow_alias_ip_ranges] if args.key?(:allow_alias_ip_ranges)
           @allow_auto_mode_subnet = args[:allow_auto_mode_subnet] if args.key?(:allow_auto_mode_subnet)
           @allow_class_d_firewalls = args[:allow_class_d_firewalls] if args.key?(:allow_class_d_firewalls)
@@ -33492,10 +33665,12 @@ module Google
           @allow_cloud_router = args[:allow_cloud_router] if args.key?(:allow_cloud_router)
           @allow_default_nic_attachment = args[:allow_default_nic_attachment] if args.key?(:allow_default_nic_attachment)
           @allow_external_ip_access = args[:allow_external_ip_access] if args.key?(:allow_external_ip_access)
+          @allow_firewall_policy = args[:allow_firewall_policy] if args.key?(:allow_firewall_policy)
           @allow_interconnect = args[:allow_interconnect] if args.key?(:allow_interconnect)
           @allow_ip_forwarding = args[:allow_ip_forwarding] if args.key?(:allow_ip_forwarding)
           @allow_load_balancing = args[:allow_load_balancing] if args.key?(:allow_load_balancing)
           @allow_multi_nic_in_same_network = args[:allow_multi_nic_in_same_network] if args.key?(:allow_multi_nic_in_same_network)
+          @allow_multi_nic_in_same_subnetwork = args[:allow_multi_nic_in_same_subnetwork] if args.key?(:allow_multi_nic_in_same_subnetwork)
           @allow_multicast = args[:allow_multicast] if args.key?(:allow_multicast)
           @allow_ncc = args[:allow_ncc] if args.key?(:allow_ncc)
           @allow_network_migration = args[:allow_network_migration] if args.key?(:allow_network_migration)
@@ -33505,15 +33680,45 @@ module Google
           @allow_same_network_unicast = args[:allow_same_network_unicast] if args.key?(:allow_same_network_unicast)
           @allow_static_routes = args[:allow_static_routes] if args.key?(:allow_static_routes)
           @allow_sub_interfaces = args[:allow_sub_interfaces] if args.key?(:allow_sub_interfaces)
+          @allow_subnetwork_creation = args[:allow_subnetwork_creation] if args.key?(:allow_subnetwork_creation)
+          @allow_vpc_firewall_rules = args[:allow_vpc_firewall_rules] if args.key?(:allow_vpc_firewall_rules)
           @allow_vpc_peering = args[:allow_vpc_peering] if args.key?(:allow_vpc_peering)
           @allow_vpn = args[:allow_vpn] if args.key?(:allow_vpn)
+          @firewall_policy_types = args[:firewall_policy_types] if args.key?(:firewall_policy_types)
           @interface_types = args[:interface_types] if args.key?(:interface_types)
           @multicast = args[:multicast] if args.key?(:multicast)
+          @predefined_network_internal_ipv6_range = args[:predefined_network_internal_ipv6_range] if args.key?(:predefined_network_internal_ipv6_range)
+          @predefined_subnetwork_ranges = args[:predefined_subnetwork_ranges] if args.key?(:predefined_subnetwork_ranges)
           @subnet_purposes = args[:subnet_purposes] if args.key?(:subnet_purposes)
           @subnet_stack_types = args[:subnet_stack_types] if args.key?(:subnet_stack_types)
           @subnetwork_purposes = args[:subnetwork_purposes] if args.key?(:subnetwork_purposes)
           @subnetwork_stack_types = args[:subnetwork_stack_types] if args.key?(:subnetwork_stack_types)
           @unicast = args[:unicast] if args.key?(:unicast)
+        end
+      end
+      
+      # 
+      class NetworkProfileNetworkFeaturesPredefinedSubnetworkRange
+        include Google::Apis::Core::Hashable
+      
+        # The IPv6 range of the predefined subnetwork.
+        # Corresponds to the JSON property `ipv6Range`
+        # @return [String]
+        attr_accessor :ipv6_range
+      
+        # The naming prefix of the predefined subnetwork.
+        # Corresponds to the JSON property `namePrefix`
+        # @return [String]
+        attr_accessor :name_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ipv6_range = args[:ipv6_range] if args.key?(:ipv6_range)
+          @name_prefix = args[:name_prefix] if args.key?(:name_prefix)
         end
       end
       
@@ -42301,6 +42506,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :in_use_count
       
+        # Output only. Number of hosts currently in use. If there is one or more
+        # Instances running
+        # on the host, it is considered in use.
+        # Corresponds to the JSON property `inUseHostCount`
+        # @return [Fixnum]
+        attr_accessor :in_use_host_count
+      
         # Output only. [Output Only] Type of the resource. Alwayscompute#
         # reservationBlock for reservation blocks.
         # Corresponds to the JSON property `kind`
@@ -42373,6 +42585,7 @@ module Google
           @health_info = args[:health_info] if args.key?(:health_info)
           @id = args[:id] if args.key?(:id)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
+          @in_use_host_count = args[:in_use_host_count] if args.key?(:in_use_host_count)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @physical_topology = args[:physical_topology] if args.key?(:physical_topology)
@@ -42813,6 +43026,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :in_use_count
       
+        # Output only. Number of hosts currently in use. If there is one or more
+        # Instances running
+        # on the host, it is considered in use.
+        # Corresponds to the JSON property `inUseHostCount`
+        # @return [Fixnum]
+        attr_accessor :in_use_host_count
+      
         # Output only. [Output Only] Type of the resource. Alwayscompute#
         # reservationSubBlock for reservation subBlocks.
         # Corresponds to the JSON property `kind`
@@ -42871,6 +43091,7 @@ module Google
           @health_info = args[:health_info] if args.key?(:health_info)
           @id = args[:id] if args.key?(:id)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
+          @in_use_host_count = args[:in_use_host_count] if args.key?(:in_use_host_count)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @physical_topology = args[:physical_topology] if args.key?(:physical_topology)
@@ -51315,6 +51536,11 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::NetworkInterface>]
         attr_accessor :network_interfaces
       
+        # PostKeyRevocationActionType of the instance.
+        # Corresponds to the JSON property `postKeyRevocationActionType`
+        # @return [String]
+        attr_accessor :post_key_revocation_action_type
+      
         # Sets the scheduling options for an Instance.
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::Scheduling]
@@ -51350,6 +51576,7 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @post_key_revocation_action_type = args[:post_key_revocation_action_type] if args.key?(:post_key_revocation_action_type)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
           @tags = args[:tags] if args.key?(:tags)
@@ -52716,6 +52943,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Additional storage pool params.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeV1::StoragePoolParams]
+        attr_accessor :params
+      
         # Provisioning type of the performance-related parameters of the pool,
         # such as throughput and IOPS.
         # Corresponds to the JSON property `performanceProvisioningType`
@@ -52800,6 +53032,7 @@ module Google
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @performance_provisioning_type = args[:performance_provisioning_type] if args.key?(:performance_provisioning_type)
           @pool_provisioned_capacity_gb = args[:pool_provisioned_capacity_gb] if args.key?(:pool_provisioned_capacity_gb)
           @pool_provisioned_iops = args[:pool_provisioned_iops] if args.key?(:pool_provisioned_iops)
@@ -53344,6 +53577,32 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Additional storage pool params.
+      class StoragePoolParams
+        include Google::Apis::Core::Hashable
+      
+        # Input only. Resource manager tags to be bound to the storage pool. Tag keys
+        # and values
+        # have the same definition as resource
+        # manager tags. Keys and values can be either in numeric format,
+        # such as `tagKeys/`tag_key_id`` and `tagValues/456` or in namespaced
+        # format such as ``org_id|project_id`/`tag_key_short_name`` and
+        # ``tag_value_short_name``. The field is ignored (both PUT &
+        # PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
