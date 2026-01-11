@@ -119,6 +119,21 @@ module Google
       # Move a copy of the maps you created in My Maps
       AUTH_DATAPORTABILITY_MYMAPS_MAPS = 'https://www.googleapis.com/auth/dataportability.mymaps.maps'
 
+      # Copy Nest camera event data
+      AUTH_DATAPORTABILITY_NEST_CAMERA_EVENT = 'https://www.googleapis.com/auth/dataportability.nest.camera_event'
+
+      # Copy Nest camera feature data
+      AUTH_DATAPORTABILITY_NEST_CAMERA_FEATURE = 'https://www.googleapis.com/auth/dataportability.nest.camera_feature'
+
+      # Copy Nest camera footage
+      AUTH_DATAPORTABILITY_NEST_CAMERA_VIDEO = 'https://www.googleapis.com/auth/dataportability.nest.camera_video'
+
+      # Copy your Nest Store and Nest Renew billing and payment information
+      AUTH_DATAPORTABILITY_NEST_STORE = 'https://www.googleapis.com/auth/dataportability.nest.store'
+
+      # Copy your Nest user information
+      AUTH_DATAPORTABILITY_NEST_USER = 'https://www.googleapis.com/auth/dataportability.nest.user'
+
       # Move a copy of your food purchase and reservation activity
       AUTH_DATAPORTABILITY_ORDER_RESERVE_PURCHASES_RESERVATIONS = 'https://www.googleapis.com/auth/dataportability.order_reserve.purchases_reservations'
 
