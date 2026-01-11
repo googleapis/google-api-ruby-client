@@ -1272,8 +1272,14 @@ module Google
         
         # Lists Certificates.
         # @param [String] parent
-        #   Required. The resource name of the location associated with the Certificates,
-        #   in the format `projects/*/locations/*/caPools/*`.
+        #   Required. The resource name of the parent associated with the Certificates, in
+        #   the format `projects/*/locations/*/caPools/*`. The parent resource name can be
+        #   in one of two forms: 1. **Specific CA Pool:** To list certificates within a
+        #   single CA Pool: `projects/*/locations/*/caPools/*` 2. **All CA Pools in a
+        #   Location:** To list certificates across *all* CA Pools in a given project and
+        #   location, use the wildcard character (`-`) in place of the CA Pool ID. Example:
+        #   `projects/*/locations/*/caPools/-` See go/ccfe-nested-collections#aggregate-
+        #   listing for more details.
         # @param [String] filter
         #   Optional. Only include resources that match the filter in the response. For
         #   details on supported filters and syntax, see [Certificates Filtering
@@ -1863,11 +1869,12 @@ module Google
         #   The standard list page token.
         # @param [Boolean] return_partial_success
         #   When set to `true`, operations that are reachable are returned as normal, and
-        #   those that are unreachable are returned in the [ListOperationsResponse.
-        #   unreachable] field. This can only be `true` when reading across collections e.
-        #   g. when `parent` is set to `"projects/example/locations/-"`. This field is not
-        #   by default supported and will result in an `UNIMPLEMENTED` error if set unless
-        #   explicitly documented otherwise in service or product specific documentation.
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
