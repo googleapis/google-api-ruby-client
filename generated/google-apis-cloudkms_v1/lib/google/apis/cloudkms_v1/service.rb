@@ -2609,6 +2609,358 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Creates a new SingleTenantHsmInstance in a given Project and Location. User
+        # must create a RegisterTwoFactorAuthKeys proposal with this single-tenant HSM
+        # instance to finish setup of the instance.
+        # @param [String] parent
+        #   Required. The resource name of the location associated with the
+        #   SingleTenantHsmInstance, in the format `projects/*/locations/*`.
+        # @param [Google::Apis::CloudkmsV1::SingleTenantHsmInstance] single_tenant_hsm_instance_object
+        # @param [String] single_tenant_hsm_instance_id
+        #   Optional. It must be unique within a location and match the regular expression
+        #   `[a-zA-Z0-9_-]`1,63``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_single_tenant_hsm_instance(parent, single_tenant_hsm_instance_object = nil, single_tenant_hsm_instance_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/singleTenantHsmInstances', options)
+          command.request_representation = Google::Apis::CloudkmsV1::SingleTenantHsmInstance::Representation
+          command.request_object = single_tenant_hsm_instance_object
+          command.response_representation = Google::Apis::CloudkmsV1::Operation::Representation
+          command.response_class = Google::Apis::CloudkmsV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['singleTenantHsmInstanceId'] = single_tenant_hsm_instance_id unless single_tenant_hsm_instance_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns metadata for a given SingleTenantHsmInstance.
+        # @param [String] name
+        #   Required. The name of the SingleTenantHsmInstance to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::SingleTenantHsmInstance] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::SingleTenantHsmInstance]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_single_tenant_hsm_instance(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudkmsV1::SingleTenantHsmInstance::Representation
+          command.response_class = Google::Apis::CloudkmsV1::SingleTenantHsmInstance
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists SingleTenantHsmInstances.
+        # @param [String] parent
+        #   Required. The resource name of the location associated with the
+        #   SingleTenantHsmInstances to list, in the format `projects/*/locations/*`.
+        # @param [String] filter
+        #   Optional. Only include resources that match the filter in the response. For
+        #   more information, see [Sorting and filtering list results](https://cloud.
+        #   google.com/kms/docs/sorting-and-filtering).
+        # @param [String] order_by
+        #   Optional. Specify how the results should be sorted. If not specified, the
+        #   results will be sorted in the default order. For more information, see [
+        #   Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-
+        #   and-filtering).
+        # @param [Fixnum] page_size
+        #   Optional. Optional limit on the number of SingleTenantHsmInstances to include
+        #   in the response. Further SingleTenantHsmInstances can subsequently be obtained
+        #   by including the ListSingleTenantHsmInstancesResponse.next_page_token in a
+        #   subsequent request. If unspecified, the server will pick an appropriate
+        #   default.
+        # @param [String] page_token
+        #   Optional. Optional pagination token, returned earlier via
+        #   ListSingleTenantHsmInstancesResponse.next_page_token.
+        # @param [Boolean] show_deleted
+        #   Optional. If set to true, HsmManagement.ListSingleTenantHsmInstances will also
+        #   return SingleTenantHsmInstances in DELETED state.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::ListSingleTenantHsmInstancesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::ListSingleTenantHsmInstancesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_single_tenant_hsm_instances(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/singleTenantHsmInstances', options)
+          command.response_representation = Google::Apis::CloudkmsV1::ListSingleTenantHsmInstancesResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::ListSingleTenantHsmInstancesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Approves a SingleTenantHsmInstanceProposal for a given SingleTenantHsmInstance.
+        # The proposal must be in the PENDING state.
+        # @param [String] name
+        #   Required. The name of the SingleTenantHsmInstanceProposal to approve.
+        # @param [Google::Apis::CloudkmsV1::ApproveSingleTenantHsmInstanceProposalRequest] approve_single_tenant_hsm_instance_proposal_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::ApproveSingleTenantHsmInstanceProposalResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::ApproveSingleTenantHsmInstanceProposalResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def approve_single_tenant_hsm_instance_proposal(name, approve_single_tenant_hsm_instance_proposal_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:approve', options)
+          command.request_representation = Google::Apis::CloudkmsV1::ApproveSingleTenantHsmInstanceProposalRequest::Representation
+          command.request_object = approve_single_tenant_hsm_instance_proposal_request_object
+          command.response_representation = Google::Apis::CloudkmsV1::ApproveSingleTenantHsmInstanceProposalResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::ApproveSingleTenantHsmInstanceProposalResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new SingleTenantHsmInstanceProposal for a given
+        # SingleTenantHsmInstance.
+        # @param [String] parent
+        #   Required. The name of the SingleTenantHsmInstance associated with the
+        #   SingleTenantHsmInstanceProposals.
+        # @param [Google::Apis::CloudkmsV1::SingleTenantHsmInstanceProposal] single_tenant_hsm_instance_proposal_object
+        # @param [String] single_tenant_hsm_instance_proposal_id
+        #   Optional. It must be unique within a location and match the regular expression
+        #   `[a-zA-Z0-9_-]`1,63``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_single_tenant_hsm_instance_proposal(parent, single_tenant_hsm_instance_proposal_object = nil, single_tenant_hsm_instance_proposal_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/proposals', options)
+          command.request_representation = Google::Apis::CloudkmsV1::SingleTenantHsmInstanceProposal::Representation
+          command.request_object = single_tenant_hsm_instance_proposal_object
+          command.response_representation = Google::Apis::CloudkmsV1::Operation::Representation
+          command.response_class = Google::Apis::CloudkmsV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['singleTenantHsmInstanceProposalId'] = single_tenant_hsm_instance_proposal_id unless single_tenant_hsm_instance_proposal_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a SingleTenantHsmInstanceProposal.
+        # @param [String] name
+        #   Required. The name of the SingleTenantHsmInstanceProposal to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_single_tenant_hsm_instance_proposal(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudkmsV1::Empty::Representation
+          command.response_class = Google::Apis::CloudkmsV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Executes a SingleTenantHsmInstanceProposal for a given SingleTenantHsmInstance.
+        # The proposal must be in the APPROVED state.
+        # @param [String] name
+        #   Required. The name of the SingleTenantHsmInstanceProposal to execute.
+        # @param [Google::Apis::CloudkmsV1::ExecuteSingleTenantHsmInstanceProposalRequest] execute_single_tenant_hsm_instance_proposal_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_single_tenant_hsm_instance_proposal(name, execute_single_tenant_hsm_instance_proposal_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:execute', options)
+          command.request_representation = Google::Apis::CloudkmsV1::ExecuteSingleTenantHsmInstanceProposalRequest::Representation
+          command.request_object = execute_single_tenant_hsm_instance_proposal_request_object
+          command.response_representation = Google::Apis::CloudkmsV1::Operation::Representation
+          command.response_class = Google::Apis::CloudkmsV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns metadata for a given SingleTenantHsmInstanceProposal.
+        # @param [String] name
+        #   Required. The name of the SingleTenantHsmInstanceProposal to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::SingleTenantHsmInstanceProposal] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::SingleTenantHsmInstanceProposal]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_single_tenant_hsm_instance_proposal(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudkmsV1::SingleTenantHsmInstanceProposal::Representation
+          command.response_class = Google::Apis::CloudkmsV1::SingleTenantHsmInstanceProposal
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists SingleTenantHsmInstanceProposals.
+        # @param [String] parent
+        #   Required. The resource name of the location associated with the
+        #   SingleTenantHsmInstanceProposals to list, in the format `projects/*/locations/*
+        #   /singleTenantHsmInstances/*`.
+        # @param [String] filter
+        #   Optional. Only include resources that match the filter in the response. For
+        #   more information, see [Sorting and filtering list results](https://cloud.
+        #   google.com/kms/docs/sorting-and-filtering).
+        # @param [String] order_by
+        #   Optional. Specify how the results should be sorted. If not specified, the
+        #   results will be sorted in the default order. For more information, see [
+        #   Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-
+        #   and-filtering).
+        # @param [Fixnum] page_size
+        #   Optional. Optional limit on the number of SingleTenantHsmInstanceProposals to
+        #   include in the response. Further SingleTenantHsmInstanceProposals can
+        #   subsequently be obtained by including the
+        #   ListSingleTenantHsmInstanceProposalsResponse.next_page_token in a subsequent
+        #   request. If unspecified, the server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. Optional pagination token, returned earlier via
+        #   ListSingleTenantHsmInstanceProposalsResponse.next_page_token.
+        # @param [Boolean] show_deleted
+        #   Optional. If set to true, HsmManagement.ListSingleTenantHsmInstanceProposals
+        #   will also return SingleTenantHsmInstanceProposals in DELETED state.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::ListSingleTenantHsmInstanceProposalsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::ListSingleTenantHsmInstanceProposalsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_single_tenant_hsm_instance_proposals(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/proposals', options)
+          command.response_representation = Google::Apis::CloudkmsV1::ListSingleTenantHsmInstanceProposalsResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::ListSingleTenantHsmInstanceProposalsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 

@@ -22,6 +22,66 @@ module Google
   module Apis
     module CloudkmsV1
       
+      # Add a quorum member to the SingleTenantHsmInstance. This will increase the
+      # total_approver_count by 1. The SingleTenantHsmInstance must be in the ACTIVE
+      # state to perform this operation.
+      class AddQuorumMember
+        include Google::Apis::Core::Hashable
+      
+        # Required. The public key associated with the 2FA key for the new quorum member
+        # to add. Public keys must be associated with RSA 2048 keys.
+        # Corresponds to the JSON property `twoFactorPublicKeyPem`
+        # @return [String]
+        attr_accessor :two_factor_public_key_pem
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @two_factor_public_key_pem = args[:two_factor_public_key_pem] if args.key?(:two_factor_public_key_pem)
+        end
+      end
+      
+      # Request message for HsmManagement.ApproveSingleTenantHsmInstanceProposal.
+      class ApproveSingleTenantHsmInstanceProposalRequest
+        include Google::Apis::Core::Hashable
+      
+        # The reply to QuorumParameters for approving the proposal.
+        # Corresponds to the JSON property `quorumReply`
+        # @return [Google::Apis::CloudkmsV1::QuorumReply]
+        attr_accessor :quorum_reply
+      
+        # The reply to RequiredActionQuorumParameters for approving the proposal.
+        # Corresponds to the JSON property `requiredActionQuorumReply`
+        # @return [Google::Apis::CloudkmsV1::RequiredActionQuorumReply]
+        attr_accessor :required_action_quorum_reply
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @quorum_reply = args[:quorum_reply] if args.key?(:quorum_reply)
+          @required_action_quorum_reply = args[:required_action_quorum_reply] if args.key?(:required_action_quorum_reply)
+        end
+      end
+      
+      # Response message for HsmManagement.ApproveSingleTenantHsmInstanceProposal.
+      class ApproveSingleTenantHsmInstanceProposalResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for KeyManagementService.AsymmetricDecrypt.
       class AsymmetricDecryptRequest
         include Google::Apis::Core::Hashable
@@ -577,6 +637,61 @@ module Google
         end
       end
       
+      # A challenge to be signed by a 2FA key.
+      class Challenge
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The challenge to be signed by the 2FA key indicated by the public
+        # key.
+        # Corresponds to the JSON property `challenge`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :challenge
+      
+        # Output only. The public key associated with the 2FA key that should sign the
+        # challenge.
+        # Corresponds to the JSON property `publicKeyPem`
+        # @return [String]
+        attr_accessor :public_key_pem
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @challenge = args[:challenge] if args.key?(:challenge)
+          @public_key_pem = args[:public_key_pem] if args.key?(:public_key_pem)
+        end
+      end
+      
+      # A reply to a challenge signed by a 2FA key.
+      class ChallengeReply
+        include Google::Apis::Core::Hashable
+      
+        # Required. The public key associated with the 2FA key.
+        # Corresponds to the JSON property `publicKeyPem`
+        # @return [String]
+        attr_accessor :public_key_pem
+      
+        # Required. The signed challenge associated with the 2FA key. The signature must
+        # be RSASSA-PKCS1 v1.5 with a SHA256 digest.
+        # Corresponds to the JSON property `signedChallenge`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :signed_challenge
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_key_pem = args[:public_key_pem] if args.key?(:public_key_pem)
+          @signed_challenge = args[:signed_challenge] if args.key?(:signed_challenge)
+        end
+      end
+      
       # Data with integrity verification field.
       class ChecksummedData
         include Google::Apis::Core::Hashable
@@ -1101,6 +1216,22 @@ module Google
         end
       end
       
+      # Delete the SingleTenantHsmInstance. Deleting a SingleTenantHsmInstance will
+      # make all CryptoKeys attached to the SingleTenantHsmInstance unusable. The
+      # SingleTenantHsmInstance must not be in the DELETING or DELETED state to
+      # perform this operation.
+      class DeleteSingleTenantHsmInstance
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for KeyManagementService.DestroyCryptoKeyVersion.
       class DestroyCryptoKeyVersionRequest
         include Google::Apis::Core::Hashable
@@ -1145,6 +1276,20 @@ module Google
           @sha256 = args[:sha256] if args.key?(:sha256)
           @sha384 = args[:sha384] if args.key?(:sha384)
           @sha512 = args[:sha512] if args.key?(:sha512)
+        end
+      end
+      
+      # Disable the SingleTenantHsmInstance. The SingleTenantHsmInstance must be in
+      # the ACTIVE state to perform this operation.
+      class DisableSingleTenantHsmInstance
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1231,6 +1376,36 @@ module Google
           @key_management_mode = args[:key_management_mode] if args.key?(:key_management_mode)
           @name = args[:name] if args.key?(:name)
           @service_resolvers = args[:service_resolvers] if args.key?(:service_resolvers)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Enable the SingleTenantHsmInstance. The SingleTenantHsmInstance must be in the
+      # DISABLED state to perform this operation.
+      class EnableSingleTenantHsmInstance
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1374,6 +1549,19 @@ module Google
           @protection_level = args[:protection_level] if args.key?(:protection_level)
           @verified_additional_authenticated_data_crc32c = args[:verified_additional_authenticated_data_crc32c] if args.key?(:verified_additional_authenticated_data_crc32c)
           @verified_plaintext_crc32c = args[:verified_plaintext_crc32c] if args.key?(:verified_plaintext_crc32c)
+        end
+      end
+      
+      # Request message for HsmManagement.ExecuteSingleTenantHsmInstanceProposal.
+      class ExecuteSingleTenantHsmInstanceProposalRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2094,6 +2282,76 @@ module Google
         end
       end
       
+      # Response message for HsmManagement.ListSingleTenantHsmInstanceProposals.
+      class ListSingleTenantHsmInstanceProposalsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve next page of results. Pass this value in
+        # ListSingleTenantHsmInstanceProposalsRequest.page_token to retrieve the next
+        # page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of SingleTenantHsmInstanceProposals.
+        # Corresponds to the JSON property `singleTenantHsmInstanceProposals`
+        # @return [Array<Google::Apis::CloudkmsV1::SingleTenantHsmInstanceProposal>]
+        attr_accessor :single_tenant_hsm_instance_proposals
+      
+        # The total number of SingleTenantHsmInstanceProposals that matched the query.
+        # This field is not populated if ListSingleTenantHsmInstanceProposalsRequest.
+        # filter is applied.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @single_tenant_hsm_instance_proposals = args[:single_tenant_hsm_instance_proposals] if args.key?(:single_tenant_hsm_instance_proposals)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Response message for HsmManagement.ListSingleTenantHsmInstances.
+      class ListSingleTenantHsmInstancesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve next page of results. Pass this value in
+        # ListSingleTenantHsmInstancesRequest.page_token to retrieve the next page of
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of SingleTenantHsmInstances.
+        # Corresponds to the JSON property `singleTenantHsmInstances`
+        # @return [Array<Google::Apis::CloudkmsV1::SingleTenantHsmInstance>]
+        attr_accessor :single_tenant_hsm_instances
+      
+        # The total number of SingleTenantHsmInstances that matched the query. This
+        # field is not populated if ListSingleTenantHsmInstancesRequest.filter is
+        # applied.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @single_tenant_hsm_instances = args[:single_tenant_hsm_instances] if args.key?(:single_tenant_hsm_instances)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
       # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
@@ -2630,6 +2888,96 @@ module Google
         end
       end
       
+      # Configuration for M of N quorum auth.
+      class QuorumAuth
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The required numbers of approvers. The M value used for M of N
+        # quorum auth. Must be greater than or equal to 2 and less than or equal to
+        # total_approver_count - 1.
+        # Corresponds to the JSON property `requiredApproverCount`
+        # @return [Fixnum]
+        attr_accessor :required_approver_count
+      
+        # Required. The total number of approvers. This is the N value used for M of N
+        # quorum auth. Must be greater than or equal to 3 and less than or equal to 16.
+        # Corresponds to the JSON property `totalApproverCount`
+        # @return [Fixnum]
+        attr_accessor :total_approver_count
+      
+        # Output only. The public keys associated with the 2FA keys for M of N quorum
+        # auth.
+        # Corresponds to the JSON property `twoFactorPublicKeyPems`
+        # @return [Array<String>]
+        attr_accessor :two_factor_public_key_pems
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @required_approver_count = args[:required_approver_count] if args.key?(:required_approver_count)
+          @total_approver_count = args[:total_approver_count] if args.key?(:total_approver_count)
+          @two_factor_public_key_pems = args[:two_factor_public_key_pems] if args.key?(:two_factor_public_key_pems)
+        end
+      end
+      
+      # Parameters of quorum approval for the SingleTenantHsmInstanceProposal.
+      class QuorumParameters
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The public keys associated with the 2FA keys that have already
+        # approved the SingleTenantHsmInstanceProposal by signing the challenge.
+        # Corresponds to the JSON property `approvedTwoFactorPublicKeyPems`
+        # @return [Array<String>]
+        attr_accessor :approved_two_factor_public_key_pems
+      
+        # Output only. The challenges to be signed by 2FA keys for quorum auth. M of N
+        # of these challenges are required to be signed to approve the operation.
+        # Corresponds to the JSON property `challenges`
+        # @return [Array<Google::Apis::CloudkmsV1::Challenge>]
+        attr_accessor :challenges
+      
+        # Output only. The required numbers of approvers. This is the M value used for M
+        # of N quorum auth. It is less than the number of public keys.
+        # Corresponds to the JSON property `requiredApproverCount`
+        # @return [Fixnum]
+        attr_accessor :required_approver_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approved_two_factor_public_key_pems = args[:approved_two_factor_public_key_pems] if args.key?(:approved_two_factor_public_key_pems)
+          @challenges = args[:challenges] if args.key?(:challenges)
+          @required_approver_count = args[:required_approver_count] if args.key?(:required_approver_count)
+        end
+      end
+      
+      # The reply to QuorumParameters for approving the proposal.
+      class QuorumReply
+        include Google::Apis::Core::Hashable
+      
+        # Required. The challenge replies to approve the proposal. Challenge replies can
+        # be sent across multiple requests. The proposal will be approved when
+        # required_approver_count challenge replies are provided.
+        # Corresponds to the JSON property `challengeReplies`
+        # @return [Array<Google::Apis::CloudkmsV1::ChallengeReply>]
+        attr_accessor :challenge_replies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @challenge_replies = args[:challenge_replies] if args.key?(:challenge_replies)
+        end
+      end
+      
       # Request message for KeyManagementService.RawDecrypt.
       class RawDecryptRequest
         include Google::Apis::Core::Hashable
@@ -3018,6 +3366,145 @@ module Google
         end
       end
       
+      # Refreshes the SingleTenantHsmInstance. This operation must be performed
+      # periodically to keep the SingleTenantHsmInstance active. This operation must
+      # be performed before unrefreshed_duration_until_disable has passed. The
+      # SingleTenantHsmInstance must be in the ACTIVE state to perform this operation.
+      class RefreshSingleTenantHsmInstance
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Register 2FA keys for the SingleTenantHsmInstance. This operation requires all
+      # Challenges to be signed by 2FA keys. The SingleTenantHsmInstance must be in
+      # the PENDING_TWO_FACTOR_AUTH_REGISTRATION state to perform this operation.
+      class RegisterTwoFactorAuthKeys
+        include Google::Apis::Core::Hashable
+      
+        # Required. The required numbers of approvers to set for the
+        # SingleTenantHsmInstance. This is the M value used for M of N quorum auth. Must
+        # be greater than or equal to 2 and less than or equal to total_approver_count -
+        # 1.
+        # Corresponds to the JSON property `requiredApproverCount`
+        # @return [Fixnum]
+        attr_accessor :required_approver_count
+      
+        # Required. The public keys associated with the 2FA keys for M of N quorum auth.
+        # Public keys must be associated with RSA 2048 keys.
+        # Corresponds to the JSON property `twoFactorPublicKeyPems`
+        # @return [Array<String>]
+        attr_accessor :two_factor_public_key_pems
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @required_approver_count = args[:required_approver_count] if args.key?(:required_approver_count)
+          @two_factor_public_key_pems = args[:two_factor_public_key_pems] if args.key?(:two_factor_public_key_pems)
+        end
+      end
+      
+      # Remove a quorum member from the SingleTenantHsmInstance. This will reduce
+      # total_approver_count by 1. The SingleTenantHsmInstance must be in the ACTIVE
+      # state to perform this operation.
+      class RemoveQuorumMember
+        include Google::Apis::Core::Hashable
+      
+        # Required. The public key associated with the 2FA key for the quorum member to
+        # remove. Public keys must be associated with RSA 2048 keys.
+        # Corresponds to the JSON property `twoFactorPublicKeyPem`
+        # @return [String]
+        attr_accessor :two_factor_public_key_pem
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @two_factor_public_key_pem = args[:two_factor_public_key_pem] if args.key?(:two_factor_public_key_pem)
+        end
+      end
+      
+      # Parameters for an approval that has both required challenges and a quorum.
+      class RequiredActionQuorumParameters
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The public keys associated with the 2FA keys that have already
+        # approved the SingleTenantHsmInstanceProposal by signing the challenge.
+        # Corresponds to the JSON property `approvedTwoFactorPublicKeyPems`
+        # @return [Array<String>]
+        attr_accessor :approved_two_factor_public_key_pems
+      
+        # Output only. The challenges to be signed by 2FA keys for quorum auth. M of N
+        # of these challenges are required to be signed to approve the operation.
+        # Corresponds to the JSON property `quorumChallenges`
+        # @return [Array<Google::Apis::CloudkmsV1::Challenge>]
+        attr_accessor :quorum_challenges
+      
+        # Output only. The required number of quorum approvers. This is the M value used
+        # for M of N quorum auth. It is less than the number of public keys.
+        # Corresponds to the JSON property `requiredApproverCount`
+        # @return [Fixnum]
+        attr_accessor :required_approver_count
+      
+        # Output only. A list of specific challenges that must be signed. For some
+        # operations, this will contain a single challenge.
+        # Corresponds to the JSON property `requiredChallenges`
+        # @return [Array<Google::Apis::CloudkmsV1::Challenge>]
+        attr_accessor :required_challenges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approved_two_factor_public_key_pems = args[:approved_two_factor_public_key_pems] if args.key?(:approved_two_factor_public_key_pems)
+          @quorum_challenges = args[:quorum_challenges] if args.key?(:quorum_challenges)
+          @required_approver_count = args[:required_approver_count] if args.key?(:required_approver_count)
+          @required_challenges = args[:required_challenges] if args.key?(:required_challenges)
+        end
+      end
+      
+      # The reply to RequiredActionQuorumParameters for approving the proposal.
+      class RequiredActionQuorumReply
+        include Google::Apis::Core::Hashable
+      
+        # Required. Quorum members' signed challenge replies. These can be provided
+        # across multiple requests. The proposal will be approved when
+        # required_approver_count quorum_challenge_replies are provided and when all
+        # required_challenge_replies are provided.
+        # Corresponds to the JSON property `quorumChallengeReplies`
+        # @return [Array<Google::Apis::CloudkmsV1::ChallengeReply>]
+        attr_accessor :quorum_challenge_replies
+      
+        # Required. All required challenges must be signed for the proposal to be
+        # approved. These can be sent across multiple requests.
+        # Corresponds to the JSON property `requiredChallengeReplies`
+        # @return [Array<Google::Apis::CloudkmsV1::ChallengeReply>]
+        attr_accessor :required_challenge_replies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @quorum_challenge_replies = args[:quorum_challenge_replies] if args.key?(:quorum_challenge_replies)
+          @required_challenge_replies = args[:required_challenge_replies] if args.key?(:required_challenge_replies)
+        end
+      end
+      
       # Request message for KeyManagementService.RestoreCryptoKeyVersion.
       class RestoreCryptoKeyVersionRequest
         include Google::Apis::Core::Hashable
@@ -3200,6 +3687,208 @@ module Google
         # Update properties of this object
         def update!(**args)
           @effective_kaj_policy = args[:effective_kaj_policy] if args.key?(:effective_kaj_policy)
+        end
+      end
+      
+      # A SingleTenantHsmInstance represents a single-tenant HSM instance. It can be
+      # used for creating CryptoKeys with a ProtectionLevel of HSM_SINGLE_TENANT, as
+      # well as performing cryptographic operations using keys created within the
+      # SingleTenantHsmInstance.
+      class SingleTenantHsmInstance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the SingleTenantHsmInstance was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time at which the SingleTenantHsmInstance was deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Output only. The time at which the instance will be automatically disabled if
+        # not refreshed. This field is updated upon creation and after each successful
+        # refresh operation and enable. A RefreshSingleTenantHsmInstance operation must
+        # be made via a SingleTenantHsmInstanceProposal before this time otherwise the
+        # SingleTenantHsmInstance will become disabled.
+        # Corresponds to the JSON property `disableTime`
+        # @return [String]
+        attr_accessor :disable_time
+      
+        # Identifier. The resource name for this SingleTenantHsmInstance in the format `
+        # projects/*/locations/*/singleTenantHsmInstances/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configuration for M of N quorum auth.
+        # Corresponds to the JSON property `quorumAuth`
+        # @return [Google::Apis::CloudkmsV1::QuorumAuth]
+        attr_accessor :quorum_auth
+      
+        # Output only. The state of the SingleTenantHsmInstance.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The system-defined duration that an instance can remain
+        # unrefreshed until it is automatically disabled. This will have a value of 120
+        # days.
+        # Corresponds to the JSON property `unrefreshedDurationUntilDisable`
+        # @return [String]
+        attr_accessor :unrefreshed_duration_until_disable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @disable_time = args[:disable_time] if args.key?(:disable_time)
+          @name = args[:name] if args.key?(:name)
+          @quorum_auth = args[:quorum_auth] if args.key?(:quorum_auth)
+          @state = args[:state] if args.key?(:state)
+          @unrefreshed_duration_until_disable = args[:unrefreshed_duration_until_disable] if args.key?(:unrefreshed_duration_until_disable)
+        end
+      end
+      
+      # A SingleTenantHsmInstanceProposal represents a proposal to perform an
+      # operation on a SingleTenantHsmInstance.
+      class SingleTenantHsmInstanceProposal
+        include Google::Apis::Core::Hashable
+      
+        # Add a quorum member to the SingleTenantHsmInstance. This will increase the
+        # total_approver_count by 1. The SingleTenantHsmInstance must be in the ACTIVE
+        # state to perform this operation.
+        # Corresponds to the JSON property `addQuorumMember`
+        # @return [Google::Apis::CloudkmsV1::AddQuorumMember]
+        attr_accessor :add_quorum_member
+      
+        # Output only. The time at which the SingleTenantHsmInstanceProposal was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Delete the SingleTenantHsmInstance. Deleting a SingleTenantHsmInstance will
+        # make all CryptoKeys attached to the SingleTenantHsmInstance unusable. The
+        # SingleTenantHsmInstance must not be in the DELETING or DELETED state to
+        # perform this operation.
+        # Corresponds to the JSON property `deleteSingleTenantHsmInstance`
+        # @return [Google::Apis::CloudkmsV1::DeleteSingleTenantHsmInstance]
+        attr_accessor :delete_single_tenant_hsm_instance
+      
+        # Output only. The time at which the SingleTenantHsmInstanceProposal was deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Disable the SingleTenantHsmInstance. The SingleTenantHsmInstance must be in
+        # the ACTIVE state to perform this operation.
+        # Corresponds to the JSON property `disableSingleTenantHsmInstance`
+        # @return [Google::Apis::CloudkmsV1::DisableSingleTenantHsmInstance]
+        attr_accessor :disable_single_tenant_hsm_instance
+      
+        # Enable the SingleTenantHsmInstance. The SingleTenantHsmInstance must be in the
+        # DISABLED state to perform this operation.
+        # Corresponds to the JSON property `enableSingleTenantHsmInstance`
+        # @return [Google::Apis::CloudkmsV1::EnableSingleTenantHsmInstance]
+        attr_accessor :enable_single_tenant_hsm_instance
+      
+        # The time at which the SingleTenantHsmInstanceProposal will expire if not
+        # approved and executed.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. The root cause of the most recent failure. Only present if state
+        # is FAILED.
+        # Corresponds to the JSON property `failureReason`
+        # @return [String]
+        attr_accessor :failure_reason
+      
+        # Identifier. The resource name for this SingleTenantHsmInstance in the format `
+        # projects/*/locations/*/singleTenantHsmInstances/*/proposals/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The time at which the soft-deleted
+        # SingleTenantHsmInstanceProposal will be permanently purged. This field is only
+        # populated when the state is DELETED and will be set a time after expiration of
+        # the proposal, i.e. >= expire_time or (create_time + ttl).
+        # Corresponds to the JSON property `purgeTime`
+        # @return [String]
+        attr_accessor :purge_time
+      
+        # Parameters of quorum approval for the SingleTenantHsmInstanceProposal.
+        # Corresponds to the JSON property `quorumParameters`
+        # @return [Google::Apis::CloudkmsV1::QuorumParameters]
+        attr_accessor :quorum_parameters
+      
+        # Refreshes the SingleTenantHsmInstance. This operation must be performed
+        # periodically to keep the SingleTenantHsmInstance active. This operation must
+        # be performed before unrefreshed_duration_until_disable has passed. The
+        # SingleTenantHsmInstance must be in the ACTIVE state to perform this operation.
+        # Corresponds to the JSON property `refreshSingleTenantHsmInstance`
+        # @return [Google::Apis::CloudkmsV1::RefreshSingleTenantHsmInstance]
+        attr_accessor :refresh_single_tenant_hsm_instance
+      
+        # Register 2FA keys for the SingleTenantHsmInstance. This operation requires all
+        # Challenges to be signed by 2FA keys. The SingleTenantHsmInstance must be in
+        # the PENDING_TWO_FACTOR_AUTH_REGISTRATION state to perform this operation.
+        # Corresponds to the JSON property `registerTwoFactorAuthKeys`
+        # @return [Google::Apis::CloudkmsV1::RegisterTwoFactorAuthKeys]
+        attr_accessor :register_two_factor_auth_keys
+      
+        # Remove a quorum member from the SingleTenantHsmInstance. This will reduce
+        # total_approver_count by 1. The SingleTenantHsmInstance must be in the ACTIVE
+        # state to perform this operation.
+        # Corresponds to the JSON property `removeQuorumMember`
+        # @return [Google::Apis::CloudkmsV1::RemoveQuorumMember]
+        attr_accessor :remove_quorum_member
+      
+        # Parameters for an approval that has both required challenges and a quorum.
+        # Corresponds to the JSON property `requiredActionQuorumParameters`
+        # @return [Google::Apis::CloudkmsV1::RequiredActionQuorumParameters]
+        attr_accessor :required_action_quorum_parameters
+      
+        # Output only. The state of the SingleTenantHsmInstanceProposal.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Input only. The TTL for the SingleTenantHsmInstanceProposal. Proposals will
+        # expire after this duration.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_quorum_member = args[:add_quorum_member] if args.key?(:add_quorum_member)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_single_tenant_hsm_instance = args[:delete_single_tenant_hsm_instance] if args.key?(:delete_single_tenant_hsm_instance)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @disable_single_tenant_hsm_instance = args[:disable_single_tenant_hsm_instance] if args.key?(:disable_single_tenant_hsm_instance)
+          @enable_single_tenant_hsm_instance = args[:enable_single_tenant_hsm_instance] if args.key?(:enable_single_tenant_hsm_instance)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
+          @name = args[:name] if args.key?(:name)
+          @purge_time = args[:purge_time] if args.key?(:purge_time)
+          @quorum_parameters = args[:quorum_parameters] if args.key?(:quorum_parameters)
+          @refresh_single_tenant_hsm_instance = args[:refresh_single_tenant_hsm_instance] if args.key?(:refresh_single_tenant_hsm_instance)
+          @register_two_factor_auth_keys = args[:register_two_factor_auth_keys] if args.key?(:register_two_factor_auth_keys)
+          @remove_quorum_member = args[:remove_quorum_member] if args.key?(:remove_quorum_member)
+          @required_action_quorum_parameters = args[:required_action_quorum_parameters] if args.key?(:required_action_quorum_parameters)
+          @state = args[:state] if args.key?(:state)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       
