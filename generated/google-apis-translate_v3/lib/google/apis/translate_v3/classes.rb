@@ -43,7 +43,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :example_count
       
-        # Required. The resource name of the dataset, in form of `projects/`project-
+        # Identifier. The resource name of the dataset, in form of `projects/`project-
         # number-or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset_id``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -99,9 +99,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :entry_count
       
-        # Required. The resource name of the file, in form of `projects/`project-number-
-        # or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset`/adaptiveMtFiles/`
-        # file``
+        # Identifier. The resource name of the file, in form of `projects/`project-
+        # number-or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset`/
+        # adaptiveMtFiles/`file``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -134,9 +134,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. The resource name of the file, in form of `projects/`project-number-
-        # or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset`/adaptiveMtFiles/`
-        # file`/adaptiveMtSentences/`sentence``
+        # Identifier. The resource name of the file, in form of `projects/`project-
+        # number-or-id`/locations/`location_id`/adaptiveMtDatasets/`dataset`/
+        # adaptiveMtFiles/`file`/adaptiveMtSentences/`sentence``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -363,6 +363,12 @@ module Google
         # @return [Google::Apis::TranslateV3::BatchDocumentOutputConfig]
         attr_accessor :output_config
       
+        # Optional. If true, only native pdf pages will be translated.
+        # Corresponds to the JSON property `pdfNativeOnly`
+        # @return [Boolean]
+        attr_accessor :pdf_native_only
+        alias_method :pdf_native_only?, :pdf_native_only
+      
         # Required. The ISO-639 language code of the input document if known, for
         # example, "en-US" or "sr-Latn". Supported language codes are listed in [
         # Language Support](https://cloud.google.com/translate/docs/languages).
@@ -371,7 +377,9 @@ module Google
         attr_accessor :source_language_code
       
         # Required. The ISO-639 language code to use for translation of the input
-        # document. Specify up to 10 language codes here.
+        # document. Specify up to 10 language codes here. Supported language codes are
+        # listed in [Language Support](https://cloud.google.com/translate/docs/languages)
+        # .
         # Corresponds to the JSON property `targetLanguageCodes`
         # @return [Array<String>]
         attr_accessor :target_language_codes
@@ -390,6 +398,7 @@ module Google
           @input_configs = args[:input_configs] if args.key?(:input_configs)
           @models = args[:models] if args.key?(:models)
           @output_config = args[:output_config] if args.key?(:output_config)
+          @pdf_native_only = args[:pdf_native_only] if args.key?(:pdf_native_only)
           @source_language_code = args[:source_language_code] if args.key?(:source_language_code)
           @target_language_codes = args[:target_language_codes] if args.key?(:target_language_codes)
         end
@@ -439,12 +448,15 @@ module Google
         # @return [Google::Apis::TranslateV3::OutputConfig]
         attr_accessor :output_config
       
-        # Required. Source language code.
+        # Required. Source language code. Supported language codes are listed in [
+        # Language Support](https://cloud.google.com/translate/docs/languages).
         # Corresponds to the JSON property `sourceLanguageCode`
         # @return [String]
         attr_accessor :source_language_code
       
-        # Required. Specify up to 10 language codes here.
+        # Required. Specify up to 10 language codes here. Supported language codes are
+        # listed in [Language Support](https://cloud.google.com/translate/docs/languages)
+        # .
         # Corresponds to the JSON property `targetLanguageCodes`
         # @return [Array<String>]
         attr_accessor :target_language_codes
@@ -601,6 +613,11 @@ module Google
         # @return [String]
         attr_accessor :content
       
+        # A document translation request input config.
+        # Corresponds to the JSON property `documentInputConfig`
+        # @return [Google::Apis::TranslateV3::DocumentInputConfig]
+        attr_accessor :document_input_config
+      
         # Optional. The labels with user-defined metadata for the request. Label keys
         # and values can be no longer than 63 characters (Unicode codepoints), can only
         # contain lowercase letters, numeric characters, underscores and dashes.
@@ -633,6 +650,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content = args[:content] if args.key?(:content)
+          @document_input_config = args[:document_input_config] if args.key?(:document_input_config)
           @labels = args[:labels] if args.key?(:labels)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @model = args[:model] if args.key?(:model)
@@ -1012,7 +1030,7 @@ module Google
         # @return [Google::Apis::TranslateV3::LanguageCodePair]
         attr_accessor :language_pair
       
-        # Required. The resource name of the glossary. Glossary names have the form `
+        # Identifier. The resource name of the glossary. Glossary names have the form `
         # projects/`project-number-or-id`/locations/`location-id`/glossaries/`glossary-
         # id``.
         # Corresponds to the JSON property `name`
@@ -1355,9 +1373,9 @@ module Google
       class LanguageCodesSet
         include Google::Apis::Core::Hashable
       
-        # The ISO-639 language code(s) for terms defined in the glossary. All entries
-        # are unique. The list contains at least two entries. Expected to be an exact
-        # match for GlossaryTerm.language_code.
+        # Optional. The ISO-639 language code(s) for terms defined in the glossary. All
+        # entries are unique. The list contains at least two entries. Expected to be an
+        # exact match for GlossaryTerm.language_code.
         # Corresponds to the JSON property `languageCodes`
         # @return [Array<String>]
         attr_accessor :language_codes
@@ -1621,6 +1639,14 @@ module Google
         # @return [Array<Google::Apis::TranslateV3::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1629,6 +1655,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1689,8 +1716,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The dataset from which the model is trained, in form of `projects/`project-
-        # number-or-id`/locations/`location_id`/datasets/`dataset_id``
+        # Required. The dataset from which the model is trained, in form of `projects/`
+        # project-number-or-id`/locations/`location_id`/datasets/`dataset_id``
         # Corresponds to the JSON property `dataset`
         # @return [String]
         attr_accessor :dataset
@@ -1915,6 +1942,84 @@ module Google
         end
       end
       
+      # Request message for RefineText.
+      class RefineTextRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The source texts and original translations in the source and target
+        # languages.
+        # Corresponds to the JSON property `refinementEntries`
+        # @return [Array<Google::Apis::TranslateV3::RefinementEntry>]
+        attr_accessor :refinement_entries
+      
+        # Required. The BCP-47 language code of the source text in the request, for
+        # example, "en-US".
+        # Corresponds to the JSON property `sourceLanguageCode`
+        # @return [String]
+        attr_accessor :source_language_code
+      
+        # Required. The BCP-47 language code for translation output, for example, "zh-CN"
+        # .
+        # Corresponds to the JSON property `targetLanguageCode`
+        # @return [String]
+        attr_accessor :target_language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @refinement_entries = args[:refinement_entries] if args.key?(:refinement_entries)
+          @source_language_code = args[:source_language_code] if args.key?(:source_language_code)
+          @target_language_code = args[:target_language_code] if args.key?(:target_language_code)
+        end
+      end
+      
+      # Response message for RefineText.
+      class RefineTextResponse
+        include Google::Apis::Core::Hashable
+      
+        # The refined translations obtained from the original translations.
+        # Corresponds to the JSON property `refinedTranslations`
+        # @return [Array<String>]
+        attr_accessor :refined_translations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @refined_translations = args[:refined_translations] if args.key?(:refined_translations)
+        end
+      end
+      
+      # A single refinement entry for RefineTextRequest.
+      class RefinementEntry
+        include Google::Apis::Core::Hashable
+      
+        # Required. The original translation of the source text.
+        # Corresponds to the JSON property `originalTranslation`
+        # @return [String]
+        attr_accessor :original_translation
+      
+        # Required. The source text to be refined.
+        # Corresponds to the JSON property `sourceText`
+        # @return [String]
+        attr_accessor :source_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @original_translation = args[:original_translation] if args.key?(:original_translation)
+          @source_text = args[:source_text] if args.key?(:source_text)
+        end
+      end
+      
       # A single romanization response.
       class Romanization
         include Google::Apis::Core::Hashable
@@ -1954,9 +2059,10 @@ module Google
         attr_accessor :contents
       
         # Optional. The ISO-639 language code of the input text if known, for example, "
-        # hi" or "zh". If the source language isn't specified, the API attempts to
-        # identify the source language automatically and returns the source language for
-        # each content in the response.
+        # hi" or "zh". Supported language codes are listed in [Language Support](https://
+        # cloud.google.com/translate/docs/languages#roman). If the source language isn't
+        # specified, the API attempts to identify the source language automatically and
+        # returns the source language for each content in the response.
         # Corresponds to the JSON property `sourceLanguageCode`
         # @return [String]
         attr_accessor :source_language_code
@@ -2163,17 +2269,19 @@ module Google
         attr_accessor :model
       
         # Optional. The ISO-639 language code of the input document if known, for
-        # example, "en-US" or "sr-Latn". Supported language codes are listed in Language
-        # Support. If the source language isn't specified, the API attempts to identify
-        # the source language automatically and returns the source language within the
-        # response. Source language must be specified if the request contains a glossary
-        # or a custom model.
+        # example, "en-US" or "sr-Latn". Supported language codes are listed in [
+        # Language Support](https://cloud.google.com/translate/docs/languages). If the
+        # source language isn't specified, the API attempts to identify the source
+        # language automatically and returns the source language within the response.
+        # Source language must be specified if the request contains a glossary or a
+        # custom model.
         # Corresponds to the JSON property `sourceLanguageCode`
         # @return [String]
         attr_accessor :source_language_code
       
         # Required. The ISO-639 language code to use for translation of the input
-        # document, set to one of the language codes listed in Language Support.
+        # document, set to one of the language codes listed in [Language Support](https:/
+        # /cloud.google.com/translate/docs/languages).
         # Corresponds to the JSON property `targetLanguageCode`
         # @return [String]
         attr_accessor :target_language_code
@@ -2324,16 +2432,17 @@ module Google
         attr_accessor :model
       
         # Optional. The ISO-639 language code of the input text if known, for example, "
-        # en-US" or "sr-Latn". Supported language codes are listed in Language Support.
-        # If the source language isn't specified, the API attempts to identify the
-        # source language automatically and returns the source language within the
-        # response.
+        # en-US" or "sr-Latn". Supported language codes are listed in [Language Support](
+        # https://cloud.google.com/translate/docs/languages). If the source language isn'
+        # t specified, the API attempts to identify the source language automatically
+        # and returns the source language within the response.
         # Corresponds to the JSON property `sourceLanguageCode`
         # @return [String]
         attr_accessor :source_language_code
       
         # Required. The ISO-639 language code to use for translation of the input text,
-        # set to one of the language codes listed in Language Support.
+        # set to one of the language codes listed in [Language Support](https://cloud.
+        # google.com/translate/docs/languages).
         # Corresponds to the JSON property `targetLanguageCode`
         # @return [String]
         attr_accessor :target_language_code
