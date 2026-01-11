@@ -3834,6 +3834,7 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :example, as: 'example'
+          property :launch_status, as: 'launchStatus'
           property :location_support, as: 'locationSupport', class: Google::Apis::DlpV2::GooglePrivacyDlpV2LocationSupport, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2LocationSupport::Representation
       
           property :name, as: 'name'
