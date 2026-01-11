@@ -337,6 +337,64 @@ module Google
         end
       end
       
+      # Represents the result of evaluating artifact guard policies.
+      class ArtifactGuardPolicies
+        include Google::Apis::Core::Hashable
+      
+        # A list of failing policies.
+        # Corresponds to the JSON property `failingPolicies`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::ArtifactGuardPolicy>]
+        attr_accessor :failing_policies
+      
+        # The ID of the resource that has policies configured for it.
+        # Corresponds to the JSON property `resourceId`
+        # @return [String]
+        attr_accessor :resource_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failing_policies = args[:failing_policies] if args.key?(:failing_policies)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+        end
+      end
+      
+      # Represents an artifact guard policy.
+      class ArtifactGuardPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The reason for the policy failure, for example, "severity=HIGH AND
+        # max_vuln_count=2".
+        # Corresponds to the JSON property `failureReason`
+        # @return [String]
+        attr_accessor :failure_reason
+      
+        # The ID of the failing policy, for example, "organizations/3392779/locations/
+        # global/policies/prod-policy".
+        # Corresponds to the JSON property `policyId`
+        # @return [String]
+        attr_accessor :policy_id
+      
+        # The type of the policy evaluation.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
+          @policy_id = args[:policy_id] if args.key?(:policy_id)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Information about DDoS attack volume and classification.
       class Attack
         include Google::Apis::Core::Hashable
@@ -2154,6 +2212,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::DiskPath]
         attr_accessor :disk_path
       
+        # The load state of the file.
+        # Corresponds to the JSON property `fileLoadState`
+        # @return [String]
+        attr_accessor :file_load_state
+      
         # The length in bytes of the file prefix that was hashed. If hashed_size == size,
         # any hashes reported represent the entire file.
         # Corresponds to the JSON property `hashedSize`
@@ -2195,6 +2258,7 @@ module Google
         def update!(**args)
           @contents = args[:contents] if args.key?(:contents)
           @disk_path = args[:disk_path] if args.key?(:disk_path)
+          @file_load_state = args[:file_load_state] if args.key?(:file_load_state)
           @hashed_size = args[:hashed_size] if args.key?(:hashed_size)
           @operations = args[:operations] if args.key?(:operations)
           @partially_hashed = args[:partially_hashed] if args.key?(:partially_hashed)
@@ -2250,6 +2314,11 @@ module Google
         # Corresponds to the JSON property `application`
         # @return [Google::Apis::SecuritycenterV1beta2::Application]
         attr_accessor :application
+      
+        # Represents the result of evaluating artifact guard policies.
+        # Corresponds to the JSON property `artifactGuardPolicies`
+        # @return [Google::Apis::SecuritycenterV1beta2::ArtifactGuardPolicies]
+        attr_accessor :artifact_guard_policies
       
         # An attack exposure contains the results of an attack path simulation run.
         # Corresponds to the JSON property `attackExposure`
@@ -2563,6 +2632,11 @@ module Google
         # @return [String]
         attr_accessor :resource_name
       
+        # Details about a secret or credential associated with the finding.
+        # Corresponds to the JSON property `secret`
+        # @return [Google::Apis::SecuritycenterV1beta2::Secret]
+        attr_accessor :secret
+      
         # User specified security marks that are attached to the parent Security Command
         # Center resource. Security marks are scoped within a Security Command Center
         # organization -- they can be modified and viewed by all users who have proper
@@ -2625,6 +2699,7 @@ module Google
           @affected_resources = args[:affected_resources] if args.key?(:affected_resources)
           @ai_model = args[:ai_model] if args.key?(:ai_model)
           @application = args[:application] if args.key?(:application)
+          @artifact_guard_policies = args[:artifact_guard_policies] if args.key?(:artifact_guard_policies)
           @attack_exposure = args[:attack_exposure] if args.key?(:attack_exposure)
           @backup_disaster_recovery = args[:backup_disaster_recovery] if args.key?(:backup_disaster_recovery)
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
@@ -2675,6 +2750,7 @@ module Google
           @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
           @processes = args[:processes] if args.key?(:processes)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @secret = args[:secret] if args.key?(:secret)
           @security_marks = args[:security_marks] if args.key?(:security_marks)
           @security_posture = args[:security_posture] if args.key?(:security_posture)
           @severity = args[:severity] if args.key?(:severity)
@@ -4513,6 +4589,64 @@ module Google
         end
       end
       
+      # Represents the result of evaluating artifact guard policies.
+      class GoogleCloudSecuritycenterV2ArtifactGuardPolicies
+        include Google::Apis::Core::Hashable
+      
+        # A list of failing policies.
+        # Corresponds to the JSON property `failingPolicies`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ArtifactGuardPolicy>]
+        attr_accessor :failing_policies
+      
+        # The ID of the resource that has policies configured for it.
+        # Corresponds to the JSON property `resourceId`
+        # @return [String]
+        attr_accessor :resource_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failing_policies = args[:failing_policies] if args.key?(:failing_policies)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+        end
+      end
+      
+      # Represents an artifact guard policy.
+      class GoogleCloudSecuritycenterV2ArtifactGuardPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The reason for the policy failure, for example, "severity=HIGH AND
+        # max_vuln_count=2".
+        # Corresponds to the JSON property `failureReason`
+        # @return [String]
+        attr_accessor :failure_reason
+      
+        # The ID of the failing policy, for example, "organizations/3392779/locations/
+        # global/policies/prod-policy".
+        # Corresponds to the JSON property `policyId`
+        # @return [String]
+        attr_accessor :policy_id
+      
+        # The type of the policy evaluation.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
+          @policy_id = args[:policy_id] if args.key?(:policy_id)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Information about DDoS attack volume and classification.
       class GoogleCloudSecuritycenterV2Attack
         include Google::Apis::Core::Hashable
@@ -6299,6 +6433,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2DiskPath]
         attr_accessor :disk_path
       
+        # The load state of the file.
+        # Corresponds to the JSON property `fileLoadState`
+        # @return [String]
+        attr_accessor :file_load_state
+      
         # The length in bytes of the file prefix that was hashed. If hashed_size == size,
         # any hashes reported represent the entire file.
         # Corresponds to the JSON property `hashedSize`
@@ -6340,6 +6479,7 @@ module Google
         def update!(**args)
           @contents = args[:contents] if args.key?(:contents)
           @disk_path = args[:disk_path] if args.key?(:disk_path)
+          @file_load_state = args[:file_load_state] if args.key?(:file_load_state)
           @hashed_size = args[:hashed_size] if args.key?(:hashed_size)
           @operations = args[:operations] if args.key?(:operations)
           @partially_hashed = args[:partially_hashed] if args.key?(:partially_hashed)
@@ -6395,6 +6535,11 @@ module Google
         # Corresponds to the JSON property `application`
         # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Application]
         attr_accessor :application
+      
+        # Represents the result of evaluating artifact guard policies.
+        # Corresponds to the JSON property `artifactGuardPolicies`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ArtifactGuardPolicies]
+        attr_accessor :artifact_guard_policies
       
         # An attack exposure contains the results of an attack path simulation run.
         # Corresponds to the JSON property `attackExposure`
@@ -6725,6 +6870,11 @@ module Google
         # @return [String]
         attr_accessor :resource_name
       
+        # Details about a secret or credential associated with the finding.
+        # Corresponds to the JSON property `secret`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Secret]
+        attr_accessor :secret
+      
         # User specified security marks that are attached to the parent Security Command
         # Center resource. Security marks are scoped within a Security Command Center
         # organization -- they can be modified and viewed by all users who have proper
@@ -6787,6 +6937,7 @@ module Google
           @affected_resources = args[:affected_resources] if args.key?(:affected_resources)
           @ai_model = args[:ai_model] if args.key?(:ai_model)
           @application = args[:application] if args.key?(:application)
+          @artifact_guard_policies = args[:artifact_guard_policies] if args.key?(:artifact_guard_policies)
           @attack_exposure = args[:attack_exposure] if args.key?(:attack_exposure)
           @backup_disaster_recovery = args[:backup_disaster_recovery] if args.key?(:backup_disaster_recovery)
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
@@ -6838,6 +6989,7 @@ module Google
           @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
           @processes = args[:processes] if args.key?(:processes)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @secret = args[:secret] if args.key?(:secret)
           @security_marks = args[:security_marks] if args.key?(:security_marks)
           @security_posture = args[:security_posture] if args.key?(:security_posture)
           @severity = args[:severity] if args.key?(:severity)
@@ -9172,6 +9324,108 @@ module Google
         end
       end
       
+      # Details about a secret or credential associated with the finding.
+      class GoogleCloudSecuritycenterV2Secret
+        include Google::Apis::Core::Hashable
+      
+        # Environment variable containing the secret.
+        # Corresponds to the JSON property `environmentVariable`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2SecretEnvironmentVariable]
+        attr_accessor :environment_variable
+      
+        # File path containing the secret.
+        # Corresponds to the JSON property `filePath`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2SecretFilePath]
+        attr_accessor :file_path
+      
+        # The status of the secret.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2SecretStatus]
+        attr_accessor :status
+      
+        # The type of secret, for example, GCP_API_KEY.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment_variable = args[:environment_variable] if args.key?(:environment_variable)
+          @file_path = args[:file_path] if args.key?(:file_path)
+          @status = args[:status] if args.key?(:status)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Environment variable containing the secret.
+      class GoogleCloudSecuritycenterV2SecretEnvironmentVariable
+        include Google::Apis::Core::Hashable
+      
+        # Environment variable name as a JSON encoded string. Note that value is not
+        # included since the value contains the secret data, which is sensitive core
+        # content.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+        end
+      end
+      
+      # File path containing the secret.
+      class GoogleCloudSecuritycenterV2SecretFilePath
+        include Google::Apis::Core::Hashable
+      
+        # Path to the file.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # The status of the secret.
+      class GoogleCloudSecuritycenterV2SecretStatus
+        include Google::Apis::Core::Hashable
+      
+        # Time that the secret was found.
+        # Corresponds to the JSON property `lastUpdatedTime`
+        # @return [String]
+        attr_accessor :last_updated_time
+      
+        # The validity of the secret.
+        # Corresponds to the JSON property `validity`
+        # @return [String]
+        attr_accessor :validity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_updated_time = args[:last_updated_time] if args.key?(:last_updated_time)
+          @validity = args[:validity] if args.key?(:validity)
+        end
+      end
+      
       # SecurityBulletin are notifications of vulnerabilities of Google products.
       class GoogleCloudSecuritycenterV2SecurityBulletin
         include Google::Apis::Core::Hashable
@@ -10900,6 +11154,108 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @ns = args[:ns] if args.key?(:ns)
+        end
+      end
+      
+      # Details about a secret or credential associated with the finding.
+      class Secret
+        include Google::Apis::Core::Hashable
+      
+        # Environment variable containing the secret.
+        # Corresponds to the JSON property `environmentVariable`
+        # @return [Google::Apis::SecuritycenterV1beta2::SecretEnvironmentVariable]
+        attr_accessor :environment_variable
+      
+        # File path containing the secret.
+        # Corresponds to the JSON property `filePath`
+        # @return [Google::Apis::SecuritycenterV1beta2::SecretFilePath]
+        attr_accessor :file_path
+      
+        # The status of the secret.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::SecuritycenterV1beta2::SecretStatus]
+        attr_accessor :status
+      
+        # The type of secret, for example, GCP_API_KEY.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment_variable = args[:environment_variable] if args.key?(:environment_variable)
+          @file_path = args[:file_path] if args.key?(:file_path)
+          @status = args[:status] if args.key?(:status)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Environment variable containing the secret.
+      class SecretEnvironmentVariable
+        include Google::Apis::Core::Hashable
+      
+        # Environment variable name as a JSON encoded string. Note that value is not
+        # included since the value contains the secret data, which is sensitive core
+        # content.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+        end
+      end
+      
+      # File path containing the secret.
+      class SecretFilePath
+        include Google::Apis::Core::Hashable
+      
+        # Path to the file.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # The status of the secret.
+      class SecretStatus
+        include Google::Apis::Core::Hashable
+      
+        # Time that the secret was found.
+        # Corresponds to the JSON property `lastUpdatedTime`
+        # @return [String]
+        attr_accessor :last_updated_time
+      
+        # The validity of the secret.
+        # Corresponds to the JSON property `validity`
+        # @return [String]
+        attr_accessor :validity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_updated_time = args[:last_updated_time] if args.key?(:last_updated_time)
+          @validity = args[:validity] if args.key?(:validity)
         end
       end
       
