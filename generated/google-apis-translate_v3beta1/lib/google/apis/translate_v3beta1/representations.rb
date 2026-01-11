@@ -172,6 +172,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RefineTextRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RefineTextResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RefinementEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -262,6 +280,7 @@ module Google
           hash :models, as: 'models'
           property :output_config, as: 'outputConfig', class: Google::Apis::TranslateV3beta1::BatchDocumentOutputConfig, decorator: Google::Apis::TranslateV3beta1::BatchDocumentOutputConfig::Representation
       
+          property :pdf_native_only, as: 'pdfNativeOnly'
           property :source_language_code, as: 'sourceLanguageCode'
           collection :target_language_codes, as: 'targetLanguageCodes'
         end
@@ -435,6 +454,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::TranslateV3beta1::Operation, decorator: Google::Apis::TranslateV3beta1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -466,6 +486,31 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::TranslateV3beta1::GcsDestination, decorator: Google::Apis::TranslateV3beta1::GcsDestination::Representation
       
+        end
+      end
+      
+      class RefineTextRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :refinement_entries, as: 'refinementEntries', class: Google::Apis::TranslateV3beta1::RefinementEntry, decorator: Google::Apis::TranslateV3beta1::RefinementEntry::Representation
+      
+          property :source_language_code, as: 'sourceLanguageCode'
+          property :target_language_code, as: 'targetLanguageCode'
+        end
+      end
+      
+      class RefineTextResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :refined_translations, as: 'refinedTranslations'
+        end
+      end
+      
+      class RefinementEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :original_translation, as: 'originalTranslation'
+          property :source_text, as: 'sourceText'
         end
       end
       
