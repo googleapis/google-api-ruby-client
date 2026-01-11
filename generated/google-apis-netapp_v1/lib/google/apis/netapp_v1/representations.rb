@@ -829,6 +829,7 @@ module Google
       class LocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :has_ontap_proxy, as: 'hasOntapProxy'
           property :has_vcp, as: 'hasVcp'
           collection :supported_flex_performance, as: 'supportedFlexPerformance'
           collection :supported_service_levels, as: 'supportedServiceLevels'
