@@ -1161,6 +1161,11 @@ module Google
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1SystemTimestamps]
         attr_accessor :source_system_timestamps
       
+        # Specification of a Spanner table.
+        # Corresponds to the JSON property `spannerTableSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1SpannerTableSpec]
+        attr_accessor :spanner_table_spec
+      
         # Specification that applies to entries that are part `SQL_DATABASE` system (
         # user_specified_type)
         # Corresponds to the JSON property `sqlDatabaseSystemSpec`
@@ -1232,6 +1237,7 @@ module Google
           @schema = args[:schema] if args.key?(:schema)
           @service_spec = args[:service_spec] if args.key?(:service_spec)
           @source_system_timestamps = args[:source_system_timestamps] if args.key?(:source_system_timestamps)
+          @spanner_table_spec = args[:spanner_table_spec] if args.key?(:spanner_table_spec)
           @sql_database_system_spec = args[:sql_database_system_spec] if args.key?(:sql_database_system_spec)
           @type = args[:type] if args.key?(:type)
           @usage_signal = args[:usage_signal] if args.key?(:usage_signal)
@@ -2041,6 +2047,110 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cloud_bigtable_instance_spec = args[:cloud_bigtable_instance_spec] if args.key?(:cloud_bigtable_instance_spec)
+        end
+      end
+      
+      # Specification of a Spanner table.
+      class GoogleCloudDatacatalogV1SpannerTableSpec
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The foreign keys of the table.
+        # Corresponds to the JSON property `foreignKeys`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey>]
+        attr_accessor :foreign_keys
+      
+        # Specification of a Spanner primary key.
+        # Corresponds to the JSON property `primaryKey`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey]
+        attr_accessor :primary_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @foreign_keys = args[:foreign_keys] if args.key?(:foreign_keys)
+          @primary_key = args[:primary_key] if args.key?(:primary_key)
+        end
+      end
+      
+      # Specification of a Spanner foreign key.
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The ordered list of column mappings for this foreign key.
+        # Corresponds to the JSON property `columnMappings`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping>]
+        attr_accessor :column_mappings
+      
+        # Output only. The table name this foreign key referenced to. Format: `projects/`
+        # PROJECT_ID`/locations/`LOCATION`/entryGroups/`ENTRY_GROUP_ID`/entries/`
+        # ENTRY_ID``
+        # Corresponds to the JSON property `entry`
+        # @return [String]
+        attr_accessor :entry
+      
+        # Output only. The constraint_name of the foreign key, for example,
+        # FK_CustomerOrder.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_mappings = args[:column_mappings] if args.key?(:column_mappings)
+          @entry = args[:entry] if args.key?(:entry)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Column mapping for a Spanner foreign key.
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The column in the current table that is part of the foreign key.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # Output only. The column in the referenced table that is part of the foreign
+        # key.
+        # Corresponds to the JSON property `referenceColumn`
+        # @return [String]
+        attr_accessor :reference_column
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @reference_column = args[:reference_column] if args.key?(:reference_column)
+        end
+      end
+      
+      # Specification of a Spanner primary key.
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Column names of the primary key.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<String>]
+        attr_accessor :columns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
         end
       end
       
