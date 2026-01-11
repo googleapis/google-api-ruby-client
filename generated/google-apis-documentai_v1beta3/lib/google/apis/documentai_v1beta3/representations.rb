@@ -3610,6 +3610,8 @@ module Google
       
           property :entity_validation_output, as: 'entityValidationOutput', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutput, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutput::Representation
       
+          property :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentProvenance, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentProvenance::Representation
+      
           property :revision_id, as: 'revisionId'
         end
       end
