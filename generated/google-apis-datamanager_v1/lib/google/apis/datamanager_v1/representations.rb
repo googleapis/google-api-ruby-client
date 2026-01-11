@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TermsOfService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -692,6 +698,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :request_status_per_destination, as: 'requestStatusPerDestination', class: Google::Apis::DatamanagerV1::RequestStatusPerDestination, decorator: Google::Apis::DatamanagerV1::RequestStatusPerDestination::Representation
       
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       
