@@ -163,8 +163,8 @@ module Google
         # Create a BackupPlanAssociation
         # @param [String] parent
         #   Required. The backup plan association project and location in the format `
-        #   projects/`project_id`/locations/`location``. In Cloud BackupDR locations map
-        #   to GCP regions, for example **us-central1**.
+        #   projects/`project_id`/locations/`location``. In Backup and DR locations map to
+        #   Google Cloud regions, for example **us-central1**.
         # @param [Google::Apis::BackupdrV1::BackupPlanAssociation] backup_plan_association_object
         # @param [String] backup_plan_association_id
         #   Required. The name of the backup plan association to create. The name must be
@@ -280,7 +280,8 @@ module Google
         #   FetchBackupPlanAssociationsForResourceType` must match the call that provided
         #   the page token.
         # @param [String] resource_type
-        #   Required. The type of the GCP resource. Ex: sql.googleapis.com/Instance
+        #   Required. The type of the Google Cloud resource. Ex: sql.googleapis.com/
+        #   Instance
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -349,9 +350,9 @@ module Google
         # @param [String] parent
         #   Required. The project and location for which to retrieve backup Plan
         #   Associations information, in the format `projects/`project_id`/locations/`
-        #   location``. In Cloud BackupDR, locations map to GCP regions, for example **us-
-        #   central1**. To retrieve backup plan associations for all locations, use "-"
-        #   for the ``location`` value.
+        #   location``. In Backup and DR, locations map to Google Cloud regions, for
+        #   example **us-central1**. To retrieve backup plan associations for all
+        #   locations, use "-" for the ``location`` value.
         # @param [String] filter
         #   Optional. Filtering results
         # @param [Fixnum] page_size
@@ -482,8 +483,8 @@ module Google
         # Create a BackupPlan
         # @param [String] parent
         #   Required. The `BackupPlan` project and location in the format `projects/`
-        #   project`/locations/`location``. In Cloud BackupDR locations map to GCP regions,
-        #   for example **us-central1**.
+        #   project`/locations/`location``. In Google Cloud Backup and DR locations map to
+        #   Google Cloud regions, for example **us-central1**.
         # @param [Google::Apis::BackupdrV1::BackupPlan] backup_plan_object
         # @param [String] backup_plan_id
         #   Required. The name of the `BackupPlan` to create. The name must be unique for
@@ -609,9 +610,10 @@ module Google
         # Lists BackupPlans in a given project and location.
         # @param [String] parent
         #   Required. The project and location for which to retrieve `BackupPlans`
-        #   information. Format: `projects/`project`/locations/`location``. In Cloud
-        #   BackupDR, locations map to GCP regions, for e.g. **us-central1**. To retrieve
-        #   backup plans for all locations, use "-" for the ``location`` value.
+        #   information. Format: `projects/`project`/locations/`location``. In Google
+        #   Cloud Backup and DR, locations map to Google Cloud regions, for example **us-
+        #   central1**. To retrieve backup plans for all locations, use "-" for the ``
+        #   location`` value.
         # @param [String] filter
         #   Optional. Field match expression used to filter the results.
         # @param [String] order_by
@@ -749,8 +751,8 @@ module Google
         # @param [String] parent
         #   Required. The project and location for which to retrieve `BackupPlanRevisions`
         #   information. Format: `projects/`project`/locations/`location`/backupPlans/`
-        #   backup_plan``. In Cloud BackupDR, locations map to GCP regions, for e.g. **us-
-        #   central1**.
+        #   backup_plan``. In Google Cloud Backup and DR, locations map to Google Cloud
+        #   regions, for example **us-central1**.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of `BackupPlans` to return in a single response.
         #   If not specified, a default value will be chosen by the service. Note that the
@@ -1556,7 +1558,8 @@ module Google
         #   When paginating, all other parameters provided to `FetchBackupsForResourceType`
         #   must match the call that provided the page token.
         # @param [String] resource_type
-        #   Required. The type of the GCP resource. Ex: sqladmin.googleapis.com/Instance
+        #   Required. The type of the Google Cloud resource. Ex: sqladmin.googleapis.com/
+        #   Instance
         # @param [String] view
         #   Optional. This parameter is used to specify the view of the backup. If not
         #   specified, the default view is BASIC.
@@ -1797,7 +1800,8 @@ module Google
         #   FetchDataSourceReferencesForResourceType` must match the call that provided
         #   the page token.
         # @param [String] resource_type
-        #   Required. The type of the GCP resource. Ex: sql.googleapis.com/Instance
+        #   Required. The type of the Google Cloud resource. Ex: sql.googleapis.com/
+        #   Instance
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2089,9 +2093,9 @@ module Google
         # @param [String] parent
         #   Required. The project and location for which to retrieve management servers
         #   information, in the format 'projects/`project_id`/locations/`location`'. In
-        #   Cloud BackupDR, locations map to Google Cloud regions, for example **us-
-        #   central1**. To retrieve management servers for all locations, use "-" for the '
-        #   `location`' value.
+        #   Google Cloud Backup and DR, locations map to Google Cloud regions, for example
+        #   **us-central1**. To retrieve management servers for all locations, use "-" for
+        #   the '`location`' value.
         # @param [String] filter
         #   Optional. Filtering results.
         # @param [String] order_by
@@ -2136,8 +2140,8 @@ module Google
         # @param [String] parent
         #   Required. The project and location to be used to check CSS metadata for target
         #   project information, in the format 'projects/`project_id`/locations/`location`'
-        #   . In Cloud BackupDR, locations map to Google Cloud regions, for example **us-
-        #   central1**.
+        #   . In Google Cloud Backup and DR, locations map to Google Cloud regions, for
+        #   example **us-central1**.
         # @param [Google::Apis::BackupdrV1::FetchMsComplianceMetadataRequest] fetch_ms_compliance_metadata_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2400,8 +2404,9 @@ module Google
         # Lists ResourceBackupConfigs.
         # @param [String] parent
         #   Required. The project and location for which to retrieve resource backup
-        #   configs. Format: 'projects/`project_id`/locations/`location`'. In Cloud Backup
-        #   and DR, locations map to Google Cloud regions, for example **us-central1**.
+        #   configs. Format: 'projects/`project_id`/locations/`location`'. In Google Cloud
+        #   Backup and DR, locations map to Google Cloud regions, for example **us-
+        #   central1**.
         # @param [String] filter
         #   Optional. Filtering results.
         # @param [String] order_by
