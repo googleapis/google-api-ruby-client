@@ -5221,6 +5221,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customer_policy, as: 'customerPolicy', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantCustomerPolicy, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantCustomerPolicy::Representation
       
+          property :default_web_grounding_toggle_off, as: 'defaultWebGroundingToggleOff'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           hash :enabled_tools, as: 'enabledTools', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantToolList, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantToolList::Representation
@@ -9767,6 +9768,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customer_policy, as: 'customerPolicy', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicy, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicy::Representation
       
+          property :default_web_grounding_toggle_off, as: 'defaultWebGroundingToggleOff'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           hash :enabled_tools, as: 'enabledTools', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantToolList, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantToolList::Representation
