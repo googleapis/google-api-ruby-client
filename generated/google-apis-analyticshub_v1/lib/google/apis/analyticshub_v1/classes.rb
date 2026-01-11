@@ -1107,7 +1107,7 @@ module Google
         # @return [Array<Google::Apis::AnalyticshubV1::MessageTransform>]
         attr_accessor :message_transforms
       
-        # Required. Name of the subscription. Format is `projects/`project`/
+        # Required. Identifier. Name of the subscription. Format is `projects/`project`/
         # subscriptions/`sub``.
         # Corresponds to the JSON property `name`
         # @return [String]
