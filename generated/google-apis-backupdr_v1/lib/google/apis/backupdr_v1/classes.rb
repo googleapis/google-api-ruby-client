@@ -246,6 +246,19 @@ module Google
         end
       end
       
+      # Properties for an AlloyDB cluster backup plan association.
+      class AlloyDbClusterBackupPlanAssociationProperties
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # AlloyDBClusterDataSourceProperties represents the properties of a AlloyDB
       # cluster resource that are stored in the DataSource. .
       class AlloyDbClusterDataSourceProperties
@@ -851,14 +864,14 @@ module Google
         # @return [String]
         attr_accessor :backup_config_source_display_name
       
-        # BackupDrPlanConfig has additional information about Backup and DR's Plan
-        # backup configuration.
+        # BackupDrPlanConfig has additional information about Google Cloud Backup and DR'
+        # s Plan backup configuration.
         # Corresponds to the JSON property `backupDrPlanConfig`
         # @return [Google::Apis::BackupdrV1::BackupDrPlanConfig]
         attr_accessor :backup_dr_plan_config
       
-        # BackupDrTemplateConfig has additional information about Backup and DR's
-        # Template backup configuration.
+        # Provides additional information about Google Cloud Backup and DR's Template
+        # backup configuration.
         # Corresponds to the JSON property `backupDrTemplateConfig`
         # @return [Google::Apis::BackupdrV1::BackupDrTemplateConfig]
         attr_accessor :backup_dr_template_config
@@ -970,8 +983,8 @@ module Google
         end
       end
       
-      # BackupDrPlanConfig has additional information about Backup and DR's Plan
-      # backup configuration.
+      # BackupDrPlanConfig has additional information about Google Cloud Backup and DR'
+      # s Plan backup configuration.
       class BackupDrPlanConfig
         include Google::Apis::Core::Hashable
       
@@ -1016,8 +1029,8 @@ module Google
         end
       end
       
-      # BackupDrTemplateConfig has additional information about Backup and DR's
-      # Template backup configuration.
+      # Provides additional information about Google Cloud Backup and DR's Template
+      # backup configuration.
       class BackupDrTemplateConfig
         include Google::Apis::Core::Hashable
       
@@ -1154,9 +1167,9 @@ module Google
         # @return [String]
         attr_accessor :backup_vault
       
-        # Output only. The Google Cloud Platform Service Account to be used by the
-        # BackupVault for taking backups. Specify the email address of the Backup Vault
-        # Service Account.
+        # Output only. The Google Cloud service account to be used by the BackupVault
+        # for taking backups. Specify the email address of the Backup Vault Service
+        # Account.
         # Corresponds to the JSON property `backupVaultServiceAccount`
         # @return [String]
         attr_accessor :backup_vault_service_account
@@ -1188,9 +1201,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Optional. Applicable only for CloudSQL resource_type. Configures how long logs
-        # will be stored. It is defined in “days”. This value should be greater than or
-        # equal to minimum enforced log retention duration of the backup vault.
+        # Optional. Applicable only for Cloud SQL resource_type. Configures how long
+        # logs will be stored. It is defined in “days”. This value should be greater
+        # than or equal to minimum enforced log retention duration of the backup vault.
         # Corresponds to the JSON property `logRetentionDays`
         # @return [Fixnum]
         attr_accessor :log_retention_days
@@ -1273,6 +1286,11 @@ module Google
       class BackupPlanAssociation
         include Google::Apis::Core::Hashable
       
+        # Properties for an AlloyDB cluster backup plan association.
+        # Corresponds to the JSON property `alloydbClusterBackupPlanAssociationProperties`
+        # @return [Google::Apis::BackupdrV1::AlloyDbClusterBackupPlanAssociationProperties]
+        attr_accessor :alloydb_cluster_backup_plan_association_properties
+      
         # Required. Resource name of backup plan which needs to be applied on workload.
         # Format: projects/`project`/locations/`location`/backupPlans/`backupPlanId`
         # Corresponds to the JSON property `backupPlan`
@@ -1308,6 +1326,11 @@ module Google
         # Corresponds to the JSON property `dataSource`
         # @return [String]
         attr_accessor :data_source
+      
+        # Filestore instance's BPA properties.
+        # Corresponds to the JSON property `filestoreInstanceBackupPlanAssociationProperties`
+        # @return [Google::Apis::BackupdrV1::FilestoreInstanceBackupPlanAssociationProperties]
+        attr_accessor :filestore_instance_backup_plan_association_properties
       
         # Output only. Identifier. The resource name of BackupPlanAssociation in below
         # format Format : projects/`project`/locations/`location`/backupPlanAssociations/
@@ -1351,12 +1374,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alloydb_cluster_backup_plan_association_properties = args[:alloydb_cluster_backup_plan_association_properties] if args.key?(:alloydb_cluster_backup_plan_association_properties)
           @backup_plan = args[:backup_plan] if args.key?(:backup_plan)
           @backup_plan_revision_id = args[:backup_plan_revision_id] if args.key?(:backup_plan_revision_id)
           @backup_plan_revision_name = args[:backup_plan_revision_name] if args.key?(:backup_plan_revision_name)
           @cloud_sql_instance_backup_plan_association_properties = args[:cloud_sql_instance_backup_plan_association_properties] if args.key?(:cloud_sql_instance_backup_plan_association_properties)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_source = args[:data_source] if args.key?(:data_source)
+          @filestore_instance_backup_plan_association_properties = args[:filestore_instance_backup_plan_association_properties] if args.key?(:filestore_instance_backup_plan_association_properties)
           @name = args[:name] if args.key?(:name)
           @resource = args[:resource] if args.key?(:resource)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
@@ -1599,17 +1624,17 @@ module Google
       class BackupWindow
         include Google::Apis::Core::Hashable
       
-        # Required. The hour of day (1-24) when the window end for e.g. if value of end
-        # hour of day is 10 that mean backup window end time is 10:00. End hour of day
-        # should be greater than start hour of day. 0 <= start_hour_of_day <
+        # Required. The hour of day (1-24) when the window end for example if value of
+        # end hour of day is 10 that mean backup window end time is 10:00. End hour of
+        # day should be greater than start hour of day. 0 <= start_hour_of_day <
         # end_hour_of_day <= 24 End hour of day is not include in backup window that
         # mean if end_hour_of_day= 10 jobs should start before 10:00.
         # Corresponds to the JSON property `endHourOfDay`
         # @return [Fixnum]
         attr_accessor :end_hour_of_day
       
-        # Required. The hour of day (0-23) when the window starts for e.g. if value of
-        # start hour of day is 6 that mean backup window start at 6:00.
+        # Required. The hour of day (0-23) when the window starts for example if value
+        # of start hour of day is 6 that mean backup window start at 6:00.
         # Corresponds to the JSON property `startHourOfDay`
         # @return [Fixnum]
         attr_accessor :start_hour_of_day
@@ -2588,7 +2613,7 @@ module Google
         end
       end
       
-      # The GCP resource that the DataSource is associated with.
+      # The Google Cloud resource that the DataSource is associated with.
       class DataSourceGcpResourceInfo
         include Google::Apis::Core::Hashable
       
@@ -2598,18 +2623,20 @@ module Google
         # @return [Google::Apis::BackupdrV1::CloudSqlInstanceDataSourceReferenceProperties]
         attr_accessor :cloud_sql_instance_properties
       
-        # Output only. The resource name of the GCP resource. Ex: projects/`project`/
-        # zones/`zone`/instances/`instance`
+        # Output only. The resource name of the Google Cloud resource. Ex: projects/`
+        # project`/zones/`zone`/instances/`instance`
         # Corresponds to the JSON property `gcpResourcename`
         # @return [String]
         attr_accessor :gcp_resourcename
       
-        # Output only. The location of the GCP resource. Ex: //"global"/"unspecified"
+        # Output only. The location of the Google Cloud resource. Ex: //"global"/"
+        # unspecified"
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # Output only. The type of the GCP resource. Ex: compute.googleapis.com/Instance
+        # Output only. The type of the Google Cloud resource. Ex: compute.googleapis.com/
+        # Instance
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2657,7 +2684,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :data_source_backup_count
       
-        # The GCP resource that the DataSource is associated with.
+        # The Google Cloud resource that the DataSource is associated with.
         # Corresponds to the JSON property `dataSourceGcpResourceInfo`
         # @return [Google::Apis::BackupdrV1::DataSourceGcpResourceInfo]
         attr_accessor :data_source_gcp_resource_info
@@ -3317,8 +3344,8 @@ module Google
       class FetchMsComplianceMetadataResponse
         include Google::Apis::Core::Hashable
       
-        # The ms compliance metadata of the target project, if the project is an assured
-        # workloads project, values will be true, otherwise false.
+        # The ms compliance metadata of the target project, if the project is an Assured
+        # Workloads project, values will be true, otherwise false.
         # Corresponds to the JSON property `isAssuredWorkload`
         # @return [Boolean]
         attr_accessor :is_assured_workload
@@ -3366,6 +3393,25 @@ module Google
           @backup_vaults = args[:backup_vaults] if args.key?(:backup_vaults)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Filestore instance's BPA properties.
+      class FilestoreInstanceBackupPlanAssociationProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the instance was created.
+        # Corresponds to the JSON property `instanceCreateTime`
+        # @return [String]
+        attr_accessor :instance_create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_create_time = args[:instance_create_time] if args.key?(:instance_create_time)
         end
       end
       
@@ -3626,7 +3672,7 @@ module Google
         # request ID so that if you must retry your request, the server will know to
         # ignore the request if it has already been completed. The server will guarantee
         # that for at least 60 minutes since the first request. For example, consider a
-        # situation where you make an initial request and t he request times out. If you
+        # situation where you make an initial request and the request times out. If you
         # make the request again with the same request ID, the server can check if
         # original operation with the same request ID was received, and if so, will
         # ignore the second request. This prevents clients from accidentally creating
@@ -4224,9 +4270,9 @@ module Google
         attr_accessor :networks
       
         # Output only. The OAuth 2.0 client id is required to make API calls to the
-        # BackupDR instance API of this ManagementServer. This is the value that should
-        # be provided in the 'aud' field of the OIDC ID Token (see openid specification
-        # https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
+        # Backup and DR instance API of this ManagementServer. This is the value that
+        # should be provided in the 'aud' field of the OIDC ID Token (see openid
+        # specification https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
         # Corresponds to the JSON property `oauth2ClientId`
         # @return [String]
         attr_accessor :oauth2_client_id
@@ -5351,7 +5397,7 @@ module Google
         # Required. The time zone to be used when interpreting the schedule. The value
         # of this field must be a time zone name from the IANA tz database. See https://
         # en.wikipedia.org/wiki/List_of_tz_database_time_zones for the list of valid
-        # timezone names. For e.g., Europe/Paris.
+        # timezone names. For example, Europe/Paris.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone

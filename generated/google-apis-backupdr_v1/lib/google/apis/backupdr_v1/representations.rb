@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AlloyDbClusterBackupPlanAssociationProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AlloyDbClusterDataSourceProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -413,6 +419,12 @@ module Google
       end
       
       class FetchUsableBackupVaultsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FilestoreInstanceBackupPlanAssociationProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -828,6 +840,12 @@ module Google
         end
       end
       
+      class AlloyDbClusterBackupPlanAssociationProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AlloyDbClusterDataSourceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1076,6 +1094,8 @@ module Google
       class BackupPlanAssociation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alloydb_cluster_backup_plan_association_properties, as: 'alloydbClusterBackupPlanAssociationProperties', class: Google::Apis::BackupdrV1::AlloyDbClusterBackupPlanAssociationProperties, decorator: Google::Apis::BackupdrV1::AlloyDbClusterBackupPlanAssociationProperties::Representation
+      
           property :backup_plan, as: 'backupPlan'
           property :backup_plan_revision_id, as: 'backupPlanRevisionId'
           property :backup_plan_revision_name, as: 'backupPlanRevisionName'
@@ -1083,6 +1103,8 @@ module Google
       
           property :create_time, as: 'createTime'
           property :data_source, as: 'dataSource'
+          property :filestore_instance_backup_plan_association_properties, as: 'filestoreInstanceBackupPlanAssociationProperties', class: Google::Apis::BackupdrV1::FilestoreInstanceBackupPlanAssociationProperties, decorator: Google::Apis::BackupdrV1::FilestoreInstanceBackupPlanAssociationProperties::Representation
+      
           property :name, as: 'name'
           property :resource, as: 'resource'
           property :resource_type, as: 'resourceType'
@@ -1582,6 +1604,13 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class FilestoreInstanceBackupPlanAssociationProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_create_time, as: 'instanceCreateTime'
         end
       end
       
