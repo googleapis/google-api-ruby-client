@@ -6282,7 +6282,7 @@ module Google
         end
       end
       
-      # An inventory source.
+      # An inventory source. Next ID: 22
       class InventorySource
         include Google::Apis::Core::Hashable
       
