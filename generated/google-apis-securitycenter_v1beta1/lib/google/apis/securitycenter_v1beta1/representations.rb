@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ArtifactGuardPolicies
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArtifactGuardPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Asset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -647,6 +659,18 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2Application
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2ArtifactGuardPolicies
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2ArtifactGuardPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1330,6 +1354,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2Secret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2SecretEnvironmentVariable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2SecretFilePath
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2SecretStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2SecurityBulletin
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1696,6 +1744,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Secret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretEnvironmentVariable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretFilePath
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityBulletin
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1901,6 +1973,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :base_uri, as: 'baseUri'
           property :full_uri, as: 'fullUri'
+        end
+      end
+      
+      class ArtifactGuardPolicies
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :failing_policies, as: 'failingPolicies', class: Google::Apis::SecuritycenterV1beta1::ArtifactGuardPolicy, decorator: Google::Apis::SecuritycenterV1beta1::ArtifactGuardPolicy::Representation
+      
+          property :resource_id, as: 'resourceId'
+        end
+      end
+      
+      class ArtifactGuardPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_reason, as: 'failureReason'
+          property :policy_id, as: 'policyId'
+          property :type, as: 'type'
         end
       end
       
@@ -2413,6 +2503,7 @@ module Google
           property :contents, as: 'contents'
           property :disk_path, as: 'diskPath', class: Google::Apis::SecuritycenterV1beta1::DiskPath, decorator: Google::Apis::SecuritycenterV1beta1::DiskPath::Representation
       
+          property :file_load_state, as: 'fileLoadState'
           property :hashed_size, :numeric_string => true, as: 'hashedSize'
           collection :operations, as: 'operations', class: Google::Apis::SecuritycenterV1beta1::FileOperation, decorator: Google::Apis::SecuritycenterV1beta1::FileOperation::Representation
       
@@ -2440,6 +2531,8 @@ module Google
           property :ai_model, as: 'aiModel', class: Google::Apis::SecuritycenterV1beta1::AiModel, decorator: Google::Apis::SecuritycenterV1beta1::AiModel::Representation
       
           property :application, as: 'application', class: Google::Apis::SecuritycenterV1beta1::Application, decorator: Google::Apis::SecuritycenterV1beta1::Application::Representation
+      
+          property :artifact_guard_policies, as: 'artifactGuardPolicies', class: Google::Apis::SecuritycenterV1beta1::ArtifactGuardPolicies, decorator: Google::Apis::SecuritycenterV1beta1::ArtifactGuardPolicies::Representation
       
           property :attack_exposure, as: 'attackExposure', class: Google::Apis::SecuritycenterV1beta1::AttackExposure, decorator: Google::Apis::SecuritycenterV1beta1::AttackExposure::Representation
       
@@ -2525,6 +2618,8 @@ module Google
           collection :processes, as: 'processes', class: Google::Apis::SecuritycenterV1beta1::Process, decorator: Google::Apis::SecuritycenterV1beta1::Process::Representation
       
           property :resource_name, as: 'resourceName'
+          property :secret, as: 'secret', class: Google::Apis::SecuritycenterV1beta1::Secret, decorator: Google::Apis::SecuritycenterV1beta1::Secret::Representation
+      
           property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1beta1::SecurityMarks, decorator: Google::Apis::SecuritycenterV1beta1::SecurityMarks::Representation
       
           property :security_posture, as: 'securityPosture', class: Google::Apis::SecuritycenterV1beta1::SecurityPosture, decorator: Google::Apis::SecuritycenterV1beta1::SecurityPosture::Representation
@@ -3023,6 +3118,24 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2ArtifactGuardPolicies
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :failing_policies, as: 'failingPolicies', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ArtifactGuardPolicy, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ArtifactGuardPolicy::Representation
+      
+          property :resource_id, as: 'resourceId'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2ArtifactGuardPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_reason, as: 'failureReason'
+          property :policy_id, as: 'policyId'
+          property :type, as: 'type'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2Attack
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3490,6 +3603,7 @@ module Google
           property :contents, as: 'contents'
           property :disk_path, as: 'diskPath', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2DiskPath, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2DiskPath::Representation
       
+          property :file_load_state, as: 'fileLoadState'
           property :hashed_size, :numeric_string => true, as: 'hashedSize'
           collection :operations, as: 'operations', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2FileOperation, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2FileOperation::Representation
       
@@ -3517,6 +3631,8 @@ module Google
           property :ai_model, as: 'aiModel', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AiModel, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AiModel::Representation
       
           property :application, as: 'application', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Application, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Application::Representation
+      
+          property :artifact_guard_policies, as: 'artifactGuardPolicies', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ArtifactGuardPolicies, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ArtifactGuardPolicies::Representation
       
           property :attack_exposure, as: 'attackExposure', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AttackExposure, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AttackExposure::Representation
       
@@ -3603,6 +3719,8 @@ module Google
           collection :processes, as: 'processes', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Process, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Process::Representation
       
           property :resource_name, as: 'resourceName'
+          property :secret, as: 'secret', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Secret, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Secret::Representation
+      
           property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2SecurityMarks, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2SecurityMarks::Representation
       
           property :security_posture, as: 'securityPosture', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2SecurityPosture, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2SecurityPosture::Representation
@@ -4293,6 +4411,41 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2Secret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :environment_variable, as: 'environmentVariable', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2SecretEnvironmentVariable, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2SecretEnvironmentVariable::Representation
+      
+          property :file_path, as: 'filePath', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2SecretFilePath, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2SecretFilePath::Representation
+      
+          property :status, as: 'status', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2SecretStatus, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2SecretStatus::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2SecretEnvironmentVariable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2SecretFilePath
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2SecretStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_updated_time, as: 'lastUpdatedTime'
+          property :validity, as: 'validity'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2SecurityBulletin
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4902,6 +5055,41 @@ module Google
       class RunAssetDiscoveryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Secret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :environment_variable, as: 'environmentVariable', class: Google::Apis::SecuritycenterV1beta1::SecretEnvironmentVariable, decorator: Google::Apis::SecuritycenterV1beta1::SecretEnvironmentVariable::Representation
+      
+          property :file_path, as: 'filePath', class: Google::Apis::SecuritycenterV1beta1::SecretFilePath, decorator: Google::Apis::SecuritycenterV1beta1::SecretFilePath::Representation
+      
+          property :status, as: 'status', class: Google::Apis::SecuritycenterV1beta1::SecretStatus, decorator: Google::Apis::SecuritycenterV1beta1::SecretStatus::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class SecretEnvironmentVariable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+        end
+      end
+      
+      class SecretFilePath
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+        end
+      end
+      
+      class SecretStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_updated_time, as: 'lastUpdatedTime'
+          property :validity, as: 'validity'
         end
       end
       
