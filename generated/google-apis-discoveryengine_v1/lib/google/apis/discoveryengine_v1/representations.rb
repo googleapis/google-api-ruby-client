@@ -1288,6 +1288,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfigFeatureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2476,6 +2488,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaAdvancedSiteSearchConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3016,6 +3034,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaDeleteSchemaMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3149,6 +3173,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaEngineCommonConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfigFeatureConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3412,6 +3448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaPatientFilterOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaProject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3551,6 +3593,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4217,6 +4271,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1betaEngineCommonConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7017,6 +7083,8 @@ module Google
           property :display_name, as: 'displayName'
           hash :features, as: 'features'
           property :industry_vertical, as: 'industryVertical'
+          property :knowledge_graph_config, as: 'knowledgeGraphConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig::Representation
+      
           property :media_recommendation_engine_config, as: 'mediaRecommendationEngineConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig::Representation
       
           hash :model_configs, as: 'modelConfigs'
@@ -7059,6 +7127,28 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :company_name, as: 'companyName'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cloud_knowledge_graph_types, as: 'cloudKnowledgeGraphTypes'
+          property :enable_cloud_knowledge_graph, as: 'enableCloudKnowledgeGraph'
+          property :enable_private_knowledge_graph, as: 'enablePrivateKnowledgeGraph'
+          property :feature_config, as: 'featureConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfigFeatureConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfigFeatureConfig::Representation
+      
+          collection :private_knowledge_graph_types, as: 'privateKnowledgeGraphTypes'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfigFeatureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_private_kg_auto_complete, as: 'disablePrivateKgAutoComplete'
+          property :disable_private_kg_enrichment, as: 'disablePrivateKgEnrichment'
+          property :disable_private_kg_query_ui_chips, as: 'disablePrivateKgQueryUiChips'
+          property :disable_private_kg_query_understanding, as: 'disablePrivateKgQueryUnderstanding'
         end
       end
       
@@ -7196,6 +7286,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_configurable_schema, as: 'enableConfigurableSchema'
           property :enable_static_indexing_for_batch_ingestion, as: 'enableStaticIndexingForBatchIngestion'
+          collection :initial_filter_groups, as: 'initialFilterGroups'
         end
       end
       
@@ -9133,6 +9224,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_store, as: 'dataStore'
+          collection :filter_groups, as: 'filterGroups'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaAdvancedSiteSearchConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10112,6 +10211,13 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_store, as: 'dataStore'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaDeleteSchemaMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10286,6 +10392,8 @@ module Google
           property :display_name, as: 'displayName'
           hash :features, as: 'features'
           property :industry_vertical, as: 'industryVertical'
+          property :knowledge_graph_config, as: 'knowledgeGraphConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfig::Representation
+      
           property :media_recommendation_engine_config, as: 'mediaRecommendationEngineConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig::Representation
       
           hash :model_configs, as: 'modelConfigs'
@@ -10332,6 +10440,28 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :company_name, as: 'companyName'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cloud_knowledge_graph_types, as: 'cloudKnowledgeGraphTypes'
+          property :enable_cloud_knowledge_graph, as: 'enableCloudKnowledgeGraph'
+          property :enable_private_knowledge_graph, as: 'enablePrivateKnowledgeGraph'
+          property :feature_config, as: 'featureConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfigFeatureConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfigFeatureConfig::Representation
+      
+          collection :private_knowledge_graph_types, as: 'privateKnowledgeGraphTypes'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfigFeatureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_private_kg_auto_complete, as: 'disablePrivateKgAutoComplete'
+          property :disable_private_kg_enrichment, as: 'disablePrivateKgEnrichment'
+          property :disable_private_kg_query_ui_chips, as: 'disablePrivateKgQueryUiChips'
+          property :disable_private_kg_query_understanding, as: 'disablePrivateKgQueryUnderstanding'
         end
       end
       
@@ -10508,6 +10638,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_configurable_schema, as: 'enableConfigurableSchema'
           property :enable_static_indexing_for_batch_ingestion, as: 'enableStaticIndexingForBatchIngestion'
+          collection :initial_filter_groups, as: 'initialFilterGroups'
         end
       end
       
@@ -10752,6 +10883,16 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaPatientFilterOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :filters_added_count, :numeric_string => true, as: 'filtersAddedCount'
+          property :filters_removed_count, :numeric_string => true, as: 'filtersRemovedCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaProject
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10980,6 +11121,22 @@ module Google
           property :error, as: 'error', class: Google::Apis::DiscoveryengineV1::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1::GoogleRpcStatus::Representation
       
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_store, as: 'dataStore'
+          collection :filter_groups, as: 'filterGroups'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_store, as: 'dataStore'
+          collection :filter_groups, as: 'filterGroups'
         end
       end
       
@@ -12071,6 +12228,8 @@ module Google
           property :display_name, as: 'displayName'
           hash :features, as: 'features'
           property :industry_vertical, as: 'industryVertical'
+          property :knowledge_graph_config, as: 'knowledgeGraphConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig::Representation
+      
           property :media_recommendation_engine_config, as: 'mediaRecommendationEngineConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig::Representation
       
           hash :model_configs, as: 'modelConfigs'
@@ -12113,6 +12272,28 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :company_name, as: 'companyName'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cloud_knowledge_graph_types, as: 'cloudKnowledgeGraphTypes'
+          property :enable_cloud_knowledge_graph, as: 'enableCloudKnowledgeGraph'
+          property :enable_private_knowledge_graph, as: 'enablePrivateKnowledgeGraph'
+          property :feature_config, as: 'featureConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig::Representation
+      
+          collection :private_knowledge_graph_types, as: 'privateKnowledgeGraphTypes'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_private_kg_auto_complete, as: 'disablePrivateKgAutoComplete'
+          property :disable_private_kg_enrichment, as: 'disablePrivateKgEnrichment'
+          property :disable_private_kg_query_ui_chips, as: 'disablePrivateKgQueryUiChips'
+          property :disable_private_kg_query_understanding, as: 'disablePrivateKgQueryUnderstanding'
         end
       end
       
@@ -12210,6 +12391,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_configurable_schema, as: 'enableConfigurableSchema'
           property :enable_static_indexing_for_batch_ingestion, as: 'enableStaticIndexingForBatchIngestion'
+          collection :initial_filter_groups, as: 'initialFilterGroups'
         end
       end
       
