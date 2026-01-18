@@ -740,6 +740,11 @@ module Google
         # @return [Google::Apis::ClouddeployV1::TimedPromoteReleaseOperation]
         attr_accessor :timed_promote_release_operation
       
+        # Output only. Unique identifier of the `AutomationRun`.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
         # Output only. Time at which the automationRun was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -773,6 +778,7 @@ module Google
           @state_description = args[:state_description] if args.key?(:state_description)
           @target_id = args[:target_id] if args.key?(:target_id)
           @timed_promote_release_operation = args[:timed_promote_release_operation] if args.key?(:timed_promote_release_operation)
+          @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @wait_until_time = args[:wait_until_time] if args.key?(:wait_until_time)
         end
