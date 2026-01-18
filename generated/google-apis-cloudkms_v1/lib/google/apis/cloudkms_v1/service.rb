@@ -52,10 +52,10 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Returns the AutokeyConfig for a folder.
+        # Returns the AutokeyConfig for a folder or project.
         # @param [String] name
         #   Required. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
-        #   autokeyConfig`.
+        #   autokeyConfig` or `projects/`PROJECT_NUMBER`/autokeyConfig`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -114,8 +114,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the AutokeyConfig for a folder. The caller must have both `cloudkms.
-        # autokeyConfigs.update` permission on the parent folder and `cloudkms.
+        # Updates the AutokeyConfig for a folder or a project. The caller must have both
+        # `cloudkms.autokeyConfigs.update` permission on the parent folder and `cloudkms.
         # cryptoKeys.setIamPolicy` permission on the provided key project. A KeyHandle
         # creation in the folder's descendant projects will use this configuration to
         # determine where to create the resulting CryptoKey.
@@ -262,6 +262,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the AutokeyConfig for a folder or project.
+        # @param [String] name
+        #   Required. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
+        #   autokeyConfig` or `projects/`PROJECT_NUMBER`/autokeyConfig`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::AutokeyConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::AutokeyConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_autokey_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudkmsV1::AutokeyConfig::Representation
+          command.response_class = Google::Apis::CloudkmsV1::AutokeyConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder,
         # or project.
         # @param [String] name
@@ -384,6 +415,47 @@ module Google
           command.response_representation = Google::Apis::CloudkmsV1::ShowEffectiveKeyAccessJustificationsPolicyConfigResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1::ShowEffectiveKeyAccessJustificationsPolicyConfigResponse
           command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the AutokeyConfig for a folder or a project. The caller must have both
+        # `cloudkms.autokeyConfigs.update` permission on the parent folder and `cloudkms.
+        # cryptoKeys.setIamPolicy` permission on the provided key project. A KeyHandle
+        # creation in the folder's descendant projects will use this configuration to
+        # determine where to create the resulting CryptoKey.
+        # @param [String] name
+        #   Identifier. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
+        #   autokeyConfig`
+        # @param [Google::Apis::CloudkmsV1::AutokeyConfig] autokey_config_object
+        # @param [String] update_mask
+        #   Required. Masks which fields of the AutokeyConfig to update, e.g. `keyProject`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::AutokeyConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::AutokeyConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_autokey_config(name, autokey_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudkmsV1::AutokeyConfig::Representation
+          command.request_object = autokey_config_object
+          command.response_representation = Google::Apis::CloudkmsV1::AutokeyConfig::Representation
+          command.response_class = Google::Apis::CloudkmsV1::AutokeyConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
