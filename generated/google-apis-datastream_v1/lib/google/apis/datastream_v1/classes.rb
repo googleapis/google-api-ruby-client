@@ -79,6 +79,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::SalesforceOrg]
         attr_accessor :salesforce_excluded_objects
       
+        # Spanner database structure.
+        # Corresponds to the JSON property `spannerExcludedObjects`
+        # @return [Google::Apis::DatastreamV1::SpannerDatabase]
+        attr_accessor :spanner_excluded_objects
+      
         # SQLServer database structure.
         # Corresponds to the JSON property `sqlServerExcludedObjects`
         # @return [Google::Apis::DatastreamV1::SqlServerRdbms]
@@ -95,6 +100,7 @@ module Google
           @oracle_excluded_objects = args[:oracle_excluded_objects] if args.key?(:oracle_excluded_objects)
           @postgresql_excluded_objects = args[:postgresql_excluded_objects] if args.key?(:postgresql_excluded_objects)
           @salesforce_excluded_objects = args[:salesforce_excluded_objects] if args.key?(:salesforce_excluded_objects)
+          @spanner_excluded_objects = args[:spanner_excluded_objects] if args.key?(:spanner_excluded_objects)
           @sql_server_excluded_objects = args[:sql_server_excluded_objects] if args.key?(:sql_server_excluded_objects)
         end
       end
@@ -506,6 +512,11 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
+        # Spanner profile.
+        # Corresponds to the JSON property `spannerProfile`
+        # @return [Google::Apis::DatastreamV1::SpannerProfile]
+        attr_accessor :spanner_profile
+      
         # SQLServer database profile.
         # Corresponds to the JSON property `sqlServerProfile`
         # @return [Google::Apis::DatastreamV1::SqlServerProfile]
@@ -544,6 +555,7 @@ module Google
           @salesforce_profile = args[:salesforce_profile] if args.key?(:salesforce_profile)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @spanner_profile = args[:spanner_profile] if args.key?(:spanner_profile)
           @sql_server_profile = args[:sql_server_profile] if args.key?(:sql_server_profile)
           @static_service_ip_connectivity = args[:static_service_ip_connectivity] if args.key?(:static_service_ip_connectivity)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -698,6 +710,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::SalesforceOrg]
         attr_accessor :salesforce_org
       
+        # Spanner database structure.
+        # Corresponds to the JSON property `spannerDatabase`
+        # @return [Google::Apis::DatastreamV1::SpannerDatabase]
+        attr_accessor :spanner_database
+      
         # SQLServer database structure.
         # Corresponds to the JSON property `sqlServerRdbms`
         # @return [Google::Apis::DatastreamV1::SqlServerRdbms]
@@ -718,6 +735,7 @@ module Google
           @oracle_rdbms = args[:oracle_rdbms] if args.key?(:oracle_rdbms)
           @postgresql_rdbms = args[:postgresql_rdbms] if args.key?(:postgresql_rdbms)
           @salesforce_org = args[:salesforce_org] if args.key?(:salesforce_org)
+          @spanner_database = args[:spanner_database] if args.key?(:spanner_database)
           @sql_server_rdbms = args[:sql_server_rdbms] if args.key?(:sql_server_rdbms)
         end
       end
@@ -751,6 +769,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::SalesforceOrg]
         attr_accessor :salesforce_org
       
+        # Spanner database structure.
+        # Corresponds to the JSON property `spannerDatabase`
+        # @return [Google::Apis::DatastreamV1::SpannerDatabase]
+        attr_accessor :spanner_database
+      
         # SQLServer database structure.
         # Corresponds to the JSON property `sqlServerRdbms`
         # @return [Google::Apis::DatastreamV1::SqlServerRdbms]
@@ -767,6 +790,7 @@ module Google
           @oracle_rdbms = args[:oracle_rdbms] if args.key?(:oracle_rdbms)
           @postgresql_rdbms = args[:postgresql_rdbms] if args.key?(:postgresql_rdbms)
           @salesforce_org = args[:salesforce_org] if args.key?(:salesforce_org)
+          @spanner_database = args[:spanner_database] if args.key?(:spanner_database)
           @sql_server_rdbms = args[:sql_server_rdbms] if args.key?(:sql_server_rdbms)
         end
       end
@@ -3640,6 +3664,11 @@ module Google
         # @return [String]
         attr_accessor :source_connection_profile
       
+        # Spanner source configuration.
+        # Corresponds to the JSON property `spannerSourceConfig`
+        # @return [Google::Apis::DatastreamV1::SpannerSourceConfig]
+        attr_accessor :spanner_source_config
+      
         # SQLServer data source configuration
         # Corresponds to the JSON property `sqlServerSourceConfig`
         # @return [Google::Apis::DatastreamV1::SqlServerSourceConfig]
@@ -3657,6 +3686,7 @@ module Google
           @postgresql_source_config = args[:postgresql_source_config] if args.key?(:postgresql_source_config)
           @salesforce_source_config = args[:salesforce_source_config] if args.key?(:salesforce_source_config)
           @source_connection_profile = args[:source_connection_profile] if args.key?(:source_connection_profile)
+          @spanner_source_config = args[:spanner_source_config] if args.key?(:spanner_source_config)
           @sql_server_source_config = args[:sql_server_source_config] if args.key?(:sql_server_source_config)
         end
       end
@@ -3717,6 +3747,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::SalesforceObjectIdentifier]
         attr_accessor :salesforce_identifier
       
+        # Spanner data source object identifier.
+        # Corresponds to the JSON property `spannerIdentifier`
+        # @return [Google::Apis::DatastreamV1::SpannerObjectIdentifier]
+        attr_accessor :spanner_identifier
+      
         # SQLServer data source object identifier.
         # Corresponds to the JSON property `sqlServerIdentifier`
         # @return [Google::Apis::DatastreamV1::SqlServerObjectIdentifier]
@@ -3733,7 +3768,232 @@ module Google
           @oracle_identifier = args[:oracle_identifier] if args.key?(:oracle_identifier)
           @postgresql_identifier = args[:postgresql_identifier] if args.key?(:postgresql_identifier)
           @salesforce_identifier = args[:salesforce_identifier] if args.key?(:salesforce_identifier)
+          @spanner_identifier = args[:spanner_identifier] if args.key?(:spanner_identifier)
           @sql_server_identifier = args[:sql_server_identifier] if args.key?(:sql_server_identifier)
+        end
+      end
+      
+      # Spanner column.
+      class SpannerColumn
+        include Google::Apis::Core::Hashable
+      
+        # Required. Column name.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # Optional. Spanner data type.
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        # Optional. Whether or not the column is a primary key.
+        # Corresponds to the JSON property `isPrimaryKey`
+        # @return [Boolean]
+        attr_accessor :is_primary_key
+        alias_method :is_primary_key?, :is_primary_key
+      
+        # Optional. The ordinal position of the column in the table.
+        # Corresponds to the JSON property `ordinalPosition`
+        # @return [Fixnum]
+        attr_accessor :ordinal_position
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @is_primary_key = args[:is_primary_key] if args.key?(:is_primary_key)
+          @ordinal_position = args[:ordinal_position] if args.key?(:ordinal_position)
+        end
+      end
+      
+      # Spanner database structure.
+      class SpannerDatabase
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Spanner schemas in the database.
+        # Corresponds to the JSON property `schemas`
+        # @return [Array<Google::Apis::DatastreamV1::SpannerSchema>]
+        attr_accessor :schemas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schemas = args[:schemas] if args.key?(:schemas)
+        end
+      end
+      
+      # Spanner data source object identifier.
+      class SpannerObjectIdentifier
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The schema name.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        # Required. The table name.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schema = args[:schema] if args.key?(:schema)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # Spanner profile.
+      class SpannerProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. Cloud Spanner database resource. This field is immutable.
+        # Must be in the format: projects/`project`/instances/`instance`/databases/`
+        # database_id`.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Optional. The Spanner endpoint to connect to. Defaults to the global endpoint (
+        # https://spanner.googleapis.com). Must be in the format: https://spanner.`
+        # region`.rep.googleapis.com.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @host = args[:host] if args.key?(:host)
+        end
+      end
+      
+      # Spanner schema.
+      class SpannerSchema
+        include Google::Apis::Core::Hashable
+      
+        # Required. Schema name.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        # Optional. Spanner tables in the schema.
+        # Corresponds to the JSON property `tables`
+        # @return [Array<Google::Apis::DatastreamV1::SpannerTable>]
+        attr_accessor :tables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schema = args[:schema] if args.key?(:schema)
+          @tables = args[:tables] if args.key?(:tables)
+        end
+      end
+      
+      # Spanner source configuration.
+      class SpannerSourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to use Data Boost for Spanner backfills. Defaults to false
+        # if not set.
+        # Corresponds to the JSON property `backfillDataBoostEnabled`
+        # @return [Boolean]
+        attr_accessor :backfill_data_boost_enabled
+        alias_method :backfill_data_boost_enabled?, :backfill_data_boost_enabled
+      
+        # Required. Immutable. The change stream name to use for the stream.
+        # Corresponds to the JSON property `changeStreamName`
+        # @return [String]
+        attr_accessor :change_stream_name
+      
+        # Spanner database structure.
+        # Corresponds to the JSON property `excludeObjects`
+        # @return [Google::Apis::DatastreamV1::SpannerDatabase]
+        attr_accessor :exclude_objects
+      
+        # Optional. The FGAC role to use for the stream.
+        # Corresponds to the JSON property `fgacRole`
+        # @return [String]
+        attr_accessor :fgac_role
+      
+        # Spanner database structure.
+        # Corresponds to the JSON property `includeObjects`
+        # @return [Google::Apis::DatastreamV1::SpannerDatabase]
+        attr_accessor :include_objects
+      
+        # Optional. Maximum number of concurrent backfill tasks.
+        # Corresponds to the JSON property `maxConcurrentBackfillTasks`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_backfill_tasks
+      
+        # Optional. Maximum number of concurrent CDC tasks.
+        # Corresponds to the JSON property `maxConcurrentCdcTasks`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_cdc_tasks
+      
+        # Optional. The RPC priority to use for the stream.
+        # Corresponds to the JSON property `spannerRpcPriority`
+        # @return [String]
+        attr_accessor :spanner_rpc_priority
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backfill_data_boost_enabled = args[:backfill_data_boost_enabled] if args.key?(:backfill_data_boost_enabled)
+          @change_stream_name = args[:change_stream_name] if args.key?(:change_stream_name)
+          @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
+          @fgac_role = args[:fgac_role] if args.key?(:fgac_role)
+          @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @max_concurrent_backfill_tasks = args[:max_concurrent_backfill_tasks] if args.key?(:max_concurrent_backfill_tasks)
+          @max_concurrent_cdc_tasks = args[:max_concurrent_cdc_tasks] if args.key?(:max_concurrent_cdc_tasks)
+          @spanner_rpc_priority = args[:spanner_rpc_priority] if args.key?(:spanner_rpc_priority)
+        end
+      end
+      
+      # Spanner table.
+      class SpannerTable
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Spanner columns in the table.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<Google::Apis::DatastreamV1::SpannerColumn>]
+        attr_accessor :columns
+      
+        # Required. Table name.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+          @table = args[:table] if args.key?(:table)
         end
       end
       
