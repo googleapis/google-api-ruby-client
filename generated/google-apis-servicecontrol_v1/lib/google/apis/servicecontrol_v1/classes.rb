@@ -1779,6 +1779,11 @@ module Google
         # @return [Hash<String,Fixnum>]
         attr_accessor :quota_consumed
       
+        # Output only. Indicates the state of the quota extraction.
+        # Corresponds to the JSON property `quotaExtractionState`
+        # @return [String]
+        attr_accessor :quota_extraction_state
+      
         # Quota metrics to indicate the usage. Depending on the check request, one or
         # more of the following metrics will be included: 1. For rate quota, per quota
         # group or per quota metric incremental usage will be specified using the
@@ -1800,6 +1805,7 @@ module Google
         def update!(**args)
           @limit_exceeded = args[:limit_exceeded] if args.key?(:limit_exceeded)
           @quota_consumed = args[:quota_consumed] if args.key?(:quota_consumed)
+          @quota_extraction_state = args[:quota_extraction_state] if args.key?(:quota_extraction_state)
           @quota_metrics = args[:quota_metrics] if args.key?(:quota_metrics)
         end
       end

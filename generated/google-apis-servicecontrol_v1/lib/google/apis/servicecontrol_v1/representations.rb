@@ -794,6 +794,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :limit_exceeded, as: 'limitExceeded'
           hash :quota_consumed, as: 'quotaConsumed'
+          property :quota_extraction_state, as: 'quotaExtractionState'
           collection :quota_metrics, as: 'quotaMetrics', class: Google::Apis::ServicecontrolV1::MetricValueSet, decorator: Google::Apis::ServicecontrolV1::MetricValueSet::Representation
       
         end
