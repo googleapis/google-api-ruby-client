@@ -1288,6 +1288,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination_custom_placement_config, as: 'destinationCustomPlacementConfig', class: Google::Apis::StorageV1::RelocateBucketRequest::DestinationCustomPlacementConfig, decorator: Google::Apis::StorageV1::RelocateBucketRequest::DestinationCustomPlacementConfig::Representation
       
+          property :destination_kms_key_name, as: 'destinationKmsKeyName'
           property :destination_location, as: 'destinationLocation'
           property :validate_only, as: 'validateOnly'
         end
