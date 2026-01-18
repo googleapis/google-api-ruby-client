@@ -1360,6 +1360,7 @@ module Google
           property :connection_type, as: 'connectionType'
           property :dns_scope, as: 'dnsScope'
           property :name, as: 'name'
+          property :record_manager, as: 'recordManager'
         end
       end
       
@@ -1372,6 +1373,7 @@ module Google
       class ExecuteSqlPayload
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :application, as: 'application'
           property :auto_iam_authn, as: 'autoIamAuthn'
           property :database, as: 'database'
           property :partial_result_mode, as: 'partialResultMode'
@@ -1630,6 +1632,7 @@ module Google
       class InsightsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enhanced_query_insights_enabled, as: 'enhancedQueryInsightsEnabled'
           property :query_insights_enabled, as: 'queryInsightsEnabled'
           property :query_plans_per_minute, as: 'queryPlansPerMinute'
           property :query_string_length, as: 'queryStringLength'

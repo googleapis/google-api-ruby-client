@@ -1830,10 +1830,15 @@ module Google
         # @return [String]
         attr_accessor :dns_scope
       
-        # The DNS name.
+        # Output only. The DNS name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Output only. The manager for this DNS record.
+        # Corresponds to the JSON property `recordManager`
+        # @return [String]
+        attr_accessor :record_manager
       
         def initialize(**args)
            update!(**args)
@@ -1844,6 +1849,7 @@ module Google
           @connection_type = args[:connection_type] if args.key?(:connection_type)
           @dns_scope = args[:dns_scope] if args.key?(:dns_scope)
           @name = args[:name] if args.key?(:name)
+          @record_manager = args[:record_manager] if args.key?(:record_manager)
         end
       end
       
@@ -1866,6 +1872,13 @@ module Google
       # The request payload used to execute SQL statements.
       class ExecuteSqlPayload
         include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the name of the application that is making the request.
+        # This field is used for telemetry. Only alphanumeric characters, dashes, and
+        # underscores are allowed. The maximum length is 32 characters.
+        # Corresponds to the JSON property `application`
+        # @return [String]
+        attr_accessor :application
       
         # Optional. When set to true, the API caller identity associated with the
         # request is used for database authentication. The API caller must be an IAM
@@ -1911,6 +1924,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @application = args[:application] if args.key?(:application)
           @auto_iam_authn = args[:auto_iam_authn] if args.key?(:auto_iam_authn)
           @database = args[:database] if args.key?(:database)
           @partial_result_mode = args[:partial_result_mode] if args.key?(:partial_result_mode)
@@ -2923,6 +2937,12 @@ module Google
       class InsightsConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Whether enhanced query insights feature is enabled.
+        # Corresponds to the JSON property `enhancedQueryInsightsEnabled`
+        # @return [Boolean]
+        attr_accessor :enhanced_query_insights_enabled
+        alias_method :enhanced_query_insights_enabled?, :enhanced_query_insights_enabled
+      
         # Whether Query Insights feature is enabled.
         # Corresponds to the JSON property `queryInsightsEnabled`
         # @return [Boolean]
@@ -2961,6 +2981,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enhanced_query_insights_enabled = args[:enhanced_query_insights_enabled] if args.key?(:enhanced_query_insights_enabled)
           @query_insights_enabled = args[:query_insights_enabled] if args.key?(:query_insights_enabled)
           @query_plans_per_minute = args[:query_plans_per_minute] if args.key?(:query_plans_per_minute)
           @query_string_length = args[:query_string_length] if args.key?(:query_string_length)
