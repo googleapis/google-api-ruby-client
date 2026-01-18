@@ -859,9 +859,9 @@ module Google
       class Control
         include Google::Apis::Core::Hashable
       
-        # The service controller environment to use. If empty, no control plane feature (
-        # like quota and billing) will be enabled. The recommended value for most
-        # services is servicecontrol.googleapis.com
+        # The service controller environment to use. If empty, no control plane features
+        # (like quota and billing) will be enabled. The recommended value for most
+        # services is servicecontrol.googleapis.com.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
