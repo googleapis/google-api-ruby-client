@@ -3192,6 +3192,13 @@ module Google
         # @return [Google::Apis::StorageV1::RelocateBucketRequest::DestinationCustomPlacementConfig]
         attr_accessor :destination_custom_placement_config
       
+        # Resource name of a Cloud KMS key, of the form projects/my-project/locations/
+        # global/keyRings/my-kr/cryptoKeys/my-key. If set, is used to encrypt all
+        # objects in the destination bucket.
+        # Corresponds to the JSON property `destinationKmsKeyName`
+        # @return [String]
+        attr_accessor :destination_kms_key_name
+      
         # The new location the bucket will be relocated to.
         # Corresponds to the JSON property `destinationLocation`
         # @return [String]
@@ -3210,6 +3217,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @destination_custom_placement_config = args[:destination_custom_placement_config] if args.key?(:destination_custom_placement_config)
+          @destination_kms_key_name = args[:destination_kms_key_name] if args.key?(:destination_kms_key_name)
           @destination_location = args[:destination_location] if args.key?(:destination_location)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
