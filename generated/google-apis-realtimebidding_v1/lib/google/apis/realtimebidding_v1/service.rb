@@ -549,7 +549,7 @@ module Google
         # Gets a pretargeting configuration.
         # @param [String] name
         #   Required. Name of the pretargeting configuration to get. Format: bidders/`
-        #   bidderAccountId`/pretargetingConfig/`configId`
+        #   bidderAccountId`/pretargetingConfigs/`configId`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
