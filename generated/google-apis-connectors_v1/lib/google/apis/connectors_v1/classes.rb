@@ -1199,6 +1199,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :connection_ratelimit_window_seconds
       
+        # Indicate whether connection service account is enabled. If false, the common
+        # runtime service agent is used.
+        # Corresponds to the JSON property `connectionServiceAccountEnabled`
+        # @return [Boolean]
+        attr_accessor :connection_service_account_enabled
+        alias_method :connection_service_account_enabled?, :connection_service_account_enabled
+      
         # Indicate whether connector versioning is enabled.
         # Corresponds to the JSON property `connectorVersioningEnabled`
         # @return [Boolean]
@@ -1255,6 +1262,12 @@ module Google
         attr_accessor :provision_memstore
         alias_method :provision_memstore?, :provision_memstore
       
+        # Indicate whether public network ingress should be enabled.
+        # Corresponds to the JSON property `publicNetworkIngressEnabled`
+        # @return [Boolean]
+        attr_accessor :public_network_ingress_enabled
+        alias_method :public_network_ingress_enabled?, :public_network_ingress_enabled
+      
         # Max QPS supported by the connector version before throttling of requests.
         # Corresponds to the JSON property `ratelimitThreshold`
         # @return [Fixnum]
@@ -1283,6 +1296,7 @@ module Google
         def update!(**args)
           @always_allocate_cpu = args[:always_allocate_cpu] if args.key?(:always_allocate_cpu)
           @connection_ratelimit_window_seconds = args[:connection_ratelimit_window_seconds] if args.key?(:connection_ratelimit_window_seconds)
+          @connection_service_account_enabled = args[:connection_service_account_enabled] if args.key?(:connection_service_account_enabled)
           @connector_versioning_enabled = args[:connector_versioning_enabled] if args.key?(:connector_versioning_enabled)
           @deployment_model = args[:deployment_model] if args.key?(:deployment_model)
           @hpa_config = args[:hpa_config] if args.key?(:hpa_config)
@@ -1293,6 +1307,7 @@ module Google
           @network_egress_mode_override = args[:network_egress_mode_override] if args.key?(:network_egress_mode_override)
           @provision_cloud_spanner = args[:provision_cloud_spanner] if args.key?(:provision_cloud_spanner)
           @provision_memstore = args[:provision_memstore] if args.key?(:provision_memstore)
+          @public_network_ingress_enabled = args[:public_network_ingress_enabled] if args.key?(:public_network_ingress_enabled)
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
           @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
           @resource_requests = args[:resource_requests] if args.key?(:resource_requests)
@@ -2129,6 +2144,22 @@ module Google
       class EgressControlConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Access mode for egress control.
+        # Corresponds to the JSON property `accessMode`
+        # @return [String]
+        attr_accessor :access_mode
+      
+        # Extraction Rules to identity the backends from customer provided configuration
+        # in Connection resource.
+        # Corresponds to the JSON property `additionalExtractionRules`
+        # @return [Google::Apis::ConnectorsV1::ExtractionRules]
+        attr_accessor :additional_extraction_rules
+      
+        # Optional. Used when access_mode is RESTRICTED or ACCESS_MODE_UNSPECIFIED.
+        # Corresponds to the JSON property `allowlistedProjectNumbers`
+        # @return [Array<String>]
+        attr_accessor :allowlisted_project_numbers
+      
         # Static Comma separated backends which are common for all Connection resources.
         # Supported formats for each backend are host:port or just host (host can be ip
         # address or domain name).
@@ -2142,14 +2173,23 @@ module Google
         # @return [Google::Apis::ConnectorsV1::ExtractionRules]
         attr_accessor :extraction_rules
       
+        # Launch environment for egress control.
+        # Corresponds to the JSON property `launchEnvironment`
+        # @return [String]
+        attr_accessor :launch_environment
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @access_mode = args[:access_mode] if args.key?(:access_mode)
+          @additional_extraction_rules = args[:additional_extraction_rules] if args.key?(:additional_extraction_rules)
+          @allowlisted_project_numbers = args[:allowlisted_project_numbers] if args.key?(:allowlisted_project_numbers)
           @backends = args[:backends] if args.key?(:backends)
           @extraction_rules = args[:extraction_rules] if args.key?(:extraction_rules)
+          @launch_environment = args[:launch_environment] if args.key?(:launch_environment)
         end
       end
       
@@ -3521,6 +3561,12 @@ module Google
         # @return [String]
         attr_accessor :extraction_regex
       
+        # Format string used to format the extracted backend details. If empty,
+        # extracted backend details will be returned as it is.
+        # Corresponds to the JSON property `formatString`
+        # @return [String]
+        attr_accessor :format_string
+      
         # Source to extract the backend from.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::ConnectorsV1::Source]
@@ -3533,6 +3579,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @extraction_regex = args[:extraction_regex] if args.key?(:extraction_regex)
+          @format_string = args[:format_string] if args.key?(:format_string)
           @source = args[:source] if args.key?(:source)
         end
       end
@@ -4528,8 +4575,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable

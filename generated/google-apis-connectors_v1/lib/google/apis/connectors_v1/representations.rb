@@ -1319,6 +1319,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :always_allocate_cpu, as: 'alwaysAllocateCpu'
           property :connection_ratelimit_window_seconds, :numeric_string => true, as: 'connectionRatelimitWindowSeconds'
+          property :connection_service_account_enabled, as: 'connectionServiceAccountEnabled'
           property :connector_versioning_enabled, as: 'connectorVersioningEnabled'
           property :deployment_model, as: 'deploymentModel'
           property :hpa_config, as: 'hpaConfig', class: Google::Apis::ConnectorsV1::HpaConfig, decorator: Google::Apis::ConnectorsV1::HpaConfig::Representation
@@ -1331,6 +1332,7 @@ module Google
       
           property :provision_cloud_spanner, as: 'provisionCloudSpanner'
           property :provision_memstore, as: 'provisionMemstore'
+          property :public_network_ingress_enabled, as: 'publicNetworkIngressEnabled'
           property :ratelimit_threshold, :numeric_string => true, as: 'ratelimitThreshold'
           property :resource_limits, as: 'resourceLimits', class: Google::Apis::ConnectorsV1::ResourceLimits, decorator: Google::Apis::ConnectorsV1::ResourceLimits::Representation
       
@@ -1549,9 +1551,14 @@ module Google
       class EgressControlConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_mode, as: 'accessMode'
+          property :additional_extraction_rules, as: 'additionalExtractionRules', class: Google::Apis::ConnectorsV1::ExtractionRules, decorator: Google::Apis::ConnectorsV1::ExtractionRules::Representation
+      
+          collection :allowlisted_project_numbers, as: 'allowlistedProjectNumbers'
           property :backends, as: 'backends'
           property :extraction_rules, as: 'extractionRules', class: Google::Apis::ConnectorsV1::ExtractionRules, decorator: Google::Apis::ConnectorsV1::ExtractionRules::Representation
       
+          property :launch_environment, as: 'launchEnvironment'
         end
       end
       
@@ -1941,6 +1948,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :extraction_regex, as: 'extractionRegex'
+          property :format_string, as: 'formatString'
           property :source, as: 'source', class: Google::Apis::ConnectorsV1::Source, decorator: Google::Apis::ConnectorsV1::Source::Representation
       
         end
