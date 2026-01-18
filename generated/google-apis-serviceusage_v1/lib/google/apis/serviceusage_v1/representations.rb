@@ -478,7 +478,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleApiServiceusageV2betaMcpEnableRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaMcpPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaMcpService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleApiServiceusageV2betaUpdateConsumerPolicyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaUpdateMcpPolicyMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1641,7 +1665,40 @@ module Google
         end
       end
       
+      class GoogleApiServiceusageV2betaMcpEnableRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mcp_services, as: 'mcpServices', class: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaMcpService, decorator: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaMcpService::Representation
+      
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaMcpPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
+          collection :mcp_enable_rules, as: 'mcpEnableRules', class: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaMcpEnableRule, decorator: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaMcpEnableRule::Representation
+      
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaMcpService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
+        end
+      end
+      
       class GoogleApiServiceusageV2betaUpdateConsumerPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaUpdateMcpPolicyMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
