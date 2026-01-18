@@ -14405,7 +14405,7 @@ module Google
         
         # Updates an Endpoint.
         # @param [String] name
-        #   Output only. The resource name of the Endpoint.
+        #   Identifier. The resource name of the Endpoint.
         # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Endpoint] google_cloud_aiplatform_v1beta1_endpoint_object
         # @param [String] update_mask
         #   Required. The update mask applies to the resource. See google.protobuf.
@@ -14767,7 +14767,7 @@ module Google
         
         # Updates an Endpoint with a long running operation.
         # @param [String] name
-        #   Output only. The resource name of the Endpoint.
+        #   Identifier. The resource name of the Endpoint.
         # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1UpdateEndpointLongRunningRequest] google_cloud_aiplatform_v1beta1_update_endpoint_long_running_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
