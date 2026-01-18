@@ -2147,11 +2147,11 @@ module Google
         end
         
         # Returns a list of student submissions that the requester is permitted to view,
-        # factoring in the OAuth scopes of the request. `-` may be specified as the `
-        # course_work_id` to include student submissions for multiple course work items.
-        # Course students may only view their own work. Course teachers and domain
-        # administrators may view all student submissions. This method returns the
-        # following error codes: * `PERMISSION_DENIED` if the requesting user is not
+        # factoring in the OAuth scopes of the request. A hyphen (`-`) may be specified
+        # as the `course_work_id` to include student submissions for multiple course
+        # work items. Course students may only view their own work. Course teachers and
+        # domain administrators may view all student submissions. This method returns
+        # the following error codes: * `PERMISSION_DENIED` if the requesting user is not
         # permitted to access the requested course or course work, or for access errors.
         # * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
         # requested course does not exist.
@@ -3432,6 +3432,294 @@ module Google
           command.params['submissionId'] = submission_id unless submission_id.nil?
           command.query['itemId'] = item_id unless item_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a student group for a course. This method returns the following error
+        # codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create
+        # the student group or for access errors. * `NOT_FOUND` if the course does not
+        # exist or the requesting user doesn't have access to the course. * `
+        # FAILED_PRECONDITION` if creating the student group would exceed the maximum
+        # number of student groups per course.
+        # @param [String] course_id
+        #   Required. The identifier of the course.
+        # @param [Google::Apis::ClassroomV1::StudentGroup] student_group_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::StudentGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::StudentGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_course_student_group(course_id, student_group_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/studentGroups', options)
+          command.request_representation = Google::Apis::ClassroomV1::StudentGroup::Representation
+          command.request_object = student_group_object
+          command.response_representation = Google::Apis::ClassroomV1::StudentGroup::Representation
+          command.response_class = Google::Apis::ClassroomV1::StudentGroup
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a student group. This method returns the following error codes: * `
+        # PERMISSION_DENIED` if the requesting user is not permitted to delete the
+        # requested student group or for access errors. * `NOT_FOUND` if the student
+        # group does not exist or the user does not have access to the student group.
+        # @param [String] course_id
+        #   Required. The identifier of the course containing the student group to delete.
+        # @param [String] id
+        #   Required. The identifier of the student group to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_course_student_group(course_id, id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/courses/{courseId}/studentGroups/{id}', options)
+          command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
+          command.response_class = Google::Apis::ClassroomV1::Empty
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of groups in a course. This method returns the following error
+        # codes: * `NOT_FOUND` if the course does not exist.
+        # @param [String] course_id
+        #   Required. The identifier of the course.
+        # @param [Fixnum] page_size
+        #   Maximum number of items to return. Zero or unspecified indicates that the
+        #   server may assign a maximum, which is currently set to 75 items. The server
+        #   may return fewer than the specified number of results.
+        # @param [String] page_token
+        #   nextPageToken value returned from a previous list call, indicating that the
+        #   subsequent page of results should be returned. The list request must be
+        #   otherwise identical to the one that resulted in this token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::ListStudentGroupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::ListStudentGroupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_course_student_groups(course_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/studentGroups', options)
+          command.response_representation = Google::Apis::ClassroomV1::ListStudentGroupsResponse::Representation
+          command.response_class = Google::Apis::ClassroomV1::ListStudentGroupsResponse
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates one or more fields in a student group. This method returns the
+        # following error codes: * `PERMISSION_DENIED` if the requesting user is not
+        # permitted to modify the requested student group or for access errors. * `
+        # NOT_FOUND` if the student group does not exist or the user does not have
+        # access to the student group. * `INVALID_ARGUMENT` if invalid fields are
+        # specified in the update mask or if no update mask is supplied.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] id
+        #   Required. Identifier of the student group.
+        # @param [Google::Apis::ClassroomV1::StudentGroup] student_group_object
+        # @param [String] update_mask
+        #   Required. Mask that identifies which fields on the student group to update.
+        #   This field is required to do an update. The update fails if invalid fields are
+        #   specified. The following fields can be specified by teachers: * `title`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::StudentGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::StudentGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_course_student_group(course_id, id, student_group_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/courses/{courseId}/studentGroups/{id}', options)
+          command.request_representation = Google::Apis::ClassroomV1::StudentGroup::Representation
+          command.request_object = student_group_object
+          command.response_representation = Google::Apis::ClassroomV1::StudentGroup::Representation
+          command.response_class = Google::Apis::ClassroomV1::StudentGroup
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a student group member for a student group. This method returns the
+        # following error codes: * `PERMISSION_DENIED` if the requesting user is not
+        # permitted to create the student group or member for access errors. * `
+        # NOT_FOUND` if the student group does not exist or the user does not have
+        # access to the student group. * `ALREADY_EXISTS` if the student group member
+        # already exists. * `FAILED_PRECONDITION` if attempting to add a member to a
+        # student group that has reached its member limit.
+        # @param [String] course_id
+        #   Required. The identifier of the course.
+        # @param [String] student_group_id
+        #   Required. The identifier of the student group.
+        # @param [Google::Apis::ClassroomV1::StudentGroupMember] student_group_member_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::StudentGroupMember] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::StudentGroupMember]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_course_student_group_student_group_member(course_id, student_group_id, student_group_member_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers', options)
+          command.request_representation = Google::Apis::ClassroomV1::StudentGroupMember::Representation
+          command.request_object = student_group_member_object
+          command.response_representation = Google::Apis::ClassroomV1::StudentGroupMember::Representation
+          command.response_class = Google::Apis::ClassroomV1::StudentGroupMember
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['studentGroupId'] = student_group_id unless student_group_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a student group member. This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting user is not permitted to delete the
+        # requested student group member or for access errors. * `NOT_FOUND` if the
+        # student group member does not exist or the user does not have access to the
+        # student group.
+        # @param [String] course_id
+        #   Required. The identifier of the course containing the relevant student group.
+        # @param [String] student_group_id
+        #   Required. The identifier of the student group containing the student group
+        #   member to delete.
+        # @param [String] user_id
+        #   Required. The identifier of the student group member to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_course_student_group_student_group_member(course_id, student_group_id, user_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers/{userId}', options)
+          command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
+          command.response_class = Google::Apis::ClassroomV1::Empty
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['studentGroupId'] = student_group_id unless student_group_id.nil?
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of students in a group. This method returns the following error
+        # codes: * `NOT_FOUND` if the course or student group does not exist.
+        # @param [String] course_id
+        #   Required. The identifier of the course.
+        # @param [String] student_group_id
+        #   Required. The identifier of the student group.
+        # @param [Fixnum] page_size
+        #   Maximum number of items to return. Zero or unspecified indicates that the
+        #   server may assign a maximum. The server may return fewer than the specified
+        #   number of results.
+        # @param [String] page_token
+        #   nextPageToken value returned from a previous list call, indicating that the
+        #   subsequent page of results should be returned. The list request must be
+        #   otherwise identical to the one that resulted in this token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::ListStudentGroupMembersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::ListStudentGroupMembersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_course_student_group_student_group_members(course_id, student_group_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers', options)
+          command.response_representation = Google::Apis::ClassroomV1::ListStudentGroupMembersResponse::Representation
+          command.response_class = Google::Apis::ClassroomV1::ListStudentGroupMembersResponse
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['studentGroupId'] = student_group_id unless student_group_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
