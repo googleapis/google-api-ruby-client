@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpGraphql
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImpersonateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -247,6 +253,8 @@ module Google
       class Datasource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_graphql, as: 'httpGraphql', class: Google::Apis::FirebasedataconnectV1::HttpGraphql, decorator: Google::Apis::FirebasedataconnectV1::HttpGraphql::Representation
+      
           property :postgresql, as: 'postgresql', class: Google::Apis::FirebasedataconnectV1::PostgreSql, decorator: Google::Apis::FirebasedataconnectV1::PostgreSql::Representation
       
         end
@@ -349,6 +357,14 @@ module Google
           hash :data, as: 'data'
           collection :errors, as: 'errors', class: Google::Apis::FirebasedataconnectV1::GraphqlError, decorator: Google::Apis::FirebasedataconnectV1::GraphqlError::Representation
       
+        end
+      end
+      
+      class HttpGraphql
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :timeout, as: 'timeout'
+          property :uri, as: 'uri'
         end
       end
       

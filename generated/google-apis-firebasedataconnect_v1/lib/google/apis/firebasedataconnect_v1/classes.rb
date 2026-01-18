@@ -139,6 +139,11 @@ module Google
       class Datasource
         include Google::Apis::Core::Hashable
       
+        # Settings for HTTP GraphQL server webhook.
+        # Corresponds to the JSON property `httpGraphql`
+        # @return [Google::Apis::FirebasedataconnectV1::HttpGraphql]
+        attr_accessor :http_graphql
+      
         # Settings for PostgreSQL data source.
         # Corresponds to the JSON property `postgresql`
         # @return [Google::Apis::FirebasedataconnectV1::PostgreSql]
@@ -150,6 +155,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @http_graphql = args[:http_graphql] if args.key?(:http_graphql)
           @postgresql = args[:postgresql] if args.key?(:postgresql)
         end
       end
@@ -503,6 +509,31 @@ module Google
         end
       end
       
+      # Settings for HTTP GraphQL server webhook.
+      class HttpGraphql
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Timeout duration for the HTTP request.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        # Required. The endpoint of the HTTP GraphQL server.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @timeout = args[:timeout] if args.key?(:timeout)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # The Impersonate request to Firebase Data Connect.
       class ImpersonateRequest
         include Google::Apis::Core::Hashable
@@ -648,8 +679,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
