@@ -1235,6 +1235,7 @@ module Google
           property :target_id, as: 'targetId'
           property :timed_promote_release_operation, as: 'timedPromoteReleaseOperation', class: Google::Apis::ClouddeployV1::TimedPromoteReleaseOperation, decorator: Google::Apis::ClouddeployV1::TimedPromoteReleaseOperation::Representation
       
+          property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :wait_until_time, as: 'waitUntilTime'
         end
