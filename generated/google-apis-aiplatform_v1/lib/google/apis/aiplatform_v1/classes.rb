@@ -758,6 +758,86 @@ module Google
         end
       end
       
+      # The aggregation result for the entire dataset and all metrics.
+      class GoogleCloudAiplatformV1AggregationOutput
+        include Google::Apis::Core::Hashable
+      
+        # One AggregationResult per metric.
+        # Corresponds to the JSON property `aggregationResults`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AggregationResult>]
+        attr_accessor :aggregation_results
+      
+        # The dataset used for evaluation.
+        # Corresponds to the JSON property `dataset`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationDataset]
+        attr_accessor :dataset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_results = args[:aggregation_results] if args.key?(:aggregation_results)
+          @dataset = args[:dataset] if args.key?(:dataset)
+        end
+      end
+      
+      # The aggregation result for a single metric.
+      class GoogleCloudAiplatformV1AggregationResult
+        include Google::Apis::Core::Hashable
+      
+        # Aggregation metric.
+        # Corresponds to the JSON property `aggregationMetric`
+        # @return [String]
+        attr_accessor :aggregation_metric
+      
+        # Bleu metric value for an instance.
+        # Corresponds to the JSON property `bleuMetricValue`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BleuMetricValue]
+        attr_accessor :bleu_metric_value
+      
+        # Result for custom code execution metric.
+        # Corresponds to the JSON property `customCodeExecutionResult`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CustomCodeExecutionResult]
+        attr_accessor :custom_code_execution_result
+      
+        # Exact match metric value for an instance.
+        # Corresponds to the JSON property `exactMatchMetricValue`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ExactMatchMetricValue]
+        attr_accessor :exact_match_metric_value
+      
+        # Spec for pairwise metric result.
+        # Corresponds to the JSON property `pairwiseMetricResult`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseMetricResult]
+        attr_accessor :pairwise_metric_result
+      
+        # Spec for pointwise metric result.
+        # Corresponds to the JSON property `pointwiseMetricResult`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PointwiseMetricResult]
+        attr_accessor :pointwise_metric_result
+      
+        # Rouge metric value for an instance.
+        # Corresponds to the JSON property `rougeMetricValue`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RougeMetricValue]
+        attr_accessor :rouge_metric_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_metric = args[:aggregation_metric] if args.key?(:aggregation_metric)
+          @bleu_metric_value = args[:bleu_metric_value] if args.key?(:bleu_metric_value)
+          @custom_code_execution_result = args[:custom_code_execution_result] if args.key?(:custom_code_execution_result)
+          @exact_match_metric_value = args[:exact_match_metric_value] if args.key?(:exact_match_metric_value)
+          @pairwise_metric_result = args[:pairwise_metric_result] if args.key?(:pairwise_metric_result)
+          @pointwise_metric_result = args[:pointwise_metric_result] if args.key?(:pointwise_metric_result)
+          @rouge_metric_value = args[:rouge_metric_value] if args.key?(:rouge_metric_value)
+        end
+      end
+      
       # Used to assign specific AnnotationSpec to a particular area of a DataItem or
       # the whole part of the DataItem.
       class GoogleCloudAiplatformV1Annotation
@@ -1582,7 +1662,10 @@ module Google
         # * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `
         # aiplatform.googleapis.com/prediction/online/cpu/utilization` * `aiplatform.
         # googleapis.com/prediction/online/request_count` * `pubsub.googleapis.com/
-        # subscription/num_undelivered_messages`
+        # subscription/num_undelivered_messages` * `prometheus.googleapis.com/
+        # vertex_dcgm_fi_dev_gpu_util` * `prometheus.googleapis.com/
+        # vertex_vllm_gpu_cache_usage_perc` * `prometheus.googleapis.com/
+        # vertex_vllm_num_requests_waiting`
         # Corresponds to the JSON property `metricName`
         # @return [String]
         attr_accessor :metric_name
@@ -5193,6 +5276,25 @@ module Google
         end
       end
       
+      # Result for custom code execution metric.
+      class GoogleCloudAiplatformV1CustomCodeExecutionResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Custom code execution score.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
       # Specificies a metric that is populated by evaluating user-defined Python code.
       class GoogleCloudAiplatformV1CustomCodeExecutionSpec
         include Google::Apis::Core::Hashable
@@ -7875,7 +7977,7 @@ module Google
         # @return [String]
         attr_accessor :model_deployment_monitoring_job
       
-        # Output only. The resource name of the Endpoint.
+        # Identifier. The resource name of the Endpoint.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -8243,6 +8345,31 @@ module Google
           @location = args[:location] if args.key?(:location)
           @metrics = args[:metrics] if args.key?(:metrics)
           @output_config = args[:output_config] if args.key?(:output_config)
+        end
+      end
+      
+      # The results from an evaluation run performed by the EvaluationService.
+      class GoogleCloudAiplatformV1EvaluateDatasetResponse
+        include Google::Apis::Core::Hashable
+      
+        # The aggregation result for the entire dataset and all metrics.
+        # Corresponds to the JSON property `aggregationOutput`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AggregationOutput]
+        attr_accessor :aggregation_output
+      
+        # Describes the info for output of EvaluationService.
+        # Corresponds to the JSON property `outputInfo`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OutputInfo]
+        attr_accessor :output_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_output = args[:aggregation_output] if args.key?(:aggregation_output)
+          @output_info = args[:output_info] if args.key?(:output_info)
         end
       end
       
@@ -25127,6 +25254,26 @@ module Google
         end
       end
       
+      # Describes the info for output of EvaluationService.
+      class GoogleCloudAiplatformV1OutputInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The full path of the Cloud Storage directory created, into which
+        # the evaluation results and aggregation results are written.
+        # Corresponds to the JSON property `gcsOutputDirectory`
+        # @return [String]
+        attr_accessor :gcs_output_directory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_output_directory = args[:gcs_output_directory] if args.key?(:gcs_output_directory)
+        end
+      end
+      
       # PSC config that is used to automatically create PSC endpoints in the user
       # projects.
       class GoogleCloudAiplatformV1PscAutomationConfig
@@ -25615,7 +25762,10 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PartMediaResolution]
         attr_accessor :media_resolution
       
-        # Optional. The text content of the part.
+        # Optional. The text content of the part. When sent from the VSCode Gemini Code
+        # Assist extension, references to @mentioned items will be converted to markdown
+        # boldface text. For example `@my-repo` will be converted to and sent as `**my-
+        # repo**` by the IDE agent.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -30763,8 +30913,8 @@ module Google
         # @return [String]
         attr_accessor :pickle_object_gcs_uri
       
-        # Optional. The Python version. Supported values are 3.9, 3.10, 3.11, 3.12, 3.13.
-        # If not specified, the default value is 3.10.
+        # Optional. The Python version. Supported values are 3.9, 3.10, 3.11, 3.12, 3.13,
+        # 3.14. If not specified, the default value is 3.10.
         # Corresponds to the JSON property `pythonVersion`
         # @return [String]
         attr_accessor :python_version
@@ -30924,7 +31074,7 @@ module Google
         attr_accessor :requirements_file
       
         # Optional. The version of Python to use. Support version includes 3.9, 3.10, 3.
-        # 11, 3.12, 3.13. If not specified, default value is 3.10.
+        # 11, 3.12, 3.13, 3.14. If not specified, default value is 3.10.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
