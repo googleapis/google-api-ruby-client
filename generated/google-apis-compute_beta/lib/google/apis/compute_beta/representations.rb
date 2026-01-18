@@ -2380,6 +2380,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceFlexibilityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceFlexibilityPolicyInstanceSelection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10326,6 +10338,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, :numeric_string => true, as: 'count'
+          property :instance_flexibility_policy, as: 'instanceFlexibilityPolicy', class: Google::Apis::ComputeBeta::InstanceFlexibilityPolicy, decorator: Google::Apis::ComputeBeta::InstanceFlexibilityPolicy::Representation
+      
           property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeBeta::InstanceProperties, decorator: Google::Apis::ComputeBeta::InstanceProperties::Representation
       
           property :location_policy, as: 'locationPolicy', class: Google::Apis::ComputeBeta::LocationPolicy, decorator: Google::Apis::ComputeBeta::LocationPolicy::Representation
@@ -13426,6 +13440,24 @@ module Google
           property :local_ssd_gb, as: 'localSsdGb'
           property :memory_mb, as: 'memoryMb'
           property :min_node_cpus, as: 'minNodeCpus'
+        end
+      end
+      
+      class InstanceFlexibilityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :instance_selections, as: 'instanceSelections', class: Google::Apis::ComputeBeta::InstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeBeta::InstanceFlexibilityPolicyInstanceSelection::Representation
+      
+        end
+      end
+      
+      class InstanceFlexibilityPolicyInstanceSelection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disks, as: 'disks', class: Google::Apis::ComputeBeta::AttachedDisk, decorator: Google::Apis::ComputeBeta::AttachedDisk::Representation
+      
+          collection :machine_types, as: 'machineTypes'
+          property :rank, :numeric_string => true, as: 'rank'
         end
       end
       
