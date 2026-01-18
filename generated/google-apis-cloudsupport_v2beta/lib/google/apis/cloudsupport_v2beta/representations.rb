@@ -233,6 +233,7 @@ module Google
           property :download_external_read_token, :base64 => true, as: 'downloadExternalReadToken'
           property :download_read_handle, :base64 => true, as: 'downloadReadHandle'
           property :read_token, as: 'readToken'
+          property :upload_fragment_list_creation_info, :base64 => true, as: 'uploadFragmentListCreationInfo'
           property :upload_metadata_container, :base64 => true, as: 'uploadMetadataContainer'
         end
       end
