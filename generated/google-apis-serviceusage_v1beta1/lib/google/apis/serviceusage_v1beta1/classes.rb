@@ -1402,9 +1402,9 @@ module Google
       class Control
         include Google::Apis::Core::Hashable
       
-        # The service controller environment to use. If empty, no control plane feature (
-        # like quota and billing) will be enabled. The recommended value for most
-        # services is servicecontrol.googleapis.com
+        # The service controller environment to use. If empty, no control plane features
+        # (like quota and billing) will be enabled. The recommended value for most
+        # services is servicecontrol.googleapis.com.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
@@ -3189,8 +3189,109 @@ module Google
         end
       end
       
+      # McpEnableRule contains MCP enablement related rules.
+      class GoogleApiServiceusageV2betaMcpEnableRule
+        include Google::Apis::Core::Hashable
+      
+        # List of enabled MCP services.
+        # Corresponds to the JSON property `mcpServices`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaMcpService>]
+        attr_accessor :mcp_services
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mcp_services = args[:mcp_services] if args.key?(:mcp_services)
+        end
+      end
+      
+      # MCP Consumer Policy is a set of rules that define MCP related policy for a
+      # cloud resource hierarchy.
+      class GoogleApiServiceusageV2betaMcpPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the policy was created. For singleton policies (such as
+        # the `default` policy), this is the first touch of the policy.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # An opaque tag indicating the current version of the policy, used for
+        # concurrency control.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # McpEnableRules contains MCP enablement related rules.
+        # Corresponds to the JSON property `mcpEnableRules`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2betaMcpEnableRule>]
+        attr_accessor :mcp_enable_rules
+      
+        # Output only. The resource name of the policy. Only the `default` policy is
+        # supported. We allow the following formats: `projects/`PROJECT_NUMBER`/
+        # mcpPolicies/default`, `projects/`PROJECT_ID`/mcpPolicies/default`, `folders/`
+        # FOLDER_ID`/mcpPolicies/default`, `organizations/`ORG_ID`/mcpPolicies/default`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The time the policy was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @mcp_enable_rules = args[:mcp_enable_rules] if args.key?(:mcp_enable_rules)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # McpService contains the service names that are enabled for MCP.
+      class GoogleApiServiceusageV2betaMcpService
+        include Google::Apis::Core::Hashable
+      
+        # The names of the services that are enabled for MCP. Example: `services/library-
+        # example.googleapis.com`
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
       # Metadata for the `UpdateConsumerPolicy` method.
       class GoogleApiServiceusageV2betaUpdateConsumerPolicyMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for the `UpdateMcpPolicy` method.
+      class GoogleApiServiceusageV2betaUpdateMcpPolicyMetadata
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -3870,8 +3971,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
