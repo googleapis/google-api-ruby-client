@@ -505,6 +505,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_token, as: 'customToken'
+          property :jti, as: 'jti'
           property :limited_use, as: 'limitedUse'
         end
       end
