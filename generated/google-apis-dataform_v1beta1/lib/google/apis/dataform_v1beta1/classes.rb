@@ -1354,6 +1354,103 @@ module Google
         end
       end
       
+      # Represents a Dataform Folder. This is a resource that is used to organize
+      # Files and other Folders and provide hierarchical access controls.
+      class Folder
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The containing Folder resource name. This should take the format:
+        # projects/`project`/locations/`location`/folders/`folder`, projects/`project`/
+        # locations/`location`/teamFolders/`teamFolder`, or just projects/`project`/
+        # locations/`location` if this is a root Folder. This field can only be updated
+        # through MoveFolder.
+        # Corresponds to the JSON property `containingFolder`
+        # @return [String]
+        attr_accessor :containing_folder
+      
+        # Output only. The timestamp of when the Folder was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The IAM principal identifier of the creator of the Folder.
+        # Corresponds to the JSON property `creatorIamPrincipal`
+        # @return [String]
+        attr_accessor :creator_iam_principal
+      
+        # Required. The Folder's user-friendly name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. All the metadata information that is used internally to serve the
+        # resource. For example: timestamps, flags, status fields, etc. The format of
+        # this field is a JSON string.
+        # Corresponds to the JSON property `internalMetadata`
+        # @return [String]
+        attr_accessor :internal_metadata
+      
+        # Identifier. The Folder's name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The resource name of the TeamFolder that this Folder is
+        # associated with. This should take the format: projects/`project`/locations/`
+        # location`/teamFolders/`teamFolder`. If this is not set, the Folder is not
+        # associated with a TeamFolder and is a UserFolder.
+        # Corresponds to the JSON property `teamFolderName`
+        # @return [String]
+        attr_accessor :team_folder_name
+      
+        # Output only. The timestamp of when the Folder was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @containing_folder = args[:containing_folder] if args.key?(:containing_folder)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator_iam_principal = args[:creator_iam_principal] if args.key?(:creator_iam_principal)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
+          @name = args[:name] if args.key?(:name)
+          @team_folder_name = args[:team_folder_name] if args.key?(:team_folder_name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents a single content entry.
+      class FolderContentsEntry
+        include Google::Apis::Core::Hashable
+      
+        # Represents a Dataform Folder. This is a resource that is used to organize
+        # Files and other Folders and provide hierarchical access controls.
+        # Corresponds to the JSON property `folder`
+        # @return [Google::Apis::DataformV1beta1::Folder]
+        attr_accessor :folder
+      
+        # Represents a Dataform Git repository.
+        # Corresponds to the JSON property `repository`
+        # @return [Google::Apis::DataformV1beta1::Repository]
+        attr_accessor :repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @folder = args[:folder] if args.key?(:folder)
+          @repository = args[:repository] if args.key?(:repository)
+        end
+      end
+      
       # Controls Git remote configuration for a repository.
       class GitRemoteSettings
         include Google::Apis::Core::Hashable
@@ -2073,6 +2170,48 @@ module Google
         end
       end
       
+      # `MoveFolder` request message.
+      class MoveFolderRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the Folder, TeamFolder, or root location to move the
+        # Folder to. Can be in the format of: - "" to move into the root User folder - `
+        # projects/*/locations/*/folders/*` - `projects/*/locations/*/teamFolders/*`
+        # Corresponds to the JSON property `destinationContainingFolder`
+        # @return [String]
+        attr_accessor :destination_containing_folder
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_containing_folder = args[:destination_containing_folder] if args.key?(:destination_containing_folder)
+        end
+      end
+      
+      # `MoveRepository` request message.
+      class MoveRepositoryRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the Folder, TeamFolder, or root location to move the
+        # repository to. Can be in the format of: - "" to move into the root User folder
+        # - `projects/*/locations/*/folders/*` - `projects/*/locations/*/teamFolders/*`
+        # Corresponds to the JSON property `destinationContainingFolder`
+        # @return [String]
+        attr_accessor :destination_containing_folder
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_containing_folder = args[:destination_containing_folder] if args.key?(:destination_containing_folder)
+        end
+      end
+      
       # Represents a notebook.
       class Notebook
         include Google::Apis::Core::Hashable
@@ -2613,6 +2752,32 @@ module Google
         end
       end
       
+      # `QueryFolderContents` response message.
+      class QueryFolderContentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of entries in the folder.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::DataformV1beta1::FolderContentsEntry>]
+        attr_accessor :entries
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # `QueryRepositoryDirectoryContents` response message.
       class QueryRepositoryDirectoryContentsResponse
         include Google::Apis::Core::Hashable
@@ -2635,6 +2800,58 @@ module Google
         # Update properties of this object
         def update!(**args)
           @directory_entries = args[:directory_entries] if args.key?(:directory_entries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # `QueryTeamFolderContents` response message.
+      class QueryTeamFolderContentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of entries in the TeamFolder.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::DataformV1beta1::TeamFolderContentsEntry>]
+        attr_accessor :entries
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # `QueryUserRootContents` response message.
+      class QueryUserRootContentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of entries in the folder.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::DataformV1beta1::RootContentsEntry>]
+        attr_accessor :entries
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -3021,6 +3238,13 @@ module Google
       class Repository
         include Google::Apis::Core::Hashable
       
+        # Optional. The name of the containing folder of the repository. The field is
+        # immutable and it can be modified via a MoveRepository operation. Format: `
+        # projects/*/locations/*/folders/*`. or `projects/*/locations/*/teamFolders/*`.
+        # Corresponds to the JSON property `containingFolder`
+        # @return [String]
+        attr_accessor :containing_folder
+      
         # Output only. The timestamp of when the repository was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -3089,6 +3313,14 @@ module Google
         attr_accessor :set_authenticated_user_admin
         alias_method :set_authenticated_user_admin?, :set_authenticated_user_admin
       
+        # Output only. The resource name of the TeamFolder that this Repository is
+        # associated with. This should take the format: projects/`project`/locations/`
+        # location`/teamFolders/`teamFolder`. If this is not set, the Repository is not
+        # associated with a TeamFolder.
+        # Corresponds to the JSON property `teamFolderName`
+        # @return [String]
+        attr_accessor :team_folder_name
+      
         # Configures workspace compilation overrides for a repository. Primarily used by
         # the UI (`console.cloud.google.com`). `schema_suffix` and `table_prefix` can
         # have a special expression - `$`workspaceName``, which refers to the workspace
@@ -3107,6 +3339,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @containing_folder = args[:containing_folder] if args.key?(:containing_folder)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -3118,6 +3351,7 @@ module Google
           @npmrc_environment_variables_secret_version = args[:npmrc_environment_variables_secret_version] if args.key?(:npmrc_environment_variables_secret_version)
           @service_account = args[:service_account] if args.key?(:service_account)
           @set_authenticated_user_admin = args[:set_authenticated_user_admin] if args.key?(:set_authenticated_user_admin)
+          @team_folder_name = args[:team_folder_name] if args.key?(:team_folder_name)
           @workspace_compilation_overrides = args[:workspace_compilation_overrides] if args.key?(:workspace_compilation_overrides)
         end
       end
@@ -3159,6 +3393,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Represents a single content entry.
+      class RootContentsEntry
+        include Google::Apis::Core::Hashable
+      
+        # Represents a Dataform Folder. This is a resource that is used to organize
+        # Files and other Folders and provide hierarchical access controls.
+        # Corresponds to the JSON property `folder`
+        # @return [Google::Apis::DataformV1beta1::Folder]
+        attr_accessor :folder
+      
+        # Represents a Dataform Git repository.
+        # Corresponds to the JSON property `repository`
+        # @return [Google::Apis::DataformV1beta1::Repository]
+        attr_accessor :repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @folder = args[:folder] if args.key?(:folder)
+          @repository = args[:repository] if args.key?(:repository)
         end
       end
       
@@ -3287,6 +3547,32 @@ module Google
         def update!(**args)
           @directory = args[:directory] if args.key?(:directory)
           @file = args[:file] if args.key?(:file)
+        end
+      end
+      
+      # `SearchTeamFolders` response message.
+      class SearchTeamFoldersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of TeamFolders that match the search query.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::DataformV1beta1::TeamFolderSearchResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @results = args[:results] if args.key?(:results)
         end
       end
       
@@ -3476,6 +3762,106 @@ module Google
           @database = args[:database] if args.key?(:database)
           @name = args[:name] if args.key?(:name)
           @schema = args[:schema] if args.key?(:schema)
+        end
+      end
+      
+      # Represents a Dataform TeamFolder. This is a resource that sits at the project
+      # level and is used to organize Repositories and Folders with hierarchical
+      # access controls. They provide a team context and stricter access controls.
+      class TeamFolder
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp of when the TeamFolder was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The IAM principal identifier of the creator of the TeamFolder.
+        # Corresponds to the JSON property `creatorIamPrincipal`
+        # @return [String]
+        attr_accessor :creator_iam_principal
+      
+        # Required. The TeamFolder's user-friendly name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. All the metadata information that is used internally to serve the
+        # resource. For example: timestamps, flags, status fields, etc. The format of
+        # this field is a JSON string.
+        # Corresponds to the JSON property `internalMetadata`
+        # @return [String]
+        attr_accessor :internal_metadata
+      
+        # Identifier. The TeamFolder's name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp of when the TeamFolder was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator_iam_principal = args[:creator_iam_principal] if args.key?(:creator_iam_principal)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents a single content entry.
+      class TeamFolderContentsEntry
+        include Google::Apis::Core::Hashable
+      
+        # Represents a Dataform Folder. This is a resource that is used to organize
+        # Files and other Folders and provide hierarchical access controls.
+        # Corresponds to the JSON property `folder`
+        # @return [Google::Apis::DataformV1beta1::Folder]
+        attr_accessor :folder
+      
+        # Represents a Dataform Git repository.
+        # Corresponds to the JSON property `repository`
+        # @return [Google::Apis::DataformV1beta1::Repository]
+        attr_accessor :repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @folder = args[:folder] if args.key?(:folder)
+          @repository = args[:repository] if args.key?(:repository)
+        end
+      end
+      
+      # Represents a single content entry.
+      class TeamFolderSearchResult
+        include Google::Apis::Core::Hashable
+      
+        # Represents a Dataform TeamFolder. This is a resource that sits at the project
+        # level and is used to organize Repositories and Folders with hierarchical
+        # access controls. They provide a team context and stricter access controls.
+        # Corresponds to the JSON property `teamFolder`
+        # @return [Google::Apis::DataformV1beta1::TeamFolder]
+        attr_accessor :team_folder
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @team_folder = args[:team_folder] if args.key?(:team_folder)
         end
       end
       
@@ -3799,6 +4185,13 @@ module Google
         # @return [Google::Apis::DataformV1beta1::DataEncryptionState]
         attr_accessor :data_encryption_state
       
+        # Optional. If set to true, workspaces will not be moved if its linked
+        # Repository is moved. Instead, it will be deleted.
+        # Corresponds to the JSON property `disableMoves`
+        # @return [Boolean]
+        attr_accessor :disable_moves
+        alias_method :disable_moves?, :disable_moves
+      
         # Output only. All the metadata information that is used internally to serve the
         # resource. For example: timestamps, flags, status fields, etc. The format of
         # this field is a JSON string.
@@ -3824,6 +4217,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
+          @disable_moves = args[:disable_moves] if args.key?(:disable_moves)
           @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @name = args[:name] if args.key?(:name)
           @private_resource_metadata = args[:private_resource_metadata] if args.key?(:private_resource_metadata)
