@@ -11158,7 +11158,6 @@ module Google
       
           collection :used_by, as: 'usedBy', class: Google::Apis::ComputeAlpha::BackendServiceUsedBy, decorator: Google::Apis::ComputeAlpha::BackendServiceUsedBy::Representation
       
-          property :vpc_network_scope, as: 'vpcNetworkScope'
         end
       end
       
@@ -23092,10 +23091,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
-          property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputeAlpha::ReservationSlotPhysicalTopology, decorator: Google::Apis::ComputeAlpha::ReservationSlotPhysicalTopology::Representation
+      
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeAlpha::ShareSettings, decorator: Google::Apis::ComputeAlpha::ShareSettings::Representation
