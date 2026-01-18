@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FilterControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GaugeView
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -707,6 +713,13 @@ module Google
         end
       end
       
+      class FilterControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :template_variable, as: 'templateVariable'
+        end
+      end
+      
       class GaugeView
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1242,6 +1255,8 @@ module Google
           property :collapsible_group, as: 'collapsibleGroup', class: Google::Apis::MonitoringV1::CollapsibleGroup, decorator: Google::Apis::MonitoringV1::CollapsibleGroup::Representation
       
           property :error_reporting_panel, as: 'errorReportingPanel', class: Google::Apis::MonitoringV1::ErrorReportingPanel, decorator: Google::Apis::MonitoringV1::ErrorReportingPanel::Representation
+      
+          property :filter_control, as: 'filterControl', class: Google::Apis::MonitoringV1::FilterControl, decorator: Google::Apis::MonitoringV1::FilterControl::Representation
       
           property :id, as: 'id'
           property :incident_list, as: 'incidentList', class: Google::Apis::MonitoringV1::IncidentList, decorator: Google::Apis::MonitoringV1::IncidentList::Representation
