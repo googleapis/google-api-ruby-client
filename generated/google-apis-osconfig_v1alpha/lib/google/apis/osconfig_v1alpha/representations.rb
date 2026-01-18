@@ -52,6 +52,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudOsconfigCommonV1OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOsconfigCommonV1alphaOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOsconfigCommonV1mainOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudOsconfigV1OsPolicyAssignmentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +185,12 @@ module Google
       end
       
       class ListOsPolicyAssignmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -506,6 +530,45 @@ module Google
         end
       end
       
+      class GoogleCloudOsconfigCommonV1OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudOsconfigCommonV1alphaOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudOsconfigCommonV1mainOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
       class GoogleCloudOsconfigV1OsPolicyAssignmentOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -741,6 +804,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :os_policy_assignments, as: 'osPolicyAssignments', class: Google::Apis::OsconfigV1alpha::OsPolicyAssignment, decorator: Google::Apis::OsconfigV1alpha::OsPolicyAssignment::Representation
       
+        end
+      end
+      
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::OsconfigV1alpha::Operation, decorator: Google::Apis::OsconfigV1alpha::Operation::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
