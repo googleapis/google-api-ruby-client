@@ -961,6 +961,26 @@ module Google
         end
       end
       
+      # A widget that displays an input field to change the value of a template
+      # variable.
+      class FilterControl
+        include Google::Apis::Core::Hashable
+      
+        # Name of the template variable the widget affects.
+        # Corresponds to the JSON property `templateVariable`
+        # @return [String]
+        attr_accessor :template_variable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @template_variable = args[:template_variable] if args.key?(:template_variable)
+        end
+      end
+      
       # A gauge chart shows where the current value sits within a pre-defined range.
       # The upper and lower bounds should define the possible range of values for the
       # scorecard's query (inclusive).
@@ -2989,6 +3009,12 @@ module Google
         # @return [Google::Apis::MonitoringV1::ErrorReportingPanel]
         attr_accessor :error_reporting_panel
       
+        # A widget that displays an input field to change the value of a template
+        # variable.
+        # Corresponds to the JSON property `filterControl`
+        # @return [Google::Apis::MonitoringV1::FilterControl]
+        attr_accessor :filter_control
+      
         # Optional. The widget id. Ids may be made up of alphanumerics, dashes and
         # underscores. Widget ids are optional.
         # Corresponds to the JSON property `id`
@@ -3069,6 +3095,7 @@ module Google
           @blank = args[:blank] if args.key?(:blank)
           @collapsible_group = args[:collapsible_group] if args.key?(:collapsible_group)
           @error_reporting_panel = args[:error_reporting_panel] if args.key?(:error_reporting_panel)
+          @filter_control = args[:filter_control] if args.key?(:filter_control)
           @id = args[:id] if args.key?(:id)
           @incident_list = args[:incident_list] if args.key?(:incident_list)
           @logs_panel = args[:logs_panel] if args.key?(:logs_panel)
