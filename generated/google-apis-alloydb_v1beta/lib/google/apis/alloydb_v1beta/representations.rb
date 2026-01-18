@@ -550,12 +550,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class StorageDatabasecenterPartnerapiV1mainBigQueryResourceMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class StorageDatabasecenterPartnerapiV1mainCompliance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1757,23 +1751,6 @@ module Google
         end
       end
       
-      class StorageDatabasecenterPartnerapiV1mainBigQueryResourceMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :full_resource_name, as: 'fullResourceName'
-          property :location, as: 'location'
-          property :product, as: 'product', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterProtoCommonProduct, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterProtoCommonProduct::Representation
-      
-          property :resource_container, as: 'resourceContainer'
-          property :resource_id, as: 'resourceId', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
-      
-          property :update_time, as: 'updateTime'
-          property :user_label_set, as: 'userLabelSet', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainUserLabels, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainUserLabels::Representation
-      
-        end
-      end
-      
       class StorageDatabasecenterPartnerapiV1mainCompliance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1806,8 +1783,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backupdr_metadata, as: 'backupdrMetadata', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupDrMetadata, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupDrMetadata::Representation
-      
-          property :bigquery_resource_metadata, as: 'bigqueryResourceMetadata', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBigQueryResourceMetadata, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBigQueryResourceMetadata::Representation
       
           property :config_based_signal_data, as: 'configBasedSignalData', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData::Representation
       
@@ -1969,7 +1944,9 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainMachineConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :baseline_slots, :numeric_string => true, as: 'baselineSlots'
           property :cpu_count, as: 'cpuCount'
+          property :max_reservation_slots, :numeric_string => true, as: 'maxReservationSlots'
           property :memory_size_in_bytes, :numeric_string => true, as: 'memorySizeInBytes'
           property :shard_count, as: 'shardCount'
           property :vcpu_count, as: 'vcpuCount'
