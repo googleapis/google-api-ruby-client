@@ -130,12 +130,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BatchGetStatsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Caption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1180,31 +1174,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class VideoStat
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class VideoStatistics
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class VideoStatsContentDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class VideoStatsSnippet
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class VideoStatsStatistics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1450,16 +1420,6 @@ module Google
       
           property :title, as: 'title'
           property :type, as: 'type'
-        end
-      end
-      
-      class BatchGetStatsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
-          collection :items, as: 'items', class: Google::Apis::YoutubeV3::VideoStat, decorator: Google::Apis::YoutubeV3::VideoStat::Representation
-      
-          property :kind, as: 'kind'
         end
       end
       
@@ -3644,50 +3604,12 @@ module Google
         end
       end
       
-      class VideoStat
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :content_details, as: 'contentDetails', class: Google::Apis::YoutubeV3::VideoStatsContentDetails, decorator: Google::Apis::YoutubeV3::VideoStatsContentDetails::Representation
-      
-          property :etag, as: 'etag'
-          property :id, as: 'id'
-          property :kind, as: 'kind'
-          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::VideoStatsSnippet, decorator: Google::Apis::YoutubeV3::VideoStatsSnippet::Representation
-      
-          property :statistics, as: 'statistics', class: Google::Apis::YoutubeV3::VideoStatsStatistics, decorator: Google::Apis::YoutubeV3::VideoStatsStatistics::Representation
-      
-        end
-      end
-      
       class VideoStatistics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :comment_count, :numeric_string => true, as: 'commentCount'
           property :dislike_count, :numeric_string => true, as: 'dislikeCount'
           property :favorite_count, :numeric_string => true, as: 'favoriteCount'
-          property :like_count, :numeric_string => true, as: 'likeCount'
-          property :view_count, :numeric_string => true, as: 'viewCount'
-        end
-      end
-      
-      class VideoStatsContentDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :duration, as: 'duration'
-        end
-      end
-      
-      class VideoStatsSnippet
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :publish_time, as: 'publishTime'
-        end
-      end
-      
-      class VideoStatsStatistics
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :comment_count, :numeric_string => true, as: 'commentCount'
           property :like_count, :numeric_string => true, as: 'likeCount'
           property :view_count, :numeric_string => true, as: 'viewCount'
         end

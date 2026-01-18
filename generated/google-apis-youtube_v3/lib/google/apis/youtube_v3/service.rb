@@ -4242,57 +4242,6 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # Retrieves a batch of VideoStat resources, possibly filtered.
-        # @param [Array<String>, String] id
-        #   Required. Return videos with the given ids. The number of IDs specified cannot
-        #   exceed 50.
-        # @param [String] on_behalf_of_content_owner
-        #   Optional. **Note:** This parameter is intended exclusively for YouTube content
-        #   partners. The `onBehalfOfContentOwner` parameter indicates that the request's
-        #   authorization credentials identify a YouTube CMS user who is acting on behalf
-        #   of the content owner specified in the parameter value. This parameter is
-        #   intended for YouTube content partners that own and manage many different
-        #   YouTube channels. It allows content owners to authenticate once and get access
-        #   to all their video and channel data, without having to provide authentication
-        #   credentials for each individual channel. The CMS account that the user
-        #   authenticates with must be linked to the specified YouTube content owner.
-        # @param [Array<String>, String] part
-        #   Required. The `**part**` parameter specifies a comma-separated list of one or
-        #   more `videoStat` resource properties that the API response will include. If
-        #   the parameter identifies a property that contains child properties, the child
-        #   properties will be included in the response. For example, in a `videoStat`
-        #   resource, the `statistics` property contains `view_count` and `like_count`. As
-        #   such, if you set `**part=snippet**`, the API response will contain all of
-        #   those properties.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::BatchGetStatsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::YoutubeV3::BatchGetStatsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_youtube_v3_video_get_stats(id: nil, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'youtube/v3/videos:batchGetStats', options)
-          command.response_representation = Google::Apis::YoutubeV3::BatchGetStatsResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::BatchGetStatsResponse
-          command.query['id'] = id unless id.nil?
-          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
-          command.query['part'] = part unless part.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
 
         protected
 
