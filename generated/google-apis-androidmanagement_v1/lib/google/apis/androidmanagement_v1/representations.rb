@@ -1642,6 +1642,7 @@ module Google
           property :cellular_two_g_state, as: 'cellularTwoGState'
           property :minimum_wifi_security_level, as: 'minimumWifiSecurityLevel'
           property :ultra_wideband_state, as: 'ultraWidebandState'
+          property :user_initiated_add_esim_settings, as: 'userInitiatedAddEsimSettings'
           property :wifi_state, as: 'wifiState'
         end
       end
