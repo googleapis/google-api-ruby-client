@@ -383,6 +383,8 @@ module Google
       class Config
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :effective_env, as: 'effectiveEnv', class: Google::Apis::FirebaseapphostingV1::EnvironmentVariable, decorator: Google::Apis::FirebaseapphostingV1::EnvironmentVariable::Representation
+      
           collection :env, as: 'env', class: Google::Apis::FirebaseapphostingV1::EnvironmentVariable, decorator: Google::Apis::FirebaseapphostingV1::EnvironmentVariable::Representation
       
           property :run_config, as: 'runConfig', class: Google::Apis::FirebaseapphostingV1::RunConfig, decorator: Google::Apis::FirebaseapphostingV1::RunConfig::Representation
@@ -506,6 +508,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :availability, as: 'availability'
+          property :origin, as: 'origin'
+          property :origin_file_name, as: 'originFileName'
           property :secret, as: 'secret'
           property :value, as: 'value'
           property :variable, as: 'variable'

@@ -492,6 +492,14 @@ module Google
       class Config
         include Google::Apis::Core::Hashable
       
+        # Output only. [OUTPUT_ONLY] This field represents all environment variables
+        # employed during both the build and runtime. This list reflects the result of
+        # merging variables from all sources (Backend.override_env, Build.Config.env,
+        # YAML, defaults, system). Each variable includes its `origin`
+        # Corresponds to the JSON property `effectiveEnv`
+        # @return [Array<Google::Apis::FirebaseapphostingV1::EnvironmentVariable>]
+        attr_accessor :effective_env
+      
         # Optional. Supplied environment variables for a specific build. Provided at
         # Build creation time and immutable afterwards. This field is only applicable
         # for Builds using a build image - (e.g., ContainerSource or ArchiveSource with
@@ -514,6 +522,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @effective_env = args[:effective_env] if args.key?(:effective_env)
           @env = args[:env] if args.key?(:env)
           @run_config = args[:run_config] if args.key?(:run_config)
         end
@@ -976,6 +985,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :availability
       
+        # Output only. The high-level origin category of the environment variable.
+        # Corresponds to the JSON property `origin`
+        # @return [String]
+        attr_accessor :origin
+      
+        # Output only. Specific detail about the source. For APPHOSTING_YAML origins,
+        # this will contain the exact filename, such as "apphosting.yaml" or "apphosting.
+        # staging.yaml".
+        # Corresponds to the JSON property `originFileName`
+        # @return [String]
+        attr_accessor :origin_file_name
+      
         # A fully qualified secret version. The value of the secret will be accessed
         # once while building the application and once per cold start of the container
         # at runtime. The service account used by Cloud Build and by Cloud Run must each
@@ -1004,6 +1025,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @availability = args[:availability] if args.key?(:availability)
+          @origin = args[:origin] if args.key?(:origin)
+          @origin_file_name = args[:origin_file_name] if args.key?(:origin_file_name)
           @secret = args[:secret] if args.key?(:secret)
           @value = args[:value] if args.key?(:value)
           @variable = args[:variable] if args.key?(:variable)
