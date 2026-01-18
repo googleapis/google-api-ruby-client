@@ -16,13 +16,13 @@ module Google
   module Apis
     module ManagedkafkaV1
       # Version of the google-apis-managedkafka_v1 gem
-      GEM_VERSION = "0.19.0"
+      GEM_VERSION = "0.20.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.18.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20251212"
+      REVISION = "20260108"
     end
   end
 end

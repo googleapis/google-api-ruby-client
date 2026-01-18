@@ -700,6 +700,9 @@ module Google
         # @param [String] parent
         #   Required. The parent cluster whose consumer groups are to be listed.
         #   Structured like `projects/`project`/locations/`location`/clusters/`cluster``.
+        # @param [String] filter
+        #   Optional. Filter expression for the result. Only supports filtering by topic
+        #   name as a key in the `topics` map.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of consumer groups to return. The service may
         #   return fewer than this value. If unset or zero, all consumer groups for the
@@ -729,11 +732,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_cluster_consumer_groups(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_cluster_consumer_groups(parent, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/consumerGroups', options)
           command.response_representation = Google::Apis::ManagedkafkaV1::ListConsumerGroupsResponse::Representation
           command.response_class = Google::Apis::ManagedkafkaV1::ListConsumerGroupsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?
