@@ -1540,6 +1540,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :objects_from_source_skipped_by_sync
       
+        # Number of unrestored deep archive objects skipped.
+        # Corresponds to the JSON property `unrestoredDeepArchiveObjectsSkippedCount`
+        # @return [Fixnum]
+        attr_accessor :unrestored_deep_archive_objects_skipped_count
+      
+        # Number of glacier objects skipped, glacier objects are unsupported by default
+        # regardless of the restore status. Allowlist the project to copy glacier
+        # objects if needed.
+        # Corresponds to the JSON property `unsupportedS3GlacierObjectsSkippedCount`
+        # @return [Fixnum]
+        attr_accessor :unsupported_s3_glacier_objects_skipped_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1567,6 +1579,8 @@ module Google
           @objects_found_only_from_sink = args[:objects_found_only_from_sink] if args.key?(:objects_found_only_from_sink)
           @objects_from_source_failed = args[:objects_from_source_failed] if args.key?(:objects_from_source_failed)
           @objects_from_source_skipped_by_sync = args[:objects_from_source_skipped_by_sync] if args.key?(:objects_from_source_skipped_by_sync)
+          @unrestored_deep_archive_objects_skipped_count = args[:unrestored_deep_archive_objects_skipped_count] if args.key?(:unrestored_deep_archive_objects_skipped_count)
+          @unsupported_s3_glacier_objects_skipped_count = args[:unsupported_s3_glacier_objects_skipped_count] if args.key?(:unsupported_s3_glacier_objects_skipped_count)
         end
       end
       
