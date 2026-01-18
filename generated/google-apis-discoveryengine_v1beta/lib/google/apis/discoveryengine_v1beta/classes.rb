@@ -3510,6 +3510,11 @@ module Google
         # @return [String]
         attr_accessor :industry_vertical
       
+        # Configuration message for the Knowledge Graph.
+        # Corresponds to the JSON property `knowledgeGraphConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig]
+        attr_accessor :knowledge_graph_config
+      
         # Additional config specs for a Media Recommendation engine.
         # Corresponds to the JSON property `mediaRecommendationEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig]
@@ -3568,6 +3573,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
+          @knowledge_graph_config = args[:knowledge_graph_config] if args.key?(:knowledge_graph_config)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
           @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
@@ -3708,6 +3714,98 @@ module Google
         # Update properties of this object
         def update!(**args)
           @company_name = args[:company_name] if args.key?(:company_name)
+        end
+      end
+      
+      # Configuration message for the Knowledge Graph.
+      class GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specify entity types to support.
+        # Corresponds to the JSON property `cloudKnowledgeGraphTypes`
+        # @return [Array<String>]
+        attr_accessor :cloud_knowledge_graph_types
+      
+        # Whether to enable the Cloud Knowledge Graph for the engine. Defaults to false
+        # if not specified.
+        # Corresponds to the JSON property `enableCloudKnowledgeGraph`
+        # @return [Boolean]
+        attr_accessor :enable_cloud_knowledge_graph
+        alias_method :enable_cloud_knowledge_graph?, :enable_cloud_knowledge_graph
+      
+        # Whether to enable the Private Knowledge Graph for the engine. Defaults to
+        # false if not specified.
+        # Corresponds to the JSON property `enablePrivateKnowledgeGraph`
+        # @return [Boolean]
+        attr_accessor :enable_private_knowledge_graph
+        alias_method :enable_private_knowledge_graph?, :enable_private_knowledge_graph
+      
+        # Feature config for the Knowledge Graph.
+        # Corresponds to the JSON property `featureConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfigFeatureConfig]
+        attr_accessor :feature_config
+      
+        # Specify entity types to support.
+        # Corresponds to the JSON property `privateKnowledgeGraphTypes`
+        # @return [Array<String>]
+        attr_accessor :private_knowledge_graph_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_knowledge_graph_types = args[:cloud_knowledge_graph_types] if args.key?(:cloud_knowledge_graph_types)
+          @enable_cloud_knowledge_graph = args[:enable_cloud_knowledge_graph] if args.key?(:enable_cloud_knowledge_graph)
+          @enable_private_knowledge_graph = args[:enable_private_knowledge_graph] if args.key?(:enable_private_knowledge_graph)
+          @feature_config = args[:feature_config] if args.key?(:feature_config)
+          @private_knowledge_graph_types = args[:private_knowledge_graph_types] if args.key?(:private_knowledge_graph_types)
+        end
+      end
+      
+      # Feature config for the Knowledge Graph.
+      class GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfigFeatureConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to disable the private KG auto complete for the engine. Defaults to
+        # false if not specified.
+        # Corresponds to the JSON property `disablePrivateKgAutoComplete`
+        # @return [Boolean]
+        attr_accessor :disable_private_kg_auto_complete
+        alias_method :disable_private_kg_auto_complete?, :disable_private_kg_auto_complete
+      
+        # Whether to disable the private KG enrichment for the engine. Defaults to false
+        # if not specified.
+        # Corresponds to the JSON property `disablePrivateKgEnrichment`
+        # @return [Boolean]
+        attr_accessor :disable_private_kg_enrichment
+        alias_method :disable_private_kg_enrichment?, :disable_private_kg_enrichment
+      
+        # Whether to disable the private KG for query UI chips. Defaults to false if not
+        # specified.
+        # Corresponds to the JSON property `disablePrivateKgQueryUiChips`
+        # @return [Boolean]
+        attr_accessor :disable_private_kg_query_ui_chips
+        alias_method :disable_private_kg_query_ui_chips?, :disable_private_kg_query_ui_chips
+      
+        # Whether to disable the private KG query understanding for the engine. Defaults
+        # to false if not specified.
+        # Corresponds to the JSON property `disablePrivateKgQueryUnderstanding`
+        # @return [Boolean]
+        attr_accessor :disable_private_kg_query_understanding
+        alias_method :disable_private_kg_query_understanding?, :disable_private_kg_query_understanding
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_private_kg_auto_complete = args[:disable_private_kg_auto_complete] if args.key?(:disable_private_kg_auto_complete)
+          @disable_private_kg_enrichment = args[:disable_private_kg_enrichment] if args.key?(:disable_private_kg_enrichment)
+          @disable_private_kg_query_ui_chips = args[:disable_private_kg_query_ui_chips] if args.key?(:disable_private_kg_query_ui_chips)
+          @disable_private_kg_query_understanding = args[:disable_private_kg_query_understanding] if args.key?(:disable_private_kg_query_understanding)
         end
       end
       
@@ -3918,6 +4016,16 @@ module Google
         attr_accessor :enable_static_indexing_for_batch_ingestion
         alias_method :enable_static_indexing_for_batch_ingestion?, :enable_static_indexing_for_batch_ingestion
       
+        # Optional. Names of the Group resources to use as a basis for the initial
+        # patient filter, in format `projects/`project_id`/locations/`location_id`/
+        # datasets/`dataset_id`/fhirStores/`fhir_store_id`/fhir/Group/`group_id``. The
+        # filter group must be a FHIR resource name of type Group, and the filter will
+        # be constructed from the direct members of the group which are Patient
+        # resources.
+        # Corresponds to the JSON property `initialFilterGroups`
+        # @return [Array<String>]
+        attr_accessor :initial_filter_groups
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3926,6 +4034,7 @@ module Google
         def update!(**args)
           @enable_configurable_schema = args[:enable_configurable_schema] if args.key?(:enable_configurable_schema)
           @enable_static_indexing_for_batch_ingestion = args[:enable_static_indexing_for_batch_ingestion] if args.key?(:enable_static_indexing_for_batch_ingestion)
+          @initial_filter_groups = args[:initial_filter_groups] if args.key?(:initial_filter_groups)
         end
       end
       
@@ -6234,6 +6343,47 @@ module Google
           @json_action_params = args[:json_action_params] if args.key?(:json_action_params)
           @service_name = args[:service_name] if args.key?(:service_name)
           @use_static_secrets = args[:use_static_secrets] if args.key?(:use_static_secrets)
+        end
+      end
+      
+      # Request for DataStoreService.AddPatientFilter method.
+      class GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Full resource name of DataStore, such as `projects/`project`/
+        # locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
+        # If the caller does not have permission to access the DataStore, regardless of
+        # whether or not it exists, a PERMISSION_DENIED error is returned. If the
+        # requested DataStore does not exist, a NOT_FOUND error is returned. If the
+        # requested DataStore already has a patient filter, an ALREADY_EXISTS error will
+        # be returned.
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        # Required. Names of the Group resources to use as a basis for the patient
+        # filter, in format `projects/`project_id`/locations/`location_id`/datasets/`
+        # dataset_id`/fhirStores/`fhir_store_id`/fhir/Group/`group_id``. if the caller
+        # does not have permission to access the FHIR store, regardless of whether it
+        # exists, PERMISSION_DENIED error is returned. If the discovery engine service
+        # account does not have permission to access the FHIR store, regardless of
+        # whether or not it exists, a PERMISSION_DENIED error is returned. If the group
+        # is not found at the location, a RESOURCE_NOT_FOUND error will be returned. The
+        # filter group must be a FHIR resource name of type Group, and the filter will
+        # be constructed from the direct members of the group which are Patient
+        # resources.
+        # Corresponds to the JSON property `filterGroups`
+        # @return [Array<String>]
+        attr_accessor :filter_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store = args[:data_store] if args.key?(:data_store)
+          @filter_groups = args[:filter_groups] if args.key?(:filter_groups)
         end
       end
       
@@ -9783,6 +9933,31 @@ module Google
         end
       end
       
+      # Request for DataStoreService.DeletePatientFilters method.
+      class GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Full resource name of DataStore, such as `projects/`project`/
+        # locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
+        # If the caller does not have permission to access the DataStore, regardless of
+        # whether or not it exists, a PERMISSION_DENIED error is returned. If the
+        # requested DataStore does not exist, a NOT_FOUND error is returned. If the
+        # requested DataStore does not have a patient filter, a NOT_FOUND error will be
+        # returned.
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store = args[:data_store] if args.key?(:data_store)
+        end
+      end
+      
       # Metadata for DeleteSchema LRO.
       class GoogleCloudDiscoveryengineV1alphaDeleteSchemaMetadata
         include Google::Apis::Core::Hashable
@@ -10380,6 +10555,11 @@ module Google
         # @return [String]
         attr_accessor :industry_vertical
       
+        # Configuration message for the Knowledge Graph.
+        # Corresponds to the JSON property `knowledgeGraphConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfig]
+        attr_accessor :knowledge_graph_config
+      
         # Additional config specs for a Media Recommendation engine.
         # Corresponds to the JSON property `mediaRecommendationEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig]
@@ -10448,6 +10628,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
+          @knowledge_graph_config = args[:knowledge_graph_config] if args.key?(:knowledge_graph_config)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
           @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
@@ -10590,6 +10771,98 @@ module Google
         # Update properties of this object
         def update!(**args)
           @company_name = args[:company_name] if args.key?(:company_name)
+        end
+      end
+      
+      # Configuration message for the Knowledge Graph.
+      class GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specify entity types to support.
+        # Corresponds to the JSON property `cloudKnowledgeGraphTypes`
+        # @return [Array<String>]
+        attr_accessor :cloud_knowledge_graph_types
+      
+        # Whether to enable the Cloud Knowledge Graph for the engine. Defaults to false
+        # if not specified.
+        # Corresponds to the JSON property `enableCloudKnowledgeGraph`
+        # @return [Boolean]
+        attr_accessor :enable_cloud_knowledge_graph
+        alias_method :enable_cloud_knowledge_graph?, :enable_cloud_knowledge_graph
+      
+        # Whether to enable the Private Knowledge Graph for the engine. Defaults to
+        # false if not specified.
+        # Corresponds to the JSON property `enablePrivateKnowledgeGraph`
+        # @return [Boolean]
+        attr_accessor :enable_private_knowledge_graph
+        alias_method :enable_private_knowledge_graph?, :enable_private_knowledge_graph
+      
+        # Feature config for the Knowledge Graph.
+        # Corresponds to the JSON property `featureConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfigFeatureConfig]
+        attr_accessor :feature_config
+      
+        # Specify entity types to support.
+        # Corresponds to the JSON property `privateKnowledgeGraphTypes`
+        # @return [Array<String>]
+        attr_accessor :private_knowledge_graph_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_knowledge_graph_types = args[:cloud_knowledge_graph_types] if args.key?(:cloud_knowledge_graph_types)
+          @enable_cloud_knowledge_graph = args[:enable_cloud_knowledge_graph] if args.key?(:enable_cloud_knowledge_graph)
+          @enable_private_knowledge_graph = args[:enable_private_knowledge_graph] if args.key?(:enable_private_knowledge_graph)
+          @feature_config = args[:feature_config] if args.key?(:feature_config)
+          @private_knowledge_graph_types = args[:private_knowledge_graph_types] if args.key?(:private_knowledge_graph_types)
+        end
+      end
+      
+      # Feature config for the Knowledge Graph.
+      class GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfigFeatureConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to disable the private KG auto complete for the engine. Defaults to
+        # false if not specified.
+        # Corresponds to the JSON property `disablePrivateKgAutoComplete`
+        # @return [Boolean]
+        attr_accessor :disable_private_kg_auto_complete
+        alias_method :disable_private_kg_auto_complete?, :disable_private_kg_auto_complete
+      
+        # Whether to disable the private KG enrichment for the engine. Defaults to false
+        # if not specified.
+        # Corresponds to the JSON property `disablePrivateKgEnrichment`
+        # @return [Boolean]
+        attr_accessor :disable_private_kg_enrichment
+        alias_method :disable_private_kg_enrichment?, :disable_private_kg_enrichment
+      
+        # Whether to disable the private KG for query UI chips. Defaults to false if not
+        # specified.
+        # Corresponds to the JSON property `disablePrivateKgQueryUiChips`
+        # @return [Boolean]
+        attr_accessor :disable_private_kg_query_ui_chips
+        alias_method :disable_private_kg_query_ui_chips?, :disable_private_kg_query_ui_chips
+      
+        # Whether to disable the private KG query understanding for the engine. Defaults
+        # to false if not specified.
+        # Corresponds to the JSON property `disablePrivateKgQueryUnderstanding`
+        # @return [Boolean]
+        attr_accessor :disable_private_kg_query_understanding
+        alias_method :disable_private_kg_query_understanding?, :disable_private_kg_query_understanding
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_private_kg_auto_complete = args[:disable_private_kg_auto_complete] if args.key?(:disable_private_kg_auto_complete)
+          @disable_private_kg_enrichment = args[:disable_private_kg_enrichment] if args.key?(:disable_private_kg_enrichment)
+          @disable_private_kg_query_ui_chips = args[:disable_private_kg_query_ui_chips] if args.key?(:disable_private_kg_query_ui_chips)
+          @disable_private_kg_query_understanding = args[:disable_private_kg_query_understanding] if args.key?(:disable_private_kg_query_understanding)
         end
       end
       
@@ -11269,6 +11542,16 @@ module Google
         attr_accessor :enable_static_indexing_for_batch_ingestion
         alias_method :enable_static_indexing_for_batch_ingestion?, :enable_static_indexing_for_batch_ingestion
       
+        # Optional. Names of the Group resources to use as a basis for the initial
+        # patient filter, in format `projects/`project_id`/locations/`location_id`/
+        # datasets/`dataset_id`/fhirStores/`fhir_store_id`/fhir/Group/`group_id``. The
+        # filter group must be a FHIR resource name of type Group, and the filter will
+        # be constructed from the direct members of the group which are Patient
+        # resources.
+        # Corresponds to the JSON property `initialFilterGroups`
+        # @return [Array<String>]
+        attr_accessor :initial_filter_groups
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11277,6 +11560,7 @@ module Google
         def update!(**args)
           @enable_configurable_schema = args[:enable_configurable_schema] if args.key?(:enable_configurable_schema)
           @enable_static_indexing_for_batch_ingestion = args[:enable_static_indexing_for_batch_ingestion] if args.key?(:enable_static_indexing_for_batch_ingestion)
+          @initial_filter_groups = args[:initial_filter_groups] if args.key?(:initial_filter_groups)
         end
       end
       
@@ -12140,6 +12424,45 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the various patient filter operations.
+      # This will be returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudDiscoveryengineV1alphaPatientFilterOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The number of patient IDs added to the patient filter.
+        # Corresponds to the JSON property `filtersAddedCount`
+        # @return [Fixnum]
+        attr_accessor :filters_added_count
+      
+        # The number of patient IDs removed from the patient filter.
+        # Corresponds to the JSON property `filtersRemovedCount`
+        # @return [Fixnum]
+        attr_accessor :filters_removed_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @filters_added_count = args[:filters_added_count] if args.key?(:filters_added_count)
+          @filters_removed_count = args[:filters_removed_count] if args.key?(:filters_removed_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Metadata and configurations for a Google Cloud project in the service.
       class GoogleCloudDiscoveryengineV1alphaProject
         include Google::Apis::Core::Hashable
@@ -12946,6 +13269,88 @@ module Google
         def update!(**args)
           @error = args[:error] if args.key?(:error)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Request for DataStoreService.RemovePatientFilter method.
+      class GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Full resource name of DataStore, such as `projects/`project`/
+        # locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
+        # If the caller does not have permission to access the DataStore, regardless of
+        # whether or not it exists, a PERMISSION_DENIED error is returned. If the
+        # requested DataStore does not exist, a NOT_FOUND error is returned. If the
+        # requested DataStore does not have a patient filter, a NOT_FOUND error will be
+        # returned
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        # Required. Names of the Group resources to use as a basis for the list of
+        # patients to remove from the patient filter, in format `projects/`project_id`/
+        # locations/`location_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id`/fhir/
+        # Group/`group_id``. if the caller does not have permission to access the FHIR
+        # store, regardless of whether it exists, PERMISSION_DENIED error is returned.
+        # If the discovery engine service account does not have permission to access the
+        # FHIR store, regardless of whether or not it exists, a PERMISSION_DENIED error
+        # is returned. If the group is not found at the location, a RESOURCE_NOT_FOUND
+        # error will be returned. The filter group must be a FHIR resource name of type
+        # Group, and the list of IDs to remove will be constructed from the direct
+        # members of the group which are Patient resources.
+        # Corresponds to the JSON property `filterGroups`
+        # @return [Array<String>]
+        attr_accessor :filter_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store = args[:data_store] if args.key?(:data_store)
+          @filter_groups = args[:filter_groups] if args.key?(:filter_groups)
+        end
+      end
+      
+      # Request for DataStoreService.ReplacePatientFilter method.
+      class GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Full resource name of DataStore, such as `projects/`project`/
+        # locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
+        # If the caller does not have permission to access the DataStore, regardless of
+        # whether or not it exists, a PERMISSION_DENIED error is returned. If the
+        # requested DataStore does not exist, a NOT_FOUND error is returned. If the
+        # requested DataStore already has a patient filter, an ALREADY_EXISTS error will
+        # be returned.
+        # Corresponds to the JSON property `dataStore`
+        # @return [String]
+        attr_accessor :data_store
+      
+        # Required. Names of the Group resources to use as a basis for the list of
+        # patients for the new patient filter, in format `projects/`project_id`/
+        # locations/`location_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id`/fhir/
+        # Group/`group_id``. if the caller does not have permission to access the FHIR
+        # store, regardless of whether it exists, PERMISSION_DENIED error is returned.
+        # If the discovery engine service account does not have permission to access the
+        # FHIR store, regardless of whether or not it exists, a PERMISSION_DENIED error
+        # is returned. If the group is not found at the location, a RESOURCE_NOT_FOUND
+        # error will be returned. The filter group must be a FHIR resource name of type
+        # Group, and the new filter will be constructed from the direct members of the
+        # group which are Patient resources.
+        # Corresponds to the JSON property `filterGroups`
+        # @return [Array<String>]
+        attr_accessor :filter_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_store = args[:data_store] if args.key?(:data_store)
+          @filter_groups = args[:filter_groups] if args.key?(:filter_groups)
         end
       end
       
@@ -22062,6 +22467,11 @@ module Google
         # @return [String]
         attr_accessor :industry_vertical
       
+        # Configuration message for the Knowledge Graph.
+        # Corresponds to the JSON property `knowledgeGraphConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig]
+        attr_accessor :knowledge_graph_config
+      
         # Additional config specs for a Media Recommendation engine.
         # Corresponds to the JSON property `mediaRecommendationEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig]
@@ -22120,6 +22530,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
+          @knowledge_graph_config = args[:knowledge_graph_config] if args.key?(:knowledge_graph_config)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
           @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
@@ -22260,6 +22671,98 @@ module Google
         # Update properties of this object
         def update!(**args)
           @company_name = args[:company_name] if args.key?(:company_name)
+        end
+      end
+      
+      # Configuration message for the Knowledge Graph.
+      class GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specify entity types to support.
+        # Corresponds to the JSON property `cloudKnowledgeGraphTypes`
+        # @return [Array<String>]
+        attr_accessor :cloud_knowledge_graph_types
+      
+        # Whether to enable the Cloud Knowledge Graph for the engine. Defaults to false
+        # if not specified.
+        # Corresponds to the JSON property `enableCloudKnowledgeGraph`
+        # @return [Boolean]
+        attr_accessor :enable_cloud_knowledge_graph
+        alias_method :enable_cloud_knowledge_graph?, :enable_cloud_knowledge_graph
+      
+        # Whether to enable the Private Knowledge Graph for the engine. Defaults to
+        # false if not specified.
+        # Corresponds to the JSON property `enablePrivateKnowledgeGraph`
+        # @return [Boolean]
+        attr_accessor :enable_private_knowledge_graph
+        alias_method :enable_private_knowledge_graph?, :enable_private_knowledge_graph
+      
+        # Feature config for the Knowledge Graph.
+        # Corresponds to the JSON property `featureConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig]
+        attr_accessor :feature_config
+      
+        # Specify entity types to support.
+        # Corresponds to the JSON property `privateKnowledgeGraphTypes`
+        # @return [Array<String>]
+        attr_accessor :private_knowledge_graph_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_knowledge_graph_types = args[:cloud_knowledge_graph_types] if args.key?(:cloud_knowledge_graph_types)
+          @enable_cloud_knowledge_graph = args[:enable_cloud_knowledge_graph] if args.key?(:enable_cloud_knowledge_graph)
+          @enable_private_knowledge_graph = args[:enable_private_knowledge_graph] if args.key?(:enable_private_knowledge_graph)
+          @feature_config = args[:feature_config] if args.key?(:feature_config)
+          @private_knowledge_graph_types = args[:private_knowledge_graph_types] if args.key?(:private_knowledge_graph_types)
+        end
+      end
+      
+      # Feature config for the Knowledge Graph.
+      class GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to disable the private KG auto complete for the engine. Defaults to
+        # false if not specified.
+        # Corresponds to the JSON property `disablePrivateKgAutoComplete`
+        # @return [Boolean]
+        attr_accessor :disable_private_kg_auto_complete
+        alias_method :disable_private_kg_auto_complete?, :disable_private_kg_auto_complete
+      
+        # Whether to disable the private KG enrichment for the engine. Defaults to false
+        # if not specified.
+        # Corresponds to the JSON property `disablePrivateKgEnrichment`
+        # @return [Boolean]
+        attr_accessor :disable_private_kg_enrichment
+        alias_method :disable_private_kg_enrichment?, :disable_private_kg_enrichment
+      
+        # Whether to disable the private KG for query UI chips. Defaults to false if not
+        # specified.
+        # Corresponds to the JSON property `disablePrivateKgQueryUiChips`
+        # @return [Boolean]
+        attr_accessor :disable_private_kg_query_ui_chips
+        alias_method :disable_private_kg_query_ui_chips?, :disable_private_kg_query_ui_chips
+      
+        # Whether to disable the private KG query understanding for the engine. Defaults
+        # to false if not specified.
+        # Corresponds to the JSON property `disablePrivateKgQueryUnderstanding`
+        # @return [Boolean]
+        attr_accessor :disable_private_kg_query_understanding
+        alias_method :disable_private_kg_query_understanding?, :disable_private_kg_query_understanding
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_private_kg_auto_complete = args[:disable_private_kg_auto_complete] if args.key?(:disable_private_kg_auto_complete)
+          @disable_private_kg_enrichment = args[:disable_private_kg_enrichment] if args.key?(:disable_private_kg_enrichment)
+          @disable_private_kg_query_ui_chips = args[:disable_private_kg_query_ui_chips] if args.key?(:disable_private_kg_query_ui_chips)
+          @disable_private_kg_query_understanding = args[:disable_private_kg_query_understanding] if args.key?(:disable_private_kg_query_understanding)
         end
       end
       
@@ -22875,6 +23378,16 @@ module Google
         attr_accessor :enable_static_indexing_for_batch_ingestion
         alias_method :enable_static_indexing_for_batch_ingestion?, :enable_static_indexing_for_batch_ingestion
       
+        # Optional. Names of the Group resources to use as a basis for the initial
+        # patient filter, in format `projects/`project_id`/locations/`location_id`/
+        # datasets/`dataset_id`/fhirStores/`fhir_store_id`/fhir/Group/`group_id``. The
+        # filter group must be a FHIR resource name of type Group, and the filter will
+        # be constructed from the direct members of the group which are Patient
+        # resources.
+        # Corresponds to the JSON property `initialFilterGroups`
+        # @return [Array<String>]
+        attr_accessor :initial_filter_groups
+      
         def initialize(**args)
            update!(**args)
         end
@@ -22883,6 +23396,7 @@ module Google
         def update!(**args)
           @enable_configurable_schema = args[:enable_configurable_schema] if args.key?(:enable_configurable_schema)
           @enable_static_indexing_for_batch_ingestion = args[:enable_static_indexing_for_batch_ingestion] if args.key?(:enable_static_indexing_for_batch_ingestion)
+          @initial_filter_groups = args[:initial_filter_groups] if args.key?(:initial_filter_groups)
         end
       end
       
