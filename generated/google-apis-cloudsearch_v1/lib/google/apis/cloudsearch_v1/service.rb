@@ -32,7 +32,7 @@ module Google
       #    Cloudsearch = Google::Apis::CloudsearchV1 # Alias the module
       #    service = Cloudsearch::CloudSearchService.new
       #
-      # @see https://developers.google.com/cloud-search/docs/guides/
+      # @see https://developers.google.com/workspace/cloud-search/docs/guides/
       class CloudSearchService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://cloudsearch.$UNIVERSE_DOMAIN$/"
 
@@ -387,8 +387,8 @@ module Google
         #   version value that is less than or equal to the version of the currently
         #   indexed item. The maximum length for this field is 1024 bytes. For information
         #   on how item version affects the deletion process, refer to [Handle revisions
-        #   after manual deletes](https://developers.google.com/cloud-search/docs/guides/
-        #   operations).
+        #   after manual deletes](https://developers.google.com/workspace/cloud-search/
+        #   docs/guides/operations).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -746,8 +746,8 @@ module Google
         
         # Uploads media for indexing. The upload endpoint supports direct and resumable
         # upload protocols and is intended for large items that can not be [inlined
-        # during index requests](https://developers.google.com/cloud-search/docs/
-        # reference/rest/v1/indexing.datasources.items#itemcontent). To index large
+        # during index requests](https://developers.google.com/workspace/cloud-search/
+        # docs/reference/rest/v1/indexing.datasources.items#itemcontent). To index large
         # content: 1. Call indexing.datasources.items.upload with the item name to begin
         # an upload session and retrieve the UploadItemRef. 1. Call media.upload to
         # upload the content, as a streaming request, using the same resource name from
@@ -755,8 +755,8 @@ module Google
         # index the item. Populate the [ItemContent](/cloud-search/docs/reference/rest/
         # v1/indexing.datasources.items#ItemContent) with the UploadItemRef from step 1.
         # For additional information, see [Create a content connector using the REST API]
-        # (https://developers.google.com/cloud-search/docs/guides/content-connector#rest)
-        # . **Note:** This API requires a service account to execute.
+        # (https://developers.google.com/workspace/cloud-search/docs/guides/content-
+        # connector#rest). **Note:** This API requires a service account to execute.
         # @param [String] resource_name
         #   Name of the media that is being downloaded. See ReadRequest.resource_name.
         # @param [Google::Apis::CloudsearchV1::Media] media_object
@@ -840,6 +840,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -857,7 +865,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operation_lros(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_operation_lros(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/lro', options)
           command.response_representation = Google::Apis::CloudsearchV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::CloudsearchV1::ListOperationsResponse
@@ -865,6 +873,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -874,7 +883,8 @@ module Google
         # method. **Note:** This API requires a standard end user account to execute. A
         # service account can't perform Query API requests directly; to use a service
         # account to perform queries, set up [Google Workspace domain-wide delegation of
-        # authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+        # authority](https://developers.google.com/workspace/cloud-search/docs/guides/
+        # delegation/).
         # @param [Google::Apis::CloudsearchV1::SearchRequest] search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -909,7 +919,7 @@ module Google
         # account to execute. A service account can't perform Remove Activity requests
         # directly; to use a service account to perform queries, set up [Google
         # Workspace domain-wide delegation of authority](https://developers.google.com/
-        # cloud-search/docs/guides/delegation/).
+        # workspace/cloud-search/docs/guides/delegation/).
         # @param [Google::Apis::CloudsearchV1::RemoveActivityRequest] remove_activity_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -946,7 +956,7 @@ module Google
         # account to execute. A service account can't perform Query API requests
         # directly; to use a service account to perform queries, set up [Google
         # Workspace domain-wide delegation of authority](https://developers.google.com/
-        # cloud-search/docs/guides/delegation/).
+        # workspace/cloud-search/docs/guides/delegation/).
         # @param [Google::Apis::CloudsearchV1::SearchRequest] search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -980,7 +990,7 @@ module Google
         # a standard end user account to execute. A service account can't perform Query
         # API requests directly; to use a service account to perform queries, set up [
         # Google Workspace domain-wide delegation of authority](https://developers.
-        # google.com/cloud-search/docs/guides/delegation/).
+        # google.com/workspace/cloud-search/docs/guides/delegation/).
         # @param [Google::Apis::CloudsearchV1::SuggestRequest] suggest_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1014,7 +1024,7 @@ module Google
         # * This API requires a standard end user account to execute. A service account
         # can't perform Query API requests directly; to use a service account to perform
         # queries, set up [Google Workspace domain-wide delegation of authority](https://
-        # developers.google.com/cloud-search/docs/guides/delegation/).
+        # developers.google.com/workspace/cloud-search/docs/guides/delegation/).
         # @param [String] page_token
         #   Number of sources to return in the response.
         # @param [Boolean] request_options_debug_options_enable_debugging
@@ -1279,11 +1289,11 @@ module Google
         #   ignore this field.
         # @param [String] update_mask
         #   Only applies to [`settings.datasources.patch`](https://developers.google.com/
-        #   cloud-search/docs/reference/rest/v1/settings.datasources/patch). Update mask
-        #   to control which fields to update. Example field paths: `name`, `displayName`.
-        #   * If `update_mask` is non-empty, then only the fields specified in the `
-        #   update_mask` are updated. * If you specify a field in the `update_mask`, but
-        #   don't specify its value in the source, that field is cleared. * If the `
+        #   workspace/cloud-search/docs/reference/rest/v1/settings.datasources/patch).
+        #   Update mask to control which fields to update. Example field paths: `name`, `
+        #   displayName`. * If `update_mask` is non-empty, then only the fields specified
+        #   in the `update_mask` are updated. * If you specify a field in the `update_mask`
+        #   , but don't specify its value in the source, that field is cleared. * If the `
         #   update_mask` is not present or empty or has the value `*`, then all fields are
         #   updated.
         # @param [String] fields
@@ -1501,13 +1511,14 @@ module Google
         # @param [Google::Apis::CloudsearchV1::SearchApplication] search_application_object
         # @param [String] update_mask
         #   Only applies to [`settings.searchapplications.patch`](https://developers.
-        #   google.com/cloud-search/docs/reference/rest/v1/settings.searchapplications/
-        #   patch). Update mask to control which fields to update. Example field paths: `
-        #   search_application.name`, `search_application.displayName`. * If `update_mask`
-        #   is non-empty, then only the fields specified in the `update_mask` are updated.
-        #   * If you specify a field in the `update_mask`, but don't specify its value in
-        #   the `search_application`, then that field is cleared. * If the `update_mask`
-        #   is not present or empty or has the value `*`, then all fields are updated.
+        #   google.com/workspace/cloud-search/docs/reference/rest/v1/settings.
+        #   searchapplications/patch). Update mask to control which fields to update.
+        #   Example field paths: `search_application.name`, `search_application.
+        #   displayName`. * If `update_mask` is non-empty, then only the fields specified
+        #   in the `update_mask` are updated. * If you specify a field in the `update_mask`
+        #   , but don't specify its value in the `search_application`, then that field is
+        #   cleared. * If the `update_mask` is not present or empty or has the value `*`,
+        #   then all fields are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1581,13 +1592,14 @@ module Google
         # @param [Google::Apis::CloudsearchV1::SearchApplication] search_application_object
         # @param [String] update_mask
         #   Only applies to [`settings.searchapplications.patch`](https://developers.
-        #   google.com/cloud-search/docs/reference/rest/v1/settings.searchapplications/
-        #   patch). Update mask to control which fields to update. Example field paths: `
-        #   search_application.name`, `search_application.displayName`. * If `update_mask`
-        #   is non-empty, then only the fields specified in the `update_mask` are updated.
-        #   * If you specify a field in the `update_mask`, but don't specify its value in
-        #   the `search_application`, then that field is cleared. * If the `update_mask`
-        #   is not present or empty or has the value `*`, then all fields are updated.
+        #   google.com/workspace/cloud-search/docs/reference/rest/v1/settings.
+        #   searchapplications/patch). Update mask to control which fields to update.
+        #   Example field paths: `search_application.name`, `search_application.
+        #   displayName`. * If `update_mask` is non-empty, then only the fields specified
+        #   in the `update_mask` are updated. * If you specify a field in the `update_mask`
+        #   , but don't specify its value in the `search_application`, then that field is
+        #   cleared. * If the `update_mask` is not present or empty or has the value `*`,
+        #   then all fields are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
