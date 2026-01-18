@@ -1084,6 +1084,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1996,6 +2008,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2867,6 +2891,18 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4879,6 +4915,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :conversation_measure, as: 'conversationMeasure', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure::Representation
       
+          property :dialogflow_interaction_measure, as: 'dialogflowInteractionMeasure', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure::Representation
+      
           property :interval, as: 'interval', class: Google::Apis::ContactcenterinsightsV1::GoogleTypeInterval, decorator: Google::Apis::ContactcenterinsightsV1::GoogleTypeInterval::Representation
       
         end
@@ -4887,6 +4925,18 @@ module Google
       class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aa_supervisor_assigned_conversations_count, as: 'aaSupervisorAssignedConversationsCount'
+          property :aa_supervisor_dropped_conversations_count, as: 'aaSupervisorDroppedConversationsCount'
+          property :aa_supervisor_escalated_conversations_count, as: 'aaSupervisorEscalatedConversationsCount'
+          property :aa_supervisor_monitored_conversations_count, as: 'aaSupervisorMonitoredConversationsCount'
+          property :aa_supervisor_transferred_to_human_agent_conv_count, as: 'aaSupervisorTransferredToHumanAgentConvCount'
+          property :ai_coach_suggestion_agent_message_trigger_count, as: 'aiCoachSuggestionAgentMessageTriggerCount'
+          property :ai_coach_suggestion_agent_usage_count, as: 'aiCoachSuggestionAgentUsageCount'
+          property :ai_coach_suggestion_agent_usage_ratio, as: 'aiCoachSuggestionAgentUsageRatio'
+          property :ai_coach_suggestion_customer_message_trigger_count, as: 'aiCoachSuggestionCustomerMessageTriggerCount'
+          property :ai_coach_suggestion_customer_message_trigger_ratio, as: 'aiCoachSuggestionCustomerMessageTriggerRatio'
+          property :ai_coach_suggestion_message_trigger_count, as: 'aiCoachSuggestionMessageTriggerCount'
+          property :ai_coach_suggestion_message_trigger_ratio, as: 'aiCoachSuggestionMessageTriggerRatio'
           property :average_agent_sentiment_score, as: 'averageAgentSentimentScore'
           property :average_client_sentiment_score, as: 'averageClientSentimentScore'
           property :average_customer_satisfaction_rating, as: 'averageCustomerSatisfactionRating'
@@ -4894,10 +4944,43 @@ module Google
           property :average_qa_normalized_score, as: 'averageQaNormalizedScore'
           property :average_qa_question_normalized_score, as: 'averageQaQuestionNormalizedScore'
           property :average_silence_percentage, as: 'averageSilencePercentage'
+          property :average_summarization_suggestion_edit_distance, as: 'averageSummarizationSuggestionEditDistance'
+          property :average_summarization_suggestion_normalized_edit_distance, as: 'averageSummarizationSuggestionNormalizedEditDistance'
           property :average_turn_count, as: 'averageTurnCount'
+          property :avg_conversation_client_turn_sentiment_ema, as: 'avgConversationClientTurnSentimentEma'
+          property :contained_conversation_count, as: 'containedConversationCount'
+          property :contained_conversation_ratio, as: 'containedConversationRatio'
+          property :conversation_ai_coach_suggestion_count, as: 'conversationAiCoachSuggestionCount'
+          property :conversation_ai_coach_suggestion_ratio, as: 'conversationAiCoachSuggestionRatio'
           property :conversation_count, as: 'conversationCount'
+          property :conversation_suggested_summary_ratio, as: 'conversationSuggestedSummaryRatio'
+          property :conversation_total_agent_message_count, as: 'conversationTotalAgentMessageCount'
+          property :conversation_total_customer_message_count, as: 'conversationTotalCustomerMessageCount'
+          property :conversational_agents_average_audio_in_audio_out_latency, as: 'conversationalAgentsAverageAudioInAudioOutLatency'
+          property :conversational_agents_average_end_to_end_latency, as: 'conversationalAgentsAverageEndToEndLatency'
+          property :conversational_agents_average_llm_call_latency, as: 'conversationalAgentsAverageLlmCallLatency'
+          property :conversational_agents_average_tts_latency, as: 'conversationalAgentsAverageTtsLatency'
+          property :dialogflow_average_webhook_latency, as: 'dialogflowAverageWebhookLatency'
+          property :dialogflow_conversations_escalation_count, as: 'dialogflowConversationsEscalationCount'
+          property :dialogflow_conversations_escalation_ratio, as: 'dialogflowConversationsEscalationRatio'
+          property :dialogflow_interactions_no_input_ratio, as: 'dialogflowInteractionsNoInputRatio'
+          property :dialogflow_interactions_no_match_ratio, as: 'dialogflowInteractionsNoMatchRatio'
+          property :dialogflow_webhook_failure_ratio, as: 'dialogflowWebhookFailureRatio'
+          property :dialogflow_webhook_timeout_ratio, as: 'dialogflowWebhookTimeoutRatio'
+          property :knowledge_assist_negative_feedback_ratio, as: 'knowledgeAssistNegativeFeedbackRatio'
+          property :knowledge_assist_positive_feedback_ratio, as: 'knowledgeAssistPositiveFeedbackRatio'
+          property :knowledge_assist_result_count, as: 'knowledgeAssistResultCount'
+          property :knowledge_assist_uri_click_ratio, as: 'knowledgeAssistUriClickRatio'
+          property :knowledge_search_agent_query_source_ratio, as: 'knowledgeSearchAgentQuerySourceRatio'
+          property :knowledge_search_negative_feedback_ratio, as: 'knowledgeSearchNegativeFeedbackRatio'
+          property :knowledge_search_positive_feedback_ratio, as: 'knowledgeSearchPositiveFeedbackRatio'
+          property :knowledge_search_result_count, as: 'knowledgeSearchResultCount'
+          property :knowledge_search_suggested_query_source_ratio, as: 'knowledgeSearchSuggestedQuerySourceRatio'
+          property :knowledge_search_uri_click_ratio, as: 'knowledgeSearchUriClickRatio'
           collection :qa_tag_scores, as: 'qaTagScores', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore::Representation
       
+          property :summarization_suggestion_edit_ratio, as: 'summarizationSuggestionEditRatio'
+          property :summarization_suggestion_result_count, as: 'summarizationSuggestionResultCount'
         end
       end
       
@@ -4906,6 +4989,31 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :average_tag_normalized_score, as: 'averageTagNormalizedScore'
           property :tag, as: 'tag'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentile_audio_in_audio_out_latency, as: 'percentileAudioInAudioOutLatency', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult::Representation
+      
+          property :percentile_end_to_end_latency, as: 'percentileEndToEndLatency', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult::Representation
+      
+          property :percentile_llm_call_latency, as: 'percentileLlmCallLatency', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult::Representation
+      
+          property :percentile_tool_use_latency, as: 'percentileToolUseLatency', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult::Representation
+      
+          property :percentile_tts_latency, as: 'percentileTtsLatency', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :p50, as: 'p50'
+          property :p90, as: 'p90'
+          property :p99, as: 'p99'
         end
       end
       
@@ -6455,6 +6563,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :conversation_measure, as: 'conversationMeasure', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure::Representation
       
+          property :dialogflow_interaction_measure, as: 'dialogflowInteractionMeasure', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure::Representation
+      
           property :interval, as: 'interval', class: Google::Apis::ContactcenterinsightsV1::GoogleTypeInterval, decorator: Google::Apis::ContactcenterinsightsV1::GoogleTypeInterval::Representation
       
         end
@@ -6463,6 +6573,18 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aa_supervisor_assigned_conversations_count, as: 'aaSupervisorAssignedConversationsCount'
+          property :aa_supervisor_dropped_conversations_count, as: 'aaSupervisorDroppedConversationsCount'
+          property :aa_supervisor_escalated_conversations_count, as: 'aaSupervisorEscalatedConversationsCount'
+          property :aa_supervisor_monitored_conversations_count, as: 'aaSupervisorMonitoredConversationsCount'
+          property :aa_supervisor_transferred_to_human_agent_conv_count, as: 'aaSupervisorTransferredToHumanAgentConvCount'
+          property :ai_coach_suggestion_agent_message_trigger_count, as: 'aiCoachSuggestionAgentMessageTriggerCount'
+          property :ai_coach_suggestion_agent_usage_count, as: 'aiCoachSuggestionAgentUsageCount'
+          property :ai_coach_suggestion_agent_usage_ratio, as: 'aiCoachSuggestionAgentUsageRatio'
+          property :ai_coach_suggestion_customer_message_trigger_count, as: 'aiCoachSuggestionCustomerMessageTriggerCount'
+          property :ai_coach_suggestion_customer_message_trigger_ratio, as: 'aiCoachSuggestionCustomerMessageTriggerRatio'
+          property :ai_coach_suggestion_message_trigger_count, as: 'aiCoachSuggestionMessageTriggerCount'
+          property :ai_coach_suggestion_message_trigger_ratio, as: 'aiCoachSuggestionMessageTriggerRatio'
           property :average_agent_sentiment_score, as: 'averageAgentSentimentScore'
           property :average_client_sentiment_score, as: 'averageClientSentimentScore'
           property :average_customer_satisfaction_rating, as: 'averageCustomerSatisfactionRating'
@@ -6470,10 +6592,43 @@ module Google
           property :average_qa_normalized_score, as: 'averageQaNormalizedScore'
           property :average_qa_question_normalized_score, as: 'averageQaQuestionNormalizedScore'
           property :average_silence_percentage, as: 'averageSilencePercentage'
+          property :average_summarization_suggestion_edit_distance, as: 'averageSummarizationSuggestionEditDistance'
+          property :average_summarization_suggestion_normalized_edit_distance, as: 'averageSummarizationSuggestionNormalizedEditDistance'
           property :average_turn_count, as: 'averageTurnCount'
+          property :avg_conversation_client_turn_sentiment_ema, as: 'avgConversationClientTurnSentimentEma'
+          property :contained_conversation_count, as: 'containedConversationCount'
+          property :contained_conversation_ratio, as: 'containedConversationRatio'
+          property :conversation_ai_coach_suggestion_count, as: 'conversationAiCoachSuggestionCount'
+          property :conversation_ai_coach_suggestion_ratio, as: 'conversationAiCoachSuggestionRatio'
           property :conversation_count, as: 'conversationCount'
+          property :conversation_suggested_summary_ratio, as: 'conversationSuggestedSummaryRatio'
+          property :conversation_total_agent_message_count, as: 'conversationTotalAgentMessageCount'
+          property :conversation_total_customer_message_count, as: 'conversationTotalCustomerMessageCount'
+          property :conversational_agents_average_audio_in_audio_out_latency, as: 'conversationalAgentsAverageAudioInAudioOutLatency'
+          property :conversational_agents_average_end_to_end_latency, as: 'conversationalAgentsAverageEndToEndLatency'
+          property :conversational_agents_average_llm_call_latency, as: 'conversationalAgentsAverageLlmCallLatency'
+          property :conversational_agents_average_tts_latency, as: 'conversationalAgentsAverageTtsLatency'
+          property :dialogflow_average_webhook_latency, as: 'dialogflowAverageWebhookLatency'
+          property :dialogflow_conversations_escalation_count, as: 'dialogflowConversationsEscalationCount'
+          property :dialogflow_conversations_escalation_ratio, as: 'dialogflowConversationsEscalationRatio'
+          property :dialogflow_interactions_no_input_ratio, as: 'dialogflowInteractionsNoInputRatio'
+          property :dialogflow_interactions_no_match_ratio, as: 'dialogflowInteractionsNoMatchRatio'
+          property :dialogflow_webhook_failure_ratio, as: 'dialogflowWebhookFailureRatio'
+          property :dialogflow_webhook_timeout_ratio, as: 'dialogflowWebhookTimeoutRatio'
+          property :knowledge_assist_negative_feedback_ratio, as: 'knowledgeAssistNegativeFeedbackRatio'
+          property :knowledge_assist_positive_feedback_ratio, as: 'knowledgeAssistPositiveFeedbackRatio'
+          property :knowledge_assist_result_count, as: 'knowledgeAssistResultCount'
+          property :knowledge_assist_uri_click_ratio, as: 'knowledgeAssistUriClickRatio'
+          property :knowledge_search_agent_query_source_ratio, as: 'knowledgeSearchAgentQuerySourceRatio'
+          property :knowledge_search_negative_feedback_ratio, as: 'knowledgeSearchNegativeFeedbackRatio'
+          property :knowledge_search_positive_feedback_ratio, as: 'knowledgeSearchPositiveFeedbackRatio'
+          property :knowledge_search_result_count, as: 'knowledgeSearchResultCount'
+          property :knowledge_search_suggested_query_source_ratio, as: 'knowledgeSearchSuggestedQuerySourceRatio'
+          property :knowledge_search_uri_click_ratio, as: 'knowledgeSearchUriClickRatio'
           collection :qa_tag_scores, as: 'qaTagScores', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore::Representation
       
+          property :summarization_suggestion_edit_ratio, as: 'summarizationSuggestionEditRatio'
+          property :summarization_suggestion_result_count, as: 'summarizationSuggestionResultCount'
         end
       end
       
@@ -6482,6 +6637,31 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :average_tag_normalized_score, as: 'averageTagNormalizedScore'
           property :tag, as: 'tag'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentile_audio_in_audio_out_latency, as: 'percentileAudioInAudioOutLatency', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult::Representation
+      
+          property :percentile_end_to_end_latency, as: 'percentileEndToEndLatency', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult::Representation
+      
+          property :percentile_llm_call_latency, as: 'percentileLlmCallLatency', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult::Representation
+      
+          property :percentile_tool_use_latency, as: 'percentileToolUseLatency', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult::Representation
+      
+          property :percentile_tts_latency, as: 'percentileTtsLatency', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :p50, as: 'p50'
+          property :p90, as: 'p90'
+          property :p99, as: 'p99'
         end
       end
       
@@ -7980,6 +8160,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :conversation_measure, as: 'conversationMeasure', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure::Representation
       
+          property :dialogflow_interaction_measure, as: 'dialogflowInteractionMeasure', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure::Representation
+      
           property :interval, as: 'interval', class: Google::Apis::ContactcenterinsightsV1::GoogleTypeInterval, decorator: Google::Apis::ContactcenterinsightsV1::GoogleTypeInterval::Representation
       
         end
@@ -7988,6 +8170,18 @@ module Google
       class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aa_supervisor_assigned_conversations_count, as: 'aaSupervisorAssignedConversationsCount'
+          property :aa_supervisor_dropped_conversations_count, as: 'aaSupervisorDroppedConversationsCount'
+          property :aa_supervisor_escalated_conversations_count, as: 'aaSupervisorEscalatedConversationsCount'
+          property :aa_supervisor_monitored_conversations_count, as: 'aaSupervisorMonitoredConversationsCount'
+          property :aa_supervisor_transferred_to_human_agent_conv_count, as: 'aaSupervisorTransferredToHumanAgentConvCount'
+          property :ai_coach_suggestion_agent_message_trigger_count, as: 'aiCoachSuggestionAgentMessageTriggerCount'
+          property :ai_coach_suggestion_agent_usage_count, as: 'aiCoachSuggestionAgentUsageCount'
+          property :ai_coach_suggestion_agent_usage_ratio, as: 'aiCoachSuggestionAgentUsageRatio'
+          property :ai_coach_suggestion_customer_message_trigger_count, as: 'aiCoachSuggestionCustomerMessageTriggerCount'
+          property :ai_coach_suggestion_customer_message_trigger_ratio, as: 'aiCoachSuggestionCustomerMessageTriggerRatio'
+          property :ai_coach_suggestion_message_trigger_count, as: 'aiCoachSuggestionMessageTriggerCount'
+          property :ai_coach_suggestion_message_trigger_ratio, as: 'aiCoachSuggestionMessageTriggerRatio'
           property :average_agent_sentiment_score, as: 'averageAgentSentimentScore'
           property :average_client_sentiment_score, as: 'averageClientSentimentScore'
           property :average_customer_satisfaction_rating, as: 'averageCustomerSatisfactionRating'
@@ -7995,10 +8189,43 @@ module Google
           property :average_qa_normalized_score, as: 'averageQaNormalizedScore'
           property :average_qa_question_normalized_score, as: 'averageQaQuestionNormalizedScore'
           property :average_silence_percentage, as: 'averageSilencePercentage'
+          property :average_summarization_suggestion_edit_distance, as: 'averageSummarizationSuggestionEditDistance'
+          property :average_summarization_suggestion_normalized_edit_distance, as: 'averageSummarizationSuggestionNormalizedEditDistance'
           property :average_turn_count, as: 'averageTurnCount'
+          property :avg_conversation_client_turn_sentiment_ema, as: 'avgConversationClientTurnSentimentEma'
+          property :contained_conversation_count, as: 'containedConversationCount'
+          property :contained_conversation_ratio, as: 'containedConversationRatio'
+          property :conversation_ai_coach_suggestion_count, as: 'conversationAiCoachSuggestionCount'
+          property :conversation_ai_coach_suggestion_ratio, as: 'conversationAiCoachSuggestionRatio'
           property :conversation_count, as: 'conversationCount'
+          property :conversation_suggested_summary_ratio, as: 'conversationSuggestedSummaryRatio'
+          property :conversation_total_agent_message_count, as: 'conversationTotalAgentMessageCount'
+          property :conversation_total_customer_message_count, as: 'conversationTotalCustomerMessageCount'
+          property :conversational_agents_average_audio_in_audio_out_latency, as: 'conversationalAgentsAverageAudioInAudioOutLatency'
+          property :conversational_agents_average_end_to_end_latency, as: 'conversationalAgentsAverageEndToEndLatency'
+          property :conversational_agents_average_llm_call_latency, as: 'conversationalAgentsAverageLlmCallLatency'
+          property :conversational_agents_average_tts_latency, as: 'conversationalAgentsAverageTtsLatency'
+          property :dialogflow_average_webhook_latency, as: 'dialogflowAverageWebhookLatency'
+          property :dialogflow_conversations_escalation_count, as: 'dialogflowConversationsEscalationCount'
+          property :dialogflow_conversations_escalation_ratio, as: 'dialogflowConversationsEscalationRatio'
+          property :dialogflow_interactions_no_input_ratio, as: 'dialogflowInteractionsNoInputRatio'
+          property :dialogflow_interactions_no_match_ratio, as: 'dialogflowInteractionsNoMatchRatio'
+          property :dialogflow_webhook_failure_ratio, as: 'dialogflowWebhookFailureRatio'
+          property :dialogflow_webhook_timeout_ratio, as: 'dialogflowWebhookTimeoutRatio'
+          property :knowledge_assist_negative_feedback_ratio, as: 'knowledgeAssistNegativeFeedbackRatio'
+          property :knowledge_assist_positive_feedback_ratio, as: 'knowledgeAssistPositiveFeedbackRatio'
+          property :knowledge_assist_result_count, as: 'knowledgeAssistResultCount'
+          property :knowledge_assist_uri_click_ratio, as: 'knowledgeAssistUriClickRatio'
+          property :knowledge_search_agent_query_source_ratio, as: 'knowledgeSearchAgentQuerySourceRatio'
+          property :knowledge_search_negative_feedback_ratio, as: 'knowledgeSearchNegativeFeedbackRatio'
+          property :knowledge_search_positive_feedback_ratio, as: 'knowledgeSearchPositiveFeedbackRatio'
+          property :knowledge_search_result_count, as: 'knowledgeSearchResultCount'
+          property :knowledge_search_suggested_query_source_ratio, as: 'knowledgeSearchSuggestedQuerySourceRatio'
+          property :knowledge_search_uri_click_ratio, as: 'knowledgeSearchUriClickRatio'
           collection :qa_tag_scores, as: 'qaTagScores', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore::Representation
       
+          property :summarization_suggestion_edit_ratio, as: 'summarizationSuggestionEditRatio'
+          property :summarization_suggestion_result_count, as: 'summarizationSuggestionResultCount'
         end
       end
       
@@ -8007,6 +8234,31 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :average_tag_normalized_score, as: 'averageTagNormalizedScore'
           property :tag, as: 'tag'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentile_audio_in_audio_out_latency, as: 'percentileAudioInAudioOutLatency', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult::Representation
+      
+          property :percentile_end_to_end_latency, as: 'percentileEndToEndLatency', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult::Representation
+      
+          property :percentile_llm_call_latency, as: 'percentileLlmCallLatency', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult::Representation
+      
+          property :percentile_tool_use_latency, as: 'percentileToolUseLatency', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult::Representation
+      
+          property :percentile_tts_latency, as: 'percentileTtsLatency', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :p50, as: 'p50'
+          property :p90, as: 'p90'
+          property :p99, as: 'p99'
         end
       end
       
