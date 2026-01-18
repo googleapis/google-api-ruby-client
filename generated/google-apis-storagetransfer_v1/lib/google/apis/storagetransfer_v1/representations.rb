@@ -630,6 +630,8 @@ module Google
           property :objects_found_only_from_sink, :numeric_string => true, as: 'objectsFoundOnlyFromSink'
           property :objects_from_source_failed, :numeric_string => true, as: 'objectsFromSourceFailed'
           property :objects_from_source_skipped_by_sync, :numeric_string => true, as: 'objectsFromSourceSkippedBySync'
+          property :unrestored_deep_archive_objects_skipped_count, :numeric_string => true, as: 'unrestoredDeepArchiveObjectsSkippedCount'
+          property :unsupported_s3_glacier_objects_skipped_count, :numeric_string => true, as: 'unsupportedS3GlacierObjectsSkippedCount'
         end
       end
       
