@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EstablishVolumePeeringRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -596,6 +602,16 @@ module Google
       end
       
       class EstablishPeeringRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :peer_cluster_name, as: 'peerClusterName'
+          collection :peer_ip_addresses, as: 'peerIpAddresses'
+          property :peer_svm_name, as: 'peerSvmName'
+          property :peer_volume_name, as: 'peerVolumeName'
+        end
+      end
+      
+      class EstablishVolumePeeringRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :peer_cluster_name, as: 'peerClusterName'
