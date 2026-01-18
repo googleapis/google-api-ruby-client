@@ -871,7 +871,7 @@ module Google
         # @return [String]
         attr_accessor :gsr_response
       
-        # The search API response. NEXT ID: 17
+        # The search API response. NEXT ID: 19
         # Corresponds to the JSON property `searchResponse`
         # @return [Google::Apis::CloudsearchV1::SearchResponse]
         attr_accessor :search_response
@@ -4119,7 +4119,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Access control list information for the item. For more information see [Map
-        # ACLs](https://developers.google.com/cloud-search/docs/guides/acls).
+        # ACLs](https://developers.google.com/workspace/cloud-search/docs/guides/acls).
         # Corresponds to the JSON property `acl`
         # @return [Google::Apis::CloudsearchV1::ItemAcl]
         attr_accessor :acl
@@ -4175,8 +4175,8 @@ module Google
         # queued item with a version value that is less than or equal to the version of
         # the currently indexed item. The maximum length for this field is 1024 bytes.
         # For information on how item version affects the deletion process, refer to [
-        # Handle revisions after manual deletes](https://developers.google.com/cloud-
-        # search/docs/guides/operations).
+        # Handle revisions after manual deletes](https://developers.google.com/workspace/
+        # cloud-search/docs/guides/operations).
         # Corresponds to the JSON property `version`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -4202,7 +4202,7 @@ module Google
       end
       
       # Access control list information for the item. For more information see [Map
-      # ACLs](https://developers.google.com/cloud-search/docs/guides/acls).
+      # ACLs](https://developers.google.com/workspace/cloud-search/docs/guides/acls).
       class ItemAcl
         include Google::Apis::Core::Hashable
       
@@ -4602,6 +4602,14 @@ module Google
         # @return [Array<Google::Apis::CloudsearchV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4610,6 +4618,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -5844,7 +5853,8 @@ module Google
         # supported for Text properties. IsReturnable must be true to set this option.
         # In a given datasource maximum of 5 properties can be marked as
         # is_wildcard_searchable. For more details, see [Define object properties](https:
-        # //developers.google.com/cloud-search/docs/guides/schema-guide#properties)
+        # //developers.google.com/workspace/cloud-search/docs/guides/schema-guide#
+        # properties)
         # Corresponds to the JSON property `isWildcardSearchable`
         # @return [Boolean]
         attr_accessor :is_wildcard_searchable
@@ -6088,6 +6098,16 @@ module Google
         # @return [String]
         attr_accessor :interpreted_query
       
+        # The actual number of results returned by the interpreted query.
+        # Corresponds to the JSON property `interpretedQueryActualResultCount`
+        # @return [Fixnum]
+        attr_accessor :interpreted_query_actual_result_count
+      
+        # The estimated number of results returned by the interpreted query.
+        # Corresponds to the JSON property `interpretedQueryEstimatedResultCount`
+        # @return [Fixnum]
+        attr_accessor :interpreted_query_estimated_result_count
+      
         # The reason for interpretation of the query. This field will not be UNSPECIFIED
         # if the interpretation type is not NONE.
         # Corresponds to the JSON property `reason`
@@ -6102,6 +6122,8 @@ module Google
         def update!(**args)
           @interpretation_type = args[:interpretation_type] if args.key?(:interpretation_type)
           @interpreted_query = args[:interpreted_query] if args.key?(:interpreted_query)
+          @interpreted_query_actual_result_count = args[:interpreted_query_actual_result_count] if args.key?(:interpreted_query_actual_result_count)
+          @interpreted_query_estimated_result_count = args[:interpreted_query_estimated_result_count] if args.key?(:interpreted_query_estimated_result_count)
           @reason = args[:reason] if args.key?(:reason)
         end
       end
@@ -7058,7 +7080,7 @@ module Google
         end
       end
       
-      # The search API request. NEXT ID: 17
+      # The search API request. NEXT ID: 24
       class SearchRequest
         include Google::Apis::Core::Hashable
       
@@ -7130,7 +7152,7 @@ module Google
         end
       end
       
-      # The search API response. NEXT ID: 17
+      # The search API response. NEXT ID: 19
       class SearchResponse
         include Google::Apis::Core::Hashable
       
@@ -7212,7 +7234,7 @@ module Google
         end
       end
       
-      # Results containing indexed information for a document.
+      # Results containing indexed information for a document. Next ID: 16
       class SearchResult
         include Google::Apis::Core::Hashable
       
@@ -8005,11 +8027,11 @@ module Google
         attr_accessor :source
       
         # Only applies to [`settings.datasources.patch`](https://developers.google.com/
-        # cloud-search/docs/reference/rest/v1/settings.datasources/patch). Update mask
-        # to control which fields to update. Example field paths: `name`, `displayName`.
-        # * If `update_mask` is non-empty, then only the fields specified in the `
-        # update_mask` are updated. * If you specify a field in the `update_mask`, but
-        # don't specify its value in the source, that field is cleared. * If the `
+        # workspace/cloud-search/docs/reference/rest/v1/settings.datasources/patch).
+        # Update mask to control which fields to update. Example field paths: `name`, `
+        # displayName`. * If `update_mask` is non-empty, then only the fields specified
+        # in the `update_mask` are updated. * If you specify a field in the `update_mask`
+        # , but don't specify its value in the source, that field is cleared. * If the `
         # update_mask` is not present or empty or has the value `*`, then all fields are
         # updated.
         # Corresponds to the JSON property `updateMask`

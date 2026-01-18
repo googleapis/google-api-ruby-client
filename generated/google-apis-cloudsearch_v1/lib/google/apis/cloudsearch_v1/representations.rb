@@ -2692,6 +2692,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::CloudsearchV1::Operation, decorator: Google::Apis::CloudsearchV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -3104,6 +3105,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :interpretation_type, as: 'interpretationType'
           property :interpreted_query, as: 'interpretedQuery'
+          property :interpreted_query_actual_result_count, as: 'interpretedQueryActualResultCount'
+          property :interpreted_query_estimated_result_count, :numeric_string => true, as: 'interpretedQueryEstimatedResultCount'
           property :reason, as: 'reason'
         end
       end
