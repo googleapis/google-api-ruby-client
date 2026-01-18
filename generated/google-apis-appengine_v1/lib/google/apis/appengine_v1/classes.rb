@@ -1026,36 +1026,6 @@ module Google
         end
       end
       
-      # Request message for Versions.ExportAppImage.
-      class ExportAppImageRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The full resource name of the AR repository to export to. Format:
-        # projects/`project`/locations/`location`/repositories/`repository` If not
-        # specified, defaults to projects/`project`/locations/`location`/repositories/
-        # gae-standard in the same region as the app. The default repository will be
-        # created if it does not exist.
-        # Corresponds to the JSON property `destinationRepository`
-        # @return [String]
-        attr_accessor :destination_repository
-      
-        # Optional. Optional: A service account to use for authenticating to Artifact
-        # Registry.
-        # Corresponds to the JSON property `serviceAccount`
-        # @return [String]
-        attr_accessor :service_account
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @destination_repository = args[:destination_repository] if args.key?(:destination_repository)
-          @service_account = args[:service_account] if args.key?(:service_account)
-        end
-      end
-      
       # The feature specific settings to be used in the application. These define
       # behaviors that are user configurable.
       class FeatureSettings
