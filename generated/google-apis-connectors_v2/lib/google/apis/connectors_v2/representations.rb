@@ -136,7 +136,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExecutionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Field
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetResourcePostRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListToolsPostRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListToolsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +245,12 @@ module Google
       end
       
       class NotificationParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OAuth2Config
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -317,6 +341,12 @@ module Google
       end
       
       class ToolAnnotations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ToolSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -457,6 +487,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auth_code_data, as: 'authCodeData', class: Google::Apis::ConnectorsV2::AuthCodeData, decorator: Google::Apis::ConnectorsV2::AuthCodeData::Representation
       
+          property :execution_config, as: 'executionConfig', class: Google::Apis::ConnectorsV2::ExecutionConfig, decorator: Google::Apis::ConnectorsV2::ExecutionConfig::Representation
+      
+          property :oauth2_config, as: 'oauth2Config', class: Google::Apis::ConnectorsV2::OAuth2Config, decorator: Google::Apis::ConnectorsV2::OAuth2Config::Representation
+      
         end
       end
       
@@ -472,6 +506,8 @@ module Google
       class ExecuteActionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_config, as: 'executionConfig', class: Google::Apis::ConnectorsV2::ExecutionConfig, decorator: Google::Apis::ConnectorsV2::ExecutionConfig::Representation
+      
           hash :parameters, as: 'parameters'
         end
       end
@@ -502,7 +538,10 @@ module Google
       class ExecuteToolRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_config, as: 'executionConfig', class: Google::Apis::ConnectorsV2::ExecutionConfig, decorator: Google::Apis::ConnectorsV2::ExecutionConfig::Representation
+      
           hash :parameters, as: 'parameters'
+          hash :tool_definition, as: 'toolDefinition'
         end
       end
       
@@ -511,6 +550,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :metadata, as: 'metadata'
           hash :result, as: 'result'
+        end
+      end
+      
+      class ExecutionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :headers, as: 'headers'
         end
       end
       
@@ -527,6 +573,16 @@ module Google
           property :name, as: 'name'
           property :nullable, as: 'nullable'
           property :reference, as: 'reference', class: Google::Apis::ConnectorsV2::Reference, decorator: Google::Apis::ConnectorsV2::Reference::Representation
+      
+        end
+      end
+      
+      class GetResourcePostRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_config, as: 'executionConfig', class: Google::Apis::ConnectorsV2::ExecutionConfig, decorator: Google::Apis::ConnectorsV2::ExecutionConfig::Representation
+      
+          property :tool_spec, as: 'toolSpec', class: Google::Apis::ConnectorsV2::ToolSpec, decorator: Google::Apis::ConnectorsV2::ToolSpec::Representation
       
         end
       end
@@ -643,6 +699,18 @@ module Google
         end
       end
       
+      class ListToolsPostRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_config, as: 'executionConfig', class: Google::Apis::ConnectorsV2::ExecutionConfig, decorator: Google::Apis::ConnectorsV2::ExecutionConfig::Representation
+      
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :tool_spec, as: 'toolSpec', class: Google::Apis::ConnectorsV2::ToolSpec, decorator: Google::Apis::ConnectorsV2::ToolSpec::Representation
+      
+        end
+      end
+      
       class ListToolsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -715,6 +783,15 @@ module Google
         end
       end
       
+      class OAuth2Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_uri, as: 'authUri'
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+        end
+      end
+      
       class PerSliSloEligibility
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -761,6 +838,10 @@ module Google
       class RefreshAccessTokenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_config, as: 'executionConfig', class: Google::Apis::ConnectorsV2::ExecutionConfig, decorator: Google::Apis::ConnectorsV2::ExecutionConfig::Representation
+      
+          property :oauth2_config, as: 'oauth2Config', class: Google::Apis::ConnectorsV2::OAuth2Config, decorator: Google::Apis::ConnectorsV2::OAuth2Config::Representation
+      
           property :refresh_token, as: 'refreshToken'
         end
       end
@@ -860,6 +941,14 @@ module Google
           property :open_world_hint, as: 'openWorldHint'
           property :read_only_hint, as: 'readOnlyHint'
           property :title, as: 'title'
+        end
+      end
+      
+      class ToolSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tool_definitions, as: 'toolDefinitions'
+          property :tool_spec_version, as: 'toolSpecVersion'
         end
       end
       
