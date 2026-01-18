@@ -1271,46 +1271,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports a user image to Artifact Registry.
-        # @param [String] apps_id
-        #   Part of `name`. Required. Name of the App Engine version resource. Format:
-        #   apps/`app`/services/`service`/versions/`version`
-        # @param [String] services_id
-        #   Part of `name`. See documentation of `appsId`.
-        # @param [String] versions_id
-        #   Part of `name`. See documentation of `appsId`.
-        # @param [Google::Apis::AppengineV1beta::ExportAppImageRequest] export_app_image_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AppengineV1beta::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AppengineV1beta::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def export_app_service_version_app_image(apps_id, services_id, versions_id, export_app_image_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}:exportAppImage', options)
-          command.request_representation = Google::Apis::AppengineV1beta::ExportAppImageRequest::Representation
-          command.request_object = export_app_image_request_object
-          command.response_representation = Google::Apis::AppengineV1beta::Operation::Representation
-          command.response_class = Google::Apis::AppengineV1beta::Operation
-          command.params['appsId'] = apps_id unless apps_id.nil?
-          command.params['servicesId'] = services_id unless services_id.nil?
-          command.params['versionsId'] = versions_id unless versions_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Gets the specified Version resource. By default, only a BASIC_VIEW will be
         # returned. Specify the FULL_VIEW parameter to get the full resource.
         # @param [String] apps_id
@@ -2411,52 +2371,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports a user image to Artifact Registry.
-        # @param [String] projects_id
-        #   Part of `name`. Required. Name of the App Engine version resource. Format:
-        #   apps/`app`/services/`service`/versions/`version`
-        # @param [String] locations_id
-        #   Part of `name`. See documentation of `projectsId`.
-        # @param [String] applications_id
-        #   Part of `name`. See documentation of `projectsId`.
-        # @param [String] services_id
-        #   Part of `name`. See documentation of `projectsId`.
-        # @param [String] versions_id
-        #   Part of `name`. See documentation of `projectsId`.
-        # @param [Google::Apis::AppengineV1beta::ExportAppImageRequest] export_app_image_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AppengineV1beta::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AppengineV1beta::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def export_project_location_application_service_version_app_image(projects_id, locations_id, applications_id, services_id, versions_id, export_app_image_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}:exportAppImage', options)
-          command.request_representation = Google::Apis::AppengineV1beta::ExportAppImageRequest::Representation
-          command.request_object = export_app_image_request_object
-          command.response_representation = Google::Apis::AppengineV1beta::Operation::Representation
-          command.response_class = Google::Apis::AppengineV1beta::Operation
-          command.params['projectsId'] = projects_id unless projects_id.nil?
-          command.params['locationsId'] = locations_id unless locations_id.nil?
-          command.params['applicationsId'] = applications_id unless applications_id.nil?
-          command.params['servicesId'] = services_id unless services_id.nil?
-          command.params['versionsId'] = versions_id unless versions_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Updates the specified Version resource. You can specify the following fields
         # depending on the App Engine environment and type of scaling that the version
         # resource uses:Standard environment instance_class (https://cloud.google.com/
@@ -2539,6 +2453,60 @@ module Google
           command.params['servicesId'] = services_id unless services_id.nil?
           command.params['versionsId'] = versions_id unless versions_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Enables debugging on a VM instance. This allows you to use the SSH command to
+        # connect to the virtual machine where the instance lives. While in "debug mode",
+        # the instance continues to serve live traffic. You should delete the instance
+        # when you are done debugging and then allow the system to take over and
+        # determine if another instance should be started.Only applicable for instances
+        # in App Engine flexible environment.
+        # @param [String] projects_id
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default/versions/v1/instances/instance-1.
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] services_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] versions_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] instances_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [Google::Apis::AppengineV1beta::DebugInstanceRequest] debug_instance_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def debug_project_location_application_service_version_instance(projects_id, locations_id, applications_id, services_id, versions_id, instances_id, debug_instance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug', options)
+          command.request_representation = Google::Apis::AppengineV1beta::DebugInstanceRequest::Representation
+          command.request_object = debug_instance_request_object
+          command.response_representation = Google::Apis::AppengineV1beta::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1beta::Operation
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['servicesId'] = services_id unless services_id.nil?
+          command.params['versionsId'] = versions_id unless versions_id.nil?
+          command.params['instancesId'] = instances_id unless instances_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

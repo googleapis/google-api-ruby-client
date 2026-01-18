@@ -190,12 +190,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ExportAppImageRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class FeatureSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -520,6 +514,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpcAccess
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpcAccessConnector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -527,6 +527,12 @@ module Google
       end
       
       class VpcEgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpcNetworkInterface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -827,14 +833,6 @@ module Google
           property :error_code, as: 'errorCode'
           property :mime_type, as: 'mimeType'
           property :static_file, as: 'staticFile'
-        end
-      end
-      
-      class ExportAppImageRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :destination_repository, as: 'destinationRepository'
-          property :service_account, as: 'serviceAccount'
         end
       end
       
@@ -1448,6 +1446,8 @@ module Google
           property :threadsafe, as: 'threadsafe'
           property :version_url, as: 'versionUrl'
           property :vm, as: 'vm'
+          property :vpc_access, as: 'vpcAccess', class: Google::Apis::AppengineV1beta::VpcAccess, decorator: Google::Apis::AppengineV1beta::VpcAccess::Representation
+      
           property :vpc_access_connector, as: 'vpcAccessConnector', class: Google::Apis::AppengineV1beta::VpcAccessConnector, decorator: Google::Apis::AppengineV1beta::VpcAccessConnector::Representation
       
           property :vpc_egress, as: 'vpcEgress', class: Google::Apis::AppengineV1beta::VpcEgress, decorator: Google::Apis::AppengineV1beta::VpcEgress::Representation
@@ -1462,6 +1462,15 @@ module Google
           property :name, as: 'name'
           property :size_gb, as: 'sizeGb'
           property :volume_type, as: 'volumeType'
+        end
+      end
+      
+      class VpcAccess
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::AppengineV1beta::VpcNetworkInterface, decorator: Google::Apis::AppengineV1beta::VpcNetworkInterface::Representation
+      
+          property :vpc_egress, as: 'vpcEgress'
         end
       end
       
@@ -1481,6 +1490,15 @@ module Google
       
           property :subnetwork_key, as: 'subnetworkKey', class: Google::Apis::AppengineV1beta::SubnetworkKey, decorator: Google::Apis::AppengineV1beta::SubnetworkKey::Representation
       
+        end
+      end
+      
+      class VpcNetworkInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+          property :subnet, as: 'subnet'
+          collection :tags, as: 'tags'
         end
       end
       
