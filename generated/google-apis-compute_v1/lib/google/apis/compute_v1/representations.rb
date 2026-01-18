@@ -2026,6 +2026,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceFlexibilityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceFlexibilityPolicyInstanceSelection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5207,6 +5219,48 @@ module Google
       end
       
       class ReservationList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationSlot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationSlotPhysicalTopology
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationSlotStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationSlotsGetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationSlotsListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Warning
@@ -9119,6 +9173,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, :numeric_string => true, as: 'count'
+          property :instance_flexibility_policy, as: 'instanceFlexibilityPolicy', class: Google::Apis::ComputeV1::InstanceFlexibilityPolicy, decorator: Google::Apis::ComputeV1::InstanceFlexibilityPolicy::Representation
+      
           property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeV1::InstanceProperties, decorator: Google::Apis::ComputeV1::InstanceProperties::Representation
       
           property :location_policy, as: 'locationPolicy', class: Google::Apis::ComputeV1::LocationPolicy, decorator: Google::Apis::ComputeV1::LocationPolicy::Representation
@@ -11690,6 +11746,24 @@ module Google
           property :local_ssd_gb, as: 'localSsdGb'
           property :memory_mb, as: 'memoryMb'
           property :min_node_cpus, as: 'minNodeCpus'
+        end
+      end
+      
+      class InstanceFlexibilityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :instance_selections, as: 'instanceSelections', class: Google::Apis::ComputeV1::InstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeV1::InstanceFlexibilityPolicyInstanceSelection::Representation
+      
+        end
+      end
+      
+      class InstanceFlexibilityPolicyInstanceSelection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disks, as: 'disks', class: Google::Apis::ComputeV1::AttachedDisk, decorator: Google::Apis::ComputeV1::AttachedDisk::Representation
+      
+          collection :machine_types, as: 'machineTypes'
+          property :rank, :numeric_string => true, as: 'rank'
         end
       end
       
@@ -17533,6 +17607,86 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeV1::ReservationList::Warning::Datum, decorator: Google::Apis::ComputeV1::ReservationList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class ReservationSlot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputeV1::ReservationSlotPhysicalTopology, decorator: Google::Apis::ComputeV1::ReservationSlotPhysicalTopology::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeV1::ShareSettings, decorator: Google::Apis::ComputeV1::ShareSettings::Representation
+      
+          property :state, as: 'state'
+          property :status, as: 'status', class: Google::Apis::ComputeV1::ReservationSlotStatus, decorator: Google::Apis::ComputeV1::ReservationSlotStatus::Representation
+      
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class ReservationSlotPhysicalTopology
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :block, as: 'block'
+          property :cluster, as: 'cluster'
+          property :host, as: 'host'
+          property :sub_block, as: 'subBlock'
+        end
+      end
+      
+      class ReservationSlotStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputeV1::ReservationSlotPhysicalTopology, decorator: Google::Apis::ComputeV1::ReservationSlotPhysicalTopology::Representation
+      
+          collection :rdma_ip_addresses, as: 'rdmaIpAddresses'
+          collection :running_instances, as: 'runningInstances'
+        end
+      end
+      
+      class ReservationSlotsGetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource, as: 'resource', class: Google::Apis::ComputeV1::ReservationSlot, decorator: Google::Apis::ComputeV1::ReservationSlot::Representation
+      
+        end
+      end
+      
+      class ReservationSlotsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::ReservationSlot, decorator: Google::Apis::ComputeV1::ReservationSlot::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::ReservationSlotsListResponse::Warning, decorator: Google::Apis::ComputeV1::ReservationSlotsListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::ReservationSlotsListResponse::Warning::Datum, decorator: Google::Apis::ComputeV1::ReservationSlotsListResponse::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
