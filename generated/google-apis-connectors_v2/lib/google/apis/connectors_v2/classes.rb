@@ -431,6 +431,16 @@ module Google
         # @return [Google::Apis::ConnectorsV2::AuthCodeData]
         attr_accessor :auth_code_data
       
+        # ExecutionConfig contains the configuration for the execution of the request.
+        # Corresponds to the JSON property `executionConfig`
+        # @return [Google::Apis::ConnectorsV2::ExecutionConfig]
+        attr_accessor :execution_config
+      
+        # OAuth2Config contains the OAuth2 config for the connection.
+        # Corresponds to the JSON property `oauth2Config`
+        # @return [Google::Apis::ConnectorsV2::OAuth2Config]
+        attr_accessor :oauth2_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -438,6 +448,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auth_code_data = args[:auth_code_data] if args.key?(:auth_code_data)
+          @execution_config = args[:execution_config] if args.key?(:execution_config)
+          @oauth2_config = args[:oauth2_config] if args.key?(:oauth2_config)
         end
       end
       
@@ -472,6 +484,11 @@ module Google
       class ExecuteActionRequest
         include Google::Apis::Core::Hashable
       
+        # Execution config for the request.
+        # Corresponds to the JSON property `executionConfig`
+        # @return [Google::Apis::ConnectorsV2::ExecutionConfig]
+        attr_accessor :execution_config
+      
         # Parameters for executing the action. The parameters can be key/value pairs or
         # nested structs.
         # Corresponds to the JSON property `parameters`
@@ -484,6 +501,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @execution_config = args[:execution_config] if args.key?(:execution_config)
           @parameters = args[:parameters] if args.key?(:parameters)
         end
       end
@@ -566,10 +584,20 @@ module Google
       class ExecuteToolRequest
         include Google::Apis::Core::Hashable
       
+        # execution config for the request.
+        # Corresponds to the JSON property `executionConfig`
+        # @return [Google::Apis::ConnectorsV2::ExecutionConfig]
+        attr_accessor :execution_config
+      
         # Input parameters for the tool.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
+      
+        # Tool definition for the tool to be executed.
+        # Corresponds to the JSON property `toolDefinition`
+        # @return [Hash<String,Object>]
+        attr_accessor :tool_definition
       
         def initialize(**args)
            update!(**args)
@@ -577,7 +605,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @execution_config = args[:execution_config] if args.key?(:execution_config)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @tool_definition = args[:tool_definition] if args.key?(:tool_definition)
         end
       end
       
@@ -603,6 +633,27 @@ module Google
         def update!(**args)
           @metadata = args[:metadata] if args.key?(:metadata)
           @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # 
+      class ExecutionConfig
+        include Google::Apis::Core::Hashable
+      
+        # headers to be used for the request. For example: headers:'`"x-integration-
+        # connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-
+        # config":"runtime-cfg"`'
+        # Corresponds to the JSON property `headers`
+        # @return [String]
+        attr_accessor :headers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @headers = args[:headers] if args.key?(:headers)
         end
       end
       
@@ -676,6 +727,31 @@ module Google
           @name = args[:name] if args.key?(:name)
           @nullable = args[:nullable] if args.key?(:nullable)
           @reference = args[:reference] if args.key?(:reference)
+        end
+      end
+      
+      # Request message for ConnectorAgentService.GetResourcePost
+      class GetResourcePostRequest
+        include Google::Apis::Core::Hashable
+      
+        # execution config for the request.
+        # Corresponds to the JSON property `executionConfig`
+        # @return [Google::Apis::ConnectorsV2::ExecutionConfig]
+        attr_accessor :execution_config
+      
+        # List of tool specifications.
+        # Corresponds to the JSON property `toolSpec`
+        # @return [Google::Apis::ConnectorsV2::ToolSpec]
+        attr_accessor :tool_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_config = args[:execution_config] if args.key?(:execution_config)
+          @tool_spec = args[:tool_spec] if args.key?(:tool_spec)
         end
       end
       
@@ -1161,6 +1237,43 @@ module Google
         end
       end
       
+      # Request message for ConnectorAgentService.ListToolsPost
+      class ListToolsPostRequest
+        include Google::Apis::Core::Hashable
+      
+        # execution config for the request.
+        # Corresponds to the JSON property `executionConfig`
+        # @return [Google::Apis::ConnectorsV2::ExecutionConfig]
+        attr_accessor :execution_config
+      
+        # Page size.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # Page token.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # List of tool specifications.
+        # Corresponds to the JSON property `toolSpec`
+        # @return [Google::Apis::ConnectorsV2::ToolSpec]
+        attr_accessor :tool_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_config = args[:execution_config] if args.key?(:execution_config)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @tool_spec = args[:tool_spec] if args.key?(:tool_spec)
+        end
+      end
+      
       # Response message for ConnectorAgentService.ListTools
       class ListToolsResponse
         include Google::Apis::Core::Hashable
@@ -1425,6 +1538,37 @@ module Google
         end
       end
       
+      # 
+      class OAuth2Config
+        include Google::Apis::Core::Hashable
+      
+        # Authorization Server URL/Token Endpoint for Authorization Code Flow
+        # Corresponds to the JSON property `authUri`
+        # @return [String]
+        attr_accessor :auth_uri
+      
+        # Client ID for the OAuth2 flow.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Client secret for the OAuth2 flow.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_uri = args[:auth_uri] if args.key?(:auth_uri)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+        end
+      end
+      
       # PerSliSloEligibility is a mapping from an SLI name to eligibility.
       class PerSliSloEligibility
         include Google::Apis::Core::Hashable
@@ -1579,6 +1723,16 @@ module Google
       class RefreshAccessTokenRequest
         include Google::Apis::Core::Hashable
       
+        # ExecutionConfig contains the configuration for the execution of the request.
+        # Corresponds to the JSON property `executionConfig`
+        # @return [Google::Apis::ConnectorsV2::ExecutionConfig]
+        attr_accessor :execution_config
+      
+        # OAuth2Config contains the OAuth2 config for the connection.
+        # Corresponds to the JSON property `oauth2Config`
+        # @return [Google::Apis::ConnectorsV2::OAuth2Config]
+        attr_accessor :oauth2_config
+      
         # Optional. Refresh Token String. If the Refresh Token is not provided, the
         # runtime will read the data from the secret manager.
         # Corresponds to the JSON property `refreshToken`
@@ -1591,6 +1745,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @execution_config = args[:execution_config] if args.key?(:execution_config)
+          @oauth2_config = args[:oauth2_config] if args.key?(:oauth2_config)
           @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
         end
       end
@@ -1960,6 +2116,31 @@ module Google
           @open_world_hint = args[:open_world_hint] if args.key?(:open_world_hint)
           @read_only_hint = args[:read_only_hint] if args.key?(:read_only_hint)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # 
+      class ToolSpec
+        include Google::Apis::Core::Hashable
+      
+        # List of tool definitions.
+        # Corresponds to the JSON property `toolDefinitions`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :tool_definitions
+      
+        # Version of the tool spec. Format: providerId/connectorId/versionId/toolSpecId
+        # Corresponds to the JSON property `toolSpecVersion`
+        # @return [String]
+        attr_accessor :tool_spec_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_definitions = args[:tool_definitions] if args.key?(:tool_definitions)
+          @tool_spec_version = args[:tool_spec_version] if args.key?(:tool_spec_version)
         end
       end
       
