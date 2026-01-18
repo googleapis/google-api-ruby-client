@@ -27,6 +27,11 @@ module Google
       class GoogleHomeEnterpriseSdmV1Device
         include Google::Apis::Core::Hashable
       
+        # Output only. The GHP device ID of the device.
+        # Corresponds to the JSON property `ghpName`
+        # @return [String]
+        attr_accessor :ghp_name
+      
         # Required. The resource name of the device. For example: "enterprises/XYZ/
         # devices/123".
         # Corresponds to the JSON property `name`
@@ -57,6 +62,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ghp_name = args[:ghp_name] if args.key?(:ghp_name)
           @name = args[:name] if args.key?(:name)
           @parent_relations = args[:parent_relations] if args.key?(:parent_relations)
           @traits = args[:traits] if args.key?(:traits)
@@ -177,6 +183,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Output only. The GHP name of the relation -- e.g., structure/room where the
+        # device is assigned to. For example: "homegraph.googleapis.com/Structure/ABC"
+        # or "homegraph.googleapis.com/Room/ABC"
+        # Corresponds to the JSON property `ghpParent`
+        # @return [String]
+        attr_accessor :ghp_parent
+      
         # Output only. The name of the relation -- e.g., structure/room where the device
         # is assigned to. For example: "enterprises/XYZ/structures/ABC" or "enterprises/
         # XYZ/structures/ABC/rooms/123"
@@ -191,6 +204,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @ghp_parent = args[:ghp_parent] if args.key?(:ghp_parent)
           @parent = args[:parent] if args.key?(:parent)
         end
       end
@@ -227,6 +241,12 @@ module Google
       class GoogleHomeEnterpriseSdmV1Structure
         include Google::Apis::Core::Hashable
       
+        # Output only. The unique identifier for the structure in Google Home Platform.
+        # Format: homegraph.googleapis.com/Structure/`structure_id`
+        # Corresponds to the JSON property `ghpName`
+        # @return [String]
+        attr_accessor :ghp_name
+      
         # Output only. The resource name of the structure. For example: "enterprises/XYZ/
         # structures/ABC".
         # Corresponds to the JSON property `name`
@@ -244,6 +264,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ghp_name = args[:ghp_name] if args.key?(:ghp_name)
           @name = args[:name] if args.key?(:name)
           @traits = args[:traits] if args.key?(:traits)
         end
