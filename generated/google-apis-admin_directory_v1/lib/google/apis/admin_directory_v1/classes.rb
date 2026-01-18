@@ -2296,6 +2296,11 @@ module Google
       class DirectoryUsersCreateGuestRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Immutable ID of the Google Workspace account.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
         # Immutable. External email of the guest user being created.
         # Corresponds to the JSON property `primaryGuestEmail`
         # @return [String]
@@ -2307,6 +2312,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
           @primary_guest_email = args[:primary_guest_email] if args.key?(:primary_guest_email)
         end
       end

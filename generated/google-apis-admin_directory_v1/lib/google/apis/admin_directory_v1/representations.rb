@@ -1377,6 +1377,7 @@ module Google
       class DirectoryUsersCreateGuestRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
           property :primary_guest_email, as: 'primaryGuestEmail'
         end
       end
