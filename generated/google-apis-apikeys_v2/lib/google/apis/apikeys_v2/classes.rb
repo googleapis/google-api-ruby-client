@@ -288,10 +288,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. A checksum computed by the server based on the current value of
-        # the Key resource. This may be sent on update and delete requests to ensure the
-        # client has an up-to-date value before proceeding. See https://google.aip.dev/
-        # 154.
+        # A checksum computed by the server based on the current value of the Key
+        # resource. This may be sent on update and delete requests to ensure the client
+        # has an up-to-date value before proceeding. See https://google.aip.dev/154.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
