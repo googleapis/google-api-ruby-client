@@ -380,6 +380,14 @@ module Google
         # @return [String]
         attr_accessor :read_token
       
+        # A serialized Object Fragment List Creation Info passed from Bigstore -> Scotty
+        # for a GCS upload. This field must never be consumed outside of Bigstore, and
+        # is not applicable to non-GCS media uploads.
+        # Corresponds to the JSON property `uploadFragmentListCreationInfo`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :upload_fragment_list_creation_info
+      
         # Metadata passed from Blobstore -> Scotty for a new GCS upload. This is a
         # signed, serialized blobstore2.BlobMetadataContainer proto which must never be
         # consumed outside of Bigstore, and is not applicable to non-GCS media uploads.
@@ -399,6 +407,7 @@ module Google
           @download_external_read_token = args[:download_external_read_token] if args.key?(:download_external_read_token)
           @download_read_handle = args[:download_read_handle] if args.key?(:download_read_handle)
           @read_token = args[:read_token] if args.key?(:read_token)
+          @upload_fragment_list_creation_info = args[:upload_fragment_list_creation_info] if args.key?(:upload_fragment_list_creation_info)
           @upload_metadata_container = args[:upload_metadata_container] if args.key?(:upload_metadata_container)
         end
       end
