@@ -265,7 +265,10 @@ module Google
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.
         # @param [String] page_token
-        #   Optional. A token identifying a page of results the server should return.
+        #   Optional. A page token, received from a previous `ListParameters` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListParameters` must match the call that provided the
+        #   page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -488,7 +491,10 @@ module Google
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.
         # @param [String] page_token
-        #   Optional. A token identifying a page of results the server should return.
+        #   Optional. A page token, received from a previous `ListParameterVersions` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListParameterVersions` must match the call that
+        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
