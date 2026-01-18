@@ -1581,6 +1581,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Adds a group of patient IDs as a patient filter for the data store. Patient
+        # filters are empty by default when a data store is created, and are stored in a
+        # separate table. The data store must first be created, and must be a healthcare
+        # data store. The filter group must be a FHIR resource name of type Group, and
+        # the filter will be constructed from the direct members of the group which are
+        # Patient resources.
+        # @param [String] data_store
+        #   Required. Full resource name of DataStore, such as `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
+        #   If the caller does not have permission to access the DataStore, regardless of
+        #   whether or not it exists, a PERMISSION_DENIED error is returned. If the
+        #   requested DataStore does not exist, a NOT_FOUND error is returned. If the
+        #   requested DataStore already has a patient filter, an ALREADY_EXISTS error will
+        #   be returned.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest] google_cloud_discoveryengine_v1alpha_add_patient_filter_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_project_location_collection_data_store_patient_filter(data_store, google_cloud_discoveryengine_v1alpha_add_patient_filter_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+dataStore}:addPatientFilter', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_add_patient_filter_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['dataStore'] = data_store unless data_store.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Completes the specified user input with keyword suggestions.
         # @param [String] data_store
         #   Required. The parent data store resource name for which the completion is
@@ -1735,6 +1779,48 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the entire patient filter for the data store. Patient filters are
+        # empty by default when a data store is created, and are stored in a separate
+        # table. The data store must first be created, and must be a healthcare data
+        # store. This method will fail if the data store does not have a patient filter.
+        # @param [String] data_store
+        #   Required. Full resource name of DataStore, such as `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
+        #   If the caller does not have permission to access the DataStore, regardless of
+        #   whether or not it exists, a PERMISSION_DENIED error is returned. If the
+        #   requested DataStore does not exist, a NOT_FOUND error is returned. If the
+        #   requested DataStore does not have a patient filter, a NOT_FOUND error will be
+        #   returned.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest] google_cloud_discoveryengine_v1alpha_delete_patient_filters_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_collection_data_store_patient_filter(data_store, google_cloud_discoveryengine_v1alpha_delete_patient_filters_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+dataStore}:deletePatientFilter', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_delete_patient_filters_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['dataStore'] = data_store unless data_store.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1924,6 +2010,97 @@ module Google
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataStore
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes a group of patient IDs from the patient filter for the data store.
+        # Patient filters are empty by default when a data store is created, and are
+        # stored in a separate table. The data store must first be created, and must be
+        # a healthcare data store. This method will fail if the data store does not have
+        # a patient filter. The filter group must be a FHIR resource name of type Group,
+        # and the list of patient IDs to remove will be constructed from the direct
+        # members of the group which are Patient resources.
+        # @param [String] data_store
+        #   Required. Full resource name of DataStore, such as `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
+        #   If the caller does not have permission to access the DataStore, regardless of
+        #   whether or not it exists, a PERMISSION_DENIED error is returned. If the
+        #   requested DataStore does not exist, a NOT_FOUND error is returned. If the
+        #   requested DataStore does not have a patient filter, a NOT_FOUND error will be
+        #   returned
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest] google_cloud_discoveryengine_v1alpha_remove_patient_filter_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_project_location_collection_data_store_patient_filter(data_store, google_cloud_discoveryengine_v1alpha_remove_patient_filter_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+dataStore}:removePatientFilter', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_remove_patient_filter_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['dataStore'] = data_store unless data_store.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Replaces the patient filter for the data store. This method is essentially a
+        # combination of DeletePatientFilters and AddPatientFilter. Patient filters are
+        # empty by default when a data store is created, and are stored in a separate
+        # table. The data store must first be created, and must be a healthcare data
+        # store. This method will fail if the data store does not have a patient filter.
+        # The filter group must be a FHIR resource name of type Group, and the new
+        # filter will be constructed from the direct members of the group which are
+        # Patient resources.
+        # @param [String] data_store
+        #   Required. Full resource name of DataStore, such as `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
+        #   If the caller does not have permission to access the DataStore, regardless of
+        #   whether or not it exists, a PERMISSION_DENIED error is returned. If the
+        #   requested DataStore does not exist, a NOT_FOUND error is returned. If the
+        #   requested DataStore already has a patient filter, an ALREADY_EXISTS error will
+        #   be returned.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest] google_cloud_discoveryengine_v1alpha_replace_patient_filter_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def replace_project_location_collection_data_store_patient_filter(data_store, google_cloud_discoveryengine_v1alpha_replace_patient_filter_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+dataStore}:replacePatientFilter', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_replace_patient_filter_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['dataStore'] = data_store unless data_store.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -8125,6 +8302,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Adds a group of patient IDs as a patient filter for the data store. Patient
+        # filters are empty by default when a data store is created, and are stored in a
+        # separate table. The data store must first be created, and must be a healthcare
+        # data store. The filter group must be a FHIR resource name of type Group, and
+        # the filter will be constructed from the direct members of the group which are
+        # Patient resources.
+        # @param [String] data_store
+        #   Required. Full resource name of DataStore, such as `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
+        #   If the caller does not have permission to access the DataStore, regardless of
+        #   whether or not it exists, a PERMISSION_DENIED error is returned. If the
+        #   requested DataStore does not exist, a NOT_FOUND error is returned. If the
+        #   requested DataStore already has a patient filter, an ALREADY_EXISTS error will
+        #   be returned.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest] google_cloud_discoveryengine_v1alpha_add_patient_filter_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_project_location_data_store_patient_filter(data_store, google_cloud_discoveryengine_v1alpha_add_patient_filter_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+dataStore}:addPatientFilter', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_add_patient_filter_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['dataStore'] = data_store unless data_store.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Completes the specified user input with keyword suggestions.
         # @param [String] data_store
         #   Required. The parent data store resource name for which the completion is
@@ -8279,6 +8500,48 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the entire patient filter for the data store. Patient filters are
+        # empty by default when a data store is created, and are stored in a separate
+        # table. The data store must first be created, and must be a healthcare data
+        # store. This method will fail if the data store does not have a patient filter.
+        # @param [String] data_store
+        #   Required. Full resource name of DataStore, such as `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
+        #   If the caller does not have permission to access the DataStore, regardless of
+        #   whether or not it exists, a PERMISSION_DENIED error is returned. If the
+        #   requested DataStore does not exist, a NOT_FOUND error is returned. If the
+        #   requested DataStore does not have a patient filter, a NOT_FOUND error will be
+        #   returned.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest] google_cloud_discoveryengine_v1alpha_delete_patient_filters_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_data_store_patient_filter(data_store, google_cloud_discoveryengine_v1alpha_delete_patient_filters_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+dataStore}:deletePatientFilter', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDeletePatientFiltersRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_delete_patient_filters_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['dataStore'] = data_store unless data_store.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -8468,6 +8731,97 @@ module Google
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataStore
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes a group of patient IDs from the patient filter for the data store.
+        # Patient filters are empty by default when a data store is created, and are
+        # stored in a separate table. The data store must first be created, and must be
+        # a healthcare data store. This method will fail if the data store does not have
+        # a patient filter. The filter group must be a FHIR resource name of type Group,
+        # and the list of patient IDs to remove will be constructed from the direct
+        # members of the group which are Patient resources.
+        # @param [String] data_store
+        #   Required. Full resource name of DataStore, such as `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
+        #   If the caller does not have permission to access the DataStore, regardless of
+        #   whether or not it exists, a PERMISSION_DENIED error is returned. If the
+        #   requested DataStore does not exist, a NOT_FOUND error is returned. If the
+        #   requested DataStore does not have a patient filter, a NOT_FOUND error will be
+        #   returned
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest] google_cloud_discoveryengine_v1alpha_remove_patient_filter_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_project_location_data_store_patient_filter(data_store, google_cloud_discoveryengine_v1alpha_remove_patient_filter_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+dataStore}:removePatientFilter', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_remove_patient_filter_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['dataStore'] = data_store unless data_store.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Replaces the patient filter for the data store. This method is essentially a
+        # combination of DeletePatientFilters and AddPatientFilter. Patient filters are
+        # empty by default when a data store is created, and are stored in a separate
+        # table. The data store must first be created, and must be a healthcare data
+        # store. This method will fail if the data store does not have a patient filter.
+        # The filter group must be a FHIR resource name of type Group, and the new
+        # filter will be constructed from the direct members of the group which are
+        # Patient resources.
+        # @param [String] data_store
+        #   Required. Full resource name of DataStore, such as `projects/`project`/
+        #   locations/`location`/collections/`collection_id`/dataStores/`data_store_id``.
+        #   If the caller does not have permission to access the DataStore, regardless of
+        #   whether or not it exists, a PERMISSION_DENIED error is returned. If the
+        #   requested DataStore does not exist, a NOT_FOUND error is returned. If the
+        #   requested DataStore already has a patient filter, an ALREADY_EXISTS error will
+        #   be returned.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest] google_cloud_discoveryengine_v1alpha_replace_patient_filter_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def replace_project_location_data_store_patient_filter(data_store, google_cloud_discoveryengine_v1alpha_replace_patient_filter_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+dataStore}:replacePatientFilter', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1alpha_replace_patient_filter_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleLongrunningOperation
+          command.params['dataStore'] = data_store unless data_store.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
