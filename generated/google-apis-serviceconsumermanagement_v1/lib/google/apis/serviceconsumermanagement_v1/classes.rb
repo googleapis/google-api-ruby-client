@@ -984,9 +984,9 @@ module Google
       class Control
         include Google::Apis::Core::Hashable
       
-        # The service controller environment to use. If empty, no control plane feature (
-        # like quota and billing) will be enabled. The recommended value for most
-        # services is servicecontrol.googleapis.com
+        # The service controller environment to use. If empty, no control plane features
+        # (like quota and billing) will be enabled. The recommended value for most
+        # services is servicecontrol.googleapis.com.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
@@ -2085,8 +2085,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -4140,6 +4141,14 @@ module Google
       class TenantResource
         include Google::Apis::Core::Hashable
       
+        # Output only. The newly created regional resource name of the tenant project
+        # that has been migrated from a global service. This field is only set for
+        # migrated tenant projects. Format: `services//`collection_id`/`RESOURCE_ID`/
+        # locations/`LOCATION`/tenantProjects/`TENANT_ID``.
+        # Corresponds to the JSON property `migratedTenantProject`
+        # @return [String]
+        attr_accessor :migrated_tenant_project
+      
         # Output only. @OutputOnly Identifier of the tenant resource. For cloud projects,
         # it is in the form 'projects/`number`'. For example 'projects/123456'.
         # Corresponds to the JSON property `resource`
@@ -4162,6 +4171,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @migrated_tenant_project = args[:migrated_tenant_project] if args.key?(:migrated_tenant_project)
           @resource = args[:resource] if args.key?(:resource)
           @status = args[:status] if args.key?(:status)
           @tag = args[:tag] if args.key?(:tag)
