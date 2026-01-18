@@ -1143,7 +1143,7 @@ module Google
         end
       end
       
-      # LINT.IfChange(LoyaltyProgram) A message that represents loyalty program.
+      # A message that represents loyalty program.
       class LoyaltyProgram
         include Google::Apis::Core::Hashable
       
