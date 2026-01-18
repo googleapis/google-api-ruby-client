@@ -160,6 +160,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1AggregationOutput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1AggregationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1Annotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1018,6 +1030,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1CustomCodeExecutionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1CustomCodeExecutionSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1397,6 +1415,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1EvaluateDatasetRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1EvaluateDatasetResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4019,6 +4043,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1OutputFieldSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1OutputInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8168,6 +8198,35 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1AggregationOutput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aggregation_results, as: 'aggregationResults', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AggregationResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AggregationResult::Representation
+      
+          property :dataset, as: 'dataset', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationDataset, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationDataset::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1AggregationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_metric, as: 'aggregationMetric'
+          property :bleu_metric_value, as: 'bleuMetricValue', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BleuMetricValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BleuMetricValue::Representation
+      
+          property :custom_code_execution_result, as: 'customCodeExecutionResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CustomCodeExecutionResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CustomCodeExecutionResult::Representation
+      
+          property :exact_match_metric_value, as: 'exactMatchMetricValue', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ExactMatchMetricValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ExactMatchMetricValue::Representation
+      
+          property :pairwise_metric_result, as: 'pairwiseMetricResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseMetricResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PairwiseMetricResult::Representation
+      
+          property :pointwise_metric_result, as: 'pointwiseMetricResult', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PointwiseMetricResult, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PointwiseMetricResult::Representation
+      
+          property :rouge_metric_value, as: 'rougeMetricValue', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RougeMetricValue, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RougeMetricValue::Representation
+      
+        end
+      end
+      
       class GoogleCloudAiplatformV1Annotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9510,6 +9569,13 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1CustomCodeExecutionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+        end
+      end
+      
       class GoogleCloudAiplatformV1CustomCodeExecutionSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10256,6 +10322,16 @@ module Google
           collection :metrics, as: 'metrics', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Metric, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Metric::Representation
       
           property :output_config, as: 'outputConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OutputConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OutputConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1EvaluateDatasetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_output, as: 'aggregationOutput', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AggregationOutput, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AggregationOutput::Representation
+      
+          property :output_info, as: 'outputInfo', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OutputInfo, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OutputInfo::Representation
       
         end
       end
@@ -15014,6 +15090,13 @@ module Google
           property :field_name, as: 'fieldName'
           property :field_type, as: 'fieldType'
           property :guidance, as: 'guidance'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1OutputInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_output_directory, as: 'gcsOutputDirectory'
         end
       end
       
