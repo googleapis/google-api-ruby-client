@@ -682,6 +682,48 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpannerColumn
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpannerDatabase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpannerObjectIdentifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpannerProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpannerSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpannerSourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpannerTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SpecificStartPosition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -881,6 +923,8 @@ module Google
       
           property :salesforce_excluded_objects, as: 'salesforceExcludedObjects', class: Google::Apis::DatastreamV1::SalesforceOrg, decorator: Google::Apis::DatastreamV1::SalesforceOrg::Representation
       
+          property :spanner_excluded_objects, as: 'spannerExcludedObjects', class: Google::Apis::DatastreamV1::SpannerDatabase, decorator: Google::Apis::DatastreamV1::SpannerDatabase::Representation
+      
           property :sql_server_excluded_objects, as: 'sqlServerExcludedObjects', class: Google::Apis::DatastreamV1::SqlServerRdbms, decorator: Google::Apis::DatastreamV1::SqlServerRdbms::Representation
       
         end
@@ -1025,6 +1069,8 @@ module Google
       
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :spanner_profile, as: 'spannerProfile', class: Google::Apis::DatastreamV1::SpannerProfile, decorator: Google::Apis::DatastreamV1::SpannerProfile::Representation
+      
           property :sql_server_profile, as: 'sqlServerProfile', class: Google::Apis::DatastreamV1::SqlServerProfile, decorator: Google::Apis::DatastreamV1::SqlServerProfile::Representation
       
           property :static_service_ip_connectivity, as: 'staticServiceIpConnectivity', class: Google::Apis::DatastreamV1::StaticServiceIpConnectivity, decorator: Google::Apis::DatastreamV1::StaticServiceIpConnectivity::Representation
@@ -1081,6 +1127,8 @@ module Google
       
           property :salesforce_org, as: 'salesforceOrg', class: Google::Apis::DatastreamV1::SalesforceOrg, decorator: Google::Apis::DatastreamV1::SalesforceOrg::Representation
       
+          property :spanner_database, as: 'spannerDatabase', class: Google::Apis::DatastreamV1::SpannerDatabase, decorator: Google::Apis::DatastreamV1::SpannerDatabase::Representation
+      
           property :sql_server_rdbms, as: 'sqlServerRdbms', class: Google::Apis::DatastreamV1::SqlServerRdbms, decorator: Google::Apis::DatastreamV1::SqlServerRdbms::Representation
       
         end
@@ -1098,6 +1146,8 @@ module Google
           property :postgresql_rdbms, as: 'postgresqlRdbms', class: Google::Apis::DatastreamV1::PostgresqlRdbms, decorator: Google::Apis::DatastreamV1::PostgresqlRdbms::Representation
       
           property :salesforce_org, as: 'salesforceOrg', class: Google::Apis::DatastreamV1::SalesforceOrg, decorator: Google::Apis::DatastreamV1::SalesforceOrg::Representation
+      
+          property :spanner_database, as: 'spannerDatabase', class: Google::Apis::DatastreamV1::SpannerDatabase, decorator: Google::Apis::DatastreamV1::SpannerDatabase::Representation
       
           property :sql_server_rdbms, as: 'sqlServerRdbms', class: Google::Apis::DatastreamV1::SqlServerRdbms, decorator: Google::Apis::DatastreamV1::SqlServerRdbms::Representation
       
@@ -1955,6 +2005,8 @@ module Google
           property :salesforce_source_config, as: 'salesforceSourceConfig', class: Google::Apis::DatastreamV1::SalesforceSourceConfig, decorator: Google::Apis::DatastreamV1::SalesforceSourceConfig::Representation
       
           property :source_connection_profile, as: 'sourceConnectionProfile'
+          property :spanner_source_config, as: 'spannerSourceConfig', class: Google::Apis::DatastreamV1::SpannerSourceConfig, decorator: Google::Apis::DatastreamV1::SpannerSourceConfig::Representation
+      
           property :sql_server_source_config, as: 'sqlServerSourceConfig', class: Google::Apis::DatastreamV1::SqlServerSourceConfig, decorator: Google::Apis::DatastreamV1::SqlServerSourceConfig::Representation
       
         end
@@ -1982,8 +2034,78 @@ module Google
       
           property :salesforce_identifier, as: 'salesforceIdentifier', class: Google::Apis::DatastreamV1::SalesforceObjectIdentifier, decorator: Google::Apis::DatastreamV1::SalesforceObjectIdentifier::Representation
       
+          property :spanner_identifier, as: 'spannerIdentifier', class: Google::Apis::DatastreamV1::SpannerObjectIdentifier, decorator: Google::Apis::DatastreamV1::SpannerObjectIdentifier::Representation
+      
           property :sql_server_identifier, as: 'sqlServerIdentifier', class: Google::Apis::DatastreamV1::SqlServerObjectIdentifier, decorator: Google::Apis::DatastreamV1::SqlServerObjectIdentifier::Representation
       
+        end
+      end
+      
+      class SpannerColumn
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :data_type, as: 'dataType'
+          property :is_primary_key, as: 'isPrimaryKey'
+          property :ordinal_position, :numeric_string => true, as: 'ordinalPosition'
+        end
+      end
+      
+      class SpannerDatabase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :schemas, as: 'schemas', class: Google::Apis::DatastreamV1::SpannerSchema, decorator: Google::Apis::DatastreamV1::SpannerSchema::Representation
+      
+        end
+      end
+      
+      class SpannerObjectIdentifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schema, as: 'schema'
+          property :table, as: 'table'
+        end
+      end
+      
+      class SpannerProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :host, as: 'host'
+        end
+      end
+      
+      class SpannerSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schema, as: 'schema'
+          collection :tables, as: 'tables', class: Google::Apis::DatastreamV1::SpannerTable, decorator: Google::Apis::DatastreamV1::SpannerTable::Representation
+      
+        end
+      end
+      
+      class SpannerSourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backfill_data_boost_enabled, as: 'backfillDataBoostEnabled'
+          property :change_stream_name, as: 'changeStreamName'
+          property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::SpannerDatabase, decorator: Google::Apis::DatastreamV1::SpannerDatabase::Representation
+      
+          property :fgac_role, as: 'fgacRole'
+          property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::SpannerDatabase, decorator: Google::Apis::DatastreamV1::SpannerDatabase::Representation
+      
+          property :max_concurrent_backfill_tasks, as: 'maxConcurrentBackfillTasks'
+          property :max_concurrent_cdc_tasks, as: 'maxConcurrentCdcTasks'
+          property :spanner_rpc_priority, as: 'spannerRpcPriority'
+        end
+      end
+      
+      class SpannerTable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns', class: Google::Apis::DatastreamV1::SpannerColumn, decorator: Google::Apis::DatastreamV1::SpannerColumn::Representation
+      
+          property :table, as: 'table'
         end
       end
       
