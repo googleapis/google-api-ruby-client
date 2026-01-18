@@ -1105,36 +1105,6 @@ module Google
         end
       end
       
-      # Request message for Versions.ExportAppImage.
-      class ExportAppImageRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The full resource name of the AR repository to export to. Format:
-        # projects/`project`/locations/`location`/repositories/`repository` If not
-        # specified, defaults to projects/`project`/locations/`location`/repositories/
-        # gae-standard in the same region as the app. The default repository will be
-        # created if it does not exist.
-        # Corresponds to the JSON property `destinationRepository`
-        # @return [String]
-        attr_accessor :destination_repository
-      
-        # Optional. Optional: A service account to use for authenticating to Artifact
-        # Registry.
-        # Corresponds to the JSON property `serviceAccount`
-        # @return [String]
-        attr_accessor :service_account
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @destination_repository = args[:destination_repository] if args.key?(:destination_repository)
-          @service_account = args[:service_account] if args.key?(:service_account)
-        end
-      end
-      
       # The feature specific settings to be used in the application. These define
       # behaviors that are user configurable.
       class FeatureSettings
@@ -3592,12 +3562,17 @@ module Google
         attr_accessor :vm
         alias_method :vm?, :vm
       
+        # VPC Access settings
+        # Corresponds to the JSON property `vpcAccess`
+        # @return [Google::Apis::AppengineV1beta::VpcAccess]
+        attr_accessor :vpc_access
+      
         # VPC access connector specification.
         # Corresponds to the JSON property `vpcAccessConnector`
         # @return [Google::Apis::AppengineV1beta::VpcAccessConnector]
         attr_accessor :vpc_access_connector
       
-        # Vpc Egress configuration.
+        # Deprecated: Use VpcAccess instead. Vpc Egress configuration.
         # Corresponds to the JSON property `vpcEgress`
         # @return [Google::Apis::AppengineV1beta::VpcEgress]
         attr_accessor :vpc_egress
@@ -3655,6 +3630,7 @@ module Google
           @threadsafe = args[:threadsafe] if args.key?(:threadsafe)
           @version_url = args[:version_url] if args.key?(:version_url)
           @vm = args[:vm] if args.key?(:vm)
+          @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
           @vpc_access_connector = args[:vpc_access_connector] if args.key?(:vpc_access_connector)
           @vpc_egress = args[:vpc_egress] if args.key?(:vpc_egress)
           @zones = args[:zones] if args.key?(:zones)
@@ -3693,6 +3669,33 @@ module Google
         end
       end
       
+      # VPC Access settings
+      class VpcAccess
+        include Google::Apis::Core::Hashable
+      
+        # The Direct VPC configuration. Currently only single network interface is
+        # supported.
+        # Corresponds to the JSON property `networkInterfaces`
+        # @return [Array<Google::Apis::AppengineV1beta::VpcNetworkInterface>]
+        attr_accessor :network_interfaces
+      
+        # The traffic egress setting for the VPC network interface, controlling what
+        # traffic is diverted through it.
+        # Corresponds to the JSON property `vpcEgress`
+        # @return [String]
+        attr_accessor :vpc_egress
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @vpc_egress = args[:vpc_egress] if args.key?(:vpc_egress)
+        end
+      end
+      
       # VPC access connector specification.
       class VpcAccessConnector
         include Google::Apis::Core::Hashable
@@ -3720,7 +3723,7 @@ module Google
         end
       end
       
-      # Vpc Egress configuration.
+      # Deprecated: Use VpcAccess instead. Vpc Egress configuration.
       class VpcEgress
         include Google::Apis::Core::Hashable
       
@@ -3749,6 +3752,48 @@ module Google
           @egress_setting = args[:egress_setting] if args.key?(:egress_setting)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
           @subnetwork_key = args[:subnetwork_key] if args.key?(:subnetwork_key)
+        end
+      end
+      
+      # Network interface key message.
+      class VpcNetworkInterface
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The VPC network that the App Engine resource will be able to send
+        # traffic to. At least one of network or subnetwork must be specified. If both
+        # network and subnetwork are specified, the given VPC subnetwork must belong to
+        # the given VPC network. If network is not specified, it will be looked up from
+        # the subnetwork. Could be either a short name or a full path. e.g. `VPC_NETWORK`
+        # or projects/`HOST_PROJECT_ID`/global/networks/`VPC_NETWORK`
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Optional. The VPC subnetwork that the App Engine resource will get IPs from.
+        # At least one of network or subnetwork must be specified. If both network and
+        # subnetwork are specified, the given VPC subnetwork must belong to the given
+        # VPC network. If subnetwork is not specified, the subnetwork with the same name
+        # with the network will be used. Could be either a short name or a full path. e.
+        # g. `SUBNET_NAME` or projects/`HOST_PROJECT_ID`/regions/`REGION`/subnetworks/`
+        # SUBNET_NAME`
+        # Corresponds to the JSON property `subnet`
+        # @return [String]
+        attr_accessor :subnet
+      
+        # Optional. The network tags that will be applied to this App Engine resource.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network = args[:network] if args.key?(:network)
+          @subnet = args[:subnet] if args.key?(:subnet)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
