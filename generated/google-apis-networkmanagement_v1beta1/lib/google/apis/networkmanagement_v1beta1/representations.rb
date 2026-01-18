@@ -178,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GkePodInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleManagedServiceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleServiceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +209,12 @@ module Google
       end
       
       class InterconnectAttachmentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IpMasqueradingSkippedInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -740,6 +758,25 @@ module Google
         end
       end
       
+      class GkePodInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :network_uri, as: 'networkUri'
+          property :pod_uri, as: 'podUri'
+        end
+      end
+      
+      class GoogleManagedServiceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :network_uri, as: 'networkUri'
+          property :service_type, as: 'serviceType'
+          property :service_uri, as: 'serviceUri'
+        end
+      end
+      
       class GoogleServiceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -784,6 +821,14 @@ module Google
           property :region, as: 'region'
           property :type, as: 'type'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class IpMasqueradingSkippedInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :non_masquerade_range, as: 'nonMasqueradeRange'
+          property :reason, as: 'reason'
         end
       end
       
@@ -1168,6 +1213,10 @@ module Google
       
           property :gke_master, as: 'gkeMaster', class: Google::Apis::NetworkmanagementV1beta1::GkeMasterInfo, decorator: Google::Apis::NetworkmanagementV1beta1::GkeMasterInfo::Representation
       
+          property :gke_pod, as: 'gkePod', class: Google::Apis::NetworkmanagementV1beta1::GkePodInfo, decorator: Google::Apis::NetworkmanagementV1beta1::GkePodInfo::Representation
+      
+          property :google_managed_service, as: 'googleManagedService', class: Google::Apis::NetworkmanagementV1beta1::GoogleManagedServiceInfo, decorator: Google::Apis::NetworkmanagementV1beta1::GoogleManagedServiceInfo::Representation
+      
           property :google_service, as: 'googleService', class: Google::Apis::NetworkmanagementV1beta1::GoogleServiceInfo, decorator: Google::Apis::NetworkmanagementV1beta1::GoogleServiceInfo::Representation
       
           property :hybrid_subnet, as: 'hybridSubnet', class: Google::Apis::NetworkmanagementV1beta1::HybridSubnetInfo, decorator: Google::Apis::NetworkmanagementV1beta1::HybridSubnetInfo::Representation
@@ -1175,6 +1224,8 @@ module Google
           property :instance, as: 'instance', class: Google::Apis::NetworkmanagementV1beta1::InstanceInfo, decorator: Google::Apis::NetworkmanagementV1beta1::InstanceInfo::Representation
       
           property :interconnect_attachment, as: 'interconnectAttachment', class: Google::Apis::NetworkmanagementV1beta1::InterconnectAttachmentInfo, decorator: Google::Apis::NetworkmanagementV1beta1::InterconnectAttachmentInfo::Representation
+      
+          property :ip_masquerading_skipped, as: 'ipMasqueradingSkipped', class: Google::Apis::NetworkmanagementV1beta1::IpMasqueradingSkippedInfo, decorator: Google::Apis::NetworkmanagementV1beta1::IpMasqueradingSkippedInfo::Representation
       
           property :load_balancer, as: 'loadBalancer', class: Google::Apis::NetworkmanagementV1beta1::LoadBalancerInfo, decorator: Google::Apis::NetworkmanagementV1beta1::LoadBalancerInfo::Representation
       

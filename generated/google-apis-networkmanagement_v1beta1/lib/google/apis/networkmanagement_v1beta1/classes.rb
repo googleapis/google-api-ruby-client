@@ -1402,6 +1402,81 @@ module Google
         end
       end
       
+      # For display only. Metadata associated with a Google Kubernetes Engine (GKE)
+      # Pod.
+      class GkePodInfo
+        include Google::Apis::Core::Hashable
+      
+        # IP address of a GKE Pod. If the Pod is dual-stack, this is the IP address
+        # relevant to the trace.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # URI of the network containing the GKE Pod.
+        # Corresponds to the JSON property `networkUri`
+        # @return [String]
+        attr_accessor :network_uri
+      
+        # URI of a GKE Pod. For Pods in regional Clusters, the URI format is: `projects/`
+        # project`/locations/`location`/clusters/`cluster`/k8s/namespaces/`namespace`/
+        # pods/`pod`` For Pods in zonal Clusters, the URI format is: `projects/`project`/
+        # zones/`zone`/clusters/`cluster`/k8s/namespaces/`namespace`/pods/`pod``
+        # Corresponds to the JSON property `podUri`
+        # @return [String]
+        attr_accessor :pod_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @pod_uri = args[:pod_uri] if args.key?(:pod_uri)
+        end
+      end
+      
+      # For display only. Metadata associated with ARRIVE_AT_GOOGLE_MANAGED_SERVICE
+      # state.
+      class GoogleManagedServiceInfo
+        include Google::Apis::Core::Hashable
+      
+        # IP address of the Google-managed service endpoint.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # URI of the Google-managed service endpoint network, it is empty if the IP
+        # address is a public IP address.
+        # Corresponds to the JSON property `networkUri`
+        # @return [String]
+        attr_accessor :network_uri
+      
+        # Type of a Google-managed service.
+        # Corresponds to the JSON property `serviceType`
+        # @return [String]
+        attr_accessor :service_type
+      
+        # URI of the Google-managed service.
+        # Corresponds to the JSON property `serviceUri`
+        # @return [String]
+        attr_accessor :service_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @service_type = args[:service_type] if args.key?(:service_type)
+          @service_uri = args[:service_uri] if args.key?(:service_uri)
+        end
+      end
+      
       # For display only. Details of a Google Service sending packets to a VPC network.
       # Although the source IP might be a publicly routable address, some Google
       # Services use special routes within Google production infrastructure to reach
@@ -1595,6 +1670,34 @@ module Google
           @region = args[:region] if args.key?(:region)
           @type = args[:type] if args.key?(:type)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # For display only. Contains information about why IP masquerading was skipped
+      # for the packet.
+      class IpMasqueradingSkippedInfo
+        include Google::Apis::Core::Hashable
+      
+        # The matched non-masquerade IP range. Only set if reason is
+        # DESTINATION_IP_IN_CONFIGURED_NON_MASQUERADE_RANGE or
+        # DESTINATION_IP_IN_DEFAULT_NON_MASQUERADE_RANGE.
+        # Corresponds to the JSON property `nonMasqueradeRange`
+        # @return [String]
+        attr_accessor :non_masquerade_range
+      
+        # Reason why IP masquerading was not applied.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @non_masquerade_range = args[:non_masquerade_range] if args.key?(:non_masquerade_range)
+          @reason = args[:reason] if args.key?(:reason)
         end
       end
       
@@ -3163,6 +3266,18 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::GkeMasterInfo]
         attr_accessor :gke_master
       
+        # For display only. Metadata associated with a Google Kubernetes Engine (GKE)
+        # Pod.
+        # Corresponds to the JSON property `gkePod`
+        # @return [Google::Apis::NetworkmanagementV1beta1::GkePodInfo]
+        attr_accessor :gke_pod
+      
+        # For display only. Metadata associated with ARRIVE_AT_GOOGLE_MANAGED_SERVICE
+        # state.
+        # Corresponds to the JSON property `googleManagedService`
+        # @return [Google::Apis::NetworkmanagementV1beta1::GoogleManagedServiceInfo]
+        attr_accessor :google_managed_service
+      
         # For display only. Details of a Google Service sending packets to a VPC network.
         # Although the source IP might be a publicly routable address, some Google
         # Services use special routes within Google production infrastructure to reach
@@ -3186,6 +3301,12 @@ module Google
         # Corresponds to the JSON property `interconnectAttachment`
         # @return [Google::Apis::NetworkmanagementV1beta1::InterconnectAttachmentInfo]
         attr_accessor :interconnect_attachment
+      
+        # For display only. Contains information about why IP masquerading was skipped
+        # for the packet.
+        # Corresponds to the JSON property `ipMasqueradingSkipped`
+        # @return [Google::Apis::NetworkmanagementV1beta1::IpMasqueradingSkippedInfo]
+        attr_accessor :ip_masquerading_skipped
       
         # For display only. Metadata associated with a load balancer.
         # Corresponds to the JSON property `loadBalancer`
@@ -3289,10 +3410,13 @@ module Google
           @forward = args[:forward] if args.key?(:forward)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @gke_master = args[:gke_master] if args.key?(:gke_master)
+          @gke_pod = args[:gke_pod] if args.key?(:gke_pod)
+          @google_managed_service = args[:google_managed_service] if args.key?(:google_managed_service)
           @google_service = args[:google_service] if args.key?(:google_service)
           @hybrid_subnet = args[:hybrid_subnet] if args.key?(:hybrid_subnet)
           @instance = args[:instance] if args.key?(:instance)
           @interconnect_attachment = args[:interconnect_attachment] if args.key?(:interconnect_attachment)
+          @ip_masquerading_skipped = args[:ip_masquerading_skipped] if args.key?(:ip_masquerading_skipped)
           @load_balancer = args[:load_balancer] if args.key?(:load_balancer)
           @load_balancer_backend_info = args[:load_balancer_backend_info] if args.key?(:load_balancer_backend_info)
           @nat = args[:nat] if args.key?(:nat)
