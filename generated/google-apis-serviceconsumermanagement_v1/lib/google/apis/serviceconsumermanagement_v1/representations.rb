@@ -1636,6 +1636,7 @@ module Google
       class TenantResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :migrated_tenant_project, as: 'migratedTenantProject'
           property :resource, as: 'resource'
           property :status, as: 'status'
           property :tag, as: 'tag'
