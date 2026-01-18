@@ -239,9 +239,8 @@ module Google
         # @param [Google::Apis::PaymentsresellersubscriptionV1::Subscription] subscription_object
         # @param [String] subscription_id
         #   Required. Identifies the subscription resource on the Partner side. The value
-        #   is restricted to 63 ASCII characters at the maximum. If a subscription was
-        #   previously created with the same subscription_id, we will directly return that
-        #   one.
+        #   is restricted to 63 ASCII characters at the maximum. If a subscription with
+        #   the same ID already exists, the creation fails with an `ALREADY_EXISTS` error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -393,9 +392,8 @@ module Google
         #   The unit used for the duration
         # @param [String] subscription_id
         #   Required. Identifies the subscription resource on the Partner side. The value
-        #   is restricted to 63 ASCII characters at the maximum. If a subscription was
-        #   previously created with the same subscription_id, we will directly return that
-        #   one.
+        #   is restricted to 63 ASCII characters at the maximum. If a subscription with
+        #   the same ID already exists, the creation fails with an `ALREADY_EXISTS` error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
