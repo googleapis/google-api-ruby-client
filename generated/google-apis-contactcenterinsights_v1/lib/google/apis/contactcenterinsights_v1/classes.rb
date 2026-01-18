@@ -6199,6 +6199,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure]
         attr_accessor :conversation_measure
       
+        # The measure related to dialogflow interactions.
+        # Corresponds to the JSON property `dialogflowInteractionMeasure`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure]
+        attr_accessor :dialogflow_interaction_measure
+      
         # Represents a time interval, encoded as a Timestamp start (inclusive) and a
         # Timestamp end (exclusive). The start must be less than or equal to the end.
         # When the start equals the end, the interval is empty (matches no time). When
@@ -6214,6 +6219,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @conversation_measure = args[:conversation_measure] if args.key?(:conversation_measure)
+          @dialogflow_interaction_measure = args[:dialogflow_interaction_measure] if args.key?(:dialogflow_interaction_measure)
           @interval = args[:interval] if args.key?(:interval)
         end
       end
@@ -6221,6 +6227,70 @@ module Google
       # The measure related to conversations.
       class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure
         include Google::Apis::Core::Hashable
+      
+        # The number of conversations that were assigned to an AA human supervisor.
+        # Corresponds to the JSON property `aaSupervisorAssignedConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :aa_supervisor_assigned_conversations_count
+      
+        # The number of conversations that were dropped, i.e. escalated but not assigned
+        # to an AA human supervisor.
+        # Corresponds to the JSON property `aaSupervisorDroppedConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :aa_supervisor_dropped_conversations_count
+      
+        # The number of conversations that were escalated to an AA human supervisor for
+        # intervention.
+        # Corresponds to the JSON property `aaSupervisorEscalatedConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :aa_supervisor_escalated_conversations_count
+      
+        # The number of conversations scanned by the AA human supervisor.
+        # Corresponds to the JSON property `aaSupervisorMonitoredConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :aa_supervisor_monitored_conversations_count
+      
+        # The number of conversations transferred to a human agent.
+        # Corresponds to the JSON property `aaSupervisorTransferredToHumanAgentConvCount`
+        # @return [Fixnum]
+        attr_accessor :aa_supervisor_transferred_to_human_agent_conv_count
+      
+        # Count of agent messages that triggered an Ai Coach Suggestion.
+        # Corresponds to the JSON property `aiCoachSuggestionAgentMessageTriggerCount`
+        # @return [Fixnum]
+        attr_accessor :ai_coach_suggestion_agent_message_trigger_count
+      
+        # Count of Ai Coach Suggestion that has been used by agents.
+        # Corresponds to the JSON property `aiCoachSuggestionAgentUsageCount`
+        # @return [Fixnum]
+        attr_accessor :ai_coach_suggestion_agent_usage_count
+      
+        # Proportion of Ai Coach Suggestion that has been used by agents.
+        # Corresponds to the JSON property `aiCoachSuggestionAgentUsageRatio`
+        # @return [Float]
+        attr_accessor :ai_coach_suggestion_agent_usage_ratio
+      
+        # Count of customer messages that triggered an Ai Coach Suggestion.
+        # Corresponds to the JSON property `aiCoachSuggestionCustomerMessageTriggerCount`
+        # @return [Fixnum]
+        attr_accessor :ai_coach_suggestion_customer_message_trigger_count
+      
+        # Proportion of customer messages that triggered an Ai Coach Suggestion.
+        # Corresponds to the JSON property `aiCoachSuggestionCustomerMessageTriggerRatio`
+        # @return [Float]
+        attr_accessor :ai_coach_suggestion_customer_message_trigger_ratio
+      
+        # Count of end_of_utterance trigger event messages that triggered an Ai Coach
+        # Suggestion.
+        # Corresponds to the JSON property `aiCoachSuggestionMessageTriggerCount`
+        # @return [Fixnum]
+        attr_accessor :ai_coach_suggestion_message_trigger_count
+      
+        # Proportion of end_of_utterance trigger event messages that triggered an Ai
+        # Coach Suggestion.
+        # Corresponds to the JSON property `aiCoachSuggestionMessageTriggerRatio`
+        # @return [Float]
+        attr_accessor :ai_coach_suggestion_message_trigger_ratio
       
         # The average agent's sentiment score.
         # Corresponds to the JSON property `averageAgentSentimentScore`
@@ -6263,20 +6333,215 @@ module Google
         # @return [Float]
         attr_accessor :average_silence_percentage
       
+        # Average edit distance of the summarization suggestions. Edit distance (also
+        # called as levenshtein distance) is calculated by summing up number of
+        # insertions, deletions and substitutions required to transform the summization
+        # feedback to the original summary suggestion.
+        # Corresponds to the JSON property `averageSummarizationSuggestionEditDistance`
+        # @return [Float]
+        attr_accessor :average_summarization_suggestion_edit_distance
+      
+        # Normalized Average edit distance of the summarization suggestions. Edit
+        # distance (also called as levenshtein distance) is calculated by summing up
+        # number of insertions, deletions and substitutions required to transform the
+        # summization feedback to the original summary suggestion. Normalized edit
+        # distance is the average of (edit distance / summary length).
+        # Corresponds to the JSON property `averageSummarizationSuggestionNormalizedEditDistance`
+        # @return [Float]
+        attr_accessor :average_summarization_suggestion_normalized_edit_distance
+      
         # The average turn count.
         # Corresponds to the JSON property `averageTurnCount`
         # @return [Float]
         attr_accessor :average_turn_count
+      
+        # The exponential moving average of the sentiment score of client turns in the
+        # conversation.
+        # Corresponds to the JSON property `avgConversationClientTurnSentimentEma`
+        # @return [Float]
+        attr_accessor :avg_conversation_client_turn_sentiment_ema
+      
+        # The number of conversations that were contained.
+        # Corresponds to the JSON property `containedConversationCount`
+        # @return [Fixnum]
+        attr_accessor :contained_conversation_count
+      
+        # The percentage of conversations that were contained.
+        # Corresponds to the JSON property `containedConversationRatio`
+        # @return [Float]
+        attr_accessor :contained_conversation_ratio
+      
+        # Count of conversations that has Ai Coach Suggestions.
+        # Corresponds to the JSON property `conversationAiCoachSuggestionCount`
+        # @return [Fixnum]
+        attr_accessor :conversation_ai_coach_suggestion_count
+      
+        # Proportion of conversations that has Ai Coach Suggestions.
+        # Corresponds to the JSON property `conversationAiCoachSuggestionRatio`
+        # @return [Float]
+        attr_accessor :conversation_ai_coach_suggestion_ratio
       
         # The conversation count.
         # Corresponds to the JSON property `conversationCount`
         # @return [Fixnum]
         attr_accessor :conversation_count
       
+        # Proportion of conversations that had a suggested summary.
+        # Corresponds to the JSON property `conversationSuggestedSummaryRatio`
+        # @return [Float]
+        attr_accessor :conversation_suggested_summary_ratio
+      
+        # The agent message count.
+        # Corresponds to the JSON property `conversationTotalAgentMessageCount`
+        # @return [Fixnum]
+        attr_accessor :conversation_total_agent_message_count
+      
+        # The customer message count.
+        # Corresponds to the JSON property `conversationTotalCustomerMessageCount`
+        # @return [Fixnum]
+        attr_accessor :conversation_total_customer_message_count
+      
+        # The average latency of conversational agents' audio in audio out latency per
+        # interaction. This is computed as the average of the all the interactions'
+        # audio in audio out latencies in a conversation and averaged across
+        # conversations.
+        # Corresponds to the JSON property `conversationalAgentsAverageAudioInAudioOutLatency`
+        # @return [Float]
+        attr_accessor :conversational_agents_average_audio_in_audio_out_latency
+      
+        # The average latency of conversational agents' latency per interaction. This is
+        # computed as the average of the all the iteractions' end to end latencies in a
+        # conversation and averaged across conversations. The e2e latency is the time
+        # between the end of the user utterance and the start of the agent utterance on
+        # the interaction level.
+        # Corresponds to the JSON property `conversationalAgentsAverageEndToEndLatency`
+        # @return [Float]
+        attr_accessor :conversational_agents_average_end_to_end_latency
+      
+        # The average latency of conversational agents' LLM call latency per interaction.
+        # This is computed as the average of the all the interactions LLM call
+        # latencies in a conversation and averaged across conversations.
+        # Corresponds to the JSON property `conversationalAgentsAverageLlmCallLatency`
+        # @return [Float]
+        attr_accessor :conversational_agents_average_llm_call_latency
+      
+        # The macro average latency of conversational agents' TTS latency per
+        # interaction. This is computed as the average of the all the interactions' TTS
+        # latencies in a conversation and averaged across conversations.
+        # Corresponds to the JSON property `conversationalAgentsAverageTtsLatency`
+        # @return [Float]
+        attr_accessor :conversational_agents_average_tts_latency
+      
+        # Average latency of dialogflow webhook calls.
+        # Corresponds to the JSON property `dialogflowAverageWebhookLatency`
+        # @return [Float]
+        attr_accessor :dialogflow_average_webhook_latency
+      
+        # count of conversations that was handed off from virtual agent to human agent.
+        # Corresponds to the JSON property `dialogflowConversationsEscalationCount`
+        # @return [Float]
+        attr_accessor :dialogflow_conversations_escalation_count
+      
+        # Proportion of conversations that was handed off from virtual agent to human
+        # agent.
+        # Corresponds to the JSON property `dialogflowConversationsEscalationRatio`
+        # @return [Float]
+        attr_accessor :dialogflow_conversations_escalation_ratio
+      
+        # Proportion of dialogflow interactions that has empty input.
+        # Corresponds to the JSON property `dialogflowInteractionsNoInputRatio`
+        # @return [Float]
+        attr_accessor :dialogflow_interactions_no_input_ratio
+      
+        # Proportion of dialogflow interactions that has no intent match for the input.
+        # Corresponds to the JSON property `dialogflowInteractionsNoMatchRatio`
+        # @return [Float]
+        attr_accessor :dialogflow_interactions_no_match_ratio
+      
+        # Proportion of dialogflow webhook calls that failed.
+        # Corresponds to the JSON property `dialogflowWebhookFailureRatio`
+        # @return [Float]
+        attr_accessor :dialogflow_webhook_failure_ratio
+      
+        # Proportion of dialogflow webhook calls that timed out.
+        # Corresponds to the JSON property `dialogflowWebhookTimeoutRatio`
+        # @return [Float]
+        attr_accessor :dialogflow_webhook_timeout_ratio
+      
+        # Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries
+        # that had negative feedback.
+        # Corresponds to the JSON property `knowledgeAssistNegativeFeedbackRatio`
+        # @return [Float]
+        attr_accessor :knowledge_assist_negative_feedback_ratio
+      
+        # Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries
+        # that had positive feedback.
+        # Corresponds to the JSON property `knowledgeAssistPositiveFeedbackRatio`
+        # @return [Float]
+        attr_accessor :knowledge_assist_positive_feedback_ratio
+      
+        # Count of knowledge assist results (Proactive Generative Knowledge Assist)
+        # shown to the user.
+        # Corresponds to the JSON property `knowledgeAssistResultCount`
+        # @return [Fixnum]
+        attr_accessor :knowledge_assist_result_count
+      
+        # Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries
+        # that had a URL clicked.
+        # Corresponds to the JSON property `knowledgeAssistUriClickRatio`
+        # @return [Float]
+        attr_accessor :knowledge_assist_uri_click_ratio
+      
+        # Proportion of knowledge search (Generative Knowledge Assist) queries made by
+        # the agent compared to the total number of knowledge search queries made.
+        # Corresponds to the JSON property `knowledgeSearchAgentQuerySourceRatio`
+        # @return [Float]
+        attr_accessor :knowledge_search_agent_query_source_ratio
+      
+        # Proportion of knowledge search (Generative Knowledge Assist) queries that had
+        # negative feedback.
+        # Corresponds to the JSON property `knowledgeSearchNegativeFeedbackRatio`
+        # @return [Float]
+        attr_accessor :knowledge_search_negative_feedback_ratio
+      
+        # Proportion of knowledge search (Generative Knowledge Assist) queries that had
+        # positive feedback.
+        # Corresponds to the JSON property `knowledgeSearchPositiveFeedbackRatio`
+        # @return [Float]
+        attr_accessor :knowledge_search_positive_feedback_ratio
+      
+        # Count of knowledge search results (Generative Knowledge Assist) shown to the
+        # user.
+        # Corresponds to the JSON property `knowledgeSearchResultCount`
+        # @return [Fixnum]
+        attr_accessor :knowledge_search_result_count
+      
+        # Proportion of knowledge search (Generative Knowledge Assist) queries suggested
+        # compared to the total number of knowledge search queries made.
+        # Corresponds to the JSON property `knowledgeSearchSuggestedQuerySourceRatio`
+        # @return [Float]
+        attr_accessor :knowledge_search_suggested_query_source_ratio
+      
+        # Proportion of knowledge search (Generative Knowledge Assist) queries that had
+        # a URL clicked.
+        # Corresponds to the JSON property `knowledgeSearchUriClickRatio`
+        # @return [Float]
+        attr_accessor :knowledge_search_uri_click_ratio
+      
         # Average QA normalized score for all the tags.
         # Corresponds to the JSON property `qaTagScores`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore>]
         attr_accessor :qa_tag_scores
+      
+        # Proportion of summarization suggestions that were manually edited.
+        # Corresponds to the JSON property `summarizationSuggestionEditRatio`
+        # @return [Float]
+        attr_accessor :summarization_suggestion_edit_ratio
+      
+        # Count of summarization suggestions results.
+        # Corresponds to the JSON property `summarizationSuggestionResultCount`
+        # @return [Fixnum]
+        attr_accessor :summarization_suggestion_result_count
       
         def initialize(**args)
            update!(**args)
@@ -6284,6 +6549,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aa_supervisor_assigned_conversations_count = args[:aa_supervisor_assigned_conversations_count] if args.key?(:aa_supervisor_assigned_conversations_count)
+          @aa_supervisor_dropped_conversations_count = args[:aa_supervisor_dropped_conversations_count] if args.key?(:aa_supervisor_dropped_conversations_count)
+          @aa_supervisor_escalated_conversations_count = args[:aa_supervisor_escalated_conversations_count] if args.key?(:aa_supervisor_escalated_conversations_count)
+          @aa_supervisor_monitored_conversations_count = args[:aa_supervisor_monitored_conversations_count] if args.key?(:aa_supervisor_monitored_conversations_count)
+          @aa_supervisor_transferred_to_human_agent_conv_count = args[:aa_supervisor_transferred_to_human_agent_conv_count] if args.key?(:aa_supervisor_transferred_to_human_agent_conv_count)
+          @ai_coach_suggestion_agent_message_trigger_count = args[:ai_coach_suggestion_agent_message_trigger_count] if args.key?(:ai_coach_suggestion_agent_message_trigger_count)
+          @ai_coach_suggestion_agent_usage_count = args[:ai_coach_suggestion_agent_usage_count] if args.key?(:ai_coach_suggestion_agent_usage_count)
+          @ai_coach_suggestion_agent_usage_ratio = args[:ai_coach_suggestion_agent_usage_ratio] if args.key?(:ai_coach_suggestion_agent_usage_ratio)
+          @ai_coach_suggestion_customer_message_trigger_count = args[:ai_coach_suggestion_customer_message_trigger_count] if args.key?(:ai_coach_suggestion_customer_message_trigger_count)
+          @ai_coach_suggestion_customer_message_trigger_ratio = args[:ai_coach_suggestion_customer_message_trigger_ratio] if args.key?(:ai_coach_suggestion_customer_message_trigger_ratio)
+          @ai_coach_suggestion_message_trigger_count = args[:ai_coach_suggestion_message_trigger_count] if args.key?(:ai_coach_suggestion_message_trigger_count)
+          @ai_coach_suggestion_message_trigger_ratio = args[:ai_coach_suggestion_message_trigger_ratio] if args.key?(:ai_coach_suggestion_message_trigger_ratio)
           @average_agent_sentiment_score = args[:average_agent_sentiment_score] if args.key?(:average_agent_sentiment_score)
           @average_client_sentiment_score = args[:average_client_sentiment_score] if args.key?(:average_client_sentiment_score)
           @average_customer_satisfaction_rating = args[:average_customer_satisfaction_rating] if args.key?(:average_customer_satisfaction_rating)
@@ -6291,9 +6568,42 @@ module Google
           @average_qa_normalized_score = args[:average_qa_normalized_score] if args.key?(:average_qa_normalized_score)
           @average_qa_question_normalized_score = args[:average_qa_question_normalized_score] if args.key?(:average_qa_question_normalized_score)
           @average_silence_percentage = args[:average_silence_percentage] if args.key?(:average_silence_percentage)
+          @average_summarization_suggestion_edit_distance = args[:average_summarization_suggestion_edit_distance] if args.key?(:average_summarization_suggestion_edit_distance)
+          @average_summarization_suggestion_normalized_edit_distance = args[:average_summarization_suggestion_normalized_edit_distance] if args.key?(:average_summarization_suggestion_normalized_edit_distance)
           @average_turn_count = args[:average_turn_count] if args.key?(:average_turn_count)
+          @avg_conversation_client_turn_sentiment_ema = args[:avg_conversation_client_turn_sentiment_ema] if args.key?(:avg_conversation_client_turn_sentiment_ema)
+          @contained_conversation_count = args[:contained_conversation_count] if args.key?(:contained_conversation_count)
+          @contained_conversation_ratio = args[:contained_conversation_ratio] if args.key?(:contained_conversation_ratio)
+          @conversation_ai_coach_suggestion_count = args[:conversation_ai_coach_suggestion_count] if args.key?(:conversation_ai_coach_suggestion_count)
+          @conversation_ai_coach_suggestion_ratio = args[:conversation_ai_coach_suggestion_ratio] if args.key?(:conversation_ai_coach_suggestion_ratio)
           @conversation_count = args[:conversation_count] if args.key?(:conversation_count)
+          @conversation_suggested_summary_ratio = args[:conversation_suggested_summary_ratio] if args.key?(:conversation_suggested_summary_ratio)
+          @conversation_total_agent_message_count = args[:conversation_total_agent_message_count] if args.key?(:conversation_total_agent_message_count)
+          @conversation_total_customer_message_count = args[:conversation_total_customer_message_count] if args.key?(:conversation_total_customer_message_count)
+          @conversational_agents_average_audio_in_audio_out_latency = args[:conversational_agents_average_audio_in_audio_out_latency] if args.key?(:conversational_agents_average_audio_in_audio_out_latency)
+          @conversational_agents_average_end_to_end_latency = args[:conversational_agents_average_end_to_end_latency] if args.key?(:conversational_agents_average_end_to_end_latency)
+          @conversational_agents_average_llm_call_latency = args[:conversational_agents_average_llm_call_latency] if args.key?(:conversational_agents_average_llm_call_latency)
+          @conversational_agents_average_tts_latency = args[:conversational_agents_average_tts_latency] if args.key?(:conversational_agents_average_tts_latency)
+          @dialogflow_average_webhook_latency = args[:dialogflow_average_webhook_latency] if args.key?(:dialogflow_average_webhook_latency)
+          @dialogflow_conversations_escalation_count = args[:dialogflow_conversations_escalation_count] if args.key?(:dialogflow_conversations_escalation_count)
+          @dialogflow_conversations_escalation_ratio = args[:dialogflow_conversations_escalation_ratio] if args.key?(:dialogflow_conversations_escalation_ratio)
+          @dialogflow_interactions_no_input_ratio = args[:dialogflow_interactions_no_input_ratio] if args.key?(:dialogflow_interactions_no_input_ratio)
+          @dialogflow_interactions_no_match_ratio = args[:dialogflow_interactions_no_match_ratio] if args.key?(:dialogflow_interactions_no_match_ratio)
+          @dialogflow_webhook_failure_ratio = args[:dialogflow_webhook_failure_ratio] if args.key?(:dialogflow_webhook_failure_ratio)
+          @dialogflow_webhook_timeout_ratio = args[:dialogflow_webhook_timeout_ratio] if args.key?(:dialogflow_webhook_timeout_ratio)
+          @knowledge_assist_negative_feedback_ratio = args[:knowledge_assist_negative_feedback_ratio] if args.key?(:knowledge_assist_negative_feedback_ratio)
+          @knowledge_assist_positive_feedback_ratio = args[:knowledge_assist_positive_feedback_ratio] if args.key?(:knowledge_assist_positive_feedback_ratio)
+          @knowledge_assist_result_count = args[:knowledge_assist_result_count] if args.key?(:knowledge_assist_result_count)
+          @knowledge_assist_uri_click_ratio = args[:knowledge_assist_uri_click_ratio] if args.key?(:knowledge_assist_uri_click_ratio)
+          @knowledge_search_agent_query_source_ratio = args[:knowledge_search_agent_query_source_ratio] if args.key?(:knowledge_search_agent_query_source_ratio)
+          @knowledge_search_negative_feedback_ratio = args[:knowledge_search_negative_feedback_ratio] if args.key?(:knowledge_search_negative_feedback_ratio)
+          @knowledge_search_positive_feedback_ratio = args[:knowledge_search_positive_feedback_ratio] if args.key?(:knowledge_search_positive_feedback_ratio)
+          @knowledge_search_result_count = args[:knowledge_search_result_count] if args.key?(:knowledge_search_result_count)
+          @knowledge_search_suggested_query_source_ratio = args[:knowledge_search_suggested_query_source_ratio] if args.key?(:knowledge_search_suggested_query_source_ratio)
+          @knowledge_search_uri_click_ratio = args[:knowledge_search_uri_click_ratio] if args.key?(:knowledge_search_uri_click_ratio)
           @qa_tag_scores = args[:qa_tag_scores] if args.key?(:qa_tag_scores)
+          @summarization_suggestion_edit_ratio = args[:summarization_suggestion_edit_ratio] if args.key?(:summarization_suggestion_edit_ratio)
+          @summarization_suggestion_result_count = args[:summarization_suggestion_result_count] if args.key?(:summarization_suggestion_result_count)
         end
       end
       
@@ -6319,6 +6629,86 @@ module Google
         def update!(**args)
           @average_tag_normalized_score = args[:average_tag_normalized_score] if args.key?(:average_tag_normalized_score)
           @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # The measure related to dialogflow interactions.
+      class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure
+        include Google::Apis::Core::Hashable
+      
+        # The percentile result. Currently supported percentiles are 50th, 90th, and
+        # 99th.
+        # Corresponds to the JSON property `percentileAudioInAudioOutLatency`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult]
+        attr_accessor :percentile_audio_in_audio_out_latency
+      
+        # The percentile result. Currently supported percentiles are 50th, 90th, and
+        # 99th.
+        # Corresponds to the JSON property `percentileEndToEndLatency`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult]
+        attr_accessor :percentile_end_to_end_latency
+      
+        # The percentile result. Currently supported percentiles are 50th, 90th, and
+        # 99th.
+        # Corresponds to the JSON property `percentileLlmCallLatency`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult]
+        attr_accessor :percentile_llm_call_latency
+      
+        # The percentile result. Currently supported percentiles are 50th, 90th, and
+        # 99th.
+        # Corresponds to the JSON property `percentileToolUseLatency`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult]
+        attr_accessor :percentile_tool_use_latency
+      
+        # The percentile result. Currently supported percentiles are 50th, 90th, and
+        # 99th.
+        # Corresponds to the JSON property `percentileTtsLatency`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult]
+        attr_accessor :percentile_tts_latency
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentile_audio_in_audio_out_latency = args[:percentile_audio_in_audio_out_latency] if args.key?(:percentile_audio_in_audio_out_latency)
+          @percentile_end_to_end_latency = args[:percentile_end_to_end_latency] if args.key?(:percentile_end_to_end_latency)
+          @percentile_llm_call_latency = args[:percentile_llm_call_latency] if args.key?(:percentile_llm_call_latency)
+          @percentile_tool_use_latency = args[:percentile_tool_use_latency] if args.key?(:percentile_tool_use_latency)
+          @percentile_tts_latency = args[:percentile_tts_latency] if args.key?(:percentile_tts_latency)
+        end
+      end
+      
+      # The percentile result. Currently supported percentiles are 50th, 90th, and
+      # 99th.
+      class GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult
+        include Google::Apis::Core::Hashable
+      
+        # The 50th percentile value.
+        # Corresponds to the JSON property `p50`
+        # @return [Float]
+        attr_accessor :p50
+      
+        # The 90th percentile value.
+        # Corresponds to the JSON property `p90`
+        # @return [Float]
+        attr_accessor :p90
+      
+        # The 99th percentile value.
+        # Corresponds to the JSON property `p99`
+        # @return [Float]
+        attr_accessor :p99
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @p50 = args[:p50] if args.key?(:p50)
+          @p90 = args[:p90] if args.key?(:p90)
+          @p99 = args[:p99] if args.key?(:p99)
         end
       end
       
@@ -11663,6 +12053,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure]
         attr_accessor :conversation_measure
       
+        # The measure related to dialogflow interactions.
+        # Corresponds to the JSON property `dialogflowInteractionMeasure`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure]
+        attr_accessor :dialogflow_interaction_measure
+      
         # Represents a time interval, encoded as a Timestamp start (inclusive) and a
         # Timestamp end (exclusive). The start must be less than or equal to the end.
         # When the start equals the end, the interval is empty (matches no time). When
@@ -11678,6 +12073,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @conversation_measure = args[:conversation_measure] if args.key?(:conversation_measure)
+          @dialogflow_interaction_measure = args[:dialogflow_interaction_measure] if args.key?(:dialogflow_interaction_measure)
           @interval = args[:interval] if args.key?(:interval)
         end
       end
@@ -11685,6 +12081,70 @@ module Google
       # The measure related to conversations.
       class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure
         include Google::Apis::Core::Hashable
+      
+        # The number of conversations that were assigned to an AA human supervisor.
+        # Corresponds to the JSON property `aaSupervisorAssignedConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :aa_supervisor_assigned_conversations_count
+      
+        # The number of conversations that were dropped, i.e. escalated but not assigned
+        # to an AA human supervisor.
+        # Corresponds to the JSON property `aaSupervisorDroppedConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :aa_supervisor_dropped_conversations_count
+      
+        # The number of conversations that were escalated to an AA human supervisor for
+        # intervention.
+        # Corresponds to the JSON property `aaSupervisorEscalatedConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :aa_supervisor_escalated_conversations_count
+      
+        # The number of conversations scanned by the AA human supervisor.
+        # Corresponds to the JSON property `aaSupervisorMonitoredConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :aa_supervisor_monitored_conversations_count
+      
+        # The number of conversations transferred to a human agent.
+        # Corresponds to the JSON property `aaSupervisorTransferredToHumanAgentConvCount`
+        # @return [Fixnum]
+        attr_accessor :aa_supervisor_transferred_to_human_agent_conv_count
+      
+        # Count of agent messages that triggered an Ai Coach Suggestion.
+        # Corresponds to the JSON property `aiCoachSuggestionAgentMessageTriggerCount`
+        # @return [Fixnum]
+        attr_accessor :ai_coach_suggestion_agent_message_trigger_count
+      
+        # Count of Ai Coach Suggestion that has been used by agents.
+        # Corresponds to the JSON property `aiCoachSuggestionAgentUsageCount`
+        # @return [Fixnum]
+        attr_accessor :ai_coach_suggestion_agent_usage_count
+      
+        # Proportion of Ai Coach Suggestion that has been used by agents.
+        # Corresponds to the JSON property `aiCoachSuggestionAgentUsageRatio`
+        # @return [Float]
+        attr_accessor :ai_coach_suggestion_agent_usage_ratio
+      
+        # Count of customer messages that triggered an Ai Coach Suggestion.
+        # Corresponds to the JSON property `aiCoachSuggestionCustomerMessageTriggerCount`
+        # @return [Fixnum]
+        attr_accessor :ai_coach_suggestion_customer_message_trigger_count
+      
+        # Proportion of customer messages that triggered an Ai Coach Suggestion.
+        # Corresponds to the JSON property `aiCoachSuggestionCustomerMessageTriggerRatio`
+        # @return [Float]
+        attr_accessor :ai_coach_suggestion_customer_message_trigger_ratio
+      
+        # Count of end_of_utterance trigger event messages that triggered an Ai Coach
+        # Suggestion.
+        # Corresponds to the JSON property `aiCoachSuggestionMessageTriggerCount`
+        # @return [Fixnum]
+        attr_accessor :ai_coach_suggestion_message_trigger_count
+      
+        # Proportion of end_of_utterance trigger event messages that triggered an Ai
+        # Coach Suggestion.
+        # Corresponds to the JSON property `aiCoachSuggestionMessageTriggerRatio`
+        # @return [Float]
+        attr_accessor :ai_coach_suggestion_message_trigger_ratio
       
         # The average agent's sentiment score.
         # Corresponds to the JSON property `averageAgentSentimentScore`
@@ -11727,20 +12187,215 @@ module Google
         # @return [Float]
         attr_accessor :average_silence_percentage
       
+        # Average edit distance of the summarization suggestions. Edit distance (also
+        # called as levenshtein distance) is calculated by summing up number of
+        # insertions, deletions and substitutions required to transform the summization
+        # feedback to the original summary suggestion.
+        # Corresponds to the JSON property `averageSummarizationSuggestionEditDistance`
+        # @return [Float]
+        attr_accessor :average_summarization_suggestion_edit_distance
+      
+        # Normalized Average edit distance of the summarization suggestions. Edit
+        # distance (also called as levenshtein distance) is calculated by summing up
+        # number of insertions, deletions and substitutions required to transform the
+        # summization feedback to the original summary suggestion. Normalized edit
+        # distance is the average of (edit distance / summary length).
+        # Corresponds to the JSON property `averageSummarizationSuggestionNormalizedEditDistance`
+        # @return [Float]
+        attr_accessor :average_summarization_suggestion_normalized_edit_distance
+      
         # The average turn count.
         # Corresponds to the JSON property `averageTurnCount`
         # @return [Float]
         attr_accessor :average_turn_count
+      
+        # The exponential moving average of the sentiment score of client turns in the
+        # conversation.
+        # Corresponds to the JSON property `avgConversationClientTurnSentimentEma`
+        # @return [Float]
+        attr_accessor :avg_conversation_client_turn_sentiment_ema
+      
+        # The number of conversations that were contained.
+        # Corresponds to the JSON property `containedConversationCount`
+        # @return [Fixnum]
+        attr_accessor :contained_conversation_count
+      
+        # The percentage of conversations that were contained.
+        # Corresponds to the JSON property `containedConversationRatio`
+        # @return [Float]
+        attr_accessor :contained_conversation_ratio
+      
+        # Count of conversations that has Ai Coach Suggestions.
+        # Corresponds to the JSON property `conversationAiCoachSuggestionCount`
+        # @return [Fixnum]
+        attr_accessor :conversation_ai_coach_suggestion_count
+      
+        # Proportion of conversations that has Ai Coach Suggestions.
+        # Corresponds to the JSON property `conversationAiCoachSuggestionRatio`
+        # @return [Float]
+        attr_accessor :conversation_ai_coach_suggestion_ratio
       
         # The conversation count.
         # Corresponds to the JSON property `conversationCount`
         # @return [Fixnum]
         attr_accessor :conversation_count
       
+        # Proportion of conversations that had a suggested summary.
+        # Corresponds to the JSON property `conversationSuggestedSummaryRatio`
+        # @return [Float]
+        attr_accessor :conversation_suggested_summary_ratio
+      
+        # The agent message count.
+        # Corresponds to the JSON property `conversationTotalAgentMessageCount`
+        # @return [Fixnum]
+        attr_accessor :conversation_total_agent_message_count
+      
+        # The customer message count.
+        # Corresponds to the JSON property `conversationTotalCustomerMessageCount`
+        # @return [Fixnum]
+        attr_accessor :conversation_total_customer_message_count
+      
+        # The average latency of conversational agents' audio in audio out latency per
+        # interaction. This is computed as the average of the all the interactions'
+        # audio in audio out latencies in a conversation and averaged across
+        # conversations.
+        # Corresponds to the JSON property `conversationalAgentsAverageAudioInAudioOutLatency`
+        # @return [Float]
+        attr_accessor :conversational_agents_average_audio_in_audio_out_latency
+      
+        # The average latency of conversational agents' latency per interaction. This is
+        # computed as the average of the all the iteractions' end to end latencies in a
+        # conversation and averaged across conversations. The e2e latency is the time
+        # between the end of the user utterance and the start of the agent utterance on
+        # the interaction level.
+        # Corresponds to the JSON property `conversationalAgentsAverageEndToEndLatency`
+        # @return [Float]
+        attr_accessor :conversational_agents_average_end_to_end_latency
+      
+        # The average latency of conversational agents' LLM call latency per interaction.
+        # This is computed as the average of the all the interactions LLM call
+        # latencies in a conversation and averaged across conversations.
+        # Corresponds to the JSON property `conversationalAgentsAverageLlmCallLatency`
+        # @return [Float]
+        attr_accessor :conversational_agents_average_llm_call_latency
+      
+        # The macro average latency of conversational agents' TTS latency per
+        # interaction. This is computed as the average of the all the interactions' TTS
+        # latencies in a conversation and averaged across conversations.
+        # Corresponds to the JSON property `conversationalAgentsAverageTtsLatency`
+        # @return [Float]
+        attr_accessor :conversational_agents_average_tts_latency
+      
+        # Average latency of dialogflow webhook calls.
+        # Corresponds to the JSON property `dialogflowAverageWebhookLatency`
+        # @return [Float]
+        attr_accessor :dialogflow_average_webhook_latency
+      
+        # count of conversations that was handed off from virtual agent to human agent.
+        # Corresponds to the JSON property `dialogflowConversationsEscalationCount`
+        # @return [Float]
+        attr_accessor :dialogflow_conversations_escalation_count
+      
+        # Proportion of conversations that was handed off from virtual agent to human
+        # agent.
+        # Corresponds to the JSON property `dialogflowConversationsEscalationRatio`
+        # @return [Float]
+        attr_accessor :dialogflow_conversations_escalation_ratio
+      
+        # Proportion of dialogflow interactions that has empty input.
+        # Corresponds to the JSON property `dialogflowInteractionsNoInputRatio`
+        # @return [Float]
+        attr_accessor :dialogflow_interactions_no_input_ratio
+      
+        # Proportion of dialogflow interactions that has no intent match for the input.
+        # Corresponds to the JSON property `dialogflowInteractionsNoMatchRatio`
+        # @return [Float]
+        attr_accessor :dialogflow_interactions_no_match_ratio
+      
+        # Proportion of dialogflow webhook calls that failed.
+        # Corresponds to the JSON property `dialogflowWebhookFailureRatio`
+        # @return [Float]
+        attr_accessor :dialogflow_webhook_failure_ratio
+      
+        # Proportion of dialogflow webhook calls that timed out.
+        # Corresponds to the JSON property `dialogflowWebhookTimeoutRatio`
+        # @return [Float]
+        attr_accessor :dialogflow_webhook_timeout_ratio
+      
+        # Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries
+        # that had negative feedback.
+        # Corresponds to the JSON property `knowledgeAssistNegativeFeedbackRatio`
+        # @return [Float]
+        attr_accessor :knowledge_assist_negative_feedback_ratio
+      
+        # Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries
+        # that had positive feedback.
+        # Corresponds to the JSON property `knowledgeAssistPositiveFeedbackRatio`
+        # @return [Float]
+        attr_accessor :knowledge_assist_positive_feedback_ratio
+      
+        # Count of knowledge assist results (Proactive Generative Knowledge Assist)
+        # shown to the user.
+        # Corresponds to the JSON property `knowledgeAssistResultCount`
+        # @return [Fixnum]
+        attr_accessor :knowledge_assist_result_count
+      
+        # Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries
+        # that had a URL clicked.
+        # Corresponds to the JSON property `knowledgeAssistUriClickRatio`
+        # @return [Float]
+        attr_accessor :knowledge_assist_uri_click_ratio
+      
+        # Proportion of knowledge search (Generative Knowledge Assist) queries made by
+        # the agent compared to the total number of knowledge search queries made.
+        # Corresponds to the JSON property `knowledgeSearchAgentQuerySourceRatio`
+        # @return [Float]
+        attr_accessor :knowledge_search_agent_query_source_ratio
+      
+        # Proportion of knowledge search (Generative Knowledge Assist) queries that had
+        # negative feedback.
+        # Corresponds to the JSON property `knowledgeSearchNegativeFeedbackRatio`
+        # @return [Float]
+        attr_accessor :knowledge_search_negative_feedback_ratio
+      
+        # Proportion of knowledge search (Generative Knowledge Assist) queries that had
+        # positive feedback.
+        # Corresponds to the JSON property `knowledgeSearchPositiveFeedbackRatio`
+        # @return [Float]
+        attr_accessor :knowledge_search_positive_feedback_ratio
+      
+        # Count of knowledge search results (Generative Knowledge Assist) shown to the
+        # user.
+        # Corresponds to the JSON property `knowledgeSearchResultCount`
+        # @return [Fixnum]
+        attr_accessor :knowledge_search_result_count
+      
+        # Proportion of knowledge search (Generative Knowledge Assist) queries suggested
+        # compared to the total number of knowledge search queries made.
+        # Corresponds to the JSON property `knowledgeSearchSuggestedQuerySourceRatio`
+        # @return [Float]
+        attr_accessor :knowledge_search_suggested_query_source_ratio
+      
+        # Proportion of knowledge search (Generative Knowledge Assist) queries that had
+        # a URL clicked.
+        # Corresponds to the JSON property `knowledgeSearchUriClickRatio`
+        # @return [Float]
+        attr_accessor :knowledge_search_uri_click_ratio
+      
         # Average QA normalized score for all the tags.
         # Corresponds to the JSON property `qaTagScores`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore>]
         attr_accessor :qa_tag_scores
+      
+        # Proportion of summarization suggestions that were manually edited.
+        # Corresponds to the JSON property `summarizationSuggestionEditRatio`
+        # @return [Float]
+        attr_accessor :summarization_suggestion_edit_ratio
+      
+        # Count of summarization suggestions results.
+        # Corresponds to the JSON property `summarizationSuggestionResultCount`
+        # @return [Fixnum]
+        attr_accessor :summarization_suggestion_result_count
       
         def initialize(**args)
            update!(**args)
@@ -11748,6 +12403,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aa_supervisor_assigned_conversations_count = args[:aa_supervisor_assigned_conversations_count] if args.key?(:aa_supervisor_assigned_conversations_count)
+          @aa_supervisor_dropped_conversations_count = args[:aa_supervisor_dropped_conversations_count] if args.key?(:aa_supervisor_dropped_conversations_count)
+          @aa_supervisor_escalated_conversations_count = args[:aa_supervisor_escalated_conversations_count] if args.key?(:aa_supervisor_escalated_conversations_count)
+          @aa_supervisor_monitored_conversations_count = args[:aa_supervisor_monitored_conversations_count] if args.key?(:aa_supervisor_monitored_conversations_count)
+          @aa_supervisor_transferred_to_human_agent_conv_count = args[:aa_supervisor_transferred_to_human_agent_conv_count] if args.key?(:aa_supervisor_transferred_to_human_agent_conv_count)
+          @ai_coach_suggestion_agent_message_trigger_count = args[:ai_coach_suggestion_agent_message_trigger_count] if args.key?(:ai_coach_suggestion_agent_message_trigger_count)
+          @ai_coach_suggestion_agent_usage_count = args[:ai_coach_suggestion_agent_usage_count] if args.key?(:ai_coach_suggestion_agent_usage_count)
+          @ai_coach_suggestion_agent_usage_ratio = args[:ai_coach_suggestion_agent_usage_ratio] if args.key?(:ai_coach_suggestion_agent_usage_ratio)
+          @ai_coach_suggestion_customer_message_trigger_count = args[:ai_coach_suggestion_customer_message_trigger_count] if args.key?(:ai_coach_suggestion_customer_message_trigger_count)
+          @ai_coach_suggestion_customer_message_trigger_ratio = args[:ai_coach_suggestion_customer_message_trigger_ratio] if args.key?(:ai_coach_suggestion_customer_message_trigger_ratio)
+          @ai_coach_suggestion_message_trigger_count = args[:ai_coach_suggestion_message_trigger_count] if args.key?(:ai_coach_suggestion_message_trigger_count)
+          @ai_coach_suggestion_message_trigger_ratio = args[:ai_coach_suggestion_message_trigger_ratio] if args.key?(:ai_coach_suggestion_message_trigger_ratio)
           @average_agent_sentiment_score = args[:average_agent_sentiment_score] if args.key?(:average_agent_sentiment_score)
           @average_client_sentiment_score = args[:average_client_sentiment_score] if args.key?(:average_client_sentiment_score)
           @average_customer_satisfaction_rating = args[:average_customer_satisfaction_rating] if args.key?(:average_customer_satisfaction_rating)
@@ -11755,9 +12422,42 @@ module Google
           @average_qa_normalized_score = args[:average_qa_normalized_score] if args.key?(:average_qa_normalized_score)
           @average_qa_question_normalized_score = args[:average_qa_question_normalized_score] if args.key?(:average_qa_question_normalized_score)
           @average_silence_percentage = args[:average_silence_percentage] if args.key?(:average_silence_percentage)
+          @average_summarization_suggestion_edit_distance = args[:average_summarization_suggestion_edit_distance] if args.key?(:average_summarization_suggestion_edit_distance)
+          @average_summarization_suggestion_normalized_edit_distance = args[:average_summarization_suggestion_normalized_edit_distance] if args.key?(:average_summarization_suggestion_normalized_edit_distance)
           @average_turn_count = args[:average_turn_count] if args.key?(:average_turn_count)
+          @avg_conversation_client_turn_sentiment_ema = args[:avg_conversation_client_turn_sentiment_ema] if args.key?(:avg_conversation_client_turn_sentiment_ema)
+          @contained_conversation_count = args[:contained_conversation_count] if args.key?(:contained_conversation_count)
+          @contained_conversation_ratio = args[:contained_conversation_ratio] if args.key?(:contained_conversation_ratio)
+          @conversation_ai_coach_suggestion_count = args[:conversation_ai_coach_suggestion_count] if args.key?(:conversation_ai_coach_suggestion_count)
+          @conversation_ai_coach_suggestion_ratio = args[:conversation_ai_coach_suggestion_ratio] if args.key?(:conversation_ai_coach_suggestion_ratio)
           @conversation_count = args[:conversation_count] if args.key?(:conversation_count)
+          @conversation_suggested_summary_ratio = args[:conversation_suggested_summary_ratio] if args.key?(:conversation_suggested_summary_ratio)
+          @conversation_total_agent_message_count = args[:conversation_total_agent_message_count] if args.key?(:conversation_total_agent_message_count)
+          @conversation_total_customer_message_count = args[:conversation_total_customer_message_count] if args.key?(:conversation_total_customer_message_count)
+          @conversational_agents_average_audio_in_audio_out_latency = args[:conversational_agents_average_audio_in_audio_out_latency] if args.key?(:conversational_agents_average_audio_in_audio_out_latency)
+          @conversational_agents_average_end_to_end_latency = args[:conversational_agents_average_end_to_end_latency] if args.key?(:conversational_agents_average_end_to_end_latency)
+          @conversational_agents_average_llm_call_latency = args[:conversational_agents_average_llm_call_latency] if args.key?(:conversational_agents_average_llm_call_latency)
+          @conversational_agents_average_tts_latency = args[:conversational_agents_average_tts_latency] if args.key?(:conversational_agents_average_tts_latency)
+          @dialogflow_average_webhook_latency = args[:dialogflow_average_webhook_latency] if args.key?(:dialogflow_average_webhook_latency)
+          @dialogflow_conversations_escalation_count = args[:dialogflow_conversations_escalation_count] if args.key?(:dialogflow_conversations_escalation_count)
+          @dialogflow_conversations_escalation_ratio = args[:dialogflow_conversations_escalation_ratio] if args.key?(:dialogflow_conversations_escalation_ratio)
+          @dialogflow_interactions_no_input_ratio = args[:dialogflow_interactions_no_input_ratio] if args.key?(:dialogflow_interactions_no_input_ratio)
+          @dialogflow_interactions_no_match_ratio = args[:dialogflow_interactions_no_match_ratio] if args.key?(:dialogflow_interactions_no_match_ratio)
+          @dialogflow_webhook_failure_ratio = args[:dialogflow_webhook_failure_ratio] if args.key?(:dialogflow_webhook_failure_ratio)
+          @dialogflow_webhook_timeout_ratio = args[:dialogflow_webhook_timeout_ratio] if args.key?(:dialogflow_webhook_timeout_ratio)
+          @knowledge_assist_negative_feedback_ratio = args[:knowledge_assist_negative_feedback_ratio] if args.key?(:knowledge_assist_negative_feedback_ratio)
+          @knowledge_assist_positive_feedback_ratio = args[:knowledge_assist_positive_feedback_ratio] if args.key?(:knowledge_assist_positive_feedback_ratio)
+          @knowledge_assist_result_count = args[:knowledge_assist_result_count] if args.key?(:knowledge_assist_result_count)
+          @knowledge_assist_uri_click_ratio = args[:knowledge_assist_uri_click_ratio] if args.key?(:knowledge_assist_uri_click_ratio)
+          @knowledge_search_agent_query_source_ratio = args[:knowledge_search_agent_query_source_ratio] if args.key?(:knowledge_search_agent_query_source_ratio)
+          @knowledge_search_negative_feedback_ratio = args[:knowledge_search_negative_feedback_ratio] if args.key?(:knowledge_search_negative_feedback_ratio)
+          @knowledge_search_positive_feedback_ratio = args[:knowledge_search_positive_feedback_ratio] if args.key?(:knowledge_search_positive_feedback_ratio)
+          @knowledge_search_result_count = args[:knowledge_search_result_count] if args.key?(:knowledge_search_result_count)
+          @knowledge_search_suggested_query_source_ratio = args[:knowledge_search_suggested_query_source_ratio] if args.key?(:knowledge_search_suggested_query_source_ratio)
+          @knowledge_search_uri_click_ratio = args[:knowledge_search_uri_click_ratio] if args.key?(:knowledge_search_uri_click_ratio)
           @qa_tag_scores = args[:qa_tag_scores] if args.key?(:qa_tag_scores)
+          @summarization_suggestion_edit_ratio = args[:summarization_suggestion_edit_ratio] if args.key?(:summarization_suggestion_edit_ratio)
+          @summarization_suggestion_result_count = args[:summarization_suggestion_result_count] if args.key?(:summarization_suggestion_result_count)
         end
       end
       
@@ -11783,6 +12483,86 @@ module Google
         def update!(**args)
           @average_tag_normalized_score = args[:average_tag_normalized_score] if args.key?(:average_tag_normalized_score)
           @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # The measure related to dialogflow interactions.
+      class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure
+        include Google::Apis::Core::Hashable
+      
+        # The percentile result. Currently supported percentiles are 50th, 90th, and
+        # 99th.
+        # Corresponds to the JSON property `percentileAudioInAudioOutLatency`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult]
+        attr_accessor :percentile_audio_in_audio_out_latency
+      
+        # The percentile result. Currently supported percentiles are 50th, 90th, and
+        # 99th.
+        # Corresponds to the JSON property `percentileEndToEndLatency`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult]
+        attr_accessor :percentile_end_to_end_latency
+      
+        # The percentile result. Currently supported percentiles are 50th, 90th, and
+        # 99th.
+        # Corresponds to the JSON property `percentileLlmCallLatency`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult]
+        attr_accessor :percentile_llm_call_latency
+      
+        # The percentile result. Currently supported percentiles are 50th, 90th, and
+        # 99th.
+        # Corresponds to the JSON property `percentileToolUseLatency`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult]
+        attr_accessor :percentile_tool_use_latency
+      
+        # The percentile result. Currently supported percentiles are 50th, 90th, and
+        # 99th.
+        # Corresponds to the JSON property `percentileTtsLatency`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult]
+        attr_accessor :percentile_tts_latency
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentile_audio_in_audio_out_latency = args[:percentile_audio_in_audio_out_latency] if args.key?(:percentile_audio_in_audio_out_latency)
+          @percentile_end_to_end_latency = args[:percentile_end_to_end_latency] if args.key?(:percentile_end_to_end_latency)
+          @percentile_llm_call_latency = args[:percentile_llm_call_latency] if args.key?(:percentile_llm_call_latency)
+          @percentile_tool_use_latency = args[:percentile_tool_use_latency] if args.key?(:percentile_tool_use_latency)
+          @percentile_tts_latency = args[:percentile_tts_latency] if args.key?(:percentile_tts_latency)
+        end
+      end
+      
+      # The percentile result. Currently supported percentiles are 50th, 90th, and
+      # 99th.
+      class GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult
+        include Google::Apis::Core::Hashable
+      
+        # The 50th percentile value.
+        # Corresponds to the JSON property `p50`
+        # @return [Float]
+        attr_accessor :p50
+      
+        # The 90th percentile value.
+        # Corresponds to the JSON property `p90`
+        # @return [Float]
+        attr_accessor :p90
+      
+        # The 99th percentile value.
+        # Corresponds to the JSON property `p99`
+        # @return [Float]
+        attr_accessor :p99
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @p50 = args[:p50] if args.key?(:p50)
+          @p90 = args[:p90] if args.key?(:p90)
+          @p99 = args[:p99] if args.key?(:p99)
         end
       end
       
@@ -16951,6 +17731,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure]
         attr_accessor :conversation_measure
       
+        # The measure related to dialogflow interactions.
+        # Corresponds to the JSON property `dialogflowInteractionMeasure`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure]
+        attr_accessor :dialogflow_interaction_measure
+      
         # Represents a time interval, encoded as a Timestamp start (inclusive) and a
         # Timestamp end (exclusive). The start must be less than or equal to the end.
         # When the start equals the end, the interval is empty (matches no time). When
@@ -16966,6 +17751,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @conversation_measure = args[:conversation_measure] if args.key?(:conversation_measure)
+          @dialogflow_interaction_measure = args[:dialogflow_interaction_measure] if args.key?(:dialogflow_interaction_measure)
           @interval = args[:interval] if args.key?(:interval)
         end
       end
@@ -16973,6 +17759,70 @@ module Google
       # The measure related to conversations.
       class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure
         include Google::Apis::Core::Hashable
+      
+        # The number of conversations that were assigned to an AA human supervisor.
+        # Corresponds to the JSON property `aaSupervisorAssignedConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :aa_supervisor_assigned_conversations_count
+      
+        # The number of conversations that were dropped, i.e. escalated but not assigned
+        # to an AA human supervisor.
+        # Corresponds to the JSON property `aaSupervisorDroppedConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :aa_supervisor_dropped_conversations_count
+      
+        # The number of conversations that were escalated to an AA human supervisor for
+        # intervention.
+        # Corresponds to the JSON property `aaSupervisorEscalatedConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :aa_supervisor_escalated_conversations_count
+      
+        # The number of conversations scanned by the AA human supervisor.
+        # Corresponds to the JSON property `aaSupervisorMonitoredConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :aa_supervisor_monitored_conversations_count
+      
+        # The number of conversations transferred to a human agent.
+        # Corresponds to the JSON property `aaSupervisorTransferredToHumanAgentConvCount`
+        # @return [Fixnum]
+        attr_accessor :aa_supervisor_transferred_to_human_agent_conv_count
+      
+        # Count of agent messages that triggered an Ai Coach Suggestion.
+        # Corresponds to the JSON property `aiCoachSuggestionAgentMessageTriggerCount`
+        # @return [Fixnum]
+        attr_accessor :ai_coach_suggestion_agent_message_trigger_count
+      
+        # Count of Ai Coach Suggestion that has been used by agents.
+        # Corresponds to the JSON property `aiCoachSuggestionAgentUsageCount`
+        # @return [Fixnum]
+        attr_accessor :ai_coach_suggestion_agent_usage_count
+      
+        # Proportion of Ai Coach Suggestion that has been used by agents.
+        # Corresponds to the JSON property `aiCoachSuggestionAgentUsageRatio`
+        # @return [Float]
+        attr_accessor :ai_coach_suggestion_agent_usage_ratio
+      
+        # Count of customer messages that triggered an Ai Coach Suggestion.
+        # Corresponds to the JSON property `aiCoachSuggestionCustomerMessageTriggerCount`
+        # @return [Fixnum]
+        attr_accessor :ai_coach_suggestion_customer_message_trigger_count
+      
+        # Proportion of customer messages that triggered an Ai Coach Suggestion.
+        # Corresponds to the JSON property `aiCoachSuggestionCustomerMessageTriggerRatio`
+        # @return [Float]
+        attr_accessor :ai_coach_suggestion_customer_message_trigger_ratio
+      
+        # Count of end_of_utterance trigger event messages that triggered an Ai Coach
+        # Suggestion.
+        # Corresponds to the JSON property `aiCoachSuggestionMessageTriggerCount`
+        # @return [Fixnum]
+        attr_accessor :ai_coach_suggestion_message_trigger_count
+      
+        # Proportion of end_of_utterance trigger event messages that triggered an Ai
+        # Coach Suggestion.
+        # Corresponds to the JSON property `aiCoachSuggestionMessageTriggerRatio`
+        # @return [Float]
+        attr_accessor :ai_coach_suggestion_message_trigger_ratio
       
         # The average agent's sentiment score.
         # Corresponds to the JSON property `averageAgentSentimentScore`
@@ -17015,20 +17865,215 @@ module Google
         # @return [Float]
         attr_accessor :average_silence_percentage
       
+        # Average edit distance of the summarization suggestions. Edit distance (also
+        # called as levenshtein distance) is calculated by summing up number of
+        # insertions, deletions and substitutions required to transform the summization
+        # feedback to the original summary suggestion.
+        # Corresponds to the JSON property `averageSummarizationSuggestionEditDistance`
+        # @return [Float]
+        attr_accessor :average_summarization_suggestion_edit_distance
+      
+        # Normalized Average edit distance of the summarization suggestions. Edit
+        # distance (also called as levenshtein distance) is calculated by summing up
+        # number of insertions, deletions and substitutions required to transform the
+        # summization feedback to the original summary suggestion. Normalized edit
+        # distance is the average of (edit distance / summary length).
+        # Corresponds to the JSON property `averageSummarizationSuggestionNormalizedEditDistance`
+        # @return [Float]
+        attr_accessor :average_summarization_suggestion_normalized_edit_distance
+      
         # The average turn count.
         # Corresponds to the JSON property `averageTurnCount`
         # @return [Float]
         attr_accessor :average_turn_count
+      
+        # The exponential moving average of the sentiment score of client turns in the
+        # conversation.
+        # Corresponds to the JSON property `avgConversationClientTurnSentimentEma`
+        # @return [Float]
+        attr_accessor :avg_conversation_client_turn_sentiment_ema
+      
+        # The number of conversations that were contained.
+        # Corresponds to the JSON property `containedConversationCount`
+        # @return [Fixnum]
+        attr_accessor :contained_conversation_count
+      
+        # The percentage of conversations that were contained.
+        # Corresponds to the JSON property `containedConversationRatio`
+        # @return [Float]
+        attr_accessor :contained_conversation_ratio
+      
+        # Count of conversations that has Ai Coach Suggestions.
+        # Corresponds to the JSON property `conversationAiCoachSuggestionCount`
+        # @return [Fixnum]
+        attr_accessor :conversation_ai_coach_suggestion_count
+      
+        # Proportion of conversations that has Ai Coach Suggestions.
+        # Corresponds to the JSON property `conversationAiCoachSuggestionRatio`
+        # @return [Float]
+        attr_accessor :conversation_ai_coach_suggestion_ratio
       
         # The conversation count.
         # Corresponds to the JSON property `conversationCount`
         # @return [Fixnum]
         attr_accessor :conversation_count
       
+        # Proportion of conversations that had a suggested summary.
+        # Corresponds to the JSON property `conversationSuggestedSummaryRatio`
+        # @return [Float]
+        attr_accessor :conversation_suggested_summary_ratio
+      
+        # The agent message count.
+        # Corresponds to the JSON property `conversationTotalAgentMessageCount`
+        # @return [Fixnum]
+        attr_accessor :conversation_total_agent_message_count
+      
+        # The customer message count.
+        # Corresponds to the JSON property `conversationTotalCustomerMessageCount`
+        # @return [Fixnum]
+        attr_accessor :conversation_total_customer_message_count
+      
+        # The average latency of conversational agents' audio in audio out latency per
+        # interaction. This is computed as the average of the all the interactions'
+        # audio in audio out latencies in a conversation and averaged across
+        # conversations.
+        # Corresponds to the JSON property `conversationalAgentsAverageAudioInAudioOutLatency`
+        # @return [Float]
+        attr_accessor :conversational_agents_average_audio_in_audio_out_latency
+      
+        # The average latency of conversational agents' latency per interaction. This is
+        # computed as the average of the all the iteractions' end to end latencies in a
+        # conversation and averaged across conversations. The e2e latency is the time
+        # between the end of the user utterance and the start of the agent utterance on
+        # the interaction level.
+        # Corresponds to the JSON property `conversationalAgentsAverageEndToEndLatency`
+        # @return [Float]
+        attr_accessor :conversational_agents_average_end_to_end_latency
+      
+        # The average latency of conversational agents' LLM call latency per interaction.
+        # This is computed as the average of the all the interactions LLM call
+        # latencies in a conversation and averaged across conversations.
+        # Corresponds to the JSON property `conversationalAgentsAverageLlmCallLatency`
+        # @return [Float]
+        attr_accessor :conversational_agents_average_llm_call_latency
+      
+        # The macro average latency of conversational agents' TTS latency per
+        # interaction. This is computed as the average of the all the interactions' TTS
+        # latencies in a conversation and averaged across conversations.
+        # Corresponds to the JSON property `conversationalAgentsAverageTtsLatency`
+        # @return [Float]
+        attr_accessor :conversational_agents_average_tts_latency
+      
+        # Average latency of dialogflow webhook calls.
+        # Corresponds to the JSON property `dialogflowAverageWebhookLatency`
+        # @return [Float]
+        attr_accessor :dialogflow_average_webhook_latency
+      
+        # count of conversations that was handed off from virtual agent to human agent.
+        # Corresponds to the JSON property `dialogflowConversationsEscalationCount`
+        # @return [Float]
+        attr_accessor :dialogflow_conversations_escalation_count
+      
+        # Proportion of conversations that was handed off from virtual agent to human
+        # agent.
+        # Corresponds to the JSON property `dialogflowConversationsEscalationRatio`
+        # @return [Float]
+        attr_accessor :dialogflow_conversations_escalation_ratio
+      
+        # Proportion of dialogflow interactions that has empty input.
+        # Corresponds to the JSON property `dialogflowInteractionsNoInputRatio`
+        # @return [Float]
+        attr_accessor :dialogflow_interactions_no_input_ratio
+      
+        # Proportion of dialogflow interactions that has no intent match for the input.
+        # Corresponds to the JSON property `dialogflowInteractionsNoMatchRatio`
+        # @return [Float]
+        attr_accessor :dialogflow_interactions_no_match_ratio
+      
+        # Proportion of dialogflow webhook calls that failed.
+        # Corresponds to the JSON property `dialogflowWebhookFailureRatio`
+        # @return [Float]
+        attr_accessor :dialogflow_webhook_failure_ratio
+      
+        # Proportion of dialogflow webhook calls that timed out.
+        # Corresponds to the JSON property `dialogflowWebhookTimeoutRatio`
+        # @return [Float]
+        attr_accessor :dialogflow_webhook_timeout_ratio
+      
+        # Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries
+        # that had negative feedback.
+        # Corresponds to the JSON property `knowledgeAssistNegativeFeedbackRatio`
+        # @return [Float]
+        attr_accessor :knowledge_assist_negative_feedback_ratio
+      
+        # Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries
+        # that had positive feedback.
+        # Corresponds to the JSON property `knowledgeAssistPositiveFeedbackRatio`
+        # @return [Float]
+        attr_accessor :knowledge_assist_positive_feedback_ratio
+      
+        # Count of knowledge assist results (Proactive Generative Knowledge Assist)
+        # shown to the user.
+        # Corresponds to the JSON property `knowledgeAssistResultCount`
+        # @return [Fixnum]
+        attr_accessor :knowledge_assist_result_count
+      
+        # Proportion of knowledge assist (Proactive Generative Knowledge Assist) queries
+        # that had a URL clicked.
+        # Corresponds to the JSON property `knowledgeAssistUriClickRatio`
+        # @return [Float]
+        attr_accessor :knowledge_assist_uri_click_ratio
+      
+        # Proportion of knowledge search (Generative Knowledge Assist) queries made by
+        # the agent compared to the total number of knowledge search queries made.
+        # Corresponds to the JSON property `knowledgeSearchAgentQuerySourceRatio`
+        # @return [Float]
+        attr_accessor :knowledge_search_agent_query_source_ratio
+      
+        # Proportion of knowledge search (Generative Knowledge Assist) queries that had
+        # negative feedback.
+        # Corresponds to the JSON property `knowledgeSearchNegativeFeedbackRatio`
+        # @return [Float]
+        attr_accessor :knowledge_search_negative_feedback_ratio
+      
+        # Proportion of knowledge search (Generative Knowledge Assist) queries that had
+        # positive feedback.
+        # Corresponds to the JSON property `knowledgeSearchPositiveFeedbackRatio`
+        # @return [Float]
+        attr_accessor :knowledge_search_positive_feedback_ratio
+      
+        # Count of knowledge search results (Generative Knowledge Assist) shown to the
+        # user.
+        # Corresponds to the JSON property `knowledgeSearchResultCount`
+        # @return [Fixnum]
+        attr_accessor :knowledge_search_result_count
+      
+        # Proportion of knowledge search (Generative Knowledge Assist) queries suggested
+        # compared to the total number of knowledge search queries made.
+        # Corresponds to the JSON property `knowledgeSearchSuggestedQuerySourceRatio`
+        # @return [Float]
+        attr_accessor :knowledge_search_suggested_query_source_ratio
+      
+        # Proportion of knowledge search (Generative Knowledge Assist) queries that had
+        # a URL clicked.
+        # Corresponds to the JSON property `knowledgeSearchUriClickRatio`
+        # @return [Float]
+        attr_accessor :knowledge_search_uri_click_ratio
+      
         # Average QA normalized score for all the tags.
         # Corresponds to the JSON property `qaTagScores`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore>]
         attr_accessor :qa_tag_scores
+      
+        # Proportion of summarization suggestions that were manually edited.
+        # Corresponds to the JSON property `summarizationSuggestionEditRatio`
+        # @return [Float]
+        attr_accessor :summarization_suggestion_edit_ratio
+      
+        # Count of summarization suggestions results.
+        # Corresponds to the JSON property `summarizationSuggestionResultCount`
+        # @return [Fixnum]
+        attr_accessor :summarization_suggestion_result_count
       
         def initialize(**args)
            update!(**args)
@@ -17036,6 +18081,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aa_supervisor_assigned_conversations_count = args[:aa_supervisor_assigned_conversations_count] if args.key?(:aa_supervisor_assigned_conversations_count)
+          @aa_supervisor_dropped_conversations_count = args[:aa_supervisor_dropped_conversations_count] if args.key?(:aa_supervisor_dropped_conversations_count)
+          @aa_supervisor_escalated_conversations_count = args[:aa_supervisor_escalated_conversations_count] if args.key?(:aa_supervisor_escalated_conversations_count)
+          @aa_supervisor_monitored_conversations_count = args[:aa_supervisor_monitored_conversations_count] if args.key?(:aa_supervisor_monitored_conversations_count)
+          @aa_supervisor_transferred_to_human_agent_conv_count = args[:aa_supervisor_transferred_to_human_agent_conv_count] if args.key?(:aa_supervisor_transferred_to_human_agent_conv_count)
+          @ai_coach_suggestion_agent_message_trigger_count = args[:ai_coach_suggestion_agent_message_trigger_count] if args.key?(:ai_coach_suggestion_agent_message_trigger_count)
+          @ai_coach_suggestion_agent_usage_count = args[:ai_coach_suggestion_agent_usage_count] if args.key?(:ai_coach_suggestion_agent_usage_count)
+          @ai_coach_suggestion_agent_usage_ratio = args[:ai_coach_suggestion_agent_usage_ratio] if args.key?(:ai_coach_suggestion_agent_usage_ratio)
+          @ai_coach_suggestion_customer_message_trigger_count = args[:ai_coach_suggestion_customer_message_trigger_count] if args.key?(:ai_coach_suggestion_customer_message_trigger_count)
+          @ai_coach_suggestion_customer_message_trigger_ratio = args[:ai_coach_suggestion_customer_message_trigger_ratio] if args.key?(:ai_coach_suggestion_customer_message_trigger_ratio)
+          @ai_coach_suggestion_message_trigger_count = args[:ai_coach_suggestion_message_trigger_count] if args.key?(:ai_coach_suggestion_message_trigger_count)
+          @ai_coach_suggestion_message_trigger_ratio = args[:ai_coach_suggestion_message_trigger_ratio] if args.key?(:ai_coach_suggestion_message_trigger_ratio)
           @average_agent_sentiment_score = args[:average_agent_sentiment_score] if args.key?(:average_agent_sentiment_score)
           @average_client_sentiment_score = args[:average_client_sentiment_score] if args.key?(:average_client_sentiment_score)
           @average_customer_satisfaction_rating = args[:average_customer_satisfaction_rating] if args.key?(:average_customer_satisfaction_rating)
@@ -17043,9 +18100,42 @@ module Google
           @average_qa_normalized_score = args[:average_qa_normalized_score] if args.key?(:average_qa_normalized_score)
           @average_qa_question_normalized_score = args[:average_qa_question_normalized_score] if args.key?(:average_qa_question_normalized_score)
           @average_silence_percentage = args[:average_silence_percentage] if args.key?(:average_silence_percentage)
+          @average_summarization_suggestion_edit_distance = args[:average_summarization_suggestion_edit_distance] if args.key?(:average_summarization_suggestion_edit_distance)
+          @average_summarization_suggestion_normalized_edit_distance = args[:average_summarization_suggestion_normalized_edit_distance] if args.key?(:average_summarization_suggestion_normalized_edit_distance)
           @average_turn_count = args[:average_turn_count] if args.key?(:average_turn_count)
+          @avg_conversation_client_turn_sentiment_ema = args[:avg_conversation_client_turn_sentiment_ema] if args.key?(:avg_conversation_client_turn_sentiment_ema)
+          @contained_conversation_count = args[:contained_conversation_count] if args.key?(:contained_conversation_count)
+          @contained_conversation_ratio = args[:contained_conversation_ratio] if args.key?(:contained_conversation_ratio)
+          @conversation_ai_coach_suggestion_count = args[:conversation_ai_coach_suggestion_count] if args.key?(:conversation_ai_coach_suggestion_count)
+          @conversation_ai_coach_suggestion_ratio = args[:conversation_ai_coach_suggestion_ratio] if args.key?(:conversation_ai_coach_suggestion_ratio)
           @conversation_count = args[:conversation_count] if args.key?(:conversation_count)
+          @conversation_suggested_summary_ratio = args[:conversation_suggested_summary_ratio] if args.key?(:conversation_suggested_summary_ratio)
+          @conversation_total_agent_message_count = args[:conversation_total_agent_message_count] if args.key?(:conversation_total_agent_message_count)
+          @conversation_total_customer_message_count = args[:conversation_total_customer_message_count] if args.key?(:conversation_total_customer_message_count)
+          @conversational_agents_average_audio_in_audio_out_latency = args[:conversational_agents_average_audio_in_audio_out_latency] if args.key?(:conversational_agents_average_audio_in_audio_out_latency)
+          @conversational_agents_average_end_to_end_latency = args[:conversational_agents_average_end_to_end_latency] if args.key?(:conversational_agents_average_end_to_end_latency)
+          @conversational_agents_average_llm_call_latency = args[:conversational_agents_average_llm_call_latency] if args.key?(:conversational_agents_average_llm_call_latency)
+          @conversational_agents_average_tts_latency = args[:conversational_agents_average_tts_latency] if args.key?(:conversational_agents_average_tts_latency)
+          @dialogflow_average_webhook_latency = args[:dialogflow_average_webhook_latency] if args.key?(:dialogflow_average_webhook_latency)
+          @dialogflow_conversations_escalation_count = args[:dialogflow_conversations_escalation_count] if args.key?(:dialogflow_conversations_escalation_count)
+          @dialogflow_conversations_escalation_ratio = args[:dialogflow_conversations_escalation_ratio] if args.key?(:dialogflow_conversations_escalation_ratio)
+          @dialogflow_interactions_no_input_ratio = args[:dialogflow_interactions_no_input_ratio] if args.key?(:dialogflow_interactions_no_input_ratio)
+          @dialogflow_interactions_no_match_ratio = args[:dialogflow_interactions_no_match_ratio] if args.key?(:dialogflow_interactions_no_match_ratio)
+          @dialogflow_webhook_failure_ratio = args[:dialogflow_webhook_failure_ratio] if args.key?(:dialogflow_webhook_failure_ratio)
+          @dialogflow_webhook_timeout_ratio = args[:dialogflow_webhook_timeout_ratio] if args.key?(:dialogflow_webhook_timeout_ratio)
+          @knowledge_assist_negative_feedback_ratio = args[:knowledge_assist_negative_feedback_ratio] if args.key?(:knowledge_assist_negative_feedback_ratio)
+          @knowledge_assist_positive_feedback_ratio = args[:knowledge_assist_positive_feedback_ratio] if args.key?(:knowledge_assist_positive_feedback_ratio)
+          @knowledge_assist_result_count = args[:knowledge_assist_result_count] if args.key?(:knowledge_assist_result_count)
+          @knowledge_assist_uri_click_ratio = args[:knowledge_assist_uri_click_ratio] if args.key?(:knowledge_assist_uri_click_ratio)
+          @knowledge_search_agent_query_source_ratio = args[:knowledge_search_agent_query_source_ratio] if args.key?(:knowledge_search_agent_query_source_ratio)
+          @knowledge_search_negative_feedback_ratio = args[:knowledge_search_negative_feedback_ratio] if args.key?(:knowledge_search_negative_feedback_ratio)
+          @knowledge_search_positive_feedback_ratio = args[:knowledge_search_positive_feedback_ratio] if args.key?(:knowledge_search_positive_feedback_ratio)
+          @knowledge_search_result_count = args[:knowledge_search_result_count] if args.key?(:knowledge_search_result_count)
+          @knowledge_search_suggested_query_source_ratio = args[:knowledge_search_suggested_query_source_ratio] if args.key?(:knowledge_search_suggested_query_source_ratio)
+          @knowledge_search_uri_click_ratio = args[:knowledge_search_uri_click_ratio] if args.key?(:knowledge_search_uri_click_ratio)
           @qa_tag_scores = args[:qa_tag_scores] if args.key?(:qa_tag_scores)
+          @summarization_suggestion_edit_ratio = args[:summarization_suggestion_edit_ratio] if args.key?(:summarization_suggestion_edit_ratio)
+          @summarization_suggestion_result_count = args[:summarization_suggestion_result_count] if args.key?(:summarization_suggestion_result_count)
         end
       end
       
@@ -17071,6 +18161,86 @@ module Google
         def update!(**args)
           @average_tag_normalized_score = args[:average_tag_normalized_score] if args.key?(:average_tag_normalized_score)
           @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # The measure related to dialogflow interactions.
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure
+        include Google::Apis::Core::Hashable
+      
+        # The percentile result. Currently supported percentiles are 50th, 90th, and
+        # 99th.
+        # Corresponds to the JSON property `percentileAudioInAudioOutLatency`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult]
+        attr_accessor :percentile_audio_in_audio_out_latency
+      
+        # The percentile result. Currently supported percentiles are 50th, 90th, and
+        # 99th.
+        # Corresponds to the JSON property `percentileEndToEndLatency`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult]
+        attr_accessor :percentile_end_to_end_latency
+      
+        # The percentile result. Currently supported percentiles are 50th, 90th, and
+        # 99th.
+        # Corresponds to the JSON property `percentileLlmCallLatency`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult]
+        attr_accessor :percentile_llm_call_latency
+      
+        # The percentile result. Currently supported percentiles are 50th, 90th, and
+        # 99th.
+        # Corresponds to the JSON property `percentileToolUseLatency`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult]
+        attr_accessor :percentile_tool_use_latency
+      
+        # The percentile result. Currently supported percentiles are 50th, 90th, and
+        # 99th.
+        # Corresponds to the JSON property `percentileTtsLatency`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult]
+        attr_accessor :percentile_tts_latency
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentile_audio_in_audio_out_latency = args[:percentile_audio_in_audio_out_latency] if args.key?(:percentile_audio_in_audio_out_latency)
+          @percentile_end_to_end_latency = args[:percentile_end_to_end_latency] if args.key?(:percentile_end_to_end_latency)
+          @percentile_llm_call_latency = args[:percentile_llm_call_latency] if args.key?(:percentile_llm_call_latency)
+          @percentile_tool_use_latency = args[:percentile_tool_use_latency] if args.key?(:percentile_tool_use_latency)
+          @percentile_tts_latency = args[:percentile_tts_latency] if args.key?(:percentile_tts_latency)
+        end
+      end
+      
+      # The percentile result. Currently supported percentiles are 50th, 90th, and
+      # 99th.
+      class GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult
+        include Google::Apis::Core::Hashable
+      
+        # The 50th percentile value.
+        # Corresponds to the JSON property `p50`
+        # @return [Float]
+        attr_accessor :p50
+      
+        # The 90th percentile value.
+        # Corresponds to the JSON property `p90`
+        # @return [Float]
+        attr_accessor :p90
+      
+        # The 99th percentile value.
+        # Corresponds to the JSON property `p99`
+        # @return [Float]
+        attr_accessor :p99
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @p50 = args[:p50] if args.key?(:p50)
+          @p90 = args[:p90] if args.key?(:p90)
+          @p99 = args[:p99] if args.key?(:p99)
         end
       end
       
