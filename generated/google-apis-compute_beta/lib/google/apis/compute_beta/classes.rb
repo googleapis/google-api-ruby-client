@@ -7168,6 +7168,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
+        # A flexible specification of machine types for instances to create.
+        # Corresponds to the JSON property `instanceFlexibilityPolicy`
+        # @return [Google::Apis::ComputeBeta::InstanceFlexibilityPolicy]
+        attr_accessor :instance_flexibility_policy
+      
         # The instance properties defining the VM instances to be created. Required
         # if sourceInstanceTemplate is not provided.
         # Corresponds to the JSON property `instanceProperties`
@@ -7238,6 +7243,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @count = args[:count] if args.key?(:count)
+          @instance_flexibility_policy = args[:instance_flexibility_policy] if args.key?(:instance_flexibility_policy)
           @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
           @location_policy = args[:location_policy] if args.key?(:location_policy)
           @min_count = args[:min_count] if args.key?(:min_count)
@@ -21617,6 +21623,76 @@ module Google
         end
       end
       
+      # A flexible specification of machine types for instances to create.
+      class InstanceFlexibilityPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specification of alternative, flexible instance subsets.
+        # One of them will be selected to create the instances
+        # based on various criteria, like:
+        # - ranks,
+        # - location policy,
+        # - current capacity,
+        # - available reservations (you can specify affinity in
+        # InstanceProperties),
+        # - SWAN/GOOSE limitations.
+        # Key is an arbitrary, unique RFC1035 string that identifies the instance
+        # selection.
+        # Corresponds to the JSON property `instanceSelections`
+        # @return [Hash<String,Google::Apis::ComputeBeta::InstanceFlexibilityPolicyInstanceSelection>]
+        attr_accessor :instance_selections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_selections = args[:instance_selections] if args.key?(:instance_selections)
+        end
+      end
+      
+      # Specification of machine type to use. Every position inside this message
+      # is an alternative.
+      # The count specified in the shape flexibility must not exceed the number
+      # of entries in per_instance_properties or the capacity of the
+      # name_pattern, if used.
+      class InstanceFlexibilityPolicyInstanceSelection
+        include Google::Apis::Core::Hashable
+      
+        # Disks to be attached to the instances created from in this selection.
+        # They override the disks specified in the instance properties.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::ComputeBeta::AttachedDisk>]
+        attr_accessor :disks
+      
+        # Alternative machine types to use for instances that are created from
+        # these properties. This field only accepts a machine type names, for
+        # example `n2-standard-4` and not URLs or partial URLs.
+        # Corresponds to the JSON property `machineTypes`
+        # @return [Array<String>]
+        attr_accessor :machine_types
+      
+        # Rank when prioritizing the shape flexibilities.
+        # The instance selections with rank are considered
+        # first, in the ascending order of the rank.
+        # If not set, defaults to 0.
+        # Corresponds to the JSON property `rank`
+        # @return [Fixnum]
+        attr_accessor :rank
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
+          @machine_types = args[:machine_types] if args.key?(:machine_types)
+          @rank = args[:rank] if args.key?(:rank)
+        end
+      end
+      
       # Represents an Instance Group resource.
       # Instance Groups can be used to configure a target forload
       # balancing.
@@ -28041,6 +28117,7 @@ module Google
         # - BPS_20G: 20 Gbit/s
         # - BPS_50G: 50 Gbit/s
         # - BPS_100G: 100 Gbit/s
+        # - BPS_400G: 400 Gbit/s
         # Corresponds to the JSON property `bandwidth`
         # @return [String]
         attr_accessor :bandwidth
