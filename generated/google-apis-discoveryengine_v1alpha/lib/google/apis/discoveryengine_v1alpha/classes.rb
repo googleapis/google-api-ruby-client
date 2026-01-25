@@ -3496,9 +3496,10 @@ module Google
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
         # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `disable-agent-sharing` * `disable-image-generation`
-        # * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
-        # content` * `disable-google-drive-upload`
+        # personalization-memory` * `personalization-suggested-highlights` * `disable-
+        # agent-sharing` * `disable-image-generation` * `disable-video-generation` * `
+        # disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-
+        # upload` * `disable-welcome-emails`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -7249,6 +7250,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The display name of the agent owner.
+        # Corresponds to the JSON property `ownerDisplayName`
+        # @return [String]
+        attr_accessor :owner_display_name
+      
         # The reason why the agent was rejected. Only set if the state is PRIVATE, and
         # got there via rejection.
         # Corresponds to the JSON property `rejectionReason`
@@ -7270,6 +7276,11 @@ module Google
         # Corresponds to the JSON property `suspensionReason`
         # @return [String]
         attr_accessor :suspension_reason
+      
+        # Output only. The timestamp when the agent was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
       
         # Per-user annotations for an Agent, based on UserAnnotation.
         # Corresponds to the JSON property `userAnnotations`
@@ -7296,10 +7307,12 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @icon = args[:icon] if args.key?(:icon)
           @name = args[:name] if args.key?(:name)
+          @owner_display_name = args[:owner_display_name] if args.key?(:owner_display_name)
           @rejection_reason = args[:rejection_reason] if args.key?(:rejection_reason)
           @state = args[:state] if args.key?(:state)
           @suggested_prompts = args[:suggested_prompts] if args.key?(:suggested_prompts)
           @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
+          @update_time = args[:update_time] if args.key?(:update_time)
           @user_annotations = args[:user_annotations] if args.key?(:user_annotations)
           @user_permissions = args[:user_permissions] if args.key?(:user_permissions)
         end
@@ -9502,8 +9515,8 @@ module Google
         # Output only. When set, uniquely identifies a reply within the `AssistAnswer`
         # resource. During an AssistantService.StreamAssist call, multiple `Reply`
         # messages with the same ID can occur within the response stream (across
-        # multiple AssistantService.StreamAssistResponse messages). These represent
-        # parts of a single `Reply` message in the final `AssistAnswer` resource.
+        # multiple StreamAssistResponse messages). These represent parts of a single `
+        # Reply` message in the final `AssistAnswer` resource.
         # Corresponds to the JSON property `replyId`
         # @return [String]
         attr_accessor :reply_id
@@ -15365,9 +15378,10 @@ module Google
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
         # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `disable-agent-sharing` * `disable-image-generation`
-        # * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
-        # content` * `disable-google-drive-upload`
+        # personalization-memory` * `personalization-suggested-highlights` * `disable-
+        # agent-sharing` * `disable-image-generation` * `disable-video-generation` * `
+        # disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-
+        # upload` * `disable-welcome-emails`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -18948,7 +18962,7 @@ module Google
         end
       end
       
-      # Response message for UserLicenseService.ListLicenseConfigUsageStats method.
+      # Response message for UserLicenseService.ListLicenseConfigsUsageStats method.
       class GoogleCloudDiscoveryengineV1alphaListLicenseConfigsUsageStatsResponse
         include Google::Apis::Core::Hashable
       
@@ -22158,15 +22172,15 @@ module Google
       
         # Optional. The categories associated with a category page. Must be set for
         # category navigation queries to achieve good search quality. The format should
-        # be the same as UserEvent.PageInfo.page_category. This field is the equivalent
-        # of the query for browse (navigation) queries. It's used by the browse model
-        # when the query is empty. If the field is empty, it will not be used by the
-        # browse model. If the field contains more than one element, only the first
-        # element will be used. To represent full path of a category, use '>' character
-        # to separate different hierarchies. If '>' is part of the category name,
-        # replace it with other character(s). For example, `Graphics Cards > RTX>4090 >
-        # Founders Edition` where "RTX > 4090" represents one level, can be rewritten as
-        # `Graphics Cards > RTX_4090 > Founders Edition`
+        # be the same as PageInfo.page_category. This field is the equivalent of the
+        # query for browse (navigation) queries. It's used by the browse model when the
+        # query is empty. If the field is empty, it will not be used by the browse model.
+        # If the field contains more than one element, only the first element will be
+        # used. To represent full path of a category, use '>' character to separate
+        # different hierarchies. If '>' is part of the category name, replace it with
+        # other character(s). For example, `Graphics Cards > RTX>4090 > Founders Edition`
+        # where "RTX > 4090" represents one level, can be rewritten as `Graphics Cards >
+        # RTX_4090 > Founders Edition`
         # Corresponds to the JSON property `pageCategories`
         # @return [Array<String>]
         attr_accessor :page_categories
@@ -23305,8 +23319,8 @@ module Google
         # search, the default is `HARD_FILTER`. For multi-datastore search, the default
         # behavior is `SOFT_BOOST`. Location-based filters are always applied as hard
         # filters, and the `SOFT_BOOST` setting will not affect them. This field is only
-        # used if SearchRequest.natural_language_query_understanding_spec.
-        # filter_extraction_condition is set to FilterExtractionCondition.ENABLED.
+        # used if SearchRequest.NaturalLanguageQueryUnderstandingSpec.
+        # FilterExtractionCondition is set to FilterExtractionCondition.ENABLED.
         # Corresponds to the JSON property `extractedFilterBehavior`
         # @return [String]
         attr_accessor :extracted_filter_behavior
@@ -27226,7 +27240,7 @@ module Google
       
         # The name of the collection. It should be collection resource name. Format: `
         # projects/`project`/locations/`location`/collections/`collection_id``. For APIs
-        # under WidgetService, such as WidgetService.LookUpWidgetConfig, the project
+        # under WidgetService, such as WidgetService.LookupWidgetConfig, the project
         # number and location part is erased in this field.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -27303,7 +27317,7 @@ module Google
         # The name of the data store. It should be data store resource name Format: `
         # projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
         # `data_store_id``. For APIs under WidgetService, such as WidgetService.
-        # LookUpWidgetConfig, the project number and location part is erased in this
+        # LookupWidgetConfig, the project number and location part is erased in this
         # field.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -27359,7 +27373,7 @@ module Google
         # The name of the data store. It should be data store resource name Format: `
         # projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
         # `data_store_id``. For APIs under WidgetService, such as WidgetService.
-        # LookUpWidgetConfig, the project number and location part is erased in this
+        # LookupWidgetConfig, the project number and location part is erased in this
         # field.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -27598,9 +27612,10 @@ module Google
         # Supported keys: * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery`
         # * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-
         # chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `disable-agent-sharing` * `disable-image-generation`
-        # * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
-        # content` * `disable-google-drive-upload`
+        # personalization-memory` * `personalization-suggested-highlights` * `disable-
+        # agent-sharing` * `disable-image-generation` * `disable-video-generation` * `
+        # disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-
+        # upload` * `disable-welcome-emails`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -29501,9 +29516,10 @@ module Google
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
         # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `disable-agent-sharing` * `disable-image-generation`
-        # * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
-        # content` * `disable-google-drive-upload`
+        # personalization-memory` * `personalization-suggested-highlights` * `disable-
+        # agent-sharing` * `disable-image-generation` * `disable-video-generation` * `
+        # disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-
+        # upload` * `disable-welcome-emails`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -31618,15 +31634,15 @@ module Google
       
         # Optional. The categories associated with a category page. Must be set for
         # category navigation queries to achieve good search quality. The format should
-        # be the same as UserEvent.PageInfo.page_category. This field is the equivalent
-        # of the query for browse (navigation) queries. It's used by the browse model
-        # when the query is empty. If the field is empty, it will not be used by the
-        # browse model. If the field contains more than one element, only the first
-        # element will be used. To represent full path of a category, use '>' character
-        # to separate different hierarchies. If '>' is part of the category name,
-        # replace it with other character(s). For example, `Graphics Cards > RTX>4090 >
-        # Founders Edition` where "RTX > 4090" represents one level, can be rewritten as
-        # `Graphics Cards > RTX_4090 > Founders Edition`
+        # be the same as PageInfo.page_category. This field is the equivalent of the
+        # query for browse (navigation) queries. It's used by the browse model when the
+        # query is empty. If the field is empty, it will not be used by the browse model.
+        # If the field contains more than one element, only the first element will be
+        # used. To represent full path of a category, use '>' character to separate
+        # different hierarchies. If '>' is part of the category name, replace it with
+        # other character(s). For example, `Graphics Cards > RTX>4090 > Founders Edition`
+        # where "RTX > 4090" represents one level, can be rewritten as `Graphics Cards >
+        # RTX_4090 > Founders Edition`
         # Corresponds to the JSON property `pageCategories`
         # @return [Array<String>]
         attr_accessor :page_categories
@@ -32754,8 +32770,8 @@ module Google
         # search, the default is `HARD_FILTER`. For multi-datastore search, the default
         # behavior is `SOFT_BOOST`. Location-based filters are always applied as hard
         # filters, and the `SOFT_BOOST` setting will not affect them. This field is only
-        # used if SearchRequest.natural_language_query_understanding_spec.
-        # filter_extraction_condition is set to FilterExtractionCondition.ENABLED.
+        # used if SearchRequest.NaturalLanguageQueryUnderstandingSpec.
+        # FilterExtractionCondition is set to FilterExtractionCondition.ENABLED.
         # Corresponds to the JSON property `extractedFilterBehavior`
         # @return [String]
         attr_accessor :extracted_filter_behavior
@@ -33845,7 +33861,7 @@ module Google
         end
       end
       
-      # Request for SourceService.BatchDeleteSourcesRequest method.
+      # Request for BatchDeleteSourcesRequest method.
       class GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest
         include Google::Apis::Core::Hashable
       
