@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ForwardedMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCardV1Action
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -761,6 +767,12 @@ module Google
       end
       
       class QuotedMessageMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuotedMessageSnapshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1343,6 +1355,14 @@ module Google
           property :action_method_name, as: 'actionMethodName'
           collection :parameters, as: 'parameters', class: Google::Apis::ChatV1::ActionParameter, decorator: Google::Apis::ChatV1::ActionParameter::Representation
       
+        end
+      end
+      
+      class ForwardedMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :space, as: 'space'
+          property :space_display_name, as: 'spaceDisplayName'
         end
       end
       
@@ -2322,8 +2342,26 @@ module Google
       class QuotedMessageMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :forwarded_metadata, as: 'forwardedMetadata', class: Google::Apis::ChatV1::ForwardedMetadata, decorator: Google::Apis::ChatV1::ForwardedMetadata::Representation
+      
           property :last_update_time, as: 'lastUpdateTime'
           property :name, as: 'name'
+          property :quote_type, as: 'quoteType'
+          property :quoted_message_snapshot, as: 'quotedMessageSnapshot', class: Google::Apis::ChatV1::QuotedMessageSnapshot, decorator: Google::Apis::ChatV1::QuotedMessageSnapshot::Representation
+      
+        end
+      end
+      
+      class QuotedMessageSnapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :annotations, as: 'annotations', class: Google::Apis::ChatV1::Annotation, decorator: Google::Apis::ChatV1::Annotation::Representation
+      
+          collection :attachments, as: 'attachments', class: Google::Apis::ChatV1::Attachment, decorator: Google::Apis::ChatV1::Attachment::Representation
+      
+          property :formatted_text, as: 'formattedText'
+          property :sender, as: 'sender'
+          property :text, as: 'text'
         end
       end
       
