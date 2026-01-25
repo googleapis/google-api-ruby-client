@@ -153,6 +153,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets correlation config.
+        # @param [String] name
+        #   Required. The name of the correlation config resource to get. Format: projects/
+        #   `project`/locations/`location`/correlationConfig
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_correlation_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationConfig::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets location-level encryption key specification.
         # @param [String] name
         #   Required. The name of the encryption spec resource to get.
@@ -327,6 +358,77 @@ module Google
           command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Tests correlation config on a conversation.
+        # @param [String] location
+        #   Required. The location to test correlation config. Format: projects/`project`/
+        #   locations/`location`
+        # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest] google_cloud_contactcenterinsights_v1_test_correlation_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_project_location_correlation_config(location, google_cloud_contactcenterinsights_v1_test_correlation_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+location}:testCorrelationConfig', options)
+          command.request_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest::Representation
+          command.request_object = google_cloud_contactcenterinsights_v1_test_correlation_config_request_object
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleLongrunningOperation
+          command.params['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates correlation config.
+        # @param [String] name
+        #   Immutable. Identifier. The resource name of the correlation config. Format:
+        #   projects/`project`/locations/`location`/correlationConfig
+        # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationConfig] google_cloud_contactcenterinsights_v1_correlation_config_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_correlation_config(name, google_cloud_contactcenterinsights_v1_correlation_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationConfig::Representation
+          command.request_object = google_cloud_contactcenterinsights_v1_correlation_config_object
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationConfig::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2221,6 +2323,217 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an auto labeling rule.
+        # @param [String] parent
+        #   Required. The project and location to create the auto labeling rule in. Format:
+        #   projects/`project`/locations/`location`
+        # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule] google_cloud_contactcenterinsights_v1_auto_labeling_rule_object
+        # @param [String] auto_labeling_rule_id
+        #   Required. The ID to use for the auto labeling rule, which will become the
+        #   final component of the auto labeling rule's resource name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_auto_labeling_rule(parent, google_cloud_contactcenterinsights_v1_auto_labeling_rule_object = nil, auto_labeling_rule_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/autoLabelingRules', options)
+          command.request_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule::Representation
+          command.request_object = google_cloud_contactcenterinsights_v1_auto_labeling_rule_object
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule
+          command.params['parent'] = parent unless parent.nil?
+          command.query['autoLabelingRuleId'] = auto_labeling_rule_id unless auto_labeling_rule_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an auto labeling rule.
+        # @param [String] name
+        #   Required. The name of the auto labeling rule to delete. Format: projects/`
+        #   project`/locations/`location`/autoLabelingRules/`auto_labeling_rule`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_auto_labeling_rule(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an auto labeling rule.
+        # @param [String] name
+        #   Required. The name of the auto labeling rule to get. Format: projects/`project`
+        #   /locations/`location`/autoLabelingRules/`auto_labeling_rule`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_auto_labeling_rule(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists auto labeling rules.
+        # @param [String] parent
+        #   Required. The project and location to list auto labeling rules from. Format:
+        #   projects/`project`/locations/`location`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of auto labeling rules to return in a single
+        #   response. If unspecified, at most 100 rules will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous List request, if
+        #   any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_auto_labeling_rules(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/autoLabelingRules', options)
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an auto labeling rule.
+        # @param [String] name
+        #   Identifier. The resource name of the auto-labeling rule. Format: projects/`
+        #   project`/locations/`location`/autoLabelingRules/`auto_labeling_rule`
+        # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule] google_cloud_contactcenterinsights_v1_auto_labeling_rule_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_auto_labeling_rule(name, google_cloud_contactcenterinsights_v1_auto_labeling_rule_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule::Representation
+          command.request_object = google_cloud_contactcenterinsights_v1_auto_labeling_rule_object
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Tests auto labeling rules against a conversation.
+        # @param [String] parent
+        #   Required. The parent project and location. Format: projects/`project`/
+        #   locations/`location`
+        # @param [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest] google_cloud_contactcenterinsights_v1_test_auto_labeling_rule_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_project_location_auto_labeling_rule(parent, google_cloud_contactcenterinsights_v1_test_auto_labeling_rule_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/autoLabelingRules:test', options)
+          command.request_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest::Representation
+          command.request_object = google_cloud_contactcenterinsights_v1_test_auto_labeling_rule_request_object
+          command.response_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse::Representation
+          command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Analyzes multiple conversations in a single request.
         # @param [String] parent
         #   Required. The parent resource to create analyses in.
@@ -2558,6 +2871,9 @@ module Google
         #   Optional. Defaults to false. If set to true, and the conversation is not found,
         #   a new conversation will be created. In this situation, `update_mask` is
         #   ignored.
+        # @param [Boolean] conversation_auto_labeling_update_config_allow_auto_labeling_update
+        #   Optional. If set to true, the conversation will be updated with auto labeling
+        #   results.
         # @param [String] update_mask
         #   The list of fields to be updated. All possible fields can be updated by
         #   passing `*`, or a subset of the following updateable fields can be provided: *
@@ -2582,7 +2898,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_conversation(name, google_cloud_contactcenterinsights_v1_conversation_object = nil, allow_missing: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_conversation(name, google_cloud_contactcenterinsights_v1_conversation_object = nil, allow_missing: nil, conversation_auto_labeling_update_config_allow_auto_labeling_update: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation::Representation
           command.request_object = google_cloud_contactcenterinsights_v1_conversation_object
@@ -2590,6 +2906,7 @@ module Google
           command.response_class = Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation
           command.params['name'] = name unless name.nil?
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['conversationAutoLabelingUpdateConfig.allowAutoLabelingUpdate'] = conversation_auto_labeling_update_config_allow_auto_labeling_update unless conversation_auto_labeling_update_config_allow_auto_labeling_update.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -729,6 +729,105 @@ module Google
         end
       end
       
+      # Rule for auto-labeling conversations.
+      class GoogleCloudContactcenterinsightsV1AutoLabelingRule
+        include Google::Apis::Core::Hashable
+      
+        # Whether the rule is active.
+        # Corresponds to the JSON property `active`
+        # @return [Boolean]
+        attr_accessor :active
+        alias_method :active?, :active
+      
+        # Conditions to apply for auto-labeling the label_key. Representing sequential
+        # block of if .. else if .. else statements. The value of the first matching
+        # condition will be used.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition>]
+        attr_accessor :conditions
+      
+        # Output only. The time at which this rule was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The description of the rule.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The user-provided display name of the rule.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The label key. This is also the `auto_labeling_rule` in the resource name.
+        # Only settable if label_key_type is LABEL_KEY_TYPE_CUSTOM.
+        # Corresponds to the JSON property `labelKey`
+        # @return [String]
+        attr_accessor :label_key
+      
+        # The type of the label key.
+        # Corresponds to the JSON property `labelKeyType`
+        # @return [String]
+        attr_accessor :label_key_type
+      
+        # Identifier. The resource name of the auto-labeling rule. Format: projects/`
+        # project`/locations/`location`/autoLabelingRules/`auto_labeling_rule`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The most recent time at which the rule was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active = args[:active] if args.key?(:active)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @label_key = args[:label_key] if args.key?(:label_key)
+          @label_key_type = args[:label_key_type] if args.key?(:label_key_type)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Condition for auto-labeling conversations.
+      class GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition
+        include Google::Apis::Core::Hashable
+      
+        # A optional CEL expression to be evaluated as a boolean value. Once evaluated
+        # as true, then we will proceed with the value evaluation. An empty condition
+        # will be auto evaluated as true.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # CEL expression to be evaluated as the value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # The metadata for a bulk analyze conversations operation.
       class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata
         include Google::Apis::Core::Hashable
@@ -1578,6 +1677,74 @@ module Google
         end
       end
       
+      # The result of testing a constraint expression on a pair of conversations.
+      class GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult
+        include Google::Apis::Core::Hashable
+      
+        # The first conversation resource name.
+        # Corresponds to the JSON property `conversationA`
+        # @return [String]
+        attr_accessor :conversation_a
+      
+        # The second conversation resource name.
+        # Corresponds to the JSON property `conversationB`
+        # @return [String]
+        attr_accessor :conversation_b
+      
+        # The results for each applicable constraint rule.
+        # Corresponds to the JSON property `ruleConstraintResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult>]
+        attr_accessor :rule_constraint_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_a = args[:conversation_a] if args.key?(:conversation_a)
+          @conversation_b = args[:conversation_b] if args.key?(:conversation_b)
+          @rule_constraint_results = args[:rule_constraint_results] if args.key?(:rule_constraint_results)
+        end
+      end
+      
+      # The result of a single constraint rule on the pair of conversations.
+      class GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult
+        include Google::Apis::Core::Hashable
+      
+        # Whether the constraint expression evaluated to true for (A, B) or (B, A).
+        # Corresponds to the JSON property `constraintMet`
+        # @return [Boolean]
+        attr_accessor :constraint_met
+        alias_method :constraint_met?, :constraint_met
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # The rule ID.
+        # Corresponds to the JSON property `ruleId`
+        # @return [String]
+        attr_accessor :rule_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constraint_met = args[:constraint_met] if args.key?(:constraint_met)
+          @error = args[:error] if args.key?(:error)
+          @rule_id = args[:rule_id] if args.key?(:rule_id)
+        end
+      end
+      
       # The conversation resource.
       class GoogleCloudContactcenterinsightsV1Conversation
         include Google::Apis::Core::Hashable
@@ -1592,6 +1759,11 @@ module Google
         # Corresponds to the JSON property `callMetadata`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationCallMetadata]
         attr_accessor :call_metadata
+      
+        # Info for correlating across conversations.
+        # Corresponds to the JSON property `correlationInfo`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo]
+        attr_accessor :correlation_info
       
         # Output only. The time at which the conversation was created.
         # Corresponds to the JSON property `createTime`
@@ -1642,7 +1814,7 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData]
         attr_accessor :latest_summary
       
-        # Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
+        # Immutable. The conversation medium.
         # Corresponds to the JSON property `medium`
         # @return [String]
         attr_accessor :medium
@@ -1710,6 +1882,7 @@ module Google
         def update!(**args)
           @agent_id = args[:agent_id] if args.key?(:agent_id)
           @call_metadata = args[:call_metadata] if args.key?(:call_metadata)
+          @correlation_info = args[:correlation_info] if args.key?(:correlation_info)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_source = args[:data_source] if args.key?(:data_source)
           @dialogflow_intents = args[:dialogflow_intents] if args.key?(:dialogflow_intents)
@@ -1755,6 +1928,124 @@ module Google
         def update!(**args)
           @agent_channel = args[:agent_channel] if args.key?(:agent_channel)
           @customer_channel = args[:customer_channel] if args.key?(:customer_channel)
+        end
+      end
+      
+      # Info for correlating across conversations.
+      class GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The correlation types of this conversation. A single conversation
+        # can have multiple correlation types. For example a conversation that only has
+        # a single segment is both a SEGMENT and a FULL_CONVERSATION.
+        # Corresponds to the JSON property `correlationTypes`
+        # @return [Array<String>]
+        attr_accessor :correlation_types
+      
+        # Output only. The full conversation correlation id this conversation is a
+        # segment of.
+        # Corresponds to the JSON property `fullConversationCorrelationId`
+        # @return [String]
+        attr_accessor :full_conversation_correlation_id
+      
+        # Output only. The full conversation correlation id this conversation is a
+        # merged conversation of.
+        # Corresponds to the JSON property `mergedFullConversationCorrelationId`
+        # @return [String]
+        attr_accessor :merged_full_conversation_correlation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @correlation_types = args[:correlation_types] if args.key?(:correlation_types)
+          @full_conversation_correlation_id = args[:full_conversation_correlation_id] if args.key?(:full_conversation_correlation_id)
+          @merged_full_conversation_correlation_id = args[:merged_full_conversation_correlation_id] if args.key?(:merged_full_conversation_correlation_id)
+        end
+      end
+      
+      # The result of testing correlation config on a single conversation.
+      class GoogleCloudContactcenterinsightsV1ConversationCorrelationResult
+        include Google::Apis::Core::Hashable
+      
+        # The conversation resource name.
+        # Corresponds to the JSON property `conversation`
+        # @return [String]
+        attr_accessor :conversation
+      
+        # The results for each correlation rule.
+        # Corresponds to the JSON property `ruleResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult>]
+        attr_accessor :rule_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation = args[:conversation] if args.key?(:conversation)
+          @rule_results = args[:rule_results] if args.key?(:rule_results)
+        end
+      end
+      
+      # The result of a single correlation rule.
+      class GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult
+        include Google::Apis::Core::Hashable
+      
+        # The correlation ID generated by the join key expression.
+        # Corresponds to the JSON property `correlationId`
+        # @return [String]
+        attr_accessor :correlation_id
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # The rule ID.
+        # Corresponds to the JSON property `ruleId`
+        # @return [String]
+        attr_accessor :rule_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @correlation_id = args[:correlation_id] if args.key?(:correlation_id)
+          @error = args[:error] if args.key?(:error)
+          @rule_id = args[:rule_id] if args.key?(:rule_id)
+        end
+      end
+      
+      # Options for configuring what metadata is included in the conversation data
+      # used in QAI and Discovery Engine.
+      class GoogleCloudContactcenterinsightsV1ConversationDataOptions
+        include Google::Apis::Core::Hashable
+      
+        # Whether to include the per turn Dialogflow interaction data in conversation
+        # transcript.
+        # Corresponds to the JSON property `includeDialogflowInteractionData`
+        # @return [Boolean]
+        attr_accessor :include_dialogflow_interaction_data
+        alias_method :include_dialogflow_interaction_data?, :include_dialogflow_interaction_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_dialogflow_interaction_data = args[:include_dialogflow_interaction_data] if args.key?(:include_dialogflow_interaction_data)
         end
       end
       
@@ -2244,6 +2535,111 @@ module Google
           @end_offset = args[:end_offset] if args.key?(:end_offset)
           @start_offset = args[:start_offset] if args.key?(:start_offset)
           @word = args[:word] if args.key?(:word)
+        end
+      end
+      
+      # A configuration that defines how to correlate conversations for a given a
+      # given project.
+      class GoogleCloudContactcenterinsightsV1CorrelationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the correlation config was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A list of correlation rules for a given correlation type.
+        # Corresponds to the JSON property `fullConversationConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationTypeConfig]
+        attr_accessor :full_conversation_config
+      
+        # Immutable. Identifier. The resource name of the correlation config. Format:
+        # projects/`project`/locations/`location`/correlationConfig
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The time at which the correlation config was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @full_conversation_config = args[:full_conversation_config] if args.key?(:full_conversation_config)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A correlation rule that defines how to join conversations for a given
+      # correlation type.
+      class GoogleCloudContactcenterinsightsV1CorrelationRule
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether the config is active to be evaluated.
+        # Corresponds to the JSON property `active`
+        # @return [Boolean]
+        attr_accessor :active
+        alias_method :active?, :active
+      
+        # Optional. A cel expression (go/cel) to be evaluated as a boolean value. Two
+        # variables conversation_a and conversation_b will be available for evaluation.
+        # This expression should evaluate to true if conversation_a and conversation_b
+        # should be joined. This is used as an extra constraint on top of the
+        # join_key_expression to further refine the group of conversations that are
+        # joined together and will be evaluated in both directions. for two
+        # conversations c1 and c2 and the result will be OR'd. We will evaluate: f(c1,
+        # c2) OR f(c2, c1)
+        # Corresponds to the JSON property `constraintExpression`
+        # @return [String]
+        attr_accessor :constraint_expression
+      
+        # Optional. A cel expression (go/cel) to be evaluated as a string value. This
+        # string value will be used as the join key for the correlation.
+        # Corresponds to the JSON property `joinKeyExpression`
+        # @return [String]
+        attr_accessor :join_key_expression
+      
+        # Required. The unique identifier of the rule.
+        # Corresponds to the JSON property `ruleId`
+        # @return [String]
+        attr_accessor :rule_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active = args[:active] if args.key?(:active)
+          @constraint_expression = args[:constraint_expression] if args.key?(:constraint_expression)
+          @join_key_expression = args[:join_key_expression] if args.key?(:join_key_expression)
+          @rule_id = args[:rule_id] if args.key?(:rule_id)
+        end
+      end
+      
+      # A list of correlation rules for a given correlation type.
+      class GoogleCloudContactcenterinsightsV1CorrelationTypeConfig
+        include Google::Apis::Core::Hashable
+      
+        # A list of correlation rules to be evaluated for correlation.
+        # Corresponds to the JSON property `correlationRules`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationRule>]
+        attr_accessor :correlation_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @correlation_rules = args[:correlation_rules] if args.key?(:correlation_rules)
         end
       end
       
@@ -4675,6 +5071,32 @@ module Google
         end
       end
       
+      # The response message for listing auto labeling rules.
+      class GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The auto labeling rules.
+        # Corresponds to the JSON property `autoLabelingRules`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule>]
+        attr_accessor :auto_labeling_rules
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_labeling_rules = args[:auto_labeling_rules] if args.key?(:auto_labeling_rules)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response of listing conversations.
       class GoogleCloudContactcenterinsightsV1ListConversationsResponse
         include Google::Apis::Core::Hashable
@@ -5505,6 +5927,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig]
         attr_accessor :predefined_question_config
       
+        # Options for configuring the data used to generate the QA question.
+        # Corresponds to the JSON property `qaQuestionDataOptions`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions]
+        attr_accessor :qa_question_data_options
+      
         # Question text. E.g., "Did the agent greet the customer?"
         # Corresponds to the JSON property `questionBody`
         # @return [String]
@@ -5551,6 +5978,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @order = args[:order] if args.key?(:order)
           @predefined_question_config = args[:predefined_question_config] if args.key?(:predefined_question_config)
+          @qa_question_data_options = args[:qa_question_data_options] if args.key?(:qa_question_data_options)
           @question_body = args[:question_body] if args.key?(:question_body)
           @question_type = args[:question_type] if args.key?(:question_type)
           @tags = args[:tags] if args.key?(:tags)
@@ -5651,6 +6079,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Options for configuring the data used to generate the QA question.
+      class GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions
+        include Google::Apis::Core::Hashable
+      
+        # Options for configuring what metadata is included in the conversation data
+        # used in QAI and Discovery Engine.
+        # Corresponds to the JSON property `conversationDataOptions`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataOptions]
+        attr_accessor :conversation_data_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_data_options = args[:conversation_data_options] if args.key?(:conversation_data_options)
         end
       end
       
@@ -7542,6 +7990,270 @@ module Google
         end
       end
       
+      # The request message for testing auto labeling rules.
+      class GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest
+        include Google::Apis::Core::Hashable
+      
+        # Rule for auto-labeling conversations.
+        # Corresponds to the JSON property `autoLabelingRule`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule]
+        attr_accessor :auto_labeling_rule
+      
+        # The conversation resource.
+        # Corresponds to the JSON property `conversation`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation]
+        attr_accessor :conversation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_labeling_rule = args[:auto_labeling_rule] if args.key?(:auto_labeling_rule)
+          @conversation = args[:conversation] if args.key?(:conversation)
+        end
+      end
+      
+      # The response message for testing auto labeling rules.
+      class GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse
+        include Google::Apis::Core::Hashable
+      
+        # The result of the test auto labeling rule.
+        # Corresponds to the JSON property `labelResult`
+        # @return [String]
+        attr_accessor :label_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_result = args[:label_result] if args.key?(:label_result)
+        end
+      end
+      
+      # Metadata for testing correlation config.
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The dataset used for sampling conversations.
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        # Statistics for TestCorrelationConfig operation.
+        # Corresponds to the JSON property `stats`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats]
+        attr_accessor :stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @dataset = args[:dataset] if args.key?(:dataset)
+          @stats = args[:stats] if args.key?(:stats)
+        end
+      end
+      
+      # Statistics for TestCorrelationConfig operation.
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats
+        include Google::Apis::Core::Hashable
+      
+        # A list of errors that occurred during correlation, one for each conversation
+        # that failed.
+        # Corresponds to the JSON property `conversationCorrelationErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError>]
+        attr_accessor :conversation_correlation_errors
+      
+        # The number of conversations correlated.
+        # Corresponds to the JSON property `correlatedConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :correlated_conversations_count
+      
+        # The number of conversations that failed correlation.
+        # Corresponds to the JSON property `failedConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :failed_conversations_count
+      
+        # Partial errors during test correlation config operation that might cause the
+        # operation output to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
+        # The number of conversations sampled.
+        # Corresponds to the JSON property `sampledConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :sampled_conversations_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_correlation_errors = args[:conversation_correlation_errors] if args.key?(:conversation_correlation_errors)
+          @correlated_conversations_count = args[:correlated_conversations_count] if args.key?(:correlated_conversations_count)
+          @failed_conversations_count = args[:failed_conversations_count] if args.key?(:failed_conversations_count)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @sampled_conversations_count = args[:sampled_conversations_count] if args.key?(:sampled_conversations_count)
+        end
+      end
+      
+      # An error that occurred during correlation for a specific conversation.
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError
+        include Google::Apis::Core::Hashable
+      
+        # The conversation resource name that had an error during correlation.
+        # Corresponds to the JSON property `conversation`
+        # @return [String]
+        attr_accessor :conversation
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation = args[:conversation] if args.key?(:conversation)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The request to test correlation config.
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Wrapper for a list of conversations.
+        # Corresponds to the JSON property `conversations`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations]
+        attr_accessor :conversations
+      
+        # A configuration that defines how to correlate conversations for a given a
+        # given project.
+        # Corresponds to the JSON property `correlationConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationConfig]
+        attr_accessor :correlation_config
+      
+        # Optional. Filter to select conversations to test correlation against.
+        # Conversations matching this filter will be sampled based on start time. The
+        # most recent `max_sample_count` conversations will be selected. If no
+        # conversations match the filter, the request will fail with an `
+        # INVALID_ARGUMENT` error.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. The maximum number of conversations to sample when using the `filter`
+        # . If not set, defaults to 1000. Values greater than 1000 are coerced to 1000.
+        # This field is ignored if `conversations` is provided.
+        # Corresponds to the JSON property `maxSampleCount`
+        # @return [Fixnum]
+        attr_accessor :max_sample_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversations = args[:conversations] if args.key?(:conversations)
+          @correlation_config = args[:correlation_config] if args.key?(:correlation_config)
+          @filter = args[:filter] if args.key?(:filter)
+          @max_sample_count = args[:max_sample_count] if args.key?(:max_sample_count)
+        end
+      end
+      
+      # Wrapper for a list of conversations.
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The conversations.
+        # Corresponds to the JSON property `conversations`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation>]
+        attr_accessor :conversations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversations = args[:conversations] if args.key?(:conversations)
+        end
+      end
+      
+      # The response of testing correlation config.
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # Wrapper for detailed, step-by-step results.
+        # Corresponds to the JSON property `detailedResults`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults]
+        attr_accessor :detailed_results
+      
+        # Partial errors during test correlation config operation that might cause the
+        # operation output to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detailed_results = args[:detailed_results] if args.key?(:detailed_results)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+        end
+      end
+      
+      # Wrapper for detailed, step-by-step results.
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults
+        include Google::Apis::Core::Hashable
+      
+        # A list of constraint evaluation results for each pair of conversations.
+        # Corresponds to the JSON property `constraintResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult>]
+        attr_accessor :constraint_results
+      
+        # A list of join key correlation results for each conversation tested.
+        # Corresponds to the JSON property `joinKeyResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationCorrelationResult>]
+        attr_accessor :join_key_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constraint_results = args[:constraint_results] if args.key?(:constraint_results)
+          @join_key_results = args[:join_key_results] if args.key?(:join_key_results)
+        end
+      end
+      
       # Request for TuneQaScorecardRevision endpoint.
       class GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest
         include Google::Apis::Core::Hashable
@@ -8666,6 +9378,74 @@ module Google
         end
       end
       
+      # The result of testing a constraint expression on a pair of conversations.
+      class GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult
+        include Google::Apis::Core::Hashable
+      
+        # The first conversation resource name.
+        # Corresponds to the JSON property `conversationA`
+        # @return [String]
+        attr_accessor :conversation_a
+      
+        # The second conversation resource name.
+        # Corresponds to the JSON property `conversationB`
+        # @return [String]
+        attr_accessor :conversation_b
+      
+        # The results for each applicable constraint rule.
+        # Corresponds to the JSON property `ruleConstraintResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult>]
+        attr_accessor :rule_constraint_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_a = args[:conversation_a] if args.key?(:conversation_a)
+          @conversation_b = args[:conversation_b] if args.key?(:conversation_b)
+          @rule_constraint_results = args[:rule_constraint_results] if args.key?(:rule_constraint_results)
+        end
+      end
+      
+      # The result of a single constraint rule on the pair of conversations.
+      class GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult
+        include Google::Apis::Core::Hashable
+      
+        # Whether the constraint expression evaluated to true for (A, B) or (B, A).
+        # Corresponds to the JSON property `constraintMet`
+        # @return [Boolean]
+        attr_accessor :constraint_met
+        alias_method :constraint_met?, :constraint_met
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # The rule ID.
+        # Corresponds to the JSON property `ruleId`
+        # @return [String]
+        attr_accessor :rule_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constraint_met = args[:constraint_met] if args.key?(:constraint_met)
+          @error = args[:error] if args.key?(:error)
+          @rule_id = args[:rule_id] if args.key?(:rule_id)
+        end
+      end
+      
       # The conversation resource.
       class GoogleCloudContactcenterinsightsV1alpha1Conversation
         include Google::Apis::Core::Hashable
@@ -8680,6 +9460,11 @@ module Google
         # Corresponds to the JSON property `callMetadata`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata]
         attr_accessor :call_metadata
+      
+        # Info for correlating across conversations.
+        # Corresponds to the JSON property `correlationInfo`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo]
+        attr_accessor :correlation_info
       
         # Output only. The time at which the conversation was created.
         # Corresponds to the JSON property `createTime`
@@ -8730,7 +9515,7 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData]
         attr_accessor :latest_summary
       
-        # Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
+        # Immutable. The conversation medium.
         # Corresponds to the JSON property `medium`
         # @return [String]
         attr_accessor :medium
@@ -8798,6 +9583,7 @@ module Google
         def update!(**args)
           @agent_id = args[:agent_id] if args.key?(:agent_id)
           @call_metadata = args[:call_metadata] if args.key?(:call_metadata)
+          @correlation_info = args[:correlation_info] if args.key?(:correlation_info)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_source = args[:data_source] if args.key?(:data_source)
           @dialogflow_intents = args[:dialogflow_intents] if args.key?(:dialogflow_intents)
@@ -8843,6 +9629,102 @@ module Google
         def update!(**args)
           @agent_channel = args[:agent_channel] if args.key?(:agent_channel)
           @customer_channel = args[:customer_channel] if args.key?(:customer_channel)
+        end
+      end
+      
+      # Info for correlating across conversations.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The correlation types of this conversation. A single conversation
+        # can have multiple correlation types. For example a conversation that only has
+        # a single segment is both a SEGMENT and a FULL_CONVERSATION.
+        # Corresponds to the JSON property `correlationTypes`
+        # @return [Array<String>]
+        attr_accessor :correlation_types
+      
+        # Output only. The full conversation correlation id this conversation is a
+        # segment of.
+        # Corresponds to the JSON property `fullConversationCorrelationId`
+        # @return [String]
+        attr_accessor :full_conversation_correlation_id
+      
+        # Output only. The full conversation correlation id this conversation is a
+        # merged conversation of.
+        # Corresponds to the JSON property `mergedFullConversationCorrelationId`
+        # @return [String]
+        attr_accessor :merged_full_conversation_correlation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @correlation_types = args[:correlation_types] if args.key?(:correlation_types)
+          @full_conversation_correlation_id = args[:full_conversation_correlation_id] if args.key?(:full_conversation_correlation_id)
+          @merged_full_conversation_correlation_id = args[:merged_full_conversation_correlation_id] if args.key?(:merged_full_conversation_correlation_id)
+        end
+      end
+      
+      # The result of testing correlation config on a single conversation.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult
+        include Google::Apis::Core::Hashable
+      
+        # The conversation resource name.
+        # Corresponds to the JSON property `conversation`
+        # @return [String]
+        attr_accessor :conversation
+      
+        # The results for each correlation rule.
+        # Corresponds to the JSON property `ruleResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult>]
+        attr_accessor :rule_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation = args[:conversation] if args.key?(:conversation)
+          @rule_results = args[:rule_results] if args.key?(:rule_results)
+        end
+      end
+      
+      # The result of a single correlation rule.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult
+        include Google::Apis::Core::Hashable
+      
+        # The correlation ID generated by the join key expression.
+        # Corresponds to the JSON property `correlationId`
+        # @return [String]
+        attr_accessor :correlation_id
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # The rule ID.
+        # Corresponds to the JSON property `ruleId`
+        # @return [String]
+        attr_accessor :rule_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @correlation_id = args[:correlation_id] if args.key?(:correlation_id)
+          @error = args[:error] if args.key?(:error)
+          @rule_id = args[:rule_id] if args.key?(:rule_id)
         end
       end
       
@@ -13080,6 +13962,163 @@ module Google
         end
       end
       
+      # Metadata for testing correlation config.
+      class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The dataset used for sampling conversations.
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        # Statistics for TestCorrelationConfig operation.
+        # Corresponds to the JSON property `stats`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats]
+        attr_accessor :stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @dataset = args[:dataset] if args.key?(:dataset)
+          @stats = args[:stats] if args.key?(:stats)
+        end
+      end
+      
+      # Statistics for TestCorrelationConfig operation.
+      class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats
+        include Google::Apis::Core::Hashable
+      
+        # A list of errors that occurred during correlation, one for each conversation
+        # that failed.
+        # Corresponds to the JSON property `conversationCorrelationErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError>]
+        attr_accessor :conversation_correlation_errors
+      
+        # The number of conversations correlated.
+        # Corresponds to the JSON property `correlatedConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :correlated_conversations_count
+      
+        # The number of conversations that failed correlation.
+        # Corresponds to the JSON property `failedConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :failed_conversations_count
+      
+        # Partial errors during test correlation config operation that might cause the
+        # operation output to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
+        # The number of conversations sampled.
+        # Corresponds to the JSON property `sampledConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :sampled_conversations_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_correlation_errors = args[:conversation_correlation_errors] if args.key?(:conversation_correlation_errors)
+          @correlated_conversations_count = args[:correlated_conversations_count] if args.key?(:correlated_conversations_count)
+          @failed_conversations_count = args[:failed_conversations_count] if args.key?(:failed_conversations_count)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @sampled_conversations_count = args[:sampled_conversations_count] if args.key?(:sampled_conversations_count)
+        end
+      end
+      
+      # An error that occurred during correlation for a specific conversation.
+      class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError
+        include Google::Apis::Core::Hashable
+      
+        # The conversation resource name that had an error during correlation.
+        # Corresponds to the JSON property `conversation`
+        # @return [String]
+        attr_accessor :conversation
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation = args[:conversation] if args.key?(:conversation)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The response of testing correlation config.
+      class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # Wrapper for detailed, step-by-step results.
+        # Corresponds to the JSON property `detailedResults`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults]
+        attr_accessor :detailed_results
+      
+        # Partial errors during test correlation config operation that might cause the
+        # operation output to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detailed_results = args[:detailed_results] if args.key?(:detailed_results)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+        end
+      end
+      
+      # Wrapper for detailed, step-by-step results.
+      class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults
+        include Google::Apis::Core::Hashable
+      
+        # A list of constraint evaluation results for each pair of conversations.
+        # Corresponds to the JSON property `constraintResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult>]
+        attr_accessor :constraint_results
+      
+        # A list of join key correlation results for each conversation tested.
+        # Corresponds to the JSON property `joinKeyResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult>]
+        attr_accessor :join_key_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constraint_results = args[:constraint_results] if args.key?(:constraint_results)
+          @join_key_results = args[:join_key_results] if args.key?(:join_key_results)
+        end
+      end
+      
       # Metadata for undeploying an issue model.
       class GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata
         include Google::Apis::Core::Hashable
@@ -14344,6 +15383,74 @@ module Google
         end
       end
       
+      # The result of testing a constraint expression on a pair of conversations.
+      class GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult
+        include Google::Apis::Core::Hashable
+      
+        # The first conversation resource name.
+        # Corresponds to the JSON property `conversationA`
+        # @return [String]
+        attr_accessor :conversation_a
+      
+        # The second conversation resource name.
+        # Corresponds to the JSON property `conversationB`
+        # @return [String]
+        attr_accessor :conversation_b
+      
+        # The results for each applicable constraint rule.
+        # Corresponds to the JSON property `ruleConstraintResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult>]
+        attr_accessor :rule_constraint_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_a = args[:conversation_a] if args.key?(:conversation_a)
+          @conversation_b = args[:conversation_b] if args.key?(:conversation_b)
+          @rule_constraint_results = args[:rule_constraint_results] if args.key?(:rule_constraint_results)
+        end
+      end
+      
+      # The result of a single constraint rule on the pair of conversations.
+      class GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult
+        include Google::Apis::Core::Hashable
+      
+        # Whether the constraint expression evaluated to true for (A, B) or (B, A).
+        # Corresponds to the JSON property `constraintMet`
+        # @return [Boolean]
+        attr_accessor :constraint_met
+        alias_method :constraint_met?, :constraint_met
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # The rule ID.
+        # Corresponds to the JSON property `ruleId`
+        # @return [String]
+        attr_accessor :rule_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constraint_met = args[:constraint_met] if args.key?(:constraint_met)
+          @error = args[:error] if args.key?(:error)
+          @rule_id = args[:rule_id] if args.key?(:rule_id)
+        end
+      end
+      
       # The conversation resource.
       class GoogleCloudContactcenterinsightsV1mainConversation
         include Google::Apis::Core::Hashable
@@ -14358,6 +15465,11 @@ module Google
         # Corresponds to the JSON property `callMetadata`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationCallMetadata]
         attr_accessor :call_metadata
+      
+        # Info for correlating across conversations.
+        # Corresponds to the JSON property `correlationInfo`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo]
+        attr_accessor :correlation_info
       
         # Output only. The time at which the conversation was created.
         # Corresponds to the JSON property `createTime`
@@ -14408,7 +15520,7 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData]
         attr_accessor :latest_summary
       
-        # Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
+        # Immutable. The conversation medium.
         # Corresponds to the JSON property `medium`
         # @return [String]
         attr_accessor :medium
@@ -14476,6 +15588,7 @@ module Google
         def update!(**args)
           @agent_id = args[:agent_id] if args.key?(:agent_id)
           @call_metadata = args[:call_metadata] if args.key?(:call_metadata)
+          @correlation_info = args[:correlation_info] if args.key?(:correlation_info)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_source = args[:data_source] if args.key?(:data_source)
           @dialogflow_intents = args[:dialogflow_intents] if args.key?(:dialogflow_intents)
@@ -14521,6 +15634,102 @@ module Google
         def update!(**args)
           @agent_channel = args[:agent_channel] if args.key?(:agent_channel)
           @customer_channel = args[:customer_channel] if args.key?(:customer_channel)
+        end
+      end
+      
+      # Info for correlating across conversations.
+      class GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The correlation types of this conversation. A single conversation
+        # can have multiple correlation types. For example a conversation that only has
+        # a single segment is both a SEGMENT and a FULL_CONVERSATION.
+        # Corresponds to the JSON property `correlationTypes`
+        # @return [Array<String>]
+        attr_accessor :correlation_types
+      
+        # Output only. The full conversation correlation id this conversation is a
+        # segment of.
+        # Corresponds to the JSON property `fullConversationCorrelationId`
+        # @return [String]
+        attr_accessor :full_conversation_correlation_id
+      
+        # Output only. The full conversation correlation id this conversation is a
+        # merged conversation of.
+        # Corresponds to the JSON property `mergedFullConversationCorrelationId`
+        # @return [String]
+        attr_accessor :merged_full_conversation_correlation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @correlation_types = args[:correlation_types] if args.key?(:correlation_types)
+          @full_conversation_correlation_id = args[:full_conversation_correlation_id] if args.key?(:full_conversation_correlation_id)
+          @merged_full_conversation_correlation_id = args[:merged_full_conversation_correlation_id] if args.key?(:merged_full_conversation_correlation_id)
+        end
+      end
+      
+      # The result of testing correlation config on a single conversation.
+      class GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult
+        include Google::Apis::Core::Hashable
+      
+        # The conversation resource name.
+        # Corresponds to the JSON property `conversation`
+        # @return [String]
+        attr_accessor :conversation
+      
+        # The results for each correlation rule.
+        # Corresponds to the JSON property `ruleResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult>]
+        attr_accessor :rule_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation = args[:conversation] if args.key?(:conversation)
+          @rule_results = args[:rule_results] if args.key?(:rule_results)
+        end
+      end
+      
+      # The result of a single correlation rule.
+      class GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult
+        include Google::Apis::Core::Hashable
+      
+        # The correlation ID generated by the join key expression.
+        # Corresponds to the JSON property `correlationId`
+        # @return [String]
+        attr_accessor :correlation_id
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # The rule ID.
+        # Corresponds to the JSON property `ruleId`
+        # @return [String]
+        attr_accessor :rule_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @correlation_id = args[:correlation_id] if args.key?(:correlation_id)
+          @error = args[:error] if args.key?(:error)
+          @rule_id = args[:rule_id] if args.key?(:rule_id)
         end
       end
       
@@ -18755,6 +19964,163 @@ module Google
         def update!(**args)
           @disable_word_time_offsets = args[:disable_word_time_offsets] if args.key?(:disable_word_time_offsets)
           @speech_recognizer = args[:speech_recognizer] if args.key?(:speech_recognizer)
+        end
+      end
+      
+      # Metadata for testing correlation config.
+      class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The dataset used for sampling conversations.
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        # Statistics for TestCorrelationConfig operation.
+        # Corresponds to the JSON property `stats`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats]
+        attr_accessor :stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @dataset = args[:dataset] if args.key?(:dataset)
+          @stats = args[:stats] if args.key?(:stats)
+        end
+      end
+      
+      # Statistics for TestCorrelationConfig operation.
+      class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats
+        include Google::Apis::Core::Hashable
+      
+        # A list of errors that occurred during correlation, one for each conversation
+        # that failed.
+        # Corresponds to the JSON property `conversationCorrelationErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError>]
+        attr_accessor :conversation_correlation_errors
+      
+        # The number of conversations correlated.
+        # Corresponds to the JSON property `correlatedConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :correlated_conversations_count
+      
+        # The number of conversations that failed correlation.
+        # Corresponds to the JSON property `failedConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :failed_conversations_count
+      
+        # Partial errors during test correlation config operation that might cause the
+        # operation output to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
+        # The number of conversations sampled.
+        # Corresponds to the JSON property `sampledConversationsCount`
+        # @return [Fixnum]
+        attr_accessor :sampled_conversations_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_correlation_errors = args[:conversation_correlation_errors] if args.key?(:conversation_correlation_errors)
+          @correlated_conversations_count = args[:correlated_conversations_count] if args.key?(:correlated_conversations_count)
+          @failed_conversations_count = args[:failed_conversations_count] if args.key?(:failed_conversations_count)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @sampled_conversations_count = args[:sampled_conversations_count] if args.key?(:sampled_conversations_count)
+        end
+      end
+      
+      # An error that occurred during correlation for a specific conversation.
+      class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError
+        include Google::Apis::Core::Hashable
+      
+        # The conversation resource name that had an error during correlation.
+        # Corresponds to the JSON property `conversation`
+        # @return [String]
+        attr_accessor :conversation
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation = args[:conversation] if args.key?(:conversation)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The response of testing correlation config.
+      class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # Wrapper for detailed, step-by-step results.
+        # Corresponds to the JSON property `detailedResults`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults]
+        attr_accessor :detailed_results
+      
+        # Partial errors during test correlation config operation that might cause the
+        # operation output to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detailed_results = args[:detailed_results] if args.key?(:detailed_results)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+        end
+      end
+      
+      # Wrapper for detailed, step-by-step results.
+      class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults
+        include Google::Apis::Core::Hashable
+      
+        # A list of constraint evaluation results for each pair of conversations.
+        # Corresponds to the JSON property `constraintResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult>]
+        attr_accessor :constraint_results
+      
+        # A list of join key correlation results for each conversation tested.
+        # Corresponds to the JSON property `joinKeyResults`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult>]
+        attr_accessor :join_key_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constraint_results = args[:constraint_results] if args.key?(:constraint_results)
+          @join_key_results = args[:join_key_results] if args.key?(:join_key_results)
         end
       end
       
