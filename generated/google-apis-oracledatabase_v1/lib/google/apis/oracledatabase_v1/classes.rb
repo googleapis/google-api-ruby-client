@@ -62,12 +62,12 @@ module Google
       class AutonomousDatabase
         include Google::Apis::Core::Hashable
       
-        # Optional. The password for the default ADMIN user.
+        # Optional. Immutable. The password for the default ADMIN user.
         # Corresponds to the JSON property `adminPassword`
         # @return [String]
         attr_accessor :admin_password
       
-        # Optional. The subnet CIDR range for the Autonomous Database.
+        # Optional. Immutable. The subnet CIDR range for the Autonomous Database.
         # Corresponds to the JSON property `cidr`
         # @return [String]
         attr_accessor :cidr
@@ -77,9 +77,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. The name of the Autonomous Database. The database name must be
-        # unique in the project. The name must begin with a letter and can contain a
-        # maximum of 30 alphanumeric characters.
+        # Optional. Immutable. The name of the Autonomous Database. The database name
+        # must be unique in the project. The name must begin with a letter and can
+        # contain a maximum of 30 alphanumeric characters.
         # Corresponds to the JSON property `database`
         # @return [String]
         attr_accessor :database
@@ -90,8 +90,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :disaster_recovery_supported_locations
       
-        # Optional. The display name for the Autonomous Database. The name does not have
-        # to be unique within your project.
+        # Optional. Immutable. The display name for the Autonomous Database. The name
+        # does not have to be unique within your project.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -114,23 +114,23 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. The name of the VPC network used by the Autonomous Database in the
-        # following format: projects/`project`/global/networks/`network`
+        # Optional. Immutable. The name of the VPC network used by the Autonomous
+        # Database in the following format: projects/`project`/global/networks/`network`
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Optional. The name of the OdbNetwork associated with the Autonomous Database.
-        # Format: projects/`project`/locations/`location`/odbNetworks/`odb_network` It
-        # is optional but if specified, this should match the parent ODBNetwork of the
-        # OdbSubnet.
+        # Optional. Immutable. The name of the OdbNetwork associated with the Autonomous
+        # Database. Format: projects/`project`/locations/`location`/odbNetworks/`
+        # odb_network` It is optional but if specified, this should match the parent
+        # ODBNetwork of the OdbSubnet.
         # Corresponds to the JSON property `odbNetwork`
         # @return [String]
         attr_accessor :odb_network
       
-        # Optional. The name of the OdbSubnet associated with the Autonomous Database.
-        # Format: projects/`project`/locations/`location`/odbNetworks/`odb_network`/
-        # odbSubnets/`odb_subnet`
+        # Optional. Immutable. The name of the OdbSubnet associated with the Autonomous
+        # Database. Format: projects/`project`/locations/`location`/odbNetworks/`
+        # odb_network`/odbSubnets/`odb_subnet`
         # Corresponds to the JSON property `odbSubnet`
         # @return [String]
         attr_accessor :odb_subnet
@@ -568,7 +568,8 @@ module Google
         # @return [Float]
         attr_accessor :allocated_storage_size_tb
       
-        # Optional. The list of allowlisted IP addresses for the Autonomous Database.
+        # Optional. Immutable. The list of allowlisted IP addresses for the Autonomous
+        # Database.
         # Corresponds to the JSON property `allowlistedIps`
         # @return [Array<String>]
         attr_accessor :allowlisted_ips
@@ -603,20 +604,20 @@ module Google
         # @return [Array<String>]
         attr_accessor :available_upgrade_versions
       
-        # Optional. The retention period for the Autonomous Database. This field is
-        # specified in days, can range from 1 day to 60 days, and has a default value of
-        # 60 days.
+        # Optional. Immutable. The retention period for the Autonomous Database. This
+        # field is specified in days, can range from 1 day to 60 days, and has a default
+        # value of 60 days.
         # Corresponds to the JSON property `backupRetentionPeriodDays`
         # @return [Fixnum]
         attr_accessor :backup_retention_period_days
       
-        # Optional. The character set for the Autonomous Database. The default is
-        # AL32UTF8.
+        # Optional. Immutable. The character set for the Autonomous Database. The
+        # default is AL32UTF8.
         # Corresponds to the JSON property `characterSet`
         # @return [String]
         attr_accessor :character_set
       
-        # Optional. The number of compute servers for the Autonomous Database.
+        # Optional. Immutable. The number of compute servers for the Autonomous Database.
         # Corresponds to the JSON property `computeCount`
         # @return [Float]
         attr_accessor :compute_count
@@ -635,12 +636,13 @@ module Google
         # @return [Google::Apis::OracledatabaseV1::AutonomousDatabaseConnectionUrls]
         attr_accessor :connection_urls
       
-        # Optional. The number of CPU cores to be made available to the database.
+        # Optional. Immutable. The number of CPU cores to be made available to the
+        # database.
         # Corresponds to the JSON property `cpuCoreCount`
         # @return [Fixnum]
         attr_accessor :cpu_core_count
       
-        # Optional. The list of customer contacts.
+        # Optional. Immutable. The list of customer contacts.
         # Corresponds to the JSON property `customerContacts`
         # @return [Array<Google::Apis::OracledatabaseV1::CustomerContact>]
         attr_accessor :customer_contacts
@@ -657,12 +659,12 @@ module Google
         # @return [String]
         attr_accessor :data_safe_state
       
-        # Optional. The size of the data stored in the database, in gigabytes.
+        # Optional. Immutable. The size of the data stored in the database, in gigabytes.
         # Corresponds to the JSON property `dataStorageSizeGb`
         # @return [Fixnum]
         attr_accessor :data_storage_size_gb
       
-        # Optional. The size of the data stored in the database, in terabytes.
+        # Optional. Immutable. The size of the data stored in the database, in terabytes.
         # Corresponds to the JSON property `dataStorageSizeTb`
         # @return [Fixnum]
         attr_accessor :data_storage_size_tb
@@ -673,17 +675,17 @@ module Google
         # @return [String]
         attr_accessor :database_management_state
       
-        # Optional. The edition of the Autonomous Databases.
+        # Optional. Immutable. The edition of the Autonomous Databases.
         # Corresponds to the JSON property `dbEdition`
         # @return [String]
         attr_accessor :db_edition
       
-        # Optional. The Oracle Database version for the Autonomous Database.
+        # Optional. Immutable. The Oracle Database version for the Autonomous Database.
         # Corresponds to the JSON property `dbVersion`
         # @return [String]
         attr_accessor :db_version
       
-        # Required. The workload type of the Autonomous Database.
+        # Required. Immutable. The workload type of the Autonomous Database.
         # Corresponds to the JSON property `dbWorkload`
         # @return [String]
         attr_accessor :db_workload
@@ -711,8 +713,8 @@ module Google
         # @return [String]
         attr_accessor :failed_data_recovery_duration
       
-        # Optional. This field indicates if auto scaling is enabled for the Autonomous
-        # Database CPU core count.
+        # Optional. Immutable. This field indicates if auto scaling is enabled for the
+        # Autonomous Database CPU core count.
         # Corresponds to the JSON property `isAutoScalingEnabled`
         # @return [Boolean]
         attr_accessor :is_auto_scaling_enabled
@@ -725,14 +727,14 @@ module Google
         attr_accessor :is_local_data_guard_enabled
         alias_method :is_local_data_guard_enabled?, :is_local_data_guard_enabled
       
-        # Optional. This field indicates if auto scaling is enabled for the Autonomous
-        # Database storage.
+        # Optional. Immutable. This field indicates if auto scaling is enabled for the
+        # Autonomous Database storage.
         # Corresponds to the JSON property `isStorageAutoScalingEnabled`
         # @return [Boolean]
         attr_accessor :is_storage_auto_scaling_enabled
         alias_method :is_storage_auto_scaling_enabled?, :is_storage_auto_scaling_enabled
       
-        # Required. The license type used for the Autonomous Database.
+        # Required. Immutable. The license type used for the Autonomous Database.
         # Corresponds to the JSON property `licenseType`
         # @return [String]
         attr_accessor :license_type
@@ -771,7 +773,7 @@ module Google
         # @return [String]
         attr_accessor :maintenance_end_time
       
-        # Optional. The maintenance schedule of the Autonomous Database.
+        # Optional. Immutable. The maintenance schedule of the Autonomous Database.
         # Corresponds to the JSON property `maintenanceScheduleType`
         # @return [String]
         attr_accessor :maintenance_schedule_type
@@ -786,15 +788,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :memory_table_gbs
       
-        # Optional. This field specifies if the Autonomous Database requires mTLS
-        # connections.
+        # Optional. Immutable. This field specifies if the Autonomous Database requires
+        # mTLS connections.
         # Corresponds to the JSON property `mtlsConnectionRequired`
         # @return [Boolean]
         attr_accessor :mtls_connection_required
         alias_method :mtls_connection_required?, :mtls_connection_required
       
-        # Optional. The national character set for the Autonomous Database. The default
-        # is AL16UTF16.
+        # Optional. Immutable. The national character set for the Autonomous Database.
+        # The default is AL16UTF16.
         # Corresponds to the JSON property `nCharacterSet`
         # @return [String]
         attr_accessor :n_character_set
@@ -842,12 +844,13 @@ module Google
         # @return [String]
         attr_accessor :private_endpoint
       
-        # Optional. The private endpoint IP address for the Autonomous Database.
+        # Optional. Immutable. The private endpoint IP address for the Autonomous
+        # Database.
         # Corresponds to the JSON property `privateEndpointIp`
         # @return [String]
         attr_accessor :private_endpoint_ip
       
-        # Optional. The private endpoint label for the Autonomous Database.
+        # Optional. Immutable. The private endpoint label for the Autonomous Database.
         # Corresponds to the JSON property `privateEndpointLabel`
         # @return [String]
         attr_accessor :private_endpoint_label
@@ -873,7 +876,7 @@ module Google
         # @return [Array<Google::Apis::OracledatabaseV1::ScheduledOperationDetails>]
         attr_accessor :scheduled_operation_details
       
-        # Optional. The ID of the Oracle Cloud Infrastructure vault secret.
+        # Optional. Immutable. The ID of the Oracle Cloud Infrastructure vault secret.
         # Corresponds to the JSON property `secretId`
         # @return [String]
         attr_accessor :secret_id
@@ -911,7 +914,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :used_data_storage_size_tbs
       
-        # Optional. The ID of the Oracle Cloud Infrastructure vault.
+        # Optional. Immutable. The ID of the Oracle Cloud Infrastructure vault.
         # Corresponds to the JSON property `vaultId`
         # @return [String]
         attr_accessor :vault_id
@@ -3462,7 +3465,8 @@ module Google
       class FailoverAutonomousDatabaseRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The peer database name to fail over to.
+        # Optional. The peer database name to fail over to. Required for cross-region
+        # standby, and must be omitted for in-region Data Guard.
         # Corresponds to the JSON property `peerAutonomousDatabase`
         # @return [String]
         attr_accessor :peer_autonomous_database
@@ -5055,7 +5059,8 @@ module Google
       class SwitchoverAutonomousDatabaseRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The peer database name to switch over to.
+        # Optional. The peer database name to switch over to. Required for cross-region
+        # standby, and must be omitted for in-region Data Guard.
         # Corresponds to the JSON property `peerAutonomousDatabase`
         # @return [String]
         attr_accessor :peer_autonomous_database
