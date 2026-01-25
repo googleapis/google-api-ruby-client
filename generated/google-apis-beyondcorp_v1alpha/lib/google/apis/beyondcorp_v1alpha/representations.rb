@@ -286,31 +286,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaGroup
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaListPartnerTenantsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1175,31 +1151,6 @@ module Google
         end
       end
       
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaGroup
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :email, as: 'email'
-          property :id, as: 'id'
-        end
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaListPartnerTenantsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :partner_tenants, as: 'partnerTenants', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant::Representation
-      
-        end
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :internal_tenant_id, as: 'internalTenantId'
-          property :partner_tenant_id, as: 'partnerTenantId'
-        end
-      end
-      
       class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1210,20 +1161,6 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
-        end
-      end
-      
-      class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :display_name, as: 'displayName'
-          property :group, as: 'group', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaGroup, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaGroup::Representation
-      
-          property :name, as: 'name'
-          property :partner_metadata, as: 'partnerMetadata', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata::Representation
-      
-          property :update_time, as: 'updateTime'
         end
       end
       
