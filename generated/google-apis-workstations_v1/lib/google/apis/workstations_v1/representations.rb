@@ -447,6 +447,7 @@ module Google
           property :disable_public_ip_addresses, as: 'disablePublicIpAddresses'
           property :disable_ssh, as: 'disableSsh'
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
+          hash :instance_metadata, as: 'instanceMetadata'
           property :machine_type, as: 'machineType'
           property :pool_size, as: 'poolSize'
           property :pooled_instances, as: 'pooledInstances'
