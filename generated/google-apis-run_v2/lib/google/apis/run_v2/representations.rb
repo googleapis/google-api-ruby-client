@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2ContainerStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2DockerBuild
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -178,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2Instance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2InstanceSplit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +209,12 @@ module Google
       end
       
       class GoogleCloudRunV2ListExecutionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -341,6 +359,18 @@ module Google
       end
       
       class GoogleCloudRunV2SourceCode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2StartInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2StopInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -890,6 +920,8 @@ module Google
           property :name, as: 'name'
           collection :ports, as: 'ports', class: Google::Apis::RunV2::GoogleCloudRunV2ContainerPort, decorator: Google::Apis::RunV2::GoogleCloudRunV2ContainerPort::Representation
       
+          property :readiness_probe, as: 'readinessProbe', class: Google::Apis::RunV2::GoogleCloudRunV2Probe, decorator: Google::Apis::RunV2::GoogleCloudRunV2Probe::Representation
+      
           property :resources, as: 'resources', class: Google::Apis::RunV2::GoogleCloudRunV2ResourceRequirements, decorator: Google::Apis::RunV2::GoogleCloudRunV2ResourceRequirements::Representation
       
           property :source_code, as: 'sourceCode', class: Google::Apis::RunV2::GoogleCloudRunV2SourceCode, decorator: Google::Apis::RunV2::GoogleCloudRunV2SourceCode::Representation
@@ -917,6 +949,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :container_port, as: 'containerPort'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudRunV2ContainerStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_digest, as: 'imageDigest'
           property :name, as: 'name'
         end
       end
@@ -1082,6 +1122,57 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2Instance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :binary_authorization, as: 'binaryAuthorization', class: Google::Apis::RunV2::GoogleCloudRunV2BinaryAuthorization, decorator: Google::Apis::RunV2::GoogleCloudRunV2BinaryAuthorization::Representation
+      
+          property :client, as: 'client'
+          property :client_version, as: 'clientVersion'
+          collection :conditions, as: 'conditions', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
+      
+          collection :container_statuses, as: 'containerStatuses', class: Google::Apis::RunV2::GoogleCloudRunV2ContainerStatus, decorator: Google::Apis::RunV2::GoogleCloudRunV2ContainerStatus::Representation
+      
+          collection :containers, as: 'containers', class: Google::Apis::RunV2::GoogleCloudRunV2Container, decorator: Google::Apis::RunV2::GoogleCloudRunV2Container::Representation
+      
+          property :create_time, as: 'createTime'
+          property :creator, as: 'creator'
+          property :delete_time, as: 'deleteTime'
+          property :description, as: 'description'
+          property :encryption_key, as: 'encryptionKey'
+          property :encryption_key_revocation_action, as: 'encryptionKeyRevocationAction'
+          property :encryption_key_shutdown_duration, as: 'encryptionKeyShutdownDuration'
+          property :etag, as: 'etag'
+          property :expire_time, as: 'expireTime'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :gpu_zonal_redundancy_disabled, as: 'gpuZonalRedundancyDisabled'
+          property :iap_enabled, as: 'iapEnabled'
+          property :ingress, as: 'ingress'
+          property :invoker_iam_disabled, as: 'invokerIamDisabled'
+          hash :labels, as: 'labels'
+          property :last_modifier, as: 'lastModifier'
+          property :launch_stage, as: 'launchStage'
+          property :log_uri, as: 'logUri'
+          property :name, as: 'name'
+          property :node_selector, as: 'nodeSelector', class: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector, decorator: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector::Representation
+      
+          property :observed_generation, :numeric_string => true, as: 'observedGeneration'
+          property :reconciling, as: 'reconciling'
+          property :satisfies_pzs, as: 'satisfiesPzs'
+          property :service_account, as: 'serviceAccount'
+          property :terminal_condition, as: 'terminalCondition', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
+      
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+          collection :urls, as: 'urls'
+          collection :volumes, as: 'volumes', class: Google::Apis::RunV2::GoogleCloudRunV2Volume, decorator: Google::Apis::RunV2::GoogleCloudRunV2Volume::Representation
+      
+          property :vpc_access, as: 'vpcAccess', class: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess, decorator: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess::Representation
+      
+        end
+      end
+      
       class GoogleCloudRunV2InstanceSplit
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1141,6 +1232,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :executions, as: 'executions', class: Google::Apis::RunV2::GoogleCloudRunV2Execution, decorator: Google::Apis::RunV2::GoogleCloudRunV2Execution::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudRunV2ListInstancesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::RunV2::GoogleCloudRunV2Instance, decorator: Google::Apis::RunV2::GoogleCloudRunV2Instance::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -1464,6 +1564,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cloud_storage_source, as: 'cloudStorageSource', class: Google::Apis::RunV2::GoogleCloudRunV2CloudStorageSource, decorator: Google::Apis::RunV2::GoogleCloudRunV2CloudStorageSource::Representation
       
+        end
+      end
+      
+      class GoogleCloudRunV2StartInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class GoogleCloudRunV2StopInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :validate_only, as: 'validateOnly'
         end
       end
       

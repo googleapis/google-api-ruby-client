@@ -225,6 +225,225 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an Instance.
+        # @param [String] parent
+        # @param [Google::Apis::RunV2::GoogleCloudRunV2Instance] google_cloud_run_v2_instance_object
+        # @param [String] instance_id
+        #   Required. The unique identifier for the Instance. It must begin with letter,
+        #   and cannot end with hyphen; must contain fewer than 50 characters. The name of
+        #   the instance becomes `parent`/instances/`instance_id`.
+        # @param [Boolean] validate_only
+        #   Optional. Indicates that the request should be validated and default values
+        #   populated, without persisting the request or creating any resources.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_instance(parent, google_cloud_run_v2_instance_object = nil, instance_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/instances', options)
+          command.request_representation = Google::Apis::RunV2::GoogleCloudRunV2Instance::Representation
+          command.request_object = google_cloud_run_v2_instance_object
+          command.response_representation = Google::Apis::RunV2::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['instanceId'] = instance_id unless instance_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Instance
+        # @param [String] name
+        # @param [String] etag
+        #   Optional. A system-generated fingerprint for this version of the resource. May
+        #   be used to detect modification conflict during updates.
+        # @param [Boolean] validate_only
+        #   Optional. Indicates that the request should be validated without actually
+        #   deleting any resources.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_instance(name, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::RunV2::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Instance
+        # @param [String] name
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleCloudRunV2Instance] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2Instance]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_instance(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::RunV2::GoogleCloudRunV2Instance::Representation
+          command.response_class = Google::Apis::RunV2::GoogleCloudRunV2Instance
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Instances. Results are sorted by creation time, descending.
+        # @param [String] parent
+        #   Required. The location and project to list resources on. Format: projects/`
+        #   project`/locations/`location`, where `project` can be project id or number.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of Instances to return in this call.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous call to ListInstances. All
+        #   other parameters must match.
+        # @param [Boolean] show_deleted
+        #   Optional. If true, returns deleted (but unexpired) resources along with active
+        #   ones.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleCloudRunV2ListInstancesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2ListInstancesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_instances(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/instances', options)
+          command.response_representation = Google::Apis::RunV2::GoogleCloudRunV2ListInstancesResponse::Representation
+          command.response_class = Google::Apis::RunV2::GoogleCloudRunV2ListInstancesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts an Instance.
+        # @param [String] name
+        #   Required. The name of the Instance to stop. Format: `projects/`project`/
+        #   locations/`location`/instances/`instance``, where ``project`` can be project
+        #   id or number.
+        # @param [Google::Apis::RunV2::GoogleCloudRunV2StartInstanceRequest] google_cloud_run_v2_start_instance_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_project_location_instance(name, google_cloud_run_v2_start_instance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:start', options)
+          command.request_representation = Google::Apis::RunV2::GoogleCloudRunV2StartInstanceRequest::Representation
+          command.request_object = google_cloud_run_v2_start_instance_request_object
+          command.response_representation = Google::Apis::RunV2::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Stops an Instance.
+        # @param [String] name
+        #   Required. The name of the Instance to stop. Format: `projects/`project`/
+        #   locations/`location`/instances/`instance``, where ``project`` can be project
+        #   id or number.
+        # @param [Google::Apis::RunV2::GoogleCloudRunV2StopInstanceRequest] google_cloud_run_v2_stop_instance_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stop_project_location_instance(name, google_cloud_run_v2_stop_instance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:stop', options)
+          command.request_representation = Google::Apis::RunV2::GoogleCloudRunV2StopInstanceRequest::Representation
+          command.request_object = google_cloud_run_v2_stop_instance_request_object
+          command.response_representation = Google::Apis::RunV2::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Job.
         # @param [String] parent
         #   Required. The location and project in which this Job should be created. Format:

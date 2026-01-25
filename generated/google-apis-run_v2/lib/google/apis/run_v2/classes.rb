@@ -440,6 +440,12 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2ContainerPort>]
         attr_accessor :ports
       
+        # Probe describes a health check to be performed against a container to
+        # determine whether it is alive or ready to receive traffic.
+        # Corresponds to the JSON property `readinessProbe`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2Probe]
+        attr_accessor :readiness_probe
+      
         # ResourceRequirements describes the compute resource requirements.
         # Corresponds to the JSON property `resources`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2ResourceRequirements]
@@ -483,6 +489,7 @@ module Google
           @liveness_probe = args[:liveness_probe] if args.key?(:liveness_probe)
           @name = args[:name] if args.key?(:name)
           @ports = args[:ports] if args.key?(:ports)
+          @readiness_probe = args[:readiness_probe] if args.key?(:readiness_probe)
           @resources = args[:resources] if args.key?(:resources)
           @source_code = args[:source_code] if args.key?(:source_code)
           @startup_probe = args[:startup_probe] if args.key?(:startup_probe)
@@ -553,6 +560,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @container_port = args[:container_port] if args.key?(:container_port)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # ContainerStatus holds the information of container name and image digest value.
+      class GoogleCloudRunV2ContainerStatus
+        include Google::Apis::Core::Hashable
+      
+        # ImageDigest holds the resolved digest for the image specified and resolved
+        # during the creation of Revision. This field holds the digest value regardless
+        # of whether a tag or digest was originally specified in the Container object.
+        # Corresponds to the JSON property `imageDigest`
+        # @return [String]
+        attr_accessor :image_digest
+      
+        # The name of the container, if specified.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_digest = args[:image_digest] if args.key?(:image_digest)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -1216,6 +1250,289 @@ module Google
         end
       end
       
+      # A Cloud Run Instance represents a single group of containers running in a
+      # region.
+      class GoogleCloudRunV2Instance
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Settings for Binary Authorization feature.
+        # Corresponds to the JSON property `binaryAuthorization`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2BinaryAuthorization]
+        attr_accessor :binary_authorization
+      
+        # Arbitrary identifier for the API client.
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
+        # Arbitrary version identifier for the API client.
+        # Corresponds to the JSON property `clientVersion`
+        # @return [String]
+        attr_accessor :client_version
+      
+        # Output only. The Conditions of all other associated sub-resources. They
+        # contain additional diagnostics information in case the Instance does not reach
+        # its Serving state. See comments in `reconciling` for additional information on
+        # reconciliation process in Cloud Run.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Condition>]
+        attr_accessor :conditions
+      
+        # Output only. Status information for each of the specified containers. The
+        # status includes the resolved digest for specified images.
+        # Corresponds to the JSON property `containerStatuses`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2ContainerStatus>]
+        attr_accessor :container_statuses
+      
+        # Required. Holds the single container that defines the unit of execution for
+        # this Instance.
+        # Corresponds to the JSON property `containers`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Container>]
+        attr_accessor :containers
+      
+        # Output only. The creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Email address of the authenticated creator.
+        # Corresponds to the JSON property `creator`
+        # @return [String]
+        attr_accessor :creator
+      
+        # Output only. The deletion time.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # User-provided description of the Instance. This field currently has a 512-
+        # character limit.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A reference to a customer managed encryption key (CMEK) to use to encrypt this
+        # container image. For more information, go to https://cloud.google.com/run/docs/
+        # securing/using-cmek
+        # Corresponds to the JSON property `encryptionKey`
+        # @return [String]
+        attr_accessor :encryption_key
+      
+        # The action to take if the encryption key is revoked.
+        # Corresponds to the JSON property `encryptionKeyRevocationAction`
+        # @return [String]
+        attr_accessor :encryption_key_revocation_action
+      
+        # If encryption_key_revocation_action is SHUTDOWN, the duration before shutting
+        # down all instances. The minimum increment is 1 hour.
+        # Corresponds to the JSON property `encryptionKeyShutdownDuration`
+        # @return [String]
+        attr_accessor :encryption_key_shutdown_duration
+      
+        # Optional. A system-generated fingerprint for this version of the resource. May
+        # be used to detect modification conflict during updates.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. For a deleted resource, the time after which it will be
+        # permamently deleted.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. A number that monotonically increases every time the user
+        # modifies the desired state. Please note that unlike v1, this is an int64 value.
+        # As with most Google APIs, its JSON representation will be a `string` instead
+        # of an `integer`.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Optional. True if GPU zonal redundancy is disabled on this instance.
+        # Corresponds to the JSON property `gpuZonalRedundancyDisabled`
+        # @return [Boolean]
+        attr_accessor :gpu_zonal_redundancy_disabled
+        alias_method :gpu_zonal_redundancy_disabled?, :gpu_zonal_redundancy_disabled
+      
+        # Optional. IAP settings on the Instance.
+        # Corresponds to the JSON property `iapEnabled`
+        # @return [Boolean]
+        attr_accessor :iap_enabled
+        alias_method :iap_enabled?, :iap_enabled
+      
+        # Optional. Provides the ingress settings for this Instance. On output, returns
+        # the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no
+        # revision is active.
+        # Corresponds to the JSON property `ingress`
+        # @return [String]
+        attr_accessor :ingress
+      
+        # Optional. Disables IAM permission check for run.routes.invoke for callers of
+        # this Instance. For more information, visit https://cloud.google.com/run/docs/
+        # securing/managing-access#invoker_check.
+        # Corresponds to the JSON property `invokerIamDisabled`
+        # @return [Boolean]
+        attr_accessor :invoker_iam_disabled
+        alias_method :invoker_iam_disabled?, :invoker_iam_disabled
+      
+        # 
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Email address of the last authenticated modifier.
+        # Corresponds to the JSON property `lastModifier`
+        # @return [String]
+        attr_accessor :last_modifier
+      
+        # The launch stage as defined by [Google Cloud Platform Launch Stages](https://
+        # cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and
+        # `GA`. If no value is specified, GA is assumed. Set the launch stage to a
+        # preview stage on input to allow use of preview features in that stage. On read
+        # (or output), describes whether the resource uses preview features. For example,
+        # if ALPHA is provided as input, but only BETA and GA-level features are used,
+        # this field will be BETA on output.
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
+        # Output only. The Google Console URI to obtain logs for the Instance.
+        # Corresponds to the JSON property `logUri`
+        # @return [String]
+        attr_accessor :log_uri
+      
+        # The fully qualified name of this Instance. In CreateInstanceRequest, this
+        # field is ignored, and instead composed from CreateInstanceRequest.parent and
+        # CreateInstanceRequest.instance_id. Format: projects/`project`/locations/`
+        # location`/instances/`instance_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Hardware constraints configuration.
+        # Corresponds to the JSON property `nodeSelector`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2NodeSelector]
+        attr_accessor :node_selector
+      
+        # Output only. The generation of this Instance currently serving traffic. See
+        # comments in `reconciling` for additional information on reconciliation process
+        # in Cloud Run. Please note that unlike v1, this is an int64 value. As with most
+        # Google APIs, its JSON representation will be a `string` instead of an `integer`
+        # .
+        # Corresponds to the JSON property `observedGeneration`
+        # @return [Fixnum]
+        attr_accessor :observed_generation
+      
+        # Output only. Returns true if the Instance is currently being acted upon by the
+        # system to bring it into the desired state. When a new Instance is created, or
+        # an existing one is updated, Cloud Run will asynchronously perform all
+        # necessary steps to bring the Instance to the desired serving state. This
+        # process is called reconciliation. While reconciliation is in process, `
+        # observed_generation` will have a transient value that might mismatch the
+        # intended state. Once reconciliation is over (and this field is false), there
+        # are two possible outcomes: reconciliation succeeded and the serving state
+        # matches the Instance, or there was an error, and reconciliation failed. This
+        # state can be found in `terminal_condition.state`.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
+        # 
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Defines a status condition for a resource.
+        # Corresponds to the JSON property `terminalCondition`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2Condition]
+        attr_accessor :terminal_condition
+      
+        # Output only. Server assigned unique identifier for the trigger. The value is a
+        # UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The last-modified time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. All URLs serving traffic for this Instance.
+        # Corresponds to the JSON property `urls`
+        # @return [Array<String>]
+        attr_accessor :urls
+      
+        # A list of Volumes to make available to containers.
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Volume>]
+        attr_accessor :volumes
+      
+        # VPC Access settings. For more information on sending traffic to a VPC network,
+        # visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        # Corresponds to the JSON property `vpcAccess`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
+        attr_accessor :vpc_access
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
+          @client = args[:client] if args.key?(:client)
+          @client_version = args[:client_version] if args.key?(:client_version)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @container_statuses = args[:container_statuses] if args.key?(:container_statuses)
+          @containers = args[:containers] if args.key?(:containers)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator = args[:creator] if args.key?(:creator)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @description = args[:description] if args.key?(:description)
+          @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
+          @encryption_key_revocation_action = args[:encryption_key_revocation_action] if args.key?(:encryption_key_revocation_action)
+          @encryption_key_shutdown_duration = args[:encryption_key_shutdown_duration] if args.key?(:encryption_key_shutdown_duration)
+          @etag = args[:etag] if args.key?(:etag)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @generation = args[:generation] if args.key?(:generation)
+          @gpu_zonal_redundancy_disabled = args[:gpu_zonal_redundancy_disabled] if args.key?(:gpu_zonal_redundancy_disabled)
+          @iap_enabled = args[:iap_enabled] if args.key?(:iap_enabled)
+          @ingress = args[:ingress] if args.key?(:ingress)
+          @invoker_iam_disabled = args[:invoker_iam_disabled] if args.key?(:invoker_iam_disabled)
+          @labels = args[:labels] if args.key?(:labels)
+          @last_modifier = args[:last_modifier] if args.key?(:last_modifier)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
+          @log_uri = args[:log_uri] if args.key?(:log_uri)
+          @name = args[:name] if args.key?(:name)
+          @node_selector = args[:node_selector] if args.key?(:node_selector)
+          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @urls = args[:urls] if args.key?(:urls)
+          @volumes = args[:volumes] if args.key?(:volumes)
+          @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
+        end
+      end
+      
       # Holds a single instance split entry for the Worker. Allocations can be done to
       # a specific Revision name, or pointing to the latest Ready Revision.
       class GoogleCloudRunV2InstanceSplit
@@ -1527,6 +1844,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @executions = args[:executions] if args.key?(:executions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message containing a list of Instances.
+      class GoogleCloudRunV2ListInstancesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resulting list of Instances.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Instance>]
+        attr_accessor :instances
+      
+        # A token indicating there are more items than page_size. Use it in the next
+        # ListInstances request to continue.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -2917,6 +3260,62 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cloud_storage_source = args[:cloud_storage_source] if args.key?(:cloud_storage_source)
+        end
+      end
+      
+      # Request message for starting an Instance.
+      class GoogleCloudRunV2StartInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A system-generated fingerprint for this version of the resource.
+        # This may be used to detect modification conflict during updates.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Indicates that the request should be validated without actually
+        # stopping any resources.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Request message for deleting an Instance.
+      class GoogleCloudRunV2StopInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A system-generated fingerprint for this version of the resource.
+        # This may be used to detect modification conflict during updates.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Indicates that the request should be validated without actually
+        # stopping any resources.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
       end
       
