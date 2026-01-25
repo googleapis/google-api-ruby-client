@@ -1377,6 +1377,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :pod_ipv4_range_names, as: 'podIpv4RangeNames'
+          property :status, as: 'status'
           property :subnetwork, as: 'subnetwork'
         end
       end
@@ -1817,6 +1818,7 @@ module Google
       class ClusterAutoscaling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autopilot_general_profile, as: 'autopilotGeneralProfile'
           collection :autoprovisioning_locations, as: 'autoprovisioningLocations'
           property :autoprovisioning_node_pool_defaults, as: 'autoprovisioningNodePoolDefaults', class: Google::Apis::ContainerV1::AutoprovisioningNodePoolDefaults, decorator: Google::Apis::ContainerV1::AutoprovisioningNodePoolDefaults::Representation
       
@@ -2808,6 +2810,7 @@ module Google
           property :boot_disk_kms_key, as: 'bootDiskKmsKey'
           property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1::ConfidentialNodes, decorator: Google::Apis::ContainerV1::ConfidentialNodes::Representation
       
+          property :consolidation_delay, as: 'consolidationDelay'
           property :containerd_config, as: 'containerdConfig', class: Google::Apis::ContainerV1::ContainerdConfig, decorator: Google::Apis::ContainerV1::ContainerdConfig::Representation
       
           property :disk_size_gb, as: 'diskSizeGb'
@@ -3732,6 +3735,7 @@ module Google
           property :cluster_id, as: 'clusterId'
           property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1::ConfidentialNodes, decorator: Google::Apis::ContainerV1::ConfidentialNodes::Representation
       
+          property :consolidation_delay, as: 'consolidationDelay'
           property :containerd_config, as: 'containerdConfig', class: Google::Apis::ContainerV1::ContainerdConfig, decorator: Google::Apis::ContainerV1::ContainerdConfig::Representation
       
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
