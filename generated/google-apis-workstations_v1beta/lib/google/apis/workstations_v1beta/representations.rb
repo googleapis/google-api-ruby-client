@@ -493,6 +493,7 @@ module Google
       class GceRegionalPersistentDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive_timeout, as: 'archiveTimeout'
           property :disk_type, as: 'diskType'
           property :fs_type, as: 'fsType'
           property :reclaim_policy, as: 'reclaimPolicy'

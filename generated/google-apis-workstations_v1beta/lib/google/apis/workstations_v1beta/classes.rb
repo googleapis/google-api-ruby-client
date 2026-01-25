@@ -738,8 +738,9 @@ module Google
         # service account must have [Permission to access the bucket and script file in
         # Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-
         # permissions). Otherwise, the script must be publicly accessible. Note that the
-        # service regularly updates the OS version used, and it is the responsibility of
-        # the user to ensure the script stays compatible with the OS version.
+        # service regularly updates the OS version of the host VM, and it is the
+        # responsibility of the user to ensure the script stays compatible with the OS
+        # version.
         # Corresponds to the JSON property `startupScriptUri`
         # @return [String]
         attr_accessor :startup_script_uri
@@ -881,6 +882,15 @@ module Google
       class GceRegionalPersistentDisk
         include Google::Apis::Core::Hashable
       
+        # Optional. Number of seconds to wait after initially creating or subsequently
+        # shutting down the workstation before converting its disk into a snapshot. This
+        # generally saves costs at the expense of greater startup time on next
+        # workstation start, as the service will need to create a disk from the archival
+        # snapshot. A value of `"0s"` indicates that the disk will never be archived.
+        # Corresponds to the JSON property `archiveTimeout`
+        # @return [String]
+        attr_accessor :archive_timeout
+      
         # Optional. The [type of the persistent disk](https://cloud.google.com/compute/
         # docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
         # Corresponds to the JSON property `diskType`
@@ -921,6 +931,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @archive_timeout = args[:archive_timeout] if args.key?(:archive_timeout)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @fs_type = args[:fs_type] if args.key?(:fs_type)
           @reclaim_policy = args[:reclaim_policy] if args.key?(:reclaim_policy)
