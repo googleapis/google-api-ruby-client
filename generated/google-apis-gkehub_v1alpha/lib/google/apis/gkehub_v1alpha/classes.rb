@@ -406,8 +406,8 @@ module Google
       class ClusterSelector
         include Google::Apis::Core::Hashable
       
-        # The label selector must be a valid CEL (go/cel) expression which evaluates
-        # resource.labels.
+        # Optional. A valid CEL (Common Expression Language) expression which evaluates `
+        # resource.labels`.
         # Corresponds to the JSON property `labelSelector`
         # @return [String]
         attr_accessor :label_selector
@@ -1845,7 +1845,8 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerConfig]
         attr_accessor :hierarchy_controller
       
-        # Optional. Enables automatic Feature management.
+        # Optional. Deprecated: From version 1.21.0, automatic Feature management is
+        # unavailable, and Config Sync only supports manual upgrades.
         # Corresponds to the JSON property `management`
         # @return [String]
         attr_accessor :management
@@ -6181,7 +6182,7 @@ module Google
       
         # Optional. Immutable. The full, unique resource name of the rollout sequence
         # that initiatied this Rollout. In the format of `projects/`project`/locations/
-        # global/rolloutSequences/`rollout_sequence``. Empty for user initiated rollouts.
+        # global/rolloutSequences/`rollout_sequence``.
         # Corresponds to the JSON property `rolloutSequence`
         # @return [String]
         attr_accessor :rollout_sequence
@@ -6191,8 +6192,7 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::Schedule]
         attr_accessor :schedule
       
-        # Output only. The stages of the Rollout. Note: this is only populated for
-        # google-initiated rollouts.
+        # Output only. The stages of the Rollout.
         # Corresponds to the JSON property `stages`
         # @return [Array<Google::Apis::GkehubV1alpha::RolloutStage>]
         attr_accessor :stages
@@ -6405,16 +6405,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Output only. The resource link of the Cluster resource upgraded in
-        # this Rollout. It is formatted as: ///projects//locations//clusters/. I.e. for
-        # GKE clusters, it is formatted as: //container.googleapis.com/projects//
-        # locations//clusters/. For GDCE, it is formatted as: //edgecontainer.googleapis.
-        # com/projects//locations//clusters/.
+        # this Rollout. It is formatted as: `//`api_service`/projects/`project_number`/
+        # locations/`location`/clusters/`cluster_name``. .
         # Corresponds to the JSON property `cluster`
         # @return [String]
         attr_accessor :cluster
       
         # Optional. Output only. The resource link of the NodePool resource upgraded in
-        # this Rollout. It is formatted as: ///projects//locations//clusters//nodePools/.
+        # this Rollout. It is formatted as: `//`api_service`/projects/`project_number`/
+        # locations/`location`/clusters/`cluster_name`/nodePools/`node_pool_name``.
         # Corresponds to the JSON property `nodePool`
         # @return [String]
         attr_accessor :node_pool
