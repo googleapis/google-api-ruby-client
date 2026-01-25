@@ -3393,12 +3393,12 @@ module Google
         # displayed instead. This attribute cannot be referenced in IAM bindings. * `
         # google.posix_username`: The Linux username used by OS Login. This is an
         # optional field and the mapped POSIX username cannot exceed 32 characters. The
-        # key must match the regex "^a-zA-Z0-9._`0,31`$". This attribute cannot be
+        # key must match the regex `^a-zA-Z0-9._`0,31`$`. This attribute cannot be
         # referenced in IAM bindings. You can also provide custom attributes by
         # specifying `attribute.`custom_attribute``, where `custom_attribute` is the
         # name of the custom attribute to be mapped. You can define a maximum of 50
         # custom attributes. The maximum length of a mapped attribute key is 100
-        # characters, and the key may only contain the characters [a-z0-9_]. You can
+        # characters, and the key may only contain the characters `[a-z0-9_]`. You can
         # reference these attributes in IAM policies to define fine-grained access for a
         # workforce pool to Google Cloud resources. For example: * `google.subject`: `
         # principal://iam.googleapis.com/locations/global/workforcePools/`pool`/subject/`
