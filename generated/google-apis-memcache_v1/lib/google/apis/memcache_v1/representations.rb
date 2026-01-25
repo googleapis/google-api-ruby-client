@@ -370,9 +370,9 @@ module Google
       class GetTagsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
           property :name, as: 'name'
           hash :tags, as: 'tags'
-          property :tags_etag, as: 'tagsEtag'
         end
       end
       
@@ -722,19 +722,19 @@ module Google
       class SetTagsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
           property :name, as: 'name'
           property :request_id, as: 'requestId'
           hash :tags, as: 'tags'
-          property :tags_etag, as: 'tagsEtag'
         end
       end
       
       class SetTagsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
           property :name, as: 'name'
           hash :tags, as: 'tags'
-          property :tags_etag, as: 'tagsEtag'
         end
       end
       
