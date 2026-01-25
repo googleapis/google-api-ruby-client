@@ -1123,6 +1123,7 @@ module Google
           property :consumer_project_state, as: 'consumerProjectState'
           collection :gce_tag, as: 'gceTag', class: Google::Apis::AppengineV1::GceTag, decorator: Google::Apis::AppengineV1::GceTag::Representation
       
+          property :is_gce_project_deprovisioning, as: 'isGceProjectDeprovisioning'
           property :p4_service_account, as: 'p4ServiceAccount'
           property :producer_project_id, as: 'producerProjectId'
           property :producer_project_number, :numeric_string => true, as: 'producerProjectNumber'
