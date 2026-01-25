@@ -1403,7 +1403,6 @@ module Google
         attr_accessor :ip_addresses
       
         # Internet protocol versions for which the instance has IP addresses assigned.
-        # For this version, only MODE_IPV4 is supported.
         # Corresponds to the JSON property `modes`
         # @return [Array<String>]
         attr_accessor :modes
