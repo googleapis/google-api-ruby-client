@@ -1748,9 +1748,9 @@ module Google
         # @return [Array<Google::Apis::ApihubV1::GoogleCloudApihubV1SourceMetadata>]
         attr_accessor :source_metadata
       
-        # Optional. The project to which the deployment belongs. For GCP gateways, this
-        # will refer to the project identifier. For others like Edge/OPDK, this will
-        # refer to the org identifier.
+        # Optional. The project to which the deployment belongs. For Google Cloud
+        # gateways, this will refer to the project identifier. For others like Edge/OPDK,
+        # this will refer to the org identifier.
         # Corresponds to the JSON property `sourceProject`
         # @return [String]
         attr_accessor :source_project
@@ -1902,8 +1902,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. For an observation pushed from a gcp resource, this would be the gcp
-        # project id.
+        # Optional. For an observation pushed from a Google Cloud resource, this would
+        # be the Google Cloud project id.
         # Corresponds to the JSON property `origin`
         # @return [String]
         attr_accessor :origin
@@ -3960,9 +3960,9 @@ module Google
         attr_accessor :source_environments_config
       
         # Optional. The source project id of the plugin instance. This will be the id of
-        # runtime project in case of gcp based plugins and org id in case of non gcp
-        # based plugins. This field will be a required field for Google provided on-ramp
-        # plugins.
+        # runtime project in case of Google Cloud based plugins and org id in case of
+        # non-Google Cloud based plugins. This field will be a required field for Google
+        # provided on-ramp plugins.
         # Corresponds to the JSON property `sourceProjectId`
         # @return [String]
         attr_accessor :source_project_id
@@ -4037,7 +4037,7 @@ module Google
         attr_accessor :schedule_time_zone
       
         # Optional. The service account used to publish data. Note, the service account
-        # will only be accepted for non GCP plugins like OPDK.
+        # will only be accepted for non-Google Cloud plugins like OPDK.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
