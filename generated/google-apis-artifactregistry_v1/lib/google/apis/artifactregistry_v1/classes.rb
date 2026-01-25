@@ -3464,6 +3464,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Output only. Immutable reference for the version, calculated based on the
+        # version's content. Currently we only support dirsum_sha256 hash algorithm.
+        # Additional hash algorithms may be added in the future.
+        # Corresponds to the JSON property `fingerprints`
+        # @return [Array<Google::Apis::ArtifactregistryV1::HashProp>]
+        attr_accessor :fingerprints
+      
         # Output only. Repository-specific Metadata stored against this version. The
         # fields returned are defined by the underlying repository-specific resource.
         # Currently, the resources could be: DockerImage MavenArtifact
@@ -3498,6 +3505,7 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @fingerprints = args[:fingerprints] if args.key?(:fingerprints)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @related_tags = args[:related_tags] if args.key?(:related_tags)
