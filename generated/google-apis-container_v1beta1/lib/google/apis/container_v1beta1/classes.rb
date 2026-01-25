@@ -87,6 +87,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :pod_ipv4_range_names
       
+        # Draining status of the additional subnet.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
         # Name of the subnetwork. This can be the full path of the subnetwork or just
         # the name. Example1: my-subnet Example2: projects/gke-project/regions/us-
         # central1/subnetworks/my-subnet
@@ -101,6 +106,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @pod_ipv4_range_names = args[:pod_ipv4_range_names] if args.key?(:pod_ipv4_range_names)
+          @status = args[:status] if args.key?(:status)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
@@ -1313,7 +1319,7 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::BinaryAuthorization]
         attr_accessor :binary_authorization
       
-        # The IP address range of the container pods in this cluster, in [CIDR](http://
+        # The IP address range of the container pods in this cluster, in [CIDR](https://
         # en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.
         # 0/14`). Leave blank to have one automatically chosen or specify a `/14` block
         # in `10.0.0.0/8`.
@@ -1778,7 +1784,7 @@ module Google
         attr_accessor :self_link
       
         # Output only. The IP address range of the Kubernetes services in this cluster,
-        # in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        # in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
         # notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last `
         # /16` from the container CIDR.
         # Corresponds to the JSON property `servicesIpv4Cidr`
@@ -1815,8 +1821,8 @@ module Google
         attr_accessor :tpu_config
       
         # Output only. The IP address range of the Cloud TPUs in this cluster, in [CIDR](
-        # http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.
-        # 2.3.4/29`). This field is deprecated due to the deprecation of 2VM TPU. The
+        # https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `
+        # 1.2.3.4/29`). This field is deprecated due to the deprecation of 2VM TPU. The
         # end of life date for 2VM TPU is 2025-04-25.
         # Corresponds to the JSON property `tpuIpv4CidrBlock`
         # @return [String]
@@ -1966,6 +1972,12 @@ module Google
       class ClusterAutoscaling
         include Google::Apis::Core::Hashable
       
+        # Autopilot general profile for the cluster, which defines the configuration for
+        # the cluster.
+        # Corresponds to the JSON property `autopilotGeneralProfile`
+        # @return [String]
+        attr_accessor :autopilot_general_profile
+      
         # The list of Google Compute Engine [zones](https://cloud.google.com/compute/
         # docs/zones#available) in which the NodePool's nodes can be created by NAP.
         # Corresponds to the JSON property `autoprovisioningLocations`
@@ -2006,6 +2018,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autopilot_general_profile = args[:autopilot_general_profile] if args.key?(:autopilot_general_profile)
           @autoprovisioning_locations = args[:autoprovisioning_locations] if args.key?(:autoprovisioning_locations)
           @autoprovisioning_node_pool_defaults = args[:autoprovisioning_node_pool_defaults] if args.key?(:autoprovisioning_node_pool_defaults)
           @autoscaling_profile = args[:autoscaling_profile] if args.key?(:autoscaling_profile)
@@ -4510,10 +4523,10 @@ module Google
         # cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable
         # when `use_ip_aliases` is true. Set to blank to have a range chosen with the
         # default size. Set to /netmask (e.g. `/14`) to have a range chosen with a
-        # specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-
-        # Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private
-        # networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a
-        # specific range to use.
+        # specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/
+        # Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-
+        # 1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`)
+        # to pick a specific range to use.
         # Corresponds to the JSON property `clusterIpv4CidrBlock`
         # @return [String]
         attr_accessor :cluster_ipv4_cidr_block
@@ -4558,10 +4571,10 @@ module Google
         # The IP address range of the instance IPs in this cluster. This is applicable
         # only if `create_subnetwork` is true. Set to blank to have a range chosen with
         # the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a
-        # specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-
-        # Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private
-        # networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a
-        # specific range to use.
+        # specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/
+        # Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-
+        # 1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`)
+        # to pick a specific range to use.
         # Corresponds to the JSON property `nodeIpv4CidrBlock`
         # @return [String]
         attr_accessor :node_ipv4_cidr_block
@@ -4580,7 +4593,7 @@ module Google
         # will be automatically chosen with the default size. This field is only
         # applicable when `use_ip_aliases` is true. Set to blank to have a range chosen
         # with the default size. Set to /netmask (e.g. `/14`) to have a range chosen
-        # with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/
+        # with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/
         # Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-
         # 1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`)
         # to pick a specific range to use.
@@ -4621,11 +4634,11 @@ module Google
         # range will be automatically chosen with the default size. This field is only
         # applicable when `use_ip_aliases` is true. If unspecified, the range will use
         # the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a
-        # specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-
-        # Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private
-        # networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a
-        # specific range to use. This field is deprecated, use cluster.tpu_config.
-        # ipv4_cidr_block instead.
+        # specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/
+        # Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-
+        # 1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`)
+        # to pick a specific range to use. This field is deprecated, use cluster.
+        # tpu_config.ipv4_cidr_block instead.
         # Corresponds to the JSON property `tpuIpv4CidrBlock`
         # @return [String]
         attr_accessor :tpu_ipv4_cidr_block
@@ -6068,6 +6081,13 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ConfidentialNodes]
         attr_accessor :confidential_nodes
       
+        # Consolidation delay defines duration after which the Cluster Autoscaler can
+        # scale down underutilized nodes. If not set, nodes are scaled down by default
+        # behavior, i.e. according to the chosen autoscaling profile.
+        # Corresponds to the JSON property `consolidationDelay`
+        # @return [String]
+        attr_accessor :consolidation_delay
+      
         # ContainerdConfig contains configuration to customize containerd.
         # Corresponds to the JSON property `containerdConfig`
         # @return [Google::Apis::ContainerV1beta1::ContainerdConfig]
@@ -6367,6 +6387,7 @@ module Google
           @boot_disk = args[:boot_disk] if args.key?(:boot_disk)
           @boot_disk_kms_key = args[:boot_disk_kms_key] if args.key?(:boot_disk_kms_key)
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
+          @consolidation_delay = args[:consolidation_delay] if args.key?(:consolidation_delay)
           @containerd_config = args[:containerd_config] if args.key?(:containerd_config)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
@@ -6840,10 +6861,13 @@ module Google
         # @return [String]
         attr_accessor :pod_range
       
-        # The subnetwork path for the node pool. Format: projects/`project`/regions/`
-        # region`/subnetworks/`subnetwork` If the cluster is associated with multiple
-        # subnetworks, the subnetwork for the node pool is picked based on the IP
-        # utilization during node pool creation and is immutable.
+        # Optional. The subnetwork name/path for the node pool. Format: projects/`
+        # project`/regions/`region`/subnetworks/`subnetwork` If the cluster is
+        # associated with multiple subnetworks, the subnetwork can be either: 1. A user
+        # supplied subnetwork name/full path during node pool creation. Example1: my-
+        # subnet Example2: projects/gke-project/regions/us-central1/subnetworks/my-
+        # subnet 2. A subnetwork path picked based on the IP utilization during node
+        # pool creation and is immutable.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -10150,6 +10174,13 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ConfidentialNodes]
         attr_accessor :confidential_nodes
       
+        # Consolidation delay defines duration after which the Cluster Autoscaler can
+        # scale down underutilized nodes. If not set, nodes are scaled down by default
+        # behavior, i.e. according to the chosen autoscaling profile.
+        # Corresponds to the JSON property `consolidationDelay`
+        # @return [String]
+        attr_accessor :consolidation_delay
+      
         # ContainerdConfig contains configuration to customize containerd.
         # Corresponds to the JSON property `containerdConfig`
         # @return [Google::Apis::ContainerV1beta1::ContainerdConfig]
@@ -10398,6 +10429,7 @@ module Google
           @boot_disk = args[:boot_disk] if args.key?(:boot_disk)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
+          @consolidation_delay = args[:consolidation_delay] if args.key?(:consolidation_delay)
           @containerd_config = args[:containerd_config] if args.key?(:containerd_config)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
