@@ -1,0 +1,7 @@
+{
+    "api_id": "threatintelligence:v1beta",
+    "name_pretty": "Threat Intelligence API",
+    "distribution_name": "google-apis-threatintelligence_v1beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
