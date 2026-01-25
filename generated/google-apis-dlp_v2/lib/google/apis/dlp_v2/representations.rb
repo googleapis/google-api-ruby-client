@@ -40,6 +40,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2AdjustByImageFindings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2AdjustByMatchingInfoTypes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2AdjustmentRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2AllInfoTypes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -772,6 +790,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2Encloses
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2EntityId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -785,6 +809,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2ExcludeByHotword
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2ExcludeByImageFindings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -904,6 +934,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2FullyInside
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2GlobalProcessing
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -953,6 +989,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2HybridOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2ImageContainmentType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1391,6 +1433,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2OutputStorageConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2Overlap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2113,6 +2161,39 @@ module Google
       class GooglePrivacyDlpV2ActivateJobTriggerRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GooglePrivacyDlpV2AdjustByImageFindings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_containment_type, as: 'imageContainmentType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageContainmentType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageContainmentType::Representation
+      
+          collection :info_types, as: 'infoTypes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
+      
+          property :min_likelihood, as: 'minLikelihood'
+        end
+      end
+      
+      class GooglePrivacyDlpV2AdjustByMatchingInfoTypes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :info_types, as: 'infoTypes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
+      
+          property :matching_type, as: 'matchingType'
+          property :min_likelihood, as: 'minLikelihood'
+        end
+      end
+      
+      class GooglePrivacyDlpV2AdjustmentRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adjust_by_image_findings, as: 'adjustByImageFindings', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AdjustByImageFindings, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AdjustByImageFindings::Representation
+      
+          property :adjust_by_matching_info_types, as: 'adjustByMatchingInfoTypes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AdjustByMatchingInfoTypes, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AdjustByMatchingInfoTypes::Representation
+      
+          property :likelihood_adjustment, as: 'likelihoodAdjustment', class: Google::Apis::DlpV2::GooglePrivacyDlpV2LikelihoodAdjustment, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2LikelihoodAdjustment::Representation
+      
         end
       end
       
@@ -3410,6 +3491,12 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2Encloses
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GooglePrivacyDlpV2EntityId
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3438,6 +3525,16 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2ExcludeByImageFindings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_containment_type, as: 'imageContainmentType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageContainmentType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageContainmentType::Representation
+      
+          collection :info_types, as: 'infoTypes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2ExcludeInfoTypes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3452,6 +3549,8 @@ module Google
           property :dictionary, as: 'dictionary', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary::Representation
       
           property :exclude_by_hotword, as: 'excludeByHotword', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeByHotword, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeByHotword::Representation
+      
+          property :exclude_by_image_findings, as: 'excludeByImageFindings', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeByImageFindings, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeByImageFindings::Representation
       
           property :exclude_info_types, as: 'excludeInfoTypes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeInfoTypes, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeInfoTypes::Representation
       
@@ -3673,6 +3772,12 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2FullyInside
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GooglePrivacyDlpV2GlobalProcessing
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3752,6 +3857,18 @@ module Google
           hash :labels, as: 'labels'
           collection :required_finding_label_keys, as: 'requiredFindingLabelKeys'
           property :table_options, as: 'tableOptions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TableOptions, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TableOptions::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2ImageContainmentType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encloses, as: 'encloses', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Encloses, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Encloses::Representation
+      
+          property :fully_inside, as: 'fullyInside', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FullyInside, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FullyInside::Representation
+      
+          property :overlaps, as: 'overlaps', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Overlap, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Overlap::Representation
       
         end
       end
@@ -3989,6 +4106,8 @@ module Google
       class GooglePrivacyDlpV2InspectionRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :adjustment_rule, as: 'adjustmentRule', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AdjustmentRule, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AdjustmentRule::Representation
+      
           property :exclusion_rule, as: 'exclusionRule', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ExclusionRule, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ExclusionRule::Representation
       
           property :hotword_rule, as: 'hotwordRule', class: Google::Apis::DlpV2::GooglePrivacyDlpV2HotwordRule, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2HotwordRule::Representation
@@ -4471,6 +4590,12 @@ module Google
       
           property :table, as: 'table', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable::Representation
       
+        end
+      end
+      
+      class GooglePrivacyDlpV2Overlap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
