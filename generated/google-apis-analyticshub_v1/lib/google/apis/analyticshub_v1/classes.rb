@@ -22,6 +22,45 @@ module Google
   module Apis
     module AnalyticshubV1
       
+      # Configuration for making inference requests against Vertex AI models.
+      class AiInference
+        include Google::Apis::Core::Hashable
+      
+        # Required. An endpoint to a Vertex AI model of the form `projects/`project`/
+        # locations/`location`/endpoints/`endpoint`` or `projects/`project`/locations/`
+        # location`/publishers/`publisher`/models/`model``. Vertex AI API requests will
+        # be sent to this endpoint.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Optional. The service account to use to make prediction requests against
+        # endpoints. The resource creator or updater that specifies this field must have
+        # `iam.serviceAccounts.actAs` permission on the service account. If not
+        # specified, the Pub/Sub [service agent](`$universe.dns_names.
+        # final_documentation_domain`/iam/docs/service-agents), service-`project_number`@
+        # gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # Configuration for making inferences using arbitrary JSON payloads.
+        # Corresponds to the JSON property `unstructuredInference`
+        # @return [Google::Apis::AnalyticshubV1::UnstructuredInference]
+        attr_accessor :unstructured_inference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @unstructured_inference = args[:unstructured_inference] if args.key?(:unstructured_inference)
+        end
+      end
+      
       # Message for approving a QueryTemplate.
       class ApproveQueryTemplateRequest
         include Google::Apis::Core::Hashable
@@ -1558,6 +1597,11 @@ module Google
       class MessageTransform
         include Google::Apis::Core::Hashable
       
+        # Configuration for making inference requests against Vertex AI models.
+        # Corresponds to the JSON property `aiInference`
+        # @return [Google::Apis::AnalyticshubV1::AiInference]
+        attr_accessor :ai_inference
+      
         # Optional. If true, the transform is disabled and will not be applied to
         # messages. Defaults to `false`.
         # Corresponds to the JSON property `disabled`
@@ -1584,6 +1628,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ai_inference = args[:ai_inference] if args.key?(:ai_inference)
           @disabled = args[:disabled] if args.key?(:disabled)
           @enabled = args[:enabled] if args.key?(:enabled)
           @javascript_udf = args[:javascript_udf] if args.key?(:javascript_udf)
@@ -2765,6 +2810,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Configuration for making inferences using arbitrary JSON payloads.
+      class UnstructuredInference
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A parameters object to be included in each inference request. The
+        # parameters object is combined with the data field of the Pub/Sub message to
+        # form the inference request.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameters = args[:parameters] if args.key?(:parameters)
         end
       end
     end
