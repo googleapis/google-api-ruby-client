@@ -1,5 +1,9 @@
 # Release history for google-apis-merchantapi_notifications_v1beta
 
+### v0.9.0 (2026-01-25)
+
+* Regenerated from discovery document revision 20260118
+
 ### v0.8.0 (2025-06-29)
 
 * Regenerated from discovery document revision 20250621
