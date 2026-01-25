@@ -5458,6 +5458,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Document level prompt provided by the user. This custom text is
+        # injected into the AI model's prompt to provide extra, document-wide guidance
+        # for processing.
+        # Corresponds to the JSON property `documentPrompt`
+        # @return [String]
+        attr_accessor :document_prompt
+      
         # Entity types of the schema.
         # Corresponds to the JSON property `entityTypes`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchemaEntityType>]
@@ -5476,6 +5483,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @document_prompt = args[:document_prompt] if args.key?(:document_prompt)
           @entity_types = args[:entity_types] if args.key?(:entity_types)
           @metadata = args[:metadata] if args.key?(:metadata)
         end
@@ -8730,6 +8738,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Document level prompt provided by the user. This custom text is
+        # injected into the AI model's prompt to provide extra, document-wide guidance
+        # for processing.
+        # Corresponds to the JSON property `documentPrompt`
+        # @return [String]
+        attr_accessor :document_prompt
+      
         # Entity types of the schema.
         # Corresponds to the JSON property `entityTypes`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType>]
@@ -8748,6 +8763,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @document_prompt = args[:document_prompt] if args.key?(:document_prompt)
           @entity_types = args[:entity_types] if args.key?(:entity_types)
           @metadata = args[:metadata] if args.key?(:metadata)
         end
