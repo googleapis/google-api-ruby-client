@@ -22,6 +22,12 @@ module Google
   module Apis
     module PubsubV1
       
+      class AiInference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcknowledgeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -376,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UnstructuredInference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateSnapshotRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -416,6 +428,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AiInference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint, as: 'endpoint'
+          property :service_account_email, as: 'serviceAccountEmail'
+          property :unstructured_inference, as: 'unstructuredInference', class: Google::Apis::PubsubV1::UnstructuredInference, decorator: Google::Apis::PubsubV1::UnstructuredInference::Representation
+      
+        end
       end
       
       class AcknowledgeRequest
@@ -705,6 +727,8 @@ module Google
       class MessageTransform
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ai_inference, as: 'aiInference', class: Google::Apis::PubsubV1::AiInference, decorator: Google::Apis::PubsubV1::AiInference::Representation
+      
           property :disabled, as: 'disabled'
           property :enabled, as: 'enabled'
           property :javascript_udf, as: 'javascriptUdf', class: Google::Apis::PubsubV1::JavaScriptUdf, decorator: Google::Apis::PubsubV1::JavaScriptUdf::Representation
@@ -986,6 +1010,13 @@ module Google
       
           property :state, as: 'state'
           hash :tags, as: 'tags'
+        end
+      end
+      
+      class UnstructuredInference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :parameters, as: 'parameters'
         end
       end
       

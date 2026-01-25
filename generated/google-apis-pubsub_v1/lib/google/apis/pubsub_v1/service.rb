@@ -549,12 +549,12 @@ module Google
         # object. Note that for REST API requests, you must specify a name in the
         # request.
         # @param [String] name
-        #   Required. Identifier. User-provided name for this snapshot. If the name is not
-        #   provided in the request, the server will assign a random name for this
-        #   snapshot on the same project as the subscription. Note that for REST API
-        #   requests, you must specify a name. See the [resource name rules](https://cloud.
-        #   google.com/pubsub/docs/pubsub-basics#resource_names). Format is `projects/`
-        #   project`/snapshots/`snap``.
+        #   Required. User-provided name for this snapshot. If the name is not provided in
+        #   the request, the server will assign a random name for this snapshot on the
+        #   same project as the subscription. Note that for REST API requests, you must
+        #   specify a name. See the [resource name rules](https://cloud.google.com/pubsub/
+        #   docs/pubsub-basics#resource_names). Format is `projects/`project`/snapshots/`
+        #   snap``.
         # @param [Google::Apis::PubsubV1::CreateSnapshotRequest] create_snapshot_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -594,8 +594,8 @@ module Google
         # with the same name, but the new one has no association with the old snapshot
         # or its subscription, unless the same subscription is specified.
         # @param [String] snapshot
-        #   Required. Identifier. The name of the snapshot to delete. Format is `projects/`
-        #   project`/snapshots/`snap``.
+        #   Required. The name of the snapshot to delete. Format is `projects/`project`/
+        #   snapshots/`snap``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -629,8 +629,8 @@ module Google
         # acknowledgment state of messages in an existing subscription to the state
         # captured by a snapshot.
         # @param [String] snapshot
-        #   Required. Identifier. The name of the snapshot to get. Format is `projects/`
-        #   project`/snapshots/`snap``.
+        #   Required. The name of the snapshot to get. Format is `projects/`project`/
+        #   snapshots/`snap``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -708,8 +708,8 @@ module Google
         # message acknowledgments in bulk. That is, you can set the acknowledgment state
         # of messages in an existing subscription to the state captured by a snapshot.
         # @param [String] project
-        #   Required. Identifier. The name of the project in which to list snapshots.
-        #   Format is `projects/`project-id``.
+        #   Required. The name of the project in which to list snapshots. Format is `
+        #   projects/`project-id``.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of snapshots to return.
         # @param [String] page_token
@@ -948,8 +948,8 @@ module Google
         # but the new one has no association with the old subscription or its topic
         # unless the same topic is specified.
         # @param [String] subscription
-        #   Required. Identifier. The subscription to delete. Format is `projects/`project`
-        #   /subscriptions/`sub``.
+        #   Required. The subscription to delete. Format is `projects/`project`/
+        #   subscriptions/`sub``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1013,8 +1013,8 @@ module Google
         
         # Gets the configuration details of a subscription.
         # @param [String] subscription
-        #   Required. Identifier. The name of the subscription to get. Format is `projects/
-        #   `project`/subscriptions/`sub``.
+        #   Required. The name of the subscription to get. Format is `projects/`project`/
+        #   subscriptions/`sub``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1089,8 +1089,8 @@ module Google
         
         # Lists matching subscriptions.
         # @param [String] project
-        #   Required. Identifier. The name of the project in which to list subscriptions.
-        #   Format is `projects/`project-id``.
+        #   Required. The name of the project in which to list subscriptions. Format is `
+        #   projects/`project-id``.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of subscriptions to return.
         # @param [String] page_token
@@ -1436,8 +1436,8 @@ module Google
         # subscriptions. Existing subscriptions to this topic are not deleted, but their
         # `topic` field is set to `_deleted-topic_`.
         # @param [String] topic
-        #   Required. Identifier. Name of the topic to delete. Format is `projects/`
-        #   project`/topics/`topic``.
+        #   Required. Name of the topic to delete. Format is `projects/`project`/topics/`
+        #   topic``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1467,8 +1467,8 @@ module Google
         
         # Gets the configuration of a topic.
         # @param [String] topic
-        #   Required. Identifier. The name of the topic to get. Format is `projects/`
-        #   project`/topics/`topic``.
+        #   Required. The name of the topic to get. Format is `projects/`project`/topics/`
+        #   topic``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1543,8 +1543,8 @@ module Google
         
         # Lists matching topics.
         # @param [String] project
-        #   Required. Identifier. The name of the project in which to list topics. Format
-        #   is `projects/`project-id``.
+        #   Required. The name of the project in which to list topics. Format is `projects/
+        #   `project-id``.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of topics to return.
         # @param [String] page_token
@@ -1622,8 +1622,8 @@ module Google
         # Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic does
         # not exist.
         # @param [String] topic
-        #   Required. Identifier. The messages in the request will be published on this
-        #   topic. Format is `projects/`project`/topics/`topic``.
+        #   Required. The messages in the request will be published on this topic. Format
+        #   is `projects/`project`/topics/`topic``.
         # @param [Google::Apis::PubsubV1::PublishRequest] publish_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
