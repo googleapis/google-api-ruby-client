@@ -229,7 +229,8 @@ module Google
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProject] google_cloud_discoveryengine_v1alpha_project_object
         # @param [String] update_mask
         #   Optional. The list of fields to update. Supported fields: * `
-        #   customer_provided_config`
+        #   customer_provided_config` * `customer_provided_config.notebooklm_config.
+        #   observability_config`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2229,8 +2230,8 @@ module Google
         #   can be used as a special branch_id, it returns the default branch that has
         #   been set for the document.
         # @param [String] view
-        #   The view to apply to the returned Branch. Defaults to Branch.BranchView.BASIC
-        #   if unspecified.
+        #   The view to apply to the returned Branch. Defaults to BranchView.
+        #   BRANCH_VIEW_BASIC if unspecified.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2263,8 +2264,8 @@ module Google
         # @param [String] parent
         #   Required. The parent data store resource name.
         # @param [String] view
-        #   The view to apply to the returned Branch. Defaults to Branch.BranchView.BASIC
-        #   if unspecified.
+        #   The view to apply to the returned Branch. Defaults to BranchView.
+        #   BRANCH_VIEW_BASIC if unspecified.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6009,7 +6010,7 @@ module Google
         # @param [Fixnum] max_suggested_prompts
         #   Optional. The maximum number of suggested prompts to return per agent.
         # @param [Fixnum] page_size
-        #   Optional. Maximum number of AgentViewss to return. If unspecified, defaults to
+        #   Optional. Maximum number of AgentViews to return. If unspecified, defaults to
         #   100. The maximum allowed value is 1000; anything above that will be coerced
         #   down to 1000.
         # @param [String] page_token
@@ -6207,6 +6208,9 @@ module Google
         #   Required. The name of the Agent to disable. Format: `projects/`project`/
         #   locations/`location`/collections/`collection`/engines/`engine`/assistants/`
         #   assistant`/agents/`agent``
+        # @param [String] revision_id
+        #   Optional. The Revision ID of the Agent to disable. If not specified, the
+        #   latest revision will be disabled.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6224,11 +6228,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def disable_project_location_collection_engine_assistant_agent_agent(name, fields: nil, quota_user: nil, options: nil, &block)
+        def disable_project_location_collection_engine_assistant_agent_agent(name, revision_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1alpha/{+name}:disableAgent', options)
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent
           command.params['name'] = name unless name.nil?
+          command.query['revisionId'] = revision_id unless revision_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -6240,6 +6245,9 @@ module Google
         #   Required. The name of the Agent to enable. Format: `projects/`project`/
         #   locations/`location`/collections/`collection`/engines/`engine`/assistants/`
         #   assistant`/agents/`agent``
+        # @param [String] revision_id
+        #   Optional. The Revision ID of the Agent to enable. If not specified, the latest
+        #   revision will be enabled.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6257,11 +6265,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def enable_project_location_collection_engine_assistant_agent_agent(name, fields: nil, quota_user: nil, options: nil, &block)
+        def enable_project_location_collection_engine_assistant_agent_agent(name, revision_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1alpha/{+name}:enableAgent', options)
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent
           command.params['name'] = name unless name.nil?
+          command.query['revisionId'] = revision_id unless revision_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -8915,8 +8924,8 @@ module Google
         #   can be used as a special branch_id, it returns the default branch that has
         #   been set for the document.
         # @param [String] view
-        #   The view to apply to the returned Branch. Defaults to Branch.BranchView.BASIC
-        #   if unspecified.
+        #   The view to apply to the returned Branch. Defaults to BranchView.
+        #   BRANCH_VIEW_BASIC if unspecified.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8949,8 +8958,8 @@ module Google
         # @param [String] parent
         #   Required. The parent data store resource name.
         # @param [String] view
-        #   The view to apply to the returned Branch. Defaults to Branch.BranchView.BASIC
-        #   if unspecified.
+        #   The view to apply to the returned Branch. Defaults to BranchView.
+        #   BRANCH_VIEW_BASIC if unspecified.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

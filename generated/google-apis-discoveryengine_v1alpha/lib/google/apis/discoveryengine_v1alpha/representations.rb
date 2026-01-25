@@ -7505,11 +7505,13 @@ module Google
           property :icon, as: 'icon', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentImage, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentImage::Representation
       
           property :name, as: 'name'
+          property :owner_display_name, as: 'ownerDisplayName'
           property :rejection_reason, as: 'rejectionReason'
           property :state, as: 'state'
           collection :suggested_prompts, as: 'suggestedPrompts', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentViewSuggestedPrompt, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentViewSuggestedPrompt::Representation
       
           property :suspension_reason, as: 'suspensionReason'
+          property :update_time, as: 'updateTime'
           property :user_annotations, as: 'userAnnotations', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserAnnotations, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserAnnotations::Representation
       
           property :user_permissions, as: 'userPermissions', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentViewUserPermissions, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentViewUserPermissions::Representation
