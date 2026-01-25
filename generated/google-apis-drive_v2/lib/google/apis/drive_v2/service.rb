@@ -1110,8 +1110,9 @@ module Google
         # @param [String] timed_text_track_name
         #   The timed text track name.
         # @param [String] visibility
-        #   The visibility of the new file. This parameter is only relevant when the
-        #   source is not a native Google Doc and convert=false.
+        #   The visibility of the new file. Permissions are still inherited from parent
+        #   folders. This parameter is only relevant when the source is not a Google Doc
+        #   file and when `convert=false`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1423,8 +1424,8 @@ module Google
         # @param [Boolean] use_content_as_indexable_text
         #   Whether to use the content as indexable text.
         # @param [String] visibility
-        #   The visibility of the new file. This parameter is only relevant when convert=
-        #   false.
+        #   The visibility of the new file. Permissions are still inherited from parent
+        #   folders. This parameter is only relevant when `convert=false`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
