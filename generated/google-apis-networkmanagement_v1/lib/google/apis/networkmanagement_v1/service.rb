@@ -157,7 +157,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_organization_location_operation(name, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def cancel_organization_location_global_operation(name, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.request_representation = Google::Apis::NetworkmanagementV1::CancelOperationRequest::Representation
           command.request_object = cancel_operation_request_object
@@ -192,7 +192,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_organization_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_organization_location_global_operation(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::NetworkmanagementV1::Empty::Representation
           command.response_class = Google::Apis::NetworkmanagementV1::Empty
@@ -223,7 +223,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_organization_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_organization_location_global_operation(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::NetworkmanagementV1::Operation::Representation
           command.response_class = Google::Apis::NetworkmanagementV1::Operation
@@ -268,7 +268,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_location_global_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::NetworkmanagementV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::NetworkmanagementV1::ListOperationsResponse
