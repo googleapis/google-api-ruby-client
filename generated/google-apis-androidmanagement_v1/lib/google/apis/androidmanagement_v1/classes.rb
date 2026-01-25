@@ -7083,6 +7083,13 @@ module Google
       class SystemUpdate
         include Google::Apis::Core::Hashable
       
+        # If this is greater than zero, then this is the number of days after a pending
+        # update becoming available that a device can remain compliant, without taking
+        # the update. Has no effect otherwise.
+        # Corresponds to the JSON property `allowedDaysWithoutUpdate`
+        # @return [Fixnum]
+        attr_accessor :allowed_days_without_update
+      
         # If the type is WINDOWED, the end of the maintenance window, measured as the
         # number of minutes after midnight in device's local time. This value must be
         # between 0 and 1439, inclusive. If this value is less than start_minutes, then
@@ -7119,6 +7126,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allowed_days_without_update = args[:allowed_days_without_update] if args.key?(:allowed_days_without_update)
           @end_minutes = args[:end_minutes] if args.key?(:end_minutes)
           @freeze_periods = args[:freeze_periods] if args.key?(:freeze_periods)
           @start_minutes = args[:start_minutes] if args.key?(:start_minutes)
