@@ -2794,6 +2794,7 @@ module Google
       class SystemUpdate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowed_days_without_update, as: 'allowedDaysWithoutUpdate'
           property :end_minutes, as: 'endMinutes'
           collection :freeze_periods, as: 'freezePeriods', class: Google::Apis::AndroidmanagementV1::FreezePeriod, decorator: Google::Apis::AndroidmanagementV1::FreezePeriod::Representation
       
