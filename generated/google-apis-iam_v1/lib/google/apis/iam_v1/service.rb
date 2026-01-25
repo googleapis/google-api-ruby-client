@@ -493,8 +493,8 @@ module Google
         # @param [String] workforce_pool_provider_id
         #   Required. The ID for the provider, which becomes the final component of the
         #   resource name. This value must be 4-32 characters, and may contain the
-        #   characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may
-        #   not be specified.
+        #   characters `[a-z0-9-]`. The prefix `gcp-` is reserved for use by Google, and
+        #   may not be specified.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -713,7 +713,7 @@ module Google
         # @param [String] workforce_pool_provider_key_id
         #   Required. The ID to use for the key, which becomes the final component of the
         #   resource name. This value must be 4-32 characters, and may contain the
-        #   characters [a-z0-9-].
+        #   characters `[a-z0-9-]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -955,7 +955,7 @@ module Google
         # @param [String] workforce_pool_provider_scim_tenant_id
         #   Required. Gemini Enterprise only. The ID to use for the SCIM tenant, which
         #   becomes the final component of the resource name. This value should be 4-32
-        #   characters, containing the characters [a-z0-9-].
+        #   characters, containing the characters `[a-z0-9-]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1185,7 +1185,7 @@ module Google
         # @param [String] workforce_pool_provider_scim_token_id
         #   Required. Gemini Enterprise only. The ID to use for the SCIM token, which
         #   becomes the final component of the resource name. This value should be 4-32
-        #   characters and follow the pattern: "([a-z]([a-z0-9\\-]`2,30`[a-z0-9]))"
+        #   characters and follow the pattern: `([a-z]([a-z0-9\\-]`2,30`[a-z0-9]))`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
