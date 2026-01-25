@@ -7887,7 +7887,7 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # SELinux mode enforcing / permissive.
+        # SELinux mode disabled / enforcing / permissive.
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
