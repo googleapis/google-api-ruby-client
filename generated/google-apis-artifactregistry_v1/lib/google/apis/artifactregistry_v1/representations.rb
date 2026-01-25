@@ -1709,6 +1709,8 @@ module Google
           hash :annotations, as: 'annotations'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          collection :fingerprints, as: 'fingerprints', class: Google::Apis::ArtifactregistryV1::HashProp, decorator: Google::Apis::ArtifactregistryV1::HashProp::Representation
+      
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           collection :related_tags, as: 'relatedTags', class: Google::Apis::ArtifactregistryV1::Tag, decorator: Google::Apis::ArtifactregistryV1::Tag::Representation
