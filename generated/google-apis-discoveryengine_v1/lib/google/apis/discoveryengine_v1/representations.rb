@@ -2068,6 +2068,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterGeolocationConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1SearchResponseQueryExpansionInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8393,6 +8441,8 @@ module Google
           property :corrected_query, as: 'correctedQuery'
           collection :facets, as: 'facets', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseFacet, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseFacet::Representation
       
+          property :natural_language_query_understanding_info, as: 'naturalLanguageQueryUnderstandingInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfo::Representation
+      
           property :next_page_token, as: 'nextPageToken'
           property :query_expansion_info, as: 'queryExpansionInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseQueryExpansionInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseQueryExpansionInfo::Representation
       
@@ -8427,6 +8477,87 @@ module Google
           property :interval, as: 'interval', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Interval, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Interval::Representation
       
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :classified_intents, as: 'classifiedIntents'
+          property :extracted_filters, as: 'extractedFilters'
+          property :rewritten_query, as: 'rewrittenQuery'
+          property :structured_extracted_filter, as: 'structuredExtractedFilter', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expression, as: 'expression', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :expressions, as: 'expressions', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :and_expr, as: 'andExpr', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression::Representation
+      
+          property :geolocation_constraint, as: 'geolocationConstraint', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterGeolocationConstraint, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterGeolocationConstraint::Representation
+      
+          property :number_constraint, as: 'numberConstraint', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraint, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraint::Representation
+      
+          property :or_expr, as: 'orExpr', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression::Representation
+      
+          property :string_constraint, as: 'stringConstraint', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterGeolocationConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :field_name, as: 'fieldName'
+          property :latitude, as: 'latitude'
+          property :longitude, as: 'longitude'
+          property :radius_in_meters, as: 'radiusInMeters'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comparison, as: 'comparison'
+          property :field_name, as: 'fieldName'
+          property :query_segment, as: 'querySegment'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :expressions, as: 'expressions', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_name, as: 'fieldName'
+          property :query_segment, as: 'querySegment'
+          collection :values, as: 'values'
         end
       end
       
