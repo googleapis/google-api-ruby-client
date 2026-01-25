@@ -6454,6 +6454,11 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::StreamingComputationConfig>]
         attr_accessor :streaming_computation_configs
       
+        # Optional. The state tag encoding format version for streaming engine jobs.
+        # Corresponds to the JSON property `streamingEngineStateTagEncodingVersion`
+        # @return [Fixnum]
+        attr_accessor :streaming_engine_state_tag_encoding_version
+      
         # Map from user step names to state families.
         # Corresponds to the JSON property `userStepToStateFamilyNameMap`
         # @return [Hash<String,String>]
@@ -6496,6 +6501,7 @@ module Google
           @max_work_item_commit_bytes = args[:max_work_item_commit_bytes] if args.key?(:max_work_item_commit_bytes)
           @operational_limits = args[:operational_limits] if args.key?(:operational_limits)
           @streaming_computation_configs = args[:streaming_computation_configs] if args.key?(:streaming_computation_configs)
+          @streaming_engine_state_tag_encoding_version = args[:streaming_engine_state_tag_encoding_version] if args.key?(:streaming_engine_state_tag_encoding_version)
           @user_step_to_state_family_name_map = args[:user_step_to_state_family_name_map] if args.key?(:user_step_to_state_family_name_map)
           @user_worker_runner_v1_settings = args[:user_worker_runner_v1_settings] if args.key?(:user_worker_runner_v1_settings)
           @user_worker_runner_v2_settings = args[:user_worker_runner_v2_settings] if args.key?(:user_worker_runner_v2_settings)
