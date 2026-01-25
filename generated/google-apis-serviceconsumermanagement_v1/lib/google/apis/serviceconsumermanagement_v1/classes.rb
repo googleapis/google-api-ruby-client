@@ -3603,7 +3603,13 @@ module Google
       
         # Configuration for network endpoints. If this is empty, then an endpoint with
         # the same name as the service is automatically generated to service all defined
-        # APIs.
+        # APIs. WARNING: Defining any entries in the `endpoints` list disables the
+        # automatic generation of default endpoint variations (e.g., ``service`.clients6.
+        # google.com`, `content-`service`.googleapis.com`, and mTLS variants like ``
+        # service`.mtls.googleapis.com`). To retain these default variations, you are
+        # required to explicitly include your main service endpoint (e.g., `myservice.
+        # googleapis.com`) in this list alongside any other custom endpoints (like REP,
+        # GFE, etc.).
         # Corresponds to the JSON property `endpoints`
         # @return [Array<Google::Apis::ServiceconsumermanagementV1::Endpoint>]
         attr_accessor :endpoints
@@ -3656,8 +3662,8 @@ module Google
         # @return [Array<Google::Apis::ServiceconsumermanagementV1::MetricDescriptor>]
         attr_accessor :metrics
       
-        # Defines the monitored resources used by this service. This is required by the
-        # Service.monitoring and Service.logging configurations.
+        # Defines the monitored resources used by this service. This is required by the `
+        # Service.monitoring` and `Service.logging` configurations.
         # Corresponds to the JSON property `monitoredResources`
         # @return [Array<Google::Apis::ServiceconsumermanagementV1::MonitoredResourceDescriptor>]
         attr_accessor :monitored_resources
