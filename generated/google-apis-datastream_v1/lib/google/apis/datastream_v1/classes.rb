@@ -291,7 +291,7 @@ module Google
         end
       end
       
-      # BigQuery warehouse profile.
+      # Profile for connecting to a BigQuery destination.
       class BigQueryProfile
         include Google::Apis::Core::Hashable
       
@@ -435,7 +435,7 @@ module Google
       class ConnectionProfile
         include Google::Apis::Core::Hashable
       
-        # BigQuery warehouse profile.
+        # Profile for connecting to a BigQuery destination.
         # Corresponds to the JSON property `bigqueryProfile`
         # @return [Google::Apis::DatastreamV1::BigQueryProfile]
         attr_accessor :bigquery_profile
@@ -455,7 +455,7 @@ module Google
         # @return [Google::Apis::DatastreamV1::ForwardSshTunnelConnectivity]
         attr_accessor :forward_ssh_connectivity
       
-        # Cloud Storage bucket profile.
+        # Profile for connecting to a Cloud Storage destination.
         # Corresponds to the JSON property `gcsProfile`
         # @return [Google::Apis::DatastreamV1::GcsProfile]
         attr_accessor :gcs_profile
@@ -465,12 +465,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # MongoDB profile.
+        # Profile for connecting to a MongoDB source.
         # Corresponds to the JSON property `mongodbProfile`
         # @return [Google::Apis::DatastreamV1::MongodbProfile]
         attr_accessor :mongodb_profile
       
-        # MySQL database profile.
+        # Profile for connecting to a MySQL source.
         # Corresponds to the JSON property `mysqlProfile`
         # @return [Google::Apis::DatastreamV1::MysqlProfile]
         attr_accessor :mysql_profile
@@ -480,12 +480,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Oracle database profile.
+        # Profile for connecting to an Oracle source.
         # Corresponds to the JSON property `oracleProfile`
         # @return [Google::Apis::DatastreamV1::OracleProfile]
         attr_accessor :oracle_profile
       
-        # PostgreSQL database profile.
+        # Profile for connecting to a PostgreSQL source.
         # Corresponds to the JSON property `postgresqlProfile`
         # @return [Google::Apis::DatastreamV1::PostgresqlProfile]
         attr_accessor :postgresql_profile
@@ -495,7 +495,7 @@ module Google
         # @return [Google::Apis::DatastreamV1::PrivateConnectivity]
         attr_accessor :private_connectivity
       
-        # Salesforce profile
+        # Profile for connecting to a Salesforce source.
         # Corresponds to the JSON property `salesforceProfile`
         # @return [Google::Apis::DatastreamV1::SalesforceProfile]
         attr_accessor :salesforce_profile
@@ -512,12 +512,12 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Spanner profile.
+        # Profile for connecting to a Spanner source.
         # Corresponds to the JSON property `spannerProfile`
         # @return [Google::Apis::DatastreamV1::SpannerProfile]
         attr_accessor :spanner_profile
       
-        # SQLServer database profile.
+        # Profile for connecting to a SQLServer source.
         # Corresponds to the JSON property `sqlServerProfile`
         # @return [Google::Apis::DatastreamV1::SqlServerProfile]
         attr_accessor :sql_server_profile
@@ -921,7 +921,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An SQL-query Where clause selecting which data should be included, not
-        # including the "WHERE" keyword. E.g., "t.key1 = 'value1' AND t.key2 = 'value2'".
+        # including the "WHERE" keyword. e.g., `t.key1 = 'value1' AND t.key2 = 'value2'`
         # Corresponds to the JSON property `sqlWhereClause`
         # @return [String]
         attr_accessor :sql_where_clause
@@ -1050,7 +1050,7 @@ module Google
         end
       end
       
-      # Cloud Storage bucket profile.
+      # Profile for connecting to a Cloud Storage destination.
       class GcsProfile
         include Google::Apis::Core::Hashable
       
@@ -1059,7 +1059,7 @@ module Google
         # @return [String]
         attr_accessor :bucket
       
-        # The root path inside the Cloud Storage bucket.
+        # Optional. The root path inside the Cloud Storage bucket.
         # Corresponds to the JSON property `rootPath`
         # @return [String]
         attr_accessor :root_path
@@ -1570,7 +1570,7 @@ module Google
       class MongodbCollection
         include Google::Apis::Core::Hashable
       
-        # Collection name.
+        # The collection name.
         # Corresponds to the JSON property `collection`
         # @return [String]
         attr_accessor :collection
@@ -1600,7 +1600,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::MongodbCollection>]
         attr_accessor :collections
       
-        # Database name.
+        # The database name.
         # Corresponds to the JSON property `database`
         # @return [String]
         attr_accessor :database
@@ -1620,7 +1620,7 @@ module Google
       class MongodbField
         include Google::Apis::Core::Hashable
       
-        # Field name.
+        # The field name.
         # Corresponds to the JSON property `field`
         # @return [String]
         attr_accessor :field
@@ -1660,7 +1660,7 @@ module Google
         end
       end
       
-      # MongoDB profile.
+      # Profile for connecting to a MongoDB source.
       class MongodbProfile
         include Google::Apis::Core::Hashable
       
@@ -1739,7 +1739,7 @@ module Google
         end
       end
       
-      # MongoDB source configuration.
+      # Configuration for syncing data from a MongoDB source.
       class MongodbSourceConfig
         include Google::Apis::Core::Hashable
       
@@ -1866,7 +1866,7 @@ module Google
         # @return [String]
         attr_accessor :collation
       
-        # Column name.
+        # The column name.
         # Corresponds to the JSON property `column`
         # @return [String]
         attr_accessor :column
@@ -1931,7 +1931,7 @@ module Google
       class MysqlDatabase
         include Google::Apis::Core::Hashable
       
-        # Database name.
+        # The database name.
         # Corresponds to the JSON property `database`
         # @return [String]
         attr_accessor :database
@@ -2021,7 +2021,7 @@ module Google
         end
       end
       
-      # MySQL database profile.
+      # Profile for connecting to a MySQL source.
       class MysqlProfile
         include Google::Apis::Core::Hashable
       
@@ -2091,7 +2091,7 @@ module Google
         end
       end
       
-      # MySQL source configuration
+      # Configuration for syncing data from a MySQL source.
       class MysqlSourceConfig
         include Google::Apis::Core::Hashable
       
@@ -2209,7 +2209,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::MysqlColumn>]
         attr_accessor :mysql_columns
       
-        # Table name.
+        # The table name.
         # Corresponds to the JSON property `table`
         # @return [String]
         attr_accessor :table
@@ -2498,7 +2498,7 @@ module Google
       class OracleColumn
         include Google::Apis::Core::Hashable
       
-        # Column name.
+        # The column name.
         # Corresponds to the JSON property `column`
         # @return [String]
         attr_accessor :column
@@ -2588,7 +2588,7 @@ module Google
         end
       end
       
-      # Oracle database profile.
+      # Profile for connecting to an Oracle source.
       class OracleProfile
         include Google::Apis::Core::Hashable
       
@@ -2685,7 +2685,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::OracleTable>]
         attr_accessor :oracle_tables
       
-        # Schema name.
+        # The schema name.
         # Corresponds to the JSON property `schema`
         # @return [String]
         attr_accessor :schema
@@ -2720,7 +2720,7 @@ module Google
         end
       end
       
-      # Oracle data source configuration
+      # Configuration for syncing data from an Oracle source.
       class OracleSourceConfig
         include Google::Apis::Core::Hashable
       
@@ -2831,7 +2831,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::OracleColumn>]
         attr_accessor :oracle_columns
       
-        # Table name.
+        # The table name.
         # Corresponds to the JSON property `table`
         # @return [String]
         attr_accessor :table
@@ -2851,7 +2851,7 @@ module Google
       class PostgresqlColumn
         include Google::Apis::Core::Hashable
       
-        # Column name.
+        # The column name.
         # Corresponds to the JSON property `column`
         # @return [String]
         attr_accessor :column
@@ -2935,7 +2935,7 @@ module Google
         end
       end
       
-      # PostgreSQL database profile.
+      # Profile for connecting to a PostgreSQL source.
       class PostgresqlProfile
         include Google::Apis::Core::Hashable
       
@@ -3020,7 +3020,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::PostgresqlTable>]
         attr_accessor :postgresql_tables
       
-        # Schema name.
+        # The schema name.
         # Corresponds to the JSON property `schema`
         # @return [String]
         attr_accessor :schema
@@ -3036,7 +3036,7 @@ module Google
         end
       end
       
-      # PostgreSQL data source configuration
+      # Configuration for syncing data from a PostgreSQL source.
       class PostgresqlSourceConfig
         include Google::Apis::Core::Hashable
       
@@ -3122,7 +3122,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::PostgresqlColumn>]
         attr_accessor :postgresql_columns
       
-        # Table name.
+        # The table name.
         # Corresponds to the JSON property `table`
         # @return [String]
         attr_accessor :table
@@ -3380,7 +3380,7 @@ module Google
         # @return [String]
         attr_accessor :data_type
       
-        # Field name.
+        # The field name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3413,7 +3413,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::SalesforceField>]
         attr_accessor :fields
       
-        # Object name.
+        # The object name.
         # Corresponds to the JSON property `objectName`
         # @return [String]
         attr_accessor :object_name
@@ -3467,7 +3467,7 @@ module Google
         end
       end
       
-      # Salesforce profile
+      # Profile for connecting to a Salesforce source.
       class SalesforceProfile
         include Google::Apis::Core::Hashable
       
@@ -3498,7 +3498,7 @@ module Google
         end
       end
       
-      # Salesforce source configuration
+      # Configuration for syncing data from a Salesforce source.
       class SalesforceSourceConfig
         include Google::Apis::Core::Hashable
       
@@ -3513,8 +3513,8 @@ module Google
         attr_accessor :include_objects
       
         # Required. Salesforce objects polling interval. The interval at which new
-        # changes will be polled for each object. The duration must be between 5 minutes
-        # and 24 hours.
+        # changes will be polled for each object. The duration must be from `5 minutes`
+        # to `24 hours`, inclusive.
         # Corresponds to the JSON property `pollingInterval`
         # @return [String]
         attr_accessor :polling_interval
@@ -3633,27 +3633,27 @@ module Google
       class SourceConfig
         include Google::Apis::Core::Hashable
       
-        # MongoDB source configuration.
+        # Configuration for syncing data from a MongoDB source.
         # Corresponds to the JSON property `mongodbSourceConfig`
         # @return [Google::Apis::DatastreamV1::MongodbSourceConfig]
         attr_accessor :mongodb_source_config
       
-        # MySQL source configuration
+        # Configuration for syncing data from a MySQL source.
         # Corresponds to the JSON property `mysqlSourceConfig`
         # @return [Google::Apis::DatastreamV1::MysqlSourceConfig]
         attr_accessor :mysql_source_config
       
-        # Oracle data source configuration
+        # Configuration for syncing data from an Oracle source.
         # Corresponds to the JSON property `oracleSourceConfig`
         # @return [Google::Apis::DatastreamV1::OracleSourceConfig]
         attr_accessor :oracle_source_config
       
-        # PostgreSQL data source configuration
+        # Configuration for syncing data from a PostgreSQL source.
         # Corresponds to the JSON property `postgresqlSourceConfig`
         # @return [Google::Apis::DatastreamV1::PostgresqlSourceConfig]
         attr_accessor :postgresql_source_config
       
-        # Salesforce source configuration
+        # Configuration for syncing data from a Salesforce source.
         # Corresponds to the JSON property `salesforceSourceConfig`
         # @return [Google::Apis::DatastreamV1::SalesforceSourceConfig]
         attr_accessor :salesforce_source_config
@@ -3664,12 +3664,12 @@ module Google
         # @return [String]
         attr_accessor :source_connection_profile
       
-        # Spanner source configuration.
+        # Configuration for syncing data from a Spanner source.
         # Corresponds to the JSON property `spannerSourceConfig`
         # @return [Google::Apis::DatastreamV1::SpannerSourceConfig]
         attr_accessor :spanner_source_config
       
-        # SQLServer data source configuration
+        # Configuration for syncing data from a SQLServer source.
         # Corresponds to the JSON property `sqlServerSourceConfig`
         # @return [Google::Apis::DatastreamV1::SqlServerSourceConfig]
         attr_accessor :sql_server_source_config
@@ -3777,7 +3777,7 @@ module Google
       class SpannerColumn
         include Google::Apis::Core::Hashable
       
-        # Required. Column name.
+        # Required. The column name.
         # Corresponds to the JSON property `column`
         # @return [String]
         attr_accessor :column
@@ -3855,7 +3855,7 @@ module Google
         end
       end
       
-      # Spanner profile.
+      # Profile for connecting to a Spanner source.
       class SpannerProfile
         include Google::Apis::Core::Hashable
       
@@ -3888,7 +3888,7 @@ module Google
       class SpannerSchema
         include Google::Apis::Core::Hashable
       
-        # Required. Schema name.
+        # Required. The schema name.
         # Corresponds to the JSON property `schema`
         # @return [String]
         attr_accessor :schema
@@ -3909,7 +3909,7 @@ module Google
         end
       end
       
-      # Spanner source configuration.
+      # Configuration for syncing data from a Spanner source.
       class SpannerSourceConfig
         include Google::Apis::Core::Hashable
       
@@ -3981,7 +3981,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::SpannerColumn>]
         attr_accessor :columns
       
-        # Required. Table name.
+        # Required. The table name.
         # Corresponds to the JSON property `table`
         # @return [String]
         attr_accessor :table
@@ -4057,7 +4057,7 @@ module Google
       class SqlServerColumn
         include Google::Apis::Core::Hashable
       
-        # Column name.
+        # The column name.
         # Corresponds to the JSON property `column`
         # @return [String]
         attr_accessor :column
@@ -4160,7 +4160,7 @@ module Google
         end
       end
       
-      # SQLServer database profile.
+      # Profile for connecting to a SQLServer source.
       class SqlServerProfile
         include Google::Apis::Core::Hashable
       
@@ -4240,7 +4240,7 @@ module Google
       class SqlServerSchema
         include Google::Apis::Core::Hashable
       
-        # Schema name.
+        # The schema name.
         # Corresponds to the JSON property `schema`
         # @return [String]
         attr_accessor :schema
@@ -4261,7 +4261,7 @@ module Google
         end
       end
       
-      # SQLServer data source configuration
+      # Configuration for syncing data from a SQLServer source.
       class SqlServerSourceConfig
         include Google::Apis::Core::Hashable
       
@@ -4356,7 +4356,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::SqlServerColumn>]
         attr_accessor :columns
       
-        # Table name.
+        # The table name.
         # Corresponds to the JSON property `table`
         # @return [String]
         attr_accessor :table
