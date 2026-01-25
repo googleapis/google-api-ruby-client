@@ -74,6 +74,105 @@ module Google
         end
       end
       
+      # BucketOperation represents a bucket-level breakdown of a Job.
+      class BucketOperation
+        include Google::Apis::Core::Hashable
+      
+        # The bucket name of the objects to be transformed in the BucketOperation.
+        # Corresponds to the JSON property `bucketName`
+        # @return [String]
+        attr_accessor :bucket_name
+      
+        # Output only. The time that the BucketOperation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Describes details about the progress of the job.
+        # Corresponds to the JSON property `counters`
+        # @return [Google::Apis::StoragebatchoperationsV1::Counters]
+        attr_accessor :counters
+      
+        # Output only. The time that the BucketOperation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Describes options to delete an object.
+        # Corresponds to the JSON property `deleteObject`
+        # @return [Google::Apis::StoragebatchoperationsV1::DeleteObject]
+        attr_accessor :delete_object
+      
+        # Output only. Summarizes errors encountered with sample error log entries.
+        # Corresponds to the JSON property `errorSummaries`
+        # @return [Array<Google::Apis::StoragebatchoperationsV1::ErrorSummary>]
+        attr_accessor :error_summaries
+      
+        # Describes list of objects to be transformed.
+        # Corresponds to the JSON property `manifest`
+        # @return [Google::Apis::StoragebatchoperationsV1::Manifest]
+        attr_accessor :manifest
+      
+        # Identifier. The resource name of the BucketOperation. This is defined by the
+        # service. Format: projects/`project`/locations/global/jobs/`job_id`/
+        # bucketOperations/`bucket_operation`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Describes prefixes of objects to be transformed.
+        # Corresponds to the JSON property `prefixList`
+        # @return [Google::Apis::StoragebatchoperationsV1::PrefixList]
+        attr_accessor :prefix_list
+      
+        # Describes options for object metadata update.
+        # Corresponds to the JSON property `putMetadata`
+        # @return [Google::Apis::StoragebatchoperationsV1::PutMetadata]
+        attr_accessor :put_metadata
+      
+        # Describes options to update object hold.
+        # Corresponds to the JSON property `putObjectHold`
+        # @return [Google::Apis::StoragebatchoperationsV1::PutObjectHold]
+        attr_accessor :put_object_hold
+      
+        # Describes options for object rewrite.
+        # Corresponds to the JSON property `rewriteObject`
+        # @return [Google::Apis::StoragebatchoperationsV1::RewriteObject]
+        attr_accessor :rewrite_object
+      
+        # Output only. The time that the BucketOperation was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. State of the BucketOperation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @counters = args[:counters] if args.key?(:counters)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_object = args[:delete_object] if args.key?(:delete_object)
+          @error_summaries = args[:error_summaries] if args.key?(:error_summaries)
+          @manifest = args[:manifest] if args.key?(:manifest)
+          @name = args[:name] if args.key?(:name)
+          @prefix_list = args[:prefix_list] if args.key?(:prefix_list)
+          @put_metadata = args[:put_metadata] if args.key?(:put_metadata)
+          @put_object_hold = args[:put_object_hold] if args.key?(:put_object_hold)
+          @rewrite_object = args[:rewrite_object] if args.key?(:rewrite_object)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Message for Job to Cancel
       class CancelJobRequest
         include Google::Apis::Core::Hashable
@@ -369,6 +468,37 @@ module Google
           @rewrite_object = args[:rewrite_object] if args.key?(:rewrite_object)
           @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Message for response to listing BucketOperations
+      class ListBucketOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of storage batch bucket operations.
+        # Corresponds to the JSON property `bucketOperations`
+        # @return [Array<Google::Apis::StoragebatchoperationsV1::BucketOperation>]
+        attr_accessor :bucket_operations
+      
+        # A token identifying a page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_operations = args[:bucket_operations] if args.key?(:bucket_operations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

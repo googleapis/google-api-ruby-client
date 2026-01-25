@@ -211,6 +211,11 @@ module Google
         # @param [String] name
         #   Required. The `name` of the job to delete. Format: projects/`project_id`/
         #   locations/global/jobs/`job_id` .
+        # @param [Boolean] force
+        #   Optional. If set to true, any child bucket operations of the job will also be
+        #   deleted. Highly recommended to be set to true by all clients. Users cannot
+        #   mutate bucket operations directly, so only the jobs.delete permission is
+        #   required to delete a job (and its child bucket operations).
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID in case you need to retry your request. Requests with same `
@@ -234,11 +239,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_job(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_job(name, force: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::StoragebatchoperationsV1::Empty::Representation
           command.response_class = Google::Apis::StoragebatchoperationsV1::Empty
           command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -308,6 +314,80 @@ module Google
           command = make_simple_command(:get, 'v1/{+parent}/jobs', options)
           command.response_representation = Google::Apis::StoragebatchoperationsV1::ListJobsResponse::Representation
           command.response_class = Google::Apis::StoragebatchoperationsV1::ListJobsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a BucketOperation.
+        # @param [String] name
+        #   Required. `name` of the bucket operation to retrieve. Format: projects/`
+        #   project_id`/locations/global/jobs/`job_id`/bucketOperations/`
+        #   bucket_operation_id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StoragebatchoperationsV1::BucketOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StoragebatchoperationsV1::BucketOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_job_bucket_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::StoragebatchoperationsV1::BucketOperation::Representation
+          command.response_class = Google::Apis::StoragebatchoperationsV1::BucketOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists BucketOperations in a given project and job.
+        # @param [String] parent
+        #   Required. Format: projects/`project_id`/locations/global/jobs/`job_id`.
+        # @param [String] filter
+        #   Optional. Filters results as defined by https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Optional. Field to sort by. Supported fields are name, create_time.
+        # @param [Fixnum] page_size
+        #   Optional. The list page size. Default page size is 100.
+        # @param [String] page_token
+        #   Optional. The list page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StoragebatchoperationsV1::ListBucketOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StoragebatchoperationsV1::ListBucketOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_job_bucket_operations(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/bucketOperations', options)
+          command.response_representation = Google::Apis::StoragebatchoperationsV1::ListBucketOperationsResponse::Representation
+          command.response_class = Google::Apis::StoragebatchoperationsV1::ListBucketOperationsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?

@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BucketOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +89,12 @@ module Google
       end
       
       class Job
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBucketOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -191,6 +203,34 @@ module Google
         end
       end
       
+      class BucketOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_name, as: 'bucketName'
+          property :complete_time, as: 'completeTime'
+          property :counters, as: 'counters', class: Google::Apis::StoragebatchoperationsV1::Counters, decorator: Google::Apis::StoragebatchoperationsV1::Counters::Representation
+      
+          property :create_time, as: 'createTime'
+          property :delete_object, as: 'deleteObject', class: Google::Apis::StoragebatchoperationsV1::DeleteObject, decorator: Google::Apis::StoragebatchoperationsV1::DeleteObject::Representation
+      
+          collection :error_summaries, as: 'errorSummaries', class: Google::Apis::StoragebatchoperationsV1::ErrorSummary, decorator: Google::Apis::StoragebatchoperationsV1::ErrorSummary::Representation
+      
+          property :manifest, as: 'manifest', class: Google::Apis::StoragebatchoperationsV1::Manifest, decorator: Google::Apis::StoragebatchoperationsV1::Manifest::Representation
+      
+          property :name, as: 'name'
+          property :prefix_list, as: 'prefixList', class: Google::Apis::StoragebatchoperationsV1::PrefixList, decorator: Google::Apis::StoragebatchoperationsV1::PrefixList::Representation
+      
+          property :put_metadata, as: 'putMetadata', class: Google::Apis::StoragebatchoperationsV1::PutMetadata, decorator: Google::Apis::StoragebatchoperationsV1::PutMetadata::Representation
+      
+          property :put_object_hold, as: 'putObjectHold', class: Google::Apis::StoragebatchoperationsV1::PutObjectHold, decorator: Google::Apis::StoragebatchoperationsV1::PutObjectHold::Representation
+      
+          property :rewrite_object, as: 'rewriteObject', class: Google::Apis::StoragebatchoperationsV1::RewriteObject, decorator: Google::Apis::StoragebatchoperationsV1::RewriteObject::Representation
+      
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+        end
+      end
+      
       class CancelJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -277,6 +317,16 @@ module Google
       
           property :schedule_time, as: 'scheduleTime'
           property :state, as: 'state'
+        end
+      end
+      
+      class ListBucketOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bucket_operations, as: 'bucketOperations', class: Google::Apis::StoragebatchoperationsV1::BucketOperation, decorator: Google::Apis::StoragebatchoperationsV1::BucketOperation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
