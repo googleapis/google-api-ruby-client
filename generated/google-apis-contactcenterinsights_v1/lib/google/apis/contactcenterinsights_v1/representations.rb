@@ -118,6 +118,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1AutoLabelingRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -262,6 +274,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1Conversation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +293,30 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1ConversationCallMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ConversationCorrelationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ConversationDataOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -341,6 +389,24 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1CorrelationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1CorrelationRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1CorrelationTypeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -820,6 +886,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1ListConversationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -989,6 +1061,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1240,6 +1318,60 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1426,6 +1558,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1Conversation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1433,6 +1577,24 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2116,6 +2278,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2314,6 +2506,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1mainConversation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2321,6 +2525,24 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1mainConversationCallMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3004,6 +3226,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1mainUndeployIssueModelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3311,6 +3563,30 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1AutoLabelingRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active, as: 'active'
+          collection :conditions, as: 'conditions', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :label_key, as: 'labelKey'
+          property :label_key_type, as: 'labelKeyType'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition'
+          property :value, as: 'value'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3563,11 +3839,33 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_a, as: 'conversationA'
+          property :conversation_b, as: 'conversationB'
+          collection :rule_constraint_results, as: 'ruleConstraintResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraint_met, as: 'constraintMet'
+          property :error, as: 'error', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :rule_id, as: 'ruleId'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1Conversation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_id, as: 'agentId'
           property :call_metadata, as: 'callMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationCallMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationCallMetadata::Representation
+      
+          property :correlation_info, as: 'correlationInfo', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo::Representation
       
           property :create_time, as: 'createTime'
           property :data_source, as: 'dataSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataSource::Representation
@@ -3604,6 +3902,41 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_channel, as: 'agentChannel'
           property :customer_channel, as: 'customerChannel'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :correlation_types, as: 'correlationTypes'
+          property :full_conversation_correlation_id, as: 'fullConversationCorrelationId'
+          property :merged_full_conversation_correlation_id, as: 'mergedFullConversationCorrelationId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ConversationCorrelationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation, as: 'conversation'
+          collection :rule_results, as: 'ruleResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :correlation_id, as: 'correlationId'
+          property :error, as: 'error', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :rule_id, as: 'ruleId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1ConversationDataOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_dialogflow_interaction_data, as: 'includeDialogflowInteractionData'
         end
       end
       
@@ -3738,6 +4071,35 @@ module Google
           property :end_offset, as: 'endOffset'
           property :start_offset, as: 'startOffset'
           property :word, as: 'word'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1CorrelationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :full_conversation_config, as: 'fullConversationConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationTypeConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationTypeConfig::Representation
+      
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1CorrelationRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active, as: 'active'
+          property :constraint_expression, as: 'constraintExpression'
+          property :join_key_expression, as: 'joinKeyExpression'
+          property :rule_id, as: 'ruleId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1CorrelationTypeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :correlation_rules, as: 'correlationRules', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationRule, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationRule::Representation
+      
         end
       end
       
@@ -4481,6 +4843,15 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_labeling_rules, as: 'autoLabelingRules', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1ListConversationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4738,6 +5109,8 @@ module Google
           property :order, as: 'order'
           property :predefined_question_config, as: 'predefinedQuestionConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig::Representation
       
+          property :qa_question_data_options, as: 'qaQuestionDataOptions', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions::Representation
+      
           property :question_body, as: 'questionBody'
           property :question_type, as: 'questionType'
           collection :tags, as: 'tags'
@@ -4770,6 +5143,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_data_options, as: 'conversationDataOptions', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataOptions, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataOptions::Representation
+      
         end
       end
       
@@ -5258,6 +5639,95 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_labeling_rule, as: 'autoLabelingRule', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AutoLabelingRule::Representation
+      
+          property :conversation, as: 'conversation', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_result, as: 'labelResult'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :dataset, as: 'dataset'
+          property :stats, as: 'stats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversation_correlation_errors, as: 'conversationCorrelationErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError::Representation
+      
+          property :correlated_conversations_count, as: 'correlatedConversationsCount'
+          property :failed_conversations_count, as: 'failedConversationsCount'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :sampled_conversations_count, as: 'sampledConversationsCount'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation, as: 'conversation'
+          property :status, as: 'status', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversations, as: 'conversations', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations::Representation
+      
+          property :correlation_config, as: 'correlationConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1CorrelationConfig::Representation
+      
+          property :filter, as: 'filter'
+          property :max_sample_count, as: 'maxSampleCount'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversations, as: 'conversations', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Conversation::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detailed_results, as: 'detailedResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults::Representation
+      
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :constraint_results, as: 'constraintResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult::Representation
+      
+          collection :join_key_results, as: 'joinKeyResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationCorrelationResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationCorrelationResult::Representation
+      
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5590,11 +6060,33 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_a, as: 'conversationA'
+          property :conversation_b, as: 'conversationB'
+          collection :rule_constraint_results, as: 'ruleConstraintResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraint_met, as: 'constraintMet'
+          property :error, as: 'error', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :rule_id, as: 'ruleId'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1Conversation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_id, as: 'agentId'
           property :call_metadata, as: 'callMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata::Representation
+      
+          property :correlation_info, as: 'correlationInfo', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo::Representation
       
           property :create_time, as: 'createTime'
           property :data_source, as: 'dataSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource::Representation
@@ -5631,6 +6123,34 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_channel, as: 'agentChannel'
           property :customer_channel, as: 'customerChannel'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :correlation_types, as: 'correlationTypes'
+          property :full_conversation_correlation_id, as: 'fullConversationCorrelationId'
+          property :merged_full_conversation_correlation_id, as: 'mergedFullConversationCorrelationId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation, as: 'conversation'
+          collection :rule_results, as: 'ruleResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :correlation_id, as: 'correlationId'
+          property :error, as: 'error', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :rule_id, as: 'ruleId'
         end
       end
       
@@ -6822,6 +7342,58 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :dataset, as: 'dataset'
+          property :stats, as: 'stats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversation_correlation_errors, as: 'conversationCorrelationErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError::Representation
+      
+          property :correlated_conversations_count, as: 'correlatedConversationsCount'
+          property :failed_conversations_count, as: 'failedConversationsCount'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :sampled_conversations_count, as: 'sampledConversationsCount'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation, as: 'conversation'
+          property :status, as: 'status', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detailed_results, as: 'detailedResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults::Representation
+      
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :constraint_results, as: 'constraintResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult::Representation
+      
+          collection :join_key_results, as: 'joinKeyResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult::Representation
+      
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7187,11 +7759,33 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_a, as: 'conversationA'
+          property :conversation_b, as: 'conversationB'
+          collection :rule_constraint_results, as: 'ruleConstraintResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraint_met, as: 'constraintMet'
+          property :error, as: 'error', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :rule_id, as: 'ruleId'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1mainConversation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_id, as: 'agentId'
           property :call_metadata, as: 'callMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationCallMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationCallMetadata::Representation
+      
+          property :correlation_info, as: 'correlationInfo', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo::Representation
       
           property :create_time, as: 'createTime'
           property :data_source, as: 'dataSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationDataSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationDataSource::Representation
@@ -7228,6 +7822,34 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_channel, as: 'agentChannel'
           property :customer_channel, as: 'customerChannel'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :correlation_types, as: 'correlationTypes'
+          property :full_conversation_correlation_id, as: 'fullConversationCorrelationId'
+          property :merged_full_conversation_correlation_id, as: 'mergedFullConversationCorrelationId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation, as: 'conversation'
+          collection :rule_results, as: 'ruleResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :correlation_id, as: 'correlationId'
+          property :error, as: 'error', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :rule_id, as: 'ruleId'
         end
       end
       
@@ -8416,6 +9038,58 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_word_time_offsets, as: 'disableWordTimeOffsets'
           property :speech_recognizer, as: 'speechRecognizer'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :dataset, as: 'dataset'
+          property :stats, as: 'stats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversation_correlation_errors, as: 'conversationCorrelationErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError::Representation
+      
+          property :correlated_conversations_count, as: 'correlatedConversationsCount'
+          property :failed_conversations_count, as: 'failedConversationsCount'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :sampled_conversations_count, as: 'sampledConversationsCount'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation, as: 'conversation'
+          property :status, as: 'status', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detailed_results, as: 'detailedResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults::Representation
+      
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :constraint_results, as: 'constraintResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult::Representation
+      
+          collection :join_key_results, as: 'joinKeyResults', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult::Representation
+      
         end
       end
       
