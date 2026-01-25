@@ -962,13 +962,14 @@ module Google
         # @return [String]
         attr_accessor :load_balancer_type
       
-        # A VPC network URI.
+        # A VPC network URI. Used according to the `network_type`. Relevant only for the
+        # source endpoints.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Type of the network where the endpoint is located. Applicable only to source
-        # endpoint, as destination network type can be inferred from the source.
+        # Type of the network where the endpoint is located. Relevant only for the
+        # source endpoints.
         # Corresponds to the JSON property `networkType`
         # @return [String]
         attr_accessor :network_type
@@ -979,13 +980,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
-        # Project ID where the endpoint is located. The project ID can be derived from
-        # the URI if you provide a endpoint or network URI. The following are two cases
-        # where you may need to provide the project ID: 1. Only the IP address is
-        # specified, and the IP address is within a Google Cloud project. 2. When you
-        # are using Shared VPC and the IP address that you provide is from the service
-        # project. In this case, the network that the IP address resides in is defined
-        # in the host project.
+        # Endpoint project ID. Used according to the `network_type`. Relevant only for
+        # the source endpoints.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
