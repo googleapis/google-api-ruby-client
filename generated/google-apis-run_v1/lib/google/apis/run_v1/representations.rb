@@ -514,7 +514,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Instance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceSplit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -563,6 +581,12 @@ module Google
       end
       
       class ListExecutionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -772,6 +796,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StartInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -785,6 +815,12 @@ module Google
       end
       
       class StatusDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1803,12 +1839,48 @@ module Google
         end
       end
       
+      class Instance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
+      
+          property :spec, as: 'spec', class: Google::Apis::RunV1::InstanceSpec, decorator: Google::Apis::RunV1::InstanceSpec::Representation
+      
+          property :status, as: 'status', class: Google::Apis::RunV1::InstanceStatus, decorator: Google::Apis::RunV1::InstanceStatus::Representation
+      
+        end
+      end
+      
+      class InstanceSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :containers, as: 'containers', class: Google::Apis::RunV1::Container, decorator: Google::Apis::RunV1::Container::Representation
+      
+          hash :node_selector, as: 'nodeSelector'
+          property :service_account_name, as: 'serviceAccountName'
+          collection :volumes, as: 'volumes', class: Google::Apis::RunV1::Volume, decorator: Google::Apis::RunV1::Volume::Representation
+      
+        end
+      end
+      
       class InstanceSplit
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :latest_revision, as: 'latestRevision'
           property :percent, as: 'percent'
           property :revision_name, as: 'revisionName'
+        end
+      end
+      
+      class InstanceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conditions, as: 'conditions', class: Google::Apis::RunV1::GoogleCloudRunV1Condition, decorator: Google::Apis::RunV1::GoogleCloudRunV1Condition::Representation
+      
+          property :log_uri, as: 'logUri'
+          property :observed_generation, as: 'observedGeneration'
         end
       end
       
@@ -1897,6 +1969,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           collection :items, as: 'items', class: Google::Apis::RunV1::Execution, decorator: Google::Apis::RunV1::Execution::Representation
+      
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ListMeta, decorator: Google::Apis::RunV1::ListMeta::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListInstancesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          collection :items, as: 'items', class: Google::Apis::RunV1::Instance, decorator: Google::Apis::RunV1::Instance::Representation
       
           property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::RunV1::ListMeta, decorator: Google::Apis::RunV1::ListMeta::Representation
@@ -2307,6 +2392,12 @@ module Google
         end
       end
       
+      class StartInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2340,6 +2431,12 @@ module Google
           property :name, as: 'name'
           property :retry_after_seconds, as: 'retryAfterSeconds'
           property :uid, as: 'uid'
+        end
+      end
+      
+      class StopInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

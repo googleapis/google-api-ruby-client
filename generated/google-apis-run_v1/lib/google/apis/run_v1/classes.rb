@@ -3688,6 +3688,98 @@ module Google
         end
       end
       
+      # Instance represents the configuration of a single Instance, which references a
+      # container image which is run to completion.
+      class Instance
+        include Google::Apis::Core::Hashable
+      
+        # Optional. APIVersion defines the versioned schema of this representation of an
+        # object. Servers should convert recognized schemas to the latest internal value,
+        # and may reject unrecognized values.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Optional. Kind is a string value representing the REST resource this object
+        # represents. Servers may infer this from the endpoint the client submits
+        # requests to. Cannot be updated. In CamelCase.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources
+        # must have, which includes all objects users must create.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ObjectMeta]
+        attr_accessor :metadata
+      
+        # InstanceSpec describes how the Instance will look.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::RunV1::InstanceSpec]
+        attr_accessor :spec
+      
+        # InstanceStatus represents the current state of a Instance.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::RunV1::InstanceStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @spec = args[:spec] if args.key?(:spec)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # InstanceSpec describes how the Instance will look.
+      class InstanceSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of containers belonging to the Instance. We disallow a number
+        # of fields on this Container.
+        # Corresponds to the JSON property `containers`
+        # @return [Array<Google::Apis::RunV1::Container>]
+        attr_accessor :containers
+      
+        # Optional. The Node Selector configuration. Map of selector key to a value
+        # which matches a node.
+        # Corresponds to the JSON property `nodeSelector`
+        # @return [Hash<String,String>]
+        attr_accessor :node_selector
+      
+        # Optional. Email address of the IAM service account associated with the
+        # Instance. The service account represents the identity of the running container,
+        # and determines what permissions the Instance has. If not provided, the
+        # Instance will use the project's default service account.
+        # Corresponds to the JSON property `serviceAccountName`
+        # @return [String]
+        attr_accessor :service_account_name
+      
+        # Optional. List of volumes that can be mounted by containers belonging to the
+        # Instance.
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::RunV1::Volume>]
+        attr_accessor :volumes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @containers = args[:containers] if args.key?(:containers)
+          @node_selector = args[:node_selector] if args.key?(:node_selector)
+          @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
+          @volumes = args[:volumes] if args.key?(:volumes)
+        end
+      end
+      
       # Holds a single instance split entry for the Worker. Allocations can be done to
       # a specific Revision name, or pointing to the latest Ready Revision.
       class InstanceSplit
@@ -3721,6 +3813,41 @@ module Google
           @latest_revision = args[:latest_revision] if args.key?(:latest_revision)
           @percent = args[:percent] if args.key?(:percent)
           @revision_name = args[:revision_name] if args.key?(:revision_name)
+        end
+      end
+      
+      # InstanceStatus represents the current state of a Instance.
+      class InstanceStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Conditions communicate information about ongoing/complete
+        # reconciliation processes that bring the "spec" inline with the observed state
+        # of the world. Instance-specific conditions include: * `Ready`: `True` when the
+        # Instance is ready to be executed.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::RunV1::GoogleCloudRunV1Condition>]
+        attr_accessor :conditions
+      
+        # Optional. URI where logs for this execution can be found in Cloud Console.
+        # Corresponds to the JSON property `logUri`
+        # @return [String]
+        attr_accessor :log_uri
+      
+        # Output only. The 'generation' of the Instance that was last processed by the
+        # controller.
+        # Corresponds to the JSON property `observedGeneration`
+        # @return [Fixnum]
+        attr_accessor :observed_generation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @log_uri = args[:log_uri] if args.key?(:log_uri)
+          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
         end
       end
       
@@ -4020,6 +4147,50 @@ module Google
         attr_accessor :items
       
         # The kind of this resource, in this case "ExecutionsList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Metadata for synthetic resources like List. In Cloud Run, all List Resources
+        # Responses will have a ListMeta instead of ObjectMeta.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ListMeta]
+        attr_accessor :metadata
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # ListInstancesResponse is a list of Instances resources.
+      class ListInstancesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "run.googleapis.com/v1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of Instances.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1::Instance>]
+        attr_accessor :items
+      
+        # The kind of this resource, in this case "InstancesList".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -5683,6 +5854,19 @@ module Google
         end
       end
       
+      # Request message for starting a stopped Instance.
+      class StartInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Status is a return value for calls that don't return other objects.
       class Status
         include Google::Apis::Core::Hashable
@@ -5834,6 +6018,19 @@ module Google
           @name = args[:name] if args.key?(:name)
           @retry_after_seconds = args[:retry_after_seconds] if args.key?(:retry_after_seconds)
           @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # Request message for stopping a running Instance.
+      class StopInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
