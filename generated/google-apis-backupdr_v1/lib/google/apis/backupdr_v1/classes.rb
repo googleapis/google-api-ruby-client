@@ -250,12 +250,18 @@ module Google
       class AlloyDbClusterBackupPlanAssociationProperties
         include Google::Apis::Core::Hashable
       
+        # Output only. The cluster UID of the AlloyDB cluster.
+        # Corresponds to the JSON property `clusterUid`
+        # @return [String]
+        attr_accessor :cluster_uid
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @cluster_uid = args[:cluster_uid] if args.key?(:cluster_uid)
         end
       end
       
@@ -264,7 +270,42 @@ module Google
       class AlloyDbClusterDataSourceProperties
         include Google::Apis::Core::Hashable
       
+        # Output only. The cluster UID of the AlloyDB cluster backed up by the
+        # datasource.
+        # Corresponds to the JSON property `clusterUid`
+        # @return [String]
+        attr_accessor :cluster_uid
+      
         # Output only. Name of the AlloyDB cluster backed up by the datasource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Point in time recovery windows. The order is guaranteed to be
+        # ascending by start time.
+        # Corresponds to the JSON property `pitrWindows`
+        # @return [Array<Google::Apis::BackupdrV1::AlloyDbPitrWindow>]
+        attr_accessor :pitr_windows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_uid = args[:cluster_uid] if args.key?(:cluster_uid)
+          @name = args[:name] if args.key?(:name)
+          @pitr_windows = args[:pitr_windows] if args.key?(:pitr_windows)
+        end
+      end
+      
+      # AlloyDBClusterDataSourceReferenceProperties represents the properties of an
+      # AlloyDB cluster that are stored in the DataSourceReference.
+      class AlloyDbClusterDataSourceReferenceProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the AlloyDB cluster backed up by the datasource. Format:
+        # projects/`project`/locations/`location`/clusters/`cluster`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -316,6 +357,38 @@ module Google
           @database_version = args[:database_version] if args.key?(:database_version)
           @description = args[:description] if args.key?(:description)
           @stored_bytes = args[:stored_bytes] if args.key?(:stored_bytes)
+        end
+      end
+      
+      # Point in time recovery window for an AlloyDB cluster.
+      class AlloyDbPitrWindow
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The end time of the PITR window. It is not set if the
+        # corresponding Backup Plan Association is active.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Log retention days for the PITR window.
+        # Corresponds to the JSON property `logRetentionDays`
+        # @return [Fixnum]
+        attr_accessor :log_retention_days
+      
+        # Output only. The start time of the PITR window.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @log_retention_days = args[:log_retention_days] if args.key?(:log_retention_days)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -2617,6 +2690,12 @@ module Google
       class DataSourceGcpResourceInfo
         include Google::Apis::Core::Hashable
       
+        # AlloyDBClusterDataSourceReferenceProperties represents the properties of an
+        # AlloyDB cluster that are stored in the DataSourceReference.
+        # Corresponds to the JSON property `alloyDbClusterProperties`
+        # @return [Google::Apis::BackupdrV1::AlloyDbClusterDataSourceReferenceProperties]
+        attr_accessor :alloy_db_cluster_properties
+      
         # CloudSqlInstanceDataSourceReferenceProperties represents the properties of a
         # Cloud SQL resource that are stored in the DataSourceReference.
         # Corresponds to the JSON property `cloudSqlInstanceProperties`
@@ -2647,6 +2726,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alloy_db_cluster_properties = args[:alloy_db_cluster_properties] if args.key?(:alloy_db_cluster_properties)
           @cloud_sql_instance_properties = args[:cloud_sql_instance_properties] if args.key?(:cloud_sql_instance_properties)
           @gcp_resourcename = args[:gcp_resourcename] if args.key?(:gcp_resourcename)
           @location = args[:location] if args.key?(:location)

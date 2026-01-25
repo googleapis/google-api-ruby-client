@@ -70,7 +70,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AlloyDbClusterDataSourceReferenceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AlloyDbClusterBackupProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AlloyDbPitrWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -843,10 +855,21 @@ module Google
       class AlloyDbClusterBackupPlanAssociationProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_uid, as: 'clusterUid'
         end
       end
       
       class AlloyDbClusterDataSourceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_uid, as: 'clusterUid'
+          property :name, as: 'name'
+          collection :pitr_windows, as: 'pitrWindows', class: Google::Apis::BackupdrV1::AlloyDbPitrWindow, decorator: Google::Apis::BackupdrV1::AlloyDbPitrWindow::Representation
+      
+        end
+      end
+      
+      class AlloyDbClusterDataSourceReferenceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
@@ -860,6 +883,15 @@ module Google
           property :database_version, as: 'databaseVersion'
           property :description, as: 'description'
           property :stored_bytes, :numeric_string => true, as: 'storedBytes'
+        end
+      end
+      
+      class AlloyDbPitrWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :log_retention_days, :numeric_string => true, as: 'logRetentionDays'
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -1403,6 +1435,8 @@ module Google
       class DataSourceGcpResourceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alloy_db_cluster_properties, as: 'alloyDbClusterProperties', class: Google::Apis::BackupdrV1::AlloyDbClusterDataSourceReferenceProperties, decorator: Google::Apis::BackupdrV1::AlloyDbClusterDataSourceReferenceProperties::Representation
+      
           property :cloud_sql_instance_properties, as: 'cloudSqlInstanceProperties', class: Google::Apis::BackupdrV1::CloudSqlInstanceDataSourceReferenceProperties, decorator: Google::Apis::BackupdrV1::CloudSqlInstanceDataSourceReferenceProperties::Representation
       
           property :gcp_resourcename, as: 'gcpResourcename'
