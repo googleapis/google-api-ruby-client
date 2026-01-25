@@ -199,7 +199,7 @@ module Google
       class GetTagsRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The full One Platform resource name of the service resource.
+        # Required. The full resource name of the service resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -218,7 +218,13 @@ module Google
       class GetTagsResponse
         include Google::Apis::Core::Hashable
       
-        # Required. The full One Platform resource name of the service resource.
+        # A checksum based on the current bindings. This field is always set in server
+        # responses.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. The full resource name of the service resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -230,21 +236,15 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :tags
       
-        # A checksum based on the current bindings. This field is always set in server
-        # responses.
-        # Corresponds to the JSON property `tagsEtag`
-        # @return [String]
-        attr_accessor :tags_etag
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @tags = args[:tags] if args.key?(:tags)
-          @tags_etag = args[:tags_etag] if args.key?(:tags_etag)
         end
       end
       
@@ -1107,8 +1107,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1618,7 +1619,13 @@ module Google
       class SetTagsRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The full One Platform resource name of the service resource.
+        # Optional. A checksum based on the current bindings which can be passed to
+        # prevent race conditions. If not passed, etag check would be skipped.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. The full resource name of the service resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1636,22 +1643,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :tags
       
-        # Optional. A checksum based on the current bindings which can be passed to
-        # prevent race conditions. If not passed, etag check would be skipped.
-        # Corresponds to the JSON property `tagsEtag`
-        # @return [String]
-        attr_accessor :tags_etag
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @request_id = args[:request_id] if args.key?(:request_id)
           @tags = args[:tags] if args.key?(:tags)
-          @tags_etag = args[:tags_etag] if args.key?(:tags_etag)
         end
       end
       
@@ -1659,7 +1660,13 @@ module Google
       class SetTagsResponse
         include Google::Apis::Core::Hashable
       
-        # Required. The full One Platform resource name of the service resource.
+        # A checksum based on the current bindings. This field is always set in server
+        # responses.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. The full resource name of the service resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1671,21 +1678,15 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :tags
       
-        # A checksum based on the current bindings. This field is always set in server
-        # responses.
-        # Corresponds to the JSON property `tagsEtag`
-        # @return [String]
-        attr_accessor :tags_etag
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @tags = args[:tags] if args.key?(:tags)
-          @tags_etag = args[:tags_etag] if args.key?(:tags_etag)
         end
       end
       
