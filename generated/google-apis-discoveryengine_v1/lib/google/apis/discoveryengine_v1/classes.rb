@@ -7880,9 +7880,10 @@ module Google
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
         # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `disable-agent-sharing` * `disable-image-generation`
-        # * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
-        # content` * `disable-google-drive-upload`
+        # personalization-memory` * `personalization-suggested-highlights` * `disable-
+        # agent-sharing` * `disable-image-generation` * `disable-video-generation` * `
+        # disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-
+        # upload` * `disable-welcome-emails`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -9969,7 +9970,7 @@ module Google
         end
       end
       
-      # Response message for UserLicenseService.ListLicenseConfigUsageStats method.
+      # Response message for UserLicenseService.ListLicenseConfigsUsageStats method.
       class GoogleCloudDiscoveryengineV1ListLicenseConfigsUsageStatsResponse
         include Google::Apis::Core::Hashable
       
@@ -11691,15 +11692,15 @@ module Google
       
         # Optional. The categories associated with a category page. Must be set for
         # category navigation queries to achieve good search quality. The format should
-        # be the same as UserEvent.PageInfo.page_category. This field is the equivalent
-        # of the query for browse (navigation) queries. It's used by the browse model
-        # when the query is empty. If the field is empty, it will not be used by the
-        # browse model. If the field contains more than one element, only the first
-        # element will be used. To represent full path of a category, use '>' character
-        # to separate different hierarchies. If '>' is part of the category name,
-        # replace it with other character(s). For example, `Graphics Cards > RTX>4090 >
-        # Founders Edition` where "RTX > 4090" represents one level, can be rewritten as
-        # `Graphics Cards > RTX_4090 > Founders Edition`
+        # be the same as PageInfo.page_category. This field is the equivalent of the
+        # query for browse (navigation) queries. It's used by the browse model when the
+        # query is empty. If the field is empty, it will not be used by the browse model.
+        # If the field contains more than one element, only the first element will be
+        # used. To represent full path of a category, use '>' character to separate
+        # different hierarchies. If '>' is part of the category name, replace it with
+        # other character(s). For example, `Graphics Cards > RTX>4090 > Founders Edition`
+        # where "RTX > 4090" represents one level, can be rewritten as `Graphics Cards >
+        # RTX_4090 > Founders Edition`
         # Corresponds to the JSON property `pageCategories`
         # @return [Array<String>]
         attr_accessor :page_categories
@@ -12714,8 +12715,8 @@ module Google
         # search, the default is `HARD_FILTER`. For multi-datastore search, the default
         # behavior is `SOFT_BOOST`. Location-based filters are always applied as hard
         # filters, and the `SOFT_BOOST` setting will not affect them. This field is only
-        # used if SearchRequest.natural_language_query_understanding_spec.
-        # filter_extraction_condition is set to FilterExtractionCondition.ENABLED.
+        # used if SearchRequest.NaturalLanguageQueryUnderstandingSpec.
+        # FilterExtractionCondition is set to FilterExtractionCondition.ENABLED.
         # Corresponds to the JSON property `extractedFilterBehavior`
         # @return [String]
         attr_accessor :extracted_filter_behavior
@@ -12902,6 +12903,12 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseFacet>]
         attr_accessor :facets
       
+        # Information describing what natural language understanding was done on the
+        # input query.
+        # Corresponds to the JSON property `naturalLanguageQueryUnderstandingInfo`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfo]
+        attr_accessor :natural_language_query_understanding_info
+      
         # A token that can be sent as SearchRequest.page_token to retrieve the next page.
         # If this field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
@@ -12962,6 +12969,7 @@ module Google
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
           @corrected_query = args[:corrected_query] if args.key?(:corrected_query)
           @facets = args[:facets] if args.key?(:facets)
+          @natural_language_query_understanding_info = args[:natural_language_query_understanding_info] if args.key?(:natural_language_query_understanding_info)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @query_expansion_info = args[:query_expansion_info] if args.key?(:query_expansion_info)
           @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
@@ -13035,6 +13043,264 @@ module Google
           @count = args[:count] if args.key?(:count)
           @interval = args[:interval] if args.key?(:interval)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Information describing what natural language understanding was done on the
+      # input query.
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfo
+        include Google::Apis::Core::Hashable
+      
+        # The classified intents from the input query.
+        # Corresponds to the JSON property `classifiedIntents`
+        # @return [Array<String>]
+        attr_accessor :classified_intents
+      
+        # The filters that were extracted from the input query.
+        # Corresponds to the JSON property `extractedFilters`
+        # @return [String]
+        attr_accessor :extracted_filters
+      
+        # Rewritten input query minus the extracted filters.
+        # Corresponds to the JSON property `rewrittenQuery`
+        # @return [String]
+        attr_accessor :rewritten_query
+      
+        # The filters that were extracted from the input query represented in a
+        # structured form.
+        # Corresponds to the JSON property `structuredExtractedFilter`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter]
+        attr_accessor :structured_extracted_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @classified_intents = args[:classified_intents] if args.key?(:classified_intents)
+          @extracted_filters = args[:extracted_filters] if args.key?(:extracted_filters)
+          @rewritten_query = args[:rewritten_query] if args.key?(:rewritten_query)
+          @structured_extracted_filter = args[:structured_extracted_filter] if args.key?(:structured_extracted_filter)
+        end
+      end
+      
+      # The filters that were extracted from the input query represented in a
+      # structured form.
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter
+        include Google::Apis::Core::Hashable
+      
+        # The expression denoting the filter that was extracted from the input query.
+        # Corresponds to the JSON property `expression`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression]
+        attr_accessor :expression
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expression = args[:expression] if args.key?(:expression)
+        end
+      end
+      
+      # Logical `And` operator.
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression
+        include Google::Apis::Core::Hashable
+      
+        # The expressions that were ANDed together.
+        # Corresponds to the JSON property `expressions`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression>]
+        attr_accessor :expressions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expressions = args[:expressions] if args.key?(:expressions)
+        end
+      end
+      
+      # The expression denoting the filter that was extracted from the input query.
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression
+        include Google::Apis::Core::Hashable
+      
+        # Logical `And` operator.
+        # Corresponds to the JSON property `andExpr`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression]
+        attr_accessor :and_expr
+      
+        # Constraint of a geolocation field. Name of the geolocation field as defined in
+        # the schema.
+        # Corresponds to the JSON property `geolocationConstraint`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterGeolocationConstraint]
+        attr_accessor :geolocation_constraint
+      
+        # Constraint expression of a number field. Example: price < 100.
+        # Corresponds to the JSON property `numberConstraint`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraint]
+        attr_accessor :number_constraint
+      
+        # Logical `Or` operator.
+        # Corresponds to the JSON property `orExpr`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression]
+        attr_accessor :or_expr
+      
+        # Constraint expression of a string field.
+        # Corresponds to the JSON property `stringConstraint`
+        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint]
+        attr_accessor :string_constraint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @and_expr = args[:and_expr] if args.key?(:and_expr)
+          @geolocation_constraint = args[:geolocation_constraint] if args.key?(:geolocation_constraint)
+          @number_constraint = args[:number_constraint] if args.key?(:number_constraint)
+          @or_expr = args[:or_expr] if args.key?(:or_expr)
+          @string_constraint = args[:string_constraint] if args.key?(:string_constraint)
+        end
+      end
+      
+      # Constraint of a geolocation field. Name of the geolocation field as defined in
+      # the schema.
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterGeolocationConstraint
+        include Google::Apis::Core::Hashable
+      
+        # The reference address that was inferred from the input query. The proximity of
+        # the reference address to the geolocation field will be used to filter the
+        # results.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # The name of the geolocation field as defined in the schema.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # The latitude of the geolocation inferred from the input query.
+        # Corresponds to the JSON property `latitude`
+        # @return [Float]
+        attr_accessor :latitude
+      
+        # The longitude of the geolocation inferred from the input query.
+        # Corresponds to the JSON property `longitude`
+        # @return [Float]
+        attr_accessor :longitude
+      
+        # The radius in meters around the address. The record is returned if the
+        # location of the geolocation field is within the radius.
+        # Corresponds to the JSON property `radiusInMeters`
+        # @return [Float]
+        attr_accessor :radius_in_meters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @latitude = args[:latitude] if args.key?(:latitude)
+          @longitude = args[:longitude] if args.key?(:longitude)
+          @radius_in_meters = args[:radius_in_meters] if args.key?(:radius_in_meters)
+        end
+      end
+      
+      # Constraint expression of a number field. Example: price < 100.
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraint
+        include Google::Apis::Core::Hashable
+      
+        # The comparison operation performed between the field value and the value
+        # specified in the constraint.
+        # Corresponds to the JSON property `comparison`
+        # @return [String]
+        attr_accessor :comparison
+      
+        # Name of the numerical field as defined in the schema.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # Identifies the keywords within the search query that match a filter.
+        # Corresponds to the JSON property `querySegment`
+        # @return [String]
+        attr_accessor :query_segment
+      
+        # The value specified in the numerical constraint.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comparison = args[:comparison] if args.key?(:comparison)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @query_segment = args[:query_segment] if args.key?(:query_segment)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Logical `Or` operator.
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression
+        include Google::Apis::Core::Hashable
+      
+        # The expressions that were ORed together.
+        # Corresponds to the JSON property `expressions`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression>]
+        attr_accessor :expressions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expressions = args[:expressions] if args.key?(:expressions)
+        end
+      end
+      
+      # Constraint expression of a string field.
+      class GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint
+        include Google::Apis::Core::Hashable
+      
+        # Name of the string field as defined in the schema.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # Identifies the keywords within the search query that match a filter.
+        # Corresponds to the JSON property `querySegment`
+        # @return [String]
+        attr_accessor :query_segment
+      
+        # Values of the string field. The record will only be returned if the field
+        # value matches one of the values specified here.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @query_segment = args[:query_segment] if args.key?(:query_segment)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -15605,7 +15871,7 @@ module Google
       
         # The name of the collection. It should be collection resource name. Format: `
         # projects/`project`/locations/`location`/collections/`collection_id``. For APIs
-        # under WidgetService, such as WidgetService.LookUpWidgetConfig, the project
+        # under WidgetService, such as WidgetService.LookupWidgetConfig, the project
         # number and location part is erased in this field.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -15677,7 +15943,7 @@ module Google
         # The name of the data store. It should be data store resource name Format: `
         # projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
         # `data_store_id``. For APIs under WidgetService, such as WidgetService.
-        # LookUpWidgetConfig, the project number and location part is erased in this
+        # LookupWidgetConfig, the project number and location part is erased in this
         # field.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -15725,7 +15991,7 @@ module Google
         # The name of the data store. It should be data store resource name Format: `
         # projects/`project`/locations/`location`/collections/`collection_id`/dataStores/
         # `data_store_id``. For APIs under WidgetService, such as WidgetService.
-        # LookUpWidgetConfig, the project number and location part is erased in this
+        # LookupWidgetConfig, the project number and location part is erased in this
         # field.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -15964,9 +16230,10 @@ module Google
         # Supported keys: * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery`
         # * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-
         # chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `disable-agent-sharing` * `disable-image-generation`
-        # * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
-        # content` * `disable-google-drive-upload`
+        # personalization-memory` * `personalization-suggested-highlights` * `disable-
+        # agent-sharing` * `disable-image-generation` * `disable-video-generation` * `
+        # disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-
+        # upload` * `disable-welcome-emails`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -17337,8 +17604,8 @@ module Google
         # Output only. When set, uniquely identifies a reply within the `AssistAnswer`
         # resource. During an AssistantService.StreamAssist call, multiple `Reply`
         # messages with the same ID can occur within the response stream (across
-        # multiple AssistantService.StreamAssistResponse messages). These represent
-        # parts of a single `Reply` message in the final `AssistAnswer` resource.
+        # multiple StreamAssistResponse messages). These represent parts of a single `
+        # Reply` message in the final `AssistAnswer` resource.
         # Corresponds to the JSON property `replyId`
         # @return [String]
         attr_accessor :reply_id
@@ -20420,9 +20687,10 @@ module Google
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
         # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `disable-agent-sharing` * `disable-image-generation`
-        # * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
-        # content` * `disable-google-drive-upload`
+        # personalization-memory` * `personalization-suggested-highlights` * `disable-
+        # agent-sharing` * `disable-image-generation` * `disable-video-generation` * `
+        # disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-
+        # upload` * `disable-welcome-emails`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -23519,15 +23787,15 @@ module Google
       
         # Optional. The categories associated with a category page. Must be set for
         # category navigation queries to achieve good search quality. The format should
-        # be the same as UserEvent.PageInfo.page_category. This field is the equivalent
-        # of the query for browse (navigation) queries. It's used by the browse model
-        # when the query is empty. If the field is empty, it will not be used by the
-        # browse model. If the field contains more than one element, only the first
-        # element will be used. To represent full path of a category, use '>' character
-        # to separate different hierarchies. If '>' is part of the category name,
-        # replace it with other character(s). For example, `Graphics Cards > RTX>4090 >
-        # Founders Edition` where "RTX > 4090" represents one level, can be rewritten as
-        # `Graphics Cards > RTX_4090 > Founders Edition`
+        # be the same as PageInfo.page_category. This field is the equivalent of the
+        # query for browse (navigation) queries. It's used by the browse model when the
+        # query is empty. If the field is empty, it will not be used by the browse model.
+        # If the field contains more than one element, only the first element will be
+        # used. To represent full path of a category, use '>' character to separate
+        # different hierarchies. If '>' is part of the category name, replace it with
+        # other character(s). For example, `Graphics Cards > RTX>4090 > Founders Edition`
+        # where "RTX > 4090" represents one level, can be rewritten as `Graphics Cards >
+        # RTX_4090 > Founders Edition`
         # Corresponds to the JSON property `pageCategories`
         # @return [Array<String>]
         attr_accessor :page_categories
@@ -24666,8 +24934,8 @@ module Google
         # search, the default is `HARD_FILTER`. For multi-datastore search, the default
         # behavior is `SOFT_BOOST`. Location-based filters are always applied as hard
         # filters, and the `SOFT_BOOST` setting will not affect them. This field is only
-        # used if SearchRequest.natural_language_query_understanding_spec.
-        # filter_extraction_condition is set to FilterExtractionCondition.ENABLED.
+        # used if SearchRequest.NaturalLanguageQueryUnderstandingSpec.
+        # FilterExtractionCondition is set to FilterExtractionCondition.ENABLED.
         # Corresponds to the JSON property `extractedFilterBehavior`
         # @return [String]
         attr_accessor :extracted_filter_behavior
@@ -27454,9 +27722,10 @@ module Google
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
         # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `disable-agent-sharing` * `disable-image-generation`
-        # * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
-        # content` * `disable-google-drive-upload`
+        # personalization-memory` * `personalization-suggested-highlights` * `disable-
+        # agent-sharing` * `disable-image-generation` * `disable-video-generation` * `
+        # disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-
+        # upload` * `disable-welcome-emails`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -29571,15 +29840,15 @@ module Google
       
         # Optional. The categories associated with a category page. Must be set for
         # category navigation queries to achieve good search quality. The format should
-        # be the same as UserEvent.PageInfo.page_category. This field is the equivalent
-        # of the query for browse (navigation) queries. It's used by the browse model
-        # when the query is empty. If the field is empty, it will not be used by the
-        # browse model. If the field contains more than one element, only the first
-        # element will be used. To represent full path of a category, use '>' character
-        # to separate different hierarchies. If '>' is part of the category name,
-        # replace it with other character(s). For example, `Graphics Cards > RTX>4090 >
-        # Founders Edition` where "RTX > 4090" represents one level, can be rewritten as
-        # `Graphics Cards > RTX_4090 > Founders Edition`
+        # be the same as PageInfo.page_category. This field is the equivalent of the
+        # query for browse (navigation) queries. It's used by the browse model when the
+        # query is empty. If the field is empty, it will not be used by the browse model.
+        # If the field contains more than one element, only the first element will be
+        # used. To represent full path of a category, use '>' character to separate
+        # different hierarchies. If '>' is part of the category name, replace it with
+        # other character(s). For example, `Graphics Cards > RTX>4090 > Founders Edition`
+        # where "RTX > 4090" represents one level, can be rewritten as `Graphics Cards >
+        # RTX_4090 > Founders Edition`
         # Corresponds to the JSON property `pageCategories`
         # @return [Array<String>]
         attr_accessor :page_categories
@@ -30707,8 +30976,8 @@ module Google
         # search, the default is `HARD_FILTER`. For multi-datastore search, the default
         # behavior is `SOFT_BOOST`. Location-based filters are always applied as hard
         # filters, and the `SOFT_BOOST` setting will not affect them. This field is only
-        # used if SearchRequest.natural_language_query_understanding_spec.
-        # filter_extraction_condition is set to FilterExtractionCondition.ENABLED.
+        # used if SearchRequest.NaturalLanguageQueryUnderstandingSpec.
+        # FilterExtractionCondition is set to FilterExtractionCondition.ENABLED.
         # Corresponds to the JSON property `extractedFilterBehavior`
         # @return [String]
         attr_accessor :extracted_filter_behavior
