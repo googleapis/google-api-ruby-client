@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RuleOutput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RunEvaluationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -966,6 +972,14 @@ module Google
         end
       end
       
+      class RuleOutput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :details, as: 'details'
+          property :message, as: 'message'
+        end
+      end
+      
       class RunEvaluationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1309,6 +1323,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :asset, as: 'asset'
           hash :observed, as: 'observed'
+          collection :rule_output, as: 'ruleOutput', class: Google::Apis::WorkloadmanagerV1::RuleOutput, decorator: Google::Apis::WorkloadmanagerV1::RuleOutput::Representation
+      
           property :service_account, as: 'serviceAccount'
         end
       end
