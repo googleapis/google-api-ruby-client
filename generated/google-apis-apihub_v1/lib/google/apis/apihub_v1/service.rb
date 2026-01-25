@@ -494,12 +494,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Looks up an Api Hub instance in a given GCP project. There will always be only
-        # one Api Hub instance for a GCP project across all locations.
+        # Looks up an Api Hub instance in a given Google Cloud project. There will
+        # always be only one Api Hub instance for a Google Cloud project across all
+        # locations.
         # @param [String] parent
-        #   Required. There will always be only one Api Hub instance for a GCP project
-        #   across all locations. The parent resource for the Api Hub instance resource.
-        #   Format: `projects/`project`/locations/`location``
+        #   Required. There will always be only one Api Hub instance for a Google Cloud
+        #   project across all locations. The parent resource for the Api Hub instance
+        #   resource. Format: `projects/`project`/locations/`location``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
