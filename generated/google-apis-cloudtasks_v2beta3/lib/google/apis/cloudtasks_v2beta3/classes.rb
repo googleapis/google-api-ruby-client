@@ -1340,7 +1340,8 @@ module Google
         # protobuf/google.protobuf/#duration). Queues created by Cloud Tasks have a
         # default `task_ttl` of 31 days. . Queues created by queue.yaml/xml have a fixed
         # `task_ttl` of the maximum duration, because there is a [storage quota](https://
-        # cloud.google.com/appengine/quotas#Task_Queue) for these queues.
+        # docs.cloud.google.com/appengine/docs/standard/quotas#Task_Queue) for these
+        # queues.
         # Corresponds to the JSON property `taskTtl`
         # @return [String]
         attr_accessor :task_ttl
