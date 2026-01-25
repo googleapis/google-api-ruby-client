@@ -4243,19 +4243,21 @@ module Google
       class IncrementalResultStats
         include Google::Apis::Core::Hashable
       
-        # Reason why incremental query results are/were not written by the query.
+        # Output only. Reason why incremental query results are/were not written by the
+        # query.
         # Corresponds to the JSON property `disabledReason`
         # @return [String]
         attr_accessor :disabled_reason
       
-        # The time at which the result table's contents were modified. May be absent if
-        # no results have been written or the query has completed.
+        # Output only. The time at which the result table's contents were modified. May
+        # be absent if no results have been written or the query has completed.
         # Corresponds to the JSON property `resultSetLastModifyTime`
         # @return [String]
         attr_accessor :result_set_last_modify_time
       
-        # The time at which the result table's contents were completely replaced. May be
-        # absent if no results have been written or the query has completed.
+        # Output only. The time at which the result table's contents were completely
+        # replaced. May be absent if no results have been written or the query has
+        # completed.
         # Corresponds to the JSON property `resultSetLastReplaceTime`
         # @return [String]
         attr_accessor :result_set_last_replace_time
@@ -5461,8 +5463,8 @@ module Google
         attr_accessor :time_partitioning
       
         # Optional. Specifies whether to use BigQuery's legacy SQL dialect for this
-        # query. The default value is true. If set to false, the query will use BigQuery'
-        # s GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ When
+        # query. The default value is true. If set to false, the query uses BigQuery's [
+        # GoogleSQL](https://docs.cloud.google.com/bigquery/docs/introduction-sql). When
         # useLegacySql is set to false, the value of flattenResults is ignored; query
         # will be run as if flattenResults is false.
         # Corresponds to the JSON property `useLegacySql`
@@ -8162,10 +8164,10 @@ module Google
         attr_accessor :timeout_ms
       
         # Specifies whether to use BigQuery's legacy SQL dialect for this query. The
-        # default value is true. If set to false, the query will use BigQuery's
-        # GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql
-        # is set to false, the value of flattenResults is ignored; query will be run as
-        # if flattenResults is false.
+        # default value is true. If set to false, the query uses BigQuery's [GoogleSQL](
+        # https://docs.cloud.google.com/bigquery/docs/introduction-sql). When
+        # useLegacySql is set to false, the value of flattenResults is ignored; query
+        # will be run as if flattenResults is false.
         # Corresponds to the JSON property `useLegacySql`
         # @return [Boolean]
         attr_accessor :use_legacy_sql
@@ -12295,10 +12297,10 @@ module Google
         alias_method :use_explicit_column_names?, :use_explicit_column_names
       
         # Specifies whether to use BigQuery's legacy SQL for this view. The default
-        # value is true. If set to false, the view will use BigQuery's GoogleSQL: https:/
-        # /cloud.google.com/bigquery/sql-reference/ Queries and views that reference
-        # this view must use the same flag value. A wrapper is used here because the
-        # default value is True.
+        # value is true. If set to false, the view uses BigQuery's [GoogleSQL](https://
+        # docs.cloud.google.com/bigquery/docs/introduction-sql). Queries and views that
+        # reference this view must use the same flag value. A wrapper is used here
+        # because the default value is True.
         # Corresponds to the JSON property `useLegacySql`
         # @return [Boolean]
         attr_accessor :use_legacy_sql
