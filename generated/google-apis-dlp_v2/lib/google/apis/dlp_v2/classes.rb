@@ -154,6 +154,130 @@ module Google
         end
       end
       
+      # AdjustmentRule condition for image findings. This rule is silently ignored if
+      # the content being inspected is not an image.
+      class GooglePrivacyDlpV2AdjustByImageFindings
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the relationship between bounding boxes for image findings.
+        # Corresponds to the JSON property `imageContainmentType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ImageContainmentType]
+        attr_accessor :image_containment_type
+      
+        # A list of image-supported infoTypes—excluding [document infoTypes](https://
+        # cloud.google.com/sensitive-data-protection/docs/infotypes-reference#documents)—
+        # to be used as context for the adjustment rule. Sensitive Data Protection
+        # adjusts the likelihood of an image finding if its bounding box has the
+        # specified spatial relationship (defined by `image_containment_type`) with a
+        # finding of an infoType in this list. For example, you can create a rule to
+        # adjust the likelihood of a `US_PASSPORT` finding if it is enclosed by a
+        # finding of `OBJECT_TYPE/PERSON/PASSPORT`. To configure this, set `US_PASSPORT`
+        # in `InspectionRuleSet.info_types`. Add an `adjustment_rule` with an `
+        # adjust_by_image_findings.info_types` that contains `OBJECT_TYPE/PERSON/
+        # PASSPORT` and `image_containment_type` set to `encloses`. In this case, the
+        # likelihood of the `US_PASSPORT` finding is adjusted, but the likelihood of the
+        # `OBJECT_TYPE/PERSON/PASSPORT` finding is not.
+        # Corresponds to the JSON property `infoTypes`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
+        attr_accessor :info_types
+      
+        # Required. Minimum likelihood of the `adjust_by_image_findings.info_types`
+        # finding. If the likelihood is lower than this value, Sensitive Data Protection
+        # doesn't adjust the likelihood of the `InspectionRuleSet.info_types` finding.
+        # Corresponds to the JSON property `minLikelihood`
+        # @return [String]
+        attr_accessor :min_likelihood
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_containment_type = args[:image_containment_type] if args.key?(:image_containment_type)
+          @info_types = args[:info_types] if args.key?(:info_types)
+          @min_likelihood = args[:min_likelihood] if args.key?(:min_likelihood)
+        end
+      end
+      
+      # AdjustmentRule condition for matching infoTypes.
+      class GooglePrivacyDlpV2AdjustByMatchingInfoTypes
+        include Google::Apis::Core::Hashable
+      
+        # Sensitive Data Protection adjusts the likelihood of a finding if that finding
+        # also matches one of these infoTypes. For example, you can create a rule to
+        # adjust the likelihood of a `PHONE_NUMBER` finding if the string is found
+        # within a document that is classified as `DOCUMENT_TYPE/HR/RESUME`. To
+        # configure this, set `PHONE_NUMBER` in `InspectionRuleSet.info_types`. Add an `
+        # adjustment_rule` with an `adjust_by_matching_info_types.info_types` that
+        # contains `DOCUMENT_TYPE/HR/RESUME`. In this case, the likelihood of the `
+        # PHONE_NUMBER` finding is adjusted, but the likelihood of the `DOCUMENT_TYPE/HR/
+        # RESUME` finding is not.
+        # Corresponds to the JSON property `infoTypes`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
+        attr_accessor :info_types
+      
+        # How the adjustment rule is applied. Only MATCHING_TYPE_PARTIAL_MATCH is
+        # supported: - Partial match: adjusts the findings of infoTypes specified in the
+        # inspection rule when they have a nonempty intersection with a finding of an
+        # infoType specified in this adjustment rule.
+        # Corresponds to the JSON property `matchingType`
+        # @return [String]
+        attr_accessor :matching_type
+      
+        # Required. Minimum likelihood of the `adjust_by_matching_info_types.info_types`
+        # finding. If the likelihood is lower than this value, Sensitive Data Protection
+        # doesn't adjust the likelihood of the `InspectionRuleSet.info_types` finding.
+        # Corresponds to the JSON property `minLikelihood`
+        # @return [String]
+        attr_accessor :min_likelihood
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @info_types = args[:info_types] if args.key?(:info_types)
+          @matching_type = args[:matching_type] if args.key?(:matching_type)
+          @min_likelihood = args[:min_likelihood] if args.key?(:min_likelihood)
+        end
+      end
+      
+      # Rule that specifies conditions when a certain infoType's finding details
+      # should be adjusted.
+      class GooglePrivacyDlpV2AdjustmentRule
+        include Google::Apis::Core::Hashable
+      
+        # AdjustmentRule condition for image findings. This rule is silently ignored if
+        # the content being inspected is not an image.
+        # Corresponds to the JSON property `adjustByImageFindings`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AdjustByImageFindings]
+        attr_accessor :adjust_by_image_findings
+      
+        # AdjustmentRule condition for matching infoTypes.
+        # Corresponds to the JSON property `adjustByMatchingInfoTypes`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AdjustByMatchingInfoTypes]
+        attr_accessor :adjust_by_matching_info_types
+      
+        # Message for specifying an adjustment to the likelihood of a finding as part of
+        # a detection rule.
+        # Corresponds to the JSON property `likelihoodAdjustment`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2LikelihoodAdjustment]
+        attr_accessor :likelihood_adjustment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adjust_by_image_findings = args[:adjust_by_image_findings] if args.key?(:adjust_by_image_findings)
+          @adjust_by_matching_info_types = args[:adjust_by_matching_info_types] if args.key?(:adjust_by_matching_info_types)
+          @likelihood_adjustment = args[:likelihood_adjustment] if args.key?(:likelihood_adjustment)
+        end
+      end
+      
       # Apply transformation to all findings.
       class GooglePrivacyDlpV2AllInfoTypes
         include Google::Apis::Core::Hashable
@@ -4586,6 +4710,19 @@ module Google
         end
       end
       
+      # Defines a condition where one bounding box encloses another.
+      class GooglePrivacyDlpV2Encloses
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # An entity in a dataset is a field or set of fields that correspond to a single
       # person. For example, in medical records the `EntityId` might be a patient
       # identifier, or for financial records it might be an account identifier. This
@@ -4674,6 +4811,43 @@ module Google
         end
       end
       
+      # The rule to exclude image findings based on spatial relationships with other
+      # image findings. For example, exclude an image finding if it overlaps with
+      # another image finding. This rule is silently ignored if the content being
+      # inspected is not an image.
+      class GooglePrivacyDlpV2ExcludeByImageFindings
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the relationship between bounding boxes for image findings.
+        # Corresponds to the JSON property `imageContainmentType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ImageContainmentType]
+        attr_accessor :image_containment_type
+      
+        # A list of image-supported infoTypes—excluding [document infoTypes](https://
+        # cloud.google.com/sensitive-data-protection/docs/infotypes-reference#documents)—
+        # to be used as context for the exclusion rule. A finding is excluded if its
+        # bounding box has the specified spatial relationship (defined by `
+        # image_containment_type`) with a finding of an infoType in this list. For
+        # example, if `InspectionRuleSet.info_types` includes `OBJECT_TYPE/PERSON` and
+        # this `exclusion_rule` specifies `info_types` as `OBJECT_TYPE/PERSON/PASSPORT`
+        # with `image_containment_type` set to `encloses`, then `OBJECT_TYPE/PERSON`
+        # findings will be excluded if they are fully contained within the bounding box
+        # of an `OBJECT_TYPE/PERSON/PASSPORT` finding.
+        # Corresponds to the JSON property `infoTypes`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
+        attr_accessor :info_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_containment_type = args[:image_containment_type] if args.key?(:image_containment_type)
+          @info_types = args[:info_types] if args.key?(:info_types)
+        end
+      end
+      
       # List of excluded infoTypes.
       class GooglePrivacyDlpV2ExcludeInfoTypes
         include Google::Apis::Core::Hashable
@@ -4733,6 +4907,14 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeByHotword]
         attr_accessor :exclude_by_hotword
       
+        # The rule to exclude image findings based on spatial relationships with other
+        # image findings. For example, exclude an image finding if it overlaps with
+        # another image finding. This rule is silently ignored if the content being
+        # inspected is not an image.
+        # Corresponds to the JSON property `excludeByImageFindings`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeByImageFindings]
+        attr_accessor :exclude_by_image_findings
+      
         # List of excluded infoTypes.
         # Corresponds to the JSON property `excludeInfoTypes`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeInfoTypes]
@@ -4756,6 +4938,7 @@ module Google
         def update!(**args)
           @dictionary = args[:dictionary] if args.key?(:dictionary)
           @exclude_by_hotword = args[:exclude_by_hotword] if args.key?(:exclude_by_hotword)
+          @exclude_by_image_findings = args[:exclude_by_image_findings] if args.key?(:exclude_by_image_findings)
           @exclude_info_types = args[:exclude_info_types] if args.key?(:exclude_info_types)
           @matching_type = args[:matching_type] if args.key?(:matching_type)
           @regex = args[:regex] if args.key?(:regex)
@@ -5534,6 +5717,19 @@ module Google
         end
       end
       
+      # Defines a condition where one bounding box is fully inside another.
+      class GooglePrivacyDlpV2FullyInside
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Processing occurs in the global region.
       class GooglePrivacyDlpV2GlobalProcessing
         include Google::Apis::Core::Hashable
@@ -5794,6 +5990,37 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @required_finding_label_keys = args[:required_finding_label_keys] if args.key?(:required_finding_label_keys)
           @table_options = args[:table_options] if args.key?(:table_options)
+        end
+      end
+      
+      # Specifies the relationship between bounding boxes for image findings.
+      class GooglePrivacyDlpV2ImageContainmentType
+        include Google::Apis::Core::Hashable
+      
+        # Defines a condition where one bounding box encloses another.
+        # Corresponds to the JSON property `encloses`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Encloses]
+        attr_accessor :encloses
+      
+        # Defines a condition where one bounding box is fully inside another.
+        # Corresponds to the JSON property `fullyInside`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FullyInside]
+        attr_accessor :fully_inside
+      
+        # Defines a condition for overlapping bounding boxes.
+        # Corresponds to the JSON property `overlaps`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Overlap]
+        attr_accessor :overlaps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encloses = args[:encloses] if args.key?(:encloses)
+          @fully_inside = args[:fully_inside] if args.key?(:fully_inside)
+          @overlaps = args[:overlaps] if args.key?(:overlaps)
         end
       end
       
@@ -6549,6 +6776,12 @@ module Google
       class GooglePrivacyDlpV2InspectionRule
         include Google::Apis::Core::Hashable
       
+        # Rule that specifies conditions when a certain infoType's finding details
+        # should be adjusted.
+        # Corresponds to the JSON property `adjustmentRule`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AdjustmentRule]
+        attr_accessor :adjustment_rule
+      
         # The rule that specifies conditions when findings of infoTypes specified in `
         # InspectionRuleSet` are removed from results.
         # Corresponds to the JSON property `exclusionRule`
@@ -6567,6 +6800,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @adjustment_rule = args[:adjustment_rule] if args.key?(:adjustment_rule)
           @exclusion_rule = args[:exclusion_rule] if args.key?(:exclusion_rule)
           @hotword_rule = args[:hotword_rule] if args.key?(:hotword_rule)
         end
@@ -8031,6 +8265,19 @@ module Google
           @output_schema = args[:output_schema] if args.key?(:output_schema)
           @storage_path = args[:storage_path] if args.key?(:storage_path)
           @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # Defines a condition for overlapping bounding boxes.
+      class GooglePrivacyDlpV2Overlap
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
