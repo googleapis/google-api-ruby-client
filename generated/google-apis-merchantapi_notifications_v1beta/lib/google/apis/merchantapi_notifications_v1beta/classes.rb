@@ -64,7 +64,10 @@ module Google
         end
       end
       
-      # Represents a notification subscription owned by a Merchant account.
+      # Represents a notification subscription owned by a Merchant account. See [
+      # Decode notifications](/merchant/api/guides/accounts/notifications#
+      # decode_notifications) for information on how to decode the notification
+      # payload and how to interpret its contents.
       class NotificationSubscription
         include Google::Apis::Core::Hashable
       
