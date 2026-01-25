@@ -965,6 +965,15 @@ module Google
         # @return [Array<Google::Apis::AppengineV1alpha::GceTag>]
         attr_accessor :gce_tag
       
+        # DEPRECATED: Indicates whether the GCE project is in the DEPROVISIONING state.
+        # This field is a temporary workaround (see b/475310865) to allow GCE extensions
+        # to bypass certain checks during deprovisioning. It will be replaced by a
+        # permanent solution in the future.
+        # Corresponds to the JSON property `isGceProjectDeprovisioning`
+        # @return [Boolean]
+        attr_accessor :is_gce_project_deprovisioning
+        alias_method :is_gce_project_deprovisioning?, :is_gce_project_deprovisioning
+      
         # The service account authorized to operate on the consumer project. Note: CCFE
         # only propagates P4SA with default tag to CLH.
         # Corresponds to the JSON property `p4ServiceAccount`
@@ -1001,6 +1010,7 @@ module Google
           @consumer_project_number = args[:consumer_project_number] if args.key?(:consumer_project_number)
           @consumer_project_state = args[:consumer_project_state] if args.key?(:consumer_project_state)
           @gce_tag = args[:gce_tag] if args.key?(:gce_tag)
+          @is_gce_project_deprovisioning = args[:is_gce_project_deprovisioning] if args.key?(:is_gce_project_deprovisioning)
           @p4_service_account = args[:p4_service_account] if args.key?(:p4_service_account)
           @producer_project_id = args[:producer_project_id] if args.key?(:producer_project_id)
           @producer_project_number = args[:producer_project_number] if args.key?(:producer_project_number)
