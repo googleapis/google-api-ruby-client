@@ -1476,6 +1476,35 @@ module Google
         end
       end
       
+      # Metadata about the source space from which a message was forwarded.
+      class ForwardedMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the source space. Format: spaces/`space`
+        # Corresponds to the JSON property `space`
+        # @return [String]
+        attr_accessor :space
+      
+        # Output only. The display name of the source space or DM at the time of
+        # forwarding. For `SPACE`, this is the space name. For `DIRECT_MESSAGE`, this is
+        # the other participant's name (e.g., "User A"). For `GROUP_CHAT`, this is a
+        # generated name based on members' first names, limited to 5 including the
+        # creator (e.g., "User A, User B").
+        # Corresponds to the JSON property `spaceDisplayName`
+        # @return [String]
+        attr_accessor :space_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @space = args[:space] if args.key?(:space)
+          @space_display_name = args[:space_display_name] if args.key?(:space_display_name)
+        end
+      end
+      
       # An action that describes the behavior when the form is submitted. For example,
       # you can invoke an Apps Script script to handle the form. If the action is
       # triggered, the form values are sent to the server. [Google Workspace add-ons
@@ -5512,6 +5541,11 @@ module Google
       class QuotedMessageMetadata
         include Google::Apis::Core::Hashable
       
+        # Metadata about the source space from which a message was forwarded.
+        # Corresponds to the JSON property `forwardedMetadata`
+        # @return [Google::Apis::ChatV1::ForwardedMetadata]
+        attr_accessor :forwarded_metadata
+      
         # Required. The timestamp when the quoted message was created or when the quoted
         # message was last updated. If the message was edited, use this field, `
         # last_update_time`. If the message was never edited, use `create_time`. If `
@@ -5527,14 +5561,79 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Specifies the quote type. If not set, defaults to REPLY in the
+        # message read/write path for backward compatibility.
+        # Corresponds to the JSON property `quoteType`
+        # @return [String]
+        attr_accessor :quote_type
+      
+        # Provides a snapshot of the content of the quoted message at the time of
+        # quoting or forwarding
+        # Corresponds to the JSON property `quotedMessageSnapshot`
+        # @return [Google::Apis::ChatV1::QuotedMessageSnapshot]
+        attr_accessor :quoted_message_snapshot
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @forwarded_metadata = args[:forwarded_metadata] if args.key?(:forwarded_metadata)
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
           @name = args[:name] if args.key?(:name)
+          @quote_type = args[:quote_type] if args.key?(:quote_type)
+          @quoted_message_snapshot = args[:quoted_message_snapshot] if args.key?(:quoted_message_snapshot)
+        end
+      end
+      
+      # Provides a snapshot of the content of the quoted message at the time of
+      # quoting or forwarding
+      class QuotedMessageSnapshot
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Annotations parsed from the text body of the quoted message.
+        # Populated only for FORWARD quote type.
+        # Corresponds to the JSON property `annotations`
+        # @return [Array<Google::Apis::ChatV1::Annotation>]
+        attr_accessor :annotations
+      
+        # Output only. Attachments that were part of the quoted message. These are
+        # copies of the quoted message's attachment metadata. Populated only for FORWARD
+        # quote type.
+        # Corresponds to the JSON property `attachments`
+        # @return [Array<Google::Apis::ChatV1::Attachment>]
+        attr_accessor :attachments
+      
+        # Output only. Contains the quoted message `text` with markups added to support
+        # rich formatting like hyperlinks,custom emojis, markup, etc. Populated only for
+        # FORWARD quote type.
+        # Corresponds to the JSON property `formattedText`
+        # @return [String]
+        attr_accessor :formatted_text
+      
+        # Output only. The quoted message's author name. Populated for both REPLY &
+        # FORWARD quote types.
+        # Corresponds to the JSON property `sender`
+        # @return [String]
+        attr_accessor :sender
+      
+        # Output only. Snapshot of the quoted message's text content.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @attachments = args[:attachments] if args.key?(:attachments)
+          @formatted_text = args[:formatted_text] if args.key?(:formatted_text)
+          @sender = args[:sender] if args.key?(:sender)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
