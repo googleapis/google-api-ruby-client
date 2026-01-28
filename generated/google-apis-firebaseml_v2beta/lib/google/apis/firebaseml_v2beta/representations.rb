@@ -550,6 +550,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ToolParallelAiSearch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1UrlContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1528,6 +1534,8 @@ module Google
       
           property :google_search_retrieval, as: 'googleSearchRetrieval', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleSearchRetrieval, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleSearchRetrieval::Representation
       
+          property :parallel_ai_search, as: 'parallelAiSearch', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolParallelAiSearch, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolParallelAiSearch::Representation
+      
           property :retrieval, as: 'retrieval', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Retrieval, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Retrieval::Representation
       
           property :url_context, as: 'urlContext', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1UrlContext, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1UrlContext::Representation
@@ -1564,6 +1572,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blocking_confidence, as: 'blockingConfidence'
           collection :exclude_domains, as: 'excludeDomains'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ToolParallelAiSearch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_key, as: 'apiKey'
+          hash :custom_configs, as: 'customConfigs'
         end
       end
       
