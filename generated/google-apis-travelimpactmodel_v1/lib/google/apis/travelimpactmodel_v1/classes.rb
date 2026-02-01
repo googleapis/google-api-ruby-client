@@ -427,6 +427,55 @@ module Google
         end
       end
       
+      # Profile describing the data handling characteristics of an MCP tool. When used
+      # within the McpTool.meta field, this message should be packed into a google.
+      # protobuf.Any and associated with the key: "google.com/tool.profiles/
+      # data_handling"
+      class McpToolDataHandlingProfile
+        include Google::Apis::Core::Hashable
+      
+        # // The data access level of the tool's inputs.
+        # Corresponds to the JSON property `inputDataAccessLevel`
+        # @return [String]
+        attr_accessor :input_data_access_level
+      
+        # The data access level of the tool's outputs.
+        # Corresponds to the JSON property `outputDataAccessLevel`
+        # @return [String]
+        attr_accessor :output_data_access_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_data_access_level = args[:input_data_access_level] if args.key?(:input_data_access_level)
+          @output_data_access_level = args[:output_data_access_level] if args.key?(:output_data_access_level)
+        end
+      end
+      
+      # Profile describing the lifecycle stage of an MCP tool. When used within the
+      # McpTool.meta field, this message should be packed into a google.protobuf.Any
+      # and associated with the key: "google.com/tool.profiles/lifecycle"
+      class McpToolLifecycleProfile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The current launch state of the MCP tool.
+        # Corresponds to the JSON property `launchState`
+        # @return [String]
+        attr_accessor :launch_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @launch_state = args[:launch_state] if args.key?(:launch_state)
+        end
+      end
+      
       # Travel Impact Model version. For more information about the model versioning
       # see [GitHub](https://github.com/google/travel-impact-model/#versioning).
       class ModelVersion
