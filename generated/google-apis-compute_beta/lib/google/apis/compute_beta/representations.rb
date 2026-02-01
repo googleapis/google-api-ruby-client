@@ -1378,6 +1378,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalVpnGatewayParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FileContentBuffer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3214,6 +3220,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstantSnapshotGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotGroupParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotGroupResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotGroupSourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstantSnapshotList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3862,6 +3892,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListInstantSnapshotGroups
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocalDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3912,6 +3960,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MachineImageParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -8278,6 +8332,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetVpnGatewayParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetVpnGatewaysScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -8620,6 +8680,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpnGatewayParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpnGatewayStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8718,6 +8784,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnTunnelParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -10372,6 +10444,8 @@ module Google
       class BulkInsertDiskResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :instant_snapshot_group_parameters, as: 'instantSnapshotGroupParameters', class: Google::Apis::ComputeBeta::InstantSnapshotGroupParameters, decorator: Google::Apis::ComputeBeta::InstantSnapshotGroupParameters::Representation
+      
           property :source_consistency_group_policy, as: 'sourceConsistencyGroupPolicy'
         end
       end
@@ -11392,6 +11466,8 @@ module Google
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeBeta::ExternalVpnGatewayParams, decorator: Google::Apis::ComputeBeta::ExternalVpnGatewayParams::Representation
+      
           property :redundancy_type, as: 'redundancyType'
           property :self_link, as: 'selfLink'
         end
@@ -11436,6 +11512,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ExternalVpnGatewayParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -11745,7 +11828,6 @@ module Google
           property :all_ports, as: 'allPorts'
           property :allow_global_access, as: 'allowGlobalAccess'
           property :allow_psc_global_access, as: 'allowPscGlobalAccess'
-          property :allow_psc_packet_injection, as: 'allowPscPacketInjection'
           property :backend_service, as: 'backendService'
           property :base_forwarding_rule, as: 'baseForwardingRule'
           property :creation_timestamp, as: 'creationTimestamp'
@@ -14901,6 +14983,8 @@ module Google
           property :self_link_with_id, as: 'selfLinkWithId'
           property :source_disk, as: 'sourceDisk'
           property :source_disk_id, as: 'sourceDiskId'
+          property :source_instant_snapshot_group, as: 'sourceInstantSnapshotGroup'
+          property :source_instant_snapshot_group_id, as: 'sourceInstantSnapshotGroupId'
           property :status, as: 'status'
           property :zone, as: 'zone'
         end
@@ -14936,6 +15020,49 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InstantSnapshotGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeBeta::InstantSnapshotGroupResourceStatus, decorator: Google::Apis::ComputeBeta::InstantSnapshotGroupResourceStatus::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :source_consistency_group, as: 'sourceConsistencyGroup'
+          property :status, as: 'status'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class InstantSnapshotGroupParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_instant_snapshot_group, as: 'sourceInstantSnapshotGroup'
+        end
+      end
+      
+      class InstantSnapshotGroupResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consistency_membership_resolution_time, as: 'consistencyMembershipResolutionTime'
+          property :source_info, as: 'sourceInfo', class: Google::Apis::ComputeBeta::InstantSnapshotGroupSourceInfo, decorator: Google::Apis::ComputeBeta::InstantSnapshotGroupSourceInfo::Representation
+      
+        end
+      end
+      
+      class InstantSnapshotGroupSourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consistency_group, as: 'consistencyGroup'
+          property :consistency_group_id, as: 'consistencyGroupId'
         end
       end
       
@@ -16159,6 +16286,40 @@ module Google
         end
       end
       
+      class ListInstantSnapshotGroups
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::InstantSnapshotGroup, decorator: Google::Apis::ComputeBeta::InstantSnapshotGroup::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::ListInstantSnapshotGroups::Warning, decorator: Google::Apis::ComputeBeta::ListInstantSnapshotGroups::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::ListInstantSnapshotGroups::Warning::Datum, decorator: Google::Apis::ComputeBeta::ListInstantSnapshotGroups::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class LocalDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -16216,6 +16377,8 @@ module Google
           property :machine_image_encryption_key, as: 'machineImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeBeta::MachineImageParams, decorator: Google::Apis::ComputeBeta::MachineImageParams::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           collection :saved_disks, as: 'savedDisks', class: Google::Apis::ComputeBeta::SavedDisk, decorator: Google::Apis::ComputeBeta::SavedDisk::Representation
@@ -16261,6 +16424,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class MachineImageParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -24252,6 +24422,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :params, as: 'params', class: Google::Apis::ComputeBeta::TargetVpnGatewayParams, decorator: Google::Apis::ComputeBeta::TargetVpnGatewayParams::Representation
+      
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
@@ -24321,6 +24493,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class TargetVpnGatewayParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -24879,6 +25058,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :params, as: 'params', class: Google::Apis::ComputeBeta::VpnGatewayParams, decorator: Google::Apis::ComputeBeta::VpnGatewayParams::Representation
+      
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :stack_type, as: 'stackType'
@@ -24949,6 +25130,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class VpnGatewayParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -25051,6 +25239,8 @@ module Google
           hash :labels, as: 'labels'
           collection :local_traffic_selector, as: 'localTrafficSelector'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeBeta::VpnTunnelParams, decorator: Google::Apis::ComputeBeta::VpnTunnelParams::Representation
+      
           property :peer_external_gateway, as: 'peerExternalGateway'
           property :peer_external_gateway_interface, as: 'peerExternalGatewayInterface'
           property :peer_gcp_gateway, as: 'peerGcpGateway'
@@ -25140,6 +25330,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class VpnTunnelParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
