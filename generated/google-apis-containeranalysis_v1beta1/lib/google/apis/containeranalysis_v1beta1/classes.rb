@@ -3488,6 +3488,11 @@ module Google
         # @return [String]
         attr_accessor :last_scan_time
       
+        # The last time vulnerability scan results changed.
+        # Corresponds to the JSON property `lastVulnerabilityUpdateTime`
+        # @return [String]
+        attr_accessor :last_vulnerability_update_time
+      
         # The status of an SBOM generation.
         # Corresponds to the JSON property `sbomStatus`
         # @return [Google::Apis::ContaineranalysisV1beta1::SbomStatus]
@@ -3507,6 +3512,7 @@ module Google
           @files = args[:files] if args.key?(:files)
           @last_analysis_time = args[:last_analysis_time] if args.key?(:last_analysis_time)
           @last_scan_time = args[:last_scan_time] if args.key?(:last_scan_time)
+          @last_vulnerability_update_time = args[:last_vulnerability_update_time] if args.key?(:last_vulnerability_update_time)
           @sbom_status = args[:sbom_status] if args.key?(:sbom_status)
         end
       end
