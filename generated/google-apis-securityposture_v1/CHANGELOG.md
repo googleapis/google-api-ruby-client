@@ -1,5 +1,9 @@
 # Release history for google-apis-securityposture_v1
 
+### v0.8.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260130
+
 ### v0.7.0 (2026-01-25)
 
 * Regenerated from discovery document revision 20260123
