@@ -2887,39 +2887,39 @@ module Google
         # @return [Array<Google::Apis::ThreatintelligenceV1beta::Association>]
         attr_accessor :associations
       
-        # Output only. The collection ID of the vulnerability. Ex: "vulnerability--cve-
-        # 2025-9876".
+        # Required. The collection ID of the vulnerability. Ex: "vulnerability--cve-2025-
+        # 9876".
         # Corresponds to the JSON property `collectionId`
         # @return [String]
         attr_accessor :collection_id
       
-        # Output only. The CVE ID of the vulnerability. Ex: "CVE-2025-9876". See https://
+        # Required. The CVE ID of the vulnerability. Ex: "CVE-2025-9876". See https://
         # www.cve.org/ for more information.
         # Corresponds to the JSON property `cveId`
         # @return [String]
         attr_accessor :cve_id
       
-        # Output only. The CVSS v3 score of the vulnerability. Example: 6.4.
+        # Required. The CVSS v3 score of the vulnerability. Example: 6.4.
         # Corresponds to the JSON property `cvss3Score`
         # @return [Float]
         attr_accessor :cvss3_score
       
-        # Output only. A description of the vulnerability.
+        # Required. A description of the vulnerability.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Output only. The exploitation state of the vulnerability.
+        # Required. The exploitation state of the vulnerability.
         # Corresponds to the JSON property `exploitationState`
         # @return [String]
         attr_accessor :exploitation_state
       
-        # Output only. The risk rating of the vulnerability.
+        # Required. The risk rating of the vulnerability.
         # Corresponds to the JSON property `riskRating`
         # @return [String]
         attr_accessor :risk_rating
       
-        # Output only. The affected technologies. Ex: "Apache Struts".
+        # Required. The affected technologies. Ex: "Apache Struts".
         # Corresponds to the JSON property `technologies`
         # @return [Array<String>]
         attr_accessor :technologies

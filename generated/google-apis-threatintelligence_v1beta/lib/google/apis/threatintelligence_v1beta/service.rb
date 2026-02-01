@@ -30,7 +30,7 @@ module Google
       #    Threatintelligence = Google::Apis::ThreatintelligenceV1beta # Alias the module
       #    service = Threatintelligence::ThreatIntelligenceServiceService.new
       #
-      # @see https://www.google.com
+      # @see https://cloud.google.com/threatintelligence/docs/reference/rest
       class ThreatIntelligenceServiceService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://threatintelligence.$UNIVERSE_DOMAIN$/"
 
