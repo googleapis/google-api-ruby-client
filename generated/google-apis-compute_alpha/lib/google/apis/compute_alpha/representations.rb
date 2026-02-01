@@ -592,6 +592,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceDynamicForwardingForwardProxy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceDynamicForwardingIpPortSelection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1750,6 +1756,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ForwardingRuleAttachedExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ForwardingRuleList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1990,6 +2002,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GlobalListVmExtensionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GlobalNetworkEndpointGroupsAttachEndpointsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2015,6 +2045,12 @@ module Google
       end
       
       class GlobalSetPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalVmExtension
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3724,6 +3760,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstantSnapshotParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstantSnapshotResourceStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4451,6 +4493,42 @@ module Google
       end
       
       class ListSnapshotGroups
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListVmExtensionStatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListVmExtensionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Warning
@@ -6910,6 +6988,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReservationParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReservationSlot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8344,6 +8428,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SnapshotRecycleBinPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotRecycleBinPolicyRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotRecycleBinPolicyRuleRuleConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SnapshotResourceStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8375,6 +8477,12 @@ module Google
       end
       
       class SnapshotSettingsStorageLocationSettingsStorageLocationPreference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotsGetEffectiveRecycleBinRuleResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9658,6 +9766,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VmExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmExtensionPoliciesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -9732,6 +9846,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VmExtensionState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -11158,6 +11278,7 @@ module Google
       
           collection :used_by, as: 'usedBy', class: Google::Apis::ComputeAlpha::BackendServiceUsedBy, decorator: Google::Apis::ComputeAlpha::BackendServiceUsedBy::Representation
       
+          property :vpc_network_scope, as: 'vpcNetworkScope'
         end
       end
       
@@ -11251,8 +11372,18 @@ module Google
       class BackendServiceDynamicForwarding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :forward_proxy, as: 'forwardProxy', class: Google::Apis::ComputeAlpha::BackendServiceDynamicForwardingForwardProxy, decorator: Google::Apis::ComputeAlpha::BackendServiceDynamicForwardingForwardProxy::Representation
+      
           property :ip_port_selection, as: 'ipPortSelection', class: Google::Apis::ComputeAlpha::BackendServiceDynamicForwardingIpPortSelection, decorator: Google::Apis::ComputeAlpha::BackendServiceDynamicForwardingIpPortSelection::Representation
       
+        end
+      end
+      
+      class BackendServiceDynamicForwardingForwardProxy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :proxy_mode, as: 'proxyMode'
         end
       end
       
@@ -11703,8 +11834,11 @@ module Google
       class CacheInvalidationRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_service, as: 'backendService'
           collection :cache_tags, as: 'cacheTags'
+          property :content_type, as: 'contentType'
           property :host, as: 'host'
+          property :http_status, as: 'httpStatus'
           property :path, as: 'path'
         end
       end
@@ -13311,7 +13445,8 @@ module Google
           property :all_ports, as: 'allPorts'
           property :allow_global_access, as: 'allowGlobalAccess'
           property :allow_psc_global_access, as: 'allowPscGlobalAccess'
-          property :allow_psc_packet_injection, as: 'allowPscPacketInjection'
+          collection :attached_extensions, as: 'attachedExtensions', class: Google::Apis::ComputeAlpha::ForwardingRuleAttachedExtension, decorator: Google::Apis::ComputeAlpha::ForwardingRuleAttachedExtension::Representation
+      
           property :availability_group, as: 'availabilityGroup'
           property :backend_service, as: 'backendService'
           property :base_forwarding_rule, as: 'baseForwardingRule'
@@ -13383,6 +13518,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ForwardingRuleAttachedExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reference, as: 'reference'
         end
       end
       
@@ -13813,6 +13955,40 @@ module Google
         end
       end
       
+      class GlobalListVmExtensionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::GlobalVmExtension, decorator: Google::Apis::ComputeAlpha::GlobalVmExtension::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::GlobalListVmExtensionsResponse::Warning, decorator: Google::Apis::ComputeAlpha::GlobalListVmExtensionsResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::GlobalListVmExtensionsResponse::Warning::Datum, decorator: Google::Apis::ComputeAlpha::GlobalListVmExtensionsResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class GlobalNetworkEndpointGroupsAttachEndpointsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13856,6 +14032,14 @@ module Google
           property :etag, :base64 => true, as: 'etag'
           property :policy, as: 'policy', class: Google::Apis::ComputeAlpha::Policy, decorator: Google::Apis::ComputeAlpha::Policy::Representation
       
+        end
+      end
+      
+      class GlobalVmExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :versions, as: 'versions'
         end
       end
       
@@ -16988,6 +17172,8 @@ module Google
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeAlpha::InstantSnapshotParams, decorator: Google::Apis::ComputeAlpha::InstantSnapshotParams::Representation
+      
           property :region, as: 'region'
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeAlpha::InstantSnapshotResourceStatus, decorator: Google::Apis::ComputeAlpha::InstantSnapshotResourceStatus::Representation
       
@@ -17112,6 +17298,13 @@ module Google
         end
       end
       
+      class InstantSnapshotParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
+        end
+      end
+      
       class InstantSnapshotResourceStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -17168,6 +17361,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :customer_name, as: 'customerName'
           property :description, as: 'description'
+          property :effective_location, as: 'effectiveLocation'
           collection :expected_outages, as: 'expectedOutages', class: Google::Apis::ComputeAlpha::InterconnectOutageNotification, decorator: Google::Apis::ComputeAlpha::InterconnectOutageNotification::Representation
       
           property :google_ip_address, as: 'googleIpAddress'
@@ -18531,6 +18725,74 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ListSnapshotGroups::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ListSnapshotGroups::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class ListVmExtensionStatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::VmExtensionState, decorator: Google::Apis::ComputeAlpha::VmExtensionState::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::ListVmExtensionStatesResponse::Warning, decorator: Google::Apis::ComputeAlpha::ListVmExtensionStatesResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ListVmExtensionStatesResponse::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ListVmExtensionStatesResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class ListVmExtensionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::VmExtension, decorator: Google::Apis::ComputeAlpha::VmExtension::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::ListVmExtensionsResponse::Warning, decorator: Google::Apis::ComputeAlpha::ListVmExtensionsResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ListVmExtensionsResponse::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ListVmExtensionsResponse::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
@@ -22882,6 +23144,8 @@ module Google
           property :kind, as: 'kind'
           collection :linked_commitments, as: 'linkedCommitments'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeAlpha::ReservationParams, decorator: Google::Apis::ComputeAlpha::ReservationParams::Representation
+      
           property :protection_tier, as: 'protectionTier'
           property :reservation_mode, as: 'reservationMode'
           property :reservation_sharing_policy, as: 'reservationSharingPolicy', class: Google::Apis::ComputeAlpha::AllocationReservationSharingPolicy, decorator: Google::Apis::ComputeAlpha::AllocationReservationSharingPolicy::Representation
@@ -23084,6 +23348,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ReservationParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -25808,6 +26079,29 @@ module Google
         end
       end
       
+      class SnapshotRecycleBinPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :rules, as: 'rules', class: Google::Apis::ComputeAlpha::SnapshotRecycleBinPolicyRule, decorator: Google::Apis::ComputeAlpha::SnapshotRecycleBinPolicyRule::Representation
+      
+        end
+      end
+      
+      class SnapshotRecycleBinPolicyRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :standard_snapshots, as: 'standardSnapshots', class: Google::Apis::ComputeAlpha::SnapshotRecycleBinPolicyRuleRuleConfig, decorator: Google::Apis::ComputeAlpha::SnapshotRecycleBinPolicyRuleRuleConfig::Representation
+      
+        end
+      end
+      
+      class SnapshotRecycleBinPolicyRuleRuleConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retention_duration_days, :numeric_string => true, as: 'retentionDurationDays'
+        end
+      end
+      
       class SnapshotResourceStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -25854,6 +26148,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class SnapshotsGetEffectiveRecycleBinRuleResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retention_duration_days, :numeric_string => true, as: 'retentionDurationDays'
         end
       end
       
@@ -28208,6 +28509,14 @@ module Google
         end
       end
       
+      class VmExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :versions, as: 'versions'
+        end
+      end
+      
       class VmExtensionPoliciesScopedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -28346,6 +28655,19 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class VmExtensionState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enforcement_msg, as: 'enforcementMsg'
+          property :enforcement_state, as: 'enforcementState'
+          property :health_status, as: 'healthStatus'
+          property :name, as: 'name'
+          property :policy_id, as: 'policyId'
+          property :unhealthy_msg, as: 'unhealthyMsg'
+          property :version, as: 'version'
         end
       end
       
