@@ -742,6 +742,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BundledLocalSsds
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CacheInvalidationRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3468,6 +3474,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MachineImageParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -9222,6 +9234,14 @@ module Google
         end
       end
       
+      class BundledLocalSsds
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_interface, as: 'defaultInterface'
+          property :partition_count, as: 'partitionCount'
+        end
+      end
+      
       class CacheInvalidationRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14316,6 +14336,8 @@ module Google
           property :machine_image_encryption_key, as: 'machineImageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::MachineImageParams, decorator: Google::Apis::ComputeV1::MachineImageParams::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           collection :saved_disks, as: 'savedDisks', class: Google::Apis::ComputeV1::SavedDisk, decorator: Google::Apis::ComputeV1::SavedDisk::Representation
@@ -14364,12 +14386,21 @@ module Google
         end
       end
       
+      class MachineImageParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
+        end
+      end
+      
       class MachineType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accelerators, as: 'accelerators', class: Google::Apis::ComputeV1::MachineType::Accelerator, decorator: Google::Apis::ComputeV1::MachineType::Accelerator::Representation
       
           property :architecture, as: 'architecture'
+          property :bundled_local_ssds, as: 'bundledLocalSsds', class: Google::Apis::ComputeV1::BundledLocalSsds, decorator: Google::Apis::ComputeV1::BundledLocalSsds::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatus::Representation
       
@@ -17975,6 +18006,7 @@ module Google
       class ResourcePolicyGroupPlacementPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_topology_mode, as: 'acceleratorTopologyMode'
           property :availability_domain_count, as: 'availabilityDomainCount'
           property :collocation, as: 'collocation'
           property :gpu_topology, as: 'gpuTopology'
@@ -20393,6 +20425,7 @@ module Google
           property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :reserved_internal_range, as: 'reservedInternalRange'
+          property :resolve_subnet_mask, as: 'resolveSubnetMask'
           property :role, as: 'role'
           collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ComputeV1::SubnetworkSecondaryRange, decorator: Google::Apis::ComputeV1::SubnetworkSecondaryRange::Representation
       
