@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClientContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ColumnMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1173,6 +1179,9 @@ module Google
           property :autoscaling_limits, as: 'autoscalingLimits', class: Google::Apis::SpannerV1::AutoscalingLimits, decorator: Google::Apis::SpannerV1::AutoscalingLimits::Representation
       
           property :autoscaling_target_high_priority_cpu_utilization_percent, as: 'autoscalingTargetHighPriorityCpuUtilizationPercent'
+          property :autoscaling_target_total_cpu_utilization_percent, as: 'autoscalingTargetTotalCpuUtilizationPercent'
+          property :disable_high_priority_cpu_autoscaling, as: 'disableHighPriorityCpuAutoscaling'
+          property :disable_total_cpu_autoscaling, as: 'disableTotalCpuAutoscaling'
         end
       end
       
@@ -1191,6 +1200,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :high_priority_cpu_utilization_percent, as: 'highPriorityCpuUtilizationPercent'
           property :storage_utilization_percent, as: 'storageUtilizationPercent'
+          property :total_cpu_utilization_percent, as: 'totalCpuUtilizationPercent'
         end
       end
       
@@ -1212,6 +1222,7 @@ module Google
           collection :instance_partitions, as: 'instancePartitions', class: Google::Apis::SpannerV1::BackupInstancePartition, decorator: Google::Apis::SpannerV1::BackupInstancePartition::Representation
       
           property :max_expire_time, as: 'maxExpireTime'
+          property :minimum_restorable_edition, as: 'minimumRestorableEdition'
           property :name, as: 'name'
           property :oldest_version_time, as: 'oldestVersionTime'
           collection :referencing_backups, as: 'referencingBackups'
@@ -1366,6 +1377,13 @@ module Google
           property :child_index, as: 'childIndex'
           property :type, as: 'type'
           property :variable, as: 'variable'
+        end
+      end
+      
+      class ClientContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :secure_context, as: 'secureContext'
         end
       end
       
@@ -2589,6 +2607,8 @@ module Google
       class RequestOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_context, as: 'clientContext', class: Google::Apis::SpannerV1::ClientContext, decorator: Google::Apis::SpannerV1::ClientContext::Representation
+      
           property :priority, as: 'priority'
           property :request_tag, as: 'requestTag'
           property :transaction_tag, as: 'transactionTag'
