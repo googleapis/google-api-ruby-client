@@ -93,6 +93,274 @@ module Google
         end
       end
       
+      # Log entry for BDRBackupPlanJobLog for resources using BackupPlan based
+      # protection.
+      class BdrBackupPlanJobLog
+        include Google::Apis::Core::Hashable
+      
+        # Canonical resource name for Backup Plan Plan of the job.
+        # Corresponds to the JSON property `backupPlanName`
+        # @return [String]
+        attr_accessor :backup_plan_name
+      
+        # End time of the job.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The error code. Only populated in error scenarios.
+        # Corresponds to the JSON property `errorCode`
+        # @return [Fixnum]
+        attr_accessor :error_code
+      
+        # The user readable error message. Only populated in error scenarios.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # The name of the error type eg. PERMISSION_DENIED. Only populated in error
+        # scenarios.
+        # Corresponds to the JSON property `errorType`
+        # @return [String]
+        attr_accessor :error_type
+      
+        # The category field displays the category of the job. Can be one of [
+        # UPDATE_BACKUP_PLAN].
+        # Corresponds to the JSON property `jobCategory`
+        # @return [String]
+        attr_accessor :job_category
+      
+        # The job_id field displays the identifier of the job being reported.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        # The status field displays the status of the job. Can be one of [RUNNING,
+        # SUCCESSFUL, FAILED].
+        # Corresponds to the JSON property `jobStatus`
+        # @return [String]
+        attr_accessor :job_status
+      
+        # User friendly revision id e.g. v0, v1 etc.
+        # Corresponds to the JSON property `newBackupPlanRevisionId`
+        # @return [String]
+        attr_accessor :new_backup_plan_revision_id
+      
+        # Full resource name for new backup plan revision
+        # Corresponds to the JSON property `newBackupPlanRevisionName`
+        # @return [String]
+        attr_accessor :new_backup_plan_revision_name
+      
+        # User friendly revision id e.g. v0, v1 etc.
+        # Corresponds to the JSON property `previousBackupPlanRevisionId`
+        # @return [String]
+        attr_accessor :previous_backup_plan_revision_id
+      
+        # Full resource name for previous backup plan revision
+        # Corresponds to the JSON property `previousBackupPlanRevisionName`
+        # @return [String]
+        attr_accessor :previous_backup_plan_revision_name
+      
+        # Previous Backup Plan rules.
+        # Corresponds to the JSON property `previousBackupRules`
+        # @return [Array<Google::Apis::GkebackupV1::BackupRuleDetail>]
+        attr_accessor :previous_backup_rules
+      
+        # The resource_type field displays the type of the protected resource.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # Revised Backup Plan rules.
+        # Corresponds to the JSON property `revisedBackupRules`
+        # @return [Array<Google::Apis::GkebackupV1::BackupRuleDetail>]
+        attr_accessor :revised_backup_rules
+      
+        # Start time of the job.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The total number of workloads affected by the job.
+        # Corresponds to the JSON property `workloadsAffectedCount`
+        # @return [Fixnum]
+        attr_accessor :workloads_affected_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_plan_name = args[:backup_plan_name] if args.key?(:backup_plan_name)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @error_type = args[:error_type] if args.key?(:error_type)
+          @job_category = args[:job_category] if args.key?(:job_category)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @job_status = args[:job_status] if args.key?(:job_status)
+          @new_backup_plan_revision_id = args[:new_backup_plan_revision_id] if args.key?(:new_backup_plan_revision_id)
+          @new_backup_plan_revision_name = args[:new_backup_plan_revision_name] if args.key?(:new_backup_plan_revision_name)
+          @previous_backup_plan_revision_id = args[:previous_backup_plan_revision_id] if args.key?(:previous_backup_plan_revision_id)
+          @previous_backup_plan_revision_name = args[:previous_backup_plan_revision_name] if args.key?(:previous_backup_plan_revision_name)
+          @previous_backup_rules = args[:previous_backup_rules] if args.key?(:previous_backup_rules)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @revised_backup_rules = args[:revised_backup_rules] if args.key?(:revised_backup_rules)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @workloads_affected_count = args[:workloads_affected_count] if args.key?(:workloads_affected_count)
+        end
+      end
+      
+      # Log entry for Backup and Restore Job for resources using BackupPlan based
+      # protection. Next Id: 23
+      class BdrBackupRestoreJobLog
+        include Google::Apis::Core::Hashable
+      
+        # Backup consistency time.
+        # Corresponds to the JSON property `backupConsistencyTime`
+        # @return [String]
+        attr_accessor :backup_consistency_time
+      
+        # Full resource name of the backup created in backup jobs and used in restore
+        # jobs.
+        # Corresponds to the JSON property `backupName`
+        # @return [String]
+        attr_accessor :backup_name
+      
+        # Full resource name for Backup Plan of the job. Only populated for Scheduled
+        # Backup and Adhoc Backup.
+        # Corresponds to the JSON property `backupPlanName`
+        # @return [String]
+        attr_accessor :backup_plan_name
+      
+        # Backup retention in days.
+        # Corresponds to the JSON property `backupRetentionDays`
+        # @return [Fixnum]
+        attr_accessor :backup_retention_days
+      
+        # Name of the backup rule. Only populated for Scheduled Backup and Adhoc Backup.
+        # Corresponds to the JSON property `backupRule`
+        # @return [String]
+        attr_accessor :backup_rule
+      
+        # Full resource name backup vault name
+        # Corresponds to the JSON property `backupVaultName`
+        # @return [String]
+        attr_accessor :backup_vault_name
+      
+        # End time of the job.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The error code. Only populated in error scenarios.
+        # Corresponds to the JSON property `errorCode`
+        # @return [Fixnum]
+        attr_accessor :error_code
+      
+        # The user readable error message. Only populated in error scenarios.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # The name of the error type eg. PERMISSION_DENIED. Only populated in error
+        # scenarios.
+        # Corresponds to the JSON property `errorType`
+        # @return [String]
+        attr_accessor :error_type
+      
+        # The amount of incremental backup data copied.
+        # Corresponds to the JSON property `incrementalBackupSizeGib`
+        # @return [Float]
+        attr_accessor :incremental_backup_size_gib
+      
+        # The category field displays the category of the job.
+        # Corresponds to the JSON property `jobCategory`
+        # @return [String]
+        attr_accessor :job_category
+      
+        # The job_id field displays the identifier of the job being logged.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        # The status field displays the status of the job.
+        # Corresponds to the JSON property `jobStatus`
+        # @return [String]
+        attr_accessor :job_status
+      
+        # Recovery point time.
+        # Corresponds to the JSON property `recoveryPointTime`
+        # @return [String]
+        attr_accessor :recovery_point_time
+      
+        # The resource_type field displays the type of the protected resource.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # Restore resource location.
+        # Corresponds to the JSON property `restoreResourceLocation`
+        # @return [String]
+        attr_accessor :restore_resource_location
+      
+        # Full resource name of the restore resource. Only populated in restore jobs.
+        # Corresponds to the JSON property `restoreResourceName`
+        # @return [String]
+        attr_accessor :restore_resource_name
+      
+        # The source resource ID.
+        # Corresponds to the JSON property `sourceResourceId`
+        # @return [String]
+        attr_accessor :source_resource_id
+      
+        # Source resource location.
+        # Corresponds to the JSON property `sourceResourceLocation`
+        # @return [String]
+        attr_accessor :source_resource_location
+      
+        # Full resource name of the protected resource.
+        # Corresponds to the JSON property `sourceResourceName`
+        # @return [String]
+        attr_accessor :source_resource_name
+      
+        # Start time of the job.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_consistency_time = args[:backup_consistency_time] if args.key?(:backup_consistency_time)
+          @backup_name = args[:backup_name] if args.key?(:backup_name)
+          @backup_plan_name = args[:backup_plan_name] if args.key?(:backup_plan_name)
+          @backup_retention_days = args[:backup_retention_days] if args.key?(:backup_retention_days)
+          @backup_rule = args[:backup_rule] if args.key?(:backup_rule)
+          @backup_vault_name = args[:backup_vault_name] if args.key?(:backup_vault_name)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @error_type = args[:error_type] if args.key?(:error_type)
+          @incremental_backup_size_gib = args[:incremental_backup_size_gib] if args.key?(:incremental_backup_size_gib)
+          @job_category = args[:job_category] if args.key?(:job_category)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @job_status = args[:job_status] if args.key?(:job_status)
+          @recovery_point_time = args[:recovery_point_time] if args.key?(:recovery_point_time)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @restore_resource_location = args[:restore_resource_location] if args.key?(:restore_resource_location)
+          @restore_resource_name = args[:restore_resource_name] if args.key?(:restore_resource_name)
+          @source_resource_id = args[:source_resource_id] if args.key?(:source_resource_id)
+          @source_resource_location = args[:source_resource_location] if args.key?(:source_resource_location)
+          @source_resource_name = args[:source_resource_name] if args.key?(:source_resource_name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Represents a request to perform a single point-in-time capture of some portion
       # of the state of a GKE cluster, the record of the backup operation itself, and
       # an anchor for the underlying artifacts that comprise the Backup (the config
@@ -842,6 +1110,55 @@ module Google
           @retention_policy_details = args[:retention_policy_details] if args.key?(:retention_policy_details)
           @rpo_risk_level = args[:rpo_risk_level] if args.key?(:rpo_risk_level)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # 
+      class BackupRuleDetail
+        include Google::Apis::Core::Hashable
+      
+        # Backup Window For Eg. “00:00 to 06:00”
+        # Corresponds to the JSON property `backupWindow`
+        # @return [String]
+        attr_accessor :backup_window
+      
+        # Backup Window Timezone in IANA format. For Eg. “America/Los_Angeles”
+        # Corresponds to the JSON property `backupWindowTimezone`
+        # @return [String]
+        attr_accessor :backup_window_timezone
+      
+        # Recurrence Type. For Eg. “Weekly”,” Monthly” or “Daily”.
+        # Corresponds to the JSON property `recurrence`
+        # @return [String]
+        attr_accessor :recurrence
+      
+        # Recurrence Repeat Schedule. For Eg. “1st and 25th day of the month.”
+        # Corresponds to the JSON property `recurrenceSchedule`
+        # @return [String]
+        attr_accessor :recurrence_schedule
+      
+        # Backup Retention in Days.
+        # Corresponds to the JSON property `retentionDays`
+        # @return [Fixnum]
+        attr_accessor :retention_days
+      
+        # Backup Rule Name.
+        # Corresponds to the JSON property `ruleName`
+        # @return [String]
+        attr_accessor :rule_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_window = args[:backup_window] if args.key?(:backup_window)
+          @backup_window_timezone = args[:backup_window_timezone] if args.key?(:backup_window_timezone)
+          @recurrence = args[:recurrence] if args.key?(:recurrence)
+          @recurrence_schedule = args[:recurrence_schedule] if args.key?(:recurrence_schedule)
+          @retention_days = args[:retention_days] if args.key?(:retention_days)
+          @rule_name = args[:rule_name] if args.key?(:rule_name)
         end
       end
       

@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BdrBackupPlanJobLog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BdrBackupRestoreJobLog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Backup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +83,12 @@ module Google
       end
       
       class BackupPlanDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupRuleDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -471,6 +489,59 @@ module Google
         end
       end
       
+      class BdrBackupPlanJobLog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_plan_name, as: 'backupPlanName'
+          property :end_time, as: 'endTime'
+          property :error_code, as: 'errorCode'
+          property :error_message, as: 'errorMessage'
+          property :error_type, as: 'errorType'
+          property :job_category, as: 'jobCategory'
+          property :job_id, as: 'jobId'
+          property :job_status, as: 'jobStatus'
+          property :new_backup_plan_revision_id, as: 'newBackupPlanRevisionId'
+          property :new_backup_plan_revision_name, as: 'newBackupPlanRevisionName'
+          property :previous_backup_plan_revision_id, as: 'previousBackupPlanRevisionId'
+          property :previous_backup_plan_revision_name, as: 'previousBackupPlanRevisionName'
+          collection :previous_backup_rules, as: 'previousBackupRules', class: Google::Apis::GkebackupV1::BackupRuleDetail, decorator: Google::Apis::GkebackupV1::BackupRuleDetail::Representation
+      
+          property :resource_type, as: 'resourceType'
+          collection :revised_backup_rules, as: 'revisedBackupRules', class: Google::Apis::GkebackupV1::BackupRuleDetail, decorator: Google::Apis::GkebackupV1::BackupRuleDetail::Representation
+      
+          property :start_time, as: 'startTime'
+          property :workloads_affected_count, as: 'workloadsAffectedCount'
+        end
+      end
+      
+      class BdrBackupRestoreJobLog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_consistency_time, as: 'backupConsistencyTime'
+          property :backup_name, as: 'backupName'
+          property :backup_plan_name, as: 'backupPlanName'
+          property :backup_retention_days, as: 'backupRetentionDays'
+          property :backup_rule, as: 'backupRule'
+          property :backup_vault_name, as: 'backupVaultName'
+          property :end_time, as: 'endTime'
+          property :error_code, as: 'errorCode'
+          property :error_message, as: 'errorMessage'
+          property :error_type, as: 'errorType'
+          property :incremental_backup_size_gib, as: 'incrementalBackupSizeGib'
+          property :job_category, as: 'jobCategory'
+          property :job_id, as: 'jobId'
+          property :job_status, as: 'jobStatus'
+          property :recovery_point_time, as: 'recoveryPointTime'
+          property :resource_type, as: 'resourceType'
+          property :restore_resource_location, as: 'restoreResourceLocation'
+          property :restore_resource_name, as: 'restoreResourceName'
+          property :source_resource_id, as: 'sourceResourceId'
+          property :source_resource_location, as: 'sourceResourceLocation'
+          property :source_resource_name, as: 'sourceResourceName'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class Backup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -619,6 +690,18 @@ module Google
       
           property :rpo_risk_level, as: 'rpoRiskLevel'
           property :state, as: 'state'
+        end
+      end
+      
+      class BackupRuleDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_window, as: 'backupWindow'
+          property :backup_window_timezone, as: 'backupWindowTimezone'
+          property :recurrence, as: 'recurrence'
+          property :recurrence_schedule, as: 'recurrenceSchedule'
+          property :retention_days, as: 'retentionDays'
+          property :rule_name, as: 'ruleName'
         end
       end
       
