@@ -840,7 +840,7 @@ module Google
       class GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest
         include Google::Apis::Core::Hashable
       
-        # Specification to boost suggestions based on the condtion of the suggestion.
+        # Specification to boost suggestions based on the condition of the suggestion.
         # Corresponds to the JSON property `boostSpec`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestBoostSpec]
         attr_accessor :boost_spec
@@ -928,7 +928,7 @@ module Google
         end
       end
       
-      # Specification to boost suggestions based on the condtion of the suggestion.
+      # Specification to boost suggestions based on the condition of the suggestion.
       class GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestBoostSpec
         include Google::Apis::Core::Hashable
       
@@ -10392,10 +10392,32 @@ module Google
         # @return [Fixnum]
         attr_accessor :effective_search_qpm_threshold
       
+        # Output only. The earliest next update time for the indexing core subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # indexing core subscription threshold request is succeeded.
+        # Corresponds to the JSON property `indexingCoreThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :indexing_core_threshold_next_update_time
+      
+        # Output only. The earliest next update time for the search QPM subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # QPM subscription threshold request is succeeded.
+        # Corresponds to the JSON property `searchQpmThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :search_qpm_threshold_next_update_time
+      
         # Optional. The start time of the currently active billing subscription.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
+      
+        # Output only. The latest terminate effective time of search qpm and indexing
+        # core subscriptions.
+        # Corresponds to the JSON property `terminateTime`
+        # @return [String]
+        attr_accessor :terminate_time
       
         def initialize(**args)
            update!(**args)
@@ -10405,7 +10427,10 @@ module Google
         def update!(**args)
           @effective_indexing_core_threshold = args[:effective_indexing_core_threshold] if args.key?(:effective_indexing_core_threshold)
           @effective_search_qpm_threshold = args[:effective_search_qpm_threshold] if args.key?(:effective_search_qpm_threshold)
+          @indexing_core_threshold_next_update_time = args[:indexing_core_threshold_next_update_time] if args.key?(:indexing_core_threshold_next_update_time)
+          @search_qpm_threshold_next_update_time = args[:search_qpm_threshold_next_update_time] if args.key?(:search_qpm_threshold_next_update_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
         end
       end
       
@@ -15662,6 +15687,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The nodes associated with the Widget Config.
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigNode>]
+        attr_accessor :nodes
+      
         # The type of snippet to display in UCS widget. -
         # RESULT_DISPLAY_TYPE_UNSPECIFIED for existing users. - SNIPPET for new non-
         # enterprise search users. - EXTRACTIVE_ANSWER for new enterprise search users.
@@ -15728,6 +15758,7 @@ module Google
           @llm_enabled = args[:llm_enabled] if args.key?(:llm_enabled)
           @minimum_data_term_accepted = args[:minimum_data_term_accepted] if args.key?(:minimum_data_term_accepted)
           @name = args[:name] if args.key?(:name)
+          @nodes = args[:nodes] if args.key?(:nodes)
           @result_display_type = args[:result_display_type] if args.key?(:result_display_type)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
           @ui_branding = args[:ui_branding] if args.key?(:ui_branding)
@@ -16105,6 +16136,61 @@ module Google
         # Update properties of this object
         def update!(**args)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Represents a single reusable computational or logical unit.
+      class GoogleCloudDiscoveryengineV1WidgetConfigNode
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A detailed description of what the node does.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. A human readable name for the node.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. An identifier or URL pointing to an icon representing this node
+        # type.
+        # Corresponds to the JSON property `iconUrl`
+        # @return [String]
+        attr_accessor :icon_url
+      
+        # Output only. The output schema of the tool. This schema is expected to conform
+        # to the OpenAPI Schema standard (see https://spec.openapis.org/oas/v3.0.3.html/
+        # and AIP-146). It describes the structure of the output produced by this node.
+        # Corresponds to the JSON property `outputSchema`
+        # @return [Hash<String,Object>]
+        attr_accessor :output_schema
+      
+        # Output only. The parameter schema of the tool. This schema is expected to
+        # conform to the OpenAPI Schema standard (see https://spec.openapis.org/oas/v3.0.
+        # 3.html and AIP-146). It describes the expected structure of the parameters
+        # that this node accepts.
+        # Corresponds to the JSON property `parameterSchema`
+        # @return [Hash<String,Object>]
+        attr_accessor :parameter_schema
+      
+        # Output only. The type of the node.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @icon_url = args[:icon_url] if args.key?(:icon_url)
+          @output_schema = args[:output_schema] if args.key?(:output_schema)
+          @parameter_schema = args[:parameter_schema] if args.key?(:parameter_schema)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -22690,10 +22776,32 @@ module Google
         # @return [Fixnum]
         attr_accessor :effective_search_qpm_threshold
       
+        # Output only. The earliest next update time for the indexing core subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # indexing core subscription threshold request is succeeded.
+        # Corresponds to the JSON property `indexingCoreThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :indexing_core_threshold_next_update_time
+      
+        # Output only. The earliest next update time for the search QPM subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # QPM subscription threshold request is succeeded.
+        # Corresponds to the JSON property `searchQpmThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :search_qpm_threshold_next_update_time
+      
         # Optional. The start time of the currently active billing subscription.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
+      
+        # Output only. The latest terminate effective time of search qpm and indexing
+        # core subscriptions.
+        # Corresponds to the JSON property `terminateTime`
+        # @return [String]
+        attr_accessor :terminate_time
       
         def initialize(**args)
            update!(**args)
@@ -22703,7 +22811,10 @@ module Google
         def update!(**args)
           @effective_indexing_core_threshold = args[:effective_indexing_core_threshold] if args.key?(:effective_indexing_core_threshold)
           @effective_search_qpm_threshold = args[:effective_search_qpm_threshold] if args.key?(:effective_search_qpm_threshold)
+          @indexing_core_threshold_next_update_time = args[:indexing_core_threshold_next_update_time] if args.key?(:indexing_core_threshold_next_update_time)
+          @search_qpm_threshold_next_update_time = args[:search_qpm_threshold_next_update_time] if args.key?(:search_qpm_threshold_next_update_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
         end
       end
       
@@ -29192,10 +29303,32 @@ module Google
         # @return [Fixnum]
         attr_accessor :effective_search_qpm_threshold
       
+        # Output only. The earliest next update time for the indexing core subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # indexing core subscription threshold request is succeeded.
+        # Corresponds to the JSON property `indexingCoreThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :indexing_core_threshold_next_update_time
+      
+        # Output only. The earliest next update time for the search QPM subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # QPM subscription threshold request is succeeded.
+        # Corresponds to the JSON property `searchQpmThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :search_qpm_threshold_next_update_time
+      
         # Optional. The start time of the currently active billing subscription.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
+      
+        # Output only. The latest terminate effective time of search qpm and indexing
+        # core subscriptions.
+        # Corresponds to the JSON property `terminateTime`
+        # @return [String]
+        attr_accessor :terminate_time
       
         def initialize(**args)
            update!(**args)
@@ -29205,7 +29338,10 @@ module Google
         def update!(**args)
           @effective_indexing_core_threshold = args[:effective_indexing_core_threshold] if args.key?(:effective_indexing_core_threshold)
           @effective_search_qpm_threshold = args[:effective_search_qpm_threshold] if args.key?(:effective_search_qpm_threshold)
+          @indexing_core_threshold_next_update_time = args[:indexing_core_threshold_next_update_time] if args.key?(:indexing_core_threshold_next_update_time)
+          @search_qpm_threshold_next_update_time = args[:search_qpm_threshold_next_update_time] if args.key?(:search_qpm_threshold_next_update_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
         end
       end
       

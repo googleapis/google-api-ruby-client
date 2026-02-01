@@ -2494,6 +2494,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1WidgetConfigNode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1WidgetConfigUiComponentField
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7849,7 +7855,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :effective_indexing_core_threshold, :numeric_string => true, as: 'effectiveIndexingCoreThreshold'
           property :effective_search_qpm_threshold, :numeric_string => true, as: 'effectiveSearchQpmThreshold'
+          property :indexing_core_threshold_next_update_time, as: 'indexingCoreThresholdNextUpdateTime'
+          property :search_qpm_threshold_next_update_time, as: 'searchQpmThresholdNextUpdateTime'
           property :start_time, as: 'startTime'
+          property :terminate_time, as: 'terminateTime'
         end
       end
       
@@ -9161,6 +9170,8 @@ module Google
           property :llm_enabled, as: 'llmEnabled'
           property :minimum_data_term_accepted, as: 'minimumDataTermAccepted'
           property :name, as: 'name'
+          collection :nodes, as: 'nodes', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigNode, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigNode::Representation
+      
           property :result_display_type, as: 'resultDisplayType'
           property :solution_type, as: 'solutionType'
           property :ui_branding, as: 'uiBranding', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigUiBrandingSettings, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1WidgetConfigUiBrandingSettings::Representation
@@ -9266,6 +9277,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :url, as: 'url'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1WidgetConfigNode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :icon_url, as: 'iconUrl'
+          hash :output_schema, as: 'outputSchema'
+          hash :parameter_schema, as: 'parameterSchema'
+          property :type, as: 'type'
         end
       end
       
@@ -11044,7 +11067,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :effective_indexing_core_threshold, :numeric_string => true, as: 'effectiveIndexingCoreThreshold'
           property :effective_search_qpm_threshold, :numeric_string => true, as: 'effectiveSearchQpmThreshold'
+          property :indexing_core_threshold_next_update_time, as: 'indexingCoreThresholdNextUpdateTime'
+          property :search_qpm_threshold_next_update_time, as: 'searchQpmThresholdNextUpdateTime'
           property :start_time, as: 'startTime'
+          property :terminate_time, as: 'terminateTime'
         end
       end
       
@@ -12756,7 +12782,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :effective_indexing_core_threshold, :numeric_string => true, as: 'effectiveIndexingCoreThreshold'
           property :effective_search_qpm_threshold, :numeric_string => true, as: 'effectiveSearchQpmThreshold'
+          property :indexing_core_threshold_next_update_time, as: 'indexingCoreThresholdNextUpdateTime'
+          property :search_qpm_threshold_next_update_time, as: 'searchQpmThresholdNextUpdateTime'
           property :start_time, as: 'startTime'
+          property :terminate_time, as: 'terminateTime'
         end
       end
       
