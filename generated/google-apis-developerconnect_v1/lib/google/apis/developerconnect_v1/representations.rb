@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BasicAuthentication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BearerTokenAuthentication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BitbucketCloudConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +173,12 @@ module Google
       end
       
       class GkeWorkload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenericHttpEndpointConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -370,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecureSourceManagerInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceDirectoryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -457,6 +481,21 @@ module Google
         end
       end
       
+      class BasicAuthentication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :username, as: 'username'
+        end
+      end
+      
+      class BearerTokenAuthentication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :token_secret_version, as: 'tokenSecretVersion'
+        end
+      end
+      
       class BitbucketCloudConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -515,11 +554,15 @@ module Google
       
           property :gitlab_enterprise_config, as: 'gitlabEnterpriseConfig', class: Google::Apis::DeveloperconnectV1::GitLabEnterpriseConfig, decorator: Google::Apis::DeveloperconnectV1::GitLabEnterpriseConfig::Representation
       
+          property :http_config, as: 'httpConfig', class: Google::Apis::DeveloperconnectV1::GenericHttpEndpointConfig, decorator: Google::Apis::DeveloperconnectV1::GenericHttpEndpointConfig::Representation
+      
           property :installation_state, as: 'installationState', class: Google::Apis::DeveloperconnectV1::InstallationState, decorator: Google::Apis::DeveloperconnectV1::InstallationState::Representation
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
+          property :secure_source_manager_instance_config, as: 'secureSourceManagerInstanceConfig', class: Google::Apis::DeveloperconnectV1::SecureSourceManagerInstanceConfig, decorator: Google::Apis::DeveloperconnectV1::SecureSourceManagerInstanceConfig::Representation
+      
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -651,6 +694,20 @@ module Google
         end
       end
       
+      class GenericHttpEndpointConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :basic_authentication, as: 'basicAuthentication', class: Google::Apis::DeveloperconnectV1::BasicAuthentication, decorator: Google::Apis::DeveloperconnectV1::BasicAuthentication::Representation
+      
+          property :bearer_token_authentication, as: 'bearerTokenAuthentication', class: Google::Apis::DeveloperconnectV1::BearerTokenAuthentication, decorator: Google::Apis::DeveloperconnectV1::BearerTokenAuthentication::Representation
+      
+          property :host_uri, as: 'hostUri'
+          property :service_directory_config, as: 'serviceDirectoryConfig', class: Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig, decorator: Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig::Representation
+      
+          property :ssl_ca_certificate, as: 'sslCaCertificate'
+        end
+      end
+      
       class GitHubConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -670,6 +727,7 @@ module Google
           property :app_slug, as: 'appSlug'
           property :host_uri, as: 'hostUri'
           property :installation_uri, as: 'installationUri'
+          property :organization, as: 'organization'
           property :private_key_secret_version, as: 'privateKeySecretVersion'
           property :server_version, as: 'serverVersion'
           property :service_directory_config, as: 'serviceDirectoryConfig', class: Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig, decorator: Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig::Representation
@@ -1000,6 +1058,13 @@ module Google
       
           property :state, as: 'state'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class SecureSourceManagerInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance'
         end
       end
       
