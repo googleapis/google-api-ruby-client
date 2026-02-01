@@ -2457,7 +2457,7 @@ module Google
         
         # Updates an existing WorkloadIdentityPool.
         # @param [String] name
-        #   Output only. The resource name of the pool.
+        #   Identifier. The resource name of the pool.
         # @param [Google::Apis::IamV1::WorkloadIdentityPool] workload_identity_pool_object
         # @param [String] update_mask
         #   Required. The list of fields to update.
@@ -2742,7 +2742,7 @@ module Google
         
         # Updates an existing WorkloadIdentityPoolNamespace in a WorkloadIdentityPool.
         # @param [String] name
-        #   Output only. The resource name of the namespace.
+        #   Identifier. The resource name of the namespace.
         # @param [Google::Apis::IamV1::WorkloadIdentityPoolNamespace] workload_identity_pool_namespace_object
         # @param [String] update_mask
         #   Required. The list of fields to update.
@@ -3042,7 +3042,7 @@ module Google
         # Updates an existing WorkloadIdentityPoolManagedIdentity in a
         # WorkloadIdentityPoolNamespace.
         # @param [String] name
-        #   Output only. The resource name of the managed identity.
+        #   Identifier. The resource name of the managed identity.
         # @param [Google::Apis::IamV1::WorkloadIdentityPoolManagedIdentity] workload_identity_pool_managed_identity_object
         # @param [String] update_mask
         #   Required. The list of fields to update.
@@ -3451,7 +3451,7 @@ module Google
         
         # Updates an existing WorkloadIdentityPoolProvider.
         # @param [String] name
-        #   Output only. The resource name of the provider.
+        #   Identifier. The resource name of the provider.
         # @param [Google::Apis::IamV1::WorkloadIdentityPoolProvider] workload_identity_pool_provider_object
         # @param [String] update_mask
         #   Required. The list of fields to update.
