@@ -71,6 +71,12 @@ module Google
         attr_accessor :ancestor_has_active_key_version
         alias_method :ancestor_has_active_key_version?, :ancestor_has_active_key_version
       
+        # Output only. Field to differentiate ancestor enrolled services from locally
+        # enrolled services.
+        # Corresponds to the JSON property `ancestorsEnrolledServices`
+        # @return [Array<Google::Apis::AccessapprovalV1::EnrolledService>]
+        attr_accessor :ancestors_enrolled_services
+      
         # Represents all the policies that can be set for Customer Approval.
         # Corresponds to the JSON property `approvalPolicy`
         # @return [Google::Apis::AccessapprovalV1::CustomerApprovalApprovalPolicy]
@@ -174,6 +180,7 @@ module Google
         def update!(**args)
           @active_key_version = args[:active_key_version] if args.key?(:active_key_version)
           @ancestor_has_active_key_version = args[:ancestor_has_active_key_version] if args.key?(:ancestor_has_active_key_version)
+          @ancestors_enrolled_services = args[:ancestors_enrolled_services] if args.key?(:ancestors_enrolled_services)
           @approval_policy = args[:approval_policy] if args.key?(:approval_policy)
           @effective_approval_policy = args[:effective_approval_policy] if args.key?(:effective_approval_policy)
           @enrolled_ancestor = args[:enrolled_ancestor] if args.key?(:enrolled_ancestor)
