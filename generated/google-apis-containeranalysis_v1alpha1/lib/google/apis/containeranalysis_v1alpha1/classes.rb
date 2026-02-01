@@ -3642,6 +3642,11 @@ module Google
         # @return [String]
         attr_accessor :last_scan_time
       
+        # Optional. The last time vulnerability scan results changed.
+        # Corresponds to the JSON property `lastVulnerabilityUpdateTime`
+        # @return [String]
+        attr_accessor :last_vulnerability_update_time
+      
         # This resource represents a long-running operation that is the result of a
         # network API call.
         # Corresponds to the JSON property `operation`
@@ -3673,6 +3678,7 @@ module Google
           @cpe = args[:cpe] if args.key?(:cpe)
           @files = args[:files] if args.key?(:files)
           @last_scan_time = args[:last_scan_time] if args.key?(:last_scan_time)
+          @last_vulnerability_update_time = args[:last_vulnerability_update_time] if args.key?(:last_vulnerability_update_time)
           @operation = args[:operation] if args.key?(:operation)
           @sbom_status = args[:sbom_status] if args.key?(:sbom_status)
           @vulnerability_attestation = args[:vulnerability_attestation] if args.key?(:vulnerability_attestation)
