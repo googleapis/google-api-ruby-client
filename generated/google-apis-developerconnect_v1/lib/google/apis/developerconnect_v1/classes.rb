@@ -249,6 +249,50 @@ module Google
         end
       end
       
+      # Basic authentication with username and password.
+      class BasicAuthentication
+        include Google::Apis::Core::Hashable
+      
+        # The password SecretManager secret version to authenticate as.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Required. The username to authenticate as.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Bearer token authentication with a token.
+      class BearerTokenAuthentication
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The token SecretManager secret version to authenticate as.
+        # Corresponds to the JSON property `tokenSecretVersion`
+        # @return [String]
+        attr_accessor :token_secret_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @token_secret_version = args[:token_secret_version] if args.key?(:token_secret_version)
+        end
+      end
+      
       # Configuration for connections to an instance of Bitbucket Cloud.
       class BitbucketCloudConfig
         include Google::Apis::Core::Hashable
@@ -443,6 +487,11 @@ module Google
         # @return [Google::Apis::DeveloperconnectV1::GitLabEnterpriseConfig]
         attr_accessor :gitlab_enterprise_config
       
+        # Defines the configuration for connections to an HTTP service provider.
+        # Corresponds to the JSON property `httpConfig`
+        # @return [Google::Apis::DeveloperconnectV1::GenericHttpEndpointConfig]
+        attr_accessor :http_config
+      
         # Describes stage and necessary actions to be taken by the user to complete the
         # installation. Used for GitHub and GitHub Enterprise based connections.
         # Corresponds to the JSON property `installationState`
@@ -466,6 +515,11 @@ module Google
         # @return [Boolean]
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
+      
+        # Configuration for connections to SSM instance
+        # Corresponds to the JSON property `secureSourceManagerInstanceConfig`
+        # @return [Google::Apis::DeveloperconnectV1::SecureSourceManagerInstanceConfig]
+        attr_accessor :secure_source_manager_instance_config
       
         # Output only. A system-assigned unique identifier for the Connection.
         # Corresponds to the JSON property `uid`
@@ -496,10 +550,12 @@ module Google
           @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
           @gitlab_config = args[:gitlab_config] if args.key?(:gitlab_config)
           @gitlab_enterprise_config = args[:gitlab_enterprise_config] if args.key?(:gitlab_enterprise_config)
+          @http_config = args[:http_config] if args.key?(:http_config)
           @installation_state = args[:installation_state] if args.key?(:installation_state)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @secure_source_manager_instance_config = args[:secure_source_manager_instance_config] if args.key?(:secure_source_manager_instance_config)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -550,9 +606,9 @@ module Google
         # @return [String]
         attr_accessor :deploy_time
       
-        # Identifier. The name of the DeploymentEvent. This name is provided by DCI.
-        # Format: projects/`project`/locations/`location`/insightsConfigs/`
-        # insights_config`/deploymentEvents/`uuid`
+        # Identifier. The name of the DeploymentEvent. This name is provided by
+        # Developer Connect insights. Format: projects/`project`/locations/`location`/
+        # insightsConfigs/`insights_config`/deploymentEvents/`uuid`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -904,6 +960,50 @@ module Google
         end
       end
       
+      # Defines the configuration for connections to an HTTP service provider.
+      class GenericHttpEndpointConfig
+        include Google::Apis::Core::Hashable
+      
+        # Basic authentication with username and password.
+        # Corresponds to the JSON property `basicAuthentication`
+        # @return [Google::Apis::DeveloperconnectV1::BasicAuthentication]
+        attr_accessor :basic_authentication
+      
+        # Bearer token authentication with a token.
+        # Corresponds to the JSON property `bearerTokenAuthentication`
+        # @return [Google::Apis::DeveloperconnectV1::BearerTokenAuthentication]
+        attr_accessor :bearer_token_authentication
+      
+        # Required. Immutable. The service provider's https endpoint.
+        # Corresponds to the JSON property `hostUri`
+        # @return [String]
+        attr_accessor :host_uri
+      
+        # ServiceDirectoryConfig represents Service Directory configuration for a
+        # connection.
+        # Corresponds to the JSON property `serviceDirectoryConfig`
+        # @return [Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig]
+        attr_accessor :service_directory_config
+      
+        # Optional. The SSL certificate to use for requests to the HTTP service provider.
+        # Corresponds to the JSON property `sslCaCertificate`
+        # @return [String]
+        attr_accessor :ssl_ca_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @basic_authentication = args[:basic_authentication] if args.key?(:basic_authentication)
+          @bearer_token_authentication = args[:bearer_token_authentication] if args.key?(:bearer_token_authentication)
+          @host_uri = args[:host_uri] if args.key?(:host_uri)
+          @service_directory_config = args[:service_directory_config] if args.key?(:service_directory_config)
+          @ssl_ca_certificate = args[:ssl_ca_certificate] if args.key?(:ssl_ca_certificate)
+        end
+      end
+      
       # Configuration for connections to github.com.
       class GitHubConfig
         include Google::Apis::Core::Hashable
@@ -974,6 +1074,12 @@ module Google
         # @return [String]
         attr_accessor :installation_uri
       
+        # Optional. Immutable. GitHub Enterprise organization in which the GitHub App is
+        # created.
+        # Corresponds to the JSON property `organization`
+        # @return [String]
+        attr_accessor :organization
+      
         # Optional. SecretManager resource containing the private key of the GitHub App,
         # formatted as `projects/*/secrets/*/versions/*` or `projects/*/locations/*/
         # secrets/*/versions/*` (if regional secrets are supported in that location).
@@ -1015,6 +1121,7 @@ module Google
           @app_slug = args[:app_slug] if args.key?(:app_slug)
           @host_uri = args[:host_uri] if args.key?(:host_uri)
           @installation_uri = args[:installation_uri] if args.key?(:installation_uri)
+          @organization = args[:organization] if args.key?(:organization)
           @private_key_secret_version = args[:private_key_secret_version] if args.key?(:private_key_secret_version)
           @server_version = args[:server_version] if args.key?(:server_version)
           @service_directory_config = args[:service_directory_config] if args.key?(:service_directory_config)
@@ -1356,7 +1463,7 @@ module Google
       
       # The InsightsConfig resource is the core configuration object to capture events
       # from your Software Development Lifecycle. It acts as the central hub for
-      # managing how Developer connect understands your application, its runtime
+      # managing how Developer Connect understands your application, its runtime
       # environments, and the artifacts deployed within them.
       class InsightsConfig
         include Google::Apis::Core::Hashable
@@ -2150,7 +2257,7 @@ module Google
       class Projects
         include Google::Apis::Core::Hashable
       
-        # Optional. The GCP Project IDs. Format: projects/`project`
+        # Optional. The project IDs. Format: `project`
         # Corresponds to the JSON property `projectIds`
         # @return [Array<String>]
         attr_accessor :project_ids
@@ -2176,7 +2283,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :scopes
       
-        # Immutable. Developer Connect provided OAuth.
+        # Optional. Immutable. Developer Connect provided OAuth.
         # Corresponds to the JSON property `systemProviderId`
         # @return [String]
         attr_accessor :system_provider_id
@@ -2242,6 +2349,26 @@ module Google
         end
       end
       
+      # Configuration for connections to SSM instance
+      class SecureSourceManagerInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. SSM instance resource, formatted as `projects/*/locations/
+        # */instances/*`
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+        end
+      end
+      
       # ServiceDirectoryConfig represents Service Directory configuration for a
       # connection.
       class ServiceDirectoryConfig
@@ -2277,13 +2404,12 @@ module Google
         # @return [String]
         attr_accessor :client_id
       
-        # https://datatracker.ietf.org/doc/html/rfc7636#section-4.1 Follow http://shortn/
-        # _WFYl6U0NyC to include it in the AutoCodeURL.
+        # Please refer to https://datatracker.ietf.org/doc/html/rfc7636#section-4.1
         # Corresponds to the JSON property `codeChallenge`
         # @return [String]
         attr_accessor :code_challenge
       
-        # https://datatracker.ietf.org/doc/html/rfc7636#section-4.2
+        # Please refer to https://datatracker.ietf.org/doc/html/rfc7636#section-4.2
         # Corresponds to the JSON property `codeChallengeMethod`
         # @return [String]
         attr_accessor :code_challenge_method
