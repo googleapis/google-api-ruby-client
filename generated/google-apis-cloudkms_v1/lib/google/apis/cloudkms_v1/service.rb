@@ -2978,9 +2978,9 @@ module Google
         
         # Lists SingleTenantHsmInstanceProposals.
         # @param [String] parent
-        #   Required. The resource name of the location associated with the
-        #   SingleTenantHsmInstanceProposals to list, in the format `projects/*/locations/*
-        #   /singleTenantHsmInstances/*`.
+        #   Required. The resource name of the single tenant HSM instance associated with
+        #   the SingleTenantHsmInstanceProposals to list, in the format `projects/*/
+        #   locations/*/singleTenantHsmInstances/*`.
         # @param [String] filter
         #   Optional. Only include resources that match the filter in the response. For
         #   more information, see [Sorting and filtering list results](https://cloud.
