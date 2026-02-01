@@ -675,8 +675,9 @@ module Google
         end
       end
       
-      # Metadata about a custom region. This is only populated if the region is a
-      # custom region. For single/multi regions, it will be empty.
+      # Deprecated: Use a single region service instead. Metadata about a custom
+      # region. This is only populated if the region is a custom region. For single/
+      # multi regions, it will be empty.
       class CustomRegionMetadata
         include Google::Apis::Core::Hashable
       
@@ -1459,14 +1460,16 @@ module Google
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
-        # Possible configurations supported if the current region is a custom region.
+        # Deprecated: Use a single region service instead. Possible configurations
+        # supported if the current region is a custom region.
         # Corresponds to the JSON property `customRegionMetadata`
         # @return [Array<Google::Apis::MetastoreV1::CustomRegionMetadata>]
         attr_accessor :custom_region_metadata
       
-        # The metadata for the multi-region that includes the constituent regions. The
-        # metadata is only populated if the region is multi-region. For single region or
-        # custom dual region, it will be empty.
+        # Deprecated: Use a single region service instead. The metadata for the multi-
+        # region that includes the constituent regions. The metadata is only populated
+        # if the region is multi-region. For single region or custom dual region, it
+        # will be empty.
         # Corresponds to the JSON property `multiRegionMetadata`
         # @return [Google::Apis::MetastoreV1::MultiRegionMetadata]
         attr_accessor :multi_region_metadata
@@ -1787,9 +1790,10 @@ module Google
         end
       end
       
-      # The metadata for the multi-region that includes the constituent regions. The
-      # metadata is only populated if the region is multi-region. For single region or
-      # custom dual region, it will be empty.
+      # Deprecated: Use a single region service instead. The metadata for the multi-
+      # region that includes the constituent regions. The metadata is only populated
+      # if the region is multi-region. For single region or custom dual region, it
+      # will be empty.
       class MultiRegionMetadata
         include Google::Apis::Core::Hashable
       
