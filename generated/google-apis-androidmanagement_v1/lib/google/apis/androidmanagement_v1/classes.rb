@@ -884,7 +884,8 @@ module Google
         # in the managed configuration must match the key field of the ManagedProperty.
         # The field value must be compatible with the type of the ManagedProperty: *type*
         # *JSON value* BOOL true or false STRING string INTEGER number CHOICE string
-        # MULTISELECT array of strings HIDDEN string BUNDLE_ARRAY array of objects
+        # MULTISELECT array of strings HIDDEN string BUNDLE_ARRAY array of objects Note:
+        # string values cannot be longer than 65535 characters.
         # Corresponds to the JSON property `managedConfiguration`
         # @return [Hash<String,Object>]
         attr_accessor :managed_configuration
