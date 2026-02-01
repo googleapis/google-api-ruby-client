@@ -154,7 +154,7 @@ module Google
       class AdGroupAd
         include Google::Apis::Core::Hashable
       
-        # The unique ID of the ad. Assigned by the system.
+        # Output only. The unique ID of the ad. Assigned by the system.
         # Corresponds to the JSON property `adGroupAdId`
         # @return [Fixnum]
         attr_accessor :ad_group_ad_id
@@ -177,7 +177,7 @@ module Google
         # @return [Array<Google::Apis::DisplayvideoV3::AdUrl>]
         attr_accessor :ad_urls
       
-        # The unique ID of the advertiser the ad belongs to.
+        # Output only. The unique ID of the advertiser the ad belongs to.
         # Corresponds to the JSON property `advertiserId`
         # @return [Fixnum]
         attr_accessor :advertiser_id
@@ -218,7 +218,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV3::MastheadAd]
         attr_accessor :masthead_ad
       
-        # The resource name of the ad.
+        # Output only. The resource name of the ad.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -9239,7 +9239,7 @@ module Google
       class ListAdGroupAdsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of ad group ads. This list will be absent if empty.
+        # The list of ads. This list will be absent if empty.
         # Corresponds to the JSON property `adGroupAds`
         # @return [Array<Google::Apis::DisplayvideoV3::AdGroupAd>]
         attr_accessor :ad_group_ads

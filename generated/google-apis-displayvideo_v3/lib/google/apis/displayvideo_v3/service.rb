@@ -388,7 +388,7 @@ module Google
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser this ad group ad belongs to.
         # @param [Fixnum] ad_group_ad_id
-        #   Required. The ID of the ad group ad to fetch.
+        #   Required. The ID of the ad to fetch.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -419,16 +419,16 @@ module Google
         
         # Lists ad group ads.
         # @param [Fixnum] advertiser_id
-        #   Required. The ID of the advertiser the ad groups belongs to.
+        #   Required. The ID of the advertiser the ads belong to.
         # @param [String] filter
-        #   Optional. Allows filtering by custom ad group ad fields. Supported syntax: *
-        #   Filter expressions are made up of one or more restrictions. * Restrictions can
-        #   be combined by `AND` and `OR`. A sequence of restrictions implicitly uses `AND`
-        #   . * A restriction has the form of ``field` `operator` `value``. * All fields
-        #   must use the `EQUALS (=)` operator. Supported fields: * `adGroupId` * `
-        #   displayName` * `entityStatus` * `adGroupAdId` Examples: * All ad group ads
-        #   under an ad group: `adGroupId="1234"` * All ad group ads under an ad group
-        #   with an entityStatus of `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`: `(
+        #   Optional. Allows filtering by ad group ad fields. Supported syntax: * Filter
+        #   expressions are made up of one or more restrictions. * Restrictions can be
+        #   combined by `AND` and `OR`. A sequence of restrictions implicitly uses `AND`. *
+        #   A restriction has the form of ``field` `operator` `value``. * All fields must
+        #   use the `EQUALS (=)` operator. Supported fields: * `adGroupId` * `displayName`
+        #   * `entityStatus` * `adGroupAdId` Examples: * All ad group ads under an ad
+        #   group: `adGroupId="1234"` * All ad group ads under an ad group with an
+        #   entityStatus of `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`: `(
         #   entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED")
         #   AND adGroupId="12345"` The length of this field should be no more than 500
         #   characters. Reference our [filter `LIST` requests](/display-video/api/guides/
