@@ -406,7 +406,7 @@ module Google
       class ClusterSelector
         include Google::Apis::Core::Hashable
       
-        # Optional. A valid CEL (Common Expression Language) expression which evaluates `
+        # Required. A valid CEL (Common Expression Language) expression which evaluates `
         # resource.labels`.
         # Corresponds to the JSON property `labelSelector`
         # @return [String]
@@ -1150,16 +1150,21 @@ module Google
       class ConfigManagementConfigSync
         include Google::Apis::Core::Hashable
       
-        # Optional. Configuration for deployment overrides.
+        # Optional. Configuration for deployment overrides. Applies only to Config Sync
+        # deployments with containers that are not a root or namespace reconciler: `
+        # reconciler-manager`, `otel-collector`, `resource-group-controller-manager`, `
+        # admission-webhook`. To override a root or namespace reconciler, use the
+        # rootsync or reposync fields at https://docs.cloud.google.com/kubernetes-engine/
+        # config-sync/docs/reference/rootsync-reposync-fields#override-resources instead.
         # Corresponds to the JSON property `deploymentOverrides`
         # @return [Array<Google::Apis::GkehubV1alpha::ConfigManagementDeploymentOverride>]
         attr_accessor :deployment_overrides
       
-        # Optional. Enables the installation of ConfigSync. If set to true, ConfigSync
-        # resources will be created and the other ConfigSync fields will be applied if
-        # exist. If set to false, all other ConfigSync fields will be ignored,
-        # ConfigSync resources will be deleted. If omitted, ConfigSync resources will be
-        # managed depends on the presence of the git or oci field.
+        # Optional. Enables the installation of Config Sync. If set to true, the Feature
+        # will manage Config Sync resources, and apply the other ConfigSync fields if
+        # they exist. If set to false, the Feature will ignore all other ConfigSync
+        # fields and delete the Config Sync resources. If omitted, ConfigSync is
+        # considered enabled if the git or oci field is present.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -1189,15 +1194,18 @@ module Google
         attr_accessor :oci
       
         # Optional. Set to true to enable the Config Sync admission webhook to prevent
-        # drifts. If set to `false`, disables the Config Sync admission webhook and does
-        # not prevent drifts.
+        # drifts. If set to false, disables the Config Sync admission webhook and does
+        # not prevent drifts. Defaults to false. See https://docs.cloud.google.com/
+        # kubernetes-engine/config-sync/docs/how-to/prevent-config-drift for details.
         # Corresponds to the JSON property `preventDrift`
         # @return [Boolean]
         attr_accessor :prevent_drift
         alias_method :prevent_drift?, :prevent_drift
       
-        # Optional. Specifies whether the Config Sync Repo is in "hierarchical" or "
-        # unstructured" mode.
+        # Optional. Specifies whether the Config Sync repo is in `hierarchical` or `
+        # unstructured` mode. Defaults to `hierarchical`. See https://docs.cloud.google.
+        # com/kubernetes-engine/config-sync/docs/concepts/configs#organize-configs for
+        # an explanation.
         # Corresponds to the JSON property `sourceFormat`
         # @return [String]
         attr_accessor :source_format
@@ -1457,22 +1465,30 @@ module Google
         # @return [String]
         attr_accessor :container_name
       
-        # Optional. The cpu limit of the container.
+        # Optional. The cpu limit of the container. Use the following CPU resource units:
+        # https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        # #meaning-of-cpu.
         # Corresponds to the JSON property `cpuLimit`
         # @return [String]
         attr_accessor :cpu_limit
       
-        # Optional. The cpu request of the container.
+        # Optional. The cpu request of the container. Use the following CPU resource
+        # units: https://kubernetes.io/docs/concepts/configuration/manage-resources-
+        # containers/#meaning-of-cpu.
         # Corresponds to the JSON property `cpuRequest`
         # @return [String]
         attr_accessor :cpu_request
       
-        # Optional. The memory limit of the container.
+        # Optional. The memory limit of the container. Use the following memory resource
+        # units: https://kubernetes.io/docs/concepts/configuration/manage-resources-
+        # containers/#meaning-of-memory.
         # Corresponds to the JSON property `memoryLimit`
         # @return [String]
         attr_accessor :memory_limit
       
-        # Optional. The memory request of the container.
+        # Optional. The memory request of the container. Use the following memory
+        # resource units: https://kubernetes.io/docs/concepts/configuration/manage-
+        # resources-containers/#meaning-of-memory.
         # Corresponds to the JSON property `memoryRequest`
         # @return [String]
         attr_accessor :memory_request
@@ -1595,13 +1611,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The Google Cloud Service Account Email used for auth when
-        # secret_type is gcpServiceAccount.
+        # secret_type is `gcpserviceaccount`.
         # Corresponds to the JSON property `gcpServiceAccountEmail`
         # @return [String]
         attr_accessor :gcp_service_account_email
       
         # Optional. URL for the HTTPS proxy to be used when communicating with the Git
-        # repo.
+        # repo. Only specify when secret_type is `cookiefile`, `token`, or `none`.
         # Corresponds to the JSON property `httpsProxy`
         # @return [String]
         attr_accessor :https_proxy
@@ -1613,8 +1629,8 @@ module Google
         attr_accessor :policy_dir
       
         # Required. Type of secret configured for access to the Git repo. Must be one of
-        # ssh, cookiefile, gcenode, token, gcpserviceaccount, githubapp or none. The
-        # validation of this is case-sensitive.
+        # `ssh`, `cookiefile`, `gcenode`, `token`, `gcpserviceaccount`, `githubapp` or `
+        # none`. The validation of this is case-sensitive.
         # Corresponds to the JSON property `secretType`
         # @return [String]
         attr_accessor :secret_type
@@ -1825,12 +1841,13 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementBinauthzConfig]
         attr_accessor :binauthz
       
-        # Optional. The user-specified cluster name used by Config Sync cluster-name-
-        # selector annotation or ClusterSelector, for applying configs to only a subset
-        # of clusters. Omit this field if the cluster's fleet membership name is used by
-        # Config Sync cluster-name-selector annotation or ClusterSelector. Set this
+        # Optional. User-specified cluster name used by the Config Sync cluster-name-
+        # selector annotation or ClusterSelector object, for applying configs to only a
+        # subset of clusters. Read more about the cluster-name-selector annotation and
+        # ClusterSelector object at https://docs.cloud.google.com/kubernetes-engine/
+        # config-sync/docs/how-to/cluster-scoped-objects#limiting-configs. Only set this
         # field if a name different from the cluster's fleet membership name is used by
-        # Config Sync cluster-name-selector annotation or ClusterSelector.
+        # the Config Sync cluster-name-selector annotation or ClusterSelector.
         # Corresponds to the JSON property `cluster`
         # @return [String]
         attr_accessor :cluster
@@ -1856,7 +1873,10 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementPolicyController]
         attr_accessor :policy_controller
       
-        # Optional. Version of ACM installed.
+        # Optional. Version of Config Sync to install. Defaults to the latest supported
+        # Config Sync version if the config_sync field is enabled. See supported
+        # versions at https://cloud.google.com/kubernetes-engine/config-sync/docs/get-
+        # support-config-sync#version_support_policy.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -1946,7 +1966,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The Google Cloud Service Account Email used for auth when
-        # secret_type is gcpServiceAccount.
+        # secret_type is `gcpserviceaccount`.
         # Corresponds to the JSON property `gcpServiceAccountEmail`
         # @return [String]
         attr_accessor :gcp_service_account_email
@@ -1958,8 +1978,8 @@ module Google
         attr_accessor :policy_dir
       
         # Required. Type of secret configured for access to the OCI repo. Must be one of
-        # gcenode, gcpserviceaccount, k8sserviceaccount or none. The validation of this
-        # is case-sensitive.
+        # `gcenode`, `gcpserviceaccount`, `k8sserviceaccount` or `none`. The validation
+        # of this is case-sensitive.
         # Corresponds to the JSON property `secretType`
         # @return [String]
         attr_accessor :secret_type
@@ -7408,6 +7428,31 @@ module Google
         end
       end
       
+      # IdentityProviderStateDetail represents the state of an Identity Provider.
+      class WorkloadIdentityIdentityProviderStateDetail
+        include Google::Apis::Core::Hashable
+      
+        # The state of the Identity Provider.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # A human-readable description of the current state or returned error.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @description = args[:description] if args.key?(:description)
+        end
+      end
+      
       # **WorkloadIdentity**: The membership-specific state for WorkloadIdentity
       # feature.
       class WorkloadIdentityMembershipState
@@ -7419,6 +7464,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # The state of the Identity Providers corresponding to the membership.
+        # Corresponds to the JSON property `identityProviderStateDetails`
+        # @return [Hash<String,Google::Apis::GkehubV1alpha::WorkloadIdentityIdentityProviderStateDetail>]
+        attr_accessor :identity_provider_state_details
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7426,6 +7476,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @identity_provider_state_details = args[:identity_provider_state_details] if args.key?(:identity_provider_state_details)
         end
       end
       

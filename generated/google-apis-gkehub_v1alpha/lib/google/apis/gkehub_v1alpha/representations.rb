@@ -1240,6 +1240,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkloadIdentityIdentityProviderStateDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkloadIdentityMembershipState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3357,10 +3363,20 @@ module Google
         end
       end
       
+      class WorkloadIdentityIdentityProviderStateDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :description, as: 'description'
+        end
+      end
+      
       class WorkloadIdentityMembershipState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          hash :identity_provider_state_details, as: 'identityProviderStateDetails', class: Google::Apis::GkehubV1alpha::WorkloadIdentityIdentityProviderStateDetail, decorator: Google::Apis::GkehubV1alpha::WorkloadIdentityIdentityProviderStateDetail::Representation
+      
         end
       end
       
