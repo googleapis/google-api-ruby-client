@@ -4665,10 +4665,32 @@ module Google
         # @return [Fixnum]
         attr_accessor :effective_search_qpm_threshold
       
+        # Output only. The earliest next update time for the indexing core subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # indexing core subscription threshold request is succeeded.
+        # Corresponds to the JSON property `indexingCoreThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :indexing_core_threshold_next_update_time
+      
+        # Output only. The earliest next update time for the search QPM subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # QPM subscription threshold request is succeeded.
+        # Corresponds to the JSON property `searchQpmThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :search_qpm_threshold_next_update_time
+      
         # Optional. The start time of the currently active billing subscription.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
+      
+        # Output only. The latest terminate effective time of search qpm and indexing
+        # core subscriptions.
+        # Corresponds to the JSON property `terminateTime`
+        # @return [String]
+        attr_accessor :terminate_time
       
         def initialize(**args)
            update!(**args)
@@ -4678,7 +4700,10 @@ module Google
         def update!(**args)
           @effective_indexing_core_threshold = args[:effective_indexing_core_threshold] if args.key?(:effective_indexing_core_threshold)
           @effective_search_qpm_threshold = args[:effective_search_qpm_threshold] if args.key?(:effective_search_qpm_threshold)
+          @indexing_core_threshold_next_update_time = args[:indexing_core_threshold_next_update_time] if args.key?(:indexing_core_threshold_next_update_time)
+          @search_qpm_threshold_next_update_time = args[:search_qpm_threshold_next_update_time] if args.key?(:search_qpm_threshold_next_update_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
         end
       end
       
@@ -12545,10 +12570,32 @@ module Google
         # @return [Fixnum]
         attr_accessor :effective_search_qpm_threshold
       
+        # Output only. The earliest next update time for the indexing core subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # indexing core subscription threshold request is succeeded.
+        # Corresponds to the JSON property `indexingCoreThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :indexing_core_threshold_next_update_time
+      
+        # Output only. The earliest next update time for the search QPM subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # QPM subscription threshold request is succeeded.
+        # Corresponds to the JSON property `searchQpmThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :search_qpm_threshold_next_update_time
+      
         # Optional. The start time of the currently active billing subscription.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
+      
+        # Output only. The latest terminate effective time of search qpm and indexing
+        # core subscriptions.
+        # Corresponds to the JSON property `terminateTime`
+        # @return [String]
+        attr_accessor :terminate_time
       
         def initialize(**args)
            update!(**args)
@@ -12558,7 +12605,10 @@ module Google
         def update!(**args)
           @effective_indexing_core_threshold = args[:effective_indexing_core_threshold] if args.key?(:effective_indexing_core_threshold)
           @effective_search_qpm_threshold = args[:effective_search_qpm_threshold] if args.key?(:effective_search_qpm_threshold)
+          @indexing_core_threshold_next_update_time = args[:indexing_core_threshold_next_update_time] if args.key?(:indexing_core_threshold_next_update_time)
+          @search_qpm_threshold_next_update_time = args[:search_qpm_threshold_next_update_time] if args.key?(:search_qpm_threshold_next_update_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
         end
       end
       
@@ -15954,7 +16004,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequest
         include Google::Apis::Core::Hashable
       
-        # Specification to boost suggestions based on the condtion of the suggestion.
+        # Specification to boost suggestions based on the condition of the suggestion.
         # Corresponds to the JSON property `boostSpec`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpec]
         attr_accessor :boost_spec
@@ -16042,7 +16092,7 @@ module Google
         end
       end
       
-      # Specification to boost suggestions based on the condtion of the suggestion.
+      # Specification to boost suggestions based on the condition of the suggestion.
       class GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpec
         include Google::Apis::Core::Hashable
       
@@ -25452,10 +25502,32 @@ module Google
         # @return [Fixnum]
         attr_accessor :effective_search_qpm_threshold
       
+        # Output only. The earliest next update time for the indexing core subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # indexing core subscription threshold request is succeeded.
+        # Corresponds to the JSON property `indexingCoreThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :indexing_core_threshold_next_update_time
+      
+        # Output only. The earliest next update time for the search QPM subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # QPM subscription threshold request is succeeded.
+        # Corresponds to the JSON property `searchQpmThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :search_qpm_threshold_next_update_time
+      
         # Optional. The start time of the currently active billing subscription.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
+      
+        # Output only. The latest terminate effective time of search qpm and indexing
+        # core subscriptions.
+        # Corresponds to the JSON property `terminateTime`
+        # @return [String]
+        attr_accessor :terminate_time
       
         def initialize(**args)
            update!(**args)
@@ -25465,7 +25537,10 @@ module Google
         def update!(**args)
           @effective_indexing_core_threshold = args[:effective_indexing_core_threshold] if args.key?(:effective_indexing_core_threshold)
           @effective_search_qpm_threshold = args[:effective_search_qpm_threshold] if args.key?(:effective_search_qpm_threshold)
+          @indexing_core_threshold_next_update_time = args[:indexing_core_threshold_next_update_time] if args.key?(:indexing_core_threshold_next_update_time)
+          @search_qpm_threshold_next_update_time = args[:search_qpm_threshold_next_update_time] if args.key?(:search_qpm_threshold_next_update_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
         end
       end
       

@@ -6253,7 +6253,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :effective_indexing_core_threshold, :numeric_string => true, as: 'effectiveIndexingCoreThreshold'
           property :effective_search_qpm_threshold, :numeric_string => true, as: 'effectiveSearchQpmThreshold'
+          property :indexing_core_threshold_next_update_time, as: 'indexingCoreThresholdNextUpdateTime'
+          property :search_qpm_threshold_next_update_time, as: 'searchQpmThresholdNextUpdateTime'
           property :start_time, as: 'startTime'
+          property :terminate_time, as: 'terminateTime'
         end
       end
       
@@ -8356,7 +8359,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :effective_indexing_core_threshold, :numeric_string => true, as: 'effectiveIndexingCoreThreshold'
           property :effective_search_qpm_threshold, :numeric_string => true, as: 'effectiveSearchQpmThreshold'
+          property :indexing_core_threshold_next_update_time, as: 'indexingCoreThresholdNextUpdateTime'
+          property :search_qpm_threshold_next_update_time, as: 'searchQpmThresholdNextUpdateTime'
           property :start_time, as: 'startTime'
+          property :terminate_time, as: 'terminateTime'
         end
       end
       
@@ -11924,7 +11930,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :effective_indexing_core_threshold, :numeric_string => true, as: 'effectiveIndexingCoreThreshold'
           property :effective_search_qpm_threshold, :numeric_string => true, as: 'effectiveSearchQpmThreshold'
+          property :indexing_core_threshold_next_update_time, as: 'indexingCoreThresholdNextUpdateTime'
+          property :search_qpm_threshold_next_update_time, as: 'searchQpmThresholdNextUpdateTime'
           property :start_time, as: 'startTime'
+          property :terminate_time, as: 'terminateTime'
         end
       end
       
