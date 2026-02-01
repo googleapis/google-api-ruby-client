@@ -2820,12 +2820,21 @@ module Google
       class GoogleFirestoreAdminV1LocationMetadata
         include Google::Apis::Core::Hashable
       
+        # The storage placements available in the location. When the location represents
+        # a Standard Managed Multi-Region (SMMR) like "us", this field lists the
+        # available Google-Managed Multi-Regions (GMMRs) within it, such as "nam5" or "
+        # eur3".
+        # Corresponds to the JSON property `availableStoragePlacements`
+        # @return [Array<String>]
+        attr_accessor :available_storage_placements
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @available_storage_placements = args[:available_storage_placements] if args.key?(:available_storage_placements)
         end
       end
       

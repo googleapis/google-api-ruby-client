@@ -1582,6 +1582,7 @@ module Google
       class GoogleFirestoreAdminV1LocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :available_storage_placements, as: 'availableStoragePlacements'
         end
       end
       
