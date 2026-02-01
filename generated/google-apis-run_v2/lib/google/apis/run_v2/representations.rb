@@ -998,6 +998,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
           property :cancelled_count, as: 'cancelledCount'
+          property :client, as: 'client'
+          property :client_version, as: 'clientVersion'
           property :completion_time, as: 'completionTime'
           collection :conditions, as: 'conditions', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
       
@@ -1044,6 +1046,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :client, as: 'client'
+          property :client_version, as: 'clientVersion'
           hash :labels, as: 'labels'
           property :parallelism, as: 'parallelism'
           property :task_count, as: 'taskCount'
@@ -1371,6 +1375,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :client, as: 'client'
+          property :client_version, as: 'clientVersion'
           collection :conditions, as: 'conditions', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
       
           collection :containers, as: 'containers', class: Google::Apis::RunV2::GoogleCloudRunV2Container, decorator: Google::Apis::RunV2::GoogleCloudRunV2Container::Representation
@@ -1434,6 +1440,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :client, as: 'client'
+          property :client_version, as: 'clientVersion'
           collection :containers, as: 'containers', class: Google::Apis::RunV2::GoogleCloudRunV2Container, decorator: Google::Apis::RunV2::GoogleCloudRunV2Container::Representation
       
           property :encryption_key, as: 'encryptionKey'
@@ -1816,6 +1824,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :client, as: 'client'
+          property :client_version, as: 'clientVersion'
           collection :containers, as: 'containers', class: Google::Apis::RunV2::GoogleCloudRunV2Container, decorator: Google::Apis::RunV2::GoogleCloudRunV2Container::Representation
       
           property :encryption_key, as: 'encryptionKey'

@@ -708,6 +708,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :cancelled_count
       
+        # Output only. Arbitrary identifier for the API client.
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
+        # Output only. Arbitrary version identifier for the API client.
+        # Corresponds to the JSON property `clientVersion`
+        # @return [String]
+        attr_accessor :client_version
+      
         # Output only. Represents time when the execution was completed. It is not
         # guaranteed to be set in happens-before order across separate operations.
         # Corresponds to the JSON property `completionTime`
@@ -780,7 +790,7 @@ module Google
         # Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-
         # stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. Note that this value
         # might not be what was used as input. For example, if ALPHA was provided as
-        # input in the parent resource, but only BETA and GA-level features are were,
+        # input in the parent resource, but only BETA and GA-level features are used,
         # this field will be BETA.
         # Corresponds to the JSON property `launchStage`
         # @return [String]
@@ -879,6 +889,8 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @cancelled_count = args[:cancelled_count] if args.key?(:cancelled_count)
+          @client = args[:client] if args.key?(:client)
+          @client_version = args[:client_version] if args.key?(:client_version)
           @completion_time = args[:completion_time] if args.key?(:completion_time)
           @conditions = args[:conditions] if args.key?(:conditions)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -969,6 +981,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # Optional. Arbitrary identifier for the API client.
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
+        # Optional. Arbitrary version identifier for the API client.
+        # Corresponds to the JSON property `clientVersion`
+        # @return [String]
+        attr_accessor :client_version
+      
         # Unstructured key value map that can be used to organize and categorize objects.
         # User-provided labels are shared with Google's billing system, so they can be
         # used to filter, or break down billing charges by team, component, environment,
@@ -1012,6 +1034,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @client = args[:client] if args.key?(:client)
+          @client_version = args[:client_version] if args.key?(:client_version)
           @labels = args[:labels] if args.key?(:labels)
           @parallelism = args[:parallelism] if args.key?(:parallelism)
           @task_count = args[:task_count] if args.key?(:task_count)
@@ -2297,6 +2321,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # Output only. Arbitrary identifier for the API client.
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
+        # Output only. Arbitrary version identifier for the API client.
+        # Corresponds to the JSON property `clientVersion`
+        # @return [String]
+        attr_accessor :client_version
+      
         # Output only. The Condition of this Revision, containing its readiness status,
         # and detailed error information in case it did not reach a serving state.
         # Corresponds to the JSON property `conditions`
@@ -2387,7 +2421,7 @@ module Google
         # Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-
         # stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. Note that this value
         # might not be what was used as input. For example, if ALPHA was provided as
-        # input in the parent resource, but only BETA and GA-level features are were,
+        # input in the parent resource, but only BETA and GA-level features are used,
         # this field will be BETA.
         # Corresponds to the JSON property `launchStage`
         # @return [String]
@@ -2503,6 +2537,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @client = args[:client] if args.key?(:client)
+          @client_version = args[:client_version] if args.key?(:client_version)
           @conditions = args[:conditions] if args.key?(:conditions)
           @containers = args[:containers] if args.key?(:containers)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -2601,6 +2637,16 @@ module Google
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
+      
+        # Optional. Arbitrary identifier for the API client.
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
+        # Optional. Arbitrary version identifier for the API client.
+        # Corresponds to the JSON property `clientVersion`
+        # @return [String]
+        attr_accessor :client_version
       
         # Holds the single container that defines the unit of execution for this
         # Revision.
@@ -2722,6 +2768,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @client = args[:client] if args.key?(:client)
+          @client_version = args[:client_version] if args.key?(:client_version)
           @containers = args[:containers] if args.key?(:containers)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @encryption_key_revocation_action = args[:encryption_key_revocation_action] if args.key?(:encryption_key_revocation_action)
@@ -4392,6 +4440,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # Optional. Arbitrary identifier for the API client.
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
+        # Optional. Arbitrary version identifier for the API client.
+        # Corresponds to the JSON property `clientVersion`
+        # @return [String]
+        attr_accessor :client_version
+      
         # Holds list of the containers that defines the unit of execution for this
         # Revision.
         # Corresponds to the JSON property `containers`
@@ -4479,6 +4537,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @client = args[:client] if args.key?(:client)
+          @client_version = args[:client_version] if args.key?(:client_version)
           @containers = args[:containers] if args.key?(:containers)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @encryption_key_revocation_action = args[:encryption_key_revocation_action] if args.key?(:encryption_key_revocation_action)
