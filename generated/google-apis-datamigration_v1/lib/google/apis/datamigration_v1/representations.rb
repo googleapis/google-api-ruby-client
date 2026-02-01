@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BadRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BinaryLogParser
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DebugInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DemoteDestinationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ErrorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +305,12 @@ module Google
       end
       
       class FetchStaticIpsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FieldViolation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -328,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Help
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HeterogeneousMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -359,6 +389,12 @@ module Google
       end
       
       class IntComparisonFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Link
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -407,6 +443,12 @@ module Google
       end
       
       class ListPrivateConnectionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocalizedMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -586,6 +628,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PreconditionFailure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreconditionFailureViolation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrimaryInstanceSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -622,6 +676,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QuotaFailure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuotaFailureViolation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequestInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestartMigrationJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -629,6 +707,12 @@ module Google
       end
       
       class ResumeMigrationJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetryInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1066,6 +1150,14 @@ module Google
         end
       end
       
+      class BadRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field_violations, as: 'fieldViolations', class: Google::Apis::DatamigrationV1::FieldViolation, decorator: Google::Apis::DatamigrationV1::FieldViolation::Representation
+      
+        end
+      end
+      
       class BinaryLogParser
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1342,6 +1434,14 @@ module Google
         end
       end
       
+      class DebugInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detail, as: 'detail'
+          collection :stack_entries, as: 'stackEntries'
+        end
+      end
+      
       class DemoteDestinationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1458,6 +1558,15 @@ module Google
         end
       end
       
+      class ErrorInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          hash :metadata, as: 'metadata'
+          property :reason, as: 'reason'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1473,6 +1582,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :static_ips, as: 'staticIps'
+        end
+      end
+      
+      class FieldViolation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :field, as: 'field'
+          property :localized_message, as: 'localizedMessage', class: Google::Apis::DatamigrationV1::LocalizedMessage, decorator: Google::Apis::DatamigrationV1::LocalizedMessage::Representation
+      
+          property :reason, as: 'reason'
         end
       end
       
@@ -1539,6 +1659,14 @@ module Google
         end
       end
       
+      class Help
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :links, as: 'links', class: Google::Apis::DatamigrationV1::Link, decorator: Google::Apis::DatamigrationV1::Link::Representation
+      
+        end
+      end
+      
       class HeterogeneousMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1591,6 +1719,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :value, :numeric_string => true, as: 'value'
           property :value_comparison, as: 'valueComparison'
+        end
+      end
+      
+      class Link
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :url, as: 'url'
         end
       end
       
@@ -1668,6 +1804,14 @@ module Google
           collection :private_connections, as: 'privateConnections', class: Google::Apis::DatamigrationV1::PrivateConnection, decorator: Google::Apis::DatamigrationV1::PrivateConnection::Representation
       
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class LocalizedMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :locale, as: 'locale'
+          property :message, as: 'message'
         end
       end
       
@@ -2063,6 +2207,23 @@ module Google
         end
       end
       
+      class PreconditionFailure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :violations, as: 'violations', class: Google::Apis::DatamigrationV1::PreconditionFailureViolation, decorator: Google::Apis::DatamigrationV1::PreconditionFailureViolation::Representation
+      
+        end
+      end
+      
+      class PreconditionFailureViolation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :subject, as: 'subject'
+          property :type, as: 'type'
+        end
+      end
+      
       class PrimaryInstanceSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2127,6 +2288,46 @@ module Google
         end
       end
       
+      class QuotaFailure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :violations, as: 'violations', class: Google::Apis::DatamigrationV1::QuotaFailureViolation, decorator: Google::Apis::DatamigrationV1::QuotaFailureViolation::Representation
+      
+        end
+      end
+      
+      class QuotaFailureViolation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_service, as: 'apiService'
+          property :description, as: 'description'
+          property :future_quota_value, :numeric_string => true, as: 'futureQuotaValue'
+          hash :quota_dimensions, as: 'quotaDimensions'
+          property :quota_id, as: 'quotaId'
+          property :quota_metric, as: 'quotaMetric'
+          property :quota_value, :numeric_string => true, as: 'quotaValue'
+          property :subject, as: 'subject'
+        end
+      end
+      
+      class RequestInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+          property :serving_data, as: 'servingData'
+        end
+      end
+      
+      class ResourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :owner, as: 'owner'
+          property :resource_name, as: 'resourceName'
+          property :resource_type, as: 'resourceType'
+        end
+      end
+      
       class RestartMigrationJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2141,6 +2342,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :skip_validation, as: 'skipValidation'
+        end
+      end
+      
+      class RetryInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retry_delay, as: 'retryDelay'
         end
       end
       
