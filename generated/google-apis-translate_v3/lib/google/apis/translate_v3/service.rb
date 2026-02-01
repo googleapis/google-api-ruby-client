@@ -448,7 +448,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # can be called in two ways: * **List all public locations:** Use the path `GET /
+        # v1/locations`. * **List project-visible locations:** Use the path `GET /v1/
+        # projects/`project_id`/locations`. This may include public locations as well as
+        # private or other locations specifically visible to the project.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
@@ -887,7 +891,7 @@ module Google
         
         # Lists all AdaptiveMtFiles associated to an AdaptiveMtDataset.
         # @param [String] parent
-        #   Required. The resource name of the project from which to list the Adaptive MT
+        #   Required. The resource name of the dataset from which to list the Adaptive MT
         #   files. `projects/`project`/locations/`location`/adaptiveMtDatasets/`dataset``
         # @param [Fixnum] page_size
         #   Optional.
@@ -927,8 +931,8 @@ module Google
         
         # Lists all AdaptiveMtSentences under a given file/dataset.
         # @param [String] parent
-        #   Required. The resource name of the project from which to list the Adaptive MT
-        #   files. The following format lists all sentences under a file. `projects/`
+        #   Required. The resource name of the Adaptive MT file from which to list the
+        #   sentences. The following format lists all sentences under a file. `projects/`
         #   project`/locations/`location`/adaptiveMtDatasets/`dataset`/adaptiveMtFiles/`
         #   file`` The following format lists all sentences within a dataset. `projects/`
         #   project`/locations/`location`/adaptiveMtDatasets/`dataset``
@@ -969,8 +973,8 @@ module Google
         
         # Lists all AdaptiveMtSentences under a given file/dataset.
         # @param [String] parent
-        #   Required. The resource name of the project from which to list the Adaptive MT
-        #   files. The following format lists all sentences under a file. `projects/`
+        #   Required. The resource name of the Adaptive MT file from which to list the
+        #   sentences. The following format lists all sentences under a file. `projects/`
         #   project`/locations/`location`/adaptiveMtDatasets/`dataset`/adaptiveMtFiles/`
         #   file`` The following format lists all sentences within a dataset. `projects/`
         #   project`/locations/`location`/adaptiveMtDatasets/`dataset``
