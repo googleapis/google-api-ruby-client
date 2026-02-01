@@ -1186,6 +1186,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SparkConnectExecutionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SparkConnectSessionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SparkHistoryServerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3821,6 +3833,36 @@ module Google
         end
       end
       
+      class SparkConnectExecutionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :close_timestamp, :numeric_string => true, as: 'closeTimestamp'
+          property :detail, as: 'detail'
+          property :finish_timestamp, :numeric_string => true, as: 'finishTimestamp'
+          collection :job_ids, as: 'jobIds'
+          property :job_tag, as: 'jobTag'
+          property :operation_id, as: 'operationId'
+          property :session_id, as: 'sessionId'
+          collection :spark_session_tags, as: 'sparkSessionTags'
+          collection :sql_exec_ids, as: 'sqlExecIds'
+          property :start_timestamp, :numeric_string => true, as: 'startTimestamp'
+          property :state, as: 'state'
+          property :statement, as: 'statement'
+          property :user_id, as: 'userId'
+        end
+      end
+      
+      class SparkConnectSessionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finish_timestamp, :numeric_string => true, as: 'finishTimestamp'
+          property :session_id, as: 'sessionId'
+          property :start_timestamp, :numeric_string => true, as: 'startTimestamp'
+          property :total_execution, :numeric_string => true, as: 'totalExecution'
+          property :user_id, as: 'userId'
+        end
+      end
+      
       class SparkHistoryServerConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3993,6 +4035,10 @@ module Google
           property :rdd_storage_info, as: 'rddStorageInfo', class: Google::Apis::DataprocV1::RddStorageInfo, decorator: Google::Apis::DataprocV1::RddStorageInfo::Representation
       
           property :resource_profile_info, as: 'resourceProfileInfo', class: Google::Apis::DataprocV1::ResourceProfileInfo, decorator: Google::Apis::DataprocV1::ResourceProfileInfo::Representation
+      
+          property :spark_connect_execution_info, as: 'sparkConnectExecutionInfo', class: Google::Apis::DataprocV1::SparkConnectExecutionInfo, decorator: Google::Apis::DataprocV1::SparkConnectExecutionInfo::Representation
+      
+          property :spark_connect_session_info, as: 'sparkConnectSessionInfo', class: Google::Apis::DataprocV1::SparkConnectSessionInfo, decorator: Google::Apis::DataprocV1::SparkConnectSessionInfo::Representation
       
           property :spark_plan_graph, as: 'sparkPlanGraph', class: Google::Apis::DataprocV1::SparkPlanGraph, decorator: Google::Apis::DataprocV1::SparkPlanGraph::Representation
       
