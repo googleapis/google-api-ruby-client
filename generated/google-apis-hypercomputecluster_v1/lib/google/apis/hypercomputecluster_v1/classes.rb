@@ -83,6 +83,20 @@ module Google
         end
       end
       
+      # When set in OperationStep, indicates that cluster health check should be
+      # performed.
+      class CheckClusterHealth
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A collection of virtual machines and connected resources forming a high-
       # performance computing cluster capable of running large-scale, tightly coupled
       # workloads. A cluster combines a set a compute resources that perform
@@ -295,6 +309,325 @@ module Google
           @new_on_demand_instances = args[:new_on_demand_instances] if args.key?(:new_on_demand_instances)
           @new_reserved_instances = args[:new_reserved_instances] if args.key?(:new_reserved_instances)
           @new_spot_instances = args[:new_spot_instances] if args.key?(:new_spot_instances)
+        end
+      end
+      
+      # When set in OperationStep, indicates that a new filestore instance should be
+      # created.
+      class CreateFilestoreInstance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the Filestore instance, in the format `projects/`project`/
+        # locations/`location`/instances/`instance``
+        # Corresponds to the JSON property `filestore`
+        # @return [String]
+        attr_accessor :filestore
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filestore = args[:filestore] if args.key?(:filestore)
+        end
+      end
+      
+      # When set in OperationStep, indicates that a login node should be created.
+      class CreateLoginNode
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # When set in OperationStep, indicates that a new lustre instance should be
+      # created.
+      class CreateLustreInstance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the Managed Lustre instance, in the format `projects/`
+        # project`/locations/`location`/instances/`instance``
+        # Corresponds to the JSON property `lustre`
+        # @return [String]
+        attr_accessor :lustre
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lustre = args[:lustre] if args.key?(:lustre)
+        end
+      end
+      
+      # When set in OperationStep, indicates that a new network should be created.
+      class CreateNetwork
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the network to create, in the format `projects/`project`/
+        # global/networks/`network``.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network = args[:network] if args.key?(:network)
+        end
+      end
+      
+      # When set in OperationStep, indicates that a nodeset should be created.
+      class CreateNodeset
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the nodeset to create
+        # Corresponds to the JSON property `nodesets`
+        # @return [Array<String>]
+        attr_accessor :nodesets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nodesets = args[:nodesets] if args.key?(:nodesets)
+        end
+      end
+      
+      # When set in OperationStep, indicates that an orchestrator should be created.
+      class CreateOrchestrator
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # When set in OperationStep, indicates that a partition should be created.
+      class CreatePartition
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the partition to create
+        # Corresponds to the JSON property `partitions`
+        # @return [Array<String>]
+        attr_accessor :partitions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partitions = args[:partitions] if args.key?(:partitions)
+        end
+      end
+      
+      # When set in OperationStep, indicates that a new private service access should
+      # be created.
+      class CreatePrivateServiceAccess
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # When set in OperationStep, indicates that a new storage bucket should be
+      # created.
+      class CreateStorageBucket
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the bucket.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+        end
+      end
+      
+      # When set in OperationStep, indicates that a Filestore instance should be
+      # deleted.
+      class DeleteFilestoreInstance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the Filestore instance, in the format `projects/`project`/
+        # locations/`location`/instances/`instance``
+        # Corresponds to the JSON property `filestore`
+        # @return [String]
+        attr_accessor :filestore
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filestore = args[:filestore] if args.key?(:filestore)
+        end
+      end
+      
+      # When set in OperationStep, indicates that a login node should be deleted.
+      class DeleteLoginNode
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # When set in OperationStep, indicates that a Lustre instance should be deleted.
+      class DeleteLustreInstance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the Managed Lustre instance, in the format `projects/`
+        # project`/locations/`location`/instances/`instance``
+        # Corresponds to the JSON property `lustre`
+        # @return [String]
+        attr_accessor :lustre
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lustre = args[:lustre] if args.key?(:lustre)
+        end
+      end
+      
+      # When set in OperationStep, indicates network deletion step with the resource
+      # name.
+      class DeleteNetwork
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the network to delete, in the format `projects/`project`/
+        # global/networks/`network``.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network = args[:network] if args.key?(:network)
+        end
+      end
+      
+      # When set in OperationStep, indicates that a nodeset should be deleted.
+      class DeleteNodeset
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the nodeset to delete
+        # Corresponds to the JSON property `nodesets`
+        # @return [Array<String>]
+        attr_accessor :nodesets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nodesets = args[:nodesets] if args.key?(:nodesets)
+        end
+      end
+      
+      # When set in OperationStep, indicates that an orchestrator should be deleted.
+      class DeleteOrchestrator
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # When set in OperationStep, indicates that a partition should be deleted.
+      class DeletePartition
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the partition to delete
+        # Corresponds to the JSON property `partitions`
+        # @return [Array<String>]
+        attr_accessor :partitions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partitions = args[:partitions] if args.key?(:partitions)
+        end
+      end
+      
+      # When set in OperationStep, indicates private service access deletion step.
+      class DeletePrivateServiceAccess
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # When set in OperationStep, indicates that Cloud Storage bucket should be
+      # deleted.
+      class DeleteStorageBucket
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the bucket.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
         end
       end
       
@@ -1104,6 +1437,12 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Message describing the progress of a cluster mutation long-running operation.
+        # operation.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::HypercomputeclusterV1::OperationProgress]
+        attr_accessor :progress
+      
         # Output only. Identifies whether the user has requested cancellation of the
         # operation. Operations that have been cancelled successfully have google.
         # longrunning.Operation.error value with a google.rpc.Status.code of `1`,
@@ -1132,9 +1471,196 @@ module Google
           @api_version = args[:api_version] if args.key?(:api_version)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @progress = args[:progress] if args.key?(:progress)
           @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Message describing the progress of a cluster mutation long-running operation.
+      # operation.
+      class OperationProgress
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Steps and status of the operation.
+        # Corresponds to the JSON property `steps`
+        # @return [Array<Google::Apis::HypercomputeclusterV1::OperationStep>]
+        attr_accessor :steps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @steps = args[:steps] if args.key?(:steps)
+        end
+      end
+      
+      # Message describing the status of a single step in a cluster mutation long-
+      # running operation.
+      class OperationStep
+        include Google::Apis::Core::Hashable
+      
+        # When set in OperationStep, indicates that cluster health check should be
+        # performed.
+        # Corresponds to the JSON property `checkClusterHealth`
+        # @return [Google::Apis::HypercomputeclusterV1::CheckClusterHealth]
+        attr_accessor :check_cluster_health
+      
+        # When set in OperationStep, indicates that a new filestore instance should be
+        # created.
+        # Corresponds to the JSON property `createFilestoreInstance`
+        # @return [Google::Apis::HypercomputeclusterV1::CreateFilestoreInstance]
+        attr_accessor :create_filestore_instance
+      
+        # When set in OperationStep, indicates that a login node should be created.
+        # Corresponds to the JSON property `createLoginNode`
+        # @return [Google::Apis::HypercomputeclusterV1::CreateLoginNode]
+        attr_accessor :create_login_node
+      
+        # When set in OperationStep, indicates that a new lustre instance should be
+        # created.
+        # Corresponds to the JSON property `createLustreInstance`
+        # @return [Google::Apis::HypercomputeclusterV1::CreateLustreInstance]
+        attr_accessor :create_lustre_instance
+      
+        # When set in OperationStep, indicates that a new network should be created.
+        # Corresponds to the JSON property `createNetwork`
+        # @return [Google::Apis::HypercomputeclusterV1::CreateNetwork]
+        attr_accessor :create_network
+      
+        # When set in OperationStep, indicates that a nodeset should be created.
+        # Corresponds to the JSON property `createNodeset`
+        # @return [Google::Apis::HypercomputeclusterV1::CreateNodeset]
+        attr_accessor :create_nodeset
+      
+        # When set in OperationStep, indicates that an orchestrator should be created.
+        # Corresponds to the JSON property `createOrchestrator`
+        # @return [Google::Apis::HypercomputeclusterV1::CreateOrchestrator]
+        attr_accessor :create_orchestrator
+      
+        # When set in OperationStep, indicates that a partition should be created.
+        # Corresponds to the JSON property `createPartition`
+        # @return [Google::Apis::HypercomputeclusterV1::CreatePartition]
+        attr_accessor :create_partition
+      
+        # When set in OperationStep, indicates that a new private service access should
+        # be created.
+        # Corresponds to the JSON property `createPrivateServiceAccess`
+        # @return [Google::Apis::HypercomputeclusterV1::CreatePrivateServiceAccess]
+        attr_accessor :create_private_service_access
+      
+        # When set in OperationStep, indicates that a new storage bucket should be
+        # created.
+        # Corresponds to the JSON property `createStorageBucket`
+        # @return [Google::Apis::HypercomputeclusterV1::CreateStorageBucket]
+        attr_accessor :create_storage_bucket
+      
+        # When set in OperationStep, indicates that a Filestore instance should be
+        # deleted.
+        # Corresponds to the JSON property `deleteFilestoreInstance`
+        # @return [Google::Apis::HypercomputeclusterV1::DeleteFilestoreInstance]
+        attr_accessor :delete_filestore_instance
+      
+        # When set in OperationStep, indicates that a login node should be deleted.
+        # Corresponds to the JSON property `deleteLoginNode`
+        # @return [Google::Apis::HypercomputeclusterV1::DeleteLoginNode]
+        attr_accessor :delete_login_node
+      
+        # When set in OperationStep, indicates that a Lustre instance should be deleted.
+        # Corresponds to the JSON property `deleteLustreInstance`
+        # @return [Google::Apis::HypercomputeclusterV1::DeleteLustreInstance]
+        attr_accessor :delete_lustre_instance
+      
+        # When set in OperationStep, indicates network deletion step with the resource
+        # name.
+        # Corresponds to the JSON property `deleteNetwork`
+        # @return [Google::Apis::HypercomputeclusterV1::DeleteNetwork]
+        attr_accessor :delete_network
+      
+        # When set in OperationStep, indicates that a nodeset should be deleted.
+        # Corresponds to the JSON property `deleteNodeset`
+        # @return [Google::Apis::HypercomputeclusterV1::DeleteNodeset]
+        attr_accessor :delete_nodeset
+      
+        # When set in OperationStep, indicates that an orchestrator should be deleted.
+        # Corresponds to the JSON property `deleteOrchestrator`
+        # @return [Google::Apis::HypercomputeclusterV1::DeleteOrchestrator]
+        attr_accessor :delete_orchestrator
+      
+        # When set in OperationStep, indicates that a partition should be deleted.
+        # Corresponds to the JSON property `deletePartition`
+        # @return [Google::Apis::HypercomputeclusterV1::DeletePartition]
+        attr_accessor :delete_partition
+      
+        # When set in OperationStep, indicates private service access deletion step.
+        # Corresponds to the JSON property `deletePrivateServiceAccess`
+        # @return [Google::Apis::HypercomputeclusterV1::DeletePrivateServiceAccess]
+        attr_accessor :delete_private_service_access
+      
+        # When set in OperationStep, indicates that Cloud Storage bucket should be
+        # deleted.
+        # Corresponds to the JSON property `deleteStorageBucket`
+        # @return [Google::Apis::HypercomputeclusterV1::DeleteStorageBucket]
+        attr_accessor :delete_storage_bucket
+      
+        # Output only. State of the operation step.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # When set in OperationStep, indicates that a login node should be updated.
+        # Corresponds to the JSON property `updateLoginNode`
+        # @return [Google::Apis::HypercomputeclusterV1::UpdateLoginNode]
+        attr_accessor :update_login_node
+      
+        # When set in OperationStep, indicates that a nodeset should be updated.
+        # Corresponds to the JSON property `updateNodeset`
+        # @return [Google::Apis::HypercomputeclusterV1::UpdateNodeset]
+        attr_accessor :update_nodeset
+      
+        # When set in OperationStep, indicates that an orchestrator should be updated.
+        # Corresponds to the JSON property `updateOrchestrator`
+        # @return [Google::Apis::HypercomputeclusterV1::UpdateOrchestrator]
+        attr_accessor :update_orchestrator
+      
+        # When set in OperationStep, indicates that a partition should be updated.
+        # Corresponds to the JSON property `updatePartition`
+        # @return [Google::Apis::HypercomputeclusterV1::UpdatePartition]
+        attr_accessor :update_partition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @check_cluster_health = args[:check_cluster_health] if args.key?(:check_cluster_health)
+          @create_filestore_instance = args[:create_filestore_instance] if args.key?(:create_filestore_instance)
+          @create_login_node = args[:create_login_node] if args.key?(:create_login_node)
+          @create_lustre_instance = args[:create_lustre_instance] if args.key?(:create_lustre_instance)
+          @create_network = args[:create_network] if args.key?(:create_network)
+          @create_nodeset = args[:create_nodeset] if args.key?(:create_nodeset)
+          @create_orchestrator = args[:create_orchestrator] if args.key?(:create_orchestrator)
+          @create_partition = args[:create_partition] if args.key?(:create_partition)
+          @create_private_service_access = args[:create_private_service_access] if args.key?(:create_private_service_access)
+          @create_storage_bucket = args[:create_storage_bucket] if args.key?(:create_storage_bucket)
+          @delete_filestore_instance = args[:delete_filestore_instance] if args.key?(:delete_filestore_instance)
+          @delete_login_node = args[:delete_login_node] if args.key?(:delete_login_node)
+          @delete_lustre_instance = args[:delete_lustre_instance] if args.key?(:delete_lustre_instance)
+          @delete_network = args[:delete_network] if args.key?(:delete_network)
+          @delete_nodeset = args[:delete_nodeset] if args.key?(:delete_nodeset)
+          @delete_orchestrator = args[:delete_orchestrator] if args.key?(:delete_orchestrator)
+          @delete_partition = args[:delete_partition] if args.key?(:delete_partition)
+          @delete_private_service_access = args[:delete_private_service_access] if args.key?(:delete_private_service_access)
+          @delete_storage_bucket = args[:delete_storage_bucket] if args.key?(:delete_storage_bucket)
+          @state = args[:state] if args.key?(:state)
+          @update_login_node = args[:update_login_node] if args.key?(:update_login_node)
+          @update_nodeset = args[:update_nodeset] if args.key?(:update_nodeset)
+          @update_orchestrator = args[:update_orchestrator] if args.key?(:update_orchestrator)
+          @update_partition = args[:update_partition] if args.key?(:update_partition)
         end
       end
       
@@ -1564,6 +2090,70 @@ module Google
           @new_bucket = args[:new_bucket] if args.key?(:new_bucket)
           @new_filestore = args[:new_filestore] if args.key?(:new_filestore)
           @new_lustre = args[:new_lustre] if args.key?(:new_lustre)
+        end
+      end
+      
+      # When set in OperationStep, indicates that a login node should be updated.
+      class UpdateLoginNode
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # When set in OperationStep, indicates that a nodeset should be updated.
+      class UpdateNodeset
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the nodeset to update
+        # Corresponds to the JSON property `nodesets`
+        # @return [Array<String>]
+        attr_accessor :nodesets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nodesets = args[:nodesets] if args.key?(:nodesets)
+        end
+      end
+      
+      # When set in OperationStep, indicates that an orchestrator should be updated.
+      class UpdateOrchestrator
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # When set in OperationStep, indicates that a partition should be updated.
+      class UpdatePartition
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the partition to update
+        # Corresponds to the JSON property `partitions`
+        # @return [Array<String>]
+        attr_accessor :partitions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partitions = args[:partitions] if args.key?(:partitions)
         end
       end
     end
