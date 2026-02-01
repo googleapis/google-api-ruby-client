@@ -26,6 +26,13 @@ module Google
       class AdvancedVoiceOptions
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, textnorm will be applied to text input. This feature is
+        # enabled by default. Only applies for Gemini TTS.
+        # Corresponds to the JSON property `enableTextnorm`
+        # @return [Boolean]
+        attr_accessor :enable_textnorm
+        alias_method :enable_textnorm?, :enable_textnorm
+      
         # Only for Journey voices. If false, the synthesis is context aware and has a
         # higher latency.
         # Corresponds to the JSON property `lowLatencyJourneySynthesis`
@@ -47,6 +54,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_textnorm = args[:enable_textnorm] if args.key?(:enable_textnorm)
           @low_latency_journey_synthesis = args[:low_latency_journey_synthesis] if args.key?(:low_latency_journey_synthesis)
           @relax_safety_filters = args[:relax_safety_filters] if args.key?(:relax_safety_filters)
         end
