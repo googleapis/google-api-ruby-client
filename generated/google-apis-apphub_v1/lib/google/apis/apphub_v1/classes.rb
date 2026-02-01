@@ -320,7 +320,7 @@ module Google
         attr_accessor :create_time
       
         # Optional. The resource name of the CRM node being attached to the boundary.
-        # Format: `projects/`project-number``
+        # Format: `projects/`project-number`` or `projects/`project-id``
         # Corresponds to the JSON property `crmNode`
         # @return [String]
         attr_accessor :crm_node

@@ -120,8 +120,8 @@ module Google
         
         # Gets a Boundary.
         # @param [String] name
-        #   Required. The name of the boundary to retrieve. Format: projects/`project`/
-        #   locations/`location`/boundary
+        #   Required. The name of the boundary to retrieve. Format: `projects/`project`/
+        #   locations/`location`/boundary`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1312,8 +1312,10 @@ module Google
         
         # Gets an Extended Metadata Schema.
         # @param [String] name
-        #   Required. Schema resource name Format: projects//locations//
-        #   extendedMetadataSchemas/ could be "apphub.googleapis.com/Name"
+        #   Required. Schema resource name. Format: `projects/`project`/locations/`
+        #   location`/extendedMetadataSchemas/`extended_metadata_schema``. ``
+        #   extended_metadata_schema`` has the format `"apphub.googleapis.com/`SchemaName`"
+        #   `.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
