@@ -169,6 +169,7 @@ module Google
       class AdvancedVoiceOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_textnorm, as: 'enableTextnorm'
           property :low_latency_journey_synthesis, as: 'lowLatencyJourneySynthesis'
           property :relax_safety_filters, as: 'relaxSafetyFilters'
         end
