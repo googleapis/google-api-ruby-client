@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BootDiskProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -340,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DedicatedLocalSsdProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DefaultComputeClassConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -382,7 +394,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnterpriseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EphemeralLocalSsdProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -431,6 +455,12 @@ module Google
       end
       
       class GcpSecretManagerCertificateConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GpuDirectConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1198,6 +1228,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SliceControllerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SoleTenantConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1229,6 +1265,12 @@ module Google
       end
       
       class StatusCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SwapConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1443,6 +1485,8 @@ module Google
       
           property :ray_operator_config, as: 'rayOperatorConfig', class: Google::Apis::ContainerV1::RayOperatorConfig, decorator: Google::Apis::ContainerV1::RayOperatorConfig::Representation
       
+          property :slice_controller_config, as: 'sliceControllerConfig', class: Google::Apis::ContainerV1::SliceControllerConfig, decorator: Google::Apis::ContainerV1::SliceControllerConfig::Representation
+      
           property :stateful_ha_config, as: 'statefulHaConfig', class: Google::Apis::ContainerV1::StatefulHaConfig, decorator: Google::Apis::ContainerV1::StatefulHaConfig::Representation
       
         end
@@ -1612,6 +1656,14 @@ module Google
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
           property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
+        end
+      end
+      
+      class BootDiskProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :swap_size_gib, :numeric_string => true, as: 'swapSizeGib'
+          property :swap_size_percent, as: 'swapSizePercent'
         end
       end
       
@@ -2136,6 +2188,13 @@ module Google
         end
       end
       
+      class DedicatedLocalSsdProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_count, :numeric_string => true, as: 'diskCount'
+        end
+      end
+      
       class DefaultComputeClassConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2189,11 +2248,26 @@ module Google
         end
       end
       
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
+        end
+      end
+      
       class EnterpriseConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_tier, as: 'clusterTier'
           property :desired_tier, as: 'desiredTier'
+        end
+      end
+      
+      class EphemeralLocalSsdProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :swap_size_gib, :numeric_string => true, as: 'swapSizeGib'
+          property :swap_size_percent, as: 'swapSizePercent'
         end
       end
       
@@ -2269,6 +2343,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :secret_uri, as: 'secretUri'
+        end
+      end
+      
+      class GpuDirectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gpu_direct_strategy, as: 'gpuDirectStrategy'
         end
       end
       
@@ -2527,6 +2608,8 @@ module Google
           property :hugepages, as: 'hugepages', class: Google::Apis::ContainerV1::HugepagesConfig, decorator: Google::Apis::ContainerV1::HugepagesConfig::Representation
       
           property :node_kernel_module_loading, as: 'nodeKernelModuleLoading', class: Google::Apis::ContainerV1::NodeKernelModuleLoading, decorator: Google::Apis::ContainerV1::NodeKernelModuleLoading::Representation
+      
+          property :swap_config, as: 'swapConfig', class: Google::Apis::ContainerV1::SwapConfig, decorator: Google::Apis::ContainerV1::SwapConfig::Representation
       
           hash :sysctls, as: 'sysctls'
           property :transparent_hugepage_defrag, as: 'transparentHugepageDefrag'
@@ -2823,6 +2906,8 @@ module Google
       
           property :flex_start, as: 'flexStart'
           property :gcfs_config, as: 'gcfsConfig', class: Google::Apis::ContainerV1::GcfsConfig, decorator: Google::Apis::ContainerV1::GcfsConfig::Representation
+      
+          property :gpu_direct_config, as: 'gpuDirectConfig', class: Google::Apis::ContainerV1::GpuDirectConfig, decorator: Google::Apis::ContainerV1::GpuDirectConfig::Representation
       
           property :gvnic, as: 'gvnic', class: Google::Apis::ContainerV1::VirtualNic, decorator: Google::Apis::ContainerV1::VirtualNic::Representation
       
@@ -3622,6 +3707,13 @@ module Google
         end
       end
       
+      class SliceControllerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class SoleTenantConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3673,6 +3765,21 @@ module Google
           property :canonical_code, as: 'canonicalCode'
           property :code, as: 'code'
           property :message, as: 'message'
+        end
+      end
+      
+      class SwapConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boot_disk_profile, as: 'bootDiskProfile', class: Google::Apis::ContainerV1::BootDiskProfile, decorator: Google::Apis::ContainerV1::BootDiskProfile::Representation
+      
+          property :dedicated_local_ssd_profile, as: 'dedicatedLocalSsdProfile', class: Google::Apis::ContainerV1::DedicatedLocalSsdProfile, decorator: Google::Apis::ContainerV1::DedicatedLocalSsdProfile::Representation
+      
+          property :enabled, as: 'enabled'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::ContainerV1::EncryptionConfig, decorator: Google::Apis::ContainerV1::EncryptionConfig::Representation
+      
+          property :ephemeral_local_ssd_profile, as: 'ephemeralLocalSsdProfile', class: Google::Apis::ContainerV1::EphemeralLocalSsdProfile, decorator: Google::Apis::ContainerV1::EphemeralLocalSsdProfile::Representation
+      
         end
       end
       

@@ -282,6 +282,11 @@ module Google
         # @return [Google::Apis::ContainerV1::RayOperatorConfig]
         attr_accessor :ray_operator_config
       
+        # Configuration for the Slice Controller.
+        # Corresponds to the JSON property `sliceControllerConfig`
+        # @return [Google::Apis::ContainerV1::SliceControllerConfig]
+        attr_accessor :slice_controller_config
+      
         # Configuration for the Stateful HA add-on.
         # Corresponds to the JSON property `statefulHaConfig`
         # @return [Google::Apis::ContainerV1::StatefulHaConfig]
@@ -308,6 +313,7 @@ module Google
           @network_policy_config = args[:network_policy_config] if args.key?(:network_policy_config)
           @parallelstore_csi_driver_config = args[:parallelstore_csi_driver_config] if args.key?(:parallelstore_csi_driver_config)
           @ray_operator_config = args[:ray_operator_config] if args.key?(:ray_operator_config)
+          @slice_controller_config = args[:slice_controller_config] if args.key?(:slice_controller_config)
           @stateful_ha_config = args[:stateful_ha_config] if args.key?(:stateful_ha_config)
         end
       end
@@ -940,6 +946,31 @@ module Google
           @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
           @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
+        end
+      end
+      
+      # Swap on the node's boot disk.
+      class BootDiskProfile
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the size of the swap space in gibibytes (GiB).
+        # Corresponds to the JSON property `swapSizeGib`
+        # @return [Fixnum]
+        attr_accessor :swap_size_gib
+      
+        # Specifies the size of the swap space as a percentage of the boot disk size.
+        # Corresponds to the JSON property `swapSizePercent`
+        # @return [Fixnum]
+        attr_accessor :swap_size_percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @swap_size_gib = args[:swap_size_gib] if args.key?(:swap_size_gib)
+          @swap_size_percent = args[:swap_size_percent] if args.key?(:swap_size_percent)
         end
       end
       
@@ -2948,6 +2979,25 @@ module Google
         end
       end
       
+      # Provisions a new, separate local NVMe SSD exclusively for swap.
+      class DedicatedLocalSsdProfile
+        include Google::Apis::Core::Hashable
+      
+        # The number of physical local NVMe SSD disks to attach.
+        # Corresponds to the JSON property `diskCount`
+        # @return [Fixnum]
+        attr_accessor :disk_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_count = args[:disk_count] if args.key?(:disk_count)
+        end
+      end
+      
       # DefaultComputeClassConfig defines default compute class configuration.
       class DefaultComputeClassConfig
         include Google::Apis::Core::Hashable
@@ -3109,6 +3159,27 @@ module Google
         end
       end
       
+      # Defines encryption settings for the swap space.
+      class EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, swap space will not be encrypted. Defaults to false (
+        # encrypted).
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
+        end
+      end
+      
       # EnterpriseConfig is the cluster enterprise configuration. Deprecated: GKE
       # Enterprise features are now available without an Enterprise tier.
       class EnterpriseConfig
@@ -3132,6 +3203,32 @@ module Google
         def update!(**args)
           @cluster_tier = args[:cluster_tier] if args.key?(:cluster_tier)
           @desired_tier = args[:desired_tier] if args.key?(:desired_tier)
+        end
+      end
+      
+      # Swap on the local SSD shared with pod ephemeral storage.
+      class EphemeralLocalSsdProfile
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the size of the swap space in gibibytes (GiB).
+        # Corresponds to the JSON property `swapSizeGib`
+        # @return [Fixnum]
+        attr_accessor :swap_size_gib
+      
+        # Specifies the size of the swap space as a percentage of the ephemeral local
+        # SSD capacity.
+        # Corresponds to the JSON property `swapSizePercent`
+        # @return [Fixnum]
+        attr_accessor :swap_size_percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @swap_size_gib = args[:swap_size_gib] if args.key?(:swap_size_gib)
+          @swap_size_percent = args[:swap_size_percent] if args.key?(:swap_size_percent)
         end
       end
       
@@ -3486,6 +3583,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @secret_uri = args[:secret_uri] if args.key?(:secret_uri)
+        end
+      end
+      
+      # GPUDirectConfig specifies the GPU direct strategy on the node pool.
+      class GpuDirectConfig
+        include Google::Apis::Core::Hashable
+      
+        # The type of GPU direct strategy to enable on the node pool.
+        # Corresponds to the JSON property `gpuDirectStrategy`
+        # @return [String]
+        attr_accessor :gpu_direct_strategy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gpu_direct_strategy = args[:gpu_direct_strategy] if args.key?(:gpu_direct_strategy)
         end
       end
       
@@ -4432,6 +4548,11 @@ module Google
         # @return [Google::Apis::ContainerV1::NodeKernelModuleLoading]
         attr_accessor :node_kernel_module_loading
       
+        # Configuration for swap memory on a node pool.
+        # Corresponds to the JSON property `swapConfig`
+        # @return [Google::Apis::ContainerV1::SwapConfig]
+        attr_accessor :swap_config
+      
         # The Linux kernel parameters to be applied to the nodes and all pods running on
         # the nodes. The following parameters are supported. net.core.busy_poll net.core.
         # busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.rmem_default
@@ -4481,6 +4602,7 @@ module Google
           @cgroup_mode = args[:cgroup_mode] if args.key?(:cgroup_mode)
           @hugepages = args[:hugepages] if args.key?(:hugepages)
           @node_kernel_module_loading = args[:node_kernel_module_loading] if args.key?(:node_kernel_module_loading)
+          @swap_config = args[:swap_config] if args.key?(:swap_config)
           @sysctls = args[:sysctls] if args.key?(:sysctls)
           @transparent_hugepage_defrag = args[:transparent_hugepage_defrag] if args.key?(:transparent_hugepage_defrag)
           @transparent_hugepage_enabled = args[:transparent_hugepage_enabled] if args.key?(:transparent_hugepage_enabled)
@@ -5479,6 +5601,11 @@ module Google
         # @return [Google::Apis::ContainerV1::GcfsConfig]
         attr_accessor :gcfs_config
       
+        # GPUDirectConfig specifies the GPU direct strategy on the node pool.
+        # Corresponds to the JSON property `gpuDirectConfig`
+        # @return [Google::Apis::ContainerV1::GpuDirectConfig]
+        attr_accessor :gpu_direct_config
+      
         # Configuration of gVNIC feature.
         # Corresponds to the JSON property `gvnic`
         # @return [Google::Apis::ContainerV1::VirtualNic]
@@ -5723,6 +5850,7 @@ module Google
           @fast_socket = args[:fast_socket] if args.key?(:fast_socket)
           @flex_start = args[:flex_start] if args.key?(:flex_start)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
+          @gpu_direct_config = args[:gpu_direct_config] if args.key?(:gpu_direct_config)
           @gvnic = args[:gvnic] if args.key?(:gvnic)
           @image_type = args[:image_type] if args.key?(:image_type)
           @kubelet_config = args[:kubelet_config] if args.key?(:kubelet_config)
@@ -8731,6 +8859,26 @@ module Google
         end
       end
       
+      # Configuration for the Slice Controller.
+      class SliceControllerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates whether Slice Controller is enabled in the cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # SoleTenantConfig contains the NodeAffinities to specify what shared sole
       # tenant node groups should back the node pool.
       class SoleTenantConfig
@@ -8931,6 +9079,50 @@ module Google
           @canonical_code = args[:canonical_code] if args.key?(:canonical_code)
           @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Configuration for swap memory on a node pool.
+      class SwapConfig
+        include Google::Apis::Core::Hashable
+      
+        # Swap on the node's boot disk.
+        # Corresponds to the JSON property `bootDiskProfile`
+        # @return [Google::Apis::ContainerV1::BootDiskProfile]
+        attr_accessor :boot_disk_profile
+      
+        # Provisions a new, separate local NVMe SSD exclusively for swap.
+        # Corresponds to the JSON property `dedicatedLocalSsdProfile`
+        # @return [Google::Apis::ContainerV1::DedicatedLocalSsdProfile]
+        attr_accessor :dedicated_local_ssd_profile
+      
+        # Optional. Enables or disables swap for the node pool.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Defines encryption settings for the swap space.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::ContainerV1::EncryptionConfig]
+        attr_accessor :encryption_config
+      
+        # Swap on the local SSD shared with pod ephemeral storage.
+        # Corresponds to the JSON property `ephemeralLocalSsdProfile`
+        # @return [Google::Apis::ContainerV1::EphemeralLocalSsdProfile]
+        attr_accessor :ephemeral_local_ssd_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boot_disk_profile = args[:boot_disk_profile] if args.key?(:boot_disk_profile)
+          @dedicated_local_ssd_profile = args[:dedicated_local_ssd_profile] if args.key?(:dedicated_local_ssd_profile)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
+          @ephemeral_local_ssd_profile = args[:ephemeral_local_ssd_profile] if args.key?(:ephemeral_local_ssd_profile)
         end
       end
       
