@@ -251,6 +251,14 @@ module Google
       class AutoCreatedSubnetworkInfo
         include Google::Apis::Core::Hashable
       
+        # Output only. Indicates whether the subnetwork is delinked from the Service
+        # Connection Policy. Only set if the subnetwork mode is AUTO_CREATED during
+        # creation.
+        # Corresponds to the JSON property `delinked`
+        # @return [Boolean]
+        attr_accessor :delinked
+        alias_method :delinked?, :delinked
+      
         # Output only. URI of the automatically created Internal Range. Only set if the
         # subnetwork mode is AUTO_CREATED during creation.
         # Corresponds to the JSON property `internalRange`
@@ -281,6 +289,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @delinked = args[:delinked] if args.key?(:delinked)
           @internal_range = args[:internal_range] if args.key?(:internal_range)
           @internal_range_ref = args[:internal_range_ref] if args.key?(:internal_range_ref)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
@@ -323,6 +332,145 @@ module Google
           @dns_suffix = args[:dns_suffix] if args.key?(:dns_suffix)
           @hostname = args[:hostname] if args.key?(:hostname)
           @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
+      # Represents a DNS record managed by the AutomatedDnsRecord API.
+      class AutomatedDnsRecord
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The full resource path of the consumer network this
+        # AutomatedDnsRecord is visible to. Example: "projects/`projectNumOrId`/global/
+        # networks/`networkName`".
+        # Corresponds to the JSON property `consumerNetwork`
+        # @return [String]
+        attr_accessor :consumer_network
+      
+        # Output only. The timestamp of when the record was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Immutable. The creation mode of the AutomatedDnsRecord. This field
+        # is immutable.
+        # Corresponds to the JSON property `creationMode`
+        # @return [String]
+        attr_accessor :creation_mode
+      
+        # Defines the configuration of a DNS record.
+        # Corresponds to the JSON property `currentConfig`
+        # @return [Google::Apis::NetworkconnectivityV1::Config]
+        attr_accessor :current_config
+      
+        # A human-readable description of the record.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Immutable. The dns suffix for this record to use in longest-suffix
+        # matching. Requires a trailing dot. Example: "example.com."
+        # Corresponds to the JSON property `dnsSuffix`
+        # @return [String]
+        attr_accessor :dns_suffix
+      
+        # Output only. DnsZone is the DNS zone managed by automation. Format: projects/`
+        # project`/managedZones/`managedZone`
+        # Corresponds to the JSON property `dnsZone`
+        # @return [String]
+        attr_accessor :dns_zone
+      
+        # Optional. The etag is computed by the server, and may be sent on update and
+        # delete requests to ensure the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The FQDN created by combining the hostname and dns suffix. Should
+        # include a trailing dot.
+        # Corresponds to the JSON property `fqdn`
+        # @return [String]
+        attr_accessor :fqdn
+      
+        # Required. Immutable. The hostname for the DNS record. This value will be
+        # prepended to the `dns_suffix` to create the full domain name (FQDN) for the
+        # record. For example, if `hostname` is "corp.db" and `dns_suffix` is "example.
+        # com.", the resulting record will be "corp.db.example.com.". Should not include
+        # a trailing dot.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Optional. User-defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. Identifier. The name of an AutomatedDnsRecord. Format: projects/`
+        # project`/locations/`location`/automatedDnsRecords/`automated_dns_record` See:
+        # https://google.aip.dev/122#fields-representing-resource-names
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Defines the configuration of a DNS record.
+        # Corresponds to the JSON property `originalConfig`
+        # @return [Google::Apis::NetworkconnectivityV1::Config]
+        attr_accessor :original_config
+      
+        # Required. Immutable. The identifier of a supported record type.
+        # Corresponds to the JSON property `recordType`
+        # @return [String]
+        attr_accessor :record_type
+      
+        # Required. Immutable. The service class identifier which authorizes this
+        # AutomatedDnsRecord. Any API calls targeting this AutomatedDnsRecord must have `
+        # networkconnectivity.serviceclasses.use` IAM permission for the provided
+        # service class.
+        # Corresponds to the JSON property `serviceClass`
+        # @return [String]
+        attr_accessor :service_class
+      
+        # Output only. The current operational state of this AutomatedDnsRecord as
+        # managed by Service Connectivity Automation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. A human-readable message providing more context about the current
+        # state, such as an error description if the state is `FAILED_DEPROGRAMMING`.
+        # Corresponds to the JSON property `stateDetails`
+        # @return [String]
+        attr_accessor :state_details
+      
+        # Output only. The timestamp of when the record was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creation_mode = args[:creation_mode] if args.key?(:creation_mode)
+          @current_config = args[:current_config] if args.key?(:current_config)
+          @description = args[:description] if args.key?(:description)
+          @dns_suffix = args[:dns_suffix] if args.key?(:dns_suffix)
+          @dns_zone = args[:dns_zone] if args.key?(:dns_zone)
+          @etag = args[:etag] if args.key?(:etag)
+          @fqdn = args[:fqdn] if args.key?(:fqdn)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @original_config = args[:original_config] if args.key?(:original_config)
+          @record_type = args[:record_type] if args.key?(:record_type)
+          @service_class = args[:service_class] if args.key?(:service_class)
+          @state = args[:state] if args.key?(:state)
+          @state_details = args[:state_details] if args.key?(:state_details)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -481,6 +629,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @errors = args[:errors] if args.key?(:errors)
+        end
+      end
+      
+      # Defines the configuration of a DNS record.
+      class Config
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of resource record data strings. The content and format of
+        # these strings depend on the AutomatedDnsRecord.type. For many common record
+        # types, this list may contain multiple strings. As defined in RFC 1035 (section
+        # 5) and RFC 1034 (section 3.6.1) -- see examples. Examples: A record: ["192.0.2.
+        # 1"] or ["192.0.2.1", "192.0.2.2"] TXT record: ["This is a text record"] CNAME
+        # record: ["target.example.com."] AAAA record: ["::1"] or ["2001:0db8:85a3:0000:
+        # 0000:8a2e:0370:7334", "2001:0db8:85a3:0000:0000:8a2e:0370:7335"]
+        # Corresponds to the JSON property `rrdatas`
+        # @return [Array<String>]
+        attr_accessor :rrdatas
+      
+        # Required. Number of seconds that this DNS record can be cached by resolvers.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rrdatas = args[:rrdatas] if args.key?(:rrdatas)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       
@@ -1431,7 +1610,7 @@ module Google
         # @return [Google::Apis::NetworkconnectivityV1::AllocationOptions]
         attr_accessor :allocation_options
       
-        # Time when the internal range was created.
+        # Output only. Time when the internal range was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1521,7 +1700,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :target_cidr_range
       
-        # Time when the internal range was updated.
+        # Output only. Time when the internal range was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1645,13 +1824,13 @@ module Google
         attr_accessor :producer_network
       
         # Output only. The proposed exclude export IP ranges waiting for hub
-        # administration's approval.
+        # administrator's approval.
         # Corresponds to the JSON property `proposedExcludeExportRanges`
         # @return [Array<String>]
         attr_accessor :proposed_exclude_export_ranges
       
         # Output only. The proposed include export IP ranges waiting for hub
-        # administration's approval.
+        # administrator's approval.
         # Corresponds to the JSON property `proposedIncludeExportRanges`
         # @return [Array<String>]
         attr_accessor :proposed_include_export_ranges
@@ -1750,13 +1929,13 @@ module Google
         attr_accessor :producer_vpc_spokes
       
         # Output only. The proposed exclude export IP ranges waiting for hub
-        # administration's approval.
+        # administrator's approval.
         # Corresponds to the JSON property `proposedExcludeExportRanges`
         # @return [Array<String>]
         attr_accessor :proposed_exclude_export_ranges
       
         # Output only. The proposed include export IP ranges waiting for hub
-        # administration's approval.
+        # administrator's approval.
         # Corresponds to the JSON property `proposedIncludeExportRanges`
         # @return [Array<String>]
         attr_accessor :proposed_include_export_ranges
@@ -1823,6 +2002,38 @@ module Google
           @site_to_site_data_transfer = args[:site_to_site_data_transfer] if args.key?(:site_to_site_data_transfer)
           @uris = args[:uris] if args.key?(:uris)
           @vpc_network = args[:vpc_network] if args.key?(:vpc_network)
+        end
+      end
+      
+      # Response for ListAutomatedDnsRecords.
+      class ListAutomatedDnsRecordsResponse
+        include Google::Apis::Core::Hashable
+      
+        # AutomatedDnsRecords to be returned.
+        # Corresponds to the JSON property `automatedDnsRecords`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::AutomatedDnsRecord>]
+        attr_accessor :automated_dns_records
+      
+        # The next pagination token in the List response. It should be used as
+        # page_token for the following request. An empty value means no more result.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automated_dns_records = args[:automated_dns_records] if args.key?(:automated_dns_records)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -4162,7 +4373,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Optional. The list of fields waiting for hub administration's approval.
+        # Optional. The list of fields waiting for hub administrator's approval.
         # Corresponds to the JSON property `fieldPathsPendingUpdate`
         # @return [Array<String>]
         attr_accessor :field_paths_pending_update
@@ -4424,7 +4635,7 @@ module Google
         end
       end
       
-      # The reason a spoke is inactive.
+      # The reason for the current state of the spoke.
       class StateReason
         include Google::Apis::Core::Hashable
       
