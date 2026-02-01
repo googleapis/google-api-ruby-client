@@ -717,8 +717,9 @@ module Google
         end
       end
       
-      # Custom configuration used to specify regions that the metastore service runs
-      # in. Currently only supported in the us multi-region.
+      # Deprecated: Use a single region service instead. Custom configuration used to
+      # specify regions that the metastore service runs in. Currently only supported
+      # in the us multi-region.
       class CustomRegionConfig
         include Google::Apis::Core::Hashable
       
@@ -745,8 +746,9 @@ module Google
         end
       end
       
-      # Metadata about a custom region. This is only populated if the region is a
-      # custom region. For single/multi regions, it will be empty.
+      # Deprecated: Use a single region service instead. Metadata about a custom
+      # region. This is only populated if the region is a custom region. For single/
+      # multi regions, it will be empty.
       class CustomRegionMetadata
         include Google::Apis::Core::Hashable
       
@@ -1580,14 +1582,16 @@ module Google
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
-        # Possible configurations supported if the current region is a custom region.
+        # Deprecated: Use a single region service instead. Possible configurations
+        # supported if the current region is a custom region.
         # Corresponds to the JSON property `customRegionMetadata`
         # @return [Array<Google::Apis::MetastoreV1beta::CustomRegionMetadata>]
         attr_accessor :custom_region_metadata
       
-        # The metadata for the multi-region that includes the constituent regions. The
-        # metadata is only populated if the region is multi-region. For single region or
-        # custom dual region, it will be empty.
+        # Deprecated: Use a single region service instead. The metadata for the multi-
+        # region that includes the constituent regions. The metadata is only populated
+        # if the region is multi-region. For single region or custom dual region, it
+        # will be empty.
         # Corresponds to the JSON property `multiRegionMetadata`
         # @return [Google::Apis::MetastoreV1beta::MultiRegionMetadata]
         attr_accessor :multi_region_metadata
@@ -1915,18 +1919,21 @@ module Google
         end
       end
       
-      # The multi-region config for the Dataproc Metastore service.
+      # Deprecated: Use a single region service instead. The multi-region config for
+      # the Dataproc Metastore service.
       class MultiRegionConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. The list of root CA certificates that a gRPC client uses to
-        # connect to a multi-regional Dataproc Metastore service.
+        # Output only. Deprecated: Use a single region service instead. The list of root
+        # CA certificates that a gRPC client uses to connect to a multi-regional
+        # Dataproc Metastore service.
         # Corresponds to the JSON property `certificates`
         # @return [Array<Google::Apis::MetastoreV1beta::RootCaCertificate>]
         attr_accessor :certificates
       
-        # Custom configuration used to specify regions that the metastore service runs
-        # in. Currently only supported in the us multi-region.
+        # Deprecated: Use a single region service instead. Custom configuration used to
+        # specify regions that the metastore service runs in. Currently only supported
+        # in the us multi-region.
         # Corresponds to the JSON property `customRegionConfig`
         # @return [Google::Apis::MetastoreV1beta::CustomRegionConfig]
         attr_accessor :custom_region_config
@@ -1942,9 +1949,10 @@ module Google
         end
       end
       
-      # The metadata for the multi-region that includes the constituent regions. The
-      # metadata is only populated if the region is multi-region. For single region or
-      # custom dual region, it will be empty.
+      # Deprecated: Use a single region service instead. The metadata for the multi-
+      # region that includes the constituent regions. The metadata is only populated
+      # if the region is multi-region. For single region or custom dual region, it
+      # will be empty.
       class MultiRegionMetadata
         include Google::Apis::Core::Hashable
       
@@ -2409,17 +2417,20 @@ module Google
         end
       end
       
-      # A gRPC client must install all root CA certificates to connect to a multi-
-      # regional Dataproc Metastore service and achieve failover.
+      # Deprecated: Use a single region service instead. A gRPC client must install
+      # all root CA certificates to connect to a multi-regional Dataproc Metastore
+      # service and achieve failover.
       class RootCaCertificate
         include Google::Apis::Core::Hashable
       
-        # The root CA certificate in PEM format. The maximum length is 65536 bytes.
+        # Deprecated: Use a single region service instead. The root CA certificate in
+        # PEM format. The maximum length is 65536 bytes.
         # Corresponds to the JSON property `certificate`
         # @return [String]
         attr_accessor :certificate
       
-        # The certificate expiration time in timestamp format.
+        # Deprecated: Use a single region service instead. The certificate expiration
+        # time in timestamp format.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]
         attr_accessor :expiration_time
@@ -2610,7 +2621,8 @@ module Google
         # @return [Google::Apis::MetastoreV1beta::MetadataManagementActivity]
         attr_accessor :metadata_management_activity
       
-        # The multi-region config for the Dataproc Metastore service.
+        # Deprecated: Use a single region service instead. The multi-region config for
+        # the Dataproc Metastore service.
         # Corresponds to the JSON property `multiRegionConfig`
         # @return [Google::Apis::MetastoreV1beta::MultiRegionConfig]
         attr_accessor :multi_region_config
