@@ -1806,6 +1806,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Restores a backup of a Cloud SQL instance for Model Context Protocol (MCP)
+        # server.
+        # @param [String] target_project
+        #   Required. Project ID of the target project.
+        # @param [String] target_instance
+        #   Required. Cloud SQL instance ID of the target. This does not include the
+        #   project ID.
+        # @param [Google::Apis::SqladminV1::SqlInstancesRestoreBackupMcpRequest] sql_instances_restore_backup_mcp_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def restore_instance_backup_mcp(target_project, target_instance, sql_instances_restore_backup_mcp_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/projects/{targetProject}/instances/{targetInstance}:restoreBackupMcp', options)
+          command.request_representation = Google::Apis::SqladminV1::SqlInstancesRestoreBackupMcpRequest::Representation
+          command.request_object = sql_instances_restore_backup_mcp_request_object
+          command.response_representation = Google::Apis::SqladminV1::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1::Operation
+          command.params['targetProject'] = target_project unless target_project.nil?
+          command.params['targetInstance'] = target_instance unless target_instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Rotates the server certificate to one signed by the Certificate Authority (CA)
         # version previously added with the addServerCA method. For instances that have
         # enabled Certificate Authority Service (CAS) based server CA, use
