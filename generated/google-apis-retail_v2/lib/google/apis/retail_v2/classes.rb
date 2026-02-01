@@ -1747,7 +1747,7 @@ module Google
         attr_accessor :filter
       
         # Optional. The sort string to specify the sorting of search results. The syntax
-        # of the sort string is the same as SearchRequest.sort.
+        # of the sort string is the same as SearchRequest.order_by.
         # Corresponds to the JSON property `sortBy`
         # @return [String]
         attr_accessor :sort_by
@@ -5898,8 +5898,8 @@ module Google
       
         # This field specifies the conversation id, which maintains the state of the
         # conversation between client side and server side. Use the value from the
-        # previous ConversationalSearchResult.conversation_id. For the initial request,
-        # this should be empty.
+        # previous SearchResponse.ConversationalSearchResult.conversation_id. For the
+        # initial request, this should be empty.
         # Corresponds to the JSON property `conversationId`
         # @return [String]
         attr_accessor :conversation_id
