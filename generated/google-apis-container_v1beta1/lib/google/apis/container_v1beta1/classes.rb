@@ -303,6 +303,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::RayOperatorConfig]
         attr_accessor :ray_operator_config
       
+        # Configuration for the Slice Controller.
+        # Corresponds to the JSON property `sliceControllerConfig`
+        # @return [Google::Apis::ContainerV1beta1::SliceControllerConfig]
+        attr_accessor :slice_controller_config
+      
         # Configuration for the Stateful HA add-on.
         # Corresponds to the JSON property `statefulHaConfig`
         # @return [Google::Apis::ContainerV1beta1::StatefulHaConfig]
@@ -332,6 +337,7 @@ module Google
           @parallelstore_csi_driver_config = args[:parallelstore_csi_driver_config] if args.key?(:parallelstore_csi_driver_config)
           @pod_snapshot_config = args[:pod_snapshot_config] if args.key?(:pod_snapshot_config)
           @ray_operator_config = args[:ray_operator_config] if args.key?(:ray_operator_config)
+          @slice_controller_config = args[:slice_controller_config] if args.key?(:slice_controller_config)
           @stateful_ha_config = args[:stateful_ha_config] if args.key?(:stateful_ha_config)
         end
       end
@@ -3971,6 +3977,25 @@ module Google
         end
       end
       
+      # GPUDirectConfig specifies the GPU direct strategy on the node pool.
+      class GpuDirectConfig
+        include Google::Apis::Core::Hashable
+      
+        # The type of GPU direct strategy to enable on the node pool.
+        # Corresponds to the JSON property `gpuDirectStrategy`
+        # @return [String]
+        attr_accessor :gpu_direct_strategy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gpu_direct_strategy = args[:gpu_direct_strategy] if args.key?(:gpu_direct_strategy)
+        end
+      end
+      
       # GPUDriverInstallationConfig specifies the version of GPU driver to be auto
       # installed.
       class GpuDriverInstallationConfig
@@ -6147,6 +6172,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::GcfsConfig]
         attr_accessor :gcfs_config
       
+        # GPUDirectConfig specifies the GPU direct strategy on the node pool.
+        # Corresponds to the JSON property `gpuDirectConfig`
+        # @return [Google::Apis::ContainerV1beta1::GpuDirectConfig]
+        attr_accessor :gpu_direct_config
+      
         # Configuration of gVNIC feature.
         # Corresponds to the JSON property `gvnic`
         # @return [Google::Apis::ContainerV1beta1::VirtualNic]
@@ -6398,6 +6428,7 @@ module Google
           @fast_socket = args[:fast_socket] if args.key?(:fast_socket)
           @flex_start = args[:flex_start] if args.key?(:flex_start)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
+          @gpu_direct_config = args[:gpu_direct_config] if args.key?(:gpu_direct_config)
           @gvnic = args[:gvnic] if args.key?(:gvnic)
           @host_maintenance_policy = args[:host_maintenance_policy] if args.key?(:host_maintenance_policy)
           @image_type = args[:image_type] if args.key?(:image_type)
@@ -9625,6 +9656,26 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether Shielded Nodes features are enabled on all nodes in this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Configuration for the Slice Controller.
+      class SliceControllerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates whether Slice Controller is enabled in the cluster.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
