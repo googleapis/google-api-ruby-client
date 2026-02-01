@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Path
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Redirect
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -641,6 +647,14 @@ module Google
         end
       end
       
+      class Path
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pattern, as: 'pattern'
+          property :type, as: 'type'
+        end
+      end
+      
       class Redirect
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -675,6 +689,10 @@ module Google
           property :codebase_branch, as: 'codebaseBranch'
           property :disabled, as: 'disabled'
           property :disabled_time, as: 'disabledTime'
+          collection :ignored_paths, as: 'ignoredPaths', class: Google::Apis::FirebaseapphostingV1::Path, decorator: Google::Apis::FirebaseapphostingV1::Path::Representation
+      
+          collection :required_paths, as: 'requiredPaths', class: Google::Apis::FirebaseapphostingV1::Path, decorator: Google::Apis::FirebaseapphostingV1::Path::Representation
+      
         end
       end
       
