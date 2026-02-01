@@ -766,6 +766,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlInstancesRestoreBackupMcpRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SqlInstancesStartExternalSyncRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2375,6 +2381,15 @@ module Google
       class SqlInstancesResetReplicaSizeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SqlInstancesRestoreBackupMcpRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_id, as: 'backupId'
+          property :source_instance, as: 'sourceInstance'
+          property :source_project, as: 'sourceProject'
         end
       end
       

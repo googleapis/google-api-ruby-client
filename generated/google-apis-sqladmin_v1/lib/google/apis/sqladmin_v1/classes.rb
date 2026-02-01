@@ -5729,6 +5729,42 @@ module Google
         end
       end
       
+      # Instance restore backup request for MCP.
+      class SqlInstancesRestoreBackupMcpRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The identifier of the backup to restore. This will be one of the
+        # following: 1. An int64 containing a backup_run_id. 2. A backup name of the
+        # format 'projects/`project`/backups/`backup-uid`'. 3. A backupDR name of the
+        # format 'projects/`project`/locations/`location`/backupVaults/`backupvault`/
+        # dataSources/`datasource`/backups/`backup-uid`'.
+        # Corresponds to the JSON property `backupId`
+        # @return [String]
+        attr_accessor :backup_id
+      
+        # Optional. The Cloud SQL instance ID of the source instance containing the
+        # backup. Only necessary if the backup_id is a backup_run_id.
+        # Corresponds to the JSON property `sourceInstance`
+        # @return [String]
+        attr_accessor :source_instance
+      
+        # Required. The project ID of the source instance containing the backup.
+        # Corresponds to the JSON property `sourceProject`
+        # @return [String]
+        attr_accessor :source_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_id = args[:backup_id] if args.key?(:backup_id)
+          @source_instance = args[:source_instance] if args.key?(:source_instance)
+          @source_project = args[:source_project] if args.key?(:source_project)
+        end
+      end
+      
       # Instance start external sync request.
       class SqlInstancesStartExternalSyncRequest
         include Google::Apis::Core::Hashable
