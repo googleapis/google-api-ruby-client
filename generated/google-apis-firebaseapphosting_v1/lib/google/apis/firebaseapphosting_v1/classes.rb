@@ -1491,6 +1491,31 @@ module Google
         end
       end
       
+      # A file path pattern to match against.
+      class Path
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The pattern to match against.
+        # Corresponds to the JSON property `pattern`
+        # @return [String]
+        attr_accessor :pattern
+      
+        # Optional. The type of pattern to match against.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pattern = args[:pattern] if args.key?(:pattern)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Specifies redirect behavior for a domain.
       class Redirect
         include Google::Apis::Core::Hashable
@@ -1647,6 +1672,24 @@ module Google
         # @return [String]
         attr_accessor :disabled_time
       
+        # Optional. A list of file paths patterns to exclude from triggering a rollout.
+        # Patterns in this list take precedence over required_paths. **Note**: All paths
+        # must be in the ignored_paths in order for the rollout to be skipped. Limited
+        # to 100 paths. Example: ignored_paths: ` pattern: "foo/bar/excluded/*” type:
+        # GLOB `
+        # Corresponds to the JSON property `ignoredPaths`
+        # @return [Array<Google::Apis::FirebaseapphostingV1::Path>]
+        attr_accessor :ignored_paths
+      
+        # Optional. A list of file paths patterns that trigger a build and rollout if at
+        # least one of the changed files in the commit are present in this list. This
+        # field is optional; the rollout policy will default to triggering on all paths
+        # if not populated. Limited to 100 paths. Example: “required_paths: ` pattern: "
+        # foo/bar/*” type: GLOB `
+        # Corresponds to the JSON property `requiredPaths`
+        # @return [Array<Google::Apis::FirebaseapphostingV1::Path>]
+        attr_accessor :required_paths
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1656,6 +1699,8 @@ module Google
           @codebase_branch = args[:codebase_branch] if args.key?(:codebase_branch)
           @disabled = args[:disabled] if args.key?(:disabled)
           @disabled_time = args[:disabled_time] if args.key?(:disabled_time)
+          @ignored_paths = args[:ignored_paths] if args.key?(:ignored_paths)
+          @required_paths = args[:required_paths] if args.key?(:required_paths)
         end
       end
       
