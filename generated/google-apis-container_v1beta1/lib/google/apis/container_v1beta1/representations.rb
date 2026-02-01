@@ -502,6 +502,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GpuDirectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GpuDriverInstallationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1348,6 +1354,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SliceControllerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SoleTenantConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1647,6 +1659,8 @@ module Google
           property :pod_snapshot_config, as: 'podSnapshotConfig', class: Google::Apis::ContainerV1beta1::PodSnapshotConfig, decorator: Google::Apis::ContainerV1beta1::PodSnapshotConfig::Representation
       
           property :ray_operator_config, as: 'rayOperatorConfig', class: Google::Apis::ContainerV1beta1::RayOperatorConfig, decorator: Google::Apis::ContainerV1beta1::RayOperatorConfig::Representation
+      
+          property :slice_controller_config, as: 'sliceControllerConfig', class: Google::Apis::ContainerV1beta1::SliceControllerConfig, decorator: Google::Apis::ContainerV1beta1::SliceControllerConfig::Representation
       
           property :stateful_ha_config, as: 'statefulHaConfig', class: Google::Apis::ContainerV1beta1::StatefulHaConfig, decorator: Google::Apis::ContainerV1beta1::StatefulHaConfig::Representation
       
@@ -2609,6 +2623,13 @@ module Google
         end
       end
       
+      class GpuDirectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gpu_direct_strategy, as: 'gpuDirectStrategy'
+        end
+      end
+      
       class GpuDriverInstallationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3216,6 +3237,8 @@ module Google
       
           property :flex_start, as: 'flexStart'
           property :gcfs_config, as: 'gcfsConfig', class: Google::Apis::ContainerV1beta1::GcfsConfig, decorator: Google::Apis::ContainerV1beta1::GcfsConfig::Representation
+      
+          property :gpu_direct_config, as: 'gpuDirectConfig', class: Google::Apis::ContainerV1beta1::GpuDirectConfig, decorator: Google::Apis::ContainerV1beta1::GpuDirectConfig::Representation
       
           property :gvnic, as: 'gvnic', class: Google::Apis::ContainerV1beta1::VirtualNic, decorator: Google::Apis::ContainerV1beta1::VirtualNic::Representation
       
@@ -4083,6 +4106,13 @@ module Google
       end
       
       class ShieldedNodes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class SliceControllerConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
