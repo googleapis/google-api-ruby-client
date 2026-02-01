@@ -7130,6 +7130,11 @@ module Google
       class BulkInsertDiskResource
         include Google::Apis::Core::Hashable
       
+        # The parameters for the instant snapshot group.
+        # Corresponds to the JSON property `instantSnapshotGroupParameters`
+        # @return [Google::Apis::ComputeBeta::InstantSnapshotGroupParameters]
+        attr_accessor :instant_snapshot_group_parameters
+      
         # The URL of the DiskConsistencyGroupPolicy for the group of disks to clone.
         # This may be a full or partial URL, such as:
         # 
@@ -7153,6 +7158,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @instant_snapshot_group_parameters = args[:instant_snapshot_group_parameters] if args.key?(:instant_snapshot_group_parameters)
           @source_consistency_group_policy = args[:source_consistency_group_policy] if args.key?(:source_consistency_group_policy)
         end
       end
@@ -11774,6 +11780,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Input only. [Input Only] Additional params passed with the request, but not
+        # persisted
+        # as part of resource payload.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeBeta::ExternalVpnGatewayParams]
+        attr_accessor :params
+      
         # Indicates the user-supplied redundancy type of this external VPN gateway.
         # Corresponds to the JSON property `redundancyType`
         # @return [String]
@@ -11798,6 +11811,7 @@ module Google
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @redundancy_type = args[:redundancy_type] if args.key?(:redundancy_type)
           @self_link = args[:self_link] if args.key?(:self_link)
         end
@@ -11976,6 +11990,38 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class ExternalVpnGatewayParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource.
+        # Tag keys and values have the same definition as resource
+        # manager tags. The field is allowed for INSERT
+        # only. The keys/values to set on the resource should be specified in
+        # either ID ` : ` or Namespaced format
+        # ` : `.
+        # For example the following are valid inputs:
+        # * `"tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"`
+        # * `"123/environment" : "production", "345/abc" : "xyz"`
+        # Note:
+        # * Invalid combinations of ID & namespaced format is not supported. For
+        # instance: `"123/environment" : "tagValues/444"` is invalid.
+        # * Inconsistent format is not supported. For instance:
+        # `"tagKeys/333" : "tagValues/444", "123/env" : "prod"` is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -13400,9 +13446,7 @@ module Google
         end
       end
       
-      # A flexible specification of a time range that has 3 points of
-      # flexibility: (1) a flexible start time, (2) a flexible end time, (3) a
-      # flexible duration.
+      # Specifies a flexible time range with flexible start time and duration.
       # It is possible to specify a contradictory time range that cannot be matched
       # by any Interval. This causes a validation error.
       class FlexibleTimeRange
@@ -13556,18 +13600,6 @@ module Google
         # @return [Boolean]
         attr_accessor :allow_psc_global_access
         alias_method :allow_psc_global_access?, :allow_psc_global_access
-      
-        # This is used in PSC consumer ForwardingRule to control whether the producer
-        # is allowed to inject packets into the consumer's network. If set to true,
-        # the target service attachment must have tunneling enabled and
-        # TunnelingConfig.RoutingMode set to PACKET_INJECTION
-        # Non-PSC forwarding rules should not use this field.
-        # This field was never released to any customers and is deprecated and
-        # will be removed in the future.
-        # Corresponds to the JSON property `allowPscPacketInjection`
-        # @return [Boolean]
-        attr_accessor :allow_psc_packet_injection
-        alias_method :allow_psc_packet_injection?, :allow_psc_packet_injection
       
         # Identifies the backend service to which the forwarding rule sends traffic.
         # Required for internal and external passthrough Network Load Balancers;
@@ -13942,7 +13974,6 @@ module Google
           @all_ports = args[:all_ports] if args.key?(:all_ports)
           @allow_global_access = args[:allow_global_access] if args.key?(:allow_global_access)
           @allow_psc_global_access = args[:allow_psc_global_access] if args.key?(:allow_psc_global_access)
-          @allow_psc_packet_injection = args[:allow_psc_packet_injection] if args.key?(:allow_psc_packet_injection)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
           @base_forwarding_rule = args[:base_forwarding_rule] if args.key?(:base_forwarding_rule)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -15389,9 +15420,7 @@ module Google
         # @return [Google::Apis::ComputeBeta::FutureResourcesSpecTargetResources]
         attr_accessor :target_resources
       
-        # A flexible specification of a time range that has 3 points of
-        # flexibility: (1) a flexible start time, (2) a flexible end time, (3) a
-        # flexible duration.
+        # Specifies a flexible time range with flexible start time and duration.
         # It is possible to specify a contradictory time range that cannot be matched
         # by any Interval. This causes a validation error.
         # Corresponds to the JSON property `timeRangeSpec`
@@ -27193,6 +27222,23 @@ module Google
         # @return [String]
         attr_accessor :source_disk_id
       
+        # Output only. [Output Only] URL of the source instant snapshot this instant
+        # snapshot is
+        # part of. Note that the source instant snapshot group must be in the same
+        # zone/region as the instant snapshot to be created. This can be a full or
+        # valid partial URL.
+        # Corresponds to the JSON property `sourceInstantSnapshotGroup`
+        # @return [String]
+        attr_accessor :source_instant_snapshot_group
+      
+        # Output only. [Output Only] The ID value of the source instant snapshot group
+        # this
+        # InstantSnapshot is part of. This value may be used to determine whether the
+        # InstantSnapshot was created as part of an InstantSnapshotGroup creation.
+        # Corresponds to the JSON property `sourceInstantSnapshotGroupId`
+        # @return [String]
+        attr_accessor :source_instant_snapshot_group_id
+      
         # Output only. [Output Only] The status of the instantSnapshot. This can
         # beCREATING, DELETING, FAILED, orREADY.
         # Corresponds to the JSON property `status`
@@ -27229,6 +27275,8 @@ module Google
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @source_disk = args[:source_disk] if args.key?(:source_disk)
           @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
+          @source_instant_snapshot_group = args[:source_instant_snapshot_group] if args.key?(:source_instant_snapshot_group)
+          @source_instant_snapshot_group_id = args[:source_instant_snapshot_group_id] if args.key?(:source_instant_snapshot_group_id)
           @status = args[:status] if args.key?(:status)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -27363,6 +27411,190 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Represents an InstantSnapshotGroup resource.
+      # An instant snapshot group is a set of instant snapshots that represents a
+      # point in time state of a consistency group.
+      class InstantSnapshotGroup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] Creation timestamp inRFC3339
+        # text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # Optional. An optional description of this resource. Provide this property when
+        # you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. [Output Only] The unique identifier for the resource. This
+        # identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Output only. [Output Only] Type of the resource. Alwayscompute#
+        # instantSnapshotGroup for InstantSnapshotGroup
+        # resources.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Identifier. Name of the resource; provided by the client when the resource is
+        # created.
+        # The name must be 1-63 characters long, and comply withRFC1035.
+        # Specifically, the name must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        # character must be a lowercase letter, and all following characters must be
+        # a dash, lowercase letter, or digit, except the last character, which cannot
+        # be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. [Output Only] URL of the region where the instant snapshot group
+        # resides.
+        # You must specify this field as part of the HTTP request URL. It is
+        # not settable as a field in the request body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # 
+        # Corresponds to the JSON property `resourceStatus`
+        # @return [Google::Apis::ComputeBeta::InstantSnapshotGroupResourceStatus]
+        attr_accessor :resource_status
+      
+        # Output only. [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. [Output Only] Server-defined URL for this resource's resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # 
+        # Corresponds to the JSON property `sourceConsistencyGroup`
+        # @return [String]
+        attr_accessor :source_consistency_group
+      
+        # Output only. [Output Only]
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Output only. [Output Only] URL of the zone where the instant snapshot group
+        # resides.
+        # You must specify this field as part of the HTTP request URL. It is
+        # not settable as a field in the request body.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
+          @resource_status = args[:resource_status] if args.key?(:resource_status)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @source_consistency_group = args[:source_consistency_group] if args.key?(:source_consistency_group)
+          @status = args[:status] if args.key?(:status)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class InstantSnapshotGroupParameters
+        include Google::Apis::Core::Hashable
+      
+        # The source instant snapshot group used to create disks. You can provide
+        # this as a partial or full URL to the resource. For example, the following
+        # are valid values:
+        # 
+        # 
+        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/
+        # instantSnapshotGroups/instantSnapshotGroup
+        # - projects/project/zones/zone/instantSnapshotGroups/instantSnapshotGroup
+        # - zones/zone/instantSnapshotGroups/instantSnapshotGroup
+        # Corresponds to the JSON property `sourceInstantSnapshotGroup`
+        # @return [String]
+        attr_accessor :source_instant_snapshot_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_instant_snapshot_group = args[:source_instant_snapshot_group] if args.key?(:source_instant_snapshot_group)
+        end
+      end
+      
+      # 
+      class InstantSnapshotGroupResourceStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only]
+        # Corresponds to the JSON property `consistencyMembershipResolutionTime`
+        # @return [String]
+        attr_accessor :consistency_membership_resolution_time
+      
+        # Output only. [Output Only]
+        # Corresponds to the JSON property `sourceInfo`
+        # @return [Google::Apis::ComputeBeta::InstantSnapshotGroupSourceInfo]
+        attr_accessor :source_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consistency_membership_resolution_time = args[:consistency_membership_resolution_time] if args.key?(:consistency_membership_resolution_time)
+          @source_info = args[:source_info] if args.key?(:source_info)
+        end
+      end
+      
+      # 
+      class InstantSnapshotGroupSourceInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `consistencyGroup`
+        # @return [String]
+        attr_accessor :consistency_group
+      
+        # 
+        # Corresponds to the JSON property `consistencyGroupId`
+        # @return [String]
+        attr_accessor :consistency_group_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consistency_group = args[:consistency_group] if args.key?(:consistency_group)
+          @consistency_group_id = args[:consistency_group_id] if args.key?(:consistency_group_id)
         end
       end
       
@@ -32665,6 +32897,143 @@ module Google
         end
       end
       
+      # Contains a list of InstantSnapshotGroup resources.
+      class ListInstantSnapshotGroups
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of InstantSnapshotGroup resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeBeta::InstantSnapshotGroup>]
+        attr_accessor :items
+      
+        # Output only. Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for
+        # list requests. If the number of results is larger thanmaxResults, use the
+        # nextPageToken as a value for
+        # the query parameter pageToken in the next list request.
+        # Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. [Output Only] Unreachable resources.
+        # end_interface: MixerListResponseWithEtagBuilder
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::ListInstantSnapshotGroups::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute
+          # Engine returns NO_RESULTS_ON_PAGE if there
+          # are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key:
+          # value format. For example:
+          # "data": [
+          # `
+          # "key": "scope",
+          # "value": "zones/us-east1-d"
+          # `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::ListInstantSnapshotGroups::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being
+            # returned. For example, for warnings where there are no results in a list
+            # request for a particular zone, this key might be scope and
+            # the key value might be the zone name. Other examples might be a key
+            # indicating a deprecated resource and a suggested replacement, or a
+            # warning about invalid network settings (for example, if an instance
+            # attempts to perform IP forwarding but is not enabled for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # 
       class LocalDisk
         include Google::Apis::Core::Hashable
@@ -32890,6 +33259,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Machine Image parameters
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeBeta::MachineImageParams]
+        attr_accessor :params
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -32974,6 +33348,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @machine_image_encryption_key = args[:machine_image_encryption_key] if args.key?(:machine_image_encryption_key)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @saved_disks = args[:saved_disks] if args.key?(:saved_disks)
@@ -33109,6 +33484,32 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Machine Image parameters
+      class MachineImageParams
+        include Google::Apis::Core::Hashable
+      
+        # Input only. Resource manager tags to be bound to the machine image. Tag keys
+        # and values
+        # have the same definition as resource
+        # manager tags. Keys and values can be either in numeric format,
+        # such as `tagKeys/`tag_key_id`` and `tagValues/`tag_value_id`` or in
+        # namespaced format such as ``org_id|project_id`/`tag_key_short_name`` and
+        # ``tag_value_short_name``. The field is ignored (both PUT &
+        # PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -37726,10 +38127,7 @@ module Google
         # @return [String]
         attr_accessor :stack_type
       
-        # Output only. [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`
-        # . The
-        # peering is `ACTIVE` when there's a matching configuration in the peer
-        # network.
+        # Output only. [Output Only] State for the peering.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -60915,20 +61313,17 @@ module Google
       class StoragePoolExapoolProvisionedCapacityGb
         include Google::Apis::Core::Hashable
       
-        # Output only. Size, in GiB, of provisioned capacity-optimized capacity for this
-        # Exapool
+        # Size, in GiB, of provisioned capacity-optimized capacity for this Exapool
         # Corresponds to the JSON property `capacityOptimized`
         # @return [Fixnum]
         attr_accessor :capacity_optimized
       
-        # Output only. Size, in GiB, of provisioned read-optimized capacity for this
-        # Exapool
+        # Size, in GiB, of provisioned read-optimized capacity for this Exapool
         # Corresponds to the JSON property `readOptimized`
         # @return [Fixnum]
         attr_accessor :read_optimized
       
-        # Output only. Size, in GiB, of provisioned write-optimized capacity for this
-        # Exapool
+        # Size, in GiB, of provisioned write-optimized capacity for this Exapool
         # Corresponds to the JSON property `writeOptimized`
         # @return [Fixnum]
         attr_accessor :write_optimized
@@ -61954,9 +62349,9 @@ module Google
       class Subnetwork
         include Google::Apis::Core::Hashable
       
-        # Whether this subnetwork's ranges can conflict with existing static routes.
+        # Whether this subnetwork's ranges can conflict with existing custom routes.
         # Setting this to true allows this subnetwork's primary and secondary ranges
-        # to overlap with (and contain) static routes that have already been
+        # to overlap with (and contain) custom routes that have already been
         # configured on the corresponding network.
         # For example if a static route has range 10.1.0.0/16, a subnet
         # range 10.0.0.0/8 could only be created if allow_conflicting_routes=true.
@@ -61968,7 +62363,6 @@ module Google
         # Setting this field to true will disable this feature.
         # The default value is false and applies to all existing subnetworks and
         # automatically created subnetworks.
-        # This field cannot be set to true at resource creation time.
         # Corresponds to the JSON property `allowSubnetCidrRoutesOverlap`
         # @return [Boolean]
         attr_accessor :allow_subnet_cidr_routes_overlap
@@ -62178,6 +62572,7 @@ module Google
         # contained in this subnetwork. The primary IP of such VM must belong to the
         # primary ipCidrRange of the subnetwork. The alias IPs may belong to either
         # primary or secondary ranges. This field can be updated with apatch request.
+        # Supports both IPv4 and IPv6 ranges.
         # Corresponds to the JSON property `secondaryIpRanges`
         # @return [Array<Google::Apis::ComputeBeta::SubnetworkSecondaryRange>]
         attr_accessor :secondary_ip_ranges
@@ -62631,22 +63026,34 @@ module Google
         # The range of IP addresses belonging to this subnetwork secondary range.
         # Provide this property when you create the subnetwork. Ranges must be
         # unique and non-overlapping with all primary and secondary IP ranges
-        # within a network. Only IPv4 is supported. The range can be any range
-        # listed in theValid
+        # within a network. Both IPv4 and IPv6 ranges are supported. For IPv4,
+        # the range can be any range listed in theValid
         # ranges list.
+        # For IPv6:
+        # The range must have a /64 prefix length.
+        # The range must be omitted, for auto-allocation from Google-defined ULA
+        # IPv6 range.
+        # For BYOGUA internal IPv6 secondary range, the range may be specified
+        # along with the `ipCollection` field.
+        # If an `ipCollection` is specified, the requested ip_cidr_range must lie
+        # within the range of the PDP referenced by the `ipCollection` field for
+        # allocation.
+        # If `ipCollection` field is specified, but ip_cidr_range is not,
+        # the range is auto-allocated from the PDP referenced by the `ipCollection`
+        # field.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
       
         # The name associated with this subnetwork secondary range, used when adding
-        # an alias IP range to a VM instance.
+        # an alias IP/IPv6 range to a VM instance.
         # The name must be 1-63 characters long, and comply withRFC1035.
         # The name must be unique within the subnetwork.
         # Corresponds to the JSON property `rangeName`
         # @return [String]
         attr_accessor :range_name
       
-        # The URL of the reserved internal range.
+        # The URL of the reserved internal range. Only IPv4 is supported.
         # Corresponds to the JSON property `reservedInternalRange`
         # @return [String]
         attr_accessor :reserved_internal_range
@@ -66546,6 +66953,13 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Input only. [Input Only] Additional params passed with the request, but not
+        # persisted
+        # as part of resource payload.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeBeta::TargetVpnGatewayParams]
+        attr_accessor :params
+      
         # [Output Only] URL of the region where the target VPN gateway resides.
         # You must specify this field as part of the HTTP request URL. It is
         # not settable as a field in the request body.
@@ -66586,6 +67000,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @params = args[:params] if args.key?(:params)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
@@ -66846,6 +67261,38 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class TargetVpnGatewayParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource.
+        # Tag keys and values have the same definition as resource
+        # manager tags. The field is allowed for INSERT
+        # only. The keys/values to set on the resource should be specified in
+        # either ID ` : ` or Namespaced format
+        # ` : `.
+        # For example the following are valid inputs:
+        # * `"tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"`
+        # * `"123/environment" : "production", "345/abc" : "xyz"`
+        # Note:
+        # * Invalid combinations of ID & namespaced format is not supported. For
+        # instance: `"123/environment" : "tagValues/444"` is invalid.
+        # * Inconsistent format is not supported. For instance:
+        # `"tagKeys/333" : "tagValues/444", "123/env" : "prod"` is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -68075,6 +68522,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The range of IP addresses belonging to this subnetwork secondary range.
+        # Can be Ipv4 or Ipv6 range.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
@@ -69212,6 +69660,13 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Input only. [Input Only] Additional params passed with the request, but not
+        # persisted
+        # as part of resource payload.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeBeta::VpnGatewayParams]
+        attr_accessor :params
+      
         # Output only. [Output Only] URL of the region where the VPN gateway resides.
         # Corresponds to the JSON property `region`
         # @return [String]
@@ -69250,6 +69705,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @params = args[:params] if args.key?(:params)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @stack_type = args[:stack_type] if args.key?(:stack_type)
@@ -69510,6 +69966,38 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class VpnGatewayParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource.
+        # Tag keys and values have the same definition as resource
+        # manager tags. The field is allowed for INSERT
+        # only. The keys/values to set on the resource should be specified in
+        # either ID ` : ` or Namespaced format
+        # ` : `.
+        # For example the following are valid inputs:
+        # * `"tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"`
+        # * `"123/environment" : "production", "345/abc" : "xyz"`
+        # Note:
+        # * Invalid combinations of ID & namespaced format is not supported. For
+        # instance: `"123/environment" : "tagValues/444"` is invalid.
+        # * Inconsistent format is not supported. For instance:
+        # `"tagKeys/333" : "tagValues/444", "123/env" : "prod"` is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -69909,6 +70397,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Input only. [Input Only] Additional params passed with the request, but not
+        # persisted
+        # as part of resource payload.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeBeta::VpnTunnelParams]
+        attr_accessor :params
+      
         # URL of the peer side external VPN gateway to which this VPN tunnel is
         # connected.
         # Provided by the client when the VPN tunnel is created.
@@ -70054,6 +70549,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @local_traffic_selector = args[:local_traffic_selector] if args.key?(:local_traffic_selector)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @peer_external_gateway = args[:peer_external_gateway] if args.key?(:peer_external_gateway)
           @peer_external_gateway_interface = args[:peer_external_gateway_interface] if args.key?(:peer_external_gateway_interface)
           @peer_gcp_gateway = args[:peer_gcp_gateway] if args.key?(:peer_gcp_gateway)
@@ -70349,6 +70845,38 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class VpnTunnelParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource.
+        # Tag keys and values have the same definition as resource
+        # manager tags. The field is allowed for INSERT
+        # only. The keys/values to set on the resource should be specified in
+        # either ID ` : ` or Namespaced format
+        # ` : `.
+        # For example the following are valid inputs:
+        # * `"tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"`
+        # * `"123/environment" : "production", "345/abc" : "xyz"`
+        # Note:
+        # * Invalid combinations of ID & namespaced format is not supported. For
+        # instance: `"123/environment" : "tagValues/444"` is invalid.
+        # * Inconsistent format is not supported. For instance:
+        # `"tagKeys/333" : "tagValues/444", "123/env" : "prod"` is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
