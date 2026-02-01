@@ -1014,6 +1014,19 @@ module Google
         end
       end
       
+      # Details about base price offer phase.
+      class BasePriceOfferPhase
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for BatchDeleteOneTimeProductOffers.
       class BatchDeleteOneTimeProductOffersRequest
         include Google::Apis::Core::Hashable
@@ -2208,6 +2221,80 @@ module Google
         end
       end
       
+      # Request for the v2 purchases.subscriptions.defer API.
+      class DeferSubscriptionPurchaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # Deferral context of the purchases.subscriptionsv2.defer API.
+        # Corresponds to the JSON property `deferralContext`
+        # @return [Google::Apis::AndroidpublisherV3::DeferralContext]
+        attr_accessor :deferral_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deferral_context = args[:deferral_context] if args.key?(:deferral_context)
+        end
+      end
+      
+      # Response for the v2 purchases.subscriptions.defer API.
+      class DeferSubscriptionPurchaseResponse
+        include Google::Apis::Core::Hashable
+      
+        # The new expiry time for each subscription items.
+        # Corresponds to the JSON property `itemExpiryTimeDetails`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ItemExpiryTimeDetails>]
+        attr_accessor :item_expiry_time_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @item_expiry_time_details = args[:item_expiry_time_details] if args.key?(:item_expiry_time_details)
+        end
+      end
+      
+      # Deferral context of the purchases.subscriptionsv2.defer API.
+      class DeferralContext
+        include Google::Apis::Core::Hashable
+      
+        # Required. The duration by which all subscription items should be deferred.
+        # Corresponds to the JSON property `deferDuration`
+        # @return [String]
+        attr_accessor :defer_duration
+      
+        # Required. The API will fail if the etag does not match the latest etag for
+        # this subscription. The etag is retrieved from purchases.subscriptionsv2.get:
+        # https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.
+        # subscriptionsv2/get
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # If set to "true", the request is a dry run to validate the effect of Defer,
+        # the subscription would not be impacted.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @defer_duration = args[:defer_duration] if args.key?(:defer_duration)
+          @etag = args[:etag] if args.key?(:etag)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
       # Information related to deferred item replacement.
       class DeferredItemRemoval
         include Google::Apis::Core::Hashable
@@ -3336,6 +3423,19 @@ module Google
         end
       end
       
+      # Details about free trial offer phase.
+      class FreeTrialOfferPhase
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A full refund of the remaining amount of a transaction.
       class FullRefund
         include Google::Apis::Core::Hashable
@@ -4339,6 +4439,44 @@ module Google
         end
       end
       
+      # Details about introductory price offer phase.
+      class IntroductoryPriceOfferPhase
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Expiry time details of a subscription item.
+      class ItemExpiryTimeDetails
+        include Google::Apis::Core::Hashable
+      
+        # The new expiry time for this subscription item.
+        # Corresponds to the JSON property `expiryTime`
+        # @return [String]
+        attr_accessor :expiry_time
+      
+        # The product ID of the subscription item (for example, 'premium_plan').
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
+          @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
       # Details about a subscription line item that is being replaced.
       class ItemReplacement
         include Google::Apis::Core::Hashable
@@ -5039,6 +5177,43 @@ module Google
           @base_plan_id = args[:base_plan_id] if args.key?(:base_plan_id)
           @offer_id = args[:offer_id] if args.key?(:offer_id)
           @offer_tags = args[:offer_tags] if args.key?(:offer_tags)
+        end
+      end
+      
+      # Offer phase details.
+      class OfferPhase
+        include Google::Apis::Core::Hashable
+      
+        # Details about base price offer phase.
+        # Corresponds to the JSON property `basePrice`
+        # @return [Google::Apis::AndroidpublisherV3::BasePriceOfferPhase]
+        attr_accessor :base_price
+      
+        # Details about free trial offer phase.
+        # Corresponds to the JSON property `freeTrial`
+        # @return [Google::Apis::AndroidpublisherV3::FreeTrialOfferPhase]
+        attr_accessor :free_trial
+      
+        # Details about introductory price offer phase.
+        # Corresponds to the JSON property `introductoryPrice`
+        # @return [Google::Apis::AndroidpublisherV3::IntroductoryPriceOfferPhase]
+        attr_accessor :introductory_price
+      
+        # Details about proration period offer phase.
+        # Corresponds to the JSON property `prorationPeriod`
+        # @return [Google::Apis::AndroidpublisherV3::ProrationPeriodOfferPhase]
+        attr_accessor :proration_period
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_price = args[:base_price] if args.key?(:base_price)
+          @free_trial = args[:free_trial] if args.key?(:free_trial)
+          @introductory_price = args[:introductory_price] if args.key?(:introductory_price)
+          @proration_period = args[:proration_period] if args.key?(:proration_period)
         end
       end
       
@@ -6789,6 +6964,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @original_offer_phase = args[:original_offer_phase] if args.key?(:original_offer_phase)
+        end
+      end
+      
+      # Details about proration period offer phase.
+      class ProrationPeriodOfferPhase
+        include Google::Apis::Core::Hashable
+      
+        # The original offer phase type before the proration period. Only set when the
+        # proration period is updated from an existing offer phase.
+        # Corresponds to the JSON property `originalOfferPhaseType`
+        # @return [String]
+        attr_accessor :original_offer_phase_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @original_offer_phase_type = args[:original_offer_phase_type] if args.key?(:original_offer_phase_type)
         end
       end
       
@@ -8686,6 +8881,11 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::OfferDetails]
         attr_accessor :offer_details
       
+        # Offer phase details.
+        # Corresponds to the JSON property `offerPhase`
+        # @return [Google::Apis::AndroidpublisherV3::OfferPhase]
+        attr_accessor :offer_phase
+      
         # Information related to a prepaid plan.
         # Corresponds to the JSON property `prepaidPlan`
         # @return [Google::Apis::AndroidpublisherV3::PrepaidPlan]
@@ -8714,6 +8914,7 @@ module Google
           @item_replacement = args[:item_replacement] if args.key?(:item_replacement)
           @latest_successful_order_id = args[:latest_successful_order_id] if args.key?(:latest_successful_order_id)
           @offer_details = args[:offer_details] if args.key?(:offer_details)
+          @offer_phase = args[:offer_phase] if args.key?(:offer_phase)
           @prepaid_plan = args[:prepaid_plan] if args.key?(:prepaid_plan)
           @product_id = args[:product_id] if args.key?(:product_id)
           @signup_promotion = args[:signup_promotion] if args.key?(:signup_promotion)
@@ -8734,6 +8935,13 @@ module Google
         # Corresponds to the JSON property `canceledStateContext`
         # @return [Google::Apis::AndroidpublisherV3::CanceledStateContext]
         attr_accessor :canceled_state_context
+      
+        # Entity tag representing the current state of the subscription. The developer
+        # will provide this etag for subscription actions. This etag is always present
+        # for auto-renewing and prepaid subscriptions.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
       
         # User account identifier in the third-party service.
         # Corresponds to the JSON property `externalAccountIdentifiers`
@@ -8816,6 +9024,7 @@ module Google
         def update!(**args)
           @acknowledgement_state = args[:acknowledgement_state] if args.key?(:acknowledgement_state)
           @canceled_state_context = args[:canceled_state_context] if args.key?(:canceled_state_context)
+          @etag = args[:etag] if args.key?(:etag)
           @external_account_identifiers = args[:external_account_identifiers] if args.key?(:external_account_identifiers)
           @kind = args[:kind] if args.key?(:kind)
           @latest_order_id = args[:latest_order_id] if args.key?(:latest_order_id)
@@ -9561,11 +9770,12 @@ module Google
         end
       end
       
-      # Representation of a single country where the contents of a track are available.
+      # Representation of a single country where the contents of a track can be made
+      # available.
       class TrackTargetedCountry
         include Google::Apis::Core::Hashable
       
-        # The country to target, as a two-letter CLDR code.
+        # The country that can be targeted, as a two-letter CLDR code.
         # Corresponds to the JSON property `countryCode`
         # @return [String]
         attr_accessor :country_code
