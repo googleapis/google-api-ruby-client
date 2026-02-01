@@ -4665,10 +4665,32 @@ module Google
         # @return [Fixnum]
         attr_accessor :effective_search_qpm_threshold
       
+        # Output only. The earliest next update time for the indexing core subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # indexing core subscription threshold request is succeeded.
+        # Corresponds to the JSON property `indexingCoreThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :indexing_core_threshold_next_update_time
+      
+        # Output only. The earliest next update time for the search QPM subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # QPM subscription threshold request is succeeded.
+        # Corresponds to the JSON property `searchQpmThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :search_qpm_threshold_next_update_time
+      
         # Optional. The start time of the currently active billing subscription.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
+      
+        # Output only. The latest terminate effective time of search qpm and indexing
+        # core subscriptions.
+        # Corresponds to the JSON property `terminateTime`
+        # @return [String]
+        attr_accessor :terminate_time
       
         def initialize(**args)
            update!(**args)
@@ -4678,7 +4700,10 @@ module Google
         def update!(**args)
           @effective_indexing_core_threshold = args[:effective_indexing_core_threshold] if args.key?(:effective_indexing_core_threshold)
           @effective_search_qpm_threshold = args[:effective_search_qpm_threshold] if args.key?(:effective_search_qpm_threshold)
+          @indexing_core_threshold_next_update_time = args[:indexing_core_threshold_next_update_time] if args.key?(:indexing_core_threshold_next_update_time)
+          @search_qpm_threshold_next_update_time = args[:search_qpm_threshold_next_update_time] if args.key?(:search_qpm_threshold_next_update_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
         end
       end
       
@@ -6528,7 +6553,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequest
         include Google::Apis::Core::Hashable
       
-        # Specification to boost suggestions based on the condtion of the suggestion.
+        # Specification to boost suggestions based on the condition of the suggestion.
         # Corresponds to the JSON property `boostSpec`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpec]
         attr_accessor :boost_spec
@@ -6616,7 +6641,7 @@ module Google
         end
       end
       
-      # Specification to boost suggestions based on the condtion of the suggestion.
+      # Specification to boost suggestions based on the condition of the suggestion.
       class GoogleCloudDiscoveryengineV1alphaAdvancedCompleteQueryRequestBoostSpec
         include Google::Apis::Core::Hashable
       
@@ -7250,11 +7275,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. The display name of the agent owner.
-        # Corresponds to the JSON property `ownerDisplayName`
-        # @return [String]
-        attr_accessor :owner_display_name
-      
         # The reason why the agent was rejected. Only set if the state is PRIVATE, and
         # got there via rejection.
         # Corresponds to the JSON property `rejectionReason`
@@ -7307,7 +7327,6 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @icon = args[:icon] if args.key?(:icon)
           @name = args[:name] if args.key?(:name)
-          @owner_display_name = args[:owner_display_name] if args.key?(:owner_display_name)
           @rejection_reason = args[:rejection_reason] if args.key?(:rejection_reason)
           @state = args[:state] if args.key?(:state)
           @suggested_prompts = args[:suggested_prompts] if args.key?(:suggested_prompts)
@@ -7577,6 +7596,34 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @project_id = args[:project_id] if args.key?(:project_id)
           @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
+      # The customer controllable config for Analytics.
+      class GoogleCloudDiscoveryengineV1alphaAnalyticsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the analytics customer config. Format: `
+        # projects/`project`/locations/`location`/collections/`collection_id`/engines/`
+        # engine_id`/analytics/config`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Whether user-level metrics are enabled.
+        # Corresponds to the JSON property `userLevelMetricsEnabled`
+        # @return [Boolean]
+        attr_accessor :user_level_metrics_enabled
+        alias_method :user_level_metrics_enabled?, :user_level_metrics_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @user_level_metrics_enabled = args[:user_level_metrics_enabled] if args.key?(:user_level_metrics_enabled)
         end
       end
       
@@ -19701,10 +19748,32 @@ module Google
         # @return [Fixnum]
         attr_accessor :effective_search_qpm_threshold
       
+        # Output only. The earliest next update time for the indexing core subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # indexing core subscription threshold request is succeeded.
+        # Corresponds to the JSON property `indexingCoreThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :indexing_core_threshold_next_update_time
+      
+        # Output only. The earliest next update time for the search QPM subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # QPM subscription threshold request is succeeded.
+        # Corresponds to the JSON property `searchQpmThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :search_qpm_threshold_next_update_time
+      
         # Optional. The start time of the currently active billing subscription.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
+      
+        # Output only. The latest terminate effective time of search qpm and indexing
+        # core subscriptions.
+        # Corresponds to the JSON property `terminateTime`
+        # @return [String]
+        attr_accessor :terminate_time
       
         def initialize(**args)
            update!(**args)
@@ -19714,7 +19783,10 @@ module Google
         def update!(**args)
           @effective_indexing_core_threshold = args[:effective_indexing_core_threshold] if args.key?(:effective_indexing_core_threshold)
           @effective_search_qpm_threshold = args[:effective_search_qpm_threshold] if args.key?(:effective_search_qpm_threshold)
+          @indexing_core_threshold_next_update_time = args[:indexing_core_threshold_next_update_time] if args.key?(:indexing_core_threshold_next_update_time)
+          @search_qpm_threshold_next_update_time = args[:search_qpm_threshold_next_update_time] if args.key?(:search_qpm_threshold_next_update_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
         end
       end
       
@@ -27031,6 +27103,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The nodes associated with the Widget Config.
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigNode>]
+        attr_accessor :nodes
+      
         # The type of snippet to display in UCS widget. -
         # RESULT_DISPLAY_TYPE_UNSPECIFIED for existing users. - SNIPPET for new non-
         # enterprise search users. - EXTRACTIVE_ANSWER for new enterprise search users.
@@ -27097,6 +27174,7 @@ module Google
           @llm_enabled = args[:llm_enabled] if args.key?(:llm_enabled)
           @minimum_data_term_accepted = args[:minimum_data_term_accepted] if args.key?(:minimum_data_term_accepted)
           @name = args[:name] if args.key?(:name)
+          @nodes = args[:nodes] if args.key?(:nodes)
           @result_display_type = args[:result_display_type] if args.key?(:result_display_type)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
           @ui_branding = args[:ui_branding] if args.key?(:ui_branding)
@@ -27487,6 +27565,61 @@ module Google
         # Update properties of this object
         def update!(**args)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Represents a single reusable computational or logical unit.
+      class GoogleCloudDiscoveryengineV1alphaWidgetConfigNode
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A detailed description of what the node does.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. A human readable name for the node.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. An identifier or URL pointing to an icon representing this node
+        # type.
+        # Corresponds to the JSON property `iconUrl`
+        # @return [String]
+        attr_accessor :icon_url
+      
+        # Output only. The output schema of the tool. This schema is expected to conform
+        # to the OpenAPI Schema standard (see https://spec.openapis.org/oas/v3.0.3.html/
+        # and AIP-146). It describes the structure of the output produced by this node.
+        # Corresponds to the JSON property `outputSchema`
+        # @return [Hash<String,Object>]
+        attr_accessor :output_schema
+      
+        # Output only. The parameter schema of the tool. This schema is expected to
+        # conform to the OpenAPI Schema standard (see https://spec.openapis.org/oas/v3.0.
+        # 3.html and AIP-146). It describes the expected structure of the parameters
+        # that this node accepts.
+        # Corresponds to the JSON property `parameterSchema`
+        # @return [Hash<String,Object>]
+        attr_accessor :parameter_schema
+      
+        # Output only. The type of the node.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @icon_url = args[:icon_url] if args.key?(:icon_url)
+          @output_schema = args[:output_schema] if args.key?(:output_schema)
+          @parameter_schema = args[:parameter_schema] if args.key?(:parameter_schema)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -30986,10 +31119,32 @@ module Google
         # @return [Fixnum]
         attr_accessor :effective_search_qpm_threshold
       
+        # Output only. The earliest next update time for the indexing core subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # indexing core subscription threshold request is succeeded.
+        # Corresponds to the JSON property `indexingCoreThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :indexing_core_threshold_next_update_time
+      
+        # Output only. The earliest next update time for the search QPM subscription
+        # threshold. This is based on the next_update_time returned by the underlying
+        # Cloud Billing Subscription V3 API. This field is populated only if an update
+        # QPM subscription threshold request is succeeded.
+        # Corresponds to the JSON property `searchQpmThresholdNextUpdateTime`
+        # @return [String]
+        attr_accessor :search_qpm_threshold_next_update_time
+      
         # Optional. The start time of the currently active billing subscription.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
+      
+        # Output only. The latest terminate effective time of search qpm and indexing
+        # core subscriptions.
+        # Corresponds to the JSON property `terminateTime`
+        # @return [String]
+        attr_accessor :terminate_time
       
         def initialize(**args)
            update!(**args)
@@ -30999,7 +31154,10 @@ module Google
         def update!(**args)
           @effective_indexing_core_threshold = args[:effective_indexing_core_threshold] if args.key?(:effective_indexing_core_threshold)
           @effective_search_qpm_threshold = args[:effective_search_qpm_threshold] if args.key?(:effective_search_qpm_threshold)
+          @indexing_core_threshold_next_update_time = args[:indexing_core_threshold_next_update_time] if args.key?(:indexing_core_threshold_next_update_time)
+          @search_qpm_threshold_next_update_time = args[:search_qpm_threshold_next_update_time] if args.key?(:search_qpm_threshold_next_update_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @terminate_time = args[:terminate_time] if args.key?(:terminate_time)
         end
       end
       
@@ -33964,10 +34122,20 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonIngestionError]
         attr_accessor :ingestion_error
       
+        # Indicates that the source MIME type is blocked.
+        # Corresponds to the JSON property `mimeTypeBlocked`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonMimeTypeBlocked]
+        attr_accessor :mime_type_blocked
+      
         # Indicates that the source is paywalled and cannot be ingested.
         # Corresponds to the JSON property `paywallError`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonPaywallError]
         attr_accessor :paywall_error
+      
+        # Indicates that the policy check failed.
+        # Corresponds to the JSON property `policyCheckFailed`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonPolicyCheckFailed]
+        attr_accessor :policy_check_failed
       
         # Indicates that the source is empty.
         # Corresponds to the JSON property `sourceEmpty`
@@ -34015,7 +34183,9 @@ module Google
           @domain_blocked = args[:domain_blocked] if args.key?(:domain_blocked)
           @google_drive_error = args[:google_drive_error] if args.key?(:google_drive_error)
           @ingestion_error = args[:ingestion_error] if args.key?(:ingestion_error)
+          @mime_type_blocked = args[:mime_type_blocked] if args.key?(:mime_type_blocked)
           @paywall_error = args[:paywall_error] if args.key?(:paywall_error)
+          @policy_check_failed = args[:policy_check_failed] if args.key?(:policy_check_failed)
           @source_empty = args[:source_empty] if args.key?(:source_empty)
           @source_limit_exceeded = args[:source_limit_exceeded] if args.key?(:source_limit_exceeded)
           @source_too_long = args[:source_too_long] if args.key?(:source_too_long)
@@ -34135,8 +34305,34 @@ module Google
         end
       end
       
+      # Indicates that the source MIME type is blocked.
+      class GoogleCloudNotebooklmV1alphaFailureReasonMimeTypeBlocked
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Indicates that the source is paywalled and cannot be ingested.
       class GoogleCloudNotebooklmV1alphaFailureReasonPaywallError
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Indicates that the policy check failed.
+      class GoogleCloudNotebooklmV1alphaFailureReasonPolicyCheckFailed
         include Google::Apis::Core::Hashable
       
         def initialize(**args)

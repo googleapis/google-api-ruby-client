@@ -1156,6 +1156,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaAnalyticsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaAnswer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4324,6 +4330,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1alphaWidgetConfigNode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaWidgetConfigUiComponentField
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5380,7 +5392,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudNotebooklmV1alphaFailureReasonMimeTypeBlocked
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudNotebooklmV1alphaFailureReasonPaywallError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonPolicyCheckFailed
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6847,7 +6871,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :effective_indexing_core_threshold, :numeric_string => true, as: 'effectiveIndexingCoreThreshold'
           property :effective_search_qpm_threshold, :numeric_string => true, as: 'effectiveSearchQpmThreshold'
+          property :indexing_core_threshold_next_update_time, as: 'indexingCoreThresholdNextUpdateTime'
+          property :search_qpm_threshold_next_update_time, as: 'searchQpmThresholdNextUpdateTime'
           property :start_time, as: 'startTime'
+          property :terminate_time, as: 'terminateTime'
         end
       end
       
@@ -7505,7 +7532,6 @@ module Google
           property :icon, as: 'icon', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentImage, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentImage::Representation
       
           property :name, as: 'name'
-          property :owner_display_name, as: 'ownerDisplayName'
           property :rejection_reason, as: 'rejectionReason'
           property :state, as: 'state'
           collection :suggested_prompts, as: 'suggestedPrompts', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentViewSuggestedPrompt, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentViewSuggestedPrompt::Representation
@@ -7586,6 +7612,14 @@ module Google
           property :location_id, as: 'locationId'
           property :project_id, as: 'projectId'
           property :table_id, as: 'tableId'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAnalyticsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :user_level_metrics_enabled, as: 'userLevelMetricsEnabled'
         end
       end
       
@@ -10997,7 +11031,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :effective_indexing_core_threshold, :numeric_string => true, as: 'effectiveIndexingCoreThreshold'
           property :effective_search_qpm_threshold, :numeric_string => true, as: 'effectiveSearchQpmThreshold'
+          property :indexing_core_threshold_next_update_time, as: 'indexingCoreThresholdNextUpdateTime'
+          property :search_qpm_threshold_next_update_time, as: 'searchQpmThresholdNextUpdateTime'
           property :start_time, as: 'startTime'
+          property :terminate_time, as: 'terminateTime'
         end
       end
       
@@ -12891,6 +12928,8 @@ module Google
           property :llm_enabled, as: 'llmEnabled'
           property :minimum_data_term_accepted, as: 'minimumDataTermAccepted'
           property :name, as: 'name'
+          collection :nodes, as: 'nodes', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigNode, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigNode::Representation
+      
           property :result_display_type, as: 'resultDisplayType'
           property :solution_type, as: 'solutionType'
           property :ui_branding, as: 'uiBranding', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigUiBrandingSettings, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaWidgetConfigUiBrandingSettings::Representation
@@ -12998,6 +13037,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :url, as: 'url'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaWidgetConfigNode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :icon_url, as: 'iconUrl'
+          hash :output_schema, as: 'outputSchema'
+          hash :parameter_schema, as: 'parameterSchema'
+          property :type, as: 'type'
         end
       end
       
@@ -13952,7 +14003,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :effective_indexing_core_threshold, :numeric_string => true, as: 'effectiveIndexingCoreThreshold'
           property :effective_search_qpm_threshold, :numeric_string => true, as: 'effectiveSearchQpmThreshold'
+          property :indexing_core_threshold_next_update_time, as: 'indexingCoreThresholdNextUpdateTime'
+          property :search_qpm_threshold_next_update_time, as: 'searchQpmThresholdNextUpdateTime'
           property :start_time, as: 'startTime'
+          property :terminate_time, as: 'terminateTime'
         end
       end
       
@@ -14708,7 +14762,11 @@ module Google
       
           property :ingestion_error, as: 'ingestionError', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonIngestionError, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonIngestionError::Representation
       
+          property :mime_type_blocked, as: 'mimeTypeBlocked', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonMimeTypeBlocked, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonMimeTypeBlocked::Representation
+      
           property :paywall_error, as: 'paywallError', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonPaywallError, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonPaywallError::Representation
+      
+          property :policy_check_failed, as: 'policyCheckFailed', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonPolicyCheckFailed, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonPolicyCheckFailed::Representation
       
           property :source_empty, as: 'sourceEmpty', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty::Representation
       
@@ -14775,7 +14833,19 @@ module Google
         end
       end
       
+      class GoogleCloudNotebooklmV1alphaFailureReasonMimeTypeBlocked
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudNotebooklmV1alphaFailureReasonPaywallError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudNotebooklmV1alphaFailureReasonPolicyCheckFailed
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
