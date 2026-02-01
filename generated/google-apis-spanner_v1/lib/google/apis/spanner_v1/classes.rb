@@ -277,6 +277,44 @@ module Google
         # @return [Fixnum]
         attr_accessor :autoscaling_target_high_priority_cpu_utilization_percent
       
+        # Optional. If specified, overrides the autoscaling target `
+        # total_cpu_utilization_percent` in the top-level autoscaling configuration for
+        # the selected replicas.
+        # Corresponds to the JSON property `autoscalingTargetTotalCpuUtilizationPercent`
+        # @return [Fixnum]
+        attr_accessor :autoscaling_target_total_cpu_utilization_percent
+      
+        # Optional. If true, disables high priority CPU autoscaling for the selected
+        # replicas and ignores high_priority_cpu_utilization_percent in the top-level
+        # autoscaling configuration. When setting this field to true, setting
+        # autoscaling_target_high_priority_cpu_utilization_percent field to a non-zero
+        # value for the same replica is not supported. If false, the
+        # autoscaling_target_high_priority_cpu_utilization_percent field in the replica
+        # will be used if set to a non-zero value. Otherwise, the
+        # high_priority_cpu_utilization_percent field in the top-level autoscaling
+        # configuration will be used. Setting both disable_high_priority_cpu_autoscaling
+        # and disable_total_cpu_autoscaling to true for the same replica is not
+        # supported.
+        # Corresponds to the JSON property `disableHighPriorityCpuAutoscaling`
+        # @return [Boolean]
+        attr_accessor :disable_high_priority_cpu_autoscaling
+        alias_method :disable_high_priority_cpu_autoscaling?, :disable_high_priority_cpu_autoscaling
+      
+        # Optional. If true, disables total CPU autoscaling for the selected replicas
+        # and ignores total_cpu_utilization_percent in the top-level autoscaling
+        # configuration. When setting this field to true, setting
+        # autoscaling_target_total_cpu_utilization_percent field to a non-zero value for
+        # the same replica is not supported. If false, the
+        # autoscaling_target_total_cpu_utilization_percent field in the replica will be
+        # used if set to a non-zero value. Otherwise, the total_cpu_utilization_percent
+        # field in the top-level autoscaling configuration will be used. Setting both
+        # disable_high_priority_cpu_autoscaling and disable_total_cpu_autoscaling to
+        # true for the same replica is not supported.
+        # Corresponds to the JSON property `disableTotalCpuAutoscaling`
+        # @return [Boolean]
+        attr_accessor :disable_total_cpu_autoscaling
+        alias_method :disable_total_cpu_autoscaling?, :disable_total_cpu_autoscaling
+      
         def initialize(**args)
            update!(**args)
         end
@@ -285,6 +323,9 @@ module Google
         def update!(**args)
           @autoscaling_limits = args[:autoscaling_limits] if args.key?(:autoscaling_limits)
           @autoscaling_target_high_priority_cpu_utilization_percent = args[:autoscaling_target_high_priority_cpu_utilization_percent] if args.key?(:autoscaling_target_high_priority_cpu_utilization_percent)
+          @autoscaling_target_total_cpu_utilization_percent = args[:autoscaling_target_total_cpu_utilization_percent] if args.key?(:autoscaling_target_total_cpu_utilization_percent)
+          @disable_high_priority_cpu_autoscaling = args[:disable_high_priority_cpu_autoscaling] if args.key?(:disable_high_priority_cpu_autoscaling)
+          @disable_total_cpu_autoscaling = args[:disable_total_cpu_autoscaling] if args.key?(:disable_total_cpu_autoscaling)
         end
       end
       
@@ -338,10 +379,11 @@ module Google
       class AutoscalingTargets
         include Google::Apis::Core::Hashable
       
-        # Required. The target high priority cpu utilization percentage that the
+        # Optional. The target high priority cpu utilization percentage that the
         # autoscaler should be trying to achieve for the instance. This number is on a
         # scale from 0 (no utilization) to 100 (full utilization). The valid range is [
-        # 10, 90] inclusive.
+        # 10, 90] inclusive. If not specified or set to 0, the autoscaler skips scaling
+        # based on high priority CPU utilization.
         # Corresponds to the JSON property `highPriorityCpuUtilizationPercent`
         # @return [Fixnum]
         attr_accessor :high_priority_cpu_utilization_percent
@@ -353,6 +395,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :storage_utilization_percent
       
+        # Optional. The target total CPU utilization percentage that the autoscaler
+        # should be trying to achieve for the instance. This number is on a scale from 0
+        # (no utilization) to 100 (full utilization). The valid range is [10, 90]
+        # inclusive. If not specified or set to 0, the autoscaler skips scaling based on
+        # total CPU utilization. If both `high_priority_cpu_utilization_percent` and `
+        # total_cpu_utilization_percent` are specified, the autoscaler provisions the
+        # larger of the two required compute capacities to satisfy both targets.
+        # Corresponds to the JSON property `totalCpuUtilizationPercent`
+        # @return [Fixnum]
+        attr_accessor :total_cpu_utilization_percent
+      
         def initialize(**args)
            update!(**args)
         end
@@ -361,6 +414,7 @@ module Google
         def update!(**args)
           @high_priority_cpu_utilization_percent = args[:high_priority_cpu_utilization_percent] if args.key?(:high_priority_cpu_utilization_percent)
           @storage_utilization_percent = args[:storage_utilization_percent] if args.key?(:storage_utilization_percent)
+          @total_cpu_utilization_percent = args[:total_cpu_utilization_percent] if args.key?(:total_cpu_utilization_percent)
         end
       end
       
@@ -468,6 +522,12 @@ module Google
         # @return [String]
         attr_accessor :max_expire_time
       
+        # Output only. The minimum edition required to successfully restore the backup.
+        # Populated only if the edition is Enterprise or Enterprise Plus.
+        # Corresponds to the JSON property `minimumRestorableEdition`
+        # @return [String]
+        attr_accessor :minimum_restorable_edition
+      
         # Output only for the CreateBackup operation. Required for the UpdateBackup
         # operation. A globally unique identifier for the backup which cannot be changed.
         # Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final
@@ -546,6 +606,7 @@ module Google
           @incremental_backup_chain_id = args[:incremental_backup_chain_id] if args.key?(:incremental_backup_chain_id)
           @instance_partitions = args[:instance_partitions] if args.key?(:instance_partitions)
           @max_expire_time = args[:max_expire_time] if args.key?(:max_expire_time)
+          @minimum_restorable_edition = args[:minimum_restorable_edition] if args.key?(:minimum_restorable_edition)
           @name = args[:name] if args.key?(:name)
           @oldest_version_time = args[:oldest_version_time] if args.key?(:oldest_version_time)
           @referencing_backups = args[:referencing_backups] if args.key?(:referencing_backups)
@@ -1135,6 +1196,27 @@ module Google
           @child_index = args[:child_index] if args.key?(:child_index)
           @type = args[:type] if args.key?(:type)
           @variable = args[:variable] if args.key?(:variable)
+        end
+      end
+      
+      # Container for various pieces of client-owned context attached to a request.
+      class ClientContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Map of parameter name to value for this request. These values will
+        # be returned by any SECURE_CONTEXT() calls invoked by this request (e.g., by
+        # queries against Parameterized Secure Views).
+        # Corresponds to the JSON property `secureContext`
+        # @return [Hash<String,Object>]
+        attr_accessor :secure_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @secure_context = args[:secure_context] if args.key?(:secure_context)
         end
       end
       
@@ -5149,22 +5231,22 @@ module Google
       class PartitionQueryRequest
         include Google::Apis::Core::Hashable
       
-        # It isn't always possible for Cloud Spanner to infer the right SQL type from a
-        # JSON value. For example, values of type `BYTES` and values of type `STRING`
-        # both appear in params as JSON strings. In these cases, `param_types` can be
-        # used to specify the exact SQL type for some or all of the SQL query parameters.
-        # See the definition of Type for more information about SQL types.
+        # Optional. It isn't always possible for Cloud Spanner to infer the right SQL
+        # type from a JSON value. For example, values of type `BYTES` and values of type
+        # `STRING` both appear in params as JSON strings. In these cases, `param_types`
+        # can be used to specify the exact SQL type for some or all of the SQL query
+        # parameters. See the definition of Type for more information about SQL types.
         # Corresponds to the JSON property `paramTypes`
         # @return [Hash<String,Google::Apis::SpannerV1::Type>]
         attr_accessor :param_types
       
-        # Parameter names and values that bind to placeholders in the SQL string. A
-        # parameter placeholder consists of the `@` character followed by the parameter
-        # name (for example, `@firstName`). Parameter names can contain letters, numbers,
-        # and underscores. Parameters can appear anywhere that a literal value is
-        # expected. The same parameter name can be used more than once, for example: `"
-        # WHERE id > @msg_id AND id < @msg_id + 100"` It's an error to execute a SQL
-        # statement with unbound parameters.
+        # Optional. Parameter names and values that bind to placeholders in the SQL
+        # string. A parameter placeholder consists of the `@` character followed by the
+        # parameter name (for example, `@firstName`). Parameter names can contain
+        # letters, numbers, and underscores. Parameters can appear anywhere that a
+        # literal value is expected. The same parameter name can be used more than once,
+        # for example: `"WHERE id > @msg_id AND id < @msg_id + 100"` It's an error to
+        # execute a SQL statement with unbound parameters.
         # Corresponds to the JSON property `params`
         # @return [Hash<String,Object>]
         attr_accessor :params
@@ -6037,6 +6119,11 @@ module Google
       class RequestOptions
         include Google::Apis::Core::Hashable
       
+        # Container for various pieces of client-owned context attached to a request.
+        # Corresponds to the JSON property `clientContext`
+        # @return [Google::Apis::SpannerV1::ClientContext]
+        attr_accessor :client_context
+      
         # Priority for the request.
         # Corresponds to the JSON property `priority`
         # @return [String]
@@ -6074,6 +6161,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @client_context = args[:client_context] if args.key?(:client_context)
           @priority = args[:priority] if args.key?(:priority)
           @request_tag = args[:request_tag] if args.key?(:request_tag)
           @transaction_tag = args[:transaction_tag] if args.key?(:transaction_tag)
