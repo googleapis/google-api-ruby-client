@@ -646,6 +646,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainUserLabels
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1170,6 +1176,7 @@ module Google
           property :connection_pool_config, as: 'connectionPoolConfig', class: Google::Apis::AlloydbV1::ConnectionPoolConfig, decorator: Google::Apis::AlloydbV1::ConnectionPoolConfig::Representation
       
           property :create_time, as: 'createTime'
+          property :data_api_access, as: 'dataApiAccess'
           hash :database_flags, as: 'databaseFlags'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
@@ -1896,7 +1903,10 @@ module Google
       
           property :maintenance_schedule, as: 'maintenanceSchedule', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule::Representation
       
+          property :maintenance_state, as: 'maintenanceState'
           property :maintenance_version, as: 'maintenanceVersion'
+          property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance::Representation
+      
         end
       end
       
@@ -1925,6 +1935,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :tags, as: 'tags'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
       
