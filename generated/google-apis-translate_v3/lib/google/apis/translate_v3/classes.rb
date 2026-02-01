@@ -179,8 +179,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :content
       
-        # Required. The resource name for the dataset to use for adaptive MT. `projects/`
-        # project`/locations/`location-id`/adaptiveMtDatasets/`dataset``
+        # Required. The resource name for the dataset to use for adaptive MT translation.
+        # `projects/`project`/locations/`location-id`/adaptiveMtDatasets/`dataset``
         # Corresponds to the JSON property `dataset`
         # @return [String]
         attr_accessor :dataset

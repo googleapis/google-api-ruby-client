@@ -1,5 +1,9 @@
 # Release history for google-apis-translate_v3
 
+### v0.43.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260128
+
 ### v0.42.0 (2026-01-11)
 
 * Regenerated from discovery document revision 20260108
