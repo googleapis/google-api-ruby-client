@@ -4861,6 +4861,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Defers the renewal of a subscription.
+        # @param [String] package_name
+        #   Required. The package of the application for which this subscription was
+        #   purchased (for example, 'com.some.thing').
+        # @param [String] token
+        #   Required. The token provided to the user's device when the subscription was
+        #   purchased.
+        # @param [Google::Apis::AndroidpublisherV3::DeferSubscriptionPurchaseRequest] defer_subscription_purchase_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::DeferSubscriptionPurchaseResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::DeferSubscriptionPurchaseResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def defer_subscriptionsv2_subscription_purchase(package_name, token, defer_subscription_purchase_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:defer', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::DeferSubscriptionPurchaseRequest::Representation
+          command.request_object = defer_subscription_purchase_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::DeferSubscriptionPurchaseResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::DeferSubscriptionPurchaseResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['token'] = token unless token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get metadata about a subscription
         # @param [String] package_name
         #   The package of the application for which this subscription was purchased (for
