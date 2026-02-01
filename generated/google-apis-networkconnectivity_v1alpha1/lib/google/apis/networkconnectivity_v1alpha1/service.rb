@@ -677,9 +677,9 @@ module Google
         
         # Updates the parameters of a single internal range.
         # @param [String] name
-        #   Immutable. The name of an internal range. Format: projects/`project`/locations/
-        #   `location`/internalRanges/`internal_range` See: https://google.aip.dev/122#
-        #   fields-representing-resource-names
+        #   Identifier. The name of an internal range. Format: projects/`project`/
+        #   locations/`location`/internalRanges/`internal_range` See: https://google.aip.
+        #   dev/122#fields-representing-resource-names
         # @param [Google::Apis::NetworkconnectivityV1alpha1::InternalRange] internal_range_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
