@@ -137,6 +137,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active_key_version, as: 'activeKeyVersion'
           property :ancestor_has_active_key_version, as: 'ancestorHasActiveKeyVersion'
+          collection :ancestors_enrolled_services, as: 'ancestorsEnrolledServices', class: Google::Apis::AccessapprovalV1::EnrolledService, decorator: Google::Apis::AccessapprovalV1::EnrolledService::Representation
+      
           property :approval_policy, as: 'approvalPolicy', class: Google::Apis::AccessapprovalV1::CustomerApprovalApprovalPolicy, decorator: Google::Apis::AccessapprovalV1::CustomerApprovalApprovalPolicy::Representation
       
           property :effective_approval_policy, as: 'effectiveApprovalPolicy', class: Google::Apis::AccessapprovalV1::CustomerApprovalApprovalPolicy, decorator: Google::Apis::AccessapprovalV1::CustomerApprovalApprovalPolicy::Representation
