@@ -1940,6 +1940,7 @@ module Google
       
           property :last_analysis_time, as: 'lastAnalysisTime'
           property :last_scan_time, as: 'lastScanTime'
+          property :last_vulnerability_update_time, as: 'lastVulnerabilityUpdateTime'
           property :sbom_status, as: 'sbomStatus', class: Google::Apis::ContaineranalysisV1beta1::SbomStatus, decorator: Google::Apis::ContaineranalysisV1beta1::SbomStatus::Representation
       
         end
