@@ -6763,6 +6763,31 @@ module Google
       end
       
       # 
+      class BundledLocalSsds
+        include Google::Apis::Core::Hashable
+      
+        # The default disk interface if the interface is not specified.
+        # Corresponds to the JSON property `defaultInterface`
+        # @return [String]
+        attr_accessor :default_interface
+      
+        # The number of partitions.
+        # Corresponds to the JSON property `partitionCount`
+        # @return [Fixnum]
+        attr_accessor :partition_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_interface = args[:default_interface] if args.key?(:default_interface)
+          @partition_count = args[:partition_count] if args.key?(:partition_count)
+        end
+      end
+      
+      # 
       class CacheInvalidationRule
         include Google::Apis::Core::Hashable
       
@@ -12052,9 +12077,7 @@ module Google
         end
       end
       
-      # A flexible specification of a time range that has 3 points of
-      # flexibility: (1) a flexible start time, (2) a flexible end time, (3) a
-      # flexible duration.
+      # Specifies a flexible time range with flexible start time and duration.
       # It is possible to specify a contradictory time range that cannot be matched
       # by any Interval. This causes a validation error.
       class FlexibleTimeRange
@@ -14010,9 +14033,7 @@ module Google
         # @return [Google::Apis::ComputeV1::FutureResourcesSpecTargetResources]
         attr_accessor :target_resources
       
-        # A flexible specification of a time range that has 3 points of
-        # flexibility: (1) a flexible start time, (2) a flexible end time, (3) a
-        # flexible duration.
+        # Specifies a flexible time range with flexible start time and duration.
         # It is possible to specify a contradictory time range that cannot be matched
         # by any Interval. This causes a validation error.
         # Corresponds to the JSON property `timeRangeSpec`
@@ -29307,6 +29328,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Machine Image parameters
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeV1::MachineImageParams]
+        attr_accessor :params
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -29391,6 +29417,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @machine_image_encryption_key = args[:machine_image_encryption_key] if args.key?(:machine_image_encryption_key)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @saved_disks = args[:saved_disks] if args.key?(:saved_disks)
@@ -29529,6 +29556,32 @@ module Google
         end
       end
       
+      # Machine Image parameters
+      class MachineImageParams
+        include Google::Apis::Core::Hashable
+      
+        # Input only. Resource manager tags to be bound to the machine image. Tag keys
+        # and values
+        # have the same definition as resource
+        # manager tags. Keys and values can be either in numeric format,
+        # such as `tagKeys/`tag_key_id`` and `tagValues/`tag_value_id`` or in
+        # namespaced format such as ``org_id|project_id`/`tag_key_short_name`` and
+        # ``tag_value_short_name``. The field is ignored (both PUT &
+        # PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
+        end
+      end
+      
       # Represents a Machine Type resource.
       # You can use specific machine types for your VM instances based on performance
       # and pricing requirements. For more information, readMachine Types.
@@ -29545,6 +29598,11 @@ module Google
         # Corresponds to the JSON property `architecture`
         # @return [String]
         attr_accessor :architecture
+      
+        # [Output Only] The configuration of bundled local SSD for the machine type.
+        # Corresponds to the JSON property `bundledLocalSsds`
+        # @return [Google::Apis::ComputeV1::BundledLocalSsds]
+        attr_accessor :bundled_local_ssds
       
         # [Output Only] Creation timestamp inRFC3339
         # text format.
@@ -29634,6 +29692,7 @@ module Google
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
           @architecture = args[:architecture] if args.key?(:architecture)
+          @bundled_local_ssds = args[:bundled_local_ssds] if args.key?(:bundled_local_ssds)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @deprecated = args[:deprecated] if args.key?(:deprecated)
           @description = args[:description] if args.key?(:description)
@@ -33248,10 +33307,7 @@ module Google
         # @return [String]
         attr_accessor :stack_type
       
-        # Output only. [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`
-        # . The
-        # peering is `ACTIVE` when there's a matching configuration in the peer
-        # network.
+        # Output only. [Output Only] State for the peering.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -44385,6 +44441,12 @@ module Google
       class ResourcePolicyGroupPlacementPolicy
         include Google::Apis::Core::Hashable
       
+        # Specifies the connection mode for the accelerator topology. If not
+        # specified, the default is AUTO_CONNECT.
+        # Corresponds to the JSON property `acceleratorTopologyMode`
+        # @return [String]
+        attr_accessor :accelerator_topology_mode
+      
         # The number of availability domains to spread instances across. If two
         # instances are in different availability domain, they are not in the same
         # low latency network.
@@ -44416,6 +44478,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerator_topology_mode = args[:accelerator_topology_mode] if args.key?(:accelerator_topology_mode)
           @availability_domain_count = args[:availability_domain_count] if args.key?(:availability_domain_count)
           @collocation = args[:collocation] if args.key?(:collocation)
           @gpu_topology = args[:gpu_topology] if args.key?(:gpu_topology)
@@ -53645,20 +53708,17 @@ module Google
       class StoragePoolExapoolProvisionedCapacityGb
         include Google::Apis::Core::Hashable
       
-        # Output only. Size, in GiB, of provisioned capacity-optimized capacity for this
-        # Exapool
+        # Size, in GiB, of provisioned capacity-optimized capacity for this Exapool
         # Corresponds to the JSON property `capacityOptimized`
         # @return [Fixnum]
         attr_accessor :capacity_optimized
       
-        # Output only. Size, in GiB, of provisioned read-optimized capacity for this
-        # Exapool
+        # Size, in GiB, of provisioned read-optimized capacity for this Exapool
         # Corresponds to the JSON property `readOptimized`
         # @return [Fixnum]
         attr_accessor :read_optimized
       
-        # Output only. Size, in GiB, of provisioned write-optimized capacity for this
-        # Exapool
+        # Size, in GiB, of provisioned write-optimized capacity for this Exapool
         # Corresponds to the JSON property `writeOptimized`
         # @return [Fixnum]
         attr_accessor :write_optimized
@@ -54664,9 +54724,9 @@ module Google
       class Subnetwork
         include Google::Apis::Core::Hashable
       
-        # Whether this subnetwork's ranges can conflict with existing static routes.
+        # Whether this subnetwork's ranges can conflict with existing custom routes.
         # Setting this to true allows this subnetwork's primary and secondary ranges
-        # to overlap with (and contain) static routes that have already been
+        # to overlap with (and contain) custom routes that have already been
         # configured on the corresponding network.
         # For example if a static route has range 10.1.0.0/16, a subnet
         # range 10.0.0.0/8 could only be created if allow_conflicting_routes=true.
@@ -54678,7 +54738,6 @@ module Google
         # Setting this field to true will disable this feature.
         # The default value is false and applies to all existing subnetworks and
         # automatically created subnetworks.
-        # This field cannot be set to true at resource creation time.
         # Corresponds to the JSON property `allowSubnetCidrRoutesOverlap`
         # @return [Boolean]
         attr_accessor :allow_subnet_cidr_routes_overlap
@@ -54868,6 +54927,11 @@ module Google
         # @return [String]
         attr_accessor :reserved_internal_range
       
+        # Configures subnet mask resolution for this subnetwork.
+        # Corresponds to the JSON property `resolveSubnetMask`
+        # @return [String]
+        attr_accessor :resolve_subnet_mask
+      
         # The role of subnetwork. Currently, this field is only used when
         # purpose is set to GLOBAL_MANAGED_PROXY orREGIONAL_MANAGED_PROXY. The value can
         # be set toACTIVE or BACKUP. An ACTIVE
@@ -54883,6 +54947,7 @@ module Google
         # contained in this subnetwork. The primary IP of such VM must belong to the
         # primary ipCidrRange of the subnetwork. The alias IPs may belong to either
         # primary or secondary ranges. This field can be updated with apatch request.
+        # Supports both IPv4 and IPv6 ranges.
         # Corresponds to the JSON property `secondaryIpRanges`
         # @return [Array<Google::Apis::ComputeV1::SubnetworkSecondaryRange>]
         attr_accessor :secondary_ip_ranges
@@ -54962,6 +55027,7 @@ module Google
           @purpose = args[:purpose] if args.key?(:purpose)
           @region = args[:region] if args.key?(:region)
           @reserved_internal_range = args[:reserved_internal_range] if args.key?(:reserved_internal_range)
+          @resolve_subnet_mask = args[:resolve_subnet_mask] if args.key?(:resolve_subnet_mask)
           @role = args[:role] if args.key?(:role)
           @secondary_ip_ranges = args[:secondary_ip_ranges] if args.key?(:secondary_ip_ranges)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -55335,22 +55401,34 @@ module Google
         # The range of IP addresses belonging to this subnetwork secondary range.
         # Provide this property when you create the subnetwork. Ranges must be
         # unique and non-overlapping with all primary and secondary IP ranges
-        # within a network. Only IPv4 is supported. The range can be any range
-        # listed in theValid
+        # within a network. Both IPv4 and IPv6 ranges are supported. For IPv4,
+        # the range can be any range listed in theValid
         # ranges list.
+        # For IPv6:
+        # The range must have a /64 prefix length.
+        # The range must be omitted, for auto-allocation from Google-defined ULA
+        # IPv6 range.
+        # For BYOGUA internal IPv6 secondary range, the range may be specified
+        # along with the `ipCollection` field.
+        # If an `ipCollection` is specified, the requested ip_cidr_range must lie
+        # within the range of the PDP referenced by the `ipCollection` field for
+        # allocation.
+        # If `ipCollection` field is specified, but ip_cidr_range is not,
+        # the range is auto-allocated from the PDP referenced by the `ipCollection`
+        # field.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
       
         # The name associated with this subnetwork secondary range, used when adding
-        # an alias IP range to a VM instance.
+        # an alias IP/IPv6 range to a VM instance.
         # The name must be 1-63 characters long, and comply withRFC1035.
         # The name must be unique within the subnetwork.
         # Corresponds to the JSON property `rangeName`
         # @return [String]
         attr_accessor :range_name
       
-        # The URL of the reserved internal range.
+        # The URL of the reserved internal range. Only IPv4 is supported.
         # Corresponds to the JSON property `reservedInternalRange`
         # @return [String]
         attr_accessor :reserved_internal_range
@@ -60629,6 +60707,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The range of IP addresses belonging to this subnetwork secondary range.
+        # Can be Ipv4 or Ipv6 range.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
