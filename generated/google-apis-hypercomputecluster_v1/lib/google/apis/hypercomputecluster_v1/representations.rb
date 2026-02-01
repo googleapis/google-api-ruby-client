@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CheckClusterHealth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Cluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +71,114 @@ module Google
       end
       
       class ComputeResourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateFilestoreInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateLoginNode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateLustreInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateNetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateNodeset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateOrchestrator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreatePartition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreatePrivateServiceAccess
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateStorageBucket
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteFilestoreInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteLoginNode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteLustreInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteNetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteNodeset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteOrchestrator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeletePartition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeletePrivateServiceAccess
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteStorageBucket
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -232,6 +346,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationProgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OperationStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Orchestrator
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,6 +412,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateLoginNode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateNodeset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateOrchestrator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdatePartition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BootDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -302,6 +452,12 @@ module Google
       end
       
       class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CheckClusterHealth
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -363,6 +519,126 @@ module Google
       
           property :new_spot_instances, as: 'newSpotInstances', class: Google::Apis::HypercomputeclusterV1::NewSpotInstancesConfig, decorator: Google::Apis::HypercomputeclusterV1::NewSpotInstancesConfig::Representation
       
+        end
+      end
+      
+      class CreateFilestoreInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filestore, as: 'filestore'
+        end
+      end
+      
+      class CreateLoginNode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CreateLustreInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :lustre, as: 'lustre'
+        end
+      end
+      
+      class CreateNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+        end
+      end
+      
+      class CreateNodeset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nodesets, as: 'nodesets'
+        end
+      end
+      
+      class CreateOrchestrator
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CreatePartition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :partitions, as: 'partitions'
+        end
+      end
+      
+      class CreatePrivateServiceAccess
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CreateStorageBucket
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+        end
+      end
+      
+      class DeleteFilestoreInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filestore, as: 'filestore'
+        end
+      end
+      
+      class DeleteLoginNode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeleteLustreInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :lustre, as: 'lustre'
+        end
+      end
+      
+      class DeleteNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+        end
+      end
+      
+      class DeleteNodeset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nodesets, as: 'nodesets'
+        end
+      end
+      
+      class DeleteOrchestrator
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeletePartition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :partitions, as: 'partitions'
+        end
+      end
+      
+      class DeletePrivateServiceAccess
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeleteStorageBucket
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
         end
       end
       
@@ -599,9 +875,72 @@ module Google
           property :api_version, as: 'apiVersion'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
+          property :progress, as: 'progress', class: Google::Apis::HypercomputeclusterV1::OperationProgress, decorator: Google::Apis::HypercomputeclusterV1::OperationProgress::Representation
+      
           property :requested_cancellation, as: 'requestedCancellation'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class OperationProgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :steps, as: 'steps', class: Google::Apis::HypercomputeclusterV1::OperationStep, decorator: Google::Apis::HypercomputeclusterV1::OperationStep::Representation
+      
+        end
+      end
+      
+      class OperationStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :check_cluster_health, as: 'checkClusterHealth', class: Google::Apis::HypercomputeclusterV1::CheckClusterHealth, decorator: Google::Apis::HypercomputeclusterV1::CheckClusterHealth::Representation
+      
+          property :create_filestore_instance, as: 'createFilestoreInstance', class: Google::Apis::HypercomputeclusterV1::CreateFilestoreInstance, decorator: Google::Apis::HypercomputeclusterV1::CreateFilestoreInstance::Representation
+      
+          property :create_login_node, as: 'createLoginNode', class: Google::Apis::HypercomputeclusterV1::CreateLoginNode, decorator: Google::Apis::HypercomputeclusterV1::CreateLoginNode::Representation
+      
+          property :create_lustre_instance, as: 'createLustreInstance', class: Google::Apis::HypercomputeclusterV1::CreateLustreInstance, decorator: Google::Apis::HypercomputeclusterV1::CreateLustreInstance::Representation
+      
+          property :create_network, as: 'createNetwork', class: Google::Apis::HypercomputeclusterV1::CreateNetwork, decorator: Google::Apis::HypercomputeclusterV1::CreateNetwork::Representation
+      
+          property :create_nodeset, as: 'createNodeset', class: Google::Apis::HypercomputeclusterV1::CreateNodeset, decorator: Google::Apis::HypercomputeclusterV1::CreateNodeset::Representation
+      
+          property :create_orchestrator, as: 'createOrchestrator', class: Google::Apis::HypercomputeclusterV1::CreateOrchestrator, decorator: Google::Apis::HypercomputeclusterV1::CreateOrchestrator::Representation
+      
+          property :create_partition, as: 'createPartition', class: Google::Apis::HypercomputeclusterV1::CreatePartition, decorator: Google::Apis::HypercomputeclusterV1::CreatePartition::Representation
+      
+          property :create_private_service_access, as: 'createPrivateServiceAccess', class: Google::Apis::HypercomputeclusterV1::CreatePrivateServiceAccess, decorator: Google::Apis::HypercomputeclusterV1::CreatePrivateServiceAccess::Representation
+      
+          property :create_storage_bucket, as: 'createStorageBucket', class: Google::Apis::HypercomputeclusterV1::CreateStorageBucket, decorator: Google::Apis::HypercomputeclusterV1::CreateStorageBucket::Representation
+      
+          property :delete_filestore_instance, as: 'deleteFilestoreInstance', class: Google::Apis::HypercomputeclusterV1::DeleteFilestoreInstance, decorator: Google::Apis::HypercomputeclusterV1::DeleteFilestoreInstance::Representation
+      
+          property :delete_login_node, as: 'deleteLoginNode', class: Google::Apis::HypercomputeclusterV1::DeleteLoginNode, decorator: Google::Apis::HypercomputeclusterV1::DeleteLoginNode::Representation
+      
+          property :delete_lustre_instance, as: 'deleteLustreInstance', class: Google::Apis::HypercomputeclusterV1::DeleteLustreInstance, decorator: Google::Apis::HypercomputeclusterV1::DeleteLustreInstance::Representation
+      
+          property :delete_network, as: 'deleteNetwork', class: Google::Apis::HypercomputeclusterV1::DeleteNetwork, decorator: Google::Apis::HypercomputeclusterV1::DeleteNetwork::Representation
+      
+          property :delete_nodeset, as: 'deleteNodeset', class: Google::Apis::HypercomputeclusterV1::DeleteNodeset, decorator: Google::Apis::HypercomputeclusterV1::DeleteNodeset::Representation
+      
+          property :delete_orchestrator, as: 'deleteOrchestrator', class: Google::Apis::HypercomputeclusterV1::DeleteOrchestrator, decorator: Google::Apis::HypercomputeclusterV1::DeleteOrchestrator::Representation
+      
+          property :delete_partition, as: 'deletePartition', class: Google::Apis::HypercomputeclusterV1::DeletePartition, decorator: Google::Apis::HypercomputeclusterV1::DeletePartition::Representation
+      
+          property :delete_private_service_access, as: 'deletePrivateServiceAccess', class: Google::Apis::HypercomputeclusterV1::DeletePrivateServiceAccess, decorator: Google::Apis::HypercomputeclusterV1::DeletePrivateServiceAccess::Representation
+      
+          property :delete_storage_bucket, as: 'deleteStorageBucket', class: Google::Apis::HypercomputeclusterV1::DeleteStorageBucket, decorator: Google::Apis::HypercomputeclusterV1::DeleteStorageBucket::Representation
+      
+          property :state, as: 'state'
+          property :update_login_node, as: 'updateLoginNode', class: Google::Apis::HypercomputeclusterV1::UpdateLoginNode, decorator: Google::Apis::HypercomputeclusterV1::UpdateLoginNode::Representation
+      
+          property :update_nodeset, as: 'updateNodeset', class: Google::Apis::HypercomputeclusterV1::UpdateNodeset, decorator: Google::Apis::HypercomputeclusterV1::UpdateNodeset::Representation
+      
+          property :update_orchestrator, as: 'updateOrchestrator', class: Google::Apis::HypercomputeclusterV1::UpdateOrchestrator, decorator: Google::Apis::HypercomputeclusterV1::UpdateOrchestrator::Representation
+      
+          property :update_partition, as: 'updatePartition', class: Google::Apis::HypercomputeclusterV1::UpdatePartition, decorator: Google::Apis::HypercomputeclusterV1::UpdatePartition::Representation
+      
         end
       end
       
@@ -715,6 +1054,32 @@ module Google
       
           property :new_lustre, as: 'newLustre', class: Google::Apis::HypercomputeclusterV1::NewLustreConfig, decorator: Google::Apis::HypercomputeclusterV1::NewLustreConfig::Representation
       
+        end
+      end
+      
+      class UpdateLoginNode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UpdateNodeset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nodesets, as: 'nodesets'
+        end
+      end
+      
+      class UpdateOrchestrator
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UpdatePartition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :partitions, as: 'partitions'
         end
       end
     end
