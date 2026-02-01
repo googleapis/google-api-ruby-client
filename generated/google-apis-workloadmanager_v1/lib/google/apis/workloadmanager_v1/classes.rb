@@ -450,6 +450,49 @@ module Google
         end
       end
       
+      # HealthCondition contains the detailed health check of each component.
+      class ComponentHealth
+        include Google::Apis::Core::Hashable
+      
+        # The component of a workload.
+        # Corresponds to the JSON property `component`
+        # @return [String]
+        attr_accessor :component
+      
+        # The detailed health checks of the component.
+        # Corresponds to the JSON property `componentHealthChecks`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::HealthCheck>]
+        attr_accessor :component_health_checks
+      
+        # Output only. The type of the component health.
+        # Corresponds to the JSON property `componentHealthType`
+        # @return [String]
+        attr_accessor :component_health_type
+      
+        # Output only. The health state of the component.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Sub component health.
+        # Corresponds to the JSON property `subComponentsHealth`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::ComponentHealth>]
+        attr_accessor :sub_components_health
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @component = args[:component] if args.key?(:component)
+          @component_health_checks = args[:component_health_checks] if args.key?(:component_health_checks)
+          @component_health_type = args[:component_health_type] if args.key?(:component_health_type)
+          @state = args[:state] if args.key?(:state)
+          @sub_components_health = args[:sub_components_health] if args.key?(:sub_components_health)
+        end
+      end
+      
       # Database Properties.
       class DatabaseProperties
         include Google::Apis::Core::Hashable
@@ -459,7 +502,7 @@ module Google
         # @return [Google::Apis::WorkloadmanagerV1::BackupProperties]
         attr_accessor :backup_properties
       
-        # Output only. Type of the database. HANA, DB2, etc.
+        # Output only. Type of the database. `HANA`, `DB2`, etc.
         # Corresponds to the JSON property `databaseType`
         # @return [String]
         attr_accessor :database_type
@@ -804,6 +847,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
+        end
+      end
+      
+      # HealthCheck contains the detailed health check of a component based on asource.
+      class HealthCheck
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The message of the health check.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Output only. The health check source metric name.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # The resource on GCP
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::WorkloadmanagerV1::CloudResource]
+        attr_accessor :resource
+      
+        # Output only. The source of the health check.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Output only. The state of the health check.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @metric = args[:metric] if args.key?(:metric)
+          @resource = args[:resource] if args.key?(:resource)
+          @source = args[:source] if args.key?(:source)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -1444,7 +1530,7 @@ module Google
         end
       end
       
-      # Product contains the details of a product.
+      # Contains the details of a product.
       class Product
         include Google::Apis::Core::Hashable
       
@@ -1772,7 +1858,7 @@ module Google
         # @return [Google::Apis::WorkloadmanagerV1::DatabaseProperties]
         attr_accessor :database_properties
       
-        # A list of host URIs that are part of the HA configuration if present. An empty
+        # List of host URIs that are part of the HA configuration if present. An empty
         # list indicates the component is not configured for HA.
         # Corresponds to the JSON property `haHosts`
         # @return [Array<String>]
@@ -2552,7 +2638,7 @@ module Google
         # @return [Google::Apis::WorkloadmanagerV1::SapComponent]
         attr_accessor :application
       
-        # Output only. the architecture
+        # Output only. The architecture.
         # Corresponds to the JSON property `architecture`
         # @return [String]
         attr_accessor :architecture
@@ -2567,7 +2653,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # Output only. the products on this workload.
+        # Output only. The products on this workload.
         # Corresponds to the JSON property `products`
         # @return [Array<Google::Apis::WorkloadmanagerV1::Product>]
         attr_accessor :products
@@ -2882,7 +2968,7 @@ module Google
         # @return [String]
         attr_accessor :maintenance_status
       
-        # Optional. Instance maintenance behavior. Could be "MIGRATE" or "TERMINATE".
+        # Optional. Instance maintenance behavior. Could be `MIGRATE` or `TERMINATE`.
         # Corresponds to the JSON property `onHostMaintenance`
         # @return [String]
         attr_accessor :on_host_maintenance
@@ -2948,7 +3034,7 @@ module Google
         end
       end
       
-      # workload resource
+      # Workload resource.
       class WorkloadProfile
         include Google::Apis::Core::Hashable
       
@@ -2990,6 +3076,37 @@ module Google
           @refreshed_time = args[:refreshed_time] if args.key?(:refreshed_time)
           @sap_workload = args[:sap_workload] if args.key?(:sap_workload)
           @workload_type = args[:workload_type] if args.key?(:workload_type)
+        end
+      end
+      
+      # WorkloadProfileHealth contains the detailed health check of workload.
+      class WorkloadProfileHealth
+        include Google::Apis::Core::Hashable
+      
+        # The time when the health check was performed.
+        # Corresponds to the JSON property `checkTime`
+        # @return [String]
+        attr_accessor :check_time
+      
+        # The detailed condition reports of each component.
+        # Corresponds to the JSON property `componentsHealth`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::ComponentHealth>]
+        attr_accessor :components_health
+      
+        # Output only. The health state of the workload.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @check_time = args[:check_time] if args.key?(:check_time)
+          @components_health = args[:components_health] if args.key?(:components_health)
+          @state = args[:state] if args.key?(:state)
         end
       end
       

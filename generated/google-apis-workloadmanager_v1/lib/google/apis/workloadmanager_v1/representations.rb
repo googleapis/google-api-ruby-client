@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ComponentHealth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatabaseProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +137,12 @@ module Google
       end
       
       class GceInstanceFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -484,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkloadProfileHealth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WriteInsightRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -623,6 +641,19 @@ module Google
         end
       end
       
+      class ComponentHealth
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :component, as: 'component'
+          collection :component_health_checks, as: 'componentHealthChecks', class: Google::Apis::WorkloadmanagerV1::HealthCheck, decorator: Google::Apis::WorkloadmanagerV1::HealthCheck::Representation
+      
+          property :component_health_type, as: 'componentHealthType'
+          property :state, as: 'state'
+          collection :sub_components_health, as: 'subComponentsHealth', class: Google::Apis::WorkloadmanagerV1::ComponentHealth, decorator: Google::Apis::WorkloadmanagerV1::ComponentHealth::Representation
+      
+        end
+      end
+      
       class DatabaseProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -715,6 +746,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :service_accounts, as: 'serviceAccounts'
+        end
+      end
+      
+      class HealthCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :metric, as: 'metric'
+          property :resource, as: 'resource', class: Google::Apis::WorkloadmanagerV1::CloudResource, decorator: Google::Apis::WorkloadmanagerV1::CloudResource::Representation
+      
+          property :source, as: 'source'
+          property :state, as: 'state'
         end
       end
       
@@ -1338,6 +1381,16 @@ module Google
           property :sap_workload, as: 'sapWorkload', class: Google::Apis::WorkloadmanagerV1::SapWorkload, decorator: Google::Apis::WorkloadmanagerV1::SapWorkload::Representation
       
           property :workload_type, as: 'workloadType'
+        end
+      end
+      
+      class WorkloadProfileHealth
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :check_time, as: 'checkTime'
+          collection :components_health, as: 'componentsHealth', class: Google::Apis::WorkloadmanagerV1::ComponentHealth, decorator: Google::Apis::WorkloadmanagerV1::ComponentHealth::Representation
+      
+          property :state, as: 'state'
         end
       end
       
