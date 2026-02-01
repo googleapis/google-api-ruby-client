@@ -3750,7 +3750,7 @@ module Google
         # @return [String]
         attr_accessor :mode
       
-        # Output only. The resource name of the pool.
+        # Identifier. The resource name of the pool.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3801,7 +3801,7 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # Output only. The resource name of the managed identity.
+        # Identifier. The resource name of the managed identity.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3849,7 +3849,7 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # Output only. The resource name of the namespace.
+        # Identifier. The resource name of the namespace.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3983,7 +3983,7 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # Output only. The resource name of the provider.
+        # Identifier. The resource name of the provider.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4049,7 +4049,7 @@ module Google
         # @return [Google::Apis::IamV1::KeyData]
         attr_accessor :key_data
       
-        # Output only. The resource name of the key.
+        # Identifier. The resource name of the key.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
