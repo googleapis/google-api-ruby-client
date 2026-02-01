@@ -40,6 +40,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdcApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdcApplicationTemplateRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdcSharedTemplateRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AffectedResources
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -598,6 +616,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2AdcApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2AdcSharedTemplateRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2AffectedResources
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1013,6 +1049,24 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2IssueResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAdcApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1804,6 +1858,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
+        end
+      end
+      
+      class AdcApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attributes, as: 'attributes', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplicationAttributes, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplicationAttributes::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class AdcApplicationTemplateRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class AdcSharedTemplateRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -2646,6 +2723,12 @@ module Google
       class GoogleCloudSecuritycenterV1Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :adc_application, as: 'adcApplication', class: Google::Apis::SecuritycenterV1beta2::AdcApplication, decorator: Google::Apis::SecuritycenterV1beta2::AdcApplication::Representation
+      
+          property :adc_application_template, as: 'adcApplicationTemplate', class: Google::Apis::SecuritycenterV1beta2::AdcApplicationTemplateRevision, decorator: Google::Apis::SecuritycenterV1beta2::AdcApplicationTemplateRevision::Representation
+      
+          property :adc_shared_template, as: 'adcSharedTemplate', class: Google::Apis::SecuritycenterV1beta2::AdcSharedTemplateRevision, decorator: Google::Apis::SecuritycenterV1beta2::AdcSharedTemplateRevision::Representation
+      
           property :application, as: 'application', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplication, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplication::Representation
       
           property :aws_metadata, as: 'awsMetadata', class: Google::Apis::SecuritycenterV1beta2::AwsMetadata, decorator: Google::Apis::SecuritycenterV1beta2::AwsMetadata::Representation
@@ -2885,6 +2968,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2AdcApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attributes, as: 'attributes', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplicationAttributes, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplicationAttributes::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2AdcSharedTemplateRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -3706,6 +3812,12 @@ module Google
       class GoogleCloudSecuritycenterV2IssueResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :adc_application, as: 'adcApplication', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAdcApplication, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAdcApplication::Representation
+      
+          property :adc_application_template, as: 'adcApplicationTemplate', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision::Representation
+      
+          property :adc_shared_template, as: 'adcSharedTemplate', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision::Representation
+      
           property :application, as: 'application', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplication, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplication::Representation
       
           property :aws_metadata, as: 'awsMetadata', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAwsMetadata, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAwsMetadata::Representation
@@ -3718,6 +3830,29 @@ module Google
       
           property :name, as: 'name'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAdcApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attributes, as: 'attributes', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -4108,6 +4243,12 @@ module Google
       class GoogleCloudSecuritycenterV2Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :adc_application, as: 'adcApplication', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AdcApplication, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AdcApplication::Representation
+      
+          property :adc_application_template, as: 'adcApplicationTemplate', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision::Representation
+      
+          property :adc_shared_template, as: 'adcSharedTemplate', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AdcSharedTemplateRevision, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AdcSharedTemplateRevision::Representation
+      
           property :application, as: 'application', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplication, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplication::Representation
       
           property :aws_metadata, as: 'awsMetadata', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AwsMetadata, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AwsMetadata::Representation

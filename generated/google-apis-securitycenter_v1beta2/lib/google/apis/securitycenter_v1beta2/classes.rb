@@ -211,6 +211,74 @@ module Google
         end
       end
       
+      # Represents an ADC application associated with the finding.
+      class AdcApplication
+        include Google::Apis::Core::Hashable
+      
+        # Consumer provided attributes for the application
+        # Corresponds to the JSON property `attributes`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplicationAttributes]
+        attr_accessor :attributes
+      
+        # The resource name of an ADC Application. Format: projects/`project`/locations/`
+        # location`/spaces/`space`/applications/`application`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents an ADC template associated with the finding.
+      class AdcApplicationTemplateRevision
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of an ADC Application Template Revision. Format: projects/`
+        # project`/locations/`location`/spaces/`space`/applicationTemplates/`
+        # application_template`/revisions/`revision`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents an ADC shared template associated with the finding.
+      class AdcSharedTemplateRevision
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of an ADC Shared Template Revision. Format: projects/`
+        # project`/locations/`location`/spaces/`space`/applicationTemplates/`
+        # application_template`/revisions/`revision`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Details about resources affected by this finding.
       class AffectedResources
         include Google::Apis::Core::Hashable
@@ -3451,6 +3519,21 @@ module Google
       class GoogleCloudSecuritycenterV1Resource
         include Google::Apis::Core::Hashable
       
+        # Represents an ADC application associated with the finding.
+        # Corresponds to the JSON property `adcApplication`
+        # @return [Google::Apis::SecuritycenterV1beta2::AdcApplication]
+        attr_accessor :adc_application
+      
+        # Represents an ADC template associated with the finding.
+        # Corresponds to the JSON property `adcApplicationTemplate`
+        # @return [Google::Apis::SecuritycenterV1beta2::AdcApplicationTemplateRevision]
+        attr_accessor :adc_application_template
+      
+        # Represents an ADC shared template associated with the finding.
+        # Corresponds to the JSON property `adcSharedTemplate`
+        # @return [Google::Apis::SecuritycenterV1beta2::AdcSharedTemplateRevision]
+        attr_accessor :adc_shared_template
+      
         # The App Hub Application associated with the finding's resource.
         # Corresponds to the JSON property `application`
         # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplication]
@@ -3558,6 +3641,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @adc_application = args[:adc_application] if args.key?(:adc_application)
+          @adc_application_template = args[:adc_application_template] if args.key?(:adc_application_template)
+          @adc_shared_template = args[:adc_shared_template] if args.key?(:adc_shared_template)
           @application = args[:application] if args.key?(:application)
           @aws_metadata = args[:aws_metadata] if args.key?(:aws_metadata)
           @azure_metadata = args[:azure_metadata] if args.key?(:azure_metadata)
@@ -4460,6 +4546,74 @@ module Google
         # Update properties of this object
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
+        end
+      end
+      
+      # Represents an ADC application associated with the finding.
+      class GoogleCloudSecuritycenterV2AdcApplication
+        include Google::Apis::Core::Hashable
+      
+        # Consumer provided attributes for the application
+        # Corresponds to the JSON property `attributes`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplicationAttributes]
+        attr_accessor :attributes
+      
+        # The resource name of an ADC Application. Format: projects/`project`/locations/`
+        # location`/spaces/`space`/applications/`application`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents an ADC template associated with the finding.
+      class GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of an ADC Application Template Revision. Format: projects/`
+        # project`/locations/`location`/spaces/`space`/applicationTemplates/`
+        # application_template`/revisions/`revision`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents an ADC shared template associated with the finding.
+      class GoogleCloudSecuritycenterV2AdcSharedTemplateRevision
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of an ADC Shared Template Revision. Format: projects/`
+        # project`/locations/`location`/spaces/`space`/applicationTemplates/`
+        # application_template`/revisions/`revision`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -7561,6 +7715,21 @@ module Google
       class GoogleCloudSecuritycenterV2IssueResource
         include Google::Apis::Core::Hashable
       
+        # Represents an ADC application associated with the finding.
+        # Corresponds to the JSON property `adcApplication`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAdcApplication]
+        attr_accessor :adc_application
+      
+        # Represents an ADC template associated with the finding.
+        # Corresponds to the JSON property `adcApplicationTemplate`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision]
+        attr_accessor :adc_application_template
+      
+        # Represents an ADC shared template associated with the finding.
+        # Corresponds to the JSON property `adcSharedTemplate`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision]
+        attr_accessor :adc_shared_template
+      
         # The AppHub application associated with the resource, if any.
         # Corresponds to the JSON property `application`
         # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplication]
@@ -7608,6 +7777,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @adc_application = args[:adc_application] if args.key?(:adc_application)
+          @adc_application_template = args[:adc_application_template] if args.key?(:adc_application_template)
+          @adc_shared_template = args[:adc_shared_template] if args.key?(:adc_shared_template)
           @application = args[:application] if args.key?(:application)
           @aws_metadata = args[:aws_metadata] if args.key?(:aws_metadata)
           @azure_metadata = args[:azure_metadata] if args.key?(:azure_metadata)
@@ -7616,6 +7788,74 @@ module Google
           @google_cloud_metadata = args[:google_cloud_metadata] if args.key?(:google_cloud_metadata)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents an ADC application associated with the finding.
+      class GoogleCloudSecuritycenterV2IssueResourceAdcApplication
+        include Google::Apis::Core::Hashable
+      
+        # Consumer provided attributes for the application
+        # Corresponds to the JSON property `attributes`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes]
+        attr_accessor :attributes
+      
+        # The resource name of an ADC Application. Format: projects/`project`/locations/`
+        # location`/spaces/`space`/applications/`application`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents an ADC template associated with the finding.
+      class GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of an ADC Application Template Revision. Format: projects/`
+        # project`/locations/`location`/spaces/`space`/applicationTemplates/`
+        # application_template`/revisions/`revision`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents an ADC shared template associated with the finding.
+      class GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of an ADC Shared Template Revision. Format: projects/`
+        # project`/locations/`location`/spaces/`space`/applicationTemplates/`
+        # application_template`/revisions/`revision`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -8926,6 +9166,21 @@ module Google
       class GoogleCloudSecuritycenterV2Resource
         include Google::Apis::Core::Hashable
       
+        # Represents an ADC application associated with the finding.
+        # Corresponds to the JSON property `adcApplication`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AdcApplication]
+        attr_accessor :adc_application
+      
+        # Represents an ADC template associated with the finding.
+        # Corresponds to the JSON property `adcApplicationTemplate`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision]
+        attr_accessor :adc_application_template
+      
+        # Represents an ADC shared template associated with the finding.
+        # Corresponds to the JSON property `adcSharedTemplate`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AdcSharedTemplateRevision]
+        attr_accessor :adc_shared_template
+      
         # The App Hub Application associated with the finding's resource.
         # Corresponds to the JSON property `application`
         # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplication]
@@ -9005,6 +9260,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @adc_application = args[:adc_application] if args.key?(:adc_application)
+          @adc_application_template = args[:adc_application_template] if args.key?(:adc_application_template)
+          @adc_shared_template = args[:adc_shared_template] if args.key?(:adc_shared_template)
           @application = args[:application] if args.key?(:application)
           @aws_metadata = args[:aws_metadata] if args.key?(:aws_metadata)
           @azure_metadata = args[:azure_metadata] if args.key?(:azure_metadata)
