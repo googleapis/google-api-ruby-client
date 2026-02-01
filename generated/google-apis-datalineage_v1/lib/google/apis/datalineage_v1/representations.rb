@@ -22,6 +22,36 @@ module Google
   module Apis
     module DatalineageV1
       
+      class GoogleCloudDatacatalogLineageConfigmanagementV1Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -158,6 +188,48 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :ingestion, as: 'ingestion', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :rules, as: 'rules', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :integration_selector, as: 'integrationSelector', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector::Representation
+      
+          property :lineage_enablement, as: 'lineageEnablement', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :integration, as: 'integration'
+        end
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
       end
       
       class GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest

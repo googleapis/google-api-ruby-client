@@ -1,5 +1,9 @@
 # Release history for google-apis-datalineage_v1
 
+### v0.13.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260123
+
 ### v0.12.0 (2025-12-07)
 
 * Regenerated from discovery document revision 20251201

@@ -22,6 +22,137 @@ module Google
   module Apis
     module DatalineageV1
       
+      # Configuration for Data Lineage. Defines different configuration options for
+      # Lineage customers to control behaviour of lineage systems.
+      class GoogleCloudDatacatalogLineageConfigmanagementV1Config
+        include Google::Apis::Core::Hashable
+      
+        # Optional. `etag` is used for optimistic concurrency control as a way to help
+        # prevent simultaneous updates of a config from overwriting each other. It is
+        # required that systems make use of the `etag` in the read-modify-write cycle to
+        # perform config updates in order to avoid race conditions: An `etag` is
+        # returned in the response to `GetConfig`, and systems are expected to put that
+        # etag in the request to `UpdateConfig` to ensure that their change will be
+        # applied to the same version of the config. If an `etag` is not provided in the
+        # call to `UpdateConfig`, then the existing config, if any, will be overwritten.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Defines how Lineage should be ingested for a given resource.
+        # Corresponds to the JSON property `ingestion`
+        # @return [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion]
+        attr_accessor :ingestion
+      
+        # Identifier. The resource name of the config. Format: `organizations/`
+        # organization_id`/locations/global/config` `folders/`folder_id`/locations/
+        # global/config` `projects/`project_id`/locations/global/config` `projects/`
+        # project_number`/locations/global/config`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @ingestion = args[:ingestion] if args.key?(:ingestion)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Defines how Lineage should be ingested for a given resource.
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of rules for Data Lineage ingestion.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule>]
+        attr_accessor :rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rules = args[:rules] if args.key?(:rules)
+        end
+      end
+      
+      # Ingestion rule for Data Lineage ingestion.
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule
+        include Google::Apis::Core::Hashable
+      
+        # Integration selector of the rule. The rule is only applied to the Integration
+        # selected by the selector.
+        # Corresponds to the JSON property `integrationSelector`
+        # @return [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector]
+        attr_accessor :integration_selector
+      
+        # Lineage enablement configuration. Defines configurations for the ingestion of
+        # lineage for the resource and its children.
+        # Corresponds to the JSON property `lineageEnablement`
+        # @return [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement]
+        attr_accessor :lineage_enablement
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @integration_selector = args[:integration_selector] if args.key?(:integration_selector)
+          @lineage_enablement = args[:lineage_enablement] if args.key?(:lineage_enablement)
+        end
+      end
+      
+      # Integration selector of the rule. The rule is only applied to the Integration
+      # selected by the selector.
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector
+        include Google::Apis::Core::Hashable
+      
+        # Required. Integration to which the rule applies. This field can be used to
+        # specify the integration against which the ingestion rule should be applied.
+        # Corresponds to the JSON property `integration`
+        # @return [String]
+        attr_accessor :integration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @integration = args[:integration] if args.key?(:integration)
+        end
+      end
+      
+      # Lineage enablement configuration. Defines configurations for the ingestion of
+      # lineage for the resource and its children.
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Required. If true, ingestion of lineage should be enabled. If false,
+        # it should be disabled. If unspecified, the system default value is used.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # Request message for BatchSearchLinkProcesses.
       class GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest
         include Google::Apis::Core::Hashable
