@@ -1746,14 +1746,16 @@ module Google
         attr_accessor :name
       
         # Output only. Statistics for number of products in the branch, provided for
-        # different scopes. This field is not populated in BranchView.BASIC view.
+        # different scopes. This field is not populated in BranchView.BRANCH_VIEW_BASIC
+        # view.
         # Corresponds to the JSON property `productCountStats`
         # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranchProductCountStatistic>]
         attr_accessor :product_count_stats
       
         # Output only. The quality metrics measured among products of this branch. See
         # QualityMetric.requirement_key for supported metrics. Metrics could be missing
-        # if failed to retrieve. This field is not populated in BranchView.BASIC view.
+        # if failed to retrieve. This field is not populated in BranchView.
+        # BRANCH_VIEW_BASIC view.
         # Corresponds to the JSON property `qualityMetrics`
         # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranchQualityMetric>]
         attr_accessor :quality_metrics
@@ -2963,7 +2965,7 @@ module Google
         attr_accessor :filter
       
         # Optional. The sort string to specify the sorting of search results. The syntax
-        # of the sort string is the same as SearchRequest.sort.
+        # of the sort string is the same as SearchRequest.order_by.
         # Corresponds to the JSON property `sortBy`
         # @return [String]
         attr_accessor :sort_by
@@ -7900,8 +7902,8 @@ module Google
       
         # This field specifies the conversation id, which maintains the state of the
         # conversation between client side and server side. Use the value from the
-        # previous ConversationalSearchResult.conversation_id. For the initial request,
-        # this should be empty.
+        # previous SearchResponse.ConversationalSearchResult.conversation_id. For the
+        # initial request, this should be empty.
         # Corresponds to the JSON property `conversationId`
         # @return [String]
         attr_accessor :conversation_id
