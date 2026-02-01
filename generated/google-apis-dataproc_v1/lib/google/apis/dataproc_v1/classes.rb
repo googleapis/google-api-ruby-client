@@ -5035,8 +5035,8 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets
-        # ListOperationsRequest.return_partial_success and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success and reads across collections. For
+        # example, when attempting to list all resources across all supported locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -6267,7 +6267,8 @@ module Google
       class PyPiRepositoryConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. PyPi repository address
+        # Optional. The PyPi repository address. Note: This field is not available for
+        # batch workloads.
         # Corresponds to the JSON property `pypiRepository`
         # @return [String]
         attr_accessor :pypi_repository
@@ -7123,8 +7124,8 @@ module Google
         # @return [Google::Apis::DataprocV1::AutotuningConfig]
         attr_accessor :autotuning_config
       
-        # Optional. Cohort identifier. Identifies families of the workloads having the
-        # same shape, e.g. daily ETL jobs.
+        # Optional. Cohort identifier. Identifies families of the workloads that have
+        # the same shape, for example, daily ETL jobs.
         # Corresponds to the JSON property `cohort`
         # @return [String]
         attr_accessor :cohort
@@ -8638,6 +8639,140 @@ module Google
         end
       end
       
+      # Represents the lifecycle and details of an Execution via Spark Connect
+      class SparkConnectExecutionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp when the execution was closed.
+        # Corresponds to the JSON property `closeTimestamp`
+        # @return [Fixnum]
+        attr_accessor :close_timestamp
+      
+        # Detailed information about the execution.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        # Timestamp when the execution finished.
+        # Corresponds to the JSON property `finishTimestamp`
+        # @return [Fixnum]
+        attr_accessor :finish_timestamp
+      
+        # Optional. List of job ids associated with the execution.
+        # Corresponds to the JSON property `jobIds`
+        # @return [Array<String>]
+        attr_accessor :job_ids
+      
+        # Required. Job tag of the execution.
+        # Corresponds to the JSON property `jobTag`
+        # @return [String]
+        attr_accessor :job_tag
+      
+        # Unique identifier for the operation.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # Required. Session ID, ties the execution to a specific Spark Connect session.
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
+        # Optional. Tags associated with the Spark session.
+        # Corresponds to the JSON property `sparkSessionTags`
+        # @return [Array<String>]
+        attr_accessor :spark_session_tags
+      
+        # Optional. List of sql execution ids associated with the execution.
+        # Corresponds to the JSON property `sqlExecIds`
+        # @return [Array<String>]
+        attr_accessor :sql_exec_ids
+      
+        # Timestamp when the execution started.
+        # Corresponds to the JSON property `startTimestamp`
+        # @return [Fixnum]
+        attr_accessor :start_timestamp
+      
+        # Output only. Current state of the execution.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # statement of the execution.
+        # Corresponds to the JSON property `statement`
+        # @return [String]
+        attr_accessor :statement
+      
+        # User ID of the user who started the execution.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @close_timestamp = args[:close_timestamp] if args.key?(:close_timestamp)
+          @detail = args[:detail] if args.key?(:detail)
+          @finish_timestamp = args[:finish_timestamp] if args.key?(:finish_timestamp)
+          @job_ids = args[:job_ids] if args.key?(:job_ids)
+          @job_tag = args[:job_tag] if args.key?(:job_tag)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @session_id = args[:session_id] if args.key?(:session_id)
+          @spark_session_tags = args[:spark_session_tags] if args.key?(:spark_session_tags)
+          @sql_exec_ids = args[:sql_exec_ids] if args.key?(:sql_exec_ids)
+          @start_timestamp = args[:start_timestamp] if args.key?(:start_timestamp)
+          @state = args[:state] if args.key?(:state)
+          @statement = args[:statement] if args.key?(:statement)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Represents session-level information for Spark Connect
+      class SparkConnectSessionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp when the session finished.
+        # Corresponds to the JSON property `finishTimestamp`
+        # @return [Fixnum]
+        attr_accessor :finish_timestamp
+      
+        # Required. Session ID of the session.
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
+        # Timestamp when the session started.
+        # Corresponds to the JSON property `startTimestamp`
+        # @return [Fixnum]
+        attr_accessor :start_timestamp
+      
+        # Optional. Total number of executions in the session.
+        # Corresponds to the JSON property `totalExecution`
+        # @return [Fixnum]
+        attr_accessor :total_execution
+      
+        # User ID of the user who started the session.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finish_timestamp = args[:finish_timestamp] if args.key?(:finish_timestamp)
+          @session_id = args[:session_id] if args.key?(:session_id)
+          @start_timestamp = args[:start_timestamp] if args.key?(:start_timestamp)
+          @total_execution = args[:total_execution] if args.key?(:total_execution)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
       # Spark History Server configuration for the workload.
       class SparkHistoryServerConfig
         include Google::Apis::Core::Hashable
@@ -9260,6 +9395,16 @@ module Google
         # @return [Google::Apis::DataprocV1::ResourceProfileInfo]
         attr_accessor :resource_profile_info
       
+        # Represents the lifecycle and details of an Execution via Spark Connect
+        # Corresponds to the JSON property `sparkConnectExecutionInfo`
+        # @return [Google::Apis::DataprocV1::SparkConnectExecutionInfo]
+        attr_accessor :spark_connect_execution_info
+      
+        # Represents session-level information for Spark Connect
+        # Corresponds to the JSON property `sparkConnectSessionInfo`
+        # @return [Google::Apis::DataprocV1::SparkConnectSessionInfo]
+        attr_accessor :spark_connect_session_info
+      
         # A graph used for storing information of an executionPlan of DataFrame.
         # Corresponds to the JSON property `sparkPlanGraph`
         # @return [Google::Apis::DataprocV1::SparkPlanGraph]
@@ -9321,6 +9466,8 @@ module Google
           @rdd_operation_graph = args[:rdd_operation_graph] if args.key?(:rdd_operation_graph)
           @rdd_storage_info = args[:rdd_storage_info] if args.key?(:rdd_storage_info)
           @resource_profile_info = args[:resource_profile_info] if args.key?(:resource_profile_info)
+          @spark_connect_execution_info = args[:spark_connect_execution_info] if args.key?(:spark_connect_execution_info)
+          @spark_connect_session_info = args[:spark_connect_session_info] if args.key?(:spark_connect_session_info)
           @spark_plan_graph = args[:spark_plan_graph] if args.key?(:spark_plan_graph)
           @speculation_stage_summary = args[:speculation_stage_summary] if args.key?(:speculation_stage_summary)
           @sql_execution_ui_data = args[:sql_execution_ui_data] if args.key?(:sql_execution_ui_data)
