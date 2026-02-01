@@ -1640,6 +1640,7 @@ module Google
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
           property :state, as: 'state'
+          property :type, as: 'type'
           property :update_time, as: 'updateTime'
         end
       end

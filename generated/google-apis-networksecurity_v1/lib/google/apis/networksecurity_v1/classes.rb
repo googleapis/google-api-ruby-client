@@ -3735,6 +3735,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Immutable. The type of the endpoint group. If left unspecified, defaults to
+        # DIRECT.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         # Output only. The timestamp when the resource was most recently updated. See
         # https://google.aip.dev/148#timestamps.
         # Corresponds to the JSON property `updateTime`
@@ -3756,6 +3762,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
