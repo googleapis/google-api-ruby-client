@@ -1484,12 +1484,13 @@ module Google
         # want trashed files to appear in the list, use the `trashed=false` query
         # parameter to remove trashed files from the results.
         # @param [String] corpora
-        #   Bodies of items (files or documents) to which the query applies. Supported
-        #   bodies are: * `user` * `domain` * `drive` * `allDrives` Prefer `user` or `
-        #   drive` to `allDrives` for efficiency. By default, corpora is set to `user`.
-        #   However, this can change depending on the filter set through the `q` parameter.
-        #   For more information, see [File organization](https://developers.google.com/
-        #   workspace/drive/api/guides/about-files#file-organization).
+        #   Specifies a collection of items (files or documents) to which the query
+        #   applies. Supported items include: * `user` * `domain` * `drive` * `allDrives`
+        #   Prefer `user` or `drive` to `allDrives` for efficiency. By default, corpora is
+        #   set to `user`. However, this can change depending on the filter set through
+        #   the `q` parameter. For more information, see [File organization](https://
+        #   developers.google.com/workspace/drive/api/guides/about-files#file-organization)
+        #   .
         # @param [String] corpus
         #   Deprecated: The source of files to list. Use `corpora` instead.
         # @param [String] drive_id
@@ -1506,14 +1507,16 @@ module Google
         #   Deprecated: Use `includeItemsFromAllDrives` instead.
         # @param [String] order_by
         #   A comma-separated list of sort keys. Valid keys are: * `createdTime`: When the
-        #   file was created. * `folder`: The folder ID. This field is sorted using
-        #   alphabetical ordering. * `modifiedByMeTime`: The last time the file was
-        #   modified by the user. * `modifiedTime`: The last time the file was modified by
-        #   anyone. * `name`: The name of the file. This field is sorted using
-        #   alphabetical ordering, so 1, 12, 2, 22. * `name_natural`: The name of the file.
-        #   This field is sorted using natural sort ordering, so 1, 2, 12, 22. * `
-        #   quotaBytesUsed`: The number of storage quota bytes used by the file. * `
-        #   recency`: The most recent timestamp from the file's date-time fields. * `
+        #   file was created. Avoid using this key for queries on large item collections
+        #   as it might result in timeouts or other issues. For time-related sorting on
+        #   large item collections, use `modifiedTime` instead. * `folder`: The folder ID.
+        #   This field is sorted using alphabetical ordering. * `modifiedByMeTime`: The
+        #   last time the file was modified by the user. * `modifiedTime`: The last time
+        #   the file was modified by anyone. * `name`: The name of the file. This field is
+        #   sorted using alphabetical ordering, so 1, 12, 2, 22. * `name_natural`: The
+        #   name of the file. This field is sorted using natural sort ordering, so 1, 2,
+        #   12, 22. * `quotaBytesUsed`: The number of storage quota bytes used by the file.
+        #   * `recency`: The most recent timestamp from the file's date-time fields. * `
         #   sharedWithMeTime`: When the file was shared with the user, if applicable. * `
         #   starred`: Whether the user has starred the file. * `viewedByMeTime`: The last
         #   time the file was viewed by the user. Each key sorts ascending by default, but
