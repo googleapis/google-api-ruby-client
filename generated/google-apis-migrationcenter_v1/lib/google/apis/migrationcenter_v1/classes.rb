@@ -603,6 +603,247 @@ module Google
         end
       end
       
+      # Assets export job message.
+      class AssetsExportJob
+        include Google::Apis::Core::Hashable
+      
+        # Conditions for selecting assets to export.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::MigrationcenterV1::AssetsExportJobExportCondition]
+        attr_accessor :condition
+      
+        # Output only. Resource creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Configuration for asset inventory details exports.
+        # Corresponds to the JSON property `inventory`
+        # @return [Google::Apis::MigrationcenterV1::AssetsExportJobInventory]
+        attr_accessor :inventory
+      
+        # Optional. Labels as key value pairs. Labels must meet the following
+        # constraints: * Keys and values can contain only lowercase letters, numeric
+        # characters, underscores, and dashes. * All characters must use UTF-8 encoding,
+        # and international characters are allowed. * Keys must start with a lowercase
+        # letter or international character. * Each resource is limited to a maximum of
+        # 64 labels. Both keys and values are additionally constrained to be <= 128
+        # bytes.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Identifier. Resource name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configuration for network dependencies exports.
+        # Corresponds to the JSON property `networkDependencies`
+        # @return [Google::Apis::MigrationcenterV1::AssetsExportJobNetworkDependencies]
+        attr_accessor :network_dependencies
+      
+        # Configuration for performance data exports.
+        # Corresponds to the JSON property `performanceData`
+        # @return [Google::Apis::MigrationcenterV1::AssetsExportJobPerformanceData]
+        attr_accessor :performance_data
+      
+        # Output only. Recent non expired executions of the job.
+        # Corresponds to the JSON property `recentExecutions`
+        # @return [Array<Google::Apis::MigrationcenterV1::AssetsExportJobExecution>]
+        attr_accessor :recent_executions
+      
+        # Optional. When this value is set to 'true' the response will include all
+        # assets, including those that are hidden.
+        # Corresponds to the JSON property `showHidden`
+        # @return [Boolean]
+        attr_accessor :show_hidden
+        alias_method :show_hidden?, :show_hidden
+      
+        # Signed URI destination configuration.
+        # Corresponds to the JSON property `signedUriDestination`
+        # @return [Google::Apis::MigrationcenterV1::SignedUriDestination]
+        attr_accessor :signed_uri_destination
+      
+        # Output only. Resource update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @inventory = args[:inventory] if args.key?(:inventory)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @network_dependencies = args[:network_dependencies] if args.key?(:network_dependencies)
+          @performance_data = args[:performance_data] if args.key?(:performance_data)
+          @recent_executions = args[:recent_executions] if args.key?(:recent_executions)
+          @show_hidden = args[:show_hidden] if args.key?(:show_hidden)
+          @signed_uri_destination = args[:signed_uri_destination] if args.key?(:signed_uri_destination)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Execution status of assets export job.
+      class AssetsExportJobExecution
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Completion time of the export.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Globally unique identifier of the execution.
+        # Corresponds to the JSON property `executionId`
+        # @return [String]
+        attr_accessor :execution_id
+      
+        # Output only. Expiration time for the export and artifacts.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. Number of assets requested for export after resolving the
+        # requested filters.
+        # Corresponds to the JSON property `requestedAssetCount`
+        # @return [Fixnum]
+        attr_accessor :requested_asset_count
+      
+        # Contains the result of the assets export.
+        # Corresponds to the JSON property `result`
+        # @return [Google::Apis::MigrationcenterV1::AssetsExportJobExecutionResult]
+        attr_accessor :result
+      
+        # Output only. Execution timestamp.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @execution_id = args[:execution_id] if args.key?(:execution_id)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @requested_asset_count = args[:requested_asset_count] if args.key?(:requested_asset_count)
+          @result = args[:result] if args.key?(:result)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Contains the result of the assets export.
+      class AssetsExportJobExecutionResult
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::MigrationcenterV1::Status]
+        attr_accessor :error
+      
+        # Contains a list of output files.
+        # Corresponds to the JSON property `outputFiles`
+        # @return [Google::Apis::MigrationcenterV1::OutputFileList]
+        attr_accessor :output_files
+      
+        # Contains a list of Signed URIs.
+        # Corresponds to the JSON property `signedUris`
+        # @return [Google::Apis::MigrationcenterV1::SignedUris]
+        attr_accessor :signed_uris
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @output_files = args[:output_files] if args.key?(:output_files)
+          @signed_uris = args[:signed_uris] if args.key?(:signed_uris)
+        end
+      end
+      
+      # Conditions for selecting assets to export.
+      class AssetsExportJobExportCondition
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Assets filter, supports the same syntax as asset listing.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # Configuration for asset inventory details exports.
+      class AssetsExportJobInventory
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Configuration for network dependencies exports.
+      class AssetsExportJobNetworkDependencies
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Configuration for performance data exports.
+      class AssetsExportJobPerformanceData
+        include Google::Apis::Core::Hashable
+      
+        # Optional. When this value is set to a positive integer, performance data will
+        # be returned for the most recent days for which data is available. When this
+        # value is unset (or set to zero), all available data is returned. The maximum
+        # value is 420; values above 420 will be coerced to 420. If unset (0 value) a
+        # default value of 40 will be used.
+        # Corresponds to the JSON property `maxDays`
+        # @return [Fixnum]
+        attr_accessor :max_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_days = args[:max_days] if args.key?(:max_days)
+        end
+      end
+      
       # AWS EC2 specific details.
       class AwsEc2PlatformDetails
         include Google::Apis::Core::Hashable
@@ -1007,6 +1248,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @utilized_percentage = args[:utilized_percentage] if args.key?(:utilized_percentage)
+        end
+      end
+      
+      # Contains a single output file of type CSV.
+      class CsvOutputFile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Number of columns in the file.
+        # Corresponds to the JSON property `columnsCount`
+        # @return [Fixnum]
+        attr_accessor :columns_count
+      
+        # Output only. Number of rows in the file.
+        # Corresponds to the JSON property `rowCount`
+        # @return [Fixnum]
+        attr_accessor :row_count
+      
+        # Contains a signed URI.
+        # Corresponds to the JSON property `signedUri`
+        # @return [Google::Apis::MigrationcenterV1::SignedUri]
+        attr_accessor :signed_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns_count = args[:columns_count] if args.key?(:columns_count)
+          @row_count = args[:row_count] if args.key?(:row_count)
+          @signed_uri = args[:signed_uri] if args.key?(:signed_uri)
         end
       end
       
@@ -2875,6 +3147,31 @@ module Google
         end
       end
       
+      # Response message for listing assets export jobs.
+      class ListAssetsExportJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of assets export jobs.
+        # Corresponds to the JSON property `assetsExportJobs`
+        # @return [Array<Google::Apis::MigrationcenterV1::AssetsExportJob>]
+        attr_accessor :assets_export_jobs
+      
+        # Output only. A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assets_export_jobs = args[:assets_export_jobs] if args.key?(:assets_export_jobs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for listing assets.
       class ListAssetsResponse
         include Google::Apis::Core::Hashable
@@ -4294,6 +4591,56 @@ module Google
         end
       end
       
+      # Contains a single output file.
+      class OutputFile
+        include Google::Apis::Core::Hashable
+      
+        # Contains a single output file of type CSV.
+        # Corresponds to the JSON property `csvOutputFile`
+        # @return [Google::Apis::MigrationcenterV1::CsvOutputFile]
+        attr_accessor :csv_output_file
+      
+        # Output only. File size in bytes.
+        # Corresponds to the JSON property `fileSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :file_size_bytes
+      
+        # Contains a single output file of type XLSX.
+        # Corresponds to the JSON property `xlsxOutputFile`
+        # @return [Google::Apis::MigrationcenterV1::XlsxOutputFile]
+        attr_accessor :xlsx_output_file
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @csv_output_file = args[:csv_output_file] if args.key?(:csv_output_file)
+          @file_size_bytes = args[:file_size_bytes] if args.key?(:file_size_bytes)
+          @xlsx_output_file = args[:xlsx_output_file] if args.key?(:xlsx_output_file)
+        end
+      end
+      
+      # Contains a list of output files.
+      class OutputFileList
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of output files.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::MigrationcenterV1::OutputFile>]
+        attr_accessor :entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+        end
+      end
+      
       # Performance data sample.
       class PerformanceSample
         include Google::Apis::Core::Hashable
@@ -5458,6 +5805,53 @@ module Google
         end
       end
       
+      # A request to run an assets export job.
+      class RunAssetsExportJobRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes after the first request. For example, consider a
+        # situation where you make an initial request and the request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # Response message for running an assets export job.
+      class RunAssetsExportJobResponse
+        include Google::Apis::Core::Hashable
+      
+        # Execution status of assets export job.
+        # Corresponds to the JSON property `assetsExportJobExecution`
+        # @return [Google::Apis::MigrationcenterV1::AssetsExportJobExecution]
+        attr_accessor :assets_export_job_execution
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assets_export_job_execution = args[:assets_export_job_execution] if args.key?(:assets_export_job_execution)
+        end
+      end
+      
       # A request to run an import job.
       class RunImportJobRequest
         include Google::Apis::Core::Hashable
@@ -5696,6 +6090,69 @@ module Google
           @disable_cloud_logging = args[:disable_cloud_logging] if args.key?(:disable_cloud_logging)
           @name = args[:name] if args.key?(:name)
           @preference_set = args[:preference_set] if args.key?(:preference_set)
+        end
+      end
+      
+      # Contains a signed URI.
+      class SignedUri
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the file the Signed URI references.
+        # Corresponds to the JSON property `file`
+        # @return [String]
+        attr_accessor :file
+      
+        # Output only. Download URI for the file.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file = args[:file] if args.key?(:file)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Signed URI destination configuration.
+      class SignedUriDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The file format to export.
+        # Corresponds to the JSON property `fileFormat`
+        # @return [String]
+        attr_accessor :file_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_format = args[:file_format] if args.key?(:file_format)
+        end
+      end
+      
+      # Contains a list of Signed URIs.
+      class SignedUris
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of signed URIs.
+        # Corresponds to the JSON property `signedUris`
+        # @return [Array<Google::Apis::MigrationcenterV1::SignedUri>]
+        attr_accessor :signed_uris
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signed_uris = args[:signed_uris] if args.key?(:signed_uris)
         end
       end
       
@@ -6346,6 +6803,25 @@ module Google
           @vcenter_uri = args[:vcenter_uri] if args.key?(:vcenter_uri)
           @vcenter_version = args[:vcenter_version] if args.key?(:vcenter_version)
           @vcenter_vm_id = args[:vcenter_vm_id] if args.key?(:vcenter_vm_id)
+        end
+      end
+      
+      # Contains a single output file of type XLSX.
+      class XlsxOutputFile
+        include Google::Apis::Core::Hashable
+      
+        # Contains a signed URI.
+        # Corresponds to the JSON property `signedUri`
+        # @return [Google::Apis::MigrationcenterV1::SignedUri]
+        attr_accessor :signed_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signed_uri = args[:signed_uri] if args.key?(:signed_uri)
         end
       end
     end
