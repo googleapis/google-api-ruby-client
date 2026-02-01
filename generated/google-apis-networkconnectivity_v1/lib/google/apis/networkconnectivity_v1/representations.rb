@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutomatedDnsRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +95,12 @@ module Google
       end
       
       class CheckConsumerConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Config
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -227,6 +239,12 @@ module Google
       end
       
       class LinkedVpnTunnels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAutomatedDnsRecordsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -658,6 +676,7 @@ module Google
       class AutoCreatedSubnetworkInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :delinked, as: 'delinked'
           property :internal_range, as: 'internalRange'
           property :internal_range_ref, as: 'internalRangeRef'
           property :subnetwork, as: 'subnetwork'
@@ -671,6 +690,32 @@ module Google
           property :dns_suffix, as: 'dnsSuffix'
           property :hostname, as: 'hostname'
           property :ttl, as: 'ttl'
+        end
+      end
+      
+      class AutomatedDnsRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_network, as: 'consumerNetwork'
+          property :create_time, as: 'createTime'
+          property :creation_mode, as: 'creationMode'
+          property :current_config, as: 'currentConfig', class: Google::Apis::NetworkconnectivityV1::Config, decorator: Google::Apis::NetworkconnectivityV1::Config::Representation
+      
+          property :description, as: 'description'
+          property :dns_suffix, as: 'dnsSuffix'
+          property :dns_zone, as: 'dnsZone'
+          property :etag, as: 'etag'
+          property :fqdn, as: 'fqdn'
+          property :hostname, as: 'hostname'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :original_config, as: 'originalConfig', class: Google::Apis::NetworkconnectivityV1::Config, decorator: Google::Apis::NetworkconnectivityV1::Config::Representation
+      
+          property :record_type, as: 'recordType'
+          property :service_class, as: 'serviceClass'
+          property :state, as: 'state'
+          property :state_details, as: 'stateDetails'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -698,6 +743,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :errors, as: 'errors'
+        end
+      end
+      
+      class Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :rrdatas, as: 'rrdatas'
+          property :ttl, as: 'ttl'
         end
       end
       
@@ -984,6 +1037,16 @@ module Google
           property :site_to_site_data_transfer, as: 'siteToSiteDataTransfer'
           collection :uris, as: 'uris'
           property :vpc_network, as: 'vpcNetwork'
+        end
+      end
+      
+      class ListAutomatedDnsRecordsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :automated_dns_records, as: 'automatedDnsRecords', class: Google::Apis::NetworkconnectivityV1::AutomatedDnsRecord, decorator: Google::Apis::NetworkconnectivityV1::AutomatedDnsRecord::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       

@@ -169,6 +169,184 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new AutomatedDnsRecord in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource's name of the AutomatedDnsRecord. ex. projects/
+        #   123/locations/us-east1
+        # @param [Google::Apis::NetworkconnectivityV1::AutomatedDnsRecord] automated_dns_record_object
+        # @param [String] automated_dns_record_id
+        #   Optional. Resource ID (i.e. 'foo' in '[...]/projects/p/locations/l/
+        #   automatedDnsRecords/foo') See https://google.aip.dev/122#resource-id-segments
+        #   Unique per location. If one is not provided, one will be generated.
+        # @param [String] insert_mode
+        #   Optional. The insert mode when creating AutomatedDnsRecord.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_automated_dns_record(parent, automated_dns_record_object = nil, automated_dns_record_id: nil, insert_mode: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/automatedDnsRecords', options)
+          command.request_representation = Google::Apis::NetworkconnectivityV1::AutomatedDnsRecord::Representation
+          command.request_object = automated_dns_record_object
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['automatedDnsRecordId'] = automated_dns_record_id unless automated_dns_record_id.nil?
+          command.query['insertMode'] = insert_mode unless insert_mode.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single AutomatedDnsRecord.
+        # @param [String] name
+        #   Required. The name of the AutomatedDnsRecord to delete.
+        # @param [String] delete_mode
+        #   Optional. Delete mode when deleting AutomatedDnsRecord. If set to DEPROGRAM,
+        #   the record will be deprogrammed in Cloud DNS. If set to SKIP_DEPROGRAMMING,
+        #   the record will not be deprogrammed in Cloud DNS.
+        # @param [String] etag
+        #   Optional. The etag is computed by the server, and may be sent on update and
+        #   delete requests to ensure the client has an up-to-date value before proceeding.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes after the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_automated_dns_record(name, delete_mode: nil, etag: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['deleteMode'] = delete_mode unless delete_mode.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single AutomatedDnsRecord.
+        # @param [String] name
+        #   Required. Name of the AutomatedDnsRecord to get. Format: projects/`project`/
+        #   locations/`location`/automatedDnsRecords/`automated_dns_record`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::AutomatedDnsRecord] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::AutomatedDnsRecord]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_automated_dns_record(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::AutomatedDnsRecord::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::AutomatedDnsRecord
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists AutomatedDnsRecords in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource's name. ex. projects/123/locations/us-east1
+        # @param [String] filter
+        #   A filter expression that filters the results listed in the response.
+        # @param [String] order_by
+        #   Sort the results by a certain order.
+        # @param [Fixnum] page_size
+        #   The maximum number of results per page that should be returned.
+        # @param [String] page_token
+        #   The page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkconnectivityV1::ListAutomatedDnsRecordsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkconnectivityV1::ListAutomatedDnsRecordsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_automated_dns_records(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/automatedDnsRecords', options)
+          command.response_representation = Google::Apis::NetworkconnectivityV1::ListAutomatedDnsRecordsResponse::Representation
+          command.response_class = Google::Apis::NetworkconnectivityV1::ListAutomatedDnsRecordsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Accepts a proposal to attach a Network Connectivity Center spoke to a hub.
         # @param [String] name
         #   Required. The name of the hub into which to accept the spoke.
