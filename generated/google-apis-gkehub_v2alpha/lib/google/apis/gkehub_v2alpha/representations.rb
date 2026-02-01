@@ -592,6 +592,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkloadIdentityIdentityProviderStateDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadIdentityState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppDevExperienceState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1049,6 +1061,8 @@ module Google
           property :servicemesh, as: 'servicemesh', class: Google::Apis::GkehubV2alpha::ServiceMeshState, decorator: Google::Apis::GkehubV2alpha::ServiceMeshState::Representation
       
           property :state, as: 'state', class: Google::Apis::GkehubV2alpha::State, decorator: Google::Apis::GkehubV2alpha::State::Representation
+      
+          property :workloadidentity, as: 'workloadidentity', class: Google::Apis::GkehubV2alpha::WorkloadIdentityState, decorator: Google::Apis::GkehubV2alpha::WorkloadIdentityState::Representation
       
         end
       end
@@ -1593,6 +1607,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :certificate_management, as: 'certificateManagement'
+        end
+      end
+      
+      class WorkloadIdentityIdentityProviderStateDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :description, as: 'description'
+        end
+      end
+      
+      class WorkloadIdentityState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          hash :identity_provider_state_details, as: 'identityProviderStateDetails', class: Google::Apis::GkehubV2alpha::WorkloadIdentityIdentityProviderStateDetail, decorator: Google::Apis::GkehubV2alpha::WorkloadIdentityIdentityProviderStateDetail::Representation
+      
         end
       end
     end
