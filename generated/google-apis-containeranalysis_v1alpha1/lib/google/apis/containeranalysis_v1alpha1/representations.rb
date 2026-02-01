@@ -2070,6 +2070,7 @@ module Google
           collection :files, as: 'files', class: Google::Apis::ContaineranalysisV1alpha1::File, decorator: Google::Apis::ContaineranalysisV1alpha1::File::Representation
       
           property :last_scan_time, as: 'lastScanTime'
+          property :last_vulnerability_update_time, as: 'lastVulnerabilityUpdateTime'
           property :operation, as: 'operation', class: Google::Apis::ContaineranalysisV1alpha1::Operation, decorator: Google::Apis::ContaineranalysisV1alpha1::Operation::Representation
       
           property :sbom_status, as: 'sbomStatus', class: Google::Apis::ContaineranalysisV1alpha1::SbomStatus, decorator: Google::Apis::ContaineranalysisV1alpha1::SbomStatus::Representation
