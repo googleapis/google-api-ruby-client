@@ -794,7 +794,7 @@ module Google
       # We create a disk named `pd1`, mount it on the host VM, and map `/mnt/pd1` to `/
       # mnt/disk` in the docker container. At runtime, an entry for `input_file` would
       # be required in the inputs map, such as: ``` inputs["input_file"] = "gs://my-
-      # bucket/bar.txt" ``` This would generate the following gsutil call: ``` gcloud storage
+      # bucket/bar.txt" ``` This would generate the following gcloud storage call: ``` gcloud storage
       # cp gs://my-bucket/bar.txt /mnt/pd1/file.txt ``` The file `/mnt/pd1/file.txt`
       # maps to `/mnt/disk/file.txt` in the Docker container. Acceptable paths are:
       # Google Cloud storage pathLocal path file file glob directory For outputs, the
