@@ -1881,6 +1881,7 @@ module Google
       
           property :log_uri, as: 'logUri'
           property :observed_generation, as: 'observedGeneration'
+          collection :urls, as: 'urls'
         end
       end
       
