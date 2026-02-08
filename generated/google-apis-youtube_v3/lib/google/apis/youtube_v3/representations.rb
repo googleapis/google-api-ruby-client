@@ -526,6 +526,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LiveChatGiftDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LiveChatGiftMembershipReceivedDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2304,6 +2310,20 @@ module Google
         end
       end
       
+      class LiveChatGiftDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alt_text, as: 'altText'
+          property :combo_count, as: 'comboCount'
+          property :gift_duration, as: 'giftDuration'
+          property :gift_name, as: 'giftName'
+          property :gift_url, as: 'giftUrl'
+          property :has_visual_effect, as: 'hasVisualEffect'
+          property :jewels_count, as: 'jewelsCount'
+          property :language, as: 'language'
+        end
+      end
+      
       class LiveChatGiftMembershipReceivedDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2399,6 +2419,8 @@ module Google
           property :author_channel_id, as: 'authorChannelId'
           property :display_message, as: 'displayMessage'
           property :fan_funding_event_details, as: 'fanFundingEventDetails', class: Google::Apis::YoutubeV3::LiveChatFanFundingEventDetails, decorator: Google::Apis::YoutubeV3::LiveChatFanFundingEventDetails::Representation
+      
+          property :gift_details, as: 'giftDetails', class: Google::Apis::YoutubeV3::LiveChatGiftDetails, decorator: Google::Apis::YoutubeV3::LiveChatGiftDetails::Representation
       
           property :gift_membership_received_details, as: 'giftMembershipReceivedDetails', class: Google::Apis::YoutubeV3::LiveChatGiftMembershipReceivedDetails, decorator: Google::Apis::YoutubeV3::LiveChatGiftMembershipReceivedDetails::Representation
       
