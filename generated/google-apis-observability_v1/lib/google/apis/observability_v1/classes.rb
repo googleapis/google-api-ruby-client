@@ -22,6 +22,68 @@ module Google
   module Apis
     module ObservabilityV1
       
+      # Bucket configuration for storing observability data.
+      class Bucket
+        include Google::Apis::Core::Hashable
+      
+        # Settings for configuring CMEK for a bucket.
+        # Corresponds to the JSON property `cmekSettings`
+        # @return [Google::Apis::ObservabilityV1::CmekSettings]
+        attr_accessor :cmek_settings
+      
+        # Output only. Create timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Delete timestamp.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Optional. Description of the bucket.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. User friendly display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. Name of the bucket. The format is: projects/[PROJECT_ID]/locations/
+        # [LOCATION]/buckets/[BUCKET_ID]
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Timestamp when the bucket in soft-deleted state is purged.
+        # Corresponds to the JSON property `purgeTime`
+        # @return [String]
+        attr_accessor :purge_time
+      
+        # Output only. Update timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cmek_settings = args[:cmek_settings] if args.key?(:cmek_settings)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @purge_time = args[:purge_time] if args.key?(:purge_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -32,6 +94,97 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Settings for configuring CMEK for a bucket.
+      class CmekSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The resource name for the configured Cloud KMS key. The format is:
+        # projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]
+        # For example: projects/my-project/locations/us-central1/keyRings/my-ring/
+        # cryptoKeys/my-key
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # Output only. The CryptoKeyVersion resource name for the configured Cloud KMS
+        # key. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[
+        # KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION] For example: projects/my-
+        # project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/
+        # cryptoKeyVersions/1 This read-only field is used to convey the specific
+        # configured CryptoKeyVersion of the `kms_key` that has been configured. It is
+        # populated when the CMEK settings are bound to a single key version.
+        # Corresponds to the JSON property `kmsKeyVersion`
+        # @return [String]
+        attr_accessor :kms_key_version
+      
+        # Output only. The service account used to access the key.
+        # Corresponds to the JSON property `serviceAccountId`
+        # @return [String]
+        attr_accessor :service_account_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
+          @service_account_id = args[:service_account_id] if args.key?(:service_account_id)
+        end
+      end
+      
+      # A dataset is a collection of data that has a specific configuration. A dataset
+      # can be backed by multiple tables. One bucket can have multiple datasets.
+      class Dataset
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Delete timestamp.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Optional. Description of the dataset.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. User friendly display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. Name of the dataset. The format is: projects/[PROJECT_ID]/
+        # locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Timestamp when the dataset in soft-deleted state is purged.
+        # Corresponds to the JSON property `purgeTime`
+        # @return [String]
+        attr_accessor :purge_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @purge_time = args[:purge_time] if args.key?(:purge_time)
         end
       end
       
@@ -48,6 +201,122 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A link lets a dataset be accessible to BigQuery via usage of linked datasets.
+      class Link
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Description of the link.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. A user friendly display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. Name of the link. The format is: projects/[PROJECT_ID]/locations/[
+        # LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/links/[LINK_ID]
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Response for listing buckets.
+      class ListBucketsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of buckets.
+        # Corresponds to the JSON property `buckets`
+        # @return [Array<Google::Apis::ObservabilityV1::Bucket>]
+        attr_accessor :buckets
+      
+        # Optional. A token that can be sent as `page_token` to retrieve the next page.
+        # When this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buckets = args[:buckets] if args.key?(:buckets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for listing datasets.
+      class ListDatasetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of datasets.
+        # Corresponds to the JSON property `datasets`
+        # @return [Array<Google::Apis::ObservabilityV1::Dataset>]
+        attr_accessor :datasets
+      
+        # A token that can be sent as `page_token` to retrieve the next page. When this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @datasets = args[:datasets] if args.key?(:datasets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for listing links.
+      class ListLinksResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of links.
+        # Corresponds to the JSON property `links`
+        # @return [Array<Google::Apis::ObservabilityV1::Link>]
+        attr_accessor :links
+      
+        # Optional. A token that can be sent as `page_token` to retrieve the next page.
+        # When this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @links = args[:links] if args.key?(:links)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -134,6 +403,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @trace_scopes = args[:trace_scopes] if args.key?(:trace_scopes)
+        end
+      end
+      
+      # Response for listing views.
+      class ListViewsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A token that can be sent as `page_token` to retrieve the next page.
+        # When this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of views.
+        # Corresponds to the JSON property `views`
+        # @return [Array<Google::Apis::ObservabilityV1::View>]
+        attr_accessor :views
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @views = args[:views] if args.key?(:views)
         end
       end
       
@@ -428,6 +723,51 @@ module Google
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @resource_names = args[:resource_names] if args.key?(:resource_names)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A view corresponds to a read-only representation of a subset of the data in a
+      # dataset.
+      class View
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Description of the view.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. User friendly display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. Name of the view. The format is: projects/[PROJECT_ID]/locations/[
+        # LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/views/[VIEW_ID]
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Update timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
