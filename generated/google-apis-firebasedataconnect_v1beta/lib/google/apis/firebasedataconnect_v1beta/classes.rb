@@ -35,6 +35,44 @@ module Google
         end
       end
       
+      # Client caching settings of a connector.
+      class ClientCache
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A field that, if true, means that responses served by this connector
+        # will include entityIds in GraphQL response extensions. This helps the client
+        # SDK cache responses in an improved way, known as "normalized caching", if
+        # caching is enabled on the client. Each entityId is a stable key based on
+        # primary key values. Therefore, this field should only be set to true if the
+        # primary keys of accessed tables do not contain sensitive information.
+        # Corresponds to the JSON property `entityIdIncluded`
+        # @return [Boolean]
+        attr_accessor :entity_id_included
+        alias_method :entity_id_included?, :entity_id_included
+      
+        # Optional. A field that, if true, enables stricter validation on the connector
+        # source code to make sure the operation response shapes are suitable for client-
+        # side caching. This can include additional errors and warnings. For example,
+        # using the same alias for different fields is disallowed, as it may cause
+        # conflicts or confusion with normalized caching. (This field is off by default
+        # for compatibility, but enabling it is highly recommended to catch common
+        # caching pitfalls.)
+        # Corresponds to the JSON property `strictValidationEnabled`
+        # @return [Boolean]
+        attr_accessor :strict_validation_enabled
+        alias_method :strict_validation_enabled?, :strict_validation_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_id_included = args[:entity_id_included] if args.key?(:entity_id_included)
+          @strict_validation_enabled = args[:strict_validation_enabled] if args.key?(:strict_validation_enabled)
+        end
+      end
+      
       # Settings for CloudSQL instance configuration.
       class CloudSqlInstance
         include Google::Apis::Core::Hashable
@@ -63,6 +101,11 @@ module Google
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
+      
+        # Client caching settings of a connector.
+        # Corresponds to the JSON property `clientCache`
+        # @return [Google::Apis::FirebasedataconnectV1beta::ClientCache]
+        attr_accessor :client_cache
       
         # Output only. [Output only] Create time stamp.
         # Corresponds to the JSON property `createTime`
@@ -123,6 +166,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @client_cache = args[:client_cache] if args.key?(:client_cache)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
@@ -132,6 +176,46 @@ module Google
           @source = args[:source] if args.key?(:source)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Data Connect specific properties for a path under response.data.
+      class DataConnectProperties
+        include Google::Apis::Core::Hashable
+      
+        # A single Entity ID. Set if the path points to a single entity.
+        # Corresponds to the JSON property `entityId`
+        # @return [String]
+        attr_accessor :entity_id
+      
+        # A list of Entity IDs. Set if the path points to an array of entities. An ID is
+        # present for each element of the array at the corresponding index.
+        # Corresponds to the JSON property `entityIds`
+        # @return [Array<String>]
+        attr_accessor :entity_ids
+      
+        # The server-suggested duration before data under path is considered stale.
+        # Corresponds to the JSON property `maxAge`
+        # @return [String]
+        attr_accessor :max_age
+      
+        # The path under response.data where the rest of the fields apply. Each element
+        # may be a string (field name) or number (array index). The root of response.
+        # data is denoted by the empty list `[]`.
+        # Corresponds to the JSON property `path`
+        # @return [Array<Object>]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
+          @entity_ids = args[:entity_ids] if args.key?(:entity_ids)
+          @max_age = args[:max_age] if args.key?(:max_age)
+          @path = args[:path] if args.key?(:path)
         end
       end
       
@@ -217,6 +301,12 @@ module Google
         # @return [Array<Google::Apis::FirebasedataconnectV1beta::GraphqlError>]
         attr_accessor :errors
       
+        # GraphqlResponseExtensions contains additional information of `GraphqlResponse`
+        # or `ExecuteQueryResponse`.
+        # Corresponds to the JSON property `extensions`
+        # @return [Google::Apis::FirebasedataconnectV1beta::GraphqlResponseExtensions]
+        attr_accessor :extensions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -225,6 +315,7 @@ module Google
         def update!(**args)
           @data = args[:data] if args.key?(:data)
           @errors = args[:errors] if args.key?(:errors)
+          @extensions = args[:extensions] if args.key?(:extensions)
         end
       end
       
@@ -269,6 +360,12 @@ module Google
         # @return [Array<Google::Apis::FirebasedataconnectV1beta::GraphqlError>]
         attr_accessor :errors
       
+        # GraphqlResponseExtensions contains additional information of `GraphqlResponse`
+        # or `ExecuteQueryResponse`.
+        # Corresponds to the JSON property `extensions`
+        # @return [Google::Apis::FirebasedataconnectV1beta::GraphqlResponseExtensions]
+        attr_accessor :extensions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -277,6 +374,7 @@ module Google
         def update!(**args)
           @data = args[:data] if args.key?(:data)
           @errors = args[:errors] if args.key?(:errors)
+          @extensions = args[:extensions] if args.key?(:extensions)
         end
       end
       
@@ -493,10 +591,16 @@ module Google
       
         # Errors of this response. If the data entry in the response is not present, the
         # errors entry must be present. It conforms to https://spec.graphql.org/draft/#
-        # sec-Errors.
+        # sec-Errors .
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::FirebasedataconnectV1beta::GraphqlError>]
         attr_accessor :errors
+      
+        # GraphqlResponseExtensions contains additional information of `GraphqlResponse`
+        # or `ExecuteQueryResponse`.
+        # Corresponds to the JSON property `extensions`
+        # @return [Google::Apis::FirebasedataconnectV1beta::GraphqlResponseExtensions]
+        attr_accessor :extensions
       
         def initialize(**args)
            update!(**args)
@@ -506,6 +610,27 @@ module Google
         def update!(**args)
           @data = args[:data] if args.key?(:data)
           @errors = args[:errors] if args.key?(:errors)
+          @extensions = args[:extensions] if args.key?(:extensions)
+        end
+      end
+      
+      # GraphqlResponseExtensions contains additional information of `GraphqlResponse`
+      # or `ExecuteQueryResponse`.
+      class GraphqlResponseExtensions
+        include Google::Apis::Core::Hashable
+      
+        # Data Connect specific GraphQL extension, a list of paths and properties.
+        # Corresponds to the JSON property `dataConnect`
+        # @return [Array<Google::Apis::FirebasedataconnectV1beta::DataConnectProperties>]
+        attr_accessor :data_connect
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_connect = args[:data_connect] if args.key?(:data_connect)
         end
       end
       
