@@ -22,6 +22,55 @@ module Google
   module Apis
     module ApigeeV1
       
+      # Profile describing the data handling characteristics of an MCP tool. When used
+      # within the McpTool.meta field, this message should be packed into a google.
+      # protobuf.Any and associated with the key: "google.com/tool.profiles/
+      # data_handling"
+      class ApiservingMcpMcpToolDataHandlingProfile
+        include Google::Apis::Core::Hashable
+      
+        # // The data access level of the tool's inputs.
+        # Corresponds to the JSON property `inputDataAccessLevel`
+        # @return [String]
+        attr_accessor :input_data_access_level
+      
+        # The data access level of the tool's outputs.
+        # Corresponds to the JSON property `outputDataAccessLevel`
+        # @return [String]
+        attr_accessor :output_data_access_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_data_access_level = args[:input_data_access_level] if args.key?(:input_data_access_level)
+          @output_data_access_level = args[:output_data_access_level] if args.key?(:output_data_access_level)
+        end
+      end
+      
+      # Profile describing the lifecycle stage of an MCP tool. When used within the
+      # McpTool.meta field, this message should be packed into a google.protobuf.Any
+      # and associated with the key: "google.com/tool.profiles/lifecycle"
+      class ApiservingMcpMcpToolLifecycleProfile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The current launch state of the MCP tool.
+        # Corresponds to the JSON property `launchState`
+        # @return [String]
+        attr_accessor :launch_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @launch_state = args[:launch_state] if args.key?(:launch_state)
+        end
+      end
+      
       # Describes why a bundle is invalid. Intended for use in error details.
       class EdgeConfigstoreBundleBadBundle
         include Google::Apis::Core::Hashable
@@ -5124,7 +5173,7 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1TargetServerConfig>]
         attr_accessor :targets
       
-        # NEXT ID: 8 RuntimeTraceConfig defines the configurations for distributed trace
+        # NEXT ID: 9 RuntimeTraceConfig defines the configurations for distributed trace
         # in an environment.
         # Corresponds to the JSON property `traceConfig`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfig]
@@ -10195,7 +10244,7 @@ module Google
         end
       end
       
-      # NEXT ID: 8 RuntimeTraceConfig defines the configurations for distributed trace
+      # NEXT ID: 9 RuntimeTraceConfig defines the configurations for distributed trace
       # in an environment.
       class GoogleCloudApigeeV1RuntimeTraceConfig
         include Google::Apis::Core::Hashable
@@ -10217,6 +10266,17 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # If `true`, the runtime uses OpenTelemetry Protocol (OTLP) to send trace data.
+        # Configuration Requirements (if `open_telemetry_protocol_enabled` is `true`): -
+        # Allowed `Exporter`s: `CLOUD_TRACE` or `OPEN_TELEMETRY_COLLECTOR`. - If `
+        # Exporter` is `OPEN_TELEMETRY_COLLECTOR`: - `endpoint` refers to a valid OTLP
+        # collector URL. - If `Exporter` is `CLOUD_TRACE`: - `endpoint` refers to a
+        # valid project ID
+        # Corresponds to the JSON property `openTelemetryProtocolEnabled`
+        # @return [Boolean]
+        attr_accessor :open_telemetry_protocol_enabled
+        alias_method :open_telemetry_protocol_enabled?, :open_telemetry_protocol_enabled
       
         # List of trace configuration overrides for spicific API proxies.
         # Corresponds to the JSON property `overrides`
@@ -10251,6 +10311,7 @@ module Google
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @exporter = args[:exporter] if args.key?(:exporter)
           @name = args[:name] if args.key?(:name)
+          @open_telemetry_protocol_enabled = args[:open_telemetry_protocol_enabled] if args.key?(:open_telemetry_protocol_enabled)
           @overrides = args[:overrides] if args.key?(:overrides)
           @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
@@ -10258,7 +10319,7 @@ module Google
         end
       end
       
-      # NEXT ID: 7 Trace configuration override for a specific API proxy in an
+      # NEXT ID: 8 Trace configuration override for a specific API proxy in an
       # environment.
       class GoogleCloudApigeeV1RuntimeTraceConfigOverride
         include Google::Apis::Core::Hashable
@@ -10274,6 +10335,17 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # If `true`, the runtime uses OpenTelemetry Protocol (OTLP) to send trace data.
+        # Configuration Requirements (if `open_telemetry_protocol_enabled` is `true`): -
+        # Allowed `Exporter`s: `CLOUD_TRACE` or `OPEN_TELEMETRY_COLLECTOR`. - If `
+        # Exporter` is `OPEN_TELEMETRY_COLLECTOR`: - `endpoint` refers to a valid OTLP
+        # collector URL. - If `Exporter` is `CLOUD_TRACE`: - `endpoint` refers to a
+        # valid project ID
+        # Corresponds to the JSON property `openTelemetryProtocolEnabled`
+        # @return [Boolean]
+        attr_accessor :open_telemetry_protocol_enabled
+        alias_method :open_telemetry_protocol_enabled?, :open_telemetry_protocol_enabled
       
         # The timestamp that the revision was created or updated.
         # Corresponds to the JSON property `revisionCreateTime`
@@ -10308,6 +10380,7 @@ module Google
         def update!(**args)
           @api_proxy = args[:api_proxy] if args.key?(:api_proxy)
           @name = args[:name] if args.key?(:name)
+          @open_telemetry_protocol_enabled = args[:open_telemetry_protocol_enabled] if args.key?(:open_telemetry_protocol_enabled)
           @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @sampling_config = args[:sampling_config] if args.key?(:sampling_config)
