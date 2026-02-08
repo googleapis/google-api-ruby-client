@@ -154,6 +154,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FieldSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FilterExpression
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FilterPredicate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FunctionApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -430,6 +454,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProjectedField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryBuilderConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RecentQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -455,6 +491,12 @@ module Google
       end
       
       class Settings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SortOrderParameter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -742,6 +784,51 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class FieldSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias_ref, as: 'aliasRef'
+          property :column_type, as: 'columnType'
+          property :field, as: 'field'
+          property :is_json, as: 'isJson'
+          property :parent_path, as: 'parentPath'
+          property :projected_field, as: 'projectedField', class: Google::Apis::LoggingV2::ProjectedField, decorator: Google::Apis::LoggingV2::ProjectedField::Representation
+      
+        end
+      end
+      
+      class FilterExpression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comparator, as: 'comparator'
+          property :field_source, as: 'fieldSource', class: Google::Apis::LoggingV2::FieldSource, decorator: Google::Apis::LoggingV2::FieldSource::Representation
+      
+          property :field_source_value, as: 'fieldSourceValue', class: Google::Apis::LoggingV2::FieldSource, decorator: Google::Apis::LoggingV2::FieldSource::Representation
+      
+          property :is_negation, as: 'isNegation'
+          property :literal_value, as: 'literalValue'
+        end
+      end
+      
+      class FilterPredicate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :child_predicates, as: 'childPredicates', class: Google::Apis::LoggingV2::FilterPredicate, decorator: Google::Apis::LoggingV2::FilterPredicate::Representation
+      
+          property :leaf_predicate, as: 'leafPredicate', class: Google::Apis::LoggingV2::FilterExpression, decorator: Google::Apis::LoggingV2::FilterExpression::Representation
+      
+          property :operator_type, as: 'operatorType'
+        end
+      end
+      
+      class FunctionApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :parameters, as: 'parameters'
+          property :type, as: 'type'
         end
       end
       
@@ -1255,6 +1342,8 @@ module Google
       class OpsAnalyticsQuery
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :query_builder, as: 'queryBuilder', class: Google::Apis::LoggingV2::QueryBuilderConfig, decorator: Google::Apis::LoggingV2::QueryBuilderConfig::Representation
+      
           property :sql_query_text, as: 'sqlQueryText'
         end
       end
@@ -1266,6 +1355,35 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class ProjectedField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias, as: 'alias'
+          property :cast, as: 'cast'
+          property :field, as: 'field'
+          property :operation, as: 'operation'
+          property :regex_extraction, as: 'regexExtraction'
+          property :sql_aggregation_function, as: 'sqlAggregationFunction', class: Google::Apis::LoggingV2::FunctionApplication, decorator: Google::Apis::LoggingV2::FunctionApplication::Representation
+      
+          property :truncation_granularity, as: 'truncationGranularity'
+        end
+      end
+      
+      class QueryBuilderConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field_sources, as: 'fieldSources', class: Google::Apis::LoggingV2::FieldSource, decorator: Google::Apis::LoggingV2::FieldSource::Representation
+      
+          property :filter, as: 'filter', class: Google::Apis::LoggingV2::FilterPredicate, decorator: Google::Apis::LoggingV2::FilterPredicate::Representation
+      
+          property :limit, :numeric_string => true, as: 'limit'
+          collection :order_bys, as: 'orderBys', class: Google::Apis::LoggingV2::SortOrderParameter, decorator: Google::Apis::LoggingV2::SortOrderParameter::Representation
+      
+          collection :resource_names, as: 'resourceNames'
+          property :search_term, as: 'searchTerm'
         end
       end
       
@@ -1359,6 +1477,15 @@ module Google
           property :logging_service_account_id, as: 'loggingServiceAccountId'
           property :name, as: 'name'
           property :storage_location, as: 'storageLocation'
+        end
+      end
+      
+      class SortOrderParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_source, as: 'fieldSource', class: Google::Apis::LoggingV2::FieldSource, decorator: Google::Apis::LoggingV2::FieldSource::Representation
+      
+          property :sort_order_direction, as: 'sortOrderDirection'
         end
       end
       

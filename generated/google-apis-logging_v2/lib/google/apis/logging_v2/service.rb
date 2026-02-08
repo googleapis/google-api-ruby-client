@@ -54,9 +54,9 @@ module Google
         # Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log
         # Router can be configured for Google Cloud projects, folders, organizations,
         # and billing accounts. Once configured for an organization, it applies to all
-        # projects and folders in the Google Cloud organization.See Enabling CMEK for
-        # Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
-        # for more information.
+        # projects and folders in the Google Cloud organization.See Configure CMEK for
+        # Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-
+        # encryption) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
@@ -94,8 +94,8 @@ module Google
         
         # Gets the settings for the given resource.Note: Settings can be retrieved for
         # Google Cloud projects, folders, organizations, and billing accounts.See View
-        # default resource settings for Logging (https://cloud.google.com/logging/docs/
-        # default-settings#view-org-settings) for more information.
+        # default resource settings for Logging (https://docs.cloud.google.com/logging/
+        # docs/default-settings#view-org-settings) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/
         #   settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[
@@ -353,7 +353,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # can be called in two ways: List all public locations: Use the path GET /v1/
+        # locations. List project-visible locations: Use the path GET /v1/projects/`
+        # project_id`/locations. This may include public locations as well as private or
+        # other locations specifically visible to the project.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
@@ -1495,10 +1499,10 @@ module Google
         # @param [String] name
         #   Output only. Resource name of the saved query.In the format: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of
-        #   supported locations, see Supported Regions (https://cloud.google.com/logging/
-        #   docs/region-support#bucket-regions)After the saved query is created, the
-        #   location cannot be changed.If the user doesn't provide a QUERY_ID, the system
-        #   will generate an alphanumeric ID.
+        #   supported locations, see Supported Regions (https://docs.cloud.google.com/
+        #   logging/docs/region-support#bucket-regions)After the saved query is created,
+        #   the location cannot be changed.If the user doesn't provide a QUERY_ID, the
+        #   system will generate an alphanumeric ID.
         # @param [Google::Apis::LoggingV2::SavedQuery] saved_query_object
         # @param [String] update_mask
         #   Required. A non-empty list of fields to change in the existing saved query.
@@ -1655,8 +1659,8 @@ module Google
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
-        #   will be a service agent (https://cloud.google.com/iam/docs/service-account-
-        #   types#service-agents) used by the sinks with the same parent. For more
+        #   will be a service agent (https://docs.cloud.google.com/iam/docs/service-
+        #   account-types#service-agents) used by the sinks with the same parent. For more
         #   information, see writer_identity in LogSink.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1832,10 +1836,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -1901,10 +1905,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -2272,9 +2276,9 @@ module Google
         # Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log
         # Router can be configured for Google Cloud projects, folders, organizations,
         # and billing accounts. Once configured for an organization, it applies to all
-        # projects and folders in the Google Cloud organization.See Enabling CMEK for
-        # Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
-        # for more information.
+        # projects and folders in the Google Cloud organization.See Configure CMEK for
+        # Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-
+        # encryption) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
@@ -2312,8 +2316,8 @@ module Google
         
         # Gets the settings for the given resource.Note: Settings can be retrieved for
         # Google Cloud projects, folders, organizations, and billing accounts.See View
-        # default resource settings for Logging (https://cloud.google.com/logging/docs/
-        # default-settings#view-org-settings) for more information.
+        # default resource settings for Logging (https://docs.cloud.google.com/logging/
+        # docs/default-settings#view-org-settings) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/
         #   settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[
@@ -2355,7 +2359,7 @@ module Google
         # The value of kms_key_name is invalid. The associated service account doesn't
         # have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for
         # the key. Access to the key is disabled.See Configure default settings for
-        # organizations and folders (https://cloud.google.com/logging/docs/default-
+        # organizations and folders (https://docs.cloud.google.com/logging/docs/default-
         # settings) for more information.
         # @param [String] name
         #   Required. The resource name for the settings to update. "organizations/[
@@ -2621,7 +2625,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # can be called in two ways: List all public locations: Use the path GET /v1/
+        # locations. List project-visible locations: Use the path GET /v1/projects/`
+        # project_id`/locations. This may include public locations as well as private or
+        # other locations specifically visible to the project.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
@@ -4066,10 +4074,10 @@ module Google
         # @param [String] name
         #   Output only. Resource name of the saved query.In the format: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of
-        #   supported locations, see Supported Regions (https://cloud.google.com/logging/
-        #   docs/region-support#bucket-regions)After the saved query is created, the
-        #   location cannot be changed.If the user doesn't provide a QUERY_ID, the system
-        #   will generate an alphanumeric ID.
+        #   supported locations, see Supported Regions (https://docs.cloud.google.com/
+        #   logging/docs/region-support#bucket-regions)After the saved query is created,
+        #   the location cannot be changed.If the user doesn't provide a QUERY_ID, the
+        #   system will generate an alphanumeric ID.
         # @param [Google::Apis::LoggingV2::SavedQuery] saved_query_object
         # @param [String] update_mask
         #   Required. A non-empty list of fields to change in the existing saved query.
@@ -4226,8 +4234,8 @@ module Google
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
-        #   will be a service agent (https://cloud.google.com/iam/docs/service-account-
-        #   types#service-agents) used by the sinks with the same parent. For more
+        #   will be a service agent (https://docs.cloud.google.com/iam/docs/service-
+        #   account-types#service-agents) used by the sinks with the same parent. For more
         #   information, see writer_identity in LogSink.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4403,10 +4411,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -4472,10 +4480,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -4548,7 +4556,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # can be called in two ways: List all public locations: Use the path GET /v1/
+        # locations. List project-visible locations: Use the path GET /v1/projects/`
+        # project_id`/locations. This may include public locations as well as private or
+        # other locations specifically visible to the project.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
@@ -5647,9 +5659,9 @@ module Google
         # Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log
         # Router can be configured for Google Cloud projects, folders, organizations,
         # and billing accounts. Once configured for an organization, it applies to all
-        # projects and folders in the Google Cloud organization.See Enabling CMEK for
-        # Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
-        # for more information.
+        # projects and folders in the Google Cloud organization.See Configure CMEK for
+        # Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-
+        # encryption) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
@@ -5687,8 +5699,8 @@ module Google
         
         # Gets the settings for the given resource.Note: Settings can be retrieved for
         # Google Cloud projects, folders, organizations, and billing accounts.See View
-        # default resource settings for Logging (https://cloud.google.com/logging/docs/
-        # default-settings#view-org-settings) for more information.
+        # default resource settings for Logging (https://docs.cloud.google.com/logging/
+        # docs/default-settings#view-org-settings) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/
         #   settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[
@@ -5728,8 +5740,9 @@ module Google
         # organization.UpdateCmekSettings fails when any of the following are true: The
         # value of kms_key_name is invalid. The associated service account doesn't have
         # the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
-        # key. Access to the key is disabled.See Enabling CMEK for Log Router (https://
-        # cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        # key. Access to the key is disabled.See Configure CMEK for Cloud Logging (https:
+        # //docs.cloud.google.com/logging/docs/routing/managed-encryption) for more
+        # information.
         # @param [String] name
         #   Required. The resource name for the CMEK settings to update. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
@@ -5782,7 +5795,7 @@ module Google
         # The value of kms_key_name is invalid. The associated service account doesn't
         # have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for
         # the key. Access to the key is disabled.See Configure default settings for
-        # organizations and folders (https://cloud.google.com/logging/docs/default-
+        # organizations and folders (https://docs.cloud.google.com/logging/docs/default-
         # settings) for more information.
         # @param [String] name
         #   Required. The resource name for the settings to update. "organizations/[
@@ -6048,7 +6061,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # can be called in two ways: List all public locations: Use the path GET /v1/
+        # locations. List project-visible locations: Use the path GET /v1/projects/`
+        # project_id`/locations. This may include public locations as well as private or
+        # other locations specifically visible to the project.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
@@ -7493,10 +7510,10 @@ module Google
         # @param [String] name
         #   Output only. Resource name of the saved query.In the format: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of
-        #   supported locations, see Supported Regions (https://cloud.google.com/logging/
-        #   docs/region-support#bucket-regions)After the saved query is created, the
-        #   location cannot be changed.If the user doesn't provide a QUERY_ID, the system
-        #   will generate an alphanumeric ID.
+        #   supported locations, see Supported Regions (https://docs.cloud.google.com/
+        #   logging/docs/region-support#bucket-regions)After the saved query is created,
+        #   the location cannot be changed.If the user doesn't provide a QUERY_ID, the
+        #   system will generate an alphanumeric ID.
         # @param [Google::Apis::LoggingV2::SavedQuery] saved_query_object
         # @param [String] update_mask
         #   Required. A non-empty list of fields to change in the existing saved query.
@@ -7653,8 +7670,8 @@ module Google
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
-        #   will be a service agent (https://cloud.google.com/iam/docs/service-account-
-        #   types#service-agents) used by the sinks with the same parent. For more
+        #   will be a service agent (https://docs.cloud.google.com/iam/docs/service-
+        #   account-types#service-agents) used by the sinks with the same parent. For more
         #   information, see writer_identity in LogSink.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7830,10 +7847,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -7899,10 +7916,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -7948,9 +7965,9 @@ module Google
         # Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log
         # Router can be configured for Google Cloud projects, folders, organizations,
         # and billing accounts. Once configured for an organization, it applies to all
-        # projects and folders in the Google Cloud organization.See Enabling CMEK for
-        # Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
-        # for more information.
+        # projects and folders in the Google Cloud organization.See Configure CMEK for
+        # Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-
+        # encryption) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
@@ -7988,8 +8005,8 @@ module Google
         
         # Gets the settings for the given resource.Note: Settings can be retrieved for
         # Google Cloud projects, folders, organizations, and billing accounts.See View
-        # default resource settings for Logging (https://cloud.google.com/logging/docs/
-        # default-settings#view-org-settings) for more information.
+        # default resource settings for Logging (https://docs.cloud.google.com/logging/
+        # docs/default-settings#view-org-settings) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/
         #   settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[
@@ -8247,7 +8264,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # can be called in two ways: List all public locations: Use the path GET /v1/
+        # locations. List project-visible locations: Use the path GET /v1/projects/`
+        # project_id`/locations. This may include public locations as well as private or
+        # other locations specifically visible to the project.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
@@ -9692,10 +9713,10 @@ module Google
         # @param [String] name
         #   Output only. Resource name of the saved query.In the format: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of
-        #   supported locations, see Supported Regions (https://cloud.google.com/logging/
-        #   docs/region-support#bucket-regions)After the saved query is created, the
-        #   location cannot be changed.If the user doesn't provide a QUERY_ID, the system
-        #   will generate an alphanumeric ID.
+        #   supported locations, see Supported Regions (https://docs.cloud.google.com/
+        #   logging/docs/region-support#bucket-regions)After the saved query is created,
+        #   the location cannot be changed.If the user doesn't provide a QUERY_ID, the
+        #   system will generate an alphanumeric ID.
         # @param [Google::Apis::LoggingV2::SavedQuery] saved_query_object
         # @param [String] update_mask
         #   Required. A non-empty list of fields to change in the existing saved query.
@@ -10026,8 +10047,8 @@ module Google
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
-        #   will be a service agent (https://cloud.google.com/iam/docs/service-account-
-        #   types#service-agents) used by the sinks with the same parent. For more
+        #   will be a service agent (https://docs.cloud.google.com/iam/docs/service-
+        #   account-types#service-agents) used by the sinks with the same parent. For more
         #   information, see writer_identity in LogSink.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -10203,10 +10224,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -10272,10 +10293,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -10342,8 +10363,8 @@ module Google
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
-        #   will be a service agent (https://cloud.google.com/iam/docs/service-account-
-        #   types#service-agents) used by the sinks with the same parent. For more
+        #   will be a service agent (https://docs.cloud.google.com/iam/docs/service-
+        #   account-types#service-agents) used by the sinks with the same parent. For more
         #   information, see writer_identity in LogSink.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -10519,10 +10540,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -10568,9 +10589,9 @@ module Google
         # Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log
         # Router can be configured for Google Cloud projects, folders, organizations,
         # and billing accounts. Once configured for an organization, it applies to all
-        # projects and folders in the Google Cloud organization.See Enabling CMEK for
-        # Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
-        # for more information.
+        # projects and folders in the Google Cloud organization.See Configure CMEK for
+        # Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-
+        # encryption) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
@@ -10608,8 +10629,8 @@ module Google
         
         # Gets the settings for the given resource.Note: Settings can be retrieved for
         # Google Cloud projects, folders, organizations, and billing accounts.See View
-        # default resource settings for Logging (https://cloud.google.com/logging/docs/
-        # default-settings#view-org-settings) for more information.
+        # default resource settings for Logging (https://docs.cloud.google.com/logging/
+        # docs/default-settings#view-org-settings) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/
         #   settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[
@@ -10649,8 +10670,9 @@ module Google
         # organization.UpdateCmekSettings fails when any of the following are true: The
         # value of kms_key_name is invalid. The associated service account doesn't have
         # the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
-        # key. Access to the key is disabled.See Enabling CMEK for Log Router (https://
-        # cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        # key. Access to the key is disabled.See Configure CMEK for Cloud Logging (https:
+        # //docs.cloud.google.com/logging/docs/routing/managed-encryption) for more
+        # information.
         # @param [String] name
         #   Required. The resource name for the CMEK settings to update. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
@@ -10703,7 +10725,7 @@ module Google
         # The value of kms_key_name is invalid. The associated service account doesn't
         # have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for
         # the key. Access to the key is disabled.See Configure default settings for
-        # organizations and folders (https://cloud.google.com/logging/docs/default-
+        # organizations and folders (https://docs.cloud.google.com/logging/docs/default-
         # settings) for more information.
         # @param [String] name
         #   Required. The resource name for the settings to update. "organizations/[

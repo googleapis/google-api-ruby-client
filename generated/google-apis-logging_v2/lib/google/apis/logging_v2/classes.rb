@@ -180,13 +180,13 @@ module Google
       class BigQueryOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/
-        # bigquery/docs/partitioned-tables). By default, Cloud Logging creates dated
-        # tables based on the log entries' timestamps, e.g. syslog_20170523. With
-        # partitioned tables the date suffix is no longer present and special query
-        # syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
-        # has to be used instead. In both cases, tables are sharded based on UTC
-        # timezone.
+        # Optional. Whether to use BigQuery's partition tables (https://docs.cloud.
+        # google.com/bigquery/docs/partitioned-tables). By default, Cloud Logging
+        # creates dated tables based on the log entries' timestamps, e.g.
+        # syslog_20170523. With partitioned tables the date suffix is no longer present
+        # and special query syntax (https://docs.cloud.google.com/bigquery/docs/querying-
+        # partitioned-tables) has to be used instead. In both cases, tables are sharded
+        # based on UTC timezone.
         # Corresponds to the JSON property `usePartitionedTables`
         # @return [Boolean]
         attr_accessor :use_partitioned_tables
@@ -430,8 +430,8 @@ module Google
       # a project, folder, organization, billing account, or flexible resource.Note:
       # CMEK for the Log Router can currently only be configured for Google Cloud
       # organizations. Once configured, it applies to all projects and folders in the
-      # Google Cloud organization.See Enabling CMEK for Log Router (https://cloud.
-      # google.com/logging/docs/routing/managed-encryption) for more information.
+      # Google Cloud organization.See Configure CMEK for Cloud Logging (https://docs.
+      # cloud.google.com/logging/docs/routing/managed-encryption) for more information.
       class CmekSettings
         include Google::Apis::Core::Hashable
       
@@ -447,8 +447,8 @@ module Google
         # with the key that was in use when they started. Decryption operations will be
         # completed using the key that was used at the time of encryption unless access
         # to that key has been revoked.To disable CMEK for the Log Router, set this
-        # field to an empty string.See Enabling CMEK for Log Router (https://cloud.
-        # google.com/logging/docs/routing/managed-encryption) for more information.
+        # field to an empty string.See Configure CMEK for Cloud Logging (https://docs.
+        # cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -474,8 +474,9 @@ module Google
         # your Cloud KMS key.Before enabling CMEK for Log Router, you must first assign
         # the cloudkms.cryptoKeyEncrypterDecrypter role to the service account that the
         # Log Router will use to access your Cloud KMS key. Use GetCmekSettings to
-        # obtain the service account ID.See Enabling CMEK for Log Router (https://cloud.
-        # google.com/logging/docs/routing/managed-encryption) for more information.
+        # obtain the service account ID.See Configure CMEK for Cloud Logging (https://
+        # docs.cloud.google.com/logging/docs/routing/managed-encryption) for more
+        # information.
         # Corresponds to the JSON property `serviceAccountId`
         # @return [String]
         attr_accessor :service_account_id
@@ -707,12 +708,13 @@ module Google
         # @return [Array<Google::Apis::LoggingV2::LogExclusion>]
         attr_accessor :exclusions
       
-        # Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/
-        # advanced-queries). The only exported log entries are those that are in the
-        # resource owning the sink and that match the filter.For example:logName="
-        # projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERRORTo match all logs, don'
-        # t add exclusions and use the following line as the value of filter:logName:*
-        # Cannot be empty or unset when the value of mode is OVERWRITE.
+        # Optional. An advanced logs filter (https://docs.cloud.google.com/logging/docs/
+        # view/building-queries#queries-by-expression). The only exported log entries
+        # are those that are in the resource owning the sink and that match the filter.
+        # For example:logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=
+        # ERRORTo match all logs, don't add exclusions and use the following line as the
+        # value of filter:logName:*Cannot be empty or unset when the value of mode is
+        # OVERWRITE.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -887,6 +889,207 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A source that can be used to represent a field within various parts of a
+      # structured query, such as in SELECT, WHERE, or ORDER BY clauses.
+      class FieldSource
+        include Google::Apis::Core::Hashable
+      
+        # The alias name for a field that has already been aliased within a different
+        # ProjectedField type elsewhere in the query model. The alias must be defined in
+        # the QueryBuilderConfig's field_sources list, otherwise the model is invalid.
+        # Corresponds to the JSON property `aliasRef`
+        # @return [String]
+        attr_accessor :alias_ref
+      
+        # The type of the selected field. This comes from the schema. Can be one of the
+        # BigQuery data types: - STRING - INT64 - FLOAT64 - BOOL - TIMESTAMP - DATE -
+        # RECORD - JSON
+        # Corresponds to the JSON property `columnType`
+        # @return [String]
+        attr_accessor :column_type
+      
+        # The fully qualified, dot-delimited path to the selected atomic field (the leaf
+        # value). This path is used for primary selection and actions like drill-down or
+        # projection.The path components should match the exact field names or keys as
+        # they appear in the underlying data schema. For JSON fields, this means
+        # respecting the original casing (e.g., camelCase or snake_case as present in
+        # the JSON).To reference field names containing special characters (e.g.,
+        # hyphens, spaces), enclose the individual path segment in backticks (`).
+        # Examples: * json_payload.labels.message * json_payload.request_id *
+        # httpRequest.status * json_payload.\my-custom-field`.value *jsonPayload.`my key
+        # with spaces`.data`
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # Whether the field is a JSON field, or has a parent that is a JSON field. This
+        # value is used to determine JSON extractions in generated SQL queries. Note
+        # that this is_json flag may be true when the column_type is not JSON if the
+        # parent is a JSON field. Ex: - A json_payload.message field might have is_json=
+        # true, since the 'json_payload' parent is of type JSON, and columnType='STRING'
+        # if the 'message' field is of type STRING.
+        # Corresponds to the JSON property `isJson`
+        # @return [Boolean]
+        attr_accessor :is_json
+        alias_method :is_json?, :is_json
+      
+        # The dot-delimited path of the parent container that holds the target field.
+        # This path defines the structural hierarchy and is essential for correctly
+        # generating SQL when field keys contain special characters (e.g., dots or
+        # brackets).Example: json_payload.labels (This points to the 'labels' object).
+        # This is an empty string if the target field is at the root level.
+        # Corresponds to the JSON property `parentPath`
+        # @return [String]
+        attr_accessor :parent_path
+      
+        # Represents a field selected in the query, analogous to an item in a SQL SELECT
+        # clause. It specifies the source field and optionally applies transformations
+        # like aggregation, casting, regex extraction, or assigns an alias. Use
+        # ProjectedField when you need more than just the raw source field name (for
+        # which you might use FieldSource directly in QueryBuilderConfig's field_sources
+        # list if no transformations or specific operation type are needed).
+        # Corresponds to the JSON property `projectedField`
+        # @return [Google::Apis::LoggingV2::ProjectedField]
+        attr_accessor :projected_field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alias_ref = args[:alias_ref] if args.key?(:alias_ref)
+          @column_type = args[:column_type] if args.key?(:column_type)
+          @field = args[:field] if args.key?(:field)
+          @is_json = args[:is_json] if args.key?(:is_json)
+          @parent_path = args[:parent_path] if args.key?(:parent_path)
+          @projected_field = args[:projected_field] if args.key?(:projected_field)
+        end
+      end
+      
+      # This is a leaf of the FilterPredicate. Ex: ` field: json_payload.message.
+      # error_code, filter_value: `numeric_value: 400`, comparator: EQUAL_TO` The
+      # field will be schema field that is selected using the . annotation to display
+      # the drill down value. The value will be the user inputted text that the filter
+      # is comparing against.
+      class FilterExpression
+        include Google::Apis::Core::Hashable
+      
+        # The comparison type to use for the filter.
+        # Corresponds to the JSON property `comparator`
+        # @return [String]
+        attr_accessor :comparator
+      
+        # A source that can be used to represent a field within various parts of a
+        # structured query, such as in SELECT, WHERE, or ORDER BY clauses.
+        # Corresponds to the JSON property `fieldSource`
+        # @return [Google::Apis::LoggingV2::FieldSource]
+        attr_accessor :field_source
+      
+        # A source that can be used to represent a field within various parts of a
+        # structured query, such as in SELECT, WHERE, or ORDER BY clauses.
+        # Corresponds to the JSON property `fieldSourceValue`
+        # @return [Google::Apis::LoggingV2::FieldSource]
+        attr_accessor :field_source_value
+      
+        # Determines if the NOT flag should be added to the comparator.
+        # Corresponds to the JSON property `isNegation`
+        # @return [Boolean]
+        attr_accessor :is_negation
+        alias_method :is_negation?, :is_negation
+      
+        # The Value will be used to hold user defined constants set as the Right Hand
+        # Side of the filter.
+        # Corresponds to the JSON property `literalValue`
+        # @return [Object]
+        attr_accessor :literal_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comparator = args[:comparator] if args.key?(:comparator)
+          @field_source = args[:field_source] if args.key?(:field_source)
+          @field_source_value = args[:field_source_value] if args.key?(:field_source_value)
+          @is_negation = args[:is_negation] if args.key?(:is_negation)
+          @literal_value = args[:literal_value] if args.key?(:literal_value)
+        end
+      end
+      
+      # A filter for a query. This equates to the WHERE clause in SQL.
+      class FilterPredicate
+        include Google::Apis::Core::Hashable
+      
+        # The children of the filter predicate. This equates to the branches of the
+        # filter predicate that could contain further nested leaves.
+        # Corresponds to the JSON property `childPredicates`
+        # @return [Array<Google::Apis::LoggingV2::FilterPredicate>]
+        attr_accessor :child_predicates
+      
+        # This is a leaf of the FilterPredicate. Ex: ` field: json_payload.message.
+        # error_code, filter_value: `numeric_value: 400`, comparator: EQUAL_TO` The
+        # field will be schema field that is selected using the . annotation to display
+        # the drill down value. The value will be the user inputted text that the filter
+        # is comparing against.
+        # Corresponds to the JSON property `leafPredicate`
+        # @return [Google::Apis::LoggingV2::FilterExpression]
+        attr_accessor :leaf_predicate
+      
+        # The operator type for the filter. Currently there is no support for multiple
+        # levels of nesting, so this will be a single value with no joining of different
+        # operator types
+        # Corresponds to the JSON property `operatorType`
+        # @return [String]
+        attr_accessor :operator_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @child_predicates = args[:child_predicates] if args.key?(:child_predicates)
+          @leaf_predicate = args[:leaf_predicate] if args.key?(:leaf_predicate)
+          @operator_type = args[:operator_type] if args.key?(:operator_type)
+        end
+      end
+      
+      # Defines the aggregation function to apply to this field. This message is used
+      # only when operation is set to AGGREGATE.
+      class FunctionApplication
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Parameters to be applied to the aggregation. Aggregations that
+        # support or require parameters are listed above.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<Object>]
+        attr_accessor :parameters
+      
+        # Required. Specifies the aggregation function. Use one of the following string
+        # identifiers: "average": Computes the average (AVG). Applies only to numeric
+        # values. "count": Counts the number of values (COUNT). "count-distinct": Counts
+        # the number of distinct values (COUNT DISTINCT). "count-distinct-approx":
+        # Approximates the count of distinct values (APPROX_COUNT_DISTINCT). "max":
+        # Finds the maximum value (MAX). Applies only to numeric values. "min": Finds
+        # the minimum value (MIN). Applies only to numeric values. "sum": Computes the
+        # sum (SUM). Applies only to numeric values.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1070,8 +1273,8 @@ module Google
       
         # Required. The LogEntry field path to index.Note that some paths are
         # automatically indexed, and other paths are not eligible for indexing. See
-        # indexing documentation( https://cloud.google.com/logging/docs/analyze/custom-
-        # index) for details.For example: jsonPayload.request.status
+        # indexing documentation( https://docs.cloud.google.com/logging/docs/analyze/
+        # custom-index) for details.For example: jsonPayload.request.status
         # Corresponds to the JSON property `fieldPath`
         # @return [String]
         attr_accessor :field_path
@@ -1842,8 +2045,8 @@ module Google
         # a project, folder, organization, billing account, or flexible resource.Note:
         # CMEK for the Log Router can currently only be configured for Google Cloud
         # organizations. Once configured, it applies to all projects and folders in the
-        # Google Cloud organization.See Enabling CMEK for Log Router (https://cloud.
-        # google.com/logging/docs/routing/managed-encryption) for more information.
+        # Google Cloud organization.See Configure CMEK for Cloud Logging (https://docs.
+        # cloud.google.com/logging/docs/routing/managed-encryption) for more information.
         # Corresponds to the JSON property `cmekSettings`
         # @return [Google::Apis::LoggingV2::CmekSettings]
         attr_accessor :cmek_settings
@@ -1878,9 +2081,9 @@ module Google
       
         # Output only. The resource name of the bucket.For example:projects/my-project/
         # locations/global/buckets/my-bucketFor a list of supported locations, see
-        # Supported Regions (https://cloud.google.com/logging/docs/region-support)For
-        # the location of global it is unspecified where log entries are actually stored.
-        # After a bucket has been created, the location cannot be changed.
+        # Supported Regions (https://docs.cloud.google.com/logging/docs/region-support)
+        # For the location of global it is unspecified where log entries are actually
+        # stored.After a bucket has been created, the location cannot be changed.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2298,13 +2501,13 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/
-        # advanced-queries) that matches the log entries to be excluded. By using the
-        # sample function (https://cloud.google.com/logging/docs/view/advanced-queries#
-        # sample), you can exclude less than 100% of the matching log entries.For
-        # example, the following query matches 99% of low-severity log entries from
-        # Google Cloud Storage buckets:resource.type=gcs_bucket severity<ERROR sample(
-        # insertId, 0.99)
+        # Required. An advanced logs filter (https://docs.cloud.google.com/logging/docs/
+        # view/building-queries#queries-by-expression) that matches the log entries to
+        # be excluded. By using the sample function (https://docs.cloud.google.com/
+        # logging/docs/view/logging-query-language#sample), you can exclude less than
+        # 100% of the matching log entries.For example, the following query matches 99%
+        # of low-severity log entries from Google Cloud Storage buckets:resource.type=
+        # gcs_bucket severity<ERROR sample(insertId, 0.99)
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -2606,9 +2809,9 @@ module Google
         # com/projects/[PROJECT_ID]" "logging.googleapis.com/projects/[PROJECT_ID]/
         # locations/[LOCATION_ID]/buckets/[BUCKET_ID]" The sink's writer_identity, set
         # when the sink is created, must have permission to write to the destination or
-        # else the log entries are not exported. For more information, see Exporting
-        # Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-
-        # logs).
+        # else the log entries are not exported. For more information, see Route logs to
+        # supported destinations (https://docs.cloud.google.com/logging/docs/export/
+        # configure_export_v2).
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
@@ -2627,10 +2830,10 @@ module Google
         # @return [Array<Google::Apis::LoggingV2::LogExclusion>]
         attr_accessor :exclusions
       
-        # Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/
-        # advanced-queries). The only exported log entries are those that are in the
-        # resource owning the sink and that match the filter.For example:logName="
-        # projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
+        # Optional. An advanced logs filter (https://docs.cloud.google.com/logging/docs/
+        # view/building-queries#queries-by-expression). The only exported log entries
+        # are those that are in the resource owning the sink and that match the filter.
+        # For example:logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -2697,13 +2900,14 @@ module Google
         # is either set by specifying custom_writer_identity or set automatically by
         # sinks.create and sinks.update based on the value of unique_writer_identity in
         # those methods.Until you grant this identity write-access to the destination,
-        # log entry exports from this sink will fail. For more information, see Granting
-        # Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-
-        # service-accounts#granting_access_to_a_service_account_for_a_resource). Consult
-        # the destination service's documentation to determine the appropriate IAM roles
-        # to assign to the identity.Sinks that have a destination that is a log bucket
-        # in the same project as the sink cannot have a writer_identity and no
-        # additional permissions are required.
+        # log entry exports from this sink will fail. For more information, see Manage
+        # access to projects, folders, and organizations (https://docs.cloud.google.com/
+        # iam/docs/granting-roles-to-service-accounts#
+        # granting_access_to_a_service_account_for_a_resource). Consult the destination
+        # service's documentation to determine the appropriate IAM roles to assign to
+        # the identity.Sinks that have a destination that is a log bucket in the same
+        # project as the sink cannot have a writer_identity and no additional
+        # permissions are required.
         # Corresponds to the JSON property `writerIdentity`
         # @return [String]
         attr_accessor :writer_identity
@@ -2825,9 +3029,9 @@ module Google
       class LoggingQuery
         include Google::Apis::Core::Hashable
       
-        # Required. An advanced query using the Logging Query Language (https://cloud.
-        # google.com/logging/docs/view/logging-query-language). The maximum length of
-        # the filter is 20000 characters.
+        # Required. An advanced query using the Logging Query Language (https://docs.
+        # cloud.google.com/logging/docs/view/logging-query-language). The maximum length
+        # of the filter is 20000 characters.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -3246,14 +3450,22 @@ module Google
         end
       end
       
-      # Describes an analytics query that can be run in the Log Analytics page of
-      # Google Cloud console.Preview: This is a preview feature and may be subject to
-      # change before final release.
+      # Describes a query that can be run in Log Analytics.
       class OpsAnalyticsQuery
         include Google::Apis::Core::Hashable
       
-        # Required. A logs analytics SQL query, which generally follows BigQuery format.
-        # This is the SQL query that appears in the Log Analytics UI's query editor.
+        # Defines a structured query configuration that can be used instead of writing
+        # raw SQL. This configuration represents the components of a SQL query (FROM,
+        # SELECT, WHERE, ORDER BY, LIMIT) and is typically converted into an executable
+        # query (e.g., BigQuery SQL) by the backend service to retrieve data for
+        # analysis or visualization.
+        # Corresponds to the JSON property `queryBuilder`
+        # @return [Google::Apis::LoggingV2::QueryBuilderConfig]
+        attr_accessor :query_builder
+      
+        # Optional. A Log Analytics SQL query in text format.If both sql_query_text and
+        # query_builder fields are set, then the sql_query_text will be used, if its non-
+        # empty. At least one of the two fields must be set.
         # Corresponds to the JSON property `sqlQueryText`
         # @return [String]
         attr_accessor :sql_query_text
@@ -3264,6 +3476,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @query_builder = args[:query_builder] if args.key?(:query_builder)
           @sql_query_text = args[:sql_query_text] if args.key?(:sql_query_text)
         end
       end
@@ -3355,6 +3568,147 @@ module Google
         end
       end
       
+      # Represents a field selected in the query, analogous to an item in a SQL SELECT
+      # clause. It specifies the source field and optionally applies transformations
+      # like aggregation, casting, regex extraction, or assigns an alias. Use
+      # ProjectedField when you need more than just the raw source field name (for
+      # which you might use FieldSource directly in QueryBuilderConfig's field_sources
+      # list if no transformations or specific operation type are needed).
+      class ProjectedField
+        include Google::Apis::Core::Hashable
+      
+        # The alias name for the field. Valid alias examples are: - single word alias:
+        # TestAlias - numbers in an alias: Alias123 - multi word alias should be
+        # enclosed in quotes: "Test Alias" Invalid alias examples are: - alias
+        # containing keywords: WHERE, SELECT, FROM, etc. - alias starting with a number:
+        # 1stAlias
+        # Corresponds to the JSON property `alias`
+        # @return [String]
+        attr_accessor :alias
+      
+        # The cast for the field. This can any SQL cast type. Examples: - STRING - CHAR -
+        # DATE - TIMESTAMP - DATETIME - INT - FLOAT
+        # Corresponds to the JSON property `cast`
+        # @return [String]
+        attr_accessor :cast
+      
+        # The field name. This will be the field that is selected using the dot notation
+        # to display the drill down value.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # Specifies the role of this field (direct selection, grouping, or aggregation).
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # The re2 extraction for the field. This will be used to extract the value from
+        # the field using REGEXP_EXTRACT. More information on re2 can be found here:
+        # https://github.com/google/re2/wiki/Syntax. Meta characters like +?()| will
+        # need to be escaped. Examples: - ".(autoscaler.*)$" will be converted to
+        # REGEXP_EXTRACT(JSON_VALUE(field),"request(.*(autoscaler.*)$)")in SQL. - "\(
+        # test_value\)$" will be converted to REGEXP_EXTRACT(JSON_VALUE(field),"request(\
+        # (test_value\)$)") in SQL.
+        # Corresponds to the JSON property `regexExtraction`
+        # @return [String]
+        attr_accessor :regex_extraction
+      
+        # Defines the aggregation function to apply to this field. This message is used
+        # only when operation is set to AGGREGATE.
+        # Corresponds to the JSON property `sqlAggregationFunction`
+        # @return [Google::Apis::LoggingV2::FunctionApplication]
+        attr_accessor :sql_aggregation_function
+      
+        # The truncation granularity when grouping by a time/date field. This will be
+        # used to truncate the field to the granularity specified. This can be either a
+        # date or a time granularity found at https://cloud.google.com/bigquery/docs/
+        # reference/standard-sql/timestamp_functions#timestamp_trunc_granularity_date
+        # and https://cloud.google.com/bigquery/docs/reference/standard-sql/
+        # timestamp_functions#timestamp_trunc_granularity_time respectively.
+        # Corresponds to the JSON property `truncationGranularity`
+        # @return [String]
+        attr_accessor :truncation_granularity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alias = args[:alias] if args.key?(:alias)
+          @cast = args[:cast] if args.key?(:cast)
+          @field = args[:field] if args.key?(:field)
+          @operation = args[:operation] if args.key?(:operation)
+          @regex_extraction = args[:regex_extraction] if args.key?(:regex_extraction)
+          @sql_aggregation_function = args[:sql_aggregation_function] if args.key?(:sql_aggregation_function)
+          @truncation_granularity = args[:truncation_granularity] if args.key?(:truncation_granularity)
+        end
+      end
+      
+      # Defines a structured query configuration that can be used instead of writing
+      # raw SQL. This configuration represents the components of a SQL query (FROM,
+      # SELECT, WHERE, ORDER BY, LIMIT) and is typically converted into an executable
+      # query (e.g., BigQuery SQL) by the backend service to retrieve data for
+      # analysis or visualization.
+      class QueryBuilderConfig
+        include Google::Apis::Core::Hashable
+      
+        # Defines the items to include in the query result, analogous to a SQL SELECT
+        # clause.
+        # Corresponds to the JSON property `fieldSources`
+        # @return [Array<Google::Apis::LoggingV2::FieldSource>]
+        attr_accessor :field_sources
+      
+        # A filter for a query. This equates to the WHERE clause in SQL.
+        # Corresponds to the JSON property `filter`
+        # @return [Google::Apis::LoggingV2::FilterPredicate]
+        attr_accessor :filter
+      
+        # The limit to use for the query. This equates to the LIMIT clause in SQL. A
+        # limit of 0 will be treated as not enabled.
+        # Corresponds to the JSON property `limit`
+        # @return [Fixnum]
+        attr_accessor :limit
+      
+        # The sort orders to use for the query. This equates to the ORDER BY clause in
+        # SQL.
+        # Corresponds to the JSON property `orderBys`
+        # @return [Array<Google::Apis::LoggingV2::SortOrderParameter>]
+        attr_accessor :order_bys
+      
+        # Required. The view/resource to query. For now only a single view/resource will
+        # be sent, but there are plans to allow multiple views in the future. Marking as
+        # repeated for that purpose. Example: - "projects/123/locations/global/buckets/
+        # 456/views/_Default" - "projects/123/locations/global/metricBuckets/456/views/
+        # _Default"
+        # Corresponds to the JSON property `resourceNames`
+        # @return [Array<String>]
+        attr_accessor :resource_names
+      
+        # The plain text search to use for the query. There is no support for multiple
+        # search terms. This uses the SEARCH functionality in BigQuery. For example, a
+        # search_term = 'ERROR' would result in the following SQL:SELECT * FROM resource
+        # WHERE SEARCH(resource, 'ERROR') LIMIT 100
+        # Corresponds to the JSON property `searchTerm`
+        # @return [String]
+        attr_accessor :search_term
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_sources = args[:field_sources] if args.key?(:field_sources)
+          @filter = args[:filter] if args.key?(:filter)
+          @limit = args[:limit] if args.key?(:limit)
+          @order_bys = args[:order_bys] if args.key?(:order_bys)
+          @resource_names = args[:resource_names] if args.key?(:resource_names)
+          @search_term = args[:search_term] if args.key?(:search_term)
+        end
+      end
+      
       # Describes a recent query executed on the Logs Explorer or Log Analytics page
       # within the last ~ 30 days.
       class RecentQuery
@@ -3375,15 +3729,13 @@ module Google
       
         # Output only. Resource name of the recent query.In the format: "projects/[
         # PROJECT_ID]/locations/[LOCATION_ID]/recentQueries/[QUERY_ID]" For a list of
-        # supported locations, see Supported Regions (https://cloud.google.com/logging/
-        # docs/region-support)The QUERY_ID is a system generated alphanumeric ID.
+        # supported locations, see Supported Regions (https://docs.cloud.google.com/
+        # logging/docs/region-support)The QUERY_ID is a system generated alphanumeric ID.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Describes an analytics query that can be run in the Log Analytics page of
-        # Google Cloud console.Preview: This is a preview feature and may be subject to
-        # change before final release.
+        # Describes a query that can be run in Log Analytics.
         # Corresponds to the JSON property `opsAnalyticsQuery`
         # @return [Google::Apis::LoggingV2::OpsAnalyticsQuery]
         attr_accessor :ops_analytics_query
@@ -3667,17 +4019,15 @@ module Google
       
         # Output only. Resource name of the saved query.In the format: "projects/[
         # PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of
-        # supported locations, see Supported Regions (https://cloud.google.com/logging/
-        # docs/region-support#bucket-regions)After the saved query is created, the
-        # location cannot be changed.If the user doesn't provide a QUERY_ID, the system
-        # will generate an alphanumeric ID.
+        # supported locations, see Supported Regions (https://docs.cloud.google.com/
+        # logging/docs/region-support#bucket-regions)After the saved query is created,
+        # the location cannot be changed.If the user doesn't provide a QUERY_ID, the
+        # system will generate an alphanumeric ID.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Describes an analytics query that can be run in the Log Analytics page of
-        # Google Cloud console.Preview: This is a preview feature and may be subject to
-        # change before final release.
+        # Describes a query that can be run in Log Analytics.
         # Corresponds to the JSON property `opsAnalyticsQuery`
         # @return [Google::Apis::LoggingV2::OpsAnalyticsQuery]
         attr_accessor :ops_analytics_query
@@ -3791,8 +4141,8 @@ module Google
         # cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.The Cloud KMS
         # key used by the Log Router can be updated by changing the kms_key_name to a
         # new valid key name.To disable CMEK for the Log Router, set this field to an
-        # empty string.See Enabling CMEK for Log Router (https://cloud.google.com/
-        # logging/docs/routing/managed-encryption) for more information.
+        # empty string.See Configure CMEK for Cloud Logging (https://docs.cloud.google.
+        # com/logging/docs/routing/managed-encryption) for more information.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -3801,8 +4151,8 @@ module Google
         # your Cloud KMS key.Before enabling CMEK, you must first assign the role roles/
         # cloudkms.cryptoKeyEncrypterDecrypter to the service account that will be used
         # to access your Cloud KMS key. Use GetSettings to obtain the service account ID.
-        # See Enabling CMEK for Log Router (https://cloud.google.com/logging/docs/
-        # routing/managed-encryption) for more information.
+        # See Configure CMEK for Cloud Logging (https://docs.cloud.google.com/logging/
+        # docs/routing/managed-encryption) for more information.
         # Corresponds to the JSON property `kmsServiceAccountId`
         # @return [String]
         attr_accessor :kms_service_account_id
@@ -3842,6 +4192,32 @@ module Google
           @logging_service_account_id = args[:logging_service_account_id] if args.key?(:logging_service_account_id)
           @name = args[:name] if args.key?(:name)
           @storage_location = args[:storage_location] if args.key?(:storage_location)
+        end
+      end
+      
+      # A sort order for a query based on a column.
+      class SortOrderParameter
+        include Google::Apis::Core::Hashable
+      
+        # A source that can be used to represent a field within various parts of a
+        # structured query, such as in SELECT, WHERE, or ORDER BY clauses.
+        # Corresponds to the JSON property `fieldSource`
+        # @return [Google::Apis::LoggingV2::FieldSource]
+        attr_accessor :field_source
+      
+        # The sort order to use for the query.
+        # Corresponds to the JSON property `sortOrderDirection`
+        # @return [String]
+        attr_accessor :sort_order_direction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_source = args[:field_source] if args.key?(:field_source)
+          @sort_order_direction = args[:sort_order_direction] if args.key?(:sort_order_direction)
         end
       end
       
@@ -3948,8 +4324,8 @@ module Google
         end
       end
       
-      # A field from the LogEntry that is added to the summary line (https://cloud.
-      # google.com/logging/docs/view/logs-explorer-interface#add-summary-fields) for a
+      # A field from the LogEntry that is added to the summary line (https://docs.
+      # cloud.google.com/logging/docs/view/logs-explorer-interface#preferences) for a
       # query in the Logs Explorer.
       class SummaryField
         include Google::Apis::Core::Hashable
