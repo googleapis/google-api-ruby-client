@@ -1,5 +1,9 @@
 # Release history for google-apis-kmsinventory_v1
 
+### v0.13.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260201
+
 ### v0.12.0 (2025-12-14)
 
 * Regenerated from discovery document revision 20251207
