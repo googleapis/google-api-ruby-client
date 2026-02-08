@@ -51,7 +51,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule]
         attr_accessor :child_alignment_rule
       
-        # Description of the validation rule. This has no use but for documentation
+        # Description of the validation rule. This has no use but for documentation.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -937,7 +937,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Display name to show to users.
+        # Display name to show users.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -1010,7 +1010,7 @@ module Google
         # Common Type". The following naming conventions are used: - Use `snake_casing`.
         # - Name matching is case-sensitive. - Maximum 64 characters. - Must start with
         # a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
-        # compatibility internal infrastructure and tooling can handle any ascii
+        # compatibility, internal infrastructure and tooling can handle any ASCII
         # character.) - The `/` is sometimes used to denote a property of a type. For
         # example `line_item/amount`. This convention is deprecated, but will still be
         # honored for backward compatibility.
@@ -1140,9 +1140,9 @@ module Google
         attr_accessor :prefixed_naming_on_properties
         alias_method :prefixed_naming_on_properties?, :prefixed_naming_on_properties
       
-        # If set, we will skip the naming format validation in the schema. So the string
-        # values in `DocumentSchema.EntityType.name` and `DocumentSchema.EntityType.
-        # Property.name` will not be checked.
+        # If set, this will skip the naming format validation in the schema. So the
+        # string values in `DocumentSchema.EntityType.name` and `DocumentSchema.
+        # EntityType.Property.name` will not be checked.
         # Corresponds to the JSON property `skipNamingValidation`
         # @return [Boolean]
         attr_accessor :skip_naming_validation
@@ -1288,7 +1288,7 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3EvaluationMetrics
         include Google::Apis::Core::Hashable
       
-        # The calculated f1 score.
+        # The calculated F1 score.
         # Corresponds to the JSON property `f1Score`
         # @return [Float]
         attr_accessor :f1_score
@@ -2141,14 +2141,14 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
         include Google::Apis::Core::Hashable
       
-        # Whether finetuning is allowed for this base processor version.
+        # Whether fine tuning is allowed for this base processor version.
         # Corresponds to the JSON property `finetuningAllowed`
         # @return [Boolean]
         attr_accessor :finetuning_allowed
         alias_method :finetuning_allowed?, :finetuning_allowed
       
         # The minimum number of labeled documents in the training dataset required for
-        # finetuning.
+        # fine tuning.
         # Corresponds to the JSON property `minTrainLabeledDocuments`
         # @return [Fixnum]
         attr_accessor :min_train_labeled_documents
@@ -2455,7 +2455,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Display name to show to users.
+        # Display name to show users.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -3326,7 +3326,7 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntity>]
         attr_accessor :entities
       
-        # The entity revision id that `document.entities` field is based on. If this
+        # The entity revision ID that `document.entities` field is based on. If this
         # field is set and `entities_revisions` is not empty, the entities in `document.
         # entities` field are the entities in the entity revision with this id and `
         # document.entity_validation_output` field is the `entity_validation_output`
@@ -3896,7 +3896,7 @@ module Google
         # @return [String]
         attr_accessor :mention_id
       
-        # Optional. Text value of the entity e.g. `1600 Amphitheatre Pkwy`.
+        # Optional. Text value of the entity, for example, `1600 Amphitheatre Pkwy`.
         # Corresponds to the JSON property `mentionText`
         # @return [String]
         attr_accessor :mention_text
@@ -3941,7 +3941,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentTextAnchor]
         attr_accessor :text_anchor
       
-        # Required. Entity type from a schema e.g. `Address`.
+        # Required. Entity type from a schema, for example, `Address`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4345,8 +4345,8 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageMatrix>]
         attr_accessor :transforms
       
-        # A list of detected non-text visual elements e.g. checkbox, signature etc. on
-        # the page.
+        # A list of detected non-text visual elements, for example, checkbox, signature
+        # etc. on the page.
         # Corresponds to the JSON property `visualElements`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageVisualElement>]
         attr_accessor :visual_elements
@@ -4730,8 +4730,8 @@ module Google
         attr_accessor :bounding_poly
       
         # Confidence of the current Layout within context of the object this layout is
-        # for. e.g. confidence can be for a single token, a table, a visual element, etc.
-        # depending on context. Range `[0, 1]`.
+        # for. For example, confidence can be for a single token, a table, a visual
+        # element, etc. depending on context. Range `[0, 1]`.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -5254,7 +5254,8 @@ module Google
         end
       end
       
-      # Detected non-text visual elements e.g. checkbox, signature etc. on the page.
+      # Detected non-text visual elements, for example, checkbox, signature etc. on
+      # the page.
       class GoogleCloudDocumentaiV1DocumentPageVisualElement
         include Google::Apis::Core::Hashable
       
@@ -5422,7 +5423,7 @@ module Google
       class GoogleCloudDocumentaiV1DocumentRevisionHumanReview
         include Google::Apis::Core::Hashable
       
-        # Human review state. e.g. `requested`, `succeeded`, `rejected`.
+        # Human review state. For example, `requested`, `succeeded`, `rejected`.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -5453,7 +5454,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Display name to show to users.
+        # Display name to show users.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -5515,7 +5516,7 @@ module Google
         # Common Type". The following naming conventions are used: - Use `snake_casing`.
         # - Name matching is case-sensitive. - Maximum 64 characters. - Must start with
         # a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
-        # compatibility internal infrastructure and tooling can handle any ascii
+        # compatibility, internal infrastructure and tooling can handle any ASCII
         # character.) - The `/` is sometimes used to denote a property of a type. For
         # example `line_item/amount`. This convention is deprecated, but will still be
         # honored for backward compatibility.
@@ -5630,9 +5631,9 @@ module Google
         attr_accessor :prefixed_naming_on_properties
         alias_method :prefixed_naming_on_properties?, :prefixed_naming_on_properties
       
-        # If set, we will skip the naming format validation in the schema. So the string
-        # values in `DocumentSchema.EntityType.name` and `DocumentSchema.EntityType.
-        # Property.name` will not be checked.
+        # If set, this will skip the naming format validation in the schema. So the
+        # string values in `DocumentSchema.EntityType.name` and `DocumentSchema.
+        # EntityType.Property.name` will not be checked.
         # Corresponds to the JSON property `skipNamingValidation`
         # @return [Boolean]
         attr_accessor :skip_naming_validation
@@ -6110,6 +6111,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Contains all revisions of the evaluation, excluding the latest one.
+        # Corresponds to the JSON property `revisions`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationEvaluationRevision>]
+        attr_accessor :revisions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6123,6 +6129,7 @@ module Google
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
           @name = args[:name] if args.key?(:name)
+          @revisions = args[:revisions] if args.key?(:revisions)
         end
       end
       
@@ -6190,11 +6197,48 @@ module Google
         end
       end
       
+      # A revision of the evaluation.
+      class GoogleCloudDocumentaiV1EvaluationEvaluationRevision
+        include Google::Apis::Core::Hashable
+      
+        # Metrics across multiple confidence levels.
+        # Corresponds to the JSON property `allEntitiesMetrics`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics]
+        attr_accessor :all_entities_metrics
+      
+        # Evaluation counters for the documents that were used.
+        # Corresponds to the JSON property `documentCounters`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationCounters]
+        attr_accessor :document_counters
+      
+        # Output only. Metrics across confidence levels, for different entities.
+        # Corresponds to the JSON property `entityMetrics`
+        # @return [Hash<String,Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics>]
+        attr_accessor :entity_metrics
+      
+        # Output only. The revision ID of the evaluation.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_entities_metrics = args[:all_entities_metrics] if args.key?(:all_entities_metrics)
+          @document_counters = args[:document_counters] if args.key?(:document_counters)
+          @entity_metrics = args[:entity_metrics] if args.key?(:entity_metrics)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+        end
+      end
+      
       # Evaluation metrics, either in aggregate or about a specific entity.
       class GoogleCloudDocumentaiV1EvaluationMetrics
         include Google::Apis::Core::Hashable
       
-        # The calculated f1 score.
+        # The calculated F1 score.
         # Corresponds to the JSON property `f1Score`
         # @return [Float]
         attr_accessor :f1_score
@@ -6740,7 +6784,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. The GCP labels for the Schema.
+        # Optional. The ``gcp_name_short`` labels for the Schema.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -7559,14 +7603,14 @@ module Google
       class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
         include Google::Apis::Core::Hashable
       
-        # Whether finetuning is allowed for this base processor version.
+        # Whether fine tuning is allowed for this base processor version.
         # Corresponds to the JSON property `finetuningAllowed`
         # @return [Boolean]
         attr_accessor :finetuning_allowed
         alias_method :finetuning_allowed?, :finetuning_allowed
       
         # The minimum number of labeled documents in the training dataset required for
-        # finetuning.
+        # fine tuning.
         # Corresponds to the JSON property `minTrainLabeledDocuments`
         # @return [Fixnum]
         attr_accessor :min_train_labeled_documents
@@ -7797,7 +7841,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. The GCP labels for the SchemaVersion.
+        # Optional. The ``gcp_name_short`` labels for the SchemaVersion.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -8439,11 +8483,6 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Configuration specific to spanner-based indexing.
-        # Corresponds to the JSON property `spannerIndexingConfig`
-        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig]
-        attr_accessor :spanner_indexing_config
-      
         # Required. State of the dataset. Ignored when updating dataset.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -8465,7 +8504,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
-          @spanner_indexing_config = args[:spanner_indexing_config] if args.key?(:spanner_indexing_config)
           @state = args[:state] if args.key?(:state)
           @unmanaged_dataset_config = args[:unmanaged_dataset_config] if args.key?(:unmanaged_dataset_config)
         end
@@ -8513,19 +8551,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_prefix = args[:gcs_prefix] if args.key?(:gcs_prefix)
-        end
-      end
-      
-      # Configuration specific to spanner-based indexing.
-      class GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -8733,7 +8758,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Display name to show to users.
+        # Display name to show users.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -8806,7 +8831,7 @@ module Google
         # Common Type". The following naming conventions are used: - Use `snake_casing`.
         # - Name matching is case-sensitive. - Maximum 64 characters. - Must start with
         # a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
-        # compatibility internal infrastructure and tooling can handle any ascii
+        # compatibility, internal infrastructure and tooling can handle any ASCII
         # character.) - The `/` is sometimes used to denote a property of a type. For
         # example `line_item/amount`. This convention is deprecated, but will still be
         # honored for backward compatibility.
@@ -8936,9 +8961,9 @@ module Google
         attr_accessor :prefixed_naming_on_properties
         alias_method :prefixed_naming_on_properties?, :prefixed_naming_on_properties
       
-        # If set, we will skip the naming format validation in the schema. So the string
-        # values in `DocumentSchema.EntityType.name` and `DocumentSchema.EntityType.
-        # Property.name` will not be checked.
+        # If set, this will skip the naming format validation in the schema. So the
+        # string values in `DocumentSchema.EntityType.name` and `DocumentSchema.
+        # EntityType.Property.name` will not be checked.
         # Corresponds to the JSON property `skipNamingValidation`
         # @return [Boolean]
         attr_accessor :skip_naming_validation
@@ -9052,7 +9077,7 @@ module Google
       class GoogleCloudDocumentaiV1beta3EvaluationMetrics
         include Google::Apis::Core::Hashable
       
-        # The calculated f1 score.
+        # The calculated F1 score.
         # Corresponds to the JSON property `f1Score`
         # @return [Float]
         attr_accessor :f1_score
@@ -9699,14 +9724,14 @@ module Google
       class GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
         include Google::Apis::Core::Hashable
       
-        # Whether finetuning is allowed for this base processor version.
+        # Whether fine tuning is allowed for this base processor version.
         # Corresponds to the JSON property `finetuningAllowed`
         # @return [Boolean]
         attr_accessor :finetuning_allowed
         alias_method :finetuning_allowed?, :finetuning_allowed
       
         # The minimum number of labeled documents in the training dataset required for
-        # finetuning.
+        # fine tuning.
         # Corresponds to the JSON property `minTrainLabeledDocuments`
         # @return [Fixnum]
         attr_accessor :min_train_labeled_documents
