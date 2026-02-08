@@ -2520,6 +2520,61 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Stops a running instance.The instance might be automatically recreated based
+        # on the scaling settings of the version. For more information, see "How
+        # Instances are Managed" (standard environment (https://cloud.google.com/
+        # appengine/docs/standard/python/how-instances-are-managed) | flexible
+        # environment (https://cloud.google.com/appengine/docs/flexible/python/how-
+        # instances-are-managed)).To ensure that instances are not re-created and avoid
+        # getting billed, you can stop all instances within the target version by
+        # changing the serving status of the version to STOPPED with the apps.services.
+        # versions.patch (https://cloud.google.com/appengine/docs/admin-api/reference/
+        # rest/v1/apps.services.versions/patch) method.
+        # @param [String] projects_id
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default/versions/v1/instances/instance-1.
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] services_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] versions_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] instances_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_application_service_version_instance(projects_id, locations_id, applications_id, services_id, versions_id, instances_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', options)
+          command.response_representation = Google::Apis::AppengineV1beta::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1beta::Operation
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['servicesId'] = services_id unless services_id.nil?
+          command.params['versionsId'] = versions_id unless versions_id.nil?
+          command.params['instancesId'] = instances_id unless instances_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] projects_id
