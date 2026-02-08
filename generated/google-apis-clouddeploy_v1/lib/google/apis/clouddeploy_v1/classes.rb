@@ -1230,6 +1230,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :service_urls
       
+        # Output only. The Cloud Run worker pool associated with a `Rollout`. Format is `
+        # projects/`project`/locations/`location`/workerPools/`worker_pool``.
+        # Corresponds to the JSON property `workerPool`
+        # @return [String]
+        attr_accessor :worker_pool
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1240,6 +1246,7 @@ module Google
           @revision = args[:revision] if args.key?(:revision)
           @service = args[:service] if args.key?(:service)
           @service_urls = args[:service_urls] if args.key?(:service_urls)
+          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
         end
       end
       
@@ -1254,6 +1261,12 @@ module Google
         # @return [String]
         attr_accessor :service
       
+        # Output only. The name of the Cloud Run Worker Pool in the rendered manifest.
+        # Format is `projects/`project`/locations/`location`/workerPools/`worker_pool``.
+        # Corresponds to the JSON property `workerPool`
+        # @return [String]
+        attr_accessor :worker_pool
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1261,6 +1274,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @service = args[:service] if args.key?(:service)
+          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
         end
       end
       

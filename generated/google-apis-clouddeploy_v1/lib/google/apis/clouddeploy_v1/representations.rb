@@ -1361,6 +1361,7 @@ module Google
           property :revision, as: 'revision'
           property :service, as: 'service'
           collection :service_urls, as: 'serviceUrls'
+          property :worker_pool, as: 'workerPool'
         end
       end
       
@@ -1368,6 +1369,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :service, as: 'service'
+          property :worker_pool, as: 'workerPool'
         end
       end
       
