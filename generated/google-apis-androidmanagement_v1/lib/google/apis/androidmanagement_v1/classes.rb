@@ -1160,8 +1160,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The SHA-256 hash value of the signing key certificate of the app.
-        # This must be a valid SHA-256 hash value, i.e. 32 bytes. Otherwise, the policy
-        # is rejected.
+        # This must be a valid SHA-256 hash value, i.e. 32 bytes.
         # Corresponds to the JSON property `signingKeyCertFingerprintSha256`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
