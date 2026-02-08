@@ -22,13 +22,55 @@ module Google
   module Apis
     module ObservabilityV1
       
+      class Bucket
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CmekSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Dataset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Link
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBucketsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDatasetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListLinksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -47,6 +89,12 @@ module Google
       end
       
       class ListTraceScopesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListViewsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -88,15 +136,94 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class View
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Bucket
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cmek_settings, as: 'cmekSettings', class: Google::Apis::ObservabilityV1::CmekSettings, decorator: Google::Apis::ObservabilityV1::CmekSettings::Representation
+      
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :purge_time, as: 'purgeTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
+      class CmekSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key, as: 'kmsKey'
+          property :kms_key_version, as: 'kmsKeyVersion'
+          property :service_account_id, as: 'serviceAccountId'
+        end
+      end
+      
+      class Dataset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :purge_time, as: 'purgeTime'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Link
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+        end
+      end
+      
+      class ListBucketsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :buckets, as: 'buckets', class: Google::Apis::ObservabilityV1::Bucket, decorator: Google::Apis::ObservabilityV1::Bucket::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListDatasetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :datasets, as: 'datasets', class: Google::Apis::ObservabilityV1::Dataset, decorator: Google::Apis::ObservabilityV1::Dataset::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListLinksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :links, as: 'links', class: Google::Apis::ObservabilityV1::Link, decorator: Google::Apis::ObservabilityV1::Link::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -124,6 +251,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :trace_scopes, as: 'traceScopes', class: Google::Apis::ObservabilityV1::TraceScope, decorator: Google::Apis::ObservabilityV1::TraceScope::Representation
+      
+        end
+      end
+      
+      class ListViewsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :views, as: 'views', class: Google::Apis::ObservabilityV1::View, decorator: Google::Apis::ObservabilityV1::View::Representation
       
         end
       end
@@ -190,6 +326,17 @@ module Google
           property :description, as: 'description'
           property :name, as: 'name'
           collection :resource_names, as: 'resourceNames'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class View
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
           property :update_time, as: 'updateTime'
         end
       end
