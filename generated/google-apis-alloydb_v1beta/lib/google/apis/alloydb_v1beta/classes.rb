@@ -1009,19 +1009,6 @@ module Google
       class ConnectionPoolConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Deprecated. Use 'flags' instead. The default pool size. Defaults to
-        # 20. Note: This field should not be added to client libraries if not present
-        # already.
-        # Corresponds to the JSON property `defaultPoolSize`
-        # @return [String]
-        attr_accessor :default_pool_size
-      
-        # Optional. Deprecated; Prefer 'enabled' as this will be removed soon.
-        # Corresponds to the JSON property `enable`
-        # @return [Boolean]
-        attr_accessor :enable
-        alias_method :enable?, :enable
-      
         # Optional. Whether to enable Managed Connection Pool (MCP).
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
@@ -1033,72 +1020,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :flags
       
-        # Optional. Deprecated. Use 'flags' instead. The list of startup parameters to
-        # ignore. Defaults to ["extra_float_digits"] Note: This field should not be
-        # added to client libraries if not present already.
-        # Corresponds to the JSON property `ignoreStartupParameters`
-        # @return [Array<String>]
-        attr_accessor :ignore_startup_parameters
-      
-        # Optional. Deprecated. Use 'flags' instead. The maximum number of client
-        # connections allowed. Note: This field should not be added to client libraries
-        # if not present already.
-        # Corresponds to the JSON property `maxClientConn`
-        # @return [String]
-        attr_accessor :max_client_conn
-      
-        # Optional. Deprecated. Use 'flags' instead. The maximum number of prepared
-        # statements allowed. MCP makes sure that any statement prepared by a client, up
-        # to this limit, is available on the backing server connection in transaction
-        # and statement pooling mode. Even if the statement was originally prepared on
-        # another server connection. Defaults to 0. Note: This field should not be added
-        # to client libraries if not present already.
-        # Corresponds to the JSON property `maxPreparedStatements`
-        # @return [String]
-        attr_accessor :max_prepared_statements
-      
-        # Optional. Deprecated. Use 'flags' instead. The minimum pool size. Defaults to
-        # 0. Note: This field should not be added to client libraries if not present
-        # already.
-        # Corresponds to the JSON property `minPoolSize`
-        # @return [String]
-        attr_accessor :min_pool_size
-      
-        # Optional. Deprecated. Use 'flags' instead. The pool mode. Defaults to `
-        # POOL_MODE_TRANSACTION`. Note: This field should not be added to client
-        # libraries if not present already.
-        # Corresponds to the JSON property `poolMode`
-        # @return [String]
-        attr_accessor :pool_mode
-      
         # Output only. The number of running poolers per instance.
         # Corresponds to the JSON property `poolerCount`
         # @return [Fixnum]
         attr_accessor :pooler_count
-      
-        # Optional. Deprecated. Use 'flags' instead. The maximum number of seconds
-        # queries are allowed to spend waiting for execution. If the query is not
-        # assigned to a server during that time, the client is disconnected. 0 disables.
-        # Note: This field should not be added to client libraries if not present
-        # already.
-        # Corresponds to the JSON property `queryWaitTimeout`
-        # @return [String]
-        attr_accessor :query_wait_timeout
-      
-        # Optional. Deprecated. Use 'flags' instead. The maximum number of seconds a
-        # server is allowed to be idle before it is disconnected. 0 disables. Note: This
-        # field should not be added to client libraries if not present already.
-        # Corresponds to the JSON property `serverIdleTimeout`
-        # @return [String]
-        attr_accessor :server_idle_timeout
-      
-        # Optional. Deprecated. Use 'flags' instead. The list of users that are allowed
-        # to connect to the MCP stats console. The users must exist in the database.
-        # Note: This field should not be added to client libraries if not present
-        # already.
-        # Corresponds to the JSON property `statsUsers`
-        # @return [Array<String>]
-        attr_accessor :stats_users
       
         def initialize(**args)
            update!(**args)
@@ -1106,19 +1031,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @default_pool_size = args[:default_pool_size] if args.key?(:default_pool_size)
-          @enable = args[:enable] if args.key?(:enable)
           @enabled = args[:enabled] if args.key?(:enabled)
           @flags = args[:flags] if args.key?(:flags)
-          @ignore_startup_parameters = args[:ignore_startup_parameters] if args.key?(:ignore_startup_parameters)
-          @max_client_conn = args[:max_client_conn] if args.key?(:max_client_conn)
-          @max_prepared_statements = args[:max_prepared_statements] if args.key?(:max_prepared_statements)
-          @min_pool_size = args[:min_pool_size] if args.key?(:min_pool_size)
-          @pool_mode = args[:pool_mode] if args.key?(:pool_mode)
           @pooler_count = args[:pooler_count] if args.key?(:pooler_count)
-          @query_wait_timeout = args[:query_wait_timeout] if args.key?(:query_wait_timeout)
-          @server_idle_timeout = args[:server_idle_timeout] if args.key?(:server_idle_timeout)
-          @stats_users = args[:stats_users] if args.key?(:stats_users)
         end
       end
       
@@ -4094,7 +4009,7 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 30
+        # Common model for database resource instance metadata. Next ID: 31
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -4292,7 +4207,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 30
+      # Common model for database resource instance metadata. Next ID: 31
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -4414,6 +4329,11 @@ module Google
         # @return [String]
         attr_accessor :resource_container
       
+        # Optional. List of resource flags for the database resource.
+        # Corresponds to the JSON property `resourceFlags`
+        # @return [Array<Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainResourceFlags>]
+        attr_accessor :resource_flags
+      
         # Required. Different from DatabaseResourceId.unique_id, a resource name can be
         # reused over time. That is, after a resource named "ABC" is deleted, the name "
         # ABC" can be used to to create a new resource within the same source. Resource
@@ -4480,6 +4400,7 @@ module Google
           @primary_resource_location = args[:primary_resource_location] if args.key?(:primary_resource_location)
           @product = args[:product] if args.key?(:product)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
+          @resource_flags = args[:resource_flags] if args.key?(:resource_flags)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
           @tags_set = args[:tags_set] if args.key?(:tags_set)
@@ -4844,6 +4765,31 @@ module Google
         end
       end
       
+      # Message type for storing resource flags.
+      class StorageDatabasecenterPartnerapiV1mainResourceFlags
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Key of the resource flag.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. Value of the resource flag.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Deny maintenance period for the database resource. It specifies the time range
       # during which the maintenance cannot start. This is configured by the customer.
       class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule
@@ -4901,6 +4847,14 @@ module Google
         # @return [Array<Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule>]
         attr_accessor :deny_maintenance_schedules
       
+        # Optional. Whether the instance is in stopped state. This information is
+        # temporarily being captured in maintenanceInfo, till STOPPED state is supported
+        # by DB Center.
+        # Corresponds to the JSON property `isInstanceStopped`
+        # @return [Boolean]
+        attr_accessor :is_instance_stopped
+        alias_method :is_instance_stopped?, :is_instance_stopped
+      
         # Maintenance window for the database resource. It specifies preferred time and
         # day of the week and phase in some cases, when the maintenance can start. This
         # is configured by the customer.
@@ -4925,6 +4879,13 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance]
         attr_accessor :upcoming_maintenance
       
+        # Optional. This field will contain the date when the last version update was
+        # applied to the database resource. This will be used to calculate the age of
+        # the maintenance version.
+        # Corresponds to the JSON property `versionUpdateTime`
+        # @return [String]
+        attr_accessor :version_update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4932,10 +4893,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deny_maintenance_schedules = args[:deny_maintenance_schedules] if args.key?(:deny_maintenance_schedules)
+          @is_instance_stopped = args[:is_instance_stopped] if args.key?(:is_instance_stopped)
           @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
           @maintenance_state = args[:maintenance_state] if args.key?(:maintenance_state)
           @maintenance_version = args[:maintenance_version] if args.key?(:maintenance_version)
           @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
+          @version_update_time = args[:version_update_time] if args.key?(:version_update_time)
         end
       end
       
