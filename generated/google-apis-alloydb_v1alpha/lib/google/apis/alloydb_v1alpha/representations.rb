@@ -646,6 +646,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainResourceFlags
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1019,19 +1025,9 @@ module Google
       class ConnectionPoolConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :default_pool_size, as: 'defaultPoolSize'
-          property :enable, as: 'enable'
           property :enabled, as: 'enabled'
           hash :flags, as: 'flags'
-          collection :ignore_startup_parameters, as: 'ignoreStartupParameters'
-          property :max_client_conn, as: 'maxClientConn'
-          property :max_prepared_statements, as: 'maxPreparedStatements'
-          property :min_pool_size, as: 'minPoolSize'
-          property :pool_mode, as: 'poolMode'
           property :pooler_count, as: 'poolerCount'
-          property :query_wait_timeout, as: 'queryWaitTimeout'
-          property :server_idle_timeout, as: 'serverIdleTimeout'
-          collection :stats_users, as: 'statsUsers'
         end
       end
       
@@ -1894,6 +1890,8 @@ module Google
           property :product, as: 'product', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterProtoCommonProduct, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterProtoCommonProduct::Representation
       
           property :resource_container, as: 'resourceContainer'
+          collection :resource_flags, as: 'resourceFlags', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainResourceFlags, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainResourceFlags::Representation
+      
           property :resource_name, as: 'resourceName'
           property :suspension_reason, as: 'suspensionReason'
           property :tags_set, as: 'tagsSet', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainTags, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainTags::Representation
@@ -1996,6 +1994,14 @@ module Google
         end
       end
       
+      class StorageDatabasecenterPartnerapiV1mainResourceFlags
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2013,12 +2019,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :deny_maintenance_schedules, as: 'denyMaintenanceSchedules', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule::Representation
       
+          property :is_instance_stopped, as: 'isInstanceStopped'
           property :maintenance_schedule, as: 'maintenanceSchedule', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule::Representation
       
           property :maintenance_state, as: 'maintenanceState'
           property :maintenance_version, as: 'maintenanceVersion'
           property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance::Representation
       
+          property :version_update_time, as: 'versionUpdateTime'
         end
       end
       
