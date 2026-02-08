@@ -115,7 +115,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # can be called in two ways: * **List all public locations:** Use the path `GET /
+        # v1/locations`. * **List project-visible locations:** Use the path `GET /v1/
+        # projects/`project_id`/locations`. This may include public locations as well as
+        # private or other locations specifically visible to the project.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
@@ -1498,8 +1502,8 @@ module Google
         #   most `10` Schema will be returned. The maximum value is `20`. Values above `20`
         #   will be coerced to `20`.
         # @param [String] page_token
-        #   Optional. We will return the schema groups sorted by creation time. The page
-        #   token will point to the next Schema.
+        #   Optional. Returns the schema groups sorted by creation time. The page token
+        #   will point to the next Schema.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1536,7 +1540,7 @@ module Google
         # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema] google_cloud_documentai_v1beta3_next_schema_object
         # @param [String] update_mask
         #   Optional. The update mask to apply to the resource. **Note:** Only the
-        #   following fields can be updated: - display_name. - labels.
+        #   following fields can be updated: - `display_name` - `labels`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1707,8 +1711,8 @@ module Google
         #   most `10` SchemaVersion will be returned. The maximum value is `20`. Values
         #   above `20` will be coerced to `20`.
         # @param [String] page_token
-        #   Optional. We will return the SchemaVersion sorted by creation time. The page
-        #   token will point to the next SchemaVersion.
+        #   Optional. Returns the SchemaVersion sorted by creation time. The page token
+        #   will point to the next SchemaVersion.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1745,7 +1749,7 @@ module Google
         # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion] google_cloud_documentai_v1beta3_schema_version_object
         # @param [String] update_mask
         #   Optional. The update mask to apply to the resource. **Note:** Only the
-        #   following fields can be updated: - display_name. - labels.
+        #   following fields can be updated: - `display_name` - `labels`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

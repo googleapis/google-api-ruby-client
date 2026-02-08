@@ -862,12 +862,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1415,6 +1409,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta3EvaluationCounters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3EvaluationEvaluationRevision
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3258,8 +3258,6 @@ module Google
           property :name, as: 'name'
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
-          property :spanner_indexing_config, as: 'spannerIndexingConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig::Representation
-      
           property :state, as: 'state'
           property :unmanaged_dataset_config, as: 'unmanagedDatasetConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig::Representation
       
@@ -3290,12 +3288,6 @@ module Google
           property :name, as: 'name'
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
-        end
-      end
-      
-      class GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -4281,6 +4273,8 @@ module Google
           property :kms_key_name, as: 'kmsKeyName'
           property :kms_key_version_name, as: 'kmsKeyVersionName'
           property :name, as: 'name'
+          collection :revisions, as: 'revisions', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationEvaluationRevision, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationEvaluationRevision::Representation
+      
         end
       end
       
@@ -4300,6 +4294,19 @@ module Google
           property :failed_documents_count, as: 'failedDocumentsCount'
           property :input_documents_count, as: 'inputDocumentsCount'
           property :invalid_documents_count, as: 'invalidDocumentsCount'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3EvaluationEvaluationRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_entities_metrics, as: 'allEntitiesMetrics', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics::Representation
+      
+          property :document_counters, as: 'documentCounters', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationCounters, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationCounters::Representation
+      
+          hash :entity_metrics, as: 'entityMetrics', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics::Representation
+      
+          property :revision_id, as: 'revisionId'
         end
       end
       
