@@ -2189,10 +2189,11 @@ module Google
       
         # The TTL (time-to-live) configuration for documents that have this `Field` set.
         # Storing a timestamp value into a TTL-enabled field will be treated as the
-        # document's absolute expiration time. Timestamp values in the past indicate
-        # that the document is eligible for immediate expiration. Using any other data
-        # type or leaving the field absent will disable expiration for the individual
-        # document.
+        # document's absolute expiration time. For Enterprise edition databases, the
+        # timestamp value may also be stored in an array value in the TTL-enabled field.
+        # Timestamp values in the past indicate that the document is eligible for
+        # immediate expiration. Using any other data type or leaving the field absent
+        # will disable expiration for the individual document.
         # Corresponds to the JSON property `ttlConfig`
         # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1TtlConfig]
         attr_accessor :ttl_config
@@ -3107,10 +3108,11 @@ module Google
       
       # The TTL (time-to-live) configuration for documents that have this `Field` set.
       # Storing a timestamp value into a TTL-enabled field will be treated as the
-      # document's absolute expiration time. Timestamp values in the past indicate
-      # that the document is eligible for immediate expiration. Using any other data
-      # type or leaving the field absent will disable expiration for the individual
-      # document.
+      # document's absolute expiration time. For Enterprise edition databases, the
+      # timestamp value may also be stored in an array value in the TTL-enabled field.
+      # Timestamp values in the past indicate that the document is eligible for
+      # immediate expiration. Using any other data type or leaving the field absent
+      # will disable expiration for the individual document.
       class GoogleFirestoreAdminV1TtlConfig
         include Google::Apis::Core::Hashable
       
