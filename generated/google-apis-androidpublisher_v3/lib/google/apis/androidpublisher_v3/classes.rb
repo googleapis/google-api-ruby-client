@@ -1906,6 +1906,16 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::Money]
         attr_accessor :price
       
+        # Optional. Product tax category code in context. Product tax category
+        # determines the transaction tax rates applied to the product that will be
+        # factored into the price calculation. If not set, tax rates for the default
+        # product tax category will be used. Refer to the [Help Center article](https://
+        # support.google.com/googleplay/android-developer/answer/16408159) for more
+        # information.
+        # Corresponds to the JSON property `productTaxCategoryCode`
+        # @return [String]
+        attr_accessor :product_tax_category_code
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1913,6 +1923,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @price = args[:price] if args.key?(:price)
+          @product_tax_category_code = args[:product_tax_category_code] if args.key?(:product_tax_category_code)
         end
       end
       
