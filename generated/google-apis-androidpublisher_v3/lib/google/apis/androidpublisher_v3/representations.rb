@@ -2650,6 +2650,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :price, as: 'price', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
       
+          property :product_tax_category_code, as: 'productTaxCategoryCode'
         end
       end
       
