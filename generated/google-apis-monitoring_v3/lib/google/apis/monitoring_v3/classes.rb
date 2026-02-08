@@ -3829,7 +3829,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :notification_channel_names
       
-        # The frequency at which to send reminder notifications for open incidents.
+        # The frequency at which to send reminder notifications for open incidents. The
+        # value must be between 30 minutes and 24 hours.
         # Corresponds to the JSON property `renotifyInterval`
         # @return [String]
         attr_accessor :renotify_interval
