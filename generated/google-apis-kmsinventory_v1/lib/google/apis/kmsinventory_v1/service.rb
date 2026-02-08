@@ -52,9 +52,13 @@ module Google
         end
         
         # Returns metadata about the resources protected by the given Cloud KMS
-        # CryptoKey in the given Cloud organization.
+        # CryptoKey in the given Cloud organization/project.
         # @param [String] scope
-        #   Required. Resource name of the organization. Example: organizations/123
+        #   Required. A scope can be an organization or a project. Resources protected by
+        #   the crypto key in provided scope will be returned. The allowed values are: *
+        #   organizations/`ORGANIZATION_NUMBER` (e.g., "organizations/12345678") *
+        #   projects/`PROJECT_ID` (e.g., "projects/foo-bar") * projects/`PROJECT_NUMBER` (
+        #   e.g., "projects/12345678")
         # @param [String] crypto_key
         #   Required. The resource name of the CryptoKey.
         # @param [Fixnum] page_size
@@ -150,11 +154,18 @@ module Google
         end
         
         # Returns aggregate information about the resources protected by the given Cloud
-        # KMS CryptoKey. Only resources within the same Cloud organization as the key
-        # will be returned. The project that holds the key must be part of an
-        # organization in order for this call to succeed.
+        # KMS CryptoKey. By default, summary of resources within the same Cloud
+        # organization as the key will be returned, which requires the KMS organization
+        # service account to be configured(refer https://docs.cloud.google.com/kms/docs/
+        # view-key-usage#required-roles). If the KMS organization service account is not
+        # configured or key's project is not part of an organization, set fallback_scope
+        # to `FALLBACK_SCOPE_PROJECT` to retrieve a summary of protected resources
+        # within the key's project.
         # @param [String] name
         #   Required. The resource name of the CryptoKey.
+        # @param [String] fallback_scope
+        #   Optional. The scope to use if the kms organization service account is not
+        #   configured.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -172,11 +183,72 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_key_ring_crypto_key_protected_resources_summary(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_key_ring_crypto_key_protected_resources_summary(name, fallback_scope: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/protectedResourcesSummary', options)
           command.response_representation = Google::Apis::KmsinventoryV1::GoogleCloudKmsInventoryV1ProtectedResourcesSummary::Representation
           command.response_class = Google::Apis::KmsinventoryV1::GoogleCloudKmsInventoryV1ProtectedResourcesSummary
           command.params['name'] = name unless name.nil?
+          command.query['fallbackScope'] = fallback_scope unless fallback_scope.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns metadata about the resources protected by the given Cloud KMS
+        # CryptoKey in the given Cloud organization/project.
+        # @param [String] scope
+        #   Required. A scope can be an organization or a project. Resources protected by
+        #   the crypto key in provided scope will be returned. The allowed values are: *
+        #   organizations/`ORGANIZATION_NUMBER` (e.g., "organizations/12345678") *
+        #   projects/`PROJECT_ID` (e.g., "projects/foo-bar") * projects/`PROJECT_NUMBER` (
+        #   e.g., "projects/12345678")
+        # @param [String] crypto_key
+        #   Required. The resource name of the CryptoKey.
+        # @param [Fixnum] page_size
+        #   The maximum number of resources to return. The service may return fewer than
+        #   this value. If unspecified, at most 500 resources will be returned. The
+        #   maximum value is 500; values above 500 will be coerced to 500.
+        # @param [String] page_token
+        #   A page token, received from a previous KeyTrackingService.
+        #   SearchProtectedResources call. Provide this to retrieve the subsequent page.
+        #   When paginating, all other parameters provided to KeyTrackingService.
+        #   SearchProtectedResources must match the call that provided the page token.
+        # @param [Array<String>, String] resource_types
+        #   Optional. A list of resource types that this request searches for. If empty,
+        #   it will search all the [trackable resource types](https://cloud.google.com/kms/
+        #   docs/view-key-usage#tracked-resource-types). Regular expressions are also
+        #   supported. For example: * `compute.googleapis.com.*` snapshots resources whose
+        #   type starts with `compute.googleapis.com`. * `.*Image` snapshots resources
+        #   whose type ends with `Image`. * `.*Image.*` snapshots resources whose type
+        #   contains `Image`. See [RE2](https://github.com/google/re2/wiki/Syntax) for all
+        #   supported regular expression syntax. If the regular expression does not match
+        #   any supported resource type, an INVALID_ARGUMENT error will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::KmsinventoryV1::GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::KmsinventoryV1::GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_protected_resources(scope, crypto_key: nil, page_size: nil, page_token: nil, resource_types: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+scope}/protectedResources:search', options)
+          command.response_representation = Google::Apis::KmsinventoryV1::GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse::Representation
+          command.response_class = Google::Apis::KmsinventoryV1::GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse
+          command.params['scope'] = scope unless scope.nil?
+          command.query['cryptoKey'] = crypto_key unless crypto_key.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['resourceTypes'] = resource_types unless resource_types.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

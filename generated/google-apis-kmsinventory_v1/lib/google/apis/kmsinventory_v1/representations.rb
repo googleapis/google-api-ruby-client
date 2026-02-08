@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudKmsInventoryV1Warning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudKmsV1CryptoKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -122,6 +128,8 @@ module Google
           property :project_count, as: 'projectCount'
           property :resource_count, :numeric_string => true, as: 'resourceCount'
           hash :resource_types, as: 'resourceTypes'
+          collection :warnings, as: 'warnings', class: Google::Apis::KmsinventoryV1::GoogleCloudKmsInventoryV1Warning, decorator: Google::Apis::KmsinventoryV1::GoogleCloudKmsInventoryV1Warning::Representation
+      
         end
       end
       
@@ -131,6 +139,14 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :protected_resources, as: 'protectedResources', class: Google::Apis::KmsinventoryV1::GoogleCloudKmsInventoryV1ProtectedResource, decorator: Google::Apis::KmsinventoryV1::GoogleCloudKmsInventoryV1ProtectedResource::Representation
       
+        end
+      end
+      
+      class GoogleCloudKmsInventoryV1Warning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_message, as: 'displayMessage'
+          property :warning_code, as: 'warningCode'
         end
       end
       

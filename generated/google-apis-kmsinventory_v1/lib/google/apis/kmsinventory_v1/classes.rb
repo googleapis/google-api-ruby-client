@@ -133,7 +133,7 @@ module Google
       end
       
       # Aggregate information about the resources protected by a Cloud KMS key in the
-      # same Cloud organization as the key.
+      # same Cloud organization/project as the key.
       class GoogleCloudKmsInventoryV1ProtectedResourcesSummary
         include Google::Apis::Core::Hashable
       
@@ -171,6 +171,13 @@ module Google
         # @return [Hash<String,Fixnum>]
         attr_accessor :resource_types
       
+        # Warning messages for the state of response ProtectedResourcesSummary For
+        # example, if the organization service account is not configured,
+        # INSUFFICIENT_PERMISSIONS_PARTIAL_DATA warning will be returned.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::KmsinventoryV1::GoogleCloudKmsInventoryV1Warning>]
+        attr_accessor :warnings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -183,6 +190,7 @@ module Google
           @project_count = args[:project_count] if args.key?(:project_count)
           @resource_count = args[:resource_count] if args.key?(:resource_count)
           @resource_types = args[:resource_types] if args.key?(:resource_types)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -209,6 +217,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @protected_resources = args[:protected_resources] if args.key?(:protected_resources)
+        end
+      end
+      
+      # Warning message specifying various states of response data that might indicate
+      # incomplete or partial results.
+      class GoogleCloudKmsInventoryV1Warning
+        include Google::Apis::Core::Hashable
+      
+        # The literal message providing context and details about the warnings.
+        # Corresponds to the JSON property `displayMessage`
+        # @return [String]
+        attr_accessor :display_message
+      
+        # The specific warning code for the displayed message.
+        # Corresponds to the JSON property `warningCode`
+        # @return [String]
+        attr_accessor :warning_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_message = args[:display_message] if args.key?(:display_message)
+          @warning_code = args[:warning_code] if args.key?(:warning_code)
         end
       end
       
