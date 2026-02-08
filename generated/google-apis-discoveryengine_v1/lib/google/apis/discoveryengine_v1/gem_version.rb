@@ -16,13 +16,13 @@ module Google
   module Apis
     module DiscoveryengineV1
       # Version of the google-apis-discoveryengine_v1 gem
-      GEM_VERSION = "0.67.0"
+      GEM_VERSION = "0.68.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.18.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20260125"
+      REVISION = "20260130"
     end
   end
 end
