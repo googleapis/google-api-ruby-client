@@ -129,6 +129,11 @@ module Google
         # @return [String]
         attr_accessor :customer_domain_prefix
       
+        # Output only. Timestamp in UTC of when this resource was soft-deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
         # Required. A user friendly name for the ContactCenter.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -139,6 +144,11 @@ module Google
         # Corresponds to the JSON property `early`
         # @return [Google::Apis::ContactcenteraiplatformV1alpha1::Early]
         attr_accessor :early
+      
+        # Output only. Timestamp in UTC of when this resource is considered expired.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
       
         # Optional. Feature configuration to populate the feature flags.
         # Corresponds to the JSON property `featureConfig`
@@ -180,6 +190,12 @@ module Google
         # Corresponds to the JSON property `privateComponents`
         # @return [Array<String>]
         attr_accessor :private_components
+      
+        # Output only. Timestamp in UTC of when this resource is going to be hard-
+        # deleted.
+        # Corresponds to the JSON property `purgeTime`
+        # @return [String]
+        attr_accessor :purge_time
       
         # Output only. UJET release version, unique for each new release.
         # Corresponds to the JSON property `releaseVersion`
@@ -223,8 +239,10 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @critical = args[:critical] if args.key?(:critical)
           @customer_domain_prefix = args[:customer_domain_prefix] if args.key?(:customer_domain_prefix)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @early = args[:early] if args.key?(:early)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @feature_config = args[:feature_config] if args.key?(:feature_config)
           @instance_config = args[:instance_config] if args.key?(:instance_config)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
@@ -233,6 +251,7 @@ module Google
           @normal = args[:normal] if args.key?(:normal)
           @private_access = args[:private_access] if args.key?(:private_access)
           @private_components = args[:private_components] if args.key?(:private_components)
+          @purge_time = args[:purge_time] if args.key?(:purge_time)
           @release_version = args[:release_version] if args.key?(:release_version)
           @saml_params = args[:saml_params] if args.key?(:saml_params)
           @state = args[:state] if args.key?(:state)

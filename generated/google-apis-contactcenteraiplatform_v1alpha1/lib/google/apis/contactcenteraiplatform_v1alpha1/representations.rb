@@ -289,9 +289,11 @@ module Google
           property :critical, as: 'critical', class: Google::Apis::ContactcenteraiplatformV1alpha1::Critical, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Critical::Representation
       
           property :customer_domain_prefix, as: 'customerDomainPrefix'
+          property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
           property :early, as: 'early', class: Google::Apis::ContactcenteraiplatformV1alpha1::Early, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Early::Representation
       
+          property :expire_time, as: 'expireTime'
           property :feature_config, as: 'featureConfig', class: Google::Apis::ContactcenteraiplatformV1alpha1::FeatureConfig, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::FeatureConfig::Representation
       
           property :instance_config, as: 'instanceConfig', class: Google::Apis::ContactcenteraiplatformV1alpha1::InstanceConfig, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::InstanceConfig::Representation
@@ -304,6 +306,7 @@ module Google
           property :private_access, as: 'privateAccess', class: Google::Apis::ContactcenteraiplatformV1alpha1::PrivateAccess, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::PrivateAccess::Representation
       
           collection :private_components, as: 'privateComponents'
+          property :purge_time, as: 'purgeTime'
           property :release_version, as: 'releaseVersion'
           property :saml_params, as: 'samlParams', class: Google::Apis::ContactcenteraiplatformV1alpha1::SamlParams, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::SamlParams::Representation
       
