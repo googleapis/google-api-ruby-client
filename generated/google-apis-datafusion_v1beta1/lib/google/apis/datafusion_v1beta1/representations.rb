@@ -488,6 +488,7 @@ module Google
       class LoggingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_instance_v2_logs, as: 'enableInstanceV2Logs'
           property :instance_cloud_logging_disabled, as: 'instanceCloudLoggingDisabled'
         end
       end
