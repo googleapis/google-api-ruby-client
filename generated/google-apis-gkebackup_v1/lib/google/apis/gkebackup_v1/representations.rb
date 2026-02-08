@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetTagsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetTagsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -808,6 +814,13 @@ module Google
         end
       end
       
+      class GetTagsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class GetTagsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1238,6 +1251,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
+          property :name, as: 'name'
           property :request_id, as: 'requestId'
           hash :tags, as: 'tags'
         end

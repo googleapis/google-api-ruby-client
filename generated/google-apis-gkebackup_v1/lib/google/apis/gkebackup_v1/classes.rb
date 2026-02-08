@@ -1629,6 +1629,25 @@ module Google
         end
       end
       
+      # Request message for GetTags.
+      class GetTagsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The full resource name of the service resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Response message for GetTags.
       class GetTagsResponse
         include Google::Apis::Core::Hashable
@@ -3407,6 +3426,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Required. The full resource name of the service resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # Optional. A unique identifier for this request. Must be a valid UUID. This
         # request is only idempotent if a `request_id` is provided.
         # Corresponds to the JSON property `requestId`
@@ -3427,6 +3451,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
           @request_id = args[:request_id] if args.key?(:request_id)
           @tags = args[:tags] if args.key?(:tags)
         end
