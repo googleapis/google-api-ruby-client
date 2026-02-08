@@ -184,12 +184,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleManagedServiceInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleServiceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -652,7 +646,6 @@ module Google
       class Endpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :alloy_db_instance, as: 'alloyDbInstance'
           property :app_engine_version, as: 'appEngineVersion', class: Google::Apis::NetworkmanagementV1beta1::AppEngineVersionEndpoint, decorator: Google::Apis::NetworkmanagementV1beta1::AppEngineVersionEndpoint::Representation
       
           property :cloud_function, as: 'cloudFunction', class: Google::Apis::NetworkmanagementV1beta1::CloudFunctionEndpoint, decorator: Google::Apis::NetworkmanagementV1beta1::CloudFunctionEndpoint::Representation
@@ -764,16 +757,6 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :network_uri, as: 'networkUri'
           property :pod_uri, as: 'podUri'
-        end
-      end
-      
-      class GoogleManagedServiceInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ip_address, as: 'ipAddress'
-          property :network_uri, as: 'networkUri'
-          property :service_type, as: 'serviceType'
-          property :service_uri, as: 'serviceUri'
         end
       end
       
@@ -1214,8 +1197,6 @@ module Google
           property :gke_master, as: 'gkeMaster', class: Google::Apis::NetworkmanagementV1beta1::GkeMasterInfo, decorator: Google::Apis::NetworkmanagementV1beta1::GkeMasterInfo::Representation
       
           property :gke_pod, as: 'gkePod', class: Google::Apis::NetworkmanagementV1beta1::GkePodInfo, decorator: Google::Apis::NetworkmanagementV1beta1::GkePodInfo::Representation
-      
-          property :google_managed_service, as: 'googleManagedService', class: Google::Apis::NetworkmanagementV1beta1::GoogleManagedServiceInfo, decorator: Google::Apis::NetworkmanagementV1beta1::GoogleManagedServiceInfo::Representation
       
           property :google_service, as: 'googleService', class: Google::Apis::NetworkmanagementV1beta1::GoogleServiceInfo, decorator: Google::Apis::NetworkmanagementV1beta1::GoogleServiceInfo::Representation
       
