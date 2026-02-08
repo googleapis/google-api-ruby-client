@@ -1126,6 +1126,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1EvaluationEvaluationRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1EvaluationMetrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1535,12 +1541,6 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta3DatasetGcsManagedConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3795,6 +3795,8 @@ module Google
           property :kms_key_name, as: 'kmsKeyName'
           property :kms_key_version_name, as: 'kmsKeyVersionName'
           property :name, as: 'name'
+          collection :revisions, as: 'revisions', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationEvaluationRevision, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationEvaluationRevision::Representation
+      
         end
       end
       
@@ -3814,6 +3816,19 @@ module Google
           property :failed_documents_count, as: 'failedDocumentsCount'
           property :input_documents_count, as: 'inputDocumentsCount'
           property :invalid_documents_count, as: 'invalidDocumentsCount'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1EvaluationEvaluationRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_entities_metrics, as: 'allEntitiesMetrics', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics::Representation
+      
+          property :document_counters, as: 'documentCounters', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationCounters, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationCounters::Representation
+      
+          hash :entity_metrics, as: 'entityMetrics', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics::Representation
+      
+          property :revision_id, as: 'revisionId'
         end
       end
       
@@ -4497,8 +4512,6 @@ module Google
           property :name, as: 'name'
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
-          property :spanner_indexing_config, as: 'spannerIndexingConfig', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig::Representation
-      
           property :state, as: 'state'
           property :unmanaged_dataset_config, as: 'unmanagedDatasetConfig', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig::Representation
       
@@ -4518,12 +4531,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_prefix, as: 'gcsPrefix', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3GcsPrefix, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3GcsPrefix::Representation
       
-        end
-      end
-      
-      class GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
