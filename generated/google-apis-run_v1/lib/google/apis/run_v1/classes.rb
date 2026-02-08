@@ -3839,6 +3839,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :observed_generation
       
+        # Output only. All URLs serving traffic for this Instance.
+        # Corresponds to the JSON property `urls`
+        # @return [Array<String>]
+        attr_accessor :urls
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3848,6 +3853,7 @@ module Google
           @conditions = args[:conditions] if args.key?(:conditions)
           @log_uri = args[:log_uri] if args.key?(:log_uri)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
+          @urls = args[:urls] if args.key?(:urls)
         end
       end
       
@@ -4679,7 +4685,8 @@ module Google
         # environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`:
         # Service. * `run.googleapis.com/gpu-zonal-redundancy-disabled`: Revision. * `
         # run.googleapis.com/health-check-disabled`: Revision. * `run.googleapis.com/
-        # ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.
+        # ingress`: Service, Instance. * `run.googleapis.com/invoker-iam-disabled`:
+        # Service, Instance. * `run.googleapis.com/launch-stage`: Service, Job. * `run.
         # googleapis.com/minScale`: Service. * `run.googleapis.com/maxScale`: Service. *
         # `run.googleapis.com/manualInstanceCount`: Service. * `run.googleapis.com/
         # network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-
@@ -4720,7 +4727,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :finalizers
       
-        # Not supported by Cloud Run
+        # Optional. A prefix for the resource name if not provided in the create request.
+        # Must be less than 31 characters to allow for a random suffix.
         # Corresponds to the JSON property `generateName`
         # @return [String]
         attr_accessor :generate_name
@@ -4738,9 +4746,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. The name of the resource. Name is required when creating top-level
-        # resources (Service, Job), must be unique within a Cloud Run project/region,
-        # and cannot be changed once created.
+        # Optional. The name of the resource. A name for creating top-level resources (
+        # Service, Job, WorkerPool). Must be unique within a Cloud Run project/region,
+        # and cannot be changed once created. If omitted, a default name will be
+        # generated.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
