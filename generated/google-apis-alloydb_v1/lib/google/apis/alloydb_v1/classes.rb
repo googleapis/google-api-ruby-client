@@ -3779,7 +3779,7 @@ module Google
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 30
+        # Common model for database resource instance metadata. Next ID: 31
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata]
         attr_accessor :resource_metadata
@@ -3977,7 +3977,7 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 30
+      # Common model for database resource instance metadata. Next ID: 31
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
@@ -4099,6 +4099,11 @@ module Google
         # @return [String]
         attr_accessor :resource_container
       
+        # Optional. List of resource flags for the database resource.
+        # Corresponds to the JSON property `resourceFlags`
+        # @return [Array<Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainResourceFlags>]
+        attr_accessor :resource_flags
+      
         # Required. Different from DatabaseResourceId.unique_id, a resource name can be
         # reused over time. That is, after a resource named "ABC" is deleted, the name "
         # ABC" can be used to to create a new resource within the same source. Resource
@@ -4165,6 +4170,7 @@ module Google
           @primary_resource_location = args[:primary_resource_location] if args.key?(:primary_resource_location)
           @product = args[:product] if args.key?(:product)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
+          @resource_flags = args[:resource_flags] if args.key?(:resource_flags)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
           @tags_set = args[:tags_set] if args.key?(:tags_set)
@@ -4529,6 +4535,31 @@ module Google
         end
       end
       
+      # Message type for storing resource flags.
+      class StorageDatabasecenterPartnerapiV1mainResourceFlags
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Key of the resource flag.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. Value of the resource flag.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Deny maintenance period for the database resource. It specifies the time range
       # during which the maintenance cannot start. This is configured by the customer.
       class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule
@@ -4586,6 +4617,14 @@ module Google
         # @return [Array<Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule>]
         attr_accessor :deny_maintenance_schedules
       
+        # Optional. Whether the instance is in stopped state. This information is
+        # temporarily being captured in maintenanceInfo, till STOPPED state is supported
+        # by DB Center.
+        # Corresponds to the JSON property `isInstanceStopped`
+        # @return [Boolean]
+        attr_accessor :is_instance_stopped
+        alias_method :is_instance_stopped?, :is_instance_stopped
+      
         # Maintenance window for the database resource. It specifies preferred time and
         # day of the week and phase in some cases, when the maintenance can start. This
         # is configured by the customer.
@@ -4610,6 +4649,13 @@ module Google
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance]
         attr_accessor :upcoming_maintenance
       
+        # Optional. This field will contain the date when the last version update was
+        # applied to the database resource. This will be used to calculate the age of
+        # the maintenance version.
+        # Corresponds to the JSON property `versionUpdateTime`
+        # @return [String]
+        attr_accessor :version_update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4617,10 +4663,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deny_maintenance_schedules = args[:deny_maintenance_schedules] if args.key?(:deny_maintenance_schedules)
+          @is_instance_stopped = args[:is_instance_stopped] if args.key?(:is_instance_stopped)
           @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
           @maintenance_state = args[:maintenance_state] if args.key?(:maintenance_state)
           @maintenance_version = args[:maintenance_version] if args.key?(:maintenance_version)
           @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
+          @version_update_time = args[:version_update_time] if args.key?(:version_update_time)
         end
       end
       
