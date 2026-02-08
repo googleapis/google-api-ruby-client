@@ -1355,7 +1355,7 @@ module Google
       class GcsDestination
         include Google::Apis::Core::Hashable
       
-        # The URI of the Cloud Storage object. It's the same URI that is used by gcloud storage.
+        # The URI of the Cloud Storage object. It's the same URI that is used by gsutil.
         # Example: "gs://bucket_name/object_name". See [Viewing and Editing Object
         # Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for
         # more information. If the specified Cloud Storage object already exists and
