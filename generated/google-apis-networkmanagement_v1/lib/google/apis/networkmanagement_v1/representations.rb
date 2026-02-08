@@ -184,12 +184,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleManagedServiceInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleServiceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -766,16 +760,6 @@ module Google
         end
       end
       
-      class GoogleManagedServiceInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ip_address, as: 'ipAddress'
-          property :network_uri, as: 'networkUri'
-          property :service_type, as: 'serviceType'
-          property :service_uri, as: 'serviceUri'
-        end
-      end
-      
       class GoogleServiceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1213,8 +1197,6 @@ module Google
           property :gke_master, as: 'gkeMaster', class: Google::Apis::NetworkmanagementV1::GkeMasterInfo, decorator: Google::Apis::NetworkmanagementV1::GkeMasterInfo::Representation
       
           property :gke_pod, as: 'gkePod', class: Google::Apis::NetworkmanagementV1::GkePodInfo, decorator: Google::Apis::NetworkmanagementV1::GkePodInfo::Representation
-      
-          property :google_managed_service, as: 'googleManagedService', class: Google::Apis::NetworkmanagementV1::GoogleManagedServiceInfo, decorator: Google::Apis::NetworkmanagementV1::GoogleManagedServiceInfo::Representation
       
           property :google_service, as: 'googleService', class: Google::Apis::NetworkmanagementV1::GoogleServiceInfo, decorator: Google::Apis::NetworkmanagementV1::GoogleServiceInfo::Representation
       
