@@ -5015,7 +5015,7 @@ module Google
         # Output only. Whether the target resource is protected by a backup vault. This
         # is true if the backup_configs_details is not empty and any of the
         # ResourceBackupConfig.backup_configs_details has a backup configuration with
-        # BackupConfigDetails.backup_vault set. set.
+        # BackupConfigDetails.backup_vault set.
         # Corresponds to the JSON property `vaulted`
         # @return [Boolean]
         attr_accessor :vaulted
