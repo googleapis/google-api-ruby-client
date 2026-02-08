@@ -22,6 +22,18 @@ module Google
   module Apis
     module ApigeeV1
       
+      class ApiservingMcpMcpToolDataHandlingProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApiservingMcpMcpToolLifecycleProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EdgeConfigstoreBundleBadBundle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2072,6 +2084,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApiservingMcpMcpToolDataHandlingProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_data_access_level, as: 'inputDataAccessLevel'
+          property :output_data_access_level, as: 'outputDataAccessLevel'
+        end
+      end
+      
+      class ApiservingMcpMcpToolLifecycleProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :launch_state, as: 'launchState'
+        end
       end
       
       class EdgeConfigstoreBundleBadBundle
@@ -4816,6 +4843,7 @@ module Google
           property :endpoint, as: 'endpoint'
           property :exporter, as: 'exporter'
           property :name, as: 'name'
+          property :open_telemetry_protocol_enabled, as: 'openTelemetryProtocolEnabled'
           collection :overrides, as: 'overrides', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfigOverride, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfigOverride::Representation
       
           property :revision_create_time, as: 'revisionCreateTime'
@@ -4830,6 +4858,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_proxy, as: 'apiProxy'
           property :name, as: 'name'
+          property :open_telemetry_protocol_enabled, as: 'openTelemetryProtocolEnabled'
           property :revision_create_time, as: 'revisionCreateTime'
           property :revision_id, as: 'revisionId'
           property :sampling_config, as: 'samplingConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig::Representation
