@@ -3541,6 +3541,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Observability config for a resource.
+        # Corresponds to the JSON property `observabilityConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ObservabilityConfig]
+        attr_accessor :observability_config
+      
         # Configurations for a Search Engine.
         # Corresponds to the JSON property `searchEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineSearchEngineConfig]
@@ -3578,6 +3583,7 @@ module Google
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
           @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
+          @observability_config = args[:observability_config] if args.key?(:observability_config)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -4585,6 +4591,35 @@ module Google
         end
       end
       
+      # Observability config for a resource.
+      class GoogleCloudDiscoveryengineV1ObservabilityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Enables observability. If false, all other flags are ignored.
+        # Corresponds to the JSON property `observabilityEnabled`
+        # @return [Boolean]
+        attr_accessor :observability_enabled
+        alias_method :observability_enabled?, :observability_enabled
+      
+        # Optional. Enables sensitive logging. Sensitive logging includes customer core
+        # content (e.g. prompts, responses). If false, will sanitize all sensitive
+        # fields.
+        # Corresponds to the JSON property `sensitiveLoggingEnabled`
+        # @return [Boolean]
+        attr_accessor :sensitive_logging_enabled
+        alias_method :sensitive_logging_enabled?, :sensitive_logging_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @observability_enabled = args[:observability_enabled] if args.key?(:observability_enabled)
+          @sensitive_logging_enabled = args[:sensitive_logging_enabled] if args.key?(:sensitive_logging_enabled)
+        end
+      end
+      
       # Metadata and configurations for a Google Cloud project in the service.
       class GoogleCloudDiscoveryengineV1Project
         include Google::Apis::Core::Hashable
@@ -4736,6 +4771,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig]
         attr_accessor :model_armor_config
       
+        # Observability config for a resource.
+        # Corresponds to the JSON property `observabilityConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ObservabilityConfig]
+        attr_accessor :observability_config
+      
         # Optional. Whether to disable the notebook sharing feature for the project.
         # Default to false if not specified.
         # Corresponds to the JSON property `optOutNotebookSharing`
@@ -4750,6 +4790,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
+          @observability_config = args[:observability_config] if args.key?(:observability_config)
           @opt_out_notebook_sharing = args[:opt_out_notebook_sharing] if args.key?(:opt_out_notebook_sharing)
         end
       end
@@ -15470,6 +15511,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Observability config for a resource.
+        # Corresponds to the JSON property `observabilityConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaObservabilityConfig]
+        attr_accessor :observability_config
+      
         # Additional information of a recommendation engine.
         # Corresponds to the JSON property `recommendationMetadata`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata]
@@ -15517,6 +15563,7 @@ module Google
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
           @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
+          @observability_config = args[:observability_config] if args.key?(:observability_config)
           @recommendation_metadata = args[:recommendation_metadata] if args.key?(:recommendation_metadata)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
           @similar_documents_config = args[:similar_documents_config] if args.key?(:similar_documents_config)
@@ -19333,6 +19380,35 @@ module Google
         end
       end
       
+      # Observability config for a resource.
+      class GoogleCloudDiscoveryengineV1alphaObservabilityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Enables observability. If false, all other flags are ignored.
+        # Corresponds to the JSON property `observabilityEnabled`
+        # @return [Boolean]
+        attr_accessor :observability_enabled
+        alias_method :observability_enabled?, :observability_enabled
+      
+        # Optional. Enables sensitive logging. Sensitive logging includes customer core
+        # content (e.g. prompts, responses). If false, will sanitize all sensitive
+        # fields.
+        # Corresponds to the JSON property `sensitiveLoggingEnabled`
+        # @return [Boolean]
+        attr_accessor :sensitive_logging_enabled
+        alias_method :sensitive_logging_enabled?, :sensitive_logging_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @observability_enabled = args[:observability_enabled] if args.key?(:observability_enabled)
+          @sensitive_logging_enabled = args[:sensitive_logging_enabled] if args.key?(:sensitive_logging_enabled)
+        end
+      end
+      
       # Request message for CrawlRateManagementService.ObtainCrawlRate method.
       class GoogleCloudDiscoveryengineV1alphaObtainCrawlRateRequest
         include Google::Apis::Core::Hashable
@@ -19819,6 +19895,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig]
         attr_accessor :model_armor_config
       
+        # Observability config for a resource.
+        # Corresponds to the JSON property `observabilityConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaObservabilityConfig]
+        attr_accessor :observability_config
+      
         # Optional. Whether to disable the notebook sharing feature for the project.
         # Default to false if not specified.
         # Corresponds to the JSON property `optOutNotebookSharing`
@@ -19833,6 +19914,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
+          @observability_config = args[:observability_config] if args.key?(:observability_config)
           @opt_out_notebook_sharing = args[:opt_out_notebook_sharing] if args.key?(:opt_out_notebook_sharing)
         end
       end
@@ -29694,6 +29776,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Observability config for a resource.
+        # Corresponds to the JSON property `observabilityConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaObservabilityConfig]
+        attr_accessor :observability_config
+      
         # Configurations for a Search Engine.
         # Corresponds to the JSON property `searchEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig]
@@ -29731,6 +29818,7 @@ module Google
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
           @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
+          @observability_config = args[:observability_config] if args.key?(:observability_config)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -30962,6 +31050,35 @@ module Google
         end
       end
       
+      # Observability config for a resource.
+      class GoogleCloudDiscoveryengineV1betaObservabilityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Enables observability. If false, all other flags are ignored.
+        # Corresponds to the JSON property `observabilityEnabled`
+        # @return [Boolean]
+        attr_accessor :observability_enabled
+        alias_method :observability_enabled?, :observability_enabled
+      
+        # Optional. Enables sensitive logging. Sensitive logging includes customer core
+        # content (e.g. prompts, responses). If false, will sanitize all sensitive
+        # fields.
+        # Corresponds to the JSON property `sensitiveLoggingEnabled`
+        # @return [Boolean]
+        attr_accessor :sensitive_logging_enabled
+        alias_method :sensitive_logging_enabled?, :sensitive_logging_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @observability_enabled = args[:observability_enabled] if args.key?(:observability_enabled)
+          @sensitive_logging_enabled = args[:sensitive_logging_enabled] if args.key?(:sensitive_logging_enabled)
+        end
+      end
+      
       # Response message for CrawlRateManagementService.ObtainCrawlRate method. The
       # response contains organcic or dedicated crawl rate time series data for
       # monitoring, depending on whether dedicated crawl rate is set.
@@ -31190,6 +31307,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig]
         attr_accessor :model_armor_config
       
+        # Observability config for a resource.
+        # Corresponds to the JSON property `observabilityConfig`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaObservabilityConfig]
+        attr_accessor :observability_config
+      
         # Optional. Whether to disable the notebook sharing feature for the project.
         # Default to false if not specified.
         # Corresponds to the JSON property `optOutNotebookSharing`
@@ -31204,6 +31326,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
+          @observability_config = args[:observability_config] if args.key?(:observability_config)
           @opt_out_notebook_sharing = args[:opt_out_notebook_sharing] if args.key?(:opt_out_notebook_sharing)
         end
       end
