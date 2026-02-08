@@ -4251,6 +4251,68 @@ module Google
         end
       end
       
+      # Details about the gift event, this is only set if the type is 'giftEvent'.
+      class LiveChatGiftDetails
+        include Google::Apis::Core::Hashable
+      
+        # The alternative text to be used for accessibility.
+        # Corresponds to the JSON property `altText`
+        # @return [String]
+        attr_accessor :alt_text
+      
+        # The number of times the gift has been sent in a row.
+        # Corresponds to the JSON property `comboCount`
+        # @return [Fixnum]
+        attr_accessor :combo_count
+      
+        # The duration of the gift.
+        # Corresponds to the JSON property `giftDuration`
+        # @return [String]
+        attr_accessor :gift_duration
+      
+        # The name of the gift.
+        # Corresponds to the JSON property `giftName`
+        # @return [String]
+        attr_accessor :gift_name
+      
+        # The URL of the gift image.
+        # Corresponds to the JSON property `giftUrl`
+        # @return [String]
+        attr_accessor :gift_url
+      
+        # Whether the gift involves a visual effect.
+        # Corresponds to the JSON property `hasVisualEffect`
+        # @return [Boolean]
+        attr_accessor :has_visual_effect
+        alias_method :has_visual_effect?, :has_visual_effect
+      
+        # The cost of the gift in jewels.
+        # Corresponds to the JSON property `jewelsCount`
+        # @return [Fixnum]
+        attr_accessor :jewels_count
+      
+        # The BCP-47 language code of the gift.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alt_text = args[:alt_text] if args.key?(:alt_text)
+          @combo_count = args[:combo_count] if args.key?(:combo_count)
+          @gift_duration = args[:gift_duration] if args.key?(:gift_duration)
+          @gift_name = args[:gift_name] if args.key?(:gift_name)
+          @gift_url = args[:gift_url] if args.key?(:gift_url)
+          @has_visual_effect = args[:has_visual_effect] if args.key?(:has_visual_effect)
+          @jewels_count = args[:jewels_count] if args.key?(:jewels_count)
+          @language = args[:language] if args.key?(:language)
+        end
+      end
+      
       # 
       class LiveChatGiftMembershipReceivedDetails
         include Google::Apis::Core::Hashable
@@ -4377,7 +4439,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Next ID: 34
+        # Next ID: 35
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::LiveChatMessageSnippet]
         attr_accessor :snippet
@@ -4580,7 +4642,7 @@ module Google
         end
       end
       
-      # Next ID: 34
+      # Next ID: 35
       class LiveChatMessageSnippet
         include Google::Apis::Core::Hashable
       
@@ -4611,6 +4673,11 @@ module Google
         # Corresponds to the JSON property `fanFundingEventDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatFanFundingEventDetails]
         attr_accessor :fan_funding_event_details
+      
+        # Details about the gift event, this is only set if the type is 'giftEvent'.
+        # Corresponds to the JSON property `giftDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatGiftDetails]
+        attr_accessor :gift_details
       
         # Details about the Gift Membership Received event, this is only set if the type
         # is 'giftMembershipReceivedEvent'.
@@ -4705,6 +4772,7 @@ module Google
           @author_channel_id = args[:author_channel_id] if args.key?(:author_channel_id)
           @display_message = args[:display_message] if args.key?(:display_message)
           @fan_funding_event_details = args[:fan_funding_event_details] if args.key?(:fan_funding_event_details)
+          @gift_details = args[:gift_details] if args.key?(:gift_details)
           @gift_membership_received_details = args[:gift_membership_received_details] if args.key?(:gift_membership_received_details)
           @has_display_content = args[:has_display_content] if args.key?(:has_display_content)
           @live_chat_id = args[:live_chat_id] if args.key?(:live_chat_id)
