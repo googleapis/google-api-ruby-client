@@ -648,6 +648,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :key_project, as: 'keyProject'
+          property :key_project_resolution_mode, as: 'keyProjectResolutionMode'
           property :name, as: 'name'
           property :state, as: 'state'
         end

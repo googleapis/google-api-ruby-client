@@ -403,6 +403,12 @@ module Google
         # @return [String]
         attr_accessor :key_project
       
+        # Optional. KeyProjectResolutionMode for the AutokeyConfig. Valid values are `
+        # DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, or `DISABLED`.
+        # Corresponds to the JSON property `keyProjectResolutionMode`
+        # @return [String]
+        attr_accessor :key_project_resolution_mode
+      
         # Identifier. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
         # autokeyConfig`
         # Corresponds to the JSON property `name`
@@ -422,6 +428,7 @@ module Google
         def update!(**args)
           @etag = args[:etag] if args.key?(:etag)
           @key_project = args[:key_project] if args.key?(:key_project)
+          @key_project_resolution_mode = args[:key_project_resolution_mode] if args.key?(:key_project_resolution_mode)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
         end
@@ -1816,7 +1823,8 @@ module Google
         # for the wrapping key resides and where all related cryptographic operations
         # are performed. Currently, this field is only populated for keys stored in
         # HSM_SINGLE_TENANT. Note, this list is non-exhaustive and may apply to
-        # additional ProtectionLevels in the future.
+        # additional ProtectionLevels in the future. Supported resources: * `"projects/*/
+        # locations/*/singleTenantHsmInstances/*"`
         # Corresponds to the JSON property `cryptoKeyBackend`
         # @return [String]
         attr_accessor :crypto_key_backend
