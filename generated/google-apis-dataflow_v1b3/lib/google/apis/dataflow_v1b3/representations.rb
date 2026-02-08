@@ -1759,6 +1759,7 @@ module Google
       class GetWorkerStacktracesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
           property :worker_id, as: 'workerId'
         end
       end

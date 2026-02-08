@@ -2164,6 +2164,12 @@ module Google
       class GetWorkerStacktracesRequest
         include Google::Apis::Core::Hashable
       
+        # The end time for the stacktrace query. The returned stacktraces will be a
+        # recent stack trace at or shortly before this time.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
         # The worker for which to get stacktraces. The returned stacktraces will be for
         # the SDK harness running on this worker.
         # Corresponds to the JSON property `workerId`
@@ -2176,6 +2182,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @worker_id = args[:worker_id] if args.key?(:worker_id)
         end
       end
