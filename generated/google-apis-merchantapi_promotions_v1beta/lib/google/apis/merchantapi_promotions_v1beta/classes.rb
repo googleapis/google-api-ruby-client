@@ -54,6 +54,21 @@ module Google
         # @return [String]
         attr_accessor :coupon_value_type
       
+        # Optional. The custom redemption restriction for the promotion. If the `
+        # redemption_restriction` field is set to `CUSTOM`, this field must be set.
+        # Corresponds to the JSON property `customRedemptionRestriction`
+        # @return [String]
+        attr_accessor :custom_redemption_restriction
+      
+        # Optional. Event applicability for this promotion. When present, this field
+        # indicates you are creating a [sales event](https://support.google.com/
+        # merchants/answer/15523289?hl=en&sjid=11099988466404504696-NC) and not a
+        # product promotion. Exactly one of `product_applicability` or `
+        # event_applicability` must be set.
+        # Corresponds to the JSON property `eventApplicability`
+        # @return [String]
+        attr_accessor :event_applicability
+      
         # Optional. [Free gift description](https://support.google.com/merchants/answer/
         # 13847245?ref_topic=13773355&sjid=17642868584668136159-NC) for the promotion.
         # Corresponds to the JSON property `freeGiftDescription`
@@ -85,6 +100,15 @@ module Google
         # Corresponds to the JSON property `getThisQuantityDiscounted`
         # @return [Fixnum]
         attr_accessor :get_this_quantity_discounted
+      
+        # Optional. A list of Google product categories for this promotion. Set if `
+        # EventApplicability` is `SPECIFIC_CATEGORIES`. Up to 5 product categories can
+        # be specified. For more details on eligible values for product categories,
+        # checkout the `google_product_category` attribute in the [Promotion data
+        # specification](https://support.google.com/merchants/answer/2906014?hl=en).
+        # Corresponds to the JSON property `googleProductCategories`
+        # @return [Array<String>]
+        attr_accessor :google_product_categories
       
         # Optional. Product filter by [item group ID](https://support.google.com/
         # merchants/answer/13837298?ref_topic=13773355&sjid=17642868584668136159-NC).
@@ -144,6 +168,11 @@ module Google
         attr_accessor :long_title
       
         # The price represented as a number and currency.
+        # Corresponds to the JSON property `maxDiscountAmount`
+        # @return [Google::Apis::MerchantapiPromotionsV1beta::Price]
+        attr_accessor :max_discount_amount
+      
+        # The price represented as a number and currency.
         # Corresponds to the JSON property `minimumPurchaseAmount`
         # @return [Google::Apis::MerchantapiPromotionsV1beta::Price]
         attr_accessor :minimum_purchase_amount
@@ -172,9 +201,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :percent_off
       
-        # Required. Applicability of the promotion to either all products or [only
+        # Optional. Applicability of the promotion to either all products or [only
         # specific products](https://support.google.com/merchants/answer/6396257?
-        # ref_topic=6396150&sjid=17642868584668136159-NC).
+        # ref_topic=6396150&sjid=17642868584668136159-NC). Exactly one of `
+        # product_applicability` or `event_applicability` must be set.
         # Corresponds to the JSON property `productApplicability`
         # @return [String]
         attr_accessor :product_applicability
@@ -236,6 +266,12 @@ module Google
         # @return [String]
         attr_accessor :promotion_url
       
+        # Optional. A restriction customers must meet before they can redeem the
+        # promotion.
+        # Corresponds to the JSON property `redemptionRestriction`
+        # @return [String]
+        attr_accessor :redemption_restriction
+      
         # Optional. Whether the promotion applies to [all stores, or only specified
         # stores](https://support.google.com/merchants/answer/13857563?sjid=
         # 17642868584668136159-NC). Local Inventory ads promotions throw an error if no
@@ -276,11 +312,14 @@ module Google
           @brand_exclusion = args[:brand_exclusion] if args.key?(:brand_exclusion)
           @brand_inclusion = args[:brand_inclusion] if args.key?(:brand_inclusion)
           @coupon_value_type = args[:coupon_value_type] if args.key?(:coupon_value_type)
+          @custom_redemption_restriction = args[:custom_redemption_restriction] if args.key?(:custom_redemption_restriction)
+          @event_applicability = args[:event_applicability] if args.key?(:event_applicability)
           @free_gift_description = args[:free_gift_description] if args.key?(:free_gift_description)
           @free_gift_item_id = args[:free_gift_item_id] if args.key?(:free_gift_item_id)
           @free_gift_value = args[:free_gift_value] if args.key?(:free_gift_value)
           @generic_redemption_code = args[:generic_redemption_code] if args.key?(:generic_redemption_code)
           @get_this_quantity_discounted = args[:get_this_quantity_discounted] if args.key?(:get_this_quantity_discounted)
+          @google_product_categories = args[:google_product_categories] if args.key?(:google_product_categories)
           @item_group_id_exclusion = args[:item_group_id_exclusion] if args.key?(:item_group_id_exclusion)
           @item_group_id_inclusion = args[:item_group_id_inclusion] if args.key?(:item_group_id_inclusion)
           @item_id_exclusion = args[:item_id_exclusion] if args.key?(:item_id_exclusion)
@@ -288,6 +327,7 @@ module Google
           @limit_quantity = args[:limit_quantity] if args.key?(:limit_quantity)
           @limit_value = args[:limit_value] if args.key?(:limit_value)
           @long_title = args[:long_title] if args.key?(:long_title)
+          @max_discount_amount = args[:max_discount_amount] if args.key?(:max_discount_amount)
           @minimum_purchase_amount = args[:minimum_purchase_amount] if args.key?(:minimum_purchase_amount)
           @minimum_purchase_quantity = args[:minimum_purchase_quantity] if args.key?(:minimum_purchase_quantity)
           @money_off_amount = args[:money_off_amount] if args.key?(:money_off_amount)
@@ -300,6 +340,7 @@ module Google
           @promotion_display_time_period = args[:promotion_display_time_period] if args.key?(:promotion_display_time_period)
           @promotion_effective_time_period = args[:promotion_effective_time_period] if args.key?(:promotion_effective_time_period)
           @promotion_url = args[:promotion_url] if args.key?(:promotion_url)
+          @redemption_restriction = args[:redemption_restriction] if args.key?(:redemption_restriction)
           @store_applicability = args[:store_applicability] if args.key?(:store_applicability)
           @store_codes_exclusion = args[:store_codes_exclusion] if args.key?(:store_codes_exclusion)
           @store_codes_inclusion = args[:store_codes_inclusion] if args.key?(:store_codes_inclusion)
