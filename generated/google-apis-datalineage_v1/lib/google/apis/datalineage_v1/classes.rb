@@ -22,6 +22,55 @@ module Google
   module Apis
     module DatalineageV1
       
+      # Profile describing the data handling characteristics of an MCP tool. When used
+      # within the McpTool.meta field, this message should be packed into a google.
+      # protobuf.Any and associated with the key: "google.com/tool.profiles/
+      # data_handling"
+      class ApiservingMcpMcpToolDataHandlingProfile
+        include Google::Apis::Core::Hashable
+      
+        # // The data access level of the tool's inputs.
+        # Corresponds to the JSON property `inputDataAccessLevel`
+        # @return [String]
+        attr_accessor :input_data_access_level
+      
+        # The data access level of the tool's outputs.
+        # Corresponds to the JSON property `outputDataAccessLevel`
+        # @return [String]
+        attr_accessor :output_data_access_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_data_access_level = args[:input_data_access_level] if args.key?(:input_data_access_level)
+          @output_data_access_level = args[:output_data_access_level] if args.key?(:output_data_access_level)
+        end
+      end
+      
+      # Profile describing the lifecycle stage of an MCP tool. When used within the
+      # McpTool.meta field, this message should be packed into a google.protobuf.Any
+      # and associated with the key: "google.com/tool.profiles/lifecycle"
+      class ApiservingMcpMcpToolLifecycleProfile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The current launch state of the MCP tool.
+        # Corresponds to the JSON property `launchState`
+        # @return [String]
+        attr_accessor :launch_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @launch_state = args[:launch_state] if args.key?(:launch_state)
+        end
+      end
+      
       # Configuration for Data Lineage. Defines different configuration options for
       # Lineage customers to control behaviour of lineage systems.
       class GoogleCloudDatacatalogLineageConfigmanagementV1Config
@@ -136,8 +185,8 @@ module Google
       class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement
         include Google::Apis::Core::Hashable
       
-        # Optional. Required. If true, ingestion of lineage should be enabled. If false,
-        # it should be disabled. If unspecified, the system default value is used.
+        # Optional. If true, ingestion of lineage should be enabled. If false, it should
+        # be disabled. If unspecified, the system default value is used.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
