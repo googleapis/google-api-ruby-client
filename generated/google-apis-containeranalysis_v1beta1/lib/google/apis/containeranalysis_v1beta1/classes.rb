@@ -5179,6 +5179,11 @@ module Google
       class Note
         include Google::Apis::Core::Hashable
       
+        # The timestamp when the advisory was first published by the source.
+        # Corresponds to the JSON property `advisoryPublishTime`
+        # @return [String]
+        attr_accessor :advisory_publish_time
+      
         # Note kind that represents a logical attestation "role" or "authority". For
         # example, an organization might have one `Authority` for "QA" and one for "
         # build". This note is intended to act strictly as a grouping mechanism for the
@@ -5327,6 +5332,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advisory_publish_time = args[:advisory_publish_time] if args.key?(:advisory_publish_time)
           @attestation_authority = args[:attestation_authority] if args.key?(:attestation_authority)
           @base_image = args[:base_image] if args.key?(:base_image)
           @build = args[:build] if args.key?(:build)
