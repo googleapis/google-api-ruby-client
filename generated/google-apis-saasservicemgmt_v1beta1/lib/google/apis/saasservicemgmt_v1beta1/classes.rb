@@ -752,6 +752,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. The timestamp when the resource was marked for deletion (deletion
+        # is an asynchronous operation).
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
         # Optional. Output only. Output only snapshot of the effective unit filter at
         # Rollout start time. Contains a CEL(https://github.com/google/cel-spec)
         # expression consisting of a conjunction of Rollout.unit_filter and RolloutKind.
@@ -888,6 +894,7 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @control = args[:control] if args.key?(:control)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
           @effective_unit_filter = args[:effective_unit_filter] if args.key?(:effective_unit_filter)
           @end_time = args[:end_time] if args.key?(:end_time)
           @etag = args[:etag] if args.key?(:etag)
@@ -1061,12 +1068,12 @@ module Google
       class RolloutStats
         include Google::Apis::Core::Hashable
       
-        # Output only. A breakdown of the progress of operations triggered by the
-        # rollout. Provides a count of Operations by their state. This can be used to
-        # determine the number of units which have been updated, or are scheduled to be
-        # updated. There will be at most one entry per group. Possible values for
-        # operation groups are: - "SCHEDULED" - "PENDING" - "RUNNING" - "SUCCEEDED" - "
-        # FAILED" - "CANCELLED"
+        # Optional. Output only. Unordered list. A breakdown of the progress of
+        # operations triggered by the rollout. Provides a count of Operations by their
+        # state. This can be used to determine the number of units which have been
+        # updated, or are scheduled to be updated. There will be at most one entry per
+        # group. Possible values for operation groups are: - "SCHEDULED" - "PENDING" - "
+        # RUNNING" - "SUCCEEDED" - "FAILED" - "CANCELLED"
         # Corresponds to the JSON property `operationsByState`
         # @return [Array<Google::Apis::SaasservicemgmtV1beta1::Aggregate>]
         attr_accessor :operations_by_state
@@ -1720,6 +1727,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. The timestamp when the resource was marked for deletion (deletion
+        # is an asynchronous operation).
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
         # Deprovision is the unit operation that deprovision the underlying resources
         # represented by a Unit. Can only execute if the Unit is currently provisioned.
         # Corresponds to the JSON property `deprovision`
@@ -1829,6 +1842,7 @@ module Google
           @cancel = args[:cancel] if args.key?(:cancel)
           @conditions = args[:conditions] if args.key?(:conditions)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
           @deprovision = args[:deprovision] if args.key?(:deprovision)
           @engine_state = args[:engine_state] if args.key?(:engine_state)
           @error_category = args[:error_category] if args.key?(:error_category)

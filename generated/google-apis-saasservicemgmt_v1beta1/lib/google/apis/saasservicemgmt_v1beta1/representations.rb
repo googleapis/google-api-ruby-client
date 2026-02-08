@@ -476,6 +476,7 @@ module Google
           property :control, as: 'control', class: Google::Apis::SaasservicemgmtV1beta1::RolloutControl, decorator: Google::Apis::SaasservicemgmtV1beta1::RolloutControl::Representation
       
           property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
           property :effective_unit_filter, as: 'effectiveUnitFilter'
           property :end_time, as: 'endTime'
           property :etag, as: 'etag'
@@ -671,6 +672,7 @@ module Google
           collection :conditions, as: 'conditions', class: Google::Apis::SaasservicemgmtV1beta1::UnitOperationCondition, decorator: Google::Apis::SaasservicemgmtV1beta1::UnitOperationCondition::Representation
       
           property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
           property :deprovision, as: 'deprovision', class: Google::Apis::SaasservicemgmtV1beta1::Deprovision, decorator: Google::Apis::SaasservicemgmtV1beta1::Deprovision::Representation
       
           property :engine_state, as: 'engineState'
