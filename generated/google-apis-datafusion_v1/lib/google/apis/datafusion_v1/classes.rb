@@ -811,8 +811,9 @@ module Google
         attr_accessor :operations
       
         # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections e.g.
-        # when attempting to list all resources across all supported locations.
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -880,6 +881,13 @@ module Google
       class LoggingConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Option to enable the InstanceV2 logging for this instance. This
+        # field is supported only in CDF patch revision versions 6.11.1.1 and above.
+        # Corresponds to the JSON property `enableInstanceV2Logs`
+        # @return [Boolean]
+        attr_accessor :enable_instance_v2_logs
+        alias_method :enable_instance_v2_logs?, :enable_instance_v2_logs
+      
         # Optional. Option to determine whether instance logs should be written to Cloud
         # Logging. By default, instance logs are written to Cloud Logging.
         # Corresponds to the JSON property `instanceCloudLoggingDisabled`
@@ -893,6 +901,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_instance_v2_logs = args[:enable_instance_v2_logs] if args.key?(:enable_instance_v2_logs)
           @instance_cloud_logging_disabled = args[:instance_cloud_logging_disabled] if args.key?(:instance_cloud_logging_disabled)
         end
       end
