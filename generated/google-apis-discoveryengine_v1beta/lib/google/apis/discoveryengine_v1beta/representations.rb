@@ -718,6 +718,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1ObservabilityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1Project
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1919,6 +1925,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaNaturalLanguageQueryUnderstandingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaObservabilityConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4024,6 +4036,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaObservabilityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaObtainCrawlRateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5952,6 +5970,8 @@ module Google
       
           hash :model_configs, as: 'modelConfigs'
           property :name, as: 'name'
+          property :observability_config, as: 'observabilityConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ObservabilityConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ObservabilityConfig::Representation
+      
           property :search_engine_config, as: 'searchEngineConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineSearchEngineConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1EngineSearchEngineConfig::Representation
       
           property :solution_type, as: 'solutionType'
@@ -6233,6 +6253,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1ObservabilityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :observability_enabled, as: 'observabilityEnabled'
+          property :sensitive_logging_enabled, as: 'sensitiveLoggingEnabled'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6272,6 +6300,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model_armor_config, as: 'modelArmorConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig::Representation
+      
+          property :observability_config, as: 'observabilityConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ObservabilityConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ObservabilityConfig::Representation
       
           property :opt_out_notebook_sharing, as: 'optOutNotebookSharing'
         end
@@ -7844,6 +7874,8 @@ module Google
       
           hash :model_configs, as: 'modelConfigs'
           property :name, as: 'name'
+          property :observability_config, as: 'observabilityConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaObservabilityConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaObservabilityConfig::Representation
+      
           property :recommendation_metadata, as: 'recommendationMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata::Representation
       
           property :search_engine_config, as: 'searchEngineConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig::Representation
@@ -8306,6 +8338,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1alphaObservabilityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :observability_enabled, as: 'observabilityEnabled'
+          property :sensitive_logging_enabled, as: 'sensitiveLoggingEnabled'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaObtainCrawlRateResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8378,6 +8418,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model_armor_config, as: 'modelArmorConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig::Representation
+      
+          property :observability_config, as: 'observabilityConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaObservabilityConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaObservabilityConfig::Representation
       
           property :opt_out_notebook_sharing, as: 'optOutNotebookSharing'
         end
@@ -11057,6 +11099,8 @@ module Google
       
           hash :model_configs, as: 'modelConfigs'
           property :name, as: 'name'
+          property :observability_config, as: 'observabilityConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaObservabilityConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaObservabilityConfig::Representation
+      
           property :search_engine_config, as: 'searchEngineConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig::Representation
       
           property :solution_type, as: 'solutionType'
@@ -11843,6 +11887,14 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaObservabilityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :observability_enabled, as: 'observabilityEnabled'
+          property :sensitive_logging_enabled, as: 'sensitiveLoggingEnabled'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaObtainCrawlRateRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11949,6 +12001,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model_armor_config, as: 'modelArmorConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigModelArmorConfig::Representation
+      
+          property :observability_config, as: 'observabilityConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaObservabilityConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaObservabilityConfig::Representation
       
           property :opt_out_notebook_sharing, as: 'optOutNotebookSharing'
         end
