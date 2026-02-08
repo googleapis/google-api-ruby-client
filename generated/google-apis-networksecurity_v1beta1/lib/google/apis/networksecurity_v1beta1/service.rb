@@ -898,11 +898,11 @@ module Google
         #   SecurityProfileGroups should be listed, specified in the format `projects|
         #   organizations/*/locations/`location``.
         # @param [Fixnum] page_size
-        #   Maximum number of SecurityProfileGroups to return per call.
+        #   Optional. Maximum number of SecurityProfileGroups to return per call.
         # @param [String] page_token
-        #   The value returned by the last `ListSecurityProfileGroupsResponse` Indicates
-        #   that this is a continuation of a prior `ListSecurityProfileGroups` call, and
-        #   that the system should return the next page of data.
+        #   Optional. The value returned by the last `ListSecurityProfileGroupsResponse`
+        #   Indicates that this is a continuation of a prior `ListSecurityProfileGroups`
+        #   call, and that the system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1086,11 +1086,11 @@ module Google
         #   SecurityProfiles should be listed, specified in the format `projects|
         #   organizations/*/locations/`location``.
         # @param [Fixnum] page_size
-        #   Maximum number of SecurityProfiles to return per call.
+        #   Optional. Maximum number of SecurityProfiles to return per call.
         # @param [String] page_token
-        #   The value returned by the last `ListSecurityProfilesResponse` Indicates that
-        #   this is a continuation of a prior `ListSecurityProfiles` call, and that the
-        #   system should return the next page of data.
+        #   Optional. The value returned by the last `ListSecurityProfilesResponse`
+        #   Indicates that this is a continuation of a prior `ListSecurityProfiles` call,
+        #   and that the system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1191,7 +1191,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # can be called in two ways: * **List all public locations:** Use the path `GET /
+        # v1/locations`. * **List project-visible locations:** Use the path `GET /v1/
+        # projects/`project_id`/locations`. This may include public locations as well as
+        # private or other locations specifically visible to the project.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
