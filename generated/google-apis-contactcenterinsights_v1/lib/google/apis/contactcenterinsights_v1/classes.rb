@@ -1677,6 +1677,117 @@ module Google
         end
       end
       
+      # Configurable dashboard's widget that displays data as a chart.
+      class GoogleCloudContactcenterinsightsV1Chart
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Chart type.
+        # Corresponds to the JSON property `chartType`
+        # @return [String]
+        attr_accessor :chart_type
+      
+        # Chart visualization type.
+        # Corresponds to the JSON property `chartVisualizationType`
+        # @return [String]
+        attr_accessor :chart_visualization_type
+      
+        # Output only. Chart create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The request data for visualizing the dataset in the chart.
+        # Corresponds to the JSON property `dataSource`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ChartDataSource]
+        attr_accessor :data_source
+      
+        # Date range configuration for dashboard charts.
+        # Corresponds to the JSON property `dateRangeConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DateRangeConfig]
+        attr_accessor :date_range_config
+      
+        # Chart description
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # User provided display name of the chart.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Filter applied to all charts in the container. Should support scope later.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # The height of the chart in grid units.
+        # Corresponds to the JSON property `height`
+        # @return [Fixnum]
+        attr_accessor :height
+      
+        # Identifier. Chart resource name. Format: projects/`project`/locations/`
+        # location`/dashboards/`dashboard`/charts/`chart`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Chart last update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # The width of the chart in grid units.
+        # Corresponds to the JSON property `width`
+        # @return [Fixnum]
+        attr_accessor :width
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chart_type = args[:chart_type] if args.key?(:chart_type)
+          @chart_visualization_type = args[:chart_visualization_type] if args.key?(:chart_visualization_type)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @data_source = args[:data_source] if args.key?(:data_source)
+          @date_range_config = args[:date_range_config] if args.key?(:date_range_config)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @filter = args[:filter] if args.key?(:filter)
+          @height = args[:height] if args.key?(:height)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @width = args[:width] if args.key?(:width)
+        end
+      end
+      
+      # The request data for visualizing the dataset in the chart.
+      class GoogleCloudContactcenterinsightsV1ChartDataSource
+        include Google::Apis::Core::Hashable
+      
+        # Request that use natural language query to generate the chart.
+        # Corresponds to the JSON property `generativeInsights`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GenerativeInsights]
+        attr_accessor :generative_insights
+      
+        # Request data that use the existing QueryMetrics.
+        # Corresponds to the JSON property `queryMetrics`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryMetrics]
+        attr_accessor :query_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generative_insights = args[:generative_insights] if args.key?(:generative_insights)
+          @query_metrics = args[:query_metrics] if args.key?(:query_metrics)
+        end
+      end
+      
       # The result of testing a constraint expression on a pair of conversations.
       class GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult
         include Google::Apis::Core::Hashable
@@ -1742,6 +1853,67 @@ module Google
           @constraint_met = args[:constraint_met] if args.key?(:constraint_met)
           @error = args[:error] if args.key?(:error)
           @rule_id = args[:rule_id] if args.key?(:rule_id)
+        end
+      end
+      
+      # Configurable dashboard's container. Container can contain multiple widgets.
+      class GoogleCloudContactcenterinsightsV1Container
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Unique ID for the container.
+        # Corresponds to the JSON property `containerId`
+        # @return [String]
+        attr_accessor :container_id
+      
+        # Date range configuration for dashboard charts.
+        # Corresponds to the JSON property `dateRangeConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DateRangeConfig]
+        attr_accessor :date_range_config
+      
+        # Container description
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # User provided display name of the Container.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Filter applied to all charts in the container. Should support scope later.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # The height of the container in grid units.
+        # Corresponds to the JSON property `height`
+        # @return [Fixnum]
+        attr_accessor :height
+      
+        # Widgets in the Container.
+        # Corresponds to the JSON property `widgets`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Widget>]
+        attr_accessor :widgets
+      
+        # The width of the container in grid units.
+        # Corresponds to the JSON property `width`
+        # @return [Fixnum]
+        attr_accessor :width
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @date_range_config = args[:date_range_config] if args.key?(:date_range_config)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @filter = args[:filter] if args.key?(:filter)
+          @height = args[:height] if args.key?(:height)
+          @widgets = args[:widgets] if args.key?(:widgets)
+          @width = args[:width] if args.key?(:width)
         end
       end
       
@@ -2792,6 +2964,76 @@ module Google
         end
       end
       
+      # Configurable dashboard
+      class GoogleCloudContactcenterinsightsV1Dashboard
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Dashboard creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Date range configuration for dashboard charts.
+        # Corresponds to the JSON property `dateRangeConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DateRangeConfig]
+        attr_accessor :date_range_config
+      
+        # Dashboard description
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # User provided display name of the dashboard.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Filter applied to all charts in the dashboard. Should support scope later.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Identifier. Dashboard resource name. Format: projects/`project`/locations/`
+        # location`/dashboards/`dashboard`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Whether the dashboard is read-only. All predefined dashboards are
+        # read-only and cannot be modified by the user.
+        # Corresponds to the JSON property `readOnly`
+        # @return [Boolean]
+        attr_accessor :read_only
+        alias_method :read_only?, :read_only
+      
+        # Configurable dashboard's container. Container can contain multiple widgets.
+        # Corresponds to the JSON property `rootContainer`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Container]
+        attr_accessor :root_container
+      
+        # Output only. Dashboard last update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @date_range_config = args[:date_range_config] if args.key?(:date_range_config)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @filter = args[:filter] if args.key?(:filter)
+          @name = args[:name] if args.key?(:name)
+          @read_only = args[:read_only] if args.key?(:read_only)
+          @root_container = args[:root_container] if args.key?(:root_container)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Dataset resource represents a collection of conversations that may be bounded (
       # Static Dataset, e.g. golden dataset for training), or unbounded (Dynamic
       # Dataset, e.g. live traffic, or agent training traffic)
@@ -2847,6 +3089,56 @@ module Google
           @ttl = args[:ttl] if args.key?(:ttl)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Date range configuration for dashboard charts.
+      class GoogleCloudContactcenterinsightsV1DateRangeConfig
+        include Google::Apis::Core::Hashable
+      
+        # A time window for querying conversations.
+        # Corresponds to the JSON property `absoluteDateRange`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QueryInterval]
+        attr_accessor :absolute_date_range
+      
+        # Relative date range configuration.
+        # Corresponds to the JSON property `relativeDateRange`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange]
+        attr_accessor :relative_date_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @absolute_date_range = args[:absolute_date_range] if args.key?(:absolute_date_range)
+          @relative_date_range = args[:relative_date_range] if args.key?(:relative_date_range)
+        end
+      end
+      
+      # Relative date range configuration.
+      class GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange
+        include Google::Apis::Core::Hashable
+      
+        # Required. The quantity of units in the past.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # Required. The unit of time.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @unit = args[:unit] if args.key?(:unit)
         end
       end
       
@@ -4046,6 +4338,613 @@ module Google
         end
       end
       
+      # The conversation transcript for the chart.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript
+        include Google::Apis::Core::Hashable
+      
+        # The conversation id of the chart.
+        # Corresponds to the JSON property `conversationId`
+        # @return [String]
+        attr_accessor :conversation_id
+      
+        # Output only. The create time of the conversation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Ordered list of messages, including user inputs and system responses.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage>]
+        attr_accessor :messages
+      
+        # Output only. The update time of the conversation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @messages = args[:messages] if args.key?(:messages)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The message in the conversation.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage
+        include Google::Apis::Core::Hashable
+      
+        # Output only. For user messages, this is the time at which the system received
+        # the message. For system messages, this is the time at which the system
+        # generated the message.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The message id of the message.
+        # Corresponds to the JSON property `messageId`
+        # @return [String]
+        attr_accessor :message_id
+      
+        # A wrapper for system messages per turn.
+        # Corresponds to the JSON property `systemMessageWrapper`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages]
+        attr_accessor :system_message_wrapper
+      
+        # The user message.
+        # Corresponds to the JSON property `userMessage`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageUserMessage]
+        attr_accessor :user_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @message_id = args[:message_id] if args.key?(:message_id)
+          @system_message_wrapper = args[:system_message_wrapper] if args.key?(:system_message_wrapper)
+          @user_message = args[:user_message] if args.key?(:user_message)
+        end
+      end
+      
+      # A message from the system in response to the user. This message can also be a
+      # message from the user as historical context for multiturn conversations with
+      # the system.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage
+        include Google::Apis::Core::Hashable
+      
+        # Chart spec from LLM
+        # Corresponds to the JSON property `chartSpec`
+        # @return [Hash<String,Object>]
+        attr_accessor :chart_spec
+      
+        # Raw SQL from LLM, before templatization
+        # Corresponds to the JSON property `generatedSqlQuery`
+        # @return [String]
+        attr_accessor :generated_sql_query
+      
+        # A text output message from the system.
+        # Corresponds to the JSON property `textMessage`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput]
+        attr_accessor :text_message
+      
+        # Optional. User provided chart spec
+        # Corresponds to the JSON property `userProvidedChartSpec`
+        # @return [Hash<String,Object>]
+        attr_accessor :user_provided_chart_spec
+      
+        # Optional. User provided SQL query
+        # Corresponds to the JSON property `userProvidedSqlQuery`
+        # @return [String]
+        attr_accessor :user_provided_sql_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chart_spec = args[:chart_spec] if args.key?(:chart_spec)
+          @generated_sql_query = args[:generated_sql_query] if args.key?(:generated_sql_query)
+          @text_message = args[:text_message] if args.key?(:text_message)
+          @user_provided_chart_spec = args[:user_provided_chart_spec] if args.key?(:user_provided_chart_spec)
+          @user_provided_sql_query = args[:user_provided_sql_query] if args.key?(:user_provided_sql_query)
+        end
+      end
+      
+      # A text output message from the system.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput
+        include Google::Apis::Core::Hashable
+      
+        # The parts of the message.
+        # Corresponds to the JSON property `text`
+        # @return [Array<String>]
+        attr_accessor :text
+      
+        # The type of the text message.
+        # Corresponds to the JSON property `textType`
+        # @return [String]
+        attr_accessor :text_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+          @text_type = args[:text_type] if args.key?(:text_type)
+        end
+      end
+      
+      # A wrapper for system messages per turn.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages
+        include Google::Apis::Core::Hashable
+      
+        # A message from the system in response to the user.
+        # Corresponds to the JSON property `systemMessages`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage>]
+        attr_accessor :system_messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @system_messages = args[:system_messages] if args.key?(:system_messages)
+        end
+      end
+      
+      # The user message.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageUserMessage
+        include Google::Apis::Core::Hashable
+      
+        # A message from the user that is interacting with the system.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Request that use natural language query to generate the chart.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsights
+        include Google::Apis::Core::Hashable
+      
+        # The current chart checkpoint state.
+        # Corresponds to the JSON property `chartCheckpoint`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint]
+        attr_accessor :chart_checkpoint
+      
+        # Output only. The chart conversations used to generate the chart.
+        # Corresponds to the JSON property `chartConversations`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation>]
+        attr_accessor :chart_conversations
+      
+        # Chart spec for the chart.
+        # Corresponds to the JSON property `chartSpec`
+        # @return [Hash<String,Object>]
+        attr_accessor :chart_spec
+      
+        # 
+        # Corresponds to the JSON property `request`
+        # @return [Hash<String,Object>]
+        attr_accessor :request
+      
+        # Optional. For charts with comparison, this key will determine the metric that
+        # will be compared between the current and another dataset.
+        # Corresponds to the JSON property `sqlComparisonKey`
+        # @return [String]
+        attr_accessor :sql_comparison_key
+      
+        # SQL query used to generate the chart.
+        # Corresponds to the JSON property `sqlQuery`
+        # @return [String]
+        attr_accessor :sql_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chart_checkpoint = args[:chart_checkpoint] if args.key?(:chart_checkpoint)
+          @chart_conversations = args[:chart_conversations] if args.key?(:chart_conversations)
+          @chart_spec = args[:chart_spec] if args.key?(:chart_spec)
+          @request = args[:request] if args.key?(:request)
+          @sql_comparison_key = args[:sql_comparison_key] if args.key?(:sql_comparison_key)
+          @sql_query = args[:sql_query] if args.key?(:sql_query)
+        end
+      end
+      
+      # The current chart checkpoint state.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint
+        include Google::Apis::Core::Hashable
+      
+        # The revision id of the chart.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        # The session id of the chart.
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @session_id = args[:session_id] if args.key?(:session_id)
+        end
+      end
+      
+      # The conversation used to generate the chart.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation
+        include Google::Apis::Core::Hashable
+      
+        # The conversation id of the chart.
+        # Corresponds to the JSON property `conversationId`
+        # @return [String]
+        attr_accessor :conversation_id
+      
+        # The create time of the conversation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Ordered list of messages, including user inputs and system responses.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage>]
+        attr_accessor :messages
+      
+        # The update time of the conversation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @messages = args[:messages] if args.key?(:messages)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The message in the conversation.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage
+        include Google::Apis::Core::Hashable
+      
+        # For user messages, this is the time at which the system received the message.
+        # For system messages, this is the time at which the system generated the
+        # message.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The message id of the message.
+        # Corresponds to the JSON property `messageId`
+        # @return [String]
+        attr_accessor :message_id
+      
+        # A message from the system in response to the user. This message can also be a
+        # message from the user as historical context for multiturn conversations with
+        # the system.
+        # Corresponds to the JSON property `systemMessage`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage]
+        attr_accessor :system_message
+      
+        # The user message.
+        # Corresponds to the JSON property `userMessage`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage]
+        attr_accessor :user_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @message_id = args[:message_id] if args.key?(:message_id)
+          @system_message = args[:system_message] if args.key?(:system_message)
+          @user_message = args[:user_message] if args.key?(:user_message)
+        end
+      end
+      
+      # A message from the system in response to the user. This message can also be a
+      # message from the user as historical context for multiturn conversations with
+      # the system.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage
+        include Google::Apis::Core::Hashable
+      
+        # Chart spec from LLM
+        # Corresponds to the JSON property `chartSpec`
+        # @return [Hash<String,Object>]
+        attr_accessor :chart_spec
+      
+        # Raw SQL from LLM, before templatization
+        # Corresponds to the JSON property `generatedSqlQuery`
+        # @return [String]
+        attr_accessor :generated_sql_query
+      
+        # A text output message from the system.
+        # Corresponds to the JSON property `textOutput`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput]
+        attr_accessor :text_output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chart_spec = args[:chart_spec] if args.key?(:chart_spec)
+          @generated_sql_query = args[:generated_sql_query] if args.key?(:generated_sql_query)
+          @text_output = args[:text_output] if args.key?(:text_output)
+        end
+      end
+      
+      # A text output message from the system.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput
+        include Google::Apis::Core::Hashable
+      
+        # The parts of the message.
+        # Corresponds to the JSON property `texts`
+        # @return [Array<String>]
+        attr_accessor :texts
+      
+        # The type of the text message.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @texts = args[:texts] if args.key?(:texts)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The user message.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage
+        include Google::Apis::Core::Hashable
+      
+        # A message from the user that is interacting with the system.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # The metadata for generative insights.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsightsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The error message when the generative insights request fails.
+        # Corresponds to the JSON property `errorMessages`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :error_messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_messages = args[:error_messages] if args.key?(:error_messages)
+        end
+      end
+      
+      # The request for generative insights.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The full name of the chart resource this request corresponds to. Format:
+        # projects/`project`/locations/`location`/dashboards/`dashboard`/charts/`chart`
+        # Corresponds to the JSON property `chart`
+        # @return [String]
+        attr_accessor :chart
+      
+        # Optional. Filter for the data that can be specified in addition to the natural
+        # language query. This `filter` is specifically used for charts where
+        # comparisons are possible. For example, "compare to last month" or "compare to
+        # previous quarter".
+        # Corresponds to the JSON property `comparisonFilter`
+        # @return [String]
+        attr_accessor :comparison_filter
+      
+        # Filter for the data that can be specified in addition to the natural language
+        # query. Users are encouraged to use this field to populate time-windows.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # The natural language query specified by the user. If this field is specified, `
+        # sql_query` will be ignored.
+        # Corresponds to the JSON property `naturalLanguageQuery`
+        # @return [String]
+        attr_accessor :natural_language_query
+      
+        # Optional. The revision id that maps to the state of the chart state revision.
+        # When specified, the backend will reload the chart with the sql and visual spec
+        # from that revision.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        # Optional. The session id of the conversation. If the session id is not
+        # specified, backend will generate a random session id. If the session id is
+        # specified, will associate user-provided user_query with the provided session
+        # id.
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
+        # Optional. For charts with comparison, this key will determine the metric that
+        # will be compared between the current and another dataset.
+        # Corresponds to the JSON property `sqlComparisonKey`
+        # @return [String]
+        attr_accessor :sql_comparison_key
+      
+        # Optional. The SQL query specified by the user. This query must be in BigQuery
+        # SQL dialect. The `filter` field will also be ignored, as it is assumed that
+        # any filtering is already included in the SQL query.
+        # Corresponds to the JSON property `sqlQuery`
+        # @return [String]
+        attr_accessor :sql_query
+      
+        # Optional. The user provided chart spec for the chart. This will be used to
+        # override the visual spec generated by the LLM.
+        # Corresponds to the JSON property `userProvidedChartSpec`
+        # @return [Hash<String,Object>]
+        attr_accessor :user_provided_chart_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chart = args[:chart] if args.key?(:chart)
+          @comparison_filter = args[:comparison_filter] if args.key?(:comparison_filter)
+          @filter = args[:filter] if args.key?(:filter)
+          @natural_language_query = args[:natural_language_query] if args.key?(:natural_language_query)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @session_id = args[:session_id] if args.key?(:session_id)
+          @sql_comparison_key = args[:sql_comparison_key] if args.key?(:sql_comparison_key)
+          @sql_query = args[:sql_query] if args.key?(:sql_query)
+          @user_provided_chart_spec = args[:user_provided_chart_spec] if args.key?(:user_provided_chart_spec)
+        end
+      end
+      
+      # The response for generative insights.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsightsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The full list of generative responses. Each response is ordered by time.
+        # Corresponds to the JSON property `generativeResponses`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse>]
+        attr_accessor :generative_responses
+      
+        # The conversation transcript for the chart.
+        # Corresponds to the JSON property `transcript`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript]
+        attr_accessor :transcript
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generative_responses = args[:generative_responses] if args.key?(:generative_responses)
+          @transcript = args[:transcript] if args.key?(:transcript)
+        end
+      end
+      
+      # Wrapper for storing the generative response for a chart.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse
+        include Google::Apis::Core::Hashable
+      
+        # The chart spec for the data. This will be specified in the vega-lite or vega
+        # format.
+        # Corresponds to the JSON property `chartSpec`
+        # @return [Hash<String,Object>]
+        attr_accessor :chart_spec
+      
+        # The generated SQL query from the LLM. Will be populated during the chart
+        # building phase. The generated SQL will be cached in the corresponding chart
+        # resource.
+        # Corresponds to the JSON property `generatedSqlQuery`
+        # @return [String]
+        attr_accessor :generated_sql_query
+      
+        # Wrapper for text output.
+        # Corresponds to the JSON property `textMessage`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponseTextOutput]
+        attr_accessor :text_message
+      
+        # The text output from the LLM. Will be populated during the chart building
+        # phase. For a reloaded chart, this will NOT be populated. May contain THOUGHT
+        # or a FINAL response or some in-progress response.
+        # Corresponds to the JSON property `textOutput`
+        # @return [String]
+        attr_accessor :text_output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chart_spec = args[:chart_spec] if args.key?(:chart_spec)
+          @generated_sql_query = args[:generated_sql_query] if args.key?(:generated_sql_query)
+          @text_message = args[:text_message] if args.key?(:text_message)
+          @text_output = args[:text_output] if args.key?(:text_output)
+        end
+      end
+      
+      # Wrapper for text output.
+      class GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponseTextOutput
+        include Google::Apis::Core::Hashable
+      
+        # The text output from the LLM.
+        # Corresponds to the JSON property `text`
+        # @return [Array<String>]
+        attr_accessor :text
+      
+        # The type of text output.
+        # Corresponds to the JSON property `textType`
+        # @return [String]
+        attr_accessor :text_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+          @text_type = args[:text_type] if args.key?(:text_type)
+        end
+      end
+      
       # The data for a hold annotation.
       class GoogleCloudContactcenterinsightsV1HoldData
         include Google::Apis::Core::Hashable
@@ -5097,6 +5996,33 @@ module Google
         end
       end
       
+      # The response of listing charts.
+      class GoogleCloudContactcenterinsightsV1ListChartsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The charts under the parent.
+        # Corresponds to the JSON property `charts`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Chart>]
+        attr_accessor :charts
+      
+        # The value returned by the last `ListChartsResponse`. This value indicates that
+        # this is a continuation of a prior `ListCharts` call and that the system should
+        # return the next page of data.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @charts = args[:charts] if args.key?(:charts)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response of listing conversations.
       class GoogleCloudContactcenterinsightsV1ListConversationsResponse
         include Google::Apis::Core::Hashable
@@ -5120,6 +6046,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @conversations = args[:conversations] if args.key?(:conversations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response of listing dashboards.
+      class GoogleCloudContactcenterinsightsV1ListDashboardsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The dashboards under the parent.
+        # Corresponds to the JSON property `dashboards`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Dashboard>]
+        attr_accessor :dashboards
+      
+        # The value returned by the last `ListDashboardsResponse`. This value indicates
+        # that this is a continuation of a prior `ListDashboards` call and that the
+        # system should return the next page of data.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dashboards = args[:dashboards] if args.key?(:dashboards)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -6484,6 +7437,25 @@ module Google
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Request data that use the existing QueryMetrics.
+      class GoogleCloudContactcenterinsightsV1QueryMetrics
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `request`
+        # @return [Hash<String,Object>]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request = args[:request] if args.key?(:request)
         end
       end
       
@@ -8587,6 +9559,44 @@ module Google
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Represents a dashboard element, could be a nested Container or Chart.
+      class GoogleCloudContactcenterinsightsV1Widget
+        include Google::Apis::Core::Hashable
+      
+        # Configurable dashboard's widget that displays data as a chart.
+        # Corresponds to the JSON property `chart`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Chart]
+        attr_accessor :chart
+      
+        # A reference to a chart widget. Format: projects/`project`/locations/`location`/
+        # dashboards/`dashboard`/charts/`chart`
+        # Corresponds to the JSON property `chartReference`
+        # @return [String]
+        attr_accessor :chart_reference
+      
+        # Configurable dashboard's container. Container can contain multiple widgets.
+        # Corresponds to the JSON property `container`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Container]
+        attr_accessor :container
+      
+        # Filter applied to all charts in the container. Should support scope later.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chart = args[:chart] if args.key?(:chart)
+          @chart_reference = args[:chart_reference] if args.key?(:chart_reference)
+          @container = args[:container] if args.key?(:container)
+          @filter = args[:filter] if args.key?(:filter)
         end
       end
       
@@ -11526,6 +12536,301 @@ module Google
         def update!(**args)
           @audio_uri = args[:audio_uri] if args.key?(:audio_uri)
           @transcript_uri = args[:transcript_uri] if args.key?(:transcript_uri)
+        end
+      end
+      
+      # The conversation transcript for the chart.
+      class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript
+        include Google::Apis::Core::Hashable
+      
+        # The conversation id of the chart.
+        # Corresponds to the JSON property `conversationId`
+        # @return [String]
+        attr_accessor :conversation_id
+      
+        # Output only. The create time of the conversation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Ordered list of messages, including user inputs and system responses.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage>]
+        attr_accessor :messages
+      
+        # Output only. The update time of the conversation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @messages = args[:messages] if args.key?(:messages)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The message in the conversation.
+      class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage
+        include Google::Apis::Core::Hashable
+      
+        # Output only. For user messages, this is the time at which the system received
+        # the message. For system messages, this is the time at which the system
+        # generated the message.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The message id of the message.
+        # Corresponds to the JSON property `messageId`
+        # @return [String]
+        attr_accessor :message_id
+      
+        # A wrapper for system messages per turn.
+        # Corresponds to the JSON property `systemMessageWrapper`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages]
+        attr_accessor :system_message_wrapper
+      
+        # The user message.
+        # Corresponds to the JSON property `userMessage`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageUserMessage]
+        attr_accessor :user_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @message_id = args[:message_id] if args.key?(:message_id)
+          @system_message_wrapper = args[:system_message_wrapper] if args.key?(:system_message_wrapper)
+          @user_message = args[:user_message] if args.key?(:user_message)
+        end
+      end
+      
+      # A message from the system in response to the user. This message can also be a
+      # message from the user as historical context for multiturn conversations with
+      # the system.
+      class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage
+        include Google::Apis::Core::Hashable
+      
+        # Chart spec from LLM
+        # Corresponds to the JSON property `chartSpec`
+        # @return [Hash<String,Object>]
+        attr_accessor :chart_spec
+      
+        # Raw SQL from LLM, before templatization
+        # Corresponds to the JSON property `generatedSqlQuery`
+        # @return [String]
+        attr_accessor :generated_sql_query
+      
+        # A text output message from the system.
+        # Corresponds to the JSON property `textMessage`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput]
+        attr_accessor :text_message
+      
+        # Optional. User provided chart spec
+        # Corresponds to the JSON property `userProvidedChartSpec`
+        # @return [Hash<String,Object>]
+        attr_accessor :user_provided_chart_spec
+      
+        # Optional. User provided SQL query
+        # Corresponds to the JSON property `userProvidedSqlQuery`
+        # @return [String]
+        attr_accessor :user_provided_sql_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chart_spec = args[:chart_spec] if args.key?(:chart_spec)
+          @generated_sql_query = args[:generated_sql_query] if args.key?(:generated_sql_query)
+          @text_message = args[:text_message] if args.key?(:text_message)
+          @user_provided_chart_spec = args[:user_provided_chart_spec] if args.key?(:user_provided_chart_spec)
+          @user_provided_sql_query = args[:user_provided_sql_query] if args.key?(:user_provided_sql_query)
+        end
+      end
+      
+      # A text output message from the system.
+      class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput
+        include Google::Apis::Core::Hashable
+      
+        # The parts of the message.
+        # Corresponds to the JSON property `text`
+        # @return [Array<String>]
+        attr_accessor :text
+      
+        # The type of the text message.
+        # Corresponds to the JSON property `textType`
+        # @return [String]
+        attr_accessor :text_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+          @text_type = args[:text_type] if args.key?(:text_type)
+        end
+      end
+      
+      # A wrapper for system messages per turn.
+      class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages
+        include Google::Apis::Core::Hashable
+      
+        # A message from the system in response to the user.
+        # Corresponds to the JSON property `systemMessages`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage>]
+        attr_accessor :system_messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @system_messages = args[:system_messages] if args.key?(:system_messages)
+        end
+      end
+      
+      # The user message.
+      class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageUserMessage
+        include Google::Apis::Core::Hashable
+      
+        # A message from the user that is interacting with the system.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # The metadata for generative insights.
+      class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The error message when the generative insights request fails.
+        # Corresponds to the JSON property `errorMessages`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :error_messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_messages = args[:error_messages] if args.key?(:error_messages)
+        end
+      end
+      
+      # The response for generative insights.
+      class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The full list of generative responses. Each response is ordered by time.
+        # Corresponds to the JSON property `generativeResponses`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse>]
+        attr_accessor :generative_responses
+      
+        # The conversation transcript for the chart.
+        # Corresponds to the JSON property `transcript`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript]
+        attr_accessor :transcript
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generative_responses = args[:generative_responses] if args.key?(:generative_responses)
+          @transcript = args[:transcript] if args.key?(:transcript)
+        end
+      end
+      
+      # Wrapper for storing the generative response for a chart.
+      class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse
+        include Google::Apis::Core::Hashable
+      
+        # The chart spec for the data. This will be specified in the vega-lite or vega
+        # format.
+        # Corresponds to the JSON property `chartSpec`
+        # @return [Hash<String,Object>]
+        attr_accessor :chart_spec
+      
+        # The generated SQL query from the LLM. Will be populated during the chart
+        # building phase. The generated SQL will be cached in the corresponding chart
+        # resource.
+        # Corresponds to the JSON property `generatedSqlQuery`
+        # @return [String]
+        attr_accessor :generated_sql_query
+      
+        # Wrapper for text output.
+        # Corresponds to the JSON property `textMessage`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput]
+        attr_accessor :text_message
+      
+        # The text output from the LLM. Will be populated during the chart building
+        # phase. For a reloaded chart, this will NOT be populated. May contain THOUGHT
+        # or a FINAL response or some in-progress response.
+        # Corresponds to the JSON property `textOutput`
+        # @return [String]
+        attr_accessor :text_output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chart_spec = args[:chart_spec] if args.key?(:chart_spec)
+          @generated_sql_query = args[:generated_sql_query] if args.key?(:generated_sql_query)
+          @text_message = args[:text_message] if args.key?(:text_message)
+          @text_output = args[:text_output] if args.key?(:text_output)
+        end
+      end
+      
+      # Wrapper for text output.
+      class GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput
+        include Google::Apis::Core::Hashable
+      
+        # The text output from the LLM.
+        # Corresponds to the JSON property `text`
+        # @return [Array<String>]
+        attr_accessor :text
+      
+        # The type of text output.
+        # Corresponds to the JSON property `textType`
+        # @return [String]
+        attr_accessor :text_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+          @text_type = args[:text_type] if args.key?(:text_type)
         end
       end
       
@@ -17531,6 +18836,301 @@ module Google
         def update!(**args)
           @audio_uri = args[:audio_uri] if args.key?(:audio_uri)
           @transcript_uri = args[:transcript_uri] if args.key?(:transcript_uri)
+        end
+      end
+      
+      # The conversation transcript for the chart.
+      class GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript
+        include Google::Apis::Core::Hashable
+      
+        # The conversation id of the chart.
+        # Corresponds to the JSON property `conversationId`
+        # @return [String]
+        attr_accessor :conversation_id
+      
+        # Output only. The create time of the conversation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Ordered list of messages, including user inputs and system responses.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage>]
+        attr_accessor :messages
+      
+        # Output only. The update time of the conversation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @messages = args[:messages] if args.key?(:messages)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The message in the conversation.
+      class GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage
+        include Google::Apis::Core::Hashable
+      
+        # Output only. For user messages, this is the time at which the system received
+        # the message. For system messages, this is the time at which the system
+        # generated the message.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The message id of the message.
+        # Corresponds to the JSON property `messageId`
+        # @return [String]
+        attr_accessor :message_id
+      
+        # A wrapper for system messages per turn.
+        # Corresponds to the JSON property `systemMessageWrapper`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages]
+        attr_accessor :system_message_wrapper
+      
+        # The user message.
+        # Corresponds to the JSON property `userMessage`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageUserMessage]
+        attr_accessor :user_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @message_id = args[:message_id] if args.key?(:message_id)
+          @system_message_wrapper = args[:system_message_wrapper] if args.key?(:system_message_wrapper)
+          @user_message = args[:user_message] if args.key?(:user_message)
+        end
+      end
+      
+      # A message from the system in response to the user. This message can also be a
+      # message from the user as historical context for multiturn conversations with
+      # the system.
+      class GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage
+        include Google::Apis::Core::Hashable
+      
+        # Chart spec from LLM
+        # Corresponds to the JSON property `chartSpec`
+        # @return [Hash<String,Object>]
+        attr_accessor :chart_spec
+      
+        # Raw SQL from LLM, before templatization
+        # Corresponds to the JSON property `generatedSqlQuery`
+        # @return [String]
+        attr_accessor :generated_sql_query
+      
+        # A text output message from the system.
+        # Corresponds to the JSON property `textMessage`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput]
+        attr_accessor :text_message
+      
+        # Optional. User provided chart spec
+        # Corresponds to the JSON property `userProvidedChartSpec`
+        # @return [Hash<String,Object>]
+        attr_accessor :user_provided_chart_spec
+      
+        # Optional. User provided SQL query
+        # Corresponds to the JSON property `userProvidedSqlQuery`
+        # @return [String]
+        attr_accessor :user_provided_sql_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chart_spec = args[:chart_spec] if args.key?(:chart_spec)
+          @generated_sql_query = args[:generated_sql_query] if args.key?(:generated_sql_query)
+          @text_message = args[:text_message] if args.key?(:text_message)
+          @user_provided_chart_spec = args[:user_provided_chart_spec] if args.key?(:user_provided_chart_spec)
+          @user_provided_sql_query = args[:user_provided_sql_query] if args.key?(:user_provided_sql_query)
+        end
+      end
+      
+      # A text output message from the system.
+      class GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput
+        include Google::Apis::Core::Hashable
+      
+        # The parts of the message.
+        # Corresponds to the JSON property `text`
+        # @return [Array<String>]
+        attr_accessor :text
+      
+        # The type of the text message.
+        # Corresponds to the JSON property `textType`
+        # @return [String]
+        attr_accessor :text_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+          @text_type = args[:text_type] if args.key?(:text_type)
+        end
+      end
+      
+      # A wrapper for system messages per turn.
+      class GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages
+        include Google::Apis::Core::Hashable
+      
+        # A message from the system in response to the user.
+        # Corresponds to the JSON property `systemMessages`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage>]
+        attr_accessor :system_messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @system_messages = args[:system_messages] if args.key?(:system_messages)
+        end
+      end
+      
+      # The user message.
+      class GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageUserMessage
+        include Google::Apis::Core::Hashable
+      
+        # A message from the user that is interacting with the system.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # The metadata for generative insights.
+      class GoogleCloudContactcenterinsightsV1mainGenerativeInsightsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The error message when the generative insights request fails.
+        # Corresponds to the JSON property `errorMessages`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :error_messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_messages = args[:error_messages] if args.key?(:error_messages)
+        end
+      end
+      
+      # The response for generative insights.
+      class GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The full list of generative responses. Each response is ordered by time.
+        # Corresponds to the JSON property `generativeResponses`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse>]
+        attr_accessor :generative_responses
+      
+        # The conversation transcript for the chart.
+        # Corresponds to the JSON property `transcript`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript]
+        attr_accessor :transcript
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generative_responses = args[:generative_responses] if args.key?(:generative_responses)
+          @transcript = args[:transcript] if args.key?(:transcript)
+        end
+      end
+      
+      # Wrapper for storing the generative response for a chart.
+      class GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse
+        include Google::Apis::Core::Hashable
+      
+        # The chart spec for the data. This will be specified in the vega-lite or vega
+        # format.
+        # Corresponds to the JSON property `chartSpec`
+        # @return [Hash<String,Object>]
+        attr_accessor :chart_spec
+      
+        # The generated SQL query from the LLM. Will be populated during the chart
+        # building phase. The generated SQL will be cached in the corresponding chart
+        # resource.
+        # Corresponds to the JSON property `generatedSqlQuery`
+        # @return [String]
+        attr_accessor :generated_sql_query
+      
+        # Wrapper for text output.
+        # Corresponds to the JSON property `textMessage`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput]
+        attr_accessor :text_message
+      
+        # The text output from the LLM. Will be populated during the chart building
+        # phase. For a reloaded chart, this will NOT be populated. May contain THOUGHT
+        # or a FINAL response or some in-progress response.
+        # Corresponds to the JSON property `textOutput`
+        # @return [String]
+        attr_accessor :text_output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chart_spec = args[:chart_spec] if args.key?(:chart_spec)
+          @generated_sql_query = args[:generated_sql_query] if args.key?(:generated_sql_query)
+          @text_message = args[:text_message] if args.key?(:text_message)
+          @text_output = args[:text_output] if args.key?(:text_output)
+        end
+      end
+      
+      # Wrapper for text output.
+      class GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput
+        include Google::Apis::Core::Hashable
+      
+        # The text output from the LLM.
+        # Corresponds to the JSON property `text`
+        # @return [Array<String>]
+        attr_accessor :text
+      
+        # The type of text output.
+        # Corresponds to the JSON property `textType`
+        # @return [String]
+        attr_accessor :text_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+          @text_type = args[:text_type] if args.key?(:text_type)
         end
       end
       
