@@ -882,11 +882,6 @@ module Google
       class Endpoint
         include Google::Apis::Core::Hashable
       
-        # An [AlloyDB Instance](https://cloud.google.com/alloydb) URI.
-        # Corresponds to the JSON property `alloyDbInstance`
-        # @return [String]
-        attr_accessor :alloy_db_instance
-      
         # Wrapper for the App Engine service version attributes.
         # Corresponds to the JSON property `appEngineVersion`
         # @return [Google::Apis::NetworkmanagementV1beta1::AppEngineVersionEndpoint]
@@ -1005,7 +1000,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @alloy_db_instance = args[:alloy_db_instance] if args.key?(:alloy_db_instance)
           @app_engine_version = args[:app_engine_version] if args.key?(:app_engine_version)
           @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_run_revision = args[:cloud_run_revision] if args.key?(:cloud_run_revision)
@@ -1432,45 +1426,6 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
           @pod_uri = args[:pod_uri] if args.key?(:pod_uri)
-        end
-      end
-      
-      # For display only. Metadata associated with ARRIVE_AT_GOOGLE_MANAGED_SERVICE
-      # state.
-      class GoogleManagedServiceInfo
-        include Google::Apis::Core::Hashable
-      
-        # IP address of the Google-managed service endpoint.
-        # Corresponds to the JSON property `ipAddress`
-        # @return [String]
-        attr_accessor :ip_address
-      
-        # URI of the Google-managed service endpoint network, it is empty if the IP
-        # address is a public IP address.
-        # Corresponds to the JSON property `networkUri`
-        # @return [String]
-        attr_accessor :network_uri
-      
-        # Type of a Google-managed service.
-        # Corresponds to the JSON property `serviceType`
-        # @return [String]
-        attr_accessor :service_type
-      
-        # URI of the Google-managed service.
-        # Corresponds to the JSON property `serviceUri`
-        # @return [String]
-        attr_accessor :service_uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ip_address = args[:ip_address] if args.key?(:ip_address)
-          @network_uri = args[:network_uri] if args.key?(:network_uri)
-          @service_type = args[:service_type] if args.key?(:service_type)
-          @service_uri = args[:service_uri] if args.key?(:service_uri)
         end
       end
       
@@ -3269,12 +3224,6 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::GkePodInfo]
         attr_accessor :gke_pod
       
-        # For display only. Metadata associated with ARRIVE_AT_GOOGLE_MANAGED_SERVICE
-        # state.
-        # Corresponds to the JSON property `googleManagedService`
-        # @return [Google::Apis::NetworkmanagementV1beta1::GoogleManagedServiceInfo]
-        attr_accessor :google_managed_service
-      
         # For display only. Details of a Google Service sending packets to a VPC network.
         # Although the source IP might be a publicly routable address, some Google
         # Services use special routes within Google production infrastructure to reach
@@ -3408,7 +3357,6 @@ module Google
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @gke_master = args[:gke_master] if args.key?(:gke_master)
           @gke_pod = args[:gke_pod] if args.key?(:gke_pod)
-          @google_managed_service = args[:google_managed_service] if args.key?(:google_managed_service)
           @google_service = args[:google_service] if args.key?(:google_service)
           @hybrid_subnet = args[:hybrid_subnet] if args.key?(:hybrid_subnet)
           @instance = args[:instance] if args.key?(:instance)
