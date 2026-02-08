@@ -1,5 +1,9 @@
 # Release history for google-apis-datamigration_v1beta1
 
+### v0.40.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260127
+
 ### v0.39.0 (2026-02-01)
 
 * Regenerated from discovery document revision 20260121
