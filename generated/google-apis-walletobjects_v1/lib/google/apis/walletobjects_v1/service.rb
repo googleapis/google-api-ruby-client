@@ -404,7 +404,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies linked offer objects for the event ticket object with the given ID.
+        # Deprecated: Use Auto Linked Passes instead. Modifies linked offer objects for
+        # the event ticket object with the given ID.
         # @param [String] resource_id
         #   The unique identifier for an object. This ID must be unique across all objects
         #   from an issuer. This value should follow the format issuer ID. identifier
@@ -2328,7 +2329,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies linked offer objects for the loyalty object with the given ID.
+        # Deprecated: Use Auto Linked Passes instead. Modifies linked offer objects for
+        # the loyalty object with the given ID.
         # @param [String] resource_id
         #   The unique identifier for an object. This ID must be unique across all objects
         #   from an issuer. This value should follow the format issuer ID. identifier
