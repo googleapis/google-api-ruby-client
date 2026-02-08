@@ -52,7 +52,7 @@ module Google
         end
         
         # Currently, it doesn't support **YouTube** products. Retrieves the products
-        # that can be resold by the partner. It should be autenticated with a service
+        # that can be resold by the partner. It should be authenticated with a service
         # account.
         # @param [String] parent
         #   Required. The parent, the partner that can resell. Format: partners/`partner`
@@ -104,7 +104,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Currently, it is only enabeld for **YouTube**. Finds eligible promotions for
+        # Currently, it is only enabled for **YouTube**. Finds eligible promotions for
         # the current user. The API requires user authorization via OAuth. The bare
         # minimum oauth scope `openid` is sufficient, which will skip the consent screen.
         # @param [String] parent
@@ -141,7 +141,7 @@ module Google
         
         # Currently, it doesn't support **YouTube** promotions. Retrieves the promotions,
         # such as free trial, that can be used by the partner. It should be
-        # autenticated with a service account.
+        # authenticated with a service account.
         # @param [String] parent
         #   Required. The parent, the partner that can resell. Format: partners/`partner`
         # @param [String] filter
@@ -157,7 +157,7 @@ module Google
         #   youtubePayload.partnerEligibilityId=eligibility-id`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of promotions to return. The service may return
-        #   fewer than this value. If unspecified, at most 50 products will be returned.
+        #   fewer than this value. If unspecified, at most 50 promotions will be returned.
         #   The maximum value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
         #   Optional. A page token, received from a previous `ListPromotions` call.
@@ -537,7 +537,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a line item of a subscription. It should be autenticated with a
+        # Updates a line item of a subscription. It should be authenticated with a
         # service account.
         # @param [String] name
         #   Identifier. Resource name of the line item. Format: partners/`partner`/

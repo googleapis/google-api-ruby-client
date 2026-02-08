@@ -54,7 +54,7 @@ module Google
       
         # Optional. If true, Google will cancel the subscription immediately, and may or
         # may not (based on the contract) issue a prorated refund for the remainder of
-        # the billing cycle. Otherwise, Google defers the cancelation at renewal_time,
+        # the billing cycle. Otherwise, Google defers the cancellation at renewal_time,
         # and will not issue a refund. - YouTube subscriptions must use this option
         # currently. However, the user will still have access to the subscription until
         # the end of the billing cycle.
@@ -407,16 +407,16 @@ module Google
         attr_accessor :filter
       
         # Optional. The maximum number of promotions to return. The service may return
-        # fewer than this value. If unspecified, at most 50 products will be returned.
+        # fewer than this value. If unspecified, at most 50 promotions will be returned.
         # The maximum value is 1000; values above 1000 will be coerced to 1000.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # Optional. A page token, received from a previous `ListPromotions` call.
+        # Optional. A page token, received from a previous `FindEligiblePromotions` call.
         # Provide this to retrieve the subsequent page. When paginating, all other
-        # parameters provided to `ListPromotions` must match the call that provided the
-        # page token.
+        # parameters provided to `FindEligiblePromotions` must match the call that
+        # provided the page token.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
@@ -459,12 +459,12 @@ module Google
         end
       end
       
-      # Details for a subscriptiin line item with finite billing cycles.
+      # Details for a subscription line item with finite billing cycles.
       class FiniteBillingCycleDetails
         include Google::Apis::Core::Hashable
       
-        # Required. The number of a subscription line item billing cycles after which
-        # billing will stop automatically.
+        # The number of a subscription line item billing cycles after which billing will
+        # stop automatically.
         # Corresponds to the JSON property `billingCycleCountLimit`
         # @return [Fixnum]
         attr_accessor :billing_cycle_count_limit
@@ -767,7 +767,7 @@ module Google
         # @return [Google::Apis::PaymentsresellersubscriptionV1::ProductBundleDetails]
         attr_accessor :bundle_details
       
-        # Details for a subscriptiin line item with finite billing cycles.
+        # Details for a subscription line item with finite billing cycles.
         # Corresponds to the JSON property `finiteBillingCycleDetails`
         # @return [Google::Apis::PaymentsresellersubscriptionV1::FiniteBillingCycleDetails]
         attr_accessor :finite_billing_cycle_details
@@ -789,7 +789,7 @@ module Google
         attr_accessor :product_type
       
         # Output only. 2-letter ISO region code where the product is available in. Ex. "
-        # US" Please refers to: https://en.wikipedia.org/wiki/ISO_3166-1
+        # US" Please refer to: https://en.wikipedia.org/wiki/ISO_3166-1
         # Corresponds to the JSON property `regionCodes`
         # @return [Array<String>]
         attr_accessor :region_codes
@@ -961,7 +961,7 @@ module Google
         attr_accessor :promotion_type
       
         # Output only. 2-letter ISO region code where the promotion is available in. Ex.
-        # "US" Please refers to: https://en.wikipedia.org/wiki/ISO_3166-1
+        # "US" Please refer to: https://en.wikipedia.org/wiki/ISO_3166-1
         # Corresponds to the JSON property `regionCodes`
         # @return [Array<String>]
         attr_accessor :region_codes
@@ -1341,7 +1341,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Details for a subscriptiin line item with finite billing cycles.
+        # Details for a subscription line item with finite billing cycles.
         # Corresponds to the JSON property `finiteBillingCycleDetails`
         # @return [Google::Apis::PaymentsresellersubscriptionV1::FiniteBillingCycleDetails]
         attr_accessor :finite_billing_cycle_details
@@ -1378,8 +1378,8 @@ module Google
         # @return [Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItemOneTimeRecurrenceDetails]
         attr_accessor :one_time_recurrence_details
       
-        # Required. Product resource name that identifies one the line item The format
-        # is 'partners/`partner_id`/products/`product_id`'.
+        # Required. Product resource name that identifies the product associated with
+        # this line item. The format is 'partners/`partner_id`/products/`product_id`'.
         # Corresponds to the JSON property `product`
         # @return [String]
         attr_accessor :product
