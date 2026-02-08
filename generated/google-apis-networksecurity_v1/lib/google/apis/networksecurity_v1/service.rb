@@ -414,7 +414,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new FirewallEndpoint in a given project and location.
+        # Creates a new FirewallEndpoint in a given organization and location.
         # @param [String] parent
         #   Required. Value for parent.
         # @param [Google::Apis::NetworksecurityV1::FirewallEndpoint] firewall_endpoint_object
@@ -464,7 +464,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single Endpoint.
+        # Deletes a single org Endpoint.
         # @param [String] name
         #   Required. Name of the resource
         # @param [String] request_id
@@ -506,7 +506,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single Endpoint.
+        # Gets details of a single org Endpoint.
         # @param [String] name
         #   Required. Name of the resource
         # @param [String] fields
@@ -536,7 +536,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists FirewallEndpoints in a given project and location.
+        # Lists FirewallEndpoints in a given organization and location.
         # @param [String] parent
         #   Required. Parent value for ListEndpointsRequest
         # @param [String] filter
@@ -579,7 +579,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a single Endpoint.
+        # Update a single org Endpoint.
         # @param [String] name
         #   Immutable. Identifier. Name of resource.
         # @param [Google::Apis::NetworksecurityV1::FirewallEndpoint] firewall_endpoint_object
@@ -3304,7 +3304,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single Endpoint.
+        # Deletes a single project Endpoint.
         # @param [String] name
         #   Required. Name of the resource
         # @param [String] request_id
@@ -3346,7 +3346,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single Endpoint.
+        # Gets details of a single project Endpoint.
         # @param [String] name
         #   Required. Name of the resource
         # @param [String] fields
@@ -3419,7 +3419,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a single Endpoint.
+        # Update a single project Endpoint.
         # @param [String] name
         #   Immutable. Identifier. Name of resource.
         # @param [Google::Apis::NetworksecurityV1::FirewallEndpoint] firewall_endpoint_object
