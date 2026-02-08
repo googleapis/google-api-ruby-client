@@ -100,12 +100,15 @@ module Google
           collection :brand_exclusion, as: 'brandExclusion'
           collection :brand_inclusion, as: 'brandInclusion'
           property :coupon_value_type, as: 'couponValueType'
+          property :custom_redemption_restriction, as: 'customRedemptionRestriction'
+          property :event_applicability, as: 'eventApplicability'
           property :free_gift_description, as: 'freeGiftDescription'
           property :free_gift_item_id, as: 'freeGiftItemId'
           property :free_gift_value, as: 'freeGiftValue', class: Google::Apis::MerchantapiPromotionsV1beta::Price, decorator: Google::Apis::MerchantapiPromotionsV1beta::Price::Representation
       
           property :generic_redemption_code, as: 'genericRedemptionCode'
           property :get_this_quantity_discounted, :numeric_string => true, as: 'getThisQuantityDiscounted'
+          collection :google_product_categories, as: 'googleProductCategories'
           collection :item_group_id_exclusion, as: 'itemGroupIdExclusion'
           collection :item_group_id_inclusion, as: 'itemGroupIdInclusion'
           collection :item_id_exclusion, as: 'itemIdExclusion'
@@ -114,6 +117,8 @@ module Google
           property :limit_value, as: 'limitValue', class: Google::Apis::MerchantapiPromotionsV1beta::Price, decorator: Google::Apis::MerchantapiPromotionsV1beta::Price::Representation
       
           property :long_title, as: 'longTitle'
+          property :max_discount_amount, as: 'maxDiscountAmount', class: Google::Apis::MerchantapiPromotionsV1beta::Price, decorator: Google::Apis::MerchantapiPromotionsV1beta::Price::Representation
+      
           property :minimum_purchase_amount, as: 'minimumPurchaseAmount', class: Google::Apis::MerchantapiPromotionsV1beta::Price, decorator: Google::Apis::MerchantapiPromotionsV1beta::Price::Representation
       
           property :minimum_purchase_quantity, :numeric_string => true, as: 'minimumPurchaseQuantity'
@@ -130,6 +135,7 @@ module Google
           property :promotion_effective_time_period, as: 'promotionEffectiveTimePeriod', class: Google::Apis::MerchantapiPromotionsV1beta::Interval, decorator: Google::Apis::MerchantapiPromotionsV1beta::Interval::Representation
       
           property :promotion_url, as: 'promotionUrl'
+          property :redemption_restriction, as: 'redemptionRestriction'
           property :store_applicability, as: 'storeApplicability'
           collection :store_codes_exclusion, as: 'storeCodesExclusion'
           collection :store_codes_inclusion, as: 'storeCodesInclusion'

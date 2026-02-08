@@ -1,5 +1,9 @@
 # Release history for google-apis-merchantapi_promotions_v1beta
 
+### v0.11.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260204
+
 ### v0.10.0 (2025-08-10)
 
 * Regenerated from discovery document revision 20250805
