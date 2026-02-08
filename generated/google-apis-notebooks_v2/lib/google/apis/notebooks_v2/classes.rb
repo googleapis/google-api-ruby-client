@@ -1079,8 +1079,9 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Locations that could not be reached. For example, ['us-west1-a', 'us-central1-
-        # b']. A ListInstancesResponse will only contain either instances or
+        # Unordered list. Locations that could not be reached. For example, ['projects/`
+        # project_id`/locations/us-west1-a', 'projects/`project_id`/locations/us-
+        # central1-b']. A ListInstancesResponse will only contain either instances or
         # unreachables,
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
