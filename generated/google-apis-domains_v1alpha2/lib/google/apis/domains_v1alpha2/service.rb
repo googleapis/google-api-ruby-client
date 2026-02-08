@@ -81,12 +81,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # can be called in two ways: * **List all public locations:** Use the path `GET /
+        # v1/locations`. * **List project-visible locations:** Use the path `GET /v1/
+        # projects/`project_id`/locations`. This may include public locations as well as
+        # private or other locations specifically visible to the project.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. Unless explicitly documented otherwise, don't use this unsupported
-        #   field which is primarily intended for internal usage.
+        #   Optional. Do not use this field. It is unsupported and is ignored unless
+        #   explicitly documented otherwise. This is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -169,6 +173,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -186,7 +198,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha2/{+name}/operations', options)
           command.response_representation = Google::Apis::DomainsV1alpha2::ListOperationsResponse::Representation
           command.response_class = Google::Apis::DomainsV1alpha2::ListOperationsResponse
@@ -194,6 +206,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
