@@ -4083,6 +4083,31 @@ module Google
         end
       end
       
+      # Specification for a computation based metric.
+      class GoogleCloudAiplatformV1ComputationBasedMetricSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A map of parameters for the metric, e.g. `"rouge_type": "rougeL"`.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :parameters
+      
+        # Required. The type of the computation based metric.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Request message for ComputeTokens RPC call.
       class GoogleCloudAiplatformV1ComputeTokensRequest
         include Google::Apis::Core::Hashable
@@ -8962,6 +8987,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceAgentData]
         attr_accessor :agent_data
       
+        # Contains data specific to agent evaluations.
+        # Corresponds to the JSON property `agentEvalData`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceAgentData]
+        attr_accessor :agent_eval_data
+      
         # Instance data specified as a map.
         # Corresponds to the JSON property `otherData`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceMapInstance]
@@ -8996,6 +9026,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent_data = args[:agent_data] if args.key?(:agent_data)
+          @agent_eval_data = args[:agent_eval_data] if args.key?(:agent_eval_data)
           @other_data = args[:other_data] if args.key?(:other_data)
           @prompt = args[:prompt] if args.key?(:prompt)
           @reference = args[:reference] if args.key?(:reference)
@@ -9008,10 +9039,36 @@ module Google
       class GoogleCloudAiplatformV1EvaluationInstanceAgentConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Unique identifier of the agent. This ID is used to refer to this
+        # agent, e.g., in AgentEvent.author, or in the `sub_agents` field. It must be
+        # unique within the `agents` map.
+        # Corresponds to the JSON property `agentId`
+        # @return [String]
+        attr_accessor :agent_id
+      
+        # Optional. The type or class of the agent (e.g., "LlmAgent", "RouterAgent", "
+        # ToolUseAgent"). Useful for the autorater to understand the expected behavior
+        # of the agent.
+        # Corresponds to the JSON property `agentType`
+        # @return [String]
+        attr_accessor :agent_type
+      
+        # Optional. A high-level description of the agent's role and responsibilities.
+        # Critical for evaluating if the agent is routing tasks correctly.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Instance data used to populate placeholders in a metric prompt template.
         # Corresponds to the JSON property `developerInstruction`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceInstanceData]
         attr_accessor :developer_instruction
+      
+        # Optional. The list of valid agent IDs (names) that this agent can delegate to.
+        # This defines the directed edges in the agent system graph topology.
+        # Corresponds to the JSON property `subAgents`
+        # @return [Array<String>]
+        attr_accessor :sub_agents
       
         # Represents a list of tools for an agent.
         # Corresponds to the JSON property `tools`
@@ -9030,7 +9087,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_id = args[:agent_id] if args.key?(:agent_id)
+          @agent_type = args[:agent_type] if args.key?(:agent_type)
+          @description = args[:description] if args.key?(:description)
           @developer_instruction = args[:developer_instruction] if args.key?(:developer_instruction)
+          @sub_agents = args[:sub_agents] if args.key?(:sub_agents)
           @tools = args[:tools] if args.key?(:tools)
           @tools_text = args[:tools_text] if args.key?(:tools_text)
         end
@@ -9064,6 +9125,13 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceAgentConfig]
         attr_accessor :agent_config
       
+        # Optional. The static Agent Configuration. This map defines the graph structure
+        # of the agent system. Key: agent_id (matches the `author` field in events).
+        # Value: The static configuration of the agent (tools, instructions, sub-agents).
+        # Corresponds to the JSON property `agents`
+        # @return [Hash<String,Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceAgentConfig>]
+        attr_accessor :agents
+      
         # Instance data used to populate placeholders in a metric prompt template.
         # Corresponds to the JSON property `developerInstruction`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceInstanceData]
@@ -9074,21 +9142,22 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceAgentDataEvents]
         attr_accessor :events
       
-        # Represents a list of tools for an agent.
+        # Deprecated. Represents a list of tools for an agent.
         # Corresponds to the JSON property `tools`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceAgentDataTools]
         attr_accessor :tools
       
         # A JSON string containing a list of tools available to an agent with info such
-        # as name, description, parameters and required parameters. Example: [ ` "name":
-        # "search_actors", "description": "Search for actors in a movie. Returns a list
-        # of actors, their roles, their birthdate, and their place of birth.", "
-        # parameters": [ ` "name": "movie_name", "description": "The name of the movie."
-        # `, ` "name": "character_name", "description": "The name of the character." ` ],
-        # "required": ["movie_name", "character_name"] ` ]
+        # as name, description, parameters and required parameters.
         # Corresponds to the JSON property `toolsText`
         # @return [String]
         attr_accessor :tools_text
+      
+        # Optional. The chronological list of conversation turns. Each turn represents a
+        # logical execution cycle (e.g., User Input -> Agent Response).
+        # Corresponds to the JSON property `turns`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceAgentDataConversationTurn>]
+        attr_accessor :turns
       
         def initialize(**args)
            update!(**args)
@@ -9097,10 +9166,91 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent_config = args[:agent_config] if args.key?(:agent_config)
+          @agents = args[:agents] if args.key?(:agents)
           @developer_instruction = args[:developer_instruction] if args.key?(:developer_instruction)
           @events = args[:events] if args.key?(:events)
           @tools = args[:tools] if args.key?(:tools)
           @tools_text = args[:tools_text] if args.key?(:tools_text)
+          @turns = args[:turns] if args.key?(:turns)
+        end
+      end
+      
+      # A single event in the execution trace.
+      class GoogleCloudAiplatformV1EvaluationInstanceAgentDataAgentEvent
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of tools that were active/available to the agent at the
+        # time of this event. This overrides the `AgentConfig.tools` if set.
+        # Corresponds to the JSON property `activeTools`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Tool>]
+        attr_accessor :active_tools
+      
+        # Required. The ID of the agent or entity that generated this event.
+        # Corresponds to the JSON property `author`
+        # @return [String]
+        attr_accessor :author
+      
+        # The structured data content of a message. A Content message contains a `role`
+        # field, which indicates the producer of the content, and a `parts` field, which
+        # contains the multi-part data of the message.
+        # Corresponds to the JSON property `content`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content]
+        attr_accessor :content
+      
+        # Optional. The timestamp when the event occurred.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # Optional. The change in the session state caused by this event. This is a key-
+        # value map of fields that were modified or added by the event.
+        # Corresponds to the JSON property `stateDelta`
+        # @return [Hash<String,Object>]
+        attr_accessor :state_delta
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_tools = args[:active_tools] if args.key?(:active_tools)
+          @author = args[:author] if args.key?(:author)
+          @content = args[:content] if args.key?(:content)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @state_delta = args[:state_delta] if args.key?(:state_delta)
+        end
+      end
+      
+      # Represents a single turn/invocation in the conversation.
+      class GoogleCloudAiplatformV1EvaluationInstanceAgentDataConversationTurn
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of events that occurred during this turn.
+        # Corresponds to the JSON property `events`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationInstanceAgentDataAgentEvent>]
+        attr_accessor :events
+      
+        # Optional. A unique identifier for the turn. Useful for referencing specific
+        # turns across systems.
+        # Corresponds to the JSON property `turnId`
+        # @return [String]
+        attr_accessor :turn_id
+      
+        # Required. The 0-based index of the turn in the conversation sequence.
+        # Corresponds to the JSON property `turnIndex`
+        # @return [Fixnum]
+        attr_accessor :turn_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @events = args[:events] if args.key?(:events)
+          @turn_id = args[:turn_id] if args.key?(:turn_id)
+          @turn_index = args[:turn_index] if args.key?(:turn_index)
         end
       end
       
@@ -9123,7 +9273,7 @@ module Google
         end
       end
       
-      # Represents a list of tools for an agent.
+      # Deprecated. Represents a list of tools for an agent.
       class GoogleCloudAiplatformV1EvaluationInstanceAgentDataTools
         include Google::Apis::Core::Hashable
       
@@ -9236,7 +9386,13 @@ module Google
         # @return [String]
         attr_accessor :evaluation_item_type
       
-        # Single evaluation request.
+        # A single evaluation request supporting input for both single-turn model
+        # generation and multi-turn agent execution traces. Valid input modes: 1.
+        # Inference Mode: `prompt` is set (containing text or AgentData context). 2.
+        # Offline Eval Mode: `prompt` is unset, and `candidate_responses` contains `
+        # agent_data` (the completed execution trace). Validation Rule: Either `prompt`
+        # must be set, OR at least one of the `candidate_responses` must contain `
+        # agent_data`.
         # Corresponds to the JSON property `evaluationRequest`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRequest]
         attr_accessor :evaluation_request
@@ -9286,7 +9442,8 @@ module Google
         end
       end
       
-      # Prompt to be evaluated.
+      # Prompt to be evaluated. This can represent a single-turn prompt or a multi-
+      # turn conversation for agent evaluations.
       class GoogleCloudAiplatformV1EvaluationPrompt
         include Google::Apis::Core::Hashable
       
@@ -9336,7 +9493,13 @@ module Google
         end
       end
       
-      # Single evaluation request.
+      # A single evaluation request supporting input for both single-turn model
+      # generation and multi-turn agent execution traces. Valid input modes: 1.
+      # Inference Mode: `prompt` is set (containing text or AgentData context). 2.
+      # Offline Eval Mode: `prompt` is unset, and `candidate_responses` contains `
+      # agent_data` (the completed execution trace). Validation Rule: Either `prompt`
+      # must be set, OR at least one of the `candidate_responses` must contain `
+      # agent_data`.
       class GoogleCloudAiplatformV1EvaluationRequest
         include Google::Apis::Core::Hashable
       
@@ -9351,7 +9514,8 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CandidateResponse]
         attr_accessor :golden_response
       
-        # Prompt to be evaluated.
+        # Prompt to be evaluated. This can represent a single-turn prompt or a multi-
+        # turn conversation for agent evaluations.
         # Corresponds to the JSON property `prompt`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationPrompt]
         attr_accessor :prompt
@@ -9406,7 +9570,13 @@ module Google
         # @return [String]
         attr_accessor :metric
       
-        # Single evaluation request.
+        # A single evaluation request supporting input for both single-turn model
+        # generation and multi-turn agent execution traces. Valid input modes: 1.
+        # Inference Mode: `prompt` is set (containing text or AgentData context). 2.
+        # Offline Eval Mode: `prompt` is unset, and `candidate_responses` contains `
+        # agent_data` (the completed execution trace). Validation Rule: Either `prompt`
+        # must be set, OR at least one of the `candidate_responses` must contain `
+        # agent_data`.
         # Corresponds to the JSON property `request`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRequest]
         attr_accessor :request
@@ -9791,6 +9961,11 @@ module Google
       class GoogleCloudAiplatformV1EvaluationRunMetric
         include Google::Apis::Core::Hashable
       
+        # Specification for a computation based metric.
+        # Corresponds to the JSON property `computationBasedMetricSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricComputationBasedMetricSpec]
+        attr_accessor :computation_based_metric_spec
+      
         # Specification for an LLM based metric.
         # Corresponds to the JSON property `llmBasedMetricSpec`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluationRunMetricLlmBasedMetricSpec]
@@ -9822,11 +9997,37 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @computation_based_metric_spec = args[:computation_based_metric_spec] if args.key?(:computation_based_metric_spec)
           @llm_based_metric_spec = args[:llm_based_metric_spec] if args.key?(:llm_based_metric_spec)
           @metric = args[:metric] if args.key?(:metric)
           @metric_config = args[:metric_config] if args.key?(:metric_config)
           @predefined_metric_spec = args[:predefined_metric_spec] if args.key?(:predefined_metric_spec)
           @rubric_based_metric_spec = args[:rubric_based_metric_spec] if args.key?(:rubric_based_metric_spec)
+        end
+      end
+      
+      # Specification for a computation based metric.
+      class GoogleCloudAiplatformV1EvaluationRunMetricComputationBasedMetricSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A map of parameters for the metric, e.g. `"rouge_type": "rougeL"`.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :parameters
+      
+        # Required. The type of the computation based metric.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -19839,13 +20040,13 @@ module Google
       class GoogleCloudAiplatformV1ListTuningJobsResponse
         include Google::Apis::Core::Hashable
       
-        # A token to retrieve the next page of results. Pass to ListTuningJobsRequest.
-        # page_token to obtain that page.
+        # A token to retrieve the next page of results. Pass this token in a subsequent [
+        # GenAiTuningService.ListTuningJobs] call to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # List of TuningJobs in the requested page.
+        # The tuning jobs that match the request.
         # Corresponds to the JSON property `tuningJobs`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TuningJob>]
         attr_accessor :tuning_jobs
@@ -20895,6 +21096,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BleuSpec]
         attr_accessor :bleu_spec
       
+        # Specification for a computation based metric.
+        # Corresponds to the JSON property `computationBasedMetricSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ComputationBasedMetricSpec]
+        attr_accessor :computation_based_metric_spec
+      
         # Specificies a metric that is populated by evaluating user-defined Python code.
         # Corresponds to the JSON property `customCodeExecutionSpec`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CustomCodeExecutionSpec]
@@ -20940,6 +21146,7 @@ module Google
         def update!(**args)
           @aggregation_metrics = args[:aggregation_metrics] if args.key?(:aggregation_metrics)
           @bleu_spec = args[:bleu_spec] if args.key?(:bleu_spec)
+          @computation_based_metric_spec = args[:computation_based_metric_spec] if args.key?(:computation_based_metric_spec)
           @custom_code_execution_spec = args[:custom_code_execution_spec] if args.key?(:custom_code_execution_spec)
           @exact_match_spec = args[:exact_match_spec] if args.key?(:exact_match_spec)
           @llm_based_metric_spec = args[:llm_based_metric_spec] if args.key?(:llm_based_metric_spec)
@@ -28454,6 +28661,17 @@ module Google
         # @return [String]
         attr_accessor :filter
       
+        # Optional. Metadata filters that will be applied to the memories to be purged.
+        # Filters are defined using disjunctive normal form (OR of ANDs). For example: `
+        # filter_groups: [`filters: [`key: "author", value: `string_value: "agent 123"`,
+        # op: EQUAL`]`, `filters: [`key: "label", value: `string_value: "travel"`, op:
+        # EQUAL`, `key: "author", value: `string_value: "agent 321"`, op: EQUAL`]`]`
+        # would be equivalent to the logical expression: `(metadata.author = "agent 123"
+        # OR (metadata.label = "travel" AND metadata.author = "agent 321"))`.
+        # Corresponds to the JSON property `filterGroups`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1MemoryConjunctionFilter>]
+        attr_accessor :filter_groups
+      
         # Optional. If true, the memories will actually be purged. If false, the purge
         # request will be validated but not executed.
         # Corresponds to the JSON property `force`
@@ -28468,6 +28686,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @filter = args[:filter] if args.key?(:filter)
+          @filter_groups = args[:filter_groups] if args.key?(:filter_groups)
           @force = args[:force] if args.key?(:force)
         end
       end
@@ -29635,7 +29854,102 @@ module Google
         # Basic tier is a cost-effective and low compute tier suitable for the following
         # cases: * Experimenting with RagManagedDb. * Small data size. * Latency
         # insensitive workload. * Only using RAG Engine with external vector DBs. NOTE:
-        # This is the default tier if not explicitly chosen.
+        # This is the default tier under Spanner mode if not explicitly chosen.
+        # Corresponds to the JSON property `basic`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigBasic]
+        attr_accessor :basic
+      
+        # Scaled tier offers production grade performance along with autoscaling
+        # functionality. It is suitable for customers with large amounts of data or
+        # performance sensitive workloads.
+        # Corresponds to the JSON property `scaled`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigScaled]
+        attr_accessor :scaled
+      
+        # Message to configure the serverless mode offered by RAG Engine.
+        # Corresponds to the JSON property `serverless`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigServerless]
+        attr_accessor :serverless
+      
+        # Message to configure the Spanner database used by RagManagedDb.
+        # Corresponds to the JSON property `spanner`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigSpanner]
+        attr_accessor :spanner
+      
+        # Disables the RAG Engine service and deletes all your data held within this
+        # service. This will halt the billing of the service. NOTE: Once deleted the
+        # data cannot be recovered. To start using RAG Engine again, you will need to
+        # update the tier by calling the UpdateRagEngineConfig API.
+        # Corresponds to the JSON property `unprovisioned`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigUnprovisioned]
+        attr_accessor :unprovisioned
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @basic = args[:basic] if args.key?(:basic)
+          @scaled = args[:scaled] if args.key?(:scaled)
+          @serverless = args[:serverless] if args.key?(:serverless)
+          @spanner = args[:spanner] if args.key?(:spanner)
+          @unprovisioned = args[:unprovisioned] if args.key?(:unprovisioned)
+        end
+      end
+      
+      # Basic tier is a cost-effective and low compute tier suitable for the following
+      # cases: * Experimenting with RagManagedDb. * Small data size. * Latency
+      # insensitive workload. * Only using RAG Engine with external vector DBs. NOTE:
+      # This is the default tier under Spanner mode if not explicitly chosen.
+      class GoogleCloudAiplatformV1RagManagedDbConfigBasic
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Scaled tier offers production grade performance along with autoscaling
+      # functionality. It is suitable for customers with large amounts of data or
+      # performance sensitive workloads.
+      class GoogleCloudAiplatformV1RagManagedDbConfigScaled
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Message to configure the serverless mode offered by RAG Engine.
+      class GoogleCloudAiplatformV1RagManagedDbConfigServerless
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Message to configure the Spanner database used by RagManagedDb.
+      class GoogleCloudAiplatformV1RagManagedDbConfigSpanner
+        include Google::Apis::Core::Hashable
+      
+        # Basic tier is a cost-effective and low compute tier suitable for the following
+        # cases: * Experimenting with RagManagedDb. * Small data size. * Latency
+        # insensitive workload. * Only using RAG Engine with external vector DBs. NOTE:
+        # This is the default tier under Spanner mode if not explicitly chosen.
         # Corresponds to the JSON property `basic`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagManagedDbConfigBasic]
         attr_accessor :basic
@@ -29664,37 +29978,6 @@ module Google
           @basic = args[:basic] if args.key?(:basic)
           @scaled = args[:scaled] if args.key?(:scaled)
           @unprovisioned = args[:unprovisioned] if args.key?(:unprovisioned)
-        end
-      end
-      
-      # Basic tier is a cost-effective and low compute tier suitable for the following
-      # cases: * Experimenting with RagManagedDb. * Small data size. * Latency
-      # insensitive workload. * Only using RAG Engine with external vector DBs. NOTE:
-      # This is the default tier if not explicitly chosen.
-      class GoogleCloudAiplatformV1RagManagedDbConfigBasic
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Scaled tier offers production grade performance along with autoscaling
-      # functionality. It is suitable for customers with large amounts of data or
-      # performance sensitive workloads.
-      class GoogleCloudAiplatformV1RagManagedDbConfigScaled
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -31104,9 +31387,10 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GcsDestination]
         attr_accessor :artifact_destination
       
-        # Optional. By default, bison to gemini migration will always create new model/
-        # endpoint, but for gemini-1.0 to gemini-1.5 migration, we default deploy to the
-        # same endpoint. See details in this Section.
+        # Optional. By default, rebasing a model creates a new endpoint for the new
+        # model. If this flag is set to true, the new model will be deployed to the same
+        # endpoint as the original model. WARNING: If you deploy to the same endpoint,
+        # the original model will be un-deployed and replaced by the new model.
         # Corresponds to the JSON property `deployToSameEndpoint`
         # @return [Boolean]
         attr_accessor :deploy_to_same_endpoint
