@@ -2491,6 +2491,7 @@ module Google
       class Note
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advisory_publish_time, as: 'advisoryPublishTime'
           property :attestation, as: 'attestation', class: Google::Apis::ContaineranalysisV1::AttestationNote, decorator: Google::Apis::ContaineranalysisV1::AttestationNote::Representation
       
           property :build, as: 'build', class: Google::Apis::ContaineranalysisV1::BuildNote, decorator: Google::Apis::ContaineranalysisV1::BuildNote::Representation
