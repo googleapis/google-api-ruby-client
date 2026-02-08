@@ -7685,7 +7685,8 @@ module Google
       
         # Optional. An id corresponding to a place, such as a store id or region id.
         # When specified, we use the price from the local inventory with the matching
-        # product's LocalInventory.place_id for revenue optimization.
+        # product's LocalInventory.place_id for revenue optimization. Note, the currency
+        # of the local inventory's price must match the currency of the product's price.
         # Corresponds to the JSON property `placeId`
         # @return [String]
         attr_accessor :place_id
