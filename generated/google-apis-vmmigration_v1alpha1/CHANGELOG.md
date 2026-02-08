@@ -1,5 +1,9 @@
 # Release history for google-apis-vmmigration_v1alpha1
 
+### v0.69.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260129
+
 ### v0.68.0 (2025-12-14)
 
 * Regenerated from discovery document revision 20251204
