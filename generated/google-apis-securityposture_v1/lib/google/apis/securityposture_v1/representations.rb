@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IacValidationFailureCriteria
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +263,12 @@ module Google
       end
       
       class SecurityHealthAnalyticsModule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SeverityCountThreshold
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -416,6 +428,18 @@ module Google
           property :note, as: 'note'
           collection :violations, as: 'violations', class: Google::Apis::SecuritypostureV1::Violation, decorator: Google::Apis::SecuritypostureV1::Violation::Representation
       
+        end
+      end
+      
+      class IacValidationFailureCriteria
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          collection :severity_count_thresholds, as: 'severityCountThresholds', class: Google::Apis::SecuritypostureV1::SeverityCountThreshold, decorator: Google::Apis::SecuritypostureV1::SeverityCountThreshold::Representation
+      
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -687,6 +711,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :module_enablement_state, as: 'moduleEnablementState'
           property :module_name, as: 'moduleName'
+        end
+      end
+      
+      class SeverityCountThreshold
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :severity, as: 'severity'
+          property :threshold_count, as: 'thresholdCount'
         end
       end
       

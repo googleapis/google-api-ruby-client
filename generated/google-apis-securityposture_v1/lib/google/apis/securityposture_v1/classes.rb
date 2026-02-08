@@ -595,6 +595,51 @@ module Google
         end
       end
       
+      # Represents the criteria for considering an IaC validation as a failure.
+      class IacValidationFailureCriteria
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The etag for optimistic concurrency.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifier. The resource name of the IacValidationFailureCriteria. Format:
+        # organizations/`organization`/locations/`location`/iacValidationFailureCriteria
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. A list of severity thresholds. An IaC validation fails if any
+        # threshold is exceeded.
+        # Corresponds to the JSON property `severityCountThresholds`
+        # @return [Array<Google::Apis::SecuritypostureV1::SeverityCountThreshold>]
+        attr_accessor :severity_count_thresholds
+      
+        # Output only. The time at which the resource was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @severity_count_thresholds = args[:severity_count_thresholds] if args.key?(:severity_count_thresholds)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -1639,6 +1684,31 @@ module Google
         def update!(**args)
           @module_enablement_state = args[:module_enablement_state] if args.key?(:module_enablement_state)
           @module_name = args[:module_name] if args.key?(:module_name)
+        end
+      end
+      
+      # Represents a threshold for a specific severity.
+      class SeverityCountThreshold
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The severity level, reusing the existing Violation.Severity.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Optional. If violation count meets or exceeds this threshold, validation fails.
+        # Corresponds to the JSON property `thresholdCount`
+        # @return [Fixnum]
+        attr_accessor :threshold_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @severity = args[:severity] if args.key?(:severity)
+          @threshold_count = args[:threshold_count] if args.key?(:threshold_count)
         end
       end
       
