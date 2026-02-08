@@ -2452,7 +2452,7 @@ module Google
       
         # Set of detection rules to apply to all findings of this CustomInfoType. Rules
         # are applied in order that they are specified. Not supported for the `
-        # surrogate_type` CustomInfoType.
+        # surrogate_type`, `metadata_key_value_expression`, and `prompt` CustomInfoType.
         # Corresponds to the JSON property `detectionRules`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2DetectionRule>]
         attr_accessor :detection_rules
@@ -2480,7 +2480,8 @@ module Google
         attr_accessor :dictionary
       
         # If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be
-        # returned. It still can be used for rules matching.
+        # returned. It still can be used for rules matching. Not supported for the `
+        # metadata_key_value_expression` and `prompt` CustomInfoType.
         # Corresponds to the JSON property `exclusionType`
         # @return [String]
         attr_accessor :exclusion_type
