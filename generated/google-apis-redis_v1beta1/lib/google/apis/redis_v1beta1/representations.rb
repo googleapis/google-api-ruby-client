@@ -508,6 +508,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceFlags
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceMaintenanceDenySchedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -563,6 +569,12 @@ module Google
       end
       
       class TypedValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpcomingMaintenance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -993,6 +1005,8 @@ module Google
           property :product, as: 'product', class: Google::Apis::RedisV1beta1::Product, decorator: Google::Apis::RedisV1beta1::Product::Representation
       
           property :resource_container, as: 'resourceContainer'
+          collection :resource_flags, as: 'resourceFlags', class: Google::Apis::RedisV1beta1::ResourceFlags, decorator: Google::Apis::RedisV1beta1::ResourceFlags::Representation
+      
           property :resource_name, as: 'resourceName'
           property :suspension_reason, as: 'suspensionReason'
           property :tags_set, as: 'tagsSet', class: Google::Apis::RedisV1beta1::Tags, decorator: Google::Apis::RedisV1beta1::Tags::Representation
@@ -1541,6 +1555,14 @@ module Google
         end
       end
       
+      class ResourceFlags
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
       class ResourceMaintenanceDenySchedule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1558,9 +1580,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :deny_maintenance_schedules, as: 'denyMaintenanceSchedules', class: Google::Apis::RedisV1beta1::ResourceMaintenanceDenySchedule, decorator: Google::Apis::RedisV1beta1::ResourceMaintenanceDenySchedule::Representation
       
+          property :is_instance_stopped, as: 'isInstanceStopped'
           property :maintenance_schedule, as: 'maintenanceSchedule', class: Google::Apis::RedisV1beta1::ResourceMaintenanceSchedule, decorator: Google::Apis::RedisV1beta1::ResourceMaintenanceSchedule::Representation
       
+          property :maintenance_state, as: 'maintenanceState'
           property :maintenance_version, as: 'maintenanceVersion'
+          property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::RedisV1beta1::UpcomingMaintenance, decorator: Google::Apis::RedisV1beta1::UpcomingMaintenance::Representation
+      
+          property :version_update_time, as: 'versionUpdateTime'
         end
       end
       
@@ -1637,6 +1664,14 @@ module Google
           property :double_value, as: 'doubleValue'
           property :int64_value, :numeric_string => true, as: 'int64Value'
           property :string_value, as: 'stringValue'
+        end
+      end
+      
+      class UpcomingMaintenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
       
