@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClientCache
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudSqlInstance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -35,6 +41,12 @@ module Google
       end
       
       class Connector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataConnectProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -107,6 +119,12 @@ module Google
       end
       
       class GraphqlResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GraphqlResponseExtensions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,6 +244,14 @@ module Google
         end
       end
       
+      class ClientCache
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_id_included, as: 'entityIdIncluded'
+          property :strict_validation_enabled, as: 'strictValidationEnabled'
+        end
+      end
+      
       class CloudSqlInstance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -237,6 +263,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :client_cache, as: 'clientCache', class: Google::Apis::FirebasedataconnectV1::ClientCache, decorator: Google::Apis::FirebasedataconnectV1::ClientCache::Representation
+      
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
@@ -247,6 +275,16 @@ module Google
       
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class DataConnectProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_id, as: 'entityId'
+          collection :entity_ids, as: 'entityIds'
+          property :max_age, as: 'maxAge'
+          collection :path, as: 'path'
         end
       end
       
@@ -280,6 +318,8 @@ module Google
           hash :data, as: 'data'
           collection :errors, as: 'errors', class: Google::Apis::FirebasedataconnectV1::GraphqlError, decorator: Google::Apis::FirebasedataconnectV1::GraphqlError::Representation
       
+          property :extensions, as: 'extensions', class: Google::Apis::FirebasedataconnectV1::GraphqlResponseExtensions, decorator: Google::Apis::FirebasedataconnectV1::GraphqlResponseExtensions::Representation
+      
         end
       end
       
@@ -296,6 +336,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :data, as: 'data'
           collection :errors, as: 'errors', class: Google::Apis::FirebasedataconnectV1::GraphqlError, decorator: Google::Apis::FirebasedataconnectV1::GraphqlError::Representation
+      
+          property :extensions, as: 'extensions', class: Google::Apis::FirebasedataconnectV1::GraphqlResponseExtensions, decorator: Google::Apis::FirebasedataconnectV1::GraphqlResponseExtensions::Representation
       
         end
       end
@@ -356,6 +398,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :data, as: 'data'
           collection :errors, as: 'errors', class: Google::Apis::FirebasedataconnectV1::GraphqlError, decorator: Google::Apis::FirebasedataconnectV1::GraphqlError::Representation
+      
+          property :extensions, as: 'extensions', class: Google::Apis::FirebasedataconnectV1::GraphqlResponseExtensions, decorator: Google::Apis::FirebasedataconnectV1::GraphqlResponseExtensions::Representation
+      
+        end
+      end
+      
+      class GraphqlResponseExtensions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_connect, as: 'dataConnect', class: Google::Apis::FirebasedataconnectV1::DataConnectProperties, decorator: Google::Apis::FirebasedataconnectV1::DataConnectProperties::Representation
       
         end
       end
