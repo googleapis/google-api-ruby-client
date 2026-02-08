@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateOrgProfileConfigurationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InbandVulnerability
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -376,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PriorityAnalysis
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -419,6 +431,12 @@ module Google
       end
       
       class SeverityAnalysis
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -519,6 +537,7 @@ module Google
           collection :duplicated_by, as: 'duplicatedBy'
           property :etag, as: 'etag'
           property :external_id, as: 'externalId'
+          property :finding_count, :numeric_string => true, as: 'findingCount'
           collection :findings, as: 'findings'
           property :name, as: 'name'
           property :priority_analysis, as: 'priorityAnalysis', class: Google::Apis::ThreatintelligenceV1beta::PriorityAnalysis, decorator: Google::Apis::ThreatintelligenceV1beta::PriorityAnalysis::Representation
@@ -958,6 +977,14 @@ module Google
         end
       end
       
+      class GenerateOrgProfileConfigurationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :domain, as: 'domain'
+        end
+      end
+      
       class InbandVulnerability
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1151,6 +1178,18 @@ module Google
         end
       end
       
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::ThreatintelligenceV1beta::Status, decorator: Google::Apis::ThreatintelligenceV1beta::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
       class PriorityAnalysis
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1213,6 +1252,15 @@ module Google
           property :confidence, as: 'confidence'
           property :reasoning, as: 'reasoning'
           property :severity_level, as: 'severityLevel'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       

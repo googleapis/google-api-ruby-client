@@ -109,6 +109,11 @@ module Google
         # @return [String]
         attr_accessor :external_id
       
+        # Output only. The number of findings associated with this alert.
+        # Corresponds to the JSON property `findingCount`
+        # @return [Fixnum]
+        attr_accessor :finding_count
+      
         # Output only. Findings that are covered by this alert.
         # Corresponds to the JSON property `findings`
         # @return [Array<String>]
@@ -156,6 +161,7 @@ module Google
           @duplicated_by = args[:duplicated_by] if args.key?(:duplicated_by)
           @etag = args[:etag] if args.key?(:etag)
           @external_id = args[:external_id] if args.key?(:external_id)
+          @finding_count = args[:finding_count] if args.key?(:finding_count)
           @findings = args[:findings] if args.key?(:findings)
           @name = args[:name] if args.key?(:name)
           @priority_analysis = args[:priority_analysis] if args.key?(:priority_analysis)
@@ -1732,6 +1738,31 @@ module Google
         end
       end
       
+      # Request message for GenerateOrgProfileConfiguration.
+      class GenerateOrgProfileConfigurationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The display name of the organization to generate the profile for.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The domain of the organization to generate the profile for.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @domain = args[:domain] if args.key?(:domain)
+        end
+      end
+      
       # Fleshed out vulnerability object that includes enough details to fill out a
       # vulnerability specific view for an issue.
       class InbandVulnerability
@@ -2337,6 +2368,68 @@ module Google
         end
       end
       
+      # This resource represents a long-running operation that is the result of a
+      # network API call.
+      class Operation
+        include Google::Apis::Core::Hashable
+      
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ThreatintelligenceV1beta::Status]
+        attr_accessor :error
+      
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
       # Structured priority analysis for a threat.
       class PriorityAnalysis
         include Google::Apis::Core::Hashable
@@ -2532,6 +2625,45 @@ module Google
           @confidence = args[:confidence] if args.key?(:confidence)
           @reasoning = args[:reasoning] if args.key?(:reasoning)
           @severity_level = args[:severity_level] if args.key?(:severity_level)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
         end
       end
       

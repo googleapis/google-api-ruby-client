@@ -51,6 +51,40 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Triggers the generation of a Customer Profile for a project.
+        # @param [String] name
+        #   Required. The name of the project to generate the profile for. Format:
+        #   projects/`project`
+        # @param [Google::Apis::ThreatintelligenceV1beta::GenerateOrgProfileConfigurationRequest] generate_org_profile_configuration_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ThreatintelligenceV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ThreatintelligenceV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_org_profile_configuration(name, generate_org_profile_configuration_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+name}:generateOrgProfile', options)
+          command.request_representation = Google::Apis::ThreatintelligenceV1beta::GenerateOrgProfileConfigurationRequest::Representation
+          command.request_object = generate_org_profile_configuration_request_object
+          command.response_representation = Google::Apis::ThreatintelligenceV1beta::Operation::Representation
+          command.response_class = Google::Apis::ThreatintelligenceV1beta::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Marks an alert as benign - BENIGN.
         # @param [String] name
         #   Required. Name of the alert to mark as a benign. Format: projects/`project`/
