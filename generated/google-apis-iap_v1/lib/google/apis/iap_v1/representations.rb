@@ -447,6 +447,9 @@ module Google
       class OAuthSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          property :client_secret_sha256, as: 'clientSecretSha256'
           property :login_hint, as: 'loginHint'
           collection :programmatic_clients, as: 'programmaticClients'
         end
