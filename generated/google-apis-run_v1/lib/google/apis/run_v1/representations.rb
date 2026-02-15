@@ -1860,6 +1860,7 @@ module Google
       
           hash :node_selector, as: 'nodeSelector'
           property :service_account_name, as: 'serviceAccountName'
+          property :timeout, as: 'timeout'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV1::Volume, decorator: Google::Apis::RunV1::Volume::Representation
       
         end
