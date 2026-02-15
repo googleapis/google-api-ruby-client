@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListRetiredResourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSingleTenantHsmInstanceProposalsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -479,6 +485,12 @@ module Google
       end
       
       class RestoreCryptoKeyVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetiredResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1075,6 +1087,16 @@ module Google
         end
       end
       
+      class ListRetiredResourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :retired_resources, as: 'retiredResources', class: Google::Apis::CloudkmsV1::RetiredResource, decorator: Google::Apis::CloudkmsV1::RetiredResource::Representation
+      
+          property :total_size, :numeric_string => true, as: 'totalSize'
+        end
+      end
+      
       class ListSingleTenantHsmInstanceProposalsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1320,6 +1342,16 @@ module Google
       class RestoreCryptoKeyVersionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RetiredResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_time, as: 'deleteTime'
+          property :name, as: 'name'
+          property :original_resource, as: 'originalResource'
+          property :resource_type, as: 'resourceType'
         end
       end
       

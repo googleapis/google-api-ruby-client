@@ -410,7 +410,7 @@ module Google
         attr_accessor :key_project_resolution_mode
       
         # Identifier. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
-        # autokeyConfig`
+        # autokeyConfig` or `projects/`PROJECT_NUMBER`/autokeyConfig`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2290,6 +2290,38 @@ module Google
         end
       end
       
+      # Response message for KeyManagementService.ListRetiredResources.
+      class ListRetiredResourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results. Pass this value in
+        # ListRetiredResourcesRequest.page_token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of RetiredResources.
+        # Corresponds to the JSON property `retiredResources`
+        # @return [Array<Google::Apis::CloudkmsV1::RetiredResource>]
+        attr_accessor :retired_resources
+      
+        # The total number of RetiredResources that matched the query.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @retired_resources = args[:retired_resources] if args.key?(:retired_resources)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
       # Response message for HsmManagement.ListSingleTenantHsmInstanceProposals.
       class ListSingleTenantHsmInstanceProposalsResponse
         include Google::Apis::Core::Hashable
@@ -3523,6 +3555,48 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A RetiredResource resource represents the record of a deleted CryptoKey. Its
+      # purpose is to provide visibility into retained user data and to prevent reuse
+      # of these names for new CryptoKeys.
+      class RetiredResource
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the original resource was deleted and this
+        # RetiredResource record was created.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Output only. Identifier. The resource name for this RetiredResource in the
+        # format `projects/*/locations/*/retiredResources/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The full resource name of the original CryptoKey that was deleted
+        # in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        # Corresponds to the JSON property `originalResource`
+        # @return [String]
+        attr_accessor :original_resource
+      
+        # Output only. The resource type of the original deleted resource.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @name = args[:name] if args.key?(:name)
+          @original_resource = args[:original_resource] if args.key?(:original_resource)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
         end
       end
       
