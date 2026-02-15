@@ -1612,7 +1612,7 @@ module Google
       end
       
       # Properties of the SKU instances being reserved.
-      # Next ID: 9
+      # Next ID: 10
       class AllocationSpecificSkuAllocationReservedInstanceProperties
         include Google::Apis::Core::Hashable
       
@@ -1682,7 +1682,7 @@ module Google
         attr_accessor :in_use_count
       
         # Properties of the SKU instances being reserved.
-        # Next ID: 9
+        # Next ID: 10
         # Corresponds to the JSON property `instanceProperties`
         # @return [Google::Apis::ComputeV1::AllocationSpecificSkuAllocationReservedInstanceProperties]
         attr_accessor :instance_properties
@@ -13284,7 +13284,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Properties of the SKU instances being reserved.
-        # Next ID: 9
+        # Next ID: 10
         # Corresponds to the JSON property `instanceProperties`
         # @return [Google::Apis::ComputeV1::AllocationSpecificSkuAllocationReservedInstanceProperties]
         attr_accessor :instance_properties
@@ -18416,6 +18416,11 @@ module Google
         # @return [Google::Apis::ComputeV1::Tags]
         attr_accessor :tags
       
+        # 
+        # Corresponds to the JSON property `workloadIdentityConfig`
+        # @return [Google::Apis::ComputeV1::WorkloadIdentityConfig]
+        attr_accessor :workload_identity_config
+      
         # Output only. [Output Only] URL of the zone where the instance resides.
         # You must specify this field as part of the HTTP request URL. It is
         # not settable as a field in the request body.
@@ -18474,6 +18479,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
           @tags = args[:tags] if args.key?(:tags)
+          @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -19813,6 +19819,21 @@ module Google
         # @return [String]
         attr_accessor :force_update_on_repair
       
+        # The action that a MIG performs on an unhealthy VM. A VM is marked as
+        # unhealthy when the application running on that VM fails a health check.
+        # Valid values are:
+        # 
+        # - DEFAULT_ACTION (default): MIG uses the same action
+        # configured for instanceLifecyclePolicy.defaultActionOnFailure field.
+        # - REPAIR: MIG automatically repairs an unhealthy VM by
+        # recreating it.
+        # - DO_NOTHING: MIG doesn't repair an unhealthy VM.
+        # For more information, see
+        # About repairing VMs in a MIG.
+        # Corresponds to the JSON property `onFailedHealthCheck`
+        # @return [String]
+        attr_accessor :on_failed_health_check
+      
         def initialize(**args)
            update!(**args)
         end
@@ -19821,6 +19842,7 @@ module Google
         def update!(**args)
           @default_action_on_failure = args[:default_action_on_failure] if args.key?(:default_action_on_failure)
           @force_update_on_repair = args[:force_update_on_repair] if args.key?(:force_update_on_repair)
+          @on_failed_health_check = args[:on_failed_health_check] if args.key?(:on_failed_health_check)
         end
       end
       
@@ -22357,6 +22379,11 @@ module Google
         # @return [Google::Apis::ComputeV1::Tags]
         attr_accessor :tags
       
+        # 
+        # Corresponds to the JSON property `workloadIdentityConfig`
+        # @return [Google::Apis::ComputeV1::WorkloadIdentityConfig]
+        attr_accessor :workload_identity_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -22384,6 +22411,7 @@ module Google
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @tags = args[:tags] if args.key?(:tags)
+          @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
         end
       end
       
@@ -23558,6 +23586,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Additional instant snapshot params.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeV1::InstantSnapshotParams]
+        attr_accessor :params
+      
         # Output only. [Output Only] URL of the region where the instant snapshot
         # resides.
         # You must specify this field as part of the HTTP request URL. It is
@@ -23659,6 +23692,7 @@ module Google
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @region = args[:region] if args.key?(:region)
           @resource_status = args[:resource_status] if args.key?(:resource_status)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
@@ -23925,6 +23959,32 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Additional instant snapshot params.
+      class InstantSnapshotParams
+        include Google::Apis::Core::Hashable
+      
+        # Input only. Resource manager tags to be bound to the instant snapshot. Tag
+        # keys and
+        # values have the same definition as resource
+        # manager tags. Keys and values can be either in numeric format,
+        # such as `tagKeys/`tag_key_id`` and `tagValues/`tag_value_id`` or in
+        # namespaced format such as ``org_id|project_id`/`tag_key_short_name`` and
+        # ``tag_value_short_name``. The field is ignored (both PUT &
+        # PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -24354,8 +24414,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Specific subzone in the InterconnectLocation that represents where
-        # this connection is to be provisioned.
+        # To be deprecated.
         # Corresponds to the JSON property `subzone`
         # @return [String]
         attr_accessor :subzone
@@ -31815,6 +31874,19 @@ module Google
       # reached, whether they are reachable, and where they are located.
       # For more information about using NEGs for different use cases, seeNetwork
       # endpoint groups overview.
+      # Note: Use the following APIs to manage network endpoint groups:
+      # 
+      # -
+      # To manage NEGs with zonal scope (such as zonal NEGs, hybrid connectivity
+      # NEGs): zonal
+      # API
+      # -
+      # To manage NEGs with regional scope (such as regional internet NEGs,
+      # serverless NEGs, Private Service Connect NEGs): regional
+      # API
+      # -
+      # To manage NEGs with global scope (such as global internet NEGs):global
+      # API
       class NetworkEndpointGroup
         include Google::Apis::Core::Hashable
       
@@ -32885,6 +32957,14 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::AliasIpRange>]
         attr_accessor :alias_ip_ranges
       
+        # Optional. If true, DNS resolution will be enabled over this interface. Only
+        # valid
+        # with network_attachment.
+        # Corresponds to the JSON property `enableVpcScopedDns`
+        # @return [Boolean]
+        attr_accessor :enable_vpc_scoped_dns
+        alias_method :enable_vpc_scoped_dns?, :enable_vpc_scoped_dns
+      
         # Fingerprint hash of contents stored in this network interface.
         # This field will be ignored when inserting an Instance or
         # adding a NetworkInterface. An up-to-date
@@ -33035,6 +33115,7 @@ module Google
         def update!(**args)
           @access_configs = args[:access_configs] if args.key?(:access_configs)
           @alias_ip_ranges = args[:alias_ip_ranges] if args.key?(:alias_ip_ranges)
+          @enable_vpc_scoped_dns = args[:enable_vpc_scoped_dns] if args.key?(:enable_vpc_scoped_dns)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @igmp_query = args[:igmp_query] if args.key?(:igmp_query)
           @internal_ipv6_prefix_length = args[:internal_ipv6_prefix_length] if args.key?(:internal_ipv6_prefix_length)
@@ -42262,6 +42343,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Indicates the early access maintenance for the reservation.
+        # If this field is absent or set to NO_EARLY_ACCESS, the reservation is not
+        # enrolled in early access maintenance and the standard notice applies.
+        # Corresponds to the JSON property `earlyAccessMaintenance`
+        # @return [String]
+        attr_accessor :early_access_maintenance
+      
         # Indicates whether Compute Engine allows unplanned maintenance for your VMs;
         # for example, to fix hardware errors.
         # Corresponds to the JSON property `enableEmergentMaintenance`
@@ -42395,6 +42483,7 @@ module Google
           @delete_at_time = args[:delete_at_time] if args.key?(:delete_at_time)
           @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
           @description = args[:description] if args.key?(:description)
+          @early_access_maintenance = args[:early_access_maintenance] if args.key?(:early_access_maintenance)
           @enable_emergent_maintenance = args[:enable_emergent_maintenance] if args.key?(:enable_emergent_maintenance)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
@@ -63171,6 +63260,32 @@ module Google
           @bandwidth_allocation = args[:bandwidth_allocation] if args.key?(:bandwidth_allocation)
           @bandwidth_unmetered = args[:bandwidth_unmetered] if args.key?(:bandwidth_unmetered)
           @fault_response = args[:fault_response] if args.key?(:fault_response)
+        end
+      end
+      
+      # 
+      class WorkloadIdentityConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `identity`
+        # @return [String]
+        attr_accessor :identity
+      
+        # 
+        # Corresponds to the JSON property `identityCertificateEnabled`
+        # @return [Boolean]
+        attr_accessor :identity_certificate_enabled
+        alias_method :identity_certificate_enabled?, :identity_certificate_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identity = args[:identity] if args.key?(:identity)
+          @identity_certificate_enabled = args[:identity_certificate_enabled] if args.key?(:identity_certificate_enabled)
         end
       end
       

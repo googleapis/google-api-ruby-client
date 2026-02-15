@@ -5722,6 +5722,10 @@ module Google
         end
         
         # Lists associations of a specified target, i.e., organization or folder.
+        # @param [Boolean] include_inherited_policies
+        #   If set to "true", the response will contain a list of all associations for
+        #   the containing folders and the containing organization of the target. The
+        #   parameter has no effect if the target is an organization.
         # @param [String] target_resource
         #   The target resource to list associations. It is an organization, or a
         #   folder.
@@ -5744,10 +5748,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_firewall_policy_associations(target_resource: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_firewall_policy_associations(include_inherited_policies: nil, target_resource: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'locations/global/firewallPolicies/listAssociations', options)
           command.response_representation = Google::Apis::ComputeV1::FirewallPoliciesListAssociationsResponse::Representation
           command.response_class = Google::Apis::ComputeV1::FirewallPoliciesListAssociationsResponse
+          command.query['includeInheritedPolicies'] = include_inherited_policies unless include_inherited_policies.nil?
           command.query['targetResource'] = target_resource unless target_resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -8517,6 +8522,19 @@ module Google
         
         # Creates a network endpoint group in the specified project using the
         # parameters that are included in the request.
+        # Note: Use the following APIs to manage network endpoint groups:
+        # 
+        # -
+        # To manage NEGs with zonal scope (such as zonal NEGs, hybrid connectivity
+        # NEGs): zonal
+        # API
+        # -
+        # To manage NEGs with regional scope (such as regional internet NEGs,
+        # serverless NEGs, Private Service Connect NEGs): regional
+        # API
+        # -
+        # To manage NEGs with global scope (such as global internet NEGs):global
+        # API
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::NetworkEndpointGroup] network_endpoint_group_object
@@ -23406,6 +23424,19 @@ module Google
         
         # Creates a network endpoint group in the specified project using the
         # parameters that are included in the request.
+        # Note: Use the following APIs to manage network endpoint groups:
+        # 
+        # -
+        # To manage NEGs with zonal scope (such as zonal NEGs, hybrid connectivity
+        # NEGs): zonal
+        # API
+        # -
+        # To manage NEGs with regional scope (such as regional internet NEGs,
+        # serverless NEGs, Private Service Connect NEGs): regional
+        # API
+        # -
+        # To manage NEGs with global scope (such as global internet NEGs):global
+        # API
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -37420,6 +37451,19 @@ module Google
         
         # Creates a network endpoint group in the specified project using the
         # parameters that are included in the request.
+        # Note: Use the following APIs to manage network endpoint groups:
+        # 
+        # -
+        # To manage NEGs with zonal scope (such as zonal NEGs, hybrid connectivity
+        # NEGs): zonal
+        # API
+        # -
+        # To manage NEGs with regional scope (such as regional internet NEGs,
+        # serverless NEGs, Private Service Connect NEGs): regional
+        # API
+        # -
+        # To manage NEGs with global scope (such as global internet NEGs):global
+        # API
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
