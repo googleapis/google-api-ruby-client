@@ -1243,8 +1243,10 @@ module Google
         # @return [String]
         attr_accessor :cluster_ipv4_cidr
       
-        # CompliancePostureConfig defines the settings needed to enable/disable features
-        # for the Compliance Posture.
+        # Deprecated: Compliance Posture is no longer supported. For more details, see
+        # https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-
+        # management-deprecation. CompliancePostureConfig defines the settings needed to
+        # enable/disable features for the Compliance Posture.
         # Corresponds to the JSON property `compliancePostureConfig`
         # @return [Google::Apis::ContainerV1::CompliancePostureConfig]
         attr_accessor :compliance_posture_config
@@ -1932,8 +1934,10 @@ module Google
         # @return [Google::Apis::ContainerV1::ClusterAutoscaling]
         attr_accessor :desired_cluster_autoscaling
       
-        # CompliancePostureConfig defines the settings needed to enable/disable features
-        # for the Compliance Posture.
+        # Deprecated: Compliance Posture is no longer supported. For more details, see
+        # https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-
+        # management-deprecation. CompliancePostureConfig defines the settings needed to
+        # enable/disable features for the Compliance Posture.
         # Corresponds to the JSON property `desiredCompliancePostureConfig`
         # @return [Google::Apis::ContainerV1::CompliancePostureConfig]
         attr_accessor :desired_compliance_posture_config
@@ -2536,8 +2540,10 @@ module Google
         end
       end
       
-      # CompliancePostureConfig defines the settings needed to enable/disable features
-      # for the Compliance Posture.
+      # Deprecated: Compliance Posture is no longer supported. For more details, see
+      # https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-
+      # management-deprecation. CompliancePostureConfig defines the settings needed to
+      # enable/disable features for the Compliance Posture.
       class CompliancePostureConfig
         include Google::Apis::Core::Hashable
       
@@ -2725,6 +2731,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Contains config to modify node-level parameters for container restart behavior.
+      class CrashLoopBackOffConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The maximum duration the backoff delay can accrue to for container
+        # restarts, minimum 1 second, maximum 300 seconds. If not set, defaults to the
+        # internal crashloopbackoff maximum. The string must be a sequence of decimal
+        # numbers, each with optional fraction and a unit suffix, such as "300ms". Valid
+        # time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". See https://
+        # kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#configurable-
+        # container-restart-delay for more details.
+        # Corresponds to the JSON property `maxContainerRestartPeriod`
+        # @return [String]
+        attr_accessor :max_container_restart_period
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_container_restart_period = args[:max_container_restart_period] if args.key?(:max_container_restart_period)
         end
       end
       
@@ -3078,6 +3109,47 @@ module Google
         # Update properties of this object
         def update!(**args)
           @desired_tier = args[:desired_tier] if args.key?(:desired_tier)
+        end
+      end
+      
+      # DisruptionBudget defines the upgrade disruption budget for the cluster control
+      # plane.
+      class DisruptionBudget
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The last time a disruption was performed on the control plane.
+        # Corresponds to the JSON property `lastDisruptionTime`
+        # @return [String]
+        attr_accessor :last_disruption_time
+      
+        # Output only. The last time a minor version upgrade was performed on the
+        # control plane.
+        # Corresponds to the JSON property `lastMinorVersionDisruptionTime`
+        # @return [String]
+        attr_accessor :last_minor_version_disruption_time
+      
+        # Optional. The minimum duration between two minor version upgrades of the
+        # control plane.
+        # Corresponds to the JSON property `minorVersionDisruptionInterval`
+        # @return [String]
+        attr_accessor :minor_version_disruption_interval
+      
+        # Optional. The minimum duration between two patch version upgrades of the
+        # control plane.
+        # Corresponds to the JSON property `patchVersionDisruptionInterval`
+        # @return [String]
+        attr_accessor :patch_version_disruption_interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_disruption_time = args[:last_disruption_time] if args.key?(:last_disruption_time)
+          @last_minor_version_disruption_time = args[:last_minor_version_disruption_time] if args.key?(:last_minor_version_disruption_time)
+          @minor_version_disruption_interval = args[:minor_version_disruption_interval] if args.key?(:minor_version_disruption_interval)
+          @patch_version_disruption_interval = args[:patch_version_disruption_interval] if args.key?(:patch_version_disruption_interval)
         end
       end
       
@@ -4859,6 +4931,12 @@ module Google
       class MaintenancePolicy
         include Google::Apis::Core::Hashable
       
+        # DisruptionBudget defines the upgrade disruption budget for the cluster control
+        # plane.
+        # Corresponds to the JSON property `disruptionBudget`
+        # @return [Google::Apis::ContainerV1::DisruptionBudget]
+        attr_accessor :disruption_budget
+      
         # A hash identifying the version of this policy, so that updates to fields of
         # the policy won't accidentally undo intermediate changes (and so that users of
         # the API unaware of some fields won't accidentally remove other fields). Make a
@@ -4879,6 +4957,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disruption_budget = args[:disruption_budget] if args.key?(:disruption_budget)
           @resource_version = args[:resource_version] if args.key?(:resource_version)
           @window = args[:window] if args.key?(:window)
         end
@@ -6028,6 +6107,11 @@ module Google
         # @return [String]
         attr_accessor :cpu_manager_policy
       
+        # Contains config to modify node-level parameters for container restart behavior.
+        # Corresponds to the JSON property `crashLoopBackOff`
+        # @return [Google::Apis::ContainerV1::CrashLoopBackOffConfig]
+        attr_accessor :crash_loop_back_off
+      
         # Optional. eviction_max_pod_grace_period_seconds is the maximum allowed grace
         # period (in seconds) to use when terminating pods in response to a soft
         # eviction threshold being met. This value effectively caps the Pod's
@@ -6123,6 +6207,26 @@ module Google
         # @return [Fixnum]
         attr_accessor :pod_pids_limit
       
+        # Optional. shutdown_grace_period_critical_pods_seconds is the maximum allowed
+        # grace period (in seconds) used to terminate critical pods during a node
+        # shutdown. This value should be <= shutdown_grace_period_seconds, and is only
+        # valid if shutdown_grace_period_seconds is set. https://kubernetes.io/docs/
+        # concepts/cluster-administration/node-shutdown/ Range: [0, 120].
+        # Corresponds to the JSON property `shutdownGracePeriodCriticalPodsSeconds`
+        # @return [Fixnum]
+        attr_accessor :shutdown_grace_period_critical_pods_seconds
+      
+        # Optional. shutdown_grace_period_seconds is the maximum allowed grace period (
+        # in seconds) the total duration that the node should delay the shutdown during
+        # a graceful shutdown. This is the total grace period for pod termination for
+        # both regular and critical pods. https://kubernetes.io/docs/concepts/cluster-
+        # administration/node-shutdown/ If set to 0, node will not enable the graceful
+        # node shutdown functionality. This field is only valid for Spot VMs. Allowed
+        # values: 0, 30, 120.
+        # Corresponds to the JSON property `shutdownGracePeriodSeconds`
+        # @return [Fixnum]
+        attr_accessor :shutdown_grace_period_seconds
+      
         # Optional. Defines whether to enable single process OOM killer. If true, will
         # prevent the memory.oom.group flag from being set for container cgroups in
         # cgroups v2. This causes processes in the container to be OOM killed
@@ -6150,6 +6254,7 @@ module Google
           @cpu_cfs_quota = args[:cpu_cfs_quota] if args.key?(:cpu_cfs_quota)
           @cpu_cfs_quota_period = args[:cpu_cfs_quota_period] if args.key?(:cpu_cfs_quota_period)
           @cpu_manager_policy = args[:cpu_manager_policy] if args.key?(:cpu_manager_policy)
+          @crash_loop_back_off = args[:crash_loop_back_off] if args.key?(:crash_loop_back_off)
           @eviction_max_pod_grace_period_seconds = args[:eviction_max_pod_grace_period_seconds] if args.key?(:eviction_max_pod_grace_period_seconds)
           @eviction_minimum_reclaim = args[:eviction_minimum_reclaim] if args.key?(:eviction_minimum_reclaim)
           @eviction_soft = args[:eviction_soft] if args.key?(:eviction_soft)
@@ -6162,6 +6267,8 @@ module Google
           @max_parallel_image_pulls = args[:max_parallel_image_pulls] if args.key?(:max_parallel_image_pulls)
           @memory_manager = args[:memory_manager] if args.key?(:memory_manager)
           @pod_pids_limit = args[:pod_pids_limit] if args.key?(:pod_pids_limit)
+          @shutdown_grace_period_critical_pods_seconds = args[:shutdown_grace_period_critical_pods_seconds] if args.key?(:shutdown_grace_period_critical_pods_seconds)
+          @shutdown_grace_period_seconds = args[:shutdown_grace_period_seconds] if args.key?(:shutdown_grace_period_seconds)
           @single_process_oom_kill = args[:single_process_oom_kill] if args.key?(:single_process_oom_kill)
           @topology_manager = args[:topology_manager] if args.key?(:topology_manager)
         end
@@ -6306,11 +6413,13 @@ module Google
       
         # Optional. The subnetwork name/path for the node pool. Format: projects/`
         # project`/regions/`region`/subnetworks/`subnetwork` If the cluster is
-        # associated with multiple subnetworks, the subnetwork can be either: 1. A user
-        # supplied subnetwork name/full path during node pool creation. Example1: my-
-        # subnet Example2: projects/gke-project/regions/us-central1/subnetworks/my-
-        # subnet 2. A subnetwork path picked based on the IP utilization during node
-        # pool creation and is immutable.
+        # associated with multiple subnetworks, the subnetwork can be either: - A user
+        # supplied subnetwork name during node pool creation (e.g., `my-subnet`). The
+        # name must be between 1 and 63 characters long, start with a letter, contain
+        # only letters, numbers, and hyphens, and end with a letter or a number. - A
+        # full subnetwork path during node pool creation, such as `projects/gke-project/
+        # regions/us-central1/subnetworks/my-subnet` - A subnetwork path picked based on
+        # the IP utilization during node pool creation and is immutable.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
