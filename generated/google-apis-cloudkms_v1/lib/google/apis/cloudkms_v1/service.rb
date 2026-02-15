@@ -121,7 +121,7 @@ module Google
         # determine where to create the resulting CryptoKey.
         # @param [String] name
         #   Identifier. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
-        #   autokeyConfig`
+        #   autokeyConfig` or `projects/`PROJECT_NUMBER`/autokeyConfig`.
         # @param [Google::Apis::CloudkmsV1::AutokeyConfig] autokey_config_object
         # @param [String] update_mask
         #   Required. Masks which fields of the AutokeyConfig to update, e.g. `keyProject`.
@@ -427,7 +427,7 @@ module Google
         # determine where to create the resulting CryptoKey.
         # @param [String] name
         #   Identifier. Name of the AutokeyConfig resource, e.g. `folders/`FOLDER_NUMBER`/
-        #   autokeyConfig`
+        #   autokeyConfig` or `projects/`PROJECT_NUMBER`/autokeyConfig`.
         # @param [Google::Apis::CloudkmsV1::AutokeyConfig] autokey_config_object
         # @param [String] update_mask
         #   Required. Masks which fields of the AutokeyConfig to update, e.g. `keyProject`.
@@ -594,7 +594,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # can be called in two ways: * **List all public locations:** Use the path `GET /
+        # v1/locations`. * **List project-visible locations:** Use the path `GET /v1/
+        # projects/`project_id`/locations`. This may include public locations as well as
+        # private or other locations specifically visible to the project.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
@@ -1548,6 +1552,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Permanently deletes the given CryptoKey. All child CryptoKeyVersions must have
+        # been previously deleted using KeyManagementService.DeleteCryptoKeyVersion. The
+        # specified crypto key will be immediately and permanently deleted upon calling
+        # this method. This action cannot be undone.
+        # @param [String] name
+        #   Required. The name of the CryptoKey to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_key_ring_crypto_key(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudkmsV1::Operation::Representation
+          command.response_class = Google::Apis::CloudkmsV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Encrypts data, so that it can only be recovered by a call to Decrypt. The
         # CryptoKey.purpose must be ENCRYPT_DECRYPT.
         # @param [String] name
@@ -1994,6 +2031,40 @@ module Google
           command.request_object = decapsulate_request_object
           command.response_representation = Google::Apis::CloudkmsV1::DecapsulateResponse::Representation
           command.response_class = Google::Apis::CloudkmsV1::DecapsulateResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Permanently deletes the given CryptoKeyVersion. Only possible if the version
+        # has not been previously imported and if its state is one of DESTROYED,
+        # IMPORT_FAILED, or GENERATION_FAILED. Successfully imported CryptoKeyVersions
+        # cannot be deleted at this time. The specified version will be immediately and
+        # permanently deleted upon calling this method. This action cannot be undone.
+        # @param [String] name
+        #   Required. The name of the CryptoKeyVersion to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_key_ring_crypto_key_crypto_key_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudkmsV1::Operation::Representation
+          command.response_class = Google::Apis::CloudkmsV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2677,6 +2748,79 @@ module Google
           command.response_representation = Google::Apis::CloudkmsV1::Operation::Representation
           command.response_class = Google::Apis::CloudkmsV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a specific RetiredResource resource, which represents the record of
+        # a deleted CryptoKey.
+        # @param [String] name
+        #   Required. The name of the RetiredResource to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::RetiredResource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::RetiredResource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_retired_resource(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudkmsV1::RetiredResource::Representation
+          command.response_class = Google::Apis::CloudkmsV1::RetiredResource
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the RetiredResources which are the records of deleted CryptoKeys.
+        # RetiredResources prevent the reuse of these resource names after deletion.
+        # @param [String] parent
+        #   Required. The project-specific location holding the RetiredResources, in the
+        #   format `projects/*/locations/*`.
+        # @param [Fixnum] page_size
+        #   Optional. Optional limit on the number of RetiredResources to be included in
+        #   the response. Further RetiredResources can subsequently be obtained by
+        #   including the ListRetiredResourcesResponse.next_page_token in a subsequent
+        #   request. If unspecified, the server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. Optional pagination token, returned earlier via
+        #   ListRetiredResourcesResponse.next_page_token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::ListRetiredResourcesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::ListRetiredResourcesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_retired_resources(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/retiredResources', options)
+          command.response_representation = Google::Apis::CloudkmsV1::ListRetiredResourcesResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::ListRetiredResourcesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
