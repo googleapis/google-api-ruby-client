@@ -730,6 +730,45 @@ module Google
         end
       end
       
+      # 
+      class GenerateCustomToolspecRequest
+        include Google::Apis::Core::Hashable
+      
+        # list of tools to be generated.
+        # Corresponds to the JSON property `toolNames`
+        # @return [Array<Google::Apis::ConnectorsV2::ToolName>]
+        attr_accessor :tool_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_names = args[:tool_names] if args.key?(:tool_names)
+        end
+      end
+      
+      # 
+      class GenerateCustomToolspecResponse
+        include Google::Apis::Core::Hashable
+      
+        # tool spec that has tool_defitions array containing the tools for all sted
+        # tool_names.
+        # Corresponds to the JSON property `toolSpec`
+        # @return [Google::Apis::ConnectorsV2::ToolSpec]
+        attr_accessor :tool_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_spec = args[:tool_spec] if args.key?(:tool_spec)
+        end
+      end
+      
       # Request message for ConnectorAgentService.GetResourcePost
       class GetResourcePostRequest
         include Google::Apis::Core::Hashable
@@ -1134,6 +1173,25 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unsupported_action_names = args[:unsupported_action_names] if args.key?(:unsupported_action_names)
+        end
+      end
+      
+      # 
+      class ListCustomToolNamesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of custom tools.
+        # Corresponds to the JSON property `toolNames`
+        # @return [Array<Google::Apis::ConnectorsV2::ToolName>]
+        attr_accessor :tool_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_names = args[:tool_names] if args.key?(:tool_names)
         end
       end
       
@@ -2116,6 +2174,37 @@ module Google
           @open_world_hint = args[:open_world_hint] if args.key?(:open_world_hint)
           @read_only_hint = args[:read_only_hint] if args.key?(:read_only_hint)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # 
+      class ToolName
+        include Google::Apis::Core::Hashable
+      
+        # Entity name for which the tool was generated.
+        # Corresponds to the JSON property `entityName`
+        # @return [String]
+        attr_accessor :entity_name
+      
+        # Tool name that was generated in the list tools call.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Operation for which the tool was generated.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_name = args[:entity_name] if args.key?(:entity_name)
+          @name = args[:name] if args.key?(:name)
+          @operation = args[:operation] if args.key?(:operation)
         end
       end
       
