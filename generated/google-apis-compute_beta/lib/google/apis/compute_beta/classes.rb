@@ -1633,7 +1633,7 @@ module Google
       end
       
       # Properties of the SKU instances being reserved.
-      # Next ID: 9
+      # Next ID: 10
       class AllocationSpecificSkuAllocationReservedInstanceProperties
         include Google::Apis::Core::Hashable
       
@@ -1717,7 +1717,7 @@ module Google
         attr_accessor :in_use_count
       
         # Properties of the SKU instances being reserved.
-        # Next ID: 9
+        # Next ID: 10
         # Corresponds to the JSON property `instanceProperties`
         # @return [Google::Apis::ComputeBeta::AllocationSpecificSkuAllocationReservedInstanceProperties]
         attr_accessor :instance_properties
@@ -7513,6 +7513,247 @@ module Google
           @include_query_string = args[:include_query_string] if args.key?(:include_query_string)
           @query_string_blacklist = args[:query_string_blacklist] if args.key?(:query_string_blacklist)
           @query_string_whitelist = args[:query_string_whitelist] if args.key?(:query_string_whitelist)
+        end
+      end
+      
+      # Message containing CachePolicy configuration for URL Map's Route Action.
+      class CachePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Bypass the cache when the specified request headers are matched by name,
+        # e.g. Pragma or Authorization headers. Values are case-insensitive. Up to 5
+        # header names can be specified. The cache is bypassed for all
+        # cachePolicy.cacheMode settings.
+        # Corresponds to the JSON property `cacheBypassRequestHeaderNames`
+        # @return [Array<String>]
+        attr_accessor :cache_bypass_request_header_names
+      
+        # Message containing what to include in the cache key for a request for Cache
+        # Policy defined on Route Action.
+        # Corresponds to the JSON property `cacheKeyPolicy`
+        # @return [Google::Apis::ComputeBeta::CachePolicyCacheKeyPolicy]
+        attr_accessor :cache_key_policy
+      
+        # Specifies the cache setting for all responses from this route.
+        # If not specified, the default value is CACHE_ALL_STATIC.
+        # Corresponds to the JSON property `cacheMode`
+        # @return [String]
+        attr_accessor :cache_mode
+      
+        # A Duration represents a fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". Range is approximately 10,000 years.
+        # Corresponds to the JSON property `clientTtl`
+        # @return [Google::Apis::ComputeBeta::Duration]
+        attr_accessor :client_ttl
+      
+        # A Duration represents a fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". Range is approximately 10,000 years.
+        # Corresponds to the JSON property `defaultTtl`
+        # @return [Google::Apis::ComputeBeta::Duration]
+        attr_accessor :default_ttl
+      
+        # A Duration represents a fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". Range is approximately 10,000 years.
+        # Corresponds to the JSON property `maxTtl`
+        # @return [Google::Apis::ComputeBeta::Duration]
+        attr_accessor :max_ttl
+      
+        # Negative caching allows per-status code TTLs to be set, in order
+        # to apply fine-grained caching for common errors or redirects.
+        # This can reduce the load on your origin and improve end-user
+        # experience by reducing response latency.
+        # When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS,
+        # negative caching applies to responses with the specified response code
+        # that lack any Cache-Control, Expires, or Pragma: no-cache directives.
+        # When the cache mode is set to FORCE_CACHE_ALL, negative caching applies
+        # to all responses with the specified response code, and override any
+        # caching headers.
+        # By default, Cloud CDN will apply the following default TTLs to these
+        # status codes:
+        # HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
+        # HTTP 404 (Not Found), 410 (Gone),
+        # 451 (Unavailable For Legal Reasons): 120s
+        # HTTP 405 (Method Not Found), 501 (Not Implemented): 60s.
+        # These defaults can be overridden in negative_caching_policy.
+        # Corresponds to the JSON property `negativeCaching`
+        # @return [Boolean]
+        attr_accessor :negative_caching
+        alias_method :negative_caching?, :negative_caching
+      
+        # Sets a cache TTL for the specified HTTP status code.
+        # negative_caching must be enabled to configure negative_caching_policy.
+        # Omitting the policy and leaving negative_caching enabled will use
+        # Cloud CDN's default cache TTLs.
+        # Note that when specifying an explicit negative_caching_policy, you
+        # should take care to specify a cache TTL for all response codes
+        # that you wish to cache. Cloud CDN will not apply any default
+        # negative caching when a policy exists.
+        # Corresponds to the JSON property `negativeCachingPolicy`
+        # @return [Array<Google::Apis::ComputeBeta::CachePolicyNegativeCachingPolicy>]
+        attr_accessor :negative_caching_policy
+      
+        # If true then Cloud CDN will combine multiple concurrent cache fill
+        # requests into a small number of requests to the origin.
+        # Corresponds to the JSON property `requestCoalescing`
+        # @return [Boolean]
+        attr_accessor :request_coalescing
+        alias_method :request_coalescing?, :request_coalescing
+      
+        # A Duration represents a fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". Range is approximately 10,000 years.
+        # Corresponds to the JSON property `serveWhileStale`
+        # @return [Google::Apis::ComputeBeta::Duration]
+        attr_accessor :serve_while_stale
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cache_bypass_request_header_names = args[:cache_bypass_request_header_names] if args.key?(:cache_bypass_request_header_names)
+          @cache_key_policy = args[:cache_key_policy] if args.key?(:cache_key_policy)
+          @cache_mode = args[:cache_mode] if args.key?(:cache_mode)
+          @client_ttl = args[:client_ttl] if args.key?(:client_ttl)
+          @default_ttl = args[:default_ttl] if args.key?(:default_ttl)
+          @max_ttl = args[:max_ttl] if args.key?(:max_ttl)
+          @negative_caching = args[:negative_caching] if args.key?(:negative_caching)
+          @negative_caching_policy = args[:negative_caching_policy] if args.key?(:negative_caching_policy)
+          @request_coalescing = args[:request_coalescing] if args.key?(:request_coalescing)
+          @serve_while_stale = args[:serve_while_stale] if args.key?(:serve_while_stale)
+        end
+      end
+      
+      # Message containing what to include in the cache key for a request for Cache
+      # Policy defined on Route Action.
+      class CachePolicyCacheKeyPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Names of query string parameters to exclude in cache keys. All other
+        # parameters will be included. Either specify excluded_query_parameters or
+        # included_query_parameters, not both. '&' and '=' will be percent encoded
+        # and not treated as delimiters.
+        # Note: This field applies to routes that use backend services. Attempting
+        # to set it on a route that points exclusively to Backend Buckets will
+        # result in a configuration error. For routes that point to a Backend
+        # Bucket, use includedQueryParameters to define which parameters should
+        # be a part of the cache key.
+        # Corresponds to the JSON property `excludedQueryParameters`
+        # @return [Array<String>]
+        attr_accessor :excluded_query_parameters
+      
+        # If true, requests to different hosts will be cached separately.
+        # Note: This setting is only applicable to routes that use a Backend
+        # Service. It does not affect requests served by a Backend Bucket, as the
+        # host is never included in a Backend Bucket's cache key. Attempting to set
+        # it on a route that points exclusively to Backend Buckets will result in a
+        # configuration error.
+        # Corresponds to the JSON property `includeHost`
+        # @return [Boolean]
+        attr_accessor :include_host
+        alias_method :include_host?, :include_host
+      
+        # If true, http and https requests will be cached separately.
+        # Note: This setting is only applicable to routes that use a Backend
+        # Service. It does not affect requests served by a Backend Bucket, as the
+        # protocol is never included in a Backend Bucket's cache key. Attempting to
+        # set on a route that points exclusively to Backend Buckets will result in
+        # a configuration error.
+        # Corresponds to the JSON property `includeProtocol`
+        # @return [Boolean]
+        attr_accessor :include_protocol
+        alias_method :include_protocol?, :include_protocol
+      
+        # If true, include query string parameters in the cache key according to
+        # included_query_parameters and excluded_query_parameters. If neither is
+        # set, the entire query string will be included. If false, the query string
+        # will be excluded from the cache key entirely.
+        # Note: This field applies to routes that use backend services. Attempting
+        # to set it on a route that points exclusively to Backend Buckets will
+        # result in a configuration error.  For routes that point to a Backend
+        # Bucket, use includedQueryParameters to define which parameters should
+        # be a part of the cache key.
+        # Corresponds to the JSON property `includeQueryString`
+        # @return [Boolean]
+        attr_accessor :include_query_string
+        alias_method :include_query_string?, :include_query_string
+      
+        # Allows HTTP cookies (by name) to be used in the cache key.
+        # The name=value pair will be used in the cache key Cloud CDN generates.
+        # Note: This setting is only applicable to routes that use a Backend
+        # Service. It does not affect requests served by a Backend Bucket.
+        # Attempting to set it on a route that points exclusively to Backend
+        # Buckets will result in a configuration error. Up to 5 cookie names can be
+        # specified.
+        # Corresponds to the JSON property `includedCookieNames`
+        # @return [Array<String>]
+        attr_accessor :included_cookie_names
+      
+        # Allows HTTP request headers (by name) to be used in the cache key.
+        # Corresponds to the JSON property `includedHeaderNames`
+        # @return [Array<String>]
+        attr_accessor :included_header_names
+      
+        # Names of query string parameters to include in cache keys. All other
+        # parameters will be excluded. Either specify included_query_parameters or
+        # excluded_query_parameters, not both. '&' and '=' will be percent encoded
+        # and not treated as delimiters.
+        # Corresponds to the JSON property `includedQueryParameters`
+        # @return [Array<String>]
+        attr_accessor :included_query_parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @excluded_query_parameters = args[:excluded_query_parameters] if args.key?(:excluded_query_parameters)
+          @include_host = args[:include_host] if args.key?(:include_host)
+          @include_protocol = args[:include_protocol] if args.key?(:include_protocol)
+          @include_query_string = args[:include_query_string] if args.key?(:include_query_string)
+          @included_cookie_names = args[:included_cookie_names] if args.key?(:included_cookie_names)
+          @included_header_names = args[:included_header_names] if args.key?(:included_header_names)
+          @included_query_parameters = args[:included_query_parameters] if args.key?(:included_query_parameters)
+        end
+      end
+      
+      # Specify CDN TTLs for response error codes.
+      class CachePolicyNegativeCachingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP status code to define a TTL against. Only HTTP status codes
+        # 300, 301, 302, 307, 308, 404, 405, 410, 421, 451 and 501 can be
+        # specified as values, and you cannot specify a status code more than
+        # once.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A Duration represents a fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". Range is approximately 10,000 years.
+        # Corresponds to the JSON property `ttl`
+        # @return [Google::Apis::ComputeBeta::Duration]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       
@@ -14421,6 +14662,12 @@ module Google
       class FutureReservation
         include Google::Apis::Core::Hashable
       
+        # Advance control for cluster management, applicable only to DENSE deployment
+        # type reservations.
+        # Corresponds to the JSON property `advancedDeploymentControl`
+        # @return [Google::Apis::ComputeBeta::ReservationAdvancedDeploymentControl]
+        attr_accessor :advanced_deployment_control
+      
         # This reservation type is specified by total resource amounts (e.g. total
         # count of CPUs) and can account for multiple instance SKUs. In other words,
         # one can create instances of varying shapes against this reservation.
@@ -14602,6 +14849,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_deployment_control = args[:advanced_deployment_control] if args.key?(:advanced_deployment_control)
           @aggregate_reservation = args[:aggregate_reservation] if args.key?(:aggregate_reservation)
           @auto_created_reservations_delete_time = args[:auto_created_reservations_delete_time] if args.key?(:auto_created_reservations_delete_time)
           @auto_created_reservations_duration = args[:auto_created_reservations_duration] if args.key?(:auto_created_reservations_duration)
@@ -14671,7 +14919,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Properties of the SKU instances being reserved.
-        # Next ID: 9
+        # Next ID: 10
         # Corresponds to the JSON property `instanceProperties`
         # @return [Google::Apis::ComputeBeta::AllocationSpecificSkuAllocationReservedInstanceProperties]
         attr_accessor :instance_properties
@@ -19835,6 +20083,11 @@ module Google
       class HttpRouteAction
         include Google::Apis::Core::Hashable
       
+        # Message containing CachePolicy configuration for URL Map's Route Action.
+        # Corresponds to the JSON property `cachePolicy`
+        # @return [Google::Apis::ComputeBeta::CachePolicy]
+        attr_accessor :cache_policy
+      
         # The specification for allowing client-side cross-origin requests. For more
         # information about the W3C recommendation for cross-origin resource sharing
         # (CORS), see Fetch API Living
@@ -19908,6 +20161,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cache_policy = args[:cache_policy] if args.key?(:cache_policy)
           @cors_policy = args[:cors_policy] if args.key?(:cors_policy)
           @fault_injection_policy = args[:fault_injection_policy] if args.key?(:fault_injection_policy)
           @max_stream_duration = args[:max_stream_duration] if args.key?(:max_stream_duration)
@@ -21389,6 +21643,11 @@ module Google
         # @return [Google::Apis::ComputeBeta::Tags]
         attr_accessor :tags
       
+        # 
+        # Corresponds to the JSON property `workloadIdentityConfig`
+        # @return [Google::Apis::ComputeBeta::WorkloadIdentityConfig]
+        attr_accessor :workload_identity_config
+      
         # Output only. [Output Only] URL of the zone where the instance resides.
         # You must specify this field as part of the HTTP request URL. It is
         # not settable as a field in the request body.
@@ -21452,6 +21711,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
           @tags = args[:tags] if args.key?(:tags)
+          @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -23731,6 +23991,14 @@ module Google
         # @return [Google::Apis::ComputeBeta::InstanceGroupManagerStatusBulkInstanceOperation]
         attr_accessor :bulk_instance_operation
       
+        # The list of instance statuses and the number of instances in this managed
+        # instance group that have the status. For more information about how to
+        # interpret each status check the instance lifecycle documentation.
+        # Currently only shown for TPU MIGs.
+        # Corresponds to the JSON property `currentInstanceStatuses`
+        # @return [Google::Apis::ComputeBeta::InstanceGroupManagerStatusInstanceStatusSummary]
+        attr_accessor :current_instance_statuses
+      
         # Output only. [Output Only] A bit indicating whether the managed instance group
         # is in a
         # stable state. A stable state means that: none of the instances in the
@@ -23765,6 +24033,7 @@ module Google
           @all_instances_config = args[:all_instances_config] if args.key?(:all_instances_config)
           @autoscaler = args[:autoscaler] if args.key?(:autoscaler)
           @bulk_instance_operation = args[:bulk_instance_operation] if args.key?(:bulk_instance_operation)
+          @current_instance_statuses = args[:current_instance_statuses] if args.key?(:current_instance_statuses)
           @is_stable = args[:is_stable] if args.key?(:is_stable)
           @stateful = args[:stateful] if args.key?(:stateful)
           @version_target = args[:version_target] if args.key?(:version_target)
@@ -23974,6 +24243,132 @@ module Google
               end
             end
           end
+        end
+      end
+      
+      # The list of instance statuses and the number of instances in this managed
+      # instance group that have the status. For more information about how to
+      # interpret each status check the instance lifecycle documentation.
+      # Currently only shown for TPU MIGs.
+      class InstanceGroupManagerStatusInstanceStatusSummary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have DEPROVISIONING status.
+        # Corresponds to the JSON property `deprovisioning`
+        # @return [Fixnum]
+        attr_accessor :deprovisioning
+      
+        # Output only. [Output Only] The number of instances that have not been created
+        # yet or
+        # have been deleted. Includes only instances that would be shown in the
+        # listManagedInstances method and not all instances that have been
+        # deleted in the lifetime of the MIG.
+        # Does not include FlexStart instances that are waiting for the resources
+        # availability, they are considered as 'pending'.
+        # Corresponds to the JSON property `nonExistent`
+        # @return [Fixnum]
+        attr_accessor :non_existent
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have PENDING status, that is FlexStart instances that are waiting
+        # for resources. Instances that do not exist because of the other reasons
+        # are counted as 'non_existent'.
+        # Corresponds to the JSON property `pending`
+        # @return [Fixnum]
+        attr_accessor :pending
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have PENDING_STOP status.
+        # Corresponds to the JSON property `pendingStop`
+        # @return [Fixnum]
+        attr_accessor :pending_stop
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have PROVISIONING status.
+        # Corresponds to the JSON property `provisioning`
+        # @return [Fixnum]
+        attr_accessor :provisioning
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have REPAIRING status.
+        # Corresponds to the JSON property `repairing`
+        # @return [Fixnum]
+        attr_accessor :repairing
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have RUNNING status.
+        # Corresponds to the JSON property `running`
+        # @return [Fixnum]
+        attr_accessor :running
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have STAGING status.
+        # Corresponds to the JSON property `staging`
+        # @return [Fixnum]
+        attr_accessor :staging
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have STOPPED status.
+        # Corresponds to the JSON property `stopped`
+        # @return [Fixnum]
+        attr_accessor :stopped
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have STOPPING status.
+        # Corresponds to the JSON property `stopping`
+        # @return [Fixnum]
+        attr_accessor :stopping
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have SUSPENDED status.
+        # Corresponds to the JSON property `suspended`
+        # @return [Fixnum]
+        attr_accessor :suspended
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have SUSPENDING status.
+        # Corresponds to the JSON property `suspending`
+        # @return [Fixnum]
+        attr_accessor :suspending
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group
+        # that have TERMINATED status.
+        # Corresponds to the JSON property `terminated`
+        # @return [Fixnum]
+        attr_accessor :terminated
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deprovisioning = args[:deprovisioning] if args.key?(:deprovisioning)
+          @non_existent = args[:non_existent] if args.key?(:non_existent)
+          @pending = args[:pending] if args.key?(:pending)
+          @pending_stop = args[:pending_stop] if args.key?(:pending_stop)
+          @provisioning = args[:provisioning] if args.key?(:provisioning)
+          @repairing = args[:repairing] if args.key?(:repairing)
+          @running = args[:running] if args.key?(:running)
+          @staging = args[:staging] if args.key?(:staging)
+          @stopped = args[:stopped] if args.key?(:stopped)
+          @stopping = args[:stopping] if args.key?(:stopping)
+          @suspended = args[:suspended] if args.key?(:suspended)
+          @suspending = args[:suspending] if args.key?(:suspending)
+          @terminated = args[:terminated] if args.key?(:terminated)
         end
       end
       
@@ -25876,6 +26271,11 @@ module Google
         # @return [Google::Apis::ComputeBeta::Tags]
         attr_accessor :tags
       
+        # 
+        # Corresponds to the JSON property `workloadIdentityConfig`
+        # @return [Google::Apis::ComputeBeta::WorkloadIdentityConfig]
+        attr_accessor :workload_identity_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -25907,6 +26307,7 @@ module Google
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @shielded_vm_config = args[:shielded_vm_config] if args.key?(:shielded_vm_config)
           @tags = args[:tags] if args.key?(:tags)
+          @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
         end
       end
       
@@ -27149,6 +27550,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Additional instant snapshot params.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeBeta::InstantSnapshotParams]
+        attr_accessor :params
+      
         # Output only. [Output Only] URL of the region where the instant snapshot
         # resides.
         # You must specify this field as part of the HTTP request URL. It is
@@ -27267,6 +27673,7 @@ module Google
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @region = args[:region] if args.key?(:region)
           @resource_status = args[:resource_status] if args.key?(:resource_status)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
@@ -27722,6 +28129,32 @@ module Google
         end
       end
       
+      # Additional instant snapshot params.
+      class InstantSnapshotParams
+        include Google::Apis::Core::Hashable
+      
+        # Input only. Resource manager tags to be bound to the instant snapshot. Tag
+        # keys and
+        # values have the same definition as resource
+        # manager tags. Keys and values can be either in numeric format,
+        # such as `tagKeys/`tag_key_id`` and `tagValues/`tag_value_id`` or in
+        # namespaced format such as ``org_id|project_id`/`tag_key_short_name`` and
+        # ``tag_value_short_name``. The field is ignored (both PUT &
+        # PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
+        end
+      end
+      
       # 
       class InstantSnapshotResourceStatus
         include Google::Apis::Core::Hashable
@@ -28148,8 +28581,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Specific subzone in the InterconnectLocation that represents where
-        # this connection is to be provisioned.
+        # To be deprecated.
         # Corresponds to the JSON property `subzone`
         # @return [String]
         attr_accessor :subzone
@@ -36469,6 +36901,19 @@ module Google
       # reached, whether they are reachable, and where they are located.
       # For more information about using NEGs for different use cases, seeNetwork
       # endpoint groups overview.
+      # Note: Use the following APIs to manage network endpoint groups:
+      # 
+      # -
+      # To manage NEGs with zonal scope (such as zonal NEGs, hybrid connectivity
+      # NEGs): zonal
+      # API
+      # -
+      # To manage NEGs with regional scope (such as regional internet NEGs,
+      # serverless NEGs, Private Service Connect NEGs): regional
+      # API
+      # -
+      # To manage NEGs with global scope (such as global internet NEGs):global
+      # API
       class NetworkEndpointGroup
         include Google::Apis::Core::Hashable
       
@@ -37699,6 +38144,14 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::AliasIpRange>]
         attr_accessor :alias_ip_ranges
       
+        # Optional. If true, DNS resolution will be enabled over this interface. Only
+        # valid
+        # with network_attachment.
+        # Corresponds to the JSON property `enableVpcScopedDns`
+        # @return [Boolean]
+        attr_accessor :enable_vpc_scoped_dns
+        alias_method :enable_vpc_scoped_dns?, :enable_vpc_scoped_dns
+      
         # Fingerprint hash of contents stored in this network interface.
         # This field will be ignored when inserting an Instance or
         # adding a NetworkInterface. An up-to-date
@@ -37854,6 +38307,7 @@ module Google
         def update!(**args)
           @access_configs = args[:access_configs] if args.key?(:access_configs)
           @alias_ip_ranges = args[:alias_ip_ranges] if args.key?(:alias_ip_ranges)
+          @enable_vpc_scoped_dns = args[:enable_vpc_scoped_dns] if args.key?(:enable_vpc_scoped_dns)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @igmp_query = args[:igmp_query] if args.key?(:igmp_query)
           @internal_ipv6_prefix_length = args[:internal_ipv6_prefix_length] if args.key?(:internal_ipv6_prefix_length)
@@ -48133,6 +48587,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Indicates the early access maintenance for the reservation.
+        # If this field is absent or set to NO_EARLY_ACCESS, the reservation is not
+        # enrolled in early access maintenance and the standard notice applies.
+        # Corresponds to the JSON property `earlyAccessMaintenance`
+        # @return [String]
+        attr_accessor :early_access_maintenance
+      
         # Indicates whether Compute Engine allows unplanned maintenance for your VMs;
         # for example, to fix hardware errors.
         # Corresponds to the JSON property `enableEmergentMaintenance`
@@ -48271,6 +48732,7 @@ module Google
           @delete_at_time = args[:delete_at_time] if args.key?(:delete_at_time)
           @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
           @description = args[:description] if args.key?(:description)
+          @early_access_maintenance = args[:early_access_maintenance] if args.key?(:early_access_maintenance)
           @enable_emergent_maintenance = args[:enable_emergent_maintenance] if args.key?(:enable_emergent_maintenance)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
@@ -50993,6 +51455,12 @@ module Google
         attr_accessor :enable_oslogin_metadata_value
         alias_method :enable_oslogin_metadata_value?, :enable_oslogin_metadata_value
       
+        # Effective gce-container-declaration value at Instance level.
+        # Corresponds to the JSON property `gceContainerDeclarationMetadataValue`
+        # @return [Boolean]
+        attr_accessor :gce_container_declaration_metadata_value
+        alias_method :gce_container_declaration_metadata_value?, :gce_container_declaration_metadata_value
+      
         # Effective serial-port-enable value at Instance level.
         # Corresponds to the JSON property `serialPortEnableMetadataValue`
         # @return [Boolean]
@@ -51021,6 +51489,7 @@ module Google
           @enable_os_inventory_metadata_value = args[:enable_os_inventory_metadata_value] if args.key?(:enable_os_inventory_metadata_value)
           @enable_osconfig_metadata_value = args[:enable_osconfig_metadata_value] if args.key?(:enable_osconfig_metadata_value)
           @enable_oslogin_metadata_value = args[:enable_oslogin_metadata_value] if args.key?(:enable_oslogin_metadata_value)
+          @gce_container_declaration_metadata_value = args[:gce_container_declaration_metadata_value] if args.key?(:gce_container_declaration_metadata_value)
           @serial_port_enable_metadata_value = args[:serial_port_enable_metadata_value] if args.key?(:serial_port_enable_metadata_value)
           @serial_port_logging_enable_metadata_value = args[:serial_port_logging_enable_metadata_value] if args.key?(:serial_port_logging_enable_metadata_value)
           @vm_dns_setting_metadata_value = args[:vm_dns_setting_metadata_value] if args.key?(:vm_dns_setting_metadata_value)
@@ -55217,6 +55686,14 @@ module Google
         attr_accessor :preemptible
         alias_method :preemptible?, :preemptible
       
+        # A Duration represents a fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". Range is approximately 10,000 years.
+        # Corresponds to the JSON property `preemptionNoticeDuration`
+        # @return [Google::Apis::ComputeBeta::Duration]
+        attr_accessor :preemption_notice_duration
+      
         # Specifies the provisioning model of the instance.
         # Corresponds to the JSON property `provisioningModel`
         # @return [String]
@@ -55258,6 +55735,7 @@ module Google
           @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)
           @on_instance_stop_action = args[:on_instance_stop_action] if args.key?(:on_instance_stop_action)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
+          @preemption_notice_duration = args[:preemption_notice_duration] if args.key?(:preemption_notice_duration)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
           @skip_guest_os_shutdown = args[:skip_guest_os_shutdown] if args.key?(:skip_guest_os_shutdown)
           @termination_time = args[:termination_time] if args.key?(:termination_time)
@@ -71693,6 +72171,32 @@ module Google
           @bandwidth_allocation = args[:bandwidth_allocation] if args.key?(:bandwidth_allocation)
           @bandwidth_unmetered = args[:bandwidth_unmetered] if args.key?(:bandwidth_unmetered)
           @fault_response = args[:fault_response] if args.key?(:fault_response)
+        end
+      end
+      
+      # 
+      class WorkloadIdentityConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `identity`
+        # @return [String]
+        attr_accessor :identity
+      
+        # 
+        # Corresponds to the JSON property `identityCertificateEnabled`
+        # @return [Boolean]
+        attr_accessor :identity_certificate_enabled
+        alias_method :identity_certificate_enabled?, :identity_certificate_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identity = args[:identity] if args.key?(:identity)
+          @identity_certificate_enabled = args[:identity_certificate_enabled] if args.key?(:identity_certificate_enabled)
         end
       end
       
