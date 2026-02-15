@@ -263,7 +263,7 @@ module Google
         # @return [String]
         attr_accessor :monthly_flux_url
       
-        # The URL for an image of RGB data (aerial photo) of the region.
+        # The URL for an image of RGB data (aerial or satellite photo) of the region.
         # Corresponds to the JSON property `rgbUrl`
         # @return [String]
         attr_accessor :rgb_url
