@@ -1081,6 +1081,17 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
+        # Optional. If enabled, the callback will also be executed on intermediate model
+        # outputs. This setting only affects after model callback. **ENABLE WITH CAUTION*
+        # *. Typically after model callback only needs to be executed after receiving
+        # all model responses. Enabling proactive execution may have negative
+        # implication on the execution cost and latency, and should only be enabled in
+        # rare situations.
+        # Corresponds to the JSON property `proactiveExecutionEnabled`
+        # @return [Boolean]
+        attr_accessor :proactive_execution_enabled
+        alias_method :proactive_execution_enabled?, :proactive_execution_enabled
+      
         # Required. The python code to execute for the callback.
         # Corresponds to the JSON property `pythonCode`
         # @return [String]
@@ -1094,6 +1105,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @disabled = args[:disabled] if args.key?(:disabled)
+          @proactive_execution_enabled = args[:proactive_execution_enabled] if args.key?(:proactive_execution_enabled)
           @python_code = args[:python_code] if args.key?(:python_code)
         end
       end
@@ -3071,6 +3083,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :preferred_domains
       
+        # Prompt settings used by the model when processing or summarizing the google
+        # search results.
+        # Corresponds to the JSON property `promptConfig`
+        # @return [Google::Apis::CesV1::GoogleSearchToolPromptConfig]
+        attr_accessor :prompt_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3082,6 +3100,35 @@ module Google
           @exclude_domains = args[:exclude_domains] if args.key?(:exclude_domains)
           @name = args[:name] if args.key?(:name)
           @preferred_domains = args[:preferred_domains] if args.key?(:preferred_domains)
+          @prompt_config = args[:prompt_config] if args.key?(:prompt_config)
+        end
+      end
+      
+      # Prompt settings used by the model when processing or summarizing the google
+      # search results.
+      class GoogleSearchToolPromptConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Defines the prompt used for the system instructions when interacting
+        # with the agent in chat conversations. If not set, default prompt will be used.
+        # Corresponds to the JSON property `textPrompt`
+        # @return [String]
+        attr_accessor :text_prompt
+      
+        # Optional. Defines the prompt used for the system instructions when interacting
+        # with the agent in voice conversations. If not set, default prompt will be used.
+        # Corresponds to the JSON property `voicePrompt`
+        # @return [String]
+        attr_accessor :voice_prompt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text_prompt = args[:text_prompt] if args.key?(:text_prompt)
+          @voice_prompt = args[:voice_prompt] if args.key?(:voice_prompt)
         end
       end
       
@@ -3496,6 +3543,13 @@ module Google
         # @return [String]
         attr_accessor :gcs_uri
       
+        # Optional. Flag for overriding the app lock during import. If set to true, the
+        # import process will ignore the app lock.
+        # Corresponds to the JSON property `ignoreAppLock`
+        # @return [Boolean]
+        attr_accessor :ignore_app_lock
+        alias_method :ignore_app_lock?, :ignore_app_lock
+      
         # Configuration options for the app import process. These options control how
         # the import behaves, particularly when conflicts arise with existing app data.
         # Corresponds to the JSON property `importOptions`
@@ -3512,6 +3566,7 @@ module Google
           @app_id = args[:app_id] if args.key?(:app_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @ignore_app_lock = args[:ignore_app_lock] if args.key?(:ignore_app_lock)
           @import_options = args[:import_options] if args.key?(:import_options)
         end
       end
