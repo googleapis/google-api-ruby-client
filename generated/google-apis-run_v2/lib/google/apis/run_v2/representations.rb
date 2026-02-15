@@ -1167,6 +1167,7 @@ module Google
           property :service_account, as: 'serviceAccount'
           property :terminal_condition, as: 'terminalCondition', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
       
+          property :timeout, as: 'timeout'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           collection :urls, as: 'urls'
@@ -1424,6 +1425,8 @@ module Google
       class GoogleCloudRunV2RevisionScaling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :concurrency_utilization, as: 'concurrencyUtilization'
+          property :cpu_utilization, as: 'cpuUtilization'
           property :max_instance_count, as: 'maxInstanceCount'
           property :min_instance_count, as: 'minInstanceCount'
         end
