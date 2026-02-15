@@ -21,7 +21,8 @@ module Google
   module Apis
     # Cluster Director API
     #
-    # 
+    # The Cluster Director API allows you to deploy, manage, and monitor clusters
+    # that run AI, ML, or HPC workloads.
     #
     # @see https://docs.cloud.google.com/cluster-director/docs
     module HypercomputeclusterV1
