@@ -727,6 +727,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :replica_count
       
+        # Optional. Input only. Rotate the server certificates.
+        # Corresponds to the JSON property `rotateServerCertificate`
+        # @return [Boolean]
+        attr_accessor :rotate_server_certificate
+        alias_method :rotate_server_certificate?, :rotate_server_certificate
+      
         # Optional. Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -738,6 +744,18 @@ module Google
         # @return [Boolean]
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
+      
+        # Optional. Server CA mode for the cluster.
+        # Corresponds to the JSON property `serverCaMode`
+        # @return [String]
+        attr_accessor :server_ca_mode
+      
+        # Optional. Customer-managed CA pool for the cluster. Only applicable for BYOCA
+        # i.e. if server_ca_mode is SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA. Format: "
+        # projects/`project`/locations/`region`/caPools/`ca_pool`".
+        # Corresponds to the JSON property `serverCaPool`
+        # @return [String]
+        attr_accessor :server_ca_pool
       
         # Optional. Number of shards for the Redis cluster.
         # Corresponds to the JSON property `shardCount`
@@ -819,8 +837,11 @@ module Google
           @psc_service_attachments = args[:psc_service_attachments] if args.key?(:psc_service_attachments)
           @redis_configs = args[:redis_configs] if args.key?(:redis_configs)
           @replica_count = args[:replica_count] if args.key?(:replica_count)
+          @rotate_server_certificate = args[:rotate_server_certificate] if args.key?(:rotate_server_certificate)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @server_ca_mode = args[:server_ca_mode] if args.key?(:server_ca_mode)
+          @server_ca_pool = args[:server_ca_pool] if args.key?(:server_ca_pool)
           @shard_count = args[:shard_count] if args.key?(:shard_count)
           @simulate_maintenance_event = args[:simulate_maintenance_event] if args.key?(:simulate_maintenance_event)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
@@ -3585,6 +3606,44 @@ module Google
         end
       end
       
+      # The certificates that form the CA chain, from leaf to root order.
+      class RegionalCertChain
+        include Google::Apis::Core::Hashable
+      
+        # The certificates that form the CA chain, from leaf to root order.
+        # Corresponds to the JSON property `certificates`
+        # @return [Array<String>]
+        attr_accessor :certificates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificates = args[:certificates] if args.key?(:certificates)
+        end
+      end
+      
+      # CA certificate chains for redis managed server authentication.
+      class RegionalManagedCertificateAuthority
+        include Google::Apis::Core::Hashable
+      
+        # The PEM encoded CA certificate chains for redis managed server authentication
+        # Corresponds to the JSON property `caCerts`
+        # @return [Array<Google::Apis::RedisV1beta1::RegionalCertChain>]
+        attr_accessor :ca_certs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_certs = args[:ca_certs] if args.key?(:ca_certs)
+        end
+      end
+      
       # Details of the remote cluster associated with this cluster in a cross cluster
       # replication setup.
       class RemoteCluster
@@ -3745,6 +3804,18 @@ module Google
       class ResourceMaintenanceInfo
         include Google::Apis::Core::Hashable
       
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `currentVersionReleaseDate`
+        # @return [Google::Apis::RedisV1beta1::Date]
+        attr_accessor :current_version_release_date
+      
         # Optional. List of Deny maintenance period for the database resource.
         # Corresponds to the JSON property `denyMaintenanceSchedules`
         # @return [Array<Google::Apis::RedisV1beta1::ResourceMaintenanceDenySchedule>]
@@ -3782,26 +3853,19 @@ module Google
         # @return [Google::Apis::RedisV1beta1::UpcomingMaintenance]
         attr_accessor :upcoming_maintenance
       
-        # Optional. This field will contain the date when the last version update was
-        # applied to the database resource. This will be used to calculate the age of
-        # the maintenance version.
-        # Corresponds to the JSON property `versionUpdateTime`
-        # @return [String]
-        attr_accessor :version_update_time
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @current_version_release_date = args[:current_version_release_date] if args.key?(:current_version_release_date)
           @deny_maintenance_schedules = args[:deny_maintenance_schedules] if args.key?(:deny_maintenance_schedules)
           @is_instance_stopped = args[:is_instance_stopped] if args.key?(:is_instance_stopped)
           @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
           @maintenance_state = args[:maintenance_state] if args.key?(:maintenance_state)
           @maintenance_version = args[:maintenance_version] if args.key?(:maintenance_version)
           @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
-          @version_update_time = args[:version_update_time] if args.key?(:version_update_time)
         end
       end
       
@@ -3884,6 +3948,33 @@ module Google
           @retention_unit = args[:retention_unit] if args.key?(:retention_unit)
           @time_based_retention = args[:time_based_retention] if args.key?(:time_based_retention)
           @timestamp_based_retention_time = args[:timestamp_based_retention_time] if args.key?(:timestamp_based_retention_time)
+        end
+      end
+      
+      # Shared regional certificate authority
+      class SharedRegionalCertificateAuthority
+        include Google::Apis::Core::Hashable
+      
+        # CA certificate chains for redis managed server authentication.
+        # Corresponds to the JSON property `managedServerCa`
+        # @return [Google::Apis::RedisV1beta1::RegionalManagedCertificateAuthority]
+        attr_accessor :managed_server_ca
+      
+        # Identifier. Unique name of the resource in this scope including project and
+        # location using the form: `projects/`project`/locations/`location`/
+        # sharedRegionalCertificateAuthority`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @managed_server_ca = args[:managed_server_ca] if args.key?(:managed_server_ca)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
