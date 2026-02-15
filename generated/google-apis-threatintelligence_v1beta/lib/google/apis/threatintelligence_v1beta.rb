@@ -23,7 +23,7 @@ module Google
     #
     # threatintelligence.googleapis.com API.
     #
-    # @see https://cloud.google.com/threatintelligence/docs/reference/rest
+    # @see https://docs.cloud.google.com/threatintelligence/
     module ThreatintelligenceV1beta
       # Version of the Threat Intelligence API this client connects to.
       # This is NOT the gem version.
