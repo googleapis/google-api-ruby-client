@@ -52,12 +52,14 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Gets the status of a license for a customer to determine if they have access
-        # for a given app.
+        # Gets the customer's licensing status to determine if they have access to a
+        # given app. For more information, see [Getting app installation and licensing
+        # details](https://developers.google.com/workspace/marketplace/example-calls-
+        # marketplace-api).
         # @param [String] application_id
-        #   Application Id
+        #   The ID of the application.
         # @param [String] customer_id
-        #   Customer Id
+        #   The ID of the customer.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -86,11 +88,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the user's licensing status for their permission to use a given app.
+        # Gets the user's licensing status to determine if they have permission to use a
+        # given app. For more information, see [Getting app installation and licensing
+        # details](https://developers.google.com/workspace/marketplace/example-calls-
+        # marketplace-api).
         # @param [String] application_id
-        #   Application Id
+        #   The ID of the application.
         # @param [String] user_id
-        #   User Id
+        #   The ID of the user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

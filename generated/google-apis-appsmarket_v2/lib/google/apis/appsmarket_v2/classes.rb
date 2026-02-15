@@ -46,14 +46,14 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The type of API resource. This is always appsmarket#customerLicense.
+        # The type of API resource. This is always `appsmarket#customerLicense`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
         # The customer's license status. One of: - `ACTIVE`: The customer has a valid
-        # license. - `UNLICENSED`: There is no license: either this customer has never
-        # installed your application, or else has deleted it.
+        # license. - `UNLICENSED`: There is no license. Either this customer has never
+        # installed your application or has deleted it.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -129,12 +129,12 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # The ID of user license.
+        # The ID of the user license.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # The type of API resource. This is always appsmarket#userLicense.
+        # The type of API resource. This is always `appsmarket#userLicense`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
