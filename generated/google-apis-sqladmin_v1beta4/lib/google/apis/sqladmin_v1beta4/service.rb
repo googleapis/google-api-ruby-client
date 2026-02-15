@@ -2756,7 +2756,9 @@ module Google
         # @param [String] name
         #   Name of the user in the instance.
         # @param [Boolean] revoke_existing_roles
-        #   Optional. revoke the existing roles granted to the user.
+        #   Optional. Specifies whether to revoke existing roles that are not present in
+        #   the `database_roles` field. If `false` or unset, the database roles specified
+        #   in `database_roles` are added to the user's existing roles.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
