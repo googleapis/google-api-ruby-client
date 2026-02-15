@@ -5897,7 +5897,7 @@ module Google
       class ImageAsset
         include Google::Apis::Core::Hashable
       
-        # File size of the image asset in bytes.
+        # Output only. File size of the image asset in bytes.
         # Corresponds to the JSON property `fileSize`
         # @return [Fixnum]
         attr_accessor :file_size
@@ -5907,7 +5907,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::Dimensions]
         attr_accessor :full_size
       
-        # MIME type of the image asset.
+        # Output only. MIME type of the image asset.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -11925,7 +11925,7 @@ module Google
       class YoutubeVideoDetails
         include Google::Apis::Core::Hashable
       
-        # The YouTube video ID which can be searched on YouTube webpage.
+        # Output only. The YouTube video ID which can be searched on YouTube webpage.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -11935,6 +11935,11 @@ module Google
         # @return [String]
         attr_accessor :unavailable_reason
       
+        # Required. The YouTube video asset id. This is ad_asset.ad_asset_id.
+        # Corresponds to the JSON property `videoAssetId`
+        # @return [Fixnum]
+        attr_accessor :video_asset_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11943,6 +11948,7 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @unavailable_reason = args[:unavailable_reason] if args.key?(:unavailable_reason)
+          @video_asset_id = args[:video_asset_id] if args.key?(:video_asset_id)
         end
       end
     end
