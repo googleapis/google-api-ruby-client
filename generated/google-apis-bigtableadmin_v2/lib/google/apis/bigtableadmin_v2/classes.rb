@@ -2144,6 +2144,20 @@ module Google
         end
       end
       
+      # A geography type, representing a point or region on Earth. The value is stored
+      # in `Value.bytes_value` as Well-Known Binary (WKB) bytes.
+      class GoogleBigtableAdminV2TypeGeography
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Int64 Values of type `Int64` are stored in `Value.int_value`.
       class GoogleBigtableAdminV2TypeInt64
         include Google::Apis::Core::Hashable
@@ -4424,6 +4438,12 @@ module Google
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeFloat64]
         attr_accessor :float64_type
       
+        # A geography type, representing a point or region on Earth. The value is stored
+        # in `Value.bytes_value` as Well-Known Binary (WKB) bytes.
+        # Corresponds to the JSON property `geographyType`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeGeography]
+        attr_accessor :geography_type
+      
         # Int64 Values of type `Int64` are stored in `Value.int_value`.
         # Corresponds to the JSON property `int64Type`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64]
@@ -4476,6 +4496,7 @@ module Google
           @enum_type = args[:enum_type] if args.key?(:enum_type)
           @float32_type = args[:float32_type] if args.key?(:float32_type)
           @float64_type = args[:float64_type] if args.key?(:float64_type)
+          @geography_type = args[:geography_type] if args.key?(:geography_type)
           @int64_type = args[:int64_type] if args.key?(:int64_type)
           @map_type = args[:map_type] if args.key?(:map_type)
           @proto_type = args[:proto_type] if args.key?(:proto_type)

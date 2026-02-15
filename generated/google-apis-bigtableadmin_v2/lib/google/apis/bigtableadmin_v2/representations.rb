@@ -400,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleBigtableAdminV2TypeGeography
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleBigtableAdminV2TypeInt64
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1449,6 +1455,12 @@ module Google
         end
       end
       
+      class GoogleBigtableAdminV2TypeGeography
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleBigtableAdminV2TypeInt64
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2068,6 +2080,8 @@ module Google
           property :float32_type, as: 'float32Type', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeFloat32, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeFloat32::Representation
       
           property :float64_type, as: 'float64Type', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeFloat64, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeFloat64::Representation
+      
+          property :geography_type, as: 'geographyType', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeGeography, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeGeography::Representation
       
           property :int64_type, as: 'int64Type', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64::Representation
       
