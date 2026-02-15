@@ -322,6 +322,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Optional. Rules of the Configuration.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::AspectRule>]
+        attr_accessor :rules
+      
         # Content of the configuration. The underlying schema should be defined by
         # Aspect owners as protobuf message under `google/api/configaspects/proto`.
         # Corresponds to the JSON property `spec`
@@ -335,7 +340,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
+          @rules = args[:rules] if args.key?(:rules)
           @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
+      # Rule-based configuration for an aspect.
+      class AspectRule
+        include Google::Apis::Core::Hashable
+      
+        # Required. Rules of the configuration. The underlying schema should be defined
+        # by Aspect owners as protobuf message under `google/api/configaspects/proto`.
+        # Corresponds to the JSON property `config`
+        # @return [Hash<String,Object>]
+        attr_accessor :config
+      
+        # Required. Selects the RPC methods to which this rule applies. Refer to
+        # selector for syntax details.
+        # Corresponds to the JSON property `selector`
+        # @return [String]
+        attr_accessor :selector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @selector = args[:selector] if args.key?(:selector)
         end
       end
       
