@@ -2478,6 +2478,7 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :ssl_enabled, as: 'sslEnabled'
+          collection :tv_data_providers, as: 'tvDataProviders'
         end
       end
       
