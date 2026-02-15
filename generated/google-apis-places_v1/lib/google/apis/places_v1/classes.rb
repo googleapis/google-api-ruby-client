@@ -1282,6 +1282,11 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceGoogleMapsLinks]
         attr_accessor :google_maps_links
       
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `googleMapsTypeLabel`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :google_maps_type_label
+      
         # A URL providing more information about this place.
         # Corresponds to the JSON property `googleMapsUri`
         # @return [String]
@@ -1644,6 +1649,7 @@ module Google
           @good_for_groups = args[:good_for_groups] if args.key?(:good_for_groups)
           @good_for_watching_sports = args[:good_for_watching_sports] if args.key?(:good_for_watching_sports)
           @google_maps_links = args[:google_maps_links] if args.key?(:google_maps_links)
+          @google_maps_type_label = args[:google_maps_type_label] if args.key?(:google_maps_type_label)
           @google_maps_uri = args[:google_maps_uri] if args.key?(:google_maps_uri)
           @icon_background_color = args[:icon_background_color] if args.key?(:icon_background_color)
           @icon_mask_base_uri = args[:icon_mask_base_uri] if args.key?(:icon_mask_base_uri)
