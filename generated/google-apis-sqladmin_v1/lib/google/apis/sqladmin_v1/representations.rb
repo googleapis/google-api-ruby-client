@@ -766,12 +766,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SqlInstancesRestoreBackupMcpRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SqlInstancesStartExternalSyncRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1103,6 +1097,8 @@ module Google
       
           collection :database_names, as: 'databaseNames'
           property :destination_instance_name, as: 'destinationInstanceName'
+          property :destination_network, as: 'destinationNetwork'
+          property :destination_project, as: 'destinationProject'
           property :kind, as: 'kind'
           property :pitr_timestamp_ms, :numeric_string => true, as: 'pitrTimestampMs'
           property :point_in_time, as: 'pointInTime'
@@ -2381,15 +2377,6 @@ module Google
       class SqlInstancesResetReplicaSizeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class SqlInstancesRestoreBackupMcpRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :backup_id, as: 'backupId'
-          property :source_instance, as: 'sourceInstance'
-          property :source_project, as: 'sourceProject'
         end
       end
       
