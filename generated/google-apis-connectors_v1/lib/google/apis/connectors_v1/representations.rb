@@ -442,6 +442,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateConnectionToolspecOverrideRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateConnectionToolspecOverrideResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HpaConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -658,6 +670,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ModifyConnectionToolspecOverrideRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ModifyConnectionToolspecOverrideResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MultipleSelectConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -797,6 +821,12 @@ module Google
       end
       
       class RegionalSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveConnectionToolspecOverrideRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -977,6 +1007,18 @@ module Google
       end
       
       class TimeOfDay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ToolName
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ToolspecOverride
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1999,6 +2041,22 @@ module Google
         end
       end
       
+      class GenerateConnectionToolspecOverrideRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tool_names, as: 'toolNames', class: Google::Apis::ConnectorsV1::ToolName, decorator: Google::Apis::ConnectorsV1::ToolName::Representation
+      
+        end
+      end
+      
+      class GenerateConnectionToolspecOverrideResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :toolspec_override, as: 'toolspecOverride', class: Google::Apis::ConnectorsV1::ToolspecOverride, decorator: Google::Apis::ConnectorsV1::ToolspecOverride::Representation
+      
+        end
+      end
+      
       class HpaConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2377,6 +2435,22 @@ module Google
         end
       end
       
+      class ModifyConnectionToolspecOverrideRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :toolspec_override, as: 'toolspecOverride', class: Google::Apis::ConnectorsV1::ToolspecOverride, decorator: Google::Apis::ConnectorsV1::ToolspecOverride::Representation
+      
+        end
+      end
+      
+      class ModifyConnectionToolspecOverrideResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :toolspec_overrides, as: 'toolspecOverrides', class: Google::Apis::ConnectorsV1::ToolspecOverride, decorator: Google::Apis::ConnectorsV1::ToolspecOverride::Representation
+      
+        end
+      end
+      
       class MultipleSelectConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2630,6 +2704,12 @@ module Google
           property :network_config, as: 'networkConfig', class: Google::Apis::ConnectorsV1::NetworkConfig, decorator: Google::Apis::ConnectorsV1::NetworkConfig::Representation
       
           property :provisioned, as: 'provisioned'
+        end
+      end
+      
+      class RemoveConnectionToolspecOverrideRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2932,6 +3012,24 @@ module Google
           property :minutes, as: 'minutes'
           property :nanos, as: 'nanos'
           property :seconds, as: 'seconds'
+        end
+      end
+      
+      class ToolName
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_type, as: 'entityType'
+          property :name, as: 'name'
+          property :operation, as: 'operation'
+        end
+      end
+      
+      class ToolspecOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          collection :tools, as: 'tools'
+          property :update_time, as: 'updateTime'
         end
       end
       
