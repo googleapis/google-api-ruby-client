@@ -1332,7 +1332,8 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
-        # Optional. Specifies the termination action of the instance
+        # Optional. Termination action for the instance. If not specified, Compute
+        # Engine sets the termination action to DELETE.
         # Corresponds to the JSON property `terminationAction`
         # @return [String]
         attr_accessor :termination_action
@@ -1438,7 +1439,6 @@ module Google
         attr_accessor :end_time
       
         # Message describing the progress of a cluster mutation long-running operation.
-        # operation.
         # Corresponds to the JSON property `progress`
         # @return [Google::Apis::HypercomputeclusterV1::OperationProgress]
         attr_accessor :progress
@@ -1479,7 +1479,6 @@ module Google
       end
       
       # Message describing the progress of a cluster mutation long-running operation.
-      # operation.
       class OperationProgress
         include Google::Apis::Core::Hashable
       
@@ -1783,7 +1782,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. ID of the compute resource on which this nodeset will run. Must
-        # match a key in the cluster's [compute_resources](Cluster.compute_resources).
+        # match a key in the cluster's compute_resources.
         # Corresponds to the JSON property `computeId`
         # @return [String]
         attr_accessor :compute_id
@@ -1863,15 +1862,16 @@ module Google
         # @return [Google::Apis::HypercomputeclusterV1::SlurmLoginNodes]
         attr_accessor :login_nodes
       
-        # Required. Configuration of Slurm nodesets, which define groups of compute
-        # resources that can be used by Slurm. At least one compute node is required.
+        # Optional. Compute resource configuration for the Slurm nodesets in your
+        # cluster. If not specified, the cluster won't create any nodes.
         # Corresponds to the JSON property `nodeSets`
         # @return [Array<Google::Apis::HypercomputeclusterV1::SlurmNodeSet>]
         attr_accessor :node_sets
       
-        # Required. Configuration of Slurm partitions, which group one or more nodesets.
-        # Acts as a queue against which jobs can be submitted. At least one partition is
-        # required.
+        # Optional. Configuration for the Slurm partitions in your cluster. Each
+        # partition can contain one or more nodesets, and you can submit separate jobs
+        # on each partition. If you don't specify at least one partition in your cluster,
+        # you can't submit jobs to the cluster.
         # Corresponds to the JSON property `partitions`
         # @return [Array<Google::Apis::HypercomputeclusterV1::SlurmPartition>]
         attr_accessor :partitions
@@ -1971,7 +1971,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. ID of the storage resource to mount, which must match a key in the
-        # cluster's [storage_resources](Cluster.storage_resources).
+        # cluster's storage_resources.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
