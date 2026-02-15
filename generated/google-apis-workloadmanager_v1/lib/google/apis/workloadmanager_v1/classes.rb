@@ -22,6 +22,177 @@ module Google
   module Apis
     module WorkloadmanagerV1
       
+      # Active directory details
+      class ActiveDirectory
+        include Google::Apis::Core::Hashable
+      
+        # Optional. DNS IP address
+        # Corresponds to the JSON property `dnsAddress`
+        # @return [String]
+        attr_accessor :dns_address
+      
+        # Optional. human readable form of a domain such as “google.com”.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Optional. domain username
+        # Corresponds to the JSON property `domainUsername`
+        # @return [String]
+        attr_accessor :domain_username
+      
+        # Required. secret_manager_secret
+        # Corresponds to the JSON property `secretManagerSecret`
+        # @return [String]
+        attr_accessor :secret_manager_secret
+      
+        # Required. active directory type
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_address = args[:dns_address] if args.key?(:dns_address)
+          @domain = args[:domain] if args.key?(:domain)
+          @domain_username = args[:domain_username] if args.key?(:domain_username)
+          @secret_manager_secret = args[:secret_manager_secret] if args.key?(:secret_manager_secret)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The Actuation object represents the bootstrap state and output results of
+      # deployed infrastructure and software.
+      class Actuation
+        include Google::Apis::Core::Hashable
+      
+        # Message for output of Actuation
+        # Corresponds to the JSON property `actuationOutput`
+        # @return [Google::Apis::WorkloadmanagerV1::ActuationOutput]
+        attr_accessor :actuation_output
+      
+        # Output only. [Output only] Deployment output
+        # Corresponds to the JSON property `deploymentOutput`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::DeploymentOutput>]
+        attr_accessor :deployment_output
+      
+        # Output only. [Output only] End time stamp
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The name of actuation resource. The format is projects/`project`/locations/`
+        # location`/deployments/`deployment`/actuations/`actuation`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. [Output only] Start time stamp
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. [Output only] Actuation state
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actuation_output = args[:actuation_output] if args.key?(:actuation_output)
+          @deployment_output = args[:deployment_output] if args.key?(:deployment_output)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Message for output of Actuation
+      class ActuationOutput
+        include Google::Apis::Core::Hashable
+      
+        # A link to gcs file that store build logs
+        # Corresponds to the JSON property `actuateLogs`
+        # @return [String]
+        attr_accessor :actuate_logs
+      
+        # Output only. error message return from ansible.
+        # Corresponds to the JSON property `ansibleError`
+        # @return [String]
+        attr_accessor :ansible_error
+      
+        # Output only. failed task name return from ansible.
+        # Corresponds to the JSON property `ansibleFailedTask`
+        # @return [Array<String>]
+        attr_accessor :ansible_failed_task
+      
+        # reference to Blueprint Controller deployment and revision resource
+        # Corresponds to the JSON property `blueprintId`
+        # @return [String]
+        attr_accessor :blueprint_id
+      
+        # Cloud Build instance UUID associated with this revision, without any suffix or
+        # prefix
+        # Corresponds to the JSON property `cloudbuildId`
+        # @return [String]
+        attr_accessor :cloudbuild_id
+      
+        # Output only. Code describing any errors that may have occurred. If not
+        # specified, there is no error in actuation.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
+      
+        # A link to actuation cloud build log.
+        # Corresponds to the JSON property `errorLogs`
+        # @return [String]
+        attr_accessor :error_logs
+      
+        # Output only. whether the error message is user facing. If true, the error
+        # message will be shown in the UI.
+        # Corresponds to the JSON property `hasUserFacingErrorMsg`
+        # @return [Boolean]
+        attr_accessor :has_user_facing_error_msg
+        alias_method :has_user_facing_error_msg?, :has_user_facing_error_msg
+      
+        # Output only. error message return from terraform.
+        # Corresponds to the JSON property `terraformError`
+        # @return [String]
+        attr_accessor :terraform_error
+      
+        # reference to terraform template used
+        # Corresponds to the JSON property `terraformTemplate`
+        # @return [String]
+        attr_accessor :terraform_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actuate_logs = args[:actuate_logs] if args.key?(:actuate_logs)
+          @ansible_error = args[:ansible_error] if args.key?(:ansible_error)
+          @ansible_failed_task = args[:ansible_failed_task] if args.key?(:ansible_failed_task)
+          @blueprint_id = args[:blueprint_id] if args.key?(:blueprint_id)
+          @cloudbuild_id = args[:cloudbuild_id] if args.key?(:cloudbuild_id)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @error_logs = args[:error_logs] if args.key?(:error_logs)
+          @has_user_facing_error_msg = args[:has_user_facing_error_msg] if args.key?(:has_user_facing_error_msg)
+          @terraform_error = args[:terraform_error] if args.key?(:terraform_error)
+          @terraform_template = args[:terraform_template] if args.key?(:terraform_template)
+        end
+      end
+      
       # * An AgentCommand specifies a one-time executable program for the agent to run.
       class AgentCommand
         include Google::Apis::Core::Hashable
@@ -329,6 +500,116 @@ module Google
         end
       end
       
+      # Message for sap instant details
+      class AppDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. instance id for app
+        # Corresponds to the JSON property `appInstanceId`
+        # @return [String]
+        attr_accessor :app_instance_id
+      
+        # Application service account - let custoemrs bring their own SA for application
+        # Corresponds to the JSON property `appServiceAccount`
+        # @return [String]
+        attr_accessor :app_service_account
+      
+        # Optional. Customized vm names
+        # Corresponds to the JSON property `appVmNames`
+        # @return [Array<String>]
+        attr_accessor :app_vm_names
+      
+        # Required. image for ascs server
+        # Corresponds to the JSON property `ascsImage`
+        # @return [String]
+        attr_accessor :ascs_image
+      
+        # Optional. instance id for ascs
+        # Corresponds to the JSON property `ascsInstanceId`
+        # @return [String]
+        attr_accessor :ascs_instance_id
+      
+        # Required. ascs_machine_type
+        # Corresponds to the JSON property `ascsMachineType`
+        # @return [String]
+        attr_accessor :ascs_machine_type
+      
+        # ASCS service account - let custoemrs bring their own SA for ASCS
+        # Corresponds to the JSON property `ascsServiceAccount`
+        # @return [String]
+        attr_accessor :ascs_service_account
+      
+        # Optional. ASCS vm name
+        # Corresponds to the JSON property `ascsVm`
+        # @return [String]
+        attr_accessor :ascs_vm
+      
+        # Optional. instance id for ers
+        # Corresponds to the JSON property `ersInstanceId`
+        # @return [String]
+        attr_accessor :ers_instance_id
+      
+        # Optional. ERS vm name
+        # Corresponds to the JSON property `ersVm`
+        # @return [String]
+        attr_accessor :ers_vm
+      
+        # Required. image for app server and ascs server
+        # Corresponds to the JSON property `image`
+        # @return [String]
+        attr_accessor :image
+      
+        # Required. machine type
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Required. secret_manager_secret
+        # Corresponds to the JSON property `secretManagerSecret`
+        # @return [String]
+        attr_accessor :secret_manager_secret
+      
+        # Optional. Storage location
+        # Corresponds to the JSON property `sharedStorage`
+        # @return [String]
+        attr_accessor :shared_storage
+      
+        # Required. The SAP SID is a three-digit server-specific unique identification
+        # code.
+        # Corresponds to the JSON property `sid`
+        # @return [String]
+        attr_accessor :sid
+      
+        # Required. vms_multiplier
+        # Corresponds to the JSON property `vmsMultiplier`
+        # @return [Fixnum]
+        attr_accessor :vms_multiplier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_instance_id = args[:app_instance_id] if args.key?(:app_instance_id)
+          @app_service_account = args[:app_service_account] if args.key?(:app_service_account)
+          @app_vm_names = args[:app_vm_names] if args.key?(:app_vm_names)
+          @ascs_image = args[:ascs_image] if args.key?(:ascs_image)
+          @ascs_instance_id = args[:ascs_instance_id] if args.key?(:ascs_instance_id)
+          @ascs_machine_type = args[:ascs_machine_type] if args.key?(:ascs_machine_type)
+          @ascs_service_account = args[:ascs_service_account] if args.key?(:ascs_service_account)
+          @ascs_vm = args[:ascs_vm] if args.key?(:ascs_vm)
+          @ers_instance_id = args[:ers_instance_id] if args.key?(:ers_instance_id)
+          @ers_vm = args[:ers_vm] if args.key?(:ers_vm)
+          @image = args[:image] if args.key?(:image)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @secret_manager_secret = args[:secret_manager_secret] if args.key?(:secret_manager_secret)
+          @shared_storage = args[:shared_storage] if args.key?(:shared_storage)
+          @sid = args[:sid] if args.key?(:sid)
+          @vms_multiplier = args[:vms_multiplier] if args.key?(:vms_multiplier)
+        end
+      end
+      
       # Backup properties.
       class BackupProperties
         include Google::Apis::Core::Hashable
@@ -493,6 +774,156 @@ module Google
         end
       end
       
+      # Database details
+      class Database
+        include Google::Apis::Core::Hashable
+      
+        # Required. disk_type
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # Optional. only useful for Linux High Availability setup
+        # Corresponds to the JSON property `floatingIpAddress`
+        # @return [String]
+        attr_accessor :floating_ip_address
+      
+        # Required. machine type
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Optional. the name of a secondary-sole-tenant node/node group
+        # Corresponds to the JSON property `secondarySoleTenantNode`
+        # @return [String]
+        attr_accessor :secondary_sole_tenant_node
+      
+        # Optional. the type of a secondary-sole-tenant node/node group e.g. compute.
+        # googleapis.com/node-name
+        # Corresponds to the JSON property `secondarySoleTenantNodeType`
+        # @return [String]
+        attr_accessor :secondary_sole_tenant_node_type
+      
+        # Required. secret_manager_secret
+        # Corresponds to the JSON property `secretManagerSecret`
+        # @return [String]
+        attr_accessor :secret_manager_secret
+      
+        # Required. whether simultaneous multithreading is enabled or not
+        # Corresponds to the JSON property `smt`
+        # @return [Boolean]
+        attr_accessor :smt
+        alias_method :smt?, :smt
+      
+        # Optional. the name of a primary sole-tenant node/node group
+        # Corresponds to the JSON property `soleTenantNode`
+        # @return [String]
+        attr_accessor :sole_tenant_node
+      
+        # Optional. the type of a primary sole-tenant node/node group e.g. compute.
+        # googleapis.com/node-name
+        # Corresponds to the JSON property `soleTenantNodeType`
+        # @return [String]
+        attr_accessor :sole_tenant_node_type
+      
+        # Required. whether to have TempDB on local SSD
+        # Corresponds to the JSON property `tempdbOnSsd`
+        # @return [Boolean]
+        attr_accessor :tempdb_on_ssd
+        alias_method :tempdb_on_ssd?, :tempdb_on_ssd
+      
+        # Required. SHARED or SOLE_TENANT
+        # Corresponds to the JSON property `tenancyModel`
+        # @return [String]
+        attr_accessor :tenancy_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @floating_ip_address = args[:floating_ip_address] if args.key?(:floating_ip_address)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @secondary_sole_tenant_node = args[:secondary_sole_tenant_node] if args.key?(:secondary_sole_tenant_node)
+          @secondary_sole_tenant_node_type = args[:secondary_sole_tenant_node_type] if args.key?(:secondary_sole_tenant_node_type)
+          @secret_manager_secret = args[:secret_manager_secret] if args.key?(:secret_manager_secret)
+          @smt = args[:smt] if args.key?(:smt)
+          @sole_tenant_node = args[:sole_tenant_node] if args.key?(:sole_tenant_node)
+          @sole_tenant_node_type = args[:sole_tenant_node_type] if args.key?(:sole_tenant_node_type)
+          @tempdb_on_ssd = args[:tempdb_on_ssd] if args.key?(:tempdb_on_ssd)
+          @tenancy_model = args[:tenancy_model] if args.key?(:tenancy_model)
+        end
+      end
+      
+      # Message for sap instant details
+      class DatabaseDetails
+        include Google::Apis::Core::Hashable
+      
+        # Database service account - let custoemrs bring their own SA for database
+        # Corresponds to the JSON property `databaseServiceAccount`
+        # @return [String]
+        attr_accessor :database_service_account
+      
+        # Required. disk_type
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # Required. image for database server
+        # Corresponds to the JSON property `image`
+        # @return [String]
+        attr_accessor :image
+      
+        # Optional. instance id
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # Required. machine type
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Optional. primary db vm name
+        # Corresponds to the JSON property `primaryDbVm`
+        # @return [String]
+        attr_accessor :primary_db_vm
+      
+        # Optional. secondary db vm name
+        # Corresponds to the JSON property `secondaryDbVm`
+        # @return [String]
+        attr_accessor :secondary_db_vm
+      
+        # Required. secret_manager_secret
+        # Corresponds to the JSON property `secretManagerSecret`
+        # @return [String]
+        attr_accessor :secret_manager_secret
+      
+        # Required. The SID is a three-digit server-specific unique identification code.
+        # Corresponds to the JSON property `sid`
+        # @return [String]
+        attr_accessor :sid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_service_account = args[:database_service_account] if args.key?(:database_service_account)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @image = args[:image] if args.key?(:image)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @primary_db_vm = args[:primary_db_vm] if args.key?(:primary_db_vm)
+          @secondary_db_vm = args[:secondary_db_vm] if args.key?(:secondary_db_vm)
+          @secret_manager_secret = args[:secret_manager_secret] if args.key?(:secret_manager_secret)
+          @sid = args[:sid] if args.key?(:sid)
+        end
+      end
+      
       # Database Properties.
       class DatabaseProperties
         include Google::Apis::Core::Hashable
@@ -515,6 +946,122 @@ module Google
         def update!(**args)
           @backup_properties = args[:backup_properties] if args.key?(:backup_properties)
           @database_type = args[:database_type] if args.key?(:database_type)
+        end
+      end
+      
+      # The Deployment object represents user intent for deploying a specific type of
+      # workload.
+      class Deployment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output only] Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Description of the Deployment
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The name of deployment resource. The format will be 'projects/`project_id`/
+        # locations/`location_id`/deployments/`deployment_id`'
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Message for sap system workload
+        # Corresponds to the JSON property `sapSystemS4Config`
+        # @return [Google::Apis::WorkloadmanagerV1::SapSystemS4Config]
+        attr_accessor :sap_system_s4_config
+      
+        # User-specified Service Account (SA) credentials to be used for cloud build
+        # Format: `projects/`projectID`/serviceAccounts/`serviceAccount`` The default
+        # Cloud Build SA will be used initially if this field is not set during
+        # deployment creation
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Message for MS SQL workload
+        # Corresponds to the JSON property `sqlServerWorkload`
+        # @return [Google::Apis::WorkloadmanagerV1::SqlServerWorkload]
+        attr_accessor :sql_server_workload
+      
+        # Output only. Current state of the deployment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Optional. terraform_variables represents all the Terraform variables for the
+        # deployment workload. The key is the name of the Terraform variable, and the
+        # value is the TerraformVariable. For example: ` "project_id": ` "input_value": `
+        # "string_value": "my-project-id" ` `, "zone": ` "input_value": ` "string_value"
+        # : "us-central1-a" ` ` `
+        # Corresponds to the JSON property `terraformVariables`
+        # @return [Hash<String,Google::Apis::WorkloadmanagerV1::TerraformVariable>]
+        attr_accessor :terraform_variables
+      
+        # Output only. [Output only] Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Optional. The user-specified Cloud Build worker pool resource in which the
+        # Cloud Build job will execute. Format: `projects/`project`/locations/`location`/
+        # workerPools/`workerPoolId``. If this field is unspecified, the default Cloud
+        # Build worker pool will be used.
+        # Corresponds to the JSON property `workerPool`
+        # @return [String]
+        attr_accessor :worker_pool
+      
+        # Optional. Workload type of the deployment
+        # Corresponds to the JSON property `workloadType`
+        # @return [String]
+        attr_accessor :workload_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @sap_system_s4_config = args[:sap_system_s4_config] if args.key?(:sap_system_s4_config)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @sql_server_workload = args[:sql_server_workload] if args.key?(:sql_server_workload)
+          @state = args[:state] if args.key?(:state)
+          @terraform_variables = args[:terraform_variables] if args.key?(:terraform_variables)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
+          @workload_type = args[:workload_type] if args.key?(:workload_type)
+        end
+      end
+      
+      # Message for output of deployment resource
+      class DeploymentOutput
+        include Google::Apis::Core::Hashable
+      
+        # name of the resource
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # type of the resource
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1088,6 +1635,69 @@ module Google
         end
       end
       
+      # The response object from `ListActuations`.
+      class ListActuationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Actuation
+        # Corresponds to the JSON property `actuations`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::Actuation>]
+        attr_accessor :actuations
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actuations = args[:actuations] if args.key?(:actuations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing Deployments
+      class ListDeploymentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Deployment
+        # Corresponds to the JSON property `deployments`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::Deployment>]
+        attr_accessor :deployments
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployments = args[:deployments] if args.key?(:deployments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # List discovered profile Response returns discovered profiles from agents
       class ListDiscoveredProfilesResponse
         include Google::Apis::Core::Hashable
@@ -1364,6 +1974,95 @@ module Google
         end
       end
       
+      # Message for sap instant details
+      class LocationDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. create firewall, if true, create firewall for the deployment. This
+        # field provides an option to not always create firewall for the deployment.
+        # Corresponds to the JSON property `createCommsFirewall`
+        # @return [Boolean]
+        attr_accessor :create_comms_firewall
+        alias_method :create_comms_firewall?, :create_comms_firewall
+      
+        # Optional. network tags
+        # Corresponds to the JSON property `customTags`
+        # @return [Array<String>]
+        attr_accessor :custom_tags
+      
+        # Optional. when user skip DNS configuration from UI, deployment_dns_enabled=
+        # false otherwise deployment_dns_enabled=true
+        # Corresponds to the JSON property `deploymentDnsEnabled`
+        # @return [Boolean]
+        attr_accessor :deployment_dns_enabled
+        alias_method :deployment_dns_enabled?, :deployment_dns_enabled
+      
+        # Optional. dns zone name
+        # Corresponds to the JSON property `dnsZone`
+        # @return [String]
+        attr_accessor :dns_zone
+      
+        # Optional. dns_zone_name_suffix
+        # Corresponds to the JSON property `dnsZoneNameSuffix`
+        # @return [String]
+        attr_accessor :dns_zone_name_suffix
+      
+        # 
+        # Corresponds to the JSON property `internetAccess`
+        # @return [String]
+        attr_accessor :internet_access
+      
+        # Optional. network project
+        # Corresponds to the JSON property `networkProject`
+        # @return [String]
+        attr_accessor :network_project
+      
+        # Required. region_name
+        # Corresponds to the JSON property `regionName`
+        # @return [String]
+        attr_accessor :region_name
+      
+        # Required. subnet_name
+        # Corresponds to the JSON property `subnetName`
+        # @return [String]
+        attr_accessor :subnet_name
+      
+        # Required. vpc_name
+        # Corresponds to the JSON property `vpcName`
+        # @return [String]
+        attr_accessor :vpc_name
+      
+        # Required. zone1_name
+        # Corresponds to the JSON property `zone1Name`
+        # @return [String]
+        attr_accessor :zone1_name
+      
+        # Optional. zone2_name
+        # Corresponds to the JSON property `zone2Name`
+        # @return [String]
+        attr_accessor :zone2_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_comms_firewall = args[:create_comms_firewall] if args.key?(:create_comms_firewall)
+          @custom_tags = args[:custom_tags] if args.key?(:custom_tags)
+          @deployment_dns_enabled = args[:deployment_dns_enabled] if args.key?(:deployment_dns_enabled)
+          @dns_zone = args[:dns_zone] if args.key?(:dns_zone)
+          @dns_zone_name_suffix = args[:dns_zone_name_suffix] if args.key?(:dns_zone_name_suffix)
+          @internet_access = args[:internet_access] if args.key?(:internet_access)
+          @network_project = args[:network_project] if args.key?(:network_project)
+          @region_name = args[:region_name] if args.key?(:region_name)
+          @subnet_name = args[:subnet_name] if args.key?(:subnet_name)
+          @vpc_name = args[:vpc_name] if args.key?(:vpc_name)
+          @zone1_name = args[:zone1_name] if args.key?(:zone1_name)
+          @zone2_name = args[:zone2_name] if args.key?(:zone2_name)
+        end
+      end
+      
       # Message for additional information generated by the execution
       class Notice
         include Google::Apis::Core::Hashable
@@ -1527,6 +2226,55 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # pacemaker configuration
+      class Pacemaker
+        include Google::Apis::Core::Hashable
+      
+        # Required. bucket location for node certificates
+        # Corresponds to the JSON property `bucketNameNodeCertificates`
+        # @return [String]
+        attr_accessor :bucket_name_node_certificates
+      
+        # Required. pacemaker cluster name
+        # Corresponds to the JSON property `pacemakerCluster`
+        # @return [String]
+        attr_accessor :pacemaker_cluster
+      
+        # Required. pacemaker cluster secret name
+        # Corresponds to the JSON property `pacemakerClusterSecret`
+        # @return [String]
+        attr_accessor :pacemaker_cluster_secret
+      
+        # Required. pacemaker cluster username
+        # Corresponds to the JSON property `pacemakerClusterUsername`
+        # @return [String]
+        attr_accessor :pacemaker_cluster_username
+      
+        # Required. sql pacemaker secret name
+        # Corresponds to the JSON property `sqlPacemakerSecret`
+        # @return [String]
+        attr_accessor :sql_pacemaker_secret
+      
+        # Required. sql pacemaker username
+        # Corresponds to the JSON property `sqlPacemakerUsername`
+        # @return [String]
+        attr_accessor :sql_pacemaker_username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_name_node_certificates = args[:bucket_name_node_certificates] if args.key?(:bucket_name_node_certificates)
+          @pacemaker_cluster = args[:pacemaker_cluster] if args.key?(:pacemaker_cluster)
+          @pacemaker_cluster_secret = args[:pacemaker_cluster_secret] if args.key?(:pacemaker_cluster_secret)
+          @pacemaker_cluster_username = args[:pacemaker_cluster_username] if args.key?(:pacemaker_cluster_username)
+          @sql_pacemaker_secret = args[:sql_pacemaker_secret] if args.key?(:sql_pacemaker_secret)
+          @sql_pacemaker_username = args[:sql_pacemaker_username] if args.key?(:sql_pacemaker_username)
         end
       end
       
@@ -2565,6 +3313,100 @@ module Google
         end
       end
       
+      # Message for sap system workload
+      class SapSystemS4Config
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `allowStoppingForUpdate`
+        # @return [Boolean]
+        attr_accessor :allow_stopping_for_update
+        alias_method :allow_stopping_for_update?, :allow_stopping_for_update
+      
+        # Ansible runner service account - let custoemrs bring their own SA for Ansible
+        # runner
+        # Corresponds to the JSON property `ansibleRunnerServiceAccount`
+        # @return [String]
+        attr_accessor :ansible_runner_service_account
+      
+        # Message for sap instant details
+        # Corresponds to the JSON property `app`
+        # @return [Google::Apis::WorkloadmanagerV1::AppDetails]
+        attr_accessor :app
+      
+        # Message for sap instant details
+        # Corresponds to the JSON property `database`
+        # @return [Google::Apis::WorkloadmanagerV1::DatabaseDetails]
+        attr_accessor :database
+      
+        # Required. two model non-HA and HA supported
+        # Corresponds to the JSON property `deploymentModel`
+        # @return [String]
+        attr_accessor :deployment_model
+      
+        # Required. deployment environment
+        # Corresponds to the JSON property `environmentType`
+        # @return [String]
+        attr_accessor :environment_type
+      
+        # the project that infrastructure deployed, current only support the same
+        # project where the deployment resource exist.
+        # Corresponds to the JSON property `gcpProjectId`
+        # @return [String]
+        attr_accessor :gcp_project_id
+      
+        # Message for sap instant details
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::WorkloadmanagerV1::LocationDetails]
+        attr_accessor :location
+      
+        # Required. media_bucket_name
+        # Corresponds to the JSON property `mediaBucketName`
+        # @return [String]
+        attr_accessor :media_bucket_name
+      
+        # Optional. sap_boot_disk_image
+        # Corresponds to the JSON property `sapBootDiskImage`
+        # @return [String]
+        attr_accessor :sap_boot_disk_image
+      
+        # Required. support scale up and scale out
+        # Corresponds to the JSON property `scalingMethod`
+        # @return [String]
+        attr_accessor :scaling_method
+      
+        # Required. sap hana version
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        # vm_prefix
+        # Corresponds to the JSON property `vmPrefix`
+        # @return [String]
+        attr_accessor :vm_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_stopping_for_update = args[:allow_stopping_for_update] if args.key?(:allow_stopping_for_update)
+          @ansible_runner_service_account = args[:ansible_runner_service_account] if args.key?(:ansible_runner_service_account)
+          @app = args[:app] if args.key?(:app)
+          @database = args[:database] if args.key?(:database)
+          @deployment_model = args[:deployment_model] if args.key?(:deployment_model)
+          @environment_type = args[:environment_type] if args.key?(:environment_type)
+          @gcp_project_id = args[:gcp_project_id] if args.key?(:gcp_project_id)
+          @location = args[:location] if args.key?(:location)
+          @media_bucket_name = args[:media_bucket_name] if args.key?(:media_bucket_name)
+          @sap_boot_disk_image = args[:sap_boot_disk_image] if args.key?(:sap_boot_disk_image)
+          @scaling_method = args[:scaling_method] if args.key?(:scaling_method)
+          @version = args[:version] if args.key?(:version)
+          @vm_prefix = args[:vm_prefix] if args.key?(:vm_prefix)
+        end
+      end
+      
       # A presentation of SAP workload insight. The schema of SAP workloads validation
       # related data.
       class SapValidation
@@ -2753,6 +3595,199 @@ module Google
         end
       end
       
+      # Location and networking details for configuring SQL server workload
+      class SqlLocationDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. create a new DNS Zone when the field is empty, Only show for `Using
+        # an existing DNS` List of existing DNS Zones tf variable name:
+        # existing_dns_zone_name
+        # Corresponds to the JSON property `dnsZone`
+        # @return [String]
+        attr_accessor :dns_zone
+      
+        # Required. the project that infrastructure deployed, currently only supports
+        # the same project where the deployment resource exists.
+        # Corresponds to the JSON property `gcpProjectId`
+        # @return [String]
+        attr_accessor :gcp_project_id
+      
+        # Required. Internet Access
+        # Corresponds to the JSON property `internetAccess`
+        # @return [String]
+        attr_accessor :internet_access
+      
+        # Required. network name
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Required. primary zone
+        # Corresponds to the JSON property `primaryZone`
+        # @return [String]
+        attr_accessor :primary_zone
+      
+        # Required. region name
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Optional. secondary zone can't be same as primary_zone and is only for High
+        # Availability deployment mode
+        # Corresponds to the JSON property `secondaryZone`
+        # @return [String]
+        attr_accessor :secondary_zone
+      
+        # Required. subnetwork name
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        # Optional. teriary zone can't be same as primary_zone and secondary zone, and
+        # it is only for High Availability deployment mode
+        # Corresponds to the JSON property `tertiaryZone`
+        # @return [String]
+        attr_accessor :tertiary_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_zone = args[:dns_zone] if args.key?(:dns_zone)
+          @gcp_project_id = args[:gcp_project_id] if args.key?(:gcp_project_id)
+          @internet_access = args[:internet_access] if args.key?(:internet_access)
+          @network = args[:network] if args.key?(:network)
+          @primary_zone = args[:primary_zone] if args.key?(:primary_zone)
+          @region = args[:region] if args.key?(:region)
+          @secondary_zone = args[:secondary_zone] if args.key?(:secondary_zone)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @tertiary_zone = args[:tertiary_zone] if args.key?(:tertiary_zone)
+        end
+      end
+      
+      # Message for MS SQL workload
+      class SqlServerWorkload
+        include Google::Apis::Core::Hashable
+      
+        # Active directory details
+        # Corresponds to the JSON property `activeDirectory`
+        # @return [Google::Apis::WorkloadmanagerV1::ActiveDirectory]
+        attr_accessor :active_directory
+      
+        # Compute engine service account - let customers bring their own SA for Compute
+        # engine
+        # Corresponds to the JSON property `computeEngineServiceAccount`
+        # @return [String]
+        attr_accessor :compute_engine_service_account
+      
+        # Database details
+        # Corresponds to the JSON property `database`
+        # @return [Google::Apis::WorkloadmanagerV1::Database]
+        attr_accessor :database
+      
+        # Required. HIGH_AVAILABILITY or SINGLE_INSTANCE
+        # Corresponds to the JSON property `deploymentModel`
+        # @return [String]
+        attr_accessor :deployment_model
+      
+        # Required. deployment environment
+        # Corresponds to the JSON property `environmentType`
+        # @return [String]
+        attr_accessor :environment_type
+      
+        # Optional. SHARED_DISK or S2D
+        # Corresponds to the JSON property `fciType`
+        # @return [String]
+        attr_accessor :fci_type
+      
+        # Optional. AOAG or FCI, it is only needed for High Availability deployment mode
+        # Corresponds to the JSON property `haType`
+        # @return [String]
+        attr_accessor :ha_type
+      
+        # Required. SQL licensing type
+        # Corresponds to the JSON property `isSqlPayg`
+        # @return [Boolean]
+        attr_accessor :is_sql_payg
+        alias_method :is_sql_payg?, :is_sql_payg
+      
+        # Location and networking details for configuring SQL server workload
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::WorkloadmanagerV1::SqlLocationDetails]
+        attr_accessor :location
+      
+        # Required. name of the media storing SQL server installation files
+        # Corresponds to the JSON property `mediaBucket`
+        # @return [String]
+        attr_accessor :media_bucket
+      
+        # Required. type of the operating system the SQL server is going to run on top
+        # of
+        # Corresponds to the JSON property `operatingSystemType`
+        # @return [String]
+        attr_accessor :operating_system_type
+      
+        # Required. the image of the operating system
+        # Corresponds to the JSON property `osImage`
+        # @return [String]
+        attr_accessor :os_image
+      
+        # Optional. OS image type, it's used to create boot disks for VM instances When
+        # either Windows licensing type or SQL licensing type is BYOL, this option is
+        # disabled and default to custom image
+        # Corresponds to the JSON property `osImageType`
+        # @return [String]
+        attr_accessor :os_image_type
+      
+        # pacemaker configuration
+        # Corresponds to the JSON property `pacemaker`
+        # @return [Google::Apis::WorkloadmanagerV1::Pacemaker]
+        attr_accessor :pacemaker
+      
+        # Optional. SQL Server Edition type, only applicable when Operating System is
+        # Linux
+        # Corresponds to the JSON property `sqlServerEdition`
+        # @return [String]
+        attr_accessor :sql_server_edition
+      
+        # Optional. 2017 or 2019 or 2022
+        # Corresponds to the JSON property `sqlServerVersion`
+        # @return [String]
+        attr_accessor :sql_server_version
+      
+        # Required. should be unique in the project
+        # Corresponds to the JSON property `vmPrefix`
+        # @return [String]
+        attr_accessor :vm_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_directory = args[:active_directory] if args.key?(:active_directory)
+          @compute_engine_service_account = args[:compute_engine_service_account] if args.key?(:compute_engine_service_account)
+          @database = args[:database] if args.key?(:database)
+          @deployment_model = args[:deployment_model] if args.key?(:deployment_model)
+          @environment_type = args[:environment_type] if args.key?(:environment_type)
+          @fci_type = args[:fci_type] if args.key?(:fci_type)
+          @ha_type = args[:ha_type] if args.key?(:ha_type)
+          @is_sql_payg = args[:is_sql_payg] if args.key?(:is_sql_payg)
+          @location = args[:location] if args.key?(:location)
+          @media_bucket = args[:media_bucket] if args.key?(:media_bucket)
+          @operating_system_type = args[:operating_system_type] if args.key?(:operating_system_type)
+          @os_image = args[:os_image] if args.key?(:os_image)
+          @os_image_type = args[:os_image_type] if args.key?(:os_image_type)
+          @pacemaker = args[:pacemaker] if args.key?(:pacemaker)
+          @sql_server_edition = args[:sql_server_edition] if args.key?(:sql_server_edition)
+          @sql_server_version = args[:sql_server_version] if args.key?(:sql_server_version)
+          @vm_prefix = args[:vm_prefix] if args.key?(:vm_prefix)
+        end
+      end
+      
       # A presentation of SQLServer workload insight. The schema of SqlServer
       # workloads validation related data.
       class SqlserverValidation
@@ -2904,6 +3939,28 @@ module Google
           @failures = args[:failures] if args.key?(:failures)
           @new_failures = args[:new_failures] if args.key?(:new_failures)
           @new_fixes = args[:new_fixes] if args.key?(:new_fixes)
+        end
+      end
+      
+      # In order to align with Infra Manager dependency, we create the same
+      # TerraformVariable message to represent a Terraform input variable, by
+      # following Infra Manager's API documentation: https://cloud.google.com/
+      # infrastructure-manager/docs/reference/rest A Terraform input variable.
+      class TerraformVariable
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Input variable value.
+        # Corresponds to the JSON property `inputValue`
+        # @return [Object]
+        attr_accessor :input_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_value = args[:input_value] if args.key?(:input_value)
         end
       end
       

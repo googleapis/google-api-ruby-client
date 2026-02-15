@@ -134,6 +134,317 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new Deployment in a given project and location.
+        # @param [String] parent
+        #   Required. The resource prefix of the Deployment using the form: `projects/`
+        #   project_id`/locations/`location_id``
+        # @param [Google::Apis::WorkloadmanagerV1::Deployment] deployment_object
+        # @param [String] deployment_id
+        #   Required. Id of the deployment
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkloadmanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkloadmanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_deployment(parent, deployment_object = nil, deployment_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/deployments', options)
+          command.request_representation = Google::Apis::WorkloadmanagerV1::Deployment::Representation
+          command.request_object = deployment_object
+          command.response_representation = Google::Apis::WorkloadmanagerV1::Operation::Representation
+          command.response_class = Google::Apis::WorkloadmanagerV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['deploymentId'] = deployment_id unless deployment_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single Deployment.
+        # @param [String] name
+        #   Required. Name of the resource
+        # @param [Boolean] force
+        #   Optional. If set to true, any actuation will also be deleted. Followed the
+        #   best practice from https://aip.dev/135#cascading-delete
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkloadmanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkloadmanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_deployment(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::WorkloadmanagerV1::Operation::Representation
+          command.response_class = Google::Apis::WorkloadmanagerV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Deployment.
+        # @param [String] name
+        #   Required. Name of the resource. The format will be 'projects/`project_id`/
+        #   locations/`location_id`/deployments/`deployment_id`'
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkloadmanagerV1::Deployment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkloadmanagerV1::Deployment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_deployment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::WorkloadmanagerV1::Deployment::Representation
+          command.response_class = Google::Apis::WorkloadmanagerV1::Deployment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Deployments in a given project and location.
+        # @param [String] parent
+        #   Required. The resource prefix of the Deployment using the form: `projects/`
+        #   project_id`/locations/`location_id``
+        # @param [String] filter
+        #   Optional. Filter resource follow https://google.aip.dev/160
+        # @param [String] order_by
+        #   Optional. Field to sort by. See https://google.aip.dev/132#ordering for more
+        #   details.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkloadmanagerV1::ListDeploymentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkloadmanagerV1::ListDeploymentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_deployments(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/deployments', options)
+          command.response_representation = Google::Apis::WorkloadmanagerV1::ListDeploymentsResponse::Representation
+          command.response_class = Google::Apis::WorkloadmanagerV1::ListDeploymentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new actuation for an existing Deployment.
+        # @param [String] parent
+        #   Required. The resource name of the Actuation location using the form: '
+        #   projects/`project_id`/locations/`location`/deployments/`deployment`'
+        # @param [Google::Apis::WorkloadmanagerV1::Actuation] actuation_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and the request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkloadmanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkloadmanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_deployment_actuation(parent, actuation_object = nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/actuations', options)
+          command.request_representation = Google::Apis::WorkloadmanagerV1::Actuation::Representation
+          command.request_object = actuation_object
+          command.response_representation = Google::Apis::WorkloadmanagerV1::Operation::Representation
+          command.response_class = Google::Apis::WorkloadmanagerV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single Actuation
+        # @param [String] name
+        #   Required. The name of the book to delete. project/`project_id`/locations/`
+        #   location_id`/deployments/`deployment_id`/actuations/`actuation_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkloadmanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkloadmanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_deployment_actuation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::WorkloadmanagerV1::Operation::Representation
+          command.response_class = Google::Apis::WorkloadmanagerV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Actuation.
+        # @param [String] name
+        #   Required. Name of the resource
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkloadmanagerV1::Actuation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkloadmanagerV1::Actuation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_deployment_actuation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::WorkloadmanagerV1::Actuation::Representation
+          command.response_class = Google::Apis::WorkloadmanagerV1::Actuation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Actuations in a given project, location and deployment.
+        # @param [String] parent
+        #   Required. The resource prefix of the Actuation using the form: 'projects/`
+        #   project_id`/locations/`location`/deployments/`deployment`'
+        # @param [String] filter
+        #   Optional. Filtering results
+        # @param [String] order_by
+        #   Optional. Field to sort by. See https://google.aip.dev/132#ordering for more
+        #   details.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkloadmanagerV1::ListActuationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkloadmanagerV1::ListActuationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_deployment_actuations(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/actuations', options)
+          command.response_representation = Google::Apis::WorkloadmanagerV1::ListActuationsResponse::Representation
+          command.response_class = Google::Apis::WorkloadmanagerV1::ListActuationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets details of a discovered workload profile.
         # @param [String] name
         #   Required. Name of the resource
