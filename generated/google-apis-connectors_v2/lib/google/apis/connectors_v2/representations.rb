@@ -148,6 +148,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateCustomToolspecRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateCustomToolspecResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetResourcePostRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +191,12 @@ module Google
       end
       
       class ListActionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCustomToolNamesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -341,6 +359,12 @@ module Google
       end
       
       class ToolAnnotations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ToolName
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -577,6 +601,22 @@ module Google
         end
       end
       
+      class GenerateCustomToolspecRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tool_names, as: 'toolNames', class: Google::Apis::ConnectorsV2::ToolName, decorator: Google::Apis::ConnectorsV2::ToolName::Representation
+      
+        end
+      end
+      
+      class GenerateCustomToolspecResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tool_spec, as: 'toolSpec', class: Google::Apis::ConnectorsV2::ToolSpec, decorator: Google::Apis::ConnectorsV2::ToolSpec::Representation
+      
+        end
+      end
+      
       class GetResourcePostRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -665,6 +705,14 @@ module Google
           hash :metadata, as: 'metadata'
           property :next_page_token, as: 'nextPageToken'
           collection :unsupported_action_names, as: 'unsupportedActionNames'
+        end
+      end
+      
+      class ListCustomToolNamesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tool_names, as: 'toolNames', class: Google::Apis::ConnectorsV2::ToolName, decorator: Google::Apis::ConnectorsV2::ToolName::Representation
+      
         end
       end
       
@@ -941,6 +989,15 @@ module Google
           property :open_world_hint, as: 'openWorldHint'
           property :read_only_hint, as: 'readOnlyHint'
           property :title, as: 'title'
+        end
+      end
+      
+      class ToolName
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_name, as: 'entityName'
+          property :name, as: 'name'
+          property :operation, as: 'operation'
         end
       end
       

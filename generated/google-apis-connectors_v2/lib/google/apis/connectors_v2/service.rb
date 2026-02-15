@@ -189,6 +189,71 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generate toolspec override for the given list of toolNames.
+        # @param [String] name
+        #   Required. Resource name of the Connection. Format: projects/`project`/
+        #   locations/`location`/connections/`connection`
+        # @param [Google::Apis::ConnectorsV2::GenerateCustomToolspecRequest] generate_custom_toolspec_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV2::GenerateCustomToolspecResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV2::GenerateCustomToolspecResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_connection_connection_toolspec_override(name, generate_custom_toolspec_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:generateConnectionToolspecOverride', options)
+          command.request_representation = Google::Apis::ConnectorsV2::GenerateCustomToolspecRequest::Representation
+          command.request_object = generate_custom_toolspec_request_object
+          command.response_representation = Google::Apis::ConnectorsV2::GenerateCustomToolspecResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV2::GenerateCustomToolspecResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists custom tool names.
+        # @param [String] name
+        #   Required. Resource name of the Connection. Format: projects/`project`/
+        #   locations/`location`/connections/`connection`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV2::ListCustomToolNamesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV2::ListCustomToolNamesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_connection_custom_tool_names(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}:listCustomToolNames', options)
+          command.response_representation = Google::Apis::ConnectorsV2::ListCustomToolNamesResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV2::ListCustomToolNamesResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # RefreshAccessToken exchanges the OAuth refresh token (and other necessary data)
         # for a new access token (and new associated credentials).
         # @param [String] name
