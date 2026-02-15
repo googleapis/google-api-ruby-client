@@ -751,6 +751,21 @@ module Google
         # @return [String]
         attr_accessor :destination_instance_name
       
+        # Optional. The fully qualified URI of the VPC network to which the cloned
+        # instance will be connected via Private Services Access for private IP. For
+        # example:`projects/my-network-project/global/networks/my-network`. This field
+        # is only required for cross-project cloning.
+        # Corresponds to the JSON property `destinationNetwork`
+        # @return [String]
+        attr_accessor :destination_network
+      
+        # Optional. The project ID of the destination project where the cloned instance
+        # will be created. To perform a cross-project clone, this field is required. If
+        # not specified, the clone is created in the same project as the source instance.
+        # Corresponds to the JSON property `destinationProject`
+        # @return [String]
+        attr_accessor :destination_project
+      
         # This is always `sql#cloneContext`.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -798,6 +813,8 @@ module Google
           @bin_log_coordinates = args[:bin_log_coordinates] if args.key?(:bin_log_coordinates)
           @database_names = args[:database_names] if args.key?(:database_names)
           @destination_instance_name = args[:destination_instance_name] if args.key?(:destination_instance_name)
+          @destination_network = args[:destination_network] if args.key?(:destination_network)
+          @destination_project = args[:destination_project] if args.key?(:destination_project)
           @kind = args[:kind] if args.key?(:kind)
           @pitr_timestamp_ms = args[:pitr_timestamp_ms] if args.key?(:pitr_timestamp_ms)
           @point_in_time = args[:point_in_time] if args.key?(:point_in_time)
@@ -5726,42 +5743,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Instance restore backup request for MCP.
-      class SqlInstancesRestoreBackupMcpRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The identifier of the backup to restore. This will be one of the
-        # following: 1. An int64 containing a backup_run_id. 2. A backup name of the
-        # format 'projects/`project`/backups/`backup-uid`'. 3. A backupDR name of the
-        # format 'projects/`project`/locations/`location`/backupVaults/`backupvault`/
-        # dataSources/`datasource`/backups/`backup-uid`'.
-        # Corresponds to the JSON property `backupId`
-        # @return [String]
-        attr_accessor :backup_id
-      
-        # Optional. The Cloud SQL instance ID of the source instance containing the
-        # backup. Only necessary if the backup_id is a backup_run_id.
-        # Corresponds to the JSON property `sourceInstance`
-        # @return [String]
-        attr_accessor :source_instance
-      
-        # Required. The project ID of the source instance containing the backup.
-        # Corresponds to the JSON property `sourceProject`
-        # @return [String]
-        attr_accessor :source_project
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @backup_id = args[:backup_id] if args.key?(:backup_id)
-          @source_instance = args[:source_instance] if args.key?(:source_instance)
-          @source_project = args[:source_project] if args.key?(:source_project)
         end
       end
       
