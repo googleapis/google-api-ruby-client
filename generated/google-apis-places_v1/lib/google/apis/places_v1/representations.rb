@@ -797,6 +797,8 @@ module Google
           property :good_for_watching_sports, as: 'goodForWatchingSports'
           property :google_maps_links, as: 'googleMapsLinks', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceGoogleMapsLinks, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceGoogleMapsLinks::Representation
       
+          property :google_maps_type_label, as: 'googleMapsTypeLabel', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
           property :google_maps_uri, as: 'googleMapsUri'
           property :icon_background_color, as: 'iconBackgroundColor'
           property :icon_mask_base_uri, as: 'iconMaskBaseUri'
