@@ -1484,6 +1484,12 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2Condition]
         attr_accessor :terminal_condition
       
+        # Optional. Duration the instance may be active before the system will shut it
+        # down.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
         # Output only. Server assigned unique identifier for the trigger. The value is a
         # UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         # Corresponds to the JSON property `uid`
@@ -1549,6 +1555,7 @@ module Google
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
           @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
+          @timeout = args[:timeout] if args.key?(:timeout)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @urls = args[:urls] if args.key?(:urls)
@@ -2337,7 +2344,7 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Condition>]
         attr_accessor :conditions
       
-        # Holds the single container that defines the unit of execution for this
+        # Containers holds the list which define the units of execution for this
         # Revision.
         # Corresponds to the JSON property `containers`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Container>]
@@ -2579,6 +2586,17 @@ module Google
       class GoogleCloudRunV2RevisionScaling
         include Google::Apis::Core::Hashable
       
+        # Optional. Determines a threshold for concurrency utilization before scaling
+        # begins.
+        # Corresponds to the JSON property `concurrencyUtilization`
+        # @return [Float]
+        attr_accessor :concurrency_utilization
+      
+        # Optional. Determines a threshold for CPU utilization before scaling begins.
+        # Corresponds to the JSON property `cpuUtilization`
+        # @return [Float]
+        attr_accessor :cpu_utilization
+      
         # Optional. Maximum number of serving instances that this resource should have.
         # When unspecified, the field is set to the server default value of 100. For
         # more information see https://cloud.google.com/run/docs/configuring/max-
@@ -2598,6 +2616,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @concurrency_utilization = args[:concurrency_utilization] if args.key?(:concurrency_utilization)
+          @cpu_utilization = args[:cpu_utilization] if args.key?(:cpu_utilization)
           @max_instance_count = args[:max_instance_count] if args.key?(:max_instance_count)
           @min_instance_count = args[:min_instance_count] if args.key?(:min_instance_count)
         end
