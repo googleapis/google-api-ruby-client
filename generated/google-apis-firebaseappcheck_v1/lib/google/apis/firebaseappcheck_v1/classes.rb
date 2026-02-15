@@ -1296,7 +1296,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The App Check enforcement mode for this resource. This will override
-        # the EnforcementMode setting on the service.
+        # the App Check overall EnforcementMode setting on the service.
         # Corresponds to the JSON property `enforcementMode`
         # @return [String]
         attr_accessor :enforcement_mode
