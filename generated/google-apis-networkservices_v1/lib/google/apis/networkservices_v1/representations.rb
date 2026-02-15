@@ -1629,6 +1629,7 @@ module Google
           collection :rules, as: 'rules', class: Google::Apis::NetworkservicesV1::TlsRouteRouteRule, decorator: Google::Apis::NetworkservicesV1::TlsRouteRouteRule::Representation
       
           property :self_link, as: 'selfLink'
+          collection :target_proxies, as: 'targetProxies'
           property :update_time, as: 'updateTime'
         end
       end
