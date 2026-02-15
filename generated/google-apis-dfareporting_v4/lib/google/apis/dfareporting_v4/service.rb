@@ -3769,7 +3769,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retransforms a dynamic feed.
+        # Retransforms a dynamic feed. Only draft feeds can be retransformed (i.e. the
+        # feed has not been published).
         # @param [Fixnum] dynamic_feed_id
         #   Required. Dynamic feed ID.
         # @param [String] fields
@@ -3799,7 +3800,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a new dynamic feed.
+        # Updates a new dynamic feed. For draft feeds, only Element can be updated. For
+        # published feeds, only FeedSchedule can be updated. Other fields will be
+        # ignored.
         # @param [Google::Apis::DfareportingV4::DynamicFeed] dynamic_feed_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3829,7 +3832,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates code for a dynamic profile.
+        # Generates code for a dynamic profile, which will need unescaping.
         # @param [Fixnum] dynamic_profile_id
         #   Required. Dynamic profile ID.
         # @param [String] fields

@@ -2105,10 +2105,10 @@ module Google
         end
       end
       
-      # *Beta:* This feature is currently in beta. Contains additional information
-      # about cart data. This field may only be used when calling batchinsert; it is
-      # not supported by batchupdate. Cart data reporting is only supported in SA360. [
-      # Learn more](https://support.google.com/sa360/topic/13425788)
+      # Contains additional information about cart data. This field may only be used
+      # when calling batchinsert; it is not supported by batchupdate. Cart data
+      # reporting is only supported in SA360. [Learn more](https://support.google.com/
+      # sa360/topic/13425788)
       class CartData
         include Google::Apis::Core::Hashable
       
@@ -2913,10 +2913,10 @@ module Google
         # @return [String]
         attr_accessor :ad_user_data_consent
       
-        # *Beta:* This feature is currently in beta. Contains additional information
-        # about cart data. This field may only be used when calling batchinsert; it is
-        # not supported by batchupdate. Cart data reporting is only supported in SA360. [
-        # Learn more](https://support.google.com/sa360/topic/13425788)
+        # Contains additional information about cart data. This field may only be used
+        # when calling batchinsert; it is not supported by batchupdate. Cart data
+        # reporting is only supported in SA360. [Learn more](https://support.google.com/
+        # sa360/topic/13425788)
         # Corresponds to the JSON property `cartData`
         # @return [Google::Apis::DfareportingV4::CartData]
         attr_accessor :cart_data
@@ -6051,7 +6051,9 @@ module Google
         end
       end
       
-      # Contains dynamic feed information.
+      # *Beta:* This API resource is available only to a very limited number of
+      # customers. If you'd like to use this resource, please reach out to your Google
+      # sales representative. Contains dynamic feed information.
       class DynamicFeed
         include Google::Apis::Core::Hashable
       
@@ -6142,12 +6144,14 @@ module Google
       end
       
       # Dynamic profile ID is required for dynamic feed insert as the current GPA API
-      # only can create a dynamic feed under profile context,even though the dynnamic
-      # feed itself don't need the dynamic profile id. See
+      # only can create a dynamic feed under profile context,even though the dynamic
+      # feed itself don't need the dynamic profile id.
       class DynamicFeedsInsertRequest
         include Google::Apis::Core::Hashable
       
-        # Contains dynamic feed information.
+        # *Beta:* This API resource is available only to a very limited number of
+        # customers. If you'd like to use this resource, please reach out to your Google
+        # sales representative. Contains dynamic feed information.
         # Corresponds to the JSON property `dynamicFeed`
         # @return [Google::Apis::DfareportingV4::DynamicFeed]
         attr_accessor :dynamic_feed
@@ -6168,7 +6172,9 @@ module Google
         end
       end
       
-      # Contains dynamic profile information.
+      # *Beta:* This API resource is available only to a very limited number of
+      # customers. If you'd like to use this resource, please reach out to your Google
+      # sales representative. Contains dynamic profile information.
       class DynamicProfile
         include Google::Apis::Core::Hashable
       
@@ -6287,7 +6293,7 @@ module Google
       class DynamicProfileGenerateCodeResponse
         include Google::Apis::Core::Hashable
       
-        # Generated code for the dynamic profile.
+        # Generated code for the dynamic profile. The code will need to be unescaped.
         # Corresponds to the JSON property `code`
         # @return [String]
         attr_accessor :code
@@ -13132,7 +13138,9 @@ module Google
         end
       end
       
-      # Contains studio creative information.
+      # *Beta:* This API resource is available only to a very limited number of
+      # customers. If you'd like to use this resource, please reach out to your Google
+      # sales representative. Contains studio creative information.
       class StudioCreative
         include Google::Apis::Core::Hashable
       
@@ -13142,7 +13150,8 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :asset_ids
       
-        # Backup image asset ID of this studio creative.
+        # Backup image asset ID of this studio creative. It is a required field on
+        # insertion.
         # Corresponds to the JSON property `backupImageAssetId`
         # @return [Fixnum]
         attr_accessor :backup_image_asset_id
@@ -13229,7 +13238,9 @@ module Google
         end
       end
       
-      # Contains studio creative asset information.
+      # *Beta:* This API resource is available only to a very limited number of
+      # customers. If you'd like to use this resource, please reach out to your Google
+      # sales representative. Contains studio creative asset information.
       class StudioCreativeAsset
         include Google::Apis::Core::Hashable
       
