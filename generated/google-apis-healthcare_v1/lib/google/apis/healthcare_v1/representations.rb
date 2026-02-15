@@ -1770,6 +1770,7 @@ module Google
           property :count, :numeric_string => true, as: 'count'
           property :resource_type, as: 'resourceType'
           property :structured_storage_size_bytes, :numeric_string => true, as: 'structuredStorageSizeBytes'
+          property :versioned_storage_size_bytes, :numeric_string => true, as: 'versionedStorageSizeBytes'
         end
       end
       
