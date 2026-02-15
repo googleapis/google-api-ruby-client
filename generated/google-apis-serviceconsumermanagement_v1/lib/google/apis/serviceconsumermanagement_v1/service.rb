@@ -210,8 +210,8 @@ module Google
         #   the name of a service, for example 'service.googleapis.com'.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results returned by this request. Currently,
-        #   the default maximum is set to 1000. If `page_size` isn't provided or the size
-        #   provided is a number larger than 1000, it's automatically set to 1000.
+        #   the default maximum is set to 256. If `page_size` <= 256, the request proceeds.
+        #   Else, the request fails with an `TU_INVALID_PAGE_SIZE` error.
         # @param [String] page_token
         #   Optional. The continuation token, which is used to page through large result
         #   sets. To get the next page of results, set this parameter to the value of `
