@@ -306,6 +306,7 @@ module Google
           property :dry_run, as: 'dryRun'
           collection :error_summaries, as: 'errorSummaries', class: Google::Apis::StoragebatchoperationsV1::ErrorSummary, decorator: Google::Apis::StoragebatchoperationsV1::ErrorSummary::Representation
       
+          property :is_multi_bucket_job, as: 'isMultiBucketJob'
           property :logging_config, as: 'loggingConfig', class: Google::Apis::StoragebatchoperationsV1::LoggingConfig, decorator: Google::Apis::StoragebatchoperationsV1::LoggingConfig::Representation
       
           property :name, as: 'name'
