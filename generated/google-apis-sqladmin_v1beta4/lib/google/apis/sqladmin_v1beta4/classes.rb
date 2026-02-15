@@ -751,6 +751,21 @@ module Google
         # @return [String]
         attr_accessor :destination_instance_name
       
+        # Optional. The fully qualified URI of the VPC network to which the cloned
+        # instance will be connected via Private Services Access for private IP. For
+        # example:`projects/my-network-project/global/networks/my-network`. This field
+        # is only required for cross-project cloning.
+        # Corresponds to the JSON property `destinationNetwork`
+        # @return [String]
+        attr_accessor :destination_network
+      
+        # Optional. The project ID of the destination project where the cloned instance
+        # will be created. To perform a cross-project clone, this field is required. If
+        # not specified, the clone is created in the same project as the source instance.
+        # Corresponds to the JSON property `destinationProject`
+        # @return [String]
+        attr_accessor :destination_project
+      
         # This is always `sql#cloneContext`.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -797,6 +812,8 @@ module Google
           @bin_log_coordinates = args[:bin_log_coordinates] if args.key?(:bin_log_coordinates)
           @database_names = args[:database_names] if args.key?(:database_names)
           @destination_instance_name = args[:destination_instance_name] if args.key?(:destination_instance_name)
+          @destination_network = args[:destination_network] if args.key?(:destination_network)
+          @destination_project = args[:destination_project] if args.key?(:destination_project)
           @kind = args[:kind] if args.key?(:kind)
           @pitr_timestamp_ms = args[:pitr_timestamp_ms] if args.key?(:pitr_timestamp_ms)
           @point_in_time = args[:point_in_time] if args.key?(:point_in_time)

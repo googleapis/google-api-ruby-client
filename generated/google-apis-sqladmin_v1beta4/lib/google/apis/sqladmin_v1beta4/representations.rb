@@ -1097,6 +1097,8 @@ module Google
       
           collection :database_names, as: 'databaseNames'
           property :destination_instance_name, as: 'destinationInstanceName'
+          property :destination_network, as: 'destinationNetwork'
+          property :destination_project, as: 'destinationProject'
           property :kind, as: 'kind'
           property :pitr_timestamp_ms, :numeric_string => true, as: 'pitrTimestampMs'
           property :point_in_time, as: 'pointInTime'
