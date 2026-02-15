@@ -1700,7 +1700,7 @@ module Google
       end
       
       # Properties of the SKU instances being reserved.
-      # Next ID: 9
+      # Next ID: 10
       class AllocationSpecificSkuAllocationReservedInstanceProperties
         include Google::Apis::Core::Hashable
       
@@ -1784,7 +1784,7 @@ module Google
         attr_accessor :in_use_count
       
         # Properties of the SKU instances being reserved.
-        # Next ID: 9
+        # Next ID: 10
         # Corresponds to the JSON property `instanceProperties`
         # @return [Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationReservedInstanceProperties]
         attr_accessor :instance_properties
@@ -3636,6 +3636,12 @@ module Google
         # @return [Float]
         attr_accessor :max_utilization
       
+        # A message containing information about the resource or system that manages
+        # the backend.
+        # Corresponds to the JSON property `orchestrationInfo`
+        # @return [Google::Apis::ComputeAlpha::BackendBackendOrchestrationInfo]
+        attr_accessor :orchestration_info
+      
         # This field indicates whether this backend should be fully utilized before
         # sending traffic to backends with default preference. The possible values
         # are:
@@ -3690,9 +3696,30 @@ module Google
           @max_rate_per_endpoint = args[:max_rate_per_endpoint] if args.key?(:max_rate_per_endpoint)
           @max_rate_per_instance = args[:max_rate_per_instance] if args.key?(:max_rate_per_instance)
           @max_utilization = args[:max_utilization] if args.key?(:max_utilization)
+          @orchestration_info = args[:orchestration_info] if args.key?(:orchestration_info)
           @preference = args[:preference] if args.key?(:preference)
           @service = args[:service] if args.key?(:service)
           @traffic_duration = args[:traffic_duration] if args.key?(:traffic_duration)
+        end
+      end
+      
+      # A message containing information about the resource or system that manages
+      # the backend.
+      class BackendBackendOrchestrationInfo
+        include Google::Apis::Core::Hashable
+      
+        # The URI of the resource or system that manages the backend.
+        # Corresponds to the JSON property `resourceUri`
+        # @return [String]
+        attr_accessor :resource_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
         end
       end
       
@@ -5053,6 +5080,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::BackendServiceNetworkPassThroughLbTrafficPolicy]
         attr_accessor :network_pass_through_lb_traffic_policy
       
+        # A message containing information about the resource or system that manages
+        # the backend service.
+        # Corresponds to the JSON property `orchestrationInfo`
+        # @return [Google::Apis::ComputeAlpha::BackendServiceOrchestrationInfo]
+        attr_accessor :orchestration_info
+      
         # Settings controlling the eviction of unhealthy hosts from the load balancing
         # pool for the backend service.
         # Corresponds to the JSON property `outlierDetection`
@@ -5246,6 +5279,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @network_pass_through_lb_traffic_policy = args[:network_pass_through_lb_traffic_policy] if args.key?(:network_pass_through_lb_traffic_policy)
+          @orchestration_info = args[:orchestration_info] if args.key?(:orchestration_info)
           @outlier_detection = args[:outlier_detection] if args.key?(:outlier_detection)
           @params = args[:params] if args.key?(:params)
           @port = args[:port] if args.key?(:port)
@@ -6665,6 +6699,27 @@ module Google
         def update!(**args)
           @spillover = args[:spillover] if args.key?(:spillover)
           @spillover_ratio = args[:spillover_ratio] if args.key?(:spillover_ratio)
+        end
+      end
+      
+      # A message containing information about the resource or system that manages
+      # the backend service.
+      class BackendServiceOrchestrationInfo
+        include Google::Apis::Core::Hashable
+      
+        # The resource URI of the resource or system that manages the backend
+        # service.
+        # Corresponds to the JSON property `resourceUri`
+        # @return [String]
+        attr_accessor :resource_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
         end
       end
       
@@ -8388,6 +8443,12 @@ module Google
       class CapacityAdviceRequestInstancePropertiesScheduling
         include Google::Apis::Core::Hashable
       
+        # The maximum time that instances can run before Compute Engine
+        # terminates them.
+        # Corresponds to the JSON property `maxRunDuration`
+        # @return [String]
+        attr_accessor :max_run_duration
+      
         # Specifies the provisioning model of the instance.
         # Corresponds to the JSON property `provisioningModel`
         # @return [String]
@@ -8399,6 +8460,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @max_run_duration = args[:max_run_duration] if args.key?(:max_run_duration)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
         end
       end
@@ -8459,6 +8521,12 @@ module Google
         # @return [String]
         attr_accessor :estimated_uptime
       
+        # Output only. The likely maximum time that you will have to wait until
+        # Compute Engine provisions your instances.
+        # Corresponds to the JSON property `estimatedWaitDuration`
+        # @return [String]
+        attr_accessor :estimated_wait_duration
+      
         # The obtainability score indicates the likelihood of successfully
         # obtaining (provisioning) the requested number of VMs.
         # The score range is 0.0 through 1.0. Higher is better.
@@ -8482,6 +8550,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @estimated_uptime = args[:estimated_uptime] if args.key?(:estimated_uptime)
+          @estimated_wait_duration = args[:estimated_wait_duration] if args.key?(:estimated_wait_duration)
           @obtainability = args[:obtainability] if args.key?(:obtainability)
           @uptime_score = args[:uptime_score] if args.key?(:uptime_score)
         end
@@ -9582,6 +9651,39 @@ module Google
         end
       end
       
+      # Response message for RegionCompositeHealthChecks.GetHealth
+      class CompositeHealthCheckHealth
+        include Google::Apis::Core::Hashable
+      
+        # Health sources and their corresponding health states.
+        # Corresponds to the JSON property `healthSources`
+        # @return [Array<Google::Apis::ComputeAlpha::CompositeHealthChecksGetHealthResponseHealthSourceHealth>]
+        attr_accessor :health_sources
+      
+        # Health state of the CompositeHealthCheck.
+        # Corresponds to the JSON property `healthState`
+        # @return [String]
+        attr_accessor :health_state
+      
+        # Output only. [Output Only] Type of resource. Alwayscompute#
+        # compositeHealthCheckHealth for the health of
+        # composite health checks.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @health_sources = args[:health_sources] if args.key?(:health_sources)
+          @health_state = args[:health_state] if args.key?(:health_state)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
       # 
       class CompositeHealthCheckList
         include Google::Apis::Core::Hashable
@@ -9707,31 +9809,6 @@ module Google
         end
       end
       
-      # Response message for RegionCompositeHealthChecks.GetHealth
-      class CompositeHealthChecksGetHealthResponse
-        include Google::Apis::Core::Hashable
-      
-        # Health sources and their corresponding health states.
-        # Corresponds to the JSON property `healthSources`
-        # @return [Array<Google::Apis::ComputeAlpha::CompositeHealthChecksGetHealthResponseHealthSourceHealth>]
-        attr_accessor :health_sources
-      
-        # Health state of the CompositeHealthCheck.
-        # Corresponds to the JSON property `healthState`
-        # @return [String]
-        attr_accessor :health_state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @health_sources = args[:health_sources] if args.key?(:health_sources)
-          @health_state = args[:health_state] if args.key?(:health_state)
-        end
-      end
-      
       # 
       class CompositeHealthChecksGetHealthResponseHealthSourceHealth
         include Google::Apis::Core::Hashable
@@ -9741,7 +9818,7 @@ module Google
         # @return [String]
         attr_accessor :health_state
       
-        # URL of the associated HealthSource resource.
+        # Fully qualified URL of the associated HealthSource resource.
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -10553,6 +10630,100 @@ module Google
         def update!(**args)
           @day = args[:day] if args.key?(:day)
           @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
+      # Represents civil time (or occasionally physical time).
+      # This type can represent a civil time in one of a few possible ways:
+      # * When utc_offset is set and time_zone is unset: a civil time on a calendar
+      # day with a particular offset from UTC.
+      # * When time_zone is set and utc_offset is unset: a civil time on a calendar
+      # day in a particular time zone.
+      # * When neither time_zone nor utc_offset is set: a civil time on a calendar
+      # day in local time.
+      # The date is relative to the Proleptic Gregorian Calendar.
+      # If year, month, or day are 0, the DateTime is considered not to have a
+      # specific year, month, or day respectively.
+      # This type may also be used to represent a physical time if all the date and
+      # time fields are set and either case of the `time_offset` oneof is set.
+      # Consider using `Timestamp` message for physical time instead. If your use
+      # case also would like to store the user's timezone, that can be done in
+      # another field.
+      # This type is more flexible than some applications may want. Make sure to
+      # document and validate your application's limitations.
+      class DateTime
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Day of month. Must be from 1 to 31 and valid for the year and
+        # month, or 0 if specifying a datetime without a day.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults
+        # to 0 (midnight). An API may choose to allow the value "24:00:00" for
+        # scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Optional. Month of year. Must be from 1 to 12, or 0 if specifying a
+        # datetime without a month.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Optional. Fractions of seconds in nanoseconds. Must be from 0 to
+        # 999,999,999, defaults to 0.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Optional. Seconds of minutes of the time. Must normally be from 0 to 59,
+        # defaults to 0. An API may allow the value 60 if it allows leap-seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        # Represents a time zone from the
+        # [IANA Time Zone Database](https://www.iana.org/time-zones).
+        # Corresponds to the JSON property `timeZone`
+        # @return [Google::Apis::ComputeAlpha::TimeZone]
+        attr_accessor :time_zone
+      
+        # UTC offset. Must be whole seconds, between -18 hours and +18 hours.
+        # For example, a UTC offset of -4:00 would be represented as
+        # ` seconds: -14400 `.
+        # Corresponds to the JSON property `utcOffset`
+        # @return [String]
+        attr_accessor :utc_offset
+      
+        # Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a
+        # datetime without a year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @month = args[:month] if args.key?(:month)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @utc_offset = args[:utc_offset] if args.key?(:utc_offset)
           @year = args[:year] if args.key?(:year)
         end
       end
@@ -11457,6 +11628,58 @@ module Google
         # Update properties of this object
         def update!(**args)
           @async_replication_disk = args[:async_replication_disk] if args.key?(:async_replication_disk)
+        end
+      end
+      
+      # 
+      class DiskConvertParams
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `forceStopInProgressSnapshot`
+        # @return [Boolean]
+        attr_accessor :force_stop_in_progress_snapshot
+        alias_method :force_stop_in_progress_snapshot?, :force_stop_in_progress_snapshot
+      
+        # 
+        # Corresponds to the JSON property `provisionedIops`
+        # @return [Fixnum]
+        attr_accessor :provisioned_iops
+      
+        # 
+        # Corresponds to the JSON property `provisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :provisioned_throughput
+      
+        # 
+        # Corresponds to the JSON property `quickConversionOnly`
+        # @return [Boolean]
+        attr_accessor :quick_conversion_only
+        alias_method :quick_conversion_only?, :quick_conversion_only
+      
+        # 
+        # Corresponds to the JSON property `resetSupportedVmFamilies`
+        # @return [Boolean]
+        attr_accessor :reset_supported_vm_families
+        alias_method :reset_supported_vm_families?, :reset_supported_vm_families
+      
+        # 
+        # Corresponds to the JSON property `targetDiskType`
+        # @return [String]
+        attr_accessor :target_disk_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force_stop_in_progress_snapshot = args[:force_stop_in_progress_snapshot] if args.key?(:force_stop_in_progress_snapshot)
+          @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
+          @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
+          @quick_conversion_only = args[:quick_conversion_only] if args.key?(:quick_conversion_only)
+          @reset_supported_vm_families = args[:reset_supported_vm_families] if args.key?(:reset_supported_vm_families)
+          @target_disk_type = args[:target_disk_type] if args.key?(:target_disk_type)
         end
       end
       
@@ -12426,6 +12649,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
+        end
+      end
+      
+      # 
+      class DisksConvertRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeAlpha::DiskConvertParams]
+        attr_accessor :params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @params = args[:params] if args.key?(:params)
         end
       end
       
@@ -16002,6 +16244,12 @@ module Google
       class FutureReservation
         include Google::Apis::Core::Hashable
       
+        # Advance control for cluster management, applicable only to DENSE deployment
+        # type reservations.
+        # Corresponds to the JSON property `advancedDeploymentControl`
+        # @return [Google::Apis::ComputeAlpha::ReservationAdvancedDeploymentControl]
+        attr_accessor :advanced_deployment_control
+      
         # This reservation type is specified by total resource amounts (e.g. total
         # count of CPUs) and can account for multiple instance SKUs. In other words,
         # one can create instances of varying shapes against this reservation.
@@ -16042,6 +16290,11 @@ module Google
         # Corresponds to the JSON property `commitmentInfo`
         # @return [Google::Apis::ComputeAlpha::FutureReservationCommitmentInfo]
         attr_accessor :commitment_info
+      
+        # 
+        # Corresponds to the JSON property `confidentialComputeType`
+        # @return [String]
+        attr_accessor :confidential_compute_type
       
         # Output only. [Output Only] The creation timestamp for this future reservation
         # inRFC3339
@@ -16183,11 +16436,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_deployment_control = args[:advanced_deployment_control] if args.key?(:advanced_deployment_control)
           @aggregate_reservation = args[:aggregate_reservation] if args.key?(:aggregate_reservation)
           @auto_created_reservations_delete_time = args[:auto_created_reservations_delete_time] if args.key?(:auto_created_reservations_delete_time)
           @auto_created_reservations_duration = args[:auto_created_reservations_duration] if args.key?(:auto_created_reservations_duration)
           @auto_delete_auto_created_reservations = args[:auto_delete_auto_created_reservations] if args.key?(:auto_delete_auto_created_reservations)
           @commitment_info = args[:commitment_info] if args.key?(:commitment_info)
+          @confidential_compute_type = args[:confidential_compute_type] if args.key?(:confidential_compute_type)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
           @description = args[:description] if args.key?(:description)
@@ -16252,7 +16507,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Properties of the SKU instances being reserved.
-        # Next ID: 9
+        # Next ID: 10
         # Corresponds to the JSON property `instanceProperties`
         # @return [Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationReservedInstanceProperties]
         attr_accessor :instance_properties
@@ -17347,6 +17602,52 @@ module Google
         # Update properties of this object
         def update!(**args)
           @instance = args[:instance] if args.key?(:instance)
+        end
+      end
+      
+      # 
+      class GetVersionOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `inlineSbomInfo`
+        # @return [Google::Apis::ComputeAlpha::GetVersionOperationMetadataSbomInfo]
+        attr_accessor :inline_sbom_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inline_sbom_info = args[:inline_sbom_info] if args.key?(:inline_sbom_info)
+        end
+      end
+      
+      # 
+      class GetVersionOperationMetadataSbomInfo
+        include Google::Apis::Core::Hashable
+      
+        # SBOM versions currently applied to the resource. The key is the component
+        # name and the value is the version.
+        # Corresponds to the JSON property `currentComponentVersions`
+        # @return [Hash<String,String>]
+        attr_accessor :current_component_versions
+      
+        # SBOM versions scheduled for the next maintenance. The key is the
+        # component name and the value is the version.
+        # Corresponds to the JSON property `targetComponentVersions`
+        # @return [Hash<String,String>]
+        attr_accessor :target_component_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_component_versions = args[:current_component_versions] if args.key?(:current_component_versions)
+          @target_component_versions = args[:target_component_versions] if args.key?(:target_component_versions)
         end
       end
       
@@ -18821,7 +19122,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Advanced configuration option. If specified, these Backend Services need to
-        # be pre-created and configured as managed.
+        # be pre-created.
+        # Currently, only one backend service can be specified, and it must be L4
+        # Internal Load Balancer (ILB).
         # Corresponds to the JSON property `backendServices`
         # @return [Array<String>]
         attr_accessor :backend_services
@@ -21831,6 +22134,38 @@ module Google
         end
       end
       
+      # Response message for RegionHealthSources.GetHealth
+      class HealthSourceHealth
+        include Google::Apis::Core::Hashable
+      
+        # Health state of the HealthSource.
+        # Corresponds to the JSON property `healthState`
+        # @return [String]
+        attr_accessor :health_state
+      
+        # Output only. [Output Only] Type of resource. Alwayscompute#healthSourceHealth
+        # for the health of health sources.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Health state details of the sources.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<Google::Apis::ComputeAlpha::HealthSourcesGetHealthResponseSourceInfo>]
+        attr_accessor :sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @health_state = args[:health_state] if args.key?(:health_state)
+          @kind = args[:kind] if args.key?(:kind)
+          @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
       # 
       class HealthSourceList
         include Google::Apis::Core::Hashable
@@ -21953,6 +22288,75 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class HealthSourcesGetHealthResponseSourceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Represents an instance group or network endpoint group behind the source
+        # backend service. Only used if the sourceType of the regionHealthSource
+        # is BACKEND_SERVICE.
+        # Corresponds to the JSON property `backends`
+        # @return [Array<Google::Apis::ComputeAlpha::HealthSourcesGetHealthResponseSourceInfoBackendInfo>]
+        attr_accessor :backends
+      
+        # Fully qualified URL of the forwarding rule associated with the source
+        # resource if it is a L4ILB backend service.
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        # Fully qualified URL of the associated source resource. This is always a
+        # backend service URL.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backends = args[:backends] if args.key?(:backends)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # 
+      class HealthSourcesGetHealthResponseSourceInfoBackendInfo
+        include Google::Apis::Core::Hashable
+      
+        # Total number of endpoints when determining the health of the
+        # regionHealthSource.
+        # Corresponds to the JSON property `endpointCount`
+        # @return [Fixnum]
+        attr_accessor :endpoint_count
+      
+        # Fully qualified URL of an instance group or network endpoint group
+        # behind the source backend service.
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
+      
+        # Number of endpoints considered healthy when determining health of the
+        # regionHealthSource.
+        # Corresponds to the JSON property `healthyEndpointCount`
+        # @return [Fixnum]
+        attr_accessor :healthy_endpoint_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint_count = args[:endpoint_count] if args.key?(:endpoint_count)
+          @group = args[:group] if args.key?(:group)
+          @healthy_endpoint_count = args[:healthy_endpoint_count] if args.key?(:healthy_endpoint_count)
         end
       end
       
@@ -25848,6 +26252,13 @@ module Google
       
         # Output only. [Output Only] The number of instances in the managed instance
         # group that
+        # are scheduled to be restarted or are currently being restarted.
+        # Corresponds to the JSON property `restartingInPlace`
+        # @return [Fixnum]
+        attr_accessor :restarting_in_place
+      
+        # Output only. [Output Only] The number of instances in the managed instance
+        # group that
         # are scheduled to be resumed or are currently being resumed.
         # Corresponds to the JSON property `resuming`
         # @return [Fixnum]
@@ -25899,6 +26310,7 @@ module Google
           @recreating = args[:recreating] if args.key?(:recreating)
           @refreshing = args[:refreshing] if args.key?(:refreshing)
           @restarting = args[:restarting] if args.key?(:restarting)
+          @restarting_in_place = args[:restarting_in_place] if args.key?(:restarting_in_place)
           @resuming = args[:resuming] if args.key?(:resuming)
           @starting = args[:starting] if args.key?(:starting)
           @stopping = args[:stopping] if args.key?(:stopping)
@@ -27853,6 +28265,11 @@ module Google
       class InstanceGroupManagerUpdatePolicy
         include Google::Apis::Core::Hashable
       
+        # Whether the boot disk is allowed to be updated with restart.
+        # Corresponds to the JSON property `disruptionMode`
+        # @return [String]
+        attr_accessor :disruption_mode
+      
         # The
         # instance redistribution policy for regional managed instance groups.
         # Valid values are:
@@ -27931,6 +28348,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disruption_mode = args[:disruption_mode] if args.key?(:disruption_mode)
           @instance_redistribution_type = args[:instance_redistribution_type] if args.key?(:instance_redistribution_type)
           @max_surge = args[:max_surge] if args.key?(:max_surge)
           @max_unavailable = args[:max_unavailable] if args.key?(:max_unavailable)
@@ -28021,6 +28439,11 @@ module Google
         attr_accessor :all_instances
         alias_method :all_instances?, :all_instances
       
+        # Whether the boot disk is allowed to be updated with restart.
+        # Corresponds to the JSON property `disruptionMode`
+        # @return [String]
+        attr_accessor :disruption_mode
+      
         # The list of URLs of one or more instances for which you want to apply
         # updates. Each URL can be a full URL or a partial URL, such aszones/[ZONE]/
         # instances/[INSTANCE_NAME].
@@ -28078,10 +28501,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @all_instances = args[:all_instances] if args.key?(:all_instances)
+          @disruption_mode = args[:disruption_mode] if args.key?(:disruption_mode)
           @instances = args[:instances] if args.key?(:instances)
           @maximal_action = args[:maximal_action] if args.key?(:maximal_action)
           @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
           @most_disruptive_allowed_action = args[:most_disruptive_allowed_action] if args.key?(:most_disruptive_allowed_action)
+        end
+      end
+      
+      # InstanceGroupManagers.ConfigureAcceleratorTopologies
+      class InstanceGroupManagersConfigureAcceleratorTopologiesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Map of accelerator topologies that should have their state changed to
+        # the specified value. The key is the hashed topology locus id. It can be
+        # obtained from the GetAvailableAcceleratorTopologies rpc.
+        # Corresponds to the JSON property `acceleratorTopologyActions`
+        # @return [Hash<String,String>]
+        attr_accessor :accelerator_topology_actions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_topology_actions = args[:accelerator_topology_actions] if args.key?(:accelerator_topology_actions)
         end
       end
       
@@ -28177,6 +28622,11 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeAlpha::InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyInfo>]
         attr_accessor :accelerator_topologies_info
       
+        # URL to MMIG this MIG belongs to.
+        # Corresponds to the JSON property `multiMig`
+        # @return [String]
+        attr_accessor :multi_mig
+      
         def initialize(**args)
            update!(**args)
         end
@@ -28184,6 +28634,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerator_topologies_info = args[:accelerator_topologies_info] if args.key?(:accelerator_topologies_info)
+          @multi_mig = args[:multi_mig] if args.key?(:multi_mig)
         end
       end
       
@@ -28201,6 +28652,22 @@ module Google
         # @return [String]
         attr_accessor :accelerator_topology_health
       
+        # Specifies the topology state
+        # Corresponds to the JSON property `acceleratorTopologyState`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyState]
+        attr_accessor :accelerator_topology_state
+      
+        # 
+        # Corresponds to the JSON property `instancesHealth`
+        # @return [String]
+        attr_accessor :instances_health
+      
+        # Identified by the topology Id in the accelerator_topology_info map. Empty
+        # for the top-level topology
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
         def initialize(**args)
            update!(**args)
         end
@@ -28209,6 +28676,161 @@ module Google
         def update!(**args)
           @accelerator_topology = args[:accelerator_topology] if args.key?(:accelerator_topology)
           @accelerator_topology_health = args[:accelerator_topology_health] if args.key?(:accelerator_topology_health)
+          @accelerator_topology_state = args[:accelerator_topology_state] if args.key?(:accelerator_topology_state)
+          @instances_health = args[:instances_health] if args.key?(:instances_health)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # Specifies the topology state
+      class InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyState
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `currentState`
+        # @return [String]
+        attr_accessor :current_state
+      
+        # Reason why the topology state change failed
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyState::Error]
+        attr_accessor :error
+      
+        # Timestamp when the last error happened
+        # Corresponds to the JSON property `errorTimestamp`
+        # @return [String]
+        attr_accessor :error_timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_state = args[:current_state] if args.key?(:current_state)
+          @error = args[:error] if args.key?(:error)
+          @error_timestamp = args[:error_timestamp] if args.key?(:error_timestamp)
+        end
+        
+        # Reason why the topology state change failed
+        class Error
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] The array of errors encountered while processing this
+          # operation.
+          # Corresponds to the JSON property `errors`
+          # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyState::Error::Error>]
+          attr_accessor :errors
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @errors = args[:errors] if args.key?(:errors)
+          end
+          
+          # 
+          class Error
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] The error type identifier for this error.
+            # Corresponds to the JSON property `code`
+            # @return [String]
+            attr_accessor :code
+          
+            # [Output Only] An optional list of messages that contain the error
+            # details. There is a set of defined message types to use for providing
+            # details.The syntax depends on the error code. For example,
+            # QuotaExceededInfo will have details when the error code is
+            # QUOTA_EXCEEDED.
+            # Corresponds to the JSON property `errorDetails`
+            # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyState::Error::Error::ErrorDetail>]
+            attr_accessor :error_details
+          
+            # [Output Only] Indicates the field in the request that caused the error.
+            # This property is optional.
+            # Corresponds to the JSON property `location`
+            # @return [String]
+            attr_accessor :location
+          
+            # [Output Only] An optional, human-readable error message.
+            # Corresponds to the JSON property `message`
+            # @return [String]
+            attr_accessor :message
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @code = args[:code] if args.key?(:code)
+              @error_details = args[:error_details] if args.key?(:error_details)
+              @location = args[:location] if args.key?(:location)
+              @message = args[:message] if args.key?(:message)
+            end
+            
+            # 
+            class ErrorDetail
+              include Google::Apis::Core::Hashable
+            
+              # Describes the cause of the error with structured details.
+              # Example of an error when contacting the "pubsub.googleapis.com" API when it
+              # is not enabled:
+              # ` "reason": "API_DISABLED"
+              # "domain": "googleapis.com"
+              # "metadata": `
+              # "resource": "projects/123",
+              # "service": "pubsub.googleapis.com"
+              # `
+              # `
+              # This response indicates that the pubsub.googleapis.com API is not enabled.
+              # Example of an error that is returned when attempting to create a Spanner
+              # instance in a region that is out of stock:
+              # ` "reason": "STOCKOUT"
+              # "domain": "spanner.googleapis.com",
+              # "metadata": `
+              # "availableRegions": "us-central1,us-east2"
+              # `
+              # `
+              # Corresponds to the JSON property `errorInfo`
+              # @return [Google::Apis::ComputeAlpha::ErrorInfo]
+              attr_accessor :error_info
+            
+              # Provides links to documentation or for performing an out of band action.
+              # For example, if a quota check failed with an error indicating the calling
+              # project hasn't enabled the accessed service, this can contain a URL pointing
+              # directly to the right place in the developer console to flip the bit.
+              # Corresponds to the JSON property `help`
+              # @return [Google::Apis::ComputeAlpha::Help]
+              attr_accessor :help
+            
+              # Provides a localized error message that is safe to return to the user
+              # which can be attached to an RPC error.
+              # Corresponds to the JSON property `localizedMessage`
+              # @return [Google::Apis::ComputeAlpha::LocalizedMessage]
+              attr_accessor :localized_message
+            
+              # Additional details for quota exceeded error for resource quota.
+              # Corresponds to the JSON property `quotaInfo`
+              # @return [Google::Apis::ComputeAlpha::QuotaExceededInfo]
+              attr_accessor :quota_info
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @error_info = args[:error_info] if args.key?(:error_info)
+                @help = args[:help] if args.key?(:help)
+                @localized_message = args[:localized_message] if args.key?(:localized_message)
+                @quota_info = args[:quota_info] if args.key?(:quota_info)
+              end
+            end
+          end
         end
       end
       
@@ -32049,8 +32671,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Specific subzone in the InterconnectLocation that represents where
-        # this connection is to be provisioned.
+        # To be deprecated.
         # Corresponds to the JSON property `subzone`
         # @return [String]
         attr_accessor :subzone
@@ -42060,6 +42681,19 @@ module Google
       # reached, whether they are reachable, and where they are located.
       # For more information about using NEGs for different use cases, seeNetwork
       # endpoint groups overview.
+      # Note: Use the following APIs to manage network endpoint groups:
+      # 
+      # -
+      # To manage NEGs with zonal scope (such as zonal NEGs, hybrid connectivity
+      # NEGs): zonal
+      # API
+      # -
+      # To manage NEGs with regional scope (such as regional internet NEGs,
+      # serverless NEGs, Private Service Connect NEGs): regional
+      # API
+      # -
+      # To manage NEGs with global scope (such as global internet NEGs):global
+      # API
       class NetworkEndpointGroup
         include Google::Apis::Core::Hashable
       
@@ -48013,6 +48647,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Operation::Error]
         attr_accessor :error
       
+        # 
+        # Corresponds to the JSON property `getVersionOperationMetadata`
+        # @return [Google::Apis::ComputeAlpha::GetVersionOperationMetadata]
+        attr_accessor :get_version_operation_metadata
+      
         # [Output Only] If the operation fails, this field contains the HTTP error
         # message that was returned, such as `NOT FOUND`.
         # Corresponds to the JSON property `httpErrorMessage`
@@ -48166,6 +48805,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
+          @get_version_operation_metadata = args[:get_version_operation_metadata] if args.key?(:get_version_operation_metadata)
           @http_error_message = args[:http_error_message] if args.key?(:http_error_message)
           @http_error_status_code = args[:http_error_status_code] if args.key?(:http_error_status_code)
           @id = args[:id] if args.key?(:id)
@@ -49898,6 +50538,86 @@ module Google
           @name = args[:name] if args.key?(:name)
           @preserved_state = args[:preserved_state] if args.key?(:preserved_state)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The periodic partial maintenance schedule includes 52 weeks worth of
+      # maintenance windows.
+      # LINT.IfChange(PeriodicPartialMaintenanceSchedule)
+      class PeriodicPartialMaintenanceSchedule
+        include Google::Apis::Core::Hashable
+      
+        # The maintenance type in which the zone is during the given window.
+        # Corresponds to the JSON property `subType`
+        # @return [String]
+        attr_accessor :sub_type
+      
+        # The target resource that the maintenance window is for.
+        # For example, "projects/my-project/zones/us-central1-a".
+        # Corresponds to the JSON property `targetResource`
+        # @return [String]
+        attr_accessor :target_resource
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Represents civil time (or occasionally physical time).
+        # This type can represent a civil time in one of a few possible ways:
+        # * When utc_offset is set and time_zone is unset: a civil time on a calendar
+        # day with a particular offset from UTC.
+        # * When time_zone is set and utc_offset is unset: a civil time on a calendar
+        # day in a particular time zone.
+        # * When neither time_zone nor utc_offset is set: a civil time on a calendar
+        # day in local time.
+        # The date is relative to the Proleptic Gregorian Calendar.
+        # If year, month, or day are 0, the DateTime is considered not to have a
+        # specific year, month, or day respectively.
+        # This type may also be used to represent a physical time if all the date and
+        # time fields are set and either case of the `time_offset` oneof is set.
+        # Consider using `Timestamp` message for physical time instead. If your use
+        # case also would like to store the user's timezone, that can be done in
+        # another field.
+        # This type is more flexible than some applications may want. Make sure to
+        # document and validate your application's limitations.
+        # Corresponds to the JSON property `windowEndTime`
+        # @return [Google::Apis::ComputeAlpha::DateTime]
+        attr_accessor :window_end_time
+      
+        # Represents civil time (or occasionally physical time).
+        # This type can represent a civil time in one of a few possible ways:
+        # * When utc_offset is set and time_zone is unset: a civil time on a calendar
+        # day with a particular offset from UTC.
+        # * When time_zone is set and utc_offset is unset: a civil time on a calendar
+        # day in a particular time zone.
+        # * When neither time_zone nor utc_offset is set: a civil time on a calendar
+        # day in local time.
+        # The date is relative to the Proleptic Gregorian Calendar.
+        # If year, month, or day are 0, the DateTime is considered not to have a
+        # specific year, month, or day respectively.
+        # This type may also be used to represent a physical time if all the date and
+        # time fields are set and either case of the `time_offset` oneof is set.
+        # Consider using `Timestamp` message for physical time instead. If your use
+        # case also would like to store the user's timezone, that can be done in
+        # another field.
+        # This type is more flexible than some applications may want. Make sure to
+        # document and validate your application's limitations.
+        # Corresponds to the JSON property `windowStartTime`
+        # @return [Google::Apis::ComputeAlpha::DateTime]
+        attr_accessor :window_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sub_type = args[:sub_type] if args.key?(:sub_type)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
+          @type = args[:type] if args.key?(:type)
+          @window_end_time = args[:window_end_time] if args.key?(:window_end_time)
+          @window_start_time = args[:window_start_time] if args.key?(:window_start_time)
         end
       end
       
@@ -54706,6 +55426,11 @@ module Google
         attr_accessor :all_instances
         alias_method :all_instances?, :all_instances
       
+        # Whether the boot disk is allowed to be updated with restart.
+        # Corresponds to the JSON property `disruptionMode`
+        # @return [String]
+        attr_accessor :disruption_mode
+      
         # The list of URLs of one or more instances for which you want to apply
         # updates. Each URL can be a full URL or a partial URL, such aszones/[ZONE]/
         # instances/[INSTANCE_NAME].
@@ -54763,6 +55488,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @all_instances = args[:all_instances] if args.key?(:all_instances)
+          @disruption_mode = args[:disruption_mode] if args.key?(:disruption_mode)
           @instances = args[:instances] if args.key?(:instances)
           @maximal_action = args[:maximal_action] if args.key?(:maximal_action)
           @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
@@ -56182,6 +56908,11 @@ module Google
         # @return [String]
         attr_accessor :commitment
       
+        # 
+        # Corresponds to the JSON property `confidentialComputeType`
+        # @return [String]
+        attr_accessor :confidential_compute_type
+      
         # Output only. [Output Only] Creation timestamp inRFC3339
         # text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -56213,6 +56944,13 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Indicates the early access maintenance for the reservation.
+        # If this field is absent or set to NO_EARLY_ACCESS, the reservation is not
+        # enrolled in early access maintenance and the standard notice applies.
+        # Corresponds to the JSON property `earlyAccessMaintenance`
+        # @return [String]
+        attr_accessor :early_access_maintenance
       
         # Indicates whether Compute Engine allows unplanned maintenance for your VMs;
         # for example, to fix hardware errors.
@@ -56358,11 +57096,13 @@ module Google
           @advanced_deployment_control = args[:advanced_deployment_control] if args.key?(:advanced_deployment_control)
           @aggregate_reservation = args[:aggregate_reservation] if args.key?(:aggregate_reservation)
           @commitment = args[:commitment] if args.key?(:commitment)
+          @confidential_compute_type = args[:confidential_compute_type] if args.key?(:confidential_compute_type)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @delete_after_duration = args[:delete_after_duration] if args.key?(:delete_after_duration)
           @delete_at_time = args[:delete_at_time] if args.key?(:delete_at_time)
           @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
           @description = args[:description] if args.key?(:description)
+          @early_access_maintenance = args[:early_access_maintenance] if args.key?(:early_access_maintenance)
           @enable_emergent_maintenance = args[:enable_emergent_maintenance] if args.key?(:enable_emergent_maintenance)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
@@ -57298,6 +58038,25 @@ module Google
         end
       end
       
+      # 
+      class ReservationSlotsGetVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        # The SBOM selection to return. Duplicate values in the list will be ignored.
+        # Corresponds to the JSON property `sbomSelections`
+        # @return [Array<String>]
+        attr_accessor :sbom_selections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sbom_selections = args[:sbom_selections] if args.key?(:sbom_selections)
+        end
+      end
+      
       # A list of reservation slots within a single reservation.
       class ReservationSlotsListResponse
         include Google::Apis::Core::Hashable
@@ -57631,6 +58390,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # 
+      class ReservationSubBlocksGetVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        # The SBOM selection to return.
+        # Corresponds to the JSON property `sbomSelections`
+        # @return [Array<String>]
+        attr_accessor :sbom_selections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sbom_selections = args[:sbom_selections] if args.key?(:sbom_selections)
         end
       end
       
@@ -59370,6 +60148,12 @@ module Google
         attr_accessor :enable_oslogin_metadata_value
         alias_method :enable_oslogin_metadata_value?, :enable_oslogin_metadata_value
       
+        # Effective gce-container-declaration value at Instance level.
+        # Corresponds to the JSON property `gceContainerDeclarationMetadataValue`
+        # @return [Boolean]
+        attr_accessor :gce_container_declaration_metadata_value
+        alias_method :gce_container_declaration_metadata_value?, :gce_container_declaration_metadata_value
+      
         # Effective serial-port-enable value at Instance level.
         # Corresponds to the JSON property `serialPortEnableMetadataValue`
         # @return [Boolean]
@@ -59398,6 +60182,7 @@ module Google
           @enable_os_inventory_metadata_value = args[:enable_os_inventory_metadata_value] if args.key?(:enable_os_inventory_metadata_value)
           @enable_osconfig_metadata_value = args[:enable_osconfig_metadata_value] if args.key?(:enable_osconfig_metadata_value)
           @enable_oslogin_metadata_value = args[:enable_oslogin_metadata_value] if args.key?(:enable_oslogin_metadata_value)
+          @gce_container_declaration_metadata_value = args[:gce_container_declaration_metadata_value] if args.key?(:gce_container_declaration_metadata_value)
           @serial_port_enable_metadata_value = args[:serial_port_enable_metadata_value] if args.key?(:serial_port_enable_metadata_value)
           @serial_port_logging_enable_metadata_value = args[:serial_port_logging_enable_metadata_value] if args.key?(:serial_port_logging_enable_metadata_value)
           @vm_dns_setting_metadata_value = args[:vm_dns_setting_metadata_value] if args.key?(:vm_dns_setting_metadata_value)
@@ -70132,6 +70917,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # One of DEFAULT, ENABLED, orDEFERRED. Controls whether the load balancer allows
+        # negotiating X25519MLKEM768 key exchange when clients advertise support for
+        # it. When set to DEFAULT, or if no SSL Policy is
+        # attached to the target proxy, the load balancer disallows X25519MLKEM768
+        # key exchange until it is enabled by default on LBs. When set toENABLED, the
+        # load balancer will negotiate X25519MLKEM768 key
+        # exchange. Customers can set this to DEFERRED to temporarily
+        # opt-out the LB from negotiating post-quantum key exchange by default.
+        # Corresponds to the JSON property `postQuantumKeyExchange`
+        # @return [String]
+        attr_accessor :post_quantum_key_exchange
+      
         # Profile specifies the set of SSL features that can be used by the load
         # balancer when negotiating SSL with clients. This can be one ofCOMPATIBLE,
         # MODERN, RESTRICTED, orCUSTOM. If using CUSTOM, the set of SSL features
@@ -70184,6 +70981,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @min_tls_version = args[:min_tls_version] if args.key?(:min_tls_version)
           @name = args[:name] if args.key?(:name)
+          @post_quantum_key_exchange = args[:post_quantum_key_exchange] if args.key?(:post_quantum_key_exchange)
           @profile = args[:profile] if args.key?(:profile)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -77168,6 +77966,32 @@ module Google
         end
       end
       
+      # Represents a time zone from the
+      # [IANA Time Zone Database](https://www.iana.org/time-zones).
+      class TimeZone
+        include Google::Apis::Core::Hashable
+      
+        # IANA Time Zone Database time zone. For example "America/New_York".
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. IANA Time Zone Database version number. For example "2019a".
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # [Deprecated] Defines the mechanism to obtain the client or server
       # certificate.
       # Defines the mechanism to obtain the client or server certificate.
@@ -82010,6 +82834,11 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # 
+        # Corresponds to the JSON property `resourceStatus`
+        # @return [Google::Apis::ComputeAlpha::ZoneResourceStatus]
+        attr_accessor :resource_status
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -82040,6 +82869,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
+          @resource_status = args[:resource_status] if args.key?(:resource_status)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
           @supports_pzs = args[:supports_pzs] if args.key?(:supports_pzs)
@@ -82167,6 +82997,25 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class ZoneResourceStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] The upcoming maintenance schedule.
+        # Corresponds to the JSON property `upcomingMaintenances`
+        # @return [Array<Google::Apis::ComputeAlpha::PeriodicPartialMaintenanceSchedule>]
+        attr_accessor :upcoming_maintenances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @upcoming_maintenances = args[:upcoming_maintenances] if args.key?(:upcoming_maintenances)
         end
       end
       
