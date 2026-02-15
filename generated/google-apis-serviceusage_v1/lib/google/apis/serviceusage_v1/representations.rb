@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AspectRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthProvider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -957,7 +963,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
+          collection :rules, as: 'rules', class: Google::Apis::ServiceusageV1::AspectRule, decorator: Google::Apis::ServiceusageV1::AspectRule::Representation
+      
           hash :spec, as: 'spec'
+        end
+      end
+      
+      class AspectRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :config, as: 'config'
+          property :selector, as: 'selector'
         end
       end
       
