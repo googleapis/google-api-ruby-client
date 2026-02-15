@@ -490,6 +490,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleSearchToolPromptConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Guardrail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1312,6 +1318,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :disabled, as: 'disabled'
+          property :proactive_execution_enabled, as: 'proactiveExecutionEnabled'
           property :python_code, as: 'pythonCode'
         end
       end
@@ -1876,6 +1883,16 @@ module Google
           collection :exclude_domains, as: 'excludeDomains'
           property :name, as: 'name'
           collection :preferred_domains, as: 'preferredDomains'
+          property :prompt_config, as: 'promptConfig', class: Google::Apis::CesV1::GoogleSearchToolPromptConfig, decorator: Google::Apis::CesV1::GoogleSearchToolPromptConfig::Representation
+      
+        end
+      end
+      
+      class GoogleSearchToolPromptConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text_prompt, as: 'textPrompt'
+          property :voice_prompt, as: 'voicePrompt'
         end
       end
       
@@ -1991,6 +2008,7 @@ module Google
           property :app_id, as: 'appId'
           property :display_name, as: 'displayName'
           property :gcs_uri, as: 'gcsUri'
+          property :ignore_app_lock, as: 'ignoreAppLock'
           property :import_options, as: 'importOptions', class: Google::Apis::CesV1::ImportAppRequestImportOptions, decorator: Google::Apis::CesV1::ImportAppRequestImportOptions::Representation
       
         end
