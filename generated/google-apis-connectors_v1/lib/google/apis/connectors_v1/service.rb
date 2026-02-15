@@ -144,7 +144,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # can be called in two ways: * **List all public locations:** Use the path `GET /
+        # v1/locations`. * **List project-visible locations:** Use the path `GET /v1/
+        # projects/`project_id`/locations`. This may include public locations as well as
+        # private or other locations specifically visible to the project.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
@@ -297,6 +301,42 @@ module Google
           command.response_class = Google::Apis::ConnectorsV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['force'] = force unless force.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates Toolspec Override for a connection for the given list of entityTypes
+        # and operations. Returns results from the db if the entityType and operation
+        # are already present.
+        # @param [String] name
+        #   Required. Resource name format: projects/`project`/locations/`location`/
+        #   connections/`connection`
+        # @param [Google::Apis::ConnectorsV1::GenerateConnectionToolspecOverrideRequest] generate_connection_toolspec_override_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::GenerateConnectionToolspecOverrideResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::GenerateConnectionToolspecOverrideResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_connection_toolspec_override(name, generate_connection_toolspec_override_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:generateToolspecOverride', options)
+          command.request_representation = Google::Apis::ConnectorsV1::GenerateConnectionToolspecOverrideRequest::Representation
+          command.request_object = generate_connection_toolspec_override_request_object
+          command.response_representation = Google::Apis::ConnectorsV1::GenerateConnectionToolspecOverrideResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV1::GenerateConnectionToolspecOverrideResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -493,6 +533,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates Toolspec Override for a connection with the admin provided
+        # descriptions.
+        # @param [String] name
+        #   Required. Resource name format: projects/`project`/locations/`location`/
+        #   connections/`connection`
+        # @param [Google::Apis::ConnectorsV1::ModifyConnectionToolspecOverrideRequest] modify_connection_toolspec_override_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::ModifyConnectionToolspecOverrideResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::ModifyConnectionToolspecOverrideResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def modify_project_location_connection_toolspec_override(name, modify_connection_toolspec_override_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:modifyToolspecOverride', options)
+          command.request_representation = Google::Apis::ConnectorsV1::ModifyConnectionToolspecOverrideRequest::Representation
+          command.request_object = modify_connection_toolspec_override_request_object
+          command.response_representation = Google::Apis::ConnectorsV1::ModifyConnectionToolspecOverrideResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV1::ModifyConnectionToolspecOverrideResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the parameters of a single Connection.
         # @param [String] name
         #   Output only. Resource name of the Connection. Format: projects/`project`/
@@ -533,6 +608,40 @@ module Google
           command.response_class = Google::Apis::ConnectorsV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes all Toolspec Override for a connection.
+        # @param [String] name
+        #   Required. Resource name format: projects/`project`/locations/`location`/
+        #   connections/`connection`
+        # @param [Google::Apis::ConnectorsV1::RemoveConnectionToolspecOverrideRequest] remove_connection_toolspec_override_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_project_location_connection_toolspec_override(name, remove_connection_toolspec_override_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:removeToolspecOverride', options)
+          command.request_representation = Google::Apis::ConnectorsV1::RemoveConnectionToolspecOverrideRequest::Representation
+          command.request_object = remove_connection_toolspec_override_request_object
+          command.response_representation = Google::Apis::ConnectorsV1::Empty::Representation
+          command.response_class = Google::Apis::ConnectorsV1::Empty
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

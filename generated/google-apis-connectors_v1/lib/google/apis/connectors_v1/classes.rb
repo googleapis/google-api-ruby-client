@@ -3746,6 +3746,45 @@ module Google
         end
       end
       
+      # Request message for GenerateConnectionToolspecOverride API.
+      class GenerateConnectionToolspecOverrideRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of tools for which the tool spec override is to be generated.
+        # Corresponds to the JSON property `toolNames`
+        # @return [Array<Google::Apis::ConnectorsV1::ToolName>]
+        attr_accessor :tool_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_names = args[:tool_names] if args.key?(:tool_names)
+        end
+      end
+      
+      # Response message for GenerateConnectionToolspecOverride API.
+      class GenerateConnectionToolspecOverrideResponse
+        include Google::Apis::Core::Hashable
+      
+        # Toolspec overrides for a connection only holds the information that is to be
+        # displayed in the UI for admins.
+        # Corresponds to the JSON property `toolspecOverride`
+        # @return [Google::Apis::ConnectorsV1::ToolspecOverride]
+        attr_accessor :toolspec_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @toolspec_override = args[:toolspec_override] if args.key?(:toolspec_override)
+        end
+      end
+      
       # Autoscaling config for connector deployment system metrics.
       class HpaConfig
         include Google::Apis::Core::Hashable
@@ -5093,6 +5132,46 @@ module Google
         end
       end
       
+      # Request message for ModifyConnectionToolspecOverride API.
+      class ModifyConnectionToolspecOverrideRequest
+        include Google::Apis::Core::Hashable
+      
+        # Toolspec overrides for a connection only holds the information that is to be
+        # displayed in the UI for admins.
+        # Corresponds to the JSON property `toolspecOverride`
+        # @return [Google::Apis::ConnectorsV1::ToolspecOverride]
+        attr_accessor :toolspec_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @toolspec_override = args[:toolspec_override] if args.key?(:toolspec_override)
+        end
+      end
+      
+      # Response message for ModifyConnectionToolspecOverride API.
+      class ModifyConnectionToolspecOverrideResponse
+        include Google::Apis::Core::Hashable
+      
+        # Toolspec overrides for a connection only holds the information that is to be
+        # displayed in the UI for admins.
+        # Corresponds to the JSON property `toolspecOverrides`
+        # @return [Google::Apis::ConnectorsV1::ToolspecOverride]
+        attr_accessor :toolspec_overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @toolspec_overrides = args[:toolspec_overrides] if args.key?(:toolspec_overrides)
+        end
+      end
+      
       # MultipleSelectConfig represents the multiple options for a config variable.
       class MultipleSelectConfig
         include Google::Apis::Core::Hashable
@@ -6114,6 +6193,19 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
           @provisioned = args[:provisioned] if args.key?(:provisioned)
+        end
+      end
+      
+      # Request message for RemoveConnectionToolspecOverride API.
+      class RemoveConnectionToolspecOverrideRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -7178,6 +7270,71 @@ module Google
           @minutes = args[:minutes] if args.key?(:minutes)
           @nanos = args[:nanos] if args.key?(:nanos)
           @seconds = args[:seconds] if args.key?(:seconds)
+        end
+      end
+      
+      # Tool name for which the tool spec override is to be generated.
+      class ToolName
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Entity type name for which the tool was generated.
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        # Required. Tool name that was generated in the list tools call.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Operation for which the tool was generated.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @name = args[:name] if args.key?(:name)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
+      # Toolspec overrides for a connection only holds the information that is to be
+      # displayed in the UI for admins.
+      class ToolspecOverride
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Created time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. List of tools defined in the tool spec. Marking this field as
+        # required as this is the only field that is editable by the user in modify API
+        # so we should have at least one tool in the list.
+        # Corresponds to the JSON property `tools`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :tools
+      
+        # Output only. Updated time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @tools = args[:tools] if args.key?(:tools)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
