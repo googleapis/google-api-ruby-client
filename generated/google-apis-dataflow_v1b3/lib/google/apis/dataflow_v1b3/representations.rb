@@ -1871,6 +1871,7 @@ module Google
           hash :labels, as: 'labels'
           property :location, as: 'location'
           property :name, as: 'name'
+          property :pausable, as: 'pausable'
           property :pipeline_description, as: 'pipelineDescription', class: Google::Apis::DataflowV1b3::PipelineDescription, decorator: Google::Apis::DataflowV1b3::PipelineDescription::Representation
       
           property :project_id, as: 'projectId'
@@ -2481,6 +2482,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acceptable_backlog_duration, as: 'acceptableBacklogDuration'
+          property :autoscaling_tier, as: 'autoscalingTier'
           property :max_num_workers, as: 'maxNumWorkers'
           property :min_num_workers, as: 'minNumWorkers'
           property :worker_utilization_hint, as: 'workerUtilizationHint'

@@ -2569,6 +2569,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Indicates whether the job can be paused.
+        # Corresponds to the JSON property `pausable`
+        # @return [Boolean]
+        attr_accessor :pausable
+        alias_method :pausable?, :pausable
+      
         # A descriptive representation of submitted pipeline as well as the executed
         # form. This data is provided by the Dataflow service for ease of visualizing
         # the pipeline and interpreting Dataflow provided metrics.
@@ -2696,6 +2702,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @pausable = args[:pausable] if args.key?(:pausable)
           @pipeline_description = args[:pipeline_description] if args.key?(:pipeline_description)
           @project_id = args[:project_id] if args.key?(:project_id)
           @replace_job_id = args[:replace_job_id] if args.key?(:replace_job_id)
@@ -4844,11 +4851,17 @@ module Google
       class RuntimeUpdatableParams
         include Google::Apis::Core::Hashable
       
-        # Optional. The backlog threshold duration in seconds for autoscaling. Value
-        # must be non-negative.
+        # Optional. Deprecated: Use `autoscaling_tier` instead. The backlog threshold
+        # duration in seconds for autoscaling. Value must be non-negative.
         # Corresponds to the JSON property `acceptableBacklogDuration`
         # @return [String]
         attr_accessor :acceptable_backlog_duration
+      
+        # Optional. The backlog threshold tier for autoscaling. Value must be one of "
+        # low-latency", "medium-latency", or "high-latency".
+        # Corresponds to the JSON property `autoscalingTier`
+        # @return [String]
+        attr_accessor :autoscaling_tier
       
         # The maximum number of workers to cap autoscaling at. This field is currently
         # only supported for Streaming Engine jobs.
@@ -4878,6 +4891,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @acceptable_backlog_duration = args[:acceptable_backlog_duration] if args.key?(:acceptable_backlog_duration)
+          @autoscaling_tier = args[:autoscaling_tier] if args.key?(:autoscaling_tier)
           @max_num_workers = args[:max_num_workers] if args.key?(:max_num_workers)
           @min_num_workers = args[:min_num_workers] if args.key?(:min_num_workers)
           @worker_utilization_hint = args[:worker_utilization_hint] if args.key?(:worker_utilization_hint)
