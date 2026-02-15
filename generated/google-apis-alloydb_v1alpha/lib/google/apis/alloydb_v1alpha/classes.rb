@@ -4876,6 +4876,18 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo
         include Google::Apis::Core::Hashable
       
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `currentVersionReleaseDate`
+        # @return [Google::Apis::AlloydbV1alpha::GoogleTypeDate]
+        attr_accessor :current_version_release_date
+      
         # Optional. List of Deny maintenance period for the database resource.
         # Corresponds to the JSON property `denyMaintenanceSchedules`
         # @return [Array<Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule>]
@@ -4913,26 +4925,19 @@ module Google
         # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance]
         attr_accessor :upcoming_maintenance
       
-        # Optional. This field will contain the date when the last version update was
-        # applied to the database resource. This will be used to calculate the age of
-        # the maintenance version.
-        # Corresponds to the JSON property `versionUpdateTime`
-        # @return [String]
-        attr_accessor :version_update_time
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @current_version_release_date = args[:current_version_release_date] if args.key?(:current_version_release_date)
           @deny_maintenance_schedules = args[:deny_maintenance_schedules] if args.key?(:deny_maintenance_schedules)
           @is_instance_stopped = args[:is_instance_stopped] if args.key?(:is_instance_stopped)
           @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
           @maintenance_state = args[:maintenance_state] if args.key?(:maintenance_state)
           @maintenance_version = args[:maintenance_version] if args.key?(:maintenance_version)
           @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
-          @version_update_time = args[:version_update_time] if args.key?(:version_update_time)
         end
       end
       
