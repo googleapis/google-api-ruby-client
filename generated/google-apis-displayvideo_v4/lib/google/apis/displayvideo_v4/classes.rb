@@ -121,17 +121,17 @@ module Google
       class AdGroup
         include Google::Apis::Core::Hashable
       
-        # The format of the ads in the ad group.
+        # Required. The format of the ads in the ad group.
         # Corresponds to the JSON property `adGroupFormat`
         # @return [String]
         attr_accessor :ad_group_format
       
-        # The unique ID of the ad group. Assigned by the system.
+        # Output only. The unique ID of the ad group. Assigned by the system.
         # Corresponds to the JSON property `adGroupId`
         # @return [Fixnum]
         attr_accessor :ad_group_id
       
-        # The unique ID of the advertiser the ad group belongs to.
+        # Output only. The unique ID of the advertiser the ad group belongs to.
         # Corresponds to the JSON property `advertiserId`
         # @return [Fixnum]
         attr_accessor :advertiser_id
@@ -141,25 +141,25 @@ module Google
         # @return [Google::Apis::DisplayvideoV4::BiddingStrategy]
         attr_accessor :bid_strategy
       
-        # The display name of the ad group. Must be UTF-8 encoded with a maximum size of
-        # 255 bytes.
+        # Required. The display name of the ad group. Must be UTF-8 encoded with a
+        # maximum size of 255 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Controls whether or not the ad group can spend its budget and bid on inventory.
-        # If the ad group's parent line item is not active, the ad group can't spend
-        # its budget even if its own status is `ENTITY_STATUS_ACTIVE`.
+        # Required. Controls whether or not the ad group can spend its budget and bid on
+        # inventory. If the ad group's parent line item is not active, the ad group can'
+        # t spend its budget even if its own status is `ENTITY_STATUS_ACTIVE`.
         # Corresponds to the JSON property `entityStatus`
         # @return [String]
         attr_accessor :entity_status
       
-        # The unique ID of the line item that the ad group belongs to.
+        # Required. The unique ID of the line item that the ad group belongs to.
         # Corresponds to the JSON property `lineItemId`
         # @return [Fixnum]
         attr_accessor :line_item_id
       
-        # The resource name of the ad group.
+        # Output only. Identifier. The resource name of the ad group.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -203,10 +203,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :ad_group_ad_id
       
-        # The unique ID of the ad group that the ad belongs to. *Caution*: Parent ad
-        # groups for Demand Gen ads are not currently retrieveable using `advertisers.
-        # adGroups.list` or `advertisers.adGroups.get`. Demand Gen ads can be identified
-        # by the absence of the `ad_details` union field.
+        # Required. The unique ID of the ad group that the ad belongs to.
         # Corresponds to the JSON property `adGroupId`
         # @return [Fixnum]
         attr_accessor :ad_group_id
@@ -216,7 +213,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV4::AdPolicy]
         attr_accessor :ad_policy
       
-        # List of URLs used by the ad.
+        # Output only. List of URLs used by the ad.
         # Corresponds to the JSON property `adUrls`
         # @return [Array<Google::Apis::DisplayvideoV4::AdUrl>]
         attr_accessor :ad_urls
@@ -236,8 +233,8 @@ module Google
         # @return [Google::Apis::DisplayvideoV4::BumperAd]
         attr_accessor :bumper_ad
       
-        # The display name of the ad. Must be UTF-8 encoded with a maximum size of 255
-        # bytes.
+        # Required. The display name of the ad. Must be UTF-8 encoded with a maximum
+        # size of 255 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -247,7 +244,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV4::DisplayVideoSourceAd]
         attr_accessor :display_video_source_ad
       
-        # The entity status of the ad.
+        # Required. The entity status of the ad.
         # Corresponds to the JSON property `entityStatus`
         # @return [String]
         attr_accessor :entity_status
@@ -8064,7 +8061,7 @@ module Google
       class ImageAsset
         include Google::Apis::Core::Hashable
       
-        # File size of the image asset in bytes.
+        # Output only. File size of the image asset in bytes.
         # Corresponds to the JSON property `fileSize`
         # @return [Fixnum]
         attr_accessor :file_size
@@ -8074,7 +8071,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV4::Dimensions]
         attr_accessor :full_size
       
-        # MIME type of the image asset.
+        # Output only. MIME type of the image asset.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -14342,7 +14339,7 @@ module Google
       class YoutubeVideoDetails
         include Google::Apis::Core::Hashable
       
-        # The YouTube video ID which can be searched on YouTube webpage.
+        # Output only. The YouTube video ID which can be searched on YouTube webpage.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -14352,6 +14349,11 @@ module Google
         # @return [String]
         attr_accessor :unavailable_reason
       
+        # Required. The YouTube video asset id. This is ad_asset.ad_asset_id.
+        # Corresponds to the JSON property `videoAssetId`
+        # @return [Fixnum]
+        attr_accessor :video_asset_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -14360,6 +14362,7 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @unavailable_reason = args[:unavailable_reason] if args.key?(:unavailable_reason)
+          @video_asset_id = args[:video_asset_id] if args.key?(:video_asset_id)
         end
       end
     end

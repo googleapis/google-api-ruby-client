@@ -6229,6 +6229,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :unavailable_reason, as: 'unavailableReason'
+          property :video_asset_id, :numeric_string => true, as: 'videoAssetId'
         end
       end
     end
