@@ -3761,6 +3761,12 @@ module Google
         # @return [String]
         attr_accessor :service_account_name
       
+        # Optional. Duration the instance may be active before the system will shut it
+        # down.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
         # Optional. List of volumes that can be mounted by containers belonging to the
         # Instance.
         # Corresponds to the JSON property `volumes`
@@ -3776,6 +3782,7 @@ module Google
           @containers = args[:containers] if args.key?(:containers)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
+          @timeout = args[:timeout] if args.key?(:timeout)
           @volumes = args[:volumes] if args.key?(:volumes)
         end
       end
@@ -5133,9 +5140,8 @@ module Google
       end
       
       # Revision is an immutable snapshot of code and configuration. A revision
-      # references a container image. Revisions are created by updates to a
-      # Configuration. See also: https://github.com/knative/specs/blob/main/specs/
-      # serving/overview.md#revision
+      # references one or more container images. Revisions are created by updates to a
+      # Service.
       class Revision
         include Google::Apis::Core::Hashable
       
@@ -5193,8 +5199,7 @@ module Google
         attr_accessor :container_concurrency
       
         # Required. Containers holds the list which define the units of execution for
-        # this Revision. In the context of a Revision, we disallow a number of fields on
-        # this Container, including: name and lifecycle.
+        # this Revision.
         # Corresponds to the JSON property `containers`
         # @return [Array<Google::Apis::RunV1::Container>]
         attr_accessor :containers
