@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CountChromeOsDevicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreatePrintServerRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1282,6 +1288,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :device_ids, as: 'deviceIds'
+        end
+      end
+      
+      class CountChromeOsDevicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
         end
       end
       
