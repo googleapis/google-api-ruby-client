@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CrashLoopBackOffConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -407,6 +413,12 @@ module Google
       end
       
       class DesiredEnterpriseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DisruptionBudget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2386,6 +2398,13 @@ module Google
         end
       end
       
+      class CrashLoopBackOffConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_container_restart_period, as: 'maxContainerRestartPeriod'
+        end
+      end
+      
       class CreateClusterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2491,6 +2510,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :desired_tier, as: 'desiredTier'
+        end
+      end
+      
+      class DisruptionBudget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_disruption_time, as: 'lastDisruptionTime'
+          property :last_minor_version_disruption_time, as: 'lastMinorVersionDisruptionTime'
+          property :minor_version_disruption_interval, as: 'minorVersionDisruptionInterval'
+          property :patch_version_disruption_interval, as: 'patchVersionDisruptionInterval'
         end
       end
       
@@ -3020,6 +3049,8 @@ module Google
       class MaintenancePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disruption_budget, as: 'disruptionBudget', class: Google::Apis::ContainerV1beta1::DisruptionBudget, decorator: Google::Apis::ContainerV1beta1::DisruptionBudget::Representation
+      
           property :resource_version, as: 'resourceVersion'
           property :window, as: 'window', class: Google::Apis::ContainerV1beta1::MaintenanceWindow, decorator: Google::Apis::ContainerV1beta1::MaintenanceWindow::Representation
       
@@ -3330,6 +3361,8 @@ module Google
           property :cpu_cfs_quota, as: 'cpuCfsQuota'
           property :cpu_cfs_quota_period, as: 'cpuCfsQuotaPeriod'
           property :cpu_manager_policy, as: 'cpuManagerPolicy'
+          property :crash_loop_back_off, as: 'crashLoopBackOff', class: Google::Apis::ContainerV1beta1::CrashLoopBackOffConfig, decorator: Google::Apis::ContainerV1beta1::CrashLoopBackOffConfig::Representation
+      
           property :eviction_max_pod_grace_period_seconds, as: 'evictionMaxPodGracePeriodSeconds'
           property :eviction_minimum_reclaim, as: 'evictionMinimumReclaim', class: Google::Apis::ContainerV1beta1::EvictionMinimumReclaim, decorator: Google::Apis::ContainerV1beta1::EvictionMinimumReclaim::Representation
       
@@ -3346,6 +3379,8 @@ module Google
           property :memory_manager, as: 'memoryManager', class: Google::Apis::ContainerV1beta1::MemoryManager, decorator: Google::Apis::ContainerV1beta1::MemoryManager::Representation
       
           property :pod_pids_limit, :numeric_string => true, as: 'podPidsLimit'
+          property :shutdown_grace_period_critical_pods_seconds, as: 'shutdownGracePeriodCriticalPodsSeconds'
+          property :shutdown_grace_period_seconds, as: 'shutdownGracePeriodSeconds'
           property :single_process_oom_kill, as: 'singleProcessOomKill'
           property :topology_manager, as: 'topologyManager', class: Google::Apis::ContainerV1beta1::TopologyManager, decorator: Google::Apis::ContainerV1beta1::TopologyManager::Representation
       
