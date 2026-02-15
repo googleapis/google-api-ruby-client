@@ -3769,7 +3769,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retransforms a dynamic feed.
+        # Retransforms a dynamic feed. Only draft feeds can be retransformed (i.e. the
+        # feed has not been published).
         # @param [Fixnum] dynamic_feed_id
         #   Required. Dynamic feed ID.
         # @param [String] fields
@@ -3799,7 +3800,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a new dynamic feed.
+        # Updates a new dynamic feed. For draft feeds, only Element can be updated. For
+        # published feeds, only FeedSchedule can be updated. Other fields will be
+        # ignored.
         # @param [Google::Apis::DfareportingV5::DynamicFeed] dynamic_feed_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3829,7 +3832,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates code for a dynamic profile.
+        # Generates code for a dynamic profile, which will need unescaping.
         # @param [Fixnum] dynamic_profile_id
         #   Required. Dynamic profile ID.
         # @param [String] fields
@@ -7857,6 +7860,11 @@ module Google
         #   Required. TV Campaign ID.
         # @param [Fixnum] account_id
         #   Required. Account ID associated with this request.
+        # @param [Fixnum] country_dart_id
+        #   Optional. Country Dart ID. If not specified, defaults to 256 (US).
+        # @param [String] tv_data_provider
+        #   Optional. TV data provider. If not specified, defaults to `
+        #   COMSCORE_NATIONAL_US`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7874,13 +7882,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_tv_campaign_detail(profile_id, id, account_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_tv_campaign_detail(profile_id, id, account_id: nil, country_dart_id: nil, tv_data_provider: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'userprofiles/{+profileId}/tvCampaignDetails/{+id}', options)
           command.response_representation = Google::Apis::DfareportingV5::TvCampaignDetail::Representation
           command.response_class = Google::Apis::DfareportingV5::TvCampaignDetail
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['id'] = id unless id.nil?
           command.query['accountId'] = account_id unless account_id.nil?
+          command.query['countryDartId'] = country_dart_id unless country_dart_id.nil?
+          command.query['tvDataProvider'] = tv_data_provider unless tv_data_provider.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -7891,9 +7901,14 @@ module Google
         #   Required. User profile ID associated with this request.
         # @param [Fixnum] account_id
         #   Required. Account ID associated with this request.
+        # @param [Fixnum] country_dart_id
+        #   Optional. Country Dart ID. If not specified, defaults to 256 (US).
         # @param [String] name
         #   Required. Search string to filter the list of TV campaign summaries. Matches
         #   any substring. Required field.
+        # @param [String] tv_data_provider
+        #   Optional. TV data provider. If not specified, defaults to `
+        #   COMSCORE_NATIONAL_US`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7911,13 +7926,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_tv_campaign_summaries(profile_id, account_id: nil, name: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_tv_campaign_summaries(profile_id, account_id: nil, country_dart_id: nil, name: nil, tv_data_provider: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'userprofiles/{+profileId}/tvCampaignSummaries', options)
           command.response_representation = Google::Apis::DfareportingV5::TvCampaignSummariesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV5::TvCampaignSummariesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['accountId'] = account_id unless account_id.nil?
+          command.query['countryDartId'] = country_dart_id unless country_dart_id.nil?
           command.query['name'] = name unless name.nil?
+          command.query['tvDataProvider'] = tv_data_provider unless tv_data_provider.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
