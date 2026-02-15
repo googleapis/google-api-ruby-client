@@ -73,6 +73,11 @@ module Google
         #   the user's physical location. For example, the IP address can be the user's
         #   proxy server's address or a virtual private network (VPN) address. This
         #   parameter supports both IPv4 and IPv6 address versions.
+        # @param [String] application_info_filter
+        #   Optional. Used to filter on the `oAuthClientId` field present in [`
+        #   ApplicationInfo`](#applicationinfo) message. **Usage** ``` GET...&
+        #   applicationInfoFilter=oAuthClientId="clientId" GET...&applicationInfoFilter=
+        #   oAuthClientId=%22clientId%22 ```
         # @param [String] customer_id
         #   The unique ID of the customer to retrieve data for.
         # @param [String] end_time
@@ -142,6 +147,10 @@ module Google
         #   the report has two pages. The response's `nextPageToken` property has the
         #   token to the second page. The `maxResults` query string is optional in the
         #   request. The default value is 1000.
+        # @param [String] network_info_filter
+        #   Optional. Used to filter on the `regionCode` field present in [`NetworkInfo`](#
+        #   networkinfo) message. **Usage** ``` GET...&networkInfoFilter=regionCode="IN"
+        #   GET...&networkInfoFilter=regionCode=%22IN%22 ```
         # @param [String] org_unit_id
         #   ID of the organizational unit to report on. Activity records will be shown
         #   only for users who belong to the specified organizational unit. Data before
@@ -197,6 +206,10 @@ module Google
         #   before the `endTime` (if specified) and the current time when the request is
         #   made, or the API returns an error. For Gmail requests, `startTime` and `
         #   endTime` must be provided and the difference must not be greater than 30 days.
+        # @param [String] status_filter
+        #   Optional. Used to filter on the `statusCode` field present in [`Status`](#
+        #   status) message. **Usage** ``` GET...&statusFilter=statusCode="200" GET...&
+        #   statusFilter=statusCode=%22200%22 ```
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -214,23 +227,26 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_activities(user_key, application_name, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, group_id_filter: nil, max_results: nil, org_unit_id: nil, page_token: nil, resource_details_filter: nil, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_activities(user_key, application_name, actor_ip_address: nil, application_info_filter: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, group_id_filter: nil, max_results: nil, network_info_filter: nil, org_unit_id: nil, page_token: nil, resource_details_filter: nil, start_time: nil, status_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'admin/reports/v1/activity/users/{userKey}/applications/{applicationName}', options)
           command.response_representation = Google::Apis::AdminReportsV1::Activities::Representation
           command.response_class = Google::Apis::AdminReportsV1::Activities
           command.params['userKey'] = user_key unless user_key.nil?
           command.params['applicationName'] = application_name unless application_name.nil?
           command.query['actorIpAddress'] = actor_ip_address unless actor_ip_address.nil?
+          command.query['applicationInfoFilter'] = application_info_filter unless application_info_filter.nil?
           command.query['customerId'] = customer_id unless customer_id.nil?
           command.query['endTime'] = end_time unless end_time.nil?
           command.query['eventName'] = event_name unless event_name.nil?
           command.query['filters'] = filters unless filters.nil?
           command.query['groupIdFilter'] = group_id_filter unless group_id_filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['networkInfoFilter'] = network_info_filter unless network_info_filter.nil?
           command.query['orgUnitID'] = org_unit_id unless org_unit_id.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['resourceDetailsFilter'] = resource_details_filter unless resource_details_filter.nil?
           command.query['startTime'] = start_time unless start_time.nil?
+          command.query['statusFilter'] = status_filter unless status_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

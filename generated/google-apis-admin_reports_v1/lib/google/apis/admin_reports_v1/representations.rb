@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ActivityEventsStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ActivityNetworkInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -248,6 +254,8 @@ module Google
             collection :parameters, as: 'parameters', class: Google::Apis::AdminReportsV1::Activity::Event::Parameter, decorator: Google::Apis::AdminReportsV1::Activity::Event::Parameter::Representation
         
             collection :resource_ids, as: 'resourceIds'
+            property :status, as: 'status', class: Google::Apis::AdminReportsV1::ActivityEventsStatus, decorator: Google::Apis::AdminReportsV1::ActivityEventsStatus::Representation
+        
             property :type, as: 'type'
           end
           
@@ -293,6 +301,16 @@ module Google
         
             property :unique_qualifier, :numeric_string => true, as: 'uniqueQualifier'
           end
+        end
+      end
+      
+      class ActivityEventsStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_code, as: 'errorCode'
+          property :error_message, as: 'errorMessage'
+          property :event_status, as: 'eventStatus'
+          property :http_status_code, as: 'httpStatusCode'
         end
       end
       
