@@ -490,6 +490,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionalCertChain
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionalManagedCertificateAuthority
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RemoteCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -533,6 +545,12 @@ module Google
       end
       
       class RetentionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SharedRegionalCertificateAuthority
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -799,8 +817,11 @@ module Google
       
           hash :redis_configs, as: 'redisConfigs'
           property :replica_count, as: 'replicaCount'
+          property :rotate_server_certificate, as: 'rotateServerCertificate'
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :server_ca_mode, as: 'serverCaMode'
+          property :server_ca_pool, as: 'serverCaPool'
           property :shard_count, as: 'shardCount'
           property :simulate_maintenance_event, as: 'simulateMaintenanceEvent'
           property :size_gb, as: 'sizeGb'
@@ -1531,6 +1552,21 @@ module Google
         end
       end
       
+      class RegionalCertChain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :certificates, as: 'certificates'
+        end
+      end
+      
+      class RegionalManagedCertificateAuthority
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ca_certs, as: 'caCerts', class: Google::Apis::RedisV1::RegionalCertChain, decorator: Google::Apis::RedisV1::RegionalCertChain::Representation
+      
+        end
+      end
+      
       class RemoteCluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1578,6 +1614,8 @@ module Google
       class ResourceMaintenanceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_version_release_date, as: 'currentVersionReleaseDate', class: Google::Apis::RedisV1::Date, decorator: Google::Apis::RedisV1::Date::Representation
+      
           collection :deny_maintenance_schedules, as: 'denyMaintenanceSchedules', class: Google::Apis::RedisV1::ResourceMaintenanceDenySchedule, decorator: Google::Apis::RedisV1::ResourceMaintenanceDenySchedule::Representation
       
           property :is_instance_stopped, as: 'isInstanceStopped'
@@ -1587,7 +1625,6 @@ module Google
           property :maintenance_version, as: 'maintenanceVersion'
           property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::RedisV1::UpcomingMaintenance, decorator: Google::Apis::RedisV1::UpcomingMaintenance::Representation
       
-          property :version_update_time, as: 'versionUpdateTime'
         end
       end
       
@@ -1609,6 +1646,15 @@ module Google
           property :retention_unit, as: 'retentionUnit'
           property :time_based_retention, as: 'timeBasedRetention'
           property :timestamp_based_retention_time, as: 'timestampBasedRetentionTime'
+        end
+      end
+      
+      class SharedRegionalCertificateAuthority
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :managed_server_ca, as: 'managedServerCa', class: Google::Apis::RedisV1::RegionalManagedCertificateAuthority, decorator: Google::Apis::RedisV1::RegionalManagedCertificateAuthority::Representation
+      
+          property :name, as: 'name'
         end
       end
       
