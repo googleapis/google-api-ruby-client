@@ -409,6 +409,13 @@ module Google
         # @return [Array<Google::Apis::StoragebatchoperationsV1::ErrorSummary>]
         attr_accessor :error_summaries
       
+        # Output only. If true, this Job operates on multiple buckets. Multibucket jobs
+        # are subject to different quota limits than single-bucket jobs.
+        # Corresponds to the JSON property `isMultiBucketJob`
+        # @return [Boolean]
+        attr_accessor :is_multi_bucket_job
+        alias_method :is_multi_bucket_job?, :is_multi_bucket_job
+      
         # Specifies the Cloud Logging behavior.
         # Corresponds to the JSON property `loggingConfig`
         # @return [Google::Apis::StoragebatchoperationsV1::LoggingConfig]
@@ -461,6 +468,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
           @error_summaries = args[:error_summaries] if args.key?(:error_summaries)
+          @is_multi_bucket_job = args[:is_multi_bucket_job] if args.key?(:is_multi_bucket_job)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @name = args[:name] if args.key?(:name)
           @put_metadata = args[:put_metadata] if args.key?(:put_metadata)
