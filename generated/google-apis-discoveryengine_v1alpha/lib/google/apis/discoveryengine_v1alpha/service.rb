@@ -334,6 +334,59 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # This method provides suggestions for users and groups managed in an external
+        # identity provider, based on the provided prefix.
+        # @param [String] parent
+        #   Required. The parent location resource name, such as `projects/*/locations/
+        #   global`.
+        # @param [String] entity_type_filter
+        #   Optional. The type of entities to fetch. If not set, all entity types will be
+        #   returned.
+        # @param [Fixnum] max_suggestions
+        #   Optional. The maximum number of user and group results to return. The service
+        #   may return fewer than this value. If unspecified, at most 6 results will be
+        #   returned. The limit is distributed as evenly as possible across users and
+        #   groups. For example, if max_suggestions is 7, the service may return 4 users
+        #   and 3 groups. If there are fewer suggestions of one type than half the limit,
+        #   the other type may return more suggestions up to the max_suggestions limit.
+        # @param [String] prefix_query
+        #   Required. The prefix to search for. For users, this prefix is matched against
+        #   the `primary_email`. For groups, this prefix is matched against the `
+        #   display_name`. The matching is case-insensitive.
+        # @param [Boolean] use_scim_identities
+        #   Optional. Whether to use scim identities for external identity completion. If
+        #   false, we will call the Microsoft graph API to fetch the external identities.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCompleteExternalIdentitiesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCompleteExternalIdentitiesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def complete_project_location_external_identities(parent, entity_type_filter: nil, max_suggestions: nil, prefix_query: nil, use_scim_identities: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}:completeExternalIdentities', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCompleteExternalIdentitiesResponse::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaCompleteExternalIdentitiesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['entityTypeFilter'] = entity_type_filter unless entity_type_filter.nil?
+          command.query['maxSuggestions'] = max_suggestions unless max_suggestions.nil?
+          command.query['prefixQuery'] = prefix_query unless prefix_query.nil?
+          command.query['useScimIdentities'] = use_scim_identities unless use_scim_identities.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Estimates the data size to be used by a customer.
         # @param [String] location
         #   Required. Full resource name of the location, such as `projects/`project`/
@@ -1424,8 +1477,8 @@ module Google
         # must provide a timestamp to indicate the point in time from which data should
         # be synced.
         # @param [String] parent
-        #   Required. Connector name of the form projects/`project`/locations/`location`/
-        #   collections/ `collection_id`/dataConnector
+        #   Required. Connector name of the form `projects/`project`/locations/`location`/
+        #   collections/`collection_id`/dataConnector`
         # @param [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStartConnectorRunRequest] google_cloud_discoveryengine_v1alpha_start_connector_run_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5479,7 +5532,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a Engine.
+        # Creates an Engine.
         # @param [String] parent
         #   Required. The parent resource name, such as `projects/`project`/locations/`
         #   location`/collections/`collection``.
@@ -5519,7 +5572,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a Engine.
+        # Deletes an Engine.
         # @param [String] name
         #   Required. Full resource name of Engine, such as `projects/`project`/locations/`
         #   location`/collections/`collection_id`/engines/`engine_id``. If the caller does
@@ -5553,7 +5606,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a Engine.
+        # Gets an Engine.
         # @param [String] name
         #   Required. Full resource name of Engine, such as `projects/`project`/locations/`
         #   location`/collections/`collection_id`/engines/`engine_id``.
@@ -5579,6 +5632,52 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngine::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngine
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the IAM access control policy for an Engine. A `NOT_FOUND` error is
+        # returned if the resource does not exist. An empty policy is returned if the
+        # resource exists but does not have a policy set on it.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Fixnum] options_requested_policy_version
+        #   Optional. The maximum policy version that will be used to format the policy.
+        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        #   rejected. Requests for policies with any conditional role bindings must
+        #   specify version 3. Policies with no conditional role bindings may specify any
+        #   valid value or leave the field unset. The policy in the response might use the
+        #   policy version that you specified, or it might use a lower policy version. For
+        #   example, if you specify version 3, but the policy has no conditional role
+        #   bindings, the response uses version 1. To learn which resources support
+        #   conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        #   google.com/iam/help/conditions/resource-policies).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_engine_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+resource}:getIamPolicy', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Policy::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5697,7 +5796,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Pauses the training of an existing engine. Only applicable if SolutionType is
+        # Pauses the training of an existing Engine. Only applicable if SolutionType is
         # SOLUTION_TYPE_RECOMMENDATION.
         # @param [String] name
         #   Required. The name of the engine to pause. Format: `projects/`project`/
@@ -5732,7 +5831,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Resumes the training of an existing engine. Only applicable if SolutionType is
+        # Resumes the training of an existing Engine. Only applicable if SolutionType is
         # SOLUTION_TYPE_RECOMMENDATION.
         # @param [String] name
         #   Required. The name of the engine to resume. Format: `projects/`project`/
@@ -5767,7 +5866,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Tunes an existing engine. Only applicable if SolutionType is
+        # Sets the IAM access control policy for an Engine. A `NOT_FOUND` error is
+        # returned if the resource does not exist. **Important:** When setting a policy
+        # directly on an Engine resource, the only recommended roles in the bindings are:
+        # `roles/discoveryengine.user` and `roles/discoveryengine.agentspaceUser`.
+        # Attempting to grant any other role will result in a warning in logging.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleIamV1SetIamPolicyRequest] google_iam_v1_set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_collection_engine_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleIamV1SetIamPolicyRequest::Representation
+          command.request_object = google_iam_v1_set_iam_policy_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Policy::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Tunes an existing Engine. Only applicable if SolutionType is
         # SOLUTION_TYPE_RECOMMENDATION.
         # @param [String] name
         #   Required. The resource name of the engine to tune. Format: `projects/`project`/
@@ -6055,80 +6193,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the data for displaying the Agents under an Assistant which are
-        # available to the caller.
-        # @param [String] parent
-        #   Required. The parent resource name. Format: `projects/`project`/locations/`
-        #   location`/collections/`collection`/engines/`engine`/assistants/`assistant``
-        # @param [Boolean] admin_view
-        #   Optional. Indicates whether to consider if the caller is an admin. If set, and
-        #   the caller is an admin, the response will consider admin-only permissions.
-        #   Otherwise, a caller with admin permissions will get a response as an
-        #   unprivileged user.
-        # @param [String] agent_origin
-        #   Optional. The origin of the Agent.
-        # @param [String] filter
-        #   Optional. The filter syntax consists of an expression language for
-        #   constructing a predicate from one or more fields of the files being filtered.
-        #   Filter expression is case-sensitive. Allowed fields are: * `display_name` * `
-        #   state` Some examples of filters would be: * `display_name = 'agent_1'` * `
-        #   display_name = 'agent_1' AND state = ENABLED` For a full description of the
-        #   filter format, please see https://google.aip.dev/160.
-        # @param [String] language_code
-        #   Optional. The UI language currently shown to the user. Specifying this field
-        #   request that the texts in the AgentViews in the response should be translated
-        #   to this language.
-        # @param [Fixnum] max_suggested_prompts
-        #   Optional. The maximum number of suggested prompts to return per agent.
-        # @param [Fixnum] page_size
-        #   Optional. Maximum number of AgentViews to return. If unspecified, defaults to
-        #   100. The maximum allowed value is 1000; anything above that will be coerced
-        #   down to 1000.
-        # @param [String] page_token
-        #   Optional. A page token ListAvailableAgentViewsResponse.next_page_token,
-        #   received from a previous AgentService.ListAvailableAgentViews call. Provide
-        #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to ListAvailableAgentViews must match the call that provided the page
-        #   token.
-        # @param [String] sort_by
-        #   Optional. The field to sort by. Can have the following values: - display-name:
-        #   The display name of the agent. - description: The description of the agent. -
-        #   create-time: The creation time of the agent. - state: The state of the agent.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListAvailableAgentViewsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListAvailableAgentViewsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_collection_engine_assistant_available_agent_views(parent, admin_view: nil, agent_origin: nil, filter: nil, language_code: nil, max_suggested_prompts: nil, page_size: nil, page_token: nil, sort_by: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/{+parent}:listAvailableAgentViews', options)
-          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListAvailableAgentViewsResponse::Representation
-          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaListAvailableAgentViewsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['adminView'] = admin_view unless admin_view.nil?
-          command.query['agentOrigin'] = agent_origin unless agent_origin.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['languageCode'] = language_code unless language_code.nil?
-          command.query['maxSuggestedPrompts'] = max_suggested_prompts unless max_suggested_prompts.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['sortBy'] = sort_by unless sort_by.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Updates an Assistant
         # @param [String] name
         #   Immutable. Resource name of the assistant. Format: `projects/`project`/
@@ -6272,81 +6336,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Disables an Agent. The `state` of the Agent becomes `DISABLED`. Can be called
-        # on an Agent in the state `ENABLED` or`SUSPENDED`, otherwise it returns an
-        # error.
-        # @param [String] name
-        #   Required. The name of the Agent to disable. Format: `projects/`project`/
-        #   locations/`location`/collections/`collection`/engines/`engine`/assistants/`
-        #   assistant`/agents/`agent``
-        # @param [String] revision_id
-        #   Optional. The Revision ID of the Agent to disable. If not specified, the
-        #   latest revision will be disabled.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def disable_project_location_collection_engine_assistant_agent_agent(name, revision_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/{+name}:disableAgent', options)
-          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent::Representation
-          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent
-          command.params['name'] = name unless name.nil?
-          command.query['revisionId'] = revision_id unless revision_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Enables an Agent. The `state` of the Agent becomes `ENABLED`. Can be called on
-        # an Agent in the state `DISABLED` or 'SUSPENDED', otherwise it returns an error.
-        # @param [String] name
-        #   Required. The name of the Agent to enable. Format: `projects/`project`/
-        #   locations/`location`/collections/`collection`/engines/`engine`/assistants/`
-        #   assistant`/agents/`agent``
-        # @param [String] revision_id
-        #   Optional. The Revision ID of the Agent to enable. If not specified, the latest
-        #   revision will be enabled.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def enable_project_location_collection_engine_assistant_agent_agent(name, revision_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/{+name}:enableAgent', options)
-          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent::Representation
-          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent
-          command.params['name'] = name unless name.nil?
-          command.query['revisionId'] = revision_id unless revision_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Gets an Agent.
         # @param [String] name
         #   Required. Resource name of Agent. Format: `projects/`project`/locations/`
@@ -6374,99 +6363,6 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent::Representation
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent
           command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Returns a AgentView for a given Agent, which contains additional information
-        # about the Agent.
-        # @param [String] name
-        #   Required. The name of the Agent to get. Format: `projects/`project`/locations/`
-        #   location`/collections/`collection`/engines/`engine`/assistants/`assistant`/
-        #   agents/`agent``
-        # @param [Boolean] admin_view
-        #   Optional. Indicates whether to consider if the caller is an admin. If set, and
-        #   the caller is an admin, the response will consider admin-only permissions.
-        #   Otherwise, a caller with admin permissions will get a response as an
-        #   unprivileged user.
-        # @param [String] language_code
-        #   Optional. The UI language currently shown to the user. Specifying this field
-        #   request that the texts in the AgentView in the response should be translated
-        #   to this language.
-        # @param [Fixnum] max_suggested_prompts
-        #   Optional. The maximum number of suggested prompts to return per agent.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGetAgentViewResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGetAgentViewResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_collection_engine_assistant_agent_agent_view(name, admin_view: nil, language_code: nil, max_suggested_prompts: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha/{+name}:getAgentView', options)
-          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGetAgentViewResponse::Representation
-          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaGetAgentViewResponse
-          command.params['name'] = name unless name.nil?
-          command.query['adminView'] = admin_view unless admin_view.nil?
-          command.query['languageCode'] = language_code unless language_code.nil?
-          command.query['maxSuggestedPrompts'] = max_suggested_prompts unless max_suggested_prompts.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets the access control policy for an agent resource. A `NOT_FOUND` error is
-        # returned if the resource does not exist. An empty policy is returned if the
-        # resource exists but does not have a policy set on it.
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See [Resource
-        #   names](https://cloud.google.com/apis/design/resource_names) for the
-        #   appropriate value for this field.
-        # @param [Fixnum] options_requested_policy_version
-        #   Optional. The maximum policy version that will be used to format the policy.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected. Requests for policies with any conditional role bindings must
-        #   specify version 3. Policies with no conditional role bindings may specify any
-        #   valid value or leave the field unset. The policy in the response might use the
-        #   policy version that you specified, or it might use a lower policy version. For
-        #   example, if you specify version 3, but the policy has no conditional role
-        #   bindings, the response uses version 1. To learn which resources support
-        #   conditions in their IAM policies, see the [IAM documentation](https://cloud.
-        #   google.com/iam/help/conditions/resource-policies).
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_collection_engine_assistant_agent_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha/{+resource}:getIamPolicy', options)
-          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Policy::Representation
-          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Policy
-          command.params['resource'] = resource unless resource.nil?
-          command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -6553,82 +6449,6 @@ module Google
           command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Sets the access control policy for an agent resource. A `NOT_FOUND` error is
-        # returned if the resource does not exist. Policy can only contain `roles/
-        # discoveryengine.agentUser`, `roles/discoveryengine.agentViewer` and `roles/
-        # discoveryengine.agentEditor` roles.
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See [Resource
-        #   names](https://cloud.google.com/apis/design/resource_names) for the
-        #   appropriate value for this field.
-        # @param [Google::Apis::DiscoveryengineV1alpha::GoogleIamV1SetIamPolicyRequest] google_iam_v1_set_iam_policy_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_project_location_collection_engine_assistant_agent_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/{+resource}:setIamPolicy', options)
-          command.request_representation = Google::Apis::DiscoveryengineV1alpha::GoogleIamV1SetIamPolicyRequest::Representation
-          command.request_object = google_iam_v1_set_iam_policy_request_object
-          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Policy::Representation
-          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleIamV1Policy
-          command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Suspends an Agent. It is still available for viewing but not for use. The `
-        # state` of the Agent becomes `SUSPENDED`. Can be called on an Agent in the
-        # state `ENABLED`, otherwise it returns an error.
-        # @param [String] name
-        #   Required. The name of the Agent to suspend. Format: `projects/`project`/
-        #   locations/`location`/collections/`collection`/engines/`engine`/assistants/`
-        #   assistant`/agents/`agent``
-        # @param [String] suspension_reason
-        #   Required. The reason for suspending the Agent. This will be shown to the users
-        #   of the Agent.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def suspend_project_location_collection_engine_assistant_agent_agent(name, suspension_reason: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/{+name}:suspendAgent', options)
-          command.response_representation = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent::Representation
-          command.response_class = Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgent
-          command.params['name'] = name unless name.nil?
-          command.query['suspensionReason'] = suspension_reason unless suspension_reason.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

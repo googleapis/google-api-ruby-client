@@ -4489,6 +4489,26 @@ module Google
         attr_accessor :auto_renew
         alias_method :auto_renew?, :auto_renew
       
+        # Output only. Indication of whether the subscription is terminated earlier than
+        # the expiration date. This is usually terminated by pipeline once the
+        # subscription gets terminated from subsv3.
+        # Corresponds to the JSON property `earlyTerminated`
+        # @return [Boolean]
+        attr_accessor :early_terminated
+        alias_method :early_terminated?, :early_terminated
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `earlyTerminationDate`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate]
+        attr_accessor :early_termination_date
+      
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
@@ -4559,6 +4579,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_renew = args[:auto_renew] if args.key?(:auto_renew)
+          @early_terminated = args[:early_terminated] if args.key?(:early_terminated)
+          @early_termination_date = args[:early_termination_date] if args.key?(:early_termination_date)
           @end_date = args[:end_date] if args.key?(:end_date)
           @free_trial = args[:free_trial] if args.key?(:free_trial)
           @gemini_bundle = args[:gemini_bundle] if args.key?(:gemini_bundle)
@@ -4765,6 +4787,11 @@ module Google
       class GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfig
         include Google::Apis::Core::Hashable
       
+        # Data protection policy config for NotebookLM.
+        # Corresponds to the JSON property `dataProtectionPolicy`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy]
+        attr_accessor :data_protection_policy
+      
         # Configuration for customer defined Model Armor templates to be used for
         # sanitizing user prompts and LLM responses.
         # Corresponds to the JSON property `modelArmorConfig`
@@ -4789,9 +4816,50 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_protection_policy = args[:data_protection_policy] if args.key?(:data_protection_policy)
           @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
           @observability_config = args[:observability_config] if args.key?(:observability_config)
           @opt_out_notebook_sharing = args[:opt_out_notebook_sharing] if args.key?(:opt_out_notebook_sharing)
+        end
+      end
+      
+      # Data protection policy config for NotebookLM.
+      class GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies a Sensitive Data Protection (https://cloud.google.com/sensitive-data-
+        # protection/docs/sensitive-data-protection-overview) policy.
+        # Corresponds to the JSON property `sensitiveDataProtectionPolicy`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy]
+        attr_accessor :sensitive_data_protection_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sensitive_data_protection_policy = args[:sensitive_data_protection_policy] if args.key?(:sensitive_data_protection_policy)
+        end
+      end
+      
+      # Specifies a Sensitive Data Protection (https://cloud.google.com/sensitive-data-
+      # protection/docs/sensitive-data-protection-overview) policy.
+      class GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Sensitive Data Protection policy resource name.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
@@ -7257,210 +7325,6 @@ module Google
         end
       end
       
-      # The data for displaying an Agent.
-      class GoogleCloudDiscoveryengineV1alphaAgentView
-        include Google::Apis::Core::Hashable
-      
-        # Immutable. The origin of the Agent.
-        # Corresponds to the JSON property `agentOrigin`
-        # @return [String]
-        attr_accessor :agent_origin
-      
-        # Output only. The sharing state of the agent.
-        # Corresponds to the JSON property `agentSharingState`
-        # @return [String]
-        attr_accessor :agent_sharing_state
-      
-        # Output only. The type of the agent.
-        # Corresponds to the JSON property `agentType`
-        # @return [String]
-        attr_accessor :agent_type
-      
-        # The custom placeholder text that appears in the text box before the user
-        # enters any text.
-        # Corresponds to the JSON property `customPlaceholderText`
-        # @return [String]
-        attr_accessor :custom_placeholder_text
-      
-        # The reason why the agent deployment failed. Only set if the state is
-        # DEPLOYMENT_FAILED.
-        # Corresponds to the JSON property `deploymentFailureReason`
-        # @return [String]
-        attr_accessor :deployment_failure_reason
-      
-        # Required. Human-readable description of the agent. This might be used by an
-        # LLM to automatically select an agent to respond to a user query and to
-        # generate the first version of the steps for the agent that can be modified by
-        # the user. The language of this is either Agent.language_code, or
-        # ListAvailableAgentViewsRequest.language_code if translations are enabled.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Required. Display name of the agent. The language of this is either Agent.
-        # language_code, or ListAvailableAgentViewsRequest.language_code if translations
-        # are enabled.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Represents an image.
-        # Corresponds to the JSON property `icon`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentImage]
-        attr_accessor :icon
-      
-        # Resource name of the agent. Format: `projects/`project`/locations/`location`/
-        # collections/`collection`/engines/`engine`/assistants/`assistant`/agents/`agent`
-        # `
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The reason why the agent was rejected. Only set if the state is PRIVATE, and
-        # got there via rejection.
-        # Corresponds to the JSON property `rejectionReason`
-        # @return [String]
-        attr_accessor :rejection_reason
-      
-        # Output only. The state of the Agent.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Optional. The suggested prompts for the agent, to be shown on the agent
-        # landing page.
-        # Corresponds to the JSON property `suggestedPrompts`
-        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentViewSuggestedPrompt>]
-        attr_accessor :suggested_prompts
-      
-        # The reason why the agent was suspended. Only set if the state is SUSPENDED.
-        # Corresponds to the JSON property `suspensionReason`
-        # @return [String]
-        attr_accessor :suspension_reason
-      
-        # Output only. The timestamp when the agent was last updated.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        # Per-user annotations for an Agent, based on UserAnnotation.
-        # Corresponds to the JSON property `userAnnotations`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaUserAnnotations]
-        attr_accessor :user_annotations
-      
-        # The permissions of the user on an Agent.
-        # Corresponds to the JSON property `userPermissions`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentViewUserPermissions]
-        attr_accessor :user_permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_origin = args[:agent_origin] if args.key?(:agent_origin)
-          @agent_sharing_state = args[:agent_sharing_state] if args.key?(:agent_sharing_state)
-          @agent_type = args[:agent_type] if args.key?(:agent_type)
-          @custom_placeholder_text = args[:custom_placeholder_text] if args.key?(:custom_placeholder_text)
-          @deployment_failure_reason = args[:deployment_failure_reason] if args.key?(:deployment_failure_reason)
-          @description = args[:description] if args.key?(:description)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @icon = args[:icon] if args.key?(:icon)
-          @name = args[:name] if args.key?(:name)
-          @rejection_reason = args[:rejection_reason] if args.key?(:rejection_reason)
-          @state = args[:state] if args.key?(:state)
-          @suggested_prompts = args[:suggested_prompts] if args.key?(:suggested_prompts)
-          @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
-          @update_time = args[:update_time] if args.key?(:update_time)
-          @user_annotations = args[:user_annotations] if args.key?(:user_annotations)
-          @user_permissions = args[:user_permissions] if args.key?(:user_permissions)
-        end
-      end
-      
-      # A suggested prompt for the agent, to be shown on the agent landing page.
-      class GoogleCloudDiscoveryengineV1alphaAgentViewSuggestedPrompt
-        include Google::Apis::Core::Hashable
-      
-        # Required. The text of the suggested prompt. The language of this is either
-        # Agent.language_code, or ListAvailableAgentViewsRequest.language_code if
-        # translations are enabled.
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @text = args[:text] if args.key?(:text)
-        end
-      end
-      
-      # The permissions of the user on an Agent.
-      class GoogleCloudDiscoveryengineV1alphaAgentViewUserPermissions
-        include Google::Apis::Core::Hashable
-      
-        # If the user can delete this Agent.
-        # Corresponds to the JSON property `canDelete`
-        # @return [Boolean]
-        attr_accessor :can_delete
-        alias_method :can_delete?, :can_delete
-      
-        # If the user can edit this Agent.
-        # Corresponds to the JSON property `canEdit`
-        # @return [Boolean]
-        attr_accessor :can_edit
-        alias_method :can_edit?, :can_edit
-      
-        # If the user can propose other users to share the Agent with.
-        # Corresponds to the JSON property `canProposeUsers`
-        # @return [Boolean]
-        attr_accessor :can_propose_users
-        alias_method :can_propose_users?, :can_propose_users
-      
-        # If the user can request a review for this Agent.
-        # Corresponds to the JSON property `canRequestReview`
-        # @return [Boolean]
-        attr_accessor :can_request_review
-        alias_method :can_request_review?, :can_request_review
-      
-        # If the user can run this Agent.
-        # Corresponds to the JSON property `canRun`
-        # @return [Boolean]
-        attr_accessor :can_run
-        alias_method :can_run?, :can_run
-      
-        # If the user can view the source of this Agent.
-        # Corresponds to the JSON property `canView`
-        # @return [Boolean]
-        attr_accessor :can_view
-        alias_method :can_view?, :can_view
-      
-        # If the user can withdraw this Agent.
-        # Corresponds to the JSON property `canWithdraw`
-        # @return [Boolean]
-        attr_accessor :can_withdraw
-        alias_method :can_withdraw?, :can_withdraw
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @can_delete = args[:can_delete] if args.key?(:can_delete)
-          @can_edit = args[:can_edit] if args.key?(:can_edit)
-          @can_propose_users = args[:can_propose_users] if args.key?(:can_propose_users)
-          @can_request_review = args[:can_request_review] if args.key?(:can_request_review)
-          @can_run = args[:can_run] if args.key?(:can_run)
-          @can_view = args[:can_view] if args.key?(:can_view)
-          @can_withdraw = args[:can_withdraw] if args.key?(:can_withdraw)
-        end
-      end
-      
       # The connector level alert config.
       class GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig
         include Google::Apis::Core::Hashable
@@ -7536,6 +7400,11 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
+        # Optional. The region code used of the user that subscribed to the alert policy.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7546,6 +7415,7 @@ module Google
           @alert_policy = args[:alert_policy] if args.key?(:alert_policy)
           @contact_details = args[:contact_details] if args.key?(:contact_details)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @region_code = args[:region_code] if args.key?(:region_code)
         end
       end
       
@@ -10967,6 +10837,26 @@ module Google
         attr_accessor :auto_renew
         alias_method :auto_renew?, :auto_renew
       
+        # Indication of whether the subscription is terminated earlier than the
+        # expiration date. This is usually terminated by pipeline once the subscription
+        # gets terminated from subsv3.
+        # Corresponds to the JSON property `earlyTerminated`
+        # @return [Boolean]
+        attr_accessor :early_terminated
+        alias_method :early_terminated?, :early_terminated
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `earlyTerminationDate`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate]
+        attr_accessor :early_termination_date
+      
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
@@ -11055,6 +10945,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_renew = args[:auto_renew] if args.key?(:auto_renew)
+          @early_terminated = args[:early_terminated] if args.key?(:early_terminated)
+          @early_termination_date = args[:early_termination_date] if args.key?(:early_termination_date)
           @end_date = args[:end_date] if args.key?(:end_date)
           @gemini_bundle = args[:gemini_bundle] if args.key?(:gemini_bundle)
           @license_config_distributions = args[:license_config_distributions] if args.key?(:license_config_distributions)
@@ -12120,6 +12012,25 @@ module Google
           @data_connector = args[:data_connector] if args.key?(:data_connector)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Response message for CompletionService.CompleteExternalIdentities.
+      class GoogleCloudDiscoveryengineV1alphaCompleteExternalIdentitiesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of external identities that match the query.
+        # Corresponds to the JSON property `externalIdentities`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaExternalIdentity>]
+        attr_accessor :external_identities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_identities = args[:external_identities] if args.key?(:external_identities)
         end
       end
       
@@ -13525,6 +13436,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Data protection policy config for a connector.
+        # Corresponds to the JSON property `dataProtectionPolicy`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy]
+        attr_accessor :data_protection_policy
+      
         # Required. The name of the data source. Supported values: `salesforce`, `jira`,
         # `confluence`, `bigquery`.
         # Corresponds to the JSON property `dataSource`
@@ -13732,6 +13648,7 @@ module Google
           @connector_type = args[:connector_type] if args.key?(:connector_type)
           @create_eua_saas = args[:create_eua_saas] if args.key?(:create_eua_saas)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @data_protection_policy = args[:data_protection_policy] if args.key?(:data_protection_policy)
           @data_source = args[:data_source] if args.key?(:data_source)
           @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
           @end_user_config = args[:end_user_config] if args.key?(:end_user_config)
@@ -13964,6 +13881,46 @@ module Google
           @key_property_mappings = args[:key_property_mappings] if args.key?(:key_property_mappings)
           @params = args[:params] if args.key?(:params)
           @starting_schema = args[:starting_schema] if args.key?(:starting_schema)
+        end
+      end
+      
+      # Data protection policy config for a connector.
+      class GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies a Sensitive Data Protection (https://cloud.google.com/sensitive-data-
+        # protection/docs/sensitive-data-protection-overview) policy.
+        # Corresponds to the JSON property `sensitiveDataProtectionPolicy`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataProtectionPolicySensitiveDataProtectionPolicy]
+        attr_accessor :sensitive_data_protection_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sensitive_data_protection_policy = args[:sensitive_data_protection_policy] if args.key?(:sensitive_data_protection_policy)
+        end
+      end
+      
+      # Specifies a Sensitive Data Protection (https://cloud.google.com/sensitive-data-
+      # protection/docs/sensitive-data-protection-overview) policy.
+      class GoogleCloudDiscoveryengineV1alphaDataProtectionPolicySensitiveDataProtectionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Sensitive Data Protection content policy resource name.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
@@ -16382,6 +16339,88 @@ module Google
         end
       end
       
+      # External identity representing either a user or group. This user or group is
+      # from an external identity provider (IdP).
+      class GoogleCloudDiscoveryengineV1alphaExternalIdentity
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the user or group.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The unique 3P ID(external_id) of the entity (user or group).
+        # Corresponds to the JSON property `externalId`
+        # @return [String]
+        attr_accessor :external_id
+      
+        # Metadata corresponding to the external group.
+        # Corresponds to the JSON property `groupMetadata`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaExternalIdentityGroupMetadata]
+        attr_accessor :group_metadata
+      
+        # Metadata corresponding to the external user.
+        # Corresponds to the JSON property `userMetadata`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaExternalIdentityUserMetadata]
+        attr_accessor :user_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @external_id = args[:external_id] if args.key?(:external_id)
+          @group_metadata = args[:group_metadata] if args.key?(:group_metadata)
+          @user_metadata = args[:user_metadata] if args.key?(:user_metadata)
+        end
+      end
+      
+      # Metadata corresponding to the external group.
+      class GoogleCloudDiscoveryengineV1alphaExternalIdentityGroupMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata corresponding to the external user.
+      class GoogleCloudDiscoveryengineV1alphaExternalIdentityUserMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The user's family name.
+        # Corresponds to the JSON property `familyName`
+        # @return [String]
+        attr_accessor :family_name
+      
+        # The user's given name.
+        # Corresponds to the JSON property `givenName`
+        # @return [String]
+        attr_accessor :given_name
+      
+        # The user's primary email address.
+        # Corresponds to the JSON property `primaryEmail`
+        # @return [String]
+        attr_accessor :primary_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @family_name = args[:family_name] if args.key?(:family_name)
+          @given_name = args[:given_name] if args.key?(:given_name)
+          @primary_email = args[:primary_email] if args.key?(:primary_email)
+        end
+      end
+      
       # Fact Chunk.
       class GoogleCloudDiscoveryengineV1alphaFactChunk
         include Google::Apis::Core::Hashable
@@ -16974,25 +17013,6 @@ module Google
         def update!(**args)
           @data_schema = args[:data_schema] if args.key?(:data_schema)
           @input_uris = args[:input_uris] if args.key?(:input_uris)
-        end
-      end
-      
-      # Response message for the AgentService.GetAgentView method.
-      class GoogleCloudDiscoveryengineV1alphaGetAgentViewResponse
-        include Google::Apis::Core::Hashable
-      
-        # The data for displaying an Agent.
-        # Corresponds to the JSON property `agentView`
-        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentView]
-        attr_accessor :agent_view
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_view = args[:agent_view] if args.key?(:agent_view)
         end
       end
       
@@ -18370,6 +18390,26 @@ module Google
         attr_accessor :auto_renew
         alias_method :auto_renew?, :auto_renew
       
+        # Output only. Indication of whether the subscription is terminated earlier than
+        # the expiration date. This is usually terminated by pipeline once the
+        # subscription gets terminated from subsv3.
+        # Corresponds to the JSON property `earlyTerminated`
+        # @return [Boolean]
+        attr_accessor :early_terminated
+        alias_method :early_terminated?, :early_terminated
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `earlyTerminationDate`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate]
+        attr_accessor :early_termination_date
+      
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
@@ -18441,6 +18481,8 @@ module Google
         def update!(**args)
           @alert_policy_resource_config = args[:alert_policy_resource_config] if args.key?(:alert_policy_resource_config)
           @auto_renew = args[:auto_renew] if args.key?(:auto_renew)
+          @early_terminated = args[:early_terminated] if args.key?(:early_terminated)
+          @early_termination_date = args[:early_termination_date] if args.key?(:early_termination_date)
           @end_date = args[:end_date] if args.key?(:end_date)
           @free_trial = args[:free_trial] if args.key?(:free_trial)
           @gemini_bundle = args[:gemini_bundle] if args.key?(:gemini_bundle)
@@ -18552,33 +18594,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authorizations = args[:authorizations] if args.key?(:authorizations)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Response message for the AgentService.ListAvailableAgentViews method.
-      class GoogleCloudDiscoveryengineV1alphaListAvailableAgentViewsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The agent sources visible to the caller under the parent Assistant.
-        # Corresponds to the JSON property `agentViews`
-        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentView>]
-        attr_accessor :agent_views
-      
-        # A token that can be sent as ListAvailableAgentViewsRequest.page_token to
-        # retrieve the next page. If this field is omitted, there are no subsequent
-        # pages.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_views = args[:agent_views] if args.key?(:agent_views)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -19889,6 +19904,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfig
         include Google::Apis::Core::Hashable
       
+        # Data protection policy config for NotebookLM.
+        # Corresponds to the JSON property `dataProtectionPolicy`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy]
+        attr_accessor :data_protection_policy
+      
         # Configuration for customer defined Model Armor templates to be used for
         # sanitizing user prompts and LLM responses.
         # Corresponds to the JSON property `modelArmorConfig`
@@ -19913,9 +19933,50 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_protection_policy = args[:data_protection_policy] if args.key?(:data_protection_policy)
           @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
           @observability_config = args[:observability_config] if args.key?(:observability_config)
           @opt_out_notebook_sharing = args[:opt_out_notebook_sharing] if args.key?(:opt_out_notebook_sharing)
+        end
+      end
+      
+      # Data protection policy config for NotebookLM.
+      class GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies a Sensitive Data Protection (https://cloud.google.com/sensitive-data-
+        # protection/docs/sensitive-data-protection-overview) policy.
+        # Corresponds to the JSON property `sensitiveDataProtectionPolicy`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy]
+        attr_accessor :sensitive_data_protection_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sensitive_data_protection_policy = args[:sensitive_data_protection_policy] if args.key?(:sensitive_data_protection_policy)
+        end
+      end
+      
+      # Specifies a Sensitive Data Protection (https://cloud.google.com/sensitive-data-
+      # protection/docs/sensitive-data-protection-overview) policy.
+      class GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Sensitive Data Protection policy resource name.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
@@ -20621,6 +20682,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaQuery
         include Google::Apis::Core::Hashable
       
+        # Query content parts.
+        # Corresponds to the JSON property `parts`
+        # @return [Array<Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaQueryPart>]
+        attr_accessor :parts
+      
         # Output only. Unique Id for the query.
         # Corresponds to the JSON property `queryId`
         # @return [String]
@@ -20637,6 +20703,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @parts = args[:parts] if args.key?(:parts)
           @query_id = args[:query_id] if args.key?(:query_id)
           @text = args[:text] if args.key?(:text)
         end
@@ -20724,6 +20791,219 @@ module Google
           @dated_usages = args[:dated_usages] if args.key?(:dated_usages)
           @metric_type = args[:metric_type] if args.key?(:metric_type)
           @total_usage = args[:total_usage] if args.key?(:total_usage)
+        end
+      end
+      
+      # Represents a part or the whole of a content, used to represent a query. A
+      # query can be made up of multiple parts.
+      class GoogleCloudDiscoveryengineV1alphaQueryPart
+        include Google::Apis::Core::Hashable
+      
+        # Represents a document reference.
+        # Corresponds to the JSON property `documentReference`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaQueryPartDocumentReference]
+        attr_accessor :document_reference
+      
+        # Represents a Google Drive document reference.
+        # Corresponds to the JSON property `driveDocumentReference`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaQueryPartDriveDocumentReference]
+        attr_accessor :drive_document_reference
+      
+        # Optional. The IANA standard MIME type of the data. See https://www.iana.org/
+        # assignments/media-types/media-types.xhtml. This field is optional. If not set,
+        # the default assumed MIME type is "text/plain" for the "data" field.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Represents a person reference.
+        # Corresponds to the JSON property `personReference`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaQueryPartPersonReference]
+        attr_accessor :person_reference
+      
+        # Text content.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # This field is expected to be a ui message in JSON format. As of Q1 2026,
+        # ui_json_payload is only supported for A2UI messages.
+        # Corresponds to the JSON property `uiJsonPayload`
+        # @return [String]
+        attr_accessor :ui_json_payload
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_reference = args[:document_reference] if args.key?(:document_reference)
+          @drive_document_reference = args[:drive_document_reference] if args.key?(:drive_document_reference)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @person_reference = args[:person_reference] if args.key?(:person_reference)
+          @text = args[:text] if args.key?(:text)
+          @ui_json_payload = args[:ui_json_payload] if args.key?(:ui_json_payload)
+        end
+      end
+      
+      # Represents a document reference.
+      class GoogleCloudDiscoveryengineV1alphaQueryPartDocumentReference
+        include Google::Apis::Core::Hashable
+      
+        # The destination uri of the reference.
+        # Corresponds to the JSON property `destinationUri`
+        # @return [String]
+        attr_accessor :destination_uri
+      
+        # The display title of the reference.
+        # Corresponds to the JSON property `displayTitle`
+        # @return [String]
+        attr_accessor :display_title
+      
+        # The full resource name of the document. Format: `projects/`project`/locations/`
+        # location`/collections/`collection`/dataStores/`data_store`/branches/`branch`/
+        # documents/`document_id``.
+        # Corresponds to the JSON property `documentName`
+        # @return [String]
+        attr_accessor :document_name
+      
+        # Output only. The file id of the document data stored in the session context
+        # files.
+        # Corresponds to the JSON property `fileId`
+        # @return [String]
+        attr_accessor :file_id
+      
+        # The icon uri of the reference.
+        # Corresponds to the JSON property `iconUri`
+        # @return [String]
+        attr_accessor :icon_uri
+      
+        # Input only. The url_for_connector of the document returned by Federated Search.
+        # Corresponds to the JSON property `urlForConnector`
+        # @return [String]
+        attr_accessor :url_for_connector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_uri = args[:destination_uri] if args.key?(:destination_uri)
+          @display_title = args[:display_title] if args.key?(:display_title)
+          @document_name = args[:document_name] if args.key?(:document_name)
+          @file_id = args[:file_id] if args.key?(:file_id)
+          @icon_uri = args[:icon_uri] if args.key?(:icon_uri)
+          @url_for_connector = args[:url_for_connector] if args.key?(:url_for_connector)
+        end
+      end
+      
+      # Represents a Google Drive document reference.
+      class GoogleCloudDiscoveryengineV1alphaQueryPartDriveDocumentReference
+        include Google::Apis::Core::Hashable
+      
+        # The destination uri of the reference.
+        # Corresponds to the JSON property `destinationUri`
+        # @return [String]
+        attr_accessor :destination_uri
+      
+        # The display title of the reference.
+        # Corresponds to the JSON property `displayTitle`
+        # @return [String]
+        attr_accessor :display_title
+      
+        # The full resource name of the document. Format: `projects/*/locations/*/
+        # collections/*/dataStores/*/branches/*/documents/*`.
+        # Corresponds to the JSON property `documentName`
+        # @return [String]
+        attr_accessor :document_name
+      
+        # The Drive id of the document.
+        # Corresponds to the JSON property `driveId`
+        # @return [String]
+        attr_accessor :drive_id
+      
+        # Output only. The file id of the Drive document data stored in the session
+        # context files.
+        # Corresponds to the JSON property `fileId`
+        # @return [String]
+        attr_accessor :file_id
+      
+        # The icon uri of the Drive document reference.
+        # Corresponds to the JSON property `iconUri`
+        # @return [String]
+        attr_accessor :icon_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_uri = args[:destination_uri] if args.key?(:destination_uri)
+          @display_title = args[:display_title] if args.key?(:display_title)
+          @document_name = args[:document_name] if args.key?(:document_name)
+          @drive_id = args[:drive_id] if args.key?(:drive_id)
+          @file_id = args[:file_id] if args.key?(:file_id)
+          @icon_uri = args[:icon_uri] if args.key?(:icon_uri)
+        end
+      end
+      
+      # Represents a person reference.
+      class GoogleCloudDiscoveryengineV1alphaQueryPartPersonReference
+        include Google::Apis::Core::Hashable
+      
+        # The destination uri of the person.
+        # Corresponds to the JSON property `destinationUri`
+        # @return [String]
+        attr_accessor :destination_uri
+      
+        # The display name of the person.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The display photo url of the person.
+        # Corresponds to the JSON property `displayPhotoUri`
+        # @return [String]
+        attr_accessor :display_photo_uri
+      
+        # The full resource name of the person. Format: `projects/*/locations/*/
+        # collections/*/dataStores/*/branches/*/documents/*`.
+        # Corresponds to the JSON property `documentName`
+        # @return [String]
+        attr_accessor :document_name
+      
+        # The email of the person.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Output only. The file id of the person data stored in the session context
+        # files.
+        # Corresponds to the JSON property `fileId`
+        # @return [String]
+        attr_accessor :file_id
+      
+        # The person id of the person.
+        # Corresponds to the JSON property `personId`
+        # @return [String]
+        attr_accessor :person_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_uri = args[:destination_uri] if args.key?(:destination_uri)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @display_photo_uri = args[:display_photo_uri] if args.key?(:display_photo_uri)
+          @document_name = args[:document_name] if args.key?(:document_name)
+          @email = args[:email] if args.key?(:email)
+          @file_id = args[:file_id] if args.key?(:file_id)
+          @person_id = args[:person_id] if args.key?(:person_id)
         end
       end
       
@@ -22297,6 +22577,13 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec]
         attr_accessor :natural_language_query_understanding_spec
       
+        # Optional. The maximum number of results to retrieve from each data store. If
+        # not specified, it will use the SearchRequest.data_store_specs.num_results if
+        # provided, otherwise there is no limit.
+        # Corresponds to the JSON property `numResultsPerDataStore`
+        # @return [Fixnum]
+        attr_accessor :num_results_per_data_store
+      
         # A 0-indexed integer that specifies the current offset (that is, starting
         # result location, amongst the Documents deemed by the API as relevant) in
         # search results. This field is only considered if page_token is unset. If this
@@ -22588,6 +22875,7 @@ module Google
           @image_query = args[:image_query] if args.key?(:image_query)
           @language_code = args[:language_code] if args.key?(:language_code)
           @natural_language_query_understanding_spec = args[:natural_language_query_understanding_spec] if args.key?(:natural_language_query_understanding_spec)
+          @num_results_per_data_store = args[:num_results_per_data_store] if args.key?(:num_results_per_data_store)
           @offset = args[:offset] if args.key?(:offset)
           @one_box_page_size = args[:one_box_page_size] if args.key?(:one_box_page_size)
           @order_by = args[:order_by] if args.key?(:order_by)
@@ -23206,6 +23494,14 @@ module Google
         # @return [String]
         attr_accessor :filter
       
+        # Optional. The maximum number of results to retrieve from this data store. If
+        # not specified, it will use the SearchRequest.num_results_per_data_store if
+        # provided, otherwise there is no limit. If both this field and SearchRequest.
+        # num_results_per_data_store are specified, this field will be used.
+        # Corresponds to the JSON property `numResults`
+        # @return [Fixnum]
+        attr_accessor :num_results
+      
         def initialize(**args)
            update!(**args)
         end
@@ -23216,6 +23512,7 @@ module Google
           @custom_search_operators = args[:custom_search_operators] if args.key?(:custom_search_operators)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
+          @num_results = args[:num_results] if args.key?(:num_results)
         end
       end
       
@@ -25654,6 +25951,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaStreamAssistRequest
         include Google::Apis::Core::Hashable
       
+        # Specification of actions for the request.
+        # Corresponds to the JSON property `actionSpec`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaStreamAssistRequestActionSpec]
+        attr_accessor :action_spec
+      
         # Assistant generation specification for the request. This allows to override
         # the default generation configuration at the engine level.
         # Corresponds to the JSON property `generationSpec`
@@ -25691,11 +25993,33 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @action_spec = args[:action_spec] if args.key?(:action_spec)
           @generation_spec = args[:generation_spec] if args.key?(:generation_spec)
           @query = args[:query] if args.key?(:query)
           @session = args[:session] if args.key?(:session)
           @tools_spec = args[:tools_spec] if args.key?(:tools_spec)
           @user_metadata = args[:user_metadata] if args.key?(:user_metadata)
+        end
+      end
+      
+      # Specification of actions for the request.
+      class GoogleCloudDiscoveryengineV1alphaStreamAssistRequestActionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, actions will not be served for the request. This only works
+        # for enterprise edition.
+        # Corresponds to the JSON property `actionDisabled`
+        # @return [Boolean]
+        attr_accessor :action_disabled
+        alias_method :action_disabled?, :action_disabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_disabled = args[:action_disabled] if args.key?(:action_disabled)
         end
       end
       
@@ -26508,34 +26832,6 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # Per-user annotations for an Agent, based on UserAnnotation.
-      class GoogleCloudDiscoveryengineV1alphaUserAnnotations
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Whether the agent is pinned, pinned agent will be displayed on the
-        # top of the agent list.
-        # Corresponds to the JSON property `pinned`
-        # @return [Boolean]
-        attr_accessor :pinned
-        alias_method :pinned?, :pinned
-      
-        # Optional. Whether the agent has been viewed by the user.
-        # Corresponds to the JSON property `viewed`
-        # @return [Boolean]
-        attr_accessor :viewed
-        alias_method :viewed?, :viewed
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @pinned = args[:pinned] if args.key?(:pinned)
-          @viewed = args[:viewed] if args.key?(:viewed)
         end
       end
       
@@ -30948,6 +31244,26 @@ module Google
         attr_accessor :auto_renew
         alias_method :auto_renew?, :auto_renew
       
+        # Output only. Indication of whether the subscription is terminated earlier than
+        # the expiration date. This is usually terminated by pipeline once the
+        # subscription gets terminated from subsv3.
+        # Corresponds to the JSON property `earlyTerminated`
+        # @return [Boolean]
+        attr_accessor :early_terminated
+        alias_method :early_terminated?, :early_terminated
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `earlyTerminationDate`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleTypeDate]
+        attr_accessor :early_termination_date
+      
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
@@ -31018,6 +31334,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_renew = args[:auto_renew] if args.key?(:auto_renew)
+          @early_terminated = args[:early_terminated] if args.key?(:early_terminated)
+          @early_termination_date = args[:early_termination_date] if args.key?(:early_termination_date)
           @end_date = args[:end_date] if args.key?(:end_date)
           @free_trial = args[:free_trial] if args.key?(:free_trial)
           @gemini_bundle = args[:gemini_bundle] if args.key?(:gemini_bundle)
@@ -31301,6 +31619,11 @@ module Google
       class GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfig
         include Google::Apis::Core::Hashable
       
+        # Data protection policy config for NotebookLM.
+        # Corresponds to the JSON property `dataProtectionPolicy`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy]
+        attr_accessor :data_protection_policy
+      
         # Configuration for customer defined Model Armor templates to be used for
         # sanitizing user prompts and LLM responses.
         # Corresponds to the JSON property `modelArmorConfig`
@@ -31325,9 +31648,50 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_protection_policy = args[:data_protection_policy] if args.key?(:data_protection_policy)
           @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
           @observability_config = args[:observability_config] if args.key?(:observability_config)
           @opt_out_notebook_sharing = args[:opt_out_notebook_sharing] if args.key?(:opt_out_notebook_sharing)
+        end
+      end
+      
+      # Data protection policy config for NotebookLM.
+      class GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies a Sensitive Data Protection (https://cloud.google.com/sensitive-data-
+        # protection/docs/sensitive-data-protection-overview) policy.
+        # Corresponds to the JSON property `sensitiveDataProtectionPolicy`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy]
+        attr_accessor :sensitive_data_protection_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sensitive_data_protection_policy = args[:sensitive_data_protection_policy] if args.key?(:sensitive_data_protection_policy)
+        end
+      end
+      
+      # Specifies a Sensitive Data Protection (https://cloud.google.com/sensitive-data-
+      # protection/docs/sensitive-data-protection-overview) policy.
+      class GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Sensitive Data Protection policy resource name.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
@@ -31886,6 +32250,13 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec]
         attr_accessor :natural_language_query_understanding_spec
       
+        # Optional. The maximum number of results to retrieve from each data store. If
+        # not specified, it will use the SearchRequest.data_store_specs.num_results if
+        # provided, otherwise there is no limit.
+        # Corresponds to the JSON property `numResultsPerDataStore`
+        # @return [Fixnum]
+        attr_accessor :num_results_per_data_store
+      
         # A 0-indexed integer that specifies the current offset (that is, starting
         # result location, amongst the Documents deemed by the API as relevant) in
         # search results. This field is only considered if page_token is unset. If this
@@ -32167,6 +32538,7 @@ module Google
           @image_query = args[:image_query] if args.key?(:image_query)
           @language_code = args[:language_code] if args.key?(:language_code)
           @natural_language_query_understanding_spec = args[:natural_language_query_understanding_spec] if args.key?(:natural_language_query_understanding_spec)
+          @num_results_per_data_store = args[:num_results_per_data_store] if args.key?(:num_results_per_data_store)
           @offset = args[:offset] if args.key?(:offset)
           @one_box_page_size = args[:one_box_page_size] if args.key?(:one_box_page_size)
           @order_by = args[:order_by] if args.key?(:order_by)
@@ -32784,6 +33156,14 @@ module Google
         # @return [String]
         attr_accessor :filter
       
+        # Optional. The maximum number of results to retrieve from this data store. If
+        # not specified, it will use the SearchRequest.num_results_per_data_store if
+        # provided, otherwise there is no limit. If both this field and SearchRequest.
+        # num_results_per_data_store are specified, this field will be used.
+        # Corresponds to the JSON property `numResults`
+        # @return [Fixnum]
+        attr_accessor :num_results
+      
         def initialize(**args)
            update!(**args)
         end
@@ -32794,6 +33174,7 @@ module Google
           @custom_search_operators = args[:custom_search_operators] if args.key?(:custom_search_operators)
           @data_store = args[:data_store] if args.key?(:data_store)
           @filter = args[:filter] if args.key?(:filter)
+          @num_results = args[:num_results] if args.key?(:num_results)
         end
       end
       
