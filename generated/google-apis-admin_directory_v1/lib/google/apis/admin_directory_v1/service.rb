@@ -503,6 +503,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Counts ChromeOS devices matching the request.
+        # @param [String] customer_id
+        #   Required. Immutable ID of the Google Workspace account.
+        # @param [String] filter
+        #   Optional. Search string in the format given at https://developers.google.com/
+        #   workspace/admin/directory/v1/list-query-operators
+        # @param [Boolean] include_child_orgunits
+        #   Optional. Return devices from all child orgunits, as well as the specified org
+        #   unit. If this is set to true, 'orgUnitPath' must be provided.
+        # @param [String] org_unit_path
+        #   Optional. The full path of the organizational unit (minus the leading `/`) or
+        #   its unique ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::CountChromeOsDevicesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::CountChromeOsDevicesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_customer_device_chromeo_chrome_os_devices(customer_id, filter: nil, include_child_orgunits: nil, org_unit_path: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'admin/directory/v1/customer/{customerId}/devices/chromeos:countChromeOsDevices', options)
+          command.response_representation = Google::Apis::AdminDirectoryV1::CountChromeOsDevicesResponse::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::CountChromeOsDevicesResponse
+          command.params['customerId'] = customer_id unless customer_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['includeChildOrgunits'] = include_child_orgunits unless include_child_orgunits.nil?
+          command.query['orgUnitPath'] = org_unit_path unless org_unit_path.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Issues a command for the device to execute.
         # @param [String] customer_id
         #   Immutable. ID of the Google Workspace account.

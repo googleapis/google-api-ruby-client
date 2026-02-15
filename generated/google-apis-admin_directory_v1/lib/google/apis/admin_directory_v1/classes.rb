@@ -1912,6 +1912,25 @@ module Google
         end
       end
       
+      # A response for counting ChromeOS devices.
+      class CountChromeOsDevicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The total number of devices matching the request.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+        end
+      end
+      
       # Request for adding a new print server.
       class CreatePrintServerRequest
         include Google::Apis::Core::Hashable
