@@ -22,6 +22,24 @@ module Google
   module Apis
     module WorkloadmanagerV1
       
+      class ActiveDirectory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Actuation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActuationOutput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AgentCommand
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -64,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,7 +124,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Database
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatabaseProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Deployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeploymentOutput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,6 +226,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListActuationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDeploymentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDiscoveredProfilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LocationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Notice
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +317,12 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Pacemaker
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -406,6 +478,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SapSystemS4Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SapValidation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -442,6 +520,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlLocationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerWorkload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SqlserverValidation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +557,12 @@ module Google
       end
       
       class Summary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TerraformVariable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -512,6 +608,47 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActiveDirectory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_address, as: 'dnsAddress'
+          property :domain, as: 'domain'
+          property :domain_username, as: 'domainUsername'
+          property :secret_manager_secret, as: 'secretManagerSecret'
+          property :type, as: 'type'
+        end
+      end
+      
+      class Actuation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actuation_output, as: 'actuationOutput', class: Google::Apis::WorkloadmanagerV1::ActuationOutput, decorator: Google::Apis::WorkloadmanagerV1::ActuationOutput::Representation
+      
+          collection :deployment_output, as: 'deploymentOutput', class: Google::Apis::WorkloadmanagerV1::DeploymentOutput, decorator: Google::Apis::WorkloadmanagerV1::DeploymentOutput::Representation
+      
+          property :end_time, as: 'endTime'
+          property :name, as: 'name'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+        end
+      end
+      
+      class ActuationOutput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actuate_logs, as: 'actuateLogs'
+          property :ansible_error, as: 'ansibleError'
+          collection :ansible_failed_task, as: 'ansibleFailedTask'
+          property :blueprint_id, as: 'blueprintId'
+          property :cloudbuild_id, as: 'cloudbuildId'
+          property :error_code, as: 'errorCode'
+          property :error_logs, as: 'errorLogs'
+          property :has_user_facing_error_msg, as: 'hasUserFacingErrorMsg'
+          property :terraform_error, as: 'terraformError'
+          property :terraform_template, as: 'terraformTemplate'
+        end
       end
       
       class AgentCommand
@@ -599,6 +736,28 @@ module Google
         end
       end
       
+      class AppDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_instance_id, as: 'appInstanceId'
+          property :app_service_account, as: 'appServiceAccount'
+          collection :app_vm_names, as: 'appVmNames'
+          property :ascs_image, as: 'ascsImage'
+          property :ascs_instance_id, as: 'ascsInstanceId'
+          property :ascs_machine_type, as: 'ascsMachineType'
+          property :ascs_service_account, as: 'ascsServiceAccount'
+          property :ascs_vm, as: 'ascsVm'
+          property :ers_instance_id, as: 'ersInstanceId'
+          property :ers_vm, as: 'ersVm'
+          property :image, as: 'image'
+          property :machine_type, as: 'machineType'
+          property :secret_manager_secret, as: 'secretManagerSecret'
+          property :shared_storage, as: 'sharedStorage'
+          property :sid, as: 'sid'
+          property :vms_multiplier, as: 'vmsMultiplier'
+        end
+      end
+      
       class BackupProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -654,12 +813,72 @@ module Google
         end
       end
       
+      class Database
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_type, as: 'diskType'
+          property :floating_ip_address, as: 'floatingIpAddress'
+          property :machine_type, as: 'machineType'
+          property :secondary_sole_tenant_node, as: 'secondarySoleTenantNode'
+          property :secondary_sole_tenant_node_type, as: 'secondarySoleTenantNodeType'
+          property :secret_manager_secret, as: 'secretManagerSecret'
+          property :smt, as: 'smt'
+          property :sole_tenant_node, as: 'soleTenantNode'
+          property :sole_tenant_node_type, as: 'soleTenantNodeType'
+          property :tempdb_on_ssd, as: 'tempdbOnSsd'
+          property :tenancy_model, as: 'tenancyModel'
+        end
+      end
+      
+      class DatabaseDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_service_account, as: 'databaseServiceAccount'
+          property :disk_type, as: 'diskType'
+          property :image, as: 'image'
+          property :instance_id, as: 'instanceId'
+          property :machine_type, as: 'machineType'
+          property :primary_db_vm, as: 'primaryDbVm'
+          property :secondary_db_vm, as: 'secondaryDbVm'
+          property :secret_manager_secret, as: 'secretManagerSecret'
+          property :sid, as: 'sid'
+        end
+      end
+      
       class DatabaseProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_properties, as: 'backupProperties', class: Google::Apis::WorkloadmanagerV1::BackupProperties, decorator: Google::Apis::WorkloadmanagerV1::BackupProperties::Representation
       
           property :database_type, as: 'databaseType'
+        end
+      end
+      
+      class Deployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :sap_system_s4_config, as: 'sapSystemS4Config', class: Google::Apis::WorkloadmanagerV1::SapSystemS4Config, decorator: Google::Apis::WorkloadmanagerV1::SapSystemS4Config::Representation
+      
+          property :service_account, as: 'serviceAccount'
+          property :sql_server_workload, as: 'sqlServerWorkload', class: Google::Apis::WorkloadmanagerV1::SqlServerWorkload, decorator: Google::Apis::WorkloadmanagerV1::SqlServerWorkload::Representation
+      
+          property :state, as: 'state'
+          hash :terraform_variables, as: 'terraformVariables', class: Google::Apis::WorkloadmanagerV1::TerraformVariable, decorator: Google::Apis::WorkloadmanagerV1::TerraformVariable::Representation
+      
+          property :update_time, as: 'updateTime'
+          property :worker_pool, as: 'workerPool'
+          property :workload_type, as: 'workloadType'
+        end
+      end
+      
+      class DeploymentOutput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
@@ -821,6 +1040,26 @@ module Google
         end
       end
       
+      class ListActuationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actuations, as: 'actuations', class: Google::Apis::WorkloadmanagerV1::Actuation, decorator: Google::Apis::WorkloadmanagerV1::Actuation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListDeploymentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deployments, as: 'deployments', class: Google::Apis::WorkloadmanagerV1::Deployment, decorator: Google::Apis::WorkloadmanagerV1::Deployment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListDiscoveredProfilesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -909,6 +1148,24 @@ module Google
         end
       end
       
+      class LocationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_comms_firewall, as: 'createCommsFirewall'
+          collection :custom_tags, as: 'customTags'
+          property :deployment_dns_enabled, as: 'deploymentDnsEnabled'
+          property :dns_zone, as: 'dnsZone'
+          property :dns_zone_name_suffix, as: 'dnsZoneNameSuffix'
+          property :internet_access, as: 'internetAccess'
+          property :network_project, as: 'networkProject'
+          property :region_name, as: 'regionName'
+          property :subnet_name, as: 'subnetName'
+          property :vpc_name, as: 'vpcName'
+          property :zone1_name, as: 'zone1Name'
+          property :zone2_name, as: 'zone2Name'
+        end
+      end
+      
       class Notice
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -946,6 +1203,18 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class Pacemaker
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_name_node_certificates, as: 'bucketNameNodeCertificates'
+          property :pacemaker_cluster, as: 'pacemakerCluster'
+          property :pacemaker_cluster_secret, as: 'pacemakerClusterSecret'
+          property :pacemaker_cluster_username, as: 'pacemakerClusterUsername'
+          property :sql_pacemaker_secret, as: 'sqlPacemakerSecret'
+          property :sql_pacemaker_username, as: 'sqlPacemakerUsername'
         end
       end
       
@@ -1235,6 +1504,28 @@ module Google
         end
       end
       
+      class SapSystemS4Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_stopping_for_update, as: 'allowStoppingForUpdate'
+          property :ansible_runner_service_account, as: 'ansibleRunnerServiceAccount'
+          property :app, as: 'app', class: Google::Apis::WorkloadmanagerV1::AppDetails, decorator: Google::Apis::WorkloadmanagerV1::AppDetails::Representation
+      
+          property :database, as: 'database', class: Google::Apis::WorkloadmanagerV1::DatabaseDetails, decorator: Google::Apis::WorkloadmanagerV1::DatabaseDetails::Representation
+      
+          property :deployment_model, as: 'deploymentModel'
+          property :environment_type, as: 'environmentType'
+          property :gcp_project_id, as: 'gcpProjectId'
+          property :location, as: 'location', class: Google::Apis::WorkloadmanagerV1::LocationDetails, decorator: Google::Apis::WorkloadmanagerV1::LocationDetails::Representation
+      
+          property :media_bucket_name, as: 'mediaBucketName'
+          property :sap_boot_disk_image, as: 'sapBootDiskImage'
+          property :scaling_method, as: 'scalingMethod'
+          property :version, as: 'version'
+          property :vm_prefix, as: 'vmPrefix'
+        end
+      end
+      
       class SapValidation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1294,6 +1585,48 @@ module Google
         end
       end
       
+      class SqlLocationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_zone, as: 'dnsZone'
+          property :gcp_project_id, as: 'gcpProjectId'
+          property :internet_access, as: 'internetAccess'
+          property :network, as: 'network'
+          property :primary_zone, as: 'primaryZone'
+          property :region, as: 'region'
+          property :secondary_zone, as: 'secondaryZone'
+          property :subnetwork, as: 'subnetwork'
+          property :tertiary_zone, as: 'tertiaryZone'
+        end
+      end
+      
+      class SqlServerWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_directory, as: 'activeDirectory', class: Google::Apis::WorkloadmanagerV1::ActiveDirectory, decorator: Google::Apis::WorkloadmanagerV1::ActiveDirectory::Representation
+      
+          property :compute_engine_service_account, as: 'computeEngineServiceAccount'
+          property :database, as: 'database', class: Google::Apis::WorkloadmanagerV1::Database, decorator: Google::Apis::WorkloadmanagerV1::Database::Representation
+      
+          property :deployment_model, as: 'deploymentModel'
+          property :environment_type, as: 'environmentType'
+          property :fci_type, as: 'fciType'
+          property :ha_type, as: 'haType'
+          property :is_sql_payg, as: 'isSqlPayg'
+          property :location, as: 'location', class: Google::Apis::WorkloadmanagerV1::SqlLocationDetails, decorator: Google::Apis::WorkloadmanagerV1::SqlLocationDetails::Representation
+      
+          property :media_bucket, as: 'mediaBucket'
+          property :operating_system_type, as: 'operatingSystemType'
+          property :os_image, as: 'osImage'
+          property :os_image_type, as: 'osImageType'
+          property :pacemaker, as: 'pacemaker', class: Google::Apis::WorkloadmanagerV1::Pacemaker, decorator: Google::Apis::WorkloadmanagerV1::Pacemaker::Representation
+      
+          property :sql_server_edition, as: 'sqlServerEdition'
+          property :sql_server_version, as: 'sqlServerVersion'
+          property :vm_prefix, as: 'vmPrefix'
+        end
+      end
+      
       class SqlserverValidation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1336,6 +1669,13 @@ module Google
           property :failures, :numeric_string => true, as: 'failures'
           property :new_failures, :numeric_string => true, as: 'newFailures'
           property :new_fixes, :numeric_string => true, as: 'newFixes'
+        end
+      end
+      
+      class TerraformVariable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_value, as: 'inputValue'
         end
       end
       
