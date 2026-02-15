@@ -4020,6 +4020,14 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # Optional. TargetProxies defines a list of TargetTcpProxies this TlsRoute is
+        # attached to, as one of the routing rules to route the requests served by the
+        # TargetTcpProxy. Each TargetTcpProxy reference should match the pattern: `
+        # projects/*/locations/*/targetTcpProxies/`
+        # Corresponds to the JSON property `targetProxies`
+        # @return [Array<String>]
+        attr_accessor :target_proxies
+      
         # Output only. The timestamp when the resource was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -4039,6 +4047,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @rules = args[:rules] if args.key?(:rules)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @target_proxies = args[:target_proxies] if args.key?(:target_proxies)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
