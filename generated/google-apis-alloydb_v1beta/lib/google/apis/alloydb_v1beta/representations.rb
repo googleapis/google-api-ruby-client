@@ -2002,6 +2002,8 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_version_release_date, as: 'currentVersionReleaseDate', class: Google::Apis::AlloydbV1beta::GoogleTypeDate, decorator: Google::Apis::AlloydbV1beta::GoogleTypeDate::Representation
+      
           collection :deny_maintenance_schedules, as: 'denyMaintenanceSchedules', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule::Representation
       
           property :is_instance_stopped, as: 'isInstanceStopped'
@@ -2011,7 +2013,6 @@ module Google
           property :maintenance_version, as: 'maintenanceVersion'
           property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance, decorator: Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance::Representation
       
-          property :version_update_time, as: 'versionUpdateTime'
         end
       end
       
