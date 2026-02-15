@@ -2415,6 +2415,12 @@ module Google
       class GoogleAppsCardV1DataSourceConfig
         include Google::Apis::Core::Hashable
       
+        # The minimum number of characters the user must enter before this data provider
+        # is triggered (i.e., before it starts returning results).
+        # Corresponds to the JSON property `minCharactersTrigger`
+        # @return [Fixnum]
+        attr_accessor :min_characters_trigger
+      
         # For a `SelectionInput` widget that uses a multiselect menu, a data source from
         # Google Workspace. Used to populate items in a multiselect menu. [Google Chat
         # apps](https://developers.google.com/workspace/chat):
@@ -2436,6 +2442,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @min_characters_trigger = args[:min_characters_trigger] if args.key?(:min_characters_trigger)
           @platform_data_source = args[:platform_data_source] if args.key?(:platform_data_source)
           @remote_data_source = args[:remote_data_source] if args.key?(:remote_data_source)
         end
@@ -3494,10 +3501,9 @@ module Google
         # multi_select_max_selected_items` field, `multi_select_min_query_length` field,
         # `external_data_source` field and `platform_data_source` field are ignored.
         # Available for Google Workspace add-ons that extend Google Workspace Studio.
-        # Available for the `Dropdown widget` in Google Chat apps as part of the [
-        # Developer Preview Program](https://developers.google.com/workspace/preview).
-        # For the `Dropdown` widget in Google Chat apps, only one `DataSourceConfig` is
-        # supported. If multiple `DataSourceConfig`s are set, only the first one is used.
+        # Available for the `Dropdown widget` in Google Chat apps. For the `Dropdown`
+        # widget in Google Chat apps, only one `DataSourceConfig` is supported. If
+        # multiple `DataSourceConfig`s are set, only the first one is used.
         # Corresponds to the JSON property `dataSourceConfigs`
         # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1DataSourceConfig>]
         attr_accessor :data_source_configs

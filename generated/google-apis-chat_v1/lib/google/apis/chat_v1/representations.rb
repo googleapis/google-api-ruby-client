@@ -1564,6 +1564,7 @@ module Google
       class GoogleAppsCardV1DataSourceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_characters_trigger, as: 'minCharactersTrigger'
           property :platform_data_source, as: 'platformDataSource', class: Google::Apis::ChatV1::GoogleAppsCardV1PlatformDataSource, decorator: Google::Apis::ChatV1::GoogleAppsCardV1PlatformDataSource::Representation
       
           property :remote_data_source, as: 'remoteDataSource', class: Google::Apis::ChatV1::GoogleAppsCardV1Action, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Action::Representation
