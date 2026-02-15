@@ -2794,6 +2794,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstantSnapshotParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstantSnapshotResourceStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7792,6 +7798,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkloadIdentityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class XpnHostList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -11713,6 +11725,8 @@ module Google
           property :status_message, as: 'statusMessage'
           property :tags, as: 'tags', class: Google::Apis::ComputeV1::Tags, decorator: Google::Apis::ComputeV1::Tags::Representation
       
+          property :workload_identity_config, as: 'workloadIdentityConfig', class: Google::Apis::ComputeV1::WorkloadIdentityConfig, decorator: Google::Apis::ComputeV1::WorkloadIdentityConfig::Representation
+      
           property :zone, as: 'zone'
         end
       end
@@ -12012,6 +12026,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_action_on_failure, as: 'defaultActionOnFailure'
           property :force_update_on_repair, as: 'forceUpdateOnRepair'
+          property :on_failed_health_check, as: 'onFailedHealthCheck'
         end
       end
       
@@ -12689,6 +12704,8 @@ module Google
       
           property :tags, as: 'tags', class: Google::Apis::ComputeV1::Tags, decorator: Google::Apis::ComputeV1::Tags::Representation
       
+          property :workload_identity_config, as: 'workloadIdentityConfig', class: Google::Apis::ComputeV1::WorkloadIdentityConfig, decorator: Google::Apis::ComputeV1::WorkloadIdentityConfig::Representation
+      
         end
       end
       
@@ -13012,6 +13029,8 @@ module Google
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::InstantSnapshotParams, decorator: Google::Apis::ComputeV1::InstantSnapshotParams::Representation
+      
           property :region, as: 'region'
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeV1::InstantSnapshotResourceStatus, decorator: Google::Apis::ComputeV1::InstantSnapshotResourceStatus::Representation
       
@@ -13088,6 +13107,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InstantSnapshotParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -15185,6 +15211,7 @@ module Google
       
           collection :alias_ip_ranges, as: 'aliasIpRanges', class: Google::Apis::ComputeV1::AliasIpRange, decorator: Google::Apis::ComputeV1::AliasIpRange::Representation
       
+          property :enable_vpc_scoped_dns, as: 'enableVpcScopedDns'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :igmp_query, as: 'igmpQuery'
           property :internal_ipv6_prefix_length, as: 'internalIpv6PrefixLength'
@@ -17445,6 +17472,7 @@ module Google
           property :delete_at_time, as: 'deleteAtTime'
           property :deployment_type, as: 'deploymentType'
           property :description, as: 'description'
+          property :early_access_maintenance, as: 'earlyAccessMaintenance'
           property :enable_emergent_maintenance, as: 'enableEmergentMaintenance'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
@@ -22357,6 +22385,14 @@ module Google
           property :bandwidth_allocation, as: 'bandwidthAllocation'
           property :bandwidth_unmetered, :numeric_string => true, as: 'bandwidthUnmetered'
           property :fault_response, as: 'faultResponse'
+        end
+      end
+      
+      class WorkloadIdentityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :identity, as: 'identity'
+          property :identity_certificate_enabled, as: 'identityCertificateEnabled'
         end
       end
       
