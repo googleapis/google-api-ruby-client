@@ -4027,7 +4027,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a Engine.
+        # Creates an Engine.
         # @param [String] parent
         #   Required. The parent resource name, such as `projects/`project`/locations/`
         #   location`/collections/`collection``.
@@ -4067,7 +4067,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a Engine.
+        # Deletes an Engine.
         # @param [String] name
         #   Required. Full resource name of Engine, such as `projects/`project`/locations/`
         #   location`/collections/`collection_id`/engines/`engine_id``. If the caller does
@@ -4101,7 +4101,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a Engine.
+        # Gets an Engine.
         # @param [String] name
         #   Required. Full resource name of Engine, such as `projects/`project`/locations/`
         #   location`/collections/`collection_id`/engines/`engine_id``.
@@ -4127,6 +4127,52 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Engine::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Engine
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the IAM access control policy for an Engine. A `NOT_FOUND` error is
+        # returned if the resource does not exist. An empty policy is returned if the
+        # resource exists but does not have a policy set on it.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Fixnum] options_requested_policy_version
+        #   Optional. The maximum policy version that will be used to format the policy.
+        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        #   rejected. Requests for policies with any conditional role bindings must
+        #   specify version 3. Policies with no conditional role bindings may specify any
+        #   valid value or leave the field unset. The policy in the response might use the
+        #   policy version that you specified, or it might use a lower policy version. For
+        #   example, if you specify version 3, but the policy has no conditional role
+        #   bindings, the response uses version 1. To learn which resources support
+        #   conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        #   google.com/iam/help/conditions/resource-policies).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleIamV1Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleIamV1Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_collection_engine_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleIamV1Policy::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleIamV1Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4209,6 +4255,45 @@ module Google
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1Engine
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the IAM access control policy for an Engine. A `NOT_FOUND` error is
+        # returned if the resource does not exist. **Important:** When setting a policy
+        # directly on an Engine resource, the only recommended roles in the bindings are:
+        # `roles/discoveryengine.user` and `roles/discoveryengine.agentspaceUser`.
+        # Attempting to grant any other role will result in a warning in logging.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::DiscoveryengineV1::GoogleIamV1SetIamPolicyRequest] google_iam_v1_set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleIamV1Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1::GoogleIamV1Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_collection_engine_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleIamV1SetIamPolicyRequest::Representation
+          command.request_object = google_iam_v1_set_iam_policy_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleIamV1Policy::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1::GoogleIamV1Policy
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
