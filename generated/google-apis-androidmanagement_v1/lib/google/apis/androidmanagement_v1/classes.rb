@@ -4613,7 +4613,7 @@ module Google
         attr_accessor :network_operator_name
       
         # Provides telephony information associated with each SIM card on the device.
-        # Only supported on fully managed devices starting from Android API level 23.
+        # Only supported on fully managed devices starting from Android 6.
         # Corresponds to the JSON property `telephonyInfos`
         # @return [Array<Google::Apis::AndroidmanagementV1::TelephonyInfo>]
         attr_accessor :telephony_infos
@@ -7161,15 +7161,17 @@ module Google
         end
       end
       
-      # Telephony information associated with a given SIM card on the device. Only
-      # supported on fully managed devices starting from Android API level 23.
+      # Telephony information associated with a given SIM card on the device. This is
+      # supported for all SIM cards on fully managed devices on Android 6 and above.
+      # In addition, this is supported for admin-added eSIMs on all devices for
+      # Android 15 and above.
       class TelephonyInfo
         include Google::Apis::Core::Hashable
       
         # Output only. Activation state of the SIM card on the device. This is
-        # applicable for eSIMs only. This is supported on all devices for API level 35
-        # and above. This is always ACTIVATION_STATE_UNSPECIFIED for physical SIMs and
-        # for devices below API level 35.
+        # applicable for eSIMs only. This is supported on all devices for Android 15 and
+        # above. This is always ACTIVATION_STATE_UNSPECIFIED for physical SIMs and for
+        # devices below Android 15.
         # Corresponds to the JSON property `activationState`
         # @return [String]
         attr_accessor :activation_state
@@ -7180,9 +7182,9 @@ module Google
         attr_accessor :carrier_name
       
         # Output only. The configuration mode of the SIM card on the device. This is
-        # applicable for eSIMs only. This is supported on all devices for API level 35
-        # and above. This is always CONFIG_MODE_UNSPECIFIED for physical SIMs and for
-        # devices below API level 35.
+        # applicable for eSIMs only. This is supported on all devices for Android 15 and
+        # above. This is always CONFIG_MODE_UNSPECIFIED for physical SIMs and for
+        # devices below Android 15.
         # Corresponds to the JSON property `configMode`
         # @return [String]
         attr_accessor :config_mode
