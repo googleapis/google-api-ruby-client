@@ -240,6 +240,11 @@ module Google
           # @return [Array<String>]
           attr_accessor :resource_ids
         
+          # Status of the event. Note: Not all events have status.
+          # Corresponds to the JSON property `status`
+          # @return [Google::Apis::AdminReportsV1::ActivityEventsStatus]
+          attr_accessor :status
+        
           # Type of event. The Google Workspace service or feature that an administrator
           # changes is identified in the `type` property which identifies an event using
           # the `eventName` property. For a full list of the API's `type` categories, see
@@ -257,6 +262,7 @@ module Google
             @name = args[:name] if args.key?(:name)
             @parameters = args[:parameters] if args.key?(:parameters)
             @resource_ids = args[:resource_ids] if args.key?(:resource_ids)
+            @status = args[:status] if args.key?(:status)
             @type = args[:type] if args.key?(:type)
           end
           
@@ -403,6 +409,44 @@ module Google
             @time = args[:time] if args.key?(:time)
             @unique_qualifier = args[:unique_qualifier] if args.key?(:unique_qualifier)
           end
+        end
+      end
+      
+      # Status of the event. Note: Not all events have status.
+      class ActivityEventsStatus
+        include Google::Apis::Core::Hashable
+      
+        # Error code of the event. Note: Field can be empty.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
+      
+        # Error message of the event. Note: Field can be empty.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # * Status of the event. Possible values if not empty: - UNKNOWN_EVENT_STATUS -
+        # SUCCEEDED - SUCCEEDED_WITH_WARNINGS - FAILED - SKIPPED
+        # Corresponds to the JSON property `eventStatus`
+        # @return [String]
+        attr_accessor :event_status
+      
+        # Status code of the event. Note: Field can be empty.
+        # Corresponds to the JSON property `httpStatusCode`
+        # @return [Fixnum]
+        attr_accessor :http_status_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @event_status = args[:event_status] if args.key?(:event_status)
+          @http_status_code = args[:http_status_code] if args.key?(:http_status_code)
         end
       end
       
