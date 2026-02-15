@@ -1792,8 +1792,8 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::TextModuleData>]
         attr_accessor :text_modules_data
       
-        # Optional value added module data. Maximum of ten on the class. For a pass only
-        # ten will be displayed, prioritizing those from the object.
+        # Optional value added module data. Maximum of fifteen on the class. For a pass
+        # only fifteen will be displayed, prioritizing those from the object.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -2160,7 +2160,8 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
-        # Optional value added module data. Maximum of ten on the object.
+        # Optional value added module data. Maximum of fifteen on the object. For a pass
+        # only fifteen will be displayed.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -2744,8 +2745,8 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::TextModuleData>]
         attr_accessor :text_modules_data
       
-        # Optional value added module data. Maximum of ten on the class. For a pass only
-        # ten will be displayed, prioritizing those from the object.
+        # Optional value added module data. Maximum of fifteen on the class. For a pass
+        # only fifteen will be displayed, prioritizing those from the object.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -3132,7 +3133,8 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
-        # Optional value added module data. Maximum of ten on the object.
+        # Optional value added module data. Maximum of fifteen on the object. For a pass
+        # only fifteen will be displayed.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -3356,8 +3358,8 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::TextModuleData>]
         attr_accessor :text_modules_data
       
-        # Optional value added module data. Maximum of ten on the class. For a pass only
-        # ten will be displayed, prioritizing those from the object.
+        # Optional value added module data. Maximum of fifteen on the class. For a pass
+        # only fifteen will be displayed, prioritizing those from the object.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -3621,7 +3623,8 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
-        # Optional value added module data. Maximum of ten on the object.
+        # Optional value added module data. Maximum of fifteen on the object. For a pass
+        # only fifteen will be displayed.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -3957,8 +3960,8 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::TextModuleData>]
         attr_accessor :text_modules_data
       
-        # Optional value added module data. Maximum of ten on the class. For a pass only
-        # ten will be displayed, prioritizing those from the object.
+        # Optional value added module data. Maximum of fifteen on the class. For a pass
+        # only fifteen will be displayed, prioritizing those from the object.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -4290,7 +4293,8 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
-        # Optional value added module data. Maximum of ten on the object.
+        # Optional value added module data. Maximum of fifteen on the object. For a pass
+        # only fifteen will be displayed.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -5195,8 +5199,8 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::TextModuleData>]
         attr_accessor :text_modules_data
       
-        # Optional value added module data. Maximum of ten on the class. For a pass only
-        # ten will be displayed, prioritizing those from the object.
+        # Optional value added module data. Maximum of fifteen on the class. For a pass
+        # only fifteen will be displayed, prioritizing those from the object.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -5539,7 +5543,8 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
-        # Optional value added module data. Maximum of ten on the object.
+        # Optional value added module data. Maximum of fifteen on the object. For a pass
+        # only fifteen will be displayed.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -6568,8 +6573,8 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :title_image
       
-        # Optional value added module data. Maximum of ten on the class. For a pass only
-        # ten will be displayed, prioritizing those from the object.
+        # Optional value added module data. Maximum of fifteen on the class. For a pass
+        # only fifteen will be displayed, prioritizing those from the object.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -6877,7 +6882,8 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
-        # Optional value added module data. Maximum of ten on the object.
+        # Optional value added module data. Maximum of fifteen on the object. For a pass
+        # only fifteen will be displayed.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -8352,8 +8358,8 @@ module Google
         # @return [String]
         attr_accessor :transit_type
       
-        # Optional value added module data. Maximum of ten on the class. For a pass only
-        # ten will be displayed, prioritizing those from the object.
+        # Optional value added module data. Maximum of fifteen on the class. For a pass
+        # only fifteen will be displayed, prioritizing those from the object.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -8774,7 +8780,8 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
-        # Optional value added module data. Maximum of ten on the object.
+        # Optional value added module data. Maximum of fifteen on the object. For a pass
+        # only fifteen will be displayed.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
