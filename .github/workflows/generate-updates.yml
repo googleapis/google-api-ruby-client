@@ -24,4 +24,6 @@ jobs:
           gem install --no-document toys
       - name: execute
         run: |
-          toys generate-updates -v --fork ${{ github.event.inputs.args }}
+          toys generate-updates -v --fork ${GITHUB_EVENT_INPUTS_ARGS}
+        env:
+          GITHUB_EVENT_INPUTS_ARGS: ${{ github.event.inputs.args }}
