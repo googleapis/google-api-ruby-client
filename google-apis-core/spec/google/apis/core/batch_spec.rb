@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'google/apis/core/batch'
 require 'google/apis/core/json_representation'
