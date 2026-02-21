@@ -1,5 +1,11 @@
 # Release History
 
+### 1.0.3 (2025-12-21)
+
+#### Documentation
+
+* add warning about loading unvalidated credentials ([#24696](https://github.com/googleapis/google-api-ruby-client/issues/24696)) 
+
 ### 1.0.2 (2025-09-09)
 
 #### Bug Fixes
