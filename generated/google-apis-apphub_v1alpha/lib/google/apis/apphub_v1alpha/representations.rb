@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FunctionalType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListApplicationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -462,6 +468,13 @@ module Google
         end
       end
       
+      class FunctionalType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
       class ListApplicationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -654,6 +667,8 @@ module Google
       class ServiceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :functional_type, as: 'functionalType', class: Google::Apis::ApphubV1alpha::FunctionalType, decorator: Google::Apis::ApphubV1alpha::FunctionalType::Representation
+      
           property :gcp_project, as: 'gcpProject'
           property :location, as: 'location'
           property :zone, as: 'zone'
@@ -723,6 +738,8 @@ module Google
       class WorkloadProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :functional_type, as: 'functionalType', class: Google::Apis::ApphubV1alpha::FunctionalType, decorator: Google::Apis::ApphubV1alpha::FunctionalType::Representation
+      
           property :gcp_project, as: 'gcpProject'
           property :location, as: 'location'
           property :zone, as: 'zone'
