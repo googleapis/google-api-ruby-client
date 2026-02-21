@@ -1,5 +1,9 @@
 # Release history for google-apis-firebaseml_v2beta
 
+### v0.38.0 (2025-12-21)
+
+* Regenerated from discovery document revision 20251214
+
 ### v0.37.0 (2025-12-07)
 
 * Regenerated from discovery document revision 20251203
