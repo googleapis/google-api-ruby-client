@@ -149,7 +149,7 @@ module Google
         # Reinitiating resumable upload
         def reinitiate_resumable_upload(client)
           logger.debug { sprintf('Restarting resumable upload command to %s', url) }
-          check_resumable_upload client
+          return false unless check_resumable_upload client
           upload_io.pos = @offset
         end
 
@@ -224,6 +224,10 @@ module Google
           # Initiating call
           response = client.put(@upload_url, "", request_header)
           handle_resumable_upload_http_response_codes(response)
+          if response.status.to_i == 404
+            logger.debug { "Failed to fetch upload session. Response: #{response.status.to_i} - #{response.body}" }
+            false
+          end
         end
 
         # Cancel resumable upload
@@ -235,13 +239,17 @@ module Google
           response = client.delete(@upload_url, nil, request_header)
           handle_resumable_upload_http_response_codes(response)
 
-          if !@upload_incomplete && (400..499).include?(response.status.to_i)
+          is_successful_cancellation =
+            !@upload_incomplete &&
+            (400..499).cover?(response.status.to_i) &&
+            response.status.to_i != 404
+          if is_successful_cancellation
             @close_io_on_finish = true
-            true # method returns true if upload is successfully cancelled
+            return true # method returns true if upload is successfully cancelled
           else
-            logger.debug { sprintf("Failed to cancel upload session. Response: #{response.status.to_i} - #{response.body}") }
+            logger.debug { "Failed to cancel upload session. Response: #{response.status.to_i} - #{response.body}" }
+            return false
           end
-  
         end
 
         def handle_resumable_upload_http_response_codes(response)
