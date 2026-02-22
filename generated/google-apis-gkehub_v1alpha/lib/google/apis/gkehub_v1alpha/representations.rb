@@ -418,12 +418,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ExcludedCluster
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -449,12 +443,6 @@ module Google
       end
       
       class FeatureState
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FeatureUpdate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1042,6 +1030,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RolloutSequenceState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RolloutStage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1049,12 +1043,6 @@ module Google
       end
       
       class RolloutTarget
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Schedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1222,12 +1210,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class WaveSchedule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class WorkloadIdentityFeatureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1368,6 +1350,7 @@ module Google
       
           property :post_conditions, as: 'postConditions', class: Google::Apis::GkehubV1alpha::ClusterUpgradePostConditions, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradePostConditions::Representation
       
+          property :upgrade_engine, as: 'upgradeEngine'
           collection :upstream_fleets, as: 'upstreamFleets'
         end
       end
@@ -1952,14 +1935,6 @@ module Google
         end
       end
       
-      class ExcludedCluster
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :membership, as: 'membership'
-          property :reason, as: 'reason'
-        end
-      end
-      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2020,16 +1995,6 @@ module Google
           property :code, as: 'code'
           property :description, as: 'description'
           property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class FeatureUpdate
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :binary_authorization_config, as: 'binaryAuthorizationConfig', class: Google::Apis::GkehubV1alpha::BinaryAuthorizationConfig, decorator: Google::Apis::GkehubV1alpha::BinaryAuthorizationConfig::Representation
-      
-          property :security_posture_config, as: 'securityPostureConfig', class: Google::Apis::GkehubV1alpha::SecurityPostureConfig, decorator: Google::Apis::GkehubV1alpha::SecurityPostureConfig::Representation
-      
         end
       end
       
@@ -3006,17 +2971,11 @@ module Google
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
-          collection :excluded_clusters, as: 'excludedClusters', class: Google::Apis::GkehubV1alpha::ExcludedCluster, decorator: Google::Apis::GkehubV1alpha::ExcludedCluster::Representation
-      
-          property :feature, as: 'feature', class: Google::Apis::GkehubV1alpha::FeatureUpdate, decorator: Google::Apis::GkehubV1alpha::FeatureUpdate::Representation
-      
           hash :labels, as: 'labels'
           hash :membership_states, as: 'membershipStates', class: Google::Apis::GkehubV1alpha::RolloutMembershipState, decorator: Google::Apis::GkehubV1alpha::RolloutMembershipState::Representation
       
           property :name, as: 'name'
           property :rollout_sequence, as: 'rolloutSequence'
-          property :schedule, as: 'schedule', class: Google::Apis::GkehubV1alpha::Schedule, decorator: Google::Apis::GkehubV1alpha::Schedule::Representation
-      
           collection :stages, as: 'stages', class: Google::Apis::GkehubV1alpha::RolloutStage, decorator: Google::Apis::GkehubV1alpha::RolloutStage::Representation
       
           property :state, as: 'state'
@@ -3049,8 +3008,18 @@ module Google
           property :name, as: 'name'
           collection :stages, as: 'stages', class: Google::Apis::GkehubV1alpha::Stage, decorator: Google::Apis::GkehubV1alpha::Stage::Representation
       
+          property :state, as: 'state', class: Google::Apis::GkehubV1alpha::RolloutSequenceState, decorator: Google::Apis::GkehubV1alpha::RolloutSequenceState::Representation
+      
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class RolloutSequenceState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :lifecycle_state, as: 'lifecycleState'
+          collection :state_reasons, as: 'stateReasons'
         end
       end
       
@@ -3073,14 +3042,6 @@ module Google
           property :operation, as: 'operation'
           property :reason, as: 'reason'
           property :state, as: 'state'
-        end
-      end
-      
-      class Schedule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :waves, as: 'waves', class: Google::Apis::GkehubV1alpha::WaveSchedule, decorator: Google::Apis::GkehubV1alpha::WaveSchedule::Representation
-      
         end
       end
       
@@ -3331,15 +3292,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :desired_version, as: 'desiredVersion'
           property :type, as: 'type'
-        end
-      end
-      
-      class WaveSchedule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :wave_end_time, as: 'waveEndTime'
-          property :wave_number, as: 'waveNumber'
-          property :wave_start_time, as: 'waveStartTime'
         end
       end
       

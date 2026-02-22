@@ -438,6 +438,11 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ClusterUpgradePostConditions]
         attr_accessor :post_conditions
       
+        # Output only. The effective upgrade engine for the fleet.
+        # Corresponds to the JSON property `upgradeEngine`
+        # @return [String]
+        attr_accessor :upgrade_engine
+      
         # This fleet consumes upgrades that have COMPLETE status code in the upstream
         # fleets. See UpgradeStatus.Code for code definitions. The fleet name should be
         # either fleet project number or id. This is defined as repeated for future
@@ -454,6 +459,7 @@ module Google
         def update!(**args)
           @gke_upgrade_overrides = args[:gke_upgrade_overrides] if args.key?(:gke_upgrade_overrides)
           @post_conditions = args[:post_conditions] if args.key?(:post_conditions)
+          @upgrade_engine = args[:upgrade_engine] if args.key?(:upgrade_engine)
           @upstream_fleets = args[:upstream_fleets] if args.key?(:upstream_fleets)
         end
       end
@@ -1037,8 +1043,10 @@ module Google
         end
       end
       
-      # CompliancePostureConfig defines the settings needed to enable/disable features
-      # for the Compliance Posture.
+      # Deprecated: Compliance Posture is no longer supported. For more details, see
+      # https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-
+      # management-deprecation. CompliancePostureConfig defines the settings needed to
+      # enable/disable features for the Compliance Posture.
       class CompliancePostureConfig
         include Google::Apis::Core::Hashable
       
@@ -2365,8 +2373,10 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::BinaryAuthorizationConfig]
         attr_accessor :binary_authorization_config
       
-        # CompliancePostureConfig defines the settings needed to enable/disable features
-        # for the Compliance Posture.
+        # Deprecated: Compliance Posture is no longer supported. For more details, see
+        # https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-
+        # management-deprecation. CompliancePostureConfig defines the settings needed to
+        # enable/disable features for the Compliance Posture.
         # Corresponds to the JSON property `compliancePostureConfig`
         # @return [Google::Apis::GkehubV1alpha::CompliancePostureConfig]
         attr_accessor :compliance_posture_config
@@ -2423,32 +2433,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # An excluded cluster from the rollout.
-      class ExcludedCluster
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The name of the fleet Membership resource associated to the
-        # excluded cluster.
-        # Corresponds to the JSON property `membership`
-        # @return [String]
-        attr_accessor :membership
-      
-        # Output only. The reason for excluding the cluster from the rollout.
-        # Corresponds to the JSON property `reason`
-        # @return [String]
-        attr_accessor :reason
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @membership = args[:membership] if args.key?(:membership)
-          @reason = args[:reason] if args.key?(:reason)
         end
       end
       
@@ -2714,33 +2698,6 @@ module Google
           @code = args[:code] if args.key?(:code)
           @description = args[:description] if args.key?(:description)
           @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # Feature config to use for Rollout.
-      class FeatureUpdate
-        include Google::Apis::Core::Hashable
-      
-        # BinaryAuthorizationConfig defines the fleet level configuration of binary
-        # authorization feature.
-        # Corresponds to the JSON property `binaryAuthorizationConfig`
-        # @return [Google::Apis::GkehubV1alpha::BinaryAuthorizationConfig]
-        attr_accessor :binary_authorization_config
-      
-        # SecurityPostureConfig defines the flags needed to enable/disable features for
-        # the Security Posture API.
-        # Corresponds to the JSON property `securityPostureConfig`
-        # @return [Google::Apis::GkehubV1alpha::SecurityPostureConfig]
-        attr_accessor :security_posture_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @binary_authorization_config = args[:binary_authorization_config] if args.key?(:binary_authorization_config)
-          @security_posture_config = args[:security_posture_config] if args.key?(:security_posture_config)
         end
       end
       
@@ -6172,16 +6129,6 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Optional. Output only. The excluded clusters from the rollout.
-        # Corresponds to the JSON property `excludedClusters`
-        # @return [Array<Google::Apis::GkehubV1alpha::ExcludedCluster>]
-        attr_accessor :excluded_clusters
-      
-        # Feature config to use for Rollout.
-        # Corresponds to the JSON property `feature`
-        # @return [Google::Apis::GkehubV1alpha::FeatureUpdate]
-        attr_accessor :feature
-      
         # Optional. Labels for this Rollout.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -6206,11 +6153,6 @@ module Google
         # Corresponds to the JSON property `rolloutSequence`
         # @return [String]
         attr_accessor :rollout_sequence
-      
-        # Schedule represents the schedule of the Rollout.
-        # Corresponds to the JSON property `schedule`
-        # @return [Google::Apis::GkehubV1alpha::Schedule]
-        attr_accessor :schedule
       
         # Output only. The stages of the Rollout.
         # Corresponds to the JSON property `stages`
@@ -6256,13 +6198,10 @@ module Google
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
-          @excluded_clusters = args[:excluded_clusters] if args.key?(:excluded_clusters)
-          @feature = args[:feature] if args.key?(:feature)
           @labels = args[:labels] if args.key?(:labels)
           @membership_states = args[:membership_states] if args.key?(:membership_states)
           @name = args[:name] if args.key?(:name)
           @rollout_sequence = args[:rollout_sequence] if args.key?(:rollout_sequence)
-          @schedule = args[:schedule] if args.key?(:schedule)
           @stages = args[:stages] if args.key?(:stages)
           @state = args[:state] if args.key?(:state)
           @state_reason = args[:state_reason] if args.key?(:state_reason)
@@ -6346,6 +6285,11 @@ module Google
         # @return [Array<Google::Apis::GkehubV1alpha::Stage>]
         attr_accessor :stages
       
+        # State and reasons of the Rollout Sequence.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::GkehubV1alpha::RolloutSequenceState]
+        attr_accessor :state
+      
         # Output only. Google-generated UUID for this resource. This is unique across
         # all Rollout Sequence resources. If a Rollout Sequence resource is deleted and
         # another resource with the same name is created, it gets a different uid.
@@ -6371,8 +6315,34 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @stages = args[:stages] if args.key?(:stages)
+          @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # State and reasons of the Rollout Sequence.
+      class RolloutSequenceState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Lifecycle state of the Rollout Sequence.
+        # Corresponds to the JSON property `lifecycleState`
+        # @return [String]
+        attr_accessor :lifecycle_state
+      
+        # Output only. StateReason represents the reason for the Rollout Sequence state.
+        # Corresponds to the JSON property `stateReasons`
+        # @return [Array<String>]
+        attr_accessor :state_reasons
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
+          @state_reasons = args[:state_reasons] if args.key?(:state_reasons)
         end
       end
       
@@ -6465,25 +6435,6 @@ module Google
           @operation = args[:operation] if args.key?(:operation)
           @reason = args[:reason] if args.key?(:reason)
           @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # Schedule represents the schedule of the Rollout.
-      class Schedule
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The schedule of each wave in the Rollout.
-        # Corresponds to the JSON property `waves`
-        # @return [Array<Google::Apis::GkehubV1alpha::WaveSchedule>]
-        attr_accessor :waves
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @waves = args[:waves] if args.key?(:waves)
         end
       end
       
@@ -7329,37 +7280,6 @@ module Google
         def update!(**args)
           @desired_version = args[:desired_version] if args.key?(:desired_version)
           @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # WaveSchedule represents the schedule of a single rollout wave.
-      class WaveSchedule
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The time at which the wave ends.
-        # Corresponds to the JSON property `waveEndTime`
-        # @return [String]
-        attr_accessor :wave_end_time
-      
-        # Output only. The wave number to which this schedule applies.
-        # Corresponds to the JSON property `waveNumber`
-        # @return [Fixnum]
-        attr_accessor :wave_number
-      
-        # Output only. The time at which the wave starts.
-        # Corresponds to the JSON property `waveStartTime`
-        # @return [String]
-        attr_accessor :wave_start_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @wave_end_time = args[:wave_end_time] if args.key?(:wave_end_time)
-          @wave_number = args[:wave_number] if args.key?(:wave_number)
-          @wave_start_time = args[:wave_start_time] if args.key?(:wave_start_time)
         end
       end
       
