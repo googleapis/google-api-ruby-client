@@ -1256,6 +1256,14 @@ module Google
       class Digest
         include Google::Apis::Core::Hashable
       
+        # A message digest produced with SHAKE-256, to be used with ML-DSA external-μ
+        # algorithms only. See "message representative" note in section 6.2, algorithm 7
+        # of the FIPS-204 standard: https://doi.org/10.6028/nist.fips.204
+        # Corresponds to the JSON property `externalMu`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :external_mu
+      
         # A message digest produced with the SHA-256 algorithm.
         # Corresponds to the JSON property `sha256`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -1280,6 +1288,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @external_mu = args[:external_mu] if args.key?(:external_mu)
           @sha256 = args[:sha256] if args.key?(:sha256)
           @sha384 = args[:sha384] if args.key?(:sha384)
           @sha512 = args[:sha512] if args.key?(:sha512)
