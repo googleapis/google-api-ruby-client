@@ -3844,6 +3844,16 @@ module Google
         # @return [String]
         attr_accessor :candidate
       
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleRpcStatus]
+        attr_accessor :error
+      
         # Optional. Intermediate events (such as tool calls and responses) that led to
         # the final response.
         # Corresponds to the JSON property `events`
@@ -3868,6 +3878,7 @@ module Google
         def update!(**args)
           @agent_data = args[:agent_data] if args.key?(:agent_data)
           @candidate = args[:candidate] if args.key?(:candidate)
+          @error = args[:error] if args.key?(:error)
           @events = args[:events] if args.key?(:events)
           @text = args[:text] if args.key?(:text)
           @value = args[:value] if args.key?(:value)
@@ -17333,6 +17344,14 @@ module Google
         # @return [String]
         attr_accessor :model
       
+        # Configuration for Model Armor. Model Armor is a Google Cloud service that
+        # provides safety and security filtering for prompts and responses. It helps
+        # protect your AI applications from risks such as harmful content, sensitive
+        # data leakage, and prompt injection attacks.
+        # Corresponds to the JSON property `modelArmorConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelArmorConfig]
+        attr_accessor :model_armor_config
+      
         # Optional. Per request settings for blocking unsafe content. Enforced on
         # GenerateContentResponse.candidates.
         # Corresponds to the JSON property `safetySettings`
@@ -17370,6 +17389,7 @@ module Google
           @generation_config = args[:generation_config] if args.key?(:generation_config)
           @labels = args[:labels] if args.key?(:labels)
           @model = args[:model] if args.key?(:model)
+          @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
           @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
           @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
           @tool_config = args[:tool_config] if args.key?(:tool_config)
@@ -38754,6 +38774,14 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ScheduleRunResponse]
         attr_accessor :last_scheduled_run_response
       
+        # Optional. Specifies the maximum number of active runs that can be executed
+        # concurrently for this Schedule. This limits the number of runs that can be in
+        # a non-terminal state at the same time. Currently, this field is only supported
+        # for requests of type CreatePipelineJobRequest.
+        # Corresponds to the JSON property `maxConcurrentActiveRunCount`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_active_run_count
+      
         # Required. Maximum number of runs that can be started concurrently for this
         # Schedule. This is the limit for starting the scheduled requests and not the
         # execution of the operations/jobs created by the requests (if applicable).
@@ -38820,6 +38848,7 @@ module Google
           @last_pause_time = args[:last_pause_time] if args.key?(:last_pause_time)
           @last_resume_time = args[:last_resume_time] if args.key?(:last_resume_time)
           @last_scheduled_run_response = args[:last_scheduled_run_response] if args.key?(:last_scheduled_run_response)
+          @max_concurrent_active_run_count = args[:max_concurrent_active_run_count] if args.key?(:max_concurrent_active_run_count)
           @max_concurrent_run_count = args[:max_concurrent_run_count] if args.key?(:max_concurrent_run_count)
           @max_run_count = args[:max_run_count] if args.key?(:max_run_count)
           @name = args[:name] if args.key?(:name)

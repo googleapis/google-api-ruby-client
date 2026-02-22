@@ -10308,6 +10308,8 @@ module Google
           property :agent_data, as: 'agentData', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AgentData, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AgentData::Representation
       
           property :candidate, as: 'candidate'
+          property :error, as: 'error', class: Google::Apis::AiplatformV1beta1::GoogleRpcStatus, decorator: Google::Apis::AiplatformV1beta1::GoogleRpcStatus::Representation
+      
           collection :events, as: 'events', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content::Representation
       
           property :text, as: 'text'
@@ -14121,6 +14123,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :model, as: 'model'
+          property :model_armor_config, as: 'modelArmorConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelArmorConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ModelArmorConfig::Representation
+      
           collection :safety_settings, as: 'safetySettings', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetySetting, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SafetySetting::Representation
       
           property :system_instruction, as: 'systemInstruction', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content::Representation
@@ -20326,6 +20330,7 @@ module Google
           property :last_resume_time, as: 'lastResumeTime'
           property :last_scheduled_run_response, as: 'lastScheduledRunResponse', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ScheduleRunResponse, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ScheduleRunResponse::Representation
       
+          property :max_concurrent_active_run_count, :numeric_string => true, as: 'maxConcurrentActiveRunCount'
           property :max_concurrent_run_count, :numeric_string => true, as: 'maxConcurrentRunCount'
           property :max_run_count, :numeric_string => true, as: 'maxRunCount'
           property :name, as: 'name'
