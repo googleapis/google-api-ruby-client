@@ -124,6 +124,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TestIamPermissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -289,6 +301,20 @@ module Google
           property :name, as: 'name'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class TestIamPermissionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TestIamPermissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
         end
       end
     end
