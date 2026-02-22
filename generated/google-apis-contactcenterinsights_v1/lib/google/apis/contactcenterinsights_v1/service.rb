@@ -3942,7 +3942,7 @@ module Google
         # @param [String] update_mask
         #   Optional. List of fields to be updated. All possible fields can be updated by
         #   passing `*`, or a subset of the following updateable fields can be provided: *
-        #   `display_name` * `root_container`
+        #   `display_name` * `root_container` * `description`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
