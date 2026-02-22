@@ -265,6 +265,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The registry of the base image.
+        # Corresponds to the JSON property `registry`
+        # @return [String]
+        attr_accessor :registry
+      
         # The repository name in which the base image is from.
         # Corresponds to the JSON property `repository`
         # @return [String]
@@ -278,6 +283,7 @@ module Google
         def update!(**args)
           @layer_count = args[:layer_count] if args.key?(:layer_count)
           @name = args[:name] if args.key?(:name)
+          @registry = args[:registry] if args.key?(:registry)
           @repository = args[:repository] if args.key?(:repository)
         end
       end
