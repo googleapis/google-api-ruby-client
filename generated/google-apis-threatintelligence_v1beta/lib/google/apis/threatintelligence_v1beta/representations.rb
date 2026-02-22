@@ -22,12 +22,6 @@ module Google
   module Apis
     module ThreatintelligenceV1beta
       
-      class AffectedSoftware
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Alert
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -52,31 +46,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AssetDiscoveryConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AssetDiscoverySeed
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Association
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Audit
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CompromisedCredentialsFindingDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -184,24 +154,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DomainMonitoringConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DomainMonitoringDomain
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EntityProfile
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class EnumerateAlertFacetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,25 +196,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InbandVulnerability
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InbandVulnerabilityFindingDetail
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class InitialAccessBrokerAlertDetail
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InitialAccessBrokerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -364,24 +298,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MisconfigurationFindingDetail
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class MisconfigurationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class MisconfigurationReference
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -394,31 +310,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RefreshAlertUriStatusRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RefreshAlertUriStatusResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RelevanceAnalysis
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ReportAlertUriRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ReportAlertUriResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -442,91 +334,16 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SuspiciousDomainAlertDetail
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SuspiciousDomainDnsDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SuspiciousDomainDnsRecord
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SuspiciousDomainFindingDetail
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SuspiciousDomainGtiDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SuspiciousDomainWhoIsDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TargetTechnologyAlertDetail
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TargetTechnologyFindingDetail
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TechnologyWatchListAlertThreshold
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TechnologyWatchListConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class UpsertConfigurationResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class VulnerabilityMatch
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AffectedSoftware
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :product, as: 'product'
-          property :vendor, as: 'vendor'
-        end
-      end
-      
       class Alert
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ai_summary, as: 'aiSummary'
-          collection :assets, as: 'assets'
           property :audit, as: 'audit', class: Google::Apis::ThreatintelligenceV1beta::Audit, decorator: Google::Apis::ThreatintelligenceV1beta::Audit::Representation
       
           collection :configurations, as: 'configurations'
@@ -560,10 +377,6 @@ module Google
       
           property :insider_threat, as: 'insiderThreat', class: Google::Apis::ThreatintelligenceV1beta::InsiderThreatAlertDetail, decorator: Google::Apis::ThreatintelligenceV1beta::InsiderThreatAlertDetail::Representation
       
-          property :suspicious_domain, as: 'suspiciousDomain', class: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainAlertDetail, decorator: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainAlertDetail::Representation
-      
-          property :target_technology, as: 'targetTechnology', class: Google::Apis::ThreatintelligenceV1beta::TargetTechnologyAlertDetail, decorator: Google::Apis::ThreatintelligenceV1beta::TargetTechnologyAlertDetail::Representation
-      
         end
       end
       
@@ -595,36 +408,6 @@ module Google
         end
       end
       
-      class AssetDiscoveryConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :last_scan_complete_time, as: 'lastScanCompleteTime'
-          property :last_scan_start_time, as: 'lastScanStartTime'
-          property :scan_frequency, as: 'scanFrequency'
-          collection :scope_exclusion_assets, as: 'scopeExclusionAssets', class: Google::Apis::ThreatintelligenceV1beta::AssetDiscoverySeed, decorator: Google::Apis::ThreatintelligenceV1beta::AssetDiscoverySeed::Representation
-      
-          collection :seed_assets, as: 'seedAssets', class: Google::Apis::ThreatintelligenceV1beta::AssetDiscoverySeed, decorator: Google::Apis::ThreatintelligenceV1beta::AssetDiscoverySeed::Representation
-      
-          property :workflow, as: 'workflow'
-        end
-      end
-      
-      class AssetDiscoverySeed
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :seed_type, as: 'seedType'
-          property :seed_value, as: 'seedValue'
-        end
-      end
-      
-      class Association
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :type, as: 'type'
-        end
-      end
-      
       class Audit
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -632,25 +415,6 @@ module Google
           property :creator, as: 'creator'
           property :update_time, as: 'updateTime'
           property :updater, as: 'updater'
-        end
-      end
-      
-      class CompromisedCredentialsFindingDetail
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :author, as: 'author'
-          property :credential_service, as: 'credentialService'
-          property :dark_web_doc, as: 'darkWebDoc'
-          property :external_reference_uri, as: 'externalReferenceUri'
-          property :file_dump, as: 'fileDump'
-          collection :file_dump_hashes, as: 'fileDumpHashes'
-          property :file_dump_size_bytes, :numeric_string => true, as: 'fileDumpSizeBytes'
-          property :forum, as: 'forum'
-          property :malware_family, as: 'malwareFamily'
-          property :posted_time, as: 'postedTime'
-          property :source_uri, as: 'sourceUri'
-          property :user_key, as: 'userKey'
-          property :user_secret_evidence, as: 'userSecretEvidence'
         end
       end
       
@@ -673,17 +437,9 @@ module Google
       class ConfigurationDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :asset_discovery, as: 'assetDiscovery', class: Google::Apis::ThreatintelligenceV1beta::AssetDiscoveryConfig, decorator: Google::Apis::ThreatintelligenceV1beta::AssetDiscoveryConfig::Representation
-      
           property :customer_profile, as: 'customerProfile', class: Google::Apis::ThreatintelligenceV1beta::CustomerProfileConfig, decorator: Google::Apis::ThreatintelligenceV1beta::CustomerProfileConfig::Representation
       
           property :detail_type, as: 'detailType'
-          property :domain_monitoring, as: 'domainMonitoring', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringConfig, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringConfig::Representation
-      
-          property :initial_access_broker, as: 'initialAccessBroker', class: Google::Apis::ThreatintelligenceV1beta::InitialAccessBrokerConfig, decorator: Google::Apis::ThreatintelligenceV1beta::InitialAccessBrokerConfig::Representation
-      
-          property :technology_watchlist, as: 'technologyWatchlist', class: Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListConfig, decorator: Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListConfig::Representation
-      
         end
       end
       
@@ -864,35 +620,6 @@ module Google
         end
       end
       
-      class DomainMonitoringConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :domains, as: 'domains', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDomain, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDomain::Representation
-      
-        end
-      end
-      
-      class DomainMonitoringDomain
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :domain, as: 'domain'
-        end
-      end
-      
-      class EntityProfile
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :countries, as: 'countries'
-          collection :domains, as: 'domains'
-          collection :industries, as: 'industries'
-          property :name, as: 'name'
-          collection :operational_areas, as: 'operationalAreas'
-          property :profile_summary, as: 'profileSummary'
-          collection :regions, as: 'regions'
-          collection :sub_industries, as: 'subIndustries'
-        end
-      end
-      
       class EnumerateAlertFacetsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -935,14 +662,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ai_summary, as: 'aiSummary'
           property :alert, as: 'alert'
-          property :asset, as: 'asset'
           property :audit, as: 'audit', class: Google::Apis::ThreatintelligenceV1beta::Audit, decorator: Google::Apis::ThreatintelligenceV1beta::Audit::Representation
       
           collection :configurations, as: 'configurations'
           property :detail, as: 'detail', class: Google::Apis::ThreatintelligenceV1beta::FindingDetail, decorator: Google::Apis::ThreatintelligenceV1beta::FindingDetail::Representation
       
           property :display_name, as: 'displayName'
-          property :issue, as: 'issue'
           property :name, as: 'name'
           property :provider, as: 'provider'
           property :relevance_analysis, as: 'relevanceAnalysis', class: Google::Apis::ThreatintelligenceV1beta::RelevanceAnalysis, decorator: Google::Apis::ThreatintelligenceV1beta::RelevanceAnalysis::Representation
@@ -957,22 +682,12 @@ module Google
       class FindingDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :compromised_credentials, as: 'compromisedCredentials', class: Google::Apis::ThreatintelligenceV1beta::CompromisedCredentialsFindingDetail, decorator: Google::Apis::ThreatintelligenceV1beta::CompromisedCredentialsFindingDetail::Representation
-      
           property :data_leak, as: 'dataLeak', class: Google::Apis::ThreatintelligenceV1beta::DataLeakFindingDetail, decorator: Google::Apis::ThreatintelligenceV1beta::DataLeakFindingDetail::Representation
       
           property :detail_type, as: 'detailType'
-          property :inband_vulnerability, as: 'inbandVulnerability', class: Google::Apis::ThreatintelligenceV1beta::InbandVulnerabilityFindingDetail, decorator: Google::Apis::ThreatintelligenceV1beta::InbandVulnerabilityFindingDetail::Representation
-      
           property :initial_access_broker, as: 'initialAccessBroker', class: Google::Apis::ThreatintelligenceV1beta::InitialAccessBrokerFindingDetail, decorator: Google::Apis::ThreatintelligenceV1beta::InitialAccessBrokerFindingDetail::Representation
       
           property :insider_threat, as: 'insiderThreat', class: Google::Apis::ThreatintelligenceV1beta::InsiderThreatFindingDetail, decorator: Google::Apis::ThreatintelligenceV1beta::InsiderThreatFindingDetail::Representation
-      
-          property :misconfiguration, as: 'misconfiguration', class: Google::Apis::ThreatintelligenceV1beta::MisconfigurationFindingDetail, decorator: Google::Apis::ThreatintelligenceV1beta::MisconfigurationFindingDetail::Representation
-      
-          property :suspicious_domain, as: 'suspiciousDomain', class: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainFindingDetail, decorator: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainFindingDetail::Representation
-      
-          property :target_technology, as: 'targetTechnology', class: Google::Apis::ThreatintelligenceV1beta::TargetTechnologyFindingDetail, decorator: Google::Apis::ThreatintelligenceV1beta::TargetTechnologyFindingDetail::Representation
       
         end
       end
@@ -985,50 +700,11 @@ module Google
         end
       end
       
-      class InbandVulnerability
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :affected_software, as: 'affectedSoftware', class: Google::Apis::ThreatintelligenceV1beta::AffectedSoftware, decorator: Google::Apis::ThreatintelligenceV1beta::AffectedSoftware::Representation
-      
-          collection :authors, as: 'authors'
-          property :cve_id, as: 'cveId'
-          property :cvss_v31_score, as: 'cvssV31Score'
-          property :cvss_v31_score_temporal, as: 'cvssV31ScoreTemporal'
-          property :description, as: 'description'
-          property :disclosure_time, as: 'disclosureTime'
-          property :exploitation_state, as: 'exploitationState'
-          property :external_vulnerability_id, as: 'externalVulnerabilityId'
-          property :is_exploited_wild, as: 'isExploitedWild'
-          collection :reference_urls, as: 'referenceUrls'
-          property :remediation, as: 'remediation'
-          property :risk_rating, as: 'riskRating'
-          property :title, as: 'title'
-        end
-      end
-      
-      class InbandVulnerabilityFindingDetail
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :formatted_proof_details, as: 'formattedProofDetails'
-          property :request_uri, as: 'requestUri'
-          property :vulnerability, as: 'vulnerability', class: Google::Apis::ThreatintelligenceV1beta::InbandVulnerability, decorator: Google::Apis::ThreatintelligenceV1beta::InbandVulnerability::Representation
-      
-        end
-      end
-      
       class InitialAccessBrokerAlertDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :discovery_document_ids, as: 'discoveryDocumentIds'
           property :severity, as: 'severity'
-        end
-      end
-      
-      class InitialAccessBrokerConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :entity_profile, as: 'entityProfile', class: Google::Apis::ThreatintelligenceV1beta::EntityProfile, decorator: Google::Apis::ThreatintelligenceV1beta::EntityProfile::Representation
-      
         end
       end
       
@@ -1149,35 +825,6 @@ module Google
         end
       end
       
-      class MisconfigurationFindingDetail
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :misconfiguration_metadata, as: 'misconfigurationMetadata', class: Google::Apis::ThreatintelligenceV1beta::MisconfigurationMetadata, decorator: Google::Apis::ThreatintelligenceV1beta::MisconfigurationMetadata::Representation
-      
-        end
-      end
-      
-      class MisconfigurationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :display_name, as: 'displayName'
-          property :misconfiguration_id, as: 'misconfigurationId'
-          collection :references, as: 'references', class: Google::Apis::ThreatintelligenceV1beta::MisconfigurationReference, decorator: Google::Apis::ThreatintelligenceV1beta::MisconfigurationReference::Representation
-      
-          property :remediation, as: 'remediation'
-          property :vulnerable_uri, as: 'vulnerableUri'
-        end
-      end
-      
-      class MisconfigurationReference
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :type, as: 'type'
-          property :uri, as: 'uri'
-        end
-      end
-      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1199,19 +846,6 @@ module Google
         end
       end
       
-      class RefreshAlertUriStatusRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class RefreshAlertUriStatusResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :state, as: 'state'
-        end
-      end
-      
       class RelevanceAnalysis
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1221,19 +855,6 @@ module Google
           property :reasoning, as: 'reasoning'
           property :relevance_level, as: 'relevanceLevel'
           property :relevant, as: 'relevant'
-        end
-      end
-      
-      class ReportAlertUriRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class ReportAlertUriResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :state, as: 'state'
         end
       end
       
@@ -1264,126 +885,10 @@ module Google
         end
       end
       
-      class SuspiciousDomainAlertDetail
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :dns, as: 'dns', class: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainDnsDetails, decorator: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainDnsDetails::Representation
-      
-          property :domain, as: 'domain'
-          property :gti_details, as: 'gtiDetails', class: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainGtiDetails, decorator: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainGtiDetails::Representation
-      
-          property :web_risk_operation, as: 'webRiskOperation'
-          property :web_risk_state, as: 'webRiskState'
-          property :whois, as: 'whois', class: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainWhoIsDetails, decorator: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainWhoIsDetails::Representation
-      
-        end
-      end
-      
-      class SuspiciousDomainDnsDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :dns_records, as: 'dnsRecords', class: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainDnsRecord, decorator: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainDnsRecord::Representation
-      
-          property :retrieval_time, as: 'retrievalTime'
-        end
-      end
-      
-      class SuspiciousDomainDnsRecord
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :record, as: 'record'
-          property :ttl, as: 'ttl'
-          property :type, as: 'type'
-          property :value, as: 'value'
-        end
-      end
-      
-      class SuspiciousDomainFindingDetail
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :dns, as: 'dns', class: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainDnsDetails, decorator: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainDnsDetails::Representation
-      
-          property :domain, as: 'domain'
-          property :gti_details, as: 'gtiDetails', class: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainGtiDetails, decorator: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainGtiDetails::Representation
-      
-          property :match_score, as: 'matchScore'
-          property :severity, as: 'severity'
-          property :whois, as: 'whois', class: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainWhoIsDetails, decorator: Google::Apis::ThreatintelligenceV1beta::SuspiciousDomainWhoIsDetails::Representation
-      
-        end
-      end
-      
-      class SuspiciousDomainGtiDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :threat_score, as: 'threatScore'
-          property :verdict, as: 'verdict'
-          property :virustotal_uri, as: 'virustotalUri'
-        end
-      end
-      
-      class SuspiciousDomainWhoIsDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :retrieval_time, as: 'retrievalTime'
-          property :whois, as: 'whois'
-        end
-      end
-      
-      class TargetTechnologyAlertDetail
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :vulnerability_match, as: 'vulnerabilityMatch', class: Google::Apis::ThreatintelligenceV1beta::VulnerabilityMatch, decorator: Google::Apis::ThreatintelligenceV1beta::VulnerabilityMatch::Representation
-      
-        end
-      end
-      
-      class TargetTechnologyFindingDetail
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :vulnerability_match, as: 'vulnerabilityMatch', class: Google::Apis::ThreatintelligenceV1beta::VulnerabilityMatch, decorator: Google::Apis::ThreatintelligenceV1beta::VulnerabilityMatch::Representation
-      
-        end
-      end
-      
-      class TechnologyWatchListAlertThreshold
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cvss_score_minimum, as: 'cvssScoreMinimum'
-          property :epss_score_minimum, as: 'epssScoreMinimum'
-          collection :exploitation_states, as: 'exploitationStates'
-          property :priority_minimum, as: 'priorityMinimum'
-        end
-      end
-      
-      class TechnologyWatchListConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :alert_threshold, as: 'alertThreshold', class: Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListAlertThreshold, decorator: Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListAlertThreshold::Representation
-      
-          collection :technologies, as: 'technologies'
-        end
-      end
-      
       class UpsertConfigurationResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :configuration, as: 'configuration'
-        end
-      end
-      
-      class VulnerabilityMatch
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :associations, as: 'associations', class: Google::Apis::ThreatintelligenceV1beta::Association, decorator: Google::Apis::ThreatintelligenceV1beta::Association::Representation
-      
-          property :collection_id, as: 'collectionId'
-          property :cve_id, as: 'cveId'
-          property :cvss3_score, as: 'cvss3Score'
-          property :description, as: 'description'
-          property :exploitation_state, as: 'exploitationState'
-          property :risk_rating, as: 'riskRating'
-          collection :technologies, as: 'technologies'
         end
       end
     end
