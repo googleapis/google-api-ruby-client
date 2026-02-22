@@ -12508,6 +12508,9 @@ module Google
         #   Required. The name of the security monitoring condition to delete. Format: `
         #   organizations/`org`/securityMonitoringConditions/`
         #   security_monitoring_condition``
+        # @param [String] risk_assessment_type
+        #   Optional. The risk assessment type of the security monitoring condition.
+        #   Defaults to ADVANCED_API_SECURITY.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12525,11 +12528,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_organization_security_monitoring_condition(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_organization_security_monitoring_condition(name, risk_assessment_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
+          command.query['riskAssessmentType'] = risk_assessment_type unless risk_assessment_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -12540,6 +12544,9 @@ module Google
         #   Required. The name of the security monitoring condition to get. Format: `
         #   organizations/`org`/securityMonitoringConditions/`
         #   security_monitoring_condition``
+        # @param [String] risk_assessment_type
+        #   Optional. The risk assessment type of the security monitoring condition.
+        #   Defaults to ADVANCED_API_SECURITY.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12557,11 +12564,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_organization_security_monitoring_condition(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_organization_security_monitoring_condition(name, risk_assessment_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition
           command.params['name'] = name unless name.nil?
+          command.query['riskAssessmentType'] = risk_assessment_type unless risk_assessment_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -12572,14 +12580,20 @@ module Google
         #   Required. For a specific organization, list all the security monitoring
         #   conditions. Format: `organizations/`org``
         # @param [String] filter
-        #   Optional. Filter for the monitoring conditions. For example: `profile=profile1
-        #   AND scope=env1`
+        #   Optional. Filter for the monitoring conditions. When RiskAssessmentType is
+        #   APIGEE, monitoring conditions can be filtered by profile and scope. For
+        #   example: `profile=profile1 AND scope=env1` When RiskAssessmentType is API_HUB,
+        #   monitoring conditions can be filtered by profile and api_hub_gateway. For
+        #   example: `profile=profile1 AND api_hub_gateway=gateway1`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of monitoring conditions to return.
         # @param [String] page_token
         #   Optional. A page token, received from a previous `
         #   ListSecurityMonitoringConditions` call. Provide this to retrieve the
         #   subsequent page.
+        # @param [String] risk_assessment_type
+        #   Optional. The risk assessment type of the security monitoring condition.
+        #   Defaults to ADVANCED_API_SECURITY.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12597,7 +12611,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_security_monitoring_conditions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_security_monitoring_conditions(parent, filter: nil, page_size: nil, page_token: nil, risk_assessment_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/securityMonitoringConditions', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse
@@ -12605,6 +12619,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['riskAssessmentType'] = risk_assessment_type unless risk_assessment_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
