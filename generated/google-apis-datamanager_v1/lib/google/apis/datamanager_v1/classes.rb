@@ -128,15 +128,27 @@ module Google
         attr_accessor :mobile_data
       
         # [PAIR](//support.google.com/admanager/answer/15067908) IDs for the audience.
-        # At least one PAIR ID is required.
+        # At least one PAIR ID is required. This feature is only available to data
+        # partners.
         # Corresponds to the JSON property `pairData`
         # @return [Google::Apis::DatamanagerV1::PairData]
         attr_accessor :pair_data
+      
+        # Publisher provided identifiers data holding the ppids. At least one ppid is
+        # required. This feature is only available to data partners.
+        # Corresponds to the JSON property `ppidData`
+        # @return [Google::Apis::DatamanagerV1::PpidData]
+        attr_accessor :ppid_data
       
         # Data that identifies the user. At least one identifier is required.
         # Corresponds to the JSON property `userData`
         # @return [Google::Apis::DatamanagerV1::UserData]
         attr_accessor :user_data
+      
+        # User id data holding the user id.
+        # Corresponds to the JSON property `userIdData`
+        # @return [Google::Apis::DatamanagerV1::UserIdData]
+        attr_accessor :user_id_data
       
         def initialize(**args)
            update!(**args)
@@ -148,7 +160,9 @@ module Google
           @destination_references = args[:destination_references] if args.key?(:destination_references)
           @mobile_data = args[:mobile_data] if args.key?(:mobile_data)
           @pair_data = args[:pair_data] if args.key?(:pair_data)
+          @ppid_data = args[:ppid_data] if args.key?(:ppid_data)
           @user_data = args[:user_data] if args.key?(:user_data)
+          @user_id_data = args[:user_id_data] if args.key?(:user_id_data)
         end
       end
       
@@ -190,6 +204,34 @@ module Google
           @kek_uri = args[:kek_uri] if args.key?(:kek_uri)
           @key_type = args[:key_type] if args.key?(:key_type)
           @role_arn = args[:role_arn] if args.key?(:role_arn)
+        end
+      end
+      
+      # Baseline criteria against which insights are compared.
+      class Baseline
+        include Google::Apis::Core::Hashable
+      
+        # The baseline location of the request. Baseline location is on OR-list of ISO
+        # 3166-1 alpha-2 region codes of the requested regions.
+        # Corresponds to the JSON property `baselineLocation`
+        # @return [Google::Apis::DatamanagerV1::Location]
+        attr_accessor :baseline_location
+      
+        # If set to true, the service will try to automatically detect the baseline
+        # location for insights.
+        # Corresponds to the JSON property `locationAutoDetectionEnabled`
+        # @return [Boolean]
+        attr_accessor :location_auto_detection_enabled
+        alias_method :location_auto_detection_enabled?, :location_auto_detection_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @baseline_location = args[:baseline_location] if args.key?(:baseline_location)
+          @location_auto_detection_enabled = args[:location_auto_detection_enabled] if args.key?(:location_auto_detection_enabled)
         end
       end
       
@@ -260,6 +302,31 @@ module Google
         def update!(**args)
           @ad_personalization = args[:ad_personalization] if args.key?(:ad_personalization)
           @ad_user_data = args[:ad_user_data] if args.key?(:ad_user_data)
+        end
+      end
+      
+      # Additional information when `CONTACT_ID` is one of the `upload_key_types`.
+      class ContactIdInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Immutable. Source of the upload data
+        # Corresponds to the JSON property `dataSourceType`
+        # @return [String]
+        attr_accessor :data_source_type
+      
+        # Output only. Match rate for customer match user lists.
+        # Corresponds to the JSON property `matchRatePercentage`
+        # @return [Fixnum]
+        attr_accessor :match_rate_percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source_type = args[:data_source_type] if args.key?(:data_source_type)
+          @match_rate_percentage = args[:match_rate_percentage] if args.key?(:match_rate_percentage)
         end
       end
       
@@ -374,6 +441,22 @@ module Google
         def update!(**args)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -780,11 +863,23 @@ module Google
         # @return [Google::Apis::DatamanagerV1::IngestPairDataStatus]
         attr_accessor :pair_data_ingestion_status
       
+        # The status of the ppid data ingestion to the destination containing stats
+        # related to the ingestion.
+        # Corresponds to the JSON property `ppidDataIngestionStatus`
+        # @return [Google::Apis::DatamanagerV1::IngestPpidDataStatus]
+        attr_accessor :ppid_data_ingestion_status
+      
         # The status of the user data ingestion to the destination containing stats
         # related to the ingestion.
         # Corresponds to the JSON property `userDataIngestionStatus`
         # @return [Google::Apis::DatamanagerV1::IngestUserDataStatus]
         attr_accessor :user_data_ingestion_status
+      
+        # The status of the user id data ingestion to the destination containing stats
+        # related to the ingestion.
+        # Corresponds to the JSON property `userIdDataIngestionStatus`
+        # @return [Google::Apis::DatamanagerV1::IngestUserIdDataStatus]
+        attr_accessor :user_id_data_ingestion_status
       
         def initialize(**args)
            update!(**args)
@@ -794,7 +889,9 @@ module Google
         def update!(**args)
           @mobile_data_ingestion_status = args[:mobile_data_ingestion_status] if args.key?(:mobile_data_ingestion_status)
           @pair_data_ingestion_status = args[:pair_data_ingestion_status] if args.key?(:pair_data_ingestion_status)
+          @ppid_data_ingestion_status = args[:ppid_data_ingestion_status] if args.key?(:ppid_data_ingestion_status)
           @user_data_ingestion_status = args[:user_data_ingestion_status] if args.key?(:user_data_ingestion_status)
+          @user_id_data_ingestion_status = args[:user_id_data_ingestion_status] if args.key?(:user_id_data_ingestion_status)
         end
       end
       
@@ -957,6 +1054,36 @@ module Google
         end
       end
       
+      # The status of the ppid data ingestion to the destination containing stats
+      # related to the ingestion.
+      class IngestPpidDataStatus
+        include Google::Apis::Core::Hashable
+      
+        # The total count of ppids sent in the upload request for the destination.
+        # Includes all ppids in the request, regardless of whether they were
+        # successfully ingested or not.
+        # Corresponds to the JSON property `ppidCount`
+        # @return [Fixnum]
+        attr_accessor :ppid_count
+      
+        # The total count of audience members sent in the upload request for the
+        # destination. Includes all audience members in the request, regardless of
+        # whether they were successfully ingested or not.
+        # Corresponds to the JSON property `recordCount`
+        # @return [Fixnum]
+        attr_accessor :record_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ppid_count = args[:ppid_count] if args.key?(:ppid_count)
+          @record_count = args[:record_count] if args.key?(:record_count)
+        end
+      end
+      
       # The status of the user data ingestion to the destination containing stats
       # related to the ingestion.
       class IngestUserDataStatus
@@ -990,6 +1117,93 @@ module Google
           @record_count = args[:record_count] if args.key?(:record_count)
           @upload_match_rate_range = args[:upload_match_rate_range] if args.key?(:upload_match_rate_range)
           @user_identifier_count = args[:user_identifier_count] if args.key?(:user_identifier_count)
+        end
+      end
+      
+      # The status of the user id data ingestion to the destination containing stats
+      # related to the ingestion.
+      class IngestUserIdDataStatus
+        include Google::Apis::Core::Hashable
+      
+        # The total count of audience members sent in the upload request for the
+        # destination. Includes all audience members in the request, regardless of
+        # whether they were successfully ingested or not.
+        # Corresponds to the JSON property `recordCount`
+        # @return [Fixnum]
+        attr_accessor :record_count
+      
+        # The total count of user ids sent in the upload request for the destination.
+        # Includes all user ids in the request, regardless of whether they were
+        # successfully ingested or not.
+        # Corresponds to the JSON property `userIdCount`
+        # @return [Fixnum]
+        attr_accessor :user_id_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @record_count = args[:record_count] if args.key?(:record_count)
+          @user_id_count = args[:user_id_count] if args.key?(:user_id_count)
+        end
+      end
+      
+      # Represents a user list that is populated by user provided data.
+      class IngestedUserListInfo
+        include Google::Apis::Core::Hashable
+      
+        # Additional information when `CONTACT_ID` is one of the `upload_key_types`.
+        # Corresponds to the JSON property `contactIdInfo`
+        # @return [Google::Apis::DatamanagerV1::ContactIdInfo]
+        attr_accessor :contact_id_info
+      
+        # Additional information when `MOBILE_ID` is one of the `upload_key_types`.
+        # Corresponds to the JSON property `mobileIdInfo`
+        # @return [Google::Apis::DatamanagerV1::MobileIdInfo]
+        attr_accessor :mobile_id_info
+      
+        # Additional information when `PAIR_ID` is one of the `upload_key_types`. This
+        # feature is only available to data partners.
+        # Corresponds to the JSON property `pairIdInfo`
+        # @return [Google::Apis::DatamanagerV1::PairIdInfo]
+        attr_accessor :pair_id_info
+      
+        # Additional information for partner audiences. This feature is only available
+        # to data partners.
+        # Corresponds to the JSON property `partnerAudienceInfo`
+        # @return [Google::Apis::DatamanagerV1::PartnerAudienceInfo]
+        attr_accessor :partner_audience_info
+      
+        # Additional information when `PSEUDONYMOUS_ID` is one of the `upload_key_types`.
+        # Corresponds to the JSON property `pseudonymousIdInfo`
+        # @return [Google::Apis::DatamanagerV1::PseudonymousIdInfo]
+        attr_accessor :pseudonymous_id_info
+      
+        # Required. Immutable. Upload key types of this user list.
+        # Corresponds to the JSON property `uploadKeyTypes`
+        # @return [Array<String>]
+        attr_accessor :upload_key_types
+      
+        # Additional information when `USER_ID` is one of the `upload_key_types`.
+        # Corresponds to the JSON property `userIdInfo`
+        # @return [Google::Apis::DatamanagerV1::UserIdInfo]
+        attr_accessor :user_id_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contact_id_info = args[:contact_id_info] if args.key?(:contact_id_info)
+          @mobile_id_info = args[:mobile_id_info] if args.key?(:mobile_id_info)
+          @pair_id_info = args[:pair_id_info] if args.key?(:pair_id_info)
+          @partner_audience_info = args[:partner_audience_info] if args.key?(:partner_audience_info)
+          @pseudonymous_id_info = args[:pseudonymous_id_info] if args.key?(:pseudonymous_id_info)
+          @upload_key_types = args[:upload_key_types] if args.key?(:upload_key_types)
+          @user_id_info = args[:user_id_info] if args.key?(:user_id_info)
         end
       end
       
@@ -1068,6 +1282,193 @@ module Google
         end
       end
       
+      # Response from the ListUserListDirectLicensesRequest.
+      class ListUserListDirectLicensesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The licenses for the given user list in the request.
+        # Corresponds to the JSON property `userListDirectLicenses`
+        # @return [Array<Google::Apis::DatamanagerV1::UserListDirectLicense>]
+        attr_accessor :user_list_direct_licenses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @user_list_direct_licenses = args[:user_list_direct_licenses] if args.key?(:user_list_direct_licenses)
+        end
+      end
+      
+      # Response from the ListUserListGlobalLicensesCustomerInfoRequest.
+      class ListUserListGlobalLicenseCustomerInfosResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The customer information for the given license in the request.
+        # Corresponds to the JSON property `userListGlobalLicenseCustomerInfos`
+        # @return [Array<Google::Apis::DatamanagerV1::UserListGlobalLicenseCustomerInfo>]
+        attr_accessor :user_list_global_license_customer_infos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @user_list_global_license_customer_infos = args[:user_list_global_license_customer_infos] if args.key?(:user_list_global_license_customer_infos)
+        end
+      end
+      
+      # Response from the ListUserListGlobalLicensesRequest.
+      class ListUserListGlobalLicensesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The licenses for the given user list in the request.
+        # Corresponds to the JSON property `userListGlobalLicenses`
+        # @return [Array<Google::Apis::DatamanagerV1::UserListGlobalLicense>]
+        attr_accessor :user_list_global_licenses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @user_list_global_licenses = args[:user_list_global_licenses] if args.key?(:user_list_global_licenses)
+        end
+      end
+      
+      # Response message for ListUserLists.
+      class ListUserListsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The user lists from the specified account.
+        # Corresponds to the JSON property `userLists`
+        # @return [Array<Google::Apis::DatamanagerV1::UserList>]
+        attr_accessor :user_lists
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @user_lists = args[:user_lists] if args.key?(:user_lists)
+        end
+      end
+      
+      # The baseline location of the request. Baseline location is on OR-list of ISO
+      # 3166-1 alpha-2 region codes of the requested regions.
+      class Location
+        include Google::Apis::Core::Hashable
+      
+        # List of ISO 3166-1 alpha-2 region codes.
+        # Corresponds to the JSON property `regionCodes`
+        # @return [Array<String>]
+        attr_accessor :region_codes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region_codes = args[:region_codes] if args.key?(:region_codes)
+        end
+      end
+      
+      # Insights for marketing data. This feature is only available to data partners.
+      class MarketingDataInsight
+        include Google::Apis::Core::Hashable
+      
+        # Insights for values of a given dimension.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::DatamanagerV1::MarketingDataInsightsAttribute>]
+        attr_accessor :attributes
+      
+        # The dimension to which the insight belongs.
+        # Corresponds to the JSON property `dimension`
+        # @return [String]
+        attr_accessor :dimension
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @dimension = args[:dimension] if args.key?(:dimension)
+        end
+      end
+      
+      # Insights for a collection of related attributes of the same dimension.
+      class MarketingDataInsightsAttribute
+        include Google::Apis::Core::Hashable
+      
+        # Age range of the audience for which the lift is provided.
+        # Corresponds to the JSON property `ageRange`
+        # @return [String]
+        attr_accessor :age_range
+      
+        # Gender of the audience for which the lift is provided.
+        # Corresponds to the JSON property `gender`
+        # @return [String]
+        attr_accessor :gender
+      
+        # Measure of lift that the audience has for the attribute value as compared to
+        # the baseline. Range [0-1].
+        # Corresponds to the JSON property `lift`
+        # @return [Float]
+        attr_accessor :lift
+      
+        # The user interest ID.
+        # Corresponds to the JSON property `userInterestId`
+        # @return [Fixnum]
+        attr_accessor :user_interest_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @age_range = args[:age_range] if args.key?(:age_range)
+          @gender = args[:gender] if args.key?(:gender)
+          @lift = args[:lift] if args.key?(:lift)
+          @user_interest_id = args[:user_interest_id] if args.key?(:user_interest_id)
+        end
+      end
+      
       # Mobile IDs for the audience. At least one mobile ID is required.
       class MobileData
         include Google::Apis::Core::Hashable
@@ -1088,8 +1489,41 @@ module Google
         end
       end
       
+      # Additional information when `MOBILE_ID` is one of the `upload_key_types`.
+      class MobileIdInfo
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. A string that uniquely identifies a mobile application
+        # from which the data was collected.
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # Optional. Immutable. Source of the upload data.
+        # Corresponds to the JSON property `dataSourceType`
+        # @return [String]
+        attr_accessor :data_source_type
+      
+        # Required. Immutable. The key space of mobile IDs.
+        # Corresponds to the JSON property `keySpace`
+        # @return [String]
+        attr_accessor :key_space
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @data_source_type = args[:data_source_type] if args.key?(:data_source_type)
+          @key_space = args[:key_space] if args.key?(:key_space)
+        end
+      end
+      
       # [PAIR](//support.google.com/admanager/answer/15067908) IDs for the audience.
-      # At least one PAIR ID is required.
+      # At least one PAIR ID is required. This feature is only available to data
+      # partners.
       class PairData
         include Google::Apis::Core::Hashable
       
@@ -1108,6 +1542,144 @@ module Google
         # Update properties of this object
         def update!(**args)
           @pair_ids = args[:pair_ids] if args.key?(:pair_ids)
+        end
+      end
+      
+      # Additional information when `PAIR_ID` is one of the `upload_key_types`. This
+      # feature is only available to data partners.
+      class PairIdInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The count of the advertiser's first party data records that have
+        # been uploaded to a clean room provider. This does not signify the size of a
+        # PAIR user list.
+        # Corresponds to the JSON property `advertiserIdentifierCount`
+        # @return [Fixnum]
+        attr_accessor :advertiser_identifier_count
+      
+        # Required. Immutable. Identifies a unique advertiser to publisher relationship
+        # with one clean room provider or across multiple clean room providers.
+        # Corresponds to the JSON property `cleanRoomIdentifier`
+        # @return [String]
+        attr_accessor :clean_room_identifier
+      
+        # Output only. This field denotes the percentage of membership match of this
+        # user list with the corresponding publisher's first party data. Must be between
+        # 0 and 100 inclusive.
+        # Corresponds to the JSON property `matchRatePercentage`
+        # @return [Fixnum]
+        attr_accessor :match_rate_percentage
+      
+        # Required. Immutable. Identifies the publisher that the Publisher Advertiser
+        # Identity Reconciliation user list is reconciled with. This field is provided
+        # by the cleanroom provider and is only unique in the scope of that cleanroom.
+        # This cannot be used as a global identifier across multiple cleanrooms.
+        # Corresponds to the JSON property `publisherId`
+        # @return [Fixnum]
+        attr_accessor :publisher_id
+      
+        # Optional. Descriptive name of the publisher to be displayed in the UI for a
+        # better targeting experience.
+        # Corresponds to the JSON property `publisherName`
+        # @return [String]
+        attr_accessor :publisher_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertiser_identifier_count = args[:advertiser_identifier_count] if args.key?(:advertiser_identifier_count)
+          @clean_room_identifier = args[:clean_room_identifier] if args.key?(:clean_room_identifier)
+          @match_rate_percentage = args[:match_rate_percentage] if args.key?(:match_rate_percentage)
+          @publisher_id = args[:publisher_id] if args.key?(:publisher_id)
+          @publisher_name = args[:publisher_name] if args.key?(:publisher_name)
+        end
+      end
+      
+      # Additional information for partner audiences. This feature is only available
+      # to data partners.
+      class PartnerAudienceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The commerce partner name. Only allowed if `partner_audience_source`
+        # is `COMMERCE_AUDIENCE`.
+        # Corresponds to the JSON property `commercePartner`
+        # @return [String]
+        attr_accessor :commerce_partner
+      
+        # Required. Immutable. The source of the partner audience.
+        # Corresponds to the JSON property `partnerAudienceSource`
+        # @return [String]
+        attr_accessor :partner_audience_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commerce_partner = args[:commerce_partner] if args.key?(:commerce_partner)
+          @partner_audience_source = args[:partner_audience_source] if args.key?(:partner_audience_source)
+        end
+      end
+      
+      # A partner link between an owning account and a partner account.
+      class PartnerLink
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The name of the partner link. Format: accountTypes/`account_type`/
+        # accounts/`account`/partnerLinks/`partner_link`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents a specific account.
+        # Corresponds to the JSON property `owningAccount`
+        # @return [Google::Apis::DatamanagerV1::ProductAccount]
+        attr_accessor :owning_account
+      
+        # Represents a specific account.
+        # Corresponds to the JSON property `partnerAccount`
+        # @return [Google::Apis::DatamanagerV1::ProductAccount]
+        attr_accessor :partner_account
+      
+        # Output only. The partner link ID.
+        # Corresponds to the JSON property `partnerLinkId`
+        # @return [String]
+        attr_accessor :partner_link_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @owning_account = args[:owning_account] if args.key?(:owning_account)
+          @partner_account = args[:partner_account] if args.key?(:partner_account)
+          @partner_link_id = args[:partner_link_id] if args.key?(:partner_link_id)
+        end
+      end
+      
+      # Publisher provided identifiers data holding the ppids. At least one ppid is
+      # required. This feature is only available to data partners.
+      class PpidData
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of publisher provided identifiers for a user.
+        # Corresponds to the JSON property `ppids`
+        # @return [Array<String>]
+        attr_accessor :ppids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ppids = args[:ppids] if args.key?(:ppids)
         end
       end
       
@@ -1141,6 +1713,31 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @account_type = args[:account_type] if args.key?(:account_type)
           @product = args[:product] if args.key?(:product)
+        end
+      end
+      
+      # Additional information when `PSEUDONYMOUS_ID` is one of the `upload_key_types`.
+      class PseudonymousIdInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Immutable. The number of billable records (e.g. uploaded or matched).
+        # Corresponds to the JSON property `billableRecordCount`
+        # @return [Fixnum]
+        attr_accessor :billable_record_count
+      
+        # Output only. Sync status of the user list.
+        # Corresponds to the JSON property `syncStatus`
+        # @return [String]
+        attr_accessor :sync_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billable_record_count = args[:billable_record_count] if args.key?(:billable_record_count)
+          @sync_status = args[:sync_status] if args.key?(:sync_status)
         end
       end
       
@@ -1225,10 +1822,20 @@ module Google
         # @return [Google::Apis::DatamanagerV1::RemovePairDataStatus]
         attr_accessor :pair_data_removal_status
       
+        # The status of the ppid data removal from the destination.
+        # Corresponds to the JSON property `ppidDataRemovalStatus`
+        # @return [Google::Apis::DatamanagerV1::RemovePpidDataStatus]
+        attr_accessor :ppid_data_removal_status
+      
         # The status of the user data removal from the destination.
         # Corresponds to the JSON property `userDataRemovalStatus`
         # @return [Google::Apis::DatamanagerV1::RemoveUserDataStatus]
         attr_accessor :user_data_removal_status
+      
+        # The status of the user id data removal from the destination.
+        # Corresponds to the JSON property `userIdDataRemovalStatus`
+        # @return [Google::Apis::DatamanagerV1::RemoveUserIdDataStatus]
+        attr_accessor :user_id_data_removal_status
       
         def initialize(**args)
            update!(**args)
@@ -1238,7 +1845,9 @@ module Google
         def update!(**args)
           @mobile_data_removal_status = args[:mobile_data_removal_status] if args.key?(:mobile_data_removal_status)
           @pair_data_removal_status = args[:pair_data_removal_status] if args.key?(:pair_data_removal_status)
+          @ppid_data_removal_status = args[:ppid_data_removal_status] if args.key?(:ppid_data_removal_status)
           @user_data_removal_status = args[:user_data_removal_status] if args.key?(:user_data_removal_status)
+          @user_id_data_removal_status = args[:user_id_data_removal_status] if args.key?(:user_id_data_removal_status)
         end
       end
       
@@ -1299,6 +1908,34 @@ module Google
         end
       end
       
+      # The status of the ppid data removal from the destination.
+      class RemovePpidDataStatus
+        include Google::Apis::Core::Hashable
+      
+        # The total count of ppids sent in the removal request. Includes all ppids in
+        # the request, regardless of whether they were successfully removed or not.
+        # Corresponds to the JSON property `ppidCount`
+        # @return [Fixnum]
+        attr_accessor :ppid_count
+      
+        # The total count of audience members sent in the removal request. Includes all
+        # audience members in the request, regardless of whether they were successfully
+        # removed or not.
+        # Corresponds to the JSON property `recordCount`
+        # @return [Fixnum]
+        attr_accessor :record_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ppid_count = args[:ppid_count] if args.key?(:ppid_count)
+          @record_count = args[:record_count] if args.key?(:record_count)
+        end
+      end
+      
       # The status of the user data removal from the destination.
       class RemoveUserDataStatus
         include Google::Apis::Core::Hashable
@@ -1325,6 +1962,34 @@ module Google
         def update!(**args)
           @record_count = args[:record_count] if args.key?(:record_count)
           @user_identifier_count = args[:user_identifier_count] if args.key?(:user_identifier_count)
+        end
+      end
+      
+      # The status of the user id data removal from the destination.
+      class RemoveUserIdDataStatus
+        include Google::Apis::Core::Hashable
+      
+        # The total count of audience members sent in the removal request. Includes all
+        # audience members in the request, regardless of whether they were successfully
+        # removed or not.
+        # Corresponds to the JSON property `recordCount`
+        # @return [Fixnum]
+        attr_accessor :record_count
+      
+        # The total count of user ids sent in the removal request. Includes all user ids
+        # in the request, regardless of whether they were successfully removed or not.
+        # Corresponds to the JSON property `userIdCount`
+        # @return [Fixnum]
+        attr_accessor :user_id_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @record_count = args[:record_count] if args.key?(:record_count)
+          @user_id_count = args[:user_id_count] if args.key?(:user_id_count)
         end
       end
       
@@ -1383,6 +2048,50 @@ module Google
         end
       end
       
+      # Request message for DM API MarketingDataInsightsService.RetrieveInsights
+      class RetrieveInsightsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Baseline criteria against which insights are compared.
+        # Corresponds to the JSON property `baseline`
+        # @return [Google::Apis::DatamanagerV1::Baseline]
+        attr_accessor :baseline
+      
+        # Required. The user list ID for which insights are requested.
+        # Corresponds to the JSON property `userListId`
+        # @return [String]
+        attr_accessor :user_list_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @baseline = args[:baseline] if args.key?(:baseline)
+          @user_list_id = args[:user_list_id] if args.key?(:user_list_id)
+        end
+      end
+      
+      # Response message for DM API MarketingDataInsightsService.RetrieveInsights
+      class RetrieveInsightsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Contains the insights for the marketing data.
+        # Corresponds to the JSON property `marketingDataInsights`
+        # @return [Array<Google::Apis::DatamanagerV1::MarketingDataInsight>]
+        attr_accessor :marketing_data_insights
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @marketing_data_insights = args[:marketing_data_insights] if args.key?(:marketing_data_insights)
+        end
+      end
+      
       # Response from the RetrieveRequestStatusRequest.
       class RetrieveRequestStatusResponse
         include Google::Apis::Core::Hashable
@@ -1400,6 +2109,59 @@ module Google
         # Update properties of this object
         def update!(**args)
           @request_status_per_destination = args[:request_status_per_destination] if args.key?(:request_status_per_destination)
+        end
+      end
+      
+      # Response from the SearchPartnerLinksRequest.
+      class SearchPartnerLinksResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The partner links for the given account.
+        # Corresponds to the JSON property `partnerLinks`
+        # @return [Array<Google::Apis::DatamanagerV1::PartnerLink>]
+        attr_accessor :partner_links
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @partner_links = args[:partner_links] if args.key?(:partner_links)
+        end
+      end
+      
+      # Estimated number of members in this user list in different target networks.
+      class SizeInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Estimated number of members in this user list, on the Google
+        # Display Network.
+        # Corresponds to the JSON property `displayNetworkMembersCount`
+        # @return [Fixnum]
+        attr_accessor :display_network_members_count
+      
+        # Output only. Estimated number of members in this user list in the google.com
+        # domain. These are the members available for targeting in Search campaigns.
+        # Corresponds to the JSON property `searchNetworkMembersCount`
+        # @return [Fixnum]
+        attr_accessor :search_network_members_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_network_members_count = args[:display_network_members_count] if args.key?(:display_network_members_count)
+          @search_network_members_count = args[:search_network_members_count] if args.key?(:search_network_members_count)
         end
       end
       
@@ -1439,6 +2201,33 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Eligibility information for different target networks.
+      class TargetNetworkInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Indicates this user list is eligible for Google Display Network.
+        # Corresponds to the JSON property `eligibleForDisplay`
+        # @return [Boolean]
+        attr_accessor :eligible_for_display
+        alias_method :eligible_for_display?, :eligible_for_display
+      
+        # Optional. Indicates if this user list is eligible for Google Search Network.
+        # Corresponds to the JSON property `eligibleForSearch`
+        # @return [Boolean]
+        attr_accessor :eligible_for_search
+        alias_method :eligible_for_search?, :eligible_for_search
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eligible_for_display = args[:eligible_for_display] if args.key?(:eligible_for_display)
+          @eligible_for_search = args[:eligible_for_search] if args.key?(:eligible_for_search)
         end
       end
       
@@ -1486,6 +2275,44 @@ module Google
         end
       end
       
+      # User id data holding the user id.
+      class UserIdData
+        include Google::Apis::Core::Hashable
+      
+        # Required. A unique identifier for a user, as defined by the advertiser.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Additional information when `USER_ID` is one of the `upload_key_types`.
+      class UserIdInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Immutable. Source of the upload data.
+        # Corresponds to the JSON property `dataSourceType`
+        # @return [String]
+        attr_accessor :data_source_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source_type = args[:data_source_type] if args.key?(:data_source_type)
+        end
+      end
+      
       # A single identifier for the user.
       class UserIdentifier
         include Google::Apis::Core::Hashable
@@ -1515,6 +2342,461 @@ module Google
           @address = args[:address] if args.key?(:address)
           @email_address = args[:email_address] if args.key?(:email_address)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
+        end
+      end
+      
+      # A user list resource.
+      class UserList
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The reason this account has been granted access to the list.
+        # Corresponds to the JSON property `accessReason`
+        # @return [String]
+        attr_accessor :access_reason
+      
+        # Optional. Indicates if this share is still enabled. When a user list is shared
+        # with the account this field is set to `ENABLED`. Later the user list owner can
+        # decide to revoke the share and make it `DISABLED`.
+        # Corresponds to the JSON property `accountAccessStatus`
+        # @return [String]
+        attr_accessor :account_access_status
+      
+        # Output only. The reason why this user list membership status is closed.
+        # Corresponds to the JSON property `closingReason`
+        # @return [String]
+        attr_accessor :closing_reason
+      
+        # Optional. A description of the user list.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The display name of the user list.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The unique ID of the user list.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Represents a user list that is populated by user provided data.
+        # Corresponds to the JSON property `ingestedUserListInfo`
+        # @return [Google::Apis::DatamanagerV1::IngestedUserListInfo]
+        attr_accessor :ingested_user_list_info
+      
+        # Optional. An ID from external system. It is used by user list sellers to
+        # correlate IDs on their systems.
+        # Corresponds to the JSON property `integrationCode`
+        # @return [String]
+        attr_accessor :integration_code
+      
+        # Optional. The duration a user remains in the user list. Valid durations are
+        # exact multiples of 24 hours (86400 seconds). Providing a value that is not an
+        # exact multiple of 24 hours will result in an INVALID_ARGUMENT error.
+        # Corresponds to the JSON property `membershipDuration`
+        # @return [String]
+        attr_accessor :membership_duration
+      
+        # Optional. Membership status of this user list.
+        # Corresponds to the JSON property `membershipStatus`
+        # @return [String]
+        attr_accessor :membership_status
+      
+        # Identifier. The resource name of the user list. Format: accountTypes/`
+        # account_type`/accounts/`account`/userLists/`user_list`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. An option that indicates if a user may edit a list.
+        # Corresponds to the JSON property `readOnly`
+        # @return [Boolean]
+        attr_accessor :read_only
+        alias_method :read_only?, :read_only
+      
+        # Estimated number of members in this user list in different target networks.
+        # Corresponds to the JSON property `sizeInfo`
+        # @return [Google::Apis::DatamanagerV1::SizeInfo]
+        attr_accessor :size_info
+      
+        # Eligibility information for different target networks.
+        # Corresponds to the JSON property `targetNetworkInfo`
+        # @return [Google::Apis::DatamanagerV1::TargetNetworkInfo]
+        attr_accessor :target_network_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_reason = args[:access_reason] if args.key?(:access_reason)
+          @account_access_status = args[:account_access_status] if args.key?(:account_access_status)
+          @closing_reason = args[:closing_reason] if args.key?(:closing_reason)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @ingested_user_list_info = args[:ingested_user_list_info] if args.key?(:ingested_user_list_info)
+          @integration_code = args[:integration_code] if args.key?(:integration_code)
+          @membership_duration = args[:membership_duration] if args.key?(:membership_duration)
+          @membership_status = args[:membership_status] if args.key?(:membership_status)
+          @name = args[:name] if args.key?(:name)
+          @read_only = args[:read_only] if args.key?(:read_only)
+          @size_info = args[:size_info] if args.key?(:size_info)
+          @target_network_info = args[:target_network_info] if args.key?(:target_network_info)
+        end
+      end
+      
+      # A user list direct license. This feature is only available to data partners.
+      class UserListDirectLicense
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of client customer which the user list is being licensed to.
+        # This field is read-only.
+        # Corresponds to the JSON property `clientAccountDisplayName`
+        # @return [String]
+        attr_accessor :client_account_display_name
+      
+        # Immutable. ID of client customer which the user list is being licensed to.
+        # Corresponds to the JSON property `clientAccountId`
+        # @return [Fixnum]
+        attr_accessor :client_account_id
+      
+        # Immutable. Account type of client customer which the user list is being
+        # licensed to.
+        # Corresponds to the JSON property `clientAccountType`
+        # @return [String]
+        attr_accessor :client_account_type
+      
+        # Output only. Pricing history of this user list license. This field is read-
+        # only.
+        # Corresponds to the JSON property `historicalPricings`
+        # @return [Array<Google::Apis::DatamanagerV1::UserListLicensePricing>]
+        attr_accessor :historical_pricings
+      
+        # Metrics related to a user list license.
+        # Corresponds to the JSON property `metrics`
+        # @return [Google::Apis::DatamanagerV1::UserListLicenseMetrics]
+        attr_accessor :metrics
+      
+        # Identifier. The resource name of the user list direct license.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A user list license pricing.
+        # Corresponds to the JSON property `pricing`
+        # @return [Google::Apis::DatamanagerV1::UserListLicensePricing]
+        attr_accessor :pricing
+      
+        # Optional. Status of UserListDirectLicense - ENABLED or DISABLED.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Output only. Name of the user list being licensed. This field is read-only.
+        # Corresponds to the JSON property `userListDisplayName`
+        # @return [String]
+        attr_accessor :user_list_display_name
+      
+        # Immutable. ID of the user list being licensed.
+        # Corresponds to the JSON property `userListId`
+        # @return [Fixnum]
+        attr_accessor :user_list_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_account_display_name = args[:client_account_display_name] if args.key?(:client_account_display_name)
+          @client_account_id = args[:client_account_id] if args.key?(:client_account_id)
+          @client_account_type = args[:client_account_type] if args.key?(:client_account_type)
+          @historical_pricings = args[:historical_pricings] if args.key?(:historical_pricings)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @name = args[:name] if args.key?(:name)
+          @pricing = args[:pricing] if args.key?(:pricing)
+          @status = args[:status] if args.key?(:status)
+          @user_list_display_name = args[:user_list_display_name] if args.key?(:user_list_display_name)
+          @user_list_id = args[:user_list_id] if args.key?(:user_list_id)
+        end
+      end
+      
+      # A user list global license. This feature is only available to data partners.
+      class UserListGlobalLicense
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Pricing history of this user list license. This field is read-
+        # only.
+        # Corresponds to the JSON property `historicalPricings`
+        # @return [Array<Google::Apis::DatamanagerV1::UserListLicensePricing>]
+        attr_accessor :historical_pricings
+      
+        # Immutable. Product type of client customer which the user list is being
+        # licensed to.
+        # Corresponds to the JSON property `licenseType`
+        # @return [String]
+        attr_accessor :license_type
+      
+        # Metrics related to a user list license.
+        # Corresponds to the JSON property `metrics`
+        # @return [Google::Apis::DatamanagerV1::UserListLicenseMetrics]
+        attr_accessor :metrics
+      
+        # Identifier. The resource name of the user list global license.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A user list license pricing.
+        # Corresponds to the JSON property `pricing`
+        # @return [Google::Apis::DatamanagerV1::UserListLicensePricing]
+        attr_accessor :pricing
+      
+        # Optional. Status of UserListGlobalLicense - ENABLED or DISABLED.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Output only. Name of the user list being licensed. This field is read-only.
+        # Corresponds to the JSON property `userListDisplayName`
+        # @return [String]
+        attr_accessor :user_list_display_name
+      
+        # Immutable. ID of the user list being licensed.
+        # Corresponds to the JSON property `userListId`
+        # @return [Fixnum]
+        attr_accessor :user_list_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @historical_pricings = args[:historical_pricings] if args.key?(:historical_pricings)
+          @license_type = args[:license_type] if args.key?(:license_type)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @name = args[:name] if args.key?(:name)
+          @pricing = args[:pricing] if args.key?(:pricing)
+          @status = args[:status] if args.key?(:status)
+          @user_list_display_name = args[:user_list_display_name] if args.key?(:user_list_display_name)
+          @user_list_id = args[:user_list_id] if args.key?(:user_list_id)
+        end
+      end
+      
+      # Information about a customer of a user list global license. This will
+      # automatically be created by the system when a customer purchases a global
+      # license.
+      class UserListGlobalLicenseCustomerInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of client customer which the user list is being licensed to.
+        # Corresponds to the JSON property `clientAccountDisplayName`
+        # @return [String]
+        attr_accessor :client_account_display_name
+      
+        # Output only. ID of client customer which the user list is being licensed to.
+        # Corresponds to the JSON property `clientAccountId`
+        # @return [Fixnum]
+        attr_accessor :client_account_id
+      
+        # Output only. Product type of client customer which the user list is being
+        # licensed to.
+        # Corresponds to the JSON property `clientAccountType`
+        # @return [String]
+        attr_accessor :client_account_type
+      
+        # Output only. Pricing history of this user list license.
+        # Corresponds to the JSON property `historicalPricings`
+        # @return [Array<Google::Apis::DatamanagerV1::UserListLicensePricing>]
+        attr_accessor :historical_pricings
+      
+        # Output only. Product type of client customer which the user list is being
+        # licensed to.
+        # Corresponds to the JSON property `licenseType`
+        # @return [String]
+        attr_accessor :license_type
+      
+        # Metrics related to a user list license.
+        # Corresponds to the JSON property `metrics`
+        # @return [Google::Apis::DatamanagerV1::UserListLicenseMetrics]
+        attr_accessor :metrics
+      
+        # Identifier. The resource name of the user list global license customer.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A user list license pricing.
+        # Corresponds to the JSON property `pricing`
+        # @return [Google::Apis::DatamanagerV1::UserListLicensePricing]
+        attr_accessor :pricing
+      
+        # Output only. Status of UserListDirectLicense - ENABLED or DISABLED.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Output only. Name of the user list being licensed.
+        # Corresponds to the JSON property `userListDisplayName`
+        # @return [String]
+        attr_accessor :user_list_display_name
+      
+        # Output only. ID of the user list being licensed.
+        # Corresponds to the JSON property `userListId`
+        # @return [Fixnum]
+        attr_accessor :user_list_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_account_display_name = args[:client_account_display_name] if args.key?(:client_account_display_name)
+          @client_account_id = args[:client_account_id] if args.key?(:client_account_id)
+          @client_account_type = args[:client_account_type] if args.key?(:client_account_type)
+          @historical_pricings = args[:historical_pricings] if args.key?(:historical_pricings)
+          @license_type = args[:license_type] if args.key?(:license_type)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @name = args[:name] if args.key?(:name)
+          @pricing = args[:pricing] if args.key?(:pricing)
+          @status = args[:status] if args.key?(:status)
+          @user_list_display_name = args[:user_list_display_name] if args.key?(:user_list_display_name)
+          @user_list_id = args[:user_list_id] if args.key?(:user_list_id)
+        end
+      end
+      
+      # Metrics related to a user list license.
+      class UserListLicenseMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of clicks for the user list license.
+        # Corresponds to the JSON property `clickCount`
+        # @return [Fixnum]
+        attr_accessor :click_count
+      
+        # Output only. The end date (inclusive) of the metrics in the format YYYYMMDD.
+        # For example, 20260102 represents January 2, 2026. If `start_date` is used in
+        # the filter, `end_date` is also required. If neither `start_date` nor `end_date`
+        # are included in the filter, the UserListLicenseMetrics fields will not be
+        # populated in the response.
+        # Corresponds to the JSON property `endDate`
+        # @return [Fixnum]
+        attr_accessor :end_date
+      
+        # Output only. The number of impressions for the user list license.
+        # Corresponds to the JSON property `impressionCount`
+        # @return [Fixnum]
+        attr_accessor :impression_count
+      
+        # Output only. The revenue for the user list license in USD micros.
+        # Corresponds to the JSON property `revenueUsdMicros`
+        # @return [Fixnum]
+        attr_accessor :revenue_usd_micros
+      
+        # Output only. The start date (inclusive) of the metrics in the format YYYYMMDD.
+        # For example, 20260102 represents January 2, 2026. If `end_date` is used in the
+        # filter, `start_date` is also required. If neither `start_date` nor `end_date`
+        # are included in the filter, the UserListLicenseMetrics fields will not be
+        # populated in the response.
+        # Corresponds to the JSON property `startDate`
+        # @return [Fixnum]
+        attr_accessor :start_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @click_count = args[:click_count] if args.key?(:click_count)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @impression_count = args[:impression_count] if args.key?(:impression_count)
+          @revenue_usd_micros = args[:revenue_usd_micros] if args.key?(:revenue_usd_micros)
+          @start_date = args[:start_date] if args.key?(:start_date)
+        end
+      end
+      
+      # A user list license pricing.
+      class UserListLicensePricing
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The buyer approval state of this pricing. This field is read-only.
+        # Corresponds to the JSON property `buyerApprovalState`
+        # @return [String]
+        attr_accessor :buyer_approval_state
+      
+        # Optional. The cost associated with the model, in micro units (10^-6), in the
+        # currency specified by the currency_code field. For example, 2000000 means $2
+        # if `currency_code` is `USD`.
+        # Corresponds to the JSON property `costMicros`
+        # @return [Fixnum]
+        attr_accessor :cost_micros
+      
+        # Immutable. The cost type of this pricing. Can be set only in the `create`
+        # operation. Can't be updated for an existing license.
+        # Corresponds to the JSON property `costType`
+        # @return [String]
+        attr_accessor :cost_type
+      
+        # Optional. The currency in which cost and max_cost is specified. Must be a
+        # three-letter currency code defined in ISO 4217.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Optional. End time of the pricing.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. The maximum CPM a commerce audience can be charged when the
+        # MEDIA_SHARE cost type is used. The value is in micro units (10^-6) and in the
+        # currency specified by the currency_code field. For example, 2000000 means $2
+        # if `currency_code` is `USD`. This is only relevant when cost_type is
+        # MEDIA_SHARE. When cost_type is not MEDIA_SHARE, and this field is set, a
+        # MAX_COST_NOT_ALLOWED error will be returned. If not set or set to`0`, there is
+        # no cap.
+        # Corresponds to the JSON property `maxCostMicros`
+        # @return [Fixnum]
+        attr_accessor :max_cost_micros
+      
+        # Output only. Whether this pricing is active.
+        # Corresponds to the JSON property `pricingActive`
+        # @return [Boolean]
+        attr_accessor :pricing_active
+        alias_method :pricing_active?, :pricing_active
+      
+        # Output only. The ID of this pricing.
+        # Corresponds to the JSON property `pricingId`
+        # @return [Fixnum]
+        attr_accessor :pricing_id
+      
+        # Output only. Start time of the pricing.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buyer_approval_state = args[:buyer_approval_state] if args.key?(:buyer_approval_state)
+          @cost_micros = args[:cost_micros] if args.key?(:cost_micros)
+          @cost_type = args[:cost_type] if args.key?(:cost_type)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @max_cost_micros = args[:max_cost_micros] if args.key?(:max_cost_micros)
+          @pricing_active = args[:pricing_active] if args.key?(:pricing_active)
+          @pricing_id = args[:pricing_id] if args.key?(:pricing_id)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
