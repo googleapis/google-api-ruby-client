@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloneDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DailySchedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -571,6 +577,15 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CloneDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :shared_space_gib, :numeric_string => true, as: 'sharedSpaceGib'
+          property :source_snapshot, as: 'sourceSnapshot'
+          property :source_volume, as: 'sourceVolume'
         end
       end
       
@@ -1153,6 +1168,8 @@ module Google
           property :cache_parameters, as: 'cacheParameters', class: Google::Apis::NetappV1::CacheParameters, decorator: Google::Apis::NetappV1::CacheParameters::Representation
       
           property :capacity_gib, :numeric_string => true, as: 'capacityGib'
+          property :clone_details, as: 'cloneDetails', class: Google::Apis::NetappV1::CloneDetails, decorator: Google::Apis::NetappV1::CloneDetails::Representation
+      
           property :cold_tier_size_gib, :numeric_string => true, as: 'coldTierSizeGib'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
