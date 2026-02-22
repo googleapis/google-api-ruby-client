@@ -2724,7 +2724,7 @@ module Google
         # Optional. The connection specifying the credentials to be used to read and
         # write to external storage, such as Cloud Storage. The connection can have the
         # form ``project`.`location`.`connection_id`` or `projects/`project`/locations/`
-        # location`/connections/`connection_id`", or be set to DEFAULT.
+        # location`/connections/`connection_id``, or be set to DEFAULT.
         # Corresponds to the JSON property `connection`
         # @return [String]
         attr_accessor :connection
