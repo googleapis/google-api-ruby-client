@@ -10798,7 +10798,6 @@ module Google
       
           property :source, as: 'source'
           property :type, as: 'type'
-          collection :user_licenses, as: 'userLicenses'
         end
       end
       
@@ -12732,7 +12731,6 @@ module Google
           property :storage_pool, as: 'storagePool'
           property :storage_type, as: 'storageType'
           property :type, as: 'type'
-          collection :user_licenses, as: 'userLicenses'
           collection :users, as: 'users'
           property :zone, as: 'zone'
         end
@@ -15653,7 +15651,6 @@ module Google
           property :source_type, as: 'sourceType'
           property :status, as: 'status'
           collection :storage_locations, as: 'storageLocations'
-          collection :user_licenses, as: 'userLicenses'
         end
         
         class RawDisk
@@ -22719,7 +22716,6 @@ module Google
           property :storage_bytes, :numeric_string => true, as: 'storageBytes'
           property :storage_bytes_status, as: 'storageBytesStatus'
           collection :storage_locations, as: 'storageLocations'
-          collection :user_licenses, as: 'userLicenses'
         end
       end
       
@@ -26274,7 +26270,6 @@ module Google
           property :storage_bytes, :numeric_string => true, as: 'storageBytes'
           property :storage_bytes_status, as: 'storageBytesStatus'
           collection :storage_locations, as: 'storageLocations'
-          collection :user_licenses, as: 'userLicenses'
         end
       end
       
@@ -28988,10 +28983,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enforcement_msg, as: 'enforcementMsg'
           property :enforcement_state, as: 'enforcementState'
+          property :health_msg, as: 'healthMsg'
           property :health_status, as: 'healthStatus'
           property :name, as: 'name'
           property :policy_id, as: 'policyId'
-          property :unhealthy_msg, as: 'unhealthyMsg'
           property :version, as: 'version'
         end
       end

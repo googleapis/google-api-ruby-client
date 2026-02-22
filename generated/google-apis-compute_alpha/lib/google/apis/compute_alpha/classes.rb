@@ -2017,14 +2017,6 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Output only. [Output Only] A list of user provided licenses. It represents a
-        # list of
-        # URLs to the license resource. Unlike regular licenses, user provided
-        # licenses can be modified after the disk is created.
-        # Corresponds to the JSON property `userLicenses`
-        # @return [Array<String>]
-        attr_accessor :user_licenses
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2050,7 +2042,6 @@ module Google
           @shielded_instance_initial_state = args[:shielded_instance_initial_state] if args.key?(:shielded_instance_initial_state)
           @source = args[:source] if args.key?(:source)
           @type = args[:type] if args.key?(:type)
-          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
         end
       end
       
@@ -2190,7 +2181,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :replica_zones
       
-        # Resource manager tags to be bound to the disk. Tag keys and values
+        # Input only. Resource manager tags to be bound to the disk. Tag keys and values
         # have the same definition as resource
         # manager tags. Keys and values can be either in numeric format,
         # such as `tagKeys/`tag_key_id`` and `tagValues/456` or in namespaced
@@ -11332,16 +11323,6 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # A list of publicly visible user-licenses. Unlike regular licenses, user
-        # provided licenses can be modified after the disk is created. This includes
-        # a list of URLs to the license resource. For example, to provide a debian
-        # license:
-        # https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/
-        # debian-9-stretch
-        # Corresponds to the JSON property `userLicenses`
-        # @return [Array<String>]
-        attr_accessor :user_licenses
-      
         # Output only. [Output Only] Links to the users of the disk (attached instances)
         # in form:projects/project/zones/zone/instances/instance
         # Corresponds to the JSON property `users`
@@ -11419,7 +11400,6 @@ module Google
           @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
           @storage_type = args[:storage_type] if args.key?(:storage_type)
           @type = args[:type] if args.key?(:type)
-          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
           @users = args[:users] if args.key?(:users)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -11962,7 +11942,7 @@ module Google
       class DiskParams
         include Google::Apis::Core::Hashable
       
-        # Resource manager tags to be bound to the disk. Tag keys and values
+        # Input only. Resource manager tags to be bound to the disk. Tag keys and values
         # have the same definition as resource
         # manager tags. Keys and values can be either in numeric format,
         # such as `tagKeys/`tag_key_id`` and `tagValues/456` or in namespaced
@@ -24377,16 +24357,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :storage_locations
       
-        # A list of publicly visible user-licenses. Unlike regular licenses, user
-        # provided licenses can be modified after the disk is created. This includes
-        # a list of URLs to the license resource. For example, to provide a debian
-        # license:
-        # https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/
-        # debian-9-stretch
-        # Corresponds to the JSON property `userLicenses`
-        # @return [Array<String>]
-        attr_accessor :user_licenses
-      
         def initialize(**args)
            update!(**args)
         end
@@ -24431,7 +24401,6 @@ module Google
           @source_type = args[:source_type] if args.key?(:source_type)
           @status = args[:status] if args.key?(:status)
           @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
-          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
         end
         
         # The parameters of the raw disk image.
@@ -24631,7 +24600,8 @@ module Google
       class ImageParams
         include Google::Apis::Core::Hashable
       
-        # Resource manager tags to be bound to the image. Tag keys and values have
+        # Input only. Resource manager tags to be bound to the image. Tag keys and
+        # values have
         # the same definition as resource
         # manager tags. Keys and values can be either in numeric format,
         # such as `tagKeys/`tag_key_id`` and `tagValues/456` or in namespaced
@@ -26909,7 +26879,8 @@ module Google
       class InstanceGroupManagerParams
         include Google::Apis::Core::Hashable
       
-        # Resource manager tags to bind to the managed instance group. The tags are
+        # Input only. Resource manager tags to bind to the managed instance group. The
+        # tags are
         # key-value pairs. Keys and values can be either in numeric format,
         # such as `tagKeys/`tag_key_id`` and `tagValues/456` or in namespaced
         # format such as ``org_id|project_id`/`tag_key_short_name`` and
@@ -30093,7 +30064,8 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Duration]
         attr_accessor :request_valid_for_duration
       
-        # Resource manager tags to be bound to the instance. Tag keys and values
+        # Input only. Resource manager tags to be bound to the instance. Tag keys and
+        # values
         # have the same definition as resource
         # manager tags. Keys and values can be either in numeric format,
         # such as `tagKeys/`tag_key_id`` and `tagValues/456` or in namespaced
@@ -30249,7 +30221,8 @@ module Google
         # @return [Google::Apis::ComputeAlpha::ReservationAffinity]
         attr_accessor :reservation_affinity
       
-        # Resource manager tags to be bound to the instance. Tag keys and values
+        # Input only. Resource manager tags to be bound to the instance. Tag keys and
+        # values
         # have the same definition as resource
         # manager tags. Keys must be in the format `tagKeys/`tag_key_id``, and
         # values are in the format `tagValues/456`. The field is ignored (both PUT &
@@ -38954,6 +38927,13 @@ module Google
         # Location configurations mapped by location name.
         # Currently only zone names are supported and must be represented as valid
         # internal URLs, such as zones/us-central1-a.
+        # The bulkInsert operation doesn't create instances in an AI zone, even if
+        # an AI zone is available in the specified region. For example, if you set a
+        # DENY preference for us-central1-a, Compute Engine will consider
+        # us-central1-b and us-central1-c for instance creation, but not
+        # us-central1-ai1a. Also, you can't use the locations[] configuration to
+        # allow instance creation in an AI zone. To include an AI zone in bulkInsert
+        # operations, use the locationPolicy.zones[] field.
         # Corresponds to the JSON property `locations`
         # @return [Hash<String,Google::Apis::ComputeAlpha::LocationPolicyLocation>]
         attr_accessor :locations
@@ -38963,7 +38943,9 @@ module Google
         # @return [String]
         attr_accessor :target_shape
       
-        # List with zones where bulk will create instances.
+        # The bulkInsert operation applies any preferences set in the locations
+        # field to the specific zones listed in the zones field if the same zones
+        # are specified in both fields.
         # Corresponds to the JSON property `zones`
         # @return [Array<Google::Apis::ComputeAlpha::LocationPolicyZoneConfiguration>]
         attr_accessor :zones
@@ -39037,9 +39019,9 @@ module Google
       class LocationPolicyZoneConfiguration
         include Google::Apis::Core::Hashable
       
-        # The URL of thezone.
+        # The URL of the zone.
         # The zone must exist in the region where the request is called.
-        # Zones must be represented as valid internal URLs,
+        # Zones must be represented as valid partial URLs,
         # such as zones/us-central1-a.
         # Corresponds to the JSON property `zone`
         # @return [String]
@@ -54150,12 +54132,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :storage_locations
       
-        # [Output Only] A list of user provided licenses represented by a list of
-        # URLs to the license resource.
-        # Corresponds to the JSON property `userLicenses`
-        # @return [Array<String>]
-        attr_accessor :user_licenses
-      
         def initialize(**args)
            update!(**args)
         end
@@ -54203,7 +54179,6 @@ module Google
           @storage_bytes = args[:storage_bytes] if args.key?(:storage_bytes)
           @storage_bytes_status = args[:storage_bytes_status] if args.key?(:storage_bytes_status)
           @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
-          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
         end
       end
       
@@ -68853,12 +68828,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :storage_locations
       
-        # [Output Only] A list of user provided licenses represented by a list of
-        # URLs to the license resource.
-        # Corresponds to the JSON property `userLicenses`
-        # @return [Array<String>]
-        attr_accessor :user_licenses
-      
         def initialize(**args)
            update!(**args)
         end
@@ -68909,7 +68878,6 @@ module Google
           @storage_bytes = args[:storage_bytes] if args.key?(:storage_bytes)
           @storage_bytes_status = args[:storage_bytes_status] if args.key?(:storage_bytes_status)
           @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
-          @user_licenses = args[:user_licenses] if args.key?(:user_licenses)
         end
       end
       
@@ -69367,7 +69335,8 @@ module Google
       class SnapshotParams
         include Google::Apis::Core::Hashable
       
-        # Resource manager tags to be bound to the snapshot. Tag keys and values have
+        # Input only. Resource manager tags to be bound to the snapshot. Tag keys and
+        # values have
         # the same definition as resource
         # manager tags. Keys and values can be either in numeric format,
         # such as `tagKeys/`tag_key_id`` and `tagValues/456` or in namespaced
@@ -79859,9 +79828,9 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Required. A map of extension names (e.g., "cloudops") to their corresponding
-        # policy
-        # configurations.
+        # Required. A map of extension names (for example, "ops-agent") to their
+        # corresponding
+        # policy configurations.
         # Corresponds to the JSON property `extensionPolicies`
         # @return [Hash<String,Google::Apis::ComputeAlpha::VmExtensionPolicyExtensionPolicy>]
         attr_accessor :extension_policies
@@ -79918,7 +79887,7 @@ module Google
         # The policy priority is an integer from 0 to 65535, inclusive. Lower
         # integers indicate higher priorities. If you do not specify a priority when
         # creating a rule, it is assigned a priority of 1000. If priorities are
-        # equal, the policy with the more recent creation timestamp takes precedence.
+        # equal, the policy with the most recent creation timestamp takes precedence.
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority
@@ -80341,6 +80310,11 @@ module Google
         # @return [String]
         attr_accessor :enforcement_state
       
+        # The health status message of the extension.
+        # Corresponds to the JSON property `healthMsg`
+        # @return [String]
+        attr_accessor :health_msg
+      
         # The health status of the extension.
         # Corresponds to the JSON property `healthStatus`
         # @return [String]
@@ -80356,12 +80330,6 @@ module Google
         # @return [String]
         attr_accessor :policy_id
       
-        # The status message of the extension if the extension is in unhealthy
-        # state.
-        # Corresponds to the JSON property `unhealthyMsg`
-        # @return [String]
-        attr_accessor :unhealthy_msg
-      
         # The version of the extension.
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -80375,10 +80343,10 @@ module Google
         def update!(**args)
           @enforcement_msg = args[:enforcement_msg] if args.key?(:enforcement_msg)
           @enforcement_state = args[:enforcement_state] if args.key?(:enforcement_state)
+          @health_msg = args[:health_msg] if args.key?(:health_msg)
           @health_status = args[:health_status] if args.key?(:health_status)
           @name = args[:name] if args.key?(:name)
           @policy_id = args[:policy_id] if args.key?(:policy_id)
-          @unhealthy_msg = args[:unhealthy_msg] if args.key?(:unhealthy_msg)
           @version = args[:version] if args.key?(:version)
         end
       end
