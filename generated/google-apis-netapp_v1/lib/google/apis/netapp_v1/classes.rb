@@ -803,6 +803,41 @@ module Google
         end
       end
       
+      # Details about a clone volume.
+      class CloneDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Shared space in GiB. Determined at volume creation time based on
+        # size of source snapshot.
+        # Corresponds to the JSON property `sharedSpaceGib`
+        # @return [Fixnum]
+        attr_accessor :shared_space_gib
+      
+        # Output only. Specifies the full resource name of the source snapshot from
+        # which this volume was cloned. Format: projects/`project`/locations/`location`/
+        # volumes/`volume`/snapshots/`snapshot`
+        # Corresponds to the JSON property `sourceSnapshot`
+        # @return [String]
+        attr_accessor :source_snapshot
+      
+        # Output only. Full name of the source volume resource. Format: projects/`
+        # project`/locations/`location`/volumes/`volume`
+        # Corresponds to the JSON property `sourceVolume`
+        # @return [String]
+        attr_accessor :source_volume
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @shared_space_gib = args[:shared_space_gib] if args.key?(:shared_space_gib)
+          @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
+          @source_volume = args[:source_volume] if args.key?(:source_volume)
+        end
+      end
+      
       # Make a snapshot every day e.g. at 04:00, 05:20, 23:50
       class DailySchedule
         include Google::Apis::Core::Hashable
@@ -3076,6 +3111,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :capacity_gib
       
+        # Details about a clone volume.
+        # Corresponds to the JSON property `cloneDetails`
+        # @return [Google::Apis::NetappV1::CloneDetails]
+        attr_accessor :clone_details
+      
         # Output only. Size of the volume cold tier data rounded down to the nearest GiB.
         # Corresponds to the JSON property `coldTierSizeGib`
         # @return [Fixnum]
@@ -3291,6 +3331,7 @@ module Google
           @block_devices = args[:block_devices] if args.key?(:block_devices)
           @cache_parameters = args[:cache_parameters] if args.key?(:cache_parameters)
           @capacity_gib = args[:capacity_gib] if args.key?(:capacity_gib)
+          @clone_details = args[:clone_details] if args.key?(:clone_details)
           @cold_tier_size_gib = args[:cold_tier_size_gib] if args.key?(:cold_tier_size_gib)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
