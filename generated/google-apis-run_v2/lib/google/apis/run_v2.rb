@@ -34,6 +34,12 @@ module Google
 
       # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # See, edit, configure, and delete your Google Cloud Run data and see the email address for your Google Account
+      AUTH_RUN = 'https://www.googleapis.com/auth/run'
+
+      # See your Google Cloud Run data and the email address of your Google Account
+      AUTH_RUN_READONLY = 'https://www.googleapis.com/auth/run.readonly'
     end
   end
 end
