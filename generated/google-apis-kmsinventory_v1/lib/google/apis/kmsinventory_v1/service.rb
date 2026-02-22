@@ -55,10 +55,10 @@ module Google
         # CryptoKey in the given Cloud organization/project.
         # @param [String] scope
         #   Required. A scope can be an organization or a project. Resources protected by
-        #   the crypto key in provided scope will be returned. The allowed values are: *
-        #   organizations/`ORGANIZATION_NUMBER` (e.g., "organizations/12345678") *
-        #   projects/`PROJECT_ID` (e.g., "projects/foo-bar") * projects/`PROJECT_NUMBER` (
-        #   e.g., "projects/12345678")
+        #   the crypto key in provided scope will be returned. The following values are
+        #   allowed: * organizations/`ORGANIZATION_NUMBER` (e.g., "organizations/12345678")
+        #   * projects/`PROJECT_ID` (e.g., "projects/foo-bar") * projects/`PROJECT_NUMBER`
+        #   (e.g., "projects/12345678")
         # @param [String] crypto_key
         #   Required. The resource name of the CryptoKey.
         # @param [Fixnum] page_size
@@ -198,10 +198,10 @@ module Google
         # CryptoKey in the given Cloud organization/project.
         # @param [String] scope
         #   Required. A scope can be an organization or a project. Resources protected by
-        #   the crypto key in provided scope will be returned. The allowed values are: *
-        #   organizations/`ORGANIZATION_NUMBER` (e.g., "organizations/12345678") *
-        #   projects/`PROJECT_ID` (e.g., "projects/foo-bar") * projects/`PROJECT_NUMBER` (
-        #   e.g., "projects/12345678")
+        #   the crypto key in provided scope will be returned. The following values are
+        #   allowed: * organizations/`ORGANIZATION_NUMBER` (e.g., "organizations/12345678")
+        #   * projects/`PROJECT_ID` (e.g., "projects/foo-bar") * projects/`PROJECT_NUMBER`
+        #   (e.g., "projects/12345678")
         # @param [String] crypto_key
         #   Required. The resource name of the CryptoKey.
         # @param [Fixnum] page_size

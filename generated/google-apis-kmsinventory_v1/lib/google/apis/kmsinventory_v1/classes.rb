@@ -220,8 +220,7 @@ module Google
         end
       end
       
-      # Warning message specifying various states of response data that might indicate
-      # incomplete or partial results.
+      # A warning message that indicates potential problems with the response data.
       class GoogleCloudKmsInventoryV1Warning
         include Google::Apis::Core::Hashable
       
