@@ -9004,6 +9004,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :candidate, as: 'candidate'
+          property :error, as: 'error', class: Google::Apis::AiplatformV1::GoogleRpcStatus, decorator: Google::Apis::AiplatformV1::GoogleRpcStatus::Representation
+      
           property :text, as: 'text'
           property :value, as: 'value'
         end

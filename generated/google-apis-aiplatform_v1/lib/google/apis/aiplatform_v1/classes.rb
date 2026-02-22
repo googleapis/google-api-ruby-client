@@ -3411,6 +3411,16 @@ module Google
         # @return [String]
         attr_accessor :candidate
       
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::AiplatformV1::GoogleRpcStatus]
+        attr_accessor :error
+      
         # Text response.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -3428,6 +3438,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @candidate = args[:candidate] if args.key?(:candidate)
+          @error = args[:error] if args.key?(:error)
           @text = args[:text] if args.key?(:text)
           @value = args[:value] if args.key?(:value)
         end
