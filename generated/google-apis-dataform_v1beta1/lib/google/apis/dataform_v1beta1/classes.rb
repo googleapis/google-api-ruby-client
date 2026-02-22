@@ -2174,9 +2174,9 @@ module Google
       class MoveFolderRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the Folder, TeamFolder, or root location to move the
-        # Folder to. Can be in the format of: - "" to move into the root User folder - `
-        # projects/*/locations/*/folders/*` - `projects/*/locations/*/teamFolders/*`
+        # Optional. The name of the Folder, TeamFolder, or root location to move the
+        # Folder to. Can be in the format of: "" to move into the root User folder, `
+        # projects/*/locations/*/folders/*`, `projects/*/locations/*/teamFolders/*`
         # Corresponds to the JSON property `destinationContainingFolder`
         # @return [String]
         attr_accessor :destination_containing_folder
@@ -2195,9 +2195,9 @@ module Google
       class MoveRepositoryRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the Folder, TeamFolder, or root location to move the
-        # repository to. Can be in the format of: - "" to move into the root User folder
-        # - `projects/*/locations/*/folders/*` - `projects/*/locations/*/teamFolders/*`
+        # Optional. The name of the Folder, TeamFolder, or root location to move the
+        # repository to. Can be in the format of: "" to move into the root User folder, `
+        # projects/*/locations/*/folders/*`, `projects/*/locations/*/teamFolders/*`
         # Corresponds to the JSON property `destinationContainingFolder`
         # @return [String]
         attr_accessor :destination_containing_folder
@@ -2942,7 +2942,7 @@ module Google
         # Optional. The connection specifying the credentials to be used to read and
         # write to external storage, such as Cloud Storage. The connection can have the
         # form ``project`.`location`.`connection_id`` or `projects/`project`/locations/`
-        # location`/connections/`connection_id`", or be set to DEFAULT.
+        # location`/connections/`connection_id``, or be set to DEFAULT.
         # Corresponds to the JSON property `connection`
         # @return [String]
         attr_accessor :connection
