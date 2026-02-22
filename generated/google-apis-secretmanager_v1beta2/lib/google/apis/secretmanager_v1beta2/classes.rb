@@ -486,40 +486,6 @@ module Google
         end
       end
       
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::SecretmanagerV1beta2::Operation>]
-        attr_accessor :operations
-      
-        # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections.
-        # For example, when attempting to list all resources across all supported
-        # locations.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
-        end
-      end
-      
       # Response message for SecretManagerService.ListSecretVersions.
       class ListSecretVersionsResponse
         include Google::Apis::Core::Hashable
