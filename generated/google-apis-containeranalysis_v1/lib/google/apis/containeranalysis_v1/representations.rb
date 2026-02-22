@@ -1180,6 +1180,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :layer_count, as: 'layerCount'
           property :name, as: 'name'
+          property :registry, as: 'registry'
           property :repository, as: 'repository'
         end
       end
