@@ -1428,6 +1428,13 @@ module Google
         #   Optional. If set to true, and if the Service does not exist, it will create a
         #   new one. The caller must have 'run.services.create' permissions if this is set
         #   to true and the Service does not exist.
+        # @param [Boolean] force_new_revision
+        #   Optional. If set to true, a new revision will be created from the template
+        #   even if the system doesn't detect any changes from the previously deployed
+        #   revision. This may be useful for cases where the underlying resources need to
+        #   be recreated or reinitialized. For example if the image is specified by label,
+        #   but the underlying image digest has changed) or if the container performs
+        #   deployment initialization work that needs to be performed again.
         # @param [String] update_mask
         #   Optional. The list of fields to be updated.
         # @param [Boolean] validate_only
@@ -1450,7 +1457,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_service(name, google_cloud_run_v2_service_object = nil, allow_missing: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_service(name, google_cloud_run_v2_service_object = nil, allow_missing: nil, force_new_revision: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::RunV2::GoogleCloudRunV2Service::Representation
           command.request_object = google_cloud_run_v2_service_object
@@ -1458,6 +1465,7 @@ module Google
           command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['forceNewRevision'] = force_new_revision unless force_new_revision.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?

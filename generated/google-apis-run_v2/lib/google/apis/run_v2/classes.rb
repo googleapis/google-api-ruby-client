@@ -261,10 +261,16 @@ module Google
       class GoogleCloudRunV2CloudSqlInstance
         include Google::Apis::Core::Hashable
       
-        # The Cloud SQL instance connection names, as can be found in https://console.
-        # cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/
-        # connect-run for more information on how to connect Cloud SQL and Cloud Run.
-        # Format: `project`:`location`:`instance`
+        # A list of Cloud SQL instance connection names. Cloud Run uses these to
+        # establish connections to the specified Cloud SQL instances. While the SQL
+        # instance name itself is unique within a project, the full connection name
+        # requires the location for proper routing. Format: ``project`:`location`:`
+        # instance`` Example: `my-project:us-central1:my-instance` You can find this
+        # value on the instance's **Overview** page in the Google Cloud console or by
+        # using the following `gcloud` command: ```sh gcloud sql instances describe
+        # INSTANCE_NAME \ --format='value(connectionName)' ``` Visit https://cloud.
+        # google.com/sql/docs/mysql/connect-run for more information on how to connect
+        # Cloud SQL and Cloud Run.
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
@@ -2344,8 +2350,7 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Condition>]
         attr_accessor :conditions
       
-        # Containers holds the list which define the units of execution for this
-        # Revision.
+        # Holds the list which define the units of execution for this Revision.
         # Corresponds to the JSON property `containers`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Container>]
         attr_accessor :containers
@@ -2587,12 +2592,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Determines a threshold for concurrency utilization before scaling
-        # begins.
+        # begins. Accepted values are between `0.4` and `0.95` (inclusive) or `0.0` to
+        # disable concurrency utilization as threshold for scaling.
         # Corresponds to the JSON property `concurrencyUtilization`
         # @return [Float]
         attr_accessor :concurrency_utilization
       
         # Optional. Determines a threshold for CPU utilization before scaling begins.
+        # Accepted values are between `0.4` and `0.95` (inclusive) or `0.0` to disable
+        # CPU utilization as threshold for scaling.
         # Corresponds to the JSON property `cpuUtilization`
         # @return [Float]
         attr_accessor :cpu_utilization
@@ -2668,8 +2676,7 @@ module Google
         # @return [String]
         attr_accessor :client_version
       
-        # Holds the single container that defines the unit of execution for this
-        # Revision.
+        # Holds the list which define the units of execution for this Revision.
         # Corresponds to the JSON property `containers`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Container>]
         attr_accessor :containers
