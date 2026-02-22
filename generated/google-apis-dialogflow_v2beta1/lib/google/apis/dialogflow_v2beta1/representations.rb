@@ -7966,6 +7966,7 @@ module Google
           property :tts_config, as: 'ttsConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig::Representation
       
           property :update_time, as: 'updateTime'
+          property :use_bidi_streaming, as: 'useBidiStreaming'
         end
       end
       

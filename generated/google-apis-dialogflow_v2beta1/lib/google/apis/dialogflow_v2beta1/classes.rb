@@ -12537,6 +12537,12 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # 
+        # Corresponds to the JSON property `useBidiStreaming`
+        # @return [Boolean]
+        attr_accessor :use_bidi_streaming
+        alias_method :use_bidi_streaming?, :use_bidi_streaming
+      
         def initialize(**args)
            update!(**args)
         end
@@ -12559,6 +12565,7 @@ module Google
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @tts_config = args[:tts_config] if args.key?(:tts_config)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @use_bidi_streaming = args[:use_bidi_streaming] if args.key?(:use_bidi_streaming)
         end
       end
       
