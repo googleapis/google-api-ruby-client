@@ -854,8 +854,10 @@ module Google
         end
       end
       
-      # CompliancePostureConfig defines the settings needed to enable/disable features
-      # for the Compliance Posture.
+      # Deprecated: Compliance Posture is no longer supported. For more details, see
+      # https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-
+      # management-deprecation. CompliancePostureConfig defines the settings needed to
+      # enable/disable features for the Compliance Posture.
       class CompliancePostureConfig
         include Google::Apis::Core::Hashable
       
@@ -2106,8 +2108,10 @@ module Google
         # @return [Google::Apis::GkehubV1::BinaryAuthorizationConfig]
         attr_accessor :binary_authorization_config
       
-        # CompliancePostureConfig defines the settings needed to enable/disable features
-        # for the Compliance Posture.
+        # Deprecated: Compliance Posture is no longer supported. For more details, see
+        # https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-
+        # management-deprecation. CompliancePostureConfig defines the settings needed to
+        # enable/disable features for the Compliance Posture.
         # Corresponds to the JSON property `compliancePostureConfig`
         # @return [Google::Apis::GkehubV1::CompliancePostureConfig]
         attr_accessor :compliance_posture_config
