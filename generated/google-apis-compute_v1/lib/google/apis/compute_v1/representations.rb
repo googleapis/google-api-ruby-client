@@ -382,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendBackendOrchestrationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendBucket
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -611,6 +617,12 @@ module Google
       end
       
       class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceOrchestrationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1222,6 +1234,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalVpnGatewayParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FileContentBuffer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1692,6 +1710,66 @@ module Google
       
       class HttpsHealthCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthAggregationPoliciesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthAggregationPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthAggregationPolicyAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthAggregationPolicyList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3455,6 +3533,12 @@ module Google
       end
       
       class LocationPolicyLocationConstraints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocationPolicyZoneConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5250,6 +5334,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -7318,6 +7408,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetVpnGatewayParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetVpnGatewaysScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -7582,6 +7678,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpnGatewayParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpnGatewayStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7680,6 +7782,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnTunnelParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -8556,7 +8664,16 @@ module Google
           property :max_rate_per_endpoint, as: 'maxRatePerEndpoint'
           property :max_rate_per_instance, as: 'maxRatePerInstance'
           property :max_utilization, as: 'maxUtilization'
+          property :orchestration_info, as: 'orchestrationInfo', class: Google::Apis::ComputeV1::BackendBackendOrchestrationInfo, decorator: Google::Apis::ComputeV1::BackendBackendOrchestrationInfo::Representation
+      
           property :preference, as: 'preference'
+        end
+      end
+      
+      class BackendBackendOrchestrationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_uri, as: 'resourceUri'
         end
       end
       
@@ -8733,6 +8850,8 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_pass_through_lb_traffic_policy, as: 'networkPassThroughLbTrafficPolicy', class: Google::Apis::ComputeV1::BackendServiceNetworkPassThroughLbTrafficPolicy, decorator: Google::Apis::ComputeV1::BackendServiceNetworkPassThroughLbTrafficPolicy::Representation
+      
+          property :orchestration_info, as: 'orchestrationInfo', class: Google::Apis::ComputeV1::BackendServiceOrchestrationInfo, decorator: Google::Apis::ComputeV1::BackendServiceOrchestrationInfo::Representation
       
           property :outlier_detection, as: 'outlierDetection', class: Google::Apis::ComputeV1::OutlierDetection, decorator: Google::Apis::ComputeV1::OutlierDetection::Representation
       
@@ -9024,6 +9143,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :spillover, as: 'spillover'
           property :spillover_ratio, as: 'spilloverRatio'
+        end
+      end
+      
+      class BackendServiceOrchestrationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_uri, as: 'resourceUri'
         end
       end
       
@@ -10065,6 +10191,8 @@ module Google
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::ExternalVpnGatewayParams, decorator: Google::Apis::ComputeV1::ExternalVpnGatewayParams::Representation
+      
           property :redundancy_type, as: 'redundancyType'
           property :self_link, as: 'selfLink'
         end
@@ -10109,6 +10237,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ExternalVpnGatewayParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -11024,6 +11159,117 @@ module Google
           property :proxy_header, as: 'proxyHeader'
           property :request_path, as: 'requestPath'
           property :response, as: 'response'
+        end
+      end
+      
+      class HealthAggregationPoliciesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :health_aggregation_policies, as: 'healthAggregationPolicies', class: Google::Apis::ComputeV1::HealthAggregationPolicy, decorator: Google::Apis::ComputeV1::HealthAggregationPolicy::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::HealthAggregationPoliciesScopedList::Warning, decorator: Google::Apis::ComputeV1::HealthAggregationPoliciesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::HealthAggregationPoliciesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::HealthAggregationPoliciesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class HealthAggregationPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :healthy_percent_threshold, as: 'healthyPercentThreshold'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :min_healthy_threshold, as: 'minHealthyThreshold'
+          property :name, as: 'name'
+          property :policy_type, as: 'policyType'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+        end
+      end
+      
+      class HealthAggregationPolicyAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::HealthAggregationPoliciesScopedList, decorator: Google::Apis::ComputeV1::HealthAggregationPoliciesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::HealthAggregationPolicyAggregatedList::Warning, decorator: Google::Apis::ComputeV1::HealthAggregationPolicyAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::HealthAggregationPolicyAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeV1::HealthAggregationPolicyAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class HealthAggregationPolicyList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::HealthAggregationPolicy, decorator: Google::Apis::ComputeV1::HealthAggregationPolicy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::HealthAggregationPolicyList::Warning, decorator: Google::Apis::ComputeV1::HealthAggregationPolicyList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::HealthAggregationPolicyList::Warning::Datum, decorator: Google::Apis::ComputeV1::HealthAggregationPolicyList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -14328,6 +14574,8 @@ module Google
           hash :locations, as: 'locations', class: Google::Apis::ComputeV1::LocationPolicyLocation, decorator: Google::Apis::ComputeV1::LocationPolicyLocation::Representation
       
           property :target_shape, as: 'targetShape'
+          collection :zones, as: 'zones', class: Google::Apis::ComputeV1::LocationPolicyZoneConfiguration, decorator: Google::Apis::ComputeV1::LocationPolicyZoneConfiguration::Representation
+      
         end
       end
       
@@ -14344,6 +14592,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_count, as: 'maxCount'
+        end
+      end
+      
+      class LocationPolicyZoneConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :zone, as: 'zone'
         end
       end
       
@@ -17478,6 +17733,8 @@ module Google
           property :kind, as: 'kind'
           collection :linked_commitments, as: 'linkedCommitments'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::ReservationParams, decorator: Google::Apis::ComputeV1::ReservationParams::Representation
+      
           property :protection_tier, as: 'protectionTier'
           property :reservation_sharing_policy, as: 'reservationSharingPolicy', class: Google::Apis::ComputeV1::AllocationReservationSharingPolicy, decorator: Google::Apis::ComputeV1::AllocationReservationSharingPolicy::Representation
       
@@ -17677,6 +17934,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ReservationParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -18213,6 +18477,7 @@ module Google
           property :enable_os_inventory_metadata_value, as: 'enableOsInventoryMetadataValue'
           property :enable_osconfig_metadata_value, as: 'enableOsconfigMetadataValue'
           property :enable_oslogin_metadata_value, as: 'enableOsloginMetadataValue'
+          property :gce_container_declaration_metadata_value, as: 'gceContainerDeclarationMetadataValue'
           property :serial_port_enable_metadata_value, as: 'serialPortEnableMetadataValue'
           property :serial_port_logging_enable_metadata_value, as: 'serialPortLoggingEnableMetadataValue'
           property :vm_dns_setting_metadata_value, as: 'vmDnsSettingMetadataValue'
@@ -21447,6 +21712,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::TargetVpnGatewayParams, decorator: Google::Apis::ComputeV1::TargetVpnGatewayParams::Representation
+      
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
@@ -21516,6 +21783,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class TargetVpnGatewayParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -21933,6 +22207,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::VpnGatewayParams, decorator: Google::Apis::ComputeV1::VpnGatewayParams::Representation
+      
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :stack_type, as: 'stackType'
@@ -22003,6 +22279,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class VpnGatewayParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -22104,6 +22387,8 @@ module Google
           hash :labels, as: 'labels'
           collection :local_traffic_selector, as: 'localTrafficSelector'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::VpnTunnelParams, decorator: Google::Apis::ComputeV1::VpnTunnelParams::Representation
+      
           property :peer_external_gateway, as: 'peerExternalGateway'
           property :peer_external_gateway_interface, as: 'peerExternalGatewayInterface'
           property :peer_gcp_gateway, as: 'peerGcpGateway'
@@ -22193,6 +22478,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class VpnTunnelParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
