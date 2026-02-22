@@ -465,6 +465,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The total number of user managed namespaces contained in the
+        # Backup.
+        # Corresponds to the JSON property `namespaceCount`
+        # @return [Fixnum]
+        attr_accessor :namespace_count
+      
         # Output only. If false, Backup will fail when Backup for GKE detects Kubernetes
         # configuration that is non-standard or requires additional setup to restore.
         # Inherited from the parent BackupPlan's permissive_mode value.
@@ -587,6 +593,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @manual = args[:manual] if args.key?(:manual)
           @name = args[:name] if args.key?(:name)
+          @namespace_count = args[:namespace_count] if args.key?(:namespace_count)
           @permissive_mode = args[:permissive_mode] if args.key?(:permissive_mode)
           @pod_count = args[:pod_count] if args.key?(:pod_count)
           @resource_count = args[:resource_count] if args.key?(:resource_count)
@@ -894,6 +901,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The number of user managed namespaces backed up in the last
+        # successful Backup created via this BackupPlan.
+        # Corresponds to the JSON property `protectedNamespaceCount`
+        # @return [Fixnum]
+        attr_accessor :protected_namespace_count
+      
         # Output only. The number of Kubernetes Pods backed up in the last successful
         # Backup created via this BackupPlan.
         # Corresponds to the JSON property `protectedPodCount`
@@ -959,6 +972,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @last_successful_backup_time = args[:last_successful_backup_time] if args.key?(:last_successful_backup_time)
           @name = args[:name] if args.key?(:name)
+          @protected_namespace_count = args[:protected_namespace_count] if args.key?(:protected_namespace_count)
           @protected_pod_count = args[:protected_pod_count] if args.key?(:protected_pod_count)
           @retention_policy = args[:retention_policy] if args.key?(:retention_policy)
           @rpo_risk_level = args[:rpo_risk_level] if args.key?(:rpo_risk_level)

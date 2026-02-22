@@ -568,6 +568,7 @@ module Google
           hash :labels, as: 'labels'
           property :manual, as: 'manual'
           property :name, as: 'name'
+          property :namespace_count, as: 'namespaceCount'
           property :permissive_mode, as: 'permissiveMode'
           property :pod_count, as: 'podCount'
           property :resource_count, as: 'resourceCount'
@@ -656,6 +657,7 @@ module Google
           hash :labels, as: 'labels'
           property :last_successful_backup_time, as: 'lastSuccessfulBackupTime'
           property :name, as: 'name'
+          property :protected_namespace_count, as: 'protectedNamespaceCount'
           property :protected_pod_count, as: 'protectedPodCount'
           property :retention_policy, as: 'retentionPolicy', class: Google::Apis::GkebackupV1::RetentionPolicy, decorator: Google::Apis::GkebackupV1::RetentionPolicy::Representation
       
