@@ -11063,6 +11063,11 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails]
         attr_accessor :api_hub_deployment_details
       
+        # Optional.
+        # Corresponds to the JSON property `apiHubGatewayType`
+        # @return [String]
+        attr_accessor :api_hub_gateway_type
+      
         # Required. Name of this resource. For an Apigee API Proxy, this should be the
         # id of the API proxy. For an API Hub Deployment, this should be the id of the
         # deployment.
@@ -11087,6 +11092,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_hub_deployment_details = args[:api_hub_deployment_details] if args.key?(:api_hub_deployment_details)
+          @api_hub_gateway_type = args[:api_hub_gateway_type] if args.key?(:api_hub_gateway_type)
           @name = args[:name] if args.key?(:name)
           @resource_revision_id = args[:resource_revision_id] if args.key?(:resource_revision_id)
           @type = args[:type] if args.key?(:type)
@@ -11442,6 +11448,13 @@ module Google
       class GoogleCloudApigeeV1SecurityMonitoringCondition
         include Google::Apis::Core::Hashable
       
+        # Optional. The API Hub gateway monitored by the security monitoring condition.
+        # This should only be set if risk_assessment_type is API_HUB. Format: `projects/`
+        # project`/locations/`location`/plugins/`plugin`/instances/`instance``
+        # Corresponds to the JSON property `apiHubGateway`
+        # @return [String]
+        attr_accessor :api_hub_gateway
+      
         # Output only. The time of the security monitoring condition creation.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -11469,8 +11482,15 @@ module Google
         # @return [String]
         attr_accessor :profile
       
-        # Optional. Scope of the security monitoring condition. For Apigee, the
-        # environment is the scope of the resources.
+        # Optional. The risk assessment type of the security monitoring condition.
+        # Defaults to ADVANCED_API_SECURITY.
+        # Corresponds to the JSON property `riskAssessmentType`
+        # @return [String]
+        attr_accessor :risk_assessment_type
+      
+        # Optional. Scope of the security monitoring condition. When RiskAssessmentType
+        # is APIGEE, the scope should be set to the environment of the resources. When
+        # RiskAssessmentType is API_HUB, the scope should not be set.
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
@@ -11496,11 +11516,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_hub_gateway = args[:api_hub_gateway] if args.key?(:api_hub_gateway)
           @create_time = args[:create_time] if args.key?(:create_time)
           @include = args[:include] if args.key?(:include)
           @include_all_resources = args[:include_all_resources] if args.key?(:include_all_resources)
           @name = args[:name] if args.key?(:name)
           @profile = args[:profile] if args.key?(:profile)
+          @risk_assessment_type = args[:risk_assessment_type] if args.key?(:risk_assessment_type)
           @scope = args[:scope] if args.key?(:scope)
           @total_deployed_resources = args[:total_deployed_resources] if args.key?(:total_deployed_resources)
           @total_monitored_resources = args[:total_monitored_resources] if args.key?(:total_monitored_resources)

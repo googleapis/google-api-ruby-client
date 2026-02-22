@@ -5058,6 +5058,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_hub_deployment_details, as: 'apiHubDeploymentDetails', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails::Representation
       
+          property :api_hub_gateway_type, as: 'apiHubGatewayType'
           property :name, as: 'name'
           property :resource_revision_id, as: 'resourceRevisionId'
           property :type, as: 'type'
@@ -5157,6 +5158,7 @@ module Google
       class GoogleCloudApigeeV1SecurityMonitoringCondition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_hub_gateway, as: 'apiHubGateway'
           property :create_time, as: 'createTime'
           property :include, as: 'include', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray::Representation
       
@@ -5164,6 +5166,7 @@ module Google
       
           property :name, as: 'name'
           property :profile, as: 'profile'
+          property :risk_assessment_type, as: 'riskAssessmentType'
           property :scope, as: 'scope'
           property :total_deployed_resources, as: 'totalDeployedResources'
           property :total_monitored_resources, as: 'totalMonitoredResources'
