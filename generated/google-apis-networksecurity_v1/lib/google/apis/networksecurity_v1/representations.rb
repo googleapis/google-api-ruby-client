@@ -682,6 +682,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UrlFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UrlFilteringProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UrlList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1756,6 +1768,8 @@ module Google
       
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+          property :url_filtering_profile, as: 'urlFilteringProfile', class: Google::Apis::NetworksecurityV1::UrlFilteringProfile, decorator: Google::Apis::NetworksecurityV1::UrlFilteringProfile::Representation
+      
         end
       end
       
@@ -1772,6 +1786,7 @@ module Google
           property :name, as: 'name'
           property :threat_prevention_profile, as: 'threatPreventionProfile'
           property :update_time, as: 'updateTime'
+          property :url_filtering_profile, as: 'urlFilteringProfile'
         end
       end
       
@@ -1850,6 +1865,23 @@ module Google
           property :tls_feature_profile, as: 'tlsFeatureProfile'
           property :trust_config, as: 'trustConfig'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class UrlFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filtering_action, as: 'filteringAction'
+          property :priority, as: 'priority'
+          collection :urls, as: 'urls'
+        end
+      end
+      
+      class UrlFilteringProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :url_filters, as: 'urlFilters', class: Google::Apis::NetworksecurityV1::UrlFilter, decorator: Google::Apis::NetworksecurityV1::UrlFilter::Representation
+      
         end
       end
       
