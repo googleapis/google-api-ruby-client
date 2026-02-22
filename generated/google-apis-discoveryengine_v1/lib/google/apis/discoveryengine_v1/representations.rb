@@ -22,6 +22,234 @@ module Google
   module Apis
     module DiscoveryengineV1
       
+      class A2aV1ApiKeySecurityScheme
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1AgentCapabilities
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1AgentCard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1AgentCardSignature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1AgentExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1AgentInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1AgentProvider
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1AgentSkill
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1Artifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1AuthenticationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1AuthorizationCodeOAuthFlow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1CancelTaskRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1ClientCredentialsOAuthFlow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1DataPart
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1FilePart
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1HttpAuthSecurityScheme
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1ImplicitOAuthFlow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1ListTaskPushNotificationConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1Message
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1MutualTlsSecurityScheme
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1OAuth2SecurityScheme
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1OAuthFlows
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1OpenIdConnectSecurityScheme
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1Part
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1PasswordOAuthFlow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1PushNotificationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1Security
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1SecurityScheme
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1SendMessageConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1SendMessageRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1SendMessageResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1StreamResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1StringList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1Task
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1TaskArtifactUpdateEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1TaskPushNotificationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1TaskStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class A2aV1TaskStatusUpdateEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleApiDistribution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5110,6 +5338,418 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class A2aV1ApiKeySecurityScheme
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :location, as: 'location'
+          property :name, as: 'name'
+        end
+      end
+      
+      class A2aV1AgentCapabilities
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :extensions, as: 'extensions', class: Google::Apis::DiscoveryengineV1::A2aV1AgentExtension, decorator: Google::Apis::DiscoveryengineV1::A2aV1AgentExtension::Representation
+      
+          property :push_notifications, as: 'pushNotifications'
+          property :streaming, as: 'streaming'
+        end
+      end
+      
+      class A2aV1AgentCard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_interfaces, as: 'additionalInterfaces', class: Google::Apis::DiscoveryengineV1::A2aV1AgentInterface, decorator: Google::Apis::DiscoveryengineV1::A2aV1AgentInterface::Representation
+      
+          property :capabilities, as: 'capabilities', class: Google::Apis::DiscoveryengineV1::A2aV1AgentCapabilities, decorator: Google::Apis::DiscoveryengineV1::A2aV1AgentCapabilities::Representation
+      
+          collection :default_input_modes, as: 'defaultInputModes'
+          collection :default_output_modes, as: 'defaultOutputModes'
+          property :description, as: 'description'
+          property :documentation_url, as: 'documentationUrl'
+          property :icon_url, as: 'iconUrl'
+          property :name, as: 'name'
+          property :preferred_transport, as: 'preferredTransport'
+          property :protocol_version, as: 'protocolVersion'
+          property :provider, as: 'provider', class: Google::Apis::DiscoveryengineV1::A2aV1AgentProvider, decorator: Google::Apis::DiscoveryengineV1::A2aV1AgentProvider::Representation
+      
+          collection :security, as: 'security', class: Google::Apis::DiscoveryengineV1::A2aV1Security, decorator: Google::Apis::DiscoveryengineV1::A2aV1Security::Representation
+      
+          hash :security_schemes, as: 'securitySchemes', class: Google::Apis::DiscoveryengineV1::A2aV1SecurityScheme, decorator: Google::Apis::DiscoveryengineV1::A2aV1SecurityScheme::Representation
+      
+          collection :signatures, as: 'signatures', class: Google::Apis::DiscoveryengineV1::A2aV1AgentCardSignature, decorator: Google::Apis::DiscoveryengineV1::A2aV1AgentCardSignature::Representation
+      
+          collection :skills, as: 'skills', class: Google::Apis::DiscoveryengineV1::A2aV1AgentSkill, decorator: Google::Apis::DiscoveryengineV1::A2aV1AgentSkill::Representation
+      
+          property :supports_authenticated_extended_card, as: 'supportsAuthenticatedExtendedCard'
+          property :url, as: 'url'
+          property :version, as: 'version'
+        end
+      end
+      
+      class A2aV1AgentCardSignature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :header, as: 'header'
+          property :protected, as: 'protected'
+          property :signature, as: 'signature'
+        end
+      end
+      
+      class A2aV1AgentExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          hash :params, as: 'params'
+          property :required, as: 'required'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class A2aV1AgentInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tenant, as: 'tenant'
+          property :transport, as: 'transport'
+          property :url, as: 'url'
+        end
+      end
+      
+      class A2aV1AgentProvider
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :organization, as: 'organization'
+          property :url, as: 'url'
+        end
+      end
+      
+      class A2aV1AgentSkill
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          collection :examples, as: 'examples'
+          property :id, as: 'id'
+          collection :input_modes, as: 'inputModes'
+          property :name, as: 'name'
+          collection :output_modes, as: 'outputModes'
+          collection :security, as: 'security', class: Google::Apis::DiscoveryengineV1::A2aV1Security, decorator: Google::Apis::DiscoveryengineV1::A2aV1Security::Representation
+      
+          collection :tags, as: 'tags'
+        end
+      end
+      
+      class A2aV1Artifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_id, as: 'artifactId'
+          property :description, as: 'description'
+          collection :extensions, as: 'extensions'
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          collection :parts, as: 'parts', class: Google::Apis::DiscoveryengineV1::A2aV1Part, decorator: Google::Apis::DiscoveryengineV1::A2aV1Part::Representation
+      
+        end
+      end
+      
+      class A2aV1AuthenticationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :credentials, as: 'credentials'
+          collection :schemes, as: 'schemes'
+        end
+      end
+      
+      class A2aV1AuthorizationCodeOAuthFlow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization_url, as: 'authorizationUrl'
+          property :refresh_url, as: 'refreshUrl'
+          hash :scopes, as: 'scopes'
+          property :token_url, as: 'tokenUrl'
+        end
+      end
+      
+      class A2aV1CancelTaskRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class A2aV1ClientCredentialsOAuthFlow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :refresh_url, as: 'refreshUrl'
+          hash :scopes, as: 'scopes'
+          property :token_url, as: 'tokenUrl'
+        end
+      end
+      
+      class A2aV1DataPart
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :data, as: 'data'
+        end
+      end
+      
+      class A2aV1FilePart
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_with_bytes, :base64 => true, as: 'fileWithBytes'
+          property :file_with_uri, as: 'fileWithUri'
+          property :mime_type, as: 'mimeType'
+          property :name, as: 'name'
+        end
+      end
+      
+      class A2aV1HttpAuthSecurityScheme
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bearer_format, as: 'bearerFormat'
+          property :description, as: 'description'
+          property :scheme, as: 'scheme'
+        end
+      end
+      
+      class A2aV1ImplicitOAuthFlow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization_url, as: 'authorizationUrl'
+          property :refresh_url, as: 'refreshUrl'
+          hash :scopes, as: 'scopes'
+        end
+      end
+      
+      class A2aV1ListTaskPushNotificationConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :configs, as: 'configs', class: Google::Apis::DiscoveryengineV1::A2aV1TaskPushNotificationConfig, decorator: Google::Apis::DiscoveryengineV1::A2aV1TaskPushNotificationConfig::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class A2aV1Message
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :content, as: 'content', class: Google::Apis::DiscoveryengineV1::A2aV1Part, decorator: Google::Apis::DiscoveryengineV1::A2aV1Part::Representation
+      
+          property :context_id, as: 'contextId'
+          collection :extensions, as: 'extensions'
+          property :message_id, as: 'messageId'
+          hash :metadata, as: 'metadata'
+          property :role, as: 'role'
+          property :task_id, as: 'taskId'
+        end
+      end
+      
+      class A2aV1MutualTlsSecurityScheme
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+        end
+      end
+      
+      class A2aV1OAuth2SecurityScheme
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :flows, as: 'flows', class: Google::Apis::DiscoveryengineV1::A2aV1OAuthFlows, decorator: Google::Apis::DiscoveryengineV1::A2aV1OAuthFlows::Representation
+      
+          property :oauth2_metadata_url, as: 'oauth2MetadataUrl'
+        end
+      end
+      
+      class A2aV1OAuthFlows
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization_code, as: 'authorizationCode', class: Google::Apis::DiscoveryengineV1::A2aV1AuthorizationCodeOAuthFlow, decorator: Google::Apis::DiscoveryengineV1::A2aV1AuthorizationCodeOAuthFlow::Representation
+      
+          property :client_credentials, as: 'clientCredentials', class: Google::Apis::DiscoveryengineV1::A2aV1ClientCredentialsOAuthFlow, decorator: Google::Apis::DiscoveryengineV1::A2aV1ClientCredentialsOAuthFlow::Representation
+      
+          property :implicit, as: 'implicit', class: Google::Apis::DiscoveryengineV1::A2aV1ImplicitOAuthFlow, decorator: Google::Apis::DiscoveryengineV1::A2aV1ImplicitOAuthFlow::Representation
+      
+          property :password, as: 'password', class: Google::Apis::DiscoveryengineV1::A2aV1PasswordOAuthFlow, decorator: Google::Apis::DiscoveryengineV1::A2aV1PasswordOAuthFlow::Representation
+      
+        end
+      end
+      
+      class A2aV1OpenIdConnectSecurityScheme
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :open_id_connect_url, as: 'openIdConnectUrl'
+        end
+      end
+      
+      class A2aV1Part
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data', class: Google::Apis::DiscoveryengineV1::A2aV1DataPart, decorator: Google::Apis::DiscoveryengineV1::A2aV1DataPart::Representation
+      
+          property :file, as: 'file', class: Google::Apis::DiscoveryengineV1::A2aV1FilePart, decorator: Google::Apis::DiscoveryengineV1::A2aV1FilePart::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :text, as: 'text'
+        end
+      end
+      
+      class A2aV1PasswordOAuthFlow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :refresh_url, as: 'refreshUrl'
+          hash :scopes, as: 'scopes'
+          property :token_url, as: 'tokenUrl'
+        end
+      end
+      
+      class A2aV1PushNotificationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication, as: 'authentication', class: Google::Apis::DiscoveryengineV1::A2aV1AuthenticationInfo, decorator: Google::Apis::DiscoveryengineV1::A2aV1AuthenticationInfo::Representation
+      
+          property :id, as: 'id'
+          property :token, as: 'token'
+          property :url, as: 'url'
+        end
+      end
+      
+      class A2aV1Security
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :schemes, as: 'schemes', class: Google::Apis::DiscoveryengineV1::A2aV1StringList, decorator: Google::Apis::DiscoveryengineV1::A2aV1StringList::Representation
+      
+        end
+      end
+      
+      class A2aV1SecurityScheme
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_key_security_scheme, as: 'apiKeySecurityScheme', class: Google::Apis::DiscoveryengineV1::A2aV1ApiKeySecurityScheme, decorator: Google::Apis::DiscoveryengineV1::A2aV1ApiKeySecurityScheme::Representation
+      
+          property :http_auth_security_scheme, as: 'httpAuthSecurityScheme', class: Google::Apis::DiscoveryengineV1::A2aV1HttpAuthSecurityScheme, decorator: Google::Apis::DiscoveryengineV1::A2aV1HttpAuthSecurityScheme::Representation
+      
+          property :mtls_security_scheme, as: 'mtlsSecurityScheme', class: Google::Apis::DiscoveryengineV1::A2aV1MutualTlsSecurityScheme, decorator: Google::Apis::DiscoveryengineV1::A2aV1MutualTlsSecurityScheme::Representation
+      
+          property :oauth2_security_scheme, as: 'oauth2SecurityScheme', class: Google::Apis::DiscoveryengineV1::A2aV1OAuth2SecurityScheme, decorator: Google::Apis::DiscoveryengineV1::A2aV1OAuth2SecurityScheme::Representation
+      
+          property :open_id_connect_security_scheme, as: 'openIdConnectSecurityScheme', class: Google::Apis::DiscoveryengineV1::A2aV1OpenIdConnectSecurityScheme, decorator: Google::Apis::DiscoveryengineV1::A2aV1OpenIdConnectSecurityScheme::Representation
+      
+        end
+      end
+      
+      class A2aV1SendMessageConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accepted_output_modes, as: 'acceptedOutputModes'
+          property :blocking, as: 'blocking'
+          property :history_length, as: 'historyLength'
+          property :push_notification, as: 'pushNotification', class: Google::Apis::DiscoveryengineV1::A2aV1PushNotificationConfig, decorator: Google::Apis::DiscoveryengineV1::A2aV1PushNotificationConfig::Representation
+      
+        end
+      end
+      
+      class A2aV1SendMessageRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :configuration, as: 'configuration', class: Google::Apis::DiscoveryengineV1::A2aV1SendMessageConfiguration, decorator: Google::Apis::DiscoveryengineV1::A2aV1SendMessageConfiguration::Representation
+      
+          property :message, as: 'message', class: Google::Apis::DiscoveryengineV1::A2aV1Message, decorator: Google::Apis::DiscoveryengineV1::A2aV1Message::Representation
+      
+          hash :metadata, as: 'metadata'
+        end
+      end
+      
+      class A2aV1SendMessageResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message', class: Google::Apis::DiscoveryengineV1::A2aV1Message, decorator: Google::Apis::DiscoveryengineV1::A2aV1Message::Representation
+      
+          property :task, as: 'task', class: Google::Apis::DiscoveryengineV1::A2aV1Task, decorator: Google::Apis::DiscoveryengineV1::A2aV1Task::Representation
+      
+        end
+      end
+      
+      class A2aV1StreamResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_update, as: 'artifactUpdate', class: Google::Apis::DiscoveryengineV1::A2aV1TaskArtifactUpdateEvent, decorator: Google::Apis::DiscoveryengineV1::A2aV1TaskArtifactUpdateEvent::Representation
+      
+          property :message, as: 'message', class: Google::Apis::DiscoveryengineV1::A2aV1Message, decorator: Google::Apis::DiscoveryengineV1::A2aV1Message::Representation
+      
+          property :status_update, as: 'statusUpdate', class: Google::Apis::DiscoveryengineV1::A2aV1TaskStatusUpdateEvent, decorator: Google::Apis::DiscoveryengineV1::A2aV1TaskStatusUpdateEvent::Representation
+      
+          property :task, as: 'task', class: Google::Apis::DiscoveryengineV1::A2aV1Task, decorator: Google::Apis::DiscoveryengineV1::A2aV1Task::Representation
+      
+        end
+      end
+      
+      class A2aV1StringList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :list, as: 'list'
+        end
+      end
+      
+      class A2aV1Task
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :artifacts, as: 'artifacts', class: Google::Apis::DiscoveryengineV1::A2aV1Artifact, decorator: Google::Apis::DiscoveryengineV1::A2aV1Artifact::Representation
+      
+          property :context_id, as: 'contextId'
+          collection :history, as: 'history', class: Google::Apis::DiscoveryengineV1::A2aV1Message, decorator: Google::Apis::DiscoveryengineV1::A2aV1Message::Representation
+      
+          property :id, as: 'id'
+          hash :metadata, as: 'metadata'
+          property :status, as: 'status', class: Google::Apis::DiscoveryengineV1::A2aV1TaskStatus, decorator: Google::Apis::DiscoveryengineV1::A2aV1TaskStatus::Representation
+      
+        end
+      end
+      
+      class A2aV1TaskArtifactUpdateEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :append, as: 'append'
+          property :artifact, as: 'artifact', class: Google::Apis::DiscoveryengineV1::A2aV1Artifact, decorator: Google::Apis::DiscoveryengineV1::A2aV1Artifact::Representation
+      
+          property :context_id, as: 'contextId'
+          property :last_chunk, as: 'lastChunk'
+          hash :metadata, as: 'metadata'
+          property :task_id, as: 'taskId'
+        end
+      end
+      
+      class A2aV1TaskPushNotificationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :push_notification_config, as: 'pushNotificationConfig', class: Google::Apis::DiscoveryengineV1::A2aV1PushNotificationConfig, decorator: Google::Apis::DiscoveryengineV1::A2aV1PushNotificationConfig::Representation
+      
+        end
+      end
+      
+      class A2aV1TaskStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message', class: Google::Apis::DiscoveryengineV1::A2aV1Message, decorator: Google::Apis::DiscoveryengineV1::A2aV1Message::Representation
+      
+          property :state, as: 'state'
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class A2aV1TaskStatusUpdateEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_id, as: 'contextId'
+          property :final, as: 'final'
+          hash :metadata, as: 'metadata'
+          property :status, as: 'status', class: Google::Apis::DiscoveryengineV1::A2aV1TaskStatus, decorator: Google::Apis::DiscoveryengineV1::A2aV1TaskStatus::Representation
+      
+          property :task_id, as: 'taskId'
+        end
+      end
+      
       class GoogleApiDistribution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7245,6 +7885,7 @@ module Google
           property :common_config, as: 'commonConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineCommonConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineCommonConfig::Representation
       
           property :configurable_billing_approach, as: 'configurableBillingApproach'
+          hash :connector_tenant_info, as: 'connectorTenantInfo'
           property :create_time, as: 'createTime'
           collection :data_store_ids, as: 'dataStoreIds'
           property :disable_analytics, as: 'disableAnalytics'
@@ -10704,6 +11345,7 @@ module Google
           property :common_config, as: 'commonConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineCommonConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineCommonConfig::Representation
       
           property :configurable_billing_approach, as: 'configurableBillingApproach'
+          hash :connector_tenant_info, as: 'connectorTenantInfo'
           property :create_time, as: 'createTime'
           collection :data_store_ids, as: 'dataStoreIds'
           property :disable_analytics, as: 'disableAnalytics'
@@ -12631,6 +13273,7 @@ module Google
           property :common_config, as: 'commonConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineCommonConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineCommonConfig::Representation
       
           property :configurable_billing_approach, as: 'configurableBillingApproach'
+          hash :connector_tenant_info, as: 'connectorTenantInfo'
           property :create_time, as: 'createTime'
           collection :data_store_ids, as: 'dataStoreIds'
           property :disable_analytics, as: 'disableAnalytics'
