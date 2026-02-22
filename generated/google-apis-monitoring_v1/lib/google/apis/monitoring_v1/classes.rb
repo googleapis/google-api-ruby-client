@@ -408,6 +408,35 @@ module Google
         end
       end
       
+      # A widget that contains two widget visualizations that are coordinated in
+      # display. Currently, we only support the primary widget of TimeSeriesTable with
+      # the secondary widget of XyChart.
+      class CoordinatedWidget
+        include Google::Apis::Core::Hashable
+      
+        # Widget contains a single dashboard component and configuration of how to
+        # present the component in the dashboard.
+        # Corresponds to the JSON property `primary`
+        # @return [Google::Apis::MonitoringV1::Widget]
+        attr_accessor :primary
+      
+        # Widget contains a single dashboard component and configuration of how to
+        # present the component in the dashboard.
+        # Corresponds to the JSON property `secondary`
+        # @return [Google::Apis::MonitoringV1::Widget]
+        attr_accessor :secondary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @primary = args[:primary] if args.key?(:primary)
+          @secondary = args[:secondary] if args.key?(:secondary)
+        end
+      end
+      
       # A Google Stackdriver dashboard. Dashboards define the content and layout of
       # pages in the Stackdriver web application.
       class Dashboard
@@ -3004,6 +3033,13 @@ module Google
         # @return [Google::Apis::MonitoringV1::CollapsibleGroup]
         attr_accessor :collapsible_group
       
+        # A widget that contains two widget visualizations that are coordinated in
+        # display. Currently, we only support the primary widget of TimeSeriesTable with
+        # the secondary widget of XyChart.
+        # Corresponds to the JSON property `coordinatedWidget`
+        # @return [Google::Apis::MonitoringV1::CoordinatedWidget]
+        attr_accessor :coordinated_widget
+      
         # A widget that displays a list of error groups.
         # Corresponds to the JSON property `errorReportingPanel`
         # @return [Google::Apis::MonitoringV1::ErrorReportingPanel]
@@ -3094,6 +3130,7 @@ module Google
           @alert_chart = args[:alert_chart] if args.key?(:alert_chart)
           @blank = args[:blank] if args.key?(:blank)
           @collapsible_group = args[:collapsible_group] if args.key?(:collapsible_group)
+          @coordinated_widget = args[:coordinated_widget] if args.key?(:coordinated_widget)
           @error_reporting_panel = args[:error_reporting_panel] if args.key?(:error_reporting_panel)
           @filter_control = args[:filter_control] if args.key?(:filter_control)
           @id = args[:id] if args.key?(:id)

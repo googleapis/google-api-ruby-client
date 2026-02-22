@@ -1,5 +1,9 @@
 # Release history for google-apis-monitoring_v1
 
+### v0.61.0 (2026-02-22)
+
+* Regenerated from discovery document revision 20260212
+
 ### v0.60.0 (2026-01-18)
 
 * Regenerated from discovery document revision 20260108
