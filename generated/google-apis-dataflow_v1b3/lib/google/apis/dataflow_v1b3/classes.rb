@@ -7896,6 +7896,16 @@ module Google
         # @return [String]
         attr_accessor :default_package_set
       
+        # Optional. IOPS provisioned for the root disk for VMs.
+        # Corresponds to the JSON property `diskProvisionedIops`
+        # @return [Fixnum]
+        attr_accessor :disk_provisioned_iops
+      
+        # Optional. Throughput provisioned for the root disk for VMs.
+        # Corresponds to the JSON property `diskProvisionedThroughputMibps`
+        # @return [Fixnum]
+        attr_accessor :disk_provisioned_throughput_mibps
+      
         # Size of root disk for VMs, in GB. If zero or unspecified, the service will
         # attempt to choose a reasonable default.
         # Corresponds to the JSON property `diskSizeGb`
@@ -8026,6 +8036,8 @@ module Google
           @autoscaling_settings = args[:autoscaling_settings] if args.key?(:autoscaling_settings)
           @data_disks = args[:data_disks] if args.key?(:data_disks)
           @default_package_set = args[:default_package_set] if args.key?(:default_package_set)
+          @disk_provisioned_iops = args[:disk_provisioned_iops] if args.key?(:disk_provisioned_iops)
+          @disk_provisioned_throughput_mibps = args[:disk_provisioned_throughput_mibps] if args.key?(:disk_provisioned_throughput_mibps)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_source_image = args[:disk_source_image] if args.key?(:disk_source_image)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
