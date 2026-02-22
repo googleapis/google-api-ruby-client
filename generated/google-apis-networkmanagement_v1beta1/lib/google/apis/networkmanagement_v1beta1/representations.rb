@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NgfwPacketInspectionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -951,6 +957,13 @@ module Google
         end
       end
       
+      class NgfwPacketInspectionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :security_profile_group_uri, as: 'securityProfileGroupUri'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1215,6 +1228,8 @@ module Google
           property :nat, as: 'nat', class: Google::Apis::NetworkmanagementV1beta1::NatInfo, decorator: Google::Apis::NetworkmanagementV1beta1::NatInfo::Representation
       
           property :network, as: 'network', class: Google::Apis::NetworkmanagementV1beta1::NetworkInfo, decorator: Google::Apis::NetworkmanagementV1beta1::NetworkInfo::Representation
+      
+          property :ngfw_packet_inspection, as: 'ngfwPacketInspection', class: Google::Apis::NetworkmanagementV1beta1::NgfwPacketInspectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::NgfwPacketInspectionInfo::Representation
       
           property :project_id, as: 'projectId'
           property :proxy_connection, as: 'proxyConnection', class: Google::Apis::NetworkmanagementV1beta1::ProxyConnectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::ProxyConnectionInfo::Representation

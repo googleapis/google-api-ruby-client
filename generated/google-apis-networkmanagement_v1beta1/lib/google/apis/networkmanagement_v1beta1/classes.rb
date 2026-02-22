@@ -2176,6 +2176,27 @@ module Google
         end
       end
       
+      # For display only. Metadata associated with a layer 7 packet inspection by the
+      # firewall.
+      class NgfwPacketInspectionInfo
+        include Google::Apis::Core::Hashable
+      
+        # URI of the security profile group associated with this firewall packet
+        # inspection.
+        # Corresponds to the JSON property `securityProfileGroupUri`
+        # @return [String]
+        attr_accessor :security_profile_group_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @security_profile_group_uri = args[:security_profile_group_uri] if args.key?(:security_profile_group_uri)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -3274,6 +3295,12 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::NetworkInfo]
         attr_accessor :network
       
+        # For display only. Metadata associated with a layer 7 packet inspection by the
+        # firewall.
+        # Corresponds to the JSON property `ngfwPacketInspection`
+        # @return [Google::Apis::NetworkmanagementV1beta1::NgfwPacketInspectionInfo]
+        attr_accessor :ngfw_packet_inspection
+      
         # Project ID that contains the configuration this step is validating.
         # Corresponds to the JSON property `projectId`
         # @return [String]
@@ -3366,6 +3393,7 @@ module Google
           @load_balancer_backend_info = args[:load_balancer_backend_info] if args.key?(:load_balancer_backend_info)
           @nat = args[:nat] if args.key?(:nat)
           @network = args[:network] if args.key?(:network)
+          @ngfw_packet_inspection = args[:ngfw_packet_inspection] if args.key?(:ngfw_packet_inspection)
           @project_id = args[:project_id] if args.key?(:project_id)
           @proxy_connection = args[:proxy_connection] if args.key?(:proxy_connection)
           @redis_cluster = args[:redis_cluster] if args.key?(:redis_cluster)
