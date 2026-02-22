@@ -3317,6 +3317,8 @@ module Google
           collection :data_disks, as: 'dataDisks', class: Google::Apis::DataflowV1b3::Disk, decorator: Google::Apis::DataflowV1b3::Disk::Representation
       
           property :default_package_set, as: 'defaultPackageSet'
+          property :disk_provisioned_iops, :numeric_string => true, as: 'diskProvisionedIops'
+          property :disk_provisioned_throughput_mibps, :numeric_string => true, as: 'diskProvisionedThroughputMibps'
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_source_image, as: 'diskSourceImage'
           property :disk_type, as: 'diskType'
