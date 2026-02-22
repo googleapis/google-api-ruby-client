@@ -3464,6 +3464,13 @@ module Google
         # @return [String]
         attr_accessor :configurable_billing_approach
       
+        # Optional. Maps a connector ID (e.g., "hybrid-github", "shopify") to tenant-
+        # specific information required for that connector. The structure of the tenant
+        # information string is connector-dependent.
+        # Corresponds to the JSON property `connectorTenantInfo`
+        # @return [Hash<String,String>]
+        attr_accessor :connector_tenant_info
+      
         # Output only. Timestamp the Recommendation Engine was created at.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -3573,6 +3580,7 @@ module Google
           @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @common_config = args[:common_config] if args.key?(:common_config)
           @configurable_billing_approach = args[:configurable_billing_approach] if args.key?(:configurable_billing_approach)
+          @connector_tenant_info = args[:connector_tenant_info] if args.key?(:connector_tenant_info)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_store_ids = args[:data_store_ids] if args.key?(:data_store_ids)
           @disable_analytics = args[:disable_analytics] if args.key?(:disable_analytics)
@@ -10696,6 +10704,13 @@ module Google
         # @return [String]
         attr_accessor :configurable_billing_approach
       
+        # Optional. Maps a connector ID (e.g., "hybrid-github", "shopify") to tenant-
+        # specific information required for that connector. The structure of the tenant
+        # information string is connector-dependent.
+        # Corresponds to the JSON property `connectorTenantInfo`
+        # @return [Hash<String,String>]
+        attr_accessor :connector_tenant_info
+      
         # Output only. Timestamp the Recommendation Engine was created at.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -10815,6 +10830,7 @@ module Google
           @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @common_config = args[:common_config] if args.key?(:common_config)
           @configurable_billing_approach = args[:configurable_billing_approach] if args.key?(:configurable_billing_approach)
+          @connector_tenant_info = args[:connector_tenant_info] if args.key?(:connector_tenant_info)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_store_ids = args[:data_store_ids] if args.key?(:data_store_ids)
           @disable_analytics = args[:disable_analytics] if args.key?(:disable_analytics)
@@ -14153,7 +14169,7 @@ module Google
         attr_accessor :natural_language_query_understanding_spec
       
         # Optional. The maximum number of results to retrieve from each data store. If
-        # not specified, it will use the SearchRequest.data_store_specs.num_results if
+        # not specified, it will use the SearchRequest.DataStoreSpec.num_results if
         # provided, otherwise there is no limit.
         # Corresponds to the JSON property `numResultsPerDataStore`
         # @return [Fixnum]
@@ -22979,6 +22995,13 @@ module Google
         # @return [String]
         attr_accessor :configurable_billing_approach
       
+        # Optional. Maps a connector ID (e.g., "hybrid-github", "shopify") to tenant-
+        # specific information required for that connector. The structure of the tenant
+        # information string is connector-dependent.
+        # Corresponds to the JSON property `connectorTenantInfo`
+        # @return [Hash<String,String>]
+        attr_accessor :connector_tenant_info
+      
         # Output only. Timestamp the Recommendation Engine was created at.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -23088,6 +23111,7 @@ module Google
           @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
           @common_config = args[:common_config] if args.key?(:common_config)
           @configurable_billing_approach = args[:configurable_billing_approach] if args.key?(:configurable_billing_approach)
+          @connector_tenant_info = args[:connector_tenant_info] if args.key?(:connector_tenant_info)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_store_ids = args[:data_store_ids] if args.key?(:data_store_ids)
           @disable_analytics = args[:disable_analytics] if args.key?(:disable_analytics)
@@ -27791,7 +27815,7 @@ module Google
         attr_accessor :natural_language_query_understanding_spec
       
         # Optional. The maximum number of results to retrieve from each data store. If
-        # not specified, it will use the SearchRequest.data_store_specs.num_results if
+        # not specified, it will use the SearchRequest.DataStoreSpec.num_results if
         # provided, otherwise there is no limit.
         # Corresponds to the JSON property `numResultsPerDataStore`
         # @return [Fixnum]
