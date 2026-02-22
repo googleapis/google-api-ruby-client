@@ -6642,6 +6642,7 @@ module Google
           property :common_config, as: 'commonConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineCommonConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineCommonConfig::Representation
       
           property :configurable_billing_approach, as: 'configurableBillingApproach'
+          hash :connector_tenant_info, as: 'connectorTenantInfo'
           property :create_time, as: 'createTime'
           collection :data_store_ids, as: 'dataStoreIds'
           property :disable_analytics, as: 'disableAnalytics'
@@ -9874,6 +9875,7 @@ module Google
           property :common_config, as: 'commonConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineCommonConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineCommonConfig::Representation
       
           property :configurable_billing_approach, as: 'configurableBillingApproach'
+          hash :connector_tenant_info, as: 'connectorTenantInfo'
           property :create_time, as: 'createTime'
           collection :data_store_ids, as: 'dataStoreIds'
           property :disable_analytics, as: 'disableAnalytics'
@@ -13798,6 +13800,7 @@ module Google
           property :common_config, as: 'commonConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineCommonConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineCommonConfig::Representation
       
           property :configurable_billing_approach, as: 'configurableBillingApproach'
+          hash :connector_tenant_info, as: 'connectorTenantInfo'
           property :create_time, as: 'createTime'
           collection :data_store_ids, as: 'dataStoreIds'
           property :disable_analytics, as: 'disableAnalytics'
