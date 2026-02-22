@@ -139,9 +139,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :account_id
       
-        # Required. A human-readable name of the account. See [store name](https://
-        # support.google.com/merchants/answer/160556) and [business name](https://
-        # support.google.com/merchants/answer/12159159) for more information.
+        # Required. A human-readable name of the account. Don't use punctuation,
+        # capitalization, or non-alphanumeric symbols such as the "/" or "_" symbols.
+        # See [Adding a business name](https://support.google.com/merchants/answer/
+        # 12159159) for more information.
         # Corresponds to the JSON property `accountName`
         # @return [String]
         attr_accessor :account_name
@@ -1062,9 +1063,10 @@ module Google
         # @return [Google::Apis::MerchantapiAccountsV1beta::UriSettings]
         attr_accessor :effective_uri_settings
       
-        # Optional. The destinations (also known as [Marketing methods](https://support.
-        # google.com/merchants/answer/15130232)) to which the checkout program applies,
-        # valid destination values are `SHOPPING_ADS`, `FREE_LISTINGS`
+        # Optional. Required for the create operation. The destinations (also known as [
+        # Marketing methods](https://support.google.com/merchants/answer/15130232)) to
+        # which the checkout program applies. Valid destination values are `SHOPPING_ADS`
+        # and `FREE_LISTINGS`.
         # Corresponds to the JSON property `eligibleDestinations`
         # @return [Array<String>]
         attr_accessor :eligible_destinations
@@ -3351,7 +3353,8 @@ module Google
       # com/merchants/answer/13889434) program, which enables products from a business'
       # s store to be shown across Google for free. The following list is the
       # available set of program resource IDs accessible through the API: * `checkout`
-      # * `free-listings` * `shopping-ads` * `youtube-shopping-checkout`
+      # * `free-listings` * `product-ratings` * `shopping-ads` * `youtube-shopping-
+      # checkout`
       class Program
         include Google::Apis::Core::Hashable
       
