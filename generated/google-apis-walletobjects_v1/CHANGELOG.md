@@ -1,5 +1,9 @@
 # Release history for google-apis-walletobjects_v1
 
+### v0.30.0 (2026-02-22)
+
+* Regenerated from discovery document revision 20260220
+
 ### v0.29.0 (2026-02-15)
 
 * Regenerated from discovery document revision 20260213

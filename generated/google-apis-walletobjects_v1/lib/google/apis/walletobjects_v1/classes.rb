@@ -4719,12 +4719,12 @@ module Google
         end
       end
       
-      # 
+      # A JWT representation of a pass.
       class JwtResource
         include Google::Apis::Core::Hashable
       
-        # A string representing a JWT of the format described at https://developers.
-        # google.com/wallet/reference/rest/v1/Jwt
+        # Required. A string representing a JWT of the format described at https://
+        # developers.google.com/wallet/reference/rest/v1/Jwt
         # Corresponds to the JSON property `jwt`
         # @return [String]
         attr_accessor :jwt
