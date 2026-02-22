@@ -831,6 +831,7 @@ module Google
       class Digest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_mu, :base64 => true, as: 'externalMu'
           property :sha256, :base64 => true, as: 'sha256'
           property :sha384, :base64 => true, as: 'sha384'
           property :sha512, :base64 => true, as: 'sha512'
