@@ -1333,7 +1333,10 @@ module Google
         attr_accessor :expire_time
       
         # Output only. The unique resource name of the Backup. Format is `projects/`
-        # project`/locations/`location`/backups/`backup``.
+        # project`/locations/`location`/backups/`backup``. The location in the name will
+        # be the Standard Managed Multi-Region (SMMR) location (e.g. `us`) if the backup
+        # was created with an SMMR location, or the Google Managed Multi-Region (GMMR)
+        # location (e.g. `nam5`) if the backup was created with a GMMR location.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2821,21 +2824,12 @@ module Google
       class GoogleFirestoreAdminV1LocationMetadata
         include Google::Apis::Core::Hashable
       
-        # The storage placements available in the location. When the location represents
-        # a Standard Managed Multi-Region (SMMR) like "us", this field lists the
-        # available Google-Managed Multi-Regions (GMMRs) within it, such as "nam5" or "
-        # eur3".
-        # Corresponds to the JSON property `availableStoragePlacements`
-        # @return [Array<String>]
-        attr_accessor :available_storage_placements
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @available_storage_placements = args[:available_storage_placements] if args.key?(:available_storage_placements)
         end
       end
       
