@@ -406,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalExposure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class File
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -971,6 +977,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2Exfiltration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2ExternalExposure
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2574,6 +2586,24 @@ module Google
         end
       end
       
+      class ExternalExposure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_service, as: 'backendService'
+          property :exposed_endpoint, as: 'exposedEndpoint'
+          property :exposed_service, as: 'exposedService'
+          property :forwarding_rule, as: 'forwardingRule'
+          property :instance_group, as: 'instanceGroup'
+          property :load_balancer_firewall_policy, as: 'loadBalancerFirewallPolicy'
+          property :network_endpoint_group, as: 'networkEndpointGroup'
+          property :private_ip_address, as: 'privateIpAddress'
+          property :private_port, as: 'privatePort'
+          property :public_ip_address, as: 'publicIpAddress'
+          property :public_port, as: 'publicPort'
+          property :service_firewall_policy, as: 'serviceFirewallPolicy'
+        end
+      end
+      
       class File
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2649,6 +2679,8 @@ module Google
       
           property :event_time, as: 'eventTime'
           property :exfiltration, as: 'exfiltration', class: Google::Apis::SecuritycenterV1beta1::Exfiltration, decorator: Google::Apis::SecuritycenterV1beta1::Exfiltration::Representation
+      
+          property :external_exposure, as: 'externalExposure', class: Google::Apis::SecuritycenterV1beta1::ExternalExposure, decorator: Google::Apis::SecuritycenterV1beta1::ExternalExposure::Representation
       
           hash :external_systems, as: 'externalSystems', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1ExternalSystem, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1ExternalSystem::Representation
       
@@ -3685,6 +3717,24 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2ExternalExposure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_service, as: 'backendService'
+          property :exposed_endpoint, as: 'exposedEndpoint'
+          property :exposed_service, as: 'exposedService'
+          property :forwarding_rule, as: 'forwardingRule'
+          property :instance_group, as: 'instanceGroup'
+          property :load_balancer_firewall_policy, as: 'loadBalancerFirewallPolicy'
+          property :network_endpoint_group, as: 'networkEndpointGroup'
+          property :private_ip_address, as: 'privateIpAddress'
+          property :private_port, as: 'privatePort'
+          property :public_ip_address, as: 'publicIpAddress'
+          property :public_port, as: 'publicPort'
+          property :service_firewall_policy, as: 'serviceFirewallPolicy'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2ExternalSystem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3779,6 +3829,8 @@ module Google
       
           property :event_time, as: 'eventTime'
           property :exfiltration, as: 'exfiltration', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Exfiltration, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Exfiltration::Representation
+      
+          property :external_exposure, as: 'externalExposure', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ExternalExposure, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ExternalExposure::Representation
       
           hash :external_systems, as: 'externalSystems', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ExternalSystem, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ExternalSystem::Representation
       
