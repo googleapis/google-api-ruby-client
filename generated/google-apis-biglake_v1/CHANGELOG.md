@@ -1,5 +1,9 @@
 # Release history for google-apis-biglake_v1
 
+### v0.7.0 (2026-02-22)
+
+* Regenerated from discovery document revision 20260209
+
 ### v0.6.0 (2025-11-09)
 
 * Regenerated from discovery document revision 20251027
