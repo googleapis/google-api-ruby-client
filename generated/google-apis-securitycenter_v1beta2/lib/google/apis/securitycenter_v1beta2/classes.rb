@@ -2265,6 +2265,101 @@ module Google
         end
       end
       
+      # Details about the externally exposed resource associated with the finding.
+      class ExternalExposure
+        include Google::Apis::Core::Hashable
+      
+        # The full resource name of load balancer backend service, for example, "//
+        # compute.googleapis.com/projects/`project-id`/global/backendServices/`name`".
+        # Corresponds to the JSON property `backendService`
+        # @return [String]
+        attr_accessor :backend_service
+      
+        # The resource which is running the exposed service, for example, "//compute.
+        # googleapis.com/projects/`project-id`/zones/`zone`/instances/`instance`.”
+        # Corresponds to the JSON property `exposedEndpoint`
+        # @return [String]
+        attr_accessor :exposed_endpoint
+      
+        # The name and version of the service, for example, "Jupyter Notebook 6.14.0".
+        # Corresponds to the JSON property `exposedService`
+        # @return [String]
+        attr_accessor :exposed_service
+      
+        # The full resource name of the forwarding rule, for example, "//compute.
+        # googleapis.com/projects/`project-id`/global/forwardingRules/`forwarding-rule-
+        # name`".
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        # The full resource name of the instance group, for example, "//compute.
+        # googleapis.com/projects/`project-id`/global/instanceGroups/`name`".
+        # Corresponds to the JSON property `instanceGroup`
+        # @return [String]
+        attr_accessor :instance_group
+      
+        # The full resource name of the load balancer firewall policy, for example, "//
+        # compute.googleapis.com/projects/`project-id`/global/firewallPolicies/`policy-
+        # name`".
+        # Corresponds to the JSON property `loadBalancerFirewallPolicy`
+        # @return [String]
+        attr_accessor :load_balancer_firewall_policy
+      
+        # The full resource name of the network endpoint group, for example, "//compute.
+        # googleapis.com/projects/`project-id`/global/networkEndpointGroups/`name`".
+        # Corresponds to the JSON property `networkEndpointGroup`
+        # @return [String]
+        attr_accessor :network_endpoint_group
+      
+        # Private IP address of the exposed endpoint.
+        # Corresponds to the JSON property `privateIpAddress`
+        # @return [String]
+        attr_accessor :private_ip_address
+      
+        # Port number associated with private IP address.
+        # Corresponds to the JSON property `privatePort`
+        # @return [String]
+        attr_accessor :private_port
+      
+        # Public IP address of the exposed endpoint.
+        # Corresponds to the JSON property `publicIpAddress`
+        # @return [String]
+        attr_accessor :public_ip_address
+      
+        # Public port number of the exposed endpoint.
+        # Corresponds to the JSON property `publicPort`
+        # @return [String]
+        attr_accessor :public_port
+      
+        # The full resource name of the firewall policy of the exposed service, for
+        # example, "//compute.googleapis.com/projects/`project-id`/global/
+        # firewallPolicies/`policy-name`".
+        # Corresponds to the JSON property `serviceFirewallPolicy`
+        # @return [String]
+        attr_accessor :service_firewall_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backend_service = args[:backend_service] if args.key?(:backend_service)
+          @exposed_endpoint = args[:exposed_endpoint] if args.key?(:exposed_endpoint)
+          @exposed_service = args[:exposed_service] if args.key?(:exposed_service)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @instance_group = args[:instance_group] if args.key?(:instance_group)
+          @load_balancer_firewall_policy = args[:load_balancer_firewall_policy] if args.key?(:load_balancer_firewall_policy)
+          @network_endpoint_group = args[:network_endpoint_group] if args.key?(:network_endpoint_group)
+          @private_ip_address = args[:private_ip_address] if args.key?(:private_ip_address)
+          @private_port = args[:private_port] if args.key?(:private_port)
+          @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
+          @public_port = args[:public_port] if args.key?(:public_port)
+          @service_firewall_policy = args[:service_firewall_policy] if args.key?(:service_firewall_policy)
+        end
+      end
+      
       # File information about the related binary/library used by an executable, or
       # the script used by a script interpreter
       class File
@@ -2530,6 +2625,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::Exfiltration]
         attr_accessor :exfiltration
       
+        # Details about the externally exposed resource associated with the finding.
+        # Corresponds to the JSON property `externalExposure`
+        # @return [Google::Apis::SecuritycenterV1beta2::ExternalExposure]
+        attr_accessor :external_exposure
+      
         # Output only. Third party SIEM/SOAR fields within SCC, contains external system
         # information and external system finding fields.
         # Corresponds to the JSON property `externalSystems`
@@ -2790,6 +2890,7 @@ module Google
           @disk = args[:disk] if args.key?(:disk)
           @event_time = args[:event_time] if args.key?(:event_time)
           @exfiltration = args[:exfiltration] if args.key?(:exfiltration)
+          @external_exposure = args[:external_exposure] if args.key?(:external_exposure)
           @external_systems = args[:external_systems] if args.key?(:external_systems)
           @external_uri = args[:external_uri] if args.key?(:external_uri)
           @files = args[:files] if args.key?(:files)
@@ -6483,6 +6584,101 @@ module Google
         end
       end
       
+      # Details about the externally exposed resource associated with the finding.
+      class GoogleCloudSecuritycenterV2ExternalExposure
+        include Google::Apis::Core::Hashable
+      
+        # The full resource name of load balancer backend service, for example, "//
+        # compute.googleapis.com/projects/`project-id`/global/backendServices/`name`".
+        # Corresponds to the JSON property `backendService`
+        # @return [String]
+        attr_accessor :backend_service
+      
+        # The resource which is running the exposed service, for example, "//compute.
+        # googleapis.com/projects/`project-id`/zones/`zone`/instances/`instance`.”
+        # Corresponds to the JSON property `exposedEndpoint`
+        # @return [String]
+        attr_accessor :exposed_endpoint
+      
+        # The name and version of the service, for example, "Jupyter Notebook 6.14.0".
+        # Corresponds to the JSON property `exposedService`
+        # @return [String]
+        attr_accessor :exposed_service
+      
+        # The full resource name of the forwarding rule, for example, "//compute.
+        # googleapis.com/projects/`project-id`/global/forwardingRules/`forwarding-rule-
+        # name`".
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        # The full resource name of the instance group, for example, "//compute.
+        # googleapis.com/projects/`project-id`/global/instanceGroups/`name`".
+        # Corresponds to the JSON property `instanceGroup`
+        # @return [String]
+        attr_accessor :instance_group
+      
+        # The full resource name of the load balancer firewall policy, for example, "//
+        # compute.googleapis.com/projects/`project-id`/global/firewallPolicies/`policy-
+        # name`".
+        # Corresponds to the JSON property `loadBalancerFirewallPolicy`
+        # @return [String]
+        attr_accessor :load_balancer_firewall_policy
+      
+        # The full resource name of the network endpoint group, for example, "//compute.
+        # googleapis.com/projects/`project-id`/global/networkEndpointGroups/`name`".
+        # Corresponds to the JSON property `networkEndpointGroup`
+        # @return [String]
+        attr_accessor :network_endpoint_group
+      
+        # Private IP address of the exposed endpoint.
+        # Corresponds to the JSON property `privateIpAddress`
+        # @return [String]
+        attr_accessor :private_ip_address
+      
+        # Port number associated with private IP address.
+        # Corresponds to the JSON property `privatePort`
+        # @return [String]
+        attr_accessor :private_port
+      
+        # Public IP address of the exposed endpoint.
+        # Corresponds to the JSON property `publicIpAddress`
+        # @return [String]
+        attr_accessor :public_ip_address
+      
+        # Public port number of the exposed endpoint.
+        # Corresponds to the JSON property `publicPort`
+        # @return [String]
+        attr_accessor :public_port
+      
+        # The full resource name of the firewall policy of the exposed service, for
+        # example, "//compute.googleapis.com/projects/`project-id`/global/
+        # firewallPolicies/`policy-name`".
+        # Corresponds to the JSON property `serviceFirewallPolicy`
+        # @return [String]
+        attr_accessor :service_firewall_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backend_service = args[:backend_service] if args.key?(:backend_service)
+          @exposed_endpoint = args[:exposed_endpoint] if args.key?(:exposed_endpoint)
+          @exposed_service = args[:exposed_service] if args.key?(:exposed_service)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @instance_group = args[:instance_group] if args.key?(:instance_group)
+          @load_balancer_firewall_policy = args[:load_balancer_firewall_policy] if args.key?(:load_balancer_firewall_policy)
+          @network_endpoint_group = args[:network_endpoint_group] if args.key?(:network_endpoint_group)
+          @private_ip_address = args[:private_ip_address] if args.key?(:private_ip_address)
+          @private_port = args[:private_port] if args.key?(:private_port)
+          @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
+          @public_port = args[:public_port] if args.key?(:public_port)
+          @service_firewall_policy = args[:service_firewall_policy] if args.key?(:service_firewall_policy)
+        end
+      end
+      
       # Representation of third party SIEM/SOAR fields within SCC.
       class GoogleCloudSecuritycenterV2ExternalSystem
         include Google::Apis::Core::Hashable
@@ -6845,6 +7041,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Exfiltration]
         attr_accessor :exfiltration
       
+        # Details about the externally exposed resource associated with the finding.
+        # Corresponds to the JSON property `externalExposure`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ExternalExposure]
+        attr_accessor :external_exposure
+      
         # Output only. Third party SIEM/SOAR fields within SCC, contains external system
         # information and external system finding fields.
         # Corresponds to the JSON property `externalSystems`
@@ -7115,6 +7316,7 @@ module Google
           @disk = args[:disk] if args.key?(:disk)
           @event_time = args[:event_time] if args.key?(:event_time)
           @exfiltration = args[:exfiltration] if args.key?(:exfiltration)
+          @external_exposure = args[:external_exposure] if args.key?(:external_exposure)
           @external_systems = args[:external_systems] if args.key?(:external_systems)
           @external_uri = args[:external_uri] if args.key?(:external_uri)
           @files = args[:files] if args.key?(:files)
