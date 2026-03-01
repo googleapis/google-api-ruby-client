@@ -14934,6 +14934,13 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :response
       
+        # Optional. Specifies how the response should be scheduled in the conversation.
+        # Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults
+        # to WHEN_IDLE.
+        # Corresponds to the JSON property `scheduling`
+        # @return [String]
+        attr_accessor :scheduling
+      
         def initialize(**args)
            update!(**args)
         end
@@ -14943,6 +14950,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @parts = args[:parts] if args.key?(:parts)
           @response = args[:response] if args.key?(:response)
+          @scheduling = args[:scheduling] if args.key?(:scheduling)
         end
       end
       
@@ -16485,9 +16493,9 @@ module Google
       class GoogleCloudAiplatformV1GroundingChunk
         include Google::Apis::Core::Hashable
       
-        # A `Maps` chunk is a piece of evidence that comes from Google Maps. It contains
-        # information about a place, such as its name, address, and reviews. This is
-        # used to provide the user with rich, location-based information.
+        # A `Maps` chunk is a piece of evidence that comes from Google Maps, containing
+        # information about places or routes. This is used to provide the user with rich,
+        # location-based information.
         # Corresponds to the JSON property `maps`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingChunkMaps]
         attr_accessor :maps
@@ -16518,9 +16526,9 @@ module Google
         end
       end
       
-      # A `Maps` chunk is a piece of evidence that comes from Google Maps. It contains
-      # information about a place, such as its name, address, and reviews. This is
-      # used to provide the user with rich, location-based information.
+      # A `Maps` chunk is a piece of evidence that comes from Google Maps, containing
+      # information about places or routes. This is used to provide the user with rich,
+      # location-based information.
       class GoogleCloudAiplatformV1GroundingChunkMaps
         include Google::Apis::Core::Hashable
       
@@ -31244,6 +31252,12 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecDeveloperConnectSource]
         attr_accessor :developer_connect_source
       
+        # The image spec for building an image (within a single build step), based on
+        # the config file (i.e. Dockerfile) in the source directory.
+        # Corresponds to the JSON property `imageSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecImageSpec]
+        attr_accessor :image_spec
+      
         # Specifies source code provided as a byte stream.
         # Corresponds to the JSON property `inlineSource`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecInlineSource]
@@ -31261,6 +31275,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @developer_connect_source = args[:developer_connect_source] if args.key?(:developer_connect_source)
+          @image_spec = args[:image_spec] if args.key?(:image_spec)
           @inline_source = args[:inline_source] if args.key?(:inline_source)
           @python_spec = args[:python_spec] if args.key?(:python_spec)
         end
@@ -31320,6 +31335,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @config = args[:config] if args.key?(:config)
+        end
+      end
+      
+      # The image spec for building an image (within a single build step), based on
+      # the config file (i.e. Dockerfile) in the source directory.
+      class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecImageSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Build arguments to be used. They will be passed through --build-arg
+        # flags.
+        # Corresponds to the JSON property `buildArgs`
+        # @return [Hash<String,String>]
+        attr_accessor :build_args
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_args = args[:build_args] if args.key?(:build_args)
         end
       end
       
@@ -33220,6 +33256,14 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ScheduleRunResponse]
         attr_accessor :last_scheduled_run_response
       
+        # Optional. Specifies the maximum number of active runs that can be executed
+        # concurrently for this Schedule. This limits the number of runs that can be in
+        # a non-terminal state at the same time. Currently, this field is only supported
+        # for requests of type CreatePipelineJobRequest.
+        # Corresponds to the JSON property `maxConcurrentActiveRunCount`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_active_run_count
+      
         # Required. Maximum number of runs that can be started concurrently for this
         # Schedule. This is the limit for starting the scheduled requests and not the
         # execution of the operations/jobs created by the requests (if applicable).
@@ -33285,6 +33329,7 @@ module Google
           @last_pause_time = args[:last_pause_time] if args.key?(:last_pause_time)
           @last_resume_time = args[:last_resume_time] if args.key?(:last_resume_time)
           @last_scheduled_run_response = args[:last_scheduled_run_response] if args.key?(:last_scheduled_run_response)
+          @max_concurrent_active_run_count = args[:max_concurrent_active_run_count] if args.key?(:max_concurrent_active_run_count)
           @max_concurrent_run_count = args[:max_concurrent_run_count] if args.key?(:max_concurrent_run_count)
           @max_run_count = args[:max_run_count] if args.key?(:max_run_count)
           @name = args[:name] if args.key?(:name)
