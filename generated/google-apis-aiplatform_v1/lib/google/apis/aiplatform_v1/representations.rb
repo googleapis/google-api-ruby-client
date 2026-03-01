@@ -5080,6 +5080,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecImageSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecInlineSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -12236,6 +12242,7 @@ module Google
           collection :parts, as: 'parts', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionResponsePart, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1FunctionResponsePart::Representation
       
           hash :response, as: 'response'
+          property :scheduling, as: 'scheduling'
         end
       end
       
@@ -16868,6 +16875,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :developer_connect_source, as: 'developerConnectSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecDeveloperConnectSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecDeveloperConnectSource::Representation
       
+          property :image_spec, as: 'imageSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecImageSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecImageSpec::Representation
+      
           property :inline_source, as: 'inlineSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecInlineSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecInlineSource::Representation
       
           property :python_spec, as: 'pythonSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecPythonSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecPythonSpec::Representation
@@ -16889,6 +16898,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config, as: 'config', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecDeveloperConnectConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecDeveloperConnectConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecImageSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :build_args, as: 'buildArgs'
         end
       end
       
@@ -17474,6 +17490,7 @@ module Google
           property :last_resume_time, as: 'lastResumeTime'
           property :last_scheduled_run_response, as: 'lastScheduledRunResponse', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ScheduleRunResponse, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ScheduleRunResponse::Representation
       
+          property :max_concurrent_active_run_count, :numeric_string => true, as: 'maxConcurrentActiveRunCount'
           property :max_concurrent_run_count, :numeric_string => true, as: 'maxConcurrentRunCount'
           property :max_run_count, :numeric_string => true, as: 'maxRunCount'
           property :name, as: 'name'
