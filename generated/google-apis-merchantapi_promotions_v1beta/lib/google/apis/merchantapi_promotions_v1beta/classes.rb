@@ -26,6 +26,11 @@ module Google
       class Attributes
         include Google::Apis::Core::Hashable
       
+        # Optional. This field defines the audience a promotion will be visible to.
+        # Corresponds to the JSON property `audience`
+        # @return [String]
+        attr_accessor :audience
+      
         # Optional. Product filter by [brand exclusion](https://support.google.com/
         # merchants/answer/13861679?ref_topic=13773355&sjid=17642868584668136159-NC) for
         # the promotion. The product filter attributes only applies when the products
@@ -272,6 +277,13 @@ module Google
         # @return [String]
         attr_accessor :redemption_restriction
       
+        # Optional. A list of [regions](https://support.google.com/merchants/answer/
+        # 15406457?hl=en&sjid=8815806704218720187-NC#howregionswork) where the promotion
+        # is applicable. Must be set if `audience` is set to `LOCATION`.
+        # Corresponds to the JSON property `regionIdInclusion`
+        # @return [Array<String>]
+        attr_accessor :region_id_inclusion
+      
         # Optional. Whether the promotion applies to [all stores, or only specified
         # stores](https://support.google.com/merchants/answer/13857563?sjid=
         # 17642868584668136159-NC). Local Inventory ads promotions throw an error if no
@@ -309,6 +321,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audience = args[:audience] if args.key?(:audience)
           @brand_exclusion = args[:brand_exclusion] if args.key?(:brand_exclusion)
           @brand_inclusion = args[:brand_inclusion] if args.key?(:brand_inclusion)
           @coupon_value_type = args[:coupon_value_type] if args.key?(:coupon_value_type)
@@ -341,6 +354,7 @@ module Google
           @promotion_effective_time_period = args[:promotion_effective_time_period] if args.key?(:promotion_effective_time_period)
           @promotion_url = args[:promotion_url] if args.key?(:promotion_url)
           @redemption_restriction = args[:redemption_restriction] if args.key?(:redemption_restriction)
+          @region_id_inclusion = args[:region_id_inclusion] if args.key?(:region_id_inclusion)
           @store_applicability = args[:store_applicability] if args.key?(:store_applicability)
           @store_codes_exclusion = args[:store_codes_exclusion] if args.key?(:store_codes_exclusion)
           @store_codes_inclusion = args[:store_codes_inclusion] if args.key?(:store_codes_inclusion)
