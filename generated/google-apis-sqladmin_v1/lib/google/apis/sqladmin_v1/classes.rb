@@ -5148,6 +5148,13 @@ module Google
       class Settings
         include Google::Apis::Core::Hashable
       
+        # Optional. Whether the replica is in accelerated mode. This feature is in
+        # private preview and requires allowlisting to take effect.
+        # Corresponds to the JSON property `acceleratedReplicaMode`
+        # @return [Boolean]
+        attr_accessor :accelerated_replica_mode
+        alias_method :accelerated_replica_mode?, :accelerated_replica_mode
+      
         # The activation policy specifies when the instance is activated; it is
         # applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`:
         # The instance is on, and remains so even in the absence of connection requests.
@@ -5437,6 +5444,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerated_replica_mode = args[:accelerated_replica_mode] if args.key?(:accelerated_replica_mode)
           @activation_policy = args[:activation_policy] if args.key?(:activation_policy)
           @active_directory_config = args[:active_directory_config] if args.key?(:active_directory_config)
           @advanced_machine_features = args[:advanced_machine_features] if args.key?(:advanced_machine_features)
