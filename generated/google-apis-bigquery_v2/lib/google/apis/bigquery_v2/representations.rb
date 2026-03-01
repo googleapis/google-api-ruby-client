@@ -2400,6 +2400,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disabled_reason, as: 'disabledReason'
+          property :disabled_reason_details, as: 'disabledReasonDetails'
+          property :first_incremental_row_time, as: 'firstIncrementalRowTime'
+          property :incremental_row_count, :numeric_string => true, as: 'incrementalRowCount'
+          property :last_incremental_row_time, as: 'lastIncrementalRowTime'
           property :result_set_last_modify_time, as: 'resultSetLastModifyTime'
           property :result_set_last_replace_time, as: 'resultSetLastReplaceTime'
         end
