@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EvaluationMetricsThresholdsToolMatchingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Event
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1753,6 +1759,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expectation_level_metrics_thresholds, as: 'expectationLevelMetricsThresholds', class: Google::Apis::CesV1::EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds, decorator: Google::Apis::CesV1::EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds::Representation
       
+          property :tool_matching_settings, as: 'toolMatchingSettings', class: Google::Apis::CesV1::EvaluationMetricsThresholdsToolMatchingSettings, decorator: Google::Apis::CesV1::EvaluationMetricsThresholdsToolMatchingSettings::Representation
+      
           property :turn_level_metrics_thresholds, as: 'turnLevelMetricsThresholds', class: Google::Apis::CesV1::EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds, decorator: Google::Apis::CesV1::EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds::Representation
       
         end
@@ -1771,6 +1779,13 @@ module Google
           property :overall_tool_invocation_correctness_threshold, as: 'overallToolInvocationCorrectnessThreshold'
           property :semantic_similarity_channel, as: 'semanticSimilarityChannel'
           property :semantic_similarity_success_threshold, as: 'semanticSimilaritySuccessThreshold'
+        end
+      end
+      
+      class EvaluationMetricsThresholdsToolMatchingSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :extra_tool_call_behavior, as: 'extraToolCallBehavior'
         end
       end
       
@@ -1804,6 +1819,7 @@ module Google
           property :tool, as: 'tool'
           property :toolset_tool, as: 'toolsetTool', class: Google::Apis::CesV1::ToolsetTool, decorator: Google::Apis::CesV1::ToolsetTool::Representation
       
+          hash :variables, as: 'variables'
         end
       end
       
@@ -1814,6 +1830,7 @@ module Google
           property :tool, as: 'tool'
           property :toolset_tool, as: 'toolsetTool', class: Google::Apis::CesV1::ToolsetTool, decorator: Google::Apis::CesV1::ToolsetTool::Representation
       
+          hash :variables, as: 'variables'
         end
       end
       
