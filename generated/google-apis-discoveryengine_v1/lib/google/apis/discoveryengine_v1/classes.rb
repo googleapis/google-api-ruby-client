@@ -7679,6 +7679,15 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DestinationConfig>]
         attr_accessor :destination_configs
       
+        # Output only. The list of FQDNs of the data connector can egress to. This
+        # includes both FQDN derived from the customer provided instance URL and default
+        # per connector type FQDNs. Note: This field is derived from both the
+        # DataConnector.params, and connector source spec. It should only be used for
+        # CAIS and Org Policy evaluation purposes.
+        # Corresponds to the JSON property `egressFqdns`
+        # @return [Array<String>]
+        attr_accessor :egress_fqdns
+      
         # Any params and credentials used specifically for EUA connectors.
         # Corresponds to the JSON property `endUserConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataConnectorEndUserConfig]
@@ -7858,6 +7867,13 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Output only. Whether the connector is created with VPC-SC enabled. This is
+        # only used for CuOP evaluation purpose.
+        # Corresponds to the JSON property `vpcscEnabled`
+        # @return [Boolean]
+        attr_accessor :vpcsc_enabled
+        alias_method :vpcsc_enabled?, :vpcsc_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7877,6 +7893,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_source = args[:data_source] if args.key?(:data_source)
           @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
+          @egress_fqdns = args[:egress_fqdns] if args.key?(:egress_fqdns)
           @end_user_config = args[:end_user_config] if args.key?(:end_user_config)
           @entities = args[:entities] if args.key?(:entities)
           @errors = args[:errors] if args.key?(:errors)
@@ -7903,6 +7920,7 @@ module Google
           @static_ip_enabled = args[:static_ip_enabled] if args.key?(:static_ip_enabled)
           @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @vpcsc_enabled = args[:vpcsc_enabled] if args.key?(:vpcsc_enabled)
         end
       end
       
@@ -9386,6 +9404,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig]
         attr_accessor :knowledge_graph_config
       
+        # Optional. The visibility of marketplace agents in the agent gallery.
+        # Corresponds to the JSON property `marketplaceAgentVisibility`
+        # @return [String]
+        attr_accessor :marketplace_agent_visibility
+      
         # Additional config specs for a Media Recommendation engine.
         # Corresponds to the JSON property `mediaRecommendationEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig]
@@ -9415,6 +9438,11 @@ module Google
         # Corresponds to the JSON property `observabilityConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1ObservabilityConfig]
         attr_accessor :observability_config
+      
+        # Optional. The email of the procurement contact.
+        # Corresponds to the JSON property `procurementContactEmail`
+        # @return [String]
+        attr_accessor :procurement_contact_email
       
         # Configurations for a Search Engine.
         # Corresponds to the JSON property `searchEngineConfig`
@@ -9451,10 +9479,12 @@ module Google
           @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @knowledge_graph_config = args[:knowledge_graph_config] if args.key?(:knowledge_graph_config)
+          @marketplace_agent_visibility = args[:marketplace_agent_visibility] if args.key?(:marketplace_agent_visibility)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
           @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
           @observability_config = args[:observability_config] if args.key?(:observability_config)
+          @procurement_contact_email = args[:procurement_contact_email] if args.key?(:procurement_contact_email)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -20885,6 +20915,15 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDestinationConfig>]
         attr_accessor :destination_configs
       
+        # Output only. The list of FQDNs of the data connector can egress to. This
+        # includes both FQDN derived from the customer provided instance URL and default
+        # per connector type FQDNs. Note: This field is derived from both the
+        # DataConnector.params, and connector source spec. It should only be used for
+        # CAIS and Org Policy evaluation purposes.
+        # Corresponds to the JSON property `egressFqdns`
+        # @return [Array<String>]
+        attr_accessor :egress_fqdns
+      
         # Any params and credentials used specifically for EUA connectors.
         # Corresponds to the JSON property `endUserConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDataConnectorEndUserConfig]
@@ -21064,6 +21103,13 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Output only. Whether the connector is created with VPC-SC enabled. This is
+        # only used for CuOP evaluation purpose.
+        # Corresponds to the JSON property `vpcscEnabled`
+        # @return [Boolean]
+        attr_accessor :vpcsc_enabled
+        alias_method :vpcsc_enabled?, :vpcsc_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -21084,6 +21130,7 @@ module Google
           @data_protection_policy = args[:data_protection_policy] if args.key?(:data_protection_policy)
           @data_source = args[:data_source] if args.key?(:data_source)
           @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
+          @egress_fqdns = args[:egress_fqdns] if args.key?(:egress_fqdns)
           @end_user_config = args[:end_user_config] if args.key?(:end_user_config)
           @entities = args[:entities] if args.key?(:entities)
           @errors = args[:errors] if args.key?(:errors)
@@ -21110,6 +21157,7 @@ module Google
           @static_ip_enabled = args[:static_ip_enabled] if args.key?(:static_ip_enabled)
           @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @vpcsc_enabled = args[:vpcsc_enabled] if args.key?(:vpcsc_enabled)
         end
       end
       
@@ -22448,6 +22496,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfig]
         attr_accessor :knowledge_graph_config
       
+        # Optional. The visibility of marketplace agents in the agent gallery.
+        # Corresponds to the JSON property `marketplaceAgentVisibility`
+        # @return [String]
+        attr_accessor :marketplace_agent_visibility
+      
         # Additional config specs for a Media Recommendation engine.
         # Corresponds to the JSON property `mediaRecommendationEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig]
@@ -22477,6 +22530,11 @@ module Google
         # Corresponds to the JSON property `observabilityConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaObservabilityConfig]
         attr_accessor :observability_config
+      
+        # Optional. The email of the procurement contact.
+        # Corresponds to the JSON property `procurementContactEmail`
+        # @return [String]
+        attr_accessor :procurement_contact_email
       
         # Additional information of a recommendation engine.
         # Corresponds to the JSON property `recommendationMetadata`
@@ -22523,10 +22581,12 @@ module Google
           @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @knowledge_graph_config = args[:knowledge_graph_config] if args.key?(:knowledge_graph_config)
+          @marketplace_agent_visibility = args[:marketplace_agent_visibility] if args.key?(:marketplace_agent_visibility)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
           @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
           @observability_config = args[:observability_config] if args.key?(:observability_config)
+          @procurement_contact_email = args[:procurement_contact_email] if args.key?(:procurement_contact_email)
           @recommendation_metadata = args[:recommendation_metadata] if args.key?(:recommendation_metadata)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
           @similar_documents_config = args[:similar_documents_config] if args.key?(:similar_documents_config)
@@ -24170,10 +24230,12 @@ module Google
       
         # A comma-separated list of fields to filter by, in EBNF grammar. The supported
         # fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
-        # is_pinned` * `labels` * `create_time` * `update_time` Examples: * `
-        # user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `
-        # is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"
-        # `
+        # is_pinned` * `labels` * `create_time` * `update_time` * `collaborative_project`
+        # Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `
+        # starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "
+        # 1970-01-01T12:00:00Z"` * `collaborative_project = "projects/123/locations/
+        # global/collections/default_collection/engines/" "default_engine/
+        # collaborative_projects/cp1"`
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -29861,6 +29923,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig]
         attr_accessor :knowledge_graph_config
       
+        # Optional. The visibility of marketplace agents in the agent gallery.
+        # Corresponds to the JSON property `marketplaceAgentVisibility`
+        # @return [String]
+        attr_accessor :marketplace_agent_visibility
+      
         # Additional config specs for a Media Recommendation engine.
         # Corresponds to the JSON property `mediaRecommendationEngineConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig]
@@ -29890,6 +29957,11 @@ module Google
         # Corresponds to the JSON property `observabilityConfig`
         # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1betaObservabilityConfig]
         attr_accessor :observability_config
+      
+        # Optional. The email of the procurement contact.
+        # Corresponds to the JSON property `procurementContactEmail`
+        # @return [String]
+        attr_accessor :procurement_contact_email
       
         # Configurations for a Search Engine.
         # Corresponds to the JSON property `searchEngineConfig`
@@ -29926,10 +29998,12 @@ module Google
           @features = args[:features] if args.key?(:features)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
           @knowledge_graph_config = args[:knowledge_graph_config] if args.key?(:knowledge_graph_config)
+          @marketplace_agent_visibility = args[:marketplace_agent_visibility] if args.key?(:marketplace_agent_visibility)
           @media_recommendation_engine_config = args[:media_recommendation_engine_config] if args.key?(:media_recommendation_engine_config)
           @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
           @observability_config = args[:observability_config] if args.key?(:observability_config)
+          @procurement_contact_email = args[:procurement_contact_email] if args.key?(:procurement_contact_email)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
           @update_time = args[:update_time] if args.key?(:update_time)
