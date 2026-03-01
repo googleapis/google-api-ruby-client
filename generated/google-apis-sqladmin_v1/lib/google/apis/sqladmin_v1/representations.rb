@@ -2234,6 +2234,7 @@ module Google
       class Settings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerated_replica_mode, as: 'acceleratedReplicaMode'
           property :activation_policy, as: 'activationPolicy'
           property :active_directory_config, as: 'activeDirectoryConfig', class: Google::Apis::SqladminV1::SqlActiveDirectoryConfig, decorator: Google::Apis::SqladminV1::SqlActiveDirectoryConfig::Representation
       
