@@ -1102,6 +1102,15 @@ module Google
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request. Can be the managed zone
         #   name or ID.
+        # @param [String] filter
+        #   Specify a filter expression to view records that exactly match the specified
+        #   domain. Both the name and type parameters are not supported when you use
+        #   filter and must be omitted. Your filter expression must conform to AIP-160 and
+        #   you must specify a domain in the name field. Optionally, you can include the
+        #   type field to filter records by type. You can also include the has_suffix
+        #   function to view records that match by domain suffix. Examples: - name="
+        #   example.com." - name="example.com." AND type="A" - name=has_suffix("example.
+        #   com.") - name=has_suffix("example.com.") AND type="A"
         # @param [Fixnum] max_results
         #   Optional. Maximum number of results to be returned. If unspecified, the server
         #   decides how many results to return.
@@ -1132,12 +1141,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_resource_record_sets(project, managed_zone, max_results: nil, name: nil, page_token: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_resource_record_sets(project, managed_zone, filter: nil, max_results: nil, name: nil, page_token: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'dns/v1/projects/{project}/managedZones/{managedZone}/rrsets', options)
           command.response_representation = Google::Apis::DnsV1::ListResourceRecordSetsResponse::Representation
           command.response_class = Google::Apis::DnsV1::ListResourceRecordSetsResponse
           command.params['project'] = project unless project.nil?
           command.params['managedZone'] = managed_zone unless managed_zone.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['name'] = name unless name.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
