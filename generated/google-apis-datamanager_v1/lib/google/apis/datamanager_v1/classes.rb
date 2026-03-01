@@ -1550,7 +1550,7 @@ module Google
       class PairIdInfo
         include Google::Apis::Core::Hashable
       
-        # Output only. The count of the advertiser's first party data records that have
+        # Optional. The count of the advertiser's first party data records that have
         # been uploaded to a clean room provider. This does not signify the size of a
         # PAIR user list.
         # Corresponds to the JSON property `advertiserIdentifierCount`
@@ -1563,9 +1563,9 @@ module Google
         # @return [String]
         attr_accessor :clean_room_identifier
       
-        # Output only. This field denotes the percentage of membership match of this
-        # user list with the corresponding publisher's first party data. Must be between
-        # 0 and 100 inclusive.
+        # Optional. This field denotes the percentage of membership match of this user
+        # list with the corresponding publisher's first party data. Must be between 0
+        # and 100 inclusive.
         # Corresponds to the JSON property `matchRatePercentage`
         # @return [Fixnum]
         attr_accessor :match_rate_percentage
@@ -1578,7 +1578,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :publisher_id
       
-        # Optional. Descriptive name of the publisher to be displayed in the UI for a
+        # Required. Descriptive name of the publisher to be displayed in the UI for a
         # better targeting experience.
         # Corresponds to the JSON property `publisherName`
         # @return [String]
