@@ -97,6 +97,7 @@ module Google
       class Attributes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :audience, as: 'audience'
           collection :brand_exclusion, as: 'brandExclusion'
           collection :brand_inclusion, as: 'brandInclusion'
           property :coupon_value_type, as: 'couponValueType'
@@ -136,6 +137,7 @@ module Google
       
           property :promotion_url, as: 'promotionUrl'
           property :redemption_restriction, as: 'redemptionRestriction'
+          collection :region_id_inclusion, as: 'regionIdInclusion'
           property :store_applicability, as: 'storeApplicability'
           collection :store_codes_exclusion, as: 'storeCodesExclusion'
           collection :store_codes_inclusion, as: 'storeCodesInclusion'
