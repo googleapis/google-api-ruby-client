@@ -119,7 +119,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # can be called in two ways: * **List all public locations:** Use the path `GET /
+        # v1/locations`. * **List project-visible locations:** Use the path `GET /v1/
+        # projects/`project_id`/locations`. This may include public locations as well as
+        # private or other locations specifically visible to the project.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
@@ -263,8 +267,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new `Datastore` resource in a given project and location. Datastores
-        # are regional resources
+        # Creates a new `Datastore` resource in a given project and location.
         # @param [String] parent
         #   Required. The resource name of the location to create the new datastore in.
         #   Resource names are schemeless URIs that follow the conventions in https://
@@ -459,8 +462,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies a Datastore resource. Only the following fields can be updated: `
-        # description`. Only fields specified in `updateMask` are applied.
+        # Modifies a Datastore resource. Only fields specified in `updateMask` are
+        # applied.
         # @param [String] name
         #   Output only. Identifier. The resource name of this datastore. Resource names
         #   are schemeless URIs that follow the conventions in https://cloud.google.com/
@@ -475,8 +478,7 @@ module Google
         #   Datastore resource by the update. The fields specified in the `update_mask`
         #   are relative to the resource, not the full request. A field will be
         #   overwritten if it is in the mask. If the user does not provide a mask then all
-        #   fields will be overwritten. Only the following fields can be updated: `
-        #   description`.
+        #   fields will be overwritten.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2620,7 +2622,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Mounts a `Datastore` on a cluster resource Datastores are zonal resources
+        # Mounts a `Datastore` on a cluster resource
         # @param [String] name
         #   Required. The resource name of the cluster to mount the datastore. Resource
         #   names are schemeless URIs that follow the conventions in https://cloud.google.
@@ -2787,7 +2789,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Mounts a `Datastore` on a cluster resource Datastores are zonal resources
+        # Unmounts a `Datastore` on a cluster resource
         # @param [String] name
         #   Required. The resource name of the cluster to unmount the datastore. Resource
         #   names are schemeless URIs that follow the conventions in https://cloud.google.
