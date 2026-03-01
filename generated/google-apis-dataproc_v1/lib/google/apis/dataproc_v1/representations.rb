@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AttachedDiskConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthenticationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1811,6 +1817,16 @@ module Google
         end
       end
       
+      class AttachedDiskConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_size_gb, as: 'diskSizeGb'
+          property :disk_type, as: 'diskType'
+          property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
+        end
+      end
+      
       class AuthenticationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2151,6 +2167,8 @@ module Google
       class DiskConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attached_disk_configs, as: 'attachedDiskConfigs', class: Google::Apis::DataprocV1::AttachedDiskConfig, decorator: Google::Apis::DataprocV1::AttachedDiskConfig::Representation
+      
           property :boot_disk_provisioned_iops, :numeric_string => true, as: 'bootDiskProvisionedIops'
           property :boot_disk_provisioned_throughput, :numeric_string => true, as: 'bootDiskProvisionedThroughput'
           property :boot_disk_size_gb, as: 'bootDiskSizeGb'

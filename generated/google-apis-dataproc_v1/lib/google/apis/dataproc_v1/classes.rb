@@ -670,6 +670,47 @@ module Google
         end
       end
       
+      # Specifies the config of attached disk options for single VM instance.
+      class AttachedDiskConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Disk size in GB.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # Optional. Disk type.
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # Optional. Indicates how many IOPS to provision for the attached disk. This
+        # sets the number of I/O operations per second that the disk can handle. See
+        # https://cloud.google.com/compute/docs/disks/hyperdisks#hyperdisk-features
+        # Corresponds to the JSON property `provisionedIops`
+        # @return [Fixnum]
+        attr_accessor :provisioned_iops
+      
+        # Optional. Indicates how much throughput to provision for the attached disk.
+        # This sets the number of throughput mb per second that the disk can handle. See
+        # https://cloud.google.com/compute/docs/disks/hyperdisks#hyperdisk-features
+        # Corresponds to the JSON property `provisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :provisioned_throughput
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
+          @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
+        end
+      end
+      
       # Authentication configuration for a workload is used to set the default
       # identity for the workload execution. The config specifies the type of identity
       # (service account or user) that will be used by workloads to access resources
@@ -2022,6 +2063,11 @@ module Google
       class DiskConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. A list of attached disk configs for a group of VM instances.
+        # Corresponds to the JSON property `attachedDiskConfigs`
+        # @return [Array<Google::Apis::DataprocV1::AttachedDiskConfig>]
+        attr_accessor :attached_disk_configs
+      
         # Optional. Indicates how many IOPS to provision for the disk. This sets the
         # number of I/O operations per second that the disk can handle. This field is
         # supported only if boot_disk_type is hyperdisk-balanced.
@@ -2074,6 +2120,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @attached_disk_configs = args[:attached_disk_configs] if args.key?(:attached_disk_configs)
           @boot_disk_provisioned_iops = args[:boot_disk_provisioned_iops] if args.key?(:boot_disk_provisioned_iops)
           @boot_disk_provisioned_throughput = args[:boot_disk_provisioned_throughput] if args.key?(:boot_disk_provisioned_throughput)
           @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
