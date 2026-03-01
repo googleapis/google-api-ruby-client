@@ -195,7 +195,7 @@ module Google
         #   123456789`). Supported operations: - `AND` - `=` - `!=` Supported fields: - `
         #   partner_link_id` - `owning_account.account_type` - `owning_account.account_id`
         #   - `partner_account.account_type` - `partner_account.account_id` Example: `
-        #   owning_account.account_type = "GOOGLE_ADS" OR partner_account.account_id =
+        #   owning_account.account_type = "GOOGLE_ADS" AND partner_account.account_id =
         #   987654321`
         # @param [Fixnum] page_size
         #   The maximum number of partner links to return. The service may return fewer
