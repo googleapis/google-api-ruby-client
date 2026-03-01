@@ -870,7 +870,8 @@ module Google
         end
       end
       
-      # The destination status of the product status.
+      # The destination status of the product status. Equivalent to `
+      # StatusPerReportingContext` in Reports API.
       class DestinationStatus
         include Google::Apis::Core::Hashable
       
