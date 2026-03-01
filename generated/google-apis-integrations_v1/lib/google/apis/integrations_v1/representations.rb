@@ -3503,6 +3503,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_variables, as: 'additionalVariables', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1ConfigVariable, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1ConfigVariable::Representation
       
+          collection :allowed_event_types, as: 'allowedEventTypes'
           property :auth_config, as: 'authConfig', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig::Representation
       
           property :dead_letter_config, as: 'deadLetterConfig', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingConfigDeadLetterConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingConfigDeadLetterConfig::Representation
