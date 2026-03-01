@@ -25217,6 +25217,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Forwards arbitrary HTTP requests for both streaming and non-streaming cases.
+        # To use this method, invoke_route_prefix must be set to allow the paths that
+        # will be specified in the request.
+        # @param [String] endpoint
+        #   Required. The name of the Endpoint requested to serve the prediction. Format: `
+        #   projects/`project`/locations/`location`/endpoints/`endpoint``
+        # @param [String] invoke_id
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1InvokeRequest] google_cloud_aiplatform_v1_invoke_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def invoke_project_location_publisher_model_invoke(endpoint, invoke_id, google_cloud_aiplatform_v1_invoke_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+endpoint}/invoke/{+invokeId}', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1InvokeRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_invoke_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleApiHttpBody
+          command.params['endpoint'] = endpoint unless endpoint.nil?
+          command.params['invokeId'] = invoke_id unless invoke_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a RagCorpus.
         # @param [String] parent
         #   Required. The resource name of the Location to create the RagCorpus in. Format:
@@ -25322,7 +25360,8 @@ module Google
         #   Required. The resource name of the Location from which to list the RagCorpora.
         #   Format: `projects/`project`/locations/`location``
         # @param [Fixnum] page_size
-        #   Optional. The standard list page size.
+        #   Optional. The standard list page size. The maximum value is 100. If not
+        #   specified, a default value of 100 will be used.
         # @param [String] page_token
         #   Optional. The standard list page token. Typically obtained via
         #   ListRagCorporaResponse.next_page_token of the previous VertexRagDataService.
@@ -25686,7 +25725,8 @@ module Google
         #   Required. The resource name of the RagCorpus from which to list the RagFiles.
         #   Format: `projects/`project`/locations/`location`/ragCorpora/`rag_corpus``
         # @param [Fixnum] page_size
-        #   Optional. The standard list page size.
+        #   Optional. The standard list page size. The maximum value is 100. If not
+        #   specified, a default value of 100 will be used.
         # @param [String] page_token
         #   Optional. The standard list page token. Typically obtained via
         #   ListRagFilesResponse.next_page_token of the previous VertexRagDataService.
