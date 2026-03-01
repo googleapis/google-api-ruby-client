@@ -8268,6 +8268,11 @@ module Google
       class VulnerabilityType
         include Google::Apis::Core::Hashable
       
+        # Time this advisory was published by the source.
+        # Corresponds to the JSON property `advisoryPublishTime`
+        # @return [String]
+        attr_accessor :advisory_publish_time
+      
         # The CVSS score for this Vulnerability.
         # Corresponds to the JSON property `cvssScore`
         # @return [Float]
@@ -8311,6 +8316,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advisory_publish_time = args[:advisory_publish_time] if args.key?(:advisory_publish_time)
           @cvss_score = args[:cvss_score] if args.key?(:cvss_score)
           @cvss_v2 = args[:cvss_v2] if args.key?(:cvss_v2)
           @cvss_version = args[:cvss_version] if args.key?(:cvss_version)
