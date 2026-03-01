@@ -1267,7 +1267,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :excluded_region_codes
       
-        # Ad format targeted by this mediation group. Examples: "banner", "native".
+        # Ad format targeted by this mediation group. Examples: "BANNER", "NATIVE".
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
