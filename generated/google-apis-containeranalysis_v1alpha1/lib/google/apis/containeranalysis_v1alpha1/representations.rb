@@ -3319,6 +3319,7 @@ module Google
       class VulnerabilityType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advisory_publish_time, as: 'advisoryPublishTime'
           property :cvss_score, as: 'cvssScore'
           property :cvss_v2, as: 'cvssV2', class: Google::Apis::ContaineranalysisV1alpha1::Cvss, decorator: Google::Apis::ContaineranalysisV1alpha1::Cvss::Representation
       
