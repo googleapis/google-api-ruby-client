@@ -2838,10 +2838,12 @@ module Google
         # @param [String] filter
         #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
         #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
-        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: * `
-        #   user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `
-        #   is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"
-        #   `
+        #   is_pinned` * `labels` * `create_time` * `update_time` * `collaborative_project`
+        #   Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `
+        #   starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "
+        #   1970-01-01T12:00:00Z"` * `collaborative_project = "projects/123/locations/
+        #   global/collections/default_collection/engines/" "default_engine/
+        #   collaborative_projects/cp1"`
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -5567,10 +5569,12 @@ module Google
         # @param [String] filter
         #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
         #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
-        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: * `
-        #   user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `
-        #   is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"
-        #   `
+        #   is_pinned` * `labels` * `create_time` * `update_time` * `collaborative_project`
+        #   Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `
+        #   starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "
+        #   1970-01-01T12:00:00Z"` * `collaborative_project = "projects/123/locations/
+        #   global/collections/default_collection/engines/" "default_engine/
+        #   collaborative_projects/cp1"`
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -7894,10 +7898,12 @@ module Google
         # @param [String] filter
         #   A comma-separated list of fields to filter by, in EBNF grammar. The supported
         #   fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `
-        #   is_pinned` * `labels` * `create_time` * `update_time` Examples: * `
-        #   user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `
-        #   is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"
-        #   `
+        #   is_pinned` * `labels` * `create_time` * `update_time` * `collaborative_project`
+        #   Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `
+        #   starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "
+        #   1970-01-01T12:00:00Z"` * `collaborative_project = "projects/123/locations/
+        #   global/collections/default_collection/engines/" "default_engine/
+        #   collaborative_projects/cp1"`
         # @param [String] order_by
         #   A comma-separated list of fields to order by, sorted in ascending order. Use "
         #   desc" after a field name for descending. Supported fields: * `update_time` * `
@@ -9250,7 +9256,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a LicenseConfig
+        # Creates a LicenseConfig This method should only be used for creating
+        # NotebookLm licenses or Gemini Enterprise free trial licenses.
         # @param [String] parent
         #   Required. The parent resource name, such as `projects/`project`/locations/`
         #   location``.
