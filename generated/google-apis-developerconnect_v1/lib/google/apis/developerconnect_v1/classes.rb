@@ -516,7 +516,7 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
-        # Configuration for connections to SSM instance
+        # Configuration for connections to Secure Source Manager instance
         # Corresponds to the JSON property `secureSourceManagerInstanceConfig`
         # @return [Google::Apis::DeveloperconnectV1::SecureSourceManagerInstanceConfig]
         attr_accessor :secure_source_manager_instance_config
@@ -2349,12 +2349,12 @@ module Google
         end
       end
       
-      # Configuration for connections to SSM instance
+      # Configuration for connections to Secure Source Manager instance
       class SecureSourceManagerInstanceConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Immutable. SSM instance resource, formatted as `projects/*/locations/
-        # */instances/*`
+        # Required. Immutable. Secure Source Manager instance resource, formatted as `
+        # projects/*/locations/*/instances/*`
         # Corresponds to the JSON property `instance`
         # @return [String]
         attr_accessor :instance
