@@ -571,7 +571,7 @@ module Google
         # @return [String]
         attr_accessor :approval_id
       
-        # Output only. The time time the approval was completed.
+        # Output only. The time the approval was completed.
         # Corresponds to the JSON property `completeTime`
         # @return [String]
         attr_accessor :complete_time
