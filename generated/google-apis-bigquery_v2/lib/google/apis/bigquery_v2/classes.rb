@@ -1779,8 +1779,8 @@ module Google
       end
       
       # Data policy option. For more information, see [Mask data by applying data
-      # policies to a column](https://cloud.google.com/bigquery/docs/column-data-
-      # masking#data-policies-on-column/).
+      # policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-
+      # masking#data-policies-on-column).
       class DataPolicyOption
         include Google::Apis::Core::Hashable
       
@@ -4249,6 +4249,30 @@ module Google
         # @return [String]
         attr_accessor :disabled_reason
       
+        # Output only. Additional human-readable clarification, if available, for
+        # DisabledReason.
+        # Corresponds to the JSON property `disabledReasonDetails`
+        # @return [String]
+        attr_accessor :disabled_reason_details
+      
+        # Output only. The time at which the first incremental result was written. If
+        # the query needed to restart internally, this only describes the final attempt.
+        # Corresponds to the JSON property `firstIncrementalRowTime`
+        # @return [String]
+        attr_accessor :first_incremental_row_time
+      
+        # Output only. Number of rows that were in the latest result set before query
+        # completion.
+        # Corresponds to the JSON property `incrementalRowCount`
+        # @return [Fixnum]
+        attr_accessor :incremental_row_count
+      
+        # Output only. The time at which the last incremental result was written. Does
+        # not include the final result written after query completion.
+        # Corresponds to the JSON property `lastIncrementalRowTime`
+        # @return [String]
+        attr_accessor :last_incremental_row_time
+      
         # Output only. The time at which the result table's contents were modified. May
         # be absent if no results have been written or the query has completed.
         # Corresponds to the JSON property `resultSetLastModifyTime`
@@ -4269,6 +4293,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disabled_reason = args[:disabled_reason] if args.key?(:disabled_reason)
+          @disabled_reason_details = args[:disabled_reason_details] if args.key?(:disabled_reason_details)
+          @first_incremental_row_time = args[:first_incremental_row_time] if args.key?(:first_incremental_row_time)
+          @incremental_row_count = args[:incremental_row_count] if args.key?(:incremental_row_count)
+          @last_incremental_row_time = args[:last_incremental_row_time] if args.key?(:last_incremental_row_time)
           @result_set_last_modify_time = args[:result_set_last_modify_time] if args.key?(:result_set_last_modify_time)
           @result_set_last_replace_time = args[:result_set_last_replace_time] if args.key?(:result_set_last_replace_time)
         end
