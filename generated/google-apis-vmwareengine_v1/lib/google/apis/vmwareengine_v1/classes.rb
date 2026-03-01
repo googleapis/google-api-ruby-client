@@ -649,17 +649,16 @@ module Google
       class DatastoreMountConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. NFS is accessed by hosts in read mode Optional. Default value used
-        # will be READ_WRITE
+        # Optional. The access mode of the NFS volume. Optional. Default value used will
+        # be READ_WRITE
         # Corresponds to the JSON property `accessMode`
         # @return [String]
         attr_accessor :access_mode
       
-        # Required. The resource name of the datastore to unmount. The datastore
-        # requested to be mounted should be in same region/zone as the cluster. Resource
-        # names are schemeless URIs that follow the conventions in https://cloud.google.
-        # com/apis/design/resource_names. For example: `projects/my-project/locations/us-
-        # central1/datastores/my-datastore`
+        # Required. The resource name of the datastore to mount. Resource names are
+        # schemeless URIs that follow the conventions in https://cloud.google.com/apis/
+        # design/resource_names. For example: `projects/my-project/locations/us-central1/
+        # datastores/my-datastore`
         # Corresponds to the JSON property `datastore`
         # @return [String]
         attr_accessor :datastore
@@ -680,11 +679,6 @@ module Google
         # @return [String]
         attr_accessor :nfs_version
       
-        # Optional. ONLY required when NFS 4.1 version is used
-        # Corresponds to the JSON property `securityType`
-        # @return [String]
-        attr_accessor :security_type
-      
         # Output only. Server IP addresses of the NFS volume. For NFS 3, you can only
         # provide a single server IP address or DNS names.
         # Corresponds to the JSON property `servers`
@@ -702,7 +696,6 @@ module Google
           @datastore_network = args[:datastore_network] if args.key?(:datastore_network)
           @file_share = args[:file_share] if args.key?(:file_share)
           @nfs_version = args[:nfs_version] if args.key?(:nfs_version)
-          @security_type = args[:security_type] if args.key?(:security_type)
           @servers = args[:servers] if args.key?(:servers)
         end
       end
@@ -711,16 +704,22 @@ module Google
       class DatastoreNetwork
         include Google::Apis::Core::Hashable
       
-        # Optional. The number of connections of the NFS volume. Spported from vsphere 8.
-        # 0u1
+        # Optional. connection_count is used to set multiple connections from NFS client
+        # on ESXi host to NFS server. A higher number of connections results in better
+        # performance on datastores. In MountDatastore API by default max 4 connections
+        # are configured. User can set value of connection_count between 1 to 4.
+        # Connection_count is supported from vsphere 8.0u1 for earlier version 1
+        # connection count is set on the ESXi hosts.
         # Corresponds to the JSON property `connectionCount`
         # @return [Fixnum]
         attr_accessor :connection_count
       
-        # Optional. The Maximal Transmission Unit (MTU) of the datastore. System sets
-        # default MTU size. It prefers the VPC peering MTU, falling back to the VEN MTU
-        # if no peering MTU is found. when detected, and falling back to the VEN MTU
-        # otherwise.
+        # Optional. MTU value is set on the VMKernel adapter for the NFS traffic. By
+        # default standard 1500 MTU size is set in MountDatastore API which is good for
+        # typical setups. However google VPC networks supports jumbo MTU 8896. We
+        # recommend to tune this value based on the NFS traffic performance. Performance
+        # can be determined using benchmarking I/O tools like fio (Flexible I/O Tester)
+        # utility.
         # Corresponds to the JSON property `mtu`
         # @return [Fixnum]
         attr_accessor :mtu

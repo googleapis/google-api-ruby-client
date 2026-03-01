@@ -730,7 +730,6 @@ module Google
       
           property :file_share, as: 'fileShare'
           property :nfs_version, as: 'nfsVersion'
-          property :security_type, as: 'securityType'
           collection :servers, as: 'servers'
         end
       end
