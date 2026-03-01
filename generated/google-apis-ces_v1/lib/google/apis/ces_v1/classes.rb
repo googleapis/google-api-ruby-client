@@ -1470,7 +1470,7 @@ module Google
       class CitationsCitedChunk
         include Google::Apis::Core::Hashable
       
-        # Text used for citaiton.
+        # Text used for citation.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -2627,6 +2627,11 @@ module Google
         # @return [Google::Apis::CesV1::EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds]
         attr_accessor :expectation_level_metrics_thresholds
       
+        # Settings for matching tool calls.
+        # Corresponds to the JSON property `toolMatchingSettings`
+        # @return [Google::Apis::CesV1::EvaluationMetricsThresholdsToolMatchingSettings]
+        attr_accessor :tool_matching_settings
+      
         # Turn level metrics thresholds.
         # Corresponds to the JSON property `turnLevelMetricsThresholds`
         # @return [Google::Apis::CesV1::EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds]
@@ -2639,6 +2644,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @expectation_level_metrics_thresholds = args[:expectation_level_metrics_thresholds] if args.key?(:expectation_level_metrics_thresholds)
+          @tool_matching_settings = args[:tool_matching_settings] if args.key?(:tool_matching_settings)
           @turn_level_metrics_thresholds = args[:turn_level_metrics_thresholds] if args.key?(:turn_level_metrics_thresholds)
         end
       end
@@ -2693,6 +2699,25 @@ module Google
           @overall_tool_invocation_correctness_threshold = args[:overall_tool_invocation_correctness_threshold] if args.key?(:overall_tool_invocation_correctness_threshold)
           @semantic_similarity_channel = args[:semantic_similarity_channel] if args.key?(:semantic_similarity_channel)
           @semantic_similarity_success_threshold = args[:semantic_similarity_success_threshold] if args.key?(:semantic_similarity_success_threshold)
+        end
+      end
+      
+      # Settings for matching tool calls.
+      class EvaluationMetricsThresholdsToolMatchingSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Behavior for extra tool calls. Defaults to FAIL.
+        # Corresponds to the JSON property `extraToolCallBehavior`
+        # @return [String]
+        attr_accessor :extra_tool_call_behavior
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extra_tool_call_behavior = args[:extra_tool_call_behavior] if args.key?(:extra_tool_call_behavior)
         end
       end
       
@@ -2809,6 +2834,11 @@ module Google
         # @return [Google::Apis::CesV1::ToolsetTool]
         attr_accessor :toolset_tool
       
+        # Optional. The variables that are available for the tool execution.
+        # Corresponds to the JSON property `variables`
+        # @return [Hash<String,Object>]
+        attr_accessor :variables
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2818,6 +2848,7 @@ module Google
           @args = args[:args] if args.key?(:args)
           @tool = args[:tool] if args.key?(:tool)
           @toolset_tool = args[:toolset_tool] if args.key?(:toolset_tool)
+          @variables = args[:variables] if args.key?(:variables)
         end
       end
       
@@ -2825,10 +2856,10 @@ module Google
       class ExecuteToolResponse
         include Google::Apis::Core::Hashable
       
-        # Required. The tool execution result in JSON object format. Use "output" key to
-        # specify tool response and "error" key to specify error details (if any). If "
-        # output" and "error" keys are not specified, then whole "response" is treated
-        # as tool execution result.
+        # The tool execution result in JSON object format. Use "output" key to specify
+        # tool response and "error" key to specify error details (if any). If "output"
+        # and "error" keys are not specified, then whole "response" is treated as tool
+        # execution result.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -2844,6 +2875,11 @@ module Google
         # @return [Google::Apis::CesV1::ToolsetTool]
         attr_accessor :toolset_tool
       
+        # The variable values at the end of the tool execution.
+        # Corresponds to the JSON property `variables`
+        # @return [Hash<String,Object>]
+        attr_accessor :variables
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2853,6 +2889,7 @@ module Google
           @response = args[:response] if args.key?(:response)
           @tool = args[:tool] if args.key?(:tool)
           @toolset_tool = args[:toolset_tool] if args.key?(:toolset_tool)
+          @variables = args[:variables] if args.key?(:variables)
         end
       end
       
@@ -5062,7 +5099,7 @@ module Google
       class RetrieveToolsResponse
         include Google::Apis::Core::Hashable
       
-        # Required. The list of tools that are included in the specified toolset.
+        # The list of tools that are included in the specified toolset.
         # Corresponds to the JSON property `tools`
         # @return [Array<Google::Apis::CesV1::Tool>]
         attr_accessor :tools
@@ -5203,11 +5240,11 @@ module Google
       
         # Optional. Allows indirect references between schema nodes. The value should be
         # a valid reference to a child of the root `defs`. For example, the following
-        # schema defines a reference to a schema node named "Pet": type: object
+        # schema defines a reference to a schema node named "Pet": ``` type: object
         # properties: pet: ref: #/defs/Pet defs: Pet: type: object properties: name:
-        # type: string The value of the "pet" property is a reference to the schema node
-        # named "Pet". See details in https://json-schema.org/understanding-json-schema/
-        # structuring.
+        # type: string ``` The value of the "pet" property is a reference to the schema
+        # node named "Pet". See details in https://json-schema.org/understanding-json-
+        # schema/structuring.
         # Corresponds to the JSON property `ref`
         # @return [String]
         attr_accessor :ref
@@ -5488,10 +5525,11 @@ module Google
         attr_accessor :variables
       
         # Optional. A flag to indicate if the current message is a fragment of a larger
-        # input in the bidi streaming session. When `true`, the agent will defer
-        # processing until a subsequent message with `will_continue` set to `false` is
-        # received. Note: This flag has no effect on audio and DTMF inputs, which are
-        # always processed in real-time.
+        # input in the bidi streaming session. When set to `true`, the agent defers
+        # processing until it receives a subsequent message where `will_continue` is `
+        # false`, or until the system detects an endpoint in the audio input. NOTE: This
+        # field does not apply to audio and DTMF inputs, as they are always processed
+        # automatically based on the endpointing signal.
         # Corresponds to the JSON property `willContinue`
         # @return [Boolean]
         attr_accessor :will_continue
