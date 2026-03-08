@@ -26,7 +26,7 @@ module Google
       class ArchiveSource
         include Google::Apis::Core::Hashable
       
-        # Metadata for the user who started the build.
+        # Deprecated: Not used. Metadata for the user who started the build.
         # Corresponds to the JSON property `author`
         # @return [Google::Apis::FirebaseapphostingV1::SourceUserMetadata]
         attr_accessor :author
@@ -42,7 +42,11 @@ module Google
         # @return [String]
         attr_accessor :external_signed_uri
       
-        # Optional. Relative path in the archive.
+        # Optional. The directory relative to the root of the archive to use as the root
+        # for the deployed web app. Defaults to use the root of the repository if not
+        # provided. If deploying a [monorepo](https://firebase.google.com/docs/app-
+        # hosting/monorepos), this should be the directory that contains the `package.
+        # json` or `apphosting.yaml` file.
         # Corresponds to the JSON property `rootDirectory`
         # @return [String]
         attr_accessor :root_directory
@@ -406,7 +410,10 @@ module Google
         attr_accessor :repository
       
         # Optional. If `repository` is provided, the directory relative to the root of
-        # the repository to use as the root for the deployed web app.
+        # the repository to use as the root for the deployed web app. Defaults to use
+        # the root of the repository if not provided. If deploying a [monorepo](https://
+        # firebase.google.com/docs/app-hosting/monorepos), this should be the directory
+        # that contains the `package.json` or `apphosting.yaml` file.
         # Corresponds to the JSON property `rootDirectory`
         # @return [String]
         attr_accessor :root_directory
@@ -464,6 +471,15 @@ module Google
         # @return [String]
         attr_accessor :hash_prop
       
+        # Output only. The resource name for the Developer Connect [`gitRepositoryLink`](
+        # https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.
+        # locations.connections.gitRepositoryLinks) used for this build, in the format: `
+        # projects/`project`/locations/`location`/connections/`connection`/
+        # gitRepositoryLinks/`repositoryLink``
+        # Corresponds to the JSON property `repository`
+        # @return [String]
+        attr_accessor :repository
+      
         # Output only. A URI linking to the codebase on an hosting provider's website.
         # May not be valid if the commit has been rebased or force-pushed out of
         # existence in the linked repository.
@@ -484,6 +500,7 @@ module Google
           @commit_time = args[:commit_time] if args.key?(:commit_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @hash_prop = args[:hash_prop] if args.key?(:hash_prop)
+          @repository = args[:repository] if args.key?(:repository)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -503,15 +520,14 @@ module Google
         # Optional. Supplied environment variables for a specific build. Provided at
         # Build creation time and immutable afterwards. This field is only applicable
         # for Builds using a build image - (e.g., ContainerSource or ArchiveSource with
-        # locally_build_source) Attempts to set this for other build types will result
+        # locally_built_source) Attempts to set this for other build types will result
         # in an error
         # Corresponds to the JSON property `env`
         # @return [Array<Google::Apis::FirebaseapphostingV1::EnvironmentVariable>]
         attr_accessor :env
       
-        # Additional configuration to apply to the Cloud Run [`service`](https://cloud.
-        # google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-
-        # service).
+        # Configuration applied to the Cloud Run [`service`](https://cloud.google.com/
+        # run/docs/reference/rest/v2/projects.locations.services#resource:-service).
         # Corresponds to the JSON property `runConfig`
         # @return [Google::Apis::FirebaseapphostingV1::RunConfig]
         attr_accessor :run_config
@@ -1704,9 +1720,8 @@ module Google
         end
       end
       
-      # Additional configuration to apply to the Cloud Run [`service`](https://cloud.
-      # google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-
-      # service).
+      # Configuration applied to the Cloud Run [`service`](https://cloud.google.com/
+      # run/docs/reference/rest/v2/projects.locations.services#resource:-service).
       class RunConfig
         include Google::Apis::Core::Hashable
       
@@ -1811,23 +1826,23 @@ module Google
         end
       end
       
-      # Metadata for the user who started the build.
+      # Deprecated: Not used. Metadata for the user who started the build.
       class SourceUserMetadata
         include Google::Apis::Core::Hashable
       
-        # Output only. The user-chosen displayname. May be empty.
+        # Output only. Deprecated: Not used. The user-chosen displayname. May be empty.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. The account email linked to the EUC that created the build. May
-        # be a service account or other robot account.
+        # Output only. Deprecated: Not used. The account email linked to the EUC that
+        # created the build. May be a service account or other robot account.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
       
-        # Output only. The URI of a profile photo associated with the user who created
-        # the build.
+        # Output only. Deprecated: Not used. The URI of a profile photo associated with
+        # the user who created the build.
         # Corresponds to the JSON property `imageUri`
         # @return [String]
         attr_accessor :image_uri
