@@ -531,6 +531,7 @@ module Google
       
           property :database, as: 'database'
           property :ephemeral, as: 'ephemeral'
+          property :schema, as: 'schema'
           property :schema_migration, as: 'schemaMigration'
           property :schema_validation, as: 'schemaValidation'
           property :unlinked, as: 'unlinked'

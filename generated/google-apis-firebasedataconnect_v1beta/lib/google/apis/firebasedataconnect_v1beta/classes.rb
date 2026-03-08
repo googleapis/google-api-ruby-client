@@ -1093,6 +1093,12 @@ module Google
         attr_accessor :ephemeral
         alias_method :ephemeral?, :ephemeral
       
+        # Optional. User-configured PostgreSQL schema. Defaults to "public" if not
+        # specified.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
         # Optional. Configure how to perform Postgresql schema migration.
         # Corresponds to the JSON property `schemaMigration`
         # @return [String]
@@ -1119,6 +1125,7 @@ module Google
           @cloud_sql = args[:cloud_sql] if args.key?(:cloud_sql)
           @database = args[:database] if args.key?(:database)
           @ephemeral = args[:ephemeral] if args.key?(:ephemeral)
+          @schema = args[:schema] if args.key?(:schema)
           @schema_migration = args[:schema_migration] if args.key?(:schema_migration)
           @schema_validation = args[:schema_validation] if args.key?(:schema_validation)
           @unlinked = args[:unlinked] if args.key?(:unlinked)
