@@ -426,7 +426,7 @@ module Google
         # @return [String]
         attr_accessor :error_message
       
-        # * Status of the event. Possible values if not empty: - UNKNOWN_EVENT_STATUS -
+        # Status of the event. Possible values if not empty: - UNKNOWN_EVENT_STATUS -
         # SUCCEEDED - SUCCEEDED_WITH_WARNINGS - FAILED - SKIPPED
         # Corresponds to the JSON property `eventStatus`
         # @return [String]
