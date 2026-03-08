@@ -4518,10 +4518,27 @@ module Google
         # @return [String]
         attr_accessor :private_network
       
+        # Optional. The region of the target instance where the datasource will be
+        # restored. For example: "us-central1".
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # Target instance name.
         # Corresponds to the JSON property `targetInstance`
         # @return [String]
         attr_accessor :target_instance
+      
+        # Optional. Specifies the instance settings that will be cleared from the source
+        # instance. This field is only applicable for cross project PITRs.
+        # Corresponds to the JSON property `targetInstanceClearSettingsFieldNames`
+        # @return [Array<String>]
+        attr_accessor :target_instance_clear_settings_field_names
+      
+        # A Cloud SQL instance resource.
+        # Corresponds to the JSON property `targetInstanceSettings`
+        # @return [Google::Apis::SqladminV1::DatabaseInstance]
+        attr_accessor :target_instance_settings
       
         def initialize(**args)
            update!(**args)
@@ -4535,7 +4552,10 @@ module Google
           @preferred_secondary_zone = args[:preferred_secondary_zone] if args.key?(:preferred_secondary_zone)
           @preferred_zone = args[:preferred_zone] if args.key?(:preferred_zone)
           @private_network = args[:private_network] if args.key?(:private_network)
+          @region = args[:region] if args.key?(:region)
           @target_instance = args[:target_instance] if args.key?(:target_instance)
+          @target_instance_clear_settings_field_names = args[:target_instance_clear_settings_field_names] if args.key?(:target_instance_clear_settings_field_names)
+          @target_instance_settings = args[:target_instance_settings] if args.key?(:target_instance_settings)
         end
       end
       

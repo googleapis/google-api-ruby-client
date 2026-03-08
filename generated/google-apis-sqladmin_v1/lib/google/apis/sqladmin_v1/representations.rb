@@ -2064,7 +2064,11 @@ module Google
           property :preferred_secondary_zone, as: 'preferredSecondaryZone'
           property :preferred_zone, as: 'preferredZone'
           property :private_network, as: 'privateNetwork'
+          property :region, as: 'region'
           property :target_instance, as: 'targetInstance'
+          collection :target_instance_clear_settings_field_names, as: 'targetInstanceClearSettingsFieldNames'
+          property :target_instance_settings, as: 'targetInstanceSettings', class: Google::Apis::SqladminV1::DatabaseInstance, decorator: Google::Apis::SqladminV1::DatabaseInstance::Representation
+      
         end
       end
       
