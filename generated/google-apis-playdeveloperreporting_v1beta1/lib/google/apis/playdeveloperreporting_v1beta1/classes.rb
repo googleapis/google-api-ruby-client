@@ -22,34 +22,6 @@ module Google
   module Apis
     module PlaydeveloperreportingV1beta1
       
-      # Profile describing the data handling characteristics of an MCP tool. When used
-      # within the McpTool.meta field, this message should be packed into a google.
-      # protobuf.Any and associated with the key: "google.com/tool.profiles/
-      # data_handling"
-      class ApiservingMcpMcpToolDataHandlingProfile
-        include Google::Apis::Core::Hashable
-      
-        # // The data access level of the tool's inputs.
-        # Corresponds to the JSON property `inputDataAccessLevel`
-        # @return [String]
-        attr_accessor :input_data_access_level
-      
-        # The data access level of the tool's outputs.
-        # Corresponds to the JSON property `outputDataAccessLevel`
-        # @return [String]
-        attr_accessor :output_data_access_level
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @input_data_access_level = args[:input_data_access_level] if args.key?(:input_data_access_level)
-          @output_data_access_level = args[:output_data_access_level] if args.key?(:output_data_access_level)
-        end
-      end
-      
       # Represents an anomaly detected in a dataset. Our anomaly detection systems
       # flag datapoints in a time series that fall outside of and expected range
       # derived from historical data. Although those expected ranges have an upper and
