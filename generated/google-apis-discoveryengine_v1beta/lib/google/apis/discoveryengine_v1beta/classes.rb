@@ -822,6 +822,12 @@ module Google
         attr_accessor :use_static_secrets
         alias_method :use_static_secrets?, :use_static_secrets
       
+        # Optional. Mapping from operation name to the list of scopes. Only be populated
+        # if there are user specified scopes.
+        # Corresponds to the JSON property `userDefinedScopesMapping`
+        # @return [Hash<String,Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1ActionConfigScopeList>]
+        attr_accessor :user_defined_scopes_mapping
+      
         def initialize(**args)
            update!(**args)
         end
@@ -833,6 +839,26 @@ module Google
           @json_action_params = args[:json_action_params] if args.key?(:json_action_params)
           @service_name = args[:service_name] if args.key?(:service_name)
           @use_static_secrets = args[:use_static_secrets] if args.key?(:use_static_secrets)
+          @user_defined_scopes_mapping = args[:user_defined_scopes_mapping] if args.key?(:user_defined_scopes_mapping)
+        end
+      end
+      
+      # Stores a list of scopes.
+      class GoogleCloudDiscoveryengineV1ActionConfigScopeList
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of scopes.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scopes = args[:scopes] if args.key?(:scopes)
         end
       end
       
@@ -2143,8 +2169,19 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. The name of the data source. Supported values: `salesforce`, `jira`,
-        # `confluence`, `bigquery`.
+        # Required. The identifier for the data source. This is a partial list of
+        # supported connectors. Please refer to the [documentation](https://docs.cloud.
+        # google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-
+        # data-stores) for the full list of connectors. Supported first-party connectors
+        # include: * `gcs` * `bigquery` * `gcp_fhir` * `google_mail` * `google_drive` * `
+        # google_calendar` * `google_chat` Supported third-party connectors include:
+        # Generally available (GA) connectors: * `onedrive` * `outlook` * `confluence` *
+        # `jira` * `servicenow` * `sharepoint` Preview connectors: * `asana` * `
+        # azure_active_directory` * `box` * `canva` * `confluence_server` * `
+        # custom_connector` * `docusign` * `dropbox` * `dynamics365` * `github` * `
+        # gitlab` * `hubspot` * `jira_server` * `linear` * `native_cloud_identity` * `
+        # notion` * `okta` * `pagerduty` * `peoplesoft` * `salesforce` * `shopify` * `
+        # slack` * `snowflake` * `teams` * `trello` * `workday` * `zendesk`
         # Corresponds to the JSON property `dataSource`
         # @return [String]
         attr_accessor :data_source
@@ -2673,6 +2710,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DocumentProcessingConfig]
         attr_accessor :document_processing_config
       
+        # Stores information for federated search.
+        # Corresponds to the JSON property `federatedSearchConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfig]
+        attr_accessor :federated_search_config
+      
         # Config to data store for `HEALTHCARE_FHIR` vertical.
         # Corresponds to the JSON property `healthcareFhirConfig`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1HealthcareFhirConfig]
@@ -2758,6 +2800,7 @@ module Google
           @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @document_processing_config = args[:document_processing_config] if args.key?(:document_processing_config)
+          @federated_search_config = args[:federated_search_config] if args.key?(:federated_search_config)
           @healthcare_fhir_config = args[:healthcare_fhir_config] if args.key?(:healthcare_fhir_config)
           @identity_mapping_store = args[:identity_mapping_store] if args.key?(:identity_mapping_store)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
@@ -2818,6 +2861,190 @@ module Google
           @unstructured_data_update_time = args[:unstructured_data_update_time] if args.key?(:unstructured_data_update_time)
           @website_data_size = args[:website_data_size] if args.key?(:website_data_size)
           @website_data_update_time = args[:website_data_update_time] if args.key?(:website_data_update_time)
+        end
+      end
+      
+      # Stores information for federated search.
+      class GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfig
+        include Google::Apis::Core::Hashable
+      
+        # Stores information for connecting to AlloyDB.
+        # Corresponds to the JSON property `alloyDbConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfig]
+        attr_accessor :alloy_db_config
+      
+        # Config for connecting to NotebookLM Enterprise.
+        # Corresponds to the JSON property `notebooklmConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigNotebooklmConfig]
+        attr_accessor :notebooklm_config
+      
+        # Stores information for third party applicationOAuth.
+        # Corresponds to the JSON property `thirdPartyOauthConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigThirdPartyOauthConfig]
+        attr_accessor :third_party_oauth_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alloy_db_config = args[:alloy_db_config] if args.key?(:alloy_db_config)
+          @notebooklm_config = args[:notebooklm_config] if args.key?(:notebooklm_config)
+          @third_party_oauth_config = args[:third_party_oauth_config] if args.key?(:third_party_oauth_config)
+        end
+      end
+      
+      # Stores information for connecting to AlloyDB.
+      class GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for AlloyDB AI Natural Language.
+        # Corresponds to the JSON property `alloydbAiNlConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig]
+        attr_accessor :alloydb_ai_nl_config
+      
+        # Configuration for connecting to AlloyDB.
+        # Corresponds to the JSON property `alloydbConnectionConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig]
+        attr_accessor :alloydb_connection_config
+      
+        # Optional. Fields to be returned in the search results. If empty, all fields
+        # will be returned.
+        # Corresponds to the JSON property `returnedFields`
+        # @return [Array<String>]
+        attr_accessor :returned_fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alloydb_ai_nl_config = args[:alloydb_ai_nl_config] if args.key?(:alloydb_ai_nl_config)
+          @alloydb_connection_config = args[:alloydb_connection_config] if args.key?(:alloydb_connection_config)
+          @returned_fields = args[:returned_fields] if args.key?(:returned_fields)
+        end
+      end
+      
+      # Configuration for AlloyDB AI Natural Language.
+      class GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. AlloyDb AI NL config id, i.e. the value that was used for calling `
+        # SELECT alloydb_ai_nl.g_create_configuration(...)`. Can be empty.
+        # Corresponds to the JSON property `nlConfigId`
+        # @return [String]
+        attr_accessor :nl_config_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nl_config_id = args[:nl_config_id] if args.key?(:nl_config_id)
+        end
+      end
+      
+      # Configuration for connecting to AlloyDB.
+      class GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Auth mode.
+        # Corresponds to the JSON property `authMode`
+        # @return [String]
+        attr_accessor :auth_mode
+      
+        # Required. The AlloyDB database to connect to.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Optional. If true, enable PSVS for AlloyDB.
+        # Corresponds to the JSON property `enablePsvs`
+        # @return [Boolean]
+        attr_accessor :enable_psvs
+        alias_method :enable_psvs?, :enable_psvs
+      
+        # Required. The AlloyDB instance to connect to.
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        # Required. Database password. If auth_mode = END_USER_ACCOUNT, it can be unset.
+        # In that case, the password will be inferred on the AlloyDB side, based on the
+        # authenticated user.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Required. Database user. If auth_mode = END_USER_ACCOUNT, it can be unset. In
+        # that case, the user will be inferred on the AlloyDB side, based on the
+        # authenticated user.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_mode = args[:auth_mode] if args.key?(:auth_mode)
+          @database = args[:database] if args.key?(:database)
+          @enable_psvs = args[:enable_psvs] if args.key?(:enable_psvs)
+          @instance = args[:instance] if args.key?(:instance)
+          @password = args[:password] if args.key?(:password)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # Config for connecting to NotebookLM Enterprise.
+      class GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigNotebooklmConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Search config name. Format: projects/*/locations/global/
+        # notebookLmSearchConfigs/*
+        # Corresponds to the JSON property `searchConfig`
+        # @return [String]
+        attr_accessor :search_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @search_config = args[:search_config] if args.key?(:search_config)
+        end
+      end
+      
+      # Stores information for third party applicationOAuth.
+      class GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigThirdPartyOauthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The type of the application. E.g., "jira", "box", etc.
+        # Corresponds to the JSON property `appName`
+        # @return [String]
+        attr_accessor :app_name
+      
+        # Optional. The instance name identifying the 3P app, e.g., "vaissptbots-my".
+        # This is different from the instance_uri which is the full URL of the 3P app e.
+        # g., "https://vaissptbots-my.sharepoint.com".
+        # Corresponds to the JSON property `instanceName`
+        # @return [String]
+        attr_accessor :instance_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_name = args[:app_name] if args.key?(:app_name)
+          @instance_name = args[:instance_name] if args.key?(:instance_name)
         end
       end
       
@@ -6505,6 +6732,12 @@ module Google
         attr_accessor :use_static_secrets
         alias_method :use_static_secrets?, :use_static_secrets
       
+        # Optional. Mapping from operation name to the list of scopes. Only be populated
+        # if there are user specified scopes.
+        # Corresponds to the JSON property `userDefinedScopesMapping`
+        # @return [Hash<String,Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaActionConfigScopeList>]
+        attr_accessor :user_defined_scopes_mapping
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6516,6 +6749,26 @@ module Google
           @json_action_params = args[:json_action_params] if args.key?(:json_action_params)
           @service_name = args[:service_name] if args.key?(:service_name)
           @use_static_secrets = args[:use_static_secrets] if args.key?(:use_static_secrets)
+          @user_defined_scopes_mapping = args[:user_defined_scopes_mapping] if args.key?(:user_defined_scopes_mapping)
+        end
+      end
+      
+      # Stores a list of scopes.
+      class GoogleCloudDiscoveryengineV1alphaActionConfigScopeList
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of scopes.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scopes = args[:scopes] if args.key?(:scopes)
         end
       end
       
@@ -7029,6 +7282,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo]
         attr_accessor :chunk_info
       
+        # Output only. The search queries that produced this reference.
+        # Corresponds to the JSON property `queries`
+        # @return [Array<String>]
+        attr_accessor :queries
+      
         # Structured search information.
         # Corresponds to the JSON property `structuredDocumentInfo`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo]
@@ -7046,6 +7304,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @chunk_info = args[:chunk_info] if args.key?(:chunk_info)
+          @queries = args[:queries] if args.key?(:queries)
           @structured_document_info = args[:structured_document_info] if args.key?(:structured_document_info)
           @unstructured_document_info = args[:unstructured_document_info] if args.key?(:unstructured_document_info)
         end
@@ -9219,8 +9478,19 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy]
         attr_accessor :data_protection_policy
       
-        # Required. The name of the data source. Supported values: `salesforce`, `jira`,
-        # `confluence`, `bigquery`.
+        # Required. The identifier for the data source. This is a partial list of
+        # supported connectors. Please refer to the [documentation](https://docs.cloud.
+        # google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-
+        # data-stores) for the full list of connectors. Supported first-party connectors
+        # include: * `gcs` * `bigquery` * `gcp_fhir` * `google_mail` * `google_drive` * `
+        # google_calendar` * `google_chat` Supported third-party connectors include:
+        # Generally available (GA) connectors: * `onedrive` * `outlook` * `confluence` *
+        # `jira` * `servicenow` * `sharepoint` Preview connectors: * `asana` * `
+        # azure_active_directory` * `box` * `canva` * `confluence_server` * `
+        # custom_connector` * `docusign` * `dropbox` * `dynamics365` * `github` * `
+        # gitlab` * `hubspot` * `jira_server` * `linear` * `native_cloud_identity` * `
+        # notion` * `okta` * `pagerduty` * `peoplesoft` * `salesforce` * `shopify` * `
+        # slack` * `snowflake` * `teams` * `trello` * `workday` * `zendesk`
         # Corresponds to the JSON property `dataSource`
         # @return [String]
         attr_accessor :data_source
@@ -9790,6 +10060,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig]
         attr_accessor :document_processing_config
       
+        # Stores information for federated search.
+        # Corresponds to the JSON property `federatedSearchConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfig]
+        attr_accessor :federated_search_config
+      
         # Config to data store for `HEALTHCARE_FHIR` vertical.
         # Corresponds to the JSON property `healthcareFhirConfig`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig]
@@ -9885,6 +10160,7 @@ module Google
           @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @document_processing_config = args[:document_processing_config] if args.key?(:document_processing_config)
+          @federated_search_config = args[:federated_search_config] if args.key?(:federated_search_config)
           @healthcare_fhir_config = args[:healthcare_fhir_config] if args.key?(:healthcare_fhir_config)
           @identity_mapping_store = args[:identity_mapping_store] if args.key?(:identity_mapping_store)
           @idp_config = args[:idp_config] if args.key?(:idp_config)
@@ -9947,6 +10223,190 @@ module Google
           @unstructured_data_update_time = args[:unstructured_data_update_time] if args.key?(:unstructured_data_update_time)
           @website_data_size = args[:website_data_size] if args.key?(:website_data_size)
           @website_data_update_time = args[:website_data_update_time] if args.key?(:website_data_update_time)
+        end
+      end
+      
+      # Stores information for federated search.
+      class GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfig
+        include Google::Apis::Core::Hashable
+      
+        # Stores information for connecting to AlloyDB.
+        # Corresponds to the JSON property `alloyDbConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfig]
+        attr_accessor :alloy_db_config
+      
+        # Config for connecting to NotebookLM Enterprise.
+        # Corresponds to the JSON property `notebooklmConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigNotebooklmConfig]
+        attr_accessor :notebooklm_config
+      
+        # Stores information for third party applicationOAuth.
+        # Corresponds to the JSON property `thirdPartyOauthConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigThirdPartyOauthConfig]
+        attr_accessor :third_party_oauth_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alloy_db_config = args[:alloy_db_config] if args.key?(:alloy_db_config)
+          @notebooklm_config = args[:notebooklm_config] if args.key?(:notebooklm_config)
+          @third_party_oauth_config = args[:third_party_oauth_config] if args.key?(:third_party_oauth_config)
+        end
+      end
+      
+      # Stores information for connecting to AlloyDB.
+      class GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for AlloyDB AI Natural Language.
+        # Corresponds to the JSON property `alloydbAiNlConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig]
+        attr_accessor :alloydb_ai_nl_config
+      
+        # Configuration for connecting to AlloyDB.
+        # Corresponds to the JSON property `alloydbConnectionConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig]
+        attr_accessor :alloydb_connection_config
+      
+        # Optional. Fields to be returned in the search results. If empty, all fields
+        # will be returned.
+        # Corresponds to the JSON property `returnedFields`
+        # @return [Array<String>]
+        attr_accessor :returned_fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alloydb_ai_nl_config = args[:alloydb_ai_nl_config] if args.key?(:alloydb_ai_nl_config)
+          @alloydb_connection_config = args[:alloydb_connection_config] if args.key?(:alloydb_connection_config)
+          @returned_fields = args[:returned_fields] if args.key?(:returned_fields)
+        end
+      end
+      
+      # Configuration for AlloyDB AI Natural Language.
+      class GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. AlloyDb AI NL config id, i.e. the value that was used for calling `
+        # SELECT alloydb_ai_nl.g_create_configuration(...)`. Can be empty.
+        # Corresponds to the JSON property `nlConfigId`
+        # @return [String]
+        attr_accessor :nl_config_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nl_config_id = args[:nl_config_id] if args.key?(:nl_config_id)
+        end
+      end
+      
+      # Configuration for connecting to AlloyDB.
+      class GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Auth mode.
+        # Corresponds to the JSON property `authMode`
+        # @return [String]
+        attr_accessor :auth_mode
+      
+        # Required. The AlloyDB database to connect to.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Optional. If true, enable PSVS for AlloyDB.
+        # Corresponds to the JSON property `enablePsvs`
+        # @return [Boolean]
+        attr_accessor :enable_psvs
+        alias_method :enable_psvs?, :enable_psvs
+      
+        # Required. The AlloyDB instance to connect to.
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        # Required. Database password. If auth_mode = END_USER_ACCOUNT, it can be unset.
+        # In that case, the password will be inferred on the AlloyDB side, based on the
+        # authenticated user.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Required. Database user. If auth_mode = END_USER_ACCOUNT, it can be unset. In
+        # that case, the user will be inferred on the AlloyDB side, based on the
+        # authenticated user.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_mode = args[:auth_mode] if args.key?(:auth_mode)
+          @database = args[:database] if args.key?(:database)
+          @enable_psvs = args[:enable_psvs] if args.key?(:enable_psvs)
+          @instance = args[:instance] if args.key?(:instance)
+          @password = args[:password] if args.key?(:password)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # Config for connecting to NotebookLM Enterprise.
+      class GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigNotebooklmConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Search config name. Format: projects/*/locations/global/
+        # notebookLmSearchConfigs/*
+        # Corresponds to the JSON property `searchConfig`
+        # @return [String]
+        attr_accessor :search_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @search_config = args[:search_config] if args.key?(:search_config)
+        end
+      end
+      
+      # Stores information for third party applicationOAuth.
+      class GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigThirdPartyOauthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The type of the application. E.g., "jira", "box", etc.
+        # Corresponds to the JSON property `appName`
+        # @return [String]
+        attr_accessor :app_name
+      
+        # Optional. The instance name identifying the 3P app, e.g., "vaissptbots-my".
+        # This is different from the instance_uri which is the full URL of the 3P app e.
+        # g., "https://vaissptbots-my.sharepoint.com".
+        # Corresponds to the JSON property `instanceName`
+        # @return [String]
+        attr_accessor :instance_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_name = args[:app_name] if args.key?(:app_name)
+          @instance_name = args[:instance_name] if args.key?(:instance_name)
         end
       end
       
@@ -14447,17 +14907,12 @@ module Google
         # be interpreted as "How did Alphabet do in 2023?". Example #2 (coordination
         # between /search API calls and /answer API calls): Call /answer API with the
         # session ID generated in the first call. Here, the answer generation happens in
-        # the context of the search results from the first search call. Multi-turn
-        # Search feature is currently at private GA stage. Please use v1alpha or v1beta
-        # version instead before we launch this feature to public GA. Or ask for
-        # allowlisting through Google Support team.
+        # the context of the search results from the first search call.
         # Corresponds to the JSON property `session`
         # @return [String]
         attr_accessor :session
       
-        # Session specification. Multi-turn Search feature is currently at private GA
-        # stage. Please use v1alpha or v1beta version instead before we launch this
-        # feature to public GA. Or ask for allowlisting through Google Support team.
+        # Session specification.
         # Corresponds to the JSON property `sessionSpec`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestSessionSpec]
         attr_accessor :session_spec
@@ -15635,9 +16090,7 @@ module Google
         end
       end
       
-      # Session specification. Multi-turn Search feature is currently at private GA
-      # stage. Please use v1alpha or v1beta version instead before we launch this
-      # feature to public GA. Or ask for allowlisting through Google Support team.
+      # Session specification.
       class GoogleCloudDiscoveryengineV1alphaSearchRequestSessionSpec
         include Google::Apis::Core::Hashable
       
@@ -16437,6 +16890,9 @@ module Google
         # This mixes the event history of those users together, which results in
         # degraded model quality. The field must be a UTF-8 encoded string with a length
         # limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
+        # Represents an opaque ID to the Search API. The Search API doesn't interpret
+        # the value in any way. This field is used to associate events with a user
+        # across sessions if the events are being uploaded.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
@@ -18395,6 +18851,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfo]
         attr_accessor :chunk_info
       
+        # Output only. The search queries that produced this reference.
+        # Corresponds to the JSON property `queries`
+        # @return [Array<String>]
+        attr_accessor :queries
+      
         # Structured search information.
         # Corresponds to the JSON property `structuredDocumentInfo`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerReferenceStructuredDocumentInfo]
@@ -18412,6 +18873,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @chunk_info = args[:chunk_info] if args.key?(:chunk_info)
+          @queries = args[:queries] if args.key?(:queries)
           @structured_document_info = args[:structured_document_info] if args.key?(:structured_document_info)
           @unstructured_document_info = args[:unstructured_document_info] if args.key?(:unstructured_document_info)
         end
@@ -21965,6 +22427,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig]
         attr_accessor :document_processing_config
       
+        # Stores information for federated search.
+        # Corresponds to the JSON property `federatedSearchConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfig]
+        attr_accessor :federated_search_config
+      
         # Config to data store for `HEALTHCARE_FHIR` vertical.
         # Corresponds to the JSON property `healthcareFhirConfig`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig]
@@ -22055,6 +22522,7 @@ module Google
           @default_schema_id = args[:default_schema_id] if args.key?(:default_schema_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @document_processing_config = args[:document_processing_config] if args.key?(:document_processing_config)
+          @federated_search_config = args[:federated_search_config] if args.key?(:federated_search_config)
           @healthcare_fhir_config = args[:healthcare_fhir_config] if args.key?(:healthcare_fhir_config)
           @identity_mapping_store = args[:identity_mapping_store] if args.key?(:identity_mapping_store)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
@@ -22116,6 +22584,190 @@ module Google
           @unstructured_data_update_time = args[:unstructured_data_update_time] if args.key?(:unstructured_data_update_time)
           @website_data_size = args[:website_data_size] if args.key?(:website_data_size)
           @website_data_update_time = args[:website_data_update_time] if args.key?(:website_data_update_time)
+        end
+      end
+      
+      # Stores information for federated search.
+      class GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfig
+        include Google::Apis::Core::Hashable
+      
+        # Stores information for connecting to AlloyDB.
+        # Corresponds to the JSON property `alloyDbConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfig]
+        attr_accessor :alloy_db_config
+      
+        # Config for connecting to NotebookLM Enterprise.
+        # Corresponds to the JSON property `notebooklmConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigNotebooklmConfig]
+        attr_accessor :notebooklm_config
+      
+        # Stores information for third party applicationOAuth.
+        # Corresponds to the JSON property `thirdPartyOauthConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigThirdPartyOauthConfig]
+        attr_accessor :third_party_oauth_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alloy_db_config = args[:alloy_db_config] if args.key?(:alloy_db_config)
+          @notebooklm_config = args[:notebooklm_config] if args.key?(:notebooklm_config)
+          @third_party_oauth_config = args[:third_party_oauth_config] if args.key?(:third_party_oauth_config)
+        end
+      end
+      
+      # Stores information for connecting to AlloyDB.
+      class GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for AlloyDB AI Natural Language.
+        # Corresponds to the JSON property `alloydbAiNlConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig]
+        attr_accessor :alloydb_ai_nl_config
+      
+        # Configuration for connecting to AlloyDB.
+        # Corresponds to the JSON property `alloydbConnectionConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig]
+        attr_accessor :alloydb_connection_config
+      
+        # Optional. Fields to be returned in the search results. If empty, all fields
+        # will be returned.
+        # Corresponds to the JSON property `returnedFields`
+        # @return [Array<String>]
+        attr_accessor :returned_fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alloydb_ai_nl_config = args[:alloydb_ai_nl_config] if args.key?(:alloydb_ai_nl_config)
+          @alloydb_connection_config = args[:alloydb_connection_config] if args.key?(:alloydb_connection_config)
+          @returned_fields = args[:returned_fields] if args.key?(:returned_fields)
+        end
+      end
+      
+      # Configuration for AlloyDB AI Natural Language.
+      class GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. AlloyDb AI NL config id, i.e. the value that was used for calling `
+        # SELECT alloydb_ai_nl.g_create_configuration(...)`. Can be empty.
+        # Corresponds to the JSON property `nlConfigId`
+        # @return [String]
+        attr_accessor :nl_config_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nl_config_id = args[:nl_config_id] if args.key?(:nl_config_id)
+        end
+      end
+      
+      # Configuration for connecting to AlloyDB.
+      class GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Auth mode.
+        # Corresponds to the JSON property `authMode`
+        # @return [String]
+        attr_accessor :auth_mode
+      
+        # Required. The AlloyDB database to connect to.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Optional. If true, enable PSVS for AlloyDB.
+        # Corresponds to the JSON property `enablePsvs`
+        # @return [Boolean]
+        attr_accessor :enable_psvs
+        alias_method :enable_psvs?, :enable_psvs
+      
+        # Required. The AlloyDB instance to connect to.
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        # Required. Database password. If auth_mode = END_USER_ACCOUNT, it can be unset.
+        # In that case, the password will be inferred on the AlloyDB side, based on the
+        # authenticated user.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Required. Database user. If auth_mode = END_USER_ACCOUNT, it can be unset. In
+        # that case, the user will be inferred on the AlloyDB side, based on the
+        # authenticated user.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_mode = args[:auth_mode] if args.key?(:auth_mode)
+          @database = args[:database] if args.key?(:database)
+          @enable_psvs = args[:enable_psvs] if args.key?(:enable_psvs)
+          @instance = args[:instance] if args.key?(:instance)
+          @password = args[:password] if args.key?(:password)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # Config for connecting to NotebookLM Enterprise.
+      class GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigNotebooklmConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Search config name. Format: projects/*/locations/global/
+        # notebookLmSearchConfigs/*
+        # Corresponds to the JSON property `searchConfig`
+        # @return [String]
+        attr_accessor :search_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @search_config = args[:search_config] if args.key?(:search_config)
+        end
+      end
+      
+      # Stores information for third party applicationOAuth.
+      class GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigThirdPartyOauthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The type of the application. E.g., "jira", "box", etc.
+        # Corresponds to the JSON property `appName`
+        # @return [String]
+        attr_accessor :app_name
+      
+        # Optional. The instance name identifying the 3P app, e.g., "vaissptbots-my".
+        # This is different from the instance_uri which is the full URL of the 3P app e.
+        # g., "https://vaissptbots-my.sharepoint.com".
+        # Corresponds to the JSON property `instanceName`
+        # @return [String]
+        attr_accessor :instance_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_name = args[:app_name] if args.key?(:app_name)
+          @instance_name = args[:instance_name] if args.key?(:instance_name)
         end
       end
       
@@ -28105,17 +28757,12 @@ module Google
         # be interpreted as "How did Alphabet do in 2023?". Example #2 (coordination
         # between /search API calls and /answer API calls): Call /answer API with the
         # session ID generated in the first call. Here, the answer generation happens in
-        # the context of the search results from the first search call. Multi-turn
-        # Search feature is currently at private GA stage. Please use v1alpha or v1beta
-        # version instead before we launch this feature to public GA. Or ask for
-        # allowlisting through Google Support team.
+        # the context of the search results from the first search call.
         # Corresponds to the JSON property `session`
         # @return [String]
         attr_accessor :session
       
-        # Session specification. Multi-turn Search feature is currently at private GA
-        # stage. Please use v1alpha or v1beta version instead before we launch this
-        # feature to public GA. Or ask for allowlisting through Google Support team.
+        # Session specification.
         # Corresponds to the JSON property `sessionSpec`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestSessionSpec]
         attr_accessor :session_spec
@@ -29282,9 +29929,7 @@ module Google
         end
       end
       
-      # Session specification. Multi-turn Search feature is currently at private GA
-      # stage. Please use v1alpha or v1beta version instead before we launch this
-      # feature to public GA. Or ask for allowlisting through Google Support team.
+      # Session specification.
       class GoogleCloudDiscoveryengineV1betaSearchRequestSessionSpec
         include Google::Apis::Core::Hashable
       
@@ -31887,6 +32532,14 @@ module Google
         # @return [String]
         attr_accessor :engine
       
+        # Optional. Represents the entity for customers that may run multiple different
+        # entities, domains, sites or regions, for example, `Google US`, `Google Ads`, `
+        # Waymo`, `google.com`, `youtube.com`, etc. We recommend that you set `entity`
+        # to get better per-entity search, completion, and prediction results.
+        # Corresponds to the JSON property `entity`
+        # @return [String]
+        attr_accessor :entity
+      
         # Only required for UserEventService.ImportUserEvents method. Timestamp of when
         # the user event happened.
         # Corresponds to the JSON property `eventTime`
@@ -32006,6 +32659,7 @@ module Google
           @direct_user_request = args[:direct_user_request] if args.key?(:direct_user_request)
           @documents = args[:documents] if args.key?(:documents)
           @engine = args[:engine] if args.key?(:engine)
+          @entity = args[:entity] if args.key?(:entity)
           @event_time = args[:event_time] if args.key?(:event_time)
           @event_type = args[:event_type] if args.key?(:event_type)
           @filter = args[:filter] if args.key?(:filter)
@@ -32047,6 +32701,9 @@ module Google
         # This mixes the event history of those users together, which results in
         # degraded model quality. The field must be a UTF-8 encoded string with a length
         # limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
+        # Represents an opaque ID to the Search API. The Search API doesn't interpret
+        # the value in any way. This field is used to associate events with a user
+        # across sessions if the events are being uploaded.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
