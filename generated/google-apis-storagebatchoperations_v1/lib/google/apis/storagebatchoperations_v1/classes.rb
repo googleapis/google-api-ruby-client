@@ -150,6 +150,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Describes options to update object custom contexts.
+        # Corresponds to the JSON property `updateObjectCustomContext`
+        # @return [Google::Apis::StoragebatchoperationsV1::UpdateObjectCustomContext]
+        attr_accessor :update_object_custom_context
+      
         def initialize(**args)
            update!(**args)
         end
@@ -170,6 +175,7 @@ module Google
           @rewrite_object = args[:rewrite_object] if args.key?(:rewrite_object)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
+          @update_object_custom_context = args[:update_object_custom_context] if args.key?(:update_object_custom_context)
         end
       end
       
@@ -257,6 +263,33 @@ module Google
           @succeeded_object_count = args[:succeeded_object_count] if args.key?(:succeeded_object_count)
           @total_bytes_found = args[:total_bytes_found] if args.key?(:total_bytes_found)
           @total_object_count = args[:total_object_count] if args.key?(:total_object_count)
+        end
+      end
+      
+      # Describes a collection of updates to apply to custom contexts identified by
+      # key.
+      class CustomContextUpdates
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Custom contexts to clear by key. A key cannot be present in both `
+        # updates` and `keys_to_clear`.
+        # Corresponds to the JSON property `keysToClear`
+        # @return [Array<String>]
+        attr_accessor :keys_to_clear
+      
+        # Optional. Insert or update the existing custom contexts.
+        # Corresponds to the JSON property `updates`
+        # @return [Hash<String,Google::Apis::StoragebatchoperationsV1::ObjectCustomContextPayload>]
+        attr_accessor :updates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @keys_to_clear = args[:keys_to_clear] if args.key?(:keys_to_clear)
+          @updates = args[:updates] if args.key?(:updates)
         end
       end
       
@@ -454,6 +487,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Describes options to update object custom contexts.
+        # Corresponds to the JSON property `updateObjectCustomContext`
+        # @return [Google::Apis::StoragebatchoperationsV1::UpdateObjectCustomContext]
+        attr_accessor :update_object_custom_context
+      
         def initialize(**args)
            update!(**args)
         end
@@ -476,6 +514,7 @@ module Google
           @rewrite_object = args[:rewrite_object] if args.key?(:rewrite_object)
           @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
           @state = args[:state] if args.key?(:state)
+          @update_object_custom_context = args[:update_object_custom_context] if args.key?(:update_object_custom_context)
         end
       end
       
@@ -696,6 +735,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @manifest_location = args[:manifest_location] if args.key?(:manifest_location)
+        end
+      end
+      
+      # Describes the payload of a user defined object custom context.
+      class ObjectCustomContextPayload
+        include Google::Apis::Core::Hashable
+      
+        # The value of the object custom context. If set, `value` must NOT be an empty
+        # string since it is a required field in custom context. If unset, `value` will
+        # be ignored and no changes will be made to the `value` field of the custom
+        # context payload.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -1033,6 +1094,34 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Describes options to update object custom contexts.
+      class UpdateObjectCustomContext
+        include Google::Apis::Core::Hashable
+      
+        # If set, must be set to true and all existing object custom contexts will be
+        # deleted.
+        # Corresponds to the JSON property `clearAll`
+        # @return [Boolean]
+        attr_accessor :clear_all
+        alias_method :clear_all?, :clear_all
+      
+        # Describes a collection of updates to apply to custom contexts identified by
+        # key.
+        # Corresponds to the JSON property `customContextUpdates`
+        # @return [Google::Apis::StoragebatchoperationsV1::CustomContextUpdates]
+        attr_accessor :custom_context_updates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @clear_all = args[:clear_all] if args.key?(:clear_all)
+          @custom_context_updates = args[:custom_context_updates] if args.key?(:custom_context_updates)
         end
       end
     end

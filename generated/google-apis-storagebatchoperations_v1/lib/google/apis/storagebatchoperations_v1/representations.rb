@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomContextUpdates
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteObject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ObjectCustomContextPayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ObjectRetention
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +191,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateObjectCustomContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -228,6 +246,8 @@ module Google
       
           property :start_time, as: 'startTime'
           property :state, as: 'state'
+          property :update_object_custom_context, as: 'updateObjectCustomContext', class: Google::Apis::StoragebatchoperationsV1::UpdateObjectCustomContext, decorator: Google::Apis::StoragebatchoperationsV1::UpdateObjectCustomContext::Representation
+      
         end
       end
       
@@ -257,6 +277,15 @@ module Google
           property :succeeded_object_count, :numeric_string => true, as: 'succeededObjectCount'
           property :total_bytes_found, :numeric_string => true, as: 'totalBytesFound'
           property :total_object_count, :numeric_string => true, as: 'totalObjectCount'
+        end
+      end
+      
+      class CustomContextUpdates
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :keys_to_clear, as: 'keysToClear'
+          hash :updates, as: 'updates', class: Google::Apis::StoragebatchoperationsV1::ObjectCustomContextPayload, decorator: Google::Apis::StoragebatchoperationsV1::ObjectCustomContextPayload::Representation
+      
         end
       end
       
@@ -318,6 +347,8 @@ module Google
       
           property :schedule_time, as: 'scheduleTime'
           property :state, as: 'state'
+          property :update_object_custom_context, as: 'updateObjectCustomContext', class: Google::Apis::StoragebatchoperationsV1::UpdateObjectCustomContext, decorator: Google::Apis::StoragebatchoperationsV1::UpdateObjectCustomContext::Representation
+      
         end
       end
       
@@ -383,6 +414,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :manifest_location, as: 'manifestLocation'
+        end
+      end
+      
+      class ObjectCustomContextPayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
         end
       end
       
@@ -462,6 +500,15 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class UpdateObjectCustomContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :clear_all, as: 'clearAll'
+          property :custom_context_updates, as: 'customContextUpdates', class: Google::Apis::StoragebatchoperationsV1::CustomContextUpdates, decorator: Google::Apis::StoragebatchoperationsV1::CustomContextUpdates::Representation
+      
         end
       end
     end
