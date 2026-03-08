@@ -472,6 +472,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaLoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1464,6 +1470,12 @@ module Google
         end
       end
       
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaLoggingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1484,6 +1496,8 @@ module Google
           property :display_name, as: 'displayName'
           collection :external_ips, as: 'externalIps'
           hash :hubs, as: 'hubs', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub::Representation
+      
+          property :logging, as: 'logging', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaLoggingConfig, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaLoggingConfig::Representation
       
           property :name, as: 'name'
           property :proxy_protocol_config, as: 'proxyProtocolConfig', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfig, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaProxyProtocolConfig::Representation
