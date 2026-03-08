@@ -561,10 +561,10 @@ module Google
       class GoogleCloudAssetV1p7beta1GcsDestination
         include Google::Apis::Core::Hashable
       
-        # The URI of the Cloud Storage object. It's the same URI that is used by gsutil.
-        # Example: "gs://bucket_name/object_name". See [Viewing and Editing Object
-        # Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for
-        # more information.
+        # The URI of the Cloud Storage object. It's the same URI that is used by gcloud
+        # storage. Example: "gs://bucket_name/object_name". See [Viewing and Editing
+        # Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-
+        # metadata) for more information.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
