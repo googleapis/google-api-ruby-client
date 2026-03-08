@@ -2081,6 +2081,19 @@ module Google
         end
       end
       
+      # Configuration for Cloud Logging.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The configuration for the proxy.
       class GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig
         include Google::Apis::Core::Hashable
@@ -2161,6 +2174,11 @@ module Google
         # @return [Hash<String,Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Hub>]
         attr_accessor :hubs
       
+        # Configuration for Cloud Logging.
+        # Corresponds to the JSON property `logging`
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig]
+        attr_accessor :logging
+      
         # Identifier. Name of the resource.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2197,6 +2215,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @external_ips = args[:external_ips] if args.key?(:external_ips)
           @hubs = args[:hubs] if args.key?(:hubs)
+          @logging = args[:logging] if args.key?(:logging)
           @name = args[:name] if args.key?(:name)
           @proxy_protocol_config = args[:proxy_protocol_config] if args.key?(:proxy_protocol_config)
           @service_discovery = args[:service_discovery] if args.key?(:service_discovery)
