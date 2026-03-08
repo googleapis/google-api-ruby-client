@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EventLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EventOutOfOfficeProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +287,12 @@ module Google
       end
       
       class FreeBusyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LabelProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -728,6 +740,12 @@ module Google
         end
       end
       
+      class EventLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class EventOutOfOfficeProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -847,6 +865,12 @@ module Google
       
           property :time_min, as: 'timeMin', type: DateTime
       
+        end
+      end
+      
+      class LabelProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
