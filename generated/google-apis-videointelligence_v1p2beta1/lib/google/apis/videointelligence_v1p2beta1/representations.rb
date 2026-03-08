@@ -1479,6 +1479,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :end_time, as: 'endTime'
+          property :speaker_label, as: 'speakerLabel'
           property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
@@ -1838,6 +1839,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :end_time, as: 'endTime'
+          property :speaker_label, as: 'speakerLabel'
           property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
@@ -2197,6 +2199,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :end_time, as: 'endTime'
+          property :speaker_label, as: 'speakerLabel'
           property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
@@ -2506,6 +2509,7 @@ module Google
       class GoogleCloudVideointelligenceV1p2beta1SpeechTranscriptionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_output_uri_prefix, as: 'audioOutputUriPrefix'
           collection :audio_tracks, as: 'audioTracks'
           property :diarization_speaker_count, as: 'diarizationSpeakerCount'
           property :enable_automatic_punctuation, as: 'enableAutomaticPunctuation'
@@ -2674,6 +2678,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :end_time, as: 'endTime'
+          property :speaker_label, as: 'speakerLabel'
           property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
@@ -3098,6 +3103,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :end_time, as: 'endTime'
+          property :speaker_label, as: 'speakerLabel'
           property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
