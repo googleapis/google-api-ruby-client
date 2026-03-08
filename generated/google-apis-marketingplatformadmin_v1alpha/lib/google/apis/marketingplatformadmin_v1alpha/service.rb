@@ -91,7 +91,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lookup for a single organization.
+        # Looks up a single organization.
         # @param [String] name
         #   Required. The name of the Organization to retrieve. Format: organizations/`
         #   org_id`
@@ -161,7 +161,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the usage and billing data for properties within the organization for the
+        # Gets the usage and billing data for properties within the organization for the
         # specified month. Per direct client org, user needs to be OrgAdmin/BillingAdmin
         # on the organization in order to view the billing and usage data. Per sales
         # partner client org, user needs to be OrgAdmin/BillingAdmin on the sales
