@@ -1447,6 +1447,7 @@ module Google
       class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_output_uri_prefix, as: 'audioOutputUriPrefix'
           collection :audio_tracks, as: 'audioTracks'
           property :diarization_speaker_count, as: 'diarizationSpeakerCount'
           property :enable_automatic_punctuation, as: 'enableAutomaticPunctuation'
@@ -1615,6 +1616,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :end_time, as: 'endTime'
+          property :speaker_label, as: 'speakerLabel'
           property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
@@ -1974,6 +1976,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :end_time, as: 'endTime'
+          property :speaker_label, as: 'speakerLabel'
           property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
@@ -2333,6 +2336,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :end_time, as: 'endTime'
+          property :speaker_label, as: 'speakerLabel'
           property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
@@ -2692,6 +2696,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :end_time, as: 'endTime'
+          property :speaker_label, as: 'speakerLabel'
           property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
@@ -3116,6 +3121,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :end_time, as: 'endTime'
+          property :speaker_label, as: 'speakerLabel'
           property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
@@ -3134,6 +3140,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::VideointelligenceV1::GoogleLongrunningOperation, decorator: Google::Apis::VideointelligenceV1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
