@@ -1204,6 +1204,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2KeyValueMetadataLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2KindExpression
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1349,6 +1355,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2Manual
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2MetadataKeyValueExpression
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2831,6 +2843,8 @@ module Google
           property :info_type, as: 'infoType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
       
           property :likelihood, as: 'likelihood'
+          property :metadata_key_value_expression, as: 'metadataKeyValueExpression', class: Google::Apis::DlpV2::GooglePrivacyDlpV2MetadataKeyValueExpression, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2MetadataKeyValueExpression::Representation
+      
           property :regex, as: 'regex', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Regex, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Regex::Representation
       
           property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore::Representation
@@ -4239,6 +4253,13 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2KeyValueMetadataLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+        end
+      end
+      
       class GooglePrivacyDlpV2KindExpression
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4464,9 +4485,19 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2MetadataKeyValueExpression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_regex, as: 'keyRegex'
+          property :value_regex, as: 'valueRegex'
+        end
+      end
+      
       class GooglePrivacyDlpV2MetadataLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_value_metadata_label, as: 'keyValueMetadataLabel', class: Google::Apis::DlpV2::GooglePrivacyDlpV2KeyValueMetadataLabel, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2KeyValueMetadataLabel::Representation
+      
           property :storage_label, as: 'storageLabel', class: Google::Apis::DlpV2::GooglePrivacyDlpV2StorageMetadataLabel, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2StorageMetadataLabel::Representation
       
           property :type, as: 'type'

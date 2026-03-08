@@ -217,7 +217,7 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
         attr_accessor :info_types
       
-        # How the adjustment rule is applied. Only MATCHING_TYPE_PARTIAL_MATCH is
+        # How the adjustment rule is applied. Only `MATCHING_TYPE_PARTIAL_MATCH` is
         # supported: - Partial match: adjusts the findings of infoTypes specified in the
         # inspection rule when they have a nonempty intersection with a finding of an
         # infoType specified in this adjustment rule.
@@ -2498,6 +2498,12 @@ module Google
         # @return [String]
         attr_accessor :likelihood
       
+        # Configuration for a custom infoType that detects given expression of key-value
+        # pair in the metadata.
+        # Corresponds to the JSON property `metadataKeyValueExpression`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2MetadataKeyValueExpression]
+        attr_accessor :metadata_key_value_expression
+      
         # Message defining a custom regular expression.
         # Corresponds to the JSON property `regex`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Regex]
@@ -2537,6 +2543,7 @@ module Google
           @exclusion_type = args[:exclusion_type] if args.key?(:exclusion_type)
           @info_type = args[:info_type] if args.key?(:info_type)
           @likelihood = args[:likelihood] if args.key?(:likelihood)
+          @metadata_key_value_expression = args[:metadata_key_value_expression] if args.key?(:metadata_key_value_expression)
           @regex = args[:regex] if args.key?(:regex)
           @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
           @stored_type = args[:stored_type] if args.key?(:stored_type)
@@ -6539,7 +6546,8 @@ module Google
       
         # Set of rules to apply to the findings for this InspectConfig. Exclusion rules,
         # contained in the set are executed in the end, other rules are executed in the
-        # order they are specified for each info type.
+        # order they are specified for each info type. Not supported for the `
+        # metadata_key_value_expression` CustomInfoType.
         # Corresponds to the JSON property `ruleSet`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InspectionRuleSet>]
         attr_accessor :rule_set
@@ -7228,6 +7236,29 @@ module Google
         end
       end
       
+      # The metadata key that contains a finding.
+      class GooglePrivacyDlpV2KeyValueMetadataLabel
+        include Google::Apis::Core::Hashable
+      
+        # The metadata key. The format depends on the source of the metadata. Examples: -
+        # Microsoft Purview Information Protection keys look like 'MSIP_Label_122709e3-
+        # 8f6b-4860-985f-7f722a94f61e_Enabled', 'MSIP_Label_122709e3-8f6b-4860-985f-
+        # 7f722a94f61e_Method', 'MSIP_Label_122709e3-8f6b-4860-985f-7f722a94f61e_Name'. -
+        # General metadata keys look like 'Author', 'Title', 'Description'.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+        end
+      end
+      
       # A representation of a Datastore kind.
       class GooglePrivacyDlpV2KindExpression
         include Google::Apis::Core::Hashable
@@ -7890,9 +7921,40 @@ module Google
         end
       end
       
+      # Configuration for a custom infoType that detects given expression of key-value
+      # pair in the metadata.
+      class GooglePrivacyDlpV2MetadataKeyValueExpression
+        include Google::Apis::Core::Hashable
+      
+        # The regular expression for the key. Key should be non-empty.
+        # Corresponds to the JSON property `keyRegex`
+        # @return [String]
+        attr_accessor :key_regex
+      
+        # The regular expression for the value. Value should be non-empty.
+        # Corresponds to the JSON property `valueRegex`
+        # @return [String]
+        attr_accessor :value_regex
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_regex = args[:key_regex] if args.key?(:key_regex)
+          @value_regex = args[:value_regex] if args.key?(:value_regex)
+        end
+      end
+      
       # Metadata Location
       class GooglePrivacyDlpV2MetadataLocation
         include Google::Apis::Core::Hashable
+      
+        # The metadata key that contains a finding.
+        # Corresponds to the JSON property `keyValueMetadataLabel`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2KeyValueMetadataLabel]
+        attr_accessor :key_value_metadata_label
       
         # Storage metadata label to indicate which metadata entry contains findings.
         # Corresponds to the JSON property `storageLabel`
@@ -7910,6 +7972,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @key_value_metadata_label = args[:key_value_metadata_label] if args.key?(:key_value_metadata_label)
           @storage_label = args[:storage_label] if args.key?(:storage_label)
           @type = args[:type] if args.key?(:type)
         end
