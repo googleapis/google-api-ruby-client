@@ -22,12 +22,6 @@ module Google
   module Apis
     module PlaydeveloperreportingV1alpha1
       
-      class ApiservingMcpMcpToolDataHandlingProfile
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GooglePlayDeveloperReportingV1alpha1Anomaly
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -326,14 +320,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ApiservingMcpMcpToolDataHandlingProfile
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :input_data_access_level, as: 'inputDataAccessLevel'
-          property :output_data_access_level, as: 'outputDataAccessLevel'
-        end
       end
       
       class GooglePlayDeveloperReportingV1alpha1Anomaly
