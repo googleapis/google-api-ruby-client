@@ -510,9 +510,9 @@ module Google
         #   Immutable. Name of the constraint. This is unique within the organization.
         #   Format of the name should be * `organizations/`organization_id`/
         #   customConstraints/`custom_constraint_id`` Example: `organizations/123/
-        #   customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters
+        #   customConstraints/custom.createOnlyE2TypeVms` The max length is 71 characters
         #   and the minimum length is 1. Note that the prefix `organizations/`
-        #   organization_id`/customConstraints/` is not counted.
+        #   organization_id`/customConstraints/custom.` is not counted.
         # @param [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint] google_cloud_orgpolicy_v2_custom_constraint_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
