@@ -1781,6 +1781,12 @@ module Google
         # @return [String]
         attr_accessor :max_retention_allowed
       
+        # Min duration of retention allowed from the DSPM retention control. This field
+        # is only populated when event type is set to EVENT_TYPE_MIN_TTL_FROM_CREATION.
+        # Corresponds to the JSON property `minRetentionAllowed`
+        # @return [String]
+        attr_accessor :min_retention_allowed
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1791,6 +1797,7 @@ module Google
           @event_detection_time = args[:event_detection_time] if args.key?(:event_detection_time)
           @event_type = args[:event_type] if args.key?(:event_type)
           @max_retention_allowed = args[:max_retention_allowed] if args.key?(:max_retention_allowed)
+          @min_retention_allowed = args[:min_retention_allowed] if args.key?(:min_retention_allowed)
         end
       end
       
@@ -6265,6 +6272,12 @@ module Google
         # @return [String]
         attr_accessor :max_retention_allowed
       
+        # Min duration of retention allowed from the DSPM retention control. This field
+        # is only populated when event type is set to EVENT_TYPE_MIN_TTL_FROM_CREATION.
+        # Corresponds to the JSON property `minRetentionAllowed`
+        # @return [String]
+        attr_accessor :min_retention_allowed
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6275,6 +6288,7 @@ module Google
           @event_detection_time = args[:event_detection_time] if args.key?(:event_detection_time)
           @event_type = args[:event_type] if args.key?(:event_type)
           @max_retention_allowed = args[:max_retention_allowed] if args.key?(:max_retention_allowed)
+          @min_retention_allowed = args[:min_retention_allowed] if args.key?(:min_retention_allowed)
         end
       end
       
