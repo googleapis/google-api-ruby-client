@@ -466,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBackupdrV1OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GuestOsFeature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -623,12 +629,6 @@ module Google
       end
       
       class Operation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1692,6 +1692,20 @@ module Google
         end
       end
       
+      class GoogleCloudBackupdrV1OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_info, as: 'additionalInfo'
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
       class GuestOsFeature
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1710,6 +1724,7 @@ module Google
       class InitializeServiceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_plan_location, as: 'backupPlanLocation'
           property :cloud_sql_instance_initialization_config, as: 'cloudSqlInstanceInitializationConfig', class: Google::Apis::BackupdrV1::CloudSqlInstanceInitializationConfig, decorator: Google::Apis::BackupdrV1::CloudSqlInstanceInitializationConfig::Representation
       
           property :request_id, as: 'requestId'
@@ -1965,20 +1980,6 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
-        end
-      end
-      
-      class OperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :additional_info, as: 'additionalInfo'
-          property :api_version, as: 'apiVersion'
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :requested_cancellation, as: 'requestedCancellation'
-          property :status_message, as: 'statusMessage'
-          property :target, as: 'target'
-          property :verb, as: 'verb'
         end
       end
       

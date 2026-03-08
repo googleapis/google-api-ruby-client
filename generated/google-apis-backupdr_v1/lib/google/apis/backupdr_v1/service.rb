@@ -2455,7 +2455,8 @@ module Google
         # Initializes the service related config for a project.
         # @param [String] name
         #   Required. The resource name of the serviceConfig used to initialize the
-        #   service. Format: `projects/`project_id`/locations/`location`/serviceConfig`.
+        #   service. The location must be the location of the BackupVault. Format: `
+        #   projects/`project_id`/locations/`location`/serviceConfig`.
         # @param [Google::Apis::BackupdrV1::InitializeServiceRequest] initialize_service_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
