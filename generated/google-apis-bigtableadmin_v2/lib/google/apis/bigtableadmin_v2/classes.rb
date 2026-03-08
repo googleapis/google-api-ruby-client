@@ -4147,10 +4147,9 @@ module Google
         attr_accessor :deletion_protection
         alias_method :deletion_protection?, :deletion_protection
       
-        # Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in
-        # this table. Timestamps not matching the granularity will be rejected. If
-        # unspecified at creation time, the value will be set to `MILLIS`. Views: `
-        # SCHEMA_VIEW`, `FULL`.
+        # Immutable. The granularity at which timestamps are stored in this table.
+        # Timestamps not matching the granularity will be rejected. If unspecified at
+        # creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
         # Corresponds to the JSON property `granularity`
         # @return [String]
         attr_accessor :granularity
