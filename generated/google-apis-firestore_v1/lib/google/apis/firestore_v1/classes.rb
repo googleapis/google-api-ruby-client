@@ -1834,8 +1834,8 @@ module Google
         # @return [String]
         attr_accessor :key_prefix
       
-        # The location of the database. Available locations are listed at https://cloud.
-        # google.com/firestore/docs/locations.
+        # Required. The location of the database. Available locations are listed at
+        # https://cloud.google.com/firestore/docs/locations.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -1882,8 +1882,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :tags
       
-        # The type of the database. See https://cloud.google.com/datastore/docs/
-        # firestore-or-datastore for information about how to choose.
+        # Required. The type of the database. See https://cloud.google.com/datastore/
+        # docs/firestore-or-datastore for information about how to choose.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4334,19 +4334,25 @@ module Google
         # @return [Fixnum]
         attr_accessor :offset
       
-        # The order to apply to the query results. Firestore allows callers to provide a
-        # full ordering, a partial ordering, or no ordering at all. In all cases,
-        # Firestore guarantees a stable ordering through the following rules: * The `
-        # order_by` is required to reference all fields used with an inequality filter. *
-        # All fields that are required to be in the `order_by` but are not already
-        # present are appended in lexicographical ordering of the field name. * If an
-        # order on `__name__` is not specified, it is appended by default. Fields are
-        # appended with the same sort direction as the last order specified, or '
-        # ASCENDING' if no order was specified. For example: * `ORDER BY a` becomes `
-        # ORDER BY a ASC, __name__ ASC` * `ORDER BY a DESC` becomes `ORDER BY a DESC,
-        # __name__ DESC` * `WHERE a > 1` becomes `WHERE a > 1 ORDER BY a ASC, __name__
-        # ASC` * `WHERE __name__ > ... AND a > 1` becomes `WHERE __name__ > ... AND a >
-        # 1 ORDER BY a ASC, __name__ ASC`
+        # The order to apply to the query results. Callers can provide a full ordering,
+        # a partial ordering, or no ordering at all. While Firestore will always respect
+        # the provided order, the behavior for queries without a full ordering is
+        # different per database edition: In Standard edition, Firestore guarantees a
+        # stable ordering through the following rules: * The `order_by` is required to
+        # reference all fields used with an inequality filter. * All fields that are
+        # required to be in the `order_by` but are not already present are appended in
+        # lexicographical ordering of the field name. * If an order on `__name__` is not
+        # specified, it is appended by default. Fields are appended with the same sort
+        # direction as the last order specified, or 'ASCENDING' if no order was
+        # specified. For example: * `ORDER BY a` becomes `ORDER BY a ASC, __name__ ASC` *
+        # `ORDER BY a DESC` becomes `ORDER BY a DESC, __name__ DESC` * `WHERE a > 1`
+        # becomes `WHERE a > 1 ORDER BY a ASC, __name__ ASC` * `WHERE __name__ > ... AND
+        # a > 1` becomes `WHERE __name__ > ... AND a > 1 ORDER BY a ASC, __name__ ASC`
+        # In Enterprise edition, Firestore does not guarantee a stable ordering. Instead
+        # it will pick the most efficient ordering based on the indexes available at the
+        # time of query execution. This will result in a different ordering for queries
+        # that are otherwise identical. To ensure a stable ordering, always include a
+        # unique field in the `order_by` clause, such as `__name__`.
         # Corresponds to the JSON property `orderBy`
         # @return [Array<Google::Apis::FirestoreV1::Order>]
         attr_accessor :order_by
@@ -4686,6 +4692,13 @@ module Google
         # @return [String]
         attr_accessor :timestamp_value
       
+        # Pointer to a variable defined elsewhere in a pipeline. Unlike `
+        # field_reference_value` which references a field within a document, this refers
+        # to a variable, defined in a separate namespace than the fields of a document.
+        # Corresponds to the JSON property `variableReferenceValue`
+        # @return [String]
+        attr_accessor :variable_reference_value
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4706,6 +4719,7 @@ module Google
           @reference_value = args[:reference_value] if args.key?(:reference_value)
           @string_value = args[:string_value] if args.key?(:string_value)
           @timestamp_value = args[:timestamp_value] if args.key?(:timestamp_value)
+          @variable_reference_value = args[:variable_reference_value] if args.key?(:variable_reference_value)
         end
       end
       
