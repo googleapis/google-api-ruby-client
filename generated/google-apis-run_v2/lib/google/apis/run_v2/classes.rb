@@ -2592,14 +2592,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Determines a threshold for concurrency utilization before scaling
-        # begins. Accepted values are between `0.4` and `0.95` (inclusive) or `0.0` to
+        # begins. Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to
         # disable concurrency utilization as threshold for scaling.
         # Corresponds to the JSON property `concurrencyUtilization`
         # @return [Float]
         attr_accessor :concurrency_utilization
       
         # Optional. Determines a threshold for CPU utilization before scaling begins.
-        # Accepted values are between `0.4` and `0.95` (inclusive) or `0.0` to disable
+        # Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to disable
         # CPU utilization as threshold for scaling.
         # Corresponds to the JSON property `cpuUtilization`
         # @return [Float]
