@@ -1393,6 +1393,66 @@ module Google
         end
       end
       
+      # For display only. Metadata associated with a GKE Network Policy.
+      class GkeNetworkPolicyInfo
+        include Google::Apis::Core::Hashable
+      
+        # Possible values: ALLOW, DENY
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Possible values: INGRESS, EGRESS
+        # Corresponds to the JSON property `direction`
+        # @return [String]
+        attr_accessor :direction
+      
+        # The name of the Network Policy.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The URI of the Network Policy. Format for a Network Policy in a zonal cluster:
+        # `projects//zones//clusters//k8s/namespaces//networking.k8s.io/networkpolicies/`
+        # Format for a Network Policy in a regional cluster: `projects//locations//
+        # clusters//k8s/namespaces//networking.k8s.io/networkpolicies/`
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @direction = args[:direction] if args.key?(:direction)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # For display only. Contains information about why GKE Network Policy evaluation
+      # was skipped.
+      class GkeNetworkPolicySkippedInfo
+        include Google::Apis::Core::Hashable
+      
+        # Reason why Network Policy evaluation was skipped.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
       # For display only. Metadata associated with a Google Kubernetes Engine (GKE)
       # Pod.
       class GkePodInfo
@@ -3239,6 +3299,17 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1::GkeMasterInfo]
         attr_accessor :gke_master
       
+        # For display only. Metadata associated with a GKE Network Policy.
+        # Corresponds to the JSON property `gkeNetworkPolicy`
+        # @return [Google::Apis::NetworkmanagementV1::GkeNetworkPolicyInfo]
+        attr_accessor :gke_network_policy
+      
+        # For display only. Contains information about why GKE Network Policy evaluation
+        # was skipped.
+        # Corresponds to the JSON property `gkeNetworkPolicySkipped`
+        # @return [Google::Apis::NetworkmanagementV1::GkeNetworkPolicySkippedInfo]
+        attr_accessor :gke_network_policy_skipped
+      
         # For display only. Metadata associated with a Google Kubernetes Engine (GKE)
         # Pod.
         # Corresponds to the JSON property `gkePod`
@@ -3383,6 +3454,8 @@ module Google
           @forward = args[:forward] if args.key?(:forward)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @gke_master = args[:gke_master] if args.key?(:gke_master)
+          @gke_network_policy = args[:gke_network_policy] if args.key?(:gke_network_policy)
+          @gke_network_policy_skipped = args[:gke_network_policy_skipped] if args.key?(:gke_network_policy_skipped)
           @gke_pod = args[:gke_pod] if args.key?(:gke_pod)
           @google_service = args[:google_service] if args.key?(:google_service)
           @hybrid_subnet = args[:hybrid_subnet] if args.key?(:hybrid_subnet)
