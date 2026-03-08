@@ -1946,6 +1946,19 @@ module Google
       end
       
       # 
+      class EventLabel
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # 
       class EventOutOfOfficeProperties
         include Google::Apis::Core::Hashable
       
@@ -2372,6 +2385,19 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @time_max = args[:time_max] if args.key?(:time_max)
           @time_min = args[:time_min] if args.key?(:time_min)
+        end
+      end
+      
+      # 
+      class LabelProperties
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
