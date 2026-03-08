@@ -3692,6 +3692,72 @@ module Google
         end
       end
       
+      # Represents the metadata of the long-running operation.
+      class GoogleCloudBackupdrV1OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. AdditionalInfo contains additional Info related to backup plan
+        # association resource.
+        # Corresponds to the JSON property `additionalInfo`
+        # @return [Hash<String,String>]
+        attr_accessor :additional_info
+      
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Identifies whether the user has requested cancellation of the
+        # operation. Operations that have successfully been cancelled have google.
+        # longrunning.Operation.error value with a google.rpc.Status.code of 1,
+        # corresponding to 'Code.CANCELLED'.
+        # Corresponds to the JSON property `requestedCancellation`
+        # @return [Boolean]
+        attr_accessor :requested_cancellation
+        alias_method :requested_cancellation?, :requested_cancellation
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_info = args[:additional_info] if args.key?(:additional_info)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
       # Feature type of the Guest OS.
       class GuestOsFeature
         include Google::Apis::Core::Hashable
@@ -3742,6 +3808,16 @@ module Google
       class InitializeServiceRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The location where the BackupPlan will be created. This field is
+        # required for multi-region BackupVaults and is optional for regional
+        # BackupVaults. It is useful when creating a Backup Vault in a multi-region,
+        # allowing the BackupPlan to reside in a specific region within that multi-
+        # region. If this field is not provided, the BackupPlan will be created in the
+        # same location as specified in the `name` field.
+        # Corresponds to the JSON property `backupPlanLocation`
+        # @return [String]
+        attr_accessor :backup_plan_location
+      
         # CloudSqlInstanceInitializationConfig contains the configuration for
         # initializing a Cloud SQL instance.
         # Corresponds to the JSON property `cloudSqlInstanceInitializationConfig`
@@ -3775,6 +3851,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backup_plan_location = args[:backup_plan_location] if args.key?(:backup_plan_location)
           @cloud_sql_instance_initialization_config = args[:cloud_sql_instance_initialization_config] if args.key?(:cloud_sql_instance_initialization_config)
           @request_id = args[:request_id] if args.key?(:request_id)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
@@ -4717,72 +4794,6 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
-        end
-      end
-      
-      # Represents the metadata of the long-running operation.
-      class OperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Output only. AdditionalInfo contains additional Info related to backup plan
-        # association resource.
-        # Corresponds to the JSON property `additionalInfo`
-        # @return [Hash<String,String>]
-        attr_accessor :additional_info
-      
-        # Output only. API version used to start the operation.
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # Output only. The time the operation was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Output only. The time the operation finished running.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have successfully been cancelled have google.
-        # longrunning.Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to 'Code.CANCELLED'.
-        # Corresponds to the JSON property `requestedCancellation`
-        # @return [Boolean]
-        attr_accessor :requested_cancellation
-        alias_method :requested_cancellation?, :requested_cancellation
-      
-        # Output only. Human-readable status of the operation, if any.
-        # Corresponds to the JSON property `statusMessage`
-        # @return [String]
-        attr_accessor :status_message
-      
-        # Output only. Server-defined resource path for the target of the operation.
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
-        # Output only. Name of the verb executed by the operation.
-        # Corresponds to the JSON property `verb`
-        # @return [String]
-        attr_accessor :verb
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @additional_info = args[:additional_info] if args.key?(:additional_info)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
-          @status_message = args[:status_message] if args.key?(:status_message)
-          @target = args[:target] if args.key?(:target)
-          @verb = args[:verb] if args.key?(:verb)
         end
       end
       
