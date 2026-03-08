@@ -88,12 +88,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CoordinatedWidget
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Dashboard
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -584,16 +578,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :column, as: 'column'
           property :direction, as: 'direction'
-        end
-      end
-      
-      class CoordinatedWidget
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :primary, as: 'primary', class: Google::Apis::MonitoringV1::Widget, decorator: Google::Apis::MonitoringV1::Widget::Representation
-      
-          property :secondary, as: 'secondary', class: Google::Apis::MonitoringV1::Widget, decorator: Google::Apis::MonitoringV1::Widget::Representation
-      
         end
       end
       
@@ -1269,8 +1253,6 @@ module Google
           property :blank, as: 'blank', class: Google::Apis::MonitoringV1::Empty, decorator: Google::Apis::MonitoringV1::Empty::Representation
       
           property :collapsible_group, as: 'collapsibleGroup', class: Google::Apis::MonitoringV1::CollapsibleGroup, decorator: Google::Apis::MonitoringV1::CollapsibleGroup::Representation
-      
-          property :coordinated_widget, as: 'coordinatedWidget', class: Google::Apis::MonitoringV1::CoordinatedWidget, decorator: Google::Apis::MonitoringV1::CoordinatedWidget::Representation
       
           property :error_reporting_panel, as: 'errorReportingPanel', class: Google::Apis::MonitoringV1::ErrorReportingPanel, decorator: Google::Apis::MonitoringV1::ErrorReportingPanel::Representation
       
