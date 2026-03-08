@@ -2111,6 +2111,7 @@ module Google
           property :reference_value, as: 'referenceValue'
           property :string_value, as: 'stringValue'
           property :timestamp_value, as: 'timestampValue'
+          property :variable_reference_value, as: 'variableReferenceValue'
         end
       end
       
