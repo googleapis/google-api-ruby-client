@@ -382,6 +382,7 @@ module Google
           property :commit_time, as: 'commitTime'
           property :display_name, as: 'displayName'
           property :hash_prop, as: 'hash'
+          property :repository, as: 'repository'
           property :uri, as: 'uri'
         end
       end
