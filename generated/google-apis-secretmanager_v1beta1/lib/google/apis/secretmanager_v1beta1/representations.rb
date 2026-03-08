@@ -94,12 +94,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListSecretVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,16 +280,6 @@ module Google
           collection :locations, as: 'locations', class: Google::Apis::SecretmanagerV1beta1::Location, decorator: Google::Apis::SecretmanagerV1beta1::Location::Representation
       
           property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class ListOperationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :operations, as: 'operations', class: Google::Apis::SecretmanagerV1beta1::Operation, decorator: Google::Apis::SecretmanagerV1beta1::Operation::Representation
-      
-          collection :unreachable, as: 'unreachable'
         end
       end
       
