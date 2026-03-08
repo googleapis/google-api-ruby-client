@@ -2306,11 +2306,7 @@ module Google
         # used to compute the log entry's age and to enforce the logs retention period.
         # If this field is omitted in a new log entry, then Logging assigns it the
         # current time. Timestamps have nanosecond accuracy, but trailing zeros in the
-        # fractional seconds might be omitted when the timestamp is displayed.Incoming
-        # log entries must have timestamps that don't exceed the logs retention period (
-        # https://cloud.google.com/logging/quotas#logs_retention_periods) in the past,
-        # and that don't exceed 24 hours in the future. Log entries outside those time
-        # boundaries are rejected by Logging.
+        # fractional seconds might be omitted when the timestamp is displayed.
         # Corresponds to the JSON property `timestamp`
         # @return [String]
         attr_accessor :timestamp
