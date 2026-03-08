@@ -2427,7 +2427,6 @@ module Google
       class Note
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :advisory_publish_time, as: 'advisoryPublishTime'
           property :attestation_authority, as: 'attestationAuthority', class: Google::Apis::ContaineranalysisV1beta1::Authority, decorator: Google::Apis::ContaineranalysisV1beta1::Authority::Representation
       
           property :base_image, as: 'baseImage', class: Google::Apis::ContaineranalysisV1beta1::Basis, decorator: Google::Apis::ContaineranalysisV1beta1::Basis::Representation
@@ -2966,6 +2965,7 @@ module Google
       class Vulnerability
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advisory_publish_time, as: 'advisoryPublishTime'
           property :cvss_score, as: 'cvssScore'
           property :cvss_v2, as: 'cvssV2', class: Google::Apis::ContaineranalysisV1beta1::Cvss, decorator: Google::Apis::ContaineranalysisV1beta1::Cvss::Representation
       
