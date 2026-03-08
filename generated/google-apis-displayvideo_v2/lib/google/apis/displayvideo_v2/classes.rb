@@ -1504,6 +1504,11 @@ module Google
       class BiddingStrategy
         include Google::Apis::Core::Hashable
       
+        # Settings that control the bid strategy for Demand Gen resources.
+        # Corresponds to the JSON property `demandGenBid`
+        # @return [Google::Apis::DisplayvideoV2::DemandGenBiddingStrategy]
+        attr_accessor :demand_gen_bid
+      
         # A strategy that uses a fixed bidding price.
         # Corresponds to the JSON property `fixedBid`
         # @return [Google::Apis::DisplayvideoV2::FixedBidStrategy]
@@ -1527,6 +1532,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @demand_gen_bid = args[:demand_gen_bid] if args.key?(:demand_gen_bid)
           @fixed_bid = args[:fixed_bid] if args.key?(:fixed_bid)
           @maximize_spend_auto_bid = args[:maximize_spend_auto_bid] if args.key?(:maximize_spend_auto_bid)
           @performance_goal_auto_bid = args[:performance_goal_auto_bid] if args.key?(:performance_goal_auto_bid)
@@ -3339,6 +3345,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :post_view_count_percentage_millis
       
+        # Optional. The attribution model to use for conversion measurement. This
+        # attribution model will determine how conversions are counted. The Primary
+        # model can be set by you for a floodlight config or group. More details [here](
+        # https://support.google.com/displayvideo/answer/7409983). Only applicable to
+        # Demand Gen line items.
+        # Corresponds to the JSON property `primaryAttributionModelId`
+        # @return [Fixnum]
+        attr_accessor :primary_attribution_model_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3347,6 +3362,7 @@ module Google
         def update!(**args)
           @floodlight_activity_configs = args[:floodlight_activity_configs] if args.key?(:floodlight_activity_configs)
           @post_view_count_percentage_millis = args[:post_view_count_percentage_millis] if args.key?(:post_view_count_percentage_millis)
+          @primary_attribution_model_id = args[:primary_attribution_model_id] if args.key?(:primary_attribution_model_id)
         end
       end
       
@@ -4344,7 +4360,8 @@ module Google
         attr_accessor :start_hour
       
         # Required. The mechanism used to determine which timezone to use for this day
-        # and time targeting setting.
+        # and time targeting setting. For demand gen line items, this field is always
+        # TIME_ZONE_RESOLUTION_ADVERTISER.
         # Corresponds to the JSON property `timeZoneResolution`
         # @return [String]
         attr_accessor :time_zone_resolution
@@ -4398,6 +4415,89 @@ module Google
         def update!(**args)
           @assigned_targeting_option_ids = args[:assigned_targeting_option_ids] if args.key?(:assigned_targeting_option_ids)
           @targeting_type = args[:targeting_type] if args.key?(:targeting_type)
+        end
+      end
+      
+      # Settings that control the bid strategy for Demand Gen resources.
+      class DemandGenBiddingStrategy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. If AG doesn't set value for tCPA or tROAS, line item bidding
+        # value will be the effective_bidding_value, if the bidding strategy type is not
+        # tCPA or tROAS, effective_bidding_value is always 0. For line item, it will be
+        # the same as the value field.
+        # Corresponds to the JSON property `effectiveBiddingValue`
+        # @return [Fixnum]
+        attr_accessor :effective_bidding_value
+      
+        # Output only. Source of the effective bidding value.
+        # Corresponds to the JSON property `effectiveBiddingValueSource`
+        # @return [String]
+        attr_accessor :effective_bidding_value_source
+      
+        # Optional. The type of the bidding strategy. This can only be set at the line
+        # item level.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Optional. The value used by the bidding strategy. This can be set at the line
+        # item and ad group level. This field is only applicable for the following
+        # strategy types: * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `
+        # DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS` Value of this field is in micros
+        # of the advertiser's currency or ROAS value. For example, 1000000 represents 1.
+        # 0 standard units of the currency or 100% ROAS value. If not using an
+        # applicable strategy, the value of this field will be 0.
+        # Corresponds to the JSON property `value`
+        # @return [Fixnum]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_bidding_value = args[:effective_bidding_value] if args.key?(:effective_bidding_value)
+          @effective_bidding_value_source = args[:effective_bidding_value_source] if args.key?(:effective_bidding_value_source)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Settings for Demand Gen line items.
+      class DemandGenSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Immutable. Whether location and language targeting can be set at the
+        # line item level. Otherwise, relevant targeting types must be assigned directly
+        # to the ad groups.
+        # Corresponds to the JSON property `geoLanguageTargetingEnabled`
+        # @return [Boolean]
+        attr_accessor :geo_language_targeting_enabled
+        alias_method :geo_language_targeting_enabled?, :geo_language_targeting_enabled
+      
+        # Optional. The ID of the merchant which is linked to the line item for product
+        # feed.
+        # Corresponds to the JSON property `linkedMerchantId`
+        # @return [Fixnum]
+        attr_accessor :linked_merchant_id
+      
+        # Settings that control what third-party vendors are measuring specific line
+        # item metrics.
+        # Corresponds to the JSON property `thirdPartyMeasurementConfigs`
+        # @return [Google::Apis::DisplayvideoV2::ThirdPartyMeasurementConfigs]
+        attr_accessor :third_party_measurement_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @geo_language_targeting_enabled = args[:geo_language_targeting_enabled] if args.key?(:geo_language_targeting_enabled)
+          @linked_merchant_id = args[:linked_merchant_id] if args.key?(:linked_merchant_id)
+          @third_party_measurement_configs = args[:third_party_measurement_configs] if args.key?(:third_party_measurement_configs)
         end
       end
       
@@ -5897,6 +5997,11 @@ module Google
       class ImageAsset
         include Google::Apis::Core::Hashable
       
+        # Required. The unique ID of the asset.
+        # Corresponds to the JSON property `assetId`
+        # @return [Fixnum]
+        attr_accessor :asset_id
+      
         # Output only. File size of the image asset in bytes.
         # Corresponds to the JSON property `fileSize`
         # @return [Fixnum]
@@ -5918,6 +6023,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @asset_id = args[:asset_id] if args.key?(:asset_id)
           @file_size = args[:file_size] if args.key?(:file_size)
           @full_size = args[:full_size] if args.key?(:full_size)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
@@ -6856,6 +6962,12 @@ module Google
       class KeywordAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
+        # Optional. The policy names to exempt the keyword from. This field is only
+        # applicable for Demand Gen keywords, which are positively targeted.
+        # Corresponds to the JSON property `exemptedPolicyNames`
+        # @return [Array<String>]
+        attr_accessor :exempted_policy_names
+      
         # Required. The keyword, for example `car insurance`. Positive keyword cannot be
         # offensive word. Must be UTF-8 encoded with a maximum size of 255 bytes.
         # Maximum number of characters is 80. Maximum number of words is 10.
@@ -6875,6 +6987,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @exempted_policy_names = args[:exempted_policy_names] if args.key?(:exempted_policy_names)
           @keyword = args[:keyword] if args.key?(:keyword)
           @negative = args[:negative] if args.key?(:negative)
         end
@@ -6982,6 +7095,11 @@ module Google
         # Corresponds to the JSON property `creativeIds`
         # @return [Array<Fixnum>]
         attr_accessor :creative_ids
+      
+        # Settings for Demand Gen line items.
+        # Corresponds to the JSON property `demandGenSettings`
+        # @return [Google::Apis::DisplayvideoV2::DemandGenSettings]
+        attr_accessor :demand_gen_settings
       
         # Required. The display name of the line item. Must be UTF-8 encoded with a
         # maximum size of 240 bytes.
@@ -7108,6 +7226,7 @@ module Google
           @contains_eu_political_ads = args[:contains_eu_political_ads] if args.key?(:contains_eu_political_ads)
           @conversion_counting = args[:conversion_counting] if args.key?(:conversion_counting)
           @creative_ids = args[:creative_ids] if args.key?(:creative_ids)
+          @demand_gen_settings = args[:demand_gen_settings] if args.key?(:demand_gen_settings)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entity_status = args[:entity_status] if args.key?(:entity_status)
           @exclude_new_exchanges = args[:exclude_new_exchanges] if args.key?(:exclude_new_exchanges)
@@ -7163,7 +7282,10 @@ module Google
       
         # Required. The type of the budget allocation. `
         # LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC` is only applicable when automatic
-        # budget allocation is enabled for the parent insertion order.
+        # budget allocation is enabled for the parent insertion order. For demand gen
+        # line items, budget allocation type must be `
+        # LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED`. Demand Gen line items do not support
+        # other budget allocation types.
         # Corresponds to the JSON property `budgetAllocationType`
         # @return [String]
         attr_accessor :budget_allocation_type
@@ -9276,7 +9398,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :markup_amount
       
-        # Required. The markup type of the partner revenue model.
+        # Required. The markup type of the partner revenue model. Demand Gen line items
+        # only support `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP`.
         # Corresponds to the JSON property `markupType`
         # @return [String]
         attr_accessor :markup_type
@@ -10679,6 +10802,58 @@ module Google
           @user_rewarded_content_details = args[:user_rewarded_content_details] if args.key?(:user_rewarded_content_details)
           @video_player_size_details = args[:video_player_size_details] if args.key?(:video_player_size_details)
           @viewability_details = args[:viewability_details] if args.key?(:viewability_details)
+        end
+      end
+      
+      # Settings that control what third-party vendors are measuring specific line
+      # item metrics.
+      class ThirdPartyMeasurementConfigs
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The third-party vendors measuring brand lift. The following third-
+        # party vendors are applicable: * `THIRD_PARTY_VENDOR_DYNATA` * `
+        # THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_INTAGE` * `
+        # THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL`
+        # Corresponds to the JSON property `brandLiftVendorConfigs`
+        # @return [Array<Google::Apis::DisplayvideoV2::ThirdPartyVendorConfig>]
+        attr_accessor :brand_lift_vendor_configs
+      
+        # Optional. The third-party vendors measuring brand safety. The following third-
+        # party vendors are applicable: * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `
+        # THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` * `THIRD_PARTY_VENDOR_ZEFR`
+        # Corresponds to the JSON property `brandSafetyVendorConfigs`
+        # @return [Array<Google::Apis::DisplayvideoV2::ThirdPartyVendorConfig>]
+        attr_accessor :brand_safety_vendor_configs
+      
+        # Optional. The third-party vendors measuring reach. The following third-party
+        # vendors are applicable: * `THIRD_PARTY_VENDOR_NIELSEN` * `
+        # THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_KANTAR` * `
+        # THIRD_PARTY_VENDOR_VIDEO_RESEARCH` * `THIRD_PARTY_VENDOR_MEDIA_SCOPE` * `
+        # THIRD_PARTY_VENDOR_AUDIENCE_PROJECT` * `THIRD_PARTY_VENDOR_VIDEO_AMP` * `
+        # THIRD_PARTY_VENDOR_ISPOT_TV` * `THIRD_PARTY_VENDOR_GEMIUS`
+        # Corresponds to the JSON property `reachVendorConfigs`
+        # @return [Array<Google::Apis::DisplayvideoV2::ThirdPartyVendorConfig>]
+        attr_accessor :reach_vendor_configs
+      
+        # Optional. The third-party vendors measuring viewability. The following third-
+        # party vendors are applicable: * `THIRD_PARTY_VENDOR_MOAT` * `
+        # THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` *
+        # `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_TELEMETRY` * `
+        # THIRD_PARTY_VENDOR_MEETRICS`
+        # Corresponds to the JSON property `viewabilityVendorConfigs`
+        # @return [Array<Google::Apis::DisplayvideoV2::ThirdPartyVendorConfig>]
+        attr_accessor :viewability_vendor_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @brand_lift_vendor_configs = args[:brand_lift_vendor_configs] if args.key?(:brand_lift_vendor_configs)
+          @brand_safety_vendor_configs = args[:brand_safety_vendor_configs] if args.key?(:brand_safety_vendor_configs)
+          @reach_vendor_configs = args[:reach_vendor_configs] if args.key?(:reach_vendor_configs)
+          @viewability_vendor_configs = args[:viewability_vendor_configs] if args.key?(:viewability_vendor_configs)
         end
       end
       

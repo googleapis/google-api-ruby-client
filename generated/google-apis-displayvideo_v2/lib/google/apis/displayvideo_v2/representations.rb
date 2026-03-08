@@ -658,6 +658,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DemandGenBiddingStrategy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DemandGenSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeviceMakeModelAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1696,6 +1708,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ThirdPartyMeasurementConfigs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ThirdPartyOnlyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2270,6 +2288,8 @@ module Google
       class BiddingStrategy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :demand_gen_bid, as: 'demandGenBid', class: Google::Apis::DisplayvideoV2::DemandGenBiddingStrategy, decorator: Google::Apis::DisplayvideoV2::DemandGenBiddingStrategy::Representation
+      
           property :fixed_bid, as: 'fixedBid', class: Google::Apis::DisplayvideoV2::FixedBidStrategy, decorator: Google::Apis::DisplayvideoV2::FixedBidStrategy::Representation
       
           property :maximize_spend_auto_bid, as: 'maximizeSpendAutoBid', class: Google::Apis::DisplayvideoV2::MaximizeSpendBidStrategy, decorator: Google::Apis::DisplayvideoV2::MaximizeSpendBidStrategy::Representation
@@ -2788,6 +2808,7 @@ module Google
           collection :floodlight_activity_configs, as: 'floodlightActivityConfigs', class: Google::Apis::DisplayvideoV2::TrackingFloodlightActivityConfig, decorator: Google::Apis::DisplayvideoV2::TrackingFloodlightActivityConfig::Representation
       
           property :post_view_count_percentage_millis, :numeric_string => true, as: 'postViewCountPercentageMillis'
+          property :primary_attribution_model_id, :numeric_string => true, as: 'primaryAttributionModelId'
         end
       end
       
@@ -3036,6 +3057,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assigned_targeting_option_ids, as: 'assignedTargetingOptionIds'
           property :targeting_type, as: 'targetingType'
+        end
+      end
+      
+      class DemandGenBiddingStrategy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_bidding_value, :numeric_string => true, as: 'effectiveBiddingValue'
+          property :effective_bidding_value_source, as: 'effectiveBiddingValueSource'
+          property :type, as: 'type'
+          property :value, :numeric_string => true, as: 'value'
+        end
+      end
+      
+      class DemandGenSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :geo_language_targeting_enabled, as: 'geoLanguageTargetingEnabled'
+          property :linked_merchant_id, :numeric_string => true, as: 'linkedMerchantId'
+          property :third_party_measurement_configs, as: 'thirdPartyMeasurementConfigs', class: Google::Apis::DisplayvideoV2::ThirdPartyMeasurementConfigs, decorator: Google::Apis::DisplayvideoV2::ThirdPartyMeasurementConfigs::Representation
+      
         end
       end
       
@@ -3458,6 +3499,7 @@ module Google
       class ImageAsset
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_id, :numeric_string => true, as: 'assetId'
           property :file_size, :numeric_string => true, as: 'fileSize'
           property :full_size, as: 'fullSize', class: Google::Apis::DisplayvideoV2::Dimensions, decorator: Google::Apis::DisplayvideoV2::Dimensions::Representation
       
@@ -3696,6 +3738,7 @@ module Google
       class KeywordAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exempted_policy_names, as: 'exemptedPolicyNames'
           property :keyword, as: 'keyword'
           property :negative, as: 'negative'
         end
@@ -3730,6 +3773,8 @@ module Google
           property :conversion_counting, as: 'conversionCounting', class: Google::Apis::DisplayvideoV2::ConversionCountingConfig, decorator: Google::Apis::DisplayvideoV2::ConversionCountingConfig::Representation
       
           collection :creative_ids, as: 'creativeIds'
+          property :demand_gen_settings, as: 'demandGenSettings', class: Google::Apis::DisplayvideoV2::DemandGenSettings, decorator: Google::Apis::DisplayvideoV2::DemandGenSettings::Representation
+      
           property :display_name, as: 'displayName'
           property :entity_status, as: 'entityStatus'
           property :exclude_new_exchanges, as: 'excludeNewExchanges'
@@ -4764,6 +4809,20 @@ module Google
           property :video_player_size_details, as: 'videoPlayerSizeDetails', class: Google::Apis::DisplayvideoV2::VideoPlayerSizeTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV2::VideoPlayerSizeTargetingOptionDetails::Representation
       
           property :viewability_details, as: 'viewabilityDetails', class: Google::Apis::DisplayvideoV2::ViewabilityTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV2::ViewabilityTargetingOptionDetails::Representation
+      
+        end
+      end
+      
+      class ThirdPartyMeasurementConfigs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :brand_lift_vendor_configs, as: 'brandLiftVendorConfigs', class: Google::Apis::DisplayvideoV2::ThirdPartyVendorConfig, decorator: Google::Apis::DisplayvideoV2::ThirdPartyVendorConfig::Representation
+      
+          collection :brand_safety_vendor_configs, as: 'brandSafetyVendorConfigs', class: Google::Apis::DisplayvideoV2::ThirdPartyVendorConfig, decorator: Google::Apis::DisplayvideoV2::ThirdPartyVendorConfig::Representation
+      
+          collection :reach_vendor_configs, as: 'reachVendorConfigs', class: Google::Apis::DisplayvideoV2::ThirdPartyVendorConfig, decorator: Google::Apis::DisplayvideoV2::ThirdPartyVendorConfig::Representation
+      
+          collection :viewability_vendor_configs, as: 'viewabilityVendorConfigs', class: Google::Apis::DisplayvideoV2::ThirdPartyVendorConfig, decorator: Google::Apis::DisplayvideoV2::ThirdPartyVendorConfig::Representation
       
         end
       end
