@@ -1033,6 +1033,12 @@ module Google
       class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Legacy field. This field must be a Cloud Storage URI prefix. (e.g., `
+        # gs://bucket/path/`).
+        # Corresponds to the JSON property `audioOutputUriPrefix`
+        # @return [String]
+        attr_accessor :audio_output_uri_prefix
+      
         # Optional. For file formats, such as MXF or MKV, supporting multiple audio
         # tracks, specify up to two tracks. Default: track 0.
         # Corresponds to the JSON property `audioTracks`
@@ -1112,6 +1118,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audio_output_uri_prefix = args[:audio_output_uri_prefix] if args.key?(:audio_output_uri_prefix)
           @audio_tracks = args[:audio_tracks] if args.key?(:audio_tracks)
           @diarization_speaker_count = args[:diarization_speaker_count] if args.key?(:diarization_speaker_count)
           @enable_automatic_punctuation = args[:enable_automatic_punctuation] if args.key?(:enable_automatic_punctuation)
@@ -1640,6 +1647,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. A distinct string value is assigned for every speaker within the
+        # audio. This field specifies which one of those speakers was detected to have
+        # spoken this word.
+        # Corresponds to the JSON property `speakerLabel`
+        # @return [String]
+        attr_accessor :speaker_label
+      
         # Output only. A distinct integer value is assigned for every speaker within the
         # audio. This field specifies which one of those speakers was detected to have
         # spoken this word. Value ranges from 1 up to diarization_speaker_count, and is
@@ -1669,6 +1683,7 @@ module Google
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @speaker_label = args[:speaker_label] if args.key?(:speaker_label)
           @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
           @start_time = args[:start_time] if args.key?(:start_time)
           @word = args[:word] if args.key?(:word)
@@ -2820,6 +2835,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. A distinct string value is assigned for every speaker within the
+        # audio. This field specifies which one of those speakers was detected to have
+        # spoken this word.
+        # Corresponds to the JSON property `speakerLabel`
+        # @return [String]
+        attr_accessor :speaker_label
+      
         # Output only. A distinct integer value is assigned for every speaker within the
         # audio. This field specifies which one of those speakers was detected to have
         # spoken this word. Value ranges from 1 up to diarization_speaker_count, and is
@@ -2849,6 +2871,7 @@ module Google
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @speaker_label = args[:speaker_label] if args.key?(:speaker_label)
           @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
           @start_time = args[:start_time] if args.key?(:start_time)
           @word = args[:word] if args.key?(:word)
@@ -4000,6 +4023,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. A distinct string value is assigned for every speaker within the
+        # audio. This field specifies which one of those speakers was detected to have
+        # spoken this word.
+        # Corresponds to the JSON property `speakerLabel`
+        # @return [String]
+        attr_accessor :speaker_label
+      
         # Output only. A distinct integer value is assigned for every speaker within the
         # audio. This field specifies which one of those speakers was detected to have
         # spoken this word. Value ranges from 1 up to diarization_speaker_count, and is
@@ -4029,6 +4059,7 @@ module Google
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @speaker_label = args[:speaker_label] if args.key?(:speaker_label)
           @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
           @start_time = args[:start_time] if args.key?(:start_time)
           @word = args[:word] if args.key?(:word)
@@ -5180,6 +5211,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. A distinct string value is assigned for every speaker within the
+        # audio. This field specifies which one of those speakers was detected to have
+        # spoken this word.
+        # Corresponds to the JSON property `speakerLabel`
+        # @return [String]
+        attr_accessor :speaker_label
+      
         # Output only. A distinct integer value is assigned for every speaker within the
         # audio. This field specifies which one of those speakers was detected to have
         # spoken this word. Value ranges from 1 up to diarization_speaker_count, and is
@@ -5209,6 +5247,7 @@ module Google
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @speaker_label = args[:speaker_label] if args.key?(:speaker_label)
           @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
           @start_time = args[:start_time] if args.key?(:start_time)
           @word = args[:word] if args.key?(:word)
@@ -6566,6 +6605,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. A distinct string value is assigned for every speaker within the
+        # audio. This field specifies which one of those speakers was detected to have
+        # spoken this word.
+        # Corresponds to the JSON property `speakerLabel`
+        # @return [String]
+        attr_accessor :speaker_label
+      
         # Output only. A distinct integer value is assigned for every speaker within the
         # audio. This field specifies which one of those speakers was detected to have
         # spoken this word. Value ranges from 1 up to diarization_speaker_count, and is
@@ -6595,6 +6641,7 @@ module Google
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @speaker_label = args[:speaker_label] if args.key?(:speaker_label)
           @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
           @start_time = args[:start_time] if args.key?(:start_time)
           @word = args[:word] if args.key?(:word)
@@ -6628,6 +6675,14 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6636,6 +6691,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
