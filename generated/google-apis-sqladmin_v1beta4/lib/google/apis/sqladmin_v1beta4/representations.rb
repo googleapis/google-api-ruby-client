@@ -2064,7 +2064,11 @@ module Google
           property :preferred_secondary_zone, as: 'preferredSecondaryZone'
           property :preferred_zone, as: 'preferredZone'
           property :private_network, as: 'privateNetwork'
+          property :region, as: 'region'
           property :target_instance, as: 'targetInstance'
+          collection :target_instance_clear_settings_field_names, as: 'targetInstanceClearSettingsFieldNames'
+          property :target_instance_settings, as: 'targetInstanceSettings', class: Google::Apis::SqladminV1beta4::DatabaseInstance, decorator: Google::Apis::SqladminV1beta4::DatabaseInstance::Representation
+      
         end
       end
       
@@ -2234,6 +2238,7 @@ module Google
       class Settings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerated_replica_mode, as: 'acceleratedReplicaMode'
           property :activation_policy, as: 'activationPolicy'
           property :active_directory_config, as: 'activeDirectoryConfig', class: Google::Apis::SqladminV1beta4::SqlActiveDirectoryConfig, decorator: Google::Apis::SqladminV1beta4::SqlActiveDirectoryConfig::Representation
       
