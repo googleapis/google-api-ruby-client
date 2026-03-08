@@ -4142,6 +4142,7 @@ module Google
       class GoogleCloudDocumentaiV1beta3DocumentShardInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_offset, as: 'pageOffset'
           property :shard_count, :numeric_string => true, as: 'shardCount'
           property :shard_index, :numeric_string => true, as: 'shardIndex'
           property :text_offset, :numeric_string => true, as: 'textOffset'
