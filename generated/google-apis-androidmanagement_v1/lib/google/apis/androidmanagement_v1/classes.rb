@@ -2425,6 +2425,11 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::PreferentialNetworkServiceSettings]
         attr_accessor :preferential_network_service_settings
       
+        # Controls the device's private DNS settings.
+        # Corresponds to the JSON property `privateDnsSettings`
+        # @return [Google::Apis::AndroidmanagementV1::PrivateDnsSettings]
+        attr_accessor :private_dns_settings
+      
         # Controls tethering settings. Based on the value set, the user is partially or
         # fully disallowed from using different forms of tethering.
         # Corresponds to the JSON property `tetheringSettings`
@@ -2465,6 +2470,7 @@ module Google
           @bluetooth_sharing = args[:bluetooth_sharing] if args.key?(:bluetooth_sharing)
           @configure_wifi = args[:configure_wifi] if args.key?(:configure_wifi)
           @preferential_network_service_settings = args[:preferential_network_service_settings] if args.key?(:preferential_network_service_settings)
+          @private_dns_settings = args[:private_dns_settings] if args.key?(:private_dns_settings)
           @tethering_settings = args[:tethering_settings] if args.key?(:tethering_settings)
           @usb_data_access = args[:usb_data_access] if args.key?(:usb_data_access)
           @wifi_direct_settings = args[:wifi_direct_settings] if args.key?(:wifi_direct_settings)
@@ -5313,10 +5319,7 @@ module Google
         attr_accessor :auto_time_required
         alias_method :auto_time_required?, :auto_time_required
       
-        # Whether applications other than the ones configured in applications are
-        # blocked from being installed. When set, applications that were installed under
-        # a previous policy but no longer appear in the policy are automatically
-        # uninstalled.
+        # This field has no effect.
         # Corresponds to the JSON property `blockApplicationsEnabled`
         # @return [Boolean]
         attr_accessor :block_applications_enabled
@@ -6187,6 +6190,42 @@ module Google
         def update!(**args)
           @default_preferential_network_id = args[:default_preferential_network_id] if args.key?(:default_preferential_network_id)
           @preferential_network_service_configs = args[:preferential_network_service_configs] if args.key?(:preferential_network_service_configs)
+        end
+      end
+      
+      # Controls the device's private DNS settings.
+      class PrivateDnsSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The hostname of the DNS server. This must be set if and only if
+        # private_dns_mode is set to PRIVATE_DNS_SPECIFIED_HOST. Supported on Android 10
+        # and above on fully managed devices. A NonComplianceDetail with MANAGEMENT_MODE
+        # is reported on other management modes. A NonComplianceDetail with API_LEVEL is
+        # reported if the Android version is less than 10. A NonComplianceDetail with
+        # PENDING is reported if the device is not connected to a network. A
+        # NonComplianceDetail with nonComplianceReason INVALID_VALUE and
+        # specificNonComplianceReason PRIVATE_DNS_HOST_NOT_SERVING is reported if the
+        # specified host is not a DNS server or not supported on Android. A
+        # NonComplianceDetail with INVALID_VALUE is reported if applying this setting
+        # fails for any other reason.
+        # Corresponds to the JSON property `privateDnsHost`
+        # @return [String]
+        attr_accessor :private_dns_host
+      
+        # Optional. The configuration mode for device's global private DNS settings. If
+        # this is set to PRIVATE_DNS_SPECIFIED_HOST, then private_dns_host must be set.
+        # Corresponds to the JSON property `privateDnsMode`
+        # @return [String]
+        attr_accessor :private_dns_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @private_dns_host = args[:private_dns_host] if args.key?(:private_dns_host)
+          @private_dns_mode = args[:private_dns_mode] if args.key?(:private_dns_mode)
         end
       end
       
@@ -7085,13 +7124,6 @@ module Google
       class SystemUpdate
         include Google::Apis::Core::Hashable
       
-        # If this is greater than zero, then this is the number of days after a pending
-        # update becoming available that a device can remain compliant, without taking
-        # the update. Has no effect otherwise.
-        # Corresponds to the JSON property `allowedDaysWithoutUpdate`
-        # @return [Fixnum]
-        attr_accessor :allowed_days_without_update
-      
         # If the type is WINDOWED, the end of the maintenance window, measured as the
         # number of minutes after midnight in device's local time. This value must be
         # between 0 and 1439, inclusive. If this value is less than start_minutes, then
@@ -7128,7 +7160,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @allowed_days_without_update = args[:allowed_days_without_update] if args.key?(:allowed_days_without_update)
           @end_minutes = args[:end_minutes] if args.key?(:end_minutes)
           @freeze_periods = args[:freeze_periods] if args.key?(:freeze_periods)
           @start_minutes = args[:start_minutes] if args.key?(:start_minutes)

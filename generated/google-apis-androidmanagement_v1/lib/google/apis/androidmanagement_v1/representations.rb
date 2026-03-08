@@ -802,6 +802,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrivateDnsSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProvisioningInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1624,6 +1630,8 @@ module Google
           property :bluetooth_sharing, as: 'bluetoothSharing'
           property :configure_wifi, as: 'configureWifi'
           property :preferential_network_service_settings, as: 'preferentialNetworkServiceSettings', class: Google::Apis::AndroidmanagementV1::PreferentialNetworkServiceSettings, decorator: Google::Apis::AndroidmanagementV1::PreferentialNetworkServiceSettings::Representation
+      
+          property :private_dns_settings, as: 'privateDnsSettings', class: Google::Apis::AndroidmanagementV1::PrivateDnsSettings, decorator: Google::Apis::AndroidmanagementV1::PrivateDnsSettings::Representation
       
           property :tethering_settings, as: 'tetheringSettings'
           property :usb_data_access, as: 'usbDataAccess'
@@ -2553,6 +2561,14 @@ module Google
         end
       end
       
+      class PrivateDnsSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_dns_host, as: 'privateDnsHost'
+          property :private_dns_mode, as: 'privateDnsMode'
+        end
+      end
+      
       class ProvisioningInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2794,7 +2810,6 @@ module Google
       class SystemUpdate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :allowed_days_without_update, as: 'allowedDaysWithoutUpdate'
           property :end_minutes, as: 'endMinutes'
           collection :freeze_periods, as: 'freezePeriods', class: Google::Apis::AndroidmanagementV1::FreezePeriod, decorator: Google::Apis::AndroidmanagementV1::FreezePeriod::Representation
       
