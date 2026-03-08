@@ -580,6 +580,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Settings to describe how errors should be handled in the app.
+        # Corresponds to the JSON property `errorHandlingSettings`
+        # @return [Google::Apis::CesV1::ErrorHandlingSettings]
+        attr_accessor :error_handling_settings
+      
         # Output only. Etag used to ensure the object hasn't changed during a read-
         # modify-write operation. If the etag is empty, the update will overwrite any
         # concurrent changes.
@@ -690,6 +695,7 @@ module Google
           @deployment_count = args[:deployment_count] if args.key?(:deployment_count)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @error_handling_settings = args[:error_handling_settings] if args.key?(:error_handling_settings)
           @etag = args[:etag] if args.key?(:etag)
           @evaluation_metrics_thresholds = args[:evaluation_metrics_thresholds] if args.key?(:evaluation_metrics_thresholds)
           @global_instruction = args[:global_instruction] if args.key?(:global_instruction)
@@ -1387,6 +1393,11 @@ module Google
         # @return [Google::Apis::CesV1::AgentTransfer]
         attr_accessor :agent_transfer
       
+        # Represents a blob input or output in the conversation.
+        # Corresponds to the JSON property `blob`
+        # @return [Google::Apis::CesV1::Blob]
+        attr_accessor :blob
+      
         # A struct represents default variables at the start of the conversation, keyed
         # by variable names.
         # Corresponds to the JSON property `defaultVariables`
@@ -1436,6 +1447,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent_transfer = args[:agent_transfer] if args.key?(:agent_transfer)
+          @blob = args[:blob] if args.key?(:blob)
           @default_variables = args[:default_variables] if args.key?(:default_variables)
           @image = args[:image] if args.key?(:image)
           @payload = args[:payload] if args.key?(:payload)
@@ -2404,8 +2416,9 @@ module Google
       class Deployment
         include Google::Apis::Core::Hashable
       
-        # Required. The resource name of the app version to deploy. Format: projects/`
-        # project`/locations/`location`/apps/`app`/versions/`version`
+        # Optional. The resource name of the app version to deploy. Format: `projects/`
+        # project`/locations/`location`/apps/`app`/versions/`version`` Use `projects/`
+        # project`/locations/`location`/apps/`app`/versions/-` to use the draft app.
         # Corresponds to the JSON property `appVersion`
         # @return [String]
         attr_accessor :app_version
@@ -2433,8 +2446,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Identifier. The resource name of the deployment. Format: projects/`project`/
-        # locations/`location`/apps/`app`/deployments/`deployment`
+        # Identifier. The resource name of the deployment. Format: `projects/`project`/
+        # locations/`location`/apps/`app`/deployments/`deployment``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2577,6 +2590,55 @@ module Google
           @client_key = args[:client_key] if args.key?(:client_key)
           @issuer = args[:issuer] if args.key?(:issuer)
           @subject = args[:subject] if args.key?(:subject)
+        end
+      end
+      
+      # Defines project/location level endpoint control policy.
+      class EndpointControlPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The allowed HTTP(s) origins that tools in the App are able to
+        # directly call. The enforcement depends on the value of enforcement_scope and
+        # the VPC-SC status of the project. If a port number is not provided, all ports
+        # will be allowed. Otherwise, the port number must match exactly. For example, "
+        # https://example.com" will match "https://example.com:443" and any other port. "
+        # https://example.com:443" will only match "https://example.com:443".
+        # Corresponds to the JSON property `allowedOrigins`
+        # @return [Array<String>]
+        attr_accessor :allowed_origins
+      
+        # Optional. The scope in which this policy's allowed_origins list is enforced.
+        # Corresponds to the JSON property `enforcementScope`
+        # @return [String]
+        attr_accessor :enforcement_scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_origins = args[:allowed_origins] if args.key?(:allowed_origins)
+          @enforcement_scope = args[:enforcement_scope] if args.key?(:enforcement_scope)
+        end
+      end
+      
+      # Settings to describe how errors should be handled in the app.
+      class ErrorHandlingSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The strategy to use for error handling.
+        # Corresponds to the JSON property `errorHandlingStrategy`
+        # @return [String]
+        attr_accessor :error_handling_strategy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_handling_strategy = args[:error_handling_strategy] if args.key?(:error_handling_strategy)
         end
       end
       
@@ -5299,6 +5361,50 @@ module Google
         end
       end
       
+      # Project/Location level security settings for CES.
+      class SecuritySettings
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time of the security settings.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Defines project/location level endpoint control policy.
+        # Corresponds to the JSON property `endpointControlPolicy`
+        # @return [Google::Apis::CesV1::EndpointControlPolicy]
+        attr_accessor :endpoint_control_policy
+      
+        # Output only. Etag of the security settings.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifier. The unique identifier of the security settings. Format: `projects/`
+        # project`/locations/`location`/securitySettings`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Last update time of the security settings.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @endpoint_control_policy = args[:endpoint_control_policy] if args.key?(:endpoint_control_policy)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Configurations for authentication using a custom service account.
       class ServiceAccountAuthConfig
         include Google::Apis::Core::Hashable
@@ -5377,7 +5483,7 @@ module Google
       
         # Optional. The entry agent to handle the session. If not specified, the session
         # will be handled by the root agent of the app. Format: `projects/`project`/
-        # locations/`location`/agents/`agent``
+        # locations/`location`/apps/`app`/agents/`agent``
         # Corresponds to the JSON property `entryAgent`
         # @return [String]
         attr_accessor :entry_agent
@@ -5420,6 +5526,13 @@ module Google
         # @return [String]
         attr_accessor :time_zone
       
+        # Optional. Whether to use tool fakes for the session. If this field is set, the
+        # agent will attempt use tool fakes instead of calling the real tools.
+        # Corresponds to the JSON property `useToolFakes`
+        # @return [Boolean]
+        attr_accessor :use_tool_fakes
+        alias_method :use_tool_fakes?, :use_tool_fakes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5433,6 +5546,7 @@ module Google
           @output_audio_config = args[:output_audio_config] if args.key?(:output_audio_config)
           @remote_dialogflow_query_parameters = args[:remote_dialogflow_query_parameters] if args.key?(:remote_dialogflow_query_parameters)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @use_tool_fakes = args[:use_tool_fakes] if args.key?(:use_tool_fakes)
         end
       end
       
@@ -5850,10 +5964,10 @@ module Google
         # verification. This overrides the default SSL trust store. If this is empty or
         # unspecified, CES will use Google's default trust store to verify certificates.
         # N.B. Make sure the HTTPS server certificates are signed with "subject alt name"
-        # . For instance a certificate can be self-signed using the following command,
-        # openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -
-        # out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'
-        # ")
+        # . For instance a certificate can be self-signed using the following command: ``
+        # ` openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \
+        # -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.
+        # com'") ```
         # Corresponds to the JSON property `cert`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -5953,11 +6067,11 @@ module Google
         # @return [Google::Apis::CesV1::McpTool]
         attr_accessor :mcp_tool
       
-        # Identifier. The unique identifier of the tool. Format: - `projects/`project`/
-        # locations/`location`/apps/`app`/tools/`tool`` for ## standalone tools. `
+        # Identifier. The resource name of the tool. Format: * `projects/`project`/
+        # locations/`location`/apps/`app`/tools/`tool`` for standalone tools. * `
         # projects/`project`/locations/`location`/apps/`app`/toolsets/`toolset`/tools/`
         # tool`` for tools retrieved from a toolset. These tools are dynamic and output-
-        # only, they cannot be referenced directly where a tool is expected.
+        # only; they cannot be referenced directly where a tool is expected.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
