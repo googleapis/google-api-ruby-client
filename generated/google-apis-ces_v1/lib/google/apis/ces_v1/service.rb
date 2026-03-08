@@ -1038,8 +1038,8 @@ module Google
         
         # Updates the specified deployment.
         # @param [String] name
-        #   Identifier. The resource name of the deployment. Format: projects/`project`/
-        #   locations/`location`/apps/`app`/deployments/`deployment`
+        #   Identifier. The resource name of the deployment. Format: `projects/`project`/
+        #   locations/`location`/apps/`app`/deployments/`deployment``
         # @param [Google::Apis::CesV1::Deployment] deployment_object
         # @param [String] update_mask
         #   Optional. The list of fields to update.
@@ -1684,11 +1684,11 @@ module Google
         
         # Updates the specified tool.
         # @param [String] name
-        #   Identifier. The unique identifier of the tool. Format: - `projects/`project`/
-        #   locations/`location`/apps/`app`/tools/`tool`` for ## standalone tools. `
+        #   Identifier. The resource name of the tool. Format: * `projects/`project`/
+        #   locations/`location`/apps/`app`/tools/`tool`` for standalone tools. * `
         #   projects/`project`/locations/`location`/apps/`app`/toolsets/`toolset`/tools/`
         #   tool`` for tools retrieved from a toolset. These tools are dynamic and output-
-        #   only, they cannot be referenced directly where a tool is expected.
+        #   only; they cannot be referenced directly where a tool is expected.
         # @param [Google::Apis::CesV1::Tool] tool_object
         # @param [String] update_mask
         #   Optional. Field mask is used to control which fields get updated. If the mask

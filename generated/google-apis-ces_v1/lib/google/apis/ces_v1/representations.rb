@@ -394,6 +394,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EndpointControlPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ErrorHandlingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EvaluationMetricsThresholds
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -850,6 +862,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecuritySettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceAccountAuthConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1190,6 +1208,8 @@ module Google
           property :deployment_count, as: 'deploymentCount'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :error_handling_settings, as: 'errorHandlingSettings', class: Google::Apis::CesV1::ErrorHandlingSettings, decorator: Google::Apis::CesV1::ErrorHandlingSettings::Representation
+      
           property :etag, as: 'etag'
           property :evaluation_metrics_thresholds, as: 'evaluationMetricsThresholds', class: Google::Apis::CesV1::EvaluationMetricsThresholds, decorator: Google::Apis::CesV1::EvaluationMetricsThresholds::Representation
       
@@ -1400,6 +1420,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_transfer, as: 'agentTransfer', class: Google::Apis::CesV1::AgentTransfer, decorator: Google::Apis::CesV1::AgentTransfer::Representation
+      
+          property :blob, as: 'blob', class: Google::Apis::CesV1::Blob, decorator: Google::Apis::CesV1::Blob::Representation
       
           hash :default_variables, as: 'defaultVariables'
           property :image, as: 'image', class: Google::Apis::CesV1::Image, decorator: Google::Apis::CesV1::Image::Representation
@@ -1740,6 +1762,21 @@ module Google
           property :client_key, as: 'clientKey'
           property :issuer, as: 'issuer'
           property :subject, as: 'subject'
+        end
+      end
+      
+      class EndpointControlPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_origins, as: 'allowedOrigins'
+          property :enforcement_scope, as: 'enforcementScope'
+        end
+      end
+      
+      class ErrorHandlingSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_handling_strategy, as: 'errorHandlingStrategy'
         end
       end
       
@@ -2531,6 +2568,18 @@ module Google
         end
       end
       
+      class SecuritySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :endpoint_control_policy, as: 'endpointControlPolicy', class: Google::Apis::CesV1::EndpointControlPolicy, decorator: Google::Apis::CesV1::EndpointControlPolicy::Representation
+      
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class ServiceAccountAuthConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2566,6 +2615,7 @@ module Google
           property :remote_dialogflow_query_parameters, as: 'remoteDialogflowQueryParameters', class: Google::Apis::CesV1::SessionConfigRemoteDialogflowQueryParameters, decorator: Google::Apis::CesV1::SessionConfigRemoteDialogflowQueryParameters::Representation
       
           property :time_zone, as: 'timeZone'
+          property :use_tool_fakes, as: 'useToolFakes'
         end
       end
       
