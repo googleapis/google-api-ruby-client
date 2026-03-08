@@ -6967,6 +6967,12 @@ module Google
       class GoogleCloudDocumentaiV1beta3DocumentShardInfo
         include Google::Apis::Core::Hashable
       
+        # The index of the first page in Document.pages in the overall document global
+        # pages. Available for document shards created by the document splitter.
+        # Corresponds to the JSON property `pageOffset`
+        # @return [Fixnum]
+        attr_accessor :page_offset
+      
         # Total number of shards.
         # Corresponds to the JSON property `shardCount`
         # @return [Fixnum]
@@ -6989,6 +6995,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @page_offset = args[:page_offset] if args.key?(:page_offset)
           @shard_count = args[:shard_count] if args.key?(:shard_count)
           @shard_index = args[:shard_index] if args.key?(:shard_index)
           @text_offset = args[:text_offset] if args.key?(:text_offset)
