@@ -178,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GkeNetworkPolicyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GkeNetworkPolicySkippedInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GkePodInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -757,6 +769,23 @@ module Google
         end
       end
       
+      class GkeNetworkPolicyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :direction, as: 'direction'
+          property :display_name, as: 'displayName'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GkeNetworkPolicySkippedInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+        end
+      end
+      
       class GkePodInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1208,6 +1237,10 @@ module Google
           property :forwarding_rule, as: 'forwardingRule', class: Google::Apis::NetworkmanagementV1::ForwardingRuleInfo, decorator: Google::Apis::NetworkmanagementV1::ForwardingRuleInfo::Representation
       
           property :gke_master, as: 'gkeMaster', class: Google::Apis::NetworkmanagementV1::GkeMasterInfo, decorator: Google::Apis::NetworkmanagementV1::GkeMasterInfo::Representation
+      
+          property :gke_network_policy, as: 'gkeNetworkPolicy', class: Google::Apis::NetworkmanagementV1::GkeNetworkPolicyInfo, decorator: Google::Apis::NetworkmanagementV1::GkeNetworkPolicyInfo::Representation
+      
+          property :gke_network_policy_skipped, as: 'gkeNetworkPolicySkipped', class: Google::Apis::NetworkmanagementV1::GkeNetworkPolicySkippedInfo, decorator: Google::Apis::NetworkmanagementV1::GkeNetworkPolicySkippedInfo::Representation
       
           property :gke_pod, as: 'gkePod', class: Google::Apis::NetworkmanagementV1::GkePodInfo, decorator: Google::Apis::NetworkmanagementV1::GkePodInfo::Representation
       
