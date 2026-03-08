@@ -684,7 +684,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get a finding by name.
+        # Get a finding by name. The `name` field should have the format: `projects/`
+        # project`/findings/`finding``
         # @param [String] name
         #   Required. Name of the finding to get.
         # @param [String] fields
@@ -714,7 +715,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get a list of findings that meet the filter criteria.
+        # Get a list of findings that meet the filter criteria. The `parent` field in
+        # ListFindingsRequest should have the format: projects/`project`
         # @param [String] parent
         #   Required. Parent of the findings.
         # @param [String] filter
@@ -758,9 +760,10 @@ module Google
         end
         
         # SearchFindings is a more powerful version of ListFindings that supports
-        # complex queries like "findings for issues" using functions such as `has_issue`
-        # and `has_asset` in the query string. Example to search for findings for a
-        # specific issue: `has_issue("name=\"vaults/vault-12345/issues/issue-12345\"")`)
+        # complex queries like "findings for alerts" using functions such as `has_alert`
+        # in the query string. The `parent` field in SearchFindingsRequest should have
+        # the format: projects/`project` Example to search for findings for a specific
+        # issue: `has_alert("name=\"projects/gti-12345/alerts/alert-12345\"")`
         # @param [String] parent
         #   Required. Parent of the findings. Format: vaults/`vault`
         # @param [String] order_by
@@ -773,9 +776,8 @@ module Google
         # @param [String] query
         #   Optional. Query on what findings will be returned. This supports the same
         #   filter criteria as FindingService.ListFindings as well as the following
-        #   relationship queries `has_issue` and `has_asset`. Examples: - has_issue("name=\
-        #   "vaults/vault-12345/issues/issue-12345\"") - has_asset("name=\"vaults/vault-
-        #   12345/assets/asset-12345\"")
+        #   relationship query `has_alert`. Example: - `has_alert("name=\"projects/gti-
+        #   12345/alerts/alert-12345\"")`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
