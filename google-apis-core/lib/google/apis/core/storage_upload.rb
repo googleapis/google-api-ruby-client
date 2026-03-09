@@ -28,6 +28,7 @@ module Google
         CONTENT_LENGTH_HEADER = "Content-Length"
         CONTENT_TYPE_HEADER = "Content-Type"
         UPLOAD_CONTENT_TYPE_HEADER = "X-Upload-Content-Type"
+        UPLOAD_CONTENT_LENGTH_HEADER = "X-Upload-Content-Length"
         LOCATION_HEADER = "Location"
         CONTENT_RANGE_HEADER = "Content-Range"
         RESUMABLE = "resumable"
@@ -133,9 +134,9 @@ module Google
           request_query = query.dup
           request_query['uploadType'] = RESUMABLE
 
-          request_header[CONTENT_LENGTH_HEADER] = upload_io.size.to_s
           request_header[CONTENT_TYPE_HEADER] = JSON_CONTENT_TYPE
           request_header[UPLOAD_CONTENT_TYPE_HEADER] = upload_content_type unless upload_content_type.nil?
+          request_header[UPLOAD_CONTENT_LENGTH_HEADER] = upload_io.size.to_s
 
           response = client.post(url.to_s, body, request_header) do |request|
             request.params.replace(request_query)

@@ -51,6 +51,12 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
       expect(a_request(:put, 'https://www.googleapis.com/zoo/animals')).to have_been_made
     end
 
+    it 'should send X-Upload-Content-Length in initiate request' do
+      command.execute(client)
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+        .with { |req| req.headers.key?('X-Upload-Content-Length') }).to have_been_made
+    end
+
     it 'should generate a proper opencensus span' do
       OpenCensus::Trace.start_request_trace do |span_context|
         command.execute(client)
