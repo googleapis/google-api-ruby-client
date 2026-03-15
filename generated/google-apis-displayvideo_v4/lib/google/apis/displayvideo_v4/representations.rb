@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdGroupInventoryControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -448,6 +454,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkEditAdGroupAssignedTargetingOptionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkEditAdGroupAssignedTargetingOptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BulkEditAdvertiserAssignedTargetingOptionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -562,18 +580,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BulkListCampaignAssignedTargetingOptionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BulkListInsertionOrderAssignedTargetingOptionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class BulkUpdateLineItemsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -629,6 +635,12 @@ module Google
       end
       
       class CampaignGoal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CarouselCard
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -946,6 +958,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DemandGenBiddingStrategy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DemandGenCarouselAd
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DemandGenImageAd
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DemandGenProductAd
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DemandGenSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DemandGenVideoAd
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeviceMakeModelAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1181,12 +1229,6 @@ module Google
       end
       
       class GenderTargetingOptionDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GenerateDefaultLineItemRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1474,12 +1516,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListCampaignAssignedTargetingOptionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListCampaignsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1547,12 +1583,6 @@ module Google
       end
       
       class ListGuaranteedOrdersResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListInsertionOrderAssignedTargetingOptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1996,6 +2026,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SelectedInventories
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SensitiveCategoryAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2324,6 +2360,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_group_format, as: 'adGroupFormat'
           property :ad_group_id, :numeric_string => true, as: 'adGroupId'
+          property :ad_group_inventory_control, as: 'adGroupInventoryControl', class: Google::Apis::DisplayvideoV4::AdGroupInventoryControl, decorator: Google::Apis::DisplayvideoV4::AdGroupInventoryControl::Representation
+      
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :bid_strategy, as: 'bidStrategy', class: Google::Apis::DisplayvideoV4::BiddingStrategy, decorator: Google::Apis::DisplayvideoV4::BiddingStrategy::Representation
       
@@ -2352,6 +2390,14 @@ module Google
       
           property :bumper_ad, as: 'bumperAd', class: Google::Apis::DisplayvideoV4::BumperAd, decorator: Google::Apis::DisplayvideoV4::BumperAd::Representation
       
+          property :demand_gen_carousel_ad, as: 'demandGenCarouselAd', class: Google::Apis::DisplayvideoV4::DemandGenCarouselAd, decorator: Google::Apis::DisplayvideoV4::DemandGenCarouselAd::Representation
+      
+          property :demand_gen_image_ad, as: 'demandGenImageAd', class: Google::Apis::DisplayvideoV4::DemandGenImageAd, decorator: Google::Apis::DisplayvideoV4::DemandGenImageAd::Representation
+      
+          property :demand_gen_product_ad, as: 'demandGenProductAd', class: Google::Apis::DisplayvideoV4::DemandGenProductAd, decorator: Google::Apis::DisplayvideoV4::DemandGenProductAd::Representation
+      
+          property :demand_gen_video_ad, as: 'demandGenVideoAd', class: Google::Apis::DisplayvideoV4::DemandGenVideoAd, decorator: Google::Apis::DisplayvideoV4::DemandGenVideoAd::Representation
+      
           property :display_name, as: 'displayName'
           property :display_video_source_ad, as: 'displayVideoSourceAd', class: Google::Apis::DisplayvideoV4::DisplayVideoSourceAd, decorator: Google::Apis::DisplayvideoV4::DisplayVideoSourceAd::Representation
       
@@ -2375,6 +2421,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_group_id, :numeric_string => true, as: 'adGroupId'
           property :assigned_targeting_option, as: 'assignedTargetingOption', class: Google::Apis::DisplayvideoV4::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV4::AssignedTargetingOption::Representation
+      
+        end
+      end
+      
+      class AdGroupInventoryControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_group_inventory_strategy, as: 'adGroupInventoryStrategy'
+          property :selected_inventories, as: 'selectedInventories', class: Google::Apis::DisplayvideoV4::SelectedInventories, decorator: Google::Apis::DisplayvideoV4::SelectedInventories::Representation
       
         end
       end
@@ -3093,6 +3148,8 @@ module Google
       class BiddingStrategy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :demand_gen_bid, as: 'demandGenBid', class: Google::Apis::DisplayvideoV4::DemandGenBiddingStrategy, decorator: Google::Apis::DisplayvideoV4::DemandGenBiddingStrategy::Representation
+      
           property :fixed_bid, as: 'fixedBid', class: Google::Apis::DisplayvideoV4::FixedBidStrategy, decorator: Google::Apis::DisplayvideoV4::FixedBidStrategy::Representation
       
           property :maximize_spend_auto_bid, as: 'maximizeSpendAutoBid', class: Google::Apis::DisplayvideoV4::MaximizeSpendBidStrategy, decorator: Google::Apis::DisplayvideoV4::MaximizeSpendBidStrategy::Representation
@@ -3145,6 +3202,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ad_assets, as: 'adAssets', class: Google::Apis::DisplayvideoV4::AdAsset, decorator: Google::Apis::DisplayvideoV4::AdAsset::Representation
       
+        end
+      end
+      
+      class BulkEditAdGroupAssignedTargetingOptionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ad_group_ids, as: 'adGroupIds'
+          collection :create_requests, as: 'createRequests', class: Google::Apis::DisplayvideoV4::CreateAssignedTargetingOptionsRequest, decorator: Google::Apis::DisplayvideoV4::CreateAssignedTargetingOptionsRequest::Representation
+      
+          collection :delete_requests, as: 'deleteRequests', class: Google::Apis::DisplayvideoV4::DeleteAssignedTargetingOptionsRequest, decorator: Google::Apis::DisplayvideoV4::DeleteAssignedTargetingOptionsRequest::Representation
+      
+        end
+      end
+      
+      class BulkEditAdGroupAssignedTargetingOptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::DisplayvideoV4::Status, decorator: Google::Apis::DisplayvideoV4::Status::Representation
+      
+          collection :failed_ad_group_ids, as: 'failedAdGroupIds'
+          collection :updated_ad_group_ids, as: 'updatedAdGroupIds'
         end
       end
       
@@ -3321,24 +3399,6 @@ module Google
         end
       end
       
-      class BulkListCampaignAssignedTargetingOptionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV4::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV4::AssignedTargetingOption::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class BulkListInsertionOrderAssignedTargetingOptionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV4::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV4::AssignedTargetingOption::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class BulkUpdateLineItemsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3446,6 +3506,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :campaign_goal_type, as: 'campaignGoalType'
           property :performance_goal, as: 'performanceGoal', class: Google::Apis::DisplayvideoV4::PerformanceGoal, decorator: Google::Apis::DisplayvideoV4::PerformanceGoal::Representation
+      
+        end
+      end
+      
+      class CarouselCard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :call_to_action, as: 'callToAction'
+          property :final_mobile_url, as: 'finalMobileUrl'
+          property :final_url, as: 'finalUrl'
+          property :headline, as: 'headline'
+          property :marketing_image, as: 'marketingImage', class: Google::Apis::DisplayvideoV4::ImageAsset, decorator: Google::Apis::DisplayvideoV4::ImageAsset::Representation
+      
+          property :portrait_marketing_image, as: 'portraitMarketingImage', class: Google::Apis::DisplayvideoV4::ImageAsset, decorator: Google::Apis::DisplayvideoV4::ImageAsset::Representation
+      
+          property :square_marketing_image, as: 'squareMarketingImage', class: Google::Apis::DisplayvideoV4::ImageAsset, decorator: Google::Apis::DisplayvideoV4::ImageAsset::Representation
       
         end
       end
@@ -3693,6 +3769,7 @@ module Google
           collection :floodlight_activity_configs, as: 'floodlightActivityConfigs', class: Google::Apis::DisplayvideoV4::TrackingFloodlightActivityConfig, decorator: Google::Apis::DisplayvideoV4::TrackingFloodlightActivityConfig::Representation
       
           property :post_view_count_percentage_millis, :numeric_string => true, as: 'postViewCountPercentageMillis'
+          property :primary_attribution_model_id, :numeric_string => true, as: 'primaryAttributionModelId'
         end
       end
       
@@ -3983,6 +4060,112 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assigned_targeting_option_ids, as: 'assignedTargetingOptionIds'
           property :targeting_type, as: 'targetingType'
+        end
+      end
+      
+      class DemandGenBiddingStrategy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_bidding_value, :numeric_string => true, as: 'effectiveBiddingValue'
+          property :effective_bidding_value_source, as: 'effectiveBiddingValueSource'
+          property :type, as: 'type'
+          property :value, :numeric_string => true, as: 'value'
+        end
+      end
+      
+      class DemandGenCarouselAd
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :business_name, as: 'businessName'
+          collection :cards, as: 'cards', class: Google::Apis::DisplayvideoV4::CarouselCard, decorator: Google::Apis::DisplayvideoV4::CarouselCard::Representation
+      
+          hash :custom_parameters, as: 'customParameters'
+          property :description, as: 'description'
+          property :final_url, as: 'finalUrl'
+          property :final_url_suffix, as: 'finalUrlSuffix'
+          property :headline, as: 'headline'
+          property :logo, as: 'logo', class: Google::Apis::DisplayvideoV4::ImageAsset, decorator: Google::Apis::DisplayvideoV4::ImageAsset::Representation
+      
+          property :tracking_url, as: 'trackingUrl'
+          property :user_specified_tracking_url, as: 'userSpecifiedTrackingUrl'
+        end
+      end
+      
+      class DemandGenImageAd
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :business_name, as: 'businessName'
+          property :call_to_action, as: 'callToAction'
+          hash :custom_parameters, as: 'customParameters'
+          collection :descriptions, as: 'descriptions'
+          property :final_mobile_url, as: 'finalMobileUrl'
+          property :final_url, as: 'finalUrl'
+          property :final_url_suffix, as: 'finalUrlSuffix'
+          collection :headlines, as: 'headlines'
+          collection :logo_images, as: 'logoImages', class: Google::Apis::DisplayvideoV4::ImageAsset, decorator: Google::Apis::DisplayvideoV4::ImageAsset::Representation
+      
+          collection :marketing_images, as: 'marketingImages', class: Google::Apis::DisplayvideoV4::ImageAsset, decorator: Google::Apis::DisplayvideoV4::ImageAsset::Representation
+      
+          collection :portrait_marketing_images, as: 'portraitMarketingImages', class: Google::Apis::DisplayvideoV4::ImageAsset, decorator: Google::Apis::DisplayvideoV4::ImageAsset::Representation
+      
+          collection :square_marketing_images, as: 'squareMarketingImages', class: Google::Apis::DisplayvideoV4::ImageAsset, decorator: Google::Apis::DisplayvideoV4::ImageAsset::Representation
+      
+          property :tracking_url, as: 'trackingUrl'
+          property :user_specified_tracking_url, as: 'userSpecifiedTrackingUrl'
+        end
+      end
+      
+      class DemandGenProductAd
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :business_name, as: 'businessName'
+          property :call_to_action, as: 'callToAction'
+          hash :custom_parameters, as: 'customParameters'
+          property :description, as: 'description'
+          property :display_url_breadcrumb1, as: 'displayUrlBreadcrumb1'
+          property :display_url_breadcrumb2, as: 'displayUrlBreadcrumb2'
+          property :final_url, as: 'finalUrl'
+          property :final_url_suffix, as: 'finalUrlSuffix'
+          property :headline, as: 'headline'
+          property :logo, as: 'logo', class: Google::Apis::DisplayvideoV4::ImageAsset, decorator: Google::Apis::DisplayvideoV4::ImageAsset::Representation
+      
+          property :tracking_url, as: 'trackingUrl'
+          property :user_specified_tracking_url, as: 'userSpecifiedTrackingUrl'
+        end
+      end
+      
+      class DemandGenSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :geo_language_targeting_enabled, as: 'geoLanguageTargetingEnabled'
+          property :linked_merchant_id, :numeric_string => true, as: 'linkedMerchantId'
+          property :third_party_measurement_configs, as: 'thirdPartyMeasurementConfigs', class: Google::Apis::DisplayvideoV4::ThirdPartyMeasurementConfigs, decorator: Google::Apis::DisplayvideoV4::ThirdPartyMeasurementConfigs::Representation
+      
+        end
+      end
+      
+      class DemandGenVideoAd
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :business_name, as: 'businessName'
+          property :call_to_action, as: 'callToAction'
+          property :companion_banner, as: 'companionBanner', class: Google::Apis::DisplayvideoV4::ImageAsset, decorator: Google::Apis::DisplayvideoV4::ImageAsset::Representation
+      
+          hash :custom_parameters, as: 'customParameters'
+          collection :descriptions, as: 'descriptions'
+          property :display_url_breadcrumb1, as: 'displayUrlBreadcrumb1'
+          property :display_url_breadcrumb2, as: 'displayUrlBreadcrumb2'
+          property :final_mobile_url, as: 'finalMobileUrl'
+          property :final_url, as: 'finalUrl'
+          property :final_url_suffix, as: 'finalUrlSuffix'
+          collection :headlines, as: 'headlines'
+          property :logo, as: 'logo', class: Google::Apis::DisplayvideoV4::ImageAsset, decorator: Google::Apis::DisplayvideoV4::ImageAsset::Representation
+      
+          collection :long_headlines, as: 'longHeadlines'
+          property :tracking_url, as: 'trackingUrl'
+          property :user_specified_tracking_url, as: 'userSpecifiedTrackingUrl'
+          collection :videos, as: 'videos', class: Google::Apis::DisplayvideoV4::YoutubeVideoDetails, decorator: Google::Apis::DisplayvideoV4::YoutubeVideoDetails::Representation
+      
         end
       end
       
@@ -4353,18 +4536,6 @@ module Google
         end
       end
       
-      class GenerateDefaultLineItemRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :contains_eu_political_ads, as: 'containsEuPoliticalAds'
-          property :display_name, as: 'displayName'
-          property :insertion_order_id, :numeric_string => true, as: 'insertionOrderId'
-          property :line_item_type, as: 'lineItemType'
-          property :mobile_app, as: 'mobileApp', class: Google::Apis::DisplayvideoV4::MobileApp, decorator: Google::Apis::DisplayvideoV4::MobileApp::Representation
-      
-        end
-      end
-      
       class GeoRegionAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4483,6 +4654,7 @@ module Google
       class ImageAsset
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_id, :numeric_string => true, as: 'assetId'
           property :file_size, :numeric_string => true, as: 'fileSize'
           property :full_size, as: 'fullSize', class: Google::Apis::DisplayvideoV4::Dimensions, decorator: Google::Apis::DisplayvideoV4::Dimensions::Representation
       
@@ -4722,6 +4894,7 @@ module Google
       class KeywordAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exempted_policy_names, as: 'exemptedPolicyNames'
           property :keyword, as: 'keyword'
           property :negative, as: 'negative'
         end
@@ -4767,6 +4940,8 @@ module Google
           property :conversion_counting, as: 'conversionCounting', class: Google::Apis::DisplayvideoV4::ConversionCountingConfig, decorator: Google::Apis::DisplayvideoV4::ConversionCountingConfig::Representation
       
           collection :creative_ids, as: 'creativeIds'
+          property :demand_gen_settings, as: 'demandGenSettings', class: Google::Apis::DisplayvideoV4::DemandGenSettings, decorator: Google::Apis::DisplayvideoV4::DemandGenSettings::Representation
+      
           property :display_name, as: 'displayName'
           property :entity_status, as: 'entityStatus'
           property :exclude_new_exchanges, as: 'excludeNewExchanges'
@@ -4897,15 +5072,6 @@ module Google
         end
       end
       
-      class ListCampaignAssignedTargetingOptionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV4::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV4::AssignedTargetingOption::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class ListCampaignsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5009,15 +5175,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :guaranteed_orders, as: 'guaranteedOrders', class: Google::Apis::DisplayvideoV4::GuaranteedOrder, decorator: Google::Apis::DisplayvideoV4::GuaranteedOrder::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class ListInsertionOrderAssignedTargetingOptionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV4::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV4::AssignedTargetingOption::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -5701,6 +5858,18 @@ module Google
         end
       end
       
+      class SelectedInventories
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_discover, as: 'allowDiscover'
+          property :allow_gmail, as: 'allowGmail'
+          property :allow_google_display_network, as: 'allowGoogleDisplayNetwork'
+          property :allow_youtube_feed, as: 'allowYoutubeFeed'
+          property :allow_youtube_shorts, as: 'allowYoutubeShorts'
+          property :allow_youtube_stream, as: 'allowYoutubeStream'
+        end
+      end
+      
       class SensitiveCategoryAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5768,6 +5937,7 @@ module Google
           property :audience_expansion_level, as: 'audienceExpansionLevel'
           property :audience_expansion_seed_list_excluded, as: 'audienceExpansionSeedListExcluded'
           property :enable_optimized_targeting, as: 'enableOptimizedTargeting'
+          property :exclude_demographic_expansion, as: 'excludeDemographicExpansion'
         end
       end
       
