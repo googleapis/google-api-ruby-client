@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSupportedPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSupportedServicesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -743,6 +749,14 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :service_perimeters, as: 'servicePerimeters', class: Google::Apis::AccesscontextmanagerV1::ServicePerimeter, decorator: Google::Apis::AccesscontextmanagerV1::ServicePerimeter::Representation
       
+        end
+      end
+      
+      class ListSupportedPermissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :supported_permissions, as: 'supportedPermissions'
         end
       end
       
