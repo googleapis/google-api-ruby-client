@@ -131,7 +131,6 @@ module Google
           property :body, as: 'body'
           collection :body_loc_args, as: 'bodyLocArgs'
           property :body_loc_key, as: 'bodyLocKey'
-          property :bypass_proxy_notification, as: 'bypassProxyNotification'
           property :channel_id, as: 'channelId'
           property :click_action, as: 'clickAction'
           property :color, as: 'color'
