@@ -88,6 +88,7 @@ module Google
         # @param [String] blog_id
         # @param [Fixnum] max_posts
         # @param [String] view
+        #   Unspecified is interpreted as READER.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -120,6 +121,7 @@ module Google
         # Gets a blog by url.
         # @param [String] url
         # @param [String] view
+        #   Unspecified is interpreted as READER.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -155,6 +157,7 @@ module Google
         # @param [Array<String>, String] status
         #   Default value of status is LIVE.
         # @param [String] view
+        #   Unspecified is interpreted as the user's role on the blog.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
