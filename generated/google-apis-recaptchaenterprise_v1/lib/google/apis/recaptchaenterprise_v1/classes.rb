@@ -26,6 +26,11 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment
         include Google::Apis::Core::Hashable
       
+        # Account takeover risk assessment.
+        # Corresponds to the JSON property `accountTakeoverVerdict`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict]
+        attr_accessor :account_takeover_verdict
+      
         # Output only. Labels for this request.
         # Corresponds to the JSON property `labels`
         # @return [Array<String>]
@@ -37,7 +42,82 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_takeover_verdict = args[:account_takeover_verdict] if args.key?(:account_takeover_verdict)
           @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
+      # Risk explainability reasons for account defender.
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A risk reason associated with this request.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # Account takeover risk assessment.
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Account takeover attempt probability. Values are from 0.0 (lowest
+        # risk) to 1.0 (highest risk).
+        # Corresponds to the JSON property `risk`
+        # @return [Float]
+        attr_accessor :risk
+      
+        # Output only. Unordered list. Reasons why the request appears risky. Risk
+        # reasons can be returned even if the risk is low, as trustworthy requests can
+        # still have some risk signals.
+        # Corresponds to the JSON property `riskReasons`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason>]
+        attr_accessor :risk_reasons
+      
+        # Output only. Unordered list. Reasons why the request appears trustworthy.
+        # Trust reasons can be returned even if the risk is high, as risky requests can
+        # still have some trust signals.
+        # Corresponds to the JSON property `trustReasons`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason>]
+        attr_accessor :trust_reasons
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @risk = args[:risk] if args.key?(:risk)
+          @risk_reasons = args[:risk_reasons] if args.key?(:risk_reasons)
+          @trust_reasons = args[:trust_reasons] if args.key?(:trust_reasons)
+        end
+      end
+      
+      # Trust explainability reasons for account defender.
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A trust reason associated with this request.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] if args.key?(:reason)
         end
       end
       
@@ -1659,8 +1739,9 @@ module Google
         # @return [String]
         attr_accessor :challenge
       
-        # Output only. Extended verdict reasons to be used for experimentation only. The
-        # set of possible reasons is subject to change.
+        # Output only. Advanced reasons contributing to the risk analysis verdict. These
+        # reasons are available to Enterprise tier projects only. Contact sales for more
+        # information. The set of possible reasons is subject to change.
         # Corresponds to the JSON property `extendedVerdictReasons`
         # @return [Array<String>]
         attr_accessor :extended_verdict_reasons
