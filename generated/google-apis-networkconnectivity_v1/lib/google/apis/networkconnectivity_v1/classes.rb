@@ -1753,6 +1753,24 @@ module Google
       class LinkedInterconnectAttachments
         include Google::Apis::Core::Hashable
       
+        # Optional. Dynamic routes overlapped/encompassed by exclude export ranges are
+        # excluded during export to hub.
+        # Corresponds to the JSON property `excludeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :exclude_export_ranges
+      
+        # Optional. Hub routes overlapped/encompassed by exclude import ranges are
+        # excluded during import from hub.
+        # Corresponds to the JSON property `excludeImportRanges`
+        # @return [Array<String>]
+        attr_accessor :exclude_import_ranges
+      
+        # Optional. Dynamic routes fully encompassed by include export ranges are
+        # included during export to hub.
+        # Corresponds to the JSON property `includeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :include_export_ranges
+      
         # Optional. Hub routes fully encompassed by include import ranges are included
         # during import from hub.
         # Corresponds to the JSON property `includeImportRanges`
@@ -1784,6 +1802,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @exclude_export_ranges = args[:exclude_export_ranges] if args.key?(:exclude_export_ranges)
+          @exclude_import_ranges = args[:exclude_import_ranges] if args.key?(:exclude_import_ranges)
+          @include_export_ranges = args[:include_export_ranges] if args.key?(:include_export_ranges)
           @include_import_ranges = args[:include_import_ranges] if args.key?(:include_import_ranges)
           @site_to_site_data_transfer = args[:site_to_site_data_transfer] if args.key?(:site_to_site_data_transfer)
           @uris = args[:uris] if args.key?(:uris)
@@ -1864,6 +1885,24 @@ module Google
       class LinkedRouterApplianceInstances
         include Google::Apis::Core::Hashable
       
+        # Optional. Dynamic routes overlapped/encompassed by exclude export ranges are
+        # excluded during export to hub.
+        # Corresponds to the JSON property `excludeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :exclude_export_ranges
+      
+        # Optional. Hub routes overlapped/encompassed by exclude import ranges are
+        # excluded during import from hub.
+        # Corresponds to the JSON property `excludeImportRanges`
+        # @return [Array<String>]
+        attr_accessor :exclude_import_ranges
+      
+        # Optional. Dynamic routes fully encompassed by include export ranges are
+        # included during export to hub.
+        # Corresponds to the JSON property `includeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :include_export_ranges
+      
         # Optional. Hub routes fully encompassed by include import ranges are included
         # during import from hub.
         # Corresponds to the JSON property `includeImportRanges`
@@ -1896,6 +1935,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @exclude_export_ranges = args[:exclude_export_ranges] if args.key?(:exclude_export_ranges)
+          @exclude_import_ranges = args[:exclude_import_ranges] if args.key?(:exclude_import_ranges)
+          @include_export_ranges = args[:include_export_ranges] if args.key?(:include_export_ranges)
           @include_import_ranges = args[:include_import_ranges] if args.key?(:include_import_ranges)
           @instances = args[:instances] if args.key?(:instances)
           @site_to_site_data_transfer = args[:site_to_site_data_transfer] if args.key?(:site_to_site_data_transfer)
@@ -1967,6 +2009,24 @@ module Google
       class LinkedVpnTunnels
         include Google::Apis::Core::Hashable
       
+        # Optional. Dynamic routes overlapped/encompassed by exclude export ranges are
+        # excluded during export to hub.
+        # Corresponds to the JSON property `excludeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :exclude_export_ranges
+      
+        # Optional. Hub routes overlapped/encompassed by exclude import ranges are
+        # excluded during import from hub.
+        # Corresponds to the JSON property `excludeImportRanges`
+        # @return [Array<String>]
+        attr_accessor :exclude_import_ranges
+      
+        # Optional. Dynamic routes fully encompassed by include export ranges are
+        # included during export to hub.
+        # Corresponds to the JSON property `includeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :include_export_ranges
+      
         # Optional. Hub routes fully encompassed by include import ranges are included
         # during import from hub.
         # Corresponds to the JSON property `includeImportRanges`
@@ -1998,6 +2058,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @exclude_export_ranges = args[:exclude_export_ranges] if args.key?(:exclude_export_ranges)
+          @exclude_import_ranges = args[:exclude_import_ranges] if args.key?(:exclude_import_ranges)
+          @include_export_ranges = args[:include_export_ranges] if args.key?(:include_export_ranges)
           @include_import_ranges = args[:include_import_ranges] if args.key?(:include_import_ranges)
           @site_to_site_data_transfer = args[:site_to_site_data_transfer] if args.key?(:site_to_site_data_transfer)
           @uris = args[:uris] if args.key?(:uris)
