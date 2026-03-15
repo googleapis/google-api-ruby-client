@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ArtifactSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AssetModuleMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -970,6 +976,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListReleaseSummariesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSubscriptionOffersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1451,6 +1463,12 @@ module Google
       end
       
       class RegionsVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReleaseSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2230,6 +2248,13 @@ module Google
       class ArchiveSubscriptionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ArtifactSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version_code, as: 'versionCode'
         end
       end
       
@@ -3477,6 +3502,14 @@ module Google
         end
       end
       
+      class ListReleaseSummariesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :releases, as: 'releases', class: Google::Apis::AndroidpublisherV3::ReleaseSummary, decorator: Google::Apis::AndroidpublisherV3::ReleaseSummary::Representation
+      
+        end
+      end
+      
       class ListSubscriptionOffersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4296,6 +4329,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :version, as: 'version'
+        end
+      end
+      
+      class ReleaseSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :active_artifacts, as: 'activeArtifacts', class: Google::Apis::AndroidpublisherV3::ArtifactSummary, decorator: Google::Apis::AndroidpublisherV3::ArtifactSummary::Representation
+      
+          property :release_lifecycle_state, as: 'releaseLifecycleState'
+          property :release_name, as: 'releaseName'
+          property :track, as: 'track'
         end
       end
       

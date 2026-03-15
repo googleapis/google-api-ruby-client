@@ -757,6 +757,25 @@ module Google
         end
       end
       
+      # Summary of an artifact.
+      class ArtifactSummary
+        include Google::Apis::Core::Hashable
+      
+        # The version code of the artifact.
+        # Corresponds to the JSON property `versionCode`
+        # @return [Fixnum]
+        attr_accessor :version_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version_code = args[:version_code] if args.key?(:version_code)
+        end
+      end
+      
       # Metadata of an asset module.
       class AssetModuleMetadata
         include Google::Apis::Core::Hashable
@@ -4711,6 +4730,27 @@ module Google
         end
       end
       
+      # Response listing all releases for a given track that are either ready to be
+      # sent for review, in review, approved, not approved or available.
+      class ListReleaseSummariesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of releases for this track. There will be a maximum of 20 releases
+        # returned.
+        # Corresponds to the JSON property `releases`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ReleaseSummary>]
+        attr_accessor :releases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @releases = args[:releases] if args.key?(:releases)
+        end
+      end
+      
       # Response message for ListSubscriptionOffers.
       class ListSubscriptionOffersResponse
         include Google::Apis::Core::Hashable
@@ -7499,6 +7539,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Summary of a release.
+      class ReleaseSummary
+        include Google::Apis::Core::Hashable
+      
+        # List of active artifacts on this release.
+        # Corresponds to the JSON property `activeArtifacts`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ArtifactSummary>]
+        attr_accessor :active_artifacts
+      
+        # The lifecycle state of a release.
+        # Corresponds to the JSON property `releaseLifecycleState`
+        # @return [String]
+        attr_accessor :release_lifecycle_state
+      
+        # Name of the release.
+        # Corresponds to the JSON property `releaseName`
+        # @return [String]
+        attr_accessor :release_name
+      
+        # Identifier of the track. More on [track name](https://developers.google.com/
+        # android-publisher/tracks).
+        # Corresponds to the JSON property `track`
+        # @return [String]
+        attr_accessor :track
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_artifacts = args[:active_artifacts] if args.key?(:active_artifacts)
+          @release_lifecycle_state = args[:release_lifecycle_state] if args.key?(:release_lifecycle_state)
+          @release_name = args[:release_name] if args.key?(:release_name)
+          @track = args[:track] if args.key?(:track)
         end
       end
       

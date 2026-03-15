@@ -197,6 +197,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the list of all releases for a given track. This excludes any releases
+        # that are obsolete.
+        # @param [String] parent
+        #   Required. The parent track, which owns this collection of releases. Format:
+        #   applications/`package_name`/tracks/`track`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::ListReleaseSummariesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::ListReleaseSummariesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_application_track_releases(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'androidpublisher/v3/{+parent}/releases', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::ListReleaseSummariesResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::ListReleaseSummariesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Incrementally update targeting for a recovery action. Note that only the
         # criteria selected during the creation of recovery action can be expanded.
         # @param [String] package_name
@@ -384,6 +416,11 @@ module Google
         #   Package name of the app.
         # @param [String] edit_id
         #   Identifier of the edit.
+        # @param [String] changes_in_review_behavior
+        #   Optional. Specify how the API should behave if there are changes currently in
+        #   review. If this value is not set, it will default to "
+        #   CANCEL_IN_REVIEW_AND_SUBMIT", which will cancel the changes in review and then
+        #   send all the changes for publishing.
         # @param [Boolean] changes_not_sent_for_review
         #   When a rejection happens, the parameter will make sure that the changes in
         #   this edit won't be reviewed until they are explicitly sent for review from
@@ -406,12 +443,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def commit_edit(package_name, edit_id, changes_not_sent_for_review: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def commit_edit(package_name, edit_id, changes_in_review_behavior: nil, changes_not_sent_for_review: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/edits/{editId}:commit', options)
           command.response_representation = Google::Apis::AndroidpublisherV3::AppEdit::Representation
           command.response_class = Google::Apis::AndroidpublisherV3::AppEdit
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
+          command.query['changesInReviewBehavior'] = changes_in_review_behavior unless changes_in_review_behavior.nil?
           command.query['changesNotSentForReview'] = changes_not_sent_for_review unless changes_not_sent_for_review.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
