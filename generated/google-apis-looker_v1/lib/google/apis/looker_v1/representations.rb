@@ -214,12 +214,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UndeleteInstanceRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class UserMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -342,7 +336,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin_settings, as: 'adminSettings', class: Google::Apis::LookerV1::AdminSettings, decorator: Google::Apis::LookerV1::AdminSettings::Representation
       
-          property :catalog_integration_enabled, as: 'catalogIntegrationEnabled'
           property :class_type, as: 'classType'
           property :consumer_network, as: 'consumerNetwork'
           property :controlled_egress_config, as: 'controlledEgressConfig', class: Google::Apis::LookerV1::ControlledEgressConfig, decorator: Google::Apis::LookerV1::ControlledEgressConfig::Representation
@@ -383,9 +376,7 @@ module Google
           property :reserved_range, as: 'reservedRange'
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
-          property :soft_delete_reason, as: 'softDeleteReason'
           property :state, as: 'state'
-          property :suspended_time, as: 'suspendedTime'
           property :update_time, as: 'updateTime'
           property :user_metadata, as: 'userMetadata', class: Google::Apis::LookerV1::UserMetadata, decorator: Google::Apis::LookerV1::UserMetadata::Representation
       
@@ -476,6 +467,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_id, as: 'clientId'
           property :client_secret, as: 'clientSecret'
+          property :shared_oauth_client_enabled, as: 'sharedOauthClientEnabled'
         end
       end
       
@@ -564,12 +556,6 @@ module Google
           property :minutes, as: 'minutes'
           property :nanos, as: 'nanos'
           property :seconds, as: 'seconds'
-        end
-      end
-      
-      class UndeleteInstanceRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
