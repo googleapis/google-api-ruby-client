@@ -57,6 +57,17 @@ module Google
         attr_accessor :fail_open
         alias_method :fail_open?, :fail_open
       
+        # Optional. List of the Envoy attributes to forward to the extension server. The
+        # attributes provided here are included as part of the `ProcessingRequest.
+        # attributes` field (of type `map`), where the keys are the attribute names.
+        # Refer to the [documentation](https://cloud.google.com/service-extensions/docs/
+        # cel-matcher-language-reference#attributes) for the names of attributes that
+        # can be forwarded. If omitted, no attributes are sent. Each element is a string
+        # indicating the attribute name.
+        # Corresponds to the JSON property `forwardAttributes`
+        # @return [Array<String>]
+        attr_accessor :forward_attributes
+      
         # Optional. List of the HTTP headers to forward to the extension (from the
         # client). If omitted, all headers are sent. Each element is a string indicating
         # the header name.
@@ -138,6 +149,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @fail_open = args[:fail_open] if args.key?(:fail_open)
+          @forward_attributes = args[:forward_attributes] if args.key?(:forward_attributes)
           @forward_headers = args[:forward_headers] if args.key?(:forward_headers)
           @labels = args[:labels] if args.key?(:labels)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
@@ -378,6 +390,17 @@ module Google
         attr_accessor :fail_open
         alias_method :fail_open?, :fail_open
       
+        # Optional. List of the Envoy attributes to forward to the extension server. The
+        # attributes provided here are included as part of the `ProcessingRequest.
+        # attributes` field (of type `map`), where the keys are the attribute names.
+        # Refer to the [documentation](https://cloud.google.com/service-extensions/docs/
+        # cel-matcher-language-reference#attributes) for the names of attributes that
+        # can be forwarded. If omitted, no attributes are sent. Each element is a string
+        # indicating the attribute name.
+        # Corresponds to the JSON property `forwardAttributes`
+        # @return [Array<String>]
+        attr_accessor :forward_attributes
+      
         # Optional. List of the HTTP headers to forward to the extension (from the
         # client or backend). If omitted, all headers are sent. Each element is a string
         # indicating the header name.
@@ -501,6 +524,7 @@ module Google
           @allow_dynamic_forwarding = args[:allow_dynamic_forwarding] if args.key?(:allow_dynamic_forwarding)
           @authority = args[:authority] if args.key?(:authority)
           @fail_open = args[:fail_open] if args.key?(:fail_open)
+          @forward_attributes = args[:forward_attributes] if args.key?(:forward_attributes)
           @forward_headers = args[:forward_headers] if args.key?(:forward_headers)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
