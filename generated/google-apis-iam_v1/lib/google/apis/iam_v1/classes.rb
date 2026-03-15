@@ -985,6 +985,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :rotation_window_percentage
       
+        # Optional. If set to true, the trust domain will utilize the GCP-provisioned
+        # default CA. A default CA in the same region as the workload will be selected
+        # to issue the certificate. Enabling this will clear any existing `ca_pools`
+        # configuration to provision the certificates. NOTE: This field is mutually
+        # exclusive with `ca_pools`. If this flag is enabled, certificates will be
+        # automatically provisioned from the default shared CAs. This flag should not be
+        # set if you want to use your own CA pools to provision the certificates.
+        # Corresponds to the JSON property `useDefaultSharedCa`
+        # @return [Boolean]
+        attr_accessor :use_default_shared_ca
+        alias_method :use_default_shared_ca?, :use_default_shared_ca
+      
         def initialize(**args)
            update!(**args)
         end
@@ -995,6 +1007,7 @@ module Google
           @key_algorithm = args[:key_algorithm] if args.key?(:key_algorithm)
           @lifetime = args[:lifetime] if args.key?(:lifetime)
           @rotation_window_percentage = args[:rotation_window_percentage] if args.key?(:rotation_window_percentage)
+          @use_default_shared_ca = args[:use_default_shared_ca] if args.key?(:use_default_shared_ca)
         end
       end
       
@@ -3025,6 +3038,15 @@ module Google
         # @return [Array<Google::Apis::IamV1::TrustAnchor>]
         attr_accessor :trust_anchors
       
+        # Optional. If set to True, the trust bundle will include the private ca managed
+        # identity regional root public certificates. Important: `
+        # trust_default_shared_ca` is only supported for managed identity trust domain
+        # resource.
+        # Corresponds to the JSON property `trustDefaultSharedCa`
+        # @return [Boolean]
+        attr_accessor :trust_default_shared_ca
+        alias_method :trust_default_shared_ca?, :trust_default_shared_ca
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3033,6 +3055,7 @@ module Google
         def update!(**args)
           @intermediate_cas = args[:intermediate_cas] if args.key?(:intermediate_cas)
           @trust_anchors = args[:trust_anchors] if args.key?(:trust_anchors)
+          @trust_default_shared_ca = args[:trust_default_shared_ca] if args.key?(:trust_default_shared_ca)
         end
       end
       
