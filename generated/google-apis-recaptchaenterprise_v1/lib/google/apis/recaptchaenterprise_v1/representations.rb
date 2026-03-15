@@ -28,6 +28,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -469,7 +487,34 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_takeover_verdict, as: 'accountTakeoverVerdict', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict::Representation
+      
           collection :labels, as: 'labels'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :risk, as: 'risk'
+          collection :risk_reasons, as: 'riskReasons', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason::Representation
+      
+          collection :trust_reasons, as: 'trustReasons', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
         end
       end
       
