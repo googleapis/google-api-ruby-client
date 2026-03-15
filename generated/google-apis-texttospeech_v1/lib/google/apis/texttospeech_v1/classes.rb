@@ -40,9 +40,7 @@ module Google
         attr_accessor :low_latency_journey_synthesis
         alias_method :low_latency_journey_synthesis?, :low_latency_journey_synthesis
       
-        # Optional. Input only. If true, relaxes safety filters for Gemini TTS. Only
-        # supported for accounts linked to Invoiced (Offline) Cloud billing accounts.
-        # Otherwise, will return result google.rpc.Code.INVALID_ARGUMENT.
+        # Optional. Input only. If true, relaxes safety filters for Gemini TTS.
         # Corresponds to the JSON property `relaxSafetyFilters`
         # @return [Boolean]
         attr_accessor :relax_safety_filters
