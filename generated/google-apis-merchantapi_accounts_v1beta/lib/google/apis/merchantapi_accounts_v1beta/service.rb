@@ -2411,7 +2411,6 @@ module Google
         
         # Deletes a Merchant Center account user. Executing this method requires admin
         # access. The user to be deleted can't be the last admin user of that account.
-        # Also a user is protected from deletion if it is managed by Business Manager"
         # @param [String] name
         #   Required. The name of the user to delete. Format: `accounts/`account`/users/`
         #   email`` It is also possible to delete the user corresponding to the caller by
