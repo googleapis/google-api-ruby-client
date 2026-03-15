@@ -2451,8 +2451,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Set of detection rules to apply to all findings of this CustomInfoType. Rules
-        # are applied in order that they are specified. Not supported for the `
-        # surrogate_type`, `metadata_key_value_expression`, and `prompt` CustomInfoType.
+        # are applied in the order that they are specified. Only supported for the `
+        # dictionary`, `regex`, and `stored_type` CustomInfoTypes.
         # Corresponds to the JSON property `detectionRules`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2DetectionRule>]
         attr_accessor :detection_rules
@@ -2480,8 +2480,8 @@ module Google
         attr_accessor :dictionary
       
         # If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be
-        # returned. It still can be used for rules matching. Not supported for the `
-        # metadata_key_value_expression` and `prompt` CustomInfoType.
+        # returned. It still can be used for rules matching. Only supported for the `
+        # dictionary`, `regex`, and `stored_type` CustomInfoTypes.
         # Corresponds to the JSON property `exclusionType`
         # @return [String]
         attr_accessor :exclusion_type
@@ -2498,8 +2498,8 @@ module Google
         # @return [String]
         attr_accessor :likelihood
       
-        # Configuration for a custom infoType that detects given expression of key-value
-        # pair in the metadata.
+        # Configuration for a custom infoType that detects key-value pairs in the
+        # metadata matching the specified regular expressions.
         # Corresponds to the JSON property `metadataKeyValueExpression`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2MetadataKeyValueExpression]
         attr_accessor :metadata_key_value_expression
@@ -7240,11 +7240,9 @@ module Google
       class GooglePrivacyDlpV2KeyValueMetadataLabel
         include Google::Apis::Core::Hashable
       
-        # The metadata key. The format depends on the source of the metadata. Examples: -
-        # Microsoft Purview Information Protection keys look like 'MSIP_Label_122709e3-
-        # 8f6b-4860-985f-7f722a94f61e_Enabled', 'MSIP_Label_122709e3-8f6b-4860-985f-
-        # 7f722a94f61e_Method', 'MSIP_Label_122709e3-8f6b-4860-985f-7f722a94f61e_Name'. -
-        # General metadata keys look like 'Author', 'Title', 'Description'.
+        # The metadata key. The format depends on the source of the metadata. Example: -
+        # `MSIP_Label_122709e3-8f6b-4860-985f-7f722a94f61e_Enabled` (a Microsoft Purview
+        # Information Protection key example)
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -7921,8 +7919,8 @@ module Google
         end
       end
       
-      # Configuration for a custom infoType that detects given expression of key-value
-      # pair in the metadata.
+      # Configuration for a custom infoType that detects key-value pairs in the
+      # metadata matching the specified regular expressions.
       class GooglePrivacyDlpV2MetadataKeyValueExpression
         include Google::Apis::Core::Hashable
       
