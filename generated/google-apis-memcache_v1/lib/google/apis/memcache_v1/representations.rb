@@ -527,9 +527,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authorized_network, as: 'authorizedNetwork'
+          collection :available_maintenance_versions, as: 'availableMaintenanceVersions'
           property :create_time, as: 'createTime'
           property :discovery_endpoint, as: 'discoveryEndpoint'
           property :display_name, as: 'displayName'
+          property :effective_maintenance_version, as: 'effectiveMaintenanceVersion'
           collection :instance_messages, as: 'instanceMessages', class: Google::Apis::MemcacheV1::InstanceMessage, decorator: Google::Apis::MemcacheV1::InstanceMessage::Representation
       
           hash :labels, as: 'labels'
@@ -537,6 +539,7 @@ module Google
       
           property :maintenance_schedule, as: 'maintenanceSchedule', class: Google::Apis::MemcacheV1::MaintenanceSchedule, decorator: Google::Apis::MemcacheV1::MaintenanceSchedule::Representation
       
+          property :maintenance_version, as: 'maintenanceVersion'
           property :memcache_full_version, as: 'memcacheFullVersion'
           collection :memcache_nodes, as: 'memcacheNodes', class: Google::Apis::MemcacheV1::Node, decorator: Google::Apis::MemcacheV1::Node::Representation
       

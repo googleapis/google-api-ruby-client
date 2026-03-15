@@ -857,6 +857,12 @@ module Google
         # @return [String]
         attr_accessor :authorized_network
       
+        # Output only. The available maintenance versions that can be applied to the
+        # instance.
+        # Corresponds to the JSON property `availableMaintenanceVersions`
+        # @return [Array<String>]
+        attr_accessor :available_maintenance_versions
+      
         # Output only. The time the instance was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -872,6 +878,11 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Output only. The effective maintenance version of the instance.
+        # Corresponds to the JSON property `effectiveMaintenanceVersion`
+        # @return [String]
+        attr_accessor :effective_maintenance_version
       
         # List of messages that describe the current state of the Memcached instance.
         # Corresponds to the JSON property `instanceMessages`
@@ -894,6 +905,13 @@ module Google
         # Corresponds to the JSON property `maintenanceSchedule`
         # @return [Google::Apis::MemcacheV1::MaintenanceSchedule]
         attr_accessor :maintenance_schedule
+      
+        # Optional. Last self service update maintenance version triggered by the
+        # customer. If it is empty, it means that the maintenance version is not set by
+        # the user.
+        # Corresponds to the JSON property `maintenanceVersion`
+        # @return [String]
+        attr_accessor :maintenance_version
       
         # Output only. The full version of memcached server running on this instance.
         # System automatically determines the full memcached version for an instance
@@ -984,13 +1002,16 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
+          @available_maintenance_versions = args[:available_maintenance_versions] if args.key?(:available_maintenance_versions)
           @create_time = args[:create_time] if args.key?(:create_time)
           @discovery_endpoint = args[:discovery_endpoint] if args.key?(:discovery_endpoint)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @effective_maintenance_version = args[:effective_maintenance_version] if args.key?(:effective_maintenance_version)
           @instance_messages = args[:instance_messages] if args.key?(:instance_messages)
           @labels = args[:labels] if args.key?(:labels)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
+          @maintenance_version = args[:maintenance_version] if args.key?(:maintenance_version)
           @memcache_full_version = args[:memcache_full_version] if args.key?(:memcache_full_version)
           @memcache_nodes = args[:memcache_nodes] if args.key?(:memcache_nodes)
           @memcache_version = args[:memcache_version] if args.key?(:memcache_version)
