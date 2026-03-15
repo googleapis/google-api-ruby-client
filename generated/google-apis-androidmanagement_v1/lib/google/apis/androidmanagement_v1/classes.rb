@@ -5608,7 +5608,9 @@ module Google
         attr_accessor :network_escape_hatch_enabled
         alias_method :network_escape_hatch_enabled?, :network_escape_hatch_enabled
       
-        # Whether resetting network settings is disabled.
+        # Whether resetting network settings is disabled. This applies only on fully
+        # managed devices. A NonComplianceDetail with MANAGEMENT_MODE is reported for
+        # other management modes.
         # Corresponds to the JSON property `networkResetDisabled`
         # @return [Boolean]
         attr_accessor :network_reset_disabled
