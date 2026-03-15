@@ -1280,6 +1280,25 @@ module Google
         end
       end
       
+      # Inlined source.
+      class GoogleCloudRunV2InlinedSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Input only. The source code.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2SourceFile>]
+        attr_accessor :sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
       # A Cloud Run Instance represents a single group of containers running in a
       # region.
       class GoogleCloudRunV2Instance
@@ -3328,6 +3347,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2CloudStorageSource]
         attr_accessor :cloud_storage_source
       
+        # Inlined source.
+        # Corresponds to the JSON property `inlinedSource`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2InlinedSource]
+        attr_accessor :inlined_source
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3335,6 +3359,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cloud_storage_source = args[:cloud_storage_source] if args.key?(:cloud_storage_source)
+          @inlined_source = args[:inlined_source] if args.key?(:inlined_source)
+        end
+      end
+      
+      # Source file.
+      class GoogleCloudRunV2SourceFile
+        include Google::Apis::Core::Hashable
+      
+        # Required. Input only. The source code as raw text.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Required. Input only. The file name for the source code. e.g., `"index.js"` or
+        # `"node_modules/dependency.js"`. The filename must be less than 255 characters
+        # and cannot contain `..`, `./`, `//`, or end with a `/`. Cloud Run will place
+        # the files in the container subdirectories, please use relative path to access
+        # the file.
+        # Corresponds to the JSON property `filename`
+        # @return [String]
+        attr_accessor :filename
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @filename = args[:filename] if args.key?(:filename)
         end
       end
       
@@ -4131,7 +4185,8 @@ module Google
         attr_accessor :name
       
         # Optional. Path within the volume from which the container's volume should be
-        # mounted. Defaults to "" (volume's root).
+        # mounted. Defaults to "" (volume's root). This field is currently ignored for
+        # Secret volumes.
         # Corresponds to the JSON property `subPath`
         # @return [String]
         attr_accessor :sub_path
