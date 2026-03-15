@@ -2571,6 +2571,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :deleted_row_count
       
+        # Output only. DML mode used.
+        # Corresponds to the JSON property `dmlMode`
+        # @return [String]
+        attr_accessor :dml_mode
+      
+        # Output only. Reason for disabling fine-grained DML if applicable.
+        # Corresponds to the JSON property `fineGrainedDmlUnusedReason`
+        # @return [String]
+        attr_accessor :fine_grained_dml_unused_reason
+      
         # Output only. Number of inserted Rows. Populated by DML INSERT and MERGE
         # statements
         # Corresponds to the JSON property `insertedRowCount`
@@ -2590,6 +2600,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deleted_row_count = args[:deleted_row_count] if args.key?(:deleted_row_count)
+          @dml_mode = args[:dml_mode] if args.key?(:dml_mode)
+          @fine_grained_dml_unused_reason = args[:fine_grained_dml_unused_reason] if args.key?(:fine_grained_dml_unused_reason)
           @inserted_row_count = args[:inserted_row_count] if args.key?(:inserted_row_count)
           @updated_row_count = args[:updated_row_count] if args.key?(:updated_row_count)
         end
@@ -6186,6 +6198,12 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::ExplainQueryStage>]
         attr_accessor :query_plan
       
+        # Output only. Referenced property graphs for the job. Queries that reference
+        # more than 50 property graphs will not have a complete list.
+        # Corresponds to the JSON property `referencedPropertyGraphs`
+        # @return [Array<Google::Apis::BigqueryV2::PropertyGraphReference>]
+        attr_accessor :referenced_property_graphs
+      
         # Output only. Referenced routines for the job.
         # Corresponds to the JSON property `referencedRoutines`
         # @return [Array<Google::Apis::BigqueryV2::RoutineReference>]
@@ -6408,6 +6426,7 @@ module Google
           @performance_insights = args[:performance_insights] if args.key?(:performance_insights)
           @query_info = args[:query_info] if args.key?(:query_info)
           @query_plan = args[:query_plan] if args.key?(:query_plan)
+          @referenced_property_graphs = args[:referenced_property_graphs] if args.key?(:referenced_property_graphs)
           @referenced_routines = args[:referenced_routines] if args.key?(:referenced_routines)
           @referenced_tables = args[:referenced_tables] if args.key?(:referenced_tables)
           @reservation_usage = args[:reservation_usage] if args.key?(:reservation_usage)
@@ -7783,6 +7802,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # Id path of a property graph.
+      class PropertyGraphReference
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of the dataset containing this property graph.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # Required. The ID of the project containing this property graph.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Required. The ID of the property graph. The ID must contain only letters (a-z,
+        # A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
+        # Corresponds to the JSON property `propertyGraphId`
+        # @return [String]
+        attr_accessor :property_graph_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @property_graph_id = args[:property_graph_id] if args.key?(:property_graph_id)
         end
       end
       
