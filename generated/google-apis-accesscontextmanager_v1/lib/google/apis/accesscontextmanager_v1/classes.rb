@@ -1503,6 +1503,32 @@ module Google
         end
       end
       
+      # A response to `ListSupportedPermissionsRequest`.
+      class ListSupportedPermissionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The pagination token to retrieve the next page of results. If the value is
+        # empty, no further results remain.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of VPC-SC supported permissions.
+        # Corresponds to the JSON property `supportedPermissions`
+        # @return [Array<String>]
+        attr_accessor :supported_permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @supported_permissions = args[:supported_permissions] if args.key?(:supported_permissions)
+        end
+      end
+      
       # A response to `ListSupportedServicesRequest`.
       class ListSupportedServicesResponse
         include Google::Apis::Core::Hashable
