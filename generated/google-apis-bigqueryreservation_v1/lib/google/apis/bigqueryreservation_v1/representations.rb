@@ -209,6 +209,7 @@ module Google
           property :enable_gemini_in_bigquery, as: 'enableGeminiInBigquery'
           property :job_type, as: 'jobType'
           property :name, as: 'name'
+          property :principal, as: 'principal'
           property :scheduling_policy, as: 'schedulingPolicy', class: Google::Apis::BigqueryreservationV1::SchedulingPolicy, decorator: Google::Apis::BigqueryreservationV1::SchedulingPolicy::Representation
       
           property :state, as: 'state'
