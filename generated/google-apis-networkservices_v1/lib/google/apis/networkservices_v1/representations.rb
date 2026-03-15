@@ -658,6 +658,7 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :fail_open, as: 'failOpen'
+          collection :forward_attributes, as: 'forwardAttributes'
           collection :forward_headers, as: 'forwardHeaders'
           hash :labels, as: 'labels'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
@@ -762,6 +763,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authority, as: 'authority'
           property :fail_open, as: 'failOpen'
+          collection :forward_attributes, as: 'forwardAttributes'
           collection :forward_headers, as: 'forwardHeaders'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
