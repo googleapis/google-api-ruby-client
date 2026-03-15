@@ -986,6 +986,9 @@ module Google
       class LinkedInterconnectAttachments
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclude_export_ranges, as: 'excludeExportRanges'
+          collection :exclude_import_ranges, as: 'excludeImportRanges'
+          collection :include_export_ranges, as: 'includeExportRanges'
           collection :include_import_ranges, as: 'includeImportRanges'
           property :site_to_site_data_transfer, as: 'siteToSiteDataTransfer'
           collection :uris, as: 'uris'
@@ -1010,6 +1013,9 @@ module Google
       class LinkedRouterApplianceInstances
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclude_export_ranges, as: 'excludeExportRanges'
+          collection :exclude_import_ranges, as: 'excludeImportRanges'
+          collection :include_export_ranges, as: 'includeExportRanges'
           collection :include_import_ranges, as: 'includeImportRanges'
           collection :instances, as: 'instances', class: Google::Apis::NetworkconnectivityV1::RouterApplianceInstance, decorator: Google::Apis::NetworkconnectivityV1::RouterApplianceInstance::Representation
       
@@ -1033,6 +1039,9 @@ module Google
       class LinkedVpnTunnels
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclude_export_ranges, as: 'excludeExportRanges'
+          collection :exclude_import_ranges, as: 'excludeImportRanges'
+          collection :include_export_ranges, as: 'includeExportRanges'
           collection :include_import_ranges, as: 'includeImportRanges'
           property :site_to_site_data_transfer, as: 'siteToSiteDataTransfer'
           collection :uris, as: 'uris'
