@@ -484,6 +484,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Oci
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -786,6 +792,8 @@ module Google
           collection :npm_packages, as: 'npmPackages', class: Google::Apis::CloudbuildV1::NpmPackage, decorator: Google::Apis::CloudbuildV1::NpmPackage::Representation
       
           property :objects, as: 'objects', class: Google::Apis::CloudbuildV1::ArtifactObjects, decorator: Google::Apis::CloudbuildV1::ArtifactObjects::Representation
+      
+          collection :oci, as: 'oci', class: Google::Apis::CloudbuildV1::Oci, decorator: Google::Apis::CloudbuildV1::Oci::Representation
       
           collection :python_packages, as: 'pythonPackages', class: Google::Apis::CloudbuildV1::PythonPackage, decorator: Google::Apis::CloudbuildV1::PythonPackage::Representation
       
@@ -1091,6 +1099,7 @@ module Google
           property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :digest, as: 'digest'
           property :name, as: 'name'
+          property :oci_media_type, as: 'ociMediaType'
           property :push_timing, as: 'pushTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
       
         end
@@ -1598,6 +1607,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :package_path, as: 'packagePath'
           property :repository, as: 'repository'
+        end
+      end
+      
+      class Oci
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file, as: 'file'
+          property :registry_path, as: 'registryPath'
+          collection :tags, as: 'tags'
         end
       end
       
