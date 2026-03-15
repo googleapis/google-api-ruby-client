@@ -892,6 +892,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PropertyGraphReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PruningStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1983,6 +1989,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deleted_row_count, :numeric_string => true, as: 'deletedRowCount'
+          property :dml_mode, as: 'dmlMode'
+          property :fine_grained_dml_unused_reason, as: 'fineGrainedDmlUnusedReason'
           property :inserted_row_count, :numeric_string => true, as: 'insertedRowCount'
           property :updated_row_count, :numeric_string => true, as: 'updatedRowCount'
         end
@@ -2839,6 +2847,8 @@ module Google
       
           collection :query_plan, as: 'queryPlan', class: Google::Apis::BigqueryV2::ExplainQueryStage, decorator: Google::Apis::BigqueryV2::ExplainQueryStage::Representation
       
+          collection :referenced_property_graphs, as: 'referencedPropertyGraphs', class: Google::Apis::BigqueryV2::PropertyGraphReference, decorator: Google::Apis::BigqueryV2::PropertyGraphReference::Representation
+      
           collection :referenced_routines, as: 'referencedRoutines', class: Google::Apis::BigqueryV2::RoutineReference, decorator: Google::Apis::BigqueryV2::RoutineReference::Representation
       
           collection :referenced_tables, as: 'referencedTables', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
@@ -3241,6 +3251,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :project_id, as: 'projectId'
+        end
+      end
+      
+      class PropertyGraphReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id, as: 'datasetId'
+          property :project_id, as: 'projectId'
+          property :property_graph_id, as: 'propertyGraphId'
         end
       end
       
