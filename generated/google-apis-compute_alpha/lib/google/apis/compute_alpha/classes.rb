@@ -5864,7 +5864,7 @@ module Google
       class BackendServiceFailoverPolicy
         include Google::Apis::Core::Hashable
       
-        # This can be set to true only if the protocol isTCP.
+        # This can be set to true if the protocol isTCP, UDP, or UNSPECIFIED.
         # The default is false.
         # Corresponds to the JSON property `disableConnectionDrainOnFailover`
         # @return [Boolean]
@@ -8839,6 +8839,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Additional commitment params.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeAlpha::CommitmentParams]
+        attr_accessor :params
+      
         # The minimum time duration that you commit to purchasing resources.
         # The plan that you choose determines the preset term length of the
         # commitment (which is 1 year or 3 years) and affects the discount rate that
@@ -8956,6 +8961,7 @@ module Google
           @license_resource = args[:license_resource] if args.key?(:license_resource)
           @merge_source_commitments = args[:merge_source_commitments] if args.key?(:merge_source_commitments)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @plan = args[:plan] if args.key?(:plan)
           @region = args[:region] if args.key?(:region)
           @reservations = args[:reservations] if args.key?(:reservations)
@@ -9225,6 +9231,31 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Additional commitment params.
+      class CommitmentParams
+        include Google::Apis::Core::Hashable
+      
+        # Input only. Resource manager tags to be bound to the commitment. Tag keys and
+        # values have the same definition as resource
+        # manager tags. Keys and values can be either in numeric format,
+        # such as `tagKeys/`tag_key_id`` and `tagValues/`tag_value_id`` or in
+        # namespaced format such as ``org_id|project_id`/`tag_key_short_name`` and
+        # ``tag_value_short_name``. The field is ignored (both PUT &
+        # PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -12613,6 +12644,34 @@ module Google
       end
       
       # 
+      class DiskUpdateKmsKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The new KMS key to replace the current one on the disk. If empty,
+        # the disk
+        # will be re-encrypted using the primary version of the disk's current KMS
+        # key.
+        # The KMS key can be provided in the following formats:
+        # 
+        # 
+        # - projects/project_id/locations/location/keyRings/key_ring/cryptoKeys/key
+        # Where project is the project ID or
+        # project number.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
+      # 
       class DisksAddResourcePoliciesRequest
         include Google::Apis::Core::Hashable
       
@@ -12894,6 +12953,11 @@ module Google
       
         # Zones where the regional managed instance group will create and manage
         # its instances.
+        # By default, a regional MIG doesn't automatically select an AI zone to create
+        # instances, even if an AI zone is available in the specified region. To
+        # create instances in an AI zone in the selected region, you must explicitly
+        # specify it in the distribution policy together with the other preferred
+        # zones.
         # Corresponds to the JSON property `zones`
         # @return [Array<Google::Apis::ComputeAlpha::DistributionPolicyZoneConfiguration>]
         attr_accessor :zones
@@ -16333,6 +16397,11 @@ module Google
         # @return [String]
         attr_accessor :name_prefix
       
+        # Additional future reservation params.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeAlpha::FutureReservationParams]
+        attr_accessor :params
+      
         # Planning state before being submitted for evaluation
         # Corresponds to the JSON property `planningStatus`
         # @return [String]
@@ -16431,6 +16500,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @name_prefix = args[:name_prefix] if args.key?(:name_prefix)
+          @params = args[:params] if args.key?(:params)
           @planning_status = args[:planning_status] if args.key?(:planning_status)
           @protection_tier = args[:protection_tier] if args.key?(:protection_tier)
           @reservation_mode = args[:reservation_mode] if args.key?(:reservation_mode)
@@ -16479,6 +16549,32 @@ module Google
           @commitment_name = args[:commitment_name] if args.key?(:commitment_name)
           @commitment_plan = args[:commitment_plan] if args.key?(:commitment_plan)
           @previous_commitment_terms = args[:previous_commitment_terms] if args.key?(:previous_commitment_terms)
+        end
+      end
+      
+      # Additional future reservation params.
+      class FutureReservationParams
+        include Google::Apis::Core::Hashable
+      
+        # Input only. Resource manager tags to be bound to the future reservation. Tag
+        # keys and
+        # values have the same definition as resource
+        # manager tags. Keys and values can be either in numeric format,
+        # such as `tagKeys/`tag_key_id`` and `tagValues/`tag_value_id`` or in
+        # namespaced format such as ``org_id|project_id`/`tag_key_short_name`` and
+        # ``tag_value_short_name``. The field is ignored (both PUT &
+        # PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -18471,7 +18567,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. Predefined rollout plan.
+        # Optional. Specifies the predefined rollout plan for the policy. Valid values
+        # are `SLOW_ROLLOUT` and `FAST_ROLLOUT`. The recommended value is
+        # `SLOW_ROLLOUT` for progressive rollout. For more information, see Rollout
+        # plans for global policies.
         # Corresponds to the JSON property `predefinedRolloutPlan`
         # @return [String]
         attr_accessor :predefined_rollout_plan
@@ -18536,6 +18635,13 @@ module Google
       class GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata
         include Google::Apis::Core::Hashable
       
+        # Output only. [Output Only] The rollout status for each location. The list of
+        # the
+        # locations is the same as the list of locations in the rollout plan.
+        # Corresponds to the JSON property `locationRolloutStatus`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatus>]
+        attr_accessor :location_rollout_status
+      
         # Output only. [Output Only] The name of the rollout.
         # Ex. projects//locations/global/rollouts/.
         # Corresponds to the JSON property `rollout`
@@ -18560,8 +18666,28 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @location_rollout_status = args[:location_rollout_status] if args.key?(:location_rollout_status)
           @rollout = args[:rollout] if args.key?(:rollout)
           @rollout_plan = args[:rollout_plan] if args.key?(:rollout_plan)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # 
+      class GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] The state of the location rollout.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -23470,6 +23596,16 @@ module Google
         # @return [Google::Apis::ComputeAlpha::HttpFaultInjection]
         attr_accessor :fault_injection_policy
       
+        # The configuration for Cloud CDN's image optimization feature. This feature
+        # dynamically processes and delivers images from the network edge.
+        # Image Optimization is only available for Global External Application Load
+        # Balancers.
+        # Either Cloud CDN must be enabled on the backend service or backend bucket
+        # serving the route, or cache policy must be configured on the same route.
+        # Corresponds to the JSON property `imageOptimizationPolicy`
+        # @return [Google::Apis::ComputeAlpha::ImageOptimizationPolicy]
+        attr_accessor :image_optimization_policy
+      
         # A Duration represents a fixed-length span of time represented
         # as a count of seconds and fractions of seconds at nanosecond
         # resolution. It is independent of any calendar and concepts like "day"
@@ -23528,6 +23664,7 @@ module Google
           @cache_policy = args[:cache_policy] if args.key?(:cache_policy)
           @cors_policy = args[:cors_policy] if args.key?(:cors_policy)
           @fault_injection_policy = args[:fault_injection_policy] if args.key?(:fault_injection_policy)
+          @image_optimization_policy = args[:image_optimization_policy] if args.key?(:image_optimization_policy)
           @max_stream_duration = args[:max_stream_duration] if args.key?(:max_stream_duration)
           @request_mirror_policy = args[:request_mirror_policy] if args.key?(:request_mirror_policy)
           @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
@@ -24593,6 +24730,30 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # The configuration for Cloud CDN's image optimization feature. This feature
+      # dynamically processes and delivers images from the network edge.
+      # Image Optimization is only available for Global External Application Load
+      # Balancers.
+      # Either Cloud CDN must be enabled on the backend service or backend bucket
+      # serving the route, or cache policy must be configured on the same route.
+      class ImageOptimizationPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether to interpret query parameters for image optimization.
+        # Corresponds to the JSON property `queryParameterInterpretation`
+        # @return [String]
+        attr_accessor :query_parameter_interpretation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query_parameter_interpretation = args[:query_parameter_interpretation] if args.key?(:query_parameter_interpretation)
         end
       end
       
@@ -43920,6 +44081,12 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::AliasIpRange>]
         attr_accessor :alias_ip_ranges
       
+        # An array of alias IPv6 ranges for this network interface.
+        # You can only specify this field for network interfaces in VPC networks.
+        # Corresponds to the JSON property `aliasIpv6Ranges`
+        # @return [Array<Google::Apis::ComputeAlpha::AliasIpRange>]
+        attr_accessor :alias_ipv6_ranges
+      
         # Optional. If true, DNS resolution will be enabled over this interface. Only
         # valid
         # with network_attachment.
@@ -44099,6 +44266,7 @@ module Google
         def update!(**args)
           @access_configs = args[:access_configs] if args.key?(:access_configs)
           @alias_ip_ranges = args[:alias_ip_ranges] if args.key?(:alias_ip_ranges)
+          @alias_ipv6_ranges = args[:alias_ipv6_ranges] if args.key?(:alias_ipv6_ranges)
           @enable_vpc_scoped_dns = args[:enable_vpc_scoped_dns] if args.key?(:enable_vpc_scoped_dns)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @igmp_query = args[:igmp_query] if args.key?(:igmp_query)
@@ -54797,6 +54965,34 @@ module Google
       end
       
       # 
+      class RegionDiskUpdateKmsKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The new KMS key to replace the current one on the disk. If empty,
+        # the disk
+        # will be re-encrypted using the primary version of the disk's current KMS
+        # key.
+        # The KMS key can be provided in the following formats:
+        # 
+        # 
+        # - projects/project_id/locations/location/keyRings/key_ring/cryptoKeys/key
+        # Where project is the project ID or
+        # project number.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
+      # 
       class RegionDisksAddResourcePoliciesRequest
         include Google::Apis::Core::Hashable
       
@@ -56479,6 +56675,32 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # 
+      class RegionSnapshotUpdateKmsKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The new KMS key to replace the current one on the snapshot. If empty,
+        # the
+        # snapshot will be re-encrypted using the primary version of the snapshot's
+        # current KMS key.
+        # The KMS key can be provided in the following formats:
+        # 
+        # 
+        # - projects/project_id/locations/region/keyRings/region/cryptoKeys/key
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
         end
       end
       
@@ -61224,6 +61446,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :completed_resources_count
       
+        # Output only. Estimated timestamp at which the wave will complete. Extrapolated
+        # from
+        # current progress.
+        # Corresponds to the JSON property `estimatedCompletionTime`
+        # @return [String]
+        attr_accessor :estimated_completion_time
+      
         # Output only. Estimated total count of resources.
         # Corresponds to the JSON property `estimatedTotalResourcesCount`
         # @return [Fixnum]
@@ -61242,6 +61471,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :failed_resources_count
       
+        # Output only. Status of each location in the wave. Map keys (locations) must be
+        # specified like "us-east1" or "asia-west1-a".
+        # Corresponds to the JSON property `locationStatus`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus>]
+        attr_accessor :location_status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -61249,9 +61484,30 @@ module Google
         # Update properties of this object
         def update!(**args)
           @completed_resources_count = args[:completed_resources_count] if args.key?(:completed_resources_count)
+          @estimated_completion_time = args[:estimated_completion_time] if args.key?(:estimated_completion_time)
           @estimated_total_resources_count = args[:estimated_total_resources_count] if args.key?(:estimated_total_resources_count)
           @failed_locations = args[:failed_locations] if args.key?(:failed_locations)
           @failed_resources_count = args[:failed_resources_count] if args.key?(:failed_resources_count)
+          @location_status = args[:location_status] if args.key?(:location_status)
+        end
+      end
+      
+      # Represents the status of a location in a wave.
+      class RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Location state of the wave.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -65912,19 +66168,19 @@ module Google
         attr_accessor :ddos_adaptive_protection
       
         # DDoS Protection for Network Load Balancers (and VMs with public IPs)
-        # builds DDos mitigations that minimize collateral damage. It quantifies
+        # builds DDoS mitigations that minimize collateral damage. It quantifies
         # this as the fraction of a non-abuse baseline that's inadvertently
         # blocked.
         # Rules whose collateral damage exceeds ddosImpactedBaselineThreshold will
         # not be deployed. Using a lower value will prioritize keeping collateral
         # damage low, possibly at the cost of its effectiveness in rate limiting
-        # some or all of the attack. It should typically be unset, so Advanced DDos
+        # some or all of the attack. It should typically be unset, so Advanced DDoS
         # (and Adaptive Protection) uses the best mitigation it can find. Setting
         # the threshold is advised if there are logs for false positive detections
-        # with high collateral damage, and will cause Advanced DDos to attempt to
-        # find a less aggressive rule that satisfies the constraint; Failing that,
-        # it will fall back to no mitigation (smaller attack) or to broader network
-        # throttles (larger attack).
+        # with high collateral damage, and will cause Advanced DDoS to attempt to
+        # find a less aggressive rule that satisfies the constraint. If a suitable
+        # rule cannot be found, the system falls back to either no mitigation for
+        # smaller attacks or broader network throttles for larger ones.
         # Corresponds to the JSON property `ddosImpactedBaselineThreshold`
         # @return [Float]
         attr_accessor :ddos_impacted_baseline_threshold
@@ -69569,6 +69825,32 @@ module Google
       end
       
       # 
+      class SnapshotUpdateKmsKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The new KMS key to replace the current one on the snapshot. If empty,
+        # the
+        # snapshot will be re-encrypted using the primary version of the snapshot's
+        # current KMS key.
+        # The KMS key can be provided in the following formats:
+        # 
+        # 
+        # - projects/project_id/locations/region/keyRings/key_ring/cryptoKeys/key
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
+      # 
       class SnapshotsGetEffectiveRecycleBinRuleResponse
         include Google::Apis::Core::Hashable
       
@@ -70890,18 +71172,21 @@ module Google
         # negotiating X25519MLKEM768 key exchange when clients advertise support for
         # it. When set to DEFAULT, or if no SSL Policy is
         # attached to the target proxy, the load balancer disallows X25519MLKEM768
-        # key exchange until it is enabled by default on LBs. When set toENABLED, the
-        # load balancer will negotiate X25519MLKEM768 key
-        # exchange. Customers can set this to DEFERRED to temporarily
-        # opt-out the LB from negotiating post-quantum key exchange by default.
+        # key exchange until it is enabled by default on load balancers. When set
+        # toENABLED, the load balancer can negotiate X25519MLKEM768 key
+        # exchange. When set to DEFERRED, temporarily opts out the load
+        # balancer from negotiating X25519MLKEM768 beyond the point where it is
+        # enabled by default on load balancers.
         # Corresponds to the JSON property `postQuantumKeyExchange`
         # @return [String]
         attr_accessor :post_quantum_key_exchange
       
         # Profile specifies the set of SSL features that can be used by the load
         # balancer when negotiating SSL with clients. This can be one ofCOMPATIBLE,
-        # MODERN, RESTRICTED, orCUSTOM. If using CUSTOM, the set of SSL features
-        # to enable must be specified in the customFeatures field.
+        # MODERN, RESTRICTED,FIPS_202205, or CUSTOM. If usingCUSTOM, the set of SSL
+        # features to enable must be specified in
+        # the customFeatures field. If using FIPS_202205,
+        # the min_tls_version field must be set to TLS_1_2.
         # Corresponds to the JSON property `profile`
         # @return [String]
         attr_accessor :profile
@@ -72859,6 +73144,14 @@ module Google
         # @return [String]
         attr_accessor :ipv6_gce_endpoint
       
+        # Specifies the network tier for EXTERNAL IPv6. Can only be set when
+        # ipv6_access_type is EXTERNAL. Defaults to project defaultNetworkTier if not
+        # specified during the creation of the subnetwork. This field is IMMUTABLE
+        # once set with EXTERNAL IPv6.
+        # Corresponds to the JSON property `ipv6NetworkTier`
+        # @return [String]
+        attr_accessor :ipv6_network_tier
+      
         # Output only. [Output Only] Type of the resource. Always compute#subnetwork
         # for Subnetwork resources.
         # Corresponds to the JSON property `kind`
@@ -73040,6 +73333,7 @@ module Google
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @ipv6_cidr_range = args[:ipv6_cidr_range] if args.key?(:ipv6_cidr_range)
           @ipv6_gce_endpoint = args[:ipv6_gce_endpoint] if args.key?(:ipv6_gce_endpoint)
+          @ipv6_network_tier = args[:ipv6_network_tier] if args.key?(:ipv6_network_tier)
           @kind = args[:kind] if args.key?(:kind)
           @log_config = args[:log_config] if args.key?(:log_config)
           @metadata = args[:metadata] if args.key?(:metadata)
@@ -78176,6 +78470,11 @@ module Google
         # @return [String]
         attr_accessor :latest_window_start_time
       
+        # Output only. Maintenance method for the upcoming maintenance.
+        # Corresponds to the JSON property `maintenanceMethod`
+        # @return [String]
+        attr_accessor :maintenance_method
+      
         # Indicates whether the UpcomingMaintenance will be triggered on VM shutdown.
         # Corresponds to the JSON property `maintenanceOnShutdown`
         # @return [Boolean]
@@ -78231,6 +78530,7 @@ module Google
           @can_reschedule = args[:can_reschedule] if args.key?(:can_reschedule)
           @date = args[:date] if args.key?(:date)
           @latest_window_start_time = args[:latest_window_start_time] if args.key?(:latest_window_start_time)
+          @maintenance_method = args[:maintenance_method] if args.key?(:maintenance_method)
           @maintenance_on_shutdown = args[:maintenance_on_shutdown] if args.key?(:maintenance_on_shutdown)
           @maintenance_reasons = args[:maintenance_reasons] if args.key?(:maintenance_reasons)
           @maintenance_status = args[:maintenance_status] if args.key?(:maintenance_status)
