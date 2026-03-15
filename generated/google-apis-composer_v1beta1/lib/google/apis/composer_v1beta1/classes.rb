@@ -1810,6 +1810,11 @@ module Google
         # @return [Google::Apis::ComposerV1beta1::NetworkingConfig]
         attr_accessor :networking_config
       
+        # Optional. Networking type for the environment, either private or public.
+        # Corresponds to the JSON property `networkingType`
+        # @return [String]
+        attr_accessor :networking_type
+      
         # Configuration options for the private GKE cluster in a Cloud Composer
         # environment.
         # Corresponds to the JSON property `privateClusterConfig`
@@ -1845,6 +1850,7 @@ module Google
           @enable_private_environment = args[:enable_private_environment] if args.key?(:enable_private_environment)
           @enable_privately_used_public_ips = args[:enable_privately_used_public_ips] if args.key?(:enable_privately_used_public_ips)
           @networking_config = args[:networking_config] if args.key?(:networking_config)
+          @networking_type = args[:networking_type] if args.key?(:networking_type)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @web_server_ipv4_cidr_block = args[:web_server_ipv4_cidr_block] if args.key?(:web_server_ipv4_cidr_block)
           @web_server_ipv4_reserved_range = args[:web_server_ipv4_reserved_range] if args.key?(:web_server_ipv4_reserved_range)

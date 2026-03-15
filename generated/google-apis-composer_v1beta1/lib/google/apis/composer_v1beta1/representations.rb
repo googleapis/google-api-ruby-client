@@ -853,6 +853,7 @@ module Google
           property :enable_privately_used_public_ips, as: 'enablePrivatelyUsedPublicIps'
           property :networking_config, as: 'networkingConfig', class: Google::Apis::ComposerV1beta1::NetworkingConfig, decorator: Google::Apis::ComposerV1beta1::NetworkingConfig::Representation
       
+          property :networking_type, as: 'networkingType'
           property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::ComposerV1beta1::PrivateClusterConfig, decorator: Google::Apis::ComposerV1beta1::PrivateClusterConfig::Representation
       
           property :web_server_ipv4_cidr_block, as: 'webServerIpv4CidrBlock'
