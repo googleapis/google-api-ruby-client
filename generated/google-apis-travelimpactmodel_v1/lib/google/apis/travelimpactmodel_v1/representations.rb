@@ -94,18 +94,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class McpToolDataHandlingProfile
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class McpToolLifecycleProfile
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ModelVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -248,21 +236,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination, as: 'destination'
           property :origin, as: 'origin'
-        end
-      end
-      
-      class McpToolDataHandlingProfile
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :input_data_access_level, as: 'inputDataAccessLevel'
-          property :output_data_access_level, as: 'outputDataAccessLevel'
-        end
-      end
-      
-      class McpToolLifecycleProfile
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :launch_state, as: 'launchState'
         end
       end
       
