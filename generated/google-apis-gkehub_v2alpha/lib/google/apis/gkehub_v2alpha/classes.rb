@@ -2481,7 +2481,7 @@ module Google
         # @return [String]
         attr_accessor :delete_time
       
-        # GCP labels for this MembershipFeature.
+        # Google Cloud labels for this MembershipFeature.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
