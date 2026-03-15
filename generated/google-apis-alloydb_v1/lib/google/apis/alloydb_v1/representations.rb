@@ -646,6 +646,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainSignalMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainTags
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1818,11 +1824,15 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_run, as: 'backupRun', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainBackupRun, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainBackupRun::Representation
+      
           property :full_resource_name, as: 'fullResourceName'
           property :last_refresh_time, as: 'lastRefreshTime'
           property :resource_id, as: 'resourceId', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
       
           property :signal_bool_value, as: 'signalBoolValue'
+          collection :signal_metadata_list, as: 'signalMetadataList', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainSignalMetadata, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainSignalMetadata::Representation
+      
           property :signal_state, as: 'signalState'
           property :signal_type, as: 'signalType'
         end
@@ -1947,6 +1957,15 @@ module Google
           property :retention_unit, as: 'retentionUnit'
           property :time_based_retention, as: 'timeBasedRetention'
           property :timestamp_based_retention_time, as: 'timestampBasedRetentionTime'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainSignalMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_run, as: 'backupRun', class: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainBackupRun, decorator: Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainBackupRun::Representation
+      
+          property :signal_bool_value, as: 'signalBoolValue'
         end
       end
       
