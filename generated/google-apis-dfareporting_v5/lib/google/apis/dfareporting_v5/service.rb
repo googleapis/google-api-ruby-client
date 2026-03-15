@@ -5858,6 +5858,18 @@ module Google
         # @param [Array<String>, String] tag_formats
         #   Tag formats to generate for these placements. *Note:* PLACEMENT_TAG_STANDARD
         #   can only be generated for 1x1 placements.
+        # @param [Boolean] tag_properties_dc_dbm_macro_included
+        #   Optional. Indicates whether to include the dc_dbm macro in the generated tags.
+        #   [Learn more](https://support.google.com/campaignmanager/answer/9280273) about
+        #   this macro.
+        # @param [Boolean] tag_properties_gpp_macros_included
+        #   Optional. Indicates whether to include the GPP macro in the generated tags. [
+        #   Learn more](https://support.google.com/campaignmanager/answer/10031693) about
+        #   this macro.
+        # @param [Boolean] tag_properties_tcf_gdpr_macros_included
+        #   Optional. Indicates whether to include the TCF macro in the generated tags.
+        #   Default true. [Learn more](https://support.google.com/campaignmanager/answer/
+        #   10031693) about this macro.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5875,7 +5887,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generatetags_placement(profile_id, campaign_id: nil, placement_ids: nil, tag_formats: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def generatetags_placement(profile_id, campaign_id: nil, placement_ids: nil, tag_formats: nil, tag_properties_dc_dbm_macro_included: nil, tag_properties_gpp_macros_included: nil, tag_properties_tcf_gdpr_macros_included: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'userprofiles/{+profileId}/placements/generatetags', options)
           command.response_representation = Google::Apis::DfareportingV5::PlacementsGenerateTagsResponse::Representation
           command.response_class = Google::Apis::DfareportingV5::PlacementsGenerateTagsResponse
@@ -5883,6 +5895,9 @@ module Google
           command.query['campaignId'] = campaign_id unless campaign_id.nil?
           command.query['placementIds'] = placement_ids unless placement_ids.nil?
           command.query['tagFormats'] = tag_formats unless tag_formats.nil?
+          command.query['tagProperties.dcDbmMacroIncluded'] = tag_properties_dc_dbm_macro_included unless tag_properties_dc_dbm_macro_included.nil?
+          command.query['tagProperties.gppMacrosIncluded'] = tag_properties_gpp_macros_included unless tag_properties_gpp_macros_included.nil?
+          command.query['tagProperties.tcfGdprMacrosIncluded'] = tag_properties_tcf_gdpr_macros_included unless tag_properties_tcf_gdpr_macros_included.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
