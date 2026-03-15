@@ -1,5 +1,9 @@
 # Release history for google-apis-merchantapi_datasources_v1beta
 
+### v0.13.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260303
+
 ### v0.12.0 (2025-11-09)
 
 * Regenerated from discovery document revision 20251102
