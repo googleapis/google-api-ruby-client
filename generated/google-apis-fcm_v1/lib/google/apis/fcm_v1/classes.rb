@@ -68,7 +68,8 @@ module Google
         attr_accessor :notification
       
         # Message priority. Can take "normal" and "high" values. For more information,
-        # see [Setting the priority of a message](https://goo.gl/GjONJv).
+        # see [Setting the priority of a message](https://firebase.google.com/docs/cloud-
+        # messaging/customize-messages/setting-message-priority).
         # Corresponds to the JSON property `priority`
         # @return [String]
         attr_accessor :priority
@@ -166,13 +167,6 @@ module Google
         # Corresponds to the JSON property `bodyLocKey`
         # @return [String]
         attr_accessor :body_loc_key
-      
-        # If set, display notifications delivered to the device will be handled by the
-        # app instead of the proxy.
-        # Corresponds to the JSON property `bypassProxyNotification`
-        # @return [Boolean]
-        attr_accessor :bypass_proxy_notification
-        alias_method :bypass_proxy_notification?, :bypass_proxy_notification
       
         # The [notification's channel id](https://developer.android.com/guide/topics/ui/
         # notifiers/notifications#ManageChannels) (new in Android O). The app must
@@ -276,13 +270,15 @@ module Google
         # Set the relative priority for this notification. Priority is an indication of
         # how much of the user's attention should be consumed by this notification. Low-
         # priority notifications may be hidden from the user in certain situations,
-        # while the user might be interrupted for a higher-priority notification. The
-        # effect of setting the same priorities may differ slightly on different
-        # platforms. Note this priority differs from `AndroidMessagePriority`. This
-        # priority is processed by the client after the message has been delivered,
-        # whereas [AndroidMessagePriority](https://firebase.google.com/docs/reference/
-        # fcm/rest/v1/projects.messages#androidmessagepriority) is an FCM concept that
-        # controls when the message is delivered.
+        # while the user might be interrupted for a higher-priority notification. This
+        # parameter affects notification priority only on devices running Android 7.1 (
+        # API level 25) and lower. On Android 8.0 (API level 26) and higher, priority is
+        # ignored in favor of channel [importance](https://developer.android.com/develop/
+        # ui/views/notifications/channels#importance). Note this priority differs from `
+        # AndroidMessagePriority`. This priority is processed by the client after the
+        # message has been delivered, whereas [AndroidMessagePriority](https://firebase.
+        # google.com/docs/reference/fcm/rest/v1/projects.messages#androidmessagepriority)
+        # is an FCM concept that controls when the message is delivered.
         # Corresponds to the JSON property `notificationPriority`
         # @return [String]
         attr_accessor :notification_priority
@@ -370,7 +366,6 @@ module Google
           @body = args[:body] if args.key?(:body)
           @body_loc_args = args[:body_loc_args] if args.key?(:body_loc_args)
           @body_loc_key = args[:body_loc_key] if args.key?(:body_loc_key)
-          @bypass_proxy_notification = args[:bypass_proxy_notification] if args.key?(:bypass_proxy_notification)
           @channel_id = args[:channel_id] if args.key?(:channel_id)
           @click_action = args[:click_action] if args.key?(:click_action)
           @color = args[:color] if args.key?(:color)
