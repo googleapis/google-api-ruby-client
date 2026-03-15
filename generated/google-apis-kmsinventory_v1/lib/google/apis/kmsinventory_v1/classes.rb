@@ -283,7 +283,9 @@ module Google
         alias_method :import_only?, :import_only
       
         # A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
-        # values for encrypt, decrypt, and sign operations on a CryptoKey.
+        # values for encrypt, decrypt, and sign operations on a CryptoKey or
+        # KeyAccessJustificationsPolicyConfig (the default Key Access Justifications
+        # policy).
         # Corresponds to the JSON property `keyAccessJustificationsPolicy`
         # @return [Google::Apis::KmsinventoryV1::GoogleCloudKmsV1KeyAccessJustificationsPolicy]
         attr_accessor :key_access_justifications_policy
@@ -552,13 +554,16 @@ module Google
       end
       
       # A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
-      # values for encrypt, decrypt, and sign operations on a CryptoKey.
+      # values for encrypt, decrypt, and sign operations on a CryptoKey or
+      # KeyAccessJustificationsPolicyConfig (the default Key Access Justifications
+      # policy).
       class GoogleCloudKmsV1KeyAccessJustificationsPolicy
         include Google::Apis::Core::Hashable
       
-        # The list of allowed reasons for access to a CryptoKey. Zero allowed access
-        # reasons means all encrypt, decrypt, and sign operations for the CryptoKey
-        # associated with this policy will fail.
+        # The list of allowed reasons for access to a CryptoKey. Note that empty
+        # allowed_access_reasons has a different meaning depending on where this message
+        # appears. If this is under KeyAccessJustificationsPolicyConfig, it means allow-
+        # all. If this is under CryptoKey, it means deny-all.
         # Corresponds to the JSON property `allowedAccessReasons`
         # @return [Array<String>]
         attr_accessor :allowed_access_reasons
