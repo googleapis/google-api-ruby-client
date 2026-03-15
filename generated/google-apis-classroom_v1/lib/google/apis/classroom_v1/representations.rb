@@ -555,6 +555,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :points_earned, as: 'pointsEarned'
           property :post_submission_state, as: 'postSubmissionState'
+          property :user_id, as: 'userId'
         end
       end
       
