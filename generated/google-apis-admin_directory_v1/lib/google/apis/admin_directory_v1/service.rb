@@ -297,8 +297,8 @@ module Google
         #   Determines whether the response contains the full list of properties or only a
         #   subset.
         # @param [String] query
-        #   Search string in the format given at https://developers.google.com/workspace/
-        #   admin/directory/v1/list-query-operators
+        #   Search string in the format given at [List query operators](https://developers.
+        #   google.com/workspace/admin/directory/v1/list-query-operators).
         # @param [String] sort_order
         #   Whether to return results in ascending or descending order. Must be used with
         #   the `orderBy` parameter.
@@ -507,8 +507,8 @@ module Google
         # @param [String] customer_id
         #   Required. Immutable ID of the Google Workspace account.
         # @param [String] filter
-        #   Optional. Search string in the format given at https://developers.google.com/
-        #   workspace/admin/directory/v1/list-query-operators
+        #   Optional. Search string in the format given at [List query operators](https://
+        #   developers.google.com/workspace/admin/directory/v1/list-query-operators).
         # @param [Boolean] include_child_orgunits
         #   Optional. Return devices from all child orgunits, as well as the specified org
         #   unit. If this is set to true, 'orgUnitPath' must be provided.
@@ -4016,9 +4016,8 @@ module Google
         end
         
         # Create a guest user with access to a [subset of Workspace capabilities](https:/
-        # /support.google.com/a/answer/16558545?hl=en). This feature is currently in
-        # Alpha. Please reach out to support if you are interested in trying this
-        # feature.
+        # /support.google.com/a/answer/16558545). This feature is currently in Alpha.
+        # Please reach out to support if you are interested in trying this feature.
         # @param [Google::Apis::AdminDirectoryV1::DirectoryUsersCreateGuestRequest] directory_users_create_guest_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
