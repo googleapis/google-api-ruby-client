@@ -6495,7 +6495,8 @@ module Google
         alias_method :read_only?, :read_only
       
         # Path within the volume from which the container's volume should be mounted.
-        # Defaults to "" (volume's root).
+        # Defaults to "" (volume's root). This field is currently ignored for Secret
+        # volumes.
         # Corresponds to the JSON property `subPath`
         # @return [String]
         attr_accessor :sub_path
