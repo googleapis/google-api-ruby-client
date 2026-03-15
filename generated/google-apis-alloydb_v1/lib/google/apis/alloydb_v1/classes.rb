@@ -3744,7 +3744,7 @@ module Google
       
         # Database resource signal data. This is used to send signals to Condor which
         # are based on the DB/Instance/Fleet level configurations. These will be used to
-        # send signals for all inventory types. Next ID: 7
+        # send signals for all inventory types. Next ID: 9
         # Corresponds to the JSON property `databaseResourceSignalData`
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData]
         attr_accessor :database_resource_signal_data
@@ -4255,9 +4255,14 @@ module Google
       
       # Database resource signal data. This is used to send signals to Condor which
       # are based on the DB/Instance/Fleet level configurations. These will be used to
-      # send signals for all inventory types. Next ID: 7
+      # send signals for all inventory types. Next ID: 9
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData
         include Google::Apis::Core::Hashable
+      
+        # A backup run.
+        # Corresponds to the JSON property `backupRun`
+        # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainBackupRun]
+        attr_accessor :backup_run
       
         # Required. Full Resource name of the source resource.
         # Corresponds to the JSON property `fullResourceName`
@@ -4274,11 +4279,17 @@ module Google
         # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Signal data for boolean signals.
+        # Deprecated: Use signal_metadata_list instead.
         # Corresponds to the JSON property `signalBoolValue`
         # @return [Boolean]
         attr_accessor :signal_bool_value
         alias_method :signal_bool_value?, :signal_bool_value
+      
+        # This will support array of OneOf signal metadata information for a given
+        # signal type.
+        # Corresponds to the JSON property `signalMetadataList`
+        # @return [Array<Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainSignalMetadata>]
+        attr_accessor :signal_metadata_list
       
         # Required. Output only. Signal state of the signal
         # Corresponds to the JSON property `signalState`
@@ -4296,10 +4307,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
           @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
           @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
           @signal_bool_value = args[:signal_bool_value] if args.key?(:signal_bool_value)
+          @signal_metadata_list = args[:signal_metadata_list] if args.key?(:signal_metadata_list)
           @signal_state = args[:signal_state] if args.key?(:signal_state)
           @signal_type = args[:signal_type] if args.key?(:signal_type)
         end
@@ -4756,6 +4769,34 @@ module Google
           @retention_unit = args[:retention_unit] if args.key?(:retention_unit)
           @time_based_retention = args[:time_based_retention] if args.key?(:time_based_retention)
           @timestamp_based_retention_time = args[:timestamp_based_retention_time] if args.key?(:timestamp_based_retention_time)
+        end
+      end
+      
+      # SignalMetadata contains one of the signal metadata proto messages associated
+      # with a SignalType. This proto will be mapped to SignalMetadata message in
+      # storage.proto. Next ID: 3
+      class StorageDatabasecenterPartnerapiV1mainSignalMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A backup run.
+        # Corresponds to the JSON property `backupRun`
+        # @return [Google::Apis::AlloydbV1::StorageDatabasecenterPartnerapiV1mainBackupRun]
+        attr_accessor :backup_run
+      
+        # Signal data for boolean signals.
+        # Corresponds to the JSON property `signalBoolValue`
+        # @return [Boolean]
+        attr_accessor :signal_bool_value
+        alias_method :signal_bool_value?, :signal_bool_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @signal_bool_value = args[:signal_bool_value] if args.key?(:signal_bool_value)
         end
       end
       
