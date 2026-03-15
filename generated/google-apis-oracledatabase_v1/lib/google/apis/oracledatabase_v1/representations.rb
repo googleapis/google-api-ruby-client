@@ -1051,6 +1051,8 @@ module Google
           property :ncharacter_set, as: 'ncharacterSet'
           property :oci_url, as: 'ociUrl'
           property :ops_insights_status, as: 'opsInsightsStatus'
+          property :pluggable_database_id, as: 'pluggableDatabaseId'
+          property :pluggable_database_name, as: 'pluggableDatabaseName'
           property :properties, as: 'properties', class: Google::Apis::OracledatabaseV1::DatabaseProperties, decorator: Google::Apis::OracledatabaseV1::DatabaseProperties::Representation
       
           property :tde_wallet_password, as: 'tdeWalletPassword'
