@@ -30,7 +30,7 @@ module Google
       #    Ces = Google::Apis::CesV1 # Alias the module
       #    service = Ces::CustomerEngagementSuiteService.new
       #
-      # @see https://cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference
+      # @see https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps
       class CustomerEngagementSuiteService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://ces.$UNIVERSE_DOMAIN$/"
 
@@ -1491,7 +1491,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Initiates a single turn interaction with the CES agent within a session.
+        # Initiates a single-turn interaction with the CES agent within a session.
         # @param [String] session
         #   Required. The unique identifier of the session. Format: `projects/`project`/
         #   locations/`location`/apps/`app`/sessions/`session``

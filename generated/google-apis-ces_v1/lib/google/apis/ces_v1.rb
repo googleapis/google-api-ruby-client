@@ -23,7 +23,7 @@ module Google
     #
     # 
     #
-    # @see https://cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference
+    # @see https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps
     module CesV1
       # Version of the Gemini Enterprise for Customer Experience API this client connects to.
       # This is NOT the gem version.
