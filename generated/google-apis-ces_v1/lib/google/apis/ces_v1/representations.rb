@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AgentTool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AgentTransfer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1066,6 +1072,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WidgetToolDataMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Action
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1147,6 +1159,15 @@ module Google
           hash :input_variable_mapping, as: 'inputVariableMapping'
           hash :output_variable_mapping, as: 'outputVariableMapping'
           property :respect_response_interruption_settings, as: 'respectResponseInterruptionSettings'
+        end
+      end
+      
+      class AgentTool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :root_agent, as: 'rootAgent'
         end
       end
       
@@ -1853,6 +1874,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :args, as: 'args'
+          hash :context, as: 'context'
           property :tool, as: 'tool'
           property :toolset_tool, as: 'toolsetTool', class: Google::Apis::CesV1::ToolsetTool, decorator: Google::Apis::CesV1::ToolsetTool::Representation
       
@@ -1874,6 +1896,7 @@ module Google
       class ExportAppRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_version, as: 'appVersion'
           property :export_format, as: 'exportFormat'
           property :gcs_uri, as: 'gcsUri'
         end
@@ -1908,6 +1931,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deployment, as: 'deployment'
+          property :live_handoff_enabled, as: 'liveHandoffEnabled'
           property :recaptcha_token, as: 'recaptchaToken'
         end
       end
@@ -2248,6 +2272,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_authentication, as: 'apiAuthentication', class: Google::Apis::CesV1::ApiAuthentication, decorator: Google::Apis::CesV1::ApiAuthentication::Representation
       
+          hash :custom_headers, as: 'customHeaders'
           property :description, as: 'description'
           property :input_schema, as: 'inputSchema', class: Google::Apis::CesV1::Schema, decorator: Google::Apis::CesV1::Schema::Representation
       
@@ -2267,6 +2292,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_authentication, as: 'apiAuthentication', class: Google::Apis::CesV1::ApiAuthentication, decorator: Google::Apis::CesV1::ApiAuthentication::Representation
       
+          hash :custom_headers, as: 'customHeaders'
           property :server_address, as: 'serverAddress'
           property :service_directory_config, as: 'serviceDirectoryConfig', class: Google::Apis::CesV1::ServiceDirectoryConfig, decorator: Google::Apis::CesV1::ServiceDirectoryConfig::Representation
       
@@ -2742,6 +2768,8 @@ module Google
       class Tool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_tool, as: 'agentTool', class: Google::Apis::CesV1::AgentTool, decorator: Google::Apis::CesV1::AgentTool::Representation
+      
           property :client_function, as: 'clientFunction', class: Google::Apis::CesV1::ClientFunction, decorator: Google::Apis::CesV1::ClientFunction::Representation
       
           property :connector_tool, as: 'connectorTool', class: Google::Apis::CesV1::ConnectorTool, decorator: Google::Apis::CesV1::ConnectorTool::Representation
@@ -2935,11 +2963,24 @@ module Google
       class WidgetTool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_mapping, as: 'dataMapping', class: Google::Apis::CesV1::WidgetToolDataMapping, decorator: Google::Apis::CesV1::WidgetToolDataMapping::Representation
+      
           property :description, as: 'description'
           property :name, as: 'name'
           property :parameters, as: 'parameters', class: Google::Apis::CesV1::Schema, decorator: Google::Apis::CesV1::Schema::Representation
       
+          hash :ui_config, as: 'uiConfig'
           property :widget_type, as: 'widgetType'
+        end
+      end
+      
+      class WidgetToolDataMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :field_mappings, as: 'fieldMappings'
+          property :mode, as: 'mode'
+          property :python_script, as: 'pythonScript'
+          property :source_tool_name, as: 'sourceToolName'
         end
       end
     end
