@@ -7437,10 +7437,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates synthetic data based on the provided configuration.
+        # Generates synthetic (artificial) data based on a description
         # @param [String] location
-        #   Required. The resource name of the Location to run the job. Format: `projects/`
-        #   project`/locations/`location``
+        #   Required. The geographic location where the synthetic data generation request
+        #   is processed. This should be in the format `projects/`project`/locations/`
+        #   location``. For example, `projects/my-project/locations/us-central1`.
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateSyntheticDataRequest] google_cloud_aiplatform_v1_generate_synthetic_data_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -26663,6 +26664,12 @@ module Google
         #   Format: `projects/`project`/locations/`location`/reasoningEngines/`
         #   reasoning_engine``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Memory] google_cloud_aiplatform_v1_memory_object
+        # @param [String] memory_id
+        #   Optional. The user defined ID to use for memory, which will become the final
+        #   component of the memory resource name. If not provided, Vertex AI will
+        #   generate a value for this ID. This value may be up to 63 characters, and valid
+        #   characters are `[a-z0-9-]`. The first character must be a letter, and the last
+        #   character must be a letter or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -26680,13 +26687,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_reasoning_engine_memory(parent, google_cloud_aiplatform_v1_memory_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_reasoning_engine_memory(parent, google_cloud_aiplatform_v1_memory_object = nil, memory_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/memories', options)
           command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Memory::Representation
           command.request_object = google_cloud_aiplatform_v1_memory_object
           command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['memoryId'] = memory_id unless memory_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -27803,6 +27811,12 @@ module Google
         #   Required. The resource name of the location to create the session in. Format: `
         #   projects/`project`/locations/`location`/reasoningEngines/`reasoning_engine``
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Session] google_cloud_aiplatform_v1_session_object
+        # @param [String] session_id
+        #   Optional. The user defined ID to use for session, which will become the final
+        #   component of the session resource name. If not provided, Vertex AI will
+        #   generate a value for this ID. This value may be up to 63 characters, and valid
+        #   characters are `[a-z0-9-]`. The first character must be a letter, and the last
+        #   character must be a letter or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -27820,13 +27834,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_reasoning_engine_session(parent, google_cloud_aiplatform_v1_session_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_reasoning_engine_session(parent, google_cloud_aiplatform_v1_session_object = nil, session_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/sessions', options)
           command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Session::Representation
           command.request_object = google_cloud_aiplatform_v1_session_object
           command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['sessionId'] = session_id unless session_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
