@@ -222,15 +222,15 @@ module Google
         end
       end
       
-      # Contains information about browser profiles reported by the [Endpoint
-      # Verification extension](https://chromewebstore.google.com/detail/endpoint-
-      # verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+      # Contains information about browser profiles reported by the Clients on the
+      # device (e.g. [Endpoint Verification extension](https://chromewebstore.google.
+      # com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1)).
       class BrowserAttributes
         include Google::Apis::Core::Hashable
       
-        # Browser-specific fields reported by the [Endpoint Verification extension](
-        # https://chromewebstore.google.com/detail/endpoint-verification/
-        # callobklhcbilhphinckomhgkigmfocg?pli=1).
+        # Browser-specific fields reported by clients on the device, such as [Endpoint
+        # Verification extension](https://chromewebstore.google.com/detail/endpoint-
+        # verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
         # Corresponds to the JSON property `chromeBrowserInfo`
         # @return [Google::Apis::CloudidentityV1beta1::BrowserInfo]
         attr_accessor :chrome_browser_info
@@ -259,9 +259,9 @@ module Google
         end
       end
       
-      # Browser-specific fields reported by the [Endpoint Verification extension](
-      # https://chromewebstore.google.com/detail/endpoint-verification/
-      # callobklhcbilhphinckomhgkigmfocg?pli=1).
+      # Browser-specific fields reported by clients on the device, such as [Endpoint
+      # Verification extension](https://chromewebstore.google.com/detail/endpoint-
+      # verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
       class BrowserInfo
         include Google::Apis::Core::Hashable
       
@@ -357,6 +357,13 @@ module Google
         # @return [String]
         attr_accessor :password_protection_warning_trigger
       
+        # Output only. Chrome policies information for the browser as can be seen in
+        # chrome://policy. Full possibilities of policies can be consulted in [Chrome
+        # Enterprise Policy List](https://chromeenterprise.google/policies/).
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::ChromePolicy>]
+        attr_accessor :policies
+      
         # Current state of [Safe Browsing protection level](https://chromeenterprise.
         # google/policies/#SafeBrowsingProtectionLevel).
         # Corresponds to the JSON property `safeBrowsingProtectionLevel`
@@ -382,6 +389,7 @@ module Google
           @is_site_isolation_enabled = args[:is_site_isolation_enabled] if args.key?(:is_site_isolation_enabled)
           @is_third_party_blocking_enabled = args[:is_third_party_blocking_enabled] if args.key?(:is_third_party_blocking_enabled)
           @password_protection_warning_trigger = args[:password_protection_warning_trigger] if args.key?(:password_protection_warning_trigger)
+          @policies = args[:policies] if args.key?(:policies)
           @safe_browsing_protection_level = args[:safe_browsing_protection_level] if args.key?(:safe_browsing_protection_level)
         end
       end
@@ -608,6 +616,55 @@ module Google
         # Update properties of this object
         def update!(**args)
           @has_membership = args[:has_membership] if args.key?(:has_membership)
+        end
+      end
+      
+      # Represents a Chrome policy and its current state.
+      class ChromePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A list of other policy values for the same policy name that were
+        # not applied due to lower precedence. This field is empty if there were no
+        # conflicts.
+        # Corresponds to the JSON property `conflicts`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::PolicyConflict>]
+        attr_accessor :conflicts
+      
+        # Output only. The unique name of the Chrome policy. These names correspond to
+        # the policy names listed in [Chrome Enterprise Policy List](https://
+        # chromeenterprise.google/policies/)
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The scope at which the *applied* policy value is set (USER or
+        # MACHINE).
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # Output only. The source from which the *applied* policy value originated.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Output only. The currently applied value of the policy. The format depends on
+        # the policy type (e.g., boolean, string, JSON array/object).
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conflicts = args[:conflicts] if args.key?(:conflicts)
+          @name = args[:name] if args.key?(:name)
+          @scope = args[:scope] if args.key?(:scope)
+          @source = args[:source] if args.key?(:source)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -917,6 +974,14 @@ module Google
         # @return [String]
         attr_accessor :brand
       
+        # Browser profiles on the device. This is a copy of the BrowserAttributes
+        # message defined in EndpointVerificationSpecificAttributes. We are replicating
+        # it here since EndpointVerification isn't the only client reporting browser
+        # profiles.
+        # Corresponds to the JSON property `browserProfiles`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::BrowserAttributes>]
+        attr_accessor :browser_profiles
+      
         # Output only. Build number of the device.
         # Corresponds to the JSON property `buildNumber`
         # @return [String]
@@ -1078,6 +1143,7 @@ module Google
           @baseband_version = args[:baseband_version] if args.key?(:baseband_version)
           @bootloader_version = args[:bootloader_version] if args.key?(:bootloader_version)
           @brand = args[:brand] if args.key?(:brand)
+          @browser_profiles = args[:browser_profiles] if args.key?(:browser_profiles)
           @build_number = args[:build_number] if args.key?(:build_number)
           @client_types = args[:client_types] if args.key?(:client_types)
           @compromised_state = args[:compromised_state] if args.key?(:compromised_state)
@@ -3891,6 +3957,39 @@ module Google
           @policy_query = args[:policy_query] if args.key?(:policy_query)
           @setting = args[:setting] if args.key?(:setting)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents a policy value from a source that was not applied because a higher-
+      # priority source took precedence.
+      class PolicyConflict
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The scope at which this lower-priority policy is set (USER or
+        # MACHINE).
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # Output only. The source from which this lower-priority policy value originated.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Output only. The policy value from this lower-priority source.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope = args[:scope] if args.key?(:scope)
+          @source = args[:source] if args.key?(:source)
+          @value = args[:value] if args.key?(:value)
         end
       end
       

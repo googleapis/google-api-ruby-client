@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ChromePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClientState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -646,6 +652,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PolicyConflict
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PolicyQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -892,6 +904,8 @@ module Google
           property :is_site_isolation_enabled, as: 'isSiteIsolationEnabled'
           property :is_third_party_blocking_enabled, as: 'isThirdPartyBlockingEnabled'
           property :password_protection_warning_trigger, as: 'passwordProtectionWarningTrigger'
+          collection :policies, as: 'policies', class: Google::Apis::CloudidentityV1beta1::ChromePolicy, decorator: Google::Apis::CloudidentityV1beta1::ChromePolicy::Representation
+      
           property :safe_browsing_protection_level, as: 'safeBrowsingProtectionLevel'
         end
       end
@@ -961,6 +975,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :has_membership, as: 'hasMembership'
+        end
+      end
+      
+      class ChromePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conflicts, as: 'conflicts', class: Google::Apis::CloudidentityV1beta1::PolicyConflict, decorator: Google::Apis::CloudidentityV1beta1::PolicyConflict::Representation
+      
+          property :name, as: 'name'
+          property :scope, as: 'scope'
+          property :source, as: 'source'
+          property :value, as: 'value'
         end
       end
       
@@ -1054,6 +1080,8 @@ module Google
           property :baseband_version, as: 'basebandVersion'
           property :bootloader_version, as: 'bootloaderVersion'
           property :brand, as: 'brand'
+          collection :browser_profiles, as: 'browserProfiles', class: Google::Apis::CloudidentityV1beta1::BrowserAttributes, decorator: Google::Apis::CloudidentityV1beta1::BrowserAttributes::Representation
+      
           property :build_number, as: 'buildNumber'
           collection :client_types, as: 'clientTypes'
           property :compromised_state, as: 'compromisedState'
@@ -1853,6 +1881,15 @@ module Google
           property :setting, as: 'setting', class: Google::Apis::CloudidentityV1beta1::Setting, decorator: Google::Apis::CloudidentityV1beta1::Setting::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class PolicyConflict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scope, as: 'scope'
+          property :source, as: 'source'
+          property :value, as: 'value'
         end
       end
       
