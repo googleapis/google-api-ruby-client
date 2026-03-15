@@ -2224,7 +2224,7 @@ module Google
         # @param [String] permission_id
         #   The ID for the permission.
         # @param [Boolean] enforce_expansive_access
-        #   Whether the request should enforce expansive access rules.
+        #   Deprecated: All requests use the expansive access rules.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
@@ -2348,7 +2348,7 @@ module Google
         # @param [String] email_message
         #   A plain text custom message to include in notification emails.
         # @param [Boolean] enforce_expansive_access
-        #   Whether the request should enforce expansive access rules.
+        #   Deprecated: All requests use the expansive access rules.
         # @param [Boolean] enforce_single_parent
         #   Deprecated: See `moveToNewOwnersRoot` for details.
         # @param [Boolean] move_to_new_owners_root
@@ -2469,7 +2469,7 @@ module Google
         #   The ID for the permission.
         # @param [Google::Apis::DriveV2::Permission] permission_object
         # @param [Boolean] enforce_expansive_access
-        #   Whether the request should enforce expansive access rules.
+        #   Deprecated: All requests use the expansive access rules.
         # @param [Boolean] remove_expiration
         #   Whether to remove the expiration date.
         # @param [Boolean] supports_all_drives
@@ -2528,7 +2528,7 @@ module Google
         #   The ID for the permission.
         # @param [Google::Apis::DriveV2::Permission] permission_object
         # @param [Boolean] enforce_expansive_access
-        #   Whether the request should enforce expansive access rules.
+        #   Deprecated: All requests use the expansive access rules.
         # @param [Boolean] remove_expiration
         #   Whether to remove the expiration date.
         # @param [Boolean] supports_all_drives
