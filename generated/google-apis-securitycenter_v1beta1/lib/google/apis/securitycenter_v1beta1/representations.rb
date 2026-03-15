@@ -2465,6 +2465,7 @@ module Google
           property :event_detection_time, as: 'eventDetectionTime'
           property :event_type, as: 'eventType'
           property :max_retention_allowed, as: 'maxRetentionAllowed'
+          property :min_retention_allowed, as: 'minRetentionAllowed'
         end
       end
       
@@ -3627,6 +3628,7 @@ module Google
           property :event_detection_time, as: 'eventDetectionTime'
           property :event_type, as: 'eventType'
           property :max_retention_allowed, as: 'maxRetentionAllowed'
+          property :min_retention_allowed, as: 'minRetentionAllowed'
         end
       end
       
