@@ -1416,6 +1416,7 @@ module Google
       class GoogleAdsSearchads360V0CommonSegments
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_format_type, as: 'adFormatType'
           property :ad_network_type, as: 'adNetworkType'
           property :asset_interaction_target, as: 'assetInteractionTarget', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAssetInteractionTarget, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonAssetInteractionTarget::Representation
       
@@ -1482,6 +1483,15 @@ module Google
           property :quarter, as: 'quarter'
           collection :raw_event_conversion_dimensions, as: 'rawEventConversionDimensions', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue::Representation
       
+          property :vertical_ads_event_participant_display_names, as: 'verticalAdsEventParticipantDisplayNames'
+          property :vertical_ads_hotel_class, :numeric_string => true, as: 'verticalAdsHotelClass'
+          property :vertical_ads_listing, as: 'verticalAdsListing'
+          property :vertical_ads_listing_brand, as: 'verticalAdsListingBrand'
+          property :vertical_ads_listing_city, as: 'verticalAdsListingCity'
+          property :vertical_ads_listing_country, as: 'verticalAdsListingCountry'
+          property :vertical_ads_listing_region, as: 'verticalAdsListingRegion'
+          property :vertical_ads_partner_account, :numeric_string => true, as: 'verticalAdsPartnerAccount'
+          property :vertical_ads_vertical, as: 'verticalAdsVertical'
           property :week, as: 'week'
           property :year, as: 'year'
         end
