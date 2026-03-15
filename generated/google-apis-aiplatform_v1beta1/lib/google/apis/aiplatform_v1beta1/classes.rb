@@ -4500,9 +4500,8 @@ module Google
         end
       end
       
-      # Result of executing the [ExecutableCode]. Only generated when using the [
-      # CodeExecution] tool, and always follows a `part` containing the [
-      # ExecutableCode].
+      # Result of executing the ExecutableCode. Generated only when the `CodeExecution`
+      # tool is used.
       class GoogleCloudAiplatformV1beta1CodeExecutionResult
         include Google::Apis::Core::Hashable
       
@@ -7063,6 +7062,28 @@ module Google
         end
       end
       
+      # Defines a custom dataset-level aggregation.
+      class GoogleCloudAiplatformV1beta1DatasetCustomMetric
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A display name for this custom summary metric. Used to prefix keys
+        # in the output summaryMetrics map. If not provided, a default name like "
+        # dataset_custom_metric_1", "dataset_custom_metric_2", etc., will be generated
+        # based on the order in the repeated field.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
       # Distribution computed over a tuning dataset.
       class GoogleCloudAiplatformV1beta1DatasetDistribution
         include Google::Apis::Core::Hashable
@@ -9133,6 +9154,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content]
         attr_accessor :content
       
+        # Configurations for the EmbedContent API.
+        # Corresponds to the JSON property `embedContentConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EmbedContentRequestEmbedContentConfig]
+        attr_accessor :embed_content_config
+      
         # Optional. Deprecated: Please use EmbedContentConfig.output_dimensionality
         # instead. Reduced dimension for the output embedding. If set, excessive values
         # in the output embedding are truncated from the end.
@@ -9160,6 +9186,63 @@ module Google
         def update!(**args)
           @auto_truncate = args[:auto_truncate] if args.key?(:auto_truncate)
           @content = args[:content] if args.key?(:content)
+          @embed_content_config = args[:embed_content_config] if args.key?(:embed_content_config)
+          @output_dimensionality = args[:output_dimensionality] if args.key?(:output_dimensionality)
+          @task_type = args[:task_type] if args.key?(:task_type)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Configurations for the EmbedContent API.
+      class GoogleCloudAiplatformV1beta1EmbedContentRequestEmbedContentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to extract audio from video content.
+        # Corresponds to the JSON property `audioTrackExtraction`
+        # @return [Boolean]
+        attr_accessor :audio_track_extraction
+        alias_method :audio_track_extraction?, :audio_track_extraction
+      
+        # Optional. Whether to silently truncate the input content if it's longer than
+        # the maximum sequence length. Only applicable to text-only embedding models.
+        # Corresponds to the JSON property `autoTruncate`
+        # @return [Boolean]
+        attr_accessor :auto_truncate
+        alias_method :auto_truncate?, :auto_truncate
+      
+        # Optional. Whether to enable OCR for document content.
+        # Corresponds to the JSON property `documentOcr`
+        # @return [Boolean]
+        attr_accessor :document_ocr
+        alias_method :document_ocr?, :document_ocr
+      
+        # Optional. Reduced dimension for the output embedding. If set, excessive values
+        # in the output embedding are truncated from the end.
+        # Corresponds to the JSON property `outputDimensionality`
+        # @return [Fixnum]
+        attr_accessor :output_dimensionality
+      
+        # Optional. The task type of the embedding. Only applicable to text-only
+        # embedding models.
+        # Corresponds to the JSON property `taskType`
+        # @return [String]
+        attr_accessor :task_type
+      
+        # Optional. The title for the text. Only applicable to text-only embedding
+        # models.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_track_extraction = args[:audio_track_extraction] if args.key?(:audio_track_extraction)
+          @auto_truncate = args[:auto_truncate] if args.key?(:auto_truncate)
+          @document_ocr = args[:document_ocr] if args.key?(:document_ocr)
           @output_dimensionality = args[:output_dimensionality] if args.key?(:output_dimensionality)
           @task_type = args[:task_type] if args.key?(:task_type)
           @title = args[:title] if args.key?(:title)
@@ -11284,6 +11367,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunEvaluationConfigAutoraterConfig]
         attr_accessor :autorater_config
       
+        # Optional. Specifications for custom dataset-level aggregations.
+        # Corresponds to the JSON property `datasetCustomMetrics`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetCustomMetric>]
+        attr_accessor :dataset_custom_metrics
+      
         # Required. The metrics to be calculated in the evaluation run.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunMetric>]
@@ -11317,6 +11405,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @autorater_config = args[:autorater_config] if args.key?(:autorater_config)
+          @dataset_custom_metrics = args[:dataset_custom_metrics] if args.key?(:dataset_custom_metrics)
           @metrics = args[:metrics] if args.key?(:metrics)
           @output_config = args[:output_config] if args.key?(:output_config)
           @prompt_template = args[:prompt_template] if args.key?(:prompt_template)
@@ -11431,9 +11520,12 @@ module Google
         attr_accessor :generation_config
       
         # Optional. The fully qualified name of the publisher model or endpoint to use.
+        # Anthropic and Llama third-party models are also supported through Model Garden.
         # Publisher model format: `projects/`project`/locations/`location`/publishers/*/
-        # models/*` Endpoint format: `projects/`project`/locations/`location`/endpoints/`
-        # endpoint``
+        # models/*` Third-party model format: `projects/`project`/locations/`location`/
+        # publishers/anthropic/models/`model`` `projects/`project`/locations/`location`/
+        # publishers/llama/models/`model`` Endpoint format: `projects/`project`/
+        # locations/`location`/endpoints/`endpoint``
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
@@ -12361,9 +12453,9 @@ module Google
       end
       
       # Code generated by the model that is meant to be executed, and the result
-      # returned to the model. Generated when using the [CodeExecution] tool, in which
-      # the code will be automatically executed, and a corresponding [
-      # CodeExecutionResult] will also be generated.
+      # returned to the model. Generated when using the `CodeExecution` tool, in which
+      # the code will be automatically executed, and a corresponding
+      # CodeExecutionResult will also be generated.
       class GoogleCloudAiplatformV1beta1ExecutableCode
         include Google::Apis::Core::Hashable
       
@@ -17367,14 +17459,14 @@ module Google
         end
       end
       
-      # A predicted [FunctionCall] returned from the model that contains a string
-      # representing the [FunctionDeclaration.name] and a structured JSON object
+      # A predicted FunctionCall returned from the model that contains a string
+      # representing the FunctionDeclaration.name and a structured JSON object
       # containing the parameters and their values.
       class GoogleCloudAiplatformV1beta1FunctionCall
         include Google::Apis::Core::Hashable
       
-        # Optional. The function parameters and values in JSON object format. See [
-        # FunctionDeclaration.parameters] for parameter details.
+        # Optional. The function parameters and values in JSON object format. See
+        # FunctionDeclaration.parameters for parameter details.
         # Corresponds to the JSON property `args`
         # @return [Hash<String,Object>]
         attr_accessor :args
@@ -17385,7 +17477,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Optional. The name of the function to call. Matches [FunctionDeclaration.name].
+        # Optional. The name of the function to call. Matches FunctionDeclaration.name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -17422,8 +17514,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Function names to call. Only set when the Mode is ANY. Function
-        # names should match [FunctionDeclaration.name]. With mode set to ANY, model
-        # will predict a function call from the set of function names provided.
+        # names should match FunctionDeclaration.name. With mode set to ANY, model will
+        # predict a function call from the set of function names provided.
         # Corresponds to the JSON property `allowedFunctionNames`
         # @return [Array<String>]
         attr_accessor :allowed_function_names
@@ -17435,7 +17527,7 @@ module Google
       
         # Optional. When set to true, arguments of a single function call will be
         # streamed out in multiple parts/contents/responses. Partial parameter results
-        # will be returned in the [FunctionCall.partial_args] field.
+        # will be returned in the `FunctionCall.partial_args` field.
         # Corresponds to the JSON property `streamFunctionCallArguments`
         # @return [Boolean]
         attr_accessor :stream_function_call_arguments
@@ -17518,10 +17610,10 @@ module Google
         end
       end
       
-      # The result output from a [FunctionCall] that contains a string representing
-      # the [FunctionDeclaration.name] and a structured JSON object containing any
-      # output from the function is used as context to the model. This should contain
-      # the result of a [FunctionCall] made based on model prediction.
+      # The result output from a FunctionCall that contains a string representing the
+      # FunctionDeclaration.name and a structured JSON object containing any output
+      # from the function is used as context to the model. This should contain the
+      # result of a `FunctionCall` made based on model prediction.
       class GoogleCloudAiplatformV1beta1FunctionResponse
         include Google::Apis::Core::Hashable
       
@@ -17531,8 +17623,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Required. The name of the function to call. Matches [FunctionDeclaration.name]
-        # and [FunctionCall.name].
+        # Required. The name of the function to call. Matches FunctionDeclaration.name
+        # and FunctionCall.name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -18625,28 +18717,32 @@ module Google
         end
       end
       
-      # Request message for DataFoundryService.GenerateSyntheticData.
+      # Request message for DataFoundryService.GenerateSyntheticData. It contains the
+      # settings and information needed to generate synthetic data.
       class GoogleCloudAiplatformV1beta1GenerateSyntheticDataRequest
         include Google::Apis::Core::Hashable
       
         # Required. The number of synthetic examples to generate. For this stateless API,
-        # the count is limited to a small number.
+        # you can generate up to 50 examples in a single request.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
       
-        # Optional. A list of few-shot examples to guide the model's output style and
-        # format.
+        # Optional. A list of few-shot examples that help the model understand the
+        # desired style, tone, and format of the generated synthetic data. Providing
+        # these few-shot examples can significantly improve the quality and relevance of
+        # the output.
         # Corresponds to the JSON property `examples`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SyntheticExample>]
         attr_accessor :examples
       
-        # Required. The schema of the desired output, defined by a list of fields.
+        # Required. Defines the schema of each synthetic example to be generated,
+        # defined by a list of fields.
         # Corresponds to the JSON property `outputFieldSpecs`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1OutputFieldSpec>]
         attr_accessor :output_field_specs
       
-        # Defines a generation strategy based on a high-level task description.
+        # Defines a generation strategy based on a general task description.
         # Corresponds to the JSON property `taskDescription`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TaskDescriptionStrategy]
         attr_accessor :task_description
@@ -18664,11 +18760,13 @@ module Google
         end
       end
       
-      # The response containing the generated data.
+      # The response message for the `GenerateSyntheticData` method, containing the
+      # synthetic examples generated by the Gen AI evaluation service.
       class GoogleCloudAiplatformV1beta1GenerateSyntheticDataResponse
         include Google::Apis::Core::Hashable
       
-        # A list of generated synthetic examples.
+        # A list of generated synthetic examples, each containing a complete synthetic
+        # data instance generated based on your request.
         # Corresponds to the JSON property `syntheticExamples`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SyntheticExample>]
         attr_accessor :synthetic_examples
@@ -23974,9 +24072,14 @@ module Google
         end
       end
       
-      # Configuration for organizing memories for a particular scope.
+      # Represents configuration for organizing memories for a particular scope.
       class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfig
         include Google::Apis::Core::Hashable
+      
+        # Represents configuration for customizing how memories are consolidated.
+        # Corresponds to the JSON property `consolidationConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigConsolidationConfig]
+        attr_accessor :consolidation_config
       
         # Optional. If true, then the memories will be generated in the third person (i.
         # e. "The user generates memories with Memory Bank."). By default, the memories
@@ -24014,10 +24117,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @consolidation_config = args[:consolidation_config] if args.key?(:consolidation_config)
           @enable_third_person_memories = args[:enable_third_person_memories] if args.key?(:enable_third_person_memories)
           @generate_memories_examples = args[:generate_memories_examples] if args.key?(:generate_memories_examples)
           @memory_topics = args[:memory_topics] if args.key?(:memory_topics)
           @scope_keys = args[:scope_keys] if args.key?(:scope_keys)
+        end
+      end
+      
+      # Represents configuration for customizing how memories are consolidated.
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigConsolidationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The maximum number of revisions to consider for each candidate
+        # memory. If not set, then the default value (1) will be used, which means that
+        # only the latest revision will be considered.
+        # Corresponds to the JSON property `revisionsPerCandidateCount`
+        # @return [Fixnum]
+        attr_accessor :revisions_per_candidate_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @revisions_per_candidate_count = args[:revisions_per_candidate_count] if args.key?(:revisions_per_candidate_count)
         end
       end
       
@@ -30217,11 +30342,14 @@ module Google
         end
       end
       
-      # Defines a specification for a single output field.
+      # Specifies the properties of a single field that are included in each generated
+      # synthetic example. This helps the model understand what kind of data to
+      # generate for each field.
       class GoogleCloudAiplatformV1beta1OutputFieldSpec
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the output field.
+        # Required. The name of this field in the generated synthetic data, such as "
+        # email_subject" or "customer_review".
         # Corresponds to the JSON property `fieldName`
         # @return [String]
         attr_accessor :field_name
@@ -30231,10 +30359,11 @@ module Google
         # @return [String]
         attr_accessor :field_type
       
-        # Optional. Optional, but recommended. Additional guidance specific to this
-        # field to provide targeted instructions for the LLM to generate the content of
-        # a single output field. While the LLM can sometimes infer content from the
-        # field name, providing explicit guidance is preferred.
+        # Optional. Specific instructions for the large language model on how to
+        # generate content for this particular field. While the LLM can sometimes infer
+        # content from the field name, providing explicit guidance is preferred. For
+        # example, for a field named "review", the guidance could be "A positive review
+        # about a coffee maker."
         # Corresponds to the JSON property `guidance`
         # @return [String]
         attr_accessor :guidance
@@ -30711,17 +30840,16 @@ module Google
       class GoogleCloudAiplatformV1beta1Part
         include Google::Apis::Core::Hashable
       
-        # Result of executing the [ExecutableCode]. Only generated when using the [
-        # CodeExecution] tool, and always follows a `part` containing the [
-        # ExecutableCode].
+        # Result of executing the ExecutableCode. Generated only when the `CodeExecution`
+        # tool is used.
         # Corresponds to the JSON property `codeExecutionResult`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CodeExecutionResult]
         attr_accessor :code_execution_result
       
         # Code generated by the model that is meant to be executed, and the result
-        # returned to the model. Generated when using the [CodeExecution] tool, in which
-        # the code will be automatically executed, and a corresponding [
-        # CodeExecutionResult] will also be generated.
+        # returned to the model. Generated when using the `CodeExecution` tool, in which
+        # the code will be automatically executed, and a corresponding
+        # CodeExecutionResult will also be generated.
         # Corresponds to the JSON property `executableCode`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ExecutableCode]
         attr_accessor :executable_code
@@ -30733,17 +30861,17 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FileData]
         attr_accessor :file_data
       
-        # A predicted [FunctionCall] returned from the model that contains a string
-        # representing the [FunctionDeclaration.name] and a structured JSON object
+        # A predicted FunctionCall returned from the model that contains a string
+        # representing the FunctionDeclaration.name and a structured JSON object
         # containing the parameters and their values.
         # Corresponds to the JSON property `functionCall`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FunctionCall]
         attr_accessor :function_call
       
-        # The result output from a [FunctionCall] that contains a string representing
-        # the [FunctionDeclaration.name] and a structured JSON object containing any
-        # output from the function is used as context to the model. This should contain
-        # the result of a [FunctionCall] made based on model prediction.
+        # The result output from a FunctionCall that contains a string representing the
+        # FunctionDeclaration.name and a structured JSON object containing any output
+        # from the function is used as context to the model. This should contain the
+        # result of a `FunctionCall` made based on model prediction.
         # Corresponds to the JSON property `functionResponse`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FunctionResponse]
         attr_accessor :function_response
@@ -33000,7 +33128,7 @@ module Google
         # @return [String]
         attr_accessor :launch_stage
       
-        # Output only. The resource name of the PublisherModel.
+        # Output only. Identifier. The resource name of the PublisherModel.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -47579,6 +47707,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Weakly typed raw event data in proto struct format.
+        # Corresponds to the JSON property `rawEvent`
+        # @return [Hash<String,Object>]
+        attr_accessor :raw_event
+      
         # Required. Timestamp when the event was created on client side.
         # Corresponds to the JSON property `timestamp`
         # @return [String]
@@ -47598,6 +47731,7 @@ module Google
           @event_metadata = args[:event_metadata] if args.key?(:event_metadata)
           @invocation_id = args[:invocation_id] if args.key?(:invocation_id)
           @name = args[:name] if args.key?(:name)
+          @raw_event = args[:raw_event] if args.key?(:raw_event)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
         end
       end
@@ -50230,9 +50364,11 @@ module Google
         end
       end
       
-      # Represents a single synthetic example, composed of multiple fields. Used for
-      # providing few-shot examples in the request and for returning generated
-      # examples in the response.
+      # A single instance of generated synthetic data. Each example is made up of one
+      # or more named fields, as defined in `OutputFieldSpec`. These examples are used
+      # as few-shot examples to show the model what you want (in `
+      # GenerateSyntheticDataRequest.examples`) and to return generated examples in
+      # the response (in `GenerateSyntheticDataResponse.synthetic_examples`).
       class GoogleCloudAiplatformV1beta1SyntheticExample
         include Google::Apis::Core::Hashable
       
@@ -50251,7 +50387,8 @@ module Google
         end
       end
       
-      # Represents a single named field within a SyntheticExample.
+      # Represents a single named field within a synthetic example, consisting of a
+      # name and the actual content.
       class GoogleCloudAiplatformV1beta1SyntheticField
         include Google::Apis::Core::Hashable
       
@@ -50262,7 +50399,8 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content]
         attr_accessor :content
       
-        # Optional. The name of the field.
+        # Optional. The name of the specific field, such as "product_name" or "
+        # review_text".
         # Corresponds to the JSON property `fieldName`
         # @return [String]
         attr_accessor :field_name
@@ -50297,11 +50435,12 @@ module Google
         end
       end
       
-      # Defines a generation strategy based on a high-level task description.
+      # Defines a generation strategy based on a general task description.
       class GoogleCloudAiplatformV1beta1TaskDescriptionStrategy
         include Google::Apis::Core::Hashable
       
-        # Required. A high-level description of the synthetic data to be generated.
+        # Required. A general description of the type of synthetic data you want to
+        # generate. For example, "Generate customer reviews for a new smartphone."
         # Corresponds to the JSON property `taskDescription`
         # @return [String]
         attr_accessor :task_description
@@ -51041,7 +51180,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Tool that executes code generated by the model, and automatically returns the
-        # result to the model. See also [ExecutableCode]and [CodeExecutionResult] which
+        # result to the model. See also ExecutableCode and CodeExecutionResult, which
         # are input and output to this tool.
         # Corresponds to the JSON property `codeExecution`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolCodeExecution]
@@ -51246,7 +51385,7 @@ module Google
       end
       
       # Tool that executes code generated by the model, and automatically returns the
-      # result to the model. See also [ExecutableCode]and [CodeExecutionResult] which
+      # result to the model. See also ExecutableCode and CodeExecutionResult, which
       # are input and output to this tool.
       class GoogleCloudAiplatformV1beta1ToolCodeExecution
         include Google::Apis::Core::Hashable
