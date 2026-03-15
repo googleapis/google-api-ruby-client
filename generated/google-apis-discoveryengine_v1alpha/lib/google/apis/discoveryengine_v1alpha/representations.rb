@@ -154,6 +154,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1AgentGatewaySetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1AgentGatewaySettingAgentGatewayReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1AlertPolicyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1151,6 +1163,18 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaAgentFile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAgentGatewaySetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAgentGatewaySettingAgentGatewayReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4540,6 +4564,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaAgentGatewaySetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaBatchCreateTargetSiteMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6074,6 +6110,21 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1AgentGatewaySetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_egress_agent_gateway, as: 'defaultEgressAgentGateway', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AgentGatewaySettingAgentGatewayReference, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AgentGatewaySettingAgentGatewayReference::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1AgentGatewaySettingAgentGatewayReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1AlertPolicyConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6822,6 +6873,8 @@ module Google
       class GoogleCloudDiscoveryengineV1Engine
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_gateway_setting, as: 'agentGatewaySetting', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AgentGatewaySetting, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AgentGatewaySetting::Representation
+      
           property :app_type, as: 'appType'
           property :chat_engine_config, as: 'chatEngineConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineChatEngineConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineChatEngineConfig::Representation
       
@@ -6848,7 +6901,7 @@ module Google
           property :name, as: 'name'
           property :observability_config, as: 'observabilityConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ObservabilityConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ObservabilityConfig::Representation
       
-          property :procurement_contact_email, as: 'procurementContactEmail'
+          collection :procurement_contact_emails, as: 'procurementContactEmails'
           property :search_engine_config, as: 'searchEngineConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineSearchEngineConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1EngineSearchEngineConfig::Representation
       
           property :solution_type, as: 'solutionType'
@@ -7811,6 +7864,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :file_name, as: 'fileName'
           property :mime_type, as: 'mimeType'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAgentGatewaySetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_egress_agent_gateway, as: 'defaultEgressAgentGateway', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentGatewaySettingAgentGatewayReference, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentGatewaySettingAgentGatewayReference::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaAgentGatewaySettingAgentGatewayReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
         end
       end
@@ -10128,6 +10196,8 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaEngine
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_gateway_setting, as: 'agentGatewaySetting', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentGatewaySetting, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentGatewaySetting::Representation
+      
           property :app_type, as: 'appType'
           property :chat_engine_config, as: 'chatEngineConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig::Representation
       
@@ -10154,7 +10224,7 @@ module Google
           property :name, as: 'name'
           property :observability_config, as: 'observabilityConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaObservabilityConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaObservabilityConfig::Representation
       
-          property :procurement_contact_email, as: 'procurementContactEmail'
+          collection :procurement_contact_emails, as: 'procurementContactEmails'
           property :recommendation_metadata, as: 'recommendationMetadata', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadata::Representation
       
           property :search_engine_config, as: 'searchEngineConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig::Representation
@@ -10492,6 +10562,7 @@ module Google
           property :recs_filterable_option, as: 'recsFilterableOption'
           property :retrievable_option, as: 'retrievableOption'
           collection :schema_org_paths, as: 'schemaOrgPaths'
+          property :searchable_field_importance, as: 'searchableFieldImportance'
           property :searchable_option, as: 'searchableOption'
         end
       end
@@ -13619,6 +13690,21 @@ module Google
         end
       end
       
+      class GoogleCloudDiscoveryengineV1betaAgentGatewaySetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_egress_agent_gateway, as: 'defaultEgressAgentGateway', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDiscoveryengineV1betaBatchCreateTargetSiteMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14115,6 +14201,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaEngine
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_gateway_setting, as: 'agentGatewaySetting', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaAgentGatewaySetting, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaAgentGatewaySetting::Representation
+      
           property :app_type, as: 'appType'
           property :chat_engine_config, as: 'chatEngineConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig::Representation
       
@@ -14141,7 +14229,7 @@ module Google
           property :name, as: 'name'
           property :observability_config, as: 'observabilityConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaObservabilityConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaObservabilityConfig::Representation
       
-          property :procurement_contact_email, as: 'procurementContactEmail'
+          collection :procurement_contact_emails, as: 'procurementContactEmails'
           property :search_engine_config, as: 'searchEngineConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig::Representation
       
           property :solution_type, as: 'solutionType'

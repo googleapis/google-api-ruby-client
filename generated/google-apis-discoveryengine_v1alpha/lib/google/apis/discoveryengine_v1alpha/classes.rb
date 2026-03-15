@@ -889,6 +889,47 @@ module Google
         end
       end
       
+      # Agent Gateway setting, which may be attached to Gemini Enterprise resources
+      # for egress control of Gemini Enterprise agents to agents and tools outside of
+      # Gemini Enterprise.
+      class GoogleCloudDiscoveryengineV1AgentGatewaySetting
+        include Google::Apis::Core::Hashable
+      
+        # Reference to an Agent Gateway resource.
+        # Corresponds to the JSON property `defaultEgressAgentGateway`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AgentGatewaySettingAgentGatewayReference]
+        attr_accessor :default_egress_agent_gateway
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_egress_agent_gateway = args[:default_egress_agent_gateway] if args.key?(:default_egress_agent_gateway)
+        end
+      end
+      
+      # Reference to an Agent Gateway resource.
+      class GoogleCloudDiscoveryengineV1AgentGatewaySettingAgentGatewayReference
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The resource name of the agent gateway. Expected format: `
+        # projects/`project_number`/locations/`location`/agentGateways/`agent_gateway``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # The connector level alert config.
       class GoogleCloudDiscoveryengineV1AlertPolicyConfig
         include Google::Apis::Core::Hashable
@@ -3676,6 +3717,13 @@ module Google
       class GoogleCloudDiscoveryengineV1Engine
         include Google::Apis::Core::Hashable
       
+        # Agent Gateway setting, which may be attached to Gemini Enterprise resources
+        # for egress control of Gemini Enterprise agents to agents and tools outside of
+        # Gemini Enterprise.
+        # Corresponds to the JSON property `agentGatewaySetting`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1AgentGatewaySetting]
+        attr_accessor :agent_gateway_setting
+      
         # Optional. Immutable. This the application type which this engine resource
         # represents. NOTE: this is a new concept independ of existing industry vertical
         # or solution type.
@@ -3803,10 +3851,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1ObservabilityConfig]
         attr_accessor :observability_config
       
-        # Optional. The email of the procurement contact.
-        # Corresponds to the JSON property `procurementContactEmail`
-        # @return [String]
-        attr_accessor :procurement_contact_email
+        # Optional. The emails of the procurement contacts.
+        # Corresponds to the JSON property `procurementContactEmails`
+        # @return [Array<String>]
+        attr_accessor :procurement_contact_emails
       
         # Configurations for a Search Engine.
         # Corresponds to the JSON property `searchEngineConfig`
@@ -3829,6 +3877,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_gateway_setting = args[:agent_gateway_setting] if args.key?(:agent_gateway_setting)
           @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
@@ -3848,7 +3897,7 @@ module Google
           @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
           @observability_config = args[:observability_config] if args.key?(:observability_config)
-          @procurement_contact_email = args[:procurement_contact_email] if args.key?(:procurement_contact_email)
+          @procurement_contact_emails = args[:procurement_contact_emails] if args.key?(:procurement_contact_emails)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -4882,14 +4931,14 @@ module Google
       class GoogleCloudDiscoveryengineV1ObservabilityConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Enables observability. If false, all other flags are ignored.
+        # Optional. Enables observability. If `false`, all other flags are ignored.
         # Corresponds to the JSON property `observabilityEnabled`
         # @return [Boolean]
         attr_accessor :observability_enabled
         alias_method :observability_enabled?, :observability_enabled
       
         # Optional. Enables sensitive logging. Sensitive logging includes customer core
-        # content (e.g. prompts, responses). If false, will sanitize all sensitive
+        # content (e.g. prompts, responses). If `false`, will sanitize all sensitive
         # fields.
         # Corresponds to the JSON property `sensitiveLoggingEnabled`
         # @return [Boolean]
@@ -7548,6 +7597,47 @@ module Google
         def update!(**args)
           @file_name = args[:file_name] if args.key?(:file_name)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Agent Gateway setting, which may be attached to Gemini Enterprise resources
+      # for egress control of Gemini Enterprise agents to agents and tools outside of
+      # Gemini Enterprise.
+      class GoogleCloudDiscoveryengineV1alphaAgentGatewaySetting
+        include Google::Apis::Core::Hashable
+      
+        # Reference to an Agent Gateway resource.
+        # Corresponds to the JSON property `defaultEgressAgentGateway`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentGatewaySettingAgentGatewayReference]
+        attr_accessor :default_egress_agent_gateway
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_egress_agent_gateway = args[:default_egress_agent_gateway] if args.key?(:default_egress_agent_gateway)
+        end
+      end
+      
+      # Reference to an Agent Gateway resource.
+      class GoogleCloudDiscoveryengineV1alphaAgentGatewaySettingAgentGatewayReference
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The resource name of the agent gateway. Expected format: `
+        # projects/`project_number`/locations/`location`/agentGateways/`agent_gateway``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -13733,7 +13823,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Data protection policy config for a connector.
+        # Contains the data protection policy config for a DataStore or a connector.
         # Corresponds to the JSON property `dataProtectionPolicy`
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy]
         attr_accessor :data_protection_policy
@@ -14210,7 +14300,7 @@ module Google
         end
       end
       
-      # Data protection policy config for a connector.
+      # Contains the data protection policy config for a DataStore or a connector.
       class GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy
         include Google::Apis::Core::Hashable
       
@@ -14235,7 +14325,8 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDataProtectionPolicySensitiveDataProtectionPolicy
         include Google::Apis::Core::Hashable
       
-        # Optional. The Sensitive Data Protection content policy resource name.
+        # Optional. Specifies the resource name of the Sensitive Data Protection content
+        # policy.
         # Corresponds to the JSON property `policy`
         # @return [String]
         attr_accessor :policy
@@ -15874,6 +15965,13 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaEngine
         include Google::Apis::Core::Hashable
       
+        # Agent Gateway setting, which may be attached to Gemini Enterprise resources
+        # for egress control of Gemini Enterprise agents to agents and tools outside of
+        # Gemini Enterprise.
+        # Corresponds to the JSON property `agentGatewaySetting`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentGatewaySetting]
+        attr_accessor :agent_gateway_setting
+      
         # Optional. Immutable. This the application type which this engine resource
         # represents. NOTE: this is a new concept independ of existing industry vertical
         # or solution type.
@@ -16001,10 +16099,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaObservabilityConfig]
         attr_accessor :observability_config
       
-        # Optional. The email of the procurement contact.
-        # Corresponds to the JSON property `procurementContactEmail`
-        # @return [String]
-        attr_accessor :procurement_contact_email
+        # Optional. The emails of the procurement contacts.
+        # Corresponds to the JSON property `procurementContactEmails`
+        # @return [Array<String>]
+        attr_accessor :procurement_contact_emails
       
         # Additional information of a recommendation engine.
         # Corresponds to the JSON property `recommendationMetadata`
@@ -16037,6 +16135,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_gateway_setting = args[:agent_gateway_setting] if args.key?(:agent_gateway_setting)
           @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
@@ -16056,7 +16155,7 @@ module Google
           @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
           @observability_config = args[:observability_config] if args.key?(:observability_config)
-          @procurement_contact_email = args[:procurement_contact_email] if args.key?(:procurement_contact_email)
+          @procurement_contact_emails = args[:procurement_contact_emails] if args.key?(:procurement_contact_emails)
           @recommendation_metadata = args[:recommendation_metadata] if args.key?(:recommendation_metadata)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
           @similar_documents_config = args[:similar_documents_config] if args.key?(:similar_documents_config)
@@ -17249,6 +17348,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :schema_org_paths
       
+        # Optional. Specifies the importance of the field when `searchable_option` is `
+        # SEARCHABLE_ENABLED`. If `searchable_option` is `SEARCHABLE_DISABLED`, this
+        # field is ignored. If `searchable_option` is `SEARCHABLE_ENABLED` and this is `
+        # SEARCHABLE_FIELD_IMPORTANCE_UNSPECIFIED`, it behaves as `DEFAULT_IMPORTANCE`.
+        # Corresponds to the JSON property `searchableFieldImportance`
+        # @return [String]
+        attr_accessor :searchable_field_importance
+      
         # If searchable_option is SEARCHABLE_ENABLED, field values are searchable by
         # text queries in SearchService.Search. If SEARCHABLE_ENABLED but field type is
         # numerical, field values will not be searchable by text queries in
@@ -17280,6 +17387,7 @@ module Google
           @recs_filterable_option = args[:recs_filterable_option] if args.key?(:recs_filterable_option)
           @retrievable_option = args[:retrievable_option] if args.key?(:retrievable_option)
           @schema_org_paths = args[:schema_org_paths] if args.key?(:schema_org_paths)
+          @searchable_field_importance = args[:searchable_field_importance] if args.key?(:searchable_field_importance)
           @searchable_option = args[:searchable_option] if args.key?(:searchable_option)
         end
       end
@@ -19937,14 +20045,14 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaObservabilityConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Enables observability. If false, all other flags are ignored.
+        # Optional. Enables observability. If `false`, all other flags are ignored.
         # Corresponds to the JSON property `observabilityEnabled`
         # @return [Boolean]
         attr_accessor :observability_enabled
         alias_method :observability_enabled?, :observability_enabled
       
         # Optional. Enables sensitive logging. Sensitive logging includes customer core
-        # content (e.g. prompts, responses). If false, will sanitize all sensitive
+        # content (e.g. prompts, responses). If `false`, will sanitize all sensitive
         # fields.
         # Corresponds to the JSON property `sensitiveLoggingEnabled`
         # @return [Boolean]
@@ -28970,6 +29078,47 @@ module Google
         end
       end
       
+      # Agent Gateway setting, which may be attached to Gemini Enterprise resources
+      # for egress control of Gemini Enterprise agents to agents and tools outside of
+      # Gemini Enterprise.
+      class GoogleCloudDiscoveryengineV1betaAgentGatewaySetting
+        include Google::Apis::Core::Hashable
+      
+        # Reference to an Agent Gateway resource.
+        # Corresponds to the JSON property `defaultEgressAgentGateway`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference]
+        attr_accessor :default_egress_agent_gateway
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_egress_agent_gateway = args[:default_egress_agent_gateway] if args.key?(:default_egress_agent_gateway)
+        end
+      end
+      
+      # Reference to an Agent Gateway resource.
+      class GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The resource name of the agent gateway. Expected format: `
+        # projects/`project_number`/locations/`location`/agentGateways/`agent_gateway``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Metadata related to the progress of the SiteSearchEngineService.
       # BatchCreateTargetSites operation. This will be returned by the google.
       # longrunning.Operation.metadata field.
@@ -30695,6 +30844,13 @@ module Google
       class GoogleCloudDiscoveryengineV1betaEngine
         include Google::Apis::Core::Hashable
       
+        # Agent Gateway setting, which may be attached to Gemini Enterprise resources
+        # for egress control of Gemini Enterprise agents to agents and tools outside of
+        # Gemini Enterprise.
+        # Corresponds to the JSON property `agentGatewaySetting`
+        # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaAgentGatewaySetting]
+        attr_accessor :agent_gateway_setting
+      
         # Optional. Immutable. This the application type which this engine resource
         # represents. NOTE: this is a new concept independ of existing industry vertical
         # or solution type.
@@ -30822,10 +30978,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1betaObservabilityConfig]
         attr_accessor :observability_config
       
-        # Optional. The email of the procurement contact.
-        # Corresponds to the JSON property `procurementContactEmail`
-        # @return [String]
-        attr_accessor :procurement_contact_email
+        # Optional. The emails of the procurement contacts.
+        # Corresponds to the JSON property `procurementContactEmails`
+        # @return [Array<String>]
+        attr_accessor :procurement_contact_emails
       
         # Configurations for a Search Engine.
         # Corresponds to the JSON property `searchEngineConfig`
@@ -30848,6 +31004,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_gateway_setting = args[:agent_gateway_setting] if args.key?(:agent_gateway_setting)
           @app_type = args[:app_type] if args.key?(:app_type)
           @chat_engine_config = args[:chat_engine_config] if args.key?(:chat_engine_config)
           @chat_engine_metadata = args[:chat_engine_metadata] if args.key?(:chat_engine_metadata)
@@ -30867,7 +31024,7 @@ module Google
           @model_configs = args[:model_configs] if args.key?(:model_configs)
           @name = args[:name] if args.key?(:name)
           @observability_config = args[:observability_config] if args.key?(:observability_config)
-          @procurement_contact_email = args[:procurement_contact_email] if args.key?(:procurement_contact_email)
+          @procurement_contact_emails = args[:procurement_contact_emails] if args.key?(:procurement_contact_emails)
           @search_engine_config = args[:search_engine_config] if args.key?(:search_engine_config)
           @solution_type = args[:solution_type] if args.key?(:solution_type)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -32125,14 +32282,14 @@ module Google
       class GoogleCloudDiscoveryengineV1betaObservabilityConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Enables observability. If false, all other flags are ignored.
+        # Optional. Enables observability. If `false`, all other flags are ignored.
         # Corresponds to the JSON property `observabilityEnabled`
         # @return [Boolean]
         attr_accessor :observability_enabled
         alias_method :observability_enabled?, :observability_enabled
       
         # Optional. Enables sensitive logging. Sensitive logging includes customer core
-        # content (e.g. prompts, responses). If false, will sanitize all sensitive
+        # content (e.g. prompts, responses). If `false`, will sanitize all sensitive
         # fields.
         # Corresponds to the JSON property `sensitiveLoggingEnabled`
         # @return [Boolean]
