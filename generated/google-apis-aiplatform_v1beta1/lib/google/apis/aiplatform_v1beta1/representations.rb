@@ -1294,6 +1294,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1DatasetCustomMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1DatasetDistribution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1595,6 +1601,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1EmbedContentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1EmbedContentRequestEmbedContentConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3971,6 +3983,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigConsolidationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11444,6 +11462,13 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1DatasetCustomMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1DatasetDistribution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11993,6 +12018,20 @@ module Google
           property :auto_truncate, as: 'autoTruncate'
           property :content, as: 'content', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content::Representation
       
+          property :embed_content_config, as: 'embedContentConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EmbedContentRequestEmbedContentConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EmbedContentRequestEmbedContentConfig::Representation
+      
+          property :output_dimensionality, as: 'outputDimensionality'
+          property :task_type, as: 'taskType'
+          property :title, as: 'title'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1EmbedContentRequestEmbedContentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_track_extraction, as: 'audioTrackExtraction'
+          property :auto_truncate, as: 'autoTruncate'
+          property :document_ocr, as: 'documentOcr'
           property :output_dimensionality, as: 'outputDimensionality'
           property :task_type, as: 'taskType'
           property :title, as: 'title'
@@ -12620,6 +12659,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :autorater_config, as: 'autoraterConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunEvaluationConfigAutoraterConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunEvaluationConfigAutoraterConfig::Representation
+      
+          collection :dataset_custom_metrics, as: 'datasetCustomMetrics', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetCustomMetric, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1DatasetCustomMetric::Representation
       
           collection :metrics, as: 'metrics', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunMetric, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunMetric::Representation
       
@@ -16256,12 +16297,21 @@ module Google
       class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :consolidation_config, as: 'consolidationConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigConsolidationConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigConsolidationConfig::Representation
+      
           property :enable_third_person_memories, as: 'enableThirdPersonMemories'
           collection :generate_memories_examples, as: 'generateMemoriesExamples', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExample, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigGenerateMemoriesExample::Representation
       
           collection :memory_topics, as: 'memoryTopics', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigMemoryTopic, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigMemoryTopic::Representation
       
           collection :scope_keys, as: 'scopeKeys'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1MemoryBankCustomizationConfigConsolidationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :revisions_per_candidate_count, as: 'revisionsPerCandidateCount'
         end
       end
       
@@ -22888,6 +22938,7 @@ module Google
       
           property :invocation_id, as: 'invocationId'
           property :name, as: 'name'
+          hash :raw_event, as: 'rawEvent'
           property :timestamp, as: 'timestamp'
         end
       end
