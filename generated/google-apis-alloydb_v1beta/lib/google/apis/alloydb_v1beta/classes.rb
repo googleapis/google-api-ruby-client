@@ -2630,6 +2630,13 @@ module Google
         attr_accessor :track_active_queries
         alias_method :track_active_queries?, :track_active_queries
       
+        # Indicates whether to track active query plans for an instance. If not set, the
+        # default value is "off". Can only be enabled if track_active_queries is enabled.
+        # Corresponds to the JSON property `trackActiveQueryPlan`
+        # @return [Boolean]
+        attr_accessor :track_active_query_plan
+        alias_method :track_active_query_plan?, :track_active_query_plan
+      
         # Track client address for an instance. If not set, default value is "off".
         # Corresponds to the JSON property `trackClientAddress`
         # @return [Boolean]
@@ -2666,6 +2673,7 @@ module Google
           @query_plans_per_minute = args[:query_plans_per_minute] if args.key?(:query_plans_per_minute)
           @record_application_tags = args[:record_application_tags] if args.key?(:record_application_tags)
           @track_active_queries = args[:track_active_queries] if args.key?(:track_active_queries)
+          @track_active_query_plan = args[:track_active_query_plan] if args.key?(:track_active_query_plan)
           @track_client_address = args[:track_client_address] if args.key?(:track_client_address)
           @track_wait_event_types = args[:track_wait_event_types] if args.key?(:track_wait_event_types)
           @track_wait_events = args[:track_wait_events] if args.key?(:track_wait_events)
@@ -3974,7 +3982,7 @@ module Google
       
         # Database resource signal data. This is used to send signals to Condor which
         # are based on the DB/Instance/Fleet level configurations. These will be used to
-        # send signals for all inventory types. Next ID: 7
+        # send signals for all inventory types. Next ID: 9
         # Corresponds to the JSON property `databaseResourceSignalData`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData]
         attr_accessor :database_resource_signal_data
@@ -4485,9 +4493,14 @@ module Google
       
       # Database resource signal data. This is used to send signals to Condor which
       # are based on the DB/Instance/Fleet level configurations. These will be used to
-      # send signals for all inventory types. Next ID: 7
+      # send signals for all inventory types. Next ID: 9
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData
         include Google::Apis::Core::Hashable
+      
+        # A backup run.
+        # Corresponds to the JSON property `backupRun`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun]
+        attr_accessor :backup_run
       
         # Required. Full Resource name of the source resource.
         # Corresponds to the JSON property `fullResourceName`
@@ -4504,11 +4517,17 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Signal data for boolean signals.
+        # Deprecated: Use signal_metadata_list instead.
         # Corresponds to the JSON property `signalBoolValue`
         # @return [Boolean]
         attr_accessor :signal_bool_value
         alias_method :signal_bool_value?, :signal_bool_value
+      
+        # This will support array of OneOf signal metadata information for a given
+        # signal type.
+        # Corresponds to the JSON property `signalMetadataList`
+        # @return [Array<Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainSignalMetadata>]
+        attr_accessor :signal_metadata_list
       
         # Required. Output only. Signal state of the signal
         # Corresponds to the JSON property `signalState`
@@ -4526,10 +4545,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
           @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
           @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
           @signal_bool_value = args[:signal_bool_value] if args.key?(:signal_bool_value)
+          @signal_metadata_list = args[:signal_metadata_list] if args.key?(:signal_metadata_list)
           @signal_state = args[:signal_state] if args.key?(:signal_state)
           @signal_type = args[:signal_type] if args.key?(:signal_type)
         end
@@ -4986,6 +5007,34 @@ module Google
           @retention_unit = args[:retention_unit] if args.key?(:retention_unit)
           @time_based_retention = args[:time_based_retention] if args.key?(:time_based_retention)
           @timestamp_based_retention_time = args[:timestamp_based_retention_time] if args.key?(:timestamp_based_retention_time)
+        end
+      end
+      
+      # SignalMetadata contains one of the signal metadata proto messages associated
+      # with a SignalType. This proto will be mapped to SignalMetadata message in
+      # storage.proto. Next ID: 3
+      class StorageDatabasecenterPartnerapiV1mainSignalMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A backup run.
+        # Corresponds to the JSON property `backupRun`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun]
+        attr_accessor :backup_run
+      
+        # Signal data for boolean signals.
+        # Corresponds to the JSON property `signalBoolValue`
+        # @return [Boolean]
+        attr_accessor :signal_bool_value
+        alias_method :signal_bool_value?, :signal_bool_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @signal_bool_value = args[:signal_bool_value] if args.key?(:signal_bool_value)
         end
       end
       
