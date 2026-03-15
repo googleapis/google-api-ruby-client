@@ -728,8 +728,8 @@ module Google
         # @return [Float]
         attr_accessor :all_conversions_by_conversion_date
       
-        # The number of times people clicked the "Call" button to call a store during or
-        # after clicking an ad. This number doesn't include whether or not calls were
+        # The number of times people clicked the "Call" button to call a business during
+        # or after clicking an ad. This number doesn't include whether or not calls were
         # connected, or the duration of any calls. This metric applies to feed items
         # only.
         # Corresponds to the JSON property `allConversionsFromClickToCall`
@@ -737,7 +737,7 @@ module Google
         attr_accessor :all_conversions_from_click_to_call
       
         # The number of times people clicked a "Get directions" button to navigate to a
-        # store after clicking an ad. This metric applies to feed items only.
+        # business after clicking an ad. This metric applies to feed items only.
         # Corresponds to the JSON property `allConversionsFromDirections`
         # @return [Float]
         attr_accessor :all_conversions_from_directions
@@ -754,33 +754,33 @@ module Google
         # @return [Float]
         attr_accessor :all_conversions_from_interactions_value_per_interaction
       
-        # The number of times people clicked a link to view a store's menu after
+        # The number of times people clicked a link to view a business's menu after
         # clicking an ad. This metric applies to feed items only.
         # Corresponds to the JSON property `allConversionsFromMenu`
         # @return [Float]
         attr_accessor :all_conversions_from_menu
       
-        # The number of times people placed an order at a store after clicking an ad.
+        # The number of times people placed an order at a business after clicking an ad.
         # This metric applies to feed items only.
         # Corresponds to the JSON property `allConversionsFromOrder`
         # @return [Float]
         attr_accessor :all_conversions_from_order
       
         # The number of other conversions (for example, posting a review or saving a
-        # location for a store) that occurred after people clicked an ad. This metric
+        # location for a business) that occurred after people clicked an ad. This metric
         # applies to feed items only.
         # Corresponds to the JSON property `allConversionsFromOtherEngagement`
         # @return [Float]
         attr_accessor :all_conversions_from_other_engagement
       
-        # Estimated number of times people visited a store after clicking an ad. This
+        # Estimated number of times people visited a business after clicking an ad. This
         # metric applies to feed items only.
         # Corresponds to the JSON property `allConversionsFromStoreVisit`
         # @return [Float]
         attr_accessor :all_conversions_from_store_visit
       
-        # The number of times that people were taken to a store's URL after clicking an
-        # ad. This metric applies to feed items only.
+        # The number of times that people were taken to a business's URL after clicking
+        # an ad. This metric applies to feed items only.
         # Corresponds to the JSON property `allConversionsFromStoreWebsite`
         # @return [Float]
         attr_accessor :all_conversions_from_store_website
@@ -2002,6 +2002,11 @@ module Google
       class GoogleAdsSearchads360V0CommonSegments
         include Google::Apis::Core::Hashable
       
+        # Ad Format type.
+        # Corresponds to the JSON property `adFormatType`
+        # @return [String]
+        attr_accessor :ad_format_type
+      
         # Ad network type.
         # Corresponds to the JSON property `adNetworkType`
         # @return [String]
@@ -2316,6 +2321,56 @@ module Google
         # @return [Array<Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonValue>]
         attr_accessor :raw_event_conversion_dimensions
       
+        # The display names of participants in an event listing, like performers,
+        # speakers, or teams.
+        # Corresponds to the JSON property `verticalAdsEventParticipantDisplayNames`
+        # @return [String]
+        attr_accessor :vertical_ads_event_participant_display_names
+      
+        # The class of the hotel. Generally in the range of 1 to 5 stars, but fully
+        # customizable in the hotel feed.
+        # Corresponds to the JSON property `verticalAdsHotelClass`
+        # @return [Fixnum]
+        attr_accessor :vertical_ads_hotel_class
+      
+        # The listing associated with a listing impression, click or conversion.
+        # Corresponds to the JSON property `verticalAdsListing`
+        # @return [String]
+        attr_accessor :vertical_ads_listing
+      
+        # The brand associated with a specific listing within a Vertical Ads context,
+        # for example, the brand of a car rental, a vacation home, or an event.
+        # Corresponds to the JSON property `verticalAdsListingBrand`
+        # @return [String]
+        attr_accessor :vertical_ads_listing_brand
+      
+        # The city where the vertical ads listing is located.
+        # Corresponds to the JSON property `verticalAdsListingCity`
+        # @return [String]
+        attr_accessor :vertical_ads_listing_city
+      
+        # The country where the vertical ads listing is located.
+        # Corresponds to the JSON property `verticalAdsListingCountry`
+        # @return [String]
+        attr_accessor :vertical_ads_listing_country
+      
+        # The region where the vertical ads listing is located.
+        # Corresponds to the JSON property `verticalAdsListingRegion`
+        # @return [String]
+        attr_accessor :vertical_ads_listing_region
+      
+        # A specific partner account within a Partner Center (for example, Hotel Center)
+        # that supplies inventory feed data for Vertical Ads.
+        # Corresponds to the JSON property `verticalAdsPartnerAccount`
+        # @return [Fixnum]
+        attr_accessor :vertical_ads_partner_account
+      
+        # Type of vertical ad, such as Vacation Rentals, Car Rentals, or Events, used to
+        # categorize and segment data in the context of Vertical Ads.
+        # Corresponds to the JSON property `verticalAdsVertical`
+        # @return [String]
+        attr_accessor :vertical_ads_vertical
+      
         # Week as defined as Monday through Sunday, and represented by the date of
         # Monday. Formatted as yyyy-MM-dd.
         # Corresponds to the JSON property `week`
@@ -2333,6 +2388,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ad_format_type = args[:ad_format_type] if args.key?(:ad_format_type)
           @ad_network_type = args[:ad_network_type] if args.key?(:ad_network_type)
           @asset_interaction_target = args[:asset_interaction_target] if args.key?(:asset_interaction_target)
           @conversion_action = args[:conversion_action] if args.key?(:conversion_action)
@@ -2395,6 +2451,15 @@ module Google
           @product_type_l5 = args[:product_type_l5] if args.key?(:product_type_l5)
           @quarter = args[:quarter] if args.key?(:quarter)
           @raw_event_conversion_dimensions = args[:raw_event_conversion_dimensions] if args.key?(:raw_event_conversion_dimensions)
+          @vertical_ads_event_participant_display_names = args[:vertical_ads_event_participant_display_names] if args.key?(:vertical_ads_event_participant_display_names)
+          @vertical_ads_hotel_class = args[:vertical_ads_hotel_class] if args.key?(:vertical_ads_hotel_class)
+          @vertical_ads_listing = args[:vertical_ads_listing] if args.key?(:vertical_ads_listing)
+          @vertical_ads_listing_brand = args[:vertical_ads_listing_brand] if args.key?(:vertical_ads_listing_brand)
+          @vertical_ads_listing_city = args[:vertical_ads_listing_city] if args.key?(:vertical_ads_listing_city)
+          @vertical_ads_listing_country = args[:vertical_ads_listing_country] if args.key?(:vertical_ads_listing_country)
+          @vertical_ads_listing_region = args[:vertical_ads_listing_region] if args.key?(:vertical_ads_listing_region)
+          @vertical_ads_partner_account = args[:vertical_ads_partner_account] if args.key?(:vertical_ads_partner_account)
+          @vertical_ads_vertical = args[:vertical_ads_vertical] if args.key?(:vertical_ads_vertical)
           @week = args[:week] if args.key?(:week)
           @year = args[:year] if args.key?(:year)
         end
@@ -3659,14 +3724,17 @@ module Google
         attr_accessor :target_google_search
         alias_method :target_google_search?, :target_google_search
       
-        # Whether ads will be served on the Google Partner Network. This is available
-        # only to some select Google partner accounts.
+        # Whether ads will be served on the partner network. This is available only to
+        # some select partner accounts. Unless you have been instructed to use this
+        # field, it likely does not apply to your account. This does not control whether
+        # ads will be served on Google Search Partners Network; use `
+        # target_search_network` for that instead.
         # Corresponds to the JSON property `targetPartnerSearchNetwork`
         # @return [Boolean]
         attr_accessor :target_partner_search_network
         alias_method :target_partner_search_network?, :target_partner_search_network
       
-        # Whether ads will be served on partner sites in the Google Search Network (
+        # Whether ads will be served on sites in the Google Search Partners Network (
         # requires `target_google_search` to also be `true`).
         # Corresponds to the JSON property `targetSearchNetwork`
         # @return [Boolean]
@@ -4304,7 +4372,10 @@ module Google
         # @return [String]
         attr_accessor :ad_rotation_mode
       
-        # The maximum CPC (cost-per-click) bid.
+        # The maximum CPC (cost-per-click) bid. This field is used when the ad group's
+        # effective bidding strategy is Manual CPC. This field is not applicable and
+        # will be ignored if the ad group's campaign is using a portfolio bidding
+        # strategy.
         # Corresponds to the JSON property `cpcBidMicros`
         # @return [Fixnum]
         attr_accessor :cpc_bid_micros
@@ -6273,9 +6344,13 @@ module Google
       class GoogleAdsSearchads360V0ResourcesCampaignBudget
         include Google::Apis::Core::Hashable
       
-        # The amount of the budget, in the local currency for the account. Amount is
-        # specified in micros, where one million is equivalent to one currency unit.
-        # Monthly spend is capped at 30.4 times this amount.
+        # The average daily amount to be spent by the campaign. This field is used when
+        # the CampaignBudget `period` is set to `DAILY`, which is the default. Amount is
+        # specified in micros in the account's local currency. One million micros is
+        # equivalent to one currency unit. The effective monthly spend is capped at 30.4
+        # times this daily amount. This field is mutually exclusive with '
+        # total_amount_micros'. Only one of 'amount_micros' or 'total_amount_micros'
+        # should be set.
         # Corresponds to the JSON property `amountMicros`
         # @return [Fixnum]
         attr_accessor :amount_micros
@@ -6514,7 +6589,13 @@ module Google
         end
       end
       
-      # Cart data sales view.
+      # Cart data sales view. Provides information about the products which were
+      # purchased if conversions with cart data is implemented. Performance metrics
+      # like revenue, gross profit, lead/cross-sell metrics etc. and Merchant Center
+      # attributes such as brand, category etc. are available for products defined in
+      # an inventory feed and sold as a result of Google ads. For purchases attributed
+      # to clicks on Shopping ads, dimensions of both clicked and sold products can be
+      # viewed together.
       class GoogleAdsSearchads360V0ResourcesCartDataSalesView
         include Google::Apis::Core::Hashable
       
@@ -8069,7 +8150,11 @@ module Google
         end
       end
       
-      # A user list. This is a list of users a customer may target.
+      # A user list. This is a list of users a customer may target. The unique key of
+      # a user list consists of the following fields: `id`. Note that the `name` must
+      # also be unique for user lists owned by a given customer, except in some cases
+      # where `access_reason` is set to `SHARED`. Violating the unique name constraint
+      # produces error: `UserListError.INVALID_NAME`.
       class GoogleAdsSearchads360V0ResourcesUserList
         include Google::Apis::Core::Hashable
       
@@ -8078,8 +8163,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Name of this user list. Depending on its access_reason, the user list name may
-        # not be unique (for example, if access_reason=SHARED)
+        # Name of this user list. Unique per user list, except in some cases where a
+        # user list of the same name has `access_reason` set to `SHARED`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -8644,7 +8729,13 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCampaignLabel]
         attr_accessor :campaign_label
       
-        # Cart data sales view.
+        # Cart data sales view. Provides information about the products which were
+        # purchased if conversions with cart data is implemented. Performance metrics
+        # like revenue, gross profit, lead/cross-sell metrics etc. and Merchant Center
+        # attributes such as brand, category etc. are available for products defined in
+        # an inventory feed and sold as a result of Google ads. For purchases attributed
+        # to clicks on Shopping ads, dimensions of both clicked and sold products can be
+        # viewed together.
         # Corresponds to the JSON property `cartDataSalesView`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesCartDataSalesView]
         attr_accessor :cart_data_sales_view
@@ -8775,7 +8866,11 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesShoppingPerformanceView]
         attr_accessor :shopping_performance_view
       
-        # A user list. This is a list of users a customer may target.
+        # A user list. This is a list of users a customer may target. The unique key of
+        # a user list consists of the following fields: `id`. Note that the `name` must
+        # also be unique for user lists owned by a given customer, except in some cases
+        # where `access_reason` is set to `SHARED`. Violating the unique name constraint
+        # produces error: `UserListError.INVALID_NAME`.
         # Corresponds to the JSON property `userList`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesUserList]
         attr_accessor :user_list
