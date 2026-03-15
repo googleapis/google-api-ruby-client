@@ -4733,6 +4733,7 @@ module Google
       class TargetingExpansionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_demographic_expansion, as: 'excludeDemographicExpansion'
           property :exclude_first_party_audience, as: 'excludeFirstPartyAudience'
           property :targeting_expansion_level, as: 'targetingExpansionLevel'
         end

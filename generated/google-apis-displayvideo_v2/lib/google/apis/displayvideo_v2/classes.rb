@@ -10478,6 +10478,13 @@ module Google
       class TargetingExpansionConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Whether to exclude demographic expansion for Optimized Targeting.
+        # This field only applies to Demand Gen ad groups.
+        # Corresponds to the JSON property `excludeDemographicExpansion`
+        # @return [Boolean]
+        attr_accessor :exclude_demographic_expansion
+        alias_method :exclude_demographic_expansion?, :exclude_demographic_expansion
+      
         # Whether to exclude first-party audiences from use in targeting expansion. This
         # field was deprecated with the launch of [optimized targeting](//support.google.
         # com/displayvideo/answer/12060859). This field will be set to `false`. If this
@@ -10506,6 +10513,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @exclude_demographic_expansion = args[:exclude_demographic_expansion] if args.key?(:exclude_demographic_expansion)
           @exclude_first_party_audience = args[:exclude_first_party_audience] if args.key?(:exclude_first_party_audience)
           @targeting_expansion_level = args[:targeting_expansion_level] if args.key?(:targeting_expansion_level)
         end
