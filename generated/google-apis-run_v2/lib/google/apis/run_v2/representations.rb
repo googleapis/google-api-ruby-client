@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2InlinedSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2Instance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -359,6 +365,12 @@ module Google
       end
       
       class GoogleCloudRunV2SourceCode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2SourceFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1126,6 +1138,14 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2InlinedSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sources, as: 'sources', class: Google::Apis::RunV2::GoogleCloudRunV2SourceFile, decorator: Google::Apis::RunV2::GoogleCloudRunV2SourceFile::Representation
+      
+        end
+      end
+      
       class GoogleCloudRunV2Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1575,6 +1595,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cloud_storage_source, as: 'cloudStorageSource', class: Google::Apis::RunV2::GoogleCloudRunV2CloudStorageSource, decorator: Google::Apis::RunV2::GoogleCloudRunV2CloudStorageSource::Representation
       
+          property :inlined_source, as: 'inlinedSource', class: Google::Apis::RunV2::GoogleCloudRunV2InlinedSource, decorator: Google::Apis::RunV2::GoogleCloudRunV2InlinedSource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRunV2SourceFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :filename, as: 'filename'
         end
       end
       
