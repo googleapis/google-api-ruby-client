@@ -55,6 +55,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Represents the principal for this assignment. If not empty, jobs run
+        # by this principal will utilize the associated reservation. Otherwise, jobs
+        # will fall back to using the reservation assigned to the project, folder, or
+        # organization (in that order). If no reservation is assigned at any of these
+        # levels, on-demand capacity will be used. The supported formats are: * `
+        # principal://goog/subject/USER_EMAIL_ADDRESS` for users, * `principal://iam.
+        # googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service
+        # accounts, * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/
+        # global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity
+        # pool identities.
+        # Corresponds to the JSON property `principal`
+        # @return [String]
+        attr_accessor :principal
+      
         # The scheduling policy controls how a reservation's resources are distributed.
         # Corresponds to the JSON property `schedulingPolicy`
         # @return [Google::Apis::BigqueryreservationV1::SchedulingPolicy]
@@ -75,6 +89,7 @@ module Google
           @enable_gemini_in_bigquery = args[:enable_gemini_in_bigquery] if args.key?(:enable_gemini_in_bigquery)
           @job_type = args[:job_type] if args.key?(:job_type)
           @name = args[:name] if args.key?(:name)
+          @principal = args[:principal] if args.key?(:principal)
           @scheduling_policy = args[:scheduling_policy] if args.key?(:scheduling_policy)
           @state = args[:state] if args.key?(:state)
         end
