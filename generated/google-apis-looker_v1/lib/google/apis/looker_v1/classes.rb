@@ -410,13 +410,6 @@ module Google
         # @return [Google::Apis::LookerV1::AdminSettings]
         attr_accessor :admin_settings
       
-        # Optional. Indicates whether catalog integration is enabled for the Looker
-        # instance.
-        # Corresponds to the JSON property `catalogIntegrationEnabled`
-        # @return [Boolean]
-        attr_accessor :catalog_integration_enabled
-        alias_method :catalog_integration_enabled?, :catalog_integration_enabled
-      
         # Optional. Storage class of the instance.
         # Corresponds to the JSON property `classType`
         # @return [String]
@@ -584,20 +577,10 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Output only. The reason for the instance being in a soft-deleted state.
-        # Corresponds to the JSON property `softDeleteReason`
-        # @return [String]
-        attr_accessor :soft_delete_reason
-      
         # Output only. The state of the instance.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
-      
-        # Output only. The time when the Looker instance was suspended (soft deleted).
-        # Corresponds to the JSON property `suspendedTime`
-        # @return [String]
-        attr_accessor :suspended_time
       
         # Output only. The time when the Looker instance was last updated.
         # Corresponds to the JSON property `updateTime`
@@ -616,7 +599,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @admin_settings = args[:admin_settings] if args.key?(:admin_settings)
-          @catalog_integration_enabled = args[:catalog_integration_enabled] if args.key?(:catalog_integration_enabled)
           @class_type = args[:class_type] if args.key?(:class_type)
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @controlled_egress_config = args[:controlled_egress_config] if args.key?(:controlled_egress_config)
@@ -647,9 +629,7 @@ module Google
           @reserved_range = args[:reserved_range] if args.key?(:reserved_range)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
-          @soft_delete_reason = args[:soft_delete_reason] if args.key?(:soft_delete_reason)
           @state = args[:state] if args.key?(:state)
-          @suspended_time = args[:suspended_time] if args.key?(:suspended_time)
           @update_time = args[:update_time] if args.key?(:update_time)
           @user_metadata = args[:user_metadata] if args.key?(:user_metadata)
         end
@@ -940,6 +920,13 @@ module Google
         # @return [String]
         attr_accessor :client_secret
       
+        # Optional. Whether to use the shared OAuth client. Instances specifying this
+        # field do not need to provide client_id and client_secret.
+        # Corresponds to the JSON property `sharedOauthClientEnabled`
+        # @return [Boolean]
+        attr_accessor :shared_oauth_client_enabled
+        alias_method :shared_oauth_client_enabled?, :shared_oauth_client_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -948,6 +935,7 @@ module Google
         def update!(**args)
           @client_id = args[:client_id] if args.key?(:client_id)
           @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @shared_oauth_client_enabled = args[:shared_oauth_client_enabled] if args.key?(:shared_oauth_client_enabled)
         end
       end
       
@@ -1300,19 +1288,6 @@ module Google
           @minutes = args[:minutes] if args.key?(:minutes)
           @nanos = args[:nanos] if args.key?(:nanos)
           @seconds = args[:seconds] if args.key?(:seconds)
-        end
-      end
-      
-      # Request options for undeleting an instance.
-      class UndeleteInstanceRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
