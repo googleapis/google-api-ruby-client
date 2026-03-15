@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiskBackupPlanProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiskBackupProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1109,6 +1115,8 @@ module Google
           property :backup_vault_service_account, as: 'backupVaultServiceAccount'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :disk_backup_plan_properties, as: 'diskBackupPlanProperties', class: Google::Apis::BackupdrV1::DiskBackupPlanProperties, decorator: Google::Apis::BackupdrV1::DiskBackupPlanProperties::Representation
+      
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :log_retention_days, :numeric_string => true, as: 'logRetentionDays'
@@ -1461,6 +1469,13 @@ module Google
         end
       end
       
+      class DiskBackupPlanProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :guest_flush, as: 'guestFlush'
+        end
+      end
+      
       class DiskBackupProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1468,6 +1483,7 @@ module Google
           property :architecture, as: 'architecture'
           property :description, as: 'description'
           property :enable_confidential_compute, as: 'enableConfidentialCompute'
+          property :guest_flush, as: 'guestFlush'
           collection :guest_os_feature, as: 'guestOsFeature', class: Google::Apis::BackupdrV1::GuestOsFeature, decorator: Google::Apis::BackupdrV1::GuestOsFeature::Representation
       
           hash :labels, as: 'labels'

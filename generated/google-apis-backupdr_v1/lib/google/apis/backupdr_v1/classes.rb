@@ -1261,6 +1261,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # --- DiskBackupPlanProperties Message ---
+        # Corresponds to the JSON property `diskBackupPlanProperties`
+        # @return [Google::Apis::BackupdrV1::DiskBackupPlanProperties]
+        attr_accessor :disk_backup_plan_properties
+      
         # Optional. `etag` is returned from the service in the response. As a user of
         # the service, you may provide an etag value in this field to prevent stale
         # resources.
@@ -1340,6 +1345,7 @@ module Google
           @backup_vault_service_account = args[:backup_vault_service_account] if args.key?(:backup_vault_service_account)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @disk_backup_plan_properties = args[:disk_backup_plan_properties] if args.key?(:disk_backup_plan_properties)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @log_retention_days = args[:log_retention_days] if args.key?(:log_retention_days)
@@ -2798,6 +2804,28 @@ module Google
         end
       end
       
+      # --- DiskBackupPlanProperties Message ---
+      class DiskBackupPlanProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates whether to perform a guest flush operation before taking a
+        # disk backup. When set to false, the system will create crash-consistent
+        # backups. Default value is false.
+        # Corresponds to the JSON property `guestFlush`
+        # @return [Boolean]
+        attr_accessor :guest_flush
+        alias_method :guest_flush?, :guest_flush
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
+        end
+      end
+      
       # DiskBackupProperties represents the properties of a Disk backup.
       class DiskBackupProperties
         include Google::Apis::Core::Hashable
@@ -2822,6 +2850,13 @@ module Google
         # @return [Boolean]
         attr_accessor :enable_confidential_compute
         alias_method :enable_confidential_compute?, :enable_confidential_compute
+      
+        # Optional. Defines if the guest flush is enabled for the source disk. Default
+        # value is false.
+        # Corresponds to the JSON property `guestFlush`
+        # @return [Boolean]
+        attr_accessor :guest_flush
+        alias_method :guest_flush?, :guest_flush
       
         # A list of guest OS features that are applicable to this backup.
         # Corresponds to the JSON property `guestOsFeature`
@@ -2900,6 +2935,7 @@ module Google
           @architecture = args[:architecture] if args.key?(:architecture)
           @description = args[:description] if args.key?(:description)
           @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
+          @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
           @guest_os_feature = args[:guest_os_feature] if args.key?(:guest_os_feature)
           @labels = args[:labels] if args.key?(:labels)
           @licenses = args[:licenses] if args.key?(:licenses)
@@ -4360,7 +4396,7 @@ module Google
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
-        # 
+        # List of features that are not supported in the location.
         # Corresponds to the JSON property `unsupportedFeatures`
         # @return [Array<String>]
         attr_accessor :unsupported_features
