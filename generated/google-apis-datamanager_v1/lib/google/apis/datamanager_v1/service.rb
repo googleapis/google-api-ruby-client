@@ -190,9 +190,12 @@ module Google
         #   partner_account` are returned. Format: `accountTypes/`account_type`/accounts/`
         #   account``
         # @param [String] filter
-        #   Optional. A [filter string](//google.aip.dev/160). All fields need to be on
-        #   the left hand side of each condition (for example: `partner_link_id =
-        #   123456789`). Supported operations: - `AND` - `=` - `!=` Supported fields: - `
+        #   Optional. A [filter string](https://google.aip.dev/160). All fields need to be
+        #   on the left hand side of each condition (for example: `partner_link_id =
+        #   123456789`). Fields must be specified using either all [camel case](https://en.
+        #   wikipedia.org/wiki/Camel_case) or all [snake case](https://en.wikipedia.org/
+        #   wiki/Snake_case). Don't use a combination of camel case and snake case.
+        #   Supported operations: - `AND` - `=` - `!=` Supported fields: - `
         #   partner_link_id` - `owning_account.account_type` - `owning_account.account_id`
         #   - `partner_account.account_type` - `partner_account.account_id` Example: `
         #   owning_account.account_type = "GOOGLE_ADS" AND partner_account.account_id =
@@ -308,11 +311,15 @@ module Google
         #   Required. The account whose licenses are being queried. Should be in the
         #   format accountTypes/`ACCOUNT_TYPE`/accounts/`ACCOUNT_ID`
         # @param [String] filter
-        #   Optional. Filters to apply to the list request. All fields need to be on the
-        #   left hand side of each condition (for example: user_list_id = 123). **
-        #   Supported Operations:** - `AND` - `=` - `!=` - `>` - `>=` - `<` - `<=` **
-        #   Unsupported Fields:** - `name` (use get method instead) - `historical_pricings`
-        #   and all its subfields - `pricing.start_time` - `pricing.end_time`
+        #   Optional. A [filter string](https://google.aip.dev/160) to apply to the list
+        #   request. All fields need to be on the left hand side of each condition (for
+        #   example: `user_list_id = 123`). Fields must be specified using either all [
+        #   camel case](https://en.wikipedia.org/wiki/Camel_case) or all [snake case](
+        #   https://en.wikipedia.org/wiki/Snake_case). Don't use a combination of camel
+        #   case and snake case. **Supported Operations:** - `AND` - `=` - `!=` - `>` - `>=
+        #   ` - `<` - `<=` **Unsupported Fields:** - `name` (use get method instead) - `
+        #   historical_pricings` and all its subfields - `pricing.start_time` - `pricing.
+        #   end_time`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of licenses to return per page. The service may
         #   return fewer than this value. If unspecified, at most 50 licenses will be
@@ -462,11 +469,15 @@ module Google
         #   Required. The account whose licenses are being queried. Should be in the
         #   format accountTypes/`ACCOUNT_TYPE`/accounts/`ACCOUNT_ID`
         # @param [String] filter
-        #   Optional. Filters to apply to the list request. All fields need to be on the
-        #   left hand side of each condition (for example: user_list_id = 123). **
-        #   Supported Operations:** - `AND` - `=` - `!=` - `>` - `>=` - `<` - `<=` **
-        #   Unsupported Fields:** - `name` (use get method instead) - `historical_pricings`
-        #   and all its subfields - `pricing.start_time` - `pricing.end_time`
+        #   Optional. A [filter string](https://google.aip.dev/160) to apply to the list
+        #   request. All fields need to be on the left hand side of each condition (for
+        #   example: `user_list_id = 123`). Fields must be specified using either all [
+        #   camel case](https://en.wikipedia.org/wiki/Camel_case) or all [snake case](
+        #   https://en.wikipedia.org/wiki/Snake_case). Don't use a combination of camel
+        #   case and snake case. **Supported Operations:** - `AND` - `=` - `!=` - `>` - `>=
+        #   ` - `<` - `<=` **Unsupported Fields:** - `name` (use get method instead) - `
+        #   historical_pricings` and all its subfields - `pricing.start_time` - `pricing.
+        #   end_time`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of licenses to return. The service may return
         #   fewer than this value. If unspecified, at most 50 licenses will be returned.
@@ -554,11 +565,15 @@ module Google
         #   id with a '-' (for example, `accountTypes/DATA_PARTNER/accounts/123/
         #   userListGlobalLicenses/-`)
         # @param [String] filter
-        #   Optional. Filters to apply to the list request. All fields need to be on the
-        #   left hand side of each condition (for example: user_list_id = 123). **
-        #   Supported Operations:** - `AND` - `=` - `!=` - `>` - `>=` - `<` - `<=` **
-        #   Unsupported Fields:** - `name` (use get method instead) - `historical_pricings`
-        #   and all its subfields - `pricing.start_time` - `pricing.end_time`
+        #   Optional. A [filter string](https://google.aip.dev/160) to apply to the list
+        #   request. All fields need to be on the left hand side of each condition (for
+        #   example: `user_list_id = 123`). Fields must be specified using either all [
+        #   camel case](https://en.wikipedia.org/wiki/Camel_case) or all [snake case](
+        #   https://en.wikipedia.org/wiki/Snake_case). Don't use a combination of camel
+        #   case and snake case. **Supported Operations:** - `AND` - `=` - `!=` - `>` - `>=
+        #   ` - `<` - `<=` **Unsupported Fields:** - `name` (use get method instead) - `
+        #   historical_pricings` and all its subfields - `pricing.start_time` - `pricing.
+        #   end_time`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of licenses to return. The service may return
         #   fewer than this value. If unspecified, at most 50 licenses will be returned.
@@ -733,12 +748,15 @@ module Google
         #   Required. The parent account which owns this collection of user lists. Format:
         #   accountTypes/`account_type`/accounts/`account`
         # @param [String] filter
-        #   Optional. A [filter string](//google.aip.dev/160). All fields need to be on
-        #   the left hand side of each condition (for example: `display_name = "list 1"`).
-        #   Supported operations: - `AND` - `=` - `!=` - `>` - `>=` - `<` - `<=` - `:` (
-        #   has) Supported fields: - `id` - `display_name` - `description` - `
-        #   membership_status` - `integration_code` - `access_reason` - `
-        #   ingested_user_list_info.upload_key_types`
+        #   Optional. A [filter string](https://google.aip.dev/160). All fields need to be
+        #   on the left hand side of each condition (for example: `display_name = "list 1"`
+        #   ). Fields must be specified using either all [camel case](https://en.wikipedia.
+        #   org/wiki/Camel_case) or all [snake case](https://en.wikipedia.org/wiki/
+        #   Snake_case). Don't use a combination of camel case and snake case. Supported
+        #   operations: - `AND` - `=` - `!=` - `>` - `>=` - `<` - `<=` - `:` (has)
+        #   Supported fields: - `id` - `display_name` - `description` - `membership_status`
+        #   - `integration_code` - `access_reason` - `ingested_user_list_info.
+        #   upload_key_types`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of user lists to return. The service may return
         #   fewer than this value. If unspecified, at most 50 user lists will be returned.

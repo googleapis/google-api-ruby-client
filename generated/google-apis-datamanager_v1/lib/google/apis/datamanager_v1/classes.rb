@@ -1563,7 +1563,7 @@ module Google
         # @return [String]
         attr_accessor :clean_room_identifier
       
-        # Optional. This field denotes the percentage of membership match of this user
+        # Required. This field denotes the percentage of membership match of this user
         # list with the corresponding publisher's first party data. Must be between 0
         # and 100 inclusive.
         # Corresponds to the JSON property `matchRatePercentage`
