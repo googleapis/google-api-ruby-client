@@ -1932,6 +1932,19 @@ module Google
         # @return [String]
         attr_accessor :ops_insights_status
       
+        # Optional. The ID of the pluggable database associated with the Database. The
+        # ID must be unique within the project and location.
+        # Corresponds to the JSON property `pluggableDatabaseId`
+        # @return [String]
+        attr_accessor :pluggable_database_id
+      
+        # Optional. The pluggable database associated with the Database. The name must
+        # begin with an alphabetic character and can contain a maximum of thirty
+        # alphanumeric characters.
+        # Corresponds to the JSON property `pluggableDatabaseName`
+        # @return [String]
+        attr_accessor :pluggable_database_name
+      
         # The properties of a Database.
         # Corresponds to the JSON property `properties`
         # @return [Google::Apis::OracledatabaseV1::DatabaseProperties]
@@ -1960,6 +1973,8 @@ module Google
           @ncharacter_set = args[:ncharacter_set] if args.key?(:ncharacter_set)
           @oci_url = args[:oci_url] if args.key?(:oci_url)
           @ops_insights_status = args[:ops_insights_status] if args.key?(:ops_insights_status)
+          @pluggable_database_id = args[:pluggable_database_id] if args.key?(:pluggable_database_id)
+          @pluggable_database_name = args[:pluggable_database_name] if args.key?(:pluggable_database_name)
           @properties = args[:properties] if args.key?(:properties)
           @tde_wallet_password = args[:tde_wallet_password] if args.key?(:tde_wallet_password)
         end
