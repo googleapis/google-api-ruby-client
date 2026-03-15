@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkDeleteResourcesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BulkExportGcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1478,6 +1484,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blob_storage_class, as: 'blobStorageClass'
+        end
+      end
+      
+      class BulkDeleteResourcesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination::Representation
+      
+          property :type, as: 'type'
+          property :until, as: 'until'
+          property :version_config, as: 'versionConfig'
         end
       end
       
