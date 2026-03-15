@@ -397,6 +397,31 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :attributes
       
+        # Asset information specific for AWS API Gateway REST APIs.
+        # Corresponds to the JSON property `awsApiGatewayRestApiDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsApiGatewayRestApiDetails]
+        attr_accessor :aws_api_gateway_rest_api_details
+      
+        # Asset information specific for AWS AppSync GraphQL APIs.
+        # Corresponds to the JSON property `awsAppSyncGraphqlApiDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsAppSyncGraphqlApiDetails]
+        attr_accessor :aws_app_sync_graphql_api_details
+      
+        # Asset information specific for AWS Application Load Balancers.
+        # Corresponds to the JSON property `awsApplicationLoadBalancerDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsApplicationLoadBalancerDetails]
+        attr_accessor :aws_application_load_balancer_details
+      
+        # Asset information specific for AWS Autoscaling Group.
+        # Corresponds to the JSON property `awsAutoscalingGroupDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsAutoscalingGroupDetails]
+        attr_accessor :aws_autoscaling_group_details
+      
+        # Asset information specific for AWS Batch Compute Environments.
+        # Corresponds to the JSON property `awsBatchComputeEnvironmentDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsBatchComputeEnvironmentDetails]
+        attr_accessor :aws_batch_compute_environment_details
+      
         # Details of an AWS CloudFront distribution.
         # Corresponds to the JSON property `awsCloudFrontDistributionDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsCloudFrontDistributionDetails]
@@ -406,6 +431,16 @@ module Google
         # Corresponds to the JSON property `awsDynamodbTableDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsDynamoDbTableDetails]
         attr_accessor :aws_dynamodb_table_details
+      
+        # Asset information specific for AWS EBS Volumes.
+        # Corresponds to the JSON property `awsEbsVolumeDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsEbsVolumeDetails]
+        attr_accessor :aws_ebs_volume_details
+      
+        # Asset information specific for AWS ECR Repository.
+        # Corresponds to the JSON property `awsEcrRepositoryDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsEcrRepositoryDetails]
+        attr_accessor :aws_ecr_repository_details
       
         # Details of an AWS ECS cluster.
         # Corresponds to the JSON property `awsEcsClusterDetails`
@@ -422,10 +457,25 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsEksClusterDetails]
         attr_accessor :aws_eks_cluster_details
       
+        # Asset information specific for AWS Elastic IP Addresses.
+        # Corresponds to the JSON property `awsElasticIpAddressDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsElasticIpAddressDetails]
+        attr_accessor :aws_elastic_ip_address_details
+      
+        # Asset information specific for AWS Elastic Network Interfaces.
+        # Corresponds to the JSON property `awsElasticNetworkInterfaceDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsElasticNetworkInterfaceDetails]
+        attr_accessor :aws_elastic_network_interface_details
+      
         # Asset information specific for AWS Load Balancers.
         # Corresponds to the JSON property `awsElbLoadBalancerDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails]
         attr_accessor :aws_elb_load_balancer_details
+      
+        # Asset information specific for AWS Internet Gateways.
+        # Corresponds to the JSON property `awsInternetGatewayDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsInternetGatewayDetails]
+        attr_accessor :aws_internet_gateway_details
       
         # Asset information specific for AWS Lambda functions.
         # Corresponds to the JSON property `awsLambdaFunctionDetails`
@@ -451,6 +501,11 @@ module Google
         # Corresponds to the JSON property `awsS3BucketDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetails]
         attr_accessor :aws_s3_bucket_details
+      
+        # Asset information specific for AWS SNS Topics.
+        # Corresponds to the JSON property `awsSnsTopicDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsSnsTopicDetails]
+        attr_accessor :aws_sns_topic_details
       
         # Asset information specific for AWS VPCs.
         # Corresponds to the JSON property `awsVpcDetails`
@@ -551,17 +606,28 @@ module Google
         def update!(**args)
           @assigned_groups = args[:assigned_groups] if args.key?(:assigned_groups)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @aws_api_gateway_rest_api_details = args[:aws_api_gateway_rest_api_details] if args.key?(:aws_api_gateway_rest_api_details)
+          @aws_app_sync_graphql_api_details = args[:aws_app_sync_graphql_api_details] if args.key?(:aws_app_sync_graphql_api_details)
+          @aws_application_load_balancer_details = args[:aws_application_load_balancer_details] if args.key?(:aws_application_load_balancer_details)
+          @aws_autoscaling_group_details = args[:aws_autoscaling_group_details] if args.key?(:aws_autoscaling_group_details)
+          @aws_batch_compute_environment_details = args[:aws_batch_compute_environment_details] if args.key?(:aws_batch_compute_environment_details)
           @aws_cloud_front_distribution_details = args[:aws_cloud_front_distribution_details] if args.key?(:aws_cloud_front_distribution_details)
           @aws_dynamodb_table_details = args[:aws_dynamodb_table_details] if args.key?(:aws_dynamodb_table_details)
+          @aws_ebs_volume_details = args[:aws_ebs_volume_details] if args.key?(:aws_ebs_volume_details)
+          @aws_ecr_repository_details = args[:aws_ecr_repository_details] if args.key?(:aws_ecr_repository_details)
           @aws_ecs_cluster_details = args[:aws_ecs_cluster_details] if args.key?(:aws_ecs_cluster_details)
           @aws_efs_file_system_details = args[:aws_efs_file_system_details] if args.key?(:aws_efs_file_system_details)
           @aws_eks_cluster_details = args[:aws_eks_cluster_details] if args.key?(:aws_eks_cluster_details)
+          @aws_elastic_ip_address_details = args[:aws_elastic_ip_address_details] if args.key?(:aws_elastic_ip_address_details)
+          @aws_elastic_network_interface_details = args[:aws_elastic_network_interface_details] if args.key?(:aws_elastic_network_interface_details)
           @aws_elb_load_balancer_details = args[:aws_elb_load_balancer_details] if args.key?(:aws_elb_load_balancer_details)
+          @aws_internet_gateway_details = args[:aws_internet_gateway_details] if args.key?(:aws_internet_gateway_details)
           @aws_lambda_function_details = args[:aws_lambda_function_details] if args.key?(:aws_lambda_function_details)
           @aws_nat_gateway_details = args[:aws_nat_gateway_details] if args.key?(:aws_nat_gateway_details)
           @aws_redshift_details = args[:aws_redshift_details] if args.key?(:aws_redshift_details)
           @aws_route53_hosted_zone_details = args[:aws_route53_hosted_zone_details] if args.key?(:aws_route53_hosted_zone_details)
           @aws_s3_bucket_details = args[:aws_s3_bucket_details] if args.key?(:aws_s3_bucket_details)
+          @aws_sns_topic_details = args[:aws_sns_topic_details] if args.key?(:aws_sns_topic_details)
           @aws_vpc_details = args[:aws_vpc_details] if args.key?(:aws_vpc_details)
           @create_time = args[:create_time] if args.key?(:create_time)
           @database_deployment_details = args[:database_deployment_details] if args.key?(:database_deployment_details)
@@ -592,6 +658,31 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :attributes
       
+        # Asset information specific for AWS API Gateway REST APIs.
+        # Corresponds to the JSON property `awsApiGatewayRestApiDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsApiGatewayRestApiDetails]
+        attr_accessor :aws_api_gateway_rest_api_details
+      
+        # Asset information specific for AWS AppSync GraphQL APIs.
+        # Corresponds to the JSON property `awsAppSyncGraphqlApiDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsAppSyncGraphqlApiDetails]
+        attr_accessor :aws_app_sync_graphql_api_details
+      
+        # Asset information specific for AWS Application Load Balancers.
+        # Corresponds to the JSON property `awsApplicationLoadBalancerDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsApplicationLoadBalancerDetails]
+        attr_accessor :aws_application_load_balancer_details
+      
+        # Asset information specific for AWS Autoscaling Group.
+        # Corresponds to the JSON property `awsAutoscalingGroupDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsAutoscalingGroupDetails]
+        attr_accessor :aws_autoscaling_group_details
+      
+        # Asset information specific for AWS Batch Compute Environments.
+        # Corresponds to the JSON property `awsBatchComputeEnvironmentDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsBatchComputeEnvironmentDetails]
+        attr_accessor :aws_batch_compute_environment_details
+      
         # Details of an AWS CloudFront distribution.
         # Corresponds to the JSON property `awsCloudFrontDistributionDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsCloudFrontDistributionDetails]
@@ -601,6 +692,16 @@ module Google
         # Corresponds to the JSON property `awsDynamodbTableDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsDynamoDbTableDetails]
         attr_accessor :aws_dynamodb_table_details
+      
+        # Asset information specific for AWS EBS Volumes.
+        # Corresponds to the JSON property `awsEbsVolumeDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsEbsVolumeDetails]
+        attr_accessor :aws_ebs_volume_details
+      
+        # Asset information specific for AWS ECR Repository.
+        # Corresponds to the JSON property `awsEcrRepositoryDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsEcrRepositoryDetails]
+        attr_accessor :aws_ecr_repository_details
       
         # Details of an AWS ECS cluster.
         # Corresponds to the JSON property `awsEcsClusterDetails`
@@ -617,10 +718,25 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsEksClusterDetails]
         attr_accessor :aws_eks_cluster_details
       
+        # Asset information specific for AWS Elastic IP Addresses.
+        # Corresponds to the JSON property `awsElasticIpAddressDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsElasticIpAddressDetails]
+        attr_accessor :aws_elastic_ip_address_details
+      
+        # Asset information specific for AWS Elastic Network Interfaces.
+        # Corresponds to the JSON property `awsElasticNetworkInterfaceDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsElasticNetworkInterfaceDetails]
+        attr_accessor :aws_elastic_network_interface_details
+      
         # Asset information specific for AWS Load Balancers.
         # Corresponds to the JSON property `awsElbLoadBalancerDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsElbLoadBalancerDetails]
         attr_accessor :aws_elb_load_balancer_details
+      
+        # Asset information specific for AWS Internet Gateways.
+        # Corresponds to the JSON property `awsInternetGatewayDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsInternetGatewayDetails]
+        attr_accessor :aws_internet_gateway_details
       
         # Asset information specific for AWS Lambda functions.
         # Corresponds to the JSON property `awsLambdaFunctionDetails`
@@ -646,6 +762,11 @@ module Google
         # Corresponds to the JSON property `awsS3BucketDetails`
         # @return [Google::Apis::MigrationcenterV1alpha1::AwsS3BucketDetails]
         attr_accessor :aws_s3_bucket_details
+      
+        # Asset information specific for AWS SNS Topics.
+        # Corresponds to the JSON property `awsSnsTopicDetails`
+        # @return [Google::Apis::MigrationcenterV1alpha1::AwsSnsTopicDetails]
+        attr_accessor :aws_sns_topic_details
       
         # Asset information specific for AWS VPCs.
         # Corresponds to the JSON property `awsVpcDetails`
@@ -717,17 +838,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @aws_api_gateway_rest_api_details = args[:aws_api_gateway_rest_api_details] if args.key?(:aws_api_gateway_rest_api_details)
+          @aws_app_sync_graphql_api_details = args[:aws_app_sync_graphql_api_details] if args.key?(:aws_app_sync_graphql_api_details)
+          @aws_application_load_balancer_details = args[:aws_application_load_balancer_details] if args.key?(:aws_application_load_balancer_details)
+          @aws_autoscaling_group_details = args[:aws_autoscaling_group_details] if args.key?(:aws_autoscaling_group_details)
+          @aws_batch_compute_environment_details = args[:aws_batch_compute_environment_details] if args.key?(:aws_batch_compute_environment_details)
           @aws_cloud_front_distribution_details = args[:aws_cloud_front_distribution_details] if args.key?(:aws_cloud_front_distribution_details)
           @aws_dynamodb_table_details = args[:aws_dynamodb_table_details] if args.key?(:aws_dynamodb_table_details)
+          @aws_ebs_volume_details = args[:aws_ebs_volume_details] if args.key?(:aws_ebs_volume_details)
+          @aws_ecr_repository_details = args[:aws_ecr_repository_details] if args.key?(:aws_ecr_repository_details)
           @aws_ecs_cluster_details = args[:aws_ecs_cluster_details] if args.key?(:aws_ecs_cluster_details)
           @aws_efs_file_system_details = args[:aws_efs_file_system_details] if args.key?(:aws_efs_file_system_details)
           @aws_eks_cluster_details = args[:aws_eks_cluster_details] if args.key?(:aws_eks_cluster_details)
+          @aws_elastic_ip_address_details = args[:aws_elastic_ip_address_details] if args.key?(:aws_elastic_ip_address_details)
+          @aws_elastic_network_interface_details = args[:aws_elastic_network_interface_details] if args.key?(:aws_elastic_network_interface_details)
           @aws_elb_load_balancer_details = args[:aws_elb_load_balancer_details] if args.key?(:aws_elb_load_balancer_details)
+          @aws_internet_gateway_details = args[:aws_internet_gateway_details] if args.key?(:aws_internet_gateway_details)
           @aws_lambda_function_details = args[:aws_lambda_function_details] if args.key?(:aws_lambda_function_details)
           @aws_nat_gateway_details = args[:aws_nat_gateway_details] if args.key?(:aws_nat_gateway_details)
           @aws_redshift_details = args[:aws_redshift_details] if args.key?(:aws_redshift_details)
           @aws_route53_hosted_zone_details = args[:aws_route53_hosted_zone_details] if args.key?(:aws_route53_hosted_zone_details)
           @aws_s3_bucket_details = args[:aws_s3_bucket_details] if args.key?(:aws_s3_bucket_details)
+          @aws_sns_topic_details = args[:aws_sns_topic_details] if args.key?(:aws_sns_topic_details)
           @aws_vpc_details = args[:aws_vpc_details] if args.key?(:aws_vpc_details)
           @collection_type = args[:collection_type] if args.key?(:collection_type)
           @database_deployment_details = args[:database_deployment_details] if args.key?(:database_deployment_details)
@@ -1024,6 +1156,71 @@ module Google
         end
       end
       
+      # Asset information specific for AWS API Gateway REST APIs.
+      class AwsApiGatewayRestApiDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Asset information specific for AWS AppSync GraphQL APIs.
+      class AwsAppSyncGraphqlApiDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Asset information specific for AWS Application Load Balancers.
+      class AwsApplicationLoadBalancerDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Asset information specific for AWS Autoscaling Group.
+      class AwsAutoscalingGroupDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Asset information specific for AWS Batch Compute Environments.
+      class AwsBatchComputeEnvironmentDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Details of an AWS CloudFront distribution.
       class AwsCloudFrontDistributionDetails
         include Google::Apis::Core::Hashable
@@ -1039,6 +1236,19 @@ module Google
       
       # Details of an AWS DynamoDB table.
       class AwsDynamoDbTableDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Asset information specific for AWS EBS Volumes.
+      class AwsEbsVolumeDetails
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1081,6 +1291,19 @@ module Google
         end
       end
       
+      # Asset information specific for AWS ECR Repository.
+      class AwsEcrRepositoryDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Details of an AWS ECS cluster.
       class AwsEcsClusterDetails
         include Google::Apis::Core::Hashable
@@ -1120,8 +1343,47 @@ module Google
         end
       end
       
+      # Asset information specific for AWS Elastic IP Addresses.
+      class AwsElasticIpAddressDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Asset information specific for AWS Elastic Network Interfaces.
+      class AwsElasticNetworkInterfaceDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Asset information specific for AWS Load Balancers.
       class AwsElbLoadBalancerDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Asset information specific for AWS Internet Gateways.
+      class AwsInternetGatewayDetails
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1309,6 +1571,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Asset information specific for AWS SNS Topics.
+      class AwsSnsTopicDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -3281,6 +3556,38 @@ module Google
           @name = args[:name] if args.key?(:name)
           @original_frame = args[:original_frame] if args.key?(:original_frame)
           @violations = args[:violations] if args.key?(:violations)
+        end
+      end
+      
+      # Estimated usage data.
+      class EstimatedUsage
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Estimated CPU utilization percentage. Must be in the range [1, 100].
+        # Corresponds to the JSON property `estimatedCpuPercentage`
+        # @return [Float]
+        attr_accessor :estimated_cpu_percentage
+      
+        # Optional. Estimated disk utilization percentage. Must be in the range [1, 100].
+        # Corresponds to the JSON property `estimatedDiskPercentage`
+        # @return [Float]
+        attr_accessor :estimated_disk_percentage
+      
+        # Optional. Estimated memory utilization percentage. Must be in the range [1,
+        # 100].
+        # Corresponds to the JSON property `estimatedMemoryPercentage`
+        # @return [Float]
+        attr_accessor :estimated_memory_percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @estimated_cpu_percentage = args[:estimated_cpu_percentage] if args.key?(:estimated_cpu_percentage)
+          @estimated_disk_percentage = args[:estimated_disk_percentage] if args.key?(:estimated_disk_percentage)
+          @estimated_memory_percentage = args[:estimated_memory_percentage] if args.key?(:estimated_memory_percentage)
         end
       end
       
@@ -6866,6 +7173,11 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryChartData]
         attr_accessor :database_types
       
+        # Estimated usage stats for the assets in this collection.
+        # Corresponds to the JSON property `estimatedUsageStats`
+        # @return [Google::Apis::MigrationcenterV1alpha1::ReportSummaryAssetAggregateStatsEstimatedUsageStats]
+        attr_accessor :estimated_usage_stats
+      
         # A Histogram Chart shows a distribution of values into buckets, showing a count
         # of values which fall into a bucket.
         # Corresponds to the JSON property `memoryBytesHistogram`
@@ -6939,6 +7251,7 @@ module Google
           @asset_age = args[:asset_age] if args.key?(:asset_age)
           @core_count_histogram = args[:core_count_histogram] if args.key?(:core_count_histogram)
           @database_types = args[:database_types] if args.key?(:database_types)
+          @estimated_usage_stats = args[:estimated_usage_stats] if args.key?(:estimated_usage_stats)
           @memory_bytes_histogram = args[:memory_bytes_histogram] if args.key?(:memory_bytes_histogram)
           @memory_utilization = args[:memory_utilization] if args.key?(:memory_utilization)
           @memory_utilization_chart = args[:memory_utilization_chart] if args.key?(:memory_utilization_chart)
@@ -6951,6 +7264,33 @@ module Google
           @total_cores = args[:total_cores] if args.key?(:total_cores)
           @total_memory_bytes = args[:total_memory_bytes] if args.key?(:total_memory_bytes)
           @total_storage_bytes = args[:total_storage_bytes] if args.key?(:total_storage_bytes)
+        end
+      end
+      
+      # Estimated usage stats for the assets in this collection.
+      class ReportSummaryAssetAggregateStatsEstimatedUsageStats
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of assets that are using at least one estimated usage
+        # metric for rightsizing.
+        # Corresponds to the JSON property `totalAssetsUsingEstimatedUsage`
+        # @return [Fixnum]
+        attr_accessor :total_assets_using_estimated_usage
+      
+        # Output only. The number of virtual machines in this finding that are using at
+        # least one estimated usage metric for rightsizing.
+        # Corresponds to the JSON property `totalVirtualMachinesUsingEstimatedUsage`
+        # @return [Fixnum]
+        attr_accessor :total_virtual_machines_using_estimated_usage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_assets_using_estimated_usage = args[:total_assets_using_estimated_usage] if args.key?(:total_assets_using_estimated_usage)
+          @total_virtual_machines_using_estimated_usage = args[:total_virtual_machines_using_estimated_usage] if args.key?(:total_virtual_machines_using_estimated_usage)
         end
       end
       
@@ -8852,6 +9192,11 @@ module Google
         # @return [Google::Apis::MigrationcenterV1alpha1::ComputeEnginePreferences]
         attr_accessor :compute_engine_preferences
       
+        # Estimated usage data.
+        # Corresponds to the JSON property `estimatedUsage`
+        # @return [Google::Apis::MigrationcenterV1alpha1::EstimatedUsage]
+        attr_accessor :estimated_usage
+      
         # Parameters that affect network cost estimations.
         # Corresponds to the JSON property `networkCostParameters`
         # @return [Google::Apis::MigrationcenterV1alpha1::VirtualMachinePreferencesNetworkCostParameters]
@@ -8899,6 +9244,7 @@ module Google
         def update!(**args)
           @commitment_plan = args[:commitment_plan] if args.key?(:commitment_plan)
           @compute_engine_preferences = args[:compute_engine_preferences] if args.key?(:compute_engine_preferences)
+          @estimated_usage = args[:estimated_usage] if args.key?(:estimated_usage)
           @network_cost_parameters = args[:network_cost_parameters] if args.key?(:network_cost_parameters)
           @region_preferences = args[:region_preferences] if args.key?(:region_preferences)
           @sizing_optimization_custom_parameters = args[:sizing_optimization_custom_parameters] if args.key?(:sizing_optimization_custom_parameters)
