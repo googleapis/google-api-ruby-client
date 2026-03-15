@@ -556,6 +556,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SignalMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StateInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -774,6 +780,7 @@ module Google
       class Cluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acl_policy, as: 'aclPolicy'
           property :allow_fewer_zones_deployment, as: 'allowFewerZonesDeployment'
           property :async_cluster_endpoints_deletion_enabled, as: 'asyncClusterEndpointsDeletionEnabled'
           property :authorization_mode, as: 'authorizationMode'
@@ -1056,11 +1063,16 @@ module Google
       class DatabaseResourceSignalData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_run, as: 'backupRun', class: Google::Apis::RedisV1beta1::BackupRun, decorator: Google::Apis::RedisV1beta1::BackupRun::Representation
+      
           property :full_resource_name, as: 'fullResourceName'
           property :last_refresh_time, as: 'lastRefreshTime'
+          property :location, as: 'location'
           property :resource_id, as: 'resourceId', class: Google::Apis::RedisV1beta1::DatabaseResourceId, decorator: Google::Apis::RedisV1beta1::DatabaseResourceId::Representation
       
           property :signal_bool_value, as: 'signalBoolValue'
+          collection :signal_metadata_list, as: 'signalMetadataList', class: Google::Apis::RedisV1beta1::SignalMetadata, decorator: Google::Apis::RedisV1beta1::SignalMetadata::Representation
+      
           property :signal_state, as: 'signalState'
           property :signal_type, as: 'signalType'
         end
@@ -1655,6 +1667,15 @@ module Google
           property :managed_server_ca, as: 'managedServerCa', class: Google::Apis::RedisV1beta1::RegionalManagedCertificateAuthority, decorator: Google::Apis::RedisV1beta1::RegionalManagedCertificateAuthority::Representation
       
           property :name, as: 'name'
+        end
+      end
+      
+      class SignalMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_run, as: 'backupRun', class: Google::Apis::RedisV1beta1::BackupRun, decorator: Google::Apis::RedisV1beta1::BackupRun::Representation
+      
+          property :signal_bool_value, as: 'signalBoolValue'
         end
       end
       
