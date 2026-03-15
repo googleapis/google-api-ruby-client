@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomerIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -142,7 +148,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GroupIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NestedParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OwnerDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OwnerIdentity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -192,6 +216,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -351,6 +381,13 @@ module Google
         end
       end
       
+      class CustomerIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+        end
+      end
+      
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -426,6 +463,14 @@ module Google
         end
       end
       
+      class GroupIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group_email, as: 'groupEmail'
+          property :id, as: 'id'
+        end
+      end
+      
       class NestedParameter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -436,6 +481,27 @@ module Google
           collection :multi_value, as: 'multiValue'
           property :name, as: 'name'
           property :value, as: 'value'
+        end
+      end
+      
+      class OwnerDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :owner_identity, as: 'ownerIdentity', class: Google::Apis::AdminReportsV1::OwnerIdentity, decorator: Google::Apis::AdminReportsV1::OwnerIdentity::Representation
+      
+          property :owner_type, as: 'ownerType'
+        end
+      end
+      
+      class OwnerIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_identity, as: 'customerIdentity', class: Google::Apis::AdminReportsV1::CustomerIdentity, decorator: Google::Apis::AdminReportsV1::CustomerIdentity::Representation
+      
+          property :group_identity, as: 'groupIdentity', class: Google::Apis::AdminReportsV1::GroupIdentity, decorator: Google::Apis::AdminReportsV1::GroupIdentity::Representation
+      
+          property :user_identity, as: 'userIdentity', class: Google::Apis::AdminReportsV1::UserIdentity, decorator: Google::Apis::AdminReportsV1::UserIdentity::Representation
+      
         end
       end
       
@@ -452,6 +518,8 @@ module Google
           collection :applied_labels, as: 'appliedLabels', class: Google::Apis::AdminReportsV1::AppliedLabel, decorator: Google::Apis::AdminReportsV1::AppliedLabel::Representation
       
           property :id, as: 'id'
+          property :owner_details, as: 'ownerDetails', class: Google::Apis::AdminReportsV1::OwnerDetails, decorator: Google::Apis::AdminReportsV1::OwnerDetails::Representation
+      
           property :relation, as: 'relation'
           property :title, as: 'title'
           property :type, as: 'type'
@@ -523,6 +591,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class UserIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :user_email, as: 'userEmail'
         end
       end
     end
