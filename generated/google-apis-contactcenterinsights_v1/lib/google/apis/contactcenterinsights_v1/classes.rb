@@ -280,6 +280,14 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig]
         attr_accessor :qa_config
       
+        # Optional. Whether to run the auto-labeling annotator. If true, the auto-
+        # labeling annotator will be run. This is a non-billable operation designed for
+        # fixing or backfilling custom labels.
+        # Corresponds to the JSON property `runAutoLabelingAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_auto_labeling_annotator
+        alias_method :run_auto_labeling_annotator?, :run_auto_labeling_annotator
+      
         # Whether to run the entity annotator.
         # Corresponds to the JSON property `runEntityAnnotator`
         # @return [Boolean]
@@ -349,6 +357,7 @@ module Google
           @issue_models = args[:issue_models] if args.key?(:issue_models)
           @phrase_matchers = args[:phrase_matchers] if args.key?(:phrase_matchers)
           @qa_config = args[:qa_config] if args.key?(:qa_config)
+          @run_auto_labeling_annotator = args[:run_auto_labeling_annotator] if args.key?(:run_auto_labeling_annotator)
           @run_entity_annotator = args[:run_entity_annotator] if args.key?(:run_entity_annotator)
           @run_intent_annotator = args[:run_intent_annotator] if args.key?(:run_intent_annotator)
           @run_interruption_annotator = args[:run_interruption_annotator] if args.key?(:run_interruption_annotator)
@@ -858,6 +867,13 @@ module Google
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
         attr_accessor :partial_errors
       
+        # Output only. If true, the labeling rules will be re-evaluated for the
+        # conversations.
+        # Corresponds to the JSON property `relabel`
+        # @return [Boolean]
+        attr_accessor :relabel
+        alias_method :relabel?, :relabel
+      
         # The request to analyze conversations in bulk.
         # Corresponds to the JSON property `request`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest]
@@ -880,6 +896,7 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @failed_analyses_count = args[:failed_analyses_count] if args.key?(:failed_analyses_count)
           @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @relabel = args[:relabel] if args.key?(:relabel)
           @request = args[:request] if args.key?(:request)
           @total_requested_analyses_count = args[:total_requested_analyses_count] if args.key?(:total_requested_analyses_count)
         end
@@ -909,6 +926,13 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # Optional. If true, the labeling rules will be re-evaluated for the
+        # conversations.
+        # Corresponds to the JSON property `relabel`
+        # @return [Boolean]
+        attr_accessor :relabel
+        alias_method :relabel?, :relabel
+      
         def initialize(**args)
            update!(**args)
         end
@@ -919,6 +943,7 @@ module Google
           @annotator_selector = args[:annotator_selector] if args.key?(:annotator_selector)
           @filter = args[:filter] if args.key?(:filter)
           @parent = args[:parent] if args.key?(:parent)
+          @relabel = args[:relabel] if args.key?(:relabel)
         end
       end
       
@@ -2241,6 +2266,13 @@ module Google
         # @return [String]
         attr_accessor :metadata_uri
       
+        # Cloud Storage URIs that points to files that contain the conversation audio
+        # for each turn. Assume the order of the URIs is the same as the order of the
+        # transcript turns.
+        # Corresponds to the JSON property `turnLevelAudios`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>]
+        attr_accessor :turn_level_audios
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2250,6 +2282,7 @@ module Google
           @dialogflow_source = args[:dialogflow_source] if args.key?(:dialogflow_source)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @metadata_uri = args[:metadata_uri] if args.key?(:metadata_uri)
+          @turn_level_audios = args[:turn_level_audios] if args.key?(:turn_level_audios)
         end
       end
       
@@ -2626,6 +2659,11 @@ module Google
         # @return [String]
         attr_accessor :text
       
+        # A wrapper for holding the audio for any given turn.
+        # Corresponds to the JSON property `turnLevelAudio`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio]
+        attr_accessor :turn_level_audio
+      
         # A list of the word-specific information for each word in the segment.
         # Corresponds to the JSON property `words`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>]
@@ -2645,6 +2683,7 @@ module Google
           @segment_participant = args[:segment_participant] if args.key?(:segment_participant)
           @sentiment = args[:sentiment] if args.key?(:sentiment)
           @text = args[:text] if args.key?(:text)
+          @turn_level_audio = args[:turn_level_audio] if args.key?(:turn_level_audio)
           @words = args[:words] if args.key?(:words)
         end
       end
@@ -8748,6 +8787,14 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig]
         attr_accessor :speech_config
       
+        # Optional. The time zone applied to the project. This is a string
+        # representation of the time zone, for example, "America/New_York". This field
+        # follows the IANA TZ database format. See https://www.iana.org/time-zones for a
+        # list of valid values. If no value is set the user time zone will be used.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
         # Output only. The time at which the settings were last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -8768,6 +8815,7 @@ module Google
           @redaction_config = args[:redaction_config] if args.key?(:redaction_config)
           @screen_recording_bucket_uri = args[:screen_recording_bucket_uri] if args.key?(:screen_recording_bucket_uri)
           @speech_config = args[:speech_config] if args.key?(:speech_config)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -9785,6 +9833,14 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig]
         attr_accessor :qa_config
       
+        # Optional. Whether to run the auto-labeling annotator. If true, the auto-
+        # labeling annotator will be run. This is a non-billable operation designed for
+        # fixing or backfilling custom labels.
+        # Corresponds to the JSON property `runAutoLabelingAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_auto_labeling_annotator
+        alias_method :run_auto_labeling_annotator?, :run_auto_labeling_annotator
+      
         # Whether to run the entity annotator.
         # Corresponds to the JSON property `runEntityAnnotator`
         # @return [Boolean]
@@ -9854,6 +9910,7 @@ module Google
           @issue_models = args[:issue_models] if args.key?(:issue_models)
           @phrase_matchers = args[:phrase_matchers] if args.key?(:phrase_matchers)
           @qa_config = args[:qa_config] if args.key?(:qa_config)
+          @run_auto_labeling_annotator = args[:run_auto_labeling_annotator] if args.key?(:run_auto_labeling_annotator)
           @run_entity_annotator = args[:run_entity_annotator] if args.key?(:run_entity_annotator)
           @run_intent_annotator = args[:run_intent_annotator] if args.key?(:run_intent_annotator)
           @run_interruption_annotator = args[:run_interruption_annotator] if args.key?(:run_interruption_annotator)
@@ -10056,6 +10113,13 @@ module Google
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
         attr_accessor :partial_errors
       
+        # Output only. If true, the labeling rules will be re-evaluated for the
+        # conversations.
+        # Corresponds to the JSON property `relabel`
+        # @return [Boolean]
+        attr_accessor :relabel
+        alias_method :relabel?, :relabel
+      
         # The request to analyze conversations in bulk.
         # Corresponds to the JSON property `request`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest]
@@ -10078,6 +10142,7 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @failed_analyses_count = args[:failed_analyses_count] if args.key?(:failed_analyses_count)
           @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @relabel = args[:relabel] if args.key?(:relabel)
           @request = args[:request] if args.key?(:request)
           @total_requested_analyses_count = args[:total_requested_analyses_count] if args.key?(:total_requested_analyses_count)
         end
@@ -10107,6 +10172,13 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # Optional. If true, the labeling rules will be re-evaluated for the
+        # conversations.
+        # Corresponds to the JSON property `relabel`
+        # @return [Boolean]
+        attr_accessor :relabel
+        alias_method :relabel?, :relabel
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10117,6 +10189,7 @@ module Google
           @annotator_selector = args[:annotator_selector] if args.key?(:annotator_selector)
           @filter = args[:filter] if args.key?(:filter)
           @parent = args[:parent] if args.key?(:parent)
+          @relabel = args[:relabel] if args.key?(:relabel)
         end
       end
       
@@ -10758,6 +10831,13 @@ module Google
         # @return [String]
         attr_accessor :metadata_uri
       
+        # Cloud Storage URIs that points to files that contain the conversation audio
+        # for each turn. Assume the order of the URIs is the same as the order of the
+        # transcript turns.
+        # Corresponds to the JSON property `turnLevelAudios`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio>]
+        attr_accessor :turn_level_audios
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10767,6 +10847,32 @@ module Google
           @dialogflow_source = args[:dialogflow_source] if args.key?(:dialogflow_source)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @metadata_uri = args[:metadata_uri] if args.key?(:metadata_uri)
+          @turn_level_audios = args[:turn_level_audios] if args.key?(:turn_level_audios)
+        end
+      end
+      
+      # A wrapper for holding the audio for any given turn.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio
+        include Google::Apis::Core::Hashable
+      
+        # The duration of the audio.
+        # Corresponds to the JSON property `audioDuration`
+        # @return [String]
+        attr_accessor :audio_duration
+      
+        # The Cloud Storage URI of the audio for any given turn.
+        # Corresponds to the JSON property `audioGcsUri`
+        # @return [String]
+        attr_accessor :audio_gcs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_duration = args[:audio_duration] if args.key?(:audio_duration)
+          @audio_gcs_uri = args[:audio_gcs_uri] if args.key?(:audio_gcs_uri)
         end
       end
       
@@ -11118,6 +11224,11 @@ module Google
         # @return [String]
         attr_accessor :text
       
+        # A wrapper for holding the audio for any given turn.
+        # Corresponds to the JSON property `turnLevelAudio`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio]
+        attr_accessor :turn_level_audio
+      
         # A list of the word-specific information for each word in the segment.
         # Corresponds to the JSON property `words`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo>]
@@ -11137,6 +11248,7 @@ module Google
           @segment_participant = args[:segment_participant] if args.key?(:segment_participant)
           @sentiment = args[:sentiment] if args.key?(:sentiment)
           @text = args[:text] if args.key?(:text)
+          @turn_level_audio = args[:turn_level_audio] if args.key?(:turn_level_audio)
           @words = args[:words] if args.key?(:words)
         end
       end
@@ -15837,6 +15949,14 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig]
         attr_accessor :qa_config
       
+        # Optional. Whether to run the auto-labeling annotator. If true, the auto-
+        # labeling annotator will be run. This is a non-billable operation designed for
+        # fixing or backfilling custom labels.
+        # Corresponds to the JSON property `runAutoLabelingAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_auto_labeling_annotator
+        alias_method :run_auto_labeling_annotator?, :run_auto_labeling_annotator
+      
         # Whether to run the entity annotator.
         # Corresponds to the JSON property `runEntityAnnotator`
         # @return [Boolean]
@@ -15906,6 +16026,7 @@ module Google
           @issue_models = args[:issue_models] if args.key?(:issue_models)
           @phrase_matchers = args[:phrase_matchers] if args.key?(:phrase_matchers)
           @qa_config = args[:qa_config] if args.key?(:qa_config)
+          @run_auto_labeling_annotator = args[:run_auto_labeling_annotator] if args.key?(:run_auto_labeling_annotator)
           @run_entity_annotator = args[:run_entity_annotator] if args.key?(:run_entity_annotator)
           @run_intent_annotator = args[:run_intent_annotator] if args.key?(:run_intent_annotator)
           @run_interruption_annotator = args[:run_interruption_annotator] if args.key?(:run_interruption_annotator)
@@ -16108,6 +16229,13 @@ module Google
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
         attr_accessor :partial_errors
       
+        # Output only. If true, the labeling rules will be re-evaluated for the
+        # conversations.
+        # Corresponds to the JSON property `relabel`
+        # @return [Boolean]
+        attr_accessor :relabel
+        alias_method :relabel?, :relabel
+      
         # The request to analyze conversations in bulk.
         # Corresponds to the JSON property `request`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest]
@@ -16130,6 +16258,7 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @failed_analyses_count = args[:failed_analyses_count] if args.key?(:failed_analyses_count)
           @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @relabel = args[:relabel] if args.key?(:relabel)
           @request = args[:request] if args.key?(:request)
           @total_requested_analyses_count = args[:total_requested_analyses_count] if args.key?(:total_requested_analyses_count)
         end
@@ -16159,6 +16288,13 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # Optional. If true, the labeling rules will be re-evaluated for the
+        # conversations.
+        # Corresponds to the JSON property `relabel`
+        # @return [Boolean]
+        attr_accessor :relabel
+        alias_method :relabel?, :relabel
+      
         def initialize(**args)
            update!(**args)
         end
@@ -16169,6 +16305,7 @@ module Google
           @annotator_selector = args[:annotator_selector] if args.key?(:annotator_selector)
           @filter = args[:filter] if args.key?(:filter)
           @parent = args[:parent] if args.key?(:parent)
+          @relabel = args[:relabel] if args.key?(:relabel)
         end
       end
       
@@ -17058,6 +17195,13 @@ module Google
         # @return [String]
         attr_accessor :metadata_uri
       
+        # Cloud Storage URIs that points to files that contain the conversation audio
+        # for each turn. Assume the order of the URIs is the same as the order of the
+        # transcript turns.
+        # Corresponds to the JSON property `turnLevelAudios`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio>]
+        attr_accessor :turn_level_audios
+      
         def initialize(**args)
            update!(**args)
         end
@@ -17067,6 +17211,32 @@ module Google
           @dialogflow_source = args[:dialogflow_source] if args.key?(:dialogflow_source)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @metadata_uri = args[:metadata_uri] if args.key?(:metadata_uri)
+          @turn_level_audios = args[:turn_level_audios] if args.key?(:turn_level_audios)
+        end
+      end
+      
+      # A wrapper for holding the audio for any given turn.
+      class GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio
+        include Google::Apis::Core::Hashable
+      
+        # The duration of the audio.
+        # Corresponds to the JSON property `audioDuration`
+        # @return [String]
+        attr_accessor :audio_duration
+      
+        # The Cloud Storage URI of the audio for any given turn.
+        # Corresponds to the JSON property `audioGcsUri`
+        # @return [String]
+        attr_accessor :audio_gcs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_duration = args[:audio_duration] if args.key?(:audio_duration)
+          @audio_gcs_uri = args[:audio_gcs_uri] if args.key?(:audio_gcs_uri)
         end
       end
       
@@ -17418,6 +17588,11 @@ module Google
         # @return [String]
         attr_accessor :text
       
+        # A wrapper for holding the audio for any given turn.
+        # Corresponds to the JSON property `turnLevelAudio`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio]
+        attr_accessor :turn_level_audio
+      
         # A list of the word-specific information for each word in the segment.
         # Corresponds to the JSON property `words`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo>]
@@ -17437,6 +17612,7 @@ module Google
           @segment_participant = args[:segment_participant] if args.key?(:segment_participant)
           @sentiment = args[:sentiment] if args.key?(:sentiment)
           @text = args[:text] if args.key?(:text)
+          @turn_level_audio = args[:turn_level_audio] if args.key?(:turn_level_audio)
           @words = args[:words] if args.key?(:words)
         end
       end

@@ -1774,6 +1774,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2782,6 +2788,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3738,6 +3750,7 @@ module Google
           collection :phrase_matchers, as: 'phraseMatchers'
           property :qa_config, as: 'qaConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig::Representation
       
+          property :run_auto_labeling_annotator, as: 'runAutoLabelingAnnotator'
           property :run_entity_annotator, as: 'runEntityAnnotator'
           property :run_intent_annotator, as: 'runIntentAnnotator'
           property :run_interruption_annotator, as: 'runInterruptionAnnotator'
@@ -3884,6 +3897,7 @@ module Google
           property :failed_analyses_count, as: 'failedAnalysesCount'
           collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
       
+          property :relabel, as: 'relabel'
           property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest::Representation
       
           property :total_requested_analyses_count, as: 'totalRequestedAnalysesCount'
@@ -3898,6 +3912,7 @@ module Google
       
           property :filter, as: 'filter'
           property :parent, as: 'parent'
+          property :relabel, as: 'relabel'
         end
       end
       
@@ -4282,6 +4297,8 @@ module Google
           property :gcs_source, as: 'gcsSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GcsSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GcsSource::Representation
       
           property :metadata_uri, as: 'metadataUri'
+          collection :turn_level_audios, as: 'turnLevelAudios', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio::Representation
+      
         end
       end
       
@@ -4386,6 +4403,8 @@ module Google
           property :sentiment, as: 'sentiment', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SentimentData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SentimentData::Representation
       
           property :text, as: 'text'
+          property :turn_level_audio, as: 'turnLevelAudio', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio::Representation
+      
           collection :words, as: 'words', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo::Representation
       
         end
@@ -6155,6 +6174,7 @@ module Google
           property :screen_recording_bucket_uri, as: 'screenRecordingBucketUri'
           property :speech_config, as: 'speechConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig::Representation
       
+          property :time_zone, as: 'timeZone'
           property :update_time, as: 'updateTime'
         end
       end
@@ -6474,6 +6494,7 @@ module Google
           collection :phrase_matchers, as: 'phraseMatchers'
           property :qa_config, as: 'qaConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig::Representation
       
+          property :run_auto_labeling_annotator, as: 'runAutoLabelingAnnotator'
           property :run_entity_annotator, as: 'runEntityAnnotator'
           property :run_intent_annotator, as: 'runIntentAnnotator'
           property :run_interruption_annotator, as: 'runInterruptionAnnotator'
@@ -6542,6 +6563,7 @@ module Google
           property :failed_analyses_count, as: 'failedAnalysesCount'
           collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
       
+          property :relabel, as: 'relabel'
           property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest::Representation
       
           property :total_requested_analyses_count, as: 'totalRequestedAnalysesCount'
@@ -6556,6 +6578,7 @@ module Google
       
           property :filter, as: 'filter'
           property :parent, as: 'parent'
+          property :relabel, as: 'relabel'
         end
       end
       
@@ -6748,6 +6771,16 @@ module Google
           property :gcs_source, as: 'gcsSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GcsSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GcsSource::Representation
       
           property :metadata_uri, as: 'metadataUri'
+          collection :turn_level_audios, as: 'turnLevelAudios', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_duration, as: 'audioDuration'
+          property :audio_gcs_uri, as: 'audioGcsUri'
         end
       end
       
@@ -6844,6 +6877,8 @@ module Google
           property :sentiment, as: 'sentiment', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SentimentData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1SentimentData::Representation
       
           property :text, as: 'text'
+          property :turn_level_audio, as: 'turnLevelAudio', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio::Representation
+      
           collection :words, as: 'words', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo::Representation
       
         end
@@ -8203,6 +8238,7 @@ module Google
           collection :phrase_matchers, as: 'phraseMatchers'
           property :qa_config, as: 'qaConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig::Representation
       
+          property :run_auto_labeling_annotator, as: 'runAutoLabelingAnnotator'
           property :run_entity_annotator, as: 'runEntityAnnotator'
           property :run_intent_annotator, as: 'runIntentAnnotator'
           property :run_interruption_annotator, as: 'runInterruptionAnnotator'
@@ -8271,6 +8307,7 @@ module Google
           property :failed_analyses_count, as: 'failedAnalysesCount'
           collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
       
+          property :relabel, as: 'relabel'
           property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest::Representation
       
           property :total_requested_analyses_count, as: 'totalRequestedAnalysesCount'
@@ -8285,6 +8322,7 @@ module Google
       
           property :filter, as: 'filter'
           property :parent, as: 'parent'
+          property :relabel, as: 'relabel'
         end
       end
       
@@ -8542,6 +8580,16 @@ module Google
           property :gcs_source, as: 'gcsSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainGcsSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainGcsSource::Representation
       
           property :metadata_uri, as: 'metadataUri'
+          collection :turn_level_audios, as: 'turnLevelAudios', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_duration, as: 'audioDuration'
+          property :audio_gcs_uri, as: 'audioGcsUri'
         end
       end
       
@@ -8638,6 +8686,8 @@ module Google
           property :sentiment, as: 'sentiment', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSentimentData, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainSentimentData::Representation
       
           property :text, as: 'text'
+          property :turn_level_audio, as: 'turnLevelAudio', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio::Representation
+      
           collection :words, as: 'words', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo::Representation
       
         end
