@@ -1105,6 +1105,12 @@ module Google
         attr_accessor :consumer_import_subnet_routes_with_public_ip
         alias_method :consumer_import_subnet_routes_with_public_ip?, :consumer_import_subnet_routes_with_public_ip
       
+        # Output only. If this is true, consumer peering is active.
+        # Corresponds to the JSON property `consumerPeeringActive`
+        # @return [Boolean]
+        attr_accessor :consumer_peering_active
+        alias_method :consumer_peering_active?, :consumer_peering_active
+      
         # Export custom routes flag value for peering from producer to consumer.
         # Corresponds to the JSON property `producerExportCustomRoutes`
         # @return [Boolean]
@@ -1167,6 +1173,7 @@ module Google
           @consumer_export_subnet_routes_with_public_ip = args[:consumer_export_subnet_routes_with_public_ip] if args.key?(:consumer_export_subnet_routes_with_public_ip)
           @consumer_import_custom_routes = args[:consumer_import_custom_routes] if args.key?(:consumer_import_custom_routes)
           @consumer_import_subnet_routes_with_public_ip = args[:consumer_import_subnet_routes_with_public_ip] if args.key?(:consumer_import_subnet_routes_with_public_ip)
+          @consumer_peering_active = args[:consumer_peering_active] if args.key?(:consumer_peering_active)
           @producer_export_custom_routes = args[:producer_export_custom_routes] if args.key?(:producer_export_custom_routes)
           @producer_export_subnet_routes_with_public_ip = args[:producer_export_subnet_routes_with_public_ip] if args.key?(:producer_export_subnet_routes_with_public_ip)
           @producer_import_custom_routes = args[:producer_import_custom_routes] if args.key?(:producer_import_custom_routes)
