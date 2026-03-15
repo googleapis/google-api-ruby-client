@@ -603,6 +603,25 @@ module Google
         end
       end
       
+      # Identity of the Google Workspace customer who owns the resource.
+      class CustomerIdentity
+        include Google::Apis::Core::Hashable
+      
+        # Customer id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
       # Represents a whole or partial calendar date, such as a birthday. The time of
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
@@ -857,6 +876,31 @@ module Google
         end
       end
       
+      # Identity of the group who owns the resource.
+      class GroupIdentity
+        include Google::Apis::Core::Hashable
+      
+        # Group email.
+        # Corresponds to the JSON property `groupEmail`
+        # @return [String]
+        attr_accessor :group_email
+      
+        # Group gaia id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_email = args[:group_email] if args.key?(:group_email)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
       # JSON template for a parameter used in various reports.
       class NestedParameter
         include Google::Apis::Core::Hashable
@@ -913,6 +957,62 @@ module Google
         end
       end
       
+      # Details of the owner of the resource.
+      class OwnerDetails
+        include Google::Apis::Core::Hashable
+      
+        # Identity details of the owner(s) of the resource.
+        # Corresponds to the JSON property `ownerIdentity`
+        # @return [Array<Google::Apis::AdminReportsV1::OwnerIdentity>]
+        attr_accessor :owner_identity
+      
+        # Type of the owner of the resource.
+        # Corresponds to the JSON property `ownerType`
+        # @return [String]
+        attr_accessor :owner_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @owner_identity = args[:owner_identity] if args.key?(:owner_identity)
+          @owner_type = args[:owner_type] if args.key?(:owner_type)
+        end
+      end
+      
+      # Identity details of the owner of the resource.
+      class OwnerIdentity
+        include Google::Apis::Core::Hashable
+      
+        # Identity of the Google Workspace customer who owns the resource.
+        # Corresponds to the JSON property `customerIdentity`
+        # @return [Google::Apis::AdminReportsV1::CustomerIdentity]
+        attr_accessor :customer_identity
+      
+        # Identity of the group who owns the resource.
+        # Corresponds to the JSON property `groupIdentity`
+        # @return [Google::Apis::AdminReportsV1::GroupIdentity]
+        attr_accessor :group_identity
+      
+        # Identity of the user who owns the resource.
+        # Corresponds to the JSON property `userIdentity`
+        # @return [Google::Apis::AdminReportsV1::UserIdentity]
+        attr_accessor :user_identity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_identity = args[:customer_identity] if args.key?(:customer_identity)
+          @group_identity = args[:group_identity] if args.key?(:group_identity)
+          @user_identity = args[:user_identity] if args.key?(:user_identity)
+        end
+      end
+      
       # The reason why the label/field was applied.
       class Reason
         include Google::Apis::Core::Hashable
@@ -941,10 +1041,17 @@ module Google
         # @return [Array<Google::Apis::AdminReportsV1::AppliedLabel>]
         attr_accessor :applied_labels
       
-        # Identifier of the resource.
+        # Identifier of the resource, such as a doc_id for a Drive document, a
+        # conference_id for a Meet conference, or a "gaia_id/rfc2822_message_id" for an
+        # email.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
+      
+        # Details of the owner of the resource.
+        # Corresponds to the JSON property `ownerDetails`
+        # @return [Google::Apis::AdminReportsV1::OwnerDetails]
+        attr_accessor :owner_details
       
         # Defines relationship of the resource to the events
         # Corresponds to the JSON property `relation`
@@ -970,6 +1077,7 @@ module Google
         def update!(**args)
           @applied_labels = args[:applied_labels] if args.key?(:applied_labels)
           @id = args[:id] if args.key?(:id)
+          @owner_details = args[:owner_details] if args.key?(:owner_details)
           @relation = args[:relation] if args.key?(:relation)
           @title = args[:title] if args.key?(:title)
           @type = args[:type] if args.key?(:type)
@@ -1225,6 +1333,31 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Identity of the user who owns the resource.
+      class UserIdentity
+        include Google::Apis::Core::Hashable
+      
+        # User gaia id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # User email.
+        # Corresponds to the JSON property `userEmail`
+        # @return [String]
+        attr_accessor :user_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @user_email = args[:user_email] if args.key?(:user_email)
         end
       end
     end
