@@ -22,18 +22,6 @@ module Google
   module Apis
     module DatalineageV1
       
-      class ApiservingMcpMcpToolDataHandlingProfile
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ApiservingMcpMcpToolLifecycleProfile
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDatacatalogLineageConfigmanagementV1Config
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -200,21 +188,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ApiservingMcpMcpToolDataHandlingProfile
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :input_data_access_level, as: 'inputDataAccessLevel'
-          property :output_data_access_level, as: 'outputDataAccessLevel'
-        end
-      end
-      
-      class ApiservingMcpMcpToolLifecycleProfile
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :launch_state, as: 'launchState'
-        end
       end
       
       class GoogleCloudDatacatalogLineageConfigmanagementV1Config
