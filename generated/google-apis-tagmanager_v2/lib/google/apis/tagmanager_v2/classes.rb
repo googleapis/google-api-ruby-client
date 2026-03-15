@@ -3036,6 +3036,17 @@ module Google
         # @return [Google::Apis::TagmanagerV2::Parameter]
         attr_accessor :convert_null_to_value
       
+        # The option to convert a variable value to a boolean.
+        # Corresponds to the JSON property `convertToBoolean`
+        # @return [Boolean]
+        attr_accessor :convert_to_boolean
+        alias_method :convert_to_boolean?, :convert_to_boolean
+      
+        # The option to convert a variable value to a number.
+        # Corresponds to the JSON property `convertToNumber`
+        # @return [String]
+        attr_accessor :convert_to_number
+      
         # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `convertTrueToValue`
         # @return [Google::Apis::TagmanagerV2::Parameter]
@@ -3055,6 +3066,8 @@ module Google
           @case_conversion_type = args[:case_conversion_type] if args.key?(:case_conversion_type)
           @convert_false_to_value = args[:convert_false_to_value] if args.key?(:convert_false_to_value)
           @convert_null_to_value = args[:convert_null_to_value] if args.key?(:convert_null_to_value)
+          @convert_to_boolean = args[:convert_to_boolean] if args.key?(:convert_to_boolean)
+          @convert_to_number = args[:convert_to_number] if args.key?(:convert_to_number)
           @convert_true_to_value = args[:convert_true_to_value] if args.key?(:convert_true_to_value)
           @convert_undefined_to_value = args[:convert_undefined_to_value] if args.key?(:convert_undefined_to_value)
         end

@@ -1300,6 +1300,8 @@ module Google
       
           property :convert_null_to_value, as: 'convertNullToValue', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
       
+          property :convert_to_boolean, as: 'convertToBoolean'
+          property :convert_to_number, as: 'convertToNumber'
           property :convert_true_to_value, as: 'convertTrueToValue', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
       
           property :convert_undefined_to_value, as: 'convertUndefinedToValue', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
