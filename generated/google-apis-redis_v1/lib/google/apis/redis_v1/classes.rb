@@ -555,6 +555,11 @@ module Google
       class Cluster
         include Google::Apis::Core::Hashable
       
+        # Optional. The ACL policy to be applied to the cluster.
+        # Corresponds to the JSON property `aclPolicy`
+        # @return [String]
+        attr_accessor :acl_policy
+      
         # Optional. Immutable. Deprecated, do not use.
         # Corresponds to the JSON property `allowFewerZonesDeployment`
         # @return [Boolean]
@@ -807,6 +812,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acl_policy = args[:acl_policy] if args.key?(:acl_policy)
           @allow_fewer_zones_deployment = args[:allow_fewer_zones_deployment] if args.key?(:allow_fewer_zones_deployment)
           @async_cluster_endpoints_deletion_enabled = args[:async_cluster_endpoints_deletion_enabled] if args.key?(:async_cluster_endpoints_deletion_enabled)
           @authorization_mode = args[:authorization_mode] if args.key?(:authorization_mode)
@@ -1181,7 +1187,7 @@ module Google
       
         # Database resource signal data. This is used to send signals to Condor which
         # are based on the DB/Instance/Fleet level configurations. These will be used to
-        # send signals for all inventory types. Next ID: 7
+        # send signals for all inventory types. Next ID: 10
         # Corresponds to the JSON property `databaseResourceSignalData`
         # @return [Google::Apis::RedisV1::DatabaseResourceSignalData]
         attr_accessor :database_resource_signal_data
@@ -1692,9 +1698,14 @@ module Google
       
       # Database resource signal data. This is used to send signals to Condor which
       # are based on the DB/Instance/Fleet level configurations. These will be used to
-      # send signals for all inventory types. Next ID: 7
+      # send signals for all inventory types. Next ID: 10
       class DatabaseResourceSignalData
         include Google::Apis::Core::Hashable
+      
+        # A backup run.
+        # Corresponds to the JSON property `backupRun`
+        # @return [Google::Apis::RedisV1::BackupRun]
+        attr_accessor :backup_run
       
         # Required. Full Resource name of the source resource.
         # Corresponds to the JSON property `fullResourceName`
@@ -1706,16 +1717,27 @@ module Google
         # @return [String]
         attr_accessor :last_refresh_time
       
+        # Resource location.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # DatabaseResourceId will serve as primary key for any resource ingestion event.
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::RedisV1::DatabaseResourceId]
         attr_accessor :resource_id
       
-        # Signal data for boolean signals.
+        # Deprecated: Use signal_metadata_list instead.
         # Corresponds to the JSON property `signalBoolValue`
         # @return [Boolean]
         attr_accessor :signal_bool_value
         alias_method :signal_bool_value?, :signal_bool_value
+      
+        # This will support array of OneOf signal metadata information for a given
+        # signal type.
+        # Corresponds to the JSON property `signalMetadataList`
+        # @return [Array<Google::Apis::RedisV1::SignalMetadata>]
+        attr_accessor :signal_metadata_list
       
         # Required. Output only. Signal state of the signal
         # Corresponds to the JSON property `signalState`
@@ -1733,10 +1755,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
           @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
           @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
+          @location = args[:location] if args.key?(:location)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
           @signal_bool_value = args[:signal_bool_value] if args.key?(:signal_bool_value)
+          @signal_metadata_list = args[:signal_metadata_list] if args.key?(:signal_metadata_list)
           @signal_state = args[:signal_state] if args.key?(:signal_state)
           @signal_type = args[:signal_type] if args.key?(:signal_type)
         end
@@ -2346,11 +2371,12 @@ module Google
         # @return [String]
         attr_accessor :read_replicas_mode
       
-        # Optional. Redis configuration parameters, according to http://redis.io/topics/
-        # config. Currently, the only supported parameters are: Redis version 3.2 and
-        # newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer:
-        # * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version
-        # 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
+        # Optional. Redis configuration parameters, according to [Redis configuration](
+        # https://redis.io/docs/latest/operate/oss_and_stack/management/config/).
+        # Currently, the only supported parameters are: Redis version 3.2 and newer: *
+        # maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: *
+        # activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.
+        # 0 and newer: * stream-node-max-bytes * stream-node-max-entries
         # Corresponds to the JSON property `redisConfigs`
         # @return [Hash<String,String>]
         attr_accessor :redis_configs
@@ -3973,6 +3999,34 @@ module Google
         def update!(**args)
           @managed_server_ca = args[:managed_server_ca] if args.key?(:managed_server_ca)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # SignalMetadata contains one of the signal metadata proto messages associated
+      # with a SignalType. This proto will be mapped to SignalMetadata message in
+      # storage.proto. Next ID: 3
+      class SignalMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A backup run.
+        # Corresponds to the JSON property `backupRun`
+        # @return [Google::Apis::RedisV1::BackupRun]
+        attr_accessor :backup_run
+      
+        # Signal data for boolean signals.
+        # Corresponds to the JSON property `signalBoolValue`
+        # @return [Boolean]
+        attr_accessor :signal_bool_value
+        alias_method :signal_bool_value?, :signal_bool_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @signal_bool_value = args[:signal_bool_value] if args.key?(:signal_bool_value)
         end
       end
       
