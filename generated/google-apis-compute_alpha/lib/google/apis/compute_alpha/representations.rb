@@ -1054,6 +1054,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommitmentParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CommitmentResourceStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1434,6 +1440,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskUpdateKmsKeyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1852,6 +1864,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FutureReservationParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FutureReservationSpecificSkuProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2159,6 +2177,12 @@ module Google
       end
       
       class GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2844,6 +2868,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImageOptimizationPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -6622,6 +6652,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionDiskUpdateKmsKeyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionDisksAddResourcePoliciesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6911,6 +6947,12 @@ module Google
       end
       
       class RegionSetPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionSnapshotUpdateKmsKeyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7607,6 +7649,12 @@ module Google
       end
       
       class RolloutWaveDetailsOrchestratedWaveDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8585,6 +8633,12 @@ module Google
       end
       
       class SnapshotSettingsStorageLocationSettingsStorageLocationPreference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotUpdateKmsKeyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -12217,6 +12271,8 @@ module Google
       
           collection :merge_source_commitments, as: 'mergeSourceCommitments'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputeAlpha::CommitmentParams, decorator: Google::Apis::ComputeAlpha::CommitmentParams::Representation
+      
           property :plan, as: 'plan'
           property :region, as: 'region'
           collection :reservations, as: 'reservations', class: Google::Apis::ComputeAlpha::Reservation, decorator: Google::Apis::ComputeAlpha::Reservation::Representation
@@ -12297,6 +12353,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class CommitmentParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -13026,6 +13089,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class DiskUpdateKmsKeyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
         end
       end
       
@@ -13801,6 +13871,8 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :name_prefix, as: 'namePrefix'
+          property :params, as: 'params', class: Google::Apis::ComputeAlpha::FutureReservationParams, decorator: Google::Apis::ComputeAlpha::FutureReservationParams::Representation
+      
           property :planning_status, as: 'planningStatus'
           property :protection_tier, as: 'protectionTier'
           property :reservation_mode, as: 'reservationMode'
@@ -13827,6 +13899,13 @@ module Google
           property :commitment_name, as: 'commitmentName'
           property :commitment_plan, as: 'commitmentPlan'
           property :previous_commitment_terms, as: 'previousCommitmentTerms'
+        end
+      end
+      
+      class FutureReservationParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -14349,8 +14428,17 @@ module Google
       class GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :location_rollout_status, as: 'locationRolloutStatus', class: Google::Apis::ComputeAlpha::GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatus, decorator: Google::Apis::ComputeAlpha::GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatus::Representation
+      
           property :rollout, as: 'rollout'
           property :rollout_plan, as: 'rolloutPlan'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :state, as: 'state'
         end
       end
@@ -15493,6 +15581,8 @@ module Google
       
           property :fault_injection_policy, as: 'faultInjectionPolicy', class: Google::Apis::ComputeAlpha::HttpFaultInjection, decorator: Google::Apis::ComputeAlpha::HttpFaultInjection::Representation
       
+          property :image_optimization_policy, as: 'imageOptimizationPolicy', class: Google::Apis::ComputeAlpha::ImageOptimizationPolicy, decorator: Google::Apis::ComputeAlpha::ImageOptimizationPolicy::Representation
+      
           property :max_stream_duration, as: 'maxStreamDuration', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
       
           property :request_mirror_policy, as: 'requestMirrorPolicy', class: Google::Apis::ComputeAlpha::RequestMirrorPolicy, decorator: Google::Apis::ComputeAlpha::RequestMirrorPolicy::Representation
@@ -15700,6 +15790,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ImageOptimizationPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query_parameter_interpretation, as: 'queryParameterInterpretation'
         end
       end
       
@@ -20301,6 +20398,8 @@ module Google
       
           collection :alias_ip_ranges, as: 'aliasIpRanges', class: Google::Apis::ComputeAlpha::AliasIpRange, decorator: Google::Apis::ComputeAlpha::AliasIpRange::Representation
       
+          collection :alias_ipv6_ranges, as: 'aliasIpv6Ranges', class: Google::Apis::ComputeAlpha::AliasIpRange, decorator: Google::Apis::ComputeAlpha::AliasIpRange::Representation
+      
           property :enable_vpc_scoped_dns, as: 'enableVpcScopedDns'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :igmp_query, as: 'igmpQuery'
@@ -22877,6 +22976,13 @@ module Google
         end
       end
       
+      class RegionDiskUpdateKmsKeyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
       class RegionDisksAddResourcePoliciesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -23321,6 +23427,13 @@ module Google
           property :etag, :base64 => true, as: 'etag'
           property :policy, as: 'policy', class: Google::Apis::ComputeAlpha::Policy, decorator: Google::Apis::ComputeAlpha::Policy::Representation
       
+        end
+      end
+      
+      class RegionSnapshotUpdateKmsKeyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
         end
       end
       
@@ -24563,9 +24676,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :completed_resources_count, :numeric_string => true, as: 'completedResourcesCount'
+          property :estimated_completion_time, as: 'estimatedCompletionTime'
           property :estimated_total_resources_count, :numeric_string => true, as: 'estimatedTotalResourcesCount'
           collection :failed_locations, as: 'failedLocations'
           property :failed_resources_count, :numeric_string => true, as: 'failedResourcesCount'
+          hash :location_status, as: 'locationStatus', class: Google::Apis::ComputeAlpha::RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus, decorator: Google::Apis::ComputeAlpha::RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus::Representation
+      
+        end
+      end
+      
+      class RolloutWaveDetailsOrchestratedWaveDetailsLocationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
         end
       end
       
@@ -26462,6 +26585,13 @@ module Google
         end
       end
       
+      class SnapshotUpdateKmsKeyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
       class SnapshotsGetEffectiveRecycleBinRuleResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -27236,6 +27366,7 @@ module Google
           property :ipv6_access_type, as: 'ipv6AccessType'
           property :ipv6_cidr_range, as: 'ipv6CidrRange'
           property :ipv6_gce_endpoint, as: 'ipv6GceEndpoint'
+          property :ipv6_network_tier, as: 'ipv6NetworkTier'
           property :kind, as: 'kind'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeAlpha::SubnetworkLogConfig, decorator: Google::Apis::ComputeAlpha::SubnetworkLogConfig::Representation
       
@@ -28485,6 +28616,7 @@ module Google
           property :can_reschedule, as: 'canReschedule'
           property :date, as: 'date'
           property :latest_window_start_time, as: 'latestWindowStartTime'
+          property :maintenance_method, as: 'maintenanceMethod'
           property :maintenance_on_shutdown, as: 'maintenanceOnShutdown'
           collection :maintenance_reasons, as: 'maintenanceReasons'
           property :maintenance_status, as: 'maintenanceStatus'
