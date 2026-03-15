@@ -973,6 +973,7 @@ module Google
           property :key_algorithm, as: 'keyAlgorithm'
           property :lifetime, as: 'lifetime'
           property :rotation_window_percentage, as: 'rotationWindowPercentage'
+          property :use_default_shared_ca, as: 'useDefaultSharedCa'
         end
       end
       
@@ -1505,6 +1506,7 @@ module Google
       
           collection :trust_anchors, as: 'trustAnchors', class: Google::Apis::IamV1::TrustAnchor, decorator: Google::Apis::IamV1::TrustAnchor::Representation
       
+          property :trust_default_shared_ca, as: 'trustDefaultSharedCa'
         end
       end
       
