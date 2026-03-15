@@ -193,17 +193,17 @@ module Google
         end
       end
       
-      # * An AgentCommand specifies a one-time executable program for the agent to run.
+      # An AgentCommand specifies a one-time executable program for the agent to run.
       class AgentCommand
         include Google::Apis::Core::Hashable
       
-        # command is the name of the agent one-time executable that will be invoked.
+        # The name of the agent one-time executable that will be invoked.
         # Corresponds to the JSON property `command`
         # @return [String]
         attr_accessor :command
       
-        # parameters is a map of key/value pairs that can be used to specify additional
-        # one-time executable settings.
+        # A map of key/value pairs that can be used to specify additional one-time
+        # executable settings.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,String>]
         attr_accessor :parameters
@@ -635,17 +635,18 @@ module Google
         end
       end
       
-      # Message describing big query destination
+      # BigQuery destination for evaluation results.
       class BigQueryDestination
         include Google::Apis::Core::Hashable
       
-        # Optional. determine if results will be saved in a new table
+        # Optional. Determines if a new results table will be created when an Execution
+        # is created.
         # Corresponds to the JSON property `createNewResultsTable`
         # @return [Boolean]
         attr_accessor :create_new_results_table
         alias_method :create_new_results_table?, :create_new_results_table
       
-        # Optional. destination dataset to save evaluation results
+        # Optional. Destination dataset to save evaluation results.
         # Corresponds to the JSON property `destinationDataset`
         # @return [String]
         attr_accessor :destination_dataset
@@ -706,16 +707,16 @@ module Google
         end
       end
       
-      # * Command specifies the type of command to execute.
+      # Command specifies the type of command to execute.
       class Command
         include Google::Apis::Core::Hashable
       
-        # * An AgentCommand specifies a one-time executable program for the agent to run.
+        # An AgentCommand specifies a one-time executable program for the agent to run.
         # Corresponds to the JSON property `agentCommand`
         # @return [Google::Apis::WorkloadmanagerV1::AgentCommand]
         attr_accessor :agent_command
       
-        # * A ShellCommand is invoked via the agent's command line executor
+        # A ShellCommand is invoked via the agent's command line executor.
         # Corresponds to the JSON property `shellCommand`
         # @return [Google::Apis::WorkloadmanagerV1::ShellCommand]
         attr_accessor :shell_command
@@ -1081,16 +1082,17 @@ module Google
         end
       end
       
-      # Message describing Evaluation object
+      # Represents a Workload Manager Evaluation configuration. An Evaluation defines
+      # a set of rules to be validated against a scope of Cloud resources.
       class Evaluation
         include Google::Apis::Core::Hashable
       
-        # Message describing big query destination
+        # BigQuery destination for evaluation results.
         # Corresponds to the JSON property `bigQueryDestination`
         # @return [Google::Apis::WorkloadmanagerV1::BigQueryDestination]
         attr_accessor :big_query_destination
       
-        # Output only. [Output only] Create time stamp
+        # Output only. [Output only] Create time stamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1100,61 +1102,59 @@ module Google
         # @return [String]
         attr_accessor :custom_rules_bucket
       
-        # Description of the Evaluation
+        # Description of the Evaluation.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Evaluation type
+        # Evaluation type.
         # Corresponds to the JSON property `evaluationType`
         # @return [String]
         attr_accessor :evaluation_type
       
         # Optional. Immutable. Customer-managed encryption key name, in the format
-        # projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        # projects/*/locations/*/keyRings/*/cryptoKeys/*. The key will be used for CMEK
+        # encryption of the evaluation resource.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key
       
-        # Labels as key value pairs
+        # Labels as key value pairs.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # name of resource names have the form 'projects/`project_id`/locations/`
-        # location_id`/evaluations/`evaluation_id`'
+        # Name of resource that has the form `projects/`project_id`/locations/`
+        # location_id`/evaluations/`evaluation_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Message describing resource filters
+        # Resource filter for an evaluation defining the scope of resources to be
+        # evaluated.
         # Corresponds to the JSON property `resourceFilter`
         # @return [Google::Apis::WorkloadmanagerV1::ResourceFilter]
         attr_accessor :resource_filter
       
-        # Message describing resource status
+        # The lifecycle status of an Evaluation resource.
         # Corresponds to the JSON property `resourceStatus`
         # @return [Google::Apis::WorkloadmanagerV1::ResourceStatus]
         attr_accessor :resource_status
       
-        # the name of the rule
+        # The names of the rules used for this evaluation.
         # Corresponds to the JSON property `ruleNames`
         # @return [Array<String>]
         attr_accessor :rule_names
       
-        # Output only. [Output only] The updated rule ids if exist.
-        # Corresponds to the JSON property `ruleVersions`
-        # @return [Array<String>]
-        attr_accessor :rule_versions
-      
-        # crontab format schedule for scheduled evaluation, currently only support the
-        # following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *"
-        # , "0 0 */7 * *",
+        # Crontab format schedule for scheduled evaluation, currently only supports the
+        # following fixed schedules: * `0 */1 * * *` # Hourly * `0 */6 * * *` # Every 6
+        # hours * `0 */12 * * *` # Every 12 hours * `0 0 */1 * *` # Daily * `0 0 */7 * *`
+        # # Weekly * `0 0 */14 * *` # Every 14 days * `0 0 1 */1 *` # Monthly
         # Corresponds to the JSON property `schedule`
         # @return [String]
         attr_accessor :schedule
       
-        # Output only. [Output only] Update time stamp
+        # Output only. [Output only] Update time stamp.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1176,79 +1176,78 @@ module Google
           @resource_filter = args[:resource_filter] if args.key?(:resource_filter)
           @resource_status = args[:resource_status] if args.key?(:resource_status)
           @rule_names = args[:rule_names] if args.key?(:rule_names)
-          @rule_versions = args[:rule_versions] if args.key?(:rule_versions)
           @schedule = args[:schedule] if args.key?(:schedule)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
-      # Message describing Execution object
+      # Execution that represents a single run of an Evaluation.
       class Execution
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output only] End time stamp
+        # Output only. [Output only] End time stamp.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Optional. Engine
+        # Optional. Engine.
         # Corresponds to the JSON property `engine`
         # @return [String]
         attr_accessor :engine
       
-        # Output only. [Output only] Evaluation ID
+        # Output only. [Output only] Evaluation ID.
         # Corresponds to the JSON property `evaluationId`
         # @return [String]
         attr_accessor :evaluation_id
       
-        # Optional. External data sources
+        # Optional. External data sources.
         # Corresponds to the JSON property `externalDataSources`
         # @return [Array<Google::Apis::WorkloadmanagerV1::ExternalDataSources>]
         attr_accessor :external_data_sources
       
-        # Output only. [Output only] Inventory time stamp
+        # Output only. [Output only] Inventory time stamp.
         # Corresponds to the JSON property `inventoryTime`
         # @return [String]
         attr_accessor :inventory_time
       
-        # Labels as key value pairs
+        # Labels as key value pairs.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
         # The name of execution resource. The format is projects/`project`/locations/`
-        # location`/evaluations/`evaluation`/executions/`execution`
+        # location`/evaluations/`evaluation`/executions/`execution`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. Additional information generated by the execution
+        # Output only. Additional information generated by the execution.
         # Corresponds to the JSON property `notices`
         # @return [Array<Google::Apis::WorkloadmanagerV1::Notice>]
         attr_accessor :notices
       
-        # Message for execution summary
+        # Execution summary.
         # Corresponds to the JSON property `resultSummary`
         # @return [Google::Apis::WorkloadmanagerV1::Summary]
         attr_accessor :result_summary
       
-        # Output only. execution result summary per rule
+        # Output only. Execution result summary per rule.
         # Corresponds to the JSON property `ruleResults`
         # @return [Array<Google::Apis::WorkloadmanagerV1::RuleExecutionResult>]
         attr_accessor :rule_results
       
-        # type represent whether the execution executed directly by user or scheduled
-        # according evaluation.schedule field.
+        # Type which represents whether the execution executed directly by user or
+        # scheduled according to the `Evaluation.schedule` field.
         # Corresponds to the JSON property `runType`
         # @return [String]
         attr_accessor :run_type
       
-        # Output only. [Output only] Start time stamp
+        # Output only. [Output only] Start time stamp.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # Output only. [Output only] State
+        # Output only. [Output only] State.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -1275,7 +1274,7 @@ module Google
         end
       end
       
-      # Message describing the result of an execution
+      # The result of an execution.
       class ExecutionResult
         include Google::Apis::Core::Hashable
       
@@ -1289,7 +1288,7 @@ module Google
         # @return [String]
         attr_accessor :documentation_url
       
-        # Message represent resource in execution result
+        # Resource in execution result.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::WorkloadmanagerV1::Resource]
         attr_accessor :resource
@@ -1304,12 +1303,12 @@ module Google
         # @return [String]
         attr_accessor :severity
       
-        # Execution result type of the scanned resource
+        # Execution result type of the scanned resource.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Message describing the violation in an evaluation result.
+        # The violation in an evaluation result.
         # Corresponds to the JSON property `violationDetails`
         # @return [Google::Apis::WorkloadmanagerV1::ViolationDetails]
         attr_accessor :violation_details
@@ -1336,7 +1335,7 @@ module Google
         end
       end
       
-      # Message for external data sources
+      # External data sources for an execution.
       class ExternalDataSources
         include Google::Apis::Core::Hashable
       
@@ -1349,18 +1348,18 @@ module Google
         attr_accessor :asset_type
       
         # Optional. Name of external data source. The name will be used inside the rego/
-        # sql to refer the external data
+        # sql to refer the external data.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. Type of external data source
+        # Required. Type of external data source.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
         # Required. URI of external data source. example of bq table `project_ID`.`
-        # dataset_ID`.`table_ID`
+        # dataset_ID`.`table_ID`.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1378,11 +1377,12 @@ module Google
         end
       end
       
-      # Message describing compute engine instance filter
+      # A filter for matching Compute Engine instances.
       class GceInstanceFilter
         include Google::Apis::Core::Hashable
       
-        # Service account of compute engine
+        # If non-empty, only Compute Engine instances associated with at least one of
+        # the provided service accounts will be included in the evaluation.
         # Corresponds to the JSON property `serviceAccounts`
         # @return [Array<String>]
         attr_accessor :service_accounts
@@ -1579,62 +1579,6 @@ module Google
         end
       end
       
-      # Message represent an rule that failed to be validated.
-      class InvalidRule
-        include Google::Apis::Core::Hashable
-      
-        # display name of the invalid rule
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # cloud storage destination of the invalid rule
-        # Corresponds to the JSON property `gcsUri`
-        # @return [String]
-        attr_accessor :gcs_uri
-      
-        # name of the invalid rule
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The error message of valdating rule formats.
-        # Corresponds to the JSON property `valiadtionError`
-        # @return [String]
-        attr_accessor :valiadtion_error
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
-          @name = args[:name] if args.key?(:name)
-          @valiadtion_error = args[:valiadtion_error] if args.key?(:valiadtion_error)
-        end
-      end
-      
-      # Message wrappes a list of invalid rules.
-      class InvalidRulesWrapper
-        include Google::Apis::Core::Hashable
-      
-        # The invalid rules that failed to be validated.
-        # Corresponds to the JSON property `invalidRules`
-        # @return [Array<Google::Apis::WorkloadmanagerV1::InvalidRule>]
-        attr_accessor :invalid_rules
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @invalid_rules = args[:invalid_rules] if args.key?(:invalid_rules)
-        end
-      end
-      
       # The response object from `ListActuations`.
       class ListActuationsResponse
         include Google::Apis::Core::Hashable
@@ -1729,11 +1673,11 @@ module Google
         end
       end
       
-      # Message for response to listing Evaluations
+      # Response message for the ListEvaluations RPC.
       class ListEvaluationsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of Evaluation
+        # The list of evaluations.
         # Corresponds to the JSON property `evaluations`
         # @return [Array<Google::Apis::WorkloadmanagerV1::Evaluation>]
         attr_accessor :evaluations
@@ -1760,7 +1704,7 @@ module Google
         end
       end
       
-      # Message for response of list execution results
+      # Response message for the ListExecutionResults RPC.
       class ListExecutionResultsResponse
         include Google::Apis::Core::Hashable
       
@@ -1786,11 +1730,11 @@ module Google
         end
       end
       
-      # Message for response to listing Executions
+      # Response message for the ListExecutions RPC.
       class ListExecutionsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of Execution
+        # The list of Execution.
         # Corresponds to the JSON property `executions`
         # @return [Array<Google::Apis::WorkloadmanagerV1::Execution>]
         attr_accessor :executions
@@ -1876,16 +1820,11 @@ module Google
         end
       end
       
-      # Mesesage of response of list rules
+      # Response message for the ListRules RPC.
       class ListRulesResponse
         include Google::Apis::Core::Hashable
       
-        # Message wrappes a list of invalid rules.
-        # Corresponds to the JSON property `invalidRulesWrapper`
-        # @return [Google::Apis::WorkloadmanagerV1::InvalidRulesWrapper]
-        attr_accessor :invalid_rules_wrapper
-      
-        # all rules in response
+        # All rules in response.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::WorkloadmanagerV1::Rule>]
         attr_accessor :rules
@@ -1896,12 +1835,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @invalid_rules_wrapper = args[:invalid_rules_wrapper] if args.key?(:invalid_rules_wrapper)
           @rules = args[:rules] if args.key?(:rules)
         end
       end
       
-      # Message for response to list scanned resources
+      # Response message for the ListScannedResources RPC.
       class ListScannedResourcesResponse
         include Google::Apis::Core::Hashable
       
@@ -1911,7 +1849,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # All scanned resources in response
+        # All scanned resources in response.
         # Corresponds to the JSON property `scannedResources`
         # @return [Array<Google::Apis::WorkloadmanagerV1::ScannedResource>]
         attr_accessor :scanned_resources
@@ -2063,11 +2001,11 @@ module Google
         end
       end
       
-      # Message for additional information generated by the execution
+      # Additional information generated by an execution.
       class Notice
         include Google::Apis::Core::Hashable
       
-        # Output only. Message of the notice
+        # Output only. Message of the notice.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -2303,7 +2241,7 @@ module Google
         end
       end
       
-      # Message represent resource in execution result
+      # Resource in execution result.
       class Resource
         include Google::Apis::Core::Hashable
       
@@ -2334,26 +2272,32 @@ module Google
         end
       end
       
-      # Message describing resource filters
+      # Resource filter for an evaluation defining the scope of resources to be
+      # evaluated.
       class ResourceFilter
         include Google::Apis::Core::Hashable
       
-        # Message describing compute engine instance filter
+        # A filter for matching Compute Engine instances.
         # Corresponds to the JSON property `gceInstanceFilter`
         # @return [Google::Apis::WorkloadmanagerV1::GceInstanceFilter]
         attr_accessor :gce_instance_filter
       
-        # The label used for filter resource
+        # Labels to filter resources by. Each key-value pair in the map must exist on
+        # the resource for it to be included (e.g. VM instance labels). For example,
+        # specifying `` "env": "prod", "database": "nosql" `` will only include
+        # resources that have labels `env=prod` and `database=nosql`.
         # Corresponds to the JSON property `inclusionLabels`
         # @return [Hash<String,String>]
         attr_accessor :inclusion_labels
       
-        # The id pattern for filter resource
+        # The pattern to filter resources by their id For example, a pattern of ".*prod-
+        # cluster.*" will match all resources that contain "prod-cluster" in their ID.
         # Corresponds to the JSON property `resourceIdPatterns`
         # @return [Array<String>]
         attr_accessor :resource_id_patterns
       
-        # The scopes of evaluation resource
+        # The scopes of evaluation resource. Format: * `projects/`project_id`` * `
+        # folders/`folder_id`` * `organizations/`organization_id``
         # Corresponds to the JSON property `scopes`
         # @return [Array<String>]
         attr_accessor :scopes
@@ -2371,16 +2315,11 @@ module Google
         end
       end
       
-      # Message describing resource status
+      # The lifecycle status of an Evaluation resource.
       class ResourceStatus
         include Google::Apis::Core::Hashable
       
-        # Historical: Used before 2023-05-22 the new version of rule id if exists
-        # Corresponds to the JSON property `rulesNewerVersions`
-        # @return [Array<String>]
-        attr_accessor :rules_newer_versions
-      
-        # State of the resource
+        # State of the Evaluation resource.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -2391,12 +2330,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @rules_newer_versions = args[:rules_newer_versions] if args.key?(:rules_newer_versions)
           @state = args[:state] if args.key?(:state)
         end
       end
       
-      # Message represent a rule
+      # A rule to be evaluated.
       class Rule
         include Google::Apis::Core::Hashable
       
@@ -2406,37 +2344,37 @@ module Google
         # @return [String]
         attr_accessor :asset_type
       
-        # descrite rule in plain language
+        # Describe rule in plain language.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # the name display in UI
+        # The name display in UI.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # the message template for rule
+        # The message template for rule.
         # Corresponds to the JSON property `errorMessage`
         # @return [String]
         attr_accessor :error_message
       
-        # rule name
+        # Rule name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # the primary category
+        # The primary category.
         # Corresponds to the JSON property `primaryCategory`
         # @return [String]
         attr_accessor :primary_category
       
-        # the remediation for the rule
+        # The remediation for the rule.
         # Corresponds to the JSON property `remediation`
         # @return [String]
         attr_accessor :remediation
       
-        # Output only. the version of the rule
+        # Output only. The version of the rule.
         # Corresponds to the JSON property `revisionId`
         # @return [String]
         attr_accessor :revision_id
@@ -2446,22 +2384,22 @@ module Google
         # @return [String]
         attr_accessor :rule_type
       
-        # the secondary category
+        # The secondary category.
         # Corresponds to the JSON property `secondaryCategory`
         # @return [String]
         attr_accessor :secondary_category
       
-        # the severity of the rule
+        # The severity of the rule.
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
       
-        # List of user-defined tags
+        # List of user-defined tags.
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
       
-        # the docuement url for the rule
+        # The document url for the rule.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -2488,31 +2426,31 @@ module Google
         end
       end
       
-      # Message for execution result summary per rule
+      # Execution result summary per rule.
       class RuleExecutionResult
         include Google::Apis::Core::Hashable
       
-        # Execution message, if any
+        # Execution message, if any.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
       
-        # Number of violations
+        # Number of violations.
         # Corresponds to the JSON property `resultCount`
         # @return [Fixnum]
         attr_accessor :result_count
       
-        # rule name
+        # Rule name as plain text like `sap-hana-configured`.
         # Corresponds to the JSON property `rule`
         # @return [String]
         attr_accessor :rule
       
-        # Number of total scanned resources
+        # Number of total scanned resources.
         # Corresponds to the JSON property `scannedResourceCount`
         # @return [Fixnum]
         attr_accessor :scanned_resource_count
       
-        # Output only. The execution status
+        # Output only. The execution status.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -2556,17 +2494,16 @@ module Google
         end
       end
       
-      # Message for creating a Execution
+      # Request message for the RunEvaluation RPC.
       class RunEvaluationRequest
         include Google::Apis::Core::Hashable
       
-        # Message describing Execution object
+        # Execution that represents a single run of an Evaluation.
         # Corresponds to the JSON property `execution`
         # @return [Google::Apis::WorkloadmanagerV1::Execution]
         attr_accessor :execution
       
-        # Required. Id of the requesting object If auto-generating Id server-side,
-        # remove this field and execution_id from the method_signature of Create RPC
+        # Required. ID of the execution which will be created.
         # Corresponds to the JSON property `executionId`
         # @return [String]
         attr_accessor :execution_id
@@ -3514,16 +3451,16 @@ module Google
         end
       end
       
-      # Message of scanned resource
+      # A scanned resource.
       class ScannedResource
         include Google::Apis::Core::Hashable
       
-        # resource name
+        # Resource name.
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
       
-        # resource type
+        # Resource type.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3564,16 +3501,16 @@ module Google
         end
       end
       
-      # * A ShellCommand is invoked via the agent's command line executor
+      # A ShellCommand is invoked via the agent's command line executor.
       class ShellCommand
         include Google::Apis::Core::Hashable
       
-        # args is a string of arguments to be passed to the command.
+        # Arguments to be passed to the command.
         # Corresponds to the JSON property `args`
         # @return [String]
         attr_accessor :args
       
-        # command is the name of the command to be executed.
+        # The name of the command to be executed.
         # Corresponds to the JSON property `command`
         # @return [String]
         attr_accessor :command
@@ -3911,21 +3848,21 @@ module Google
         end
       end
       
-      # Message for execution summary
+      # Execution summary.
       class Summary
         include Google::Apis::Core::Hashable
       
-        # Output only. Number of failures
+        # Output only. Number of failures.
         # Corresponds to the JSON property `failures`
         # @return [Fixnum]
         attr_accessor :failures
       
-        # Output only. Number of new failures compared to the previous execution
+        # Output only. Number of new failures compared to the previous execution.
         # Corresponds to the JSON property `newFailures`
         # @return [Fixnum]
         attr_accessor :new_failures
       
-        # Output only. Number of new fixes compared to the previous execution
+        # Output only. Number of new fixes compared to the previous execution.
         # Corresponds to the JSON property `newFixes`
         # @return [Fixnum]
         attr_accessor :new_fixes
@@ -4054,7 +3991,7 @@ module Google
         end
       end
       
-      # Message describing the violation in an evaluation result.
+      # The violation in an evaluation result.
       class ViolationDetails
         include Google::Apis::Core::Hashable
       

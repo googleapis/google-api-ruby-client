@@ -548,10 +548,10 @@ module Google
         # Creates a new Evaluation in a given project and location.
         # @param [String] parent
         #   Required. The resource prefix of the evaluation location using the form: `
-        #   projects/`project_id`/locations/`location_id``
+        #   projects/`project_id`/locations/`location_id``.
         # @param [Google::Apis::WorkloadmanagerV1::Evaluation] evaluation_object
         # @param [String] evaluation_id
-        #   Required. Id of the requesting object
+        #   Required. Id of the requesting object.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -596,9 +596,9 @@ module Google
         
         # Deletes a single Evaluation.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. Name of the resource.
         # @param [Boolean] force
-        #   Optional. Followed the best practice from https://aip.dev/135#cascading-delete
+        #   Optional. Followed the best practice from https://aip.dev/135#cascading-delete.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -641,7 +641,7 @@ module Google
         
         # Gets details of a single Evaluation.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. Name of the resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -671,11 +671,11 @@ module Google
         
         # Lists Evaluations in a given project and location.
         # @param [String] parent
-        #   Required. Parent value for ListEvaluationsRequest
+        #   Required. Parent value for ListEvaluationsRequest.
         # @param [String] filter
         #   Filter to be applied when listing the evaluation results.
         # @param [String] order_by
-        #   Hint for how to order the results
+        #   Hint for how to order the results.
         # @param [Fixnum] page_size
         #   Requested page size. Server may return fewer items than requested. If
         #   unspecified, server will pick an appropriate default.
@@ -714,8 +714,8 @@ module Google
         
         # Updates the parameters of a single Evaluation.
         # @param [String] name
-        #   name of resource names have the form 'projects/`project_id`/locations/`
-        #   location_id`/evaluations/`evaluation_id`'
+        #   Name of resource that has the form `projects/`project_id`/locations/`
+        #   location_id`/evaluations/`evaluation_id``.
         # @param [Google::Apis::WorkloadmanagerV1::Evaluation] evaluation_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -766,7 +766,7 @@ module Google
         
         # Deletes a single Execution.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. Name of the resource.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -808,7 +808,7 @@ module Google
         
         # Gets details of a single Execution.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. Name of the resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -838,10 +838,10 @@ module Google
         
         # Lists Executions in a given project and location.
         # @param [String] parent
-        #   Required. The resource prefix of the Execution using the form: 'projects/`
-        #   project`/locations/`location`/evaluations/`evaluation`'
+        #   Required. The resource prefix of the Execution using the form: `projects/`
+        #   project`/locations/`location`/evaluations/`evaluation``.
         # @param [String] filter
-        #   Filtering results
+        #   Filtering results.
         # @param [String] order_by
         #   Field to sort by. See https://google.aip.dev/132#ordering for more details.
         # @param [Fixnum] page_size
@@ -882,8 +882,8 @@ module Google
         
         # Creates a new Execution in a given project and location.
         # @param [String] name
-        #   Required. The resource name of the Execution using the form: 'projects/`
-        #   project`/locations/`location`/evaluations/`evaluation`/executions/`execution`'
+        #   Required. The resource name of the Evaluation using the form: `projects/`
+        #   project`/locations/`location`/evaluations/`evaluation``.
         # @param [Google::Apis::WorkloadmanagerV1::RunEvaluationRequest] run_evaluation_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -917,9 +917,9 @@ module Google
         # Lists the result of a single evaluation.
         # @param [String] parent
         #   Required. The execution results. Format: `parent`/evaluations/*/executions/*/
-        #   results
+        #   results.
         # @param [String] filter
-        #   Filtering results
+        #   Filtering results.
         # @param [Fixnum] page_size
         #   Requested page size. Server may return fewer items than requested. If
         #   unspecified, server will pick an appropriate default.
@@ -957,9 +957,9 @@ module Google
         
         # List all scanned resources for a single Execution.
         # @param [String] parent
-        #   Required. parent for ListScannedResourcesRequest
+        #   Required. Parent for ListScannedResourcesRequest.
         # @param [String] filter
-        #   Filtering results
+        #   Filtering results.
         # @param [String] order_by
         #   Field to sort by. See https://google.aip.dev/132#ordering for more details.
         # @param [Fixnum] page_size
@@ -968,7 +968,7 @@ module Google
         # @param [String] page_token
         #   A token identifying a page of results the server should return.
         # @param [String] rule
-        #   rule name
+        #   Rule name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1235,14 +1235,14 @@ module Google
         # @param [String] parent
         #   Required. The [project] on which to execute the request. The format is:
         #   projects/`project_id`/locations/`location` Currently, the pre-defined rules
-        #   are global available to all projects and all regions
+        #   are global available to all projects and all regions.
         # @param [String] custom_rules_bucket
         #   The Cloud Storage bucket name for custom rules.
         # @param [String] evaluation_type
         #   Optional. The evaluation type of the rules will be applied to. The Cloud
         #   Storage bucket name for custom rules.
         # @param [String] filter
-        #   Filter based on primary_category, secondary_category
+        #   Filter based on primary_category, secondary_category.
         # @param [Fixnum] page_size
         #   Requested page size. Server may return fewer items than requested. If
         #   unspecified, server will pick an appropriate default.
