@@ -120,6 +120,12 @@ module Google
           property :long_title, as: 'longTitle'
           property :max_discount_amount, as: 'maxDiscountAmount', class: Google::Apis::MerchantapiPromotionsV1beta::Price, decorator: Google::Apis::MerchantapiPromotionsV1beta::Price::Representation
       
+          property :max_money_off_amount, as: 'maxMoneyOffAmount', class: Google::Apis::MerchantapiPromotionsV1beta::Price, decorator: Google::Apis::MerchantapiPromotionsV1beta::Price::Representation
+      
+          property :max_percent_off, :numeric_string => true, as: 'maxPercentOff'
+          property :min_money_off_amount, as: 'minMoneyOffAmount', class: Google::Apis::MerchantapiPromotionsV1beta::Price, decorator: Google::Apis::MerchantapiPromotionsV1beta::Price::Representation
+      
+          property :min_percent_off, :numeric_string => true, as: 'minPercentOff'
           property :minimum_purchase_amount, as: 'minimumPurchaseAmount', class: Google::Apis::MerchantapiPromotionsV1beta::Price, decorator: Google::Apis::MerchantapiPromotionsV1beta::Price::Representation
       
           property :minimum_purchase_quantity, :numeric_string => true, as: 'minimumPurchaseQuantity'

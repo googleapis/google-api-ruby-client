@@ -32,11 +32,11 @@ module Google
         attr_accessor :audience
       
         # Optional. Product filter by [brand exclusion](https://support.google.com/
-        # merchants/answer/13861679?ref_topic=13773355&sjid=17642868584668136159-NC) for
-        # the promotion. The product filter attributes only applies when the products
-        # eligible for promotion product applicability `product_applicability` attribute
-        # is set to [specific_products](https://support.google.com/merchants/answer/
-        # 13837299?ref_topic=13773355&sjid=17642868584668136159-NC).
+        # merchants/answer/13861679?ref_topic=13773355) for the promotion. The product
+        # filter attributes only applies when the products eligible for promotion
+        # product applicability `product_applicability` attribute is set to [
+        # specific_products](https://support.google.com/merchants/answer/13837299?
+        # ref_topic=13773355).
         # Corresponds to the JSON property `brandExclusion`
         # @return [Array<String>]
         attr_accessor :brand_exclusion
@@ -44,17 +44,16 @@ module Google
         # Optional. Product filter by brand for the promotion. The product filter
         # attributes only applies when the products eligible for promotion product
         # applicability `product_applicability` attribute is set to [specific_products](
-        # https://support.google.com/merchants/answer/13837299?ref_topic=13773355&sjid=
-        # 17642868584668136159-NC).
+        # https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
         # Corresponds to the JSON property `brandInclusion`
         # @return [Array<String>]
         attr_accessor :brand_inclusion
       
         # Required. The [coupon value type] (https://support.google.com/merchants/answer/
-        # 13861986?ref_topic=13773355&sjid=17642868584668136159-NC) attribute to signal
-        # the type of promotion that you are running. Depending on type of the selected
-        # coupon value [some attributes are required](https://support.google.com/
-        # merchants/answer/6393006?ref_topic=7322920).
+        # 13861986?ref_topic=13773355) attribute to signal the type of promotion that
+        # you are running. Depending on type of the selected coupon value [some
+        # attributes are required](https://support.google.com/merchants/answer/6393006?
+        # ref_topic=7322920).
         # Corresponds to the JSON property `couponValueType`
         # @return [String]
         attr_accessor :coupon_value_type
@@ -67,21 +66,20 @@ module Google
       
         # Optional. Event applicability for this promotion. When present, this field
         # indicates you are creating a [sales event](https://support.google.com/
-        # merchants/answer/15523289?hl=en&sjid=11099988466404504696-NC) and not a
-        # product promotion. Exactly one of `product_applicability` or `
-        # event_applicability` must be set.
+        # merchants/answer/15523289) and not a product promotion. Exactly one of `
+        # product_applicability` or `event_applicability` must be set.
         # Corresponds to the JSON property `eventApplicability`
         # @return [String]
         attr_accessor :event_applicability
       
         # Optional. [Free gift description](https://support.google.com/merchants/answer/
-        # 13847245?ref_topic=13773355&sjid=17642868584668136159-NC) for the promotion.
+        # 13847245?ref_topic=13773355) for the promotion.
         # Corresponds to the JSON property `freeGiftDescription`
         # @return [String]
         attr_accessor :free_gift_description
       
         # Optional. [Free gift item ID](https://support.google.com/merchants/answer/
-        # 13857152?ref_topic=13773355&sjid=17642868584668136159-NC) for the promotion.
+        # 13857152?ref_topic=13773355) for the promotion.
         # Corresponds to the JSON property `freeGiftItemId`
         # @return [String]
         attr_accessor :free_gift_item_id
@@ -93,8 +91,7 @@ module Google
       
         # Optional. Generic redemption code for the promotion. To be used with the `
         # offerType` field and must meet the [minimum requirements](https://support.
-        # google.com/merchants/answer/13837405?ref_topic=13773355&sjid=
-        # 17642868584668136159-NC).
+        # google.com/merchants/answer/13837405?ref_topic=13773355).
         # Corresponds to the JSON property `genericRedemptionCode`
         # @return [String]
         attr_accessor :generic_redemption_code
@@ -110,17 +107,17 @@ module Google
         # EventApplicability` is `SPECIFIC_CATEGORIES`. Up to 5 product categories can
         # be specified. For more details on eligible values for product categories,
         # checkout the `google_product_category` attribute in the [Promotion data
-        # specification](https://support.google.com/merchants/answer/2906014?hl=en).
+        # specification](https://support.google.com/merchants/answer/2906014).
         # Corresponds to the JSON property `googleProductCategories`
         # @return [Array<String>]
         attr_accessor :google_product_categories
       
         # Optional. Product filter by [item group ID](https://support.google.com/
-        # merchants/answer/13837298?ref_topic=13773355&sjid=17642868584668136159-NC).
-        # The product filter attributes only applies when the products eligible for
-        # promotion product applicability `product_applicability` attribute is set to [
-        # specific_products](https://support.google.com/merchants/answer/13837299?
-        # ref_topic=13773355&sjid=17642868584668136159-NC). exclusion for the promotion.
+        # merchants/answer/13837298?ref_topic=13773355). The product filter attributes
+        # only applies when the products eligible for promotion product applicability `
+        # product_applicability` attribute is set to [specific_products](https://support.
+        # google.com/merchants/answer/13837299?ref_topic=13773355). exclusion for the
+        # promotion.
         # Corresponds to the JSON property `itemGroupIdExclusion`
         # @return [Array<String>]
         attr_accessor :item_group_id_exclusion
@@ -129,34 +126,32 @@ module Google
         # filter attributes only applies when the products eligible for promotion
         # product applicability [product_applicability] attribute is set to [
         # specific_products](https://support.google.com/merchants/answer/13837299?
-        # ref_topic=13773355&sjid=17642868584668136159-NC).
+        # ref_topic=13773355).
         # Corresponds to the JSON property `itemGroupIdInclusion`
         # @return [Array<String>]
         attr_accessor :item_group_id_inclusion
       
         # Optional. Product filter by [item ID exclusion](https://support.google.com/
-        # merchants/answer/13863524?ref_topic=13773355&sjid=17642868584668136159-NC) for
-        # the promotion. The product filter attributes only applies when the products
-        # eligible for promotion product applicability `product_applicability` attribute
-        # is set to [specific_products](https://support.google.com/merchants/answer/
-        # 13837299?ref_topic=13773355&sjid=17642868584668136159-NC).
+        # merchants/answer/13863524?ref_topic=13773355) for the promotion. The product
+        # filter attributes only applies when the products eligible for promotion
+        # product applicability `product_applicability` attribute is set to [
+        # specific_products](https://support.google.com/merchants/answer/13837299?
+        # ref_topic=13773355).
         # Corresponds to the JSON property `itemIdExclusion`
         # @return [Array<String>]
         attr_accessor :item_id_exclusion
       
         # Optional. Product filter by [item ID](https://support.google.com/merchants/
-        # answer/13861565?ref_topic=13773355&sjid=17642868584668136159-NC) for the
-        # promotion. The product filter attributes only applies when the products
-        # eligible for promotion product applicability `product_applicability` attribute
-        # is set to [specific_products](https://support.google.com/merchants/answer/
-        # 13837299?ref_topic=13773355&sjid=17642868584668136159-NC).
+        # answer/13861565?ref_topic=13773355) for the promotion. The product filter
+        # attributes only applies when the products eligible for promotion product
+        # applicability `product_applicability` attribute is set to [specific_products](
+        # https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
         # Corresponds to the JSON property `itemIdInclusion`
         # @return [Array<String>]
         attr_accessor :item_id_inclusion
       
         # Optional. [Maximum purchase quantity](https://support.google.com/merchants/
-        # answer/13861564?ref_topic=13773355&sjid=17642868584668136159-NC) for the
-        # promotion.
+        # answer/13861564?ref_topic=13773355) for the promotion.
         # Corresponds to the JSON property `limitQuantity`
         # @return [Fixnum]
         attr_accessor :limit_quantity
@@ -167,7 +162,7 @@ module Google
         attr_accessor :limit_value
       
         # Required. [Long title](https://support.google.com/merchants/answer/13838102?
-        # ref_topic=13773355&sjid=17642868584668136159-NC) for the promotion.
+        # ref_topic=13773355) for the promotion.
         # Corresponds to the JSON property `longTitle`
         # @return [String]
         attr_accessor :long_title
@@ -176,6 +171,34 @@ module Google
         # Corresponds to the JSON property `maxDiscountAmount`
         # @return [Google::Apis::MerchantapiPromotionsV1beta::Price]
         attr_accessor :max_discount_amount
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `maxMoneyOffAmount`
+        # @return [Google::Apis::MerchantapiPromotionsV1beta::Price]
+        attr_accessor :max_money_off_amount
+      
+        # Optional. Maximum percent off for a promotion with `PERCENT_OFF_RANGE` coupon
+        # value type. At least one of `min_percent_off` or `max_percent_off` must be
+        # present when the coupon value type is `PERCENT_OFF_RANGE`. If neither is
+        # provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is
+        # returned.
+        # Corresponds to the JSON property `maxPercentOff`
+        # @return [Fixnum]
+        attr_accessor :max_percent_off
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `minMoneyOffAmount`
+        # @return [Google::Apis::MerchantapiPromotionsV1beta::Price]
+        attr_accessor :min_money_off_amount
+      
+        # Optional. Minimum percent off for a promotion with `PERCENT_OFF_RANGE` coupon
+        # value type. At least one of `min_percent_off` or `max_percent_off` must be
+        # present when the coupon value type is `PERCENT_OFF_RANGE`. If neither is
+        # provided an `INVALID_PROMOTION_MISSING_BENEFIT_OR_RESTRICTION` error is
+        # returned.
+        # Corresponds to the JSON property `minPercentOff`
+        # @return [Fixnum]
+        attr_accessor :min_percent_off
       
         # The price represented as a number and currency.
         # Corresponds to the JSON property `minimumPurchaseAmount`
@@ -193,9 +216,8 @@ module Google
         attr_accessor :money_off_amount
       
         # Required. [Type](https://support.google.com/merchants/answer/13837405?
-        # ref_topic=13773355&sjid=17642868584668136159-NC) of the promotion. Use this
-        # attribute to indicate whether or not customers need a coupon code to redeem
-        # your promotion.
+        # ref_topic=13773355) of the promotion. Use this attribute to indicate whether
+        # or not customers need a coupon code to redeem your promotion.
         # Corresponds to the JSON property `offerType`
         # @return [String]
         attr_accessor :offer_type
@@ -207,19 +229,18 @@ module Google
         attr_accessor :percent_off
       
         # Optional. Applicability of the promotion to either all products or [only
-        # specific products](https://support.google.com/merchants/answer/6396257?
-        # ref_topic=6396150&sjid=17642868584668136159-NC). Exactly one of `
-        # product_applicability` or `event_applicability` must be set.
+        # specific products](https://support.google.com/merchants/answer/6396257).
+        # Exactly one of `product_applicability` or `event_applicability` must be set.
         # Corresponds to the JSON property `productApplicability`
         # @return [String]
         attr_accessor :product_applicability
       
         # Optional. Product filter by [product type exclusion](https://support.google.
-        # com/merchants/answer/13863746?ref_topic=13773355&sjid=17642868584668136159-NC)
-        # for the promotion. The product filter attributes only applies when the
-        # products eligible for promotion product applicability `product_applicability`
-        # attribute is set to [specific_products](https://support.google.com/merchants/
-        # answer/13837299?ref_topic=13773355&sjid=17642868584668136159-NC).
+        # com/merchants/answer/13863746?ref_topic=13773355) for the promotion. The
+        # product filter attributes only applies when the products eligible for
+        # promotion product applicability `product_applicability` attribute is set to [
+        # specific_products](https://support.google.com/merchants/answer/13837299?
+        # ref_topic=13773355).
         # Corresponds to the JSON property `productTypeExclusion`
         # @return [Array<String>]
         attr_accessor :product_type_exclusion
@@ -227,8 +248,7 @@ module Google
         # Optional. Product filter by product type for the promotion. The product filter
         # attributes only applies when the products eligible for promotion product
         # applicability `product_applicability` attribute is set to [specific_products](
-        # https://support.google.com/merchants/answer/13837299?ref_topic=13773355&sjid=
-        # 17642868584668136159-NC).
+        # https://support.google.com/merchants/answer/13837299?ref_topic=13773355).
         # Corresponds to the JSON property `productTypeInclusion`
         # @return [Array<String>]
         attr_accessor :product_type_inclusion
@@ -241,8 +261,7 @@ module Google
         # destinations for your products: Shopping Actions, Surfaces across Google,
         # Local surfaces across Google. To represent these values use `FREE_LISTINGS`, `
         # FREE_LOCAL_LISTINGS`, `LOCAL_INVENTORY_ADS`. For more details see [Promotion
-        # destination](https://support.google.com/merchants/answer/13837465?sjid=
-        # 5155774230887277618-NC)
+        # destination](https://support.google.com/merchants/answer/13837465)
         # Corresponds to the JSON property `promotionDestinations`
         # @return [Array<String>]
         attr_accessor :promotion_destinations
@@ -278,8 +297,8 @@ module Google
         attr_accessor :redemption_restriction
       
         # Optional. A list of [regions](https://support.google.com/merchants/answer/
-        # 15406457?hl=en&sjid=8815806704218720187-NC#howregionswork) where the promotion
-        # is applicable. Must be set if `audience` is set to `LOCATION`.
+        # 15406457?#howregionswork) where the promotion is applicable. Must be set if `
+        # audience` is set to `LOCATION`.
         # Corresponds to the JSON property `regionIdInclusion`
         # @return [Array<String>]
         attr_accessor :region_id_inclusion
@@ -295,22 +314,22 @@ module Google
         attr_accessor :store_applicability
       
         # Optional. [Store codes to exclude](https://support.google.com/merchants/answer/
-        # 13859586?ref_topic=13773355&sjid=17642868584668136159-NC) for the promotion.
-        # The store filter attributes only applies when the `store_applicability`
-        # attribute is set to [specific_stores](https://support.google.com/merchants/
-        # answer/13857563?ref_topic=13773355&sjid=17642868584668136159-NC).
+        # 13859586?ref_topic=13773355) for the promotion. The store filter attributes
+        # only applies when the `store_applicability` attribute is set to [
+        # specific_stores](https://support.google.com/merchants/answer/13857563?
+        # ref_topic=13773355).
         # Corresponds to the JSON property `storeCodesExclusion`
         # @return [Array<String>]
         attr_accessor :store_codes_exclusion
       
         # Optional. [Store codes to include](https://support.google.com/merchants/answer/
-        # 13857470?ref_topic=13773355&sjid=17642868584668136159-NC) for the promotion.
-        # The store filter attributes only applies when the `store_applicability`
-        # attribute is set to [specific_stores](https://support.google.com/merchants/
-        # answer/13857563?ref_topic=13773355&sjid=17642868584668136159-NC). Store code (
-        # the store ID from your Business Profile) of the physical store the product is
-        # sold in. See the [Local product inventory data specification](https://support.
-        # google.com/merchants/answer/3061342) for more information.
+        # 13857470?ref_topic=13773355) for the promotion. The store filter attributes
+        # only applies when the `store_applicability` attribute is set to [
+        # specific_stores](https://support.google.com/merchants/answer/13857563?
+        # ref_topic=13773355). Store code (the store ID from your Business Profile) of
+        # the physical store the product is sold in. See the [Local product inventory
+        # data specification](https://support.google.com/merchants/answer/3061342) for
+        # more information.
         # Corresponds to the JSON property `storeCodesInclusion`
         # @return [Array<String>]
         attr_accessor :store_codes_inclusion
@@ -341,6 +360,10 @@ module Google
           @limit_value = args[:limit_value] if args.key?(:limit_value)
           @long_title = args[:long_title] if args.key?(:long_title)
           @max_discount_amount = args[:max_discount_amount] if args.key?(:max_discount_amount)
+          @max_money_off_amount = args[:max_money_off_amount] if args.key?(:max_money_off_amount)
+          @max_percent_off = args[:max_percent_off] if args.key?(:max_percent_off)
+          @min_money_off_amount = args[:min_money_off_amount] if args.key?(:min_money_off_amount)
+          @min_percent_off = args[:min_percent_off] if args.key?(:min_percent_off)
           @minimum_purchase_amount = args[:minimum_purchase_amount] if args.key?(:minimum_purchase_amount)
           @minimum_purchase_quantity = args[:minimum_purchase_quantity] if args.key?(:minimum_purchase_quantity)
           @money_off_amount = args[:money_off_amount] if args.key?(:money_off_amount)
