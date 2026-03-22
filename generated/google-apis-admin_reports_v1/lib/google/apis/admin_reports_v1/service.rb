@@ -141,6 +141,11 @@ module Google
         #   filtering groups allowlist. For more information about adding groups to
         #   filtering groups allowlist, see [Filter results by Google Group](https://
         #   support.google.com/a/answer/11482175)
+        # @param [Boolean] include_sensitive_data
+        #   Optional. When set to `true`, this field allows sensitive user-generated
+        #   content to be included in the returned audit logs. This parameter is supported
+        #   only for Rules (DLP) and Chat applications; using it with any other
+        #   application will result in a permission error.
         # @param [Fixnum] max_results
         #   Determines how many activity records are shown on each response page. For
         #   example, if the request sets `maxResults=1` and the report has two activities,
@@ -227,7 +232,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_activities(user_key, application_name, actor_ip_address: nil, application_info_filter: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, group_id_filter: nil, max_results: nil, network_info_filter: nil, org_unit_id: nil, page_token: nil, resource_details_filter: nil, start_time: nil, status_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_activities(user_key, application_name, actor_ip_address: nil, application_info_filter: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, group_id_filter: nil, include_sensitive_data: nil, max_results: nil, network_info_filter: nil, org_unit_id: nil, page_token: nil, resource_details_filter: nil, start_time: nil, status_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'admin/reports/v1/activity/users/{userKey}/applications/{applicationName}', options)
           command.response_representation = Google::Apis::AdminReportsV1::Activities::Representation
           command.response_class = Google::Apis::AdminReportsV1::Activities
@@ -240,6 +245,7 @@ module Google
           command.query['eventName'] = event_name unless event_name.nil?
           command.query['filters'] = filters unless filters.nil?
           command.query['groupIdFilter'] = group_id_filter unless group_id_filter.nil?
+          command.query['includeSensitiveData'] = include_sensitive_data unless include_sensitive_data.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['networkInfoFilter'] = network_info_filter unless network_info_filter.nil?
           command.query['orgUnitID'] = org_unit_id unless org_unit_id.nil?

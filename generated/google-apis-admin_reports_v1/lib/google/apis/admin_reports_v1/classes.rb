@@ -240,6 +240,11 @@ module Google
           # @return [Array<String>]
           attr_accessor :resource_ids
         
+          # Includes sensitive parameter value pairs for various applications.
+          # Corresponds to the JSON property `sensitiveParameters`
+          # @return [Array<Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter>]
+          attr_accessor :sensitive_parameters
+        
           # Status of the event. Note: Not all events have status.
           # Corresponds to the JSON property `status`
           # @return [Google::Apis::AdminReportsV1::ActivityEventsStatus]
@@ -262,6 +267,7 @@ module Google
             @name = args[:name] if args.key?(:name)
             @parameters = args[:parameters] if args.key?(:parameters)
             @resource_ids = args[:resource_ids] if args.key?(:resource_ids)
+            @sensitive_parameters = args[:sensitive_parameters] if args.key?(:sensitive_parameters)
             @status = args[:status] if args.key?(:status)
             @type = args[:type] if args.key?(:type)
           end
@@ -297,6 +303,112 @@ module Google
             # List of `messageValue` objects.
             # Corresponds to the JSON property `multiMessageValue`
             # @return [Array<Google::Apis::AdminReportsV1::Activity::Event::Parameter::MultiMessageValue>]
+            attr_accessor :multi_message_value
+          
+            # String values of the parameter.
+            # Corresponds to the JSON property `multiValue`
+            # @return [Array<String>]
+            attr_accessor :multi_value
+          
+            # The name of the parameter.
+            # Corresponds to the JSON property `name`
+            # @return [String]
+            attr_accessor :name
+          
+            # String value of the parameter.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @bool_value = args[:bool_value] if args.key?(:bool_value)
+              @int_value = args[:int_value] if args.key?(:int_value)
+              @message_value = args[:message_value] if args.key?(:message_value)
+              @multi_int_value = args[:multi_int_value] if args.key?(:multi_int_value)
+              @multi_message_value = args[:multi_message_value] if args.key?(:multi_message_value)
+              @multi_value = args[:multi_value] if args.key?(:multi_value)
+              @name = args[:name] if args.key?(:name)
+              @value = args[:value] if args.key?(:value)
+            end
+            
+            # Nested parameter value pairs associated with this parameter. Complex value
+            # type for a parameter are returned as a list of parameter values. For example,
+            # the address parameter may have a value as `[`parameter: [`name: city, value:
+            # abc`]`]`
+            class MessageValue
+              include Google::Apis::Core::Hashable
+            
+              # Parameter values
+              # Corresponds to the JSON property `parameter`
+              # @return [Array<Google::Apis::AdminReportsV1::NestedParameter>]
+              attr_accessor :parameter
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @parameter = args[:parameter] if args.key?(:parameter)
+              end
+            end
+            
+            # 
+            class MultiMessageValue
+              include Google::Apis::Core::Hashable
+            
+              # Parameter values
+              # Corresponds to the JSON property `parameter`
+              # @return [Array<Google::Apis::AdminReportsV1::NestedParameter>]
+              attr_accessor :parameter
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @parameter = args[:parameter] if args.key?(:parameter)
+              end
+            end
+          end
+          
+          # 
+          class SensitiveParameter
+            include Google::Apis::Core::Hashable
+          
+            # Boolean value of the parameter.
+            # Corresponds to the JSON property `boolValue`
+            # @return [Boolean]
+            attr_accessor :bool_value
+            alias_method :bool_value?, :bool_value
+          
+            # Integer value of the parameter.
+            # Corresponds to the JSON property `intValue`
+            # @return [Fixnum]
+            attr_accessor :int_value
+          
+            # Nested parameter value pairs associated with this parameter. Complex value
+            # type for a parameter are returned as a list of parameter values. For example,
+            # the address parameter may have a value as `[`parameter: [`name: city, value:
+            # abc`]`]`
+            # Corresponds to the JSON property `messageValue`
+            # @return [Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter::MessageValue]
+            attr_accessor :message_value
+          
+            # Integer values of the parameter.
+            # Corresponds to the JSON property `multiIntValue`
+            # @return [Array<Fixnum>]
+            attr_accessor :multi_int_value
+          
+            # List of `messageValue` objects.
+            # Corresponds to the JSON property `multiMessageValue`
+            # @return [Array<Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter::MultiMessageValue>]
             attr_accessor :multi_message_value
           
             # String values of the parameter.
