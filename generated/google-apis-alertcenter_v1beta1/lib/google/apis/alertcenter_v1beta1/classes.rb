@@ -834,6 +834,31 @@ module Google
         end
       end
       
+      # Alerts for client-side encryption outages.
+      class ClientSideEncryptionServiceUnavailable
+        include Google::Apis::Core::Hashable
+      
+        # Identity providers impacted by an outage or misconfiguration.
+        # Corresponds to the JSON property `idpError`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::IdentityProviderError>]
+        attr_accessor :idp_error
+      
+        # External key services impacted by an outage or misconfiguration.
+        # Corresponds to the JSON property `keyServiceError`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::KeyServiceError>]
+        attr_accessor :key_service_error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @idp_error = args[:idp_error] if args.key?(:idp_error)
+          @key_service_error = args[:key_service_error] if args.key?(:key_service_error)
+        end
+      end
+      
       # A reference to a Cloud Pubsub topic. To register for notifications, the owner
       # of the topic must grant `alerts-api-push-notifications@system.gserviceaccount.
       # com` the `projects.topics.publish` permission.
@@ -1327,6 +1352,74 @@ module Google
           @domain = args[:domain] if args.key?(:domain)
           @header = args[:header] if args.key?(:header)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Error related to an identity provider.
+      class IdentityProviderError
+        include Google::Apis::Core::Hashable
+      
+        # Authorization base url of the identity provider.
+        # Corresponds to the JSON property `authorizationBaseUrl`
+        # @return [String]
+        attr_accessor :authorization_base_url
+      
+        # Number of similar errors encountered.
+        # Corresponds to the JSON property `errorCount`
+        # @return [Fixnum]
+        attr_accessor :error_count
+      
+        # Info on the identity provider error.
+        # Corresponds to the JSON property `errorInfo`
+        # @return [String]
+        attr_accessor :error_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorization_base_url = args[:authorization_base_url] if args.key?(:authorization_base_url)
+          @error_count = args[:error_count] if args.key?(:error_count)
+          @error_info = args[:error_info] if args.key?(:error_info)
+        end
+      end
+      
+      # Error related to an external key service.
+      class KeyServiceError
+        include Google::Apis::Core::Hashable
+      
+        # Number of similar errors encountered.
+        # Corresponds to the JSON property `errorCount`
+        # @return [Fixnum]
+        attr_accessor :error_count
+      
+        # Info on the key service error.
+        # Corresponds to the JSON property `errorInfo`
+        # @return [String]
+        attr_accessor :error_info
+      
+        # HTTP response status code from the key service.
+        # Corresponds to the JSON property `httpResponseCode`
+        # @return [Fixnum]
+        attr_accessor :http_response_code
+      
+        # Url of the external key service.
+        # Corresponds to the JSON property `keyServiceUrl`
+        # @return [String]
+        attr_accessor :key_service_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_count = args[:error_count] if args.key?(:error_count)
+          @error_info = args[:error_info] if args.key?(:error_info)
+          @http_response_code = args[:http_response_code] if args.key?(:http_response_code)
+          @key_service_url = args[:key_service_url] if args.key?(:key_service_url)
         end
       end
       
