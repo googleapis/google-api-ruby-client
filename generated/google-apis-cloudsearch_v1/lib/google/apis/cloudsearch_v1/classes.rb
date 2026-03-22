@@ -6329,12 +6329,24 @@ module Google
       class QuerySuggestion
         include Google::Apis::Core::Hashable
       
+        # Last query time of the suggestion for query history suggestions.
+        # Corresponds to the JSON property `lastQueryTime`
+        # @return [String]
+        attr_accessor :last_query_time
+      
+        # Source corpus of the suggestion.
+        # Corresponds to the JSON property `sourceCorpus`
+        # @return [String]
+        attr_accessor :source_corpus
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @last_query_time = args[:last_query_time] if args.key?(:last_query_time)
+          @source_corpus = args[:source_corpus] if args.key?(:source_corpus)
         end
       end
       
@@ -7047,7 +7059,7 @@ module Google
         end
       end
       
-      # The search API request. NEXT ID: 24
+      # The search API request. NEXT ID: 25
       class SearchRequest
         include Google::Apis::Core::Hashable
       
