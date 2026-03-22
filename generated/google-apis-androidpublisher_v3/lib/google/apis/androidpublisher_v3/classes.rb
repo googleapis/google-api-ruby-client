@@ -761,7 +761,7 @@ module Google
       class ArtifactSummary
         include Google::Apis::Core::Hashable
       
-        # The version code of the artifact.
+        # Artifact's version code
         # Corresponds to the JSON property `versionCode`
         # @return [Fixnum]
         attr_accessor :version_code
@@ -4735,8 +4735,7 @@ module Google
       class ListReleaseSummariesResponse
         include Google::Apis::Core::Hashable
       
-        # List of releases for this track. There will be a maximum of 20 releases
-        # returned.
+        # List of releases for this track. A maximum of 20 releases can be returned.
         # Corresponds to the JSON property `releases`
         # @return [Array<Google::Apis::AndroidpublisherV3::ReleaseSummary>]
         attr_accessor :releases
@@ -7546,7 +7545,7 @@ module Google
       class ReleaseSummary
         include Google::Apis::Core::Hashable
       
-        # List of active artifacts on this release.
+        # List of active artifacts on this release
         # Corresponds to the JSON property `activeArtifacts`
         # @return [Array<Google::Apis::AndroidpublisherV3::ArtifactSummary>]
         attr_accessor :active_artifacts
@@ -7561,8 +7560,8 @@ module Google
         # @return [String]
         attr_accessor :release_name
       
-        # Identifier of the track. More on [track name](https://developers.google.com/
-        # android-publisher/tracks).
+        # Identifier for the track. [Learn more about track names.](https://developers.
+        # google.com/android-publisher/tracks).
         # Corresponds to the JSON property `track`
         # @return [String]
         attr_accessor :track
