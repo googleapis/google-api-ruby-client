@@ -1720,6 +1720,148 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # `ExecuteOntapDelete` dispatches the ONTAP `DELETE` request to the `StoragePool`
+        # cluster.
+        # @param [String] ontap_path
+        #   Required. The resource path of the ONTAP resource. Format: `projects/`
+        #   project_number`/locations/`location_id`/storagePools/`storage_pool_id`/ontap/`
+        #   ontap_resource_path``. For example: `projects/123456789/locations/us-central1/
+        #   storagePools/my-storage-pool/ontap/api/storage/volumes`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetappV1::ExecuteOntapDeleteResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetappV1::ExecuteOntapDeleteResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_project_location_storage_pool_ontap_ontap_delete(ontap_path, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+ontapPath}', options)
+          command.response_representation = Google::Apis::NetappV1::ExecuteOntapDeleteResponse::Representation
+          command.response_class = Google::Apis::NetappV1::ExecuteOntapDeleteResponse
+          command.params['ontapPath'] = ontap_path unless ontap_path.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # `ExecuteOntapGet` dispatches the ONTAP `GET` request to the `StoragePool`
+        # cluster.
+        # @param [String] ontap_path
+        #   Required. The resource path of the ONTAP resource. Format: `projects/`
+        #   project_number`/locations/`location_id`/storagePools/`storage_pool_id`/ontap/`
+        #   ontap_resource_path``. For example: `projects/123456789/locations/us-central1/
+        #   storagePools/my-storage-pool/ontap/api/storage/volumes`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetappV1::ExecuteOntapGetResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetappV1::ExecuteOntapGetResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_project_location_storage_pool_ontap_ontap_get(ontap_path, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+ontapPath}', options)
+          command.response_representation = Google::Apis::NetappV1::ExecuteOntapGetResponse::Representation
+          command.response_class = Google::Apis::NetappV1::ExecuteOntapGetResponse
+          command.params['ontapPath'] = ontap_path unless ontap_path.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # `ExecuteOntapPatch` dispatches the ONTAP `PATCH` request to the `StoragePool`
+        # cluster.
+        # @param [String] ontap_path
+        #   Required. The resource path of the ONTAP resource. Format: `projects/`
+        #   project_number`/locations/`location_id`/storagePools/`storage_pool_id`/ontap/`
+        #   ontap_resource_path``. For example: `projects/123456789/locations/us-central1/
+        #   storagePools/my-storage-pool/ontap/api/storage/volumes`.
+        # @param [Google::Apis::NetappV1::ExecuteOntapPatchRequest] execute_ontap_patch_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetappV1::ExecuteOntapPatchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetappV1::ExecuteOntapPatchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_ontap_patch(ontap_path, execute_ontap_patch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+ontapPath}', options)
+          command.request_representation = Google::Apis::NetappV1::ExecuteOntapPatchRequest::Representation
+          command.request_object = execute_ontap_patch_request_object
+          command.response_representation = Google::Apis::NetappV1::ExecuteOntapPatchResponse::Representation
+          command.response_class = Google::Apis::NetappV1::ExecuteOntapPatchResponse
+          command.params['ontapPath'] = ontap_path unless ontap_path.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # `ExecuteOntapPost` dispatches the ONTAP `POST` request to the `StoragePool`
+        # cluster.
+        # @param [String] ontap_path
+        #   Required. The resource path of the ONTAP resource. Format: `projects/`
+        #   project_number`/locations/`location_id`/storagePools/`storage_pool_id`/ontap/`
+        #   ontap_resource_path``. For example: `projects/123456789/locations/us-central1/
+        #   storagePools/my-storage-pool/ontap/api/storage/volumes`.
+        # @param [Google::Apis::NetappV1::ExecuteOntapPostRequest] execute_ontap_post_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetappV1::ExecuteOntapPostResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetappV1::ExecuteOntapPostResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_ontap_post(ontap_path, execute_ontap_post_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+ontapPath}', options)
+          command.request_representation = Google::Apis::NetappV1::ExecuteOntapPostRequest::Representation
+          command.request_object = execute_ontap_post_request_object
+          command.response_representation = Google::Apis::NetappV1::ExecuteOntapPostResponse::Representation
+          command.response_class = Google::Apis::NetappV1::ExecuteOntapPostResponse
+          command.params['ontapPath'] = ontap_path unless ontap_path.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new Volume in a given project and location.
         # @param [String] parent
         #   Required. Value for parent.

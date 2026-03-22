@@ -248,8 +248,9 @@ module Google
         # @return [String]
         attr_accessor :source_snapshot
       
-        # Volume full name of this backup belongs to. Format: `projects/`projects_id`/
-        # locations/`location`/volumes/`volume_id``
+        # Volume full name of this backup belongs to. Either source_volume or
+        # ontap_source should be provided. Format: `projects/`projects_id`/locations/`
+        # location`/volumes/`volume_id``
         # Corresponds to the JSON property `sourceVolume`
         # @return [String]
         attr_accessor :source_volume
@@ -1013,6 +1014,124 @@ module Google
         end
       end
       
+      # Response message for `ExecuteOntapDelete` API.
+      class ExecuteOntapDeleteResponse
+        include Google::Apis::Core::Hashable
+      
+        # The raw `JSON` body of the response.
+        # Corresponds to the JSON property `body`
+        # @return [Hash<String,Object>]
+        attr_accessor :body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+        end
+      end
+      
+      # Response message for `ExecuteOntapGet` API.
+      class ExecuteOntapGetResponse
+        include Google::Apis::Core::Hashable
+      
+        # The raw `JSON` body of the response.
+        # Corresponds to the JSON property `body`
+        # @return [Hash<String,Object>]
+        attr_accessor :body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+        end
+      end
+      
+      # Request message for `ExecuteOntapPatch` API.
+      class ExecuteOntapPatchRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The raw `JSON` body of the request. The body should be in the format
+        # of the ONTAP resource. For example: ``` ` "body": ` "field1": "value1", "
+        # field2": "value2", ` ` ```
+        # Corresponds to the JSON property `body`
+        # @return [Hash<String,Object>]
+        attr_accessor :body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+        end
+      end
+      
+      # Response message for `ExecuteOntapPatch` API.
+      class ExecuteOntapPatchResponse
+        include Google::Apis::Core::Hashable
+      
+        # The raw `JSON` body of the response.
+        # Corresponds to the JSON property `body`
+        # @return [Hash<String,Object>]
+        attr_accessor :body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+        end
+      end
+      
+      # Request message for `ExecuteOntapPost` API.
+      class ExecuteOntapPostRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The raw `JSON` body of the request. The body should be in the format
+        # of the ONTAP resource. For example: ``` ` "body": ` "field1": "value1", "
+        # field2": "value2", ` ` ```
+        # Corresponds to the JSON property `body`
+        # @return [Hash<String,Object>]
+        attr_accessor :body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+        end
+      end
+      
+      # Response message for `ExecuteOntapPost` API.
+      class ExecuteOntapPostResponse
+        include Google::Apis::Core::Hashable
+      
+        # The raw `JSON` body of the response.
+        # Corresponds to the JSON property `body`
+        # @return [Hash<String,Object>]
+        attr_accessor :body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+        end
+      end
+      
       # Defines the export policy for the volume.
       class ExportPolicy
         include Google::Apis::Core::Hashable
@@ -1350,6 +1469,28 @@ module Google
           @service_account = args[:service_account] if args.key?(:service_account)
           @state = args[:state] if args.key?(:state)
           @state_details = args[:state_details] if args.key?(:state_details)
+        end
+      end
+      
+      # Configuration for a Large Capacity Volume. A Large Capacity Volume supports
+      # sizes ranging from 12 TiB to 20 PiB, it is composed of multiple internal
+      # constituents, and must be created in a large capacity pool.
+      class LargeCapacityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of internal constituents (e.g., FlexVols) for this large
+        # volume. The minimum number of constituents is 2.
+        # Corresponds to the JSON property `constituentCount`
+        # @return [Fixnum]
+        attr_accessor :constituent_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constituent_count = args[:constituent_count] if args.key?(:constituent_count)
         end
       end
       
@@ -2286,8 +2427,10 @@ module Google
       class RestoreParameters
         include Google::Apis::Core::Hashable
       
-        # Full name of the backup resource. Format: projects/`project`/locations/`
-        # location`/backupVaults/`backup_vault_id`/backups/`backup_id`
+        # Full name of the backup resource. Format for standard backup: projects/`
+        # project`/locations/`location`/backupVaults/`backup_vault_id`/backups/`
+        # backup_id` Format for BackupDR backup: projects/`project`/locations/`location`/
+        # backupVaults/`backup_vault`/dataSources/`data_source`/backups/`backup`
         # Corresponds to the JSON property `sourceBackup`
         # @return [String]
         attr_accessor :source_backup
@@ -2742,6 +2885,13 @@ module Google
         attr_accessor :ldap_enabled
         alias_method :ldap_enabled?, :ldap_enabled
       
+        # Optional. Mode of the storage pool. This field is used to control whether the
+        # user can perform the ONTAP operations on the storage pool using the GCNV ONTAP
+        # Mode APIs. If not specified during creation, it defaults to `DEFAULT`.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         # Identifier. Name of the storage pool
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2781,6 +2931,12 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
+        # Optional. The effective scale tier of the storage pool. If `scale_tier` is not
+        # specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+        # Corresponds to the JSON property `scaleTier`
+        # @return [String]
+        attr_accessor :scale_tier
+      
         # Required. Service level of the storage pool
         # Corresponds to the JSON property `serviceLevel`
         # @return [String]
@@ -2809,8 +2965,7 @@ module Google
       
         # Optional. Type of the storage pool. This field is used to control whether the
         # pool supports `FILE` based volumes only or `UNIFIED` (both `FILE` and `BLOCK`)
-        # volumes or `UNIFIED_LARGE_CAPACITY` (both `FILE` and `BLOCK`) volumes with
-        # large capacity. If not specified during creation, it defaults to `FILE`.
+        # volumes. If not specified during creation, it defaults to `FILE`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2852,6 +3007,7 @@ module Google
           @kms_config = args[:kms_config] if args.key?(:kms_config)
           @labels = args[:labels] if args.key?(:labels)
           @ldap_enabled = args[:ldap_enabled] if args.key?(:ldap_enabled)
+          @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @psa_range = args[:psa_range] if args.key?(:psa_range)
@@ -2859,6 +3015,7 @@ module Google
           @replica_zone = args[:replica_zone] if args.key?(:replica_zone)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @scale_tier = args[:scale_tier] if args.key?(:scale_tier)
           @service_level = args[:service_level] if args.key?(:service_level)
           @state = args[:state] if args.key?(:state)
           @state_details = args[:state_details] if args.key?(:state_details)
@@ -3183,6 +3340,13 @@ module Google
         attr_accessor :large_capacity
         alias_method :large_capacity?, :large_capacity
       
+        # Configuration for a Large Capacity Volume. A Large Capacity Volume supports
+        # sizes ranging from 12 TiB to 20 PiB, it is composed of multiple internal
+        # constituents, and must be created in a large capacity pool.
+        # Corresponds to the JSON property `largeCapacityConfig`
+        # @return [Google::Apis::NetappV1::LargeCapacityConfig]
+        attr_accessor :large_capacity_config
+      
         # Output only. Flag indicating if the volume is NFS LDAP enabled or not.
         # Corresponds to the JSON property `ldapEnabled`
         # @return [Boolean]
@@ -3344,6 +3508,7 @@ module Google
           @kms_config = args[:kms_config] if args.key?(:kms_config)
           @labels = args[:labels] if args.key?(:labels)
           @large_capacity = args[:large_capacity] if args.key?(:large_capacity)
+          @large_capacity_config = args[:large_capacity_config] if args.key?(:large_capacity_config)
           @ldap_enabled = args[:ldap_enabled] if args.key?(:ldap_enabled)
           @mount_options = args[:mount_options] if args.key?(:mount_options)
           @multiple_endpoints = args[:multiple_endpoints] if args.key?(:multiple_endpoints)

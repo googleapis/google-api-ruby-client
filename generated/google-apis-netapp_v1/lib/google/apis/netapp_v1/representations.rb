@@ -124,6 +124,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExecuteOntapDeleteResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteOntapGetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteOntapPatchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteOntapPatchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteOntapPostRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteOntapPostResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +197,12 @@ module Google
       end
       
       class KmsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LargeCapacityConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -636,6 +678,48 @@ module Google
         end
       end
       
+      class ExecuteOntapDeleteResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :body, as: 'body'
+        end
+      end
+      
+      class ExecuteOntapGetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :body, as: 'body'
+        end
+      end
+      
+      class ExecuteOntapPatchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :body, as: 'body'
+        end
+      end
+      
+      class ExecuteOntapPatchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :body, as: 'body'
+        end
+      end
+      
+      class ExecuteOntapPostRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :body, as: 'body'
+        end
+      end
+      
+      class ExecuteOntapPostResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :body, as: 'body'
+        end
+      end
+      
       class ExportPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -714,6 +798,13 @@ module Google
           property :service_account, as: 'serviceAccount'
           property :state, as: 'state'
           property :state_details, as: 'stateDetails'
+        end
+      end
+      
+      class LargeCapacityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :constituent_count, as: 'constituentCount'
         end
       end
       
@@ -1074,6 +1165,7 @@ module Google
           property :kms_config, as: 'kmsConfig'
           hash :labels, as: 'labels'
           property :ldap_enabled, as: 'ldapEnabled'
+          property :mode, as: 'mode'
           property :name, as: 'name'
           property :network, as: 'network'
           property :psa_range, as: 'psaRange'
@@ -1081,6 +1173,7 @@ module Google
           property :replica_zone, as: 'replicaZone'
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :scale_tier, as: 'scaleTier'
           property :service_level, as: 'serviceLevel'
           property :state, as: 'state'
           property :state_details, as: 'stateDetails'
@@ -1184,6 +1277,8 @@ module Google
           property :kms_config, as: 'kmsConfig'
           hash :labels, as: 'labels'
           property :large_capacity, as: 'largeCapacity'
+          property :large_capacity_config, as: 'largeCapacityConfig', class: Google::Apis::NetappV1::LargeCapacityConfig, decorator: Google::Apis::NetappV1::LargeCapacityConfig::Representation
+      
           property :ldap_enabled, as: 'ldapEnabled'
           collection :mount_options, as: 'mountOptions', class: Google::Apis::NetappV1::MountOption, decorator: Google::Apis::NetappV1::MountOption::Representation
       
