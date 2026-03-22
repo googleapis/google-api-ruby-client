@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomOAuthConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeploymentEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +167,12 @@ module Google
       end
       
       class FetchReadWriteTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchUserRepositoriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -382,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProxyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RuntimeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -424,16 +442,26 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountConnector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
           property :create_time, as: 'createTime'
+          property :custom_oauth_config, as: 'customOauthConfig', class: Google::Apis::DeveloperconnectV1::CustomOAuthConfig, decorator: Google::Apis::DeveloperconnectV1::CustomOAuthConfig::Representation
+      
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :oauth_start_uri, as: 'oauthStartUri'
           property :provider_oauth_config, as: 'providerOauthConfig', class: Google::Apis::DeveloperconnectV1::ProviderOAuthConfig, decorator: Google::Apis::DeveloperconnectV1::ProviderOAuthConfig::Representation
+      
+          property :proxy_config, as: 'proxyConfig', class: Google::Apis::DeveloperconnectV1::ProxyConfig, decorator: Google::Apis::DeveloperconnectV1::ProxyConfig::Representation
       
           property :update_time, as: 'updateTime'
         end
@@ -575,6 +603,24 @@ module Google
         end
       end
       
+      class CustomOAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_uri, as: 'authUri'
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          property :host_uri, as: 'hostUri'
+          property :pkce_disabled, as: 'pkceDisabled'
+          property :scm_provider, as: 'scmProvider'
+          collection :scopes, as: 'scopes'
+          property :server_version, as: 'serverVersion'
+          property :service_directory_config, as: 'serviceDirectoryConfig', class: Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig, decorator: Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig::Representation
+      
+          property :ssl_ca_certificate, as: 'sslCaCertificate'
+          property :token_uri, as: 'tokenUri'
+        end
+      end
+      
       class DeploymentEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -675,6 +721,15 @@ module Google
           property :expiration_time, as: 'expirationTime'
           property :git_username, as: 'gitUsername'
           property :token, as: 'token'
+        end
+      end
+      
+      class FetchUserRepositoriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :user_repos, as: 'userRepos', class: Google::Apis::DeveloperconnectV1::UserRepository, decorator: Google::Apis::DeveloperconnectV1::UserRepository::Representation
+      
         end
       end
       
@@ -1045,6 +1100,13 @@ module Google
         end
       end
       
+      class ProxyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class RuntimeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1112,6 +1174,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :user_token_secret_version, as: 'userTokenSecretVersion'
           property :username, as: 'username'
+        end
+      end
+      
+      class UserRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :clone_uri, as: 'cloneUri'
+          property :display_name, as: 'displayName'
+          property :git_proxy_uri, as: 'gitProxyUri'
         end
       end
     end
