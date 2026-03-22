@@ -6100,7 +6100,7 @@ module Google
         end
       end
       
-      # Rollout contains the Rollout metadata and configuration.
+      # Rollout contains the Rollout metadata and configuration. Next ID: 28
       class Rollout
         include Google::Apis::Core::Hashable
       
@@ -6170,6 +6170,11 @@ module Google
         # @return [String]
         attr_accessor :state_reason
       
+        # Output only. StateReasonType specifies the reason type of the Rollout state.
+        # Corresponds to the JSON property `stateReasonType`
+        # @return [String]
+        attr_accessor :state_reason_type
+      
         # Output only. Google-generated UUID for this resource. This is unique across
         # all Rollout resources. If a Rollout resource is deleted and another resource
         # with the same name is created, it gets a different uid.
@@ -6205,6 +6210,7 @@ module Google
           @stages = args[:stages] if args.key?(:stages)
           @state = args[:state] if args.key?(:state)
           @state_reason = args[:state_reason] if args.key?(:state_reason)
+          @state_reason_type = args[:state_reason_type] if args.key?(:state_reason_type)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version_upgrade = args[:version_upgrade] if args.key?(:version_upgrade)
@@ -6325,6 +6331,12 @@ module Google
       class RolloutSequenceState
         include Google::Apis::Core::Hashable
       
+        # Output only. The timestamp at which the LifecycleState was last changed. Used
+        # to track how long it has been in the current state.
+        # Corresponds to the JSON property `lastStateChangeTime`
+        # @return [String]
+        attr_accessor :last_state_change_time
+      
         # Output only. Lifecycle state of the Rollout Sequence.
         # Corresponds to the JSON property `lifecycleState`
         # @return [String]
@@ -6341,6 +6353,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @last_state_change_time = args[:last_state_change_time] if args.key?(:last_state_change_time)
           @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
           @state_reasons = args[:state_reasons] if args.key?(:state_reasons)
         end
@@ -6350,27 +6363,27 @@ module Google
       class RolloutStage
         include Google::Apis::Core::Hashable
       
-        # Optional. Output only. The time at which the wave ended.
+        # Optional. Output only. The time at which the stage ended.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Optional. Duration to soak after this wave before starting the next wave.
+        # Optional. Duration to soak after this stage before starting the next stage.
         # Corresponds to the JSON property `soakDuration`
         # @return [String]
         attr_accessor :soak_duration
       
-        # Output only. The wave number to which this status applies.
+        # Output only. The stage number to which this status applies.
         # Corresponds to the JSON property `stageNumber`
         # @return [Fixnum]
         attr_accessor :stage_number
       
-        # Optional. Output only. The time at which the wave started.
+        # Optional. Output only. The time at which the stage started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # Output only. The state of the wave.
+        # Output only. The state of the stage.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state

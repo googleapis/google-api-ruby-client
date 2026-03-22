@@ -2980,6 +2980,7 @@ module Google
       
           property :state, as: 'state'
           property :state_reason, as: 'stateReason'
+          property :state_reason_type, as: 'stateReasonType'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :version_upgrade, as: 'versionUpgrade', class: Google::Apis::GkehubV1alpha::VersionUpgrade, decorator: Google::Apis::GkehubV1alpha::VersionUpgrade::Representation
@@ -3018,6 +3019,7 @@ module Google
       class RolloutSequenceState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_state_change_time, as: 'lastStateChangeTime'
           property :lifecycle_state, as: 'lifecycleState'
           collection :state_reasons, as: 'stateReasons'
         end
