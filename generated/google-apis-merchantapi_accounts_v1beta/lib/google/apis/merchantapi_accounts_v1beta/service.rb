@@ -82,6 +82,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a Merchant Center test account. Test accounts are intended for
+        # development and testing purposes, such as validating API integrations or new
+        # feature behavior. Key characteristics and limitations of test accounts: -
+        # Immutable Type: A test account cannot be converted into a regular (live)
+        # Merchant Center account. Likewise, a regular account cannot be converted into
+        # a test account. - Non-Serving Products: Any products, offers, or data created
+        # within a test account will not be published or made visible to end-users on
+        # any Google surfaces. They are strictly for testing environments. - Separate
+        # Environment: Test accounts operate in a sandbox-like manner, isolated from
+        # live serving and real user traffic.
+        # @param [String] parent
+        #   Required. The account resource name to create the test account under. Format:
+        #   accounts/`account`
+        # @param [Google::Apis::MerchantapiAccountsV1beta::Account] account_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MerchantapiAccountsV1beta::Account] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MerchantapiAccountsV1beta::Account]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_account_test_account(parent, account_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'accounts/v1beta/{+parent}:createTestAccount', options)
+          command.request_representation = Google::Apis::MerchantapiAccountsV1beta::Account::Representation
+          command.request_object = account_object
+          command.response_representation = Google::Apis::MerchantapiAccountsV1beta::Account::Representation
+          command.response_class = Google::Apis::MerchantapiAccountsV1beta::Account
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified account regardless of its type: standalone, advanced
         # account or sub-account. Deleting an advanced account leads to the deletion of
         # all of its sub-accounts. This also deletes the account's [developer
