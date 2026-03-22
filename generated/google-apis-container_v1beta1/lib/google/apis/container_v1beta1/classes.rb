@@ -532,6 +532,11 @@ module Google
       class Autopilot
         include Google::Apis::Core::Hashable
       
+        # ClusterPolicyConfig stores the configuration for cluster wide policies.
+        # Corresponds to the JSON property `clusterPolicyConfig`
+        # @return [Google::Apis::ContainerV1beta1::ClusterPolicyConfig]
+        attr_accessor :cluster_policy_config
+      
         # AutopilotConversionStatus represents conversion status.
         # Corresponds to the JSON property `conversionStatus`
         # @return [Google::Apis::ContainerV1beta1::AutopilotConversionStatus]
@@ -560,6 +565,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster_policy_config = args[:cluster_policy_config] if args.key?(:cluster_policy_config)
           @conversion_status = args[:conversion_status] if args.key?(:conversion_status)
           @enabled = args[:enabled] if args.key?(:enabled)
           @privileged_admission_config = args[:privileged_admission_config] if args.key?(:privileged_admission_config)
@@ -1573,6 +1579,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::MaintenancePolicy]
         attr_accessor :maintenance_policy
       
+        # ManagedMachineLearningDiagnosticsConfig is the configuration for the GKE
+        # Managed Machine Learning Diagnostics pipeline.
+        # Corresponds to the JSON property `managedMachineLearningDiagnosticsConfig`
+        # @return [Google::Apis::ContainerV1beta1::ManagedMachineLearningDiagnosticsConfig]
+        attr_accessor :managed_machine_learning_diagnostics_config
+      
         # ManagedOpenTelemetryConfig is the configuration for the GKE Managed
         # OpenTelemetry pipeline.
         # Corresponds to the JSON property `managedOpentelemetryConfig`
@@ -1770,6 +1782,11 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
+        # Configuration for scheduled upgrades on the cluster.
+        # Corresponds to the JSON property `scheduleUpgradeConfig`
+        # @return [Google::Apis::ContainerV1beta1::ScheduleUpgradeConfig]
+        attr_accessor :schedule_upgrade_config
+      
         # SecretManagerConfig is config for secret manager enablement.
         # Corresponds to the JSON property `secretManagerConfig`
         # @return [Google::Apis::ContainerV1beta1::SecretManagerConfig]
@@ -1923,6 +1940,7 @@ module Google
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @logging_service = args[:logging_service] if args.key?(:logging_service)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
+          @managed_machine_learning_diagnostics_config = args[:managed_machine_learning_diagnostics_config] if args.key?(:managed_machine_learning_diagnostics_config)
           @managed_opentelemetry_config = args[:managed_opentelemetry_config] if args.key?(:managed_opentelemetry_config)
           @master = args[:master] if args.key?(:master)
           @master_auth = args[:master_auth] if args.key?(:master_auth)
@@ -1954,6 +1972,7 @@ module Google
           @rollback_safe_upgrade = args[:rollback_safe_upgrade] if args.key?(:rollback_safe_upgrade)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @schedule_upgrade_config = args[:schedule_upgrade_config] if args.key?(:schedule_upgrade_config)
           @secret_manager_config = args[:secret_manager_config] if args.key?(:secret_manager_config)
           @secret_sync_config = args[:secret_sync_config] if args.key?(:secret_sync_config)
           @security_posture_config = args[:security_posture_config] if args.key?(:security_posture_config)
@@ -2055,6 +2074,48 @@ module Google
         end
       end
       
+      # ClusterPolicyConfig stores the configuration for cluster wide policies.
+      class ClusterPolicyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Denotes preventing standard node pools and requiring only autopilot node pools.
+        # Corresponds to the JSON property `noStandardNodePools`
+        # @return [Boolean]
+        attr_accessor :no_standard_node_pools
+        alias_method :no_standard_node_pools?, :no_standard_node_pools
+      
+        # Denotes preventing impersonation and CSRs for GKE System users.
+        # Corresponds to the JSON property `noSystemImpersonation`
+        # @return [Boolean]
+        attr_accessor :no_system_impersonation
+        alias_method :no_system_impersonation?, :no_system_impersonation
+      
+        # Denotes that preventing creation and mutation of resources in GKE managed
+        # namespaces and cluster-scoped GKE managed resources .
+        # Corresponds to the JSON property `noSystemMutation`
+        # @return [Boolean]
+        attr_accessor :no_system_mutation
+        alias_method :no_system_mutation?, :no_system_mutation
+      
+        # Denotes preventing unsafe webhooks.
+        # Corresponds to the JSON property `noUnsafeWebhooks`
+        # @return [Boolean]
+        attr_accessor :no_unsafe_webhooks
+        alias_method :no_unsafe_webhooks?, :no_unsafe_webhooks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @no_standard_node_pools = args[:no_standard_node_pools] if args.key?(:no_standard_node_pools)
+          @no_system_impersonation = args[:no_system_impersonation] if args.key?(:no_system_impersonation)
+          @no_system_mutation = args[:no_system_mutation] if args.key?(:no_system_mutation)
+          @no_unsafe_webhooks = args[:no_unsafe_webhooks] if args.key?(:no_unsafe_webhooks)
+        end
+      end
+      
       # Telemetry integration for the cluster.
       class ClusterTelemetry
         include Google::Apis::Core::Hashable
@@ -2112,6 +2173,11 @@ module Google
         # Corresponds to the JSON property `desiredAutoIpamConfig`
         # @return [Google::Apis::ContainerV1beta1::AutoIpamConfig]
         attr_accessor :desired_auto_ipam_config
+      
+        # ClusterPolicyConfig stores the configuration for cluster wide policies.
+        # Corresponds to the JSON property `desiredAutopilotClusterPolicyConfig`
+        # @return [Google::Apis::ContainerV1beta1::ClusterPolicyConfig]
+        attr_accessor :desired_autopilot_cluster_policy_config
       
         # WorkloadPolicyConfig is the configuration related to GCW workload policy
         # Corresponds to the JSON property `desiredAutopilotWorkloadPolicyConfig`
@@ -2308,6 +2374,12 @@ module Google
         # @return [String]
         attr_accessor :desired_logging_service
       
+        # ManagedMachineLearningDiagnosticsConfig is the configuration for the GKE
+        # Managed Machine Learning Diagnostics pipeline.
+        # Corresponds to the JSON property `desiredManagedMachineLearningDiagnosticsConfig`
+        # @return [Google::Apis::ContainerV1beta1::ManagedMachineLearningDiagnosticsConfig]
+        attr_accessor :desired_managed_machine_learning_diagnostics_config
+      
         # ManagedOpenTelemetryConfig is the configuration for the GKE Managed
         # OpenTelemetry pipeline.
         # Corresponds to the JSON property `desiredManagedOpentelemetryConfig`
@@ -2499,6 +2571,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::RollbackSafeUpgrade]
         attr_accessor :desired_rollback_safe_upgrade
       
+        # Configuration for scheduled upgrades on the cluster.
+        # Corresponds to the JSON property `desiredScheduleUpgradeConfig`
+        # @return [Google::Apis::ContainerV1beta1::ScheduleUpgradeConfig]
+        attr_accessor :desired_schedule_upgrade_config
+      
         # SecretManagerConfig is config for secret manager enablement.
         # Corresponds to the JSON property `desiredSecretManagerConfig`
         # @return [Google::Apis::ContainerV1beta1::SecretManagerConfig]
@@ -2614,6 +2691,7 @@ module Google
           @desired_anonymous_authentication_config = args[:desired_anonymous_authentication_config] if args.key?(:desired_anonymous_authentication_config)
           @desired_authenticator_groups_config = args[:desired_authenticator_groups_config] if args.key?(:desired_authenticator_groups_config)
           @desired_auto_ipam_config = args[:desired_auto_ipam_config] if args.key?(:desired_auto_ipam_config)
+          @desired_autopilot_cluster_policy_config = args[:desired_autopilot_cluster_policy_config] if args.key?(:desired_autopilot_cluster_policy_config)
           @desired_autopilot_workload_policy_config = args[:desired_autopilot_workload_policy_config] if args.key?(:desired_autopilot_workload_policy_config)
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
           @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
@@ -2646,6 +2724,7 @@ module Google
           @desired_locations = args[:desired_locations] if args.key?(:desired_locations)
           @desired_logging_config = args[:desired_logging_config] if args.key?(:desired_logging_config)
           @desired_logging_service = args[:desired_logging_service] if args.key?(:desired_logging_service)
+          @desired_managed_machine_learning_diagnostics_config = args[:desired_managed_machine_learning_diagnostics_config] if args.key?(:desired_managed_machine_learning_diagnostics_config)
           @desired_managed_opentelemetry_config = args[:desired_managed_opentelemetry_config] if args.key?(:desired_managed_opentelemetry_config)
           @desired_master = args[:desired_master] if args.key?(:desired_master)
           @desired_master_authorized_networks_config = args[:desired_master_authorized_networks_config] if args.key?(:desired_master_authorized_networks_config)
@@ -2676,6 +2755,7 @@ module Google
           @desired_release_channel = args[:desired_release_channel] if args.key?(:desired_release_channel)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
           @desired_rollback_safe_upgrade = args[:desired_rollback_safe_upgrade] if args.key?(:desired_rollback_safe_upgrade)
+          @desired_schedule_upgrade_config = args[:desired_schedule_upgrade_config] if args.key?(:desired_schedule_upgrade_config)
           @desired_secret_manager_config = args[:desired_secret_manager_config] if args.key?(:desired_secret_manager_config)
           @desired_secret_sync_config = args[:desired_secret_sync_config] if args.key?(:desired_secret_sync_config)
           @desired_security_posture_config = args[:desired_security_posture_config] if args.key?(:desired_security_posture_config)
@@ -5412,6 +5492,15 @@ module Google
       class LustreCsiDriverConfig
         include Google::Apis::Core::Hashable
       
+        # When set to true, this disables multi-NIC support for the Lustre CSI driver.
+        # By default, GKE enables multi-NIC support, which allows the Lustre CSI driver
+        # to automatically detect and configure all suitable network interfaces on a
+        # node to maximize I/O performance for demanding workloads.
+        # Corresponds to the JSON property `disableMultiNic`
+        # @return [Boolean]
+        attr_accessor :disable_multi_nic
+        alias_method :disable_multi_nic?, :disable_multi_nic
+      
         # If set to true, the Lustre CSI driver will install Lustre kernel modules using
         # port 6988. This serves as a workaround for a port conflict with the gke-
         # metadata-server. This field is required ONLY under the following conditions: 1.
@@ -5437,6 +5526,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disable_multi_nic = args[:disable_multi_nic] if args.key?(:disable_multi_nic)
           @enable_legacy_lustre_port = args[:enable_legacy_lustre_port] if args.key?(:enable_legacy_lustre_port)
           @enabled = args[:enabled] if args.key?(:enabled)
         end
@@ -5532,6 +5622,27 @@ module Google
           @daily_maintenance_window = args[:daily_maintenance_window] if args.key?(:daily_maintenance_window)
           @maintenance_exclusions = args[:maintenance_exclusions] if args.key?(:maintenance_exclusions)
           @recurring_window = args[:recurring_window] if args.key?(:recurring_window)
+        end
+      end
+      
+      # ManagedMachineLearningDiagnosticsConfig is the configuration for the GKE
+      # Managed Machine Learning Diagnostics pipeline.
+      class ManagedMachineLearningDiagnosticsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enable/Disable Managed Machine Learning Diagnostics.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -6465,6 +6576,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
+        # TaintConfig contains the configuration for the taints of the node pool.
+        # Corresponds to the JSON property `taintConfig`
+        # @return [Google::Apis::ContainerV1beta1::TaintConfig]
+        attr_accessor :taint_config
+      
         # List of kubernetes taints to be applied to each node. For more information,
         # including usage and the valid values, see: https://kubernetes.io/docs/concepts/
         # configuration/taint-and-toleration/
@@ -6537,6 +6653,7 @@ module Google
           @spot = args[:spot] if args.key?(:spot)
           @storage_pools = args[:storage_pools] if args.key?(:storage_pools)
           @tags = args[:tags] if args.key?(:tags)
+          @taint_config = args[:taint_config] if args.key?(:taint_config)
           @taints = args[:taints] if args.key?(:taints)
           @windows_node_config = args[:windows_node_config] if args.key?(:windows_node_config)
           @workload_metadata_config = args[:workload_metadata_config] if args.key?(:workload_metadata_config)
@@ -8793,6 +8910,26 @@ module Google
         end
       end
       
+      # Configuration for scheduled upgrades on the cluster.
+      class ScheduleUpgradeConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether or not scheduled upgrades are enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # SecondaryBootDisk represents a persistent disk attached to a node with special
       # configurations based on its mode.
       class SecondaryBootDisk
@@ -10071,6 +10208,25 @@ module Google
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
           @rotation_interval = args[:rotation_interval] if args.key?(:rotation_interval)
+        end
+      end
+      
+      # TaintConfig contains the configuration for the taints of the node pool.
+      class TaintConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Controls architecture tainting behavior.
+        # Corresponds to the JSON property `architectureTaintBehavior`
+        # @return [String]
+        attr_accessor :architecture_taint_behavior
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @architecture_taint_behavior = args[:architecture_taint_behavior] if args.key?(:architecture_taint_behavior)
         end
       end
       
