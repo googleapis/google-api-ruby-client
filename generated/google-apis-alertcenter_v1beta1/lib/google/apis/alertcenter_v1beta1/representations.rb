@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClientSideEncryptionServiceUnavailable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudPubsubTopic
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +227,18 @@ module Google
       end
       
       class GoogleOperations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityProviderError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KeyServiceError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -668,6 +686,16 @@ module Google
         end
       end
       
+      class ClientSideEncryptionServiceUnavailable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :idp_error, as: 'idpError', class: Google::Apis::AlertcenterV1beta1::IdentityProviderError, decorator: Google::Apis::AlertcenterV1beta1::IdentityProviderError::Representation
+      
+          collection :key_service_error, as: 'keyServiceError', class: Google::Apis::AlertcenterV1beta1::KeyServiceError, decorator: Google::Apis::AlertcenterV1beta1::KeyServiceError::Representation
+      
+        end
+      end
+      
       class CloudPubsubTopic
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -803,6 +831,25 @@ module Google
           property :domain, as: 'domain'
           property :header, as: 'header'
           property :title, as: 'title'
+        end
+      end
+      
+      class IdentityProviderError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization_base_url, as: 'authorizationBaseUrl'
+          property :error_count, :numeric_string => true, as: 'errorCount'
+          property :error_info, as: 'errorInfo'
+        end
+      end
+      
+      class KeyServiceError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_count, :numeric_string => true, as: 'errorCount'
+          property :error_info, as: 'errorInfo'
+          property :http_response_code, :numeric_string => true, as: 'httpResponseCode'
+          property :key_service_url, as: 'keyServiceUrl'
         end
       end
       
