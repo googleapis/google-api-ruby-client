@@ -430,6 +430,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FetchConnectionToolspecOverrideRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchConnectionToolspecOverrideResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Field
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1840,6 +1852,7 @@ module Google
           property :destinations, as: 'destinations', class: Google::Apis::ConnectorsV1::EventSubscriptionDestination, decorator: Google::Apis::ConnectorsV1::EventSubscriptionDestination::Representation
       
           property :event_type_id, as: 'eventTypeId'
+          property :filter, as: 'filter'
           property :jms, as: 'jms', class: Google::Apis::ConnectorsV1::Jms, decorator: Google::Apis::ConnectorsV1::Jms::Representation
       
           property :name, as: 'name'
@@ -1892,6 +1905,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_variables, as: 'additionalVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
       
+          collection :allowed_event_types, as: 'allowedEventTypes'
           property :auth_config, as: 'authConfig', class: Google::Apis::ConnectorsV1::AuthConfig, decorator: Google::Apis::ConnectorsV1::AuthConfig::Representation
       
           property :dead_letter_config, as: 'deadLetterConfig', class: Google::Apis::ConnectorsV1::DeadLetterConfig, decorator: Google::Apis::ConnectorsV1::DeadLetterConfig::Representation
@@ -2010,6 +2024,22 @@ module Google
           collection :auth_schemas, as: 'authSchemas', class: Google::Apis::ConnectorsV1::AuthSchema, decorator: Google::Apis::ConnectorsV1::AuthSchema::Representation
       
           property :json_schema, as: 'jsonSchema', class: Google::Apis::ConnectorsV1::JsonAuthSchema, decorator: Google::Apis::ConnectorsV1::JsonAuthSchema::Representation
+      
+        end
+      end
+      
+      class FetchConnectionToolspecOverrideRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tool_names, as: 'toolNames', class: Google::Apis::ConnectorsV1::ToolName, decorator: Google::Apis::ConnectorsV1::ToolName::Representation
+      
+        end
+      end
+      
+      class FetchConnectionToolspecOverrideResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :toolspec_override, as: 'toolspecOverride', class: Google::Apis::ConnectorsV1::ToolspecOverride, decorator: Google::Apis::ConnectorsV1::ToolspecOverride::Representation
       
         end
       end
@@ -2139,14 +2169,24 @@ module Google
           property :default, as: 'default'
           property :description, as: 'description'
           collection :enum, as: 'enum'
+          property :exclusive_maximum, as: 'exclusiveMaximum'
+          property :exclusive_minimum, as: 'exclusiveMinimum'
           property :format, as: 'format'
           property :items, as: 'items', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
       
           property :jdbc_type, as: 'jdbcType'
+          property :max_items, as: 'maxItems'
+          property :max_length, as: 'maxLength'
+          property :maximum, as: 'maximum'
+          property :min_items, as: 'minItems'
+          property :min_length, as: 'minLength'
+          property :minimum, as: 'minimum'
+          property :pattern, as: 'pattern'
           hash :properties, as: 'properties', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
       
           collection :required, as: 'required'
           collection :type, as: 'type'
+          property :unique_items, as: 'uniqueItems'
         end
       end
       

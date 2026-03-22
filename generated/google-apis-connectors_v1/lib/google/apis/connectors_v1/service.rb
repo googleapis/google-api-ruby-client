@@ -306,6 +306,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Fetches Toolspec Override for a connection for the given list of tools.
+        # Returns results from the db if the tool is already present.
+        # @param [String] name
+        #   Required. Resource name format: projects/`project`/locations/`location`/
+        #   connections/`connection`
+        # @param [Google::Apis::ConnectorsV1::FetchConnectionToolspecOverrideRequest] fetch_connection_toolspec_override_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::FetchConnectionToolspecOverrideResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::FetchConnectionToolspecOverrideResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_connection_toolspec_override(name, fetch_connection_toolspec_override_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:fetchToolspecOverride', options)
+          command.request_representation = Google::Apis::ConnectorsV1::FetchConnectionToolspecOverrideRequest::Representation
+          command.request_object = fetch_connection_toolspec_override_request_object
+          command.response_representation = Google::Apis::ConnectorsV1::FetchConnectionToolspecOverrideResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV1::FetchConnectionToolspecOverrideResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generates Toolspec Override for a connection for the given list of entityTypes
         # and operations. Returns results from the db if the entityType and operation
         # are already present.
