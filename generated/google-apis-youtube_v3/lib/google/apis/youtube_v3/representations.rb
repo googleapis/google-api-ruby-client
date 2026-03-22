@@ -2319,7 +2319,7 @@ module Google
           property :gift_name, as: 'giftName'
           property :gift_url, as: 'giftUrl'
           property :has_visual_effect, as: 'hasVisualEffect'
-          property :jewels_count, as: 'jewelsCount'
+          property :jewels_amount, as: 'jewelsAmount'
           property :language, as: 'language'
         end
       end

@@ -4286,10 +4286,10 @@ module Google
         attr_accessor :has_visual_effect
         alias_method :has_visual_effect?, :has_visual_effect
       
-        # The cost of the gift in jewels.
-        # Corresponds to the JSON property `jewelsCount`
+        # The value of the gift in jewels.
+        # Corresponds to the JSON property `jewelsAmount`
         # @return [Fixnum]
-        attr_accessor :jewels_count
+        attr_accessor :jewels_amount
       
         # The BCP-47 language code of the gift.
         # Corresponds to the JSON property `language`
@@ -4308,7 +4308,7 @@ module Google
           @gift_name = args[:gift_name] if args.key?(:gift_name)
           @gift_url = args[:gift_url] if args.key?(:gift_url)
           @has_visual_effect = args[:has_visual_effect] if args.key?(:has_visual_effect)
-          @jewels_count = args[:jewels_count] if args.key?(:jewels_count)
+          @jewels_amount = args[:jewels_amount] if args.key?(:jewels_amount)
           @language = args[:language] if args.key?(:language)
         end
       end
