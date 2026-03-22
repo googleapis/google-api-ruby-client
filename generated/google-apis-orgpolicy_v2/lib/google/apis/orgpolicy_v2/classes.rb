@@ -33,7 +33,7 @@ module Google
         # @return [String]
         attr_accessor :launch
       
-        # Defines a Google Cloud policy specification which is used to specify
+        # Defines a Google Cloud policy specification that is used to specify
         # constraints for configurations of Google Cloud resources.
         # Corresponds to the JSON property `spec`
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec]
@@ -50,18 +50,18 @@ module Google
         end
       end
       
-      # A constraint describes a way to restrict resource's configuration. For example,
-      # you could enforce a constraint that controls which Google Cloud services can
-      # be activated across an organization, or whether a Compute Engine instance can
-      # have serial port connections established. Constraints can be configured by the
-      # organization policy administrator to fit the needs of the organization by
-      # setting a policy that includes constraints at different locations in the
-      # organization's resource hierarchy. Policies are inherited down the resource
-      # hierarchy from higher levels, but can also be overridden. For details about
-      # the inheritance rules, see `Policy`. Constraints have a default behavior
-      # determined by the `constraint_default` field, which is the enforcement
-      # behavior that is used in the absence of a policy being defined or inherited
-      # for the resource in question.
+      # A constraint describes a way to restrict a resource's configuration. For
+      # example, you could enforce a constraint that controls which Google Cloud
+      # services can be activated across an organization, or whether a Compute Engine
+      # instance can have serial port connections established. Constraints can be
+      # configured by the organization policy administrator to fit the needs of the
+      # organization by setting a policy that includes constraints at different
+      # locations in the organization's resource hierarchy. Policies are inherited
+      # down the resource hierarchy from higher levels, but can also be overridden.
+      # For details about the inheritance rules, see `Policy`. Constraints have a
+      # default behavior determined by the `constraint_default` field, which is the
+      # enforcement behavior that is used in the absence of a policy being defined or
+      # inherited for the resource in question.
       class GoogleCloudOrgpolicyV2Constraint
         include Google::Apis::Core::Hashable
       
@@ -88,8 +88,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Managed constraint and canned constraint sometimes can have equivalents. This
-        # field is used to store the equivalent constraint name.
+        # Defines the equivalent constraint name, if it exists. Managed constraints can
+        # have an equivalent legacy managed constraint, and legacy managed constraints
+        # can have an equivalent managed constraint. For example, "constraints/iam.
+        # disableServiceAccountKeyUpload" is equivalent to "constraints/iam.managed.
+        # disableServiceAccountKeyUpload".
         # Corresponds to the JSON property `equivalentConstraint`
         # @return [String]
         attr_accessor :equivalent_constraint
@@ -187,8 +190,8 @@ module Google
         # @return [Hash<String,Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter>]
         attr_accessor :parameters
       
-        # The resource instance type on which this policy applies. Format will be of the
-        # form : `/` Example: * `compute.googleapis.com/Instance`.
+        # The resource instance type that this policy applies to, in the format `/`.
+        # Example: * `compute.googleapis.com/Instance`.
         # Corresponds to the JSON property `resourceTypes`
         # @return [Array<String>]
         attr_accessor :resource_types
@@ -234,7 +237,7 @@ module Google
       
         # Provides a CEL expression to specify the acceptable parameter values during
         # assignment. For example, parameterName in ("parameterValue1", "parameterValue2"
-        # )
+        # ).
         # Corresponds to the JSON property `validValuesExpr`
         # @return [String]
         attr_accessor :valid_values_expr
@@ -257,7 +260,7 @@ module Google
       class GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata
         include Google::Apis::Core::Hashable
       
-        # Detailed description of what this `parameter` is and use of it. Mutable.
+        # Detailed description of what this `parameter` is and its use. Mutable.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -462,7 +465,7 @@ module Google
         end
       end
       
-      # Defines an organization policy which is used to specify constraints for
+      # Defines an organization policy that is used to specify constraints for
       # configurations of Google Cloud resources.
       class GoogleCloudOrgpolicyV2Policy
         include Google::Apis::Core::Hashable
@@ -473,22 +476,22 @@ module Google
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2AlternatePolicySpec]
         attr_accessor :alternate
       
-        # Defines a Google Cloud policy specification which is used to specify
+        # Defines a Google Cloud policy specification that is used to specify
         # constraints for configurations of Google Cloud resources.
         # Corresponds to the JSON property `dryRunSpec`
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec]
         attr_accessor :dry_run_spec
       
         # Optional. An opaque tag indicating the current state of the policy, used for
-        # concurrency control. This 'etag' is computed by the server based on the value
-        # of other fields, and may be sent on update and delete requests to ensure the
-        # client has an up-to-date value before proceeding.
+        # concurrency control. This entity tag (ETag) is computed by the server based on
+        # the value of other fields, and may be sent on update and delete requests to
+        # ensure the client has an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
         # Immutable. The resource name of the policy. Must be one of the following forms,
-        # where `constraint_name` is the name of the constraint which this policy
+        # where `constraint_name` is the name of the constraint that this policy
         # configures: * `projects/`project_number`/policies/`constraint_name`` * `
         # folders/`folder_id`/policies/`constraint_name`` * `organizations/`
         # organization_id`/policies/`constraint_name`` For example, `projects/123/
@@ -499,7 +502,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Defines a Google Cloud policy specification which is used to specify
+        # Defines a Google Cloud policy specification that is used to specify
         # constraints for configurations of Google Cloud resources.
         # Corresponds to the JSON property `spec`
         # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec]
@@ -519,7 +522,7 @@ module Google
         end
       end
       
-      # Defines a Google Cloud policy specification which is used to specify
+      # Defines a Google Cloud policy specification that is used to specify
       # constraints for configurations of Google Cloud resources.
       class GoogleCloudOrgpolicyV2PolicySpec
         include Google::Apis::Core::Hashable
@@ -527,9 +530,9 @@ module Google
         # An opaque tag indicating the current version of the policySpec, used for
         # concurrency control. This field is ignored if used in a `CreatePolicy` request.
         # When the policy is returned from either a `GetPolicy` or a `ListPolicies`
-        # request, this `etag` indicates the version of the current policySpec to use
-        # when executing a read-modify-write loop. When the policy is returned from a `
-        # GetEffectivePolicy` request, the `etag` will be unset.
+        # request, this entity tag (ETag) indicates the version of the current
+        # policySpec to use when executing a read-modify-write loop. When the policy is
+        # returned from a `GetEffectivePolicy` request, the ETag will be unset.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -538,7 +541,7 @@ module Google
         # is true, policy rules set higher up in the hierarchy (up to the closest root)
         # are inherited and present in the effective policy. If it is false, then no
         # rules are inherited, and this policy becomes the new root for evaluation. This
-        # field can be set only for policies which configure list constraints.
+        # field can be set only for policies that configure list constraints.
         # Corresponds to the JSON property `inheritFromParent`
         # @return [Boolean]
         attr_accessor :inherit_from_parent
@@ -554,10 +557,10 @@ module Google
         alias_method :reset?, :reset
       
         # In policies for boolean constraints, the following requirements apply: - There
-        # must be one and only one policy rule where condition is unset. - Boolean
-        # policy rules with conditions must set `enforced` to the opposite of the policy
-        # rule without a condition. - During policy evaluation, policy rules with
-        # conditions that are true for a target resource take precedence.
+        # must be exactly one policy rule where a condition is unset. - Boolean policy
+        # rules with conditions must set `enforced` to the opposite of the policy rule
+        # without a condition. - During policy evaluation, policy rules with conditions
+        # that are true for a target resource take precedence.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpecPolicyRule>]
         attr_accessor :rules
