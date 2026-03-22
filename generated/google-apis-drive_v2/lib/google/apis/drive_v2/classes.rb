@@ -44,8 +44,13 @@ module Google
         attr_accessor :can_create_team_drives
         alias_method :can_create_team_drives?, :can_create_team_drives
       
+        # Deprecated: Does not granularly represent allowlisted domains or Trust Rules.
         # The domain sharing policy for the current user. Possible values are: * `
-        # allowed` * `allowedWithWarning` * `incomingOnly` * `disallowed`
+        # allowed` * `allowedWithWarning` * `incomingOnly` * `disallowed` Note that if
+        # the user is enrolled in Trust Rules, `disallowed` will always be returned. If
+        # sharing is restricted to allowlisted domains, either `incomingOnly` or `
+        # allowedWithWarning` will be returned, depending on whether receiving files
+        # from outside the allowlisted domains is permitted.
         # Corresponds to the JSON property `domainSharingPolicy`
         # @return [String]
         attr_accessor :domain_sharing_policy
