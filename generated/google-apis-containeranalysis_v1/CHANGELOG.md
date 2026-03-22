@@ -1,5 +1,9 @@
 # Release history for google-apis-containeranalysis_v1
 
+### v0.71.0 (2026-03-22)
+
+* Regenerated from discovery document revision 20260313
+
 ### v0.70.0 (2026-03-01)
 
 * Regenerated from discovery document revision 20260220
