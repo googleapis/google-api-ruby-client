@@ -399,6 +399,67 @@ module Google
         end
       end
       
+      # Configuration for a Bigtable subscription. The Pub/Sub message will be written
+      # to a Bigtable row as follows: - row key: subscription name and message ID
+      # delimited by #. - columns: message bytes written to a single column family "
+      # data" with an empty-string column qualifier. - cell timestamp: the message
+      # publish timestamp.
+      class BigtableConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The app profile to use for the Bigtable writes. If not specified,
+        # the "default" application profile will be used. The app profile must use
+        # single-cluster routing.
+        # Corresponds to the JSON property `appProfileId`
+        # @return [String]
+        attr_accessor :app_profile_id
+      
+        # Optional. The service account to use to write to Bigtable. The subscription
+        # creator or updater that specifies this field must have `iam.serviceAccounts.
+        # actAs` permission on the service account. If not specified, the Pub/Sub [
+        # service agent](https://cloud.google.com/iam/docs/service-agents), service-`
+        # project_number`@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # Output only. An output-only field that indicates whether or not the
+        # subscription can receive messages.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Optional. The unique name of the table to write messages to. Values are of the
+        # form `projects//instances//tables/`.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        # Optional. When true, write the subscription name, message_id, publish_time,
+        # attributes, and ordering_key to additional columns in the table under the
+        # pubsub_metadata column family. The subscription name, message_id, and
+        # publish_time fields are put in their own columns while all other message
+        # properties (other than data) are written to a JSON object in the attributes
+        # column.
+        # Corresponds to the JSON property `writeMetadata`
+        # @return [Boolean]
+        attr_accessor :write_metadata
+        alias_method :write_metadata?, :write_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_profile_id = args[:app_profile_id] if args.key?(:app_profile_id)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @state = args[:state] if args.key?(:state)
+          @table = args[:table] if args.key?(:table)
+          @write_metadata = args[:write_metadata] if args.key?(:write_metadata)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -2109,6 +2170,15 @@ module Google
         # @return [Google::Apis::PubsubV1::BigQueryConfig]
         attr_accessor :bigquery_config
       
+        # Configuration for a Bigtable subscription. The Pub/Sub message will be written
+        # to a Bigtable row as follows: - row key: subscription name and message ID
+        # delimited by #. - columns: message bytes written to a single column family "
+        # data" with an empty-string column qualifier. - cell timestamp: the message
+        # publish timestamp.
+        # Corresponds to the JSON property `bigtableConfig`
+        # @return [Google::Apis::PubsubV1::BigtableConfig]
+        attr_accessor :bigtable_config
+      
         # Configuration for a Cloud Storage subscription.
         # Corresponds to the JSON property `cloudStorageConfig`
         # @return [Google::Apis::PubsubV1::CloudStorageConfig]
@@ -2265,6 +2335,7 @@ module Google
           @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
           @analytics_hub_subscription_info = args[:analytics_hub_subscription_info] if args.key?(:analytics_hub_subscription_info)
           @bigquery_config = args[:bigquery_config] if args.key?(:bigquery_config)
+          @bigtable_config = args[:bigtable_config] if args.key?(:bigtable_config)
           @cloud_storage_config = args[:cloud_storage_config] if args.key?(:cloud_storage_config)
           @dead_letter_policy = args[:dead_letter_policy] if args.key?(:dead_letter_policy)
           @detached = args[:detached] if args.key?(:detached)
