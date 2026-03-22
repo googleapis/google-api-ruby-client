@@ -98,8 +98,9 @@ module Google
       class AuthzExtension
         include Google::Apis::Core::Hashable
       
-        # Required. The `:authority` header in the gRPC request sent from Envoy to the
-        # extension service.
+        # Optional. The `:authority` header in the gRPC request sent from Envoy to the
+        # extension service. It is required when the `service` field points to a backend
+        # service or a wasm plugin.
         # Corresponds to the JSON property `authority`
         # @return [String]
         attr_accessor :authority
@@ -711,15 +712,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. When set to `TRUE`, enables `observability_mode` on the `ext_proc`
-        # filter. This makes `ext_proc` calls asynchronous. Envoy doesn't check for the
-        # response from `ext_proc` calls. For more information about the filter, see:
-        # https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/
-        # ext_proc/v3/ext_proc.proto#extensions-filters-http-ext-proc-v3-
-        # externalprocessor This field is helpful when you want to try out the extension
-        # in async log-only mode. Supported by regional `LbTrafficExtension` and `
-        # LbRouteExtension` resources. Only `STREAMED` (default) body processing mode is
-        # supported.
+        # Optional. When set to `true`, the calls to the extension backend are performed
+        # asynchronously, without pausing the processing of the ongoing request. In this
+        # mode, only `STREAMED` (default) body processing is supported. Responses, if
+        # any, are ignored. Supported by regional `LbTrafficExtension` and `
+        # LbRouteExtension` resources.
         # Corresponds to the JSON property `observabilityMode`
         # @return [Boolean]
         attr_accessor :observability_mode
@@ -846,6 +843,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :addresses
       
+        # Optional. If true, the gateway will allow traffic from clients outside of the
+        # region where the gateway is located. This field is configurable only for
+        # gateways of type SECURE_WEB_GATEWAY.
+        # Corresponds to the JSON property `allowGlobalAccess`
+        # @return [Boolean]
+        attr_accessor :allow_global_access
+        alias_method :allow_global_access?, :allow_global_access
+      
         # Optional. A fully-qualified Certificates URL reference. The proxy presents a
         # Certificate (selected based on SNI) when establishing a TLS connection. This
         # feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -963,6 +968,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @addresses = args[:addresses] if args.key?(:addresses)
+          @allow_global_access = args[:allow_global_access] if args.key?(:allow_global_access)
           @certificate_urls = args[:certificate_urls] if args.key?(:certificate_urls)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
