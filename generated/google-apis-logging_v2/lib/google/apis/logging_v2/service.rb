@@ -1983,7 +1983,8 @@ module Google
         
         # Lists log entries. Use this method to retrieve log entries that originated
         # from a project/folder/organization/billing account. For ways to export log
-        # entries, see Exporting Logs (https://cloud.google.com/logging/docs/export).
+        # entries, see Routing overview (https://docs.cloud.google.com/logging/docs/
+        # routing/overview).
         # @param [Google::Apis::LoggingV2::ListLogEntriesRequest] list_log_entries_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
