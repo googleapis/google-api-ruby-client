@@ -3976,94 +3976,6 @@ module Google
         end
       end
       
-      # McpEnableRule contains MCP enablement related rules.
-      class McpEnableRule
-        include Google::Apis::Core::Hashable
-      
-        # List of enabled MCP services.
-        # Corresponds to the JSON property `mcpServices`
-        # @return [Array<Google::Apis::ServiceusageV1::McpService>]
-        attr_accessor :mcp_services
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @mcp_services = args[:mcp_services] if args.key?(:mcp_services)
-        end
-      end
-      
-      # MCP Consumer Policy is a set of rules that define MCP related policy for a
-      # cloud resource hierarchy.
-      class McpPolicy
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The time the policy was created. For singleton policies (such as
-        # the `default` policy), this is the first touch of the policy.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # An opaque tag indicating the current version of the policy, used for
-        # concurrency control.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # McpEnableRules contains MCP enablement related rules.
-        # Corresponds to the JSON property `mcpEnableRules`
-        # @return [Array<Google::Apis::ServiceusageV1::McpEnableRule>]
-        attr_accessor :mcp_enable_rules
-      
-        # Output only. The resource name of the policy. Only the `default` policy is
-        # supported. We allow the following formats: `projects/`PROJECT_NUMBER`/
-        # mcpPolicies/default`, `projects/`PROJECT_ID`/mcpPolicies/default`, `folders/`
-        # FOLDER_ID`/mcpPolicies/default`, `organizations/`ORG_ID`/mcpPolicies/default`.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Output only. The time the policy was last updated.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @etag = args[:etag] if args.key?(:etag)
-          @mcp_enable_rules = args[:mcp_enable_rules] if args.key?(:mcp_enable_rules)
-          @name = args[:name] if args.key?(:name)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # McpService contains the service names that are enabled for MCP.
-      class McpService
-        include Google::Apis::Core::Hashable
-      
-        # The names of the services that are enabled for MCP. Example: `services/library-
-        # example.googleapis.com`
-        # Corresponds to the JSON property `service`
-        # @return [String]
-        attr_accessor :service
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @service = args[:service] if args.key?(:service)
-        end
-      end
-      
       # Method represents a method of an API interface. New usages of this message as
       # an alternative to MethodDescriptorProto are strongly discouraged. This message
       # does not reliability preserve all information necessary to model the schema
@@ -5597,19 +5509,6 @@ module Google
       
       # Metadata for the `UpdateContentSecurityPolicy` method.
       class UpdateContentSecurityPolicyMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Metadata for the `UpdateMcpPolicy` method.
-      class UpdateMcpPolicyMetadata
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
