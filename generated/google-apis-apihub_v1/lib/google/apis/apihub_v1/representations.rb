@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApihubV1AgentRegistrySyncConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApihubV1AllDataAddonConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -931,6 +937,13 @@ module Google
         end
       end
       
+      class GoogleCloudApihubV1AgentRegistrySyncConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
+        end
+      end
+      
       class GoogleCloudApihubV1AllDataAddonConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1174,6 +1187,8 @@ module Google
       class GoogleCloudApihubV1Config
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_registry_sync_config, as: 'agentRegistrySyncConfig', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AgentRegistrySyncConfig, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AgentRegistrySyncConfig::Representation
+      
           property :cmek_key_name, as: 'cmekKeyName'
           property :disable_search, as: 'disableSearch'
           property :encryption_type, as: 'encryptionType'

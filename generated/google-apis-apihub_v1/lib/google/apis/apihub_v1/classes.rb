@@ -235,6 +235,27 @@ module Google
         end
       end
       
+      # The configuration for Agent Registry sync.
+      class GoogleCloudApihubV1AgentRegistrySyncConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, the MCP data sync to the Agent Registry will be disabled.
+        # The default value is false.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
+        end
+      end
+      
       # Configuration for addons which act on all data in the API hub. This is used to
       # specify if the addon is enabled for all data in the API hub.
       class GoogleCloudApihubV1AllDataAddonConfig
@@ -1092,6 +1113,11 @@ module Google
       class GoogleCloudApihubV1Config
         include Google::Apis::Core::Hashable
       
+        # The configuration for Agent Registry sync.
+        # Corresponds to the JSON property `agentRegistrySyncConfig`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AgentRegistrySyncConfig]
+        attr_accessor :agent_registry_sync_config
+      
         # Optional. The Customer Managed Encryption Key (CMEK) used for data encryption.
         # The CMEK name should follow the format of `projects/([^/]+)/locations/([^/]+)/
         # keyRings/([^/]+)/cryptoKeys/([^/]+)`, where the location must match the
@@ -1126,6 +1152,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_registry_sync_config = args[:agent_registry_sync_config] if args.key?(:agent_registry_sync_config)
           @cmek_key_name = args[:cmek_key_name] if args.key?(:cmek_key_name)
           @disable_search = args[:disable_search] if args.key?(:disable_search)
           @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
@@ -4229,7 +4256,7 @@ module Google
       class GoogleCloudApihubV1RetrieveApiViewsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of API views.
+        # Output only. The list of API views.
         # Corresponds to the JSON property `apiViews`
         # @return [Array<Google::Apis::ApihubV1::GoogleCloudApihubV1ApiView>]
         attr_accessor :api_views
