@@ -634,6 +634,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsCloudbuildV1Oci
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsCloudbuildV1PoolOption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1926,6 +1932,8 @@ module Google
       
           property :objects, as: 'objects', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1ArtifactObjects, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1ArtifactObjects::Representation
       
+          collection :oci, as: 'oci', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1Oci, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1Oci::Representation
+      
           collection :python_packages, as: 'pythonPackages', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1PythonPackage, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1PythonPackage::Representation
       
         end
@@ -2059,6 +2067,7 @@ module Google
           property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :digest, as: 'digest'
           property :name, as: 'name'
+          property :oci_media_type, as: 'ociMediaType'
           property :push_timing, as: 'pushTiming', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
       
         end
@@ -2196,6 +2205,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :package_path, as: 'packagePath'
           property :repository, as: 'repository'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Oci
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file, as: 'file'
+          property :registry_path, as: 'registryPath'
+          collection :tags, as: 'tags'
         end
       end
       
