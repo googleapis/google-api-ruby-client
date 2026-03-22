@@ -592,12 +592,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UndeleteWorkforcePoolProviderScimTokenRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class UndeleteWorkforcePoolRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1550,12 +1544,6 @@ module Google
       end
       
       class UndeleteWorkforcePoolProviderScimTenantRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class UndeleteWorkforcePoolProviderScimTokenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
