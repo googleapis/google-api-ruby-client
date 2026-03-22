@@ -39,6 +39,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Message for a customized OAuth config.
+        # Corresponds to the JSON property `customOauthConfig`
+        # @return [Google::Apis::DeveloperconnectV1::CustomOAuthConfig]
+        attr_accessor :custom_oauth_config
+      
         # Optional. This checksum is computed by the server based on the value of other
         # fields, and may be sent on update and delete requests to ensure the client has
         # an up-to-date value before proceeding.
@@ -67,6 +72,11 @@ module Google
         # @return [Google::Apis::DeveloperconnectV1::ProviderOAuthConfig]
         attr_accessor :provider_oauth_config
       
+        # The proxy configuration.
+        # Corresponds to the JSON property `proxyConfig`
+        # @return [Google::Apis::DeveloperconnectV1::ProxyConfig]
+        attr_accessor :proxy_config
+      
         # Output only. The timestamp when the accountConnector was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -80,11 +90,13 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_oauth_config = args[:custom_oauth_config] if args.key?(:custom_oauth_config)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @oauth_start_uri = args[:oauth_start_uri] if args.key?(:oauth_start_uri)
           @provider_oauth_config = args[:provider_oauth_config] if args.key?(:provider_oauth_config)
+          @proxy_config = args[:proxy_config] if args.key?(:proxy_config)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -583,6 +595,89 @@ module Google
         end
       end
       
+      # Message for a customized OAuth config.
+      class CustomOAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The OAuth2 authorization server URL.
+        # Corresponds to the JSON property `authUri`
+        # @return [String]
+        attr_accessor :auth_uri
+      
+        # Required. The client ID of the OAuth application.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Required. Input only. The client secret of the OAuth application. It will be
+        # provided as plain text, but encrypted and stored in developer connect. As
+        # INPUT_ONLY field, it will not be included in the output.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Required. The host URI of the OAuth application.
+        # Corresponds to the JSON property `hostUri`
+        # @return [String]
+        attr_accessor :host_uri
+      
+        # Optional. Disable PKCE for this OAuth config. PKCE is enabled by default.
+        # Corresponds to the JSON property `pkceDisabled`
+        # @return [Boolean]
+        attr_accessor :pkce_disabled
+        alias_method :pkce_disabled?, :pkce_disabled
+      
+        # Required. The type of the SCM provider.
+        # Corresponds to the JSON property `scmProvider`
+        # @return [String]
+        attr_accessor :scm_provider
+      
+        # Required. The scopes to be requested during OAuth.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        # Output only. SCM server version installed at the host URI.
+        # Corresponds to the JSON property `serverVersion`
+        # @return [String]
+        attr_accessor :server_version
+      
+        # ServiceDirectoryConfig represents Service Directory configuration for a
+        # connection.
+        # Corresponds to the JSON property `serviceDirectoryConfig`
+        # @return [Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig]
+        attr_accessor :service_directory_config
+      
+        # Optional. SSL certificate to use for requests to a private service.
+        # Corresponds to the JSON property `sslCaCertificate`
+        # @return [String]
+        attr_accessor :ssl_ca_certificate
+      
+        # Required. Immutable. The OAuth2 token request URL.
+        # Corresponds to the JSON property `tokenUri`
+        # @return [String]
+        attr_accessor :token_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_uri = args[:auth_uri] if args.key?(:auth_uri)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @host_uri = args[:host_uri] if args.key?(:host_uri)
+          @pkce_disabled = args[:pkce_disabled] if args.key?(:pkce_disabled)
+          @scm_provider = args[:scm_provider] if args.key?(:scm_provider)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @server_version = args[:server_version] if args.key?(:server_version)
+          @service_directory_config = args[:service_directory_config] if args.key?(:service_directory_config)
+          @ssl_ca_certificate = args[:ssl_ca_certificate] if args.key?(:ssl_ca_certificate)
+          @token_uri = args[:token_uri] if args.key?(:token_uri)
+        end
+      end
+      
       # The DeploymentEvent resource represents the deployment of the artifact within
       # the InsightsConfig resource.
       class DeploymentEvent
@@ -910,6 +1005,31 @@ module Google
           @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @git_username = args[:git_username] if args.key?(:git_username)
           @token = args[:token] if args.key?(:token)
+        end
+      end
+      
+      # Response message for FetchUserRepositories.
+      class FetchUserRepositoriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The repositories that the user can access with this account connector.
+        # Corresponds to the JSON property `userRepos`
+        # @return [Array<Google::Apis::DeveloperconnectV1::UserRepository>]
+        attr_accessor :user_repos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @user_repos = args[:user_repos] if args.key?(:user_repos)
         end
       end
       
@@ -2299,6 +2419,27 @@ module Google
         end
       end
       
+      # The proxy configuration.
+      class ProxyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Setting this to true allows the git and http proxies to perform
+        # actions on behalf of the user configured under the account connector.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # RuntimeConfig represents the runtimes where the application is deployed.
       class RuntimeConfig
         include Google::Apis::Core::Hashable
@@ -2551,6 +2692,42 @@ module Google
         def update!(**args)
           @user_token_secret_version = args[:user_token_secret_version] if args.key?(:user_token_secret_version)
           @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # A user repository that can be linked to the account connector. Consists of the
+      # repo name and the git proxy URL to forward requests to this repo.
+      class UserRepository
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The git clone URL of the repo. For example: https://github.com/
+        # myuser/myrepo.git
+        # Corresponds to the JSON property `cloneUri`
+        # @return [String]
+        attr_accessor :clone_uri
+      
+        # Output only. The user friendly repo name (e.g., myuser/myrepo)
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The Git proxy URL for this repo. For example: https://us-west1-
+        # git.developerconnect.dev/a/my-proj/my-ac/myuser/myrepo.git. Populated only
+        # when `proxy_config.enabled` is set to `true` in the Account Connector. This
+        # URL is used by other Google services that integrate with Developer Connect.
+        # Corresponds to the JSON property `gitProxyUri`
+        # @return [String]
+        attr_accessor :git_proxy_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @clone_uri = args[:clone_uri] if args.key?(:clone_uri)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @git_proxy_uri = args[:git_proxy_uri] if args.key?(:git_proxy_uri)
         end
       end
     end
