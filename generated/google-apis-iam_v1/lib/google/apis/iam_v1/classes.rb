@@ -3170,20 +3170,6 @@ module Google
         end
       end
       
-      # Gemini Enterprise only. Request message for
-      # UndeleteWorkforcePoolProviderScimToken.
-      class UndeleteWorkforcePoolProviderScimTokenRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Request message for UndeleteWorkforcePool.
       class UndeleteWorkforcePoolRequest
         include Google::Apis::Core::Hashable
