@@ -572,6 +572,7 @@ module Google
       class ExecuteToolResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :_meta, as: '_meta'
           hash :metadata, as: 'metadata'
           hash :result, as: 'result'
         end
@@ -630,6 +631,7 @@ module Google
       class GetResourceResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :_meta, as: '_meta'
           property :data, :base64 => true, as: 'data'
           hash :metadata, as: 'metadata'
           property :mime_type, as: 'mimeType'
@@ -686,14 +688,24 @@ module Google
           property :default, as: 'default'
           property :description, as: 'description'
           collection :enum, as: 'enum'
+          property :exclusive_maximum, as: 'exclusiveMaximum'
+          property :exclusive_minimum, as: 'exclusiveMinimum'
           property :format, as: 'format'
           property :items, as: 'items', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
       
           property :jdbc_type, as: 'jdbcType'
+          property :max_items, as: 'maxItems'
+          property :max_length, as: 'maxLength'
+          property :maximum, as: 'maximum'
+          property :min_items, as: 'minItems'
+          property :min_length, as: 'minLength'
+          property :minimum, as: 'minimum'
+          property :pattern, as: 'pattern'
           hash :properties, as: 'properties', class: Google::Apis::ConnectorsV2::JsonSchema, decorator: Google::Apis::ConnectorsV2::JsonSchema::Representation
       
           collection :required, as: 'required'
           collection :type, as: 'type'
+          property :unique_items, as: 'uniqueItems'
         end
       end
       
@@ -906,6 +918,7 @@ module Google
       class Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :_meta, as: '_meta'
           property :description, as: 'description'
           property :mime_type, as: 'mimeType'
           property :name, as: 'name'
@@ -969,6 +982,7 @@ module Google
       class Tool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :_meta, as: '_meta'
           property :annotations, as: 'annotations', class: Google::Apis::ConnectorsV2::ToolAnnotations, decorator: Google::Apis::ConnectorsV2::ToolAnnotations::Representation
       
           collection :depends_on, as: 'dependsOn'
