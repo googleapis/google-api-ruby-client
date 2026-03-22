@@ -1534,6 +1534,11 @@ module Google
         attr_accessor :display_name
       
         # 
+        # Corresponds to the JSON property `dtmfPattern`
+        # @return [String]
+        attr_accessor :dtmf_pattern
+      
+        # 
         # Corresponds to the JSON property `isFallback`
         # @return [Boolean]
         attr_accessor :is_fallback
@@ -1572,6 +1577,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @dtmf_pattern = args[:dtmf_pattern] if args.key?(:dtmf_pattern)
           @is_fallback = args[:is_fallback] if args.key?(:is_fallback)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -4902,6 +4908,11 @@ module Google
         attr_accessor :display_name
       
         # 
+        # Corresponds to the JSON property `dtmfPattern`
+        # @return [String]
+        attr_accessor :dtmf_pattern
+      
+        # 
         # Corresponds to the JSON property `isFallback`
         # @return [Boolean]
         attr_accessor :is_fallback
@@ -4940,6 +4951,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @dtmf_pattern = args[:dtmf_pattern] if args.key?(:dtmf_pattern)
           @is_fallback = args[:is_fallback] if args.key?(:is_fallback)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -8164,6 +8176,16 @@ module Google
         attr_accessor :ingested_context_references
       
         # 
+        # Corresponds to the JSON property `initialConversationProfile`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationProfile]
+        attr_accessor :initial_conversation_profile
+      
+        # 
+        # Corresponds to the JSON property `initialGeneratorContexts`
+        # @return [Hash<String,Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationGeneratorContext>]
+        attr_accessor :initial_generator_contexts
+      
+        # 
         # Corresponds to the JSON property `lifecycleState`
         # @return [String]
         attr_accessor :lifecycle_state
@@ -8198,6 +8220,8 @@ module Google
           @conversation_stage = args[:conversation_stage] if args.key?(:conversation_stage)
           @end_time = args[:end_time] if args.key?(:end_time)
           @ingested_context_references = args[:ingested_context_references] if args.key?(:ingested_context_references)
+          @initial_conversation_profile = args[:initial_conversation_profile] if args.key?(:initial_conversation_profile)
+          @initial_generator_contexts = args[:initial_generator_contexts] if args.key?(:initial_generator_contexts)
           @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
           @name = args[:name] if args.key?(:name)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
@@ -8408,6 +8432,25 @@ module Google
           @new_message_payload = args[:new_message_payload] if args.key?(:new_message_payload)
           @new_recognition_result_payload = args[:new_recognition_result_payload] if args.key?(:new_recognition_result_payload)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2ConversationGeneratorContext
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `generatorType`
+        # @return [String]
+        attr_accessor :generator_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generator_type = args[:generator_type] if args.key?(:generator_type)
         end
       end
       
