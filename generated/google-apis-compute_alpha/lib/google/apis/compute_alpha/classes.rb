@@ -5216,18 +5216,6 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::BackendServiceUsedBy>]
         attr_accessor :used_by
       
-        # The network scope of the backends that can be added to the backend
-        # service. This field can be either GLOBAL_VPC_NETWORK orREGIONAL_VPC_NETWORK.
-        # A backend service with the VPC scope set to GLOBAL_VPC_NETWORK
-        # is only allowed to have backends in global VPC networks.
-        # When the VPC scope is set to REGIONAL_VPC_NETWORK the backend
-        # service is only allowed to have backends in regional networks in the same
-        # scope as the backend service.
-        # Note: if not specified then GLOBAL_VPC_NETWORK will be used.
-        # Corresponds to the JSON property `vpcNetworkScope`
-        # @return [String]
-        attr_accessor :vpc_network_scope
-      
         def initialize(**args)
            update!(**args)
         end
@@ -5289,7 +5277,6 @@ module Google
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
           @tls_settings = args[:tls_settings] if args.key?(:tls_settings)
           @used_by = args[:used_by] if args.key?(:used_by)
-          @vpc_network_scope = args[:vpc_network_scope] if args.key?(:vpc_network_scope)
         end
       end
       
@@ -8415,6 +8402,13 @@ module Google
       class CapacityAdviceRequestInstanceProperties
         include Google::Apis::Core::Hashable
       
+        # Input only. Specifies the topology required to create a partition for
+        # VMs that have interconnected GPUs or TPUs.
+        # Example values: 2x2 for ct5l-hightpu-4t.
+        # Corresponds to the JSON property `acceleratorTopology`
+        # @return [String]
+        attr_accessor :accelerator_topology
+      
         # Defines the instance scheduling options.
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeAlpha::CapacityAdviceRequestInstancePropertiesScheduling]
@@ -8426,6 +8420,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerator_topology = args[:accelerator_topology] if args.key?(:accelerator_topology)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
         end
       end
@@ -24558,12 +24553,16 @@ module Google
           # @return [String]
           attr_accessor :sha1_checksum
         
-          # The full Google Cloud Storage URL where the raw disk image archive is
-          # stored.
-          # The following are valid formats for the URL:
+          # The full Google Cloud Storage URL or Artifact Registry path where the raw
+          # disk image archive is stored.
+          # The following are valid formats:
           # 
           # - https://storage.googleapis.com/bucket_name/image_archive_name
           # - https://storage.googleapis.com/bucket_name/folder_name/image_archive_name
+          # - projects/project/locations/location/repositories/repo/packages/package/
+          # versions/version_id
+          # - projects/project/locations/location/repositories/repo/packages/package/
+          # versions/version_id@dirsum_sha256:hex_value
           # In order to create an image, you must provide the full or partial URL of
           # one of the following:
           # 
@@ -28652,6 +28651,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :accelerator_topology_actions
       
+        # Map of accelerator topologies that should have their state changed to
+        # the specified configuration. The map key is the hashed topology locus id.
+        # It can be obtained from the GetAvailableAcceleratorTopologies rpc.
+        # Corresponds to the JSON property `acceleratorTopologyConfigurations`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfiguration>]
+        attr_accessor :accelerator_topology_configurations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -28659,6 +28665,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerator_topology_actions = args[:accelerator_topology_actions] if args.key?(:accelerator_topology_actions)
+          @accelerator_topology_configurations = args[:accelerator_topology_configurations] if args.key?(:accelerator_topology_configurations)
+        end
+      end
+      
+      # Configuration for a single accelerator topology.
+      class InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Identifier of the accelerator topology assigned externally to
+        # differentiate who is the owner of the topology. The format needs to
+        # conform to RFC1035 and be unique. The uniqueness is guaranteed by the
+        # requestor. If it is provided on activating the sub-slice it will have to
+        # be provided on deactivating as well. This identifier is cleared on
+        # successful deform of a sub-slice.
+        # Corresponds to the JSON property `externalId`
+        # @return [String]
+        attr_accessor :external_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @external_id = args[:external_id] if args.key?(:external_id)
         end
       end
       
@@ -28833,6 +28870,15 @@ module Google
         # @return [String]
         attr_accessor :error_timestamp
       
+        # Identifier of the accelerator topology assigned externally to
+        # differentiate who is the owner of the topology. This is set in
+        # ConfigureAcceleratorTopologies. If it is provided on activating the
+        # sub-slice it will have to be provided on deactivating as well.
+        # This identifier is cleared on successful deform of a sub-slice.
+        # Corresponds to the JSON property `externalId`
+        # @return [String]
+        attr_accessor :external_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -28842,6 +28888,7 @@ module Google
           @current_state = args[:current_state] if args.key?(:current_state)
           @error = args[:error] if args.key?(:error)
           @error_timestamp = args[:error_timestamp] if args.key?(:error_timestamp)
+          @external_id = args[:external_id] if args.key?(:external_id)
         end
         
         # Reason why the topology state change failed
@@ -29200,6 +29247,13 @@ module Google
         attr_accessor :no_creation_retries
         alias_method :no_creation_retries?, :no_creation_retries
       
+        # If this flag is enabled within a request to decrease a MIG's target size,
+        # then the MIG declines that request.
+        # Corresponds to the JSON property `scaleInProtection`
+        # @return [Boolean]
+        attr_accessor :scale_in_protection
+        alias_method :scale_in_protection?, :scale_in_protection
+      
         # The number of running instances that the managed instance group should
         # maintain at any given time. The group automatically adds or removes
         # instances to maintain the number of instances specified by this parameter.
@@ -29214,6 +29268,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @no_creation_retries = args[:no_creation_retries] if args.key?(:no_creation_retries)
+          @scale_in_protection = args[:scale_in_protection] if args.key?(:scale_in_protection)
           @target_size = args[:target_size] if args.key?(:target_size)
         end
       end
@@ -51947,6 +52002,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Network tier to be used for this prefix. All child delegated prefixes will
+        # inherit this field. If this field is not specified, it defaults to the
+        # network tier of the project that the PublicAdvertisedPrefix belongs to.
+        # Corresponds to the JSON property `networkTier`
+        # @return [String]
+        attr_accessor :network_tier
+      
         # Specifies how child public delegated prefix will be scoped. It could
         # be one of following values:
         # 
@@ -52015,6 +52077,7 @@ module Google
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @network_tier = args[:network_tier] if args.key?(:network_tier)
           @pdp_scope = args[:pdp_scope] if args.key?(:pdp_scope)
           @public_delegated_prefixs = args[:public_delegated_prefixs] if args.key?(:public_delegated_prefixs)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -52296,6 +52359,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Network tier of the public delegated prefix. If populated, it must match
+        # the network tier of the parent public advertised prefix. If not populated,
+        # it defaults to the network tier of the parent public advertised prefix.
+        # Corresponds to the JSON property `networkTier`
+        # @return [String]
+        attr_accessor :network_tier
+      
         # The URL of parent prefix. Either PublicAdvertisedPrefix or
         # PublicDelegatedPrefix.
         # Corresponds to the JSON property `parentPrefix`
@@ -52387,6 +52457,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
+          @network_tier = args[:network_tier] if args.key?(:network_tier)
           @parent_prefix = args[:parent_prefix] if args.key?(:parent_prefix)
           @public_delegated_sub_prefixs = args[:public_delegated_sub_prefixs] if args.key?(:public_delegated_sub_prefixs)
           @purpose = args[:purpose] if args.key?(:purpose)
@@ -55933,6 +56004,13 @@ module Google
         attr_accessor :no_creation_retries
         alias_method :no_creation_retries?, :no_creation_retries
       
+        # If this flag is enabled within a request to decrease a MIG's target size,
+        # then the MIG declines that request.
+        # Corresponds to the JSON property `scaleInProtection`
+        # @return [Boolean]
+        attr_accessor :scale_in_protection
+        alias_method :scale_in_protection?, :scale_in_protection
+      
         # The number of running instances that the managed instance group should
         # maintain at any given time. The group automatically adds or removes
         # instances to maintain the number of instances specified by this parameter.
@@ -55947,6 +56025,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @no_creation_retries = args[:no_creation_retries] if args.key?(:no_creation_retries)
+          @scale_in_protection = args[:scale_in_protection] if args.key?(:scale_in_protection)
           @target_size = args[:target_size] if args.key?(:target_size)
         end
       end
@@ -60778,6 +60857,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The timestamp at which the Rollout was paused.
+        # Corresponds to the JSON property `pauseTime`
+        # @return [String]
+        attr_accessor :pause_time
+      
+        # Output only. The timestamp at which the Rollout was resumed.
+        # Corresponds to the JSON property `resumeTime`
+        # @return [String]
+        attr_accessor :resume_time
+      
         # Specifications of the resource to roll out.
         # Corresponds to the JSON property `rolloutEntity`
         # @return [Google::Apis::ComputeAlpha::RolloutRolloutEntity]
@@ -60825,6 +60914,8 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @pause_time = args[:pause_time] if args.key?(:pause_time)
+          @resume_time = args[:resume_time] if args.key?(:resume_time)
           @rollout_entity = args[:rollout_entity] if args.key?(:rollout_entity)
           @rollout_plan = args[:rollout_plan] if args.key?(:rollout_plan)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -73740,6 +73831,22 @@ module Google
         # @return [String]
         attr_accessor :ip_cidr_range
       
+        # Reference to a Public Delegated Prefix (PDP) for BYOIP.
+        # This field should be specified for configuring BYOGUA internal IPv6
+        # secondary range.
+        # When specified along with the ip_cidr_range, the ip_cidr_range must lie
+        # within the PDP referenced by the `ipCollection` field.
+        # When specified without the ip_cidr_range, the range is auto-allocated
+        # from the PDP referenced by the `ipCollection` field.
+        # Corresponds to the JSON property `ipCollection`
+        # @return [String]
+        attr_accessor :ip_collection
+      
+        # 
+        # Corresponds to the JSON property `ipVersion`
+        # @return [String]
+        attr_accessor :ip_version
+      
         # The name associated with this subnetwork secondary range, used when adding
         # an alias IP/IPv6 range to a VM instance.
         # The name must be 1-63 characters long, and comply withRFC1035.
@@ -73760,6 +73867,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @ip_collection = args[:ip_collection] if args.key?(:ip_collection)
+          @ip_version = args[:ip_version] if args.key?(:ip_version)
           @range_name = args[:range_name] if args.key?(:range_name)
           @reserved_internal_range = args[:reserved_internal_range] if args.key?(:reserved_internal_range)
         end

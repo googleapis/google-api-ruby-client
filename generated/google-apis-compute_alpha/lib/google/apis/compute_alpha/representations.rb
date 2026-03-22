@@ -3304,6 +3304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagersCreateInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -11462,7 +11468,6 @@ module Google
       
           collection :used_by, as: 'usedBy', class: Google::Apis::ComputeAlpha::BackendServiceUsedBy, decorator: Google::Apis::ComputeAlpha::BackendServiceUsedBy::Representation
       
-          property :vpc_network_scope, as: 'vpcNetworkScope'
         end
       end
       
@@ -12171,6 +12176,7 @@ module Google
       class CapacityAdviceRequestInstanceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_topology, as: 'acceleratorTopology'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstancePropertiesScheduling, decorator: Google::Apis::ComputeAlpha::CapacityAdviceRequestInstancePropertiesScheduling::Representation
       
         end
@@ -16697,6 +16703,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :accelerator_topology_actions, as: 'acceleratorTopologyActions'
+          hash :accelerator_topology_configurations, as: 'acceleratorTopologyConfigurations', class: Google::Apis::ComputeAlpha::InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfiguration, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfiguration::Representation
+      
+        end
+      end
+      
+      class InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :external_id, as: 'externalId'
         end
       end
       
@@ -16752,6 +16768,7 @@ module Google
           property :error, as: 'error', class: Google::Apis::ComputeAlpha::InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyState::Error, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyState::Error::Representation
       
           property :error_timestamp, as: 'errorTimestamp'
+          property :external_id, as: 'externalId'
         end
         
         class Error
@@ -16854,6 +16871,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :no_creation_retries, as: 'noCreationRetries'
+          property :scale_in_protection, as: 'scaleInProtection'
           property :target_size, as: 'targetSize'
         end
       end
@@ -22280,6 +22298,7 @@ module Google
           property :ipv6_access_type, as: 'ipv6AccessType'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :network_tier, as: 'networkTier'
           property :pdp_scope, as: 'pdpScope'
           collection :public_delegated_prefixs, as: 'publicDelegatedPrefixs', class: Google::Apis::ComputeAlpha::PublicAdvertisedPrefixPublicDelegatedPrefix, decorator: Google::Apis::ComputeAlpha::PublicAdvertisedPrefixPublicDelegatedPrefix::Representation
       
@@ -22349,6 +22368,7 @@ module Google
           property :kind, as: 'kind'
           property :mode, as: 'mode'
           property :name, as: 'name'
+          property :network_tier, as: 'networkTier'
           property :parent_prefix, as: 'parentPrefix'
           collection :public_delegated_sub_prefixs, as: 'publicDelegatedSubPrefixs', class: Google::Apis::ComputeAlpha::PublicDelegatedPrefixPublicDelegatedSubPrefix, decorator: Google::Apis::ComputeAlpha::PublicDelegatedPrefixPublicDelegatedSubPrefix::Representation
       
@@ -23233,6 +23253,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :no_creation_retries, as: 'noCreationRetries'
+          property :scale_in_protection, as: 'scaleInProtection'
           property :target_size, as: 'targetSize'
         end
       end
@@ -24502,6 +24523,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :pause_time, as: 'pauseTime'
+          property :resume_time, as: 'resumeTime'
           property :rollout_entity, as: 'rolloutEntity', class: Google::Apis::ComputeAlpha::RolloutRolloutEntity, decorator: Google::Apis::ComputeAlpha::RolloutRolloutEntity::Representation
       
           property :rollout_plan, as: 'rolloutPlan'
@@ -27484,6 +27507,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_cidr_range, as: 'ipCidrRange'
+          property :ip_collection, as: 'ipCollection'
+          property :ip_version, as: 'ipVersion'
           property :range_name, as: 'rangeName'
           property :reserved_internal_range, as: 'reservedInternalRange'
         end
