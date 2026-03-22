@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigtableConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -518,6 +524,17 @@ module Google
         end
       end
       
+      class BigtableConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_profile_id, as: 'appProfileId'
+          property :service_account_email, as: 'serviceAccountEmail'
+          property :state, as: 'state'
+          property :table, as: 'table'
+          property :write_metadata, as: 'writeMetadata'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -937,6 +954,8 @@ module Google
           property :analytics_hub_subscription_info, as: 'analyticsHubSubscriptionInfo', class: Google::Apis::PubsubV1::AnalyticsHubSubscriptionInfo, decorator: Google::Apis::PubsubV1::AnalyticsHubSubscriptionInfo::Representation
       
           property :bigquery_config, as: 'bigqueryConfig', class: Google::Apis::PubsubV1::BigQueryConfig, decorator: Google::Apis::PubsubV1::BigQueryConfig::Representation
+      
+          property :bigtable_config, as: 'bigtableConfig', class: Google::Apis::PubsubV1::BigtableConfig, decorator: Google::Apis::PubsubV1::BigtableConfig::Representation
       
           property :cloud_storage_config, as: 'cloudStorageConfig', class: Google::Apis::PubsubV1::CloudStorageConfig, decorator: Google::Apis::PubsubV1::CloudStorageConfig::Representation
       
