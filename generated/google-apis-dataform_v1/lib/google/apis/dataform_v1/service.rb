@@ -2294,6 +2294,11 @@ module Google
         # @param [String] path
         #   Optional. The directory's full path including directory name, relative to the
         #   workspace root. If left unset, the workspace root is used.
+        # @param [String] view
+        #   Optional. Specifies the metadata to return for each directory entry. If
+        #   unspecified, the default is `DIRECTORY_CONTENTS_VIEW_BASIC`. Currently the `
+        #   DIRECTORY_CONTENTS_VIEW_METADATA` view is not supported by CMEK-protected
+        #   workspaces.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2311,7 +2316,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def query_project_location_repository_workspace_directory_contents(workspace, page_size: nil, page_token: nil, path: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def query_project_location_repository_workspace_directory_contents(workspace, page_size: nil, page_token: nil, path: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+workspace}:queryDirectoryContents', options)
           command.response_representation = Google::Apis::DataformV1::QueryDirectoryContentsResponse::Representation
           command.response_class = Google::Apis::DataformV1::QueryDirectoryContentsResponse
@@ -2319,6 +2324,7 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['path'] = path unless path.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
