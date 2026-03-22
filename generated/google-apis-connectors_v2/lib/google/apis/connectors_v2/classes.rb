@@ -615,6 +615,11 @@ module Google
       class ExecuteToolResponse
         include Google::Apis::Core::Hashable
       
+        # Metadata for the tool execution result.
+        # Corresponds to the JSON property `_meta`
+        # @return [Hash<String,Object>]
+        attr_accessor :_meta
+      
         # Metadata like service latency, etc.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Hash<String,Object>>]
@@ -631,6 +636,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @_meta = args[:_meta] if args.key?(:_meta)
           @metadata = args[:metadata] if args.key?(:metadata)
           @result = args[:result] if args.key?(:result)
         end
@@ -798,6 +804,11 @@ module Google
       class GetResourceResponse
         include Google::Apis::Core::Hashable
       
+        # Metadata for the resource.
+        # Corresponds to the JSON property `_meta`
+        # @return [Hash<String,Object>]
+        attr_accessor :_meta
+      
         # The content of the resource.
         # Corresponds to the JSON property `data`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -820,6 +831,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @_meta = args[:_meta] if args.key?(:_meta)
           @data = args[:data] if args.key?(:data)
           @metadata = args[:metadata] if args.key?(:metadata)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
@@ -1086,6 +1098,18 @@ module Google
         # @return [Array<Object>]
         attr_accessor :enum
       
+        # Whether the maximum number value is exclusive.
+        # Corresponds to the JSON property `exclusiveMaximum`
+        # @return [Boolean]
+        attr_accessor :exclusive_maximum
+        alias_method :exclusive_maximum?, :exclusive_maximum
+      
+        # Whether the minimum number value is exclusive.
+        # Corresponds to the JSON property `exclusiveMinimum`
+        # @return [Boolean]
+        attr_accessor :exclusive_minimum
+        alias_method :exclusive_minimum?, :exclusive_minimum
+      
         # Format of the value as per https://json-schema.org/understanding-json-schema/
         # reference/string.html#format
         # Corresponds to the JSON property `format`
@@ -1101,6 +1125,42 @@ module Google
         # Corresponds to the JSON property `jdbcType`
         # @return [String]
         attr_accessor :jdbc_type
+      
+        # Maximum number of items in the array field.
+        # Corresponds to the JSON property `maxItems`
+        # @return [Fixnum]
+        attr_accessor :max_items
+      
+        # Maximum length of the string field.
+        # Corresponds to the JSON property `maxLength`
+        # @return [Fixnum]
+        attr_accessor :max_length
+      
+        # Maximum value of the number field.
+        # Corresponds to the JSON property `maximum`
+        # @return [Object]
+        attr_accessor :maximum
+      
+        # Minimum number of items in the array field.
+        # Corresponds to the JSON property `minItems`
+        # @return [Fixnum]
+        attr_accessor :min_items
+      
+        # Minimum length of the string field.
+        # Corresponds to the JSON property `minLength`
+        # @return [Fixnum]
+        attr_accessor :min_length
+      
+        # Minimum value of the number field.
+        # Corresponds to the JSON property `minimum`
+        # @return [Object]
+        attr_accessor :minimum
+      
+        # Regex pattern of the string field. This is a string value that describes the
+        # regular expression that the string value should match.
+        # Corresponds to the JSON property `pattern`
+        # @return [String]
+        attr_accessor :pattern
       
         # The child schemas, applicable only if this is of type `object`. The key is the
         # name of the property and the value is the json schema that describes that
@@ -1119,6 +1179,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :type
       
+        # Whether the items in the array field are unique.
+        # Corresponds to the JSON property `uniqueItems`
+        # @return [Boolean]
+        attr_accessor :unique_items
+        alias_method :unique_items?, :unique_items
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1129,12 +1195,22 @@ module Google
           @default = args[:default] if args.key?(:default)
           @description = args[:description] if args.key?(:description)
           @enum = args[:enum] if args.key?(:enum)
+          @exclusive_maximum = args[:exclusive_maximum] if args.key?(:exclusive_maximum)
+          @exclusive_minimum = args[:exclusive_minimum] if args.key?(:exclusive_minimum)
           @format = args[:format] if args.key?(:format)
           @items = args[:items] if args.key?(:items)
           @jdbc_type = args[:jdbc_type] if args.key?(:jdbc_type)
+          @max_items = args[:max_items] if args.key?(:max_items)
+          @max_length = args[:max_length] if args.key?(:max_length)
+          @maximum = args[:maximum] if args.key?(:maximum)
+          @min_items = args[:min_items] if args.key?(:min_items)
+          @min_length = args[:min_length] if args.key?(:min_length)
+          @minimum = args[:minimum] if args.key?(:minimum)
+          @pattern = args[:pattern] if args.key?(:pattern)
           @properties = args[:properties] if args.key?(:properties)
           @required = args[:required] if args.key?(:required)
           @type = args[:type] if args.key?(:type)
+          @unique_items = args[:unique_items] if args.key?(:unique_items)
         end
       end
       
@@ -1840,6 +1916,11 @@ module Google
       class Resource
         include Google::Apis::Core::Hashable
       
+        # Metadata for the resource.
+        # Corresponds to the JSON property `_meta`
+        # @return [Hash<String,Object>]
+        attr_accessor :_meta
+      
         # A description of what this resource represents.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -1871,6 +1952,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @_meta = args[:_meta] if args.key?(:_meta)
           @description = args[:description] if args.key?(:description)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @name = args[:name] if args.key?(:name)
@@ -2079,6 +2161,11 @@ module Google
       class Tool
         include Google::Apis::Core::Hashable
       
+        # Metadata for the tool.
+        # Corresponds to the JSON property `_meta`
+        # @return [Hash<String,Object>]
+        attr_accessor :_meta
+      
         # ToolAnnotations holds annotations for a tool.
         # Corresponds to the JSON property `annotations`
         # @return [Google::Apis::ConnectorsV2::ToolAnnotations]
@@ -2115,6 +2202,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @_meta = args[:_meta] if args.key?(:_meta)
           @annotations = args[:annotations] if args.key?(:annotations)
           @depends_on = args[:depends_on] if args.key?(:depends_on)
           @description = args[:description] if args.key?(:description)
