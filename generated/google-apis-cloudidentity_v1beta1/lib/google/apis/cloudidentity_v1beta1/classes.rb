@@ -99,9 +99,9 @@ module Google
         # @return [String]
         attr_accessor :ownership_privilege
       
-        # Whether device supports Android work profiles. If false, this service will not
-        # block access to corp data even if an administrator turns on the "Enforce Work
-        # Profile" policy.
+        # Whether the device supports Android work profiles. If false, this service will
+        # not block access to corp data even if an administrator turns on the "Enforce
+        # Work Profile" policy.
         # Corresponds to the JSON property `supportsWorkProfile`
         # @return [Boolean]
         attr_accessor :supports_work_profile
@@ -222,7 +222,7 @@ module Google
         end
       end
       
-      # Contains information about browser profiles reported by the Clients on the
+      # Contains information about browser profiles reported by the clients on the
       # device (e.g. [Endpoint Verification extension](https://chromewebstore.google.
       # com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1)).
       class BrowserAttributes
