@@ -1534,6 +1534,11 @@ module Google
         attr_accessor :display_name
       
         # 
+        # Corresponds to the JSON property `dtmfPattern`
+        # @return [String]
+        attr_accessor :dtmf_pattern
+      
+        # 
         # Corresponds to the JSON property `isFallback`
         # @return [Boolean]
         attr_accessor :is_fallback
@@ -1572,6 +1577,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @dtmf_pattern = args[:dtmf_pattern] if args.key?(:dtmf_pattern)
           @is_fallback = args[:is_fallback] if args.key?(:is_fallback)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -7244,6 +7250,31 @@ module Google
       end
       
       # 
+      class GoogleCloudDialogflowCxV3beta1FlowTraceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # 
+        # Corresponds to the JSON property `flow`
+        # @return [String]
+        attr_accessor :flow
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @flow = args[:flow] if args.key?(:flow)
+        end
+      end
+      
+      # 
       class GoogleCloudDialogflowCxV3beta1FlowTransition
         include Google::Apis::Core::Hashable
       
@@ -8571,6 +8602,11 @@ module Google
         attr_accessor :display_name
       
         # 
+        # Corresponds to the JSON property `dtmfPattern`
+        # @return [String]
+        attr_accessor :dtmf_pattern
+      
+        # 
         # Corresponds to the JSON property `isFallback`
         # @return [Boolean]
         attr_accessor :is_fallback
@@ -8609,6 +8645,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @dtmf_pattern = args[:dtmf_pattern] if args.key?(:dtmf_pattern)
           @is_fallback = args[:is_fallback] if args.key?(:is_fallback)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -10425,6 +10462,31 @@ module Google
       end
       
       # 
+      class GoogleCloudDialogflowCxV3beta1PlaybookTraceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # 
+        # Corresponds to the JSON property `playbook`
+        # @return [String]
+        attr_accessor :playbook
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @playbook = args[:playbook] if args.key?(:playbook)
+        end
+      end
+      
+      # 
       class GoogleCloudDialogflowCxV3beta1PlaybookTransition
         include Google::Apis::Core::Hashable
       
@@ -10763,6 +10825,11 @@ module Google
         attr_accessor :text
       
         # 
+        # Corresponds to the JSON property `traceBlocks`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TraceBlock>]
+        attr_accessor :trace_blocks
+      
+        # 
         # Corresponds to the JSON property `transcript`
         # @return [String]
         attr_accessor :transcript
@@ -10829,6 +10896,7 @@ module Google
           @response_messages = args[:response_messages] if args.key?(:response_messages)
           @sentiment_analysis_result = args[:sentiment_analysis_result] if args.key?(:sentiment_analysis_result)
           @text = args[:text] if args.key?(:text)
+          @trace_blocks = args[:trace_blocks] if args.key?(:trace_blocks)
           @transcript = args[:transcript] if args.key?(:transcript)
           @trigger_event = args[:trigger_event] if args.key?(:trigger_event)
           @trigger_intent = args[:trigger_intent] if args.key?(:trigger_intent)
@@ -11908,6 +11976,25 @@ module Google
           @name = args[:name] if args.key?(:name)
           @start_time = args[:start_time] if args.key?(:start_time)
           @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowCxV3beta1SpeechProcessingMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
         end
       end
       
@@ -13140,6 +13227,73 @@ module Google
           @name = args[:name] if args.key?(:name)
           @tool = args[:tool] if args.key?(:tool)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowCxV3beta1TraceBlock
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `actions`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Action>]
+        attr_accessor :actions
+      
+        # 
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # 
+        # Corresponds to the JSON property `endState`
+        # @return [String]
+        attr_accessor :end_state
+      
+        # 
+        # Corresponds to the JSON property `flowTraceMetadata`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FlowTraceMetadata]
+        attr_accessor :flow_trace_metadata
+      
+        # 
+        # Corresponds to the JSON property `inputParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :input_parameters
+      
+        # 
+        # Corresponds to the JSON property `outputParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :output_parameters
+      
+        # 
+        # Corresponds to the JSON property `playbookTraceMetadata`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PlaybookTraceMetadata]
+        attr_accessor :playbook_trace_metadata
+      
+        # 
+        # Corresponds to the JSON property `speechProcessingMetadata`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SpeechProcessingMetadata]
+        attr_accessor :speech_processing_metadata
+      
+        # 
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @end_state = args[:end_state] if args.key?(:end_state)
+          @flow_trace_metadata = args[:flow_trace_metadata] if args.key?(:flow_trace_metadata)
+          @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
+          @output_parameters = args[:output_parameters] if args.key?(:output_parameters)
+          @playbook_trace_metadata = args[:playbook_trace_metadata] if args.key?(:playbook_trace_metadata)
+          @speech_processing_metadata = args[:speech_processing_metadata] if args.key?(:speech_processing_metadata)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
