@@ -1002,6 +1002,52 @@ module Google
       end
       
       # 
+      class GetVersionOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `inlineSbomInfo`
+        # @return [Google::Apis::DeploymentmanagerV2beta::GetVersionOperationMetadataSbomInfo]
+        attr_accessor :inline_sbom_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inline_sbom_info = args[:inline_sbom_info] if args.key?(:inline_sbom_info)
+        end
+      end
+      
+      # 
+      class GetVersionOperationMetadataSbomInfo
+        include Google::Apis::Core::Hashable
+      
+        # SBOM versions currently applied to the resource. The key is the component name
+        # and the value is the version.
+        # Corresponds to the JSON property `currentComponentVersions`
+        # @return [Hash<String,String>]
+        attr_accessor :current_component_versions
+      
+        # SBOM versions scheduled for the next maintenance. The key is the component
+        # name and the value is the version.
+        # Corresponds to the JSON property `targetComponentVersions`
+        # @return [Hash<String,String>]
+        attr_accessor :target_component_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_component_versions = args[:current_component_versions] if args.key?(:current_component_versions)
+          @target_component_versions = args[:target_component_versions] if args.key?(:target_component_versions)
+        end
+      end
+      
+      # 
       class GlobalSetPolicyRequest
         include Google::Apis::Core::Hashable
       
@@ -1379,6 +1425,11 @@ module Google
         # @return [Google::Apis::DeploymentmanagerV2beta::FirewallPolicyRuleOperationMetadata]
         attr_accessor :firewall_policy_rule_operation_metadata
       
+        # 
+        # Corresponds to the JSON property `getVersionOperationMetadata`
+        # @return [Google::Apis::DeploymentmanagerV2beta::GetVersionOperationMetadata]
+        attr_accessor :get_version_operation_metadata
+      
         # [Output Only] If the operation fails, this field contains the HTTP error
         # message that was returned, such as `NOT FOUND`.
         # Corresponds to the JSON property `httpErrorMessage`
@@ -1531,6 +1582,7 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
           @firewall_policy_rule_operation_metadata = args[:firewall_policy_rule_operation_metadata] if args.key?(:firewall_policy_rule_operation_metadata)
+          @get_version_operation_metadata = args[:get_version_operation_metadata] if args.key?(:get_version_operation_metadata)
           @http_error_message = args[:http_error_message] if args.key?(:http_error_message)
           @http_error_status_code = args[:http_error_status_code] if args.key?(:http_error_status_code)
           @id = args[:id] if args.key?(:id)
