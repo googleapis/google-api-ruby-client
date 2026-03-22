@@ -1,5 +1,11 @@
 # Release History
 
+### 1.1.0 (2026-03-22)
+
+#### Features
+
+* adding checksum header ([#25157](https://github.com/googleapis/google-api-ruby-client/issues/25157)) 
+
 ### 1.0.2 (2025-09-09)
 
 #### Bug Fixes
