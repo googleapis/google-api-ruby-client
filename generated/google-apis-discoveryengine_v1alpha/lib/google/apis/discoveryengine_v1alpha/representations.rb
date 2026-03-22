@@ -580,6 +580,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1DynamicTool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2501,6 +2507,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaDoubleList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDynamicTool
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6483,6 +6495,8 @@ module Google
           property :data_source, as: 'dataSource'
           collection :destination_configs, as: 'destinationConfigs', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1DestinationConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1DestinationConfig::Representation
       
+          collection :dynamic_tools, as: 'dynamicTools', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1DynamicTool, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1DynamicTool::Representation
+      
           collection :egress_fqdns, as: 'egressFqdns'
           property :end_user_config, as: 'endUserConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1DataConnectorEndUserConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1DataConnectorEndUserConfig::Representation
       
@@ -6853,6 +6867,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :enhanced_document_elements, as: 'enhancedDocumentElements'
           property :use_native_text, as: 'useNativeText'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1DynamicTool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :enabled, as: 'enabled'
+          property :name, as: 'name'
         end
       end
       
@@ -7848,6 +7872,8 @@ module Google
           property :managed_agent_definition, as: 'managedAgentDefinition', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaManagedAgentDefinition, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaManagedAgentDefinition::Representation
       
           property :name, as: 'name'
+          property :observability_config, as: 'observabilityConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaObservabilityConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaObservabilityConfig::Representation
+      
           property :rejection_reason, as: 'rejectionReason'
           property :sharing_config, as: 'sharingConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentSharingConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAgentSharingConfig::Representation
       
@@ -8359,7 +8385,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chunk_info, as: 'chunkInfo', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo::Representation
       
-          collection :queries, as: 'queries'
           property :structured_document_info, as: 'structuredDocumentInfo', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo::Representation
       
           property :unstructured_document_info, as: 'unstructuredDocumentInfo', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo::Representation
@@ -9623,6 +9648,8 @@ module Google
           property :data_source, as: 'dataSource'
           collection :destination_configs, as: 'destinationConfigs', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDestinationConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDestinationConfig::Representation
       
+          collection :dynamic_tools, as: 'dynamicTools', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDynamicTool, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDynamicTool::Representation
+      
           collection :egress_fqdns, as: 'egressFqdns'
           property :end_user_config, as: 'endUserConfig', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnectorEndUserConfig, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineV1alphaDataConnectorEndUserConfig::Representation
       
@@ -10163,6 +10190,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDynamicTool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :enabled, as: 'enabled'
+          property :name, as: 'name'
         end
       end
       
