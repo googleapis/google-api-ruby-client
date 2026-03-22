@@ -1401,6 +1401,12 @@ module Google
         # @return [Google::Apis::OndemandscanningV1::GrafeasV1LayerDetails]
         attr_accessor :layer_details
       
+        # Line number in the file where the package was found. Optional field that only
+        # applies to source repository scanning.
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1409,6 +1415,7 @@ module Google
         def update!(**args)
           @file_path = args[:file_path] if args.key?(:file_path)
           @layer_details = args[:layer_details] if args.key?(:layer_details)
+          @line_number = args[:line_number] if args.key?(:line_number)
         end
       end
       
