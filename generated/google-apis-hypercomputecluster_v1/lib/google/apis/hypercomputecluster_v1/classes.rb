@@ -119,7 +119,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. User-provided description of the cluster.
+        # Optional. User-provided description of the cluster. Maximum of 2048 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
