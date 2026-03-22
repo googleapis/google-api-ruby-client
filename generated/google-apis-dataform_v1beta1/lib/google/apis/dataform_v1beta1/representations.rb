@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FilesystemEntryMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Folder
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1099,6 +1105,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :directory, as: 'directory'
           property :file, as: 'file'
+          property :metadata, as: 'metadata', class: Google::Apis::DataformV1beta1::FilesystemEntryMetadata, decorator: Google::Apis::DataformV1beta1::FilesystemEntryMetadata::Representation
+      
         end
       end
       
@@ -1187,6 +1195,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :path, as: 'path'
+        end
+      end
+      
+      class FilesystemEntryMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :size_bytes, :numeric_string => true, as: 'sizeBytes'
+          property :update_time, as: 'updateTime'
         end
       end
       
