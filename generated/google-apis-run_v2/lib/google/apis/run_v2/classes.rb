@@ -3367,7 +3367,10 @@ module Google
       class GoogleCloudRunV2SourceFile
         include Google::Apis::Core::Hashable
       
-        # Required. Input only. The source code as raw text.
+        # Required. Input only. Represents the exact, literal, and complete source code
+        # of the file. Placeholders like `...` or comments such as `# [rest of code]`
+        # should NEVER be used as omission. Every character in this field will be built
+        # into the final container. Any omission will result in a broken application.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
@@ -4804,6 +4807,15 @@ module Google
         # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1ArtifactObjects]
         attr_accessor :objects
       
+        # Optional. A list of OCI images to be uploaded to Artifact Registry upon
+        # successful completion of all build steps. OCI images in the specified paths
+        # will be uploaded to the specified Artifact Registry repository using the
+        # builder service account's credentials. If any images fail to be pushed, the
+        # build is marked FAILURE.
+        # Corresponds to the JSON property `oci`
+        # @return [Array<Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1Oci>]
+        attr_accessor :oci
+      
         # A list of Python packages to be uploaded to Artifact Registry upon successful
         # completion of all build steps. The build service account credentials will be
         # used to perform the upload. If any objects fail to be pushed, the build is
@@ -4823,6 +4835,7 @@ module Google
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
           @npm_packages = args[:npm_packages] if args.key?(:npm_packages)
           @objects = args[:objects] if args.key?(:objects)
+          @oci = args[:oci] if args.key?(:oci)
           @python_packages = args[:python_packages] if args.key?(:python_packages)
         end
       end
@@ -5457,6 +5470,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The OCI media type of the artifact. Non-OCI images, such as
+        # Docker images, will have an unspecified value.
+        # Corresponds to the JSON property `ociMediaType`
+        # @return [String]
+        attr_accessor :oci_media_type
+      
         # Start and end times for a build execution phase.
         # Corresponds to the JSON property `pushTiming`
         # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan]
@@ -5471,6 +5490,7 @@ module Google
           @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @digest = args[:digest] if args.key?(:digest)
           @name = args[:name] if args.key?(:name)
+          @oci_media_type = args[:oci_media_type] if args.key?(:oci_media_type)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
         end
       end
@@ -5964,6 +5984,40 @@ module Google
         def update!(**args)
           @package_path = args[:package_path] if args.key?(:package_path)
           @repository = args[:repository] if args.key?(:repository)
+        end
+      end
+      
+      # OCI image to upload to Artifact Registry upon successful completion of all
+      # build steps.
+      class GoogleDevtoolsCloudbuildV1Oci
+        include Google::Apis::Core::Hashable
+      
+        # Required. Path on the local file system where to find the container to upload.
+        # e.g. /workspace/my-image.tar
+        # Corresponds to the JSON property `file`
+        # @return [String]
+        attr_accessor :file
+      
+        # Required. Registry path to upload the container to. e.g. us-east1-docker.pkg.
+        # dev/my-project/my-repo/my-image
+        # Corresponds to the JSON property `registryPath`
+        # @return [String]
+        attr_accessor :registry_path
+      
+        # Optional. Tags to apply to the uploaded image. e.g. latest, 1.0.0
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file = args[:file] if args.key?(:file)
+          @registry_path = args[:registry_path] if args.key?(:registry_path)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
