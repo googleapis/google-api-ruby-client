@@ -1,0 +1,7 @@
+{
+    "api_id": "agentregistry:v1alpha",
+    "name_pretty": "Agent Registry API",
+    "distribution_name": "google-apis-agentregistry_v1alpha",
+    "language": "ruby",
+    "library_type": "REST"
+}
