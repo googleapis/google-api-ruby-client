@@ -5213,7 +5213,8 @@ module Google
         # @return [String]
         attr_accessor :private_space_policy
       
-        # If true, screen capture is disabled for all users.
+        # If true, screen capture is disabled for all users. This also blocks Circle to
+        # Search (https://support.google.com/android/answer/14508957).
         # Corresponds to the JSON property `screenCaptureDisabled`
         # @return [Boolean]
         attr_accessor :screen_capture_disabled
@@ -5734,7 +5735,8 @@ module Google
         attr_accessor :safe_boot_disabled
         alias_method :safe_boot_disabled?, :safe_boot_disabled
       
-        # Whether screen capture is disabled.
+        # Whether screen capture is disabled. This also blocks Circle to Search (https://
+        # support.google.com/android/answer/14508957).
         # Corresponds to the JSON property `screenCaptureDisabled`
         # @return [Boolean]
         attr_accessor :screen_capture_disabled
