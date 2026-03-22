@@ -1090,13 +1090,6 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Optional. Value among strict (enforcing maintenance policy and only looking at
-        # Units with maintenance policy), ignore (ignoring maintenance policy) and skip (
-        # skipping Units with maintenance policy)
-        # Corresponds to the JSON property `maintenancePolicyEnforcement`
-        # @return [String]
-        attr_accessor :maintenance_policy_enforcement
-      
         # Identifier. The resource name (full URI of the resource) following the
         # standard naming scheme: "projects/`project`/locations/`location`/rolloutKinds/`
         # rollout_kind_id`"
@@ -1162,7 +1155,6 @@ module Google
           @error_budget = args[:error_budget] if args.key?(:error_budget)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
-          @maintenance_policy_enforcement = args[:maintenance_policy_enforcement] if args.key?(:maintenance_policy_enforcement)
           @name = args[:name] if args.key?(:name)
           @rollout_orchestration_strategy = args[:rollout_orchestration_strategy] if args.key?(:rollout_orchestration_strategy)
           @uid = args[:uid] if args.key?(:uid)

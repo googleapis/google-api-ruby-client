@@ -569,7 +569,6 @@ module Google
       
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
-          property :maintenance_policy_enforcement, as: 'maintenancePolicyEnforcement'
           property :name, as: 'name'
           property :rollout_orchestration_strategy, as: 'rolloutOrchestrationStrategy'
           property :uid, as: 'uid'
