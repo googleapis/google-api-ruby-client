@@ -572,7 +572,7 @@ module Google
       class ConfigVariable
         include Google::Apis::Core::Hashable
       
-        # Value is a bool.
+        # Optional. Value is a bool.
         # Corresponds to the JSON property `boolValue`
         # @return [Boolean]
         attr_accessor :bool_value
@@ -583,7 +583,7 @@ module Google
         # @return [Google::Apis::ConnectorsV1::EncryptionKey]
         attr_accessor :encryption_key_value
       
-        # Value is an integer
+        # Optional. Value is an integer
         # Corresponds to the JSON property `intValue`
         # @return [Fixnum]
         attr_accessor :int_value
@@ -598,7 +598,7 @@ module Google
         # @return [Google::Apis::ConnectorsV1::Secret]
         attr_accessor :secret_value
       
-        # Value is a string.
+        # Optional. Value is a string.
         # Corresponds to the JSON property `stringValue`
         # @return [String]
         attr_accessor :string_value
@@ -819,7 +819,7 @@ module Google
         # @return [Google::Apis::ConnectorsV1::AuthConfig]
         attr_accessor :eua_oauth_auth_config
       
-        # Eventing Configuration of a connection next: 19
+        # Eventing Configuration of a connection next: 20
         # Corresponds to the JSON property `eventingConfig`
         # @return [Google::Apis::ConnectorsV1::EventingConfig]
         attr_accessor :eventing_config
@@ -1989,7 +1989,8 @@ module Google
         # @return [String]
         attr_accessor :host
       
-        # The port is the target port number that is accepted by the destination.
+        # Optional. The port is the target port number that is accepted by the
+        # destination.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -2015,12 +2016,13 @@ module Google
       class DestinationConfig
         include Google::Apis::Core::Hashable
       
-        # The destinations for the key.
+        # Optional. The destinations for the key.
         # Corresponds to the JSON property `destinations`
         # @return [Array<Google::Apis::ConnectorsV1::Destination>]
         attr_accessor :destinations
       
-        # The key is the destination identifier that is supported by the Connector.
+        # Optional. The key is the destination identifier that is supported by the
+        # Connector.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -2246,7 +2248,7 @@ module Google
         # @return [String]
         attr_accessor :kms_key_name
       
-        # Type.
+        # Optional. Specifies the type of the encryption key.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2992,6 +2994,12 @@ module Google
         # @return [String]
         attr_accessor :event_type_id
       
+        # Optional. Filter for the event subscription. Incoming events are filtered
+        # based on the filter expression.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
         # JMS message denotes the source of the event
         # Corresponds to the JSON property `jms`
         # @return [Google::Apis::ConnectorsV1::Jms]
@@ -3038,6 +3046,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @destinations = args[:destinations] if args.key?(:destinations)
           @event_type_id = args[:event_type_id] if args.key?(:event_type_id)
+          @filter = args[:filter] if args.key?(:filter)
           @jms = args[:jms] if args.key?(:jms)
           @name = args[:name] if args.key?(:name)
           @status = args[:status] if args.key?(:status)
@@ -3176,7 +3185,7 @@ module Google
         end
       end
       
-      # Eventing Configuration of a connection next: 19
+      # Eventing Configuration of a connection next: 20
       class EventingConfig
         include Google::Apis::Core::Hashable
       
@@ -3184,6 +3193,11 @@ module Google
         # Corresponds to the JSON property `additionalVariables`
         # @return [Array<Google::Apis::ConnectorsV1::ConfigVariable>]
         attr_accessor :additional_variables
+      
+        # Optional. List of allowed event types for the connection.
+        # Corresponds to the JSON property `allowedEventTypes`
+        # @return [Array<String>]
+        attr_accessor :allowed_event_types
       
         # AuthConfig defines details of a authentication type.
         # Corresponds to the JSON property `authConfig`
@@ -3206,7 +3220,7 @@ module Google
         attr_accessor :enrichment_enabled
         alias_method :enrichment_enabled?, :enrichment_enabled
       
-        # Optional. Ingress endpoint of the event listener. This is used only when
+        # Output only. Ingress endpoint of the event listener. This is used only when
         # private connectivity is enabled.
         # Corresponds to the JSON property `eventsListenerIngressEndpoint`
         # @return [String]
@@ -3251,6 +3265,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
+          @allowed_event_types = args[:allowed_event_types] if args.key?(:allowed_event_types)
           @auth_config = args[:auth_config] if args.key?(:auth_config)
           @dead_letter_config = args[:dead_letter_config] if args.key?(:dead_letter_config)
           @enrichment_config = args[:enrichment_config] if args.key?(:enrichment_config)
@@ -3626,6 +3641,45 @@ module Google
         def update!(**args)
           @auth_schemas = args[:auth_schemas] if args.key?(:auth_schemas)
           @json_schema = args[:json_schema] if args.key?(:json_schema)
+        end
+      end
+      
+      # Request message for FetchConnectionToolspecOverride API.
+      class FetchConnectionToolspecOverrideRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of tools for which the tool spec override is to be generated.
+        # Corresponds to the JSON property `toolNames`
+        # @return [Array<Google::Apis::ConnectorsV1::ToolName>]
+        attr_accessor :tool_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_names = args[:tool_names] if args.key?(:tool_names)
+        end
+      end
+      
+      # Response message for FetchConnectionToolspecOverride API.
+      class FetchConnectionToolspecOverrideResponse
+        include Google::Apis::Core::Hashable
+      
+        # Toolspec overrides for a connection only holds the information that is to be
+        # displayed in the UI for admins.
+        # Corresponds to the JSON property `toolspecOverride`
+        # @return [Google::Apis::ConnectorsV1::ToolspecOverride]
+        attr_accessor :toolspec_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @toolspec_override = args[:toolspec_override] if args.key?(:toolspec_override)
         end
       end
       
@@ -4137,6 +4191,18 @@ module Google
         # @return [Array<Object>]
         attr_accessor :enum
       
+        # Whether the maximum number value is exclusive.
+        # Corresponds to the JSON property `exclusiveMaximum`
+        # @return [Boolean]
+        attr_accessor :exclusive_maximum
+        alias_method :exclusive_maximum?, :exclusive_maximum
+      
+        # Whether the minimum number value is exclusive.
+        # Corresponds to the JSON property `exclusiveMinimum`
+        # @return [Boolean]
+        attr_accessor :exclusive_minimum
+        alias_method :exclusive_minimum?, :exclusive_minimum
+      
         # Format of the value as per https://json-schema.org/understanding-json-schema/
         # reference/string.html#format
         # Corresponds to the JSON property `format`
@@ -4152,6 +4218,42 @@ module Google
         # Corresponds to the JSON property `jdbcType`
         # @return [String]
         attr_accessor :jdbc_type
+      
+        # Maximum number of items in the array field.
+        # Corresponds to the JSON property `maxItems`
+        # @return [Fixnum]
+        attr_accessor :max_items
+      
+        # Maximum length of the string field.
+        # Corresponds to the JSON property `maxLength`
+        # @return [Fixnum]
+        attr_accessor :max_length
+      
+        # Maximum value of the number field.
+        # Corresponds to the JSON property `maximum`
+        # @return [Object]
+        attr_accessor :maximum
+      
+        # Minimum number of items in the array field.
+        # Corresponds to the JSON property `minItems`
+        # @return [Fixnum]
+        attr_accessor :min_items
+      
+        # Minimum length of the string field.
+        # Corresponds to the JSON property `minLength`
+        # @return [Fixnum]
+        attr_accessor :min_length
+      
+        # Minimum value of the number field.
+        # Corresponds to the JSON property `minimum`
+        # @return [Object]
+        attr_accessor :minimum
+      
+        # Regex pattern of the string field. This is a string value that describes the
+        # regular expression that the string value should match.
+        # Corresponds to the JSON property `pattern`
+        # @return [String]
+        attr_accessor :pattern
       
         # The child schemas, applicable only if this is of type `object`. The key is the
         # name of the property and the value is the json schema that describes that
@@ -4170,6 +4272,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :type
       
+        # Whether the items in the array field are unique.
+        # Corresponds to the JSON property `uniqueItems`
+        # @return [Boolean]
+        attr_accessor :unique_items
+        alias_method :unique_items?, :unique_items
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4180,12 +4288,22 @@ module Google
           @default = args[:default] if args.key?(:default)
           @description = args[:description] if args.key?(:description)
           @enum = args[:enum] if args.key?(:enum)
+          @exclusive_maximum = args[:exclusive_maximum] if args.key?(:exclusive_maximum)
+          @exclusive_minimum = args[:exclusive_minimum] if args.key?(:exclusive_minimum)
           @format = args[:format] if args.key?(:format)
           @items = args[:items] if args.key?(:items)
           @jdbc_type = args[:jdbc_type] if args.key?(:jdbc_type)
+          @max_items = args[:max_items] if args.key?(:max_items)
+          @max_length = args[:max_length] if args.key?(:max_length)
+          @maximum = args[:maximum] if args.key?(:maximum)
+          @min_items = args[:min_items] if args.key?(:min_items)
+          @min_length = args[:min_length] if args.key?(:min_length)
+          @minimum = args[:minimum] if args.key?(:minimum)
+          @pattern = args[:pattern] if args.key?(:pattern)
           @properties = args[:properties] if args.key?(:properties)
           @required = args[:required] if args.key?(:required)
           @type = args[:type] if args.key?(:type)
+          @unique_items = args[:unique_items] if args.key?(:unique_items)
         end
       end
       
@@ -7351,16 +7469,16 @@ module Google
       class TrafficShapingConfig
         include Google::Apis::Core::Hashable
       
-        # Required. * The duration over which the API call quota limits are calculated.
-        # This duration is used to define the time window for evaluating if the number
-        # of API calls made by a user is within the allowed quota limits. For example: -
-        # To define a quota sampled over 16 seconds, set `seconds` to 16 - To define a
-        # quota sampled over 5 minutes, set `seconds` to 300 (5 * 60) - To define a
-        # quota sampled over 1 day, set `seconds` to 86400 (24 * 60 * 60) and so on. It
-        # is important to note that this duration is not the time the quota is valid for,
-        # but rather the time window over which the quota is evaluated. For example, if
-        # the quota is 100 calls per 10 seconds, then this duration field would be set
-        # to 10 seconds.
+        # Required. Specifies the duration over which the API call quota limits are
+        # calculated. This duration is used to define the time window for evaluating if
+        # the number of API calls made by a user is within the allowed quota limits. For
+        # example: - To define a quota sampled over 16 seconds, set `seconds` to 16 - To
+        # define a quota sampled over 5 minutes, set `seconds` to 300 (5 * 60) - To
+        # define a quota sampled over 1 day, set `seconds` to 86400 (24 * 60 * 60) and
+        # so on. It is important to note that this duration is not the time the quota is
+        # valid for, but rather the time window over which the quota is evaluated. For
+        # example, if the quota is 100 calls per 10 seconds, then this duration field
+        # would be set to 10 seconds.
         # Corresponds to the JSON property `duration`
         # @return [String]
         attr_accessor :duration
