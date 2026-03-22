@@ -5037,6 +5037,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :learning_rate_multiplier, as: 'learningRateMultiplier'
+          property :previous_fine_tuned_processor_version_name, as: 'previousFineTunedProcessorVersionName'
           property :train_steps, as: 'trainSteps'
         end
       end
