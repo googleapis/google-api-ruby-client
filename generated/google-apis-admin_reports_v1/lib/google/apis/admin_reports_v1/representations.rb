@@ -63,6 +63,24 @@ module Google
           
             include Google::Apis::Core::JsonObjectSupport
           end
+          
+          class SensitiveParameter
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class MessageValue
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+            
+            class MultiMessageValue
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -284,6 +302,8 @@ module Google
             collection :parameters, as: 'parameters', class: Google::Apis::AdminReportsV1::Activity::Event::Parameter, decorator: Google::Apis::AdminReportsV1::Activity::Event::Parameter::Representation
         
             collection :resource_ids, as: 'resourceIds'
+            collection :sensitive_parameters, as: 'sensitiveParameters', class: Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter, decorator: Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter::Representation
+        
             property :status, as: 'status', class: Google::Apis::AdminReportsV1::ActivityEventsStatus, decorator: Google::Apis::AdminReportsV1::ActivityEventsStatus::Representation
         
             property :type, as: 'type'
@@ -298,6 +318,38 @@ module Google
           
               collection :multi_int_value, as: 'multiIntValue'
               collection :multi_message_value, as: 'multiMessageValue', class: Google::Apis::AdminReportsV1::Activity::Event::Parameter::MultiMessageValue, decorator: Google::Apis::AdminReportsV1::Activity::Event::Parameter::MultiMessageValue::Representation
+          
+              collection :multi_value, as: 'multiValue'
+              property :name, as: 'name'
+              property :value, as: 'value'
+            end
+            
+            class MessageValue
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                collection :parameter, as: 'parameter', class: Google::Apis::AdminReportsV1::NestedParameter, decorator: Google::Apis::AdminReportsV1::NestedParameter::Representation
+            
+              end
+            end
+            
+            class MultiMessageValue
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                collection :parameter, as: 'parameter', class: Google::Apis::AdminReportsV1::NestedParameter, decorator: Google::Apis::AdminReportsV1::NestedParameter::Representation
+            
+              end
+            end
+          end
+          
+          class SensitiveParameter
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :bool_value, as: 'boolValue'
+              property :int_value, :numeric_string => true, as: 'intValue'
+              property :message_value, as: 'messageValue', class: Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter::MessageValue, decorator: Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter::MessageValue::Representation
+          
+              collection :multi_int_value, as: 'multiIntValue'
+              collection :multi_message_value, as: 'multiMessageValue', class: Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter::MultiMessageValue, decorator: Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter::MultiMessageValue::Representation
           
               collection :multi_value, as: 'multiValue'
               property :name, as: 'name'
