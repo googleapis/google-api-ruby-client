@@ -1075,6 +1075,11 @@ module Google
         # @return [String]
         attr_accessor :file
       
+        # Represents metadata for a single entry in a filesystem.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::DataformV1::FilesystemEntryMetadata]
+        attr_accessor :metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1083,6 +1088,7 @@ module Google
         def update!(**args)
           @directory = args[:directory] if args.key?(:directory)
           @file = args[:file] if args.key?(:file)
+          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
@@ -1351,6 +1357,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # Represents metadata for a single entry in a filesystem.
+      class FilesystemEntryMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Provides the size of the entry in bytes. For directories, this
+        # will be 0.
+        # Corresponds to the JSON property `sizeBytes`
+        # @return [Fixnum]
+        attr_accessor :size_bytes
+      
+        # Output only. Represents the time of the last modification of the entry.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
