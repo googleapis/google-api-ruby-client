@@ -208,6 +208,195 @@ module Google
         end
       end
       
+      # AlertPolicyCheck configures a set of Cloud Monitoring alerting policies that
+      # will be periodically polled for alerts. If any of the listed policies have an
+      # active alert, the analysis check will fail.
+      class AlertPolicyCheck
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Cloud Monitoring Alert Policies to check for active alerts.
+        # Format is `projects/`project`/alertPolicies/`alert_policy``.
+        # Corresponds to the JSON property `alertPolicies`
+        # @return [Array<String>]
+        attr_accessor :alert_policies
+      
+        # Required. The ID of the analysis check.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. A set of labels to filter active alerts. If set, only alerts having
+        # all of the specified labels will be considered. Otherwise, all active alerts
+        # will be considered.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_policies = args[:alert_policies] if args.key?(:alert_policies)
+          @id = args[:id] if args.key?(:id)
+          @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
+      # AlertPolicyCheckStatus contains information specific to a single run of an
+      # alert policy check.
+      class AlertPolicyCheckStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The alert policies that this analysis monitors. Format is `
+        # projects/`project`/locations/`location`/alertPolicies/`alertPolicy``.
+        # Corresponds to the JSON property `alertPolicies`
+        # @return [Array<String>]
+        attr_accessor :alert_policies
+      
+        # Output only. The alert policies that were found to be firing during this check.
+        # This will be empty if no incidents were found.
+        # Corresponds to the JSON property `failedAlertPolicies`
+        # @return [Array<Google::Apis::ClouddeployV1::FailedAlertPolicy>]
+        attr_accessor :failed_alert_policies
+      
+        # Output only. Additional information about the alert policy check failure, if
+        # available. This will be empty if the alert policy check succeeded.
+        # Corresponds to the JSON property `failureMessage`
+        # @return [String]
+        attr_accessor :failure_message
+      
+        # Output only. The ID of this analysis.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. The resolved labels used to filter for specific incidents.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_policies = args[:alert_policies] if args.key?(:alert_policies)
+          @failed_alert_policies = args[:failed_alert_policies] if args.key?(:failed_alert_policies)
+          @failure_message = args[:failure_message] if args.key?(:failure_message)
+          @id = args[:id] if args.key?(:id)
+          @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
+      # Analysis contains the configuration for the set of analyses to be performed on
+      # the target.
+      class Analysis
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Custom analysis checks from 3P metric providers.
+        # Corresponds to the JSON property `customChecks`
+        # @return [Array<Google::Apis::ClouddeployV1::CustomCheck>]
+        attr_accessor :custom_checks
+      
+        # Required. The amount of time in minutes the analysis on the target will last.
+        # If all analysis checks have successfully completed before the specified
+        # duration, the analysis is successful. If a check is still running while the
+        # specified duration passes, it will wait for that check to complete to
+        # determine if the analysis is successful. The maximum duration is 48 hours.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # GoogleCloudAnalysis is a set of Google Cloud-based checks to perform on the
+        # deployment.
+        # Corresponds to the JSON property `googleCloud`
+        # @return [Google::Apis::ClouddeployV1::GoogleCloudAnalysis]
+        attr_accessor :google_cloud
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_checks = args[:custom_checks] if args.key?(:custom_checks)
+          @duration = args[:duration] if args.key?(:duration)
+          @google_cloud = args[:google_cloud] if args.key?(:google_cloud)
+        end
+      end
+      
+      # An analysis Job.
+      class AnalysisJob
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Custom analysis checks from 3P metric providers that are run as
+        # part of the analysis Job.
+        # Corresponds to the JSON property `customChecks`
+        # @return [Array<Google::Apis::ClouddeployV1::CustomCheck>]
+        attr_accessor :custom_checks
+      
+        # Output only. The amount of time in minutes the analysis Job will run, up to a
+        # maximum of 48 hours. If any check in this Job is still running when the
+        # duration ends, the Job keeps running until that check completes.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # GoogleCloudAnalysis is a set of Google Cloud-based checks to perform on the
+        # deployment.
+        # Corresponds to the JSON property `googleCloud`
+        # @return [Google::Apis::ClouddeployV1::GoogleCloudAnalysis]
+        attr_accessor :google_cloud
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_checks = args[:custom_checks] if args.key?(:custom_checks)
+          @duration = args[:duration] if args.key?(:duration)
+          @google_cloud = args[:google_cloud] if args.key?(:google_cloud)
+        end
+      end
+      
+      # AnalysisJobRun contains information specific to an analysis `JobRun`.
+      class AnalysisJobRun
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The status of the running alert policy checks configured for this
+        # analysis.
+        # Corresponds to the JSON property `alertPolicyAnalyses`
+        # @return [Array<Google::Apis::ClouddeployV1::AlertPolicyCheckStatus>]
+        attr_accessor :alert_policy_analyses
+      
+        # Output only. The status of the running custom checks configured for this
+        # analysis.
+        # Corresponds to the JSON property `customCheckAnalyses`
+        # @return [Array<Google::Apis::ClouddeployV1::CustomCheckStatus>]
+        attr_accessor :custom_check_analyses
+      
+        # Output only. The ID of the configured check that failed. This will always be
+        # blank while the analysis is in progress or if it succeeded.
+        # Corresponds to the JSON property `failedCheckId`
+        # @return [String]
+        attr_accessor :failed_check_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_policy_analyses = args[:alert_policy_analyses] if args.key?(:alert_policy_analyses)
+          @custom_check_analyses = args[:custom_check_analyses] if args.key?(:custom_check_analyses)
+          @failed_check_id = args[:failed_check_id] if args.key?(:failed_check_id)
+        end
+      end
+      
       # Information specifying an Anthos Cluster.
       class AnthosCluster
         include Google::Apis::Core::Hashable
@@ -1005,6 +1194,12 @@ module Google
       class CanaryDeployment
         include Google::Apis::Core::Hashable
       
+        # Analysis contains the configuration for the set of analyses to be performed on
+        # the target.
+        # Corresponds to the JSON property `analysis`
+        # @return [Google::Apis::ClouddeployV1::Analysis]
+        attr_accessor :analysis
+      
         # Required. The percentage based deployments that will occur as a part of a `
         # Rollout`. List is expected in ascending order and each integer n is 0 <= n <
         # 100. If the GatewayServiceMesh is configured for Kubernetes, then the range
@@ -1030,16 +1225,23 @@ module Google
         attr_accessor :verify
         alias_method :verify?, :verify
       
+        # Verify contains the verify job configuration information.
+        # Corresponds to the JSON property `verifyConfig`
+        # @return [Google::Apis::ClouddeployV1::Verify]
+        attr_accessor :verify_config
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @analysis = args[:analysis] if args.key?(:analysis)
           @percentages = args[:percentages] if args.key?(:percentages)
           @postdeploy = args[:postdeploy] if args.key?(:postdeploy)
           @predeploy = args[:predeploy] if args.key?(:predeploy)
           @verify = args[:verify] if args.key?(:verify)
+          @verify_config = args[:verify_config] if args.key?(:verify_config)
         end
       end
       
@@ -1213,6 +1415,15 @@ module Google
         # @return [String]
         attr_accessor :job
       
+        # Output only. The previous Cloud Run Revision name associated with a `Rollout`.
+        # Only set when a canary deployment strategy is configured. Format for service
+        # is projects/`project`/locations/`location`/services/`service`/revisions/`
+        # revision`. Format for worker pool is projects/`project`/locations/`location`/
+        # workerPools/`workerpool`/revisions/`revision`.
+        # Corresponds to the JSON property `previousRevision`
+        # @return [String]
+        attr_accessor :previous_revision
+      
         # Output only. The Cloud Run Revision id associated with a `Rollout`.
         # Corresponds to the JSON property `revision`
         # @return [String]
@@ -1243,6 +1454,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @job = args[:job] if args.key?(:job)
+          @previous_revision = args[:previous_revision] if args.key?(:previous_revision)
           @revision = args[:revision] if args.key?(:revision)
           @service = args[:service] if args.key?(:service)
           @service_urls = args[:service_urls] if args.key?(:service_urls)
@@ -1254,6 +1466,19 @@ module Google
       # Release` render.
       class CloudRunRenderMetadata
         include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the Cloud Run Job in the rendered manifest. Format is
+        # `projects/`project`/locations/`location`/jobs/`job``.
+        # Corresponds to the JSON property `job`
+        # @return [String]
+        attr_accessor :job
+      
+        # Output only. The name of the Cloud Run Revision in the rendered manifest.
+        # Format is `projects/`project`/locations/`location`/services/`service`/
+        # revisions/`revision``.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
       
         # Output only. The name of the Cloud Run Service in the rendered manifest.
         # Format is `projects/`project`/locations/`location`/services/`service``.
@@ -1273,6 +1498,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @job = args[:job] if args.key?(:job)
+          @revision = args[:revision] if args.key?(:revision)
           @service = args[:service] if args.key?(:service)
           @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
         end
@@ -1313,6 +1540,46 @@ module Google
           @default_tool_versions = args[:default_tool_versions] if args.key?(:default_tool_versions)
           @name = args[:name] if args.key?(:name)
           @supported_versions = args[:supported_versions] if args.key?(:supported_versions)
+        end
+      end
+      
+      # This task is represented by a container that is executed in the Cloud Build
+      # execution environment.
+      class ContainerTask
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Args is the container arguments to use. This overrides the default
+        # arguments defined in the container image.
+        # Corresponds to the JSON property `args`
+        # @return [Array<String>]
+        attr_accessor :args
+      
+        # Optional. Command is the container entrypoint to use. This overrides the
+        # default entrypoint defined in the container image.
+        # Corresponds to the JSON property `command`
+        # @return [Array<String>]
+        attr_accessor :command
+      
+        # Optional. Environment variables that are set in the container.
+        # Corresponds to the JSON property `env`
+        # @return [Hash<String,String>]
+        attr_accessor :env
+      
+        # Required. Image is the container image to use.
+        # Corresponds to the JSON property `image`
+        # @return [String]
+        attr_accessor :image
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @command = args[:command] if args.key?(:command)
+          @env = args[:env] if args.key?(:env)
+          @image = args[:image] if args.key?(:image)
         end
       end
       
@@ -1374,6 +1641,98 @@ module Google
         # Update properties of this object
         def update!(**args)
           @phase_configs = args[:phase_configs] if args.key?(:phase_configs)
+        end
+      end
+      
+      # CustomCheck configures a third-party metric provider to run the analysis, via
+      # a Task that runs at a specified frequency.
+      class CustomCheck
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The frequency at which the custom check will be run, with a minimum
+        # and default of 5 minutes.
+        # Corresponds to the JSON property `frequency`
+        # @return [String]
+        attr_accessor :frequency
+      
+        # Required. The ID of the custom Analysis check.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A Task represents a unit of work that is executed as part of a Job.
+        # Corresponds to the JSON property `task`
+        # @return [Google::Apis::ClouddeployV1::Task]
+        attr_accessor :task
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frequency = args[:frequency] if args.key?(:frequency)
+          @id = args[:id] if args.key?(:id)
+          @task = args[:task] if args.key?(:task)
+        end
+      end
+      
+      # CustomCheckStatus contains information specific to a single iteration of a
+      # custom analysis job.
+      class CustomCheckStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The reason the analysis failed. This will always be unspecified
+        # while the analysis is in progress or if it succeeded.
+        # Corresponds to the JSON property `failureCause`
+        # @return [String]
+        attr_accessor :failure_cause
+      
+        # Output only. Additional information about the analysis failure, if available.
+        # Corresponds to the JSON property `failureMessage`
+        # @return [String]
+        attr_accessor :failure_message
+      
+        # Output only. The frequency in minutes at which the custom check is run.
+        # Corresponds to the JSON property `frequency`
+        # @return [String]
+        attr_accessor :frequency
+      
+        # Output only. The ID of the custom check.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. The resource name of the Cloud Build `Build` object that was used
+        # to execute the latest run of this custom action check. Format is `projects/`
+        # project`/locations/`location`/builds/`build``.
+        # Corresponds to the JSON property `latestBuild`
+        # @return [String]
+        attr_accessor :latest_build
+      
+        # CustomMetadata contains information from a user-defined operation.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::ClouddeployV1::CustomMetadata]
+        attr_accessor :metadata
+      
+        # A Task represents a unit of work that is executed as part of a Job.
+        # Corresponds to the JSON property `task`
+        # @return [Google::Apis::ClouddeployV1::Task]
+        attr_accessor :task
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_cause = args[:failure_cause] if args.key?(:failure_cause)
+          @failure_message = args[:failure_message] if args.key?(:failure_message)
+          @frequency = args[:frequency] if args.key?(:frequency)
+          @id = args[:id] if args.key?(:id)
+          @latest_build = args[:latest_build] if args.key?(:latest_build)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @task = args[:task] if args.key?(:task)
         end
       end
       
@@ -1471,6 +1830,31 @@ module Google
         end
       end
       
+      # CustomTargetTasks represents the `CustomTargetType` configuration using tasks.
+      class CustomTargetTasks
+        include Google::Apis::Core::Hashable
+      
+        # A Task represents a unit of work that is executed as part of a Job.
+        # Corresponds to the JSON property `deploy`
+        # @return [Google::Apis::ClouddeployV1::Task]
+        attr_accessor :deploy
+      
+        # A Task represents a unit of work that is executed as part of a Job.
+        # Corresponds to the JSON property `render`
+        # @return [Google::Apis::ClouddeployV1::Task]
+        attr_accessor :render
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deploy = args[:deploy] if args.key?(:deploy)
+          @render = args[:render] if args.key?(:render)
+        end
+      end
+      
       # A `CustomTargetType` resource in the Cloud Deploy API. A `CustomTargetType`
       # defines a type of custom target that can be referenced in a `Target` in order
       # to facilitate deploying to other systems besides the supported runtimes.
@@ -1530,6 +1914,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # CustomTargetTasks represents the `CustomTargetType` configuration using tasks.
+        # Corresponds to the JSON property `tasks`
+        # @return [Google::Apis::ClouddeployV1::CustomTargetTasks]
+        attr_accessor :tasks
+      
         # Output only. Unique identifier of the `CustomTargetType`.
         # Corresponds to the JSON property `uid`
         # @return [String]
@@ -1554,6 +1943,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @tasks = args[:tasks] if args.key?(:tasks)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -2252,6 +2642,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Job represents an operation for a `Rollout`.
+        # Corresponds to the JSON property `analysisJob`
+        # @return [Google::Apis::ClouddeployV1::Job]
+        attr_accessor :analysis_job
+      
+        # Job represents an operation for a `Rollout`.
         # Corresponds to the JSON property `deployJob`
         # @return [Google::Apis::ClouddeployV1::Job]
         attr_accessor :deploy_job
@@ -2277,6 +2672,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @analysis_job = args[:analysis_job] if args.key?(:analysis_job)
           @deploy_job = args[:deploy_job] if args.key?(:deploy_job)
           @postdeploy_job = args[:postdeploy_job] if args.key?(:postdeploy_job)
           @predeploy_job = args[:predeploy_job] if args.key?(:predeploy_job)
@@ -2425,6 +2821,34 @@ module Google
         end
       end
       
+      # FailedAlertPolicy contains information about an alert policy that was found to
+      # be firing during an alert policy check.
+      class FailedAlertPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the alert policy that was found to be firing. Format
+        # is `projects/`project`/locations/`location`/alertPolicies/`alertPolicy``.
+        # Corresponds to the JSON property `alertPolicy`
+        # @return [String]
+        attr_accessor :alert_policy
+      
+        # Output only. Open alerts for the alerting policies that matched the alert
+        # policy check configuration.
+        # Corresponds to the JSON property `alerts`
+        # @return [Array<String>]
+        attr_accessor :alerts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_policy = args[:alert_policy] if args.key?(:alert_policy)
+          @alerts = args[:alerts] if args.key?(:alerts)
+        end
+      end
+      
       # Information about the Kubernetes Gateway API service mesh configuration.
       class GatewayServiceMesh
         include Google::Apis::Core::Hashable
@@ -2536,6 +2960,27 @@ module Google
         end
       end
       
+      # GoogleCloudAnalysis is a set of Google Cloud-based checks to perform on the
+      # deployment.
+      class GoogleCloudAnalysis
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of
+        # the analysis.
+        # Corresponds to the JSON property `alertPolicyChecks`
+        # @return [Array<Google::Apis::ClouddeployV1::AlertPolicyCheck>]
+        attr_accessor :alert_policy_checks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_policy_checks = args[:alert_policy_checks] if args.key?(:alert_policy_checks)
+        end
+      end
+      
       # The request object used by `IgnoreJob`.
       class IgnoreJobRequest
         include Google::Apis::Core::Hashable
@@ -2590,6 +3035,11 @@ module Google
         # @return [Google::Apis::ClouddeployV1::AdvanceChildRolloutJob]
         attr_accessor :advance_child_rollout_job
       
+        # An analysis Job.
+        # Corresponds to the JSON property `analysisJob`
+        # @return [Google::Apis::ClouddeployV1::AnalysisJob]
+        attr_accessor :analysis_job
+      
         # A createChildRollout Job.
         # Corresponds to the JSON property `createChildRolloutJob`
         # @return [Google::Apis::ClouddeployV1::CreateChildRolloutJob]
@@ -2643,6 +3093,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advance_child_rollout_job = args[:advance_child_rollout_job] if args.key?(:advance_child_rollout_job)
+          @analysis_job = args[:analysis_job] if args.key?(:analysis_job)
           @create_child_rollout_job = args[:create_child_rollout_job] if args.key?(:create_child_rollout_job)
           @deploy_job = args[:deploy_job] if args.key?(:deploy_job)
           @id = args[:id] if args.key?(:id)
@@ -2665,6 +3116,11 @@ module Google
         # Corresponds to the JSON property `advanceChildRolloutJobRun`
         # @return [Google::Apis::ClouddeployV1::AdvanceChildRolloutJobRun]
         attr_accessor :advance_child_rollout_job_run
+      
+        # AnalysisJobRun contains information specific to an analysis `JobRun`.
+        # Corresponds to the JSON property `analysisJobRun`
+        # @return [Google::Apis::ClouddeployV1::AnalysisJobRun]
+        attr_accessor :analysis_job_run
       
         # CreateChildRolloutJobRun contains information specific to a createChildRollout
         # `JobRun`.
@@ -2748,6 +3204,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advance_child_rollout_job_run = args[:advance_child_rollout_job_run] if args.key?(:advance_child_rollout_job_run)
+          @analysis_job_run = args[:analysis_job_run] if args.key?(:analysis_job_run)
           @create_child_rollout_job_run = args[:create_child_rollout_job_run] if args.key?(:create_child_rollout_job_run)
           @create_time = args[:create_time] if args.key?(:create_time)
           @deploy_job_run = args[:deploy_job_run] if args.key?(:deploy_job_run)
@@ -2856,6 +3313,42 @@ module Google
         def update!(**args)
           @gateway_service_mesh = args[:gateway_service_mesh] if args.key?(:gateway_service_mesh)
           @service_networking = args[:service_networking] if args.key?(:service_networking)
+        end
+      end
+      
+      # KubernetesRenderMetadata contains Kubernetes information associated with a `
+      # Release` render.
+      class KubernetesRenderMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the canary version of the Kubernetes Deployment that will
+        # be applied to the GKE cluster. Only set if a canary deployment strategy was
+        # configured.
+        # Corresponds to the JSON property `canaryDeployment`
+        # @return [String]
+        attr_accessor :canary_deployment
+      
+        # Output only. Name of the Kubernetes Deployment that will be applied to the GKE
+        # cluster. Only set if a single Deployment was provided in the rendered manifest.
+        # Corresponds to the JSON property `deployment`
+        # @return [String]
+        attr_accessor :deployment
+      
+        # Output only. Namespace the Kubernetes resources will be applied to in the GKE
+        # cluster. Only set if applying resources to a single namespace.
+        # Corresponds to the JSON property `kubernetesNamespace`
+        # @return [String]
+        attr_accessor :kubernetes_namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canary_deployment = args[:canary_deployment] if args.key?(:canary_deployment)
+          @deployment = args[:deployment] if args.key?(:deployment)
+          @kubernetes_namespace = args[:kubernetes_namespace] if args.key?(:kubernetes_namespace)
         end
       end
       
@@ -3563,6 +4056,12 @@ module Google
       class PhaseConfig
         include Google::Apis::Core::Hashable
       
+        # Analysis contains the configuration for the set of analyses to be performed on
+        # the target.
+        # Corresponds to the JSON property `analysis`
+        # @return [Google::Apis::ClouddeployV1::Analysis]
+        attr_accessor :analysis
+      
         # Required. Percentage deployment for the phase.
         # Corresponds to the JSON property `percentage`
         # @return [Fixnum]
@@ -3600,18 +4099,25 @@ module Google
         attr_accessor :verify
         alias_method :verify?, :verify
       
+        # Verify contains the verify job configuration information.
+        # Corresponds to the JSON property `verifyConfig`
+        # @return [Google::Apis::ClouddeployV1::Verify]
+        attr_accessor :verify_config
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @analysis = args[:analysis] if args.key?(:analysis)
           @percentage = args[:percentage] if args.key?(:percentage)
           @phase_id = args[:phase_id] if args.key?(:phase_id)
           @postdeploy = args[:postdeploy] if args.key?(:postdeploy)
           @predeploy = args[:predeploy] if args.key?(:predeploy)
           @profiles = args[:profiles] if args.key?(:profiles)
           @verify = args[:verify] if args.key?(:verify)
+          @verify_config = args[:verify_config] if args.key?(:verify_config)
         end
       end
       
@@ -3855,6 +4361,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :actions
       
+        # Optional. The tasks that will run as a part of the postdeploy job. The tasks
+        # are executed sequentially in the order specified. Only one of `actions` or `
+        # tasks` can be specified.
+        # Corresponds to the JSON property `tasks`
+        # @return [Array<Google::Apis::ClouddeployV1::Task>]
+        attr_accessor :tasks
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3862,6 +4375,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @actions = args[:actions] if args.key?(:actions)
+          @tasks = args[:tasks] if args.key?(:tasks)
         end
       end
       
@@ -3874,6 +4388,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :actions
       
+        # Output only. The tasks that are executed as part of the postdeploy Job.
+        # Corresponds to the JSON property `tasks`
+        # @return [Array<Google::Apis::ClouddeployV1::Task>]
+        attr_accessor :tasks
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3881,6 +4400,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @actions = args[:actions] if args.key?(:actions)
+          @tasks = args[:tasks] if args.key?(:tasks)
         end
       end
       
@@ -3906,6 +4426,11 @@ module Google
         # @return [String]
         attr_accessor :failure_message
       
+        # PostdeployJobRunMetadata contains metadata about the postdeploy `JobRun`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::ClouddeployV1::PostdeployJobRunMetadata]
+        attr_accessor :metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3915,6 +4440,26 @@ module Google
           @build = args[:build] if args.key?(:build)
           @failure_cause = args[:failure_cause] if args.key?(:failure_cause)
           @failure_message = args[:failure_message] if args.key?(:failure_message)
+          @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # PostdeployJobRunMetadata contains metadata about the postdeploy `JobRun`.
+      class PostdeployJobRunMetadata
+        include Google::Apis::Core::Hashable
+      
+        # CustomMetadata contains information from a user-defined operation.
+        # Corresponds to the JSON property `custom`
+        # @return [Google::Apis::ClouddeployV1::CustomMetadata]
+        attr_accessor :custom
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom = args[:custom] if args.key?(:custom)
         end
       end
       
@@ -3928,6 +4473,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :actions
       
+        # Optional. The tasks that will run as a part of the predeploy job. The tasks
+        # are executed sequentially in the order specified. Only one of `actions` or `
+        # tasks` can be specified.
+        # Corresponds to the JSON property `tasks`
+        # @return [Array<Google::Apis::ClouddeployV1::Task>]
+        attr_accessor :tasks
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3935,6 +4487,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @actions = args[:actions] if args.key?(:actions)
+          @tasks = args[:tasks] if args.key?(:tasks)
         end
       end
       
@@ -3947,6 +4500,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :actions
       
+        # Output only. The tasks that are executed as part of the predeploy Job.
+        # Corresponds to the JSON property `tasks`
+        # @return [Array<Google::Apis::ClouddeployV1::Task>]
+        attr_accessor :tasks
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3954,6 +4512,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @actions = args[:actions] if args.key?(:actions)
+          @tasks = args[:tasks] if args.key?(:tasks)
         end
       end
       
@@ -3979,6 +4538,11 @@ module Google
         # @return [String]
         attr_accessor :failure_message
       
+        # PredeployJobRunMetadata contains metadata about the predeploy `JobRun`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::ClouddeployV1::PredeployJobRunMetadata]
+        attr_accessor :metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3988,6 +4552,26 @@ module Google
           @build = args[:build] if args.key?(:build)
           @failure_cause = args[:failure_cause] if args.key?(:failure_cause)
           @failure_message = args[:failure_message] if args.key?(:failure_message)
+          @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # PredeployJobRunMetadata contains metadata about the predeploy `JobRun`.
+      class PredeployJobRunMetadata
+        include Google::Apis::Core::Hashable
+      
+        # CustomMetadata contains information from a user-defined operation.
+        # Corresponds to the JSON property `custom`
+        # @return [Google::Apis::ClouddeployV1::CustomMetadata]
+        attr_accessor :custom
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom = args[:custom] if args.key?(:custom)
         end
       end
       
@@ -4489,6 +5073,12 @@ module Google
         # @return [Google::Apis::ClouddeployV1::CustomMetadata]
         attr_accessor :custom
       
+        # KubernetesRenderMetadata contains Kubernetes information associated with a `
+        # Release` render.
+        # Corresponds to the JSON property `kubernetes`
+        # @return [Google::Apis::ClouddeployV1::KubernetesRenderMetadata]
+        attr_accessor :kubernetes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4497,6 +5087,7 @@ module Google
         def update!(**args)
           @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
           @custom = args[:custom] if args.key?(:custom)
+          @kubernetes = args[:kubernetes] if args.key?(:kubernetes)
         end
       end
       
@@ -5750,6 +6341,12 @@ module Google
       class Standard
         include Google::Apis::Core::Hashable
       
+        # Analysis contains the configuration for the set of analyses to be performed on
+        # the target.
+        # Corresponds to the JSON property `analysis`
+        # @return [Google::Apis::ClouddeployV1::Analysis]
+        attr_accessor :analysis
+      
         # Postdeploy contains the postdeploy job configuration information.
         # Corresponds to the JSON property `postdeploy`
         # @return [Google::Apis::ClouddeployV1::Postdeploy]
@@ -5766,15 +6363,22 @@ module Google
         attr_accessor :verify
         alias_method :verify?, :verify
       
+        # Verify contains the verify job configuration information.
+        # Corresponds to the JSON property `verifyConfig`
+        # @return [Google::Apis::ClouddeployV1::Verify]
+        attr_accessor :verify_config
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @analysis = args[:analysis] if args.key?(:analysis)
           @postdeploy = args[:postdeploy] if args.key?(:postdeploy)
           @predeploy = args[:predeploy] if args.key?(:predeploy)
           @verify = args[:verify] if args.key?(:verify)
+          @verify_config = args[:verify_config] if args.key?(:verify_config)
         end
       end
       
@@ -6225,6 +6829,26 @@ module Google
         end
       end
       
+      # A Task represents a unit of work that is executed as part of a Job.
+      class Task
+        include Google::Apis::Core::Hashable
+      
+        # This task is represented by a container that is executed in the Cloud Build
+        # execution environment.
+        # Corresponds to the JSON property `container`
+        # @return [Google::Apis::ClouddeployV1::ContainerTask]
+        attr_accessor :container
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container = args[:container] if args.key?(:container)
+        end
+      end
+      
       # The request object used by `TerminateJobRun`.
       class TerminateJobRunRequest
         include Google::Apis::Core::Hashable
@@ -6582,9 +7206,15 @@ module Google
         end
       end
       
-      # A verify Job.
-      class VerifyJob
+      # Verify contains the verify job configuration information.
+      class Verify
         include Google::Apis::Core::Hashable
+      
+        # Optional. The tasks that will run as a part of the verify job. The tasks are
+        # executed sequentially in the order specified.
+        # Corresponds to the JSON property `tasks`
+        # @return [Array<Google::Apis::ClouddeployV1::Task>]
+        attr_accessor :tasks
       
         def initialize(**args)
            update!(**args)
@@ -6592,6 +7222,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @tasks = args[:tasks] if args.key?(:tasks)
+        end
+      end
+      
+      # A verify Job.
+      class VerifyJob
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The tasks that are executed as part of the verify Job.
+        # Corresponds to the JSON property `tasks`
+        # @return [Array<Google::Apis::ClouddeployV1::Task>]
+        attr_accessor :tasks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tasks = args[:tasks] if args.key?(:tasks)
         end
       end
       
@@ -6627,6 +7277,11 @@ module Google
         # @return [String]
         attr_accessor :failure_message
       
+        # VerifyJobRunMetadata contains metadata about the verify `JobRun`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::ClouddeployV1::VerifyJobRunMetadata]
+        attr_accessor :metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6638,6 +7293,26 @@ module Google
           @event_log_path = args[:event_log_path] if args.key?(:event_log_path)
           @failure_cause = args[:failure_cause] if args.key?(:failure_cause)
           @failure_message = args[:failure_message] if args.key?(:failure_message)
+          @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # VerifyJobRunMetadata contains metadata about the verify `JobRun`.
+      class VerifyJobRunMetadata
+        include Google::Apis::Core::Hashable
+      
+        # CustomMetadata contains information from a user-defined operation.
+        # Corresponds to the JSON property `custom`
+        # @return [Google::Apis::ClouddeployV1::CustomMetadata]
+        attr_accessor :custom
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom = args[:custom] if args.key?(:custom)
         end
       end
       
