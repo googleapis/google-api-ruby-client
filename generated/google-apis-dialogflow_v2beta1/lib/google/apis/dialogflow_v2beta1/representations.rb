@@ -2290,6 +2290,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1ConversationGeneratorContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1ConversationPhoneNumber
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4551,6 +4557,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :dtmf_pattern, as: 'dtmfPattern'
           property :is_fallback, as: 'isFallback'
           hash :labels, as: 'labels'
           property :name, as: 'name'
@@ -5615,6 +5622,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :dtmf_pattern, as: 'dtmfPattern'
           property :is_fallback, as: 'isFallback'
           hash :labels, as: 'labels'
           property :name, as: 'name'
@@ -7877,6 +7885,10 @@ module Google
           property :end_time, as: 'endTime'
           hash :ingested_context_references, as: 'ingestedContextReferences', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationContextReference, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationContextReference::Representation
       
+          property :initial_conversation_profile, as: 'initialConversationProfile', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationProfile, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationProfile::Representation
+      
+          hash :initial_generator_contexts, as: 'initialGeneratorContexts', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationGeneratorContext, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationGeneratorContext::Representation
+      
           property :lifecycle_state, as: 'lifecycleState'
           property :name, as: 'name'
           property :phone_number, as: 'phoneNumber', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationPhoneNumber, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ConversationPhoneNumber::Representation
@@ -7927,6 +7939,13 @@ module Google
           property :new_recognition_result_payload, as: 'newRecognitionResultPayload', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1StreamingRecognitionResult, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1StreamingRecognitionResult::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ConversationGeneratorContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generator_type, as: 'generatorType'
         end
       end
       
