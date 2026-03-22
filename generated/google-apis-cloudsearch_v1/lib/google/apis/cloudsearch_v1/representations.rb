@@ -3152,6 +3152,8 @@ module Google
       class QuerySuggestion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_query_time, as: 'lastQueryTime'
+          property :source_corpus, as: 'sourceCorpus'
         end
       end
       
