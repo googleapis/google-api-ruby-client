@@ -202,9 +202,9 @@ module Google
         #   Required. The ID to use for the Collection, which will become the final
         #   component of the Collection's resource name. A new Collection is created as
         #   part of the DataConnector setup. DataConnector is a singleton resource under
-        #   Collection, managing all DataStores of the Collection. This field must conform
-        #   to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length
-        #   limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        #   Collection, managing all DataStores of the Collection. Should conform to [RFC-
+        #   1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63
+        #   characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -489,8 +489,8 @@ module Google
         #   Required. Full resource name of DataConnector, such as `projects/`project`/
         #   locations/`location`/collections/`collection_id`/dataConnector`. If the caller
         #   does not have permission to access the DataConnector, regardless of whether or
-        #   not it exists, a PERMISSION_DENIED error is returned. If the requested
-        #   DataConnector does not exist, a NOT_FOUND error is returned.
+        #   not it exists, a `PERMISSION_DENIED` error is returned. If the requested
+        #   DataConnector does not exist, a `NOT_FOUND` error is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -532,7 +532,7 @@ module Google
         #   data_protection_policy` Note: Support for these fields may vary depending on
         #   the connector type. For example, not all connectors support `
         #   destination_configs`. If an unsupported or unknown field path is provided, the
-        #   request will return an INVALID_ARGUMENT error.
+        #   request will return an `INVALID_ARGUMENT` error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4544,7 +4544,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_collection_engine_assistant_agent_card(tenant, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, '{+tenant}/card', options)
+          command = make_simple_command(:get, 'v1/{+tenant}/card', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::A2aV1AgentCard::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::A2aV1AgentCard
           command.params['tenant'] = tenant unless tenant.nil?
@@ -4577,7 +4577,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def send_project_location_collection_engine_assistant_agent_message(tenant, a2a_v1_send_message_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, '{+tenant}/message:send', options)
+          command = make_simple_command(:post, 'v1/{+tenant}/message:send', options)
           command.request_representation = Google::Apis::DiscoveryengineV1::A2aV1SendMessageRequest::Representation
           command.request_object = a2a_v1_send_message_request_object
           command.response_representation = Google::Apis::DiscoveryengineV1::A2aV1SendMessageResponse::Representation
@@ -4612,7 +4612,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def stream_project_location_collection_engine_assistant_agent_message(tenant, a2a_v1_send_message_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, '{+tenant}/message:stream', options)
+          command = make_simple_command(:post, 'v1/{+tenant}/message:stream', options)
           command.request_representation = Google::Apis::DiscoveryengineV1::A2aV1SendMessageRequest::Representation
           command.request_object = a2a_v1_send_message_request_object
           command.response_representation = Google::Apis::DiscoveryengineV1::A2aV1StreamResponse::Representation
@@ -4680,7 +4680,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_project_location_collection_engine_assistant_agent_task(tenant, name, a2a_v1_cancel_task_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, '{+tenant}/{+name}:cancel', options)
+          command = make_simple_command(:post, 'v1/{+tenant}/{+name}:cancel', options)
           command.request_representation = Google::Apis::DiscoveryengineV1::A2aV1CancelTaskRequest::Representation
           command.request_object = a2a_v1_cancel_task_request_object
           command.response_representation = Google::Apis::DiscoveryengineV1::A2aV1Task::Representation
@@ -4718,7 +4718,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_collection_engine_assistant_agent_task(tenant, name, history_length: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, '{+tenant}/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+tenant}/{+name}', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::A2aV1Task::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::A2aV1Task
           command.params['tenant'] = tenant unless tenant.nil?
@@ -4756,7 +4756,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def subscribe_project_location_collection_engine_assistant_agent_task(tenant, name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, '{+tenant}/{+name}:subscribe', options)
+          command = make_simple_command(:get, 'v1/{+tenant}/{+name}:subscribe', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::A2aV1StreamResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::A2aV1StreamResponse
           command.params['tenant'] = tenant unless tenant.nil?
@@ -4793,7 +4793,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_location_collection_engine_assistant_agent_task_push_notification_config(tenant, parent, a2a_v1_task_push_notification_config_object = nil, config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, '{+tenant}/{+parent}', options)
+          command = make_simple_command(:post, 'v1/{+tenant}/{+parent}', options)
           command.request_representation = Google::Apis::DiscoveryengineV1::A2aV1TaskPushNotificationConfig::Representation
           command.request_object = a2a_v1_task_push_notification_config_object
           command.response_representation = Google::Apis::DiscoveryengineV1::A2aV1TaskPushNotificationConfig::Representation
@@ -4831,7 +4831,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_collection_engine_assistant_agent_task_push_notification_config(tenant, name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, '{+tenant}/{+name}', options)
+          command = make_simple_command(:delete, 'v1/{+tenant}/{+name}', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleProtobufEmpty
           command.params['tenant'] = tenant unless tenant.nil?
@@ -4866,7 +4866,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_collection_engine_assistant_agent_task_push_notification_config(tenant, name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, '{+tenant}/{+name}', options)
+          command = make_simple_command(:get, 'v1/{+tenant}/{+name}', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::A2aV1TaskPushNotificationConfig::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::A2aV1TaskPushNotificationConfig
           command.params['tenant'] = tenant unless tenant.nil?
@@ -4909,7 +4909,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_collection_engine_assistant_agent_task_push_notification_configs(tenant, parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, '{+tenant}/{+parent}/pushNotificationConfigs', options)
+          command = make_simple_command(:get, 'v1/{+tenant}/{+parent}/pushNotificationConfigs', options)
           command.response_representation = Google::Apis::DiscoveryengineV1::A2aV1ListTaskPushNotificationConfigResponse::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::A2aV1ListTaskPushNotificationConfigResponse
           command.params['tenant'] = tenant unless tenant.nil?
@@ -10082,76 +10082,6 @@ module Google
           command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a new User Store.
-        # @param [String] parent
-        #   Required. The parent collection resource name, such as `projects/`project`/
-        #   locations/`location``.
-        # @param [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1UserStore] google_cloud_discoveryengine_v1_user_store_object
-        # @param [String] user_store_id
-        #   Required. The ID of the User Store to create. The ID must contain only letters
-        #   (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum
-        #   length is 63 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1UserStore] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1UserStore]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_user_store(parent, google_cloud_discoveryengine_v1_user_store_object = nil, user_store_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+parent}/userStores', options)
-          command.request_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1UserStore::Representation
-          command.request_object = google_cloud_discoveryengine_v1_user_store_object
-          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1UserStore::Representation
-          command.response_class = Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1UserStore
-          command.params['parent'] = parent unless parent.nil?
-          command.query['userStoreId'] = user_store_id unless user_store_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes the User Store.
-        # @param [String] name
-        #   Required. The name of the User Store to delete. Format: `projects/`project`/
-        #   locations/`location`/userStores/`user_store_id``
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_user_store(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation::Representation
-          command.response_class = Google::Apis::DiscoveryengineV1::GoogleLongrunningOperation
-          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
