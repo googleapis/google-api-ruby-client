@@ -1522,6 +1522,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1DynamicTool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3551,6 +3557,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDynamicTool
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6631,7 +6643,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chunk_info, as: 'chunkInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerReferenceChunkInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerReferenceChunkInfo::Representation
       
-          collection :queries, as: 'queries'
           property :structured_document_info, as: 'structuredDocumentInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerReferenceStructuredDocumentInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerReferenceStructuredDocumentInfo::Representation
       
           property :unstructured_document_info, as: 'unstructuredDocumentInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfo::Representation
@@ -7639,6 +7650,8 @@ module Google
           property :data_source, as: 'dataSource'
           collection :destination_configs, as: 'destinationConfigs', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DestinationConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DestinationConfig::Representation
       
+          collection :dynamic_tools, as: 'dynamicTools', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DynamicTool, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DynamicTool::Representation
+      
           collection :egress_fqdns, as: 'egressFqdns'
           property :end_user_config, as: 'endUserConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataConnectorEndUserConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1DataConnectorEndUserConfig::Representation
       
@@ -8091,6 +8104,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1DynamicTool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :enabled, as: 'enabled'
+          property :name, as: 'name'
         end
       end
       
@@ -9228,6 +9251,7 @@ module Google
           property :language_code, as: 'languageCode'
           property :natural_language_query_understanding_spec, as: 'naturalLanguageQueryUnderstandingSpec', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestNaturalLanguageQueryUnderstandingSpec, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1SearchRequestNaturalLanguageQueryUnderstandingSpec::Representation
       
+          property :num_results_per_data_store, as: 'numResultsPerDataStore'
           property :offset, as: 'offset'
           property :one_box_page_size, as: 'oneBoxPageSize'
           property :order_by, as: 'orderBy'
@@ -9387,6 +9411,7 @@ module Google
           property :custom_search_operators, as: 'customSearchOperators'
           property :data_store, as: 'dataStore'
           property :filter, as: 'filter'
+          property :num_results, as: 'numResults'
         end
       end
       
@@ -10586,7 +10611,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chunk_info, as: 'chunkInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo::Representation
       
-          collection :queries, as: 'queries'
           property :structured_document_info, as: 'structuredDocumentInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo::Representation
       
           property :unstructured_document_info, as: 'unstructuredDocumentInfo', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo::Representation
@@ -11215,6 +11239,8 @@ module Google
           property :data_source, as: 'dataSource'
           collection :destination_configs, as: 'destinationConfigs', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDestinationConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDestinationConfig::Representation
       
+          collection :dynamic_tools, as: 'dynamicTools', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDynamicTool, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDynamicTool::Representation
+      
           collection :egress_fqdns, as: 'egressFqdns'
           property :end_user_config, as: 'endUserConfig', class: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDataConnectorEndUserConfig, decorator: Google::Apis::DiscoveryengineV1::GoogleCloudDiscoveryengineV1alphaDataConnectorEndUserConfig::Representation
       
@@ -11648,6 +11674,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :enhanced_document_elements, as: 'enhancedDocumentElements'
           property :use_native_text, as: 'useNativeText'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDynamicTool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :enabled, as: 'enabled'
+          property :name, as: 'name'
         end
       end
       
