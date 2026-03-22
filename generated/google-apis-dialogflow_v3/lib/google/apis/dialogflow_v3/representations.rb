@@ -568,6 +568,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3FlowTraceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3FlowTransition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1138,6 +1144,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3PlaybookTraceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3PlaybookTransition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1402,6 +1414,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3SpeechProcessingMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3SpeechToTextSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1589,6 +1607,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3ToolVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3TraceBlock
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4892,6 +4916,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3FlowTraceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :flow, as: 'flow'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3FlowTransition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5311,6 +5343,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :dtmf_pattern, as: 'dtmfPattern'
           property :is_fallback, as: 'isFallback'
           hash :labels, as: 'labels'
           property :name, as: 'name'
@@ -5836,6 +5869,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3PlaybookTraceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :playbook, as: 'playbook'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3PlaybookTransition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5931,6 +5972,8 @@ module Google
           property :sentiment_analysis_result, as: 'sentimentAnalysisResult', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SentimentAnalysisResult, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SentimentAnalysisResult::Representation
       
           property :text, as: 'text'
+          collection :trace_blocks, as: 'traceBlocks', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TraceBlock, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TraceBlock::Representation
+      
           property :transcript, as: 'transcript'
           property :trigger_event, as: 'triggerEvent'
           property :trigger_intent, as: 'triggerIntent'
@@ -6288,6 +6331,13 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3SpeechProcessingMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3SpeechToTextSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6593,6 +6643,25 @@ module Google
           property :tool, as: 'tool', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Tool, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Tool::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3TraceBlock
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions, as: 'actions', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Action, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Action::Representation
+      
+          property :complete_time, as: 'completeTime'
+          property :end_state, as: 'endState'
+          property :flow_trace_metadata, as: 'flowTraceMetadata', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FlowTraceMetadata, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FlowTraceMetadata::Representation
+      
+          hash :input_parameters, as: 'inputParameters'
+          hash :output_parameters, as: 'outputParameters'
+          property :playbook_trace_metadata, as: 'playbookTraceMetadata', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PlaybookTraceMetadata, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PlaybookTraceMetadata::Representation
+      
+          property :speech_processing_metadata, as: 'speechProcessingMetadata', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SpeechProcessingMetadata, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SpeechProcessingMetadata::Representation
+      
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -7458,6 +7527,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :dtmf_pattern, as: 'dtmfPattern'
           property :is_fallback, as: 'isFallback'
           hash :labels, as: 'labels'
           property :name, as: 'name'
