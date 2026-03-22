@@ -1568,16 +1568,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. A filter that chooses which log entries to return. For more
-        # information, see Logging query language (https://`$universe.dns_names.
-        # final_documentation_domain`/logging/docs/view/logging-query-language).Only log
-        # entries that match the filter are returned. An empty filter matches all log
-        # entries in the resources listed in resource_names. Referencing a parent
-        # resource that is not listed in resource_names will cause the filter to return
-        # no results. The maximum length of a filter is 20,000 characters.To make
-        # queries faster, you can make the filter more selective by using restrictions
-        # on indexed fields (https://`$universe.dns_names.final_documentation_domain`/
-        # logging/docs/view/logging-query-language#indexed-fields) as well as limit the
-        # time range of the query by adding range restrictions on the timestamp field.
+        # information, see Logging query language (https://docs.cloud.google.com/logging/
+        # docs/view/logging-query-language).Only log entries that match the filter are
+        # returned. An empty filter matches all log entries in the resources listed in
+        # resource_names. Referencing a parent resource that is not listed in
+        # resource_names will cause the filter to return no results. The maximum length
+        # of a filter is 20,000 characters.To make queries faster, you can make the
+        # filter more selective by using restrictions on indexed fields (https://docs.
+        # cloud.google.com/logging/docs/view/logging-query-language#indexed-fields) as
+        # well as limit the time range of the query by adding range restrictions on the
+        # timestamp field.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -4379,12 +4379,12 @@ module Google
         attr_accessor :buffer_window
       
         # Optional. A filter that chooses which log entries to return. For more
-        # information, see Logging query language (https://`$universe.dns_names.
-        # final_documentation_domain`/logging/docs/view/logging-query-language).Only log
-        # entries that match the filter are returned. An empty filter matches all log
-        # entries in the resources listed in resource_names. Referencing a parent
-        # resource that is not listed in resource_names will cause the filter to return
-        # no results. The maximum length of a filter is 20,000 characters.
+        # information, see Logging query language (https://docs.cloud.google.com/logging/
+        # docs/view/logging-query-language).Only log entries that match the filter are
+        # returned. An empty filter matches all log entries in the resources listed in
+        # resource_names. Referencing a parent resource that is not listed in
+        # resource_names will cause the filter to return no results. The maximum length
+        # of a filter is 20,000 characters.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -4560,13 +4560,13 @@ module Google
         # that did not supply their own values, the entries earlier in the list will
         # sort before the entries later in the list. See the entries.list method.Log
         # entries with timestamps that are more than the logs retention period (https://
-        # cloud.google.com/logging/quotas) in the past or more than 24 hours in the
+        # docs.cloud.google.com/logging/quotas) in the past or more than 24 hours in the
         # future will not be available when calling entries.list. However, those log
-        # entries can still be exported with LogSinks (https://cloud.google.com/logging/
-        # docs/api/tasks/exporting-logs).To improve throughput and to avoid exceeding
-        # the quota limit (https://cloud.google.com/logging/quotas) for calls to entries.
-        # write, you should try to include several log entries in this list, rather than
-        # calling this method for each individual log entry.
+        # entries can still be exported with LogSinks (https://docs.cloud.google.com/
+        # logging/docs/routing/overview).To improve throughput and to avoid exceeding
+        # the quota limit (https://docs.cloud.google.com/logging/quotas) for calls to
+        # entries.write, you should try to include several log entries in this list,
+        # rather than calling this method for each individual log entry.
         # Corresponds to the JSON property `entries`
         # @return [Array<Google::Apis::LoggingV2::LogEntry>]
         attr_accessor :entries
