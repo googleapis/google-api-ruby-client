@@ -772,7 +772,9 @@ module Google
         alias_method :import_only?, :import_only
       
         # A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
-        # values for encrypt, decrypt, and sign operations on a CryptoKey.
+        # values for encrypt, decrypt, and sign operations on a CryptoKey or
+        # KeyAccessJustificationsPolicyConfig (the default Key Access Justifications
+        # policy).
         # Corresponds to the JSON property `keyAccessJustificationsPolicy`
         # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicy]
         attr_accessor :key_access_justifications_policy
@@ -1903,18 +1905,18 @@ module Google
         end
       end
       
-      # The configuration of a protection level for a project's Key Access
+      # Represents the configuration of a protection level for a project's Key Access
       # Justifications enrollment.
       class KeyAccessJustificationsEnrollmentConfig
         include Google::Apis::Core::Hashable
       
-        # Whether the project has KAJ logging enabled.
+        # Indicates whether the project has KAJ logging enabled.
         # Corresponds to the JSON property `auditLogging`
         # @return [Boolean]
         attr_accessor :audit_logging
         alias_method :audit_logging?, :audit_logging
       
-        # Whether the project is enrolled in KAJ policy enforcement.
+        # Indicates whether the project is enrolled in KAJ policy enforcement.
         # Corresponds to the JSON property `policyEnforcement`
         # @return [Boolean]
         attr_accessor :policy_enforcement
@@ -1932,13 +1934,16 @@ module Google
       end
       
       # A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
-      # values for encrypt, decrypt, and sign operations on a CryptoKey.
+      # values for encrypt, decrypt, and sign operations on a CryptoKey or
+      # KeyAccessJustificationsPolicyConfig (the default Key Access Justifications
+      # policy).
       class KeyAccessJustificationsPolicy
         include Google::Apis::Core::Hashable
       
-        # The list of allowed reasons for access to a CryptoKey. Zero allowed access
-        # reasons means all encrypt, decrypt, and sign operations for the CryptoKey
-        # associated with this policy will fail.
+        # The list of allowed reasons for access to a CryptoKey. Note that empty
+        # allowed_access_reasons has a different meaning depending on where this message
+        # appears. If this is under KeyAccessJustificationsPolicyConfig, it means allow-
+        # all. If this is under CryptoKey, it means deny-all.
         # Corresponds to the JSON property `allowedAccessReasons`
         # @return [Array<String>]
         attr_accessor :allowed_access_reasons
@@ -1953,18 +1958,21 @@ module Google
         end
       end
       
-      # A singleton configuration for Key Access Justifications policies.
+      # Represents a singleton configuration for Key Access Justifications policies.
       class KeyAccessJustificationsPolicyConfig
         include Google::Apis::Core::Hashable
       
         # A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
-        # values for encrypt, decrypt, and sign operations on a CryptoKey.
+        # values for encrypt, decrypt, and sign operations on a CryptoKey or
+        # KeyAccessJustificationsPolicyConfig (the default Key Access Justifications
+        # policy).
         # Corresponds to the JSON property `defaultKeyAccessJustificationPolicy`
         # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicy]
         attr_accessor :default_key_access_justification_policy
       
-        # Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in
-        # the format of "`organizations|folders|projects`/*/kajPolicyConfig".
+        # Identifier. Represents the resource name for this
+        # KeyAccessJustificationsPolicyConfig in the format of "`organizations|folders|
+        # projects`/*/kajPolicyConfig".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3726,24 +3734,24 @@ module Google
         end
       end
       
-      # Response message for KeyAccessJustificationsConfig.
+      # Represents a response message for KeyAccessJustificationsConfig.
       # ShowEffectiveKeyAccessJustificationsEnrollmentConfig
       class ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse
         include Google::Apis::Core::Hashable
       
-        # The configuration of a protection level for a project's Key Access
+        # Represents the configuration of a protection level for a project's Key Access
         # Justifications enrollment.
         # Corresponds to the JSON property `externalConfig`
         # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsEnrollmentConfig]
         attr_accessor :external_config
       
-        # The configuration of a protection level for a project's Key Access
+        # Represents the configuration of a protection level for a project's Key Access
         # Justifications enrollment.
         # Corresponds to the JSON property `hardwareConfig`
         # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsEnrollmentConfig]
         attr_accessor :hardware_config
       
-        # The configuration of a protection level for a project's Key Access
+        # Represents the configuration of a protection level for a project's Key Access
         # Justifications enrollment.
         # Corresponds to the JSON property `softwareConfig`
         # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsEnrollmentConfig]
@@ -3761,12 +3769,12 @@ module Google
         end
       end
       
-      # Response message for KeyAccessJustificationsConfig.
+      # Represents a response message for KeyAccessJustificationsConfig.
       # ShowEffectiveKeyAccessJustificationsPolicyConfig.
       class ShowEffectiveKeyAccessJustificationsPolicyConfigResponse
         include Google::Apis::Core::Hashable
       
-        # A singleton configuration for Key Access Justifications policies.
+        # Represents a singleton configuration for Key Access Justifications policies.
         # Corresponds to the JSON property `effectiveKajPolicy`
         # @return [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig]
         attr_accessor :effective_kaj_policy

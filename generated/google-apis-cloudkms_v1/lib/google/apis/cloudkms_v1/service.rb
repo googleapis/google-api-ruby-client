@@ -86,7 +86,7 @@ module Google
         # Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder,
         # or project.
         # @param [String] name
-        #   Required. The name of the KeyAccessJustificationsPolicyConfig to get.
+        #   Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -158,11 +158,12 @@ module Google
         # Updates the KeyAccessJustificationsPolicyConfig for a given organization,
         # folder, or project.
         # @param [String] name
-        #   Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in
-        #   the format of "`organizations|folders|projects`/*/kajPolicyConfig".
+        #   Identifier. Represents the resource name for this
+        #   KeyAccessJustificationsPolicyConfig in the format of "`organizations|folders|
+        #   projects`/*/kajPolicyConfig".
         # @param [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig] key_access_justifications_policy_config_object
         # @param [String] update_mask
-        #   Optional. The list of fields to update.
+        #   Optional. Specifies the list of fields to update.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -196,7 +197,7 @@ module Google
         # Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder,
         # or project.
         # @param [String] name
-        #   Required. The name of the KeyAccessJustificationsPolicyConfig to get.
+        #   Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -227,11 +228,12 @@ module Google
         # Updates the KeyAccessJustificationsPolicyConfig for a given organization,
         # folder, or project.
         # @param [String] name
-        #   Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in
-        #   the format of "`organizations|folders|projects`/*/kajPolicyConfig".
+        #   Identifier. Represents the resource name for this
+        #   KeyAccessJustificationsPolicyConfig in the format of "`organizations|folders|
+        #   projects`/*/kajPolicyConfig".
         # @param [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig] key_access_justifications_policy_config_object
         # @param [String] update_mask
-        #   Optional. The list of fields to update.
+        #   Optional. Specifies the list of fields to update.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -296,7 +298,7 @@ module Google
         # Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder,
         # or project.
         # @param [String] name
-        #   Required. The name of the KeyAccessJustificationsPolicyConfig to get.
+        #   Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -359,7 +361,7 @@ module Google
         # Returns the KeyAccessJustificationsEnrollmentConfig of the resource closest to
         # the given project in hierarchy.
         # @param [String] project
-        #   Required. The number or id of the project to get the effective
+        #   Required. Specifies the number or id of the project to get the effective
         #   KeyAccessJustificationsEnrollmentConfig for.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -391,7 +393,7 @@ module Google
         # Returns the KeyAccessJustificationsPolicyConfig of the resource closest to the
         # given project in hierarchy.
         # @param [String] project
-        #   Required. The number or id of the project to get the effective
+        #   Required. Specifies the number or id of the project to get the effective
         #   KeyAccessJustificationsPolicyConfig. In the format of "projects/`|`"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -464,11 +466,12 @@ module Google
         # Updates the KeyAccessJustificationsPolicyConfig for a given organization,
         # folder, or project.
         # @param [String] name
-        #   Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in
-        #   the format of "`organizations|folders|projects`/*/kajPolicyConfig".
+        #   Identifier. Represents the resource name for this
+        #   KeyAccessJustificationsPolicyConfig in the format of "`organizations|folders|
+        #   projects`/*/kajPolicyConfig".
         # @param [Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicyConfig] key_access_justifications_policy_config_object
         # @param [String] update_mask
-        #   Optional. The list of fields to update.
+        #   Optional. Specifies the list of fields to update.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
