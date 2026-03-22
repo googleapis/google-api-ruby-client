@@ -342,6 +342,32 @@ module Google
         end
       end
       
+      # Response for ListSmartNotes method.
+      class ListSmartNotesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to be circulated back for further List call if current List doesn't
+        # include all the smart notes. Unset if all smart notes are returned.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of smart notes in one page.
+        # Corresponds to the JSON property `smartNotes`
+        # @return [Array<Google::Apis::MeetV2::SmartNote>]
+        attr_accessor :smart_notes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @smart_notes = args[:smart_notes] if args.key?(:smart_notes)
+        end
+      end
+      
       # Response for ListTranscriptEntries method.
       class ListTranscriptEntriesResponse
         include Google::Apis::Core::Hashable
@@ -633,6 +659,53 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # Metadata for a smart note generated from a conference. It refers to the notes
+      # generated from Take Notes with Gemini during the conference.
+      class SmartNote
+        include Google::Apis::Core::Hashable
+      
+        # Google Docs location where the transcript file is saved.
+        # Corresponds to the JSON property `docsDestination`
+        # @return [Google::Apis::MeetV2::DocsDestination]
+        attr_accessor :docs_destination
+      
+        # Output only. Timestamp when the smart notes stopped.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Identifier. Resource name of the smart notes. Format: `
+        # conferenceRecords/`conference_record`/smartNotes/`smart_note``, where ``
+        # smart_note`` is a 1:1 mapping to each unique smart notes session of the
+        # conference.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Timestamp when the smart notes started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. Current state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @docs_destination = args[:docs_destination] if args.key?(:docs_destination)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
