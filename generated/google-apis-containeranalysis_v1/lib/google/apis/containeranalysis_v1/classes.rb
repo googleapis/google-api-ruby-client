@@ -1527,6 +1527,15 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsArtifactObjects]
         attr_accessor :objects
       
+        # Optional. A list of OCI images to be uploaded to Artifact Registry upon
+        # successful completion of all build steps. OCI images in the specified paths
+        # will be uploaded to the specified Artifact Registry repository using the
+        # builder service account's credentials. If any images fail to be pushed, the
+        # build is marked FAILURE.
+        # Corresponds to the JSON property `oci`
+        # @return [Array<Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsOci>]
+        attr_accessor :oci
+      
         # A list of Python packages to be uploaded to Artifact Registry upon successful
         # completion of all build steps. The build service account credentials will be
         # used to perform the upload. If any objects fail to be pushed, the build is
@@ -1546,6 +1555,7 @@ module Google
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
           @npm_packages = args[:npm_packages] if args.key?(:npm_packages)
           @objects = args[:objects] if args.key?(:objects)
+          @oci = args[:oci] if args.key?(:oci)
           @python_packages = args[:python_packages] if args.key?(:python_packages)
         end
       end
@@ -1727,6 +1737,40 @@ module Google
         def update!(**args)
           @package_path = args[:package_path] if args.key?(:package_path)
           @repository = args[:repository] if args.key?(:repository)
+        end
+      end
+      
+      # OCI image to upload to Artifact Registry upon successful completion of all
+      # build steps.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsOci
+        include Google::Apis::Core::Hashable
+      
+        # Required. Path on the local file system where to find the container to upload.
+        # e.g. /workspace/my-image.tar
+        # Corresponds to the JSON property `file`
+        # @return [String]
+        attr_accessor :file
+      
+        # Required. Registry path to upload the container to. e.g. us-east1-docker.pkg.
+        # dev/my-project/my-repo/my-image
+        # Corresponds to the JSON property `registryPath`
+        # @return [String]
+        attr_accessor :registry_path
+      
+        # Optional. Tags to apply to the uploaded image. e.g. latest, 1.0.0
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file = args[:file] if args.key?(:file)
+          @registry_path = args[:registry_path] if args.key?(:registry_path)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -2433,6 +2477,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The OCI media type of the artifact. Non-OCI images, such as
+        # Docker images, will have an unspecified value.
+        # Corresponds to the JSON property `ociMediaType`
+        # @return [String]
+        attr_accessor :oci_media_type
+      
         # Start and end times for a build execution phase.
         # Corresponds to the JSON property `pushTiming`
         # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan]
@@ -2447,6 +2497,7 @@ module Google
           @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @digest = args[:digest] if args.key?(:digest)
           @name = args[:name] if args.key?(:name)
+          @oci_media_type = args[:oci_media_type] if args.key?(:oci_media_type)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
         end
       end
@@ -4315,6 +4366,12 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1::LayerDetails]
         attr_accessor :layer_details
       
+        # Line number in the file where the package was found. Optional field that only
+        # applies to source repository scanning.
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4323,6 +4380,7 @@ module Google
         def update!(**args)
           @file_path = args[:file_path] if args.key?(:file_path)
           @layer_details = args[:layer_details] if args.key?(:layer_details)
+          @line_number = args[:line_number] if args.key?(:line_number)
         end
       end
       
