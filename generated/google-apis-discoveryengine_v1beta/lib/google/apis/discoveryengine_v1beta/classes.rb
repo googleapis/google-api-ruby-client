@@ -2232,6 +2232,11 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DestinationConfig>]
         attr_accessor :destination_configs
       
+        # Output only. The dynamic tools fetched for this connector.
+        # Corresponds to the JSON property `dynamicTools`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DynamicTool>]
+        attr_accessor :dynamic_tools
+      
         # Output only. The list of FQDNs of the data connector can egress to. This
         # includes both FQDN derived from the customer provided instance URL and default
         # per connector type FQDNs. Note: This field is derived from both the
@@ -2446,6 +2451,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_source = args[:data_source] if args.key?(:data_source)
           @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
+          @dynamic_tools = args[:dynamic_tools] if args.key?(:dynamic_tools)
           @egress_fqdns = args[:egress_fqdns] if args.key?(:egress_fqdns)
           @end_user_config = args[:end_user_config] if args.key?(:end_user_config)
           @entities = args[:entities] if args.key?(:entities)
@@ -3669,6 +3675,44 @@ module Google
         def update!(**args)
           @enhanced_document_elements = args[:enhanced_document_elements] if args.key?(:enhanced_document_elements)
           @use_native_text = args[:use_native_text] if args.key?(:use_native_text)
+        end
+      end
+      
+      # Configuration for dynamic tools.
+      class GoogleCloudDiscoveryengineV1DynamicTool
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The description of the tool.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The display name of the tool.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Whether the tool is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Required. The name of the tool.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -7372,11 +7416,6 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo]
         attr_accessor :chunk_info
       
-        # Output only. The search queries that produced this reference.
-        # Corresponds to the JSON property `queries`
-        # @return [Array<String>]
-        attr_accessor :queries
-      
         # Structured search information.
         # Corresponds to the JSON property `structuredDocumentInfo`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo]
@@ -7394,7 +7433,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @chunk_info = args[:chunk_info] if args.key?(:chunk_info)
-          @queries = args[:queries] if args.key?(:queries)
           @structured_document_info = args[:structured_document_info] if args.key?(:structured_document_info)
           @unstructured_document_info = args[:unstructured_document_info] if args.key?(:unstructured_document_info)
         end
@@ -9590,6 +9628,11 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDestinationConfig>]
         attr_accessor :destination_configs
       
+        # Output only. The dynamic tools fetched for this connector.
+        # Corresponds to the JSON property `dynamicTools`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDynamicTool>]
+        attr_accessor :dynamic_tools
+      
         # Output only. The list of FQDNs of the data connector can egress to. This
         # includes both FQDN derived from the customer provided instance URL and default
         # per connector type FQDNs. Note: This field is derived from both the
@@ -9805,6 +9848,7 @@ module Google
           @data_protection_policy = args[:data_protection_policy] if args.key?(:data_protection_policy)
           @data_source = args[:data_source] if args.key?(:data_source)
           @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
+          @dynamic_tools = args[:dynamic_tools] if args.key?(:dynamic_tools)
           @egress_fqdns = args[:egress_fqdns] if args.key?(:egress_fqdns)
           @end_user_config = args[:end_user_config] if args.key?(:end_user_config)
           @entities = args[:entities] if args.key?(:entities)
@@ -11222,6 +11266,44 @@ module Google
         def update!(**args)
           @enhanced_document_elements = args[:enhanced_document_elements] if args.key?(:enhanced_document_elements)
           @use_native_text = args[:use_native_text] if args.key?(:use_native_text)
+        end
+      end
+      
+      # Configuration for dynamic tools.
+      class GoogleCloudDiscoveryengineV1alphaDynamicTool
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The description of the tool.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The display name of the tool.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Whether the tool is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Required. The name of the tool.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -19000,11 +19082,6 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfo]
         attr_accessor :chunk_info
       
-        # Output only. The search queries that produced this reference.
-        # Corresponds to the JSON property `queries`
-        # @return [Array<String>]
-        attr_accessor :queries
-      
         # Structured search information.
         # Corresponds to the JSON property `structuredDocumentInfo`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAnswerReferenceStructuredDocumentInfo]
@@ -19022,7 +19099,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @chunk_info = args[:chunk_info] if args.key?(:chunk_info)
-          @queries = args[:queries] if args.key?(:queries)
           @structured_document_info = args[:structured_document_info] if args.key?(:structured_document_info)
           @unstructured_document_info = args[:unstructured_document_info] if args.key?(:unstructured_document_info)
         end
