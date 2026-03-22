@@ -1802,8 +1802,7 @@ module Google
         # @return [String]
         attr_accessor :recaptcha_version
       
-        # Android only. Safety Net has been deprecated. Please use play_integrity_token
-        # instead.
+        # Android only. Safety Net has been deprecated. Use play_integrity_token instead.
         # Corresponds to the JSON property `safetyNetToken`
         # @return [String]
         attr_accessor :safety_net_token
